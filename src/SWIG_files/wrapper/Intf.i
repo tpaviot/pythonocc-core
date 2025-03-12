@@ -149,7 +149,7 @@ bool
 
 Description
 -----------
-Compute if the triangle <p1> <p2> <p3> contain <thepnt>.
+Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.
 ") Contain;
 		static Standard_Boolean Contain(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & ThePnt);
 
@@ -170,7 +170,7 @@ PolarDistance: float
 
 Description
 -----------
-Computes the interference between two polygons in 2d. result: points of intersections and zones of tangence. computes the interference between a polygon or a straight line and a polyhedron. points of intersection and zones of tangence. give the plane equation of the triangle <p1> <p2> <p3>.
+Computes the interference between two polygons in 2d. Result: points of intersections and zones of tangence. Computes the interference between a polygon or a straight line and a polyhedron. Points of intersection and zones of tangence. Give the plane equation of the triangle <P1> <P2> <P3>.
 ") PlaneEquation;
 		static void PlaneEquation(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, gp_XYZ & NormalVector, Standard_Real &OutValue);
 
@@ -204,7 +204,7 @@ bool
 
 Description
 -----------
-Tests if the polylines of intersection or the zones of tangence contain the point of intersection <thepnt>.
+Tests if the polylines of intersection or the zones of tangence contain the point of intersection <ThePnt>.
 ") Contains;
 		Standard_Boolean Contains(const Intf_SectionPoint & ThePnt);
 
@@ -248,7 +248,7 @@ bool
 
 Description
 -----------
-Inserts a new zone of tangence in the current list of tangent zones of the interference and returns true when done.
+Inserts a new zone of tangence in the current list of tangent zones of the interference and returns True when done.
 ") Insert;
 		Standard_Boolean Insert(const Intf_TangentZone & TheZone);
 
@@ -285,7 +285,7 @@ Intf_SectionLine
 
 Description
 -----------
-Gives the polyline of intersection at address <index> in the interference.
+Gives the polyline of intersection at address <Index> in the interference.
 ") LineValue;
 		const Intf_SectionLine & LineValue(const Standard_Integer Index);
 
@@ -342,7 +342,7 @@ Intf_SectionPoint
 
 Description
 -----------
-Gives the point of intersection of address index in the interference.
+Gives the point of intersection of address Index in the interference.
 ") PntValue;
 		const Intf_SectionPoint & PntValue(const Standard_Integer Index);
 
@@ -360,7 +360,7 @@ Intf_TangentZone
 
 Description
 -----------
-Gives the zone of tangence at address index in the interference.
+Gives the zone of tangence at address Index in the interference.
 ") ZoneValue;
 		const Intf_TangentZone & ZoneValue(const Standard_Integer Index);
 
@@ -401,7 +401,7 @@ bool
 
 Description
 -----------
-Returns true if the polyline is closed.
+Returns True if the polyline is closed.
 ") Closed;
 		virtual Standard_Boolean Closed();
 
@@ -427,7 +427,7 @@ int
 
 Description
 -----------
-Returns the number of segments in the polyline.
+Returns the number of Segments in the polyline.
 ") NbSegments;
 		virtual Standard_Integer NbSegments();
 
@@ -447,7 +447,7 @@ None
 
 Description
 -----------
-Returns the points of the segment <index> in the polygon.
+Returns the points of the segment <Index> in the Polygon.
 ") Segment;
 		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
@@ -474,7 +474,7 @@ None
 
 Description
 -----------
-Constructs an empty sectionline.
+Constructs an empty SectionLine.
 ") Intf_SectionLine;
 		 Intf_SectionLine();
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-Copies a sectionline.
+Copies a SectionLine.
 ") Intf_SectionLine;
 		 Intf_SectionLine(const Intf_SectionLine & Other);
 
@@ -510,7 +510,7 @@ None
 
 Description
 -----------
-Adds a point at the end of the sectionline.
+Adds a point at the end of the SectionLine.
 ") Append;
 		void Append(const Intf_SectionPoint & Pi);
 
@@ -528,7 +528,7 @@ None
 
 Description
 -----------
-Concatenates the sectionline <ls> at the end of the sectionline <self>.
+Concatenates the SectionLine <LS> at the end of the SectionLine <self>.
 ") Append;
 		void Append(Intf_SectionLine & LS);
 
@@ -541,7 +541,7 @@ None
 
 Description
 -----------
-Closes the sectionline.
+Closes the SectionLine.
 ") Close;
 		void Close();
 
@@ -559,7 +559,7 @@ bool
 
 Description
 -----------
-Returns true if thepi is in the sectionline <self>.
+Returns True if ThePI is in the SectionLine <self>.
 ") Contains;
 		Standard_Boolean Contains(const Intf_SectionPoint & ThePI);
 
@@ -595,7 +595,7 @@ Intf_SectionPoint
 
 Description
 -----------
-Gives the point of intersection of address <index> in the sectionline.
+Gives the point of intersection of address <Index> in the SectionLine.
 ") GetPoint;
 		const Intf_SectionPoint & GetPoint(const Standard_Integer Index);
 
@@ -608,7 +608,7 @@ bool
 
 Description
 -----------
-Returns true if the sectionline is closed.
+Returns True if the SectionLine is closed.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
@@ -626,7 +626,7 @@ int
 
 Description
 -----------
-Checks if <thepi> is an end of the sectionline. returns 1 for the beginning, 2 for the end, otherwise 0.
+Checks if <ThePI> is an end of the SectionLine. Returns 1 for the beginning, 2 for the end, otherwise 0.
 ") IsEnd;
 		Standard_Integer IsEnd(const Intf_SectionPoint & ThePI);
 
@@ -644,7 +644,7 @@ bool
 
 Description
 -----------
-Compares two sectionlines.
+Compares two SectionLines.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Intf_SectionLine & Other);
 
@@ -657,7 +657,7 @@ int
 
 Description
 -----------
-Returns number of points in this sectionline.
+Returns number of points in this SectionLine.
 ") NumberOfPoints;
 		Standard_Integer NumberOfPoints();
 
@@ -675,7 +675,7 @@ None
 
 Description
 -----------
-Adds a point to the beginning of the sectionline <self>.
+Adds a point to the beginning of the SectionLine <self>.
 ") Prepend;
 		void Prepend(const Intf_SectionPoint & Pi);
 
@@ -693,7 +693,7 @@ None
 
 Description
 -----------
-Concatenates a sectionline <ls> at the beginning of the sectionline <self>.
+Concatenates a SectionLine <LS> at the beginning of the SectionLine <self>.
 ") Prepend;
 		void Prepend(Intf_SectionLine & LS);
 
@@ -706,7 +706,7 @@ None
 
 Description
 -----------
-Reverses the order of the elements of the sectionline.
+Reverses the order of the elements of the SectionLine.
 ") Reverse;
 		void Reverse();
 
@@ -774,7 +774,7 @@ None
 
 Description
 -----------
-Builds a sectionpoint with the respective dimensions (vertex edge or face) of the concerned arguments and their addresses in the topological structure.
+Builds a SectionPoint with the respective dimensions (vertex edge or face) of the concerned arguments and their addresses in the Topological structure.
 ") Intf_SectionPoint;
 		 Intf_SectionPoint(const gp_Pnt & Where, const Intf_PIType DimeO, const Standard_Integer AddrO1, const Standard_Integer AddrO2, const Standard_Real ParamO, const Intf_PIType DimeT, const Standard_Integer AddrT1, const Standard_Integer AddrT2, const Standard_Real ParamT, const Standard_Real Incid);
 
@@ -799,7 +799,7 @@ None
 
 Description
 -----------
-Builds a sectionpoint 2d with the respective dimensions (vertex or edge) of the concerned arguments and their addresses in the topological structure.
+Builds a SectionPoint 2d with the respective dimensions (vertex or edge) of the concerned arguments and their addresses in the Topological structure.
 ") Intf_SectionPoint;
 		 Intf_SectionPoint(const gp_Pnt2d & Where, const Intf_PIType DimeO, const Standard_Integer AddrO1, const Standard_Real ParamO, const Intf_PIType DimeT, const Standard_Integer AddrT1, const Standard_Real ParamT, const Standard_Real Incid);
 
@@ -830,7 +830,7 @@ float
 
 Description
 -----------
-Gives the incidence at this section point. the incidence between the two triangles is given by the cosine. the best incidence is 0. (pi/2). the worst is 1. (null angle).
+Gives the incidence at this section point. The incidence between the two triangles is given by the cosine. The best incidence is 0. (PI/2). The worst is 1. (null angle).
 ") Incidence;
 		Standard_Real Incidence();
 
@@ -869,7 +869,7 @@ Param: float
 
 Description
 -----------
-Gives the data about the first argument of the interference.
+Gives the data about the first argument of the Interference.
 ") InfoFirst;
 		void InfoFirst(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -908,7 +908,7 @@ Param: float
 
 Description
 -----------
-Gives the data about the second argument of the interference.
+Gives the data about the second argument of the Interference.
 ") InfoSecond;
 		void InfoSecond(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -926,7 +926,7 @@ bool
 
 Description
 -----------
-Returns true if the two sectionpoint have the same logical information.
+Returns True if the two SectionPoint have the same logical information.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Intf_SectionPoint & Other);
 
@@ -944,7 +944,7 @@ bool
 
 Description
 -----------
-Returns true if the two sectionpoints are on the same edge of the first or the second element.
+Returns True if the two SectionPoints are on the same edge of the first or the second element.
 ") IsOnSameEdge;
 		Standard_Boolean IsOnSameEdge(const Intf_SectionPoint & Other);
 
@@ -962,7 +962,7 @@ None
 
 Description
 -----------
-Merges two sectionpoints.
+Merges two SectionPoints.
 ") Merge;
 		void Merge(Intf_SectionPoint & Other);
 
@@ -975,7 +975,7 @@ float
 
 Description
 -----------
-Returns the cumulated parameter of the sectionpoint on the first element.
+Returns the cumulated Parameter of the SectionPoint on the first element.
 ") ParamOnFirst;
 		Standard_Real ParamOnFirst();
 
@@ -988,7 +988,7 @@ float
 
 Description
 -----------
-Returns the cumulated parameter of the section point on the second element.
+Returns the cumulated Parameter of the section point on the second element.
 ") ParamOnSecond;
 		Standard_Real ParamOnSecond();
 
@@ -1001,7 +1001,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the location of the sectionpoint.
+Returns the location of the SectionPoint.
 ") Pnt;
 		const gp_Pnt Pnt();
 
@@ -1086,7 +1086,7 @@ None
 
 Description
 -----------
-Adds a sectionpoint to the tangentzone.
+Adds a SectionPoint to the TangentZone.
 ") Append;
 		void Append(const Intf_SectionPoint & Pi);
 
@@ -1104,7 +1104,7 @@ None
 
 Description
 -----------
-Adds the tangentzone <tzi> to <self>.
+Adds the TangentZone <Tzi> to <self>.
 ") Append;
 		void Append(const Intf_TangentZone & Tzi);
 
@@ -1122,7 +1122,7 @@ bool
 
 Description
 -----------
-Checks if <thepi> is in tangentzone.
+Checks if <ThePI> is in TangentZone.
 ") Contains;
 		Standard_Boolean Contains(const Intf_SectionPoint & ThePI);
 
@@ -1158,7 +1158,7 @@ Intf_SectionPoint
 
 Description
 -----------
-Gives the sectionpoint of address <index> in the tangentzone.
+Gives the SectionPoint of address <Index> in the TangentZone.
 ") GetPoint;
 		const Intf_SectionPoint & GetPoint(const Standard_Integer Index);
 
@@ -1176,7 +1176,7 @@ bool
 
 Description
 -----------
-Returns true if the tangentzone <other> has a common part with <self>.
+Returns True if the TangentZone <Other> has a common part with <self>.
 ") HasCommonRange;
 		Standard_Boolean HasCommonRange(const Intf_TangentZone & Other);
 
@@ -1196,7 +1196,7 @@ paraMax: float
 
 Description
 -----------
-Gives information about the first argument of the interference. (usable only for polygon).
+Gives information about the first argument of the Interference. (Usable only for polygon).
 ") InfoFirst;
 		void InfoFirst(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -1216,7 +1216,7 @@ paraMax: float
 
 Description
 -----------
-Gives information about the second argument of the interference. (usable only for polygon).
+Gives information about the second argument of the Interference. (Usable only for polygon).
 ") InfoSecond;
 		void InfoSecond(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -1234,7 +1234,7 @@ bool
 
 Description
 -----------
-Inserts a sectionpoint in the tangentzone.
+Inserts a SectionPoint in the TangentZone.
 ") Insert;
 		Standard_Boolean Insert(const Intf_SectionPoint & Pi);
 
@@ -1253,7 +1253,7 @@ None
 
 Description
 -----------
-Inserts a sectionpoint after <index> in the tangentzone.
+Inserts a SectionPoint after <Index> in the TangentZone.
 ") InsertAfter;
 		void InsertAfter(const Standard_Integer Index, const Intf_SectionPoint & Pi);
 
@@ -1272,7 +1272,7 @@ None
 
 Description
 -----------
-Inserts a sectionpoint before <index> in the tangentzone.
+Inserts a SectionPoint before <Index> in the TangentZone.
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer Index, const Intf_SectionPoint & Pi);
 
@@ -1290,7 +1290,7 @@ bool
 
 Description
 -----------
-Compares two tangentzones.
+Compares two TangentZones.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Intf_TangentZone & Other);
 
@@ -1303,7 +1303,7 @@ int
 
 Description
 -----------
-Returns number of sectionpoint in this tangentzone.
+Returns number of SectionPoint in this TangentZone.
 ") NumberOfPoints;
 		Standard_Integer NumberOfPoints();
 
@@ -1321,7 +1321,7 @@ paraMax: float
 
 Description
 -----------
-Gives the parameter range of the tangentzone on the first argument of the interference. (usable only for polygon).
+Gives the parameter range of the TangentZone on the first argument of the Interference. (Usable only for polygon).
 ") ParamOnFirst;
 		void ParamOnFirst(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1339,7 +1339,7 @@ paraMax: float
 
 Description
 -----------
-Gives the parameter range of the tangentzone on the second argument of the interference. (usable only for polygon).
+Gives the parameter range of the TangentZone on the second argument of the Interference. (Usable only for polygon).
 ") ParamOnSecond;
 		void ParamOnSecond(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1357,7 +1357,7 @@ None
 
 Description
 -----------
-Inserts a point in the polygonal tangentzone.
+Inserts a point in the polygonal TangentZone.
 ") PolygonInsert;
 		void PolygonInsert(const Intf_SectionPoint & Pi);
 
@@ -1375,7 +1375,7 @@ bool
 
 Description
 -----------
-Returns true if <thepi> is in the parameter range of the tangentzone.
+Returns True if <ThePI> is in the parameter range of the TangentZone.
 ") RangeContains;
 		Standard_Boolean RangeContains(const Intf_SectionPoint & ThePI);
 
@@ -1612,7 +1612,7 @@ None
 
 Description
 -----------
-Constructs an empty interference of polygon.
+Constructs an empty interference of Polygon.
 ") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d();
 
@@ -1631,7 +1631,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between two polygons.
+Constructs and computes an interference between two Polygons.
 ") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d(const Intf_Polygon2d & Obje1, const Intf_Polygon2d & Obje2);
 
@@ -1649,7 +1649,7 @@ None
 
 Description
 -----------
-Constructs and computes the auto interference of a polygon.
+Constructs and computes the auto interference of a Polygon.
 ") Intf_InterferencePolygon2d;
 		 Intf_InterferencePolygon2d(const Intf_Polygon2d & Obje);
 
@@ -1668,7 +1668,7 @@ None
 
 Description
 -----------
-Computes an interference between two polygons.
+Computes an interference between two Polygons.
 ") Perform;
 		void Perform(const Intf_Polygon2d & Obje1, const Intf_Polygon2d & Obje2);
 
@@ -1686,7 +1686,7 @@ None
 
 Description
 -----------
-Computes the self interference of a polygon.
+Computes the self interference of a Polygon.
 ") Perform;
 		void Perform(const Intf_Polygon2d & Obje);
 
@@ -1704,7 +1704,7 @@ gp_Pnt2d
 
 Description
 -----------
-Gives the geometrical 2d point of the intersection point at address <index> in the interference.
+Gives the geometrical 2d point of the intersection point at address <Index> in the interference.
 ") Pnt2dValue;
 		gp_Pnt2d Pnt2dValue(const Standard_Integer Index);
 

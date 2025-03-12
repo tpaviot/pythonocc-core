@@ -99,7 +99,7 @@ int
 
 Description
 -----------
-Structure to provide all-in-one result of selection of sensitive for 'matches' method of select3d_sensitiveentity.
+Structure to provide all-in-one result of selection of sensitive for 'Matches' method of Select3D_SensitiveEntity.
 ") MaxOwnerPriority;
 		static Standard_Integer MaxOwnerPriority();
 
@@ -198,7 +198,7 @@ bool
 
 Description
 -----------
-Return true if picked point lying on detected entity was set.
+Return True if Picked Point lying on detected entity was set.
 ") HasPickedPoint;
 		Standard_Boolean HasPickedPoint();
 
@@ -224,7 +224,7 @@ bool
 
 Description
 -----------
-Return true if result was been defined.
+Return True if result was been defined.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -243,7 +243,7 @@ SelectBasics_PickResult
 
 Description
 -----------
-Return closest result between two pick results according to depth value.
+Return closest result between two Pick Results according to Depth value.
 ") Min;
 		static const SelectBasics_PickResult & Min(const SelectBasics_PickResult & thePickResult1, const SelectBasics_PickResult & thePickResult2);
 
@@ -256,7 +256,7 @@ gp_Pnt
 
 Description
 -----------
-Return picked point lying on detected entity. warning! point is defined in local coordinate system and should be translated into world system before usage!.
+Return picked point lying on detected entity. WARNING! Point is defined in local coordinate system and should be translated into World System before usage!.
 ") PickedPoint;
 		const gp_Pnt PickedPoint();
 
@@ -359,7 +359,7 @@ NCollection_Vec3<float>
 
 Description
 -----------
-Return (unnormalized) surface normal at picked point or zero vector if undefined. warning! normal is defined in local coordinate system and should be translated into world system before usage!.
+Return (unnormalized) surface normal at picked point or zero vector if undefined. WARNING! Normal is defined in local coordinate system and should be translated into World System before usage!.
 ") SurfaceNormal;
 		const NCollection_Vec3<float> & SurfaceNormal();
 
@@ -392,7 +392,7 @@ gp_Pnt
 
 Description
 -----------
-Return 3d point corresponding to specified depth within picking ray.
+Return 3D point corresponding to specified depth within picking ray.
 ") DetectedPoint;
 		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
 
@@ -410,7 +410,7 @@ float
 
 Description
 -----------
-Calculates distance from 3d projection of user-defined selection point to the given point thecog.
+Calculates distance from 3d projection of user-defined selection point to the given point theCOG.
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
@@ -457,7 +457,7 @@ gp_Pnt
 
 Description
 -----------
-Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
+Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
 ") GetFarPickedPnt;
 		virtual gp_Pnt GetFarPickedPnt();
 
@@ -470,7 +470,8 @@ gp_Pnt2d
 
 Description
 -----------
-Returns mouse coordinates for point selection mode. return infinite point in case of unsupport of mouse position for this active selection volume.
+Returns mouse coordinates for Point selection mode. 
+Return: infinite point in case of unsupport of mouse position for this active selection volume.
 ") GetMousePosition;
 		virtual gp_Pnt2d GetMousePosition();
 
@@ -483,7 +484,7 @@ gp_Pnt
 
 Description
 -----------
-Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
+Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
 ") GetNearPickedPnt;
 		virtual gp_Pnt GetNearPickedPnt();
 
@@ -501,7 +502,7 @@ None
 
 Description
 -----------
-Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector.
+Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector.
 ") GetPlanes;
 		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<Standard_Real> > & thePlaneEquations);
 
@@ -514,7 +515,7 @@ gp_Dir
 
 Description
 -----------
-Valid only for point and rectangular selection. returns view ray direction.
+Valid only for point and rectangular selection. Returns view ray direction.
 ") GetViewRayDirection;
 		virtual gp_Dir GetViewRayDirection();
 
@@ -719,7 +720,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by box thebox.
+Returns true if selecting volume is overlapped by box theBox.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
@@ -739,7 +740,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
@@ -760,7 +761,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, the boolean theisfilled, and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, the boolean theIsFilled, and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, SelectBasics_PickResult & thePickResult);
 
@@ -781,7 +782,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, the boolean theisfilled, and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, the boolean theIsFilled, and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
 
@@ -804,7 +805,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight, the boolean theishollow and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight, the boolean theIsHollow and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, SelectBasics_PickResult & thePickResult);
 
@@ -827,7 +828,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight, the boolean theishollow and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight, the boolean theIsHollow and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
@@ -846,7 +847,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by point thepnt.
+Returns true if selecting volume is overlapped by point thePnt.
 ") OverlapsPoint;
 		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
@@ -864,7 +865,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by point thepnt. does not perform depth calculation, so this method is defined as helper function for inclusion test.
+Returns true if selecting volume is overlapped by point thePnt. Does not perform depth calculation, so this method is defined as helper function for inclusion test.
 ") OverlapsPoint;
 		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
 
@@ -884,7 +885,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
+Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in theArrayOfPts, taking into account sensitivity type theSensType.
 ") OverlapsPolygon;
 		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
@@ -904,7 +905,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by line segment with start point at thept1 and end point at thept2.
+Returns true if selecting volume is overlapped by line segment with start point at thePt1 and end point at thePt2.
 ") OverlapsSegment;
 		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePt1, const gp_Pnt & thePt2, SelectBasics_PickResult & thePickResult);
 
@@ -924,7 +925,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, SelectBasics_PickResult & thePickResult);
 
@@ -944,7 +945,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
 
@@ -966,7 +967,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by triangle with vertices thept1, thept2 and thept3, taking into account sensitivity type thesenstype.
+Returns true if selecting volume is overlapped by triangle with vertices thePt1, thePt2 and thePt3, taking into account sensitivity type theSensType.
 ") OverlapsTriangle;
 		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePt1, const gp_Pnt & thePt2, const gp_Pnt & thePt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 

@@ -53,6 +53,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xscontrol.html"
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<TopTools_module.hxx>
+#include<DE_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
@@ -60,6 +61,12 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xscontrol.html"
 #include<TopLoc_module.hxx>
 #include<Transfer_module.hxx>
 #include<MoniTool_module.hxx>
+#include<TDF_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XSControl_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -76,6 +83,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xscontrol.html"
 %import TCollection.i
 %import Message.i
 %import TopTools.i
+%import DE.i
 %import Geom.i
 %import Geom2d.i
 %import gp.i
@@ -130,7 +138,7 @@ opencascade::handle<XSControl_WorkSession>
 
 Description
 -----------
-Returns the worksession of a sessionpilot, but casts it as from xscontrol: it then gives access to control & transfers.
+Returns the WorkSession of a SessionPilot, but casts it as from XSControl: it then gives access to Control & Transfers.
 ") Session;
 		static opencascade::handle<XSControl_WorkSession> Session(const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -148,7 +156,7 @@ opencascade::handle<XSControl_Vars>
 
 Description
 -----------
-Returns the vars of a sessionpilot, it is brought by session it provides access to external variables.
+Returns the Vars of a SessionPilot, it is brought by Session it provides access to external variables.
 ") Vars;
 		static opencascade::handle<XSControl_Vars> Vars(const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -175,7 +183,7 @@ None
 
 Description
 -----------
-Creates a selection connectedshapes. it remains to be set a transferreader.
+Creates a Selection ConnectedShapes. It remains to be set a TransferReader.
 ") XSControl_ConnectedShapes;
 		 XSControl_ConnectedShapes();
 
@@ -193,7 +201,7 @@ None
 
 Description
 -----------
-Creates a selection connectedshapes, which will work with the current transferprocess brought by the transferreader.
+Creates a Selection ConnectedShapes, which will work with the current TransferProcess brought by the TransferReader.
 ") XSControl_ConnectedShapes;
 		 XSControl_ConnectedShapes(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -247,7 +255,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium. 'connected entities through produced shapes'.
+Returns a text defining the criterium. 'Connected Entities through produced Shapes'.
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -265,7 +273,7 @@ None
 
 Description
 -----------
-Sets a transferreader to sort entities: it brings the transferprocess which may change, while the transferreader does not.
+Sets a TransferReader to sort entities: it brings the TransferProcess which may change, while the TransferReader does not.
 ") SetReader;
 		void SetReader(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -300,7 +308,7 @@ opencascade::handle<Transfer_ActorOfTransientProcess>
 
 Description
 -----------
-Returns the actor for read attached to the pair (norm,appli) it can be adapted for data of the input model, as required can be read from field then adapted with model as required.
+Returns the Actor for Read attached to the pair (norm,appli) It can be adapted for data of the input Model, as required Can be read from field then adapted with Model as required.
 ") ActorRead;
 		virtual opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -313,7 +321,7 @@ opencascade::handle<Transfer_ActorOfFinderProcess>
 
 Description
 -----------
-Returns the actor for write attached to the pair (norm,appli) read from field. can be redefined.
+Returns the Actor for Write attached to the pair (norm,appli) Read from field. Can be redefined.
 ") ActorWrite;
 		virtual opencascade::handle<Transfer_ActorOfFinderProcess> ActorWrite();
 
@@ -346,7 +354,7 @@ None
 
 Description
 -----------
-Records a session item, to be added for customisation of the work session. it must have a specific name. <setapplied> is used if <item> is a generalmodifier, to decide if set to true, <item> will be applied to the hook list 'send'. else, it is not applied to any hook list. remark: this method is to be called at create time, the recorded items will be used by customise warning: if <name> conflicts, the last recorded item is kept.
+Records a Session Item, to be added for customisation of the Work Session. It must have a specific name. <setapplied> is used if <item> is a GeneralModifier, to decide If set to true, <item> will be applied to the hook list 'send'. Else, it is not applied to any hook list. Remark: this method is to be called at Create time, the recorded items will be used by Customise Warning: if <name> conflicts, the last recorded item is kept.
 ") AddSessionItem;
 		void AddSessionItem(const opencascade::handle<Standard_Transient> & theItem, Standard_CString theName, const Standard_Boolean toApply = Standard_False);
 
@@ -359,7 +367,7 @@ None
 
 Description
 -----------
-Records <self> is a general dictionary under short and long names (see method name).
+Records <self> is a general dictionary under Short and Long Names (see method Name).
 ") AutoRecord;
 		void AutoRecord();
 
@@ -377,7 +385,7 @@ None
 
 Description
 -----------
-Customises a worksession, by adding to it the recorded items (by addsessionitem).
+Customises a WorkSession, by adding to it the recorded items (by AddSessionItem).
 ") Customise;
 		virtual void Customise(opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -396,7 +404,7 @@ bool
 
 Description
 -----------
-Tells if a value of <modetrans> is a good value(within bounds) actually only for shapes.
+Tells if a value of <modetrans> is a good value(within bounds) Actually only for shapes.
 ") IsModeWrite;
 		Standard_Boolean IsModeWrite(const Standard_Integer modetrans, const Standard_Boolean shape = Standard_True);
 
@@ -415,7 +423,7 @@ modemax: int
 
 Description
 -----------
-Returns recorded min and max values for modetrans (write) actually only for shapes returns true if bounds are set, false else (then, free value).
+Returns recorded min and max values for modetrans (write) Actually only for shapes Returns True if bounds are set, False else (then, free value).
 ") ModeWriteBounds;
 		Standard_Boolean ModeWriteBounds(Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean shape = Standard_True);
 
@@ -452,7 +460,7 @@ str
 
 Description
 -----------
-Returns a name, as given when initializing: rsc = false (d): true name attached to the norm (long name) rsc = true: name of the resource set (i.e. short name).
+Returns a name, as given when initializing: rsc = False (D): True Name attached to the Norm (long name) rsc = True: Name of the resource set (i.e. short name).
 ") Name;
 		Standard_CString Name(const Standard_Boolean rsc = Standard_False);
 
@@ -465,7 +473,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Creates a new empty model ready to receive data of the norm used to write data from imagine to an interface file.
+Creates a new empty Model ready to receive data of the Norm Used to write data from Imagine to an interface file.
 ") NewModel;
 		virtual opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -478,7 +486,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol attached to the norm (from field).
+Returns the Protocol attached to the Norm (from field).
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -497,7 +505,7 @@ bool
 
 Description
 -----------
-Tells if a shape is valid for a transfer to a model asks the actorwrite (through a shapemapper).
+Tells if a shape is valid for a transfer to a model Asks the ActorWrite (through a ShapeMapper).
 ") RecognizeWriteShape;
 		virtual Standard_Boolean RecognizeWriteShape(const TopoDS_Shape & shape, const Standard_Integer modetrans = 0);
 
@@ -516,7 +524,7 @@ bool
 
 Description
 -----------
-Tells if <obj> (an application object) is a valid candidate for a transfer to a model. by default, asks the actorwrite if known (through a transientmapper). can be redefined.
+Tells if <obj> (an application object) is a valid candidate for a transfer to a Model. By default, asks the ActorWrite if known (through a TransientMapper). Can be redefined.
 ") RecognizeWriteTransient;
 		virtual Standard_Boolean RecognizeWriteTransient(const opencascade::handle<Standard_Transient> & obj, const Standard_Integer modetrans = 0);
 
@@ -534,7 +542,7 @@ None
 
 Description
 -----------
-Records <self> in a general dictionary under a name error if <name> already used for another one.
+Records <self> in a general dictionary under a name Error if <name> already used for another one.
 ") Record;
 		void Record(Standard_CString name);
 
@@ -552,7 +560,7 @@ opencascade::handle<XSControl_Controller>
 
 Description
 -----------
-Returns the controller attached to a given name returns a null handle if <name> is unknown.
+Returns the Controller attached to a given name Returns a Null Handle if <name> is unknown.
 ") Recorded;
 		static opencascade::handle<XSControl_Controller> Recorded(Standard_CString name);
 
@@ -570,7 +578,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an item given its name to record in a session if <name> is unknown, returns a null handle.
+Returns an item given its name to record in a Session If <name> is unknown, returns a Null Handle.
 ") SessionItem;
 		opencascade::handle<Standard_Transient> SessionItem(Standard_CString theName);
 
@@ -590,7 +598,7 @@ None
 
 Description
 -----------
-Sets mininum and maximum values for modetrans (write) erases formerly recorded bounds and values actually only for shape then, for each value a little help can be attached.
+Sets minimum and maximum values for modetrans (write) Erases formerly recorded bounds and values Actually only for shape Then, for each value a little help can be attached.
 ") SetModeWrite;
 		void SetModeWrite(const Standard_Integer modemin, const Standard_Integer modemax, const Standard_Boolean shape = Standard_True);
 
@@ -629,7 +637,7 @@ None
 
 Description
 -----------
-Changes names if a name is empty, the formerly set one remains remark: does not call record or autorecord.
+Changes names if a name is empty, the formerly set one remains Remark: Does not call Record or AutoRecord.
 ") SetNames;
 		void SetNames(Standard_CString theLongName, Standard_CString theShortName);
 
@@ -651,7 +659,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Takes one shape and transfers it to an interfacemodel (already created, e.g. by newmodel) default uses actorwrite; can be redefined as necessary returned value is a status, as follows: done ok , void: no result , fail: fail (e.g. exception) error: bad conditions , bad model or null model.
+Takes one Shape and transfers it to an InterfaceModel (already created, e.g. by NewModel) Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows: Done OK , Void: No Result , Fail: Fail (e.g. exception) Error: bad conditions , bad model or null model.
 ") TransferWriteShape;
 		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -673,7 +681,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Takes one transient object and transfers it to an interfacemodel (already created, e.g. by newmodel) (result is recorded in the model by addwithrefs) fp records produced results and checks //! default uses actorwrite; can be redefined as necessary returned value is a status, as follows: 0 ok , 1 no result , 2 fail (e.g. exception raised) -1 bad conditions , -2 bad model or null model for type of object not recognized: should return 1.
+Takes one Transient Object and transfers it to an InterfaceModel (already created, e.g. by NewModel) (result is recorded in the model by AddWithRefs) FP records produced results and checks //! Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows: 0 OK , 1 No Result , 2 Fail (e.g. exception raised) -1 bad conditions , -2 bad model or null model For type of object not recognized: should return 1.
 ") TransferWriteTransient;
 		virtual IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Standard_Transient> & obj, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -686,7 +694,7 @@ opencascade::handle<IFSelect_WorkLibrary>
 
 Description
 -----------
-Returns the worklibrary attached to the norm. remark that it has to be in phase with the protocol (read from field).
+Returns the WorkLibrary attached to the Norm. Remark that it has to be in phase with the Protocol (read from field).
 ") WorkLibrary;
 		const opencascade::handle<IFSelect_WorkLibrary> & WorkLibrary();
 
@@ -725,7 +733,7 @@ bool
 
 Description
 -----------
-Analyses given file name and variable name, with a default name for variables. returns resulting file name and variable name plus status 'file to read'(true) or 'already read'(false) in the latter case, empty resfile means no file available //! if <file> is null or empty or equates '.', considers session and returned status is false else, returns resfile = file and status is true if <var> is neither null nor empty, resvar = var else, the root part of <resfile> is considered, if defined else, <def> is taken.
+Analyses given file name and variable name, with a default name for variables. Returns resulting file name and variable name plus status 'file to read'(True) or 'already read'(False) In the latter case, empty resfile means no file available //! If <file> is null or empty or equates '.', considers Session and returned status is False Else, returns resfile = file and status is True If <var> is neither null nor empty, resvar = var Else, the root part of <resfile> is considered, if defined Else, <def> is taken.
 ") FileAndVar;
 		static Standard_Boolean FileAndVar(const opencascade::handle<XSControl_WorkSession> & session, Standard_CString file, Standard_CString var, Standard_CString def, TCollection_AsciiString & resfile, TCollection_AsciiString & resvar);
 
@@ -738,7 +746,7 @@ None
 
 Description
 -----------
-Defines and loads all functions which work on shapes for xscontrol (as actfunc).
+Defines and loads all functions which work on shapes for XSControl (as ActFunc).
 ") Init;
 		static void Init();
 
@@ -758,7 +766,7 @@ int
 
 Description
 -----------
-Analyses a name as designating shapes from a vars or from xstep transfer (last transfer on reading). <name> can be: '*': all the root shapes produced by last transfer (read) i.e. considers roots of the transientprocess a name: a name of a variable draw //! returns the count of designated shapes. their list is put in <list>. if <list> is null, it is firstly created. then it is completed (append without clear) by the shapes found returns 0 if no shape could be found.
+Analyses a name as designating Shapes from a Vars or from XSTEP transfer (last Transfer on Reading). <name> can be: '*': all the root shapes produced by last Transfer (Read) i.e. considers roots of the TransientProcess a name: a name of a variable DRAW //! Returns the count of designated Shapes. Their list is put in <list>. If <list> is null, it is firstly created. Then it is completed (Append without Clear) by the Shapes found Returns 0 if no Shape could be found.
 ") MoreShapes;
 		static Standard_Integer MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<TopTools_HSequenceOfShape> & list, Standard_CString name);
 
@@ -785,7 +793,7 @@ None
 
 Description
 -----------
-Defines and loads all functions for xscontrol (as actfunc).
+Defines and loads all functions for XSControl (as ActFunc).
 ") Init;
 		static void Init();
 
@@ -812,7 +820,7 @@ None
 
 Description
 -----------
-Creates a reader from scratch (creates an empty worksession) a worksession or a controller must be provided before running.
+Creates a Reader from scratch (creates an empty WorkSession) A WorkSession or a Controller must be provided before running.
 ") XSControl_Reader;
 		 XSControl_Reader();
 
@@ -830,7 +838,7 @@ None
 
 Description
 -----------
-Creates a reader from scratch, with a norm name which identifies a controller.
+Creates a Reader from scratch, with a norm name which identifies a Controller.
 ") XSControl_Reader;
 		 XSControl_Reader(Standard_CString norm);
 
@@ -849,7 +857,7 @@ None
 
 Description
 -----------
-Creates a reader from an already existing session, with a controller already set virtual destructor.
+Creates a Reader from an already existing Session, with a Controller already set Virtual destructor.
 ") XSControl_Reader;
 		 XSControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
@@ -862,9 +870,37 @@ None
 
 Description
 -----------
-Clears the list of shapes that may have accumulated in calls to transferone or transferroot.c.
+Clears the list of shapes that may have accumulated in calls to TransferOne or TransferRoot.C.
 ") ClearShapes;
 		void ClearShapes();
+
+		/****** XSControl_Reader::GetShapeFixParameters ******/
+		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
+		/****** XSControl_Reader::GetShapeProcessFlags ******/
+		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
+		%feature("compactdefaultargs") GetShapeProcessFlags;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ProcessingFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: Pair of values defining operations to be performed on shapes and a boolean value that indicates whether the flags were set.
+") GetShapeProcessFlags;
+		const XSAlgo_ShapeProcessor::ProcessingFlags & GetShapeProcessFlags();
 
 		/****** XSControl_Reader::GetStatsTransfer ******/
 		/****** md5 signature: e1d5ca4b1efe1739fc37e88022ce93fd ******/
@@ -882,7 +918,7 @@ nbWithFail: int
 
 Description
 -----------
-Gives statistics about transfer.
+Gives statistics about Transfer.
 ") GetStatsTransfer;
 		void GetStatsTransfer(const opencascade::handle<TColStd_HSequenceOfTransient> & list, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -901,7 +937,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns a list of entities from the iges or step file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. a selection is an operator which computes a list of entities from a list given in input according to its type. if no list is specified, the selection computes its list of entities from the whole model. a selection can be: - a predefined selection (xst-transferrable-mode) - a filter based on a signature a signature is an operator which returns a string from an entity according to its type. for example: - 'xst-type' (cdl) - 'iges-level' - 'step-type'. for example, if you wanted to select only the advanced_faces in a step file you would use the following code: example reader.givelist('xst-transferrable-roots','step-type(advanced_face)'); warning if the value given to second is incorrect, it will simply be ignored.
+Returns a list of entities from the IGES or STEP file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. A selection is an operator which computes a list of entities from a list given in input according to its type. If no list is specified, the selection computes its list of entities from the whole model. A selection can be: - A predefined selection (xst-transferrable-mode) - A filter based on a signature A Signature is an operator which returns a string from an entity according to its type. For example: - 'xst-type' (CDL) - 'iges-level' - 'step-type'. For example, if you wanted to select only the advanced_faces in a STEP file you would use the following code: Example Reader.GiveList('xst-transferrable-roots','step-type(ADVANCED_FACE)'); Warning If the value given to second is incorrect, it will simply be ignored.
 ") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first = "", Standard_CString second = "");
 
@@ -920,7 +956,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Computes a list of entities from the model as follows <first> being a selection, <ent> being an entity or a list of entities (as a hsequenceoftransient): the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
+Computes a List of entities from the model as follows <first> being a Selection, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
 ") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, const opencascade::handle<Standard_Transient> & ent);
 
@@ -933,7 +969,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model. it can then be consulted (header, product).
+Returns the model. It can then be consulted (header, product).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -946,7 +982,7 @@ int
 
 Description
 -----------
-Determines the list of root entities which are candidate for a transfer to a shape, and returns the number of entities in the list.
+Determines the list of root entities which are candidate for a transfer to a Shape, and returns the number of entities in the list.
 ") NbRootsForTransfer;
 		virtual Standard_Integer NbRootsForTransfer();
 
@@ -991,7 +1027,7 @@ None
 
 Description
 -----------
-Prints the check list attached to loaded data, on the standard trace file (starts at std::cout) all messages or fails only, according to <failsonly> mode = 0: per entity, prints messages mode = 1: per message, just gives count of entities per check mode = 2: also gives entity numbers.
+Prints the check list attached to loaded data, on the Standard Trace File (starts at std::cout) All messages or fails only, according to <failsonly> mode = 0: per entity, prints messages mode = 1: per message, just gives count of entities per check mode = 2: also gives entity numbers.
 ") PrintCheckLoad;
 		void PrintCheckLoad(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
@@ -1029,7 +1065,7 @@ None
 
 Description
 -----------
-Displays check results for the last translation of iges or step entities to open cascade entities. only fail messages are displayed if failsonly is true. all messages are displayed if failsonly is false. mode determines the contents and the order of the messages according to the terms of the ifselect_printcount enumeration.
+Displays check results for the last translation of IGES or STEP entities to Open CASCADE entities. Only fail messages are displayed if failsonly is true. All messages are displayed if failsonly is false. mode determines the contents and the order of the messages according to the terms of the IFSelect_PrintCount enumeration.
 ") PrintCheckTransfer;
 		void PrintCheckTransfer(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
@@ -1048,7 +1084,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Displays check results for the last translation of iges or step entities to open cascade entities.
+Displays check results for the last translation of IGES or STEP entities to Open CASCADE entities.
 ") PrintCheckTransfer;
 		void PrintCheckTransfer(std::ostream &OutValue, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
@@ -1067,7 +1103,7 @@ None
 
 Description
 -----------
-Displays the statistics for the last translation. what defines the kind of statistics that are displayed as follows: - 0 gives general statistics (number of translated roots, number of warnings, number of fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. the use of mode depends on the value of what. if what is 0, mode is ignored. if what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of iges or step entities in the respective model - 1 gives the number, identifier, type and result type for each iges or step entity and/or its status (fail, warning, etc.) - 2 gives maximum information for each iges or step entity (i.e. checks) - 3 gives the number of entities per type of iges or step entity - 4 gives the number of iges or step entities per result type and/or status - 5 gives the number of pairs (iges or step or result type and status) - 6 gives the number of pairs (iges or step or result type and status) and the list of entity numbers in the iges or step model. if what is 4 or 5, mode defines the warning and fail messages as follows: - if mode is 0 all warnings and checks per entity are returned - if mode is 2 the list of entities per warning is returned. if mode is not set, only the list of all entities per warning is given.
+Displays the statistics for the last translation. what defines the kind of statistics that are displayed as follows: - 0 gives general statistics (number of translated roots, number of warnings, number of fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. The use of mode depends on the value of what. If what is 0, mode is ignored. If what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of IGES or STEP entities in the respective model - 1 gives the number, identifier, type and result type for each IGES or STEP entity and/or its status (fail, warning, etc.) - 2 gives maximum information for each IGES or STEP entity (i.e. checks) - 3 gives the number of entities per type of IGES or STEP entity - 4 gives the number of IGES or STEP entities per result type and/or status - 5 gives the number of pairs (IGES or STEP or result type and status) - 6 gives the number of pairs (IGES or STEP or result type and status) AND the list of entity numbers in the IGES or STEP model. If what is 4 or 5, mode defines the warning and fail messages as follows: - if mode is 0 all warnings and checks per entity are returned - if mode is 2 the list of entities per warning is returned. If mode is not set, only the list of all entities per warning is given.
 ") PrintStatsTransfer;
 		void PrintStatsTransfer(const Standard_Integer what, const Standard_Integer mode = 0);
 
@@ -1104,7 +1140,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Loads a file and returns the read status zero for a model which compies with the controller.
+Loads a file and returns the read status Zero for a Model which complies with the Controller.
 ") ReadFile;
 		virtual IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
@@ -1141,7 +1177,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an iges or step root entity for translation. the entity is identified by its rank in a list.
+Returns an IGES or STEP root entity for translation. The entity is identified by its rank in a list.
 ") RootForTransfer;
 		opencascade::handle<Standard_Transient> RootForTransfer(const Standard_Integer num = 1);
 
@@ -1159,9 +1195,87 @@ bool
 
 Description
 -----------
-Sets a specific norm to <self> returns true if done, false if <norm> is not available.
+Sets a specific norm to <self> Returns True if done, False if <norm> is not available.
 ") SetNorm;
 		Standard_Boolean SetNorm(Standard_CString norm);
+
+		/****** XSControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** XSControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** XSControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+
+		/****** XSControl_Reader::SetShapeProcessFlags ******/
+		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
+		%feature("compactdefaultargs") SetShapeProcessFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetShapeProcessFlags;
+		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
 
 		/****** XSControl_Reader::SetWS ******/
 		/****** md5 signature: 74ebce3f94d695bdeb4915fb004d07d2 ******/
@@ -1196,7 +1310,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape resulting from a translation and identified by the rank num. num equals 1 by default. in other words, the first shape resulting from the translation is returned.
+Returns the shape resulting from a translation and identified by the rank num. num equals 1 by default. In other words, the first shape resulting from the translation is returned.
 ") Shape;
 		TopoDS_Shape Shape(const Standard_Integer num = 1);
 
@@ -1215,7 +1329,7 @@ bool
 
 Description
 -----------
-Translates an iges or step entity in the model. true is returned if a shape is produced; otherwise, false is returned.
+Translates an IGES or STEP entity in the model. true is returned if a shape is produced; otherwise, false is returned.
 ") TransferEntity;
 		Standard_Boolean TransferEntity(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1234,7 +1348,7 @@ int
 
 Description
 -----------
-Translates a list of entities. returns the number of iges or step entities that were successfully translated. the list can be produced with givelist. warning - this function does not clear the existing output shapes.
+Translates a list of entities. Returns the number of IGES or STEP entities that were successfully translated. The list can be produced with GiveList. Warning - This function does not clear the existing output shapes.
 ") TransferList;
 		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1253,7 +1367,7 @@ bool
 
 Description
 -----------
-Translates an iges or step entity identified by the rank num in the model. false is returned if no shape is produced.
+Translates an IGES or STEP entity identified by the rank num in the model. false is returned if no shape is produced.
 ") TransferOne;
 		Standard_Boolean TransferOne(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1290,7 +1404,7 @@ int
 
 Description
 -----------
-Translates all translatable roots and returns the number of successful translations. warning - this function clears existing output shapes first.
+Translates all translatable roots and returns the number of successful translations. Warning - This function clears existing output shapes first.
 ") TransferRoots;
 		Standard_Integer TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1330,7 +1444,7 @@ None
 
 Description
 -----------
-Creates a selectfortransfer, non initialised it sorts nothing, unless an actor has been defined.
+Creates a SelectForTransfer, non initialised it sorts nothing, unless an Actor has been defined.
 ") XSControl_SelectForTransfer;
 		 XSControl_SelectForTransfer();
 
@@ -1348,7 +1462,7 @@ None
 
 Description
 -----------
-Creates a selectfortransfer, which will work with the currently defined actor brought by the transferreader.
+Creates a SelectForTransfer, which will work with the currently defined Actor brought by the TransferReader.
 ") XSControl_SelectForTransfer;
 		 XSControl_SelectForTransfer(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -1361,7 +1475,7 @@ opencascade::handle<Transfer_ActorOfTransientProcess>
 
 Description
 -----------
-Returns the actor used as precised one. returns a null handle for a creation from a transferreader without any further setting.
+Returns the Actor used as precised one. Returns a Null Handle for a creation from a TransferReader without any further setting.
 ") Actor;
 		opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
@@ -1374,7 +1488,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'recognized for transfer [(current actor)]'.
+Returns a text defining the criterium: 'Recognized for Transfer [(current actor)]'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -1387,7 +1501,7 @@ opencascade::handle<XSControl_TransferReader>
 
 Description
 -----------
-Returns the reader (if created with a reader) returns a null handle if not created with a reader.
+Returns the Reader (if created with a Reader) Returns a Null Handle if not created with a Reader.
 ") Reader;
 		opencascade::handle<XSControl_TransferReader> Reader();
 
@@ -1405,7 +1519,7 @@ None
 
 Description
 -----------
-Sets a precise actor to sort entities this definition oversedes the creation with a transferreader.
+Sets a precise actor to sort entities This definition oversedes the creation with a TransferReader.
 ") SetActor;
 		void SetActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & act);
 
@@ -1423,7 +1537,7 @@ None
 
 Description
 -----------
-Sets a transferreader to sort entities: it brings the actor, which may change, while the transferreader does not.
+Sets a TransferReader to sort entities: it brings the Actor, which may change, while the TransferReader does not.
 ") SetReader;
 		void SetReader(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -1443,7 +1557,7 @@ bool
 
 Description
 -----------
-Returns true for an entity which is recognized by the actor, either the precised one, or the one defined by transferreader.
+Returns True for an Entity which is recognized by the Actor, either the precised one, or the one defined by TransferReader.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1472,7 +1586,7 @@ None
 
 Description
 -----------
-Creates a signtransferstatus, not initialised it gives nothing (empty string).
+Creates a SignTransferStatus, not initialised it gives nothing (empty string).
 ") XSControl_SignTransferStatus;
 		 XSControl_SignTransferStatus();
 
@@ -1490,7 +1604,7 @@ None
 
 Description
 -----------
-Creates a signtransferstatus, which will work on the current transientprocess brought by the transferreader (its mapreader).
+Creates a SignTransferStatus, which will work on the current TransientProcess brought by the TransferReader (its MapReader).
 ") XSControl_SignTransferStatus;
 		 XSControl_SignTransferStatus(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -1503,7 +1617,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the transientprocess used as precised one returns a null handle for a creation from a transferreader without any further setting.
+Returns the TransientProcess used as precised one Returns a Null Handle for a creation from a TransferReader without any further setting.
 ") Map;
 		opencascade::handle<Transfer_TransientProcess> Map();
 
@@ -1516,7 +1630,7 @@ opencascade::handle<XSControl_TransferReader>
 
 Description
 -----------
-Returns the reader (if created with a reader) returns a null handle if not created with a reader.
+Returns the Reader (if created with a Reader) Returns a Null Handle if not created with a Reader.
 ") Reader;
 		opencascade::handle<XSControl_TransferReader> Reader();
 
@@ -1534,7 +1648,7 @@ None
 
 Description
 -----------
-Sets a precise map to sign entities this definition oversedes the creation with a transferreader.
+Sets a precise map to sign entities This definition oversedes the creation with a TransferReader.
 ") SetMap;
 		void SetMap(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1552,7 +1666,7 @@ None
 
 Description
 -----------
-Sets a transferreader to work.
+Sets a TransferReader to work.
 ") SetReader;
 		void SetReader(const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -1571,7 +1685,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object, as its transfer status.
+Returns the Signature for a Transient object, as its transfer status.
 ") Value;
 		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1600,7 +1714,7 @@ None
 
 Description
 -----------
-Creates a transferreader, empty.
+Creates a TransferReader, empty.
 ") XSControl_TransferReader;
 		 XSControl_TransferReader();
 
@@ -1613,7 +1727,7 @@ opencascade::handle<Transfer_ActorOfTransientProcess>
 
 Description
 -----------
-Returns the actor, determined by the controller, or if this one is unknown, directly set. once it has been defined, it can then be edited.
+Returns the Actor, determined by the Controller, or if this one is unknown, directly set. Once it has been defined, it can then be edited.
 ") Actor;
 		opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
@@ -1626,7 +1740,7 @@ bool
 
 Description
 -----------
-Defines a new transferprocess for reading transfer returns true if done, false if data are not properly defined (the model, the actor for read).
+Defines a new TransferProcess for reading transfer Returns True if done, False if data are not properly defined (the Model, the Actor for Read).
 ") BeginTransfer;
 		Standard_Boolean BeginTransfer();
 
@@ -1645,7 +1759,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the checklist resulting from transferring <ent>, i.e. stored in its recorded form resultfrommodel (empty if transfer successful or not recorded ...) //! if <ent> is the model, returns the complete cumulated check-list, <level> is ignored //! if <ent> is an entity of the model, <level> applies as follows <level>: -1 for <ent> only, last transfer (transientprocess) <level>: 0 for <ent> only (d) 1 for <ent> and its immediate subtransfers, if any 2 for <ent> and subtransferts at all levels.
+Returns the CheckList resulting from transferring <ent>, i.e. stored in its recorded form ResultFromModel (empty if transfer successful or not recorded ...) //! If <ent> is the Model, returns the complete cumulated check-list, <level> is ignored //! If <ent> is an entity of the Model, <level> applies as follows <level>: -1 for <ent> only, LAST transfer (TransientProcess) <level>: 0 for <ent> only (D) 1 for <ent> and its immediate subtransfers, if any 2 for <ent> and subtransferts at all levels.
 ") CheckList;
 		Interface_CheckIterator CheckList(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theLevel = 0);
 
@@ -1665,7 +1779,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of starting entities to which a given check status is attached, in final results <ent> can be an entity, or the model to query all entities below, 'entities' are, either <ent> plus its sub-transferred, or all the entities of the model //! <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if true, only entities with an attached result remark: result true and check=0 will give an empty list.
+Returns the list of starting entities to which a given check status is attached, IN FINAL RESULTS <ent> can be an entity, or the model to query all entities Below, 'entities' are, either <ent> plus its sub-transferred, or all the entities of the model //! <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if True, only entities with an attached result Remark: result True and check=0 will give an empty list.
 ") CheckedList;
 		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const opencascade::handle<Standard_Transient> & theEnt, const Interface_CheckStatus WithCheck = Interface_CheckAny, const Standard_Boolean theResult = Standard_True);
 
@@ -1702,7 +1816,7 @@ bool
 
 Description
 -----------
-Clears recorded result for an entity, according mode <mode> = -1: true, complete, clearing (erasing result) <mode> >= 0: simple 'stripping', see resultfrommodel, in particular, 0 for simple internal strip, 10 for all but final result, 11 for all: just label, status and filename are kept returns true when done, false if nothing was to clear.
+Clears recorded result for an entity, according mode <mode> = -1: true, complete, clearing (erasing result) <mode> >= 0: simple 'stripping', see ResultFromModel, in particular, 0 for simple internal strip, 10 for all but final result, 11 for all: just label, status and filename are kept Returns True when done, False if nothing was to clear.
 ") ClearResult;
 		Standard_Boolean ClearResult(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theMode);
 
@@ -1715,7 +1829,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Description
 -----------
-Returns (modifiable) the whole definition of context rather for internal use (ex.: preparing and setting in once).
+Returns (modifiable) the whole definition of Context Rather for internal use (ex.: preparing and setting in once).
 ") Context;
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & Context();
 
@@ -1734,7 +1848,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities from which some shapes were produced: it corresponds to a loop on entityfromshaperesult, but is optimised.
+Returns the list of entities from which some shapes were produced: it corresponds to a loop on EntityFromShapeResult, but is optimised.
 ") EntitiesFromShapeList;
 		opencascade::handle<TColStd_HSequenceOfTransient> EntitiesFromShapeList(const opencascade::handle<TopTools_HSequenceOfShape> & theRes, const Standard_Integer theMode = 0);
 
@@ -1753,7 +1867,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an entity from which a given result was produced. if <mode> = 0 (d), searches in last root transfers if <mode> = 1, searches in last (root & sub) transfers if <mode> = 2, searches in root recorded results if <mode> = 3, searches in all (root & sub) recordeds <res> can be, either a transient object (result itself) or a binder. for a binder of shape, calls entityfromshaperesult returns a null handle if <res> not recorded.
+Returns an entity from which a given result was produced. If <mode> = 0 (D), searches in last root transfers If <mode> = 1, searches in last (root & sub) transfers If <mode> = 2, searches in root recorded results If <mode> = 3, searches in all (root & sub) recordeds <res> can be, either a transient object (result itself) or a binder. For a binder of shape, calls EntityFromShapeResult Returns a Null Handle if <res> not recorded.
 ") EntityFromResult;
 		opencascade::handle<Standard_Transient> EntityFromResult(const opencascade::handle<Standard_Transient> & theRes, const Standard_Integer theMode = 0);
 
@@ -1772,7 +1886,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an entity from which a given shape result was produced returns a null handle if <res> not recorded or not a shape.
+Returns an entity from which a given shape result was produced Returns a Null Handle if <res> not recorded or not a Shape.
 ") EntityFromShapeResult;
 		opencascade::handle<Standard_Transient> EntityFromShapeResult(const TopoDS_Shape & theRes, const Standard_Integer theMode = 0);
 
@@ -1821,7 +1935,7 @@ int
 
 Description
 -----------
-Returns the number attached to the entity recorded for final, or zero if not recorded (looks in the resultfrommodel).
+Returns the number attached to the entity recorded for final, or zero if not recorded (looks in the ResultFromModel).
 ") FinalEntityNumber;
 		Standard_Integer FinalEntityNumber(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1859,7 +1973,7 @@ bool
 
 Description
 -----------
-Returns the context attached to a name, if set and if it is kind of the type, else a null handle returns true if ok, false if no context.
+Returns the Context attached to a name, if set and if it is Kind of the type, else a Null Handle Returns True if OK, False if no Context.
 ") GetContext;
 		Standard_Boolean GetContext(Standard_CString theName, const opencascade::handle<Standard_Type> & theType, opencascade::handle<Standard_Transient> & theCtx);
 
@@ -1878,7 +1992,7 @@ bool
 
 Description
 -----------
-Returns true if an entity (with a final result) has checks: - failsonly = false: any kind of check message - failsonly = true: fails only returns false if <ent> is not recorded.
+Returns True if an entity (with a final result) has checks: - failsonly = False: any kind of check message - failsonly = True: fails only Returns False if <ent> is not recorded.
 ") HasChecks;
 		Standard_Boolean HasChecks(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean FailsOnly);
 
@@ -1896,7 +2010,7 @@ bool
 
 Description
 -----------
-Returns true if a final result is recorded and brings an effective result (else, it brings only fail messages).
+Returns True if a final result is recorded AND BRINGS AN EFFECTIVE RESULT (else, it brings only fail messages).
 ") HasResult;
 		Standard_Boolean HasResult(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1914,7 +2028,7 @@ bool
 
 Description
 -----------
-Returns true if an entity has been asked for transfert, hence it is marked, as: recorded (a computation has ran, with or without an effective result), or skipped (case ignored).
+Returns True if an entity has been asked for transfert, hence it is marked, as: Recorded (a computation has ran, with or without an effective result), or Skipped (case ignored).
 ") IsMarked;
 		Standard_Boolean IsMarked(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1932,7 +2046,7 @@ bool
 
 Description
 -----------
-Returns true if a final result is recorded for an entity remark that it can bring no effective result if transfer has completely failed (finalresult brings only fail messages ...).
+Returns True if a final result is recorded for an entity Remark that it can bring no effective result if transfer has completely failed (FinalResult brings only fail messages ...).
 ") IsRecorded;
 		Standard_Boolean IsRecorded(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1950,7 +2064,7 @@ bool
 
 Description
 -----------
-Returns true if an entity is noted as skipped.
+Returns True if an entity is noted as skipped.
 ") IsSkipped;
 		Standard_Boolean IsSkipped(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1963,7 +2077,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the checklist resulting from last transferread i.e. from transientprocess itself, recorded from last clear.
+Returns the CheckList resulting from last TransferRead i.e. from TransientProcess itself, recorded from last Clear.
 ") LastCheckList;
 		Interface_CheckIterator LastCheckList();
 
@@ -1981,7 +2095,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities recorded as lastly transferred i.e. from transientprocess itself, recorded from last clear if <roots> is true , considers only roots of transfer if <roots> is false, considers all entities bound with result.
+Returns the list of entities recorded as lastly transferred i.e. from TransientProcess itself, recorded from last Clear If <roots> is True , considers only roots of transfer If <roots> is False, considers all entities bound with result.
 ") LastTransferList;
 		opencascade::handle<TColStd_HSequenceOfTransient> LastTransferList(const Standard_Boolean theRoots);
 
@@ -1994,7 +2108,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the currently set interfacemodel.
+Returns the currently set InterfaceModel.
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
@@ -2013,7 +2127,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints statistics on current trace file, according <what> and <mode>. see printstatsprocess for details.
+Prints statistics on current Trace File, according <what> and <mode>. See PrintStatsProcess for details.
 ") PrintStats;
 		void PrintStats(std::ostream &OutValue, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -2034,7 +2148,7 @@ None
 
 Description
 -----------
-Works as printstatsprocess, but displays data only on the entities which are in <list> (filter).
+Works as PrintStatsProcess, but displays data only on the entities which are in <list> (filter).
 ") PrintStatsOnList;
 		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -2054,7 +2168,7 @@ None
 
 Description
 -----------
-This routines prints statistics about a transientprocess it can be called, by a transferreader, or isolately prints are done on the default trace file <what> defines what kind of statistics are to be printed: 0: basic figures 1: root results 2: all recorded (roots, intermediate, checked entities) 3: abnormal records 4: check messages (warnings and fails) 5: fail messages //! <mode> is used according <what>: <what> = 0: <mode> is ignored <what> = 1,2,3: <mode> as follows: 0 (d): just lists numbers of concerned entities in the model 1: for each entity, gives number,label, type and result type and/or status (fail/warning...) 2: for each entity, gives maximal information (i.e. checks) 3: counts per type of starting entity (class type) 4: counts per result type and/or status 5: counts per couple (starting type / result type/status) 6: idem plus gives for each item, the list of numbers of entities in the starting model //! <what> = 4,5: modes relays on an enum printcount: 0 (d): itemsbyentity (sequential list by entity) 1: countbyitem 2: shortbyitem (count + 5 first numbers) 3: listbyitem (count + entity numbers) 4: entitiesbyitem (count + entity numbers and labels).
+This routines prints statistics about a TransientProcess It can be called, by a TransferReader, or isolately Prints are done on the default trace file <what> defines what kind of statistics are to be printed: 0: basic figures 1: root results 2: all recorded (roots, intermediate, checked entities) 3: abnormal records 4: check messages (warnings and fails) 5: fail messages //! <mode> is used according <what>: <what> = 0: <mode> is ignored <what> = 1,2,3: <mode> as follows: 0 (D): just lists numbers of concerned entities in the model 1: for each entity, gives number,label, type and result type and/or status (fail/warning...) 2: for each entity, gives maximal information (i.e. checks) 3: counts per type of starting entity (class type) 4: counts per result type and/or status 5: counts per couple (starting type / result type/status) 6: idem plus gives for each item, the list of numbers of entities in the starting model //! <what> = 4,5: modes relays on an enum PrintCount: 0 (D): ItemsByEntity (sequential list by entity) 1: CountByItem 2: ShortByItem (count + 5 first numbers) 3: ListByItem (count + entity numbers) 4: EntitiesByItem (count + entity numbers and labels).
 ") PrintStatsProcess;
 		static void PrintStatsProcess(const opencascade::handle<Transfer_TransientProcess> & theTP, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -2072,7 +2186,7 @@ bool
 
 Description
 -----------
-Tells if an entity is recognized as a valid candidate for transfer. calls method recognize from the actor (if known).
+Tells if an entity is recognized as a valid candidate for Transfer. Calls method Recognize from the Actor (if known).
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -2090,7 +2204,7 @@ bool
 
 Description
 -----------
-Records a final result of transferring an entity this result is recorded as a resultfrommodel, taken from the transientprocess returns true if a result is available, false else.
+Records a final result of transferring an entity This result is recorded as a ResultFromModel, taken from the TransientProcess Returns True if a result is available, False else.
 ") RecordResult;
 		Standard_Boolean RecordResult(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -2103,7 +2217,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities to which a final result is attached (i.e. processed by recordresult).
+Returns the list of entities to which a final result is attached (i.e. processed by RecordResult).
 ") RecordedList;
 		opencascade::handle<TColStd_HSequenceOfTransient> RecordedList();
 
@@ -2121,7 +2235,7 @@ opencascade::handle<Transfer_ResultFromModel>
 
 Description
 -----------
-Returns the final result recorded for a number of entity (internal use). null if out of range.
+Returns the final result recorded for a NUMBER of entity (internal use). Null if out of range.
 ") ResultFromNumber;
 		opencascade::handle<Transfer_ResultFromModel> ResultFromNumber(const Standard_Integer theNum);
 
@@ -2139,7 +2253,7 @@ None
 
 Description
 -----------
-Sets the actor directly: this value will be used if the controller is not set.
+Sets the Actor directly: this value will be used if the Controller is not set.
 ") SetActor;
 		void SetActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & theActor);
 
@@ -2158,7 +2272,7 @@ None
 
 Description
 -----------
-Sets a context: according to receiving appli, to be interpreted by the actor.
+Sets a Context: according to receiving appli, to be interpreted by the Actor.
 ") SetContext;
 		void SetContext(Standard_CString theName, const opencascade::handle<Standard_Transient> & theCtx);
 
@@ -2176,7 +2290,7 @@ None
 
 Description
 -----------
-Sets a controller. it is required to generate the actor. elsewhere, the actor must be provided directly.
+Sets a Controller. It is required to generate the Actor. Elsewhere, the Actor must be provided directly.
 ") SetController;
 		void SetController(const opencascade::handle<XSControl_Controller> & theControl);
 
@@ -2212,7 +2326,7 @@ None
 
 Description
 -----------
-Sets a graph and its interfacemodel (calls setmodel).
+Sets a Graph and its InterfaceModel (calls SetModel).
 ") SetGraph;
 		void SetGraph(const opencascade::handle<Interface_HGraph> & theGraph);
 
@@ -2230,7 +2344,7 @@ None
 
 Description
 -----------
-Sets an interfacemodel. this causes former results, computed from another one, to be lost (see also clear).
+Sets an InterfaceModel. This causes former results, computed from another one, to be lost (see also Clear).
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
@@ -2248,7 +2362,7 @@ None
 
 Description
 -----------
-Forces the transientprocess remark: it also changes the model and the actor, from those recorded in the new transientprocess.
+Forces the TransientProcess Remark: it also changes the Model and the Actor, from those recorded in the new TransientProcess.
 ") SetTransientProcess;
 		void SetTransientProcess(const opencascade::handle<Transfer_TransientProcess> & theTP);
 
@@ -2266,7 +2380,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the resulting object as a shape null shape if no result or result not a shape.
+Returns the resulting object as a Shape Null Shape if no result or result not a shape.
 ") ShapeResult;
 		TopoDS_Shape ShapeResult(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -2284,7 +2398,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Returns a list of result shapes if <rec> is true , sees recordedlist if <rec> is false, sees lasttransferlist (last root transfers) for each one, if it is a shape, it is cumulated to the list if no shape is found, returns an empty sequence.
+Returns a list of result Shapes If <rec> is True , sees RecordedList If <rec> is False, sees LastTransferList (last ROOT transfers) For each one, if it is a Shape, it is cumulated to the list If no Shape is found, returns an empty Sequence.
 ") ShapeResultList;
 		const opencascade::handle<TopTools_HSequenceOfShape> & ShapeResultList(const Standard_Boolean theRec);
 
@@ -2302,7 +2416,7 @@ bool
 
 Description
 -----------
-Note that an entity has been required for transfer but no result at all is available (typically: case not implemented) it is not an error, but it gives a specific status: skipped returns true if done, false if <ent> is not in starting model.
+Note that an entity has been required for transfer but no result at all is available (typically: case not implemented) It is not an error, but it gives a specific status: Skipped Returns True if done, False if <ent> is not in starting model.
 ") Skip;
 		Standard_Boolean Skip(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -2341,7 +2455,7 @@ int
 
 Description
 -----------
-Commands the transfer on reading for a list of entities to data for imagine, using the selected actor for read returns count of transferred entities, ok or with fails (0/1) if <rec> is true (d), the results are recorded by recordresult.
+Commands the transfer on reading for a list of entities to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the results are recorded by RecordResult.
 ") TransferList;
 		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2361,7 +2475,7 @@ int
 
 Description
 -----------
-Commands the transfer on reading for an entity to data for imagine, using the selected actor for read returns count of transferred entities, ok or with fails (0/1) if <rec> is true (d), the result is recorded by recordresult.
+Commands the transfer on reading for an entity to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the result is recorded by RecordResult.
 ") TransferOne;
 		Standard_Integer TransferOne(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2380,7 +2494,7 @@ int
 
 Description
 -----------
-Transfers the content of the current interface model to data handled by imagine, starting from its roots (determined by the graph <g>), using the selected actor for read returns the count of performed root transfers (i.e. 0 if none) or -1 if no actor is defined.
+Transfers the content of the current Interface Model to data handled by Imagine, starting from its Roots (determined by the Graph <G>), using the selected Actor for Read Returns the count of performed root transfers (i.e. 0 if none) or -1 if no actor is defined.
 ") TransferRoots;
 		Standard_Integer TransferRoots(const Interface_Graph & theGraph, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2393,7 +2507,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the currently used transientprocess it is computed from the model by transferreadroots, or by begintransferread.
+Returns the currently used TransientProcess It is computed from the model by TransferReadRoots, or by BeginTransferRead.
 ") TransientProcess;
 		const opencascade::handle<Transfer_TransientProcess> & TransientProcess();
 
@@ -2411,7 +2525,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the resulting object as a transient null handle if no result or result not transient.
+Returns the resulting object as a Transient Null Handle if no result or result not transient.
 ") TransientResult;
 		opencascade::handle<Standard_Transient> TransientResult(const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -2440,7 +2554,7 @@ None
 
 Description
 -----------
-Creates a transferwriter, empty, ready to run with an empty finderprocess (but no controller, etc).
+Creates a TransferWriter, empty, ready to run with an empty FinderProcess (but no controller, etc).
 ") XSControl_TransferWriter;
 		 XSControl_TransferWriter();
 
@@ -2453,7 +2567,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check-list of last transfer (write), i.e. the check-list currently recorded in the finderprocess.
+Returns the check-list of last transfer (write), i.e. the check-list currently recorded in the FinderProcess.
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
@@ -2471,7 +2585,7 @@ None
 
 Description
 -----------
-Clears recorded data according a mode 0 clears finderprocess (results, checks) -1 create a new finderprocess.
+Clears recorded data according a mode 0 clears FinderProcess (results, checks) -1 create a new FinderProcess.
 ") Clear;
 		void Clear(const Standard_Integer theMode);
 
@@ -2484,7 +2598,7 @@ opencascade::handle<XSControl_Controller>
 
 Description
 -----------
-Returns the currently used controller.
+Returns the currently used Controller.
 ") Controller;
 		const opencascade::handle<XSControl_Controller> & Controller();
 
@@ -2497,7 +2611,7 @@ opencascade::handle<Transfer_FinderProcess>
 
 Description
 -----------
-Returns the finderprocess itself.
+Returns the FinderProcess itself.
 ") FinderProcess;
 		const opencascade::handle<Transfer_FinderProcess> & FinderProcess();
 
@@ -2516,7 +2630,7 @@ None
 
 Description
 -----------
-Prints statistics on current trace file, according what,mode see printstatsprocess for details.
+Prints statistics on current Trace File, according what,mode See PrintStatsProcess for details.
 ") PrintStats;
 		void PrintStats(const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
@@ -2534,7 +2648,7 @@ bool
 
 Description
 -----------
-Tells if a shape is valid for a transfer to a model asks the controller (recognizewriteshape).
+Tells if a Shape is valid for a transfer to a model Asks the Controller (RecognizeWriteShape).
 ") RecognizeShape;
 		Standard_Boolean RecognizeShape(const TopoDS_Shape & theShape);
 
@@ -2552,7 +2666,7 @@ bool
 
 Description
 -----------
-Tells if a transient object (from an application) is a valid candidate for a transfer to a model asks the controller (recognizewritetransient) if <obj> is a hshape, calls recognizeshape.
+Tells if a transient object (from an application) is a valid candidate for a transfer to a model Asks the Controller (RecognizeWriteTransient) If <obj> is a HShape, calls RecognizeShape.
 ") RecognizeTransient;
 		Standard_Boolean RecognizeTransient(const opencascade::handle<Standard_Transient> & theObj);
 
@@ -2570,7 +2684,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check-list of last transfer (write), but tries to bind to each check, the resulting entity in the model instead of keeping the original mapper, whenever known.
+Returns the check-list of last transfer (write), but tries to bind to each check, the resulting entity in the model instead of keeping the original Mapper, whenever known.
 ") ResultCheckList;
 		Interface_CheckIterator ResultCheckList(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
@@ -2588,7 +2702,7 @@ None
 
 Description
 -----------
-Sets a new controller, also sets a new finderprocess.
+Sets a new Controller, also sets a new FinderProcess.
 ") SetController;
 		void SetController(const opencascade::handle<XSControl_Controller> & theCtl);
 
@@ -2606,7 +2720,7 @@ None
 
 Description
 -----------
-Sets a new finderprocess and forgets the former one.
+Sets a new FinderProcess and forgets the former one.
 ") SetFinderProcess;
 		void SetFinderProcess(const opencascade::handle<Transfer_FinderProcess> & theFP);
 
@@ -2624,7 +2738,7 @@ None
 
 Description
 -----------
-Changes the transfer mode.
+Changes the Transfer Mode.
 ") SetTransferMode;
 		void SetTransferMode(const Standard_Integer theMode);
 
@@ -2637,7 +2751,7 @@ int
 
 Description
 -----------
-Returns the current transfer mode (an integer) it will be interpreted by the controller to run transfers this call form could be later replaced by more specific ones (parameters suited for each norm / transfer case).
+Returns the current Transfer Mode (an Integer) It will be interpreted by the Controller to run Transfers This call form could be later replaced by more specific ones (parameters suited for each norm / transfer case).
 ") TransferMode;
 		Standard_Integer TransferMode();
 
@@ -2657,7 +2771,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Transfers a shape from cascade to a model of current norm, according to the last call to settransfermode works by calling the controller returns status: =0 if ok, >0 if error during transfer, <0 if transfer badly initialised.
+Transfers a Shape from CasCade to a model of current norm, according to the last call to SetTransferMode Works by calling the Controller Returns status: =0 if OK, >0 if error during transfer, <0 if transfer badly initialised.
 ") TransferWriteShape;
 		IFSelect_ReturnStatus TransferWriteShape(const opencascade::handle<Interface_InterfaceModel> & theModel, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2677,7 +2791,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Transfers a transient object (from an application) to a model of current norm, according to the last call to settransfermode works by calling the controller returns status: =0 if ok, >0 if error during transfer, <0 if transfer badly initialised.
+Transfers a Transient object (from an application) to a model of current norm, according to the last call to SetTransferMode Works by calling the Controller Returns status: =0 if OK, >0 if error during transfer, <0 if transfer badly initialised.
 ") TransferWriteTransient;
 		IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Interface_InterfaceModel> & theModel, const opencascade::handle<Standard_Transient> & theObj, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2706,7 +2820,7 @@ None
 
 Description
 -----------
-The only use of this, is to allow a frontal to get one distinct 'utils' set per separate engine.
+the only use of this, is to allow a frontal to get one distinct 'Utils' set per separate engine.
 ") XSControl_Utils;
 		 XSControl_Utils();
 
@@ -2836,7 +2950,7 @@ TopoDS_Shape
 
 Description
 -----------
-From a transient, returns a shape. in fact, recognizes shapebinder shapemapper and hshape.
+From a Transient, returns a Shape. In fact, recognizes ShapeBinder ShapeMapper and HShape.
 ") BinderShape;
 		TopoDS_Shape BinderShape(const opencascade::handle<Standard_Transient> & tr);
 
@@ -2873,7 +2987,7 @@ TopoDS_Shape
 
 Description
 -----------
-Converts a list of shapes to a compound (a kind of shape).
+Converts a list of Shapes to a Compound (a kind of Shape).
 ") CompoundFromSeq;
 		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
@@ -3120,7 +3234,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Creates a transient object from a shape: it is either a binder (used by functions which require a transient but can process a shape, such as viewing functions) or a hshape (according to hs) default is a hshape.
+Creates a Transient Object from a Shape: it is either a Binder (used by functions which require a Transient but can process a Shape, such as viewing functions) or a HShape (according to hs) Default is a HShape.
 ") ShapeBinder;
 		opencascade::handle<Standard_Transient> ShapeBinder(const TopoDS_Shape & shape, const Standard_Boolean hs = Standard_True);
 
@@ -3139,7 +3253,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type of a shape: true type if <compound> is false if <compound> is true and <shape> is a compound, iterates on its items. if all are of the same type, returns this type. else, returns compound. if it is empty, returns shape for a null shape, returns shape.
+Returns the type of a Shape: true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const Standard_Boolean compound);
 
@@ -3179,7 +3293,7 @@ TopoDS_Shape
 
 Description
 -----------
-From a shape, builds a compound as follows: explores it level by level if <explore> is false, only compound items. else, all items adds to the result, shapes which comply to <type> + if <type> is wire, considers free edges (and makes wires) + if <type> is shell, considers free faces (and makes shells) if <compound> is true, gathers items in compounds which correspond to starting compound,solid or shell containers, or items directly contained in a compound.
+From a Shape, builds a Compound as follows: explores it level by level If <explore> is False, only COMPOUND items. Else, all items Adds to the result, shapes which comply to <type> + if <type> is WIRE, considers free edges (and makes wires) + if <type> is SHELL, considers free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound.
 ") SortedCompound;
 		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const Standard_Boolean explore, const Standard_Boolean compound);
 
@@ -3360,7 +3474,7 @@ None
 
 Description
 -----------
-Just prints a line into the current trace file. this allows to better characterise the various trace outputs, as desired.
+Just prints a line into the current Trace File. This allows to better characterise the various trace outputs, as desired.
 ") TraceLine;
 		void TraceLine(Standard_CString line);
 
@@ -3378,7 +3492,7 @@ None
 
 Description
 -----------
-Just prints a line or a set of lines into the current trace file. <lines> can be a hascii/extendedstring (produces a print without ending line) or a hsequence or harray1 of .. (one new line per item).
+Just prints a line or a set of lines into the current Trace File. <lines> can be a HAscii/ExtendedString (produces a print without ending line) or a HSequence or HArray1 Of .. (one new line per item).
 ") TraceLines;
 		void TraceLines(const opencascade::handle<Standard_Transient> & lines);
 
@@ -3397,7 +3511,7 @@ str
 
 Description
 -----------
-Returns the name of the dynamic type of an object, i.e.: if it is a type, its name if it is a object not a type, the name of its dynamictype if it is null, an empty string if <nopk> is false (d), gives complete name if <nopk> is true, returns class name without package.
+Returns the name of the dynamic type of an object, i.e.: If it is a Type, its Name If it is a object not a type, the Name of its DynamicType If it is Null, an empty string If <nopk> is False (D), gives complete name If <nopk> is True, returns class name without package.
 ") TypeName;
 		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean nopk = Standard_False);
 
@@ -3688,7 +3802,7 @@ None
 
 Description
 -----------
-Clears the whole current context (nullifies it).
+Clears the whole current Context (nullifies it).
 ") ClearContext;
 		void ClearContext();
 
@@ -3706,7 +3820,7 @@ None
 
 Description
 -----------
-In addition to basic cleardata, clears transfer and management for interactive use, for mode = 0,1,2 and over 4 plus: mode = 5 to clear transfers (both ways) only mode = 6 to clear enforced results mode = 7 to clear transfers, results.
+In addition to basic ClearData, clears Transfer and Management for interactive use, for mode = 0,1,2 and over 4 Plus: mode = 5 to clear Transfers (both ways) only mode = 6 to clear enforced results mode = 7 to clear transfers, results.
 ") ClearData;
 		virtual void ClearData(const Standard_Integer theMode);
 
@@ -3719,7 +3833,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Description
 -----------
-Returns the current context list, null if not defined the context is given to the transientprocess for transferread.
+Returns the current Context List, Null if not defined The Context is given to the TransientProcess for TransferRead.
 ") Context;
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> Context();
 
@@ -3737,7 +3851,7 @@ None
 
 Description
 -----------
-Sets a transfer reader, by internal ways, according mode: 0 recreates it clear, 1 clears it (does not recreate) 2 aligns roots of transientprocess from final results 3 aligns final results from roots of transientprocess 4 begins a new transfer (by begintransfer) 5 recreates transferreader then begins a new transfer.
+Sets a Transfer Reader, by internal ways, according mode: 0 recreates it clear, 1 clears it (does not recreate) 2 aligns Roots of TransientProcess from final Results 3 aligns final Results from Roots of TransientProcess 4 begins a new transfer (by BeginTransfer) 5 recreates TransferReader then begins a new transfer.
 ") InitTransferReader;
 		void InitTransferReader(const Standard_Integer theMode);
 
@@ -3750,7 +3864,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the transientprocess(internal data for transferreader).
+Returns the TransientProcess(internal data for TransferReader).
 ") MapReader;
 		opencascade::handle<Transfer_TransientProcess> MapReader();
 
@@ -3763,7 +3877,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Produces and returns a new model well conditioned it is produced by the norm controller it can be null (if this function is not implemented).
+produces and returns a new Model well conditioned It is produced by the Norm Controller It can be Null (if this function is not implemented).
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -3795,7 +3909,7 @@ theS: Standard_OStream
 
 Description
 -----------
-Prints the transfer status of a transferred item, as being the mapped n0 <num>, from mapwriter if <wri> is true, or from mapreader if <wri> is false returns true when done, false else (i.e. num out of range).
+Prints the transfer status of a transferred item, as being the Mapped n0 <num>, from MapWriter if <wri> is True, or from MapReader if <wri> is False Returns True when done, False else (i.e. num out of range).
 ") PrintTransferStatus;
 		Standard_Boolean PrintTransferStatus(const Standard_Integer theNum, const Standard_Boolean theWri, std::ostream &OutValue);
 
@@ -3814,7 +3928,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the result attached to a starting entity if <mode> = 0, returns final result if <mode> = 1, considers last result if <mode> = 2, considers final, else if absent, last returns it as transient, if result is not transient returns the binder <mode> = 10,11,12 idem but returns the binder itself (if it is not, e.g. shape, returns the binder) <mode> = 20, returns the resultfrommodel.
+Returns the result attached to a starting entity If <mode> = 0, returns Final Result If <mode> = 1, considers Last Result If <mode> = 2, considers Final, else if absent, Last returns it as Transient, if result is not transient returns the Binder <mode> = 10,11,12 idem but returns the Binder itself (if it is not, e.g. Shape, returns the Binder) <mode> = 20, returns the ResultFromModel.
 ") Result;
 		opencascade::handle<Standard_Transient> Result(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theMode);
 
@@ -3832,7 +3946,7 @@ bool
 
 Description
 -----------
-Selects a norm defined by its name. a norm is described and handled by a controller returns true if done, false if <normname> is unknown //! the current profile for this norm is taken.
+Selects a Norm defined by its name. A Norm is described and handled by a Controller Returns True if done, False if <normname> is unknown //! The current Profile for this Norm is taken.
 ") SelectNorm;
 		Standard_Boolean SelectNorm(Standard_CString theNormName);
 
@@ -3850,7 +3964,7 @@ str
 
 Description
 -----------
-Returns the name of the last selected norm. if none is defined, returns an empty string by default, returns the complete name of the norm if <rsc> is true, returns the short name used for resource.
+Returns the name of the last Selected Norm. If none is defined, returns an empty string By default, returns the complete name of the norm If <rsc> is True, returns the short name used for resource.
 ") SelectedNorm;
 		Standard_CString SelectedNorm(const Standard_Boolean theRsc = Standard_False);
 
@@ -3868,7 +3982,7 @@ None
 
 Description
 -----------
-Sets the current context list, as a whole sets it to the transferreader.
+Sets the current Context List, as a whole Sets it to the TransferReader.
 ") SetAllContext;
 		void SetAllContext(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > theContext);
 
@@ -3886,7 +4000,7 @@ None
 
 Description
 -----------
-Selects a norm defined by its controller itself.
+Selects a Norm defined by its Controller itself.
 ") SetController;
 		void SetController(const opencascade::handle<XSControl_Controller> & theCtl);
 
@@ -3904,7 +4018,7 @@ bool
 
 Description
 -----------
-Changes the map reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) returns true when done, false in case of bad definition, i.e. if model from tp differs from that of session.
+Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False in case of bad definition, i.e. if Model from TP differs from that of Session.
 ") SetMapReader;
 		Standard_Boolean SetMapReader(const opencascade::handle<Transfer_TransientProcess> & theTP);
 
@@ -3922,7 +4036,7 @@ bool
 
 Description
 -----------
-Changes the map reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) returns true when done, false if <fp> is null.
+Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False if <FP> is Null.
 ") SetMapWriter;
 		Standard_Boolean SetMapWriter(const opencascade::handle<Transfer_FinderProcess> & theFP);
 
@@ -3940,7 +4054,7 @@ None
 
 Description
 -----------
-Sets a transfer reader, which manages transfers on reading.
+Sets a Transfer Reader, which manages transfers on reading.
 ") SetTransferReader;
 		void SetTransferReader(const opencascade::handle<XSControl_TransferReader> & theTR);
 
@@ -3977,7 +4091,7 @@ int
 
 Description
 -----------
-Commands the transfer of, either one entity, or a list i.e. calls the transferreader after having analysed <ents> it is cumulated from the last begintransfer <ents> is processed by givelist, hence: - <ents> a selection: its selectionresult - <ents> a hsequenceoftransient: this list - <ents> the model: in this specific case, all the roots, with no cumulation of former transfers (transferreadroots).
+Commands the transfer of, either one entity, or a list I.E. calls the TransferReader after having analysed <ents> It is cumulated from the last BeginTransfer <ents> is processed by GiveList, hence: - <ents> a Selection: its SelectionResult - <ents> a HSequenceOfTransient: this list - <ents> the Model: in this specific case, all the roots, with no cumulation of former transfers (TransferReadRoots).
 ") TransferReadOne;
 		Standard_Integer TransferReadOne(const opencascade::handle<Standard_Transient> & theEnts, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3995,7 +4109,7 @@ int
 
 Description
 -----------
-Commands the transfer of all the root entities of the model i.e. calls transferroot from the transferreader with the graph no cumulation with former calls to transferreadone.
+Commands the transfer of all the root entities of the model i.e. calls TransferRoot from the TransferReader with the Graph No cumulation with former calls to TransferReadOne.
 ") TransferReadRoots;
 		Standard_Integer TransferReadRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -4008,7 +4122,7 @@ opencascade::handle<XSControl_TransferReader>
 
 Description
 -----------
-Returns the transfer reader, null if not set.
+Returns the Transfer Reader, Null if not set.
 ") TransferReader;
 		const opencascade::handle<XSControl_TransferReader> & TransferReader();
 
@@ -4021,7 +4135,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check-list of last transfer (write) it is recorded in the finderprocess, but it must be bound with resulting entities (in the resulting file model) rather than with original objects (in fact, their mappers).
+Returns the check-list of last transfer (write) It is recorded in the FinderProcess, but it must be bound with resulting entities (in the resulting file model) rather than with original objects (in fact, their mappers).
 ") TransferWriteCheckList;
 		Interface_CheckIterator TransferWriteCheckList();
 
@@ -4041,7 +4155,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Transfers a shape from cascade to a model of current norm, according to the last call to setmodewriteshape returns status :done if ok, fail if error during transfer, error if transfer badly initialised.
+Transfers a Shape from CasCade to a model of current norm, according to the last call to SetModeWriteShape Returns status :Done if OK, Fail if error during transfer, Error if transfer badly initialised.
 ") TransferWriteShape;
 		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & theShape, const Standard_Boolean theCompGraph = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -4054,7 +4168,7 @@ opencascade::handle<XSControl_TransferWriter>
 
 Description
 -----------
-Returns the transfer reader, null if not set.
+Returns the Transfer Reader, Null if not set.
 ") TransferWriter;
 		const opencascade::handle<XSControl_TransferWriter> & TransferWriter();
 
@@ -4096,7 +4210,7 @@ None
 
 Description
 -----------
-Creates a writer from scratch.
+Creates a Writer from scratch.
 ") XSControl_Writer;
 		 XSControl_Writer();
 
@@ -4114,7 +4228,7 @@ None
 
 Description
 -----------
-Creates a writer from scratch, with a norm name which identifie a controller.
+Creates a Writer from scratch, with a norm name which identifie a Controller.
 ") XSControl_Writer;
 		 XSControl_Writer(Standard_CString norm);
 
@@ -4133,7 +4247,7 @@ None
 
 Description
 -----------
-Creates a writer from an already existing session if <scratch> is true (d), clears already recorded data.
+Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data.
 ") XSControl_Writer;
 		 XSControl_Writer(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
@@ -4151,7 +4265,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the produced model. produces a new one if not yet done or if <newone> is true this method allows for instance to edit product or header data before writing.
+Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model(const Standard_Boolean newone = Standard_False);
 
@@ -4170,7 +4284,7 @@ None
 
 Description
 -----------
-Prints statistics about transfer.
+Prints Statistics about Transfer.
 ") PrintStatsTransfer;
 		void PrintStatsTransfer(const Standard_Integer what, const Standard_Integer mode = 0);
 
@@ -4188,7 +4302,7 @@ bool
 
 Description
 -----------
-Sets a specific norm to <self> returns true if done, false if <norm> is not available.
+Sets a specific norm to <self> Returns True if done, False if <norm> is not available.
 ") SetNorm;
 		Standard_Boolean SetNorm(Standard_CString norm);
 
@@ -4227,7 +4341,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Transfers a shape according to the mode.
+Transfers a Shape according to the mode.
 ") TransferShape;
 		IFSelect_ReturnStatus TransferShape(const TopoDS_Shape & sh, const Standard_Integer mode = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 

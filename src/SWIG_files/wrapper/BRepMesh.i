@@ -168,12 +168,8 @@ BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALG
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Integer ( * BRepMesh_PluginEntryType ) ( const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, BRepMesh_DiscretRoot * & theMeshAlgoInstance );
 /* end typedefs declaration */
 
-/***********************
-* class <anon-class-1> *
-***********************/
 /******************************
 * class BRepMesh_BaseMeshAlgo *
 ******************************/
@@ -243,7 +239,9 @@ None
 
 Description
 -----------
-Constructor. @param thelocation location of a circle. @param theradius radius of a circle.
+Constructor. 
+Parameter theLocation location of a circle. 
+Parameter theRadius radius of a circle.
 ") BRepMesh_Circle;
 		 BRepMesh_Circle(const gp_XY & theLocation, const Standard_Real theRadius);
 
@@ -287,7 +285,8 @@ None
 
 Description
 -----------
-Sets location of a circle. @param thelocation location of a circle.
+Sets location of a circle. 
+Parameter theLocation location of a circle.
 ") SetLocation;
 		void SetLocation(const gp_XY & theLocation);
 
@@ -305,7 +304,8 @@ None
 
 Description
 -----------
-Sets radius of a circle. @param theradius radius of a circle.
+Sets radius of a circle. 
+Parameter theRadius radius of a circle.
 ") SetRadius;
 		void SetRadius(const Standard_Real theRadius);
 
@@ -340,7 +340,10 @@ None
 
 Description
 -----------
-Constructor. @param thetolerance tolerance to be used for identification of shot circles. @param thereservedsize size to be reserved for vector of circles. @param theallocator memory allocator to be used by internal collections.
+Constructor. 
+Parameter theTolerance tolerance to be used for identification of shot circles. 
+Parameter theReservedSize size to be reserved for vector of circles. 
+Parameter theAllocator memory allocator to be used by internal collections.
 ") BRepMesh_CircleInspector;
 		 BRepMesh_CircleInspector(const Standard_Real theTolerance, const Standard_Integer theReservedSize, const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -359,7 +362,9 @@ None
 
 Description
 -----------
-Adds the circle to vector of circles at the given position. @param theindex position of circle in the vector. @param thecircle circle to be added.
+Adds the circle to vector of circles at the given position. 
+Parameter theIndex position of circle in the vector. 
+Parameter theCircle circle to be added.
 ") Bind;
 		void Bind(const Standard_Integer theIndex, const BRepMesh_Circle & theCircle);
 
@@ -377,7 +382,9 @@ BRepMesh_Circle
 
 Description
 -----------
-Returns circle with the given index. @param theindex index of circle. return circle with the given index.
+Returns circle with the given index. 
+Parameter theIndex index of circle. 
+Return: circle with the given index.
 ") Circle;
 		BRepMesh_Circle & Circle(const Standard_Integer theIndex);
 
@@ -421,7 +428,9 @@ NCollection_CellFilter_Action
 
 Description
 -----------
-Performs inspection of a circle with the given index. @param thetargetindex index of a circle to be checked. return status of the check.
+Performs inspection of a circle with the given index. 
+Parameter theTargetIndex index of a circle to be checked. 
+Return: status of the check.
 ") Inspect;
 		NCollection_CellFilter_Action Inspect(const Standard_Integer theTargetIndex);
 
@@ -440,7 +449,7 @@ bool
 
 Description
 -----------
-Checks indices for equlity.
+Checks indices for equality.
 ") IsEqual;
 		static Standard_Boolean IsEqual(const Standard_Integer theIndex, const Standard_Integer theTargetIndex);
 
@@ -458,7 +467,8 @@ None
 
 Description
 -----------
-Set reference point to be checked. @param thepoint bullet point.
+Set reference point to be checked. 
+Parameter thePoint bullet point.
 ") SetPoint;
 		void SetPoint(const gp_XY & thePoint);
 
@@ -490,7 +500,8 @@ None
 
 Description
 -----------
-Constructor. @param theallocator memory allocator to be used by internal structures.
+Constructor. 
+Parameter theAllocator memory allocator to be used by internal structures.
 ") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool(const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -509,7 +520,9 @@ None
 
 Description
 -----------
-Constructor. @param thereservedsize size to be reserved for vector of circles. @param theallocator memory allocator to be used by internal structures.
+Constructor. 
+Parameter theReservedSize size to be reserved for vector of circles. 
+Parameter theAllocator memory allocator to be used by internal structures.
 ") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool(const Standard_Integer theReservedSize, const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -528,7 +541,9 @@ None
 
 Description
 -----------
-Binds the circle to the tool. @param theindex index a circle should be bound with. @param thecircle circle to be bound.
+Binds the circle to the tool. 
+Parameter theIndex index a circle should be bound with. 
+Parameter theCircle circle to be bound.
 ") Bind;
 		void Bind(const Standard_Integer theIndex, const gp_Circ2d & theCircle);
 
@@ -549,7 +564,12 @@ bool
 
 Description
 -----------
-Computes circle on three points and bind it to the tool. @param theindex index a circle should be bound with. @param thepoint1 first point. @param thepoint2 second point. @param thepoint3 third point. return false in case of impossibility to build a circle on the given points, true elsewhere.
+Computes circle on three points and bind it to the tool. 
+Parameter theIndex index a circle should be bound with. 
+Parameter thePoint1 first point. 
+Parameter thePoint2 second point. 
+Parameter thePoint3 third point. 
+Return: False in case of impossibility to build a circle on the given points, True elsewhere.
 ") Bind;
 		Standard_Boolean Bind(const Standard_Integer theIndex, const gp_XY & thePoint1, const gp_XY & thePoint2, const gp_XY & thePoint3);
 
@@ -567,7 +587,8 @@ None
 
 Description
 -----------
-Deletes a circle from the tool. @param theindex index of a circle to be removed.
+Deletes a circle from the tool. 
+Parameter theIndex index of a circle to be removed.
 ") Delete;
 		void Delete(const Standard_Integer theIndex);
 
@@ -585,7 +606,8 @@ None
 
 Description
 -----------
-Initializes the tool. @param thereservedsize size to be reserved for vector of circles.
+Initializes the tool. 
+Parameter theReservedSize size to be reserved for vector of circles.
 ") Init;
 		void Init(const Standard_Integer);
 
@@ -619,7 +641,11 @@ theRadius: float
 
 Description
 -----------
-Computes circle on three points. @param thepoint1 first point. @param thepoint2 second point. @param thepoint3 third point. @param[out] thelocation center of computed circle. @param[out] theradius radius of computed circle. return false in case of impossibility to build a circle on the given points, true elsewhere.
+Computes circle on three points. 
+Parameter thePoint1 first point. 
+Parameter thePoint2 second point. 
+Parameter thePoint3 third point. @param[out] theLocation center of computed circle. @param[out] theRadius radius of computed circle. 
+Return: False in case of impossibility to build a circle on the given points, True elsewhere.
 ") MakeCircle;
 		static Standard_Boolean MakeCircle(const gp_XY & thePoint1, const gp_XY & thePoint2, const gp_XY & thePoint3, gp_XY & theLocation, Standard_Real &OutValue);
 
@@ -637,7 +663,8 @@ None
 
 Description
 -----------
-Binds implicit zero circle. @param theindex index a zero circle should be bound with.
+Binds implicit zero circle. 
+Parameter theIndex index a zero circle should be bound with.
 ") MocBind;
 		void MocBind(const Standard_Integer theIndex);
 
@@ -655,7 +682,8 @@ IMeshData::ListOfInteger
 
 Description
 -----------
-Select the circles shot by the given point. @param thepoint bullet point.
+Select the circles shot by the given point. 
+Parameter thePoint bullet point.
 ") Select;
 		IMeshData::ListOfInteger & Select(const gp_XY & thePoint);
 
@@ -673,7 +701,8 @@ None
 
 Description
 -----------
-Sets new size for cell filter. @param thesize cell size to be set for x and y dimensions.
+Sets new size for cell filter. 
+Parameter theSize cell size to be set for X and Y dimensions.
 ") SetCellSize;
 		void SetCellSize(const Standard_Real theSize);
 
@@ -692,7 +721,9 @@ None
 
 Description
 -----------
-Sets new size for cell filter. @param thesizex cell size to be set for x dimension. @param thesizey cell size to be set for y dimension.
+Sets new size for cell filter. 
+Parameter theSizeX cell size to be set for X dimension. 
+Parameter theSizeY cell size to be set for Y dimension.
 ") SetCellSize;
 		void SetCellSize(const Standard_Real theSizeX, const Standard_Real theSizeY);
 
@@ -711,7 +742,9 @@ None
 
 Description
 -----------
-Sets limits of inspection area. @param themin bottom left corner of inspection area. @param themax top right corner of inspection area.
+Sets limits of inspection area. 
+Parameter theMin bottom left corner of inspection area. 
+Parameter theMax top right corner of inspection area.
 ") SetMinMaxSize;
 		void SetMinMaxSize(const gp_XY & theMin, const gp_XY & theMax);
 
@@ -756,7 +789,9 @@ TopAbs_State
 
 Description
 -----------
-Performs classification of the given point regarding to face internals. @param thepoint point in parametric space to be classified. return topabs_in if point lies within face boundaries and topabs_out elsewhere.
+Performs classification of the given point regarding to face internals. 
+Parameter thePoint Point in parametric space to be classified. 
+Return: TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
 ") Perform;
 		TopAbs_State Perform(const gp_Pnt2d & thePoint);
 
@@ -777,7 +812,13 @@ None
 
 Description
 -----------
-Registers wire specified by sequence of points for further classification of points. @param thewire wire to be registered. specified by sequence of points. @param thetoluv tolerance to be used for calculations in parametric space. @param theumin lower u boundary of the face in parametric space. @param theumax upper u boundary of the face in parametric space. @param thevmin lower v boundary of the face in parametric space. @param thevmax upper v boundary of the face in parametric space.
+Registers wire specified by sequence of points for further classification of points. 
+Parameter theWire Wire to be registered. Specified by sequence of points. 
+Parameter theTolUV Tolerance to be used for calculations in parametric space. 
+Parameter theUmin Lower U boundary of the face in parametric space. 
+Parameter theUmax Upper U boundary of the face in parametric space. 
+Parameter theVmin Lower V boundary of the face in parametric space. 
+Parameter theVmax Upper V boundary of the face in parametric space.
 ") RegisterWire;
 		void RegisterWire(const NCollection_Sequence<const gp_Pnt2d *> & theWire, const std::pair<Standard_Real, Standard_Real> & theTolUV, const std::pair<Standard_Real, Standard_Real> & theRangeU, const std::pair<Standard_Real, Standard_Real> & theRangeV);
 
@@ -899,7 +940,11 @@ theParameter: float
 
 Description
 -----------
-Returns parameters of solution with the given index. @param theindex index of tessellation point. @param theparameter parameters on pcurve corresponded to the solution. @param thepoint tessellation point. return true in case of valid result, false elewhere.
+Returns parameters of solution with the given index. 
+Parameter theIndex index of tessellation point. 
+Parameter theParameter parameters on PCurve corresponded to the solution. 
+Parameter thePoint tessellation point. 
+Return: True in case of valid result, false elewhere.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Integer theIndex, gp_Pnt & thePoint, Standard_Real &OutValue);
 
@@ -935,7 +980,9 @@ None
 
 Description
 -----------
-Constructor. @param theallocator memory allocator to be used by internal structures. @param thereservednodesize presumed number of nodes in this mesh.
+Constructor. 
+Parameter theAllocator memory allocator to be used by internal structures. 
+Parameter theReservedNodeSize presumed number of nodes in this mesh.
 ") BRepMesh_DataStructureOfDelaun;
 		 BRepMesh_DataStructureOfDelaun(const opencascade::handle<NCollection_IncAllocator> & theAllocator, const Standard_Integer theReservedNodeSize = 100);
 
@@ -953,7 +1000,9 @@ int
 
 Description
 -----------
-Adds element to the mesh if it is not already in the mesh. @param theelement element to be added to the mesh. return index of the element in the structure.
+Adds element to the mesh if it is not already in the mesh. 
+Parameter theElement element to be added to the mesh. 
+Return: index of the element in the structure.
 ") AddElement;
 		Standard_Integer AddElement(const BRepMesh_Triangle & theElement);
 
@@ -971,7 +1020,9 @@ int
 
 Description
 -----------
-Adds link to the mesh if it is not already in the mesh. @param thelink link to be added to the mesh. return index of the link in the structure.
+Adds link to the mesh if it is not already in the mesh. 
+Parameter theLink link to be added to the mesh. 
+Return: index of the link in the structure.
 ") AddLink;
 		Standard_Integer AddLink(const BRepMesh_Edge & theLink);
 
@@ -990,7 +1041,10 @@ int
 
 Description
 -----------
-Adds node to the mesh if it is not already in the mesh. @param thenode node to be added to the mesh. @param isforceadd adds the given node to structure without checking on coincidence with other nodes. return index of the node in the structure.
+Adds node to the mesh if it is not already in the mesh. 
+Parameter theNode node to be added to the mesh. 
+Parameter isForceAdd adds the given node to structure without checking on coincidence with other nodes. 
+Return: index of the node in the structure.
 ") AddNode;
 		Standard_Integer AddNode(const BRepMesh_Vertex & theNode, const Standard_Boolean isForceAdd = Standard_False);
 
@@ -1079,7 +1133,8 @@ None
 
 Description
 -----------
-Returns indices of nodes forming the given element. @param theelement element which nodes should be retrieved. @param[out] thenodes nodes of the given element.
+Returns indices of nodes forming the given element. 
+Parameter theElement element which nodes should be retrieved. @param[out] theNodes nodes of the given element.
 ") ElementNodes;
 		void ElementNodes(const BRepMesh_Triangle & theElement, Standard_Integer ( & theNodes )[3]);
 
@@ -1097,7 +1152,9 @@ BRepMesh_PairOfIndex
 
 Description
 -----------
-Returns indices of elements connected to the link with the given index. @param thelinkindex index of link whose data should be retrieved. return indices of elements connected to the link.
+Returns indices of elements connected to the link with the given index. 
+Parameter theLinkIndex index of link whose data should be retrieved. 
+Return: indices of elements connected to the link.
 ") ElementsConnectedTo;
 		const BRepMesh_PairOfIndex & ElementsConnectedTo(const Standard_Integer theLinkIndex);
 
@@ -1128,7 +1185,9 @@ BRepMesh_Triangle
 
 Description
 -----------
-Get element by the index. @param theindex index of an element. return element with the given index.
+Get element by the index. 
+Parameter theIndex index of an element. 
+Return: element with the given index.
 ") GetElement;
 		const BRepMesh_Triangle & GetElement(const Standard_Integer theIndex);
 
@@ -1146,7 +1205,9 @@ BRepMesh_Edge
 
 Description
 -----------
-Get link by the index. @param theindex index of a link. return link with the given index.
+Get link by the index. 
+Parameter theIndex index of a link. 
+Return: link with the given index.
 ") GetLink;
 		const BRepMesh_Edge & GetLink(const Standard_Integer theIndex);
 
@@ -1164,7 +1225,9 @@ BRepMesh_Vertex
 
 Description
 -----------
-Get node by the index. @param theindex index of a node. return node with the given index.
+Get node by the index. 
+Parameter theIndex index of a node. 
+Return: node with the given index.
 ") GetNode;
 		const BRepMesh_Vertex & GetNode(const Standard_Integer theIndex);
 
@@ -1182,7 +1245,9 @@ int
 
 Description
 -----------
-Finds the index of the given node. @param thenode node to find. return index of the given element of zero if node is not in the mesh.
+Finds the index of the given node. 
+Parameter theNode node to find. 
+Return: index of the given element of zero if node is not in the mesh.
 ") IndexOf;
 		Standard_Integer IndexOf(const BRepMesh_Vertex & theNode);
 
@@ -1200,7 +1265,9 @@ int
 
 Description
 -----------
-Finds the index of the given link. @param thelink link to find. return index of the given element of zero if link is not in the mesh.
+Finds the index of the given link. 
+Parameter theLink link to find. 
+Return: index of the given element of zero if link is not in the mesh.
 ") IndexOf;
 		Standard_Integer IndexOf(const BRepMesh_Edge & theLink);
 
@@ -1218,7 +1285,9 @@ IMeshData::ListOfInteger
 
 Description
 -----------
-Get list of links attached to the node with the given index. @param theindex index of node whose links should be retrieved. return list of links attached to the node.
+Get list of links attached to the node with the given index. 
+Parameter theIndex index of node whose links should be retrieved. 
+Return: list of links attached to the node.
 ") LinksConnectedTo;
 		const IMeshData::ListOfInteger & LinksConnectedTo(const Standard_Integer theIndex);
 
@@ -1288,7 +1357,8 @@ None
 
 Description
 -----------
-Removes element from the mesh. @param theindex index of element to be removed.
+Removes element from the mesh. 
+Parameter theIndex index of element to be removed.
 ") RemoveElement;
 		void RemoveElement(const Standard_Integer theIndex);
 
@@ -1307,7 +1377,9 @@ None
 
 Description
 -----------
-Removes link from the mesh in case if it has no connected elements and its type is free. @param theindex index of link to be removed. @param isforce if true link will be removed even if movability is not free.
+Removes link from the mesh in case if it has no connected elements and its type is Free. 
+Parameter theIndex index of link to be removed. 
+Parameter isForce if True link will be removed even if movability is not Free.
 ") RemoveLink;
 		void RemoveLink(const Standard_Integer theIndex, const Standard_Boolean isForce = Standard_False);
 
@@ -1326,7 +1398,9 @@ None
 
 Description
 -----------
-Removes node from the mesh in case if it has no connected links and its type is free. @param theindex index of node to be removed. @param isforce if true node will be removed even if movability is not free.
+Removes node from the mesh in case if it has no connected links and its type is Free. 
+Parameter theIndex index of node to be removed. 
+Parameter isForce if True node will be removed even if movability is not Free.
 ") RemoveNode;
 		void RemoveNode(const Standard_Integer theIndex, const Standard_Boolean isForce = Standard_False);
 
@@ -1343,7 +1417,8 @@ theStream: Standard_OStream
 
 Description
 -----------
-Dumps information about this structure. @param thestream stream to be used for dump.
+Dumps information about this structure. 
+Parameter theStream stream to be used for dump.
 ") Statistics;
 		void Statistics(std::ostream &OutValue);
 
@@ -1362,7 +1437,10 @@ bool
 
 Description
 -----------
-Substitutes the element with the given index by new one. @param theindex index of element to be substituted. @param thenewlink substituting element. return false in case if new element is already in the structure, true elsewhere.
+Substitutes the element with the given index by new one. 
+Parameter theIndex index of element to be substituted. 
+Parameter theNewLink substituting element. 
+Return: False in case if new element is already in the structure, True elsewhere.
 ") SubstituteElement;
 		Standard_Boolean SubstituteElement(const Standard_Integer theIndex, const BRepMesh_Triangle & theNewElement);
 
@@ -1381,7 +1459,10 @@ bool
 
 Description
 -----------
-Substitutes the link with the given index by new one. @param theindex index of link to be substituted. @param thenewlink substituting link. return false in case if new link is already in the structure, true elsewhere.
+Substitutes the link with the given index by new one. 
+Parameter theIndex index of link to be substituted. 
+Parameter theNewLink substituting link. 
+Return: False in case if new link is already in the structure, True elsewhere.
 ") SubstituteLink;
 		Standard_Boolean SubstituteLink(const Standard_Integer theIndex, const BRepMesh_Edge & theNewLink);
 
@@ -1400,7 +1481,10 @@ bool
 
 Description
 -----------
-Substitutes the node with the given index by new one. @param theindex index of node to be substituted. @param thenewnode substituting node. return false in case if new node is already in the structure, true elsewhere.
+Substitutes the node with the given index by new one. 
+Parameter theIndex index of node to be substituted. 
+Parameter theNewNode substituting node. 
+Return: False in case if new node is already in the structure, True elsewhere.
 ") SubstituteNode;
 		Standard_Boolean SubstituteNode(const Standard_Integer theIndex, const BRepMesh_Vertex & theNewNode);
 
@@ -1499,7 +1583,7 @@ std::pair<float, float>
 
 Description
 -----------
-Returns u range.
+Returns U range.
 ") GetRangeU;
 		const std::pair<Standard_Real, Standard_Real> & GetRangeU();
 
@@ -1512,7 +1596,7 @@ std::pair<float, float>
 
 Description
 -----------
-Returns v range.
+Returns V range.
 ") GetRangeV;
 		const std::pair<Standard_Real, Standard_Real> & GetRangeV();
 
@@ -1551,7 +1635,7 @@ bool
 
 Description
 -----------
-Returns true if computed range is valid.
+Returns True if computed range is valid.
 ") IsValid;
 		virtual Standard_Boolean IsValid();
 
@@ -1569,7 +1653,7 @@ gp_Pnt
 
 Description
 -----------
-Returns point in 3d space corresponded to the given point defined in parameteric space of surface.
+Returns point in 3d space corresponded to the given point defined in parametric space of surface.
 ") Point;
 		gp_Pnt Point(const gp_Pnt2d & thePoint2d);
 
@@ -1588,7 +1672,7 @@ None
 
 Description
 -----------
-Resets this splitter. must be called before first use.
+Resets this splitter. Must be called before first use.
 ") Reset;
 		virtual void Reset(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
 
@@ -1607,7 +1691,10 @@ gp_Pnt2d
 
 Description
 -----------
-Scales the given point from real parametric space to face basis and otherwise. @param thepoint point to be scaled. @param istofacebasis if true converts point to face basis, otherwise performs reverse conversion. return scaled point.
+Scales the given point from real parametric space to face basis and otherwise. 
+Parameter thePoint point to be scaled. 
+Parameter isToFaceBasis if True converts point to face basis, otherwise performs reverse conversion. 
+Return: scaled point.
 ") Scale;
 		gp_Pnt2d Scale(const gp_Pnt2d & thePoint, const Standard_Boolean isToFaceBasis);
 
@@ -1641,7 +1728,11 @@ float
 
 Description
 -----------
-Returns absolute deflection for theshape with respect to the relative deflection and themaxshapesize. @param theshape shape for that the deflection should be computed. @param therelativedeflection relative deflection. @param themaxshapesize maximum size of the whole shape. return absolute deflection for the shape.
+Returns absolute deflection for theShape with respect to the relative deflection and theMaxShapeSize. 
+Parameter theShape shape for that the deflection should be computed. 
+Parameter theRelativeDeflection relative deflection. 
+Parameter theMaxShapeSize maximum size of the whole shape. 
+Return: absolute deflection for the shape.
 ") ComputeAbsoluteDeflection;
 		static Standard_Real ComputeAbsoluteDeflection(const TopoDS_Shape & theShape, const Standard_Real theRelativeDeflection, const Standard_Real theMaxShapeSize);
 
@@ -1720,7 +1811,11 @@ bool
 
 Description
 -----------
-Checks if the deflection of current polygonal representation is consistent with the required deflection. @param thecurrent [in] current deflection. @param therequired [in] required deflection. @param theallowdecrease [in] flag controlling the check. if decrease is allowed, to be consistent the current and required deflections should be approximately the same. if not allowed, the current deflection should be less than required. @param theratio [in] the ratio for comparison of the deflections (value from 0 to 1).
+Checks if the deflection of current polygonal representation is consistent with the required deflection. 
+Input parameter: theCurrent Current deflection. 
+Input parameter: theRequired Required deflection. 
+Input parameter: theAllowDecrease Flag controlling the check. If decrease is allowed, to be consistent the current and required deflections should be approximately the same. If not allowed, the current deflection should be less than required. 
+Input parameter: theRatio The ratio for comparison of the deflections (value from 0 to 1).
 ") IsConsistent;
 		static Standard_Boolean IsConsistent(const Standard_Real theCurrent, const Standard_Real theRequired, const Standard_Boolean theAllowDecrease, const Standard_Real theRatio = 0.1);
 
@@ -1821,7 +1916,7 @@ None
 
 Description
 -----------
-Creates the triangulation with an empty mesh data structure.
+Creates the triangulation with an empty Mesh data structure.
 ") BRepMesh_Delaun;
 		 BRepMesh_Delaun(IMeshData::Array1OfVertexOfDelaun & theVertices);
 
@@ -1840,7 +1935,7 @@ None
 
 Description
 -----------
-Creates the triangulation with an existent mesh data structure.
+Creates the triangulation with an existent Mesh data structure.
 ") BRepMesh_Delaun;
 		 BRepMesh_Delaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theOldMesh, IMeshData::Array1OfVertexOfDelaun & theVertices);
 
@@ -1859,17 +1954,17 @@ None
 
 Description
 -----------
-Creates the triangulation with an existant mesh data structure.
+Creates the triangulation with an existant Mesh data structure.
 ") BRepMesh_Delaun;
 		 BRepMesh_Delaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices);
 
 		/****** BRepMesh_Delaun::BRepMesh_Delaun ******/
-		/****** md5 signature: 369ae05e7ad78835ff2b9029f41d1d44 ******/
+		/****** md5 signature: 3764d74a81723d6551eb2212d242e04c ******/
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "
 Parameters
 ----------
-theOldMesh: Handle ( BRepMesh_DataStructureOfDelaun )
+theOldMesh: BRepMesh_DataStructureOfDelaun
 theVertexIndices: IMeshData::VectorOfInteger
 theCellsCountU: int
 theCellsCountV: int
@@ -1880,9 +1975,9 @@ None
 
 Description
 -----------
-Creates the triangulation with an existant mesh data structure.
+Creates the triangulation with an existant Mesh data structure.
 ") BRepMesh_Delaun;
-		 BRepMesh_Delaun(const Handle ( BRepMesh_DataStructureOfDelaun ) & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices, const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
+		 BRepMesh_Delaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theOldMesh, IMeshData::VectorOfInteger & theVertexIndices, const Standard_Integer theCellsCountU, const Standard_Integer theCellsCountV);
 
 		/****** BRepMesh_Delaun::AddVertices ******/
 		/****** md5 signature: 113e996513917ce7251d5a839da38bcc ******/
@@ -1912,7 +2007,7 @@ BRepMesh_CircleTool
 
 Description
 -----------
-Returns tool used to build mesh consistent to delaunay criteria.
+Returns tool used to build mesh consistent to Delaunay criteria.
 ") Circles;
 		const BRepMesh_CircleTool & Circles();
 
@@ -1932,7 +2027,9 @@ theEdgeOn: int
 
 Description
 -----------
-Test is the given triangle contains the given vertex. @param thesqtolerance square tolerance to check closeness to some edge @param theedgeon if it is != 0 the vertex lies onto the edge index returned through this parameter.
+Test is the given triangle contains the given vertex. 
+Parameter theSqTolerance square tolerance to check closeness to some edge 
+Parameter theEdgeOn If it is != 0 the vertex lies onto the edge index returned through this parameter.
 ") Contains;
 		Standard_Boolean Contains(const Standard_Integer theTriangleId, const BRepMesh_Vertex & theVertex, const Standard_Real theSqTolerance, Standard_Integer &OutValue);
 
@@ -2036,7 +2133,8 @@ None
 
 Description
 -----------
-Destruction of auxiliary triangles containing the given vertices. removes auxiliary vertices also. @param theauxvertices auxiliary vertices to be cleaned up.
+Destruction of auxiliary triangles containing the given vertices. Removes auxiliary vertices also. 
+Parameter theAuxVertices auxiliary vertices to be cleaned up.
 ") RemoveAuxElements;
 		void RemoveAuxElements();
 
@@ -2067,7 +2165,7 @@ opencascade::handle<BRepMesh_DataStructureOfDelaun>
 
 Description
 -----------
-Gives the mesh data structure.
+Gives the Mesh data structure.
 ") Result;
 		const opencascade::handle<BRepMesh_DataStructureOfDelaun> & Result();
 
@@ -2103,7 +2201,8 @@ bool
 
 Description
 -----------
-Modify mesh to use the edge. return true if done.
+Modify mesh to use the edge. 
+Return: True if done.
 ") UseEdge;
 		Standard_Boolean UseEdge(const Standard_Integer theEdge);
 
@@ -2168,7 +2267,10 @@ opencascade::handle<BRepMesh_DiscretRoot>
 
 Description
 -----------
-Returns triangulation algorithm instance. @param theshape shape to be meshed. @param thelindeflection linear deflection to be used for meshing. @param theangdeflection angular deflection to be used for meshing.
+Returns triangulation algorithm instance. 
+Parameter theShape shape to be meshed. 
+Parameter theLinDeflection linear deflection to be used for meshing. 
+Parameter theAngDeflection angular deflection to be used for meshing.
 ") Discret;
 		opencascade::handle<BRepMesh_DiscretRoot> Discret(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection);
 
@@ -2239,7 +2341,7 @@ bool
 
 Description
 -----------
-Setup meshing algorithm that should be created by this factory. returns true if requested tool is available. on fail factory will continue to use previous algo. call ::errorstatus() method to retrieve fault reason.
+Setup meshing algorithm that should be created by this Factory. Returns True if requested tool is available. On fail Factory will continue to use previous algo. Call ::ErrorStatus() method to retrieve fault reason.
 ") SetDefault;
 		Standard_Boolean SetDefault(TCollection_AsciiString theName, TCollection_AsciiString theFuncName = "DISCRETALGO");
 
@@ -2257,7 +2359,7 @@ bool
 
 Description
 -----------
-Setup meshing algorithm by name. returns true if requested tool is available. on fail factory will continue to use previous algo.
+Setup meshing algorithm by name. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
 ") SetDefaultName;
 		Standard_Boolean SetDefaultName(TCollection_AsciiString theName);
 
@@ -2275,7 +2377,7 @@ bool
 
 Description
 -----------
-Advanced function. changes function name to retrieve from plugin. returns true if requested tool is available. on fail factory will continue to use previous algo.
+Advanced function. Changes function name to retrieve from plugin. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
 ") SetFunctionName;
 		Standard_Boolean SetFunctionName(TCollection_AsciiString theFuncName);
 
@@ -2461,7 +2563,7 @@ None
 
 Description
 -----------
-Updates 2d discrete edge model using tessellation of 3d curve.
+Updates 2d discrete edge model using tessellation of 3D curve.
 ") Tessellate2d;
 		static void Tessellate2d(const IMeshData::IEdgeHandle & theDEdge, const Standard_Boolean theUpdateEnds);
 
@@ -2536,7 +2638,8 @@ bool
 
 Description
 -----------
-Performs check wires of the face for intersections. return true if there is no intersection, false elsewhere.
+Performs check wires of the face for intersections. 
+Return: True if there is no intersection, False elsewhere.
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -2583,6 +2686,9 @@ Constructor.
 	}
 };
 
+/*****************************
+* class BRepMesh_FastDiscret *
+*****************************/
 /**************************
 * class BRepMesh_GeomTool *
 **************************/
@@ -2639,7 +2745,13 @@ None
 
 Description
 -----------
-Constructor. initiates discretization of the given geometric curve. @param thecurve curve to be discretized. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum number of points to be produced.
+Constructor. Initiates discretization of the given geometric curve. 
+Parameter theCurve curve to be discretized. 
+Parameter theFirstParam first parameter of the curve. 
+Parameter theLastParam last parameter of the curve. 
+Parameter theLinDeflection linear deflection. 
+Parameter theAngDeflection angular deflection. 
+Parameter theMinPointsNb minimum number of points to be produced.
 ") BRepMesh_GeomTool;
 		 BRepMesh_GeomTool(const BRepAdaptor_Curve & theCurve, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
 
@@ -2665,7 +2777,15 @@ None
 
 Description
 -----------
-Constructor. initiates discretization of geometric curve corresponding to iso curve of the given surface. @param thesurface surface the iso curve to be taken from. @param theisotype type of iso curve to be used, u or v. @param theparamiso parameter on the surface specifying the iso curve. @param thefirstparam first parameter of the curve. @param thelastparam last parameter of the curve. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param theminpointsnb minimum number of points to be produced.
+Constructor. Initiates discretization of geometric curve corresponding to iso curve of the given surface. 
+Parameter theSurface surface the iso curve to be taken from. 
+Parameter theIsoType type of iso curve to be used, U or V. 
+Parameter theParamIso parameter on the surface specifying the iso curve. 
+Parameter theFirstParam first parameter of the curve. 
+Parameter theLastParam last parameter of the curve. 
+Parameter theLinDeflection linear deflection. 
+Parameter theAngDeflection angular deflection. 
+Parameter theMinPointsNb minimum number of points to be produced.
 ") BRepMesh_GeomTool;
 		 BRepMesh_GeomTool(const opencascade::handle<BRepAdaptor_Surface> & theSurface, const GeomAbs_IsoType theIsoType, const Standard_Real theParamIso, const Standard_Real theFirstParam, const Standard_Real theLastParam, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, const Standard_Integer theMinPointsNb = 2, const Standard_Real theMinSize = Precision::Confusion());
 
@@ -2685,17 +2805,21 @@ int
 
 Description
 -----------
-Adds point to already calculated points (or replaces existing). @param thepoint point to be added. @param theparam parameter on the curve corresponding to the given point. @param theisreplace if true replaces existing point lying within parameteric tolerance of the given point. return index of new added point or found with parametric tolerance.
+Adds point to already calculated points (or replaces existing). 
+Parameter thePoint point to be added. 
+Parameter theParam parameter on the curve corresponding to the given point. 
+Parameter theIsReplace if True replaces existing point lying within parameteric tolerance of the given point. 
+Return: index of new added point or found with parametric tolerance.
 ") AddPoint;
 		Standard_Integer AddPoint(const gp_Pnt & thePoint, const Standard_Real theParam, const Standard_Boolean theIsReplace = Standard_True);
 
 		/****** BRepMesh_GeomTool::CellsCount ******/
-		/****** md5 signature: fe52990183566da293fd7fa3dff8d5e3 ******/
+		/****** md5 signature: 0f952572db8c7ec9ddfc30e61074135e ******/
 		%feature("compactdefaultargs") CellsCount;
 		%feature("autodoc", "
 Parameters
 ----------
-theSurface: Handle ( Adaptor3d_Surface )
+theSurface: Adaptor3d_Surface
 theVerticesNb: int
 theDeflection: float
 theRangeSplitter: BRepMesh_DefaultRangeSplitter *
@@ -2708,7 +2832,7 @@ Description
 -----------
 No available documentation.
 ") CellsCount;
-		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const Handle ( Adaptor3d_Surface ) & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
+		static std::pair<Standard_Integer, Standard_Integer > CellsCount(const opencascade::handle<Adaptor3d_Surface> & theSurface, const Standard_Integer theVerticesNb, const Standard_Real theDeflection, const BRepMesh_DefaultRangeSplitter * theRangeSplitter);
 
 		/****** BRepMesh_GeomTool::NbPoints ******/
 		/****** md5 signature: e92014a2f157c195ed77b7745c7eae3f ******/
@@ -2760,7 +2884,10 @@ theParam: float
 
 Description
 -----------
-Gets parameters of discretization point with the given index. @param theindex index of discretization point. @param theisoparam parameter on surface to be used as second coordinate of resulting 2d point. @param theparam[out] parameter of the point on the iso curve. @param thepoint[out] discretization point. @param theuv[out] discretization point in parametric space of the surface. return true on success, false elsewhere.
+Gets parameters of discretization point with the given index. 
+Parameter theIndex index of discretization point. 
+Parameter theIsoParam parameter on surface to be used as second coordinate of resulting 2d point. @param[out] theParam parameter of the point on the iso curve. @param[out] thePoint discretization point. @param[out] theUV discretization point in parametric space of the surface. 
+Return: True on success, False elsewhere.
 ") Value;
 		Standard_Boolean Value(const Standard_Integer theIndex, const Standard_Real theIsoParam, Standard_Real &OutValue, gp_Pnt & thePoint, gp_Pnt2d & theUV);
 
@@ -2781,7 +2908,10 @@ theParam: float
 
 Description
 -----------
-Gets parameters of discretization point with the given index. @param theindex index of discretization point. @param thesurface surface the curve is lying onto. @param theparam[out] parameter of the point on the curve. @param thepoint[out] discretization point. @param theuv[out] discretization point in parametric space of the surface. return true on success, false elsewhere.
+Gets parameters of discretization point with the given index. 
+Parameter theIndex index of discretization point. 
+Parameter theSurface surface the curve is lying onto. @param[out] theParam parameter of the point on the curve. @param[out] thePoint discretization point. @param[out] theUV discretization point in parametric space of the surface. 
+Return: True on success, False elsewhere.
 ") Value;
 		Standard_Boolean Value(const Standard_Integer theIndex, const opencascade::handle<BRepAdaptor_Surface> & theSurface, Standard_Real &OutValue, gp_Pnt & thePoint, gp_Pnt2d & theUV);
 
@@ -2872,7 +3002,7 @@ None
 
 Description
 -----------
-Constructor. initializes tool by the given data structure.
+Constructor. Initializes tool by the given data structure.
 ") BRepMesh_MeshTool;
 		 BRepMesh_MeshTool(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theStructure);
 
@@ -2892,7 +3022,7 @@ None
 
 Description
 -----------
-Adds new triangle with specified nodes to mesh. legalizes triangle in case if it violates circle criteria.
+Adds new triangle with specified nodes to mesh. Legalizes triangle in case if it violates circle criteria.
 ") AddAndLegalizeTriangle;
 		void AddAndLegalizeTriangle(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer thePoint3);
 
@@ -2912,7 +3042,7 @@ theLinkOri: bool
 
 Description
 -----------
-Adds new link to mesh. updates link index and link orientation parameters.
+Adds new link to mesh. Updates link index and link orientation parameters.
 ") AddLink;
 		void AddLink(const Standard_Integer theFirstNode, const Standard_Integer theLastNode, Standard_Integer &OutValue, Standard_Boolean &OutValue);
 
@@ -2995,7 +3125,7 @@ None
 
 Description
 -----------
-Erases all elements connected to the specified artificial node. in addition, erases the artificial node itself.
+Erases all elements connected to the specified artificial node. In addition, erases the artificial node itself.
 ") EraseItemsConnectedTo;
 		void EraseItemsConnectedTo(const Standard_Integer theNodeIndex);
 
@@ -3014,7 +3144,7 @@ None
 
 Description
 -----------
-Erases triangle with the given index and adds the free edges into the map. when an edge is suppressed more than one time it is destroyed.
+Erases triangle with the given index and adds the free edges into the map. When an edge is suppressed more than one time it is destroyed.
 ") EraseTriangle;
 		void EraseTriangle(const Standard_Integer theTriangleIndex, IMeshData::MapOfIntegerInteger & theLoopEdges);
 
@@ -3225,7 +3355,7 @@ int
 
 Description
 -----------
-Returns index of first node of the link.
+Returns index of first node of the Link.
 ") FirstNode;
 		Standard_Integer FirstNode();
 
@@ -3243,7 +3373,9 @@ bool
 
 Description
 -----------
-Checks this and other edge for equality. @param theother edge to be checked against this one. return true if edges have the same orientation, false if not.
+Checks this and other edge for equality. 
+Parameter theOther edge to be checked against this one. 
+Return: True if edges have the same orientation, False if not.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BRepMesh_OrientedEdge & theOther);
 
@@ -3256,7 +3388,7 @@ int
 
 Description
 -----------
-Returns index of last node of the link.
+Returns index of last node of the Link.
 ") LastNode;
 		Standard_Integer LastNode();
 
@@ -3372,7 +3504,8 @@ int
 
 Description
 -----------
-Returns index corresponding to the given position in the pair. @param thepairpos position of index in the pair (1 or 2).
+Returns index corresponding to the given position in the pair. 
+Parameter thePairPos position of index in the pair (1 or 2).
 ") Index;
 		Standard_Integer Index(const Standard_Integer thePairPos);
 
@@ -3434,7 +3567,8 @@ None
 
 Description
 -----------
-Remove index from the given position. @param thepairpos position of index in the pair (1 or 2).
+Remove index from the given position. 
+Parameter thePairPos position of index in the pair (1 or 2).
 ") RemoveIndex;
 		void RemoveIndex(const Standard_Integer thePairPos);
 
@@ -3453,7 +3587,9 @@ None
 
 Description
 -----------
-Sets index corresponding to the given position in the pair. @param thepairpos position of index in the pair (1 or 2). @param theindex index to be stored.
+Sets index corresponding to the given position in the pair. 
+Parameter thePairPos position of index in the pair (1 or 2). 
+Parameter theIndex index to be stored.
 ") SetIndex;
 		void SetIndex(const Standard_Integer thePairPos, const Standard_Integer theIndex);
 
@@ -3498,7 +3634,7 @@ None
 
 Description
 -----------
-Constructor. initializes selector by the mesh.
+Constructor. Initializes selector by the mesh.
 ") BRepMesh_SelectorOfDataStructureOfDelaun;
 		 BRepMesh_SelectorOfDataStructureOfDelaun(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
@@ -3760,7 +3896,9 @@ None
 
 Description
 -----------
-Stores the given triangulation into the given face. @param theface face to be updated by triangulation. @param thetriangulation triangulation to be stored into the face.
+Stores the given triangulation into the given face. 
+Parameter theFace face to be updated by triangulation. 
+Parameter theTriangulation triangulation to be stored into the face.
 ") AddInFace;
 		static void AddInFace(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -3778,7 +3916,9 @@ theMaxDimension: float
 
 Description
 -----------
-Gets the maximum dimension of the given bounding box. if the given bounding box is void leaves the resulting value unchanged. @param thebox bounding box to be processed. @param themaxdimension maximum dimension of the given box.
+Gets the maximum dimension of the given bounding box. If the given bounding box is void leaves the resulting value unchanged. 
+Parameter theBox bounding box to be processed. 
+Parameter theMaxDimension maximum dimension of the given box.
 ") BoxMaxDimension;
 		static void BoxMaxDimension(const Bnd_Box & theBox, Standard_Real &OutValue);
 
@@ -3797,7 +3937,7 @@ None
 
 Description
 -----------
-Checks same parameter, same range and degenerativity attributes using geometrical data of the given edge and updates edge model by computed parameters in case of worst case - it can drop flags same parameter and same range to false but never to true if it is already set to false. in contrary, it can also drop degenerated flag to true, but never to false if it is already set to true.
+Checks same parameter, same range and degenerativity attributes using geometrical data of the given edge and updates edge model by computed parameters in case of worst case - it can drop flags same parameter and same range to False but never to True if it is already set to False. In contrary, it can also drop degenerated flag to True, but never to False if it is already set to True.
 ") CheckAndUpdateFlags;
 		static void CheckAndUpdateFlags(const IMeshData::IEdgeHandle & theEdge, const IMeshData::IPCurveHandle & thePCurve);
 
@@ -3815,18 +3955,18 @@ float
 
 Description
 -----------
-Returns maximum tolerance of the given face. considers tolerances of edges and vertices contained in the given face.
+Returns maximum tolerance of the given face. Considers tolerances of edges and vertices contained in the given face.
 ") MaxFaceTolerance;
 		static Standard_Real MaxFaceTolerance(const TopoDS_Face & theFace);
 
 		/****** BRepMesh_ShapeTool::NullifyEdge ******/
-		/****** md5 signature: b05e15fa2e892634fc8e8532f2f87e58 ******/
+		/****** md5 signature: 63cb3ab20f7b3e61366af5e02e4b252b ******/
 		%feature("compactdefaultargs") NullifyEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-theTriangulation: Handle ( Poly_Triangulation )
+theTriangulation: Poly_Triangulation
 theLocation: TopLoc_Location
 
 Return
@@ -3835,9 +3975,12 @@ None
 
 Description
 -----------
-Nullifies polygon on triangulation stored in the edge. @param theedge edge to be updated by null polygon. @param thetriangulation triangulation the given edge is associated to. @param thelocation face location.
+Nullifies polygon on triangulation stored in the edge. 
+Parameter theEdge edge to be updated by null polygon. 
+Parameter theTriangulation triangulation the given edge is associated to. 
+Parameter theLocation face location.
 ") NullifyEdge;
-		static void NullifyEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void NullifyEdge(const TopoDS_Edge & theEdge, const opencascade::handle<Poly_Triangulation> & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****** BRepMesh_ShapeTool::NullifyEdge ******/
 		/****** md5 signature: a40c1f6240ceb504d322009c0248d48a ******/
@@ -3854,7 +3997,9 @@ None
 
 Description
 -----------
-Nullifies 3d polygon stored in the edge. @param theedge edge to be updated by null polygon. @param thelocation face location.
+Nullifies 3d polygon stored in the edge. 
+Parameter theEdge edge to be updated by null polygon. 
+Parameter theLocation face location.
 ") NullifyEdge;
 		static void NullifyEdge(const TopoDS_Edge & theEdge, const TopLoc_Location & theLocation);
 
@@ -3872,19 +4017,20 @@ None
 
 Description
 -----------
-Nullifies triangulation stored in the face. @param theface face to be updated by null triangulation.
+Nullifies triangulation stored in the face. 
+Parameter theFace face to be updated by null triangulation.
 ") NullifyFace;
 		static void NullifyFace(const TopoDS_Face & theFace);
 
 		/****** BRepMesh_ShapeTool::Range ******/
-		/****** md5 signature: ba29b5964a00fcbb857a8ba4cd82cf5a ******/
+		/****** md5 signature: dd90b65e739d01ea0abbce085bd9b6f4 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
 theFace: TopoDS_Face
-thePCurve: Handle ( Geom2d_Curve )
+thePCurve: Geom2d_Curve
 isConsiderOrientation: bool (optional, default to Standard_False)
 
 Return
@@ -3896,16 +4042,16 @@ Description
 -----------
 Gets the parametric range of the given edge on the given face.
 ") Range;
-		static Standard_Boolean Range(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, Handle ( Geom2d_Curve ) & thePCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
+		static Standard_Boolean Range(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Geom2d_Curve> & thePCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
 
 		/****** BRepMesh_ShapeTool::Range ******/
-		/****** md5 signature: 4f2c0c58738d79d22379878c484ed3af ******/
+		/****** md5 signature: 30cc59f54fe7b47f00a3f6d04d4bd562 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-theCurve: Handle ( Geom_Curve )
+theCurve: Geom_Curve
 isConsiderOrientation: bool (optional, default to Standard_False)
 
 Return
@@ -3917,7 +4063,7 @@ Description
 -----------
 Gets the 3d range of the given edge.
 ") Range;
-		static Standard_Boolean Range(const TopoDS_Edge & theEdge, Handle ( Geom_Curve ) & theCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
+		static Standard_Boolean Range(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean isConsiderOrientation = Standard_False);
 
 		/****** BRepMesh_ShapeTool::UVPoints ******/
 		/****** md5 signature: 1252140d03973dd7dff854c69c805cd8 ******/
@@ -3937,19 +4083,19 @@ bool
 
 Description
 -----------
-Gets the strict uv locations of the extremities of the edge using pcurve.
+Gets the strict UV locations of the extremities of the edge using pcurve.
 ") UVPoints;
 		static Standard_Boolean UVPoints(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, gp_Pnt2d & theFirstPoint2d, gp_Pnt2d & theLastPoint2d, const Standard_Boolean isConsiderOrientation = Standard_False);
 
 		/****** BRepMesh_ShapeTool::UpdateEdge ******/
-		/****** md5 signature: d215b477d4979261f29a8084a2b9d5cd ******/
+		/****** md5 signature: 1dec07dab2f9af22cc20cfc99d1d0b25 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-thePolygon: Handle ( Poly_PolygonOnTriangulation )
-theTriangulation: Handle ( Poly_Triangulation )
+thePolygon: Poly_PolygonOnTriangulation
+theTriangulation: Poly_Triangulation
 theLocation: TopLoc_Location
 
 Return
@@ -3958,9 +4104,13 @@ None
 
 Description
 -----------
-Updates the given edge by the given tessellated representation. @param theedge edge to be updated. @param thepolygon tessellated representation of the edge to be stored. @param thetriangulation triangulation the given edge is associated to. @param thelocation face location.
+Updates the given edge by the given tessellated representation. 
+Parameter theEdge edge to be updated. 
+Parameter thePolygon tessellated representation of the edge to be stored. 
+Parameter theTriangulation triangulation the given edge is associated to. 
+Parameter theLocation face location.
 ") UpdateEdge;
-		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void UpdateEdge(const TopoDS_Edge & theEdge, const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon, const opencascade::handle<Poly_Triangulation> & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****** BRepMesh_ShapeTool::UpdateEdge ******/
 		/****** md5 signature: 7d40445fe5ea272ec9d3f2c1b9ae4074 ******/
@@ -3977,20 +4127,22 @@ None
 
 Description
 -----------
-Updates the given edge by the given tessellated representation. @param theedge edge to be updated. @param thepolygon tessellated representation of the edge to be stored.
+Updates the given edge by the given tessellated representation. 
+Parameter theEdge edge to be updated. 
+Parameter thePolygon tessellated representation of the edge to be stored.
 ") UpdateEdge;
 		static void UpdateEdge(const TopoDS_Edge & theEdge, const opencascade::handle<Poly_Polygon3D> & thePolygon);
 
 		/****** BRepMesh_ShapeTool::UpdateEdge ******/
-		/****** md5 signature: 68252ad4636fc7ab6104d38f6a659701 ******/
+		/****** md5 signature: 0272d97a0e3b199c5e8e189f4ac6c8b4 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-thePolygon1: Handle ( Poly_PolygonOnTriangulation )
-thePolygon2: Handle ( Poly_PolygonOnTriangulation )
-theTriangulation: Handle ( Poly_Triangulation )
+thePolygon1: Poly_PolygonOnTriangulation
+thePolygon2: Poly_PolygonOnTriangulation
+theTriangulation: Poly_Triangulation
 theLocation: TopLoc_Location
 
 Return
@@ -3999,9 +4151,14 @@ None
 
 Description
 -----------
-Updates the given seam edge by the given tessellated representations. @param theedge edge to be updated. @param thepolygon1 tessellated representation corresponding to forward direction of the seam edge. @param thepolygon2 tessellated representation corresponding to reversed direction of the seam edge. @param thetriangulation triangulation the given edge is associated to. @param thelocation face location.
+Updates the given seam edge by the given tessellated representations. 
+Parameter theEdge edge to be updated. 
+Parameter thePolygon1 tessellated representation corresponding to forward direction of the seam edge. 
+Parameter thePolygon2 tessellated representation corresponding to reversed direction of the seam edge. 
+Parameter theTriangulation triangulation the given edge is associated to. 
+Parameter theLocation face location.
 ") UpdateEdge;
-		static void UpdateEdge(const TopoDS_Edge & theEdge, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon1, const Handle ( Poly_PolygonOnTriangulation ) & thePolygon2, const Handle ( Poly_Triangulation ) & theTriangulation, const TopLoc_Location & theLocation);
+		static void UpdateEdge(const TopoDS_Edge & theEdge, const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon1, const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon2, const opencascade::handle<Poly_Triangulation> & theTriangulation, const TopLoc_Location & theLocation);
 
 		/****** BRepMesh_ShapeTool::UseLocation ******/
 		/****** md5 signature: 1d483b4a9b5ac80702e3ffccb5ce462e ******/
@@ -4018,7 +4175,9 @@ gp_Pnt
 
 Description
 -----------
-Applies location to the given point and return result. @param thepnt point to be transformed. @param theloc location to be applied.
+Applies location to the given point and return result. 
+Parameter thePnt point to be transformed. 
+Parameter theLoc location to be applied.
 ") UseLocation;
 		static gp_Pnt UseLocation(const gp_Pnt & thePnt, const TopLoc_Location & theLoc);
 
@@ -4039,12 +4198,12 @@ Applies location to the given point and return result. @param thepnt point to be
 class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 	public:
 		/****** BRepMesh_ShapeVisitor::BRepMesh_ShapeVisitor ******/
-		/****** md5 signature: 50f3cb8177633f4a40e8a4e91969cbfb ******/
+		/****** md5 signature: d1268466f38acd808d96645b2c71543a ******/
 		%feature("compactdefaultargs") BRepMesh_ShapeVisitor;
 		%feature("autodoc", "
 Parameters
 ----------
-theModel: Handle ( IMeshData_Model )
+theModel: IMeshData_Model
 
 Return
 -------
@@ -4054,7 +4213,7 @@ Description
 -----------
 Constructor.
 ") BRepMesh_ShapeVisitor;
-		 BRepMesh_ShapeVisitor(const Handle ( IMeshData_Model ) & theModel);
+		 BRepMesh_ShapeVisitor(const opencascade::handle<IMeshData_Model> & theModel);
 
 		/****** BRepMesh_ShapeVisitor::Visit ******/
 		/****** md5 signature: ebcbeb83d8be062abed52fb56f5b893f ******/
@@ -4070,7 +4229,7 @@ None
 
 Description
 -----------
-Handles topods_face object.
+Handles TopoDS_Face object.
 ") Visit;
 		virtual void Visit(const TopoDS_Face & theFace);
 
@@ -4088,7 +4247,7 @@ None
 
 Description
 -----------
-Handles topods_edge object.
+Handles TopoDS_Edge object.
 ") Visit;
 		virtual void Visit(const TopoDS_Edge & theEdge);
 
@@ -4106,9 +4265,6 @@ Handles topods_edge object.
 **************************/
 class BRepMesh_Triangle {
 	public:
-		int myEdges[3];
-		bool myOrientations[3];
-		BRepMesh_DegreeOfFreedom myMovability;
 		/****** BRepMesh_Triangle::BRepMesh_Triangle ******/
 		/****** md5 signature: a7b2afb496f1368f3f769aedd8d11850 ******/
 		%feature("compactdefaultargs") BRepMesh_Triangle;
@@ -4138,7 +4294,10 @@ None
 
 Description
 -----------
-Constructor. @param theedges array of edges of triangle. @param theorientations array of edge's orientations. @param themovability movability of triangle.
+Constructor. 
+Parameter theEdges array of edges of triangle. 
+Parameter theOrientations array of edge's orientations. 
+Parameter theMovability movability of triangle.
 ") BRepMesh_Triangle;
 		 BRepMesh_Triangle(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -4157,7 +4316,7 @@ None
 
 Description
 -----------
-Gets edges with orientations composing the triangle. @param[out] theedges array edges are stored to. @param[out] theorientations array orientations are stored to.
+Gets edges with orientations composing the triangle. @param[out] theEdges array edges are stored to. @param[out] theOrientations array orientations are stored to.
 ") Edges;
 		void Edges(Standard_Integer ( & theEdges )[3], Standard_Boolean ( & theOrientations )[3]);
 
@@ -4177,7 +4336,10 @@ None
 
 Description
 -----------
-Initializes the triangle by the given parameters. @param theedges array of edges of triangle. @param theorientations array of edge's orientations. @param themovability movability of triangle.
+Initializes the triangle by the given parameters. 
+Parameter theEdges array of edges of triangle. 
+Parameter theOrientations array of edge's orientations. 
+Parameter theMovability movability of triangle.
 ") Initialize;
 		void Initialize(const Standard_Integer ( & theEdges )[3], const Standard_Boolean ( & theOrientations )[3], const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -4195,7 +4357,9 @@ bool
 
 Description
 -----------
-Checks for equality with another triangle. @param theother triangle to be checked against this one. return true if equal, false if not.
+Checks for equality with another triangle. 
+Parameter theOther triangle to be checked against this one. 
+Return: True if equal, False if not.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BRepMesh_Triangle & theOther);
 
@@ -4274,7 +4438,7 @@ None
 
 Description
 -----------
-Constructor. initialized tool by the given parameters.
+Constructor. Initialized tool by the given parameters.
 ") BRepMesh_Triangulator;
 		 BRepMesh_Triangulator(const NCollection_Vector<gp_XYZ> & theXYZs, const NCollection_List<TColStd_SequenceOfInteger> & theWires, const gp_Dir & theNorm);
 
@@ -4310,7 +4474,7 @@ None
 
 Description
 -----------
-Set messenger for output information without this message::defaultmessenger() will be used.
+Set messenger for output information without this Message::DefaultMessenger() will be used.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & theMess);
 
@@ -4329,7 +4493,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Performs conversion of the given list of triangles to poly_triangulation.
+Performs conversion of the given list of triangles to Poly_Triangulation.
 ") ToPolyTriangulation;
 		static opencascade::handle<Poly_Triangulation> ToPolyTriangulation(const TColgp_Array1OfPnt & theNodes, const NCollection_List<Poly_Triangle> & thePolyTriangles);
 
@@ -4376,7 +4540,10 @@ None
 
 Description
 -----------
-Creates vertex associated with point in 3d space. @param theuv position of vertex in parametric space. @param thelocation3d index of 3d point to be associated with vertex. @param themovability movability of the vertex.
+Creates vertex associated with point in 3d space. 
+Parameter theUV position of vertex in parametric space. 
+Parameter theLocation3d index of 3d point to be associated with vertex. 
+Parameter theMovability movability of the vertex.
 ") BRepMesh_Vertex;
 		 BRepMesh_Vertex(const gp_XY & theUV, const Standard_Integer theLocation3d, const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -4396,7 +4563,10 @@ None
 
 Description
 -----------
-Creates vertex without association with point in 3d space. @param theu u position of vertex in parametric space. @param thev v position of vertex in parametric space. @param themovability movability of the vertex.
+Creates vertex without association with point in 3d space. 
+Parameter theU U position of vertex in parametric space. 
+Parameter theV V position of vertex in parametric space. 
+Parameter theMovability movability of the vertex.
 ") BRepMesh_Vertex;
 		 BRepMesh_Vertex(const Standard_Real theU, const Standard_Real theV, const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -4442,7 +4612,10 @@ None
 
 Description
 -----------
-Initializes vertex associated with point in 3d space. @param theuv position of vertex in parametric space. @param thelocation3d index of 3d point to be associated with vertex. @param themovability movability of the vertex.
+Initializes vertex associated with point in 3d space. 
+Parameter theUV position of vertex in parametric space. 
+Parameter theLocation3d index of 3d point to be associated with vertex. 
+Parameter theMovability movability of the vertex.
 ") Initialize;
 		void Initialize(const gp_XY & theUV, const Standard_Integer theLocation3d, const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -4460,7 +4633,9 @@ bool
 
 Description
 -----------
-Checks for equality with another vertex. @param theother vertex to be checked against this one. return true if equal, false if not.
+Checks for equality with another vertex. 
+Parameter theOther vertex to be checked against this one. 
+Return: True if equal, False if not.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BRepMesh_Vertex & theOther);
 
@@ -4551,7 +4726,8 @@ None
 
 Description
 -----------
-Constructor. @param theallocator memory allocator to be used by internal collections.
+Constructor. 
+Parameter theAllocator memory allocator to be used by internal collections.
 ") BRepMesh_VertexInspector;
 		 BRepMesh_VertexInspector(const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -4569,7 +4745,8 @@ int
 
 Description
 -----------
-Registers the given vertex. @param thevertex vertex to be registered.
+Registers the given vertex. 
+Parameter theVertex vertex to be registered.
 ") Add;
 		Standard_Integer Add(const BRepMesh_Vertex & theVertex);
 
@@ -4600,7 +4777,8 @@ None
 
 Description
 -----------
-Deletes vertex with the given index. @param theindex index of vertex to be removed.
+Deletes vertex with the given index. 
+Parameter theIndex index of vertex to be removed.
 ") Delete;
 		void Delete(const Standard_Integer theIndex);
 
@@ -4626,7 +4804,7 @@ IMeshData::ListOfInteger
 
 Description
 -----------
-Returns list with indexes of vertices that have movability attribute equal to brepmesh_deleted and can be replaced with another node.
+Returns list with indexes of vertices that have movability attribute equal to BRepMesh_Deleted and can be replaced with another node.
 ") GetListOfDelPoints;
 		const IMeshData::ListOfInteger & GetListOfDelPoints();
 
@@ -4662,7 +4840,9 @@ NCollection_CellFilter_Action
 
 Description
 -----------
-Performs inspection of a point with the given index. @param thetargetindex index of a circle to be checked. return status of the check.
+Performs inspection of a point with the given index. 
+Parameter theTargetIndex index of a circle to be checked. 
+Return: status of the check.
 ") Inspect;
 		NCollection_CellFilter_Action Inspect(const Standard_Integer theTargetIndex);
 
@@ -4681,7 +4861,7 @@ bool
 
 Description
 -----------
-Checks indices for equlity.
+Checks indices for equality.
 ") IsEqual;
 		static Standard_Boolean IsEqual(const Standard_Integer theIndex, const Standard_Integer theTargetIndex);
 
@@ -4749,7 +4929,9 @@ None
 
 Description
 -----------
-Sets the tolerance to be used for identification of coincident vertices. @param thetolerancex tolerance for x dimension. @param thetolerancey tolerance for y dimension.
+Sets the tolerance to be used for identification of coincident vertices. 
+Parameter theToleranceX tolerance for X dimension. 
+Parameter theToleranceY tolerance for Y dimension.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theToleranceX, const Standard_Real theToleranceY);
 
@@ -4781,7 +4963,8 @@ None
 
 Description
 -----------
-Constructor. @param theallocator memory allocator to be used by internal collections.
+Constructor. 
+Parameter theAllocator memory allocator to be used by internal collections.
 ") BRepMesh_VertexTool;
 		 BRepMesh_VertexTool(const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -4800,7 +4983,10 @@ int
 
 Description
 -----------
-Adds vertex with empty data to the tool. @param thevertex node to be added to the mesh. @param isforceadd adds the given node to structure without checking on coincidence with other nodes. return index of the node in the structure.
+Adds vertex with empty data to the tool. 
+Parameter theVertex node to be added to the mesh. 
+Parameter isForceAdd adds the given node to structure without checking on coincidence with other nodes. 
+Return: index of the node in the structure.
 ") Add;
 		Standard_Integer Add(const BRepMesh_Vertex & theVertex, const Standard_Boolean isForceAdd);
 
@@ -4880,7 +5066,7 @@ IMeshData::ListOfInteger
 
 Description
 -----------
-Returns the list with indexes of vertices that have movability attribute equal to brepmesh_deleted and can be replaced with another node.
+Returns the list with indexes of vertices that have movability attribute equal to BRepMesh_Deleted and can be replaced with another node.
 ") GetListOfDelNodes;
 		const IMeshData::ListOfInteger & GetListOfDelNodes();
 
@@ -4898,7 +5084,9 @@ theToleranceY: float
 
 Description
 -----------
-Gets the tolerance to be used for identification of coincident vertices. @param thetolerancex tolerance for x dimension. @param thetolerancey tolerance for y dimension.
+Gets the tolerance to be used for identification of coincident vertices. 
+Parameter theToleranceX tolerance for X dimension. 
+Parameter theToleranceY tolerance for Y dimension.
 ") GetTolerance;
 		void GetTolerance(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4911,7 +5099,7 @@ bool
 
 Description
 -----------
-Returns true when the map contains no keys. .
+Returns True when the map contains no keys. .
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -4961,7 +5149,9 @@ None
 
 Description
 -----------
-Sets new size of cell for cellfilter. @param thesizex size for x dimension. @param thesizey size for y dimension.
+Sets new size of cell for cellfilter. 
+Parameter theSizeX size for X dimension. 
+Parameter theSizeY size for Y dimension.
 ") SetCellSize;
 		void SetCellSize(const Standard_Real theSizeX, const Standard_Real theSizeY);
 
@@ -4998,7 +5188,9 @@ None
 
 Description
 -----------
-Sets the tolerance to be used for identification of coincident vertices. @param thetolerancex tolerance for x dimension. @param thetolerancey tolerance for y dimension.
+Sets the tolerance to be used for identification of coincident vertices. 
+Parameter theToleranceX tolerance for X dimension. 
+Parameter theToleranceY tolerance for Y dimension.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theToleranceX, const Standard_Real theToleranceY);
 
@@ -5034,7 +5226,9 @@ None
 
 Description
 -----------
-Substitutes vertex with the given by the given vertex with attributes. @param theindex index of vertex to be substituted. @param thevertex replacement vertex.
+Substitutes vertex with the given by the given vertex with attributes. 
+Parameter theIndex index of vertex to be substituted. 
+Parameter theVertex replacement vertex.
 ") Substitute;
 		void Substitute(const Standard_Integer theIndex, const BRepMesh_Vertex & theVertex);
 
@@ -5128,7 +5322,7 @@ None
 
 Description
 -----------
-Resets this splitter. must be called before first use.
+Resets this splitter. Must be called before first use.
 ") Reset;
 		virtual void Reset(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
 
@@ -5199,7 +5393,9 @@ bool
 
 Description
 -----------
-Checks for equality with another edge. @param theother edge to be checked against this one. return true if equal, false if not.
+Checks for equality with another edge. 
+Parameter theOther edge to be checked against this one. 
+Return: True if equal, False if not.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BRepMesh_Edge & theOther);
 
@@ -5217,7 +5413,8 @@ bool
 
 Description
 -----------
-Checks if the given edge and this one have the same orientation. @param theother edge to be checked against this one. eturn true if edges have the same orientation, false if not.
+Checks if the given edge and this one have the same orientation. 
+Parameter theOther edge to be checked against this one. eturn True if edges have the same orientation, False if not.
 ") IsSameOrientation;
 		Standard_Boolean IsSameOrientation(const BRepMesh_Edge & theOther);
 
@@ -5230,7 +5427,7 @@ BRepMesh_DegreeOfFreedom
 
 Description
 -----------
-Returns movability flag of the link.
+Returns movability flag of the Link.
 ") Movability;
 		BRepMesh_DegreeOfFreedom Movability();
 
@@ -5248,7 +5445,8 @@ None
 
 Description
 -----------
-Sets movability flag of the link. @param themovability flag to be set.
+Sets movability flag of the Link. 
+Parameter theMovability flag to be set.
 ") SetMovability;
 		void SetMovability(const BRepMesh_DegreeOfFreedom theMovability);
 
@@ -5311,7 +5509,12 @@ None
 
 Description
 -----------
-Constructor. automatically calls method perform. @param theshape shape to be meshed. @param thelindeflection linear deflection. @param isrelative if true deflection used for discretization of each edge will be <thelindeflection> * <size of edge>. deflection used for the faces will be the maximum deflection of their edges. @param theangdeflection angular deflection. @param isinparallel if true shape will be meshed in parallel.
+Constructor. Automatically calls method Perform. 
+Parameter theShape shape to be meshed. 
+Parameter theLinDeflection linear deflection. 
+Parameter isRelative if True deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. 
+Parameter theAngDeflection angular deflection. 
+Parameter isInParallel if True shape will be meshed in parallel.
 ") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Boolean isRelative = Standard_False, const Standard_Real theAngDeflection = 0.5, const Standard_Boolean isInParallel = Standard_False);
 
@@ -5331,7 +5534,9 @@ None
 
 Description
 -----------
-Constructor. automatically calls method perform. @param theshape shape to be meshed. @param theparameters - parameters of meshing.
+Constructor. Automatically calls method Perform. 
+Parameter theShape shape to be meshed. 
+Parameter theParameters - parameters of meshing.
 ") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -5365,7 +5570,10 @@ int
 
 Description
 -----------
-Plugin interface for the mesh factories. initializes meshing algorithm with the given parameters. @param theshape shape to be meshed. @param thelindeflection linear deflection. @param theangdeflection angular deflection. @param[out] thealgo pointer to initialized algorithm.
+Plugin interface for the Mesh Factories. Initializes meshing algorithm with the given parameters. 
+Parameter theShape shape to be meshed. 
+Parameter theLinDeflection linear deflection. 
+Parameter theAngDeflection angular deflection. @param[out] theAlgo pointer to initialized algorithm.
 ") Discret;
 		static Standard_Integer Discret(const TopoDS_Shape & theShape, const Standard_Real theLinDeflection, const Standard_Real theAngDeflection, BRepMesh_DiscretRoot * & theAlgo);
 
@@ -5404,7 +5612,7 @@ bool
 
 Description
 -----------
-Returns multi-threading usage flag set by default in discret() static method (thus applied only to mesh factories).
+Returns multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
 ") IsParallelDefault;
 		static Standard_Boolean IsParallelDefault();
 
@@ -5472,7 +5680,7 @@ None
 
 Description
 -----------
-Setup multi-threading usage flag set by default in discret() static method (thus applied only to mesh factories).
+Setup multi-threading usage flag set by default in Discret() static method (thus applied only to Mesh Factories).
 ") SetParallelDefault;
 		static void SetParallelDefault(const Standard_Boolean isInParallel);
 
@@ -5541,7 +5749,7 @@ IMeshData::IMapOfReal
 
 Description
 -----------
-Returns u parameters.
+Returns U parameters.
 ") GetParametersU;
 		const IMeshData::IMapOfReal & GetParametersU();
 
@@ -5554,7 +5762,7 @@ IMeshData::IMapOfReal
 
 Description
 -----------
-Returns u parameters.
+Returns U parameters.
 ") GetParametersU;
 		IMeshData::IMapOfReal & GetParametersU();
 
@@ -5567,7 +5775,7 @@ IMeshData::IMapOfReal
 
 Description
 -----------
-Returns v parameters.
+Returns V parameters.
 ") GetParametersV;
 		const IMeshData::IMapOfReal & GetParametersV();
 
@@ -5580,7 +5788,7 @@ IMeshData::IMapOfReal
 
 Description
 -----------
-Returns v parameters.
+Returns V parameters.
 ") GetParametersV;
 		IMeshData::IMapOfReal & GetParametersV();
 

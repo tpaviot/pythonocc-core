@@ -105,7 +105,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <adrivertable>.
+Adds the attribute drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 

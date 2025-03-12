@@ -157,7 +157,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		virtual void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -177,7 +177,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		virtual void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -198,7 +198,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		virtual void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -220,7 +220,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		virtual void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -239,7 +239,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		virtual gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -291,7 +291,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		virtual GeomAbs_CurveType GetType();
 
@@ -323,7 +323,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -406,7 +406,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -489,7 +489,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		virtual Standard_Real Resolution(const Standard_Real R3d);
 
@@ -522,7 +522,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		virtual opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -540,7 +540,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		virtual gp_Pnt2d Value(const Standard_Real U);
 
@@ -827,7 +827,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -948,7 +948,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1051,7 +1051,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -1098,7 +1098,7 @@ None
 
 Description
 -----------
-The offset is set to 0.
+The Offset is set to 0.
 ") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve();
 
@@ -1116,7 +1116,7 @@ None
 
 Description
 -----------
-The curve is loaded. the offset is set to 0.
+The curve is loaded. The Offset is set to 0.
 ") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1135,7 +1135,7 @@ None
 
 Description
 -----------
-Creates an offsetcurve curve. the offset is set to offset.
+Creates an OffsetCurve curve. The Offset is set to Offset.
 ") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real Offset);
 
@@ -1156,7 +1156,7 @@ None
 
 Description
 -----------
-Create an offset curve. wfirst,wlast define the bounds of the offset curve.
+Create an Offset curve. WFirst,WLast define the bounds of the Offset curve.
 ") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real Offset, const Standard_Real WFirst, const Standard_Real WLast);
 
@@ -1240,7 +1240,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -1260,7 +1260,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -1281,7 +1281,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1303,7 +1303,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1322,7 +1322,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -1374,7 +1374,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -1406,7 +1406,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1489,7 +1489,7 @@ None
 
 Description
 -----------
-Changes the curve. the offset is reset to 0.
+Changes the curve. The Offset is reset to 0.
 ") Load;
 		void Load(const opencascade::handle<Adaptor2d_Curve2d> & S);
 
@@ -1507,7 +1507,7 @@ None
 
 Description
 -----------
-Changes the offset on the current curve.
+Changes the Offset on the current Curve.
 ") Load;
 		void Load(const Standard_Real Offset);
 
@@ -1527,7 +1527,7 @@ None
 
 Description
 -----------
-Changes the offset curve on the current curve.
+Changes the Offset Curve on the current Curve.
 ") Load;
 		void Load(const Standard_Real Offset, const Standard_Real WFirst, const Standard_Real WLast);
 
@@ -1545,7 +1545,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1641,7 +1641,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -1674,7 +1674,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -1692,7 +1692,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt2d Value(const Standard_Real U);
 

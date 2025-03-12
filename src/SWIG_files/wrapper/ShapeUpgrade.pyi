@@ -7,6 +7,7 @@ from OCC.Core.Geom import *
 from OCC.Core.TColGeom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.TColGeom2d import *
+from OCC.Core.TopTools import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TopAbs import *
 from OCC.Core.ShapeBuild import *
@@ -14,7 +15,6 @@ from OCC.Core.ShapeExtend import *
 from OCC.Core.Message import *
 from OCC.Core.TColStd import *
 from OCC.Core.BRepTools import *
-from OCC.Core.TopTools import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.ShapeAnalysis import *
 from OCC.Core.TopLoc import *
@@ -30,6 +30,7 @@ class shapeupgrade:
 
 class ShapeUpgrade_RemoveLocations(Standard_Transient):
     def __init__(self) -> None: ...
+    def GetModifiedShapesMap(self) -> TopTools_DataMapOfShapeShape: ...
     def GetResult(self) -> TopoDS_Shape: ...
     def ModifiedShape(self, theInitShape: TopoDS_Shape) -> TopoDS_Shape: ...
     def Remove(self, theShape: TopoDS_Shape) -> bool: ...

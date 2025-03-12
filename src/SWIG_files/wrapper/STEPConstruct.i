@@ -70,6 +70,11 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepconstruct.htm
 #include<StepShape_module.hxx>
 #include<MoniTool_module.hxx>
 #include<Resource_module.hxx>
+#include<TDF_module.hxx>
+#include<TDocStd_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<DE_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -144,7 +149,7 @@ bool
 
 Description
 -----------
-Find cdsr correcponding to the component in the specified assembly.
+Find CDSR corresponding to the component in the specified assembly.
 ") FindCDSR;
 		static Standard_Boolean FindCDSR(const opencascade::handle<Transfer_Binder> & ComponentBinder, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & AssemblySDR, opencascade::handle<StepShape_ContextDependentShapeRepresentation> & ComponentCDSR);
 
@@ -163,7 +168,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns step entity of the (sub)type of representationitem which is a result of the tranalation of the shape, or null if no result is recorded.
+Returns STEP entity of the (sub)type of RepresentationItem which is a result of the translation of the Shape, or Null if no result is recorded.
 ") FindEntity;
 		static opencascade::handle<StepRepr_RepresentationItem> FindEntity(const opencascade::handle<Transfer_FinderProcess> & FinderProcess, const TopoDS_Shape & Shape);
 
@@ -183,7 +188,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-The same as above, but in the case if item not found, repeats search on the same shape without location. the loc corresponds to the location with which result is found (either location of the shape, or null).
+The same as above, but in the case if item not found, repeats search on the same shape without location. The Loc corresponds to the location with which result is found (either location of the Shape, or Null).
 ") FindEntity;
 		static opencascade::handle<StepRepr_RepresentationItem> FindEntity(const opencascade::handle<Transfer_FinderProcess> & FinderProcess, const TopoDS_Shape & Shape, TopLoc_Location & Loc);
 
@@ -202,7 +207,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns shape resulting from given step entity (null if not mapped).
+Returns Shape resulting from given STEP entity (Null if not mapped).
 ") FindShape;
 		static TopoDS_Shape FindShape(const opencascade::handle<Transfer_TransientProcess> & TransientProcess, const opencascade::handle<StepRepr_RepresentationItem> & item);
 
@@ -424,7 +429,7 @@ opencascade::handle<StepBasic_ProductCategoryRelationship>
 
 Description
 -----------
-Return entities (roots) instantiated for the part by method init.
+Return entities (roots) instantiated for the part by method Init.
 ") GetProductCategoryRelationship;
 		opencascade::handle<StepBasic_ProductCategoryRelationship> GetProductCategoryRelationship();
 
@@ -455,7 +460,7 @@ None
 
 Description
 -----------
-Takes sdr (part) which brings all standard data around part (common for ap203 and ap214) and creates all the additional entities required for ap203.
+Takes SDR (part) which brings all standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203.
 ") Init;
 		void Init(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr);
 
@@ -473,7 +478,7 @@ None
 
 Description
 -----------
-Takes tool which describes standard data around part (common for ap203 and ap214) and creates all the additional entities required for ap203 //! the created entities can be obtained by calls to methods getcreator(), getdesignowner(), getdesignsupplier(), getclassificationofficer(), getsecurity(), getcreationdate(), getclassificationdate(), getapproval(), getapprover(), getapprovaldatetime(), getproductcategoryrelationship().
+Takes tool which describes standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203 //! The created entities can be obtained by calls to methods GetCreator(), GetDesignOwner(), GetDesignSupplier(), GetClassificationOfficer(), GetSecurity(), GetCreationDate(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime(), GetProductCategoryRelationship().
 ") Init;
 		void Init(const STEPConstruct_Part & SDRTool);
 
@@ -491,7 +496,7 @@ None
 
 Description
 -----------
-Takes nauo which describes assembly link to component and creates the security_classification entity associated to it as required by the ap203 //! instantiated (or existing previously) entities concerned can be obtained by calls to methods getclassificationofficer(), getsecurity(), getclassificationdate(), getapproval(), getapprover(), getapprovaldatetime() takes tool which describes standard data around part (common for ap203 and ap214) and takes from model (or creates if missing) all the additional entities required by ap203.
+Takes NAUO which describes assembly link to component and creates the security_classification entity associated to it as required by the AP203 //! Instantiated (or existing previously) entities concerned can be obtained by calls to methods GetClassificationOfficer(), GetSecurity(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime() Takes tool which describes standard data around part (common for AP203 and AP214) and takes from model (or creates if missing) all the additional entities required by AP203.
 ") Init;
 		void Init(const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo);
 
@@ -504,7 +509,7 @@ None
 
 Description
 -----------
-Initializes approver and approvaldatetime entities according to approval entity.
+Initializes Approver and ApprovalDateTime entities according to Approval entity.
 ") InitApprovalRequisites;
 		void InitApprovalRequisites();
 
@@ -548,7 +553,7 @@ None
 
 Description
 -----------
-Initializes classificationofficer and classificationdate entities according to security entity.
+Initializes ClassificationOfficer and ClassificationDate entities according to Security entity.
 ") InitSecurityRequisites;
 		void InitSecurityRequisites();
 
@@ -561,7 +566,7 @@ opencascade::handle<StepBasic_ApprovalRole>
 
 Description
 -----------
-Return predefined personandorganizationrole and datetimerole entities named 'creator', 'design owner', 'design supplier', 'classification officer', 'creation date', 'classification date', 'approver'.
+Return predefined PersonAndOrganizationRole and DateTimeRole entities named 'creator', 'design owner', 'design supplier', 'classification officer', 'creation date', 'classification date', 'approver'.
 ") RoleApprover;
 		opencascade::handle<StepBasic_ApprovalRole> RoleApprover();
 
@@ -757,7 +762,7 @@ bool
 
 Description
 -----------
-Checks whether srr's definition of assembly and component contradicts with nauo definition or not, according to model schema (ap214 or ap203).
+Checks whether SRR's definition of assembly and component contradicts with NAUO definition or not, according to model schema (AP214 or AP203).
 ") CheckSRRReversesNAUO;
 		static Standard_Boolean CheckSRRReversesNAUO(const Interface_Graph & theGraph, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR);
 
@@ -770,7 +775,7 @@ opencascade::handle<StepRepr_NextAssemblyUsageOccurrence>
 
 Description
 -----------
-Returns nauo object describing the assembly link.
+Returns NAUO object describing the assembly link.
 ") GetNAUO;
 		opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> GetNAUO();
 
@@ -791,7 +796,7 @@ None
 
 Description
 -----------
-Initialises with starting values ax0: origin axis (typically, standard xyz) loc: location to which place the item makes a mappeditem resulting value is returned by itemvalue.
+Initialises with starting values Ax0: origin axis (typically, standard XYZ) Loc: location to which place the item Makes a MappedItem Resulting Value is returned by ItemValue.
 ") Init;
 		void Init(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & aSR, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR0, const opencascade::handle<StepGeom_Axis2Placement3d> & Ax0, const opencascade::handle<StepGeom_Axis2Placement3d> & Loc);
 
@@ -804,7 +809,7 @@ opencascade::handle<StepGeom_Axis2Placement3d>
 
 Description
 -----------
-Returns the location of the item, computed from starting aloc.
+Returns the location of the item, computed from starting aLoc.
 ") ItemLocation;
 		opencascade::handle<StepGeom_Axis2Placement3d> ItemLocation();
 
@@ -817,7 +822,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the value if no make... has been called, returns the starting sr.
+Returns the Value If no Make... has been called, returns the starting SR.
 ") ItemValue;
 		opencascade::handle<Standard_Transient> ItemValue();
 
@@ -830,7 +835,7 @@ None
 
 Description
 -----------
-Make a (shaperepresentationrelationship,...withtransformation) resulting value is returned by itemvalue.
+Make a (ShapeRepresentationRelationship,...WithTransformation) Resulting Value is returned by ItemValue.
 ") MakeRelationship;
 		void MakeRelationship();
 
@@ -888,7 +893,7 @@ STEPConstruct_AP203Context
 
 Description
 -----------
-Returns tool which maintains context specific for ap203.
+Returns tool which maintains context specific for AP203.
 ") AP203Context;
 		STEPConstruct_AP203Context & AP203Context();
 
@@ -1015,7 +1020,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Produces and returns a full list of root entities required for assembly link identified by assembly (including nauo and cdsr).
+Produces and returns a full list of root entities required for assembly link identified by assembly (including NAUO and CDSR).
 ") GetRootsForAssemblyLink;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForAssemblyLink(const STEPConstruct_Assembly & assembly);
 
@@ -1033,7 +1038,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Produces and returns a full list of root entities required for part identified by sdrtool (including sdr itself).
+Produces and returns a full list of root entities required for part identified by SDRTool (including SDR itself).
 ") GetRootsForPart;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForPart(const STEPConstruct_Part & SDRTool);
 
@@ -1059,7 +1064,7 @@ bool
 
 Description
 -----------
-Returns true if apd.schema_name is config_control_design.
+Returns True if APD.schema_name is config_control_design.
 ") IsAP203;
 		Standard_Boolean IsAP203();
 
@@ -1072,7 +1077,7 @@ bool
 
 Description
 -----------
-Returns true if apd.schema_name is automotive_design.
+Returns True if APD.schema_name is automotive_design.
 ") IsAP214;
 		Standard_Boolean IsAP214();
 
@@ -1085,7 +1090,7 @@ bool
 
 Description
 -----------
-Returns true if apd.schema_name is ap242_managed_model_based_3d_engineering.
+Returns True if APD.schema_name is ap242_managed_model_based_3d_engineering.
 ") IsAP242;
 		Standard_Boolean IsAP242();
 
@@ -1294,7 +1299,7 @@ None
 
 Description
 -----------
-Initialize applicationprotocoldefinition by the first entity of that type found in the model.
+Initialize ApplicationProtocolDefinition by the first entity of that type found in the model.
 ") SetModel;
 		void SetModel(const opencascade::handle<StepData_StepModel> & aStepModel);
 
@@ -1685,7 +1690,7 @@ opencascade::handle<StepShape_ShapeDefinitionRepresentation>
 
 Description
 -----------
-Returns sdr or null if not done.
+Returns SDR or Null if not done.
 ") SDRValue;
 		opencascade::handle<StepShape_ShapeDefinitionRepresentation> SDRValue();
 
@@ -1698,7 +1703,7 @@ opencascade::handle<StepShape_ShapeRepresentation>
 
 Description
 -----------
-Returns sdr->usedrepresentation() or null if not done.
+Returns SDR->UsedRepresentation() or Null if not done.
 ") SRValue;
 		opencascade::handle<StepShape_ShapeRepresentation> SRValue();
 
@@ -2026,7 +2031,7 @@ opencascade::handle<Transfer_FinderProcess>
 
 Description
 -----------
-Returns finderprocess (writing; null if not loaded).
+Returns FinderProcess (writing; Null if not loaded).
 ") FinderProcess;
 		const opencascade::handle<Transfer_FinderProcess> & FinderProcess();
 
@@ -2057,7 +2062,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns current model (null if not loaded).
+Returns current model (Null if not loaded).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -2070,7 +2075,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns transientprocess (reading; null if not loaded).
+Returns TransientProcess (reading; Null if not loaded).
 ") TransientProcess;
 		const opencascade::handle<Transfer_TransientProcess> & TransientProcess();
 
@@ -2083,7 +2088,7 @@ opencascade::handle<XSControl_WorkSession>
 
 Description
 -----------
-Returns currently loaded worksession.
+Returns currently loaded WorkSession.
 ") WS;
 		const opencascade::handle<XSControl_WorkSession> & WS();
 
@@ -2123,7 +2128,7 @@ bool
 
 Description
 -----------
-Returns true if areafactor is computed.
+Returns true if areaFactor is computed.
 ") AreaDone;
 		Standard_Boolean AreaDone();
 
@@ -2136,18 +2141,18 @@ float
 
 Description
 -----------
-Returns the areafactor.
+Returns the areaFactor.
 ") AreaFactor;
 		Standard_Real AreaFactor();
 
 		/****** STEPConstruct_UnitContext::ComputeFactors ******/
-		/****** md5 signature: e55ed6e1c621d2c51e4d002edf932ba0 ******/
+		/****** md5 signature: e3de9d0095f3a8e6e5926812aa2b9b21 ******/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
 ----------
 aContext: StepRepr_GlobalUnitAssignedContext
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -2155,18 +2160,18 @@ int
 
 Description
 -----------
-Computes the length, plane angle and solid angle conversion factor . returns a status, 0 if ok.
+Computes the length, plane angle and solid angle conversion factor . Returns a status, 0 if OK.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext, const StepData_Factors & theLocalFactors);
+		Standard_Integer ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::ComputeFactors ******/
-		/****** md5 signature: 15b5118d0051c0095eba8b5157449a74 ******/
+		/****** md5 signature: c0f59aa5ac3bd1efefcff27304b254d4 ******/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
 ----------
 aUnit: StepBasic_NamedUnit
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -2176,7 +2181,7 @@ Description
 -----------
 No available documentation.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const StepData_Factors & theLocalFactors);
+		Standard_Integer ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::ComputeTolerance ******/
 		/****** md5 signature: 9a5806980a9e9e53879adea3026bf9a2 ******/
@@ -2210,7 +2215,7 @@ float
 
 Description
 -----------
-Convert si prefix defined by enumeration to corresponding real factor (e.g. 1e6 for mega).
+Convert SI prefix defined by enumeration to corresponding real factor (e.g. 1e6 for mega).
 ") ConvertSiPrefix;
 		static Standard_Real ConvertSiPrefix(const StepBasic_SiPrefix aPrefix);
 
@@ -2223,19 +2228,19 @@ bool
 
 Description
 -----------
-Tells if a uncertainty (for length) is recorded.
+Tells if a Uncertainty (for length) is recorded.
 ") HasUncertainty;
 		Standard_Boolean HasUncertainty();
 
 		/****** STEPConstruct_UnitContext::Init ******/
-		/****** md5 signature: 2d945e7576dd2b4dd757de65980d76e4 ******/
+		/****** md5 signature: f77ccd8d8fd20c20822bd5b2de1d4f8e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Tol3d: float
 theModel: StepData_StepModel
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -2243,9 +2248,9 @@ None
 
 Description
 -----------
-Creates new context (units are mm and radians, uncertainty equal to tol3d).
+Creates new context (units are MM and radians, uncertainty equal to Tol3d).
 ") Init;
-		void Init(const Standard_Real Tol3d, const opencascade::handle<StepData_StepModel> & theModel, const StepData_Factors & theLocalFactors);
+		void Init(const Standard_Real Tol3d, const opencascade::handle<StepData_StepModel> & theModel, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::IsDone ******/
 		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
@@ -2256,7 +2261,7 @@ bool
 
 Description
 -----------
-Returns true if init was called successfully.
+Returns True if Init was called successfully.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2269,7 +2274,7 @@ bool
 
 Description
 -----------
-Returns true if computefactors has calculated a lengthfactor.
+Returns true if ComputeFactors has calculated a LengthFactor.
 ") LengthDone;
 		Standard_Boolean LengthDone();
 
@@ -2282,7 +2287,7 @@ float
 
 Description
 -----------
-Returns the lengthfactor.
+Returns the lengthFactor.
 ") LengthFactor;
 		Standard_Real LengthFactor();
 
@@ -2295,7 +2300,7 @@ bool
 
 Description
 -----------
-Returns true if computefactors has calculated a planeanglefactor.
+Returns true if ComputeFactors has calculated a PlaneAngleFactor.
 ") PlaneAngleDone;
 		Standard_Boolean PlaneAngleDone();
 
@@ -2308,7 +2313,7 @@ float
 
 Description
 -----------
-Returns the planeanglefactor.
+Returns the planeAngleFactor.
 ") PlaneAngleFactor;
 		Standard_Real PlaneAngleFactor();
 
@@ -2321,7 +2326,7 @@ bool
 
 Description
 -----------
-Returns true if computefactors has calculated a solidanglefactor.
+Returns true if ComputeFactors has calculated a SolidAngleFactor.
 ") SolidAngleDone;
 		Standard_Boolean SolidAngleDone();
 
@@ -2334,7 +2339,7 @@ float
 
 Description
 -----------
-Returns the solidanglefactor.
+Returns the solidAngleFactor.
 ") SolidAngleFactor;
 		Standard_Real SolidAngleFactor();
 
@@ -2352,7 +2357,7 @@ str
 
 Description
 -----------
-Returns a message for a given status (0 - empty) this message can then be added as warning for transfer.
+Returns a message for a given status (0 - empty) This message can then be added as warning for transfer.
 ") StatusMessage;
 		Standard_CString StatusMessage(const Standard_Integer status);
 
@@ -2365,7 +2370,7 @@ float
 
 Description
 -----------
-Returns the uncertainty value (for length) it has been converted with lengthfactor.
+Returns the Uncertainty value (for length) It has been converted with LengthFactor.
 ") Uncertainty;
 		Standard_Real Uncertainty();
 
@@ -2378,7 +2383,7 @@ opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAs
 
 Description
 -----------
-Returns context (or null if not done).
+Returns context (or Null if not done).
 ") Value;
 		opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> Value();
 
@@ -2391,7 +2396,7 @@ bool
 
 Description
 -----------
-Returns true if volumefactor is computed.
+Returns true if volumeFactor is computed.
 ") VolumeDone;
 		Standard_Boolean VolumeDone();
 
@@ -2404,7 +2409,7 @@ float
 
 Description
 -----------
-Returns the volumefactor.
+Returns the volumeFactor.
 ") VolumeFactor;
 		Standard_Real VolumeFactor();
 
@@ -2469,7 +2474,7 @@ int
 
 Description
 -----------
-Create a new external reference with specified attributes attached to a given sdr <format> can be null string, in that case this information is not written. else, it can be 'step ap214' or 'step ap203' returns index of a new extern ref.
+Create a new external reference with specified attributes attached to a given SDR <format> can be Null string, in that case this information is not written. Else, it can be 'STEP AP214' or 'STEP AP203' Returns index of a new extern ref.
 ") AddExternRef;
 		Standard_Integer AddExternRef(Standard_CString filename, const opencascade::handle<StepBasic_ProductDefinition> & PD, Standard_CString format);
 
@@ -2500,7 +2505,7 @@ opencascade::handle<StepBasic_DocumentFile>
 
 Description
 -----------
-Returns documentfile to which numth extern reference is associated. returns null if cannot be detected.
+Returns DocumentFile to which numth extern reference is associated. Returns Null if cannot be detected.
 ") DocFile;
 		opencascade::handle<StepBasic_DocumentFile> DocFile(const Standard_Integer num);
 
@@ -2518,7 +2523,7 @@ str
 
 Description
 -----------
-Returns filename for numth extern reference returns null if filename is not defined or bad.
+Returns filename for numth extern reference Returns Null if FileName is not defined or bad.
 ") FileName;
 		Standard_CString FileName(const Standard_Integer num);
 
@@ -2536,7 +2541,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns format identification string for the extern document returns null handle if format is not defined.
+Returns format identification string for the extern document Returns Null handle if format is not defined.
 ") Format;
 		opencascade::handle<TCollection_HAsciiString> Format(const Standard_Integer num);
 
@@ -2549,7 +2554,7 @@ opencascade::handle<StepBasic_ApplicationProtocolDefinition>
 
 Description
 -----------
-Returns the applicationprotocoldefinition of the pdm schema note: if not defined then create new apd with new application context.
+Returns the ApplicationProtocolDefinition of the PDM schema NOTE: if not defined then create new APD with new Application Context.
 ") GetAP214APD;
 		opencascade::handle<StepBasic_ApplicationProtocolDefinition> GetAP214APD();
 
@@ -2567,7 +2572,7 @@ bool
 
 Description
 -----------
-Initializes tool; returns true if succeeded.
+Initializes tool; returns True if succeeded.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -2580,7 +2585,7 @@ bool
 
 Description
 -----------
-Searches current step model for external references and loads them to the internal data structures note: does not clear data structures before loading.
+Searches current STEP model for external references and loads them to the internal data structures NOTE: does not clear data structures before loading.
 ") LoadExternRefs;
 		Standard_Boolean LoadExternRefs();
 
@@ -2611,7 +2616,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns productdefinition to which numth extern reference is associated. returns null if cannot be detected or if extern reference is not associated to sdr in a proper way.
+Returns ProductDefinition to which numth extern reference is associated. Returns Null if cannot be detected or if extern reference is not associated to SDR in a proper way.
 ") ProdDef;
 		opencascade::handle<StepBasic_ProductDefinition> ProdDef(const Standard_Integer num);
 
@@ -2629,7 +2634,7 @@ None
 
 Description
 -----------
-Set the applicationprotocoldefinition of the pdm schema.
+Set the ApplicationProtocolDefinition of the PDM schema.
 ") SetAP214APD;
 		void SetAP214APD(const opencascade::handle<StepBasic_ApplicationProtocolDefinition> & APD);
 
@@ -2647,7 +2652,7 @@ int
 
 Description
 -----------
-Adds all the currently defined external refs to the model returns number of written extern refs.
+Adds all the currently defined external refs to the model Returns number of written extern refs.
 ") WriteExternRefs;
 		Standard_Integer WriteExternRefs(const Standard_Integer num);
 
@@ -2743,7 +2748,7 @@ opencascade::handle<StepVisual_StyledItem>
 
 Description
 -----------
-Create a style linking giving psa to the item, and add it to the sequence of stored styles. if override is not null, then the resulting style will be of the subtype overridingstyleditem.
+Create a style linking giving PSA to the item, and add it to the sequence of stored styles. If Override is not Null, then the resulting style will be of the subtype OverridingStyledItem.
 ") AddStyle;
 		opencascade::handle<StepVisual_StyledItem> AddStyle(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_PresentationStyleAssignment> & PSA, const opencascade::handle<StepVisual_StyledItem> & Override);
 
@@ -2763,7 +2768,7 @@ opencascade::handle<StepVisual_StyledItem>
 
 Description
 -----------
-Create a style linking giving psa to the shape, and add it to the sequence of stored styles. if override is not null, then the resulting style will be of the subtype overridingstyleditem. the sape is used to find corresponding step entity by call to stepconstruct::findentity(), then previous method is called.
+Create a style linking giving PSA to the Shape, and add it to the sequence of stored styles. If Override is not Null, then the resulting style will be of the subtype OverridingStyledItem. The Sape is used to find corresponding STEP entity by call to STEPConstruct::FindEntity(), then previous method is called.
 ") AddStyle;
 		opencascade::handle<StepVisual_StyledItem> AddStyle(const TopoDS_Shape & Shape, const opencascade::handle<StepVisual_PresentationStyleAssignment> & PSA, const opencascade::handle<StepVisual_StyledItem> & Override);
 
@@ -2776,7 +2781,7 @@ None
 
 Description
 -----------
-Clears all defined styles and psa sequence.
+Clears all defined styles and PSA sequence.
 ") ClearStyles;
 		void ClearStyles();
 
@@ -2796,7 +2801,7 @@ bool
 
 Description
 -----------
-Create mdgpr, fill it with all the styles previously defined, and add it to the model.
+Create MDGPR, fill it with all the styles previously defined, and add it to the model.
 ") CreateMDGPR;
 		Standard_Boolean CreateMDGPR(const opencascade::handle<StepRepr_RepresentationContext> & Context, opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR, opencascade::handle<StepData_StepModel> & theStepModel);
 
@@ -2816,7 +2821,7 @@ bool
 
 Description
 -----------
-Create mdgpr, fill it with all the styles previously defined, and add it to the model important: <initpds> must be null when use for nauo colors <initpds> initialised only for shuo case.
+Create MDGPR, fill it with all the styles previously defined, and add it to the model IMPORTANT: <initPDS> must be null when use for NAUO colors <initPDS> initialised only for SHUO case.
 ") CreateNAUOSRD;
 		Standard_Boolean CreateNAUOSRD(const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR, const opencascade::handle<StepRepr_ProductDefinitionShape> & initPDS);
 
@@ -2835,7 +2840,7 @@ bool
 
 Description
 -----------
-Decodes step color and fills the quantity_color. returns true if ok or false if color is not recognized.
+Decodes STEP color and fills the Quantity_Color. Returns True if OK or False if color is not recognized.
 ") DecodeColor;
 		static Standard_Boolean DecodeColor(const opencascade::handle<StepVisual_Colour> & Colour, Quantity_Color & Col);
 
@@ -2853,7 +2858,7 @@ opencascade::handle<StepVisual_Colour>
 
 Description
 -----------
-Create step color entity by given quantity_color the analysis is performed for whether the color corresponds to one of standard colors predefined in step. in that case, predefinedcolour entity is created instead of rgbcolour.
+Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour.
 ") EncodeColor;
 		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col);
 
@@ -2873,7 +2878,7 @@ opencascade::handle<StepVisual_Colour>
 
 Description
 -----------
-Create step color entity by given quantity_color the analysis is performed for whether the color corresponds to one of standard colors predefined in step. in that case, predefinedcolour entity is created instead of rgbcolour.
+Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour.
 ") EncodeColor;
 		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col, STEPConstruct_DataMapOfAsciiStringTransient & DPDCs, STEPConstruct_DataMapOfPointTransient & ColRGBs);
 
@@ -2891,7 +2896,7 @@ opencascade::handle<StepRepr_RepresentationContext>
 
 Description
 -----------
-Searches the step model for the representationcontext in which given shape is defined. this context (if found) can be used then in call to createmdgpr().
+Searches the STEP model for the RepresentationContext in which given shape is defined. This context (if found) can be used then in call to CreateMDGPR().
 ") FindContext;
 		opencascade::handle<StepRepr_RepresentationContext> FindContext(const TopoDS_Shape & Shape);
 
@@ -2910,32 +2915,32 @@ opencascade::handle<StepVisual_PresentationStyleAssignment>
 
 Description
 -----------
-Returns a presentationstyleassignment entity which defines surface and curve colors as col. this psa is either created or taken from internal map where all psas created by this method are remembered.
+Returns a PresentationStyleAssignment entity which defines surface and curve colors as Col. This PSA is either created or taken from internal map where all PSAs created by this method are remembered.
 ") GetColorPSA;
 		opencascade::handle<StepVisual_PresentationStyleAssignment> GetColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & Col);
 
 		/****** STEPConstruct_Styles::GetColors ******/
-		/****** md5 signature: 471d816c25811a9fc28e360035e56eae ******/
+		/****** md5 signature: 1f0929b2e170b83d93ab61387da54beb ******/
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "
 Parameters
 ----------
-style: StepVisual_StyledItem
-SurfCol: StepVisual_Colour
-BoundCol: StepVisual_Colour
-CurveCol: StepVisual_Colour
-RenderCol: StepVisual_Colour
+theStyle: StepVisual_StyledItem
+theSurfaceColour: StepVisual_Colour
+theBoundaryColour: StepVisual_Colour
+theCurveColour: StepVisual_Colour
+theRenderColour: StepVisual_Colour
 
 Return
 -------
-RenderTransp: float
-IsComponent: bool
+theRenderTransparency: float
+theIsComponent: bool
 
 Description
 -----------
-Extract color definitions from the style entity for each type of color supported, result can be either null if it is not defined by that style, or last definition (if they are 1 or more).
+Extract color definitions from the style entity For each type of color supported, result can be either NULL if it is not defined by that style, or last definition (if they are 1 or more).
 ") GetColors;
-		Standard_Boolean GetColors(const opencascade::handle<StepVisual_StyledItem> & style, opencascade::handle<StepVisual_Colour> & SurfCol, opencascade::handle<StepVisual_Colour> & BoundCol, opencascade::handle<StepVisual_Colour> & CurveCol, opencascade::handle<StepVisual_Colour> & RenderCol, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		Standard_Boolean GetColors(const opencascade::handle<StepVisual_StyledItem> & theStyle, opencascade::handle<StepVisual_Colour> & theSurfaceColour, opencascade::handle<StepVisual_Colour> & theBoundaryColour, opencascade::handle<StepVisual_Colour> & theCurveColour, opencascade::handle<StepVisual_Colour> & theRenderColour, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
 		/****** STEPConstruct_Styles::Init ******/
 		/****** md5 signature: a41268d32348bb8b355efce3731d2872 ******/
@@ -2951,7 +2956,7 @@ bool
 
 Description
 -----------
-Initializes tool; returns true if succeeded.
+Initializes tool; returns True if succeeded.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -2969,7 +2974,7 @@ bool
 
 Description
 -----------
-Searches the step model for the inisibility entities (which bring styles) and fills out sequence of styles.
+Searches the STEP model for the INISIBILITY entities (which bring styles) and fills out sequence of styles.
 ") LoadInvisStyles;
 		Standard_Boolean LoadInvisStyles(opencascade::handle<TColStd_HSequenceOfTransient> & InvSyles);
 
@@ -2982,7 +2987,7 @@ bool
 
 Description
 -----------
-Searches the step model for the mdgpr or dm entities (which bring styles) and fills sequence of styles.
+Searches the STEP model for the MDGPR or DM entities (which bring styles) and fills sequence of styles.
 ") LoadStyles;
 		Standard_Boolean LoadStyles();
 
@@ -3005,7 +3010,7 @@ opencascade::handle<StepVisual_PresentationStyleAssignment>
 
 Description
 -----------
-Create a presentationstyleassignment entity which defines two colors (for filling surfaces and curves) if isfornauo true then returns presentationstylebycontext.
+Create a PresentationStyleAssignment entity which defines two colors (for filling surfaces and curves) if isForNAUO true then returns PresentationStyleByContext.
 ") MakeColorPSA;
 		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const opencascade::handle<StepVisual_Colour> & RenderCol, const Standard_Real RenderTransp, const Standard_Boolean isForNAUO = Standard_False);
 
@@ -3131,7 +3136,7 @@ bool
 
 Description
 -----------
-Adds surface area property for given shape (already mapped). returns true if success, false in case of fail.
+Adds surface area property for given shape (already mapped). Returns True if success, False in case of fail.
 ") AddArea;
 		Standard_Boolean AddArea(const TopoDS_Shape & Shape, const Standard_Real Area);
 
@@ -3151,7 +3156,7 @@ bool
 
 Description
 -----------
-Adds centroid property for given shape (already mapped). returns true if success, false in case of fail if instance is true, then centroid is assigned to an instance of component in assembly.
+Adds centroid property for given shape (already mapped). Returns True if success, False in case of fail If instance is True, then centroid is assigned to an instance of component in assembly.
 ") AddCentroid;
 		Standard_Boolean AddCentroid(const TopoDS_Shape & Shape, const gp_Pnt & Pnt, const Standard_Boolean instance = Standard_False);
 
@@ -3172,7 +3177,7 @@ bool
 
 Description
 -----------
-General method for adding (writing) a validation property for shape which should be already mapped on writing itself. it uses findtarget() to find target step entity resulting from given shape, and associated context returns true if success, false in case of fail.
+General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It uses FindTarget() to find target STEP entity resulting from given shape, and associated context Returns True if success, False in case of fail.
 ") AddProp;
 		Standard_Boolean AddProp(const TopoDS_Shape & Shape, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr, const Standard_Boolean instance = Standard_False);
 
@@ -3193,7 +3198,7 @@ bool
 
 Description
 -----------
-General method for adding (writing) a validation property for shape which should be already mapped on writing itself. it takes target and context entities which correspond to shape returns true if success, false in case of fail.
+General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It takes target and Context entities which correspond to shape Returns True if success, False in case of fail.
 ") AddProp;
 		Standard_Boolean AddProp(const StepRepr_CharacterizedDefinition & target, const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr);
 
@@ -3212,7 +3217,7 @@ bool
 
 Description
 -----------
-Adds volume property for given shape (already mapped). returns true if success, false in case of fail.
+Adds volume property for given shape (already mapped). Returns True if success, False in case of fail.
 ") AddVolume;
 		Standard_Boolean AddVolume(const TopoDS_Shape & Shape, const Standard_Real Vol);
 
@@ -3233,7 +3238,7 @@ bool
 
 Description
 -----------
-Finds target step entity to which validation props should be assigned, and corresponding context, starting from shape returns true if success, false in case of fail.
+Finds target STEP entity to which validation props should be assigned, and corresponding context, starting from shape Returns True if success, False in case of fail.
 ") FindTarget;
 		Standard_Boolean FindTarget(const TopoDS_Shape & S, StepRepr_CharacterizedDefinition & target, opencascade::handle<StepRepr_RepresentationContext> & Context, const Standard_Boolean instance = Standard_False);
 
@@ -3251,7 +3256,7 @@ opencascade::handle<StepRepr_NextAssemblyUsageOccurrence>
 
 Description
 -----------
-Returns cdsr associated with given ppd or null if not found (when, try getpropsdr).
+Returns CDSR associated with given PpD or NULL if not found (when, try GetPropSDR).
 ") GetPropNAUO;
 		opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> GetPropNAUO(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
@@ -3269,12 +3274,12 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns sdr associated with given ppd or null if not found (when, try getpropcdsr).
+Returns SDR associated with given PpD or NULL if not found (when, try GetPropCDSR).
 ") GetPropPD;
 		opencascade::handle<StepBasic_ProductDefinition> GetPropPD(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
 		/****** STEPConstruct_ValidationProps::GetPropPnt ******/
-		/****** md5 signature: a60d17b46f6f4bd29463c9b913c2a95d ******/
+		/****** md5 signature: 2c0297d70aecdf76b1dde1e052f18407 ******/
 		%feature("compactdefaultargs") GetPropPnt;
 		%feature("autodoc", "
 Parameters
@@ -3282,7 +3287,7 @@ Parameters
 item: StepRepr_RepresentationItem
 Context: StepRepr_RepresentationContext
 Pnt: gp_Pnt
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -3290,18 +3295,18 @@ bool
 
 Description
 -----------
-Returns value of centriod property (or false if it is not).
+Returns value of Centroid property (or False if it is not).
 ") GetPropPnt;
-		Standard_Boolean GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt, const StepData_Factors & theLocalFactors);
+		Standard_Boolean GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_ValidationProps::GetPropReal ******/
-		/****** md5 signature: 66572bdefcdc26e4643f74706fbf7d2b ******/
+		/****** md5 signature: ceacc2ead40bd4542466c7f10e78e8fd ******/
 		%feature("compactdefaultargs") GetPropReal;
 		%feature("autodoc", "
 Parameters
 ----------
 item: StepRepr_RepresentationItem
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -3310,9 +3315,9 @@ isArea: bool
 
 Description
 -----------
-Returns value of real-valued property (area or volume) if property is neither area nor volume, returns false else returns true and isarea indicates whether property is area or volume.
+Returns value of Real-Valued property (Area or Volume) If Property is neither Area nor Volume, returns False Else returns True and isArea indicates whether property is area or volume.
 ") GetPropReal;
-		Standard_Boolean GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue, const StepData_Factors & theLocalFactors);
+		Standard_Boolean GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_ValidationProps::GetPropShape ******/
 		/****** md5 signature: 16026c6cc5e907b0af72d056c5f3be1c ******/
@@ -3328,7 +3333,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns shape associated with given sdr or null shape if not found.
+Returns Shape associated with given SDR or Null Shape if not found.
 ") GetPropShape;
 		TopoDS_Shape GetPropShape(const opencascade::handle<StepBasic_ProductDefinition> & ProdDef);
 
@@ -3346,7 +3351,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns shape associated with given ppd or null shape if not found.
+Returns Shape associated with given PpD or Null Shape if not found.
 ") GetPropShape;
 		TopoDS_Shape GetPropShape(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
@@ -3364,7 +3369,7 @@ bool
 
 Description
 -----------
-Load worksession; returns true if succeeded.
+Load worksession; returns True if succeeded.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -3382,7 +3387,7 @@ bool
 
 Description
 -----------
-Searches for entities of the type propertydefinitionrepresentation in the model and fills the sequence by them.
+Searches for entities of the type PropertyDefinitionRepresentation in the model and fills the sequence by them.
 ") LoadProps;
 		Standard_Boolean LoadProps(TColStd_SequenceOfTransient & seq);
 
@@ -3400,7 +3405,7 @@ None
 
 Description
 -----------
-Sets current assembly shape sdr (for findcdsr calls).
+Sets current assembly shape SDR (for FindCDSR calls).
 ") SetAssemblyShape;
 		void SetAssemblyShape(const TopoDS_Shape & shape);
 

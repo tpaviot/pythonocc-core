@@ -157,11 +157,12 @@ enum AIS_MouseGesture {
 	AIS_MouseGesture_SelectRectangle = 1,
 	AIS_MouseGesture_SelectLasso = 2,
 	AIS_MouseGesture_Zoom = 3,
-	AIS_MouseGesture_ZoomWindow = 4,
-	AIS_MouseGesture_Pan = 5,
-	AIS_MouseGesture_RotateOrbit = 6,
-	AIS_MouseGesture_RotateView = 7,
-	AIS_MouseGesture_Drag = 8,
+	AIS_MouseGesture_ZoomVertical = 4,
+	AIS_MouseGesture_ZoomWindow = 5,
+	AIS_MouseGesture_Pan = 6,
+	AIS_MouseGesture_RotateOrbit = 7,
+	AIS_MouseGesture_RotateView = 8,
+	AIS_MouseGesture_Drag = 9,
 };
 
 enum AIS_NavigationMode {
@@ -366,15 +367,17 @@ class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_SelectRectangle = 1
 	AIS_MouseGesture_SelectLasso = 2
 	AIS_MouseGesture_Zoom = 3
-	AIS_MouseGesture_ZoomWindow = 4
-	AIS_MouseGesture_Pan = 5
-	AIS_MouseGesture_RotateOrbit = 6
-	AIS_MouseGesture_RotateView = 7
-	AIS_MouseGesture_Drag = 8
+	AIS_MouseGesture_ZoomVertical = 4
+	AIS_MouseGesture_ZoomWindow = 5
+	AIS_MouseGesture_Pan = 6
+	AIS_MouseGesture_RotateOrbit = 7
+	AIS_MouseGesture_RotateView = 8
+	AIS_MouseGesture_Drag = 9
 AIS_MouseGesture_NONE = AIS_MouseGesture.AIS_MouseGesture_NONE
 AIS_MouseGesture_SelectRectangle = AIS_MouseGesture.AIS_MouseGesture_SelectRectangle
 AIS_MouseGesture_SelectLasso = AIS_MouseGesture.AIS_MouseGesture_SelectLasso
 AIS_MouseGesture_Zoom = AIS_MouseGesture.AIS_MouseGesture_Zoom
+AIS_MouseGesture_ZoomVertical = AIS_MouseGesture.AIS_MouseGesture_ZoomVertical
 AIS_MouseGesture_ZoomWindow = AIS_MouseGesture.AIS_MouseGesture_ZoomWindow
 AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
 AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
@@ -699,7 +702,8 @@ None
 
 Description
 -----------
-Add single animation to the timeline. @param theanimation input animation.
+Add single animation to the timeline. 
+Parameter theAnimation input animation.
 ") Add;
 		void Add(const opencascade::handle<AIS_Animation> & theAnimation);
 
@@ -743,7 +747,7 @@ None
 
 Description
 -----------
-Clears own children and then copy child animations from another object. copy also start time and duration values.
+Clears own children and then copy child animations from another object. Copy also Start Time and Duration values.
 ") CopyFrom;
 		void CopyFrom(const opencascade::handle<AIS_Animation> & theOther);
 
@@ -756,7 +760,7 @@ float
 
 Description
 -----------
-Return duration of the animation in the timeline.
+Return: duration of the animation in the timeline.
 ") Duration;
 		Standard_Real Duration();
 
@@ -813,7 +817,8 @@ bool
 
 Description
 -----------
-Check if animation is to be performed in the animation timeline. return true if it is stopped of finished.
+Check if animation is to be performed in the animation timeline. 
+Return: True if it is stopped of finished.
 ") IsStopped;
 		bool IsStopped();
 
@@ -839,7 +844,7 @@ float
 
 Description
 -----------
-Return own duration of the animation in the timeline.
+Return: own duration of the animation in the timeline.
 ") OwnDuration;
 		Standard_Real OwnDuration();
 
@@ -961,7 +966,8 @@ None
 
 Description
 -----------
-Start animation. this method changes status of the animation to started. this status defines whether animation is to be performed in the timeline or not. @param thetoupdate call update() method.
+Start animation. This method changes status of the animation to Started. This status defines whether animation is to be performed in the timeline or not. 
+Parameter theToUpdate call Update() method.
 ") Start;
 		virtual void Start(const Standard_Boolean theToUpdate);
 
@@ -974,7 +980,7 @@ float
 
 Description
 -----------
-Return start time of the animation in the timeline.
+Return: start time of the animation in the timeline.
 ") StartPts;
 		Standard_Real StartPts();
 
@@ -995,7 +1001,11 @@ None
 
 Description
 -----------
-Start animation with internally defined timer instance. calls ::start() internally. //! note, that this method initializes a timer calculating an elapsed time (presentation timestamps within ais_animation::updatetimer()), not a multimedia timer executing viewer updates at specific intervals! viewer redrawing should be managed at application level, so that ais_animation::updatetimer() is called once right before each redrawing of a viewer content. //! @param thestartpts starting timer position (presentation timestamp) @param theplayspeed playback speed (1.0 means normal speed) @param thetoupdate flag to update defined animations to specified start position @param thetostoptimer flag to pause timer at the starting position.
+Start animation with internally defined timer instance. Calls ::Start() internally. //! Note, that this method initializes a timer calculating an elapsed time (presentation timestamps within AIS_Animation::UpdateTimer()), not a multimedia timer executing Viewer updates at specific intervals! Viewer redrawing should be managed at application level, so that AIS_Animation::UpdateTimer() is called once right before each redrawing of a Viewer content. //! 
+Parameter theStartPts starting timer position (presentation timestamp) 
+Parameter thePlaySpeed playback speed (1.0 means normal speed) 
+Parameter theToUpdate flag to update defined animations to specified start position 
+Parameter theToStopTimer flag to pause timer at the starting position.
 ") StartTimer;
 		virtual void StartTimer(const Standard_Real theStartPts, const Standard_Real thePlaySpeed, const Standard_Boolean theToUpdate, const Standard_Boolean theToStopTimer = Standard_False);
 
@@ -1008,7 +1018,7 @@ None
 
 Description
 -----------
-Stop animation. this method changed status of the animation to stopped. this status shows that animation will not be performed in the timeline or it is finished.
+Stop animation. This method changed status of the animation to Stopped. This status shows that animation will not be performed in the timeline or it is finished.
 ") Stop;
 		virtual void Stop();
 
@@ -1039,7 +1049,9 @@ bool
 
 Description
 -----------
-Update single frame of animation, update timer state @param thepts [in] the time moment within [0; duration()] return true if timeline is in progress.
+Update single frame of animation, update timer state 
+Input parameter: thePts the time moment within [0; Duration()] 
+Return: True if timeline is in progress.
 ") Update;
 		virtual Standard_Boolean Update(const Standard_Real thePts);
 
@@ -1052,7 +1064,8 @@ float
 
 Description
 -----------
-Update single frame of animation, update timer state return current time of timeline progress.
+Update single frame of animation, update timer state 
+Return: current time of timeline progress.
 ") UpdateTimer;
 		virtual Standard_Real UpdateTimer();
 
@@ -1085,9 +1098,6 @@ Update total duration considering all animations on timeline.
 ******************************/
 class AIS_AnimationProgress {
 	public:
-		float Pts;
-		float LocalPts;
-		float LocalNormalized;
 		/****** AIS_AnimationProgress::AIS_AnimationProgress ******/
 		/****** md5 signature: 9e9e671b9cf6b1f96915c177eaaa8cf0 ******/
 		%feature("compactdefaultargs") AIS_AnimationProgress;
@@ -1124,7 +1134,7 @@ None
 
 Description
 -----------
-Constructs an empty attribute filter object. this filter object determines whether selectable interactive objects have a non-null owner.
+Constructs an empty attribute filter object. This filter object determines whether selectable interactive objects have a non-null owner.
 ") AIS_AttributeFilter;
 		 AIS_AttributeFilter();
 
@@ -1142,7 +1152,7 @@ None
 
 Description
 -----------
-Constructs an attribute filter object defined by the color attribute acol.
+Constructs an attribute filter object defined by the color attribute aCol.
 ") AIS_AttributeFilter;
 		 AIS_AttributeFilter(const Quantity_NameOfColor aCol);
 
@@ -1160,7 +1170,7 @@ None
 
 Description
 -----------
-Constructs an attribute filter object defined by the line width attribute awidth.
+Constructs an attribute filter object defined by the line width attribute aWidth.
 ") AIS_AttributeFilter;
 		 AIS_AttributeFilter(const Standard_Real aWidth);
 
@@ -1173,7 +1183,7 @@ bool
 
 Description
 -----------
-Indicates that the interactive object has the color setting specified by the argument acol at construction time.
+Indicates that the Interactive Object has the color setting specified by the argument aCol at construction time.
 ") HasColor;
 		Standard_Boolean HasColor();
 
@@ -1186,7 +1196,7 @@ bool
 
 Description
 -----------
-Indicates that the interactive object has the width setting specified by the argument awidth at construction time.
+Indicates that the Interactive Object has the width setting specified by the argument aWidth at construction time.
 ") HasWidth;
 		Standard_Boolean HasWidth();
 
@@ -1204,7 +1214,7 @@ bool
 
 Description
 -----------
-Indicates that the selected interactive object passes the filter. the owner, anobj, can be either direct or user. a direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. if the interactive object returns standard_true when detected by the local context selector through the mouse, the object is kept; if not, it is rejected.
+Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. If the Interactive Object returns Standard_True when detected by the Local Context selector through the mouse, the object is kept; if not, it is rejected.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
@@ -1368,7 +1378,7 @@ None
 
 Description
 -----------
-Removes from the list of non-selectionnable edges all edges in the contour <index>.
+removes from the list of non-selectionnable edges all edges in the contour <Index>.
 ") RemoveEdges;
 		void RemoveEdges(const Standard_Integer Index);
 
@@ -1386,7 +1396,7 @@ None
 
 Description
 -----------
-Sets <mycontour> with current contour. used by isok.
+sets <myContour> with current contour. used by IsOk.
 ") SetContour;
 		void SetContour(const Standard_Integer Index);
 
@@ -1476,11 +1486,6 @@ No available documentation.
 **************************/
 class AIS_ColoredDrawer : public Prs3d_Drawer {
 	public:
-		bool myIsHidden;
-		bool myHasOwnMaterial;
-		bool myHasOwnColor;
-		bool myHasOwnTransp;
-		bool myHasOwnWidth;
 		/****** AIS_ColoredDrawer::AIS_ColoredDrawer ******/
 		/****** md5 signature: fb206bfbdf2e0955a791e7882ddd0a6d ******/
 		%feature("compactdefaultargs") AIS_ColoredDrawer;
@@ -1731,7 +1736,7 @@ None
 
 Description
 -----------
-Constructs an empty exclusion filter object defined by the flag setting exclusionflagon. by default, the flag is set to true.
+Constructs an empty exclusion filter object defined by the flag setting ExclusionFlagOn. By default, the flag is set to true.
 ") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter(const Standard_Boolean ExclusionFlagOn = Standard_True);
 
@@ -1750,7 +1755,7 @@ None
 
 Description
 -----------
-All the ais objects of <typetoexclude> will be rejected by the isok method.
+All the AIS objects of <TypeToExclude> Will be rejected by the IsOk Method.
 ") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude, const Standard_Boolean ExclusionFlagOn = Standard_True);
 
@@ -1770,7 +1775,7 @@ None
 
 Description
 -----------
-Constructs an exclusion filter object defined by the enumeration value typetoexclude, the signature signatureintype, and the flag setting exclusionflagon. by default, the flag is set to true.
+Constructs an exclusion filter object defined by the enumeration value TypeToExclude, the signature SignatureInType, and the flag setting ExclusionFlagOn. By default, the flag is set to true.
 ") AIS_ExclusionFilter;
 		 AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude, const Standard_Integer SignatureInType, const Standard_Boolean ExclusionFlagOn = Standard_True);
 
@@ -1788,7 +1793,7 @@ bool
 
 Description
 -----------
-Adds the type typetoexclude to the list of types.
+Adds the type TypeToExclude to the list of types.
 ") Add;
 		Standard_Boolean Add(const AIS_KindOfInteractive TypeToExclude);
 
@@ -2060,7 +2065,7 @@ bool
 
 Description
 -----------
-Returns true if object is highlighted.
+Returns True if object is highlighted.
 ") IsHilighted;
 		Standard_Boolean IsHilighted();
 
@@ -2078,7 +2083,7 @@ bool
 
 Description
 -----------
-Return true if selection mode was registered.
+Return True if selection mode was registered.
 ") IsSModeIn;
 		Standard_Boolean IsSModeIn(Standard_Integer theMode);
 
@@ -2259,10 +2264,10 @@ Parameters
 ----------
 aDrawer: Prs3d_Drawer
 TheTypeOfAttributes: AIS_TypeOfAttribute
-aCol: Quantity_NameOfColor
 
 Return
 -------
+aCol: Quantity_NameOfColor
 aWidth: float
 aTyp: Aspect_TypeOfLine
 
@@ -2270,7 +2275,7 @@ Description
 -----------
 No available documentation.
 ") GetLineAtt;
-		static void GetLineAtt(const opencascade::handle<Prs3d_Drawer> & aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_NameOfColor & aCol, Standard_Real &OutValue, Aspect_TypeOfLine &OutValue);
+		static void GetLineAtt(const opencascade::handle<Prs3d_Drawer> & aDrawer, const AIS_TypeOfAttribute TheTypeOfAttributes, Quantity_NameOfColor &OutValue, Standard_Real &OutValue, Aspect_TypeOfLine &OutValue);
 
 		/****** AIS_GraphicTool::GetLineColor ******/
 		/****** md5 signature: eba7d0fb34c3645d05f21c7b3545cd3c ******/
@@ -2395,7 +2400,7 @@ None
 
 Description
 -----------
-Constructs the interactive context object defined by the principal viewer mainviewer.
+Constructs the interactive context object defined by the principal viewer MainViewer.
 ") AIS_InteractiveContext;
 		 AIS_InteractiveContext(const opencascade::handle<V3d_Viewer> & MainViewer);
 
@@ -2415,7 +2420,7 @@ None
 
 Description
 -----------
-Activates the selection mode amode whose index is given, for the given interactive entity aniobj.
+Activates the selection mode aMode whose index is given, for the given interactive entity anIobj.
 ") Activate;
 		void Activate(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Integer theMode = 0, const Standard_Boolean theIsForce = Standard_False);
 
@@ -2490,7 +2495,7 @@ None
 
 Description
 -----------
-Allows to add or remove the object given to the list of current and highlight/unhighlight it correspondingly. is valid for global context only; for local context use method addorremoveselected. since this method makes sense only for neutral point selection of a whole object, if 0 selection of the object is empty this method simply does nothing.
+No available documentation.
 ") AddOrRemoveCurrentObject;
 		void AddOrRemoveCurrentObject(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Boolean theIsToUpdateViewer);
 
@@ -2577,7 +2582,8 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns selectedinteractive()->getowner(). @sa selectedowner().
+Returns SelectedInteractive()->GetOwner(). 
+See also: SelectedOwner().
 ") Applicative;
 		opencascade::handle<Standard_Transient> Applicative();
 
@@ -2590,7 +2596,8 @@ bool
 
 Description
 -----------
-Returns true if the automatic highlight mode is active; true by default. @sa moveto(), select(), hilightwithcolor(), unhilight().
+Returns true if the automatic highlight mode is active; True by default. 
+See also: MoveTo(), Select(), HilightWithColor(), Unhilight().
 ") AutomaticHilight;
 		Standard_Boolean AutomaticHilight();
 
@@ -2603,7 +2610,7 @@ bool
 
 Description
 -----------
-Initializes the list of presentations to be displayed returns false if no local context is opened.
+initializes the list of presentations to be displayed returns False if no local context is opened.
 ") BeginImmediateDraw;
 		Standard_Boolean BeginImmediateDraw();
 
@@ -2670,7 +2677,7 @@ None
 
 Description
 -----------
-Empties previous current objects in order to get the current objects detected by the selector using updatecurrent. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") ClearCurrents;
 		void ClearCurrents(const Standard_Boolean theToUpdateViewer);
 
@@ -2688,7 +2695,9 @@ bool
 
 Description
 -----------
-Clears the list of entities detected by moveto() and resets dynamic highlighting. @param thetoredrawimmediate if true, the main viewer will be redrawn on update return true if viewer needs to be updated (e.g. there were actually dynamically highlighted entities).
+Clears the list of entities detected by MoveTo() and resets dynamic highlighting. 
+Parameter theToRedrawImmediate if True, the main Viewer will be redrawn on update 
+Return: True if viewer needs to be updated (e.g. there were actually dynamically highlighted entities).
 ") ClearDetected;
 		Standard_Boolean ClearDetected(Standard_Boolean theToRedrawImmediate = Standard_False);
 
@@ -2708,7 +2717,7 @@ None
 
 Description
 -----------
-Empties the graphic presentation of the mode indexed by amode. warning! removes theiobj. theiobj is still active if it was previously activated.
+Empties the graphic presentation of the mode indexed by aMode. Warning! Removes theIObj. theIObj is still active if it was previously activated.
 ") ClearPrs;
 		void ClearPrs(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theMode, const Standard_Boolean theToUpdateViewer);
 
@@ -2726,7 +2735,7 @@ None
 
 Description
 -----------
-Empties previous selected objects in order to get the selected objects detected by the selector using updateselected.
+Empties previous selected objects in order to get the selected objects detected by the selector using UpdateSelected.
 ") ClearSelected;
 		void ClearSelected(const Standard_Boolean theToUpdateViewer);
 
@@ -2745,7 +2754,7 @@ None
 
 Description
 -----------
-Returns the color of the object in the interactive context.
+Returns the color of the Object in the interactive context.
 ") Color;
 		void Color(const opencascade::handle<AIS_InteractiveObject> & aniobj, Quantity_Color & acolor);
 
@@ -2758,7 +2767,7 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Returns the current interactive object. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") Current;
 		opencascade::handle<AIS_InteractiveObject> Current();
 
@@ -2808,7 +2817,7 @@ None
 
 Description
 -----------
-Deactivates all the activated selection modes of the interactive object aniobj with a given selection mode amode.
+Deactivates all the activated selection modes of the interactive object anIobj with a given selection mode aMode.
 ") Deactivate;
 		void Deactivate(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Integer theMode);
 
@@ -2852,7 +2861,7 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns the default attribute manager. this contains all the color and line attributes which can be used by interactive objects which do not have their own attributes.
+Returns the default attribute manager. This contains all the color and line attributes which can be used by interactive objects which do not have their own attributes.
 ") DefaultDrawer;
 		const opencascade::handle<Prs3d_Drawer> & DefaultDrawer();
 
@@ -2865,7 +2874,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Return current mouse-detected interactive object or null object, if there is no currently detected interactives @sa detectedcurrentowner(), initdetected(), moredetected(), nextdetected().
+Return: current mouse-detected interactive object or null object, if there is no currently detected interactives 
+See also: DetectedCurrentOwner(), InitDetected(), MoreDetected(), NextDetected().
 ") DetectedCurrentObject;
 		opencascade::handle<AIS_InteractiveObject> DetectedCurrentObject();
 
@@ -2878,7 +2888,8 @@ opencascade::handle<SelectMgr_EntityOwner>
 
 Description
 -----------
-Returns the owner from detected list pointed by current iterator position. warning! this method is irrelevant to detectedowner() which returns last picked owner regardless of iterator position! @sa initdetected(), moredetected(), nextdetected().
+Returns the owner from detected list pointed by current iterator position. WARNING! This method is irrelevant to DetectedOwner() which returns last picked Owner regardless of iterator position! 
+See also: InitDetected(), MoreDetected(), NextDetected().
 ") DetectedCurrentOwner;
 		opencascade::handle<SelectMgr_EntityOwner> DetectedCurrentOwner();
 
@@ -2891,7 +2902,8 @@ TopoDS_Shape
 
 Description
 -----------
-Return current mouse-detected shape or empty (null) shape, if current interactive object is not a shape (ais_shape) or there is no current mouse-detected interactive object at all. @sa detectedcurrentowner(), initdetected(), moredetected(), nextdetected().
+Return: current mouse-detected shape or empty (null) shape, if current interactive object is not a shape (AIS_Shape) or there is no current mouse-detected interactive object at all. 
+See also: DetectedCurrentOwner(), InitDetected(), MoreDetected(), NextDetected().
 ") DetectedCurrentShape;
 		const TopoDS_Shape DetectedCurrentShape();
 
@@ -2904,7 +2916,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Returns the interactive objects last detected in context. in general this is just a wrapper for opencascade::handle<ais_interactiveobject>::downcast(detectedowner()->selectable()). @sa detectedowner().
+Returns the interactive objects last detected in context. In general this is just a wrapper for opencascade::handle<AIS_InteractiveObject>::DownCast(DetectedOwner()->Selectable()). 
+See also: DetectedOwner().
 ") DetectedInteractive;
 		opencascade::handle<AIS_InteractiveObject> DetectedInteractive();
 
@@ -2917,7 +2930,8 @@ opencascade::handle<SelectMgr_EntityOwner>
 
 Description
 -----------
-Returns the owner of the detected sensitive primitive which is currently dynamically highlighted. warning! this method is irrelevant to initdetected()/moredetected()/nextdetected(). @sa hasdetected(), hasnextdetected(), hilightpreviousdetected(), hilightnextdetected().
+Returns the owner of the detected sensitive primitive which is currently dynamically highlighted. WARNING! This method is irrelevant to InitDetected()/MoreDetected()/NextDetected(). 
+See also: HasDetected(), HasNextDetected(), HilightPreviousDetected(), HilightNextDetected().
 ") DetectedOwner;
 		const opencascade::handle<SelectMgr_EntityOwner> & DetectedOwner();
 
@@ -2930,7 +2944,8 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape detected in local context. @sa detectedowner().
+Returns the shape detected in local context. 
+See also: DetectedOwner().
 ") DetectedShape;
 		const TopoDS_Shape DetectedShape();
 
@@ -2956,7 +2971,7 @@ float
 
 Description
 -----------
-Returns the deviation coefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through prs3d_drawer::setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
+Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through Prs3d_Drawer::SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 ") DeviationCoefficient;
 		Standard_Real DeviationCoefficient();
 
@@ -2988,7 +3003,7 @@ None
 
 Description
 -----------
-Disconnects theobjtodisconnect from theassembly and removes dependent selection structures.
+Disconnects theObjToDisconnect from theAssembly and removes dependent selection structures.
 ") Disconnect;
 		void Disconnect(const opencascade::handle<AIS_InteractiveObject> & theAssembly, const opencascade::handle<AIS_InteractiveObject> & theObjToDisconnect = NULL);
 
@@ -3007,7 +3022,7 @@ None
 
 Description
 -----------
-Displays the object in this context using default display mode. this will be the object's default display mode, if there is one. otherwise, it will be the context mode. the interactive object's default selection mode is activated if getautoactivateselection() is true. in general, this is 0.
+Displays the object in this Context using default Display Mode. This will be the object's default display mode, if there is one. Otherwise, it will be the context mode. The Interactive Object's default selection mode is activated if GetAutoActivateSelection() is True. In general, this is 0.
 ") Display;
 		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -3029,7 +3044,7 @@ None
 
 Description
 -----------
-Sets status, display mode and selection mode for specified object if theselectionmode equals -1, theiobj will not be activated: it will be displayed but will not be selectable.
+Sets status, display mode and selection mode for specified Object If theSelectionMode equals -1, theIObj will not be activated: it will be displayed but will not be selectable.
 ") Display;
 		void Display(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theDispMode, const Standard_Integer theSelectionMode, const Standard_Boolean theToUpdateViewer, const PrsMgr_DisplayStatus theDispStatus = PrsMgr_DisplayStatus_None);
 
@@ -3120,7 +3135,7 @@ int
 
 Description
 -----------
-Returns the display mode setting to be used by default.
+Returns the Display Mode setting to be used by default.
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
@@ -3138,7 +3153,7 @@ Graphic3d_DisplayPriority
 
 Description
 -----------
-Returns the display priority of the object.
+Returns the display priority of the Object.
 ") DisplayPriority;
 		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
@@ -3174,7 +3189,7 @@ PrsMgr_DisplayStatus
 
 Description
 -----------
-Returns the display status of the entity aniobj. this will be one of the following: - ais_ds_displayed displayed in main viewer - ais_ds_erased hidden in main viewer - ais_ds_temporary temporarily displayed - ais_ds_none nowhere displayed.
+Returns the display status of the entity anIobj. This will be one of the following: - AIS_DS_Displayed displayed in main viewer - AIS_DS_Erased hidden in main viewer - AIS_DS_Temporary temporarily displayed - AIS_DS_None nowhere displayed.
 ") DisplayStatus;
 		PrsMgr_DisplayStatus DisplayStatus(const opencascade::handle<AIS_InteractiveObject> & anIobj);
 
@@ -3192,7 +3207,7 @@ None
 
 Description
 -----------
-Returns the list of displayed objects of a particular type whichkind and signature whichsignature. by default, whichsignature equals -1. this means that there is a check on type only.
+Returns the list of displayed objects of a particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals -1. This means that there is a check on type only.
 ") DisplayedObjects;
 		void DisplayedObjects(AIS_ListOfInteractive & aListOfIO);
 
@@ -3212,7 +3227,7 @@ None
 
 Description
 -----------
-Gives the list of displayed objects of a particular type and signature. by default, <whichsignature> = -1 means control only on <whichkind>.
+gives the list of displayed objects of a particular Type and signature. by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") DisplayedObjects;
 		void DisplayedObjects(const AIS_KindOfInteractive theWhichKind, const Standard_Integer theWhichSignature, AIS_ListOfInteractive & theListOfIO);
 
@@ -3225,7 +3240,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the hidden lines are to be drawn. by default the hidden lines are not drawn.
+returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 ") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine();
 
@@ -3277,7 +3292,7 @@ bool
 
 Description
 -----------
-Returns true if the immediate display has been done.
+returns True if the immediate display has been done.
 ") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw(const opencascade::handle<V3d_View> & theView);
 
@@ -3290,7 +3305,7 @@ bool
 
 Description
 -----------
-Uses the first active view of main viewer! returns true if the immediate display has been done.
+Uses the First Active View of Main Viewer! returns True if the immediate display has been done.
 ") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw();
 
@@ -3309,7 +3324,7 @@ None
 
 Description
 -----------
-Hides the object. the object's presentations are simply flagged as invisible and therefore excluded from redrawing. to show hidden objects, use display().
+Hides the object. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 ") Erase;
 		void Erase(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -3327,7 +3342,7 @@ None
 
 Description
 -----------
-Hides all objects. the object's presentations are simply flagged as invisible and therefore excluded from redrawing. to show all hidden objects, use displayall().
+Hides all objects. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show all hidden objects, use DisplayAll().
 ") EraseAll;
 		void EraseAll(const Standard_Boolean theToUpdateViewer);
 
@@ -3345,7 +3360,7 @@ None
 
 Description
 -----------
-Hides selected objects. the object's presentations are simply flagged as invisible and therefore excluded from redrawing. to show hidden objects, use display().
+Hides selected objects. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 ") EraseSelected;
 		void EraseSelected(const Standard_Boolean theToUpdateViewer);
 
@@ -3363,7 +3378,7 @@ None
 
 Description
 -----------
-Returns the list thelistofio of erased objects (hidden objects) particular type whichkind and signature whichsignature. by default, whichsignature equals 1. this means that there is a check on type only.
+Returns the list theListOfIO of erased objects (hidden objects) particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 ") ErasedObjects;
 		void ErasedObjects(AIS_ListOfInteractive & theListOfIO);
 
@@ -3383,7 +3398,7 @@ None
 
 Description
 -----------
-Gives the list of erased objects (hidden objects) type and signature by default, <whichsignature> = -1 means control only on <whichkind>.
+gives the list of erased objects (hidden objects) Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") ErasedObjects;
 		void ErasedObjects(const AIS_KindOfInteractive theWhichKind, const Standard_Integer theWhichSignature, AIS_ListOfInteractive & theListOfIO);
 
@@ -3396,7 +3411,7 @@ SelectMgr_FilterType
 
 Description
 -----------
-Return the context selection filter type.
+Return: the context selection filter type.
 ") FilterType;
 		SelectMgr_FilterType FilterType();
 
@@ -3442,7 +3457,7 @@ None
 
 Description
 -----------
-Fits the view correspondingly to the bounds of selected objects. infinite objects are ignored if infinite state of ais_interactiveobject is set to true.
+Fits the view correspondingly to the bounds of selected objects. Infinite objects are ignored if infinite state of AIS_InteractiveObject is set to true.
 ") FitSelected;
 		void FitSelected(const opencascade::handle<V3d_View> & theView, const Standard_Real theMargin, const Standard_Boolean theToUpdate);
 
@@ -3460,7 +3475,7 @@ None
 
 Description
 -----------
-Fits the view correspondingly to the bounds of selected objects. infinite objects are ignored if infinite state of ais_interactiveobject is set to true.
+Fits the view correspondingly to the bounds of selected objects. Infinite objects are ignored if infinite state of AIS_InteractiveObject is set to true.
 ") FitSelected;
 		void FitSelected(const opencascade::handle<V3d_View> & theView);
 
@@ -3473,7 +3488,7 @@ bool
 
 Description
 -----------
-Manages displaying the new object should also automatically activate default selection mode; true by default.
+Manages displaying the new object should also automatically activate default selection mode; True by default.
 ") GetAutoActivateSelection;
 		Standard_Boolean GetAutoActivateSelection();
 
@@ -3491,7 +3506,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Get z layer id set for displayed interactive object.
+Get Z layer id set for displayed interactive object.
 ") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer(const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
@@ -3504,7 +3519,7 @@ opencascade::handle<SelectMgr_AndOrFilter>
 
 Description
 -----------
-Return the context selection global context filter.
+Return: the context selection global context filter.
 ") GlobalFilter;
 		const opencascade::handle<SelectMgr_AndOrFilter> & GlobalFilter();
 
@@ -3535,7 +3550,8 @@ bool
 
 Description
 -----------
-Returns selectedinteractive()->hasowner(). @sa selectedowner().
+Returns SelectedInteractive()->HasOwner(). 
+See also: SelectedOwner().
 ") HasApplicative;
 		Standard_Boolean HasApplicative();
 
@@ -3553,7 +3569,7 @@ bool
 
 Description
 -----------
-Returns true if a view of the interactive object has color.
+Returns true if a view of the Interactive Object has color.
 ") HasColor;
 		Standard_Boolean HasColor(const opencascade::handle<AIS_InteractiveObject> & aniobj);
 
@@ -3566,7 +3582,8 @@ bool
 
 Description
 -----------
-Returns true if there is a mouse-detected entity in context. @sa detectedowner(), hasnextdetected(), hilightpreviousdetected(), hilightnextdetected().
+Returns true if there is a mouse-detected entity in context. 
+See also: DetectedOwner(), HasNextDetected(), HilightPreviousDetected(), HilightNextDetected().
 ") HasDetected;
 		Standard_Boolean HasDetected();
 
@@ -3579,7 +3596,8 @@ bool
 
 Description
 -----------
-Returns true if there is a detected shape in local context. @sa hasdetected(), detectedshape().
+Returns true if there is a detected shape in local context. 
+See also: HasDetected(), DetectedShape().
 ") HasDetectedShape;
 		Standard_Boolean HasDetectedShape();
 
@@ -3597,7 +3615,7 @@ bool
 
 Description
 -----------
-Returns true if the object has a location.
+Returns true if the Object has a location.
 ") HasLocation;
 		Standard_Boolean HasLocation(const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -3610,7 +3628,8 @@ bool
 
 Description
 -----------
-Returns true if other entities were detected in the last mouse detection @sa hilightpreviousdetected(), hilightnextdetected().
+returns True if other entities were detected in the last mouse detection 
+See also: HilightPreviousDetected(), HilightNextDetected().
 ") HasNextDetected;
 		Standard_Boolean HasNextDetected();
 
@@ -3628,7 +3647,7 @@ bool
 
 Description
 -----------
-Simply calls ais_interactiveobject::haspolygonoffsets().
+Simply calls AIS_InteractiveObject::HasPolygonOffsets().
 ") HasPolygonOffsets;
 		Standard_Boolean HasPolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & anObj);
 
@@ -3641,7 +3660,8 @@ bool
 
 Description
 -----------
-Returns true if the interactive context has a shape selected. @sa selectedshape().
+Returns True if the interactive context has a shape selected. 
+See also: SelectedShape().
 ") HasSelectedShape;
 		Standard_Boolean HasSelectedShape();
 
@@ -3654,7 +3674,7 @@ opencascade::handle<Prs3d_LineAspect>
 
 Description
 -----------
-Initializes hidden line aspect in the default drawing tool, or drawer. the default values are: color: quantity_noc_yellow type of line: aspect_tol_dash width: 1.
+Initializes hidden line aspect in the default drawing tool, or Drawer. The default values are: Color: Quantity_NOC_YELLOW Type of line: Aspect_TOL_DASH Width: 1.
 ") HiddenLineAspect;
 		const opencascade::handle<Prs3d_LineAspect> & HiddenLineAspect();
 
@@ -3672,7 +3692,13 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns default highlight style settings (could be overridden by prsmgr_presentableobject). //! tip: although highlighting style is defined by prs3d_drawer, only a small set of properties derived from it's base class graphic3d_presentationattributes will be actually used in most cases. //! default highlight style for all types is aspect_tohm_color. other defaults: - prs3d_typeofhighlight_dynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_top, object highlighting is drawn on top of main scene within immediate layers, so that v3d_view::redrawimmediate() will be enough to see update; - prs3d_typeofhighlight_localdynamic * color: quantity_noc_cyan1; * layer: graphic3d_zlayerid_topmost, object parts highlighting is drawn on top of main scene within immediate layers with depth cleared (even overlapped geometry will be revealed); - prs3d_typeofhighlight_selected * color: quantity_noc_gray80; * layer: graphic3d_zlayerid_unknown, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. graphic3d_zlayerid_default by default) and increased priority. //! @param[in] thestyletype highlight style to modify return drawer associated to specified highlight type //! @sa moveto() using prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic types @sa selectdetected() using prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected types @sa prsmgr_presentableobject::dynamichilightattributes() overriding prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic defaults on object level @sa prsmgr_presentableobject::hilightattributes() overriding prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected defaults on object level.
+Returns default highlight style settings (could be overridden by PrsMgr_PresentableObject). //! Tip: although highlighting style is defined by Prs3d_Drawer, only a small set of properties derived from it's base class Graphic3d_PresentationAttributes will be actually used in most cases. //! Default highlight style for all types is Aspect_TOHM_COLOR. Other defaults: - Prs3d_TypeOfHighlight_Dynamic * Color: Quantity_NOC_CYAN1; * Layer: Graphic3d_ZLayerId_Top, object highlighting is drawn on top of main scene within Immediate Layers, so that V3d_View::RedrawImmediate() will be enough to see update; - Prs3d_TypeOfHighlight_LocalDynamic * Color: Quantity_NOC_CYAN1; * Layer: Graphic3d_ZLayerId_Topmost, object parts highlighting is drawn on top of main scene within Immediate Layers with depth cleared (even overlapped geometry will be revealed); - Prs3d_TypeOfHighlight_Selected * Color: Quantity_NOC_GRAY80; * Layer: Graphic3d_ZLayerId_UNKNOWN, object highlighting is drawn on top of main scene within the same layer as object itself (e.g. Graphic3d_ZLayerId_Default by default) and increased priority. //! 
+Input parameter: theStyleType highlight style to modify 
+Return: drawer associated to specified highlight type //! 
+See also: MoveTo() using Prs3d_TypeOfHighlight_Dynamic and Prs3d_TypeOfHighlight_LocalDynamic types 
+See also: SelectDetected() using Prs3d_TypeOfHighlight_Selected and Prs3d_TypeOfHighlight_LocalSelected types 
+See also: PrsMgr_PresentableObject::DynamicHilightAttributes() overriding Prs3d_TypeOfHighlight_Dynamic and Prs3d_TypeOfHighlight_LocalDynamic defaults on object level 
+See also: PrsMgr_PresentableObject::HilightAttributes() overriding Prs3d_TypeOfHighlight_Selected and Prs3d_TypeOfHighlight_LocalSelected defaults on object level.
 ") HighlightStyle;
 		const opencascade::handle<Prs3d_Drawer> & HighlightStyle(const Prs3d_TypeOfHighlight theStyleType);
 
@@ -3685,7 +3711,7 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns current dynamic highlight style settings corresponding to prs3d_typeofhighlight_dynamic. this is just a short-cut to highlightstyle(prs3d_typeofhighlight_dynamic).
+Returns current dynamic highlight style settings corresponding to Prs3d_TypeOfHighlight_Dynamic. This is just a short-cut to HighlightStyle(Prs3d_TypeOfHighlight_Dynamic).
 ") HighlightStyle;
 		const opencascade::handle<Prs3d_Drawer> & HighlightStyle();
 
@@ -3704,7 +3730,8 @@ bool
 
 Description
 -----------
-Returns highlight style of the object if it is marked as highlighted via global status @param theobj [in] the object to check.
+Returns highlight style of the object if it is marked as highlighted via global status 
+Input parameter: theObj the object to check.
 ") HighlightStyle;
 		Standard_Boolean HighlightStyle(const opencascade::handle<AIS_InteractiveObject> & theObj, opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -3723,7 +3750,8 @@ bool
 
 Description
 -----------
-Returns highlight style of the owner if it is selected @param theowner [in] the owner to check.
+Returns highlight style of the owner if it is selected 
+Input parameter: theOwner the owner to check.
 ") HighlightStyle;
 		Standard_Boolean HighlightStyle(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -3742,7 +3770,7 @@ None
 
 Description
 -----------
-Updates the display in the viewer to take dynamic detection into account. on dynamic detection by the mouse cursor, sensitive primitives are highlighted. the highlight color of entities detected by mouse movement is white by default.
+No available documentation.
 ") Hilight;
 		void Hilight(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Boolean theIsToUpdateViewer);
 
@@ -3760,7 +3788,7 @@ None
 
 Description
 -----------
-Highlights current objects. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") HilightCurrents;
 		void HilightCurrents(const Standard_Boolean theToUpdateViewer);
 
@@ -3779,7 +3807,9 @@ int
 
 Description
 -----------
-If more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. this method allows the user to hilight one after another the other detected entities. if the method select is called, the selected entity will be the hilighted one! warning: loop method. when all the detected entities have been hilighted, the next call will hilight the first one again. return the rank of hilighted entity @sa hasnextdetected(), hilightpreviousdetected().
+If more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. This Method allows the user to hilight one after another the other detected entities. If The method select is called, the selected entity will be the hilighted one! WARNING: Loop Method. When all the detected entities have been hilighted, the next call will hilight the first one again. 
+Return: the Rank of hilighted entity 
+See also: HasNextDetected(), HilightPreviousDetected().
 ") HilightNextDetected;
 		Standard_Integer HilightNextDetected(const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawImmediate = Standard_True);
 
@@ -3798,7 +3828,8 @@ int
 
 Description
 -----------
-Same as previous methods in reverse direction. @sa hasnextdetected(), hilightnextdetected().
+Same as previous methods in reverse direction. 
+See also: HasNextDetected(), HilightNextDetected().
 ") HilightPreviousDetected;
 		Standard_Integer HilightPreviousDetected(const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawImmediate = Standard_True);
 
@@ -3855,7 +3886,7 @@ bool
 
 Description
 -----------
-Returns true if <aniobj> has been stored in the list.
+returns True if <anIObj> has been stored in the list.
 ") ImmediateAdd;
 		Standard_Boolean ImmediateAdd(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Integer theMode = 0);
 
@@ -3868,7 +3899,7 @@ None
 
 Description
 -----------
-Initializes a scan of the current selected objects in neutral point. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") InitCurrent;
 		void InitCurrent();
 
@@ -3881,7 +3912,8 @@ None
 
 Description
 -----------
-Initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. @sa detectedcurrentowner(), moredetected(), nextdetected().
+Initialization for iteration through mouse-detected objects in interactive context or in local context if it is opened. 
+See also: DetectedCurrentOwner(), MoreDetected(), NextDetected().
 ") InitDetected;
 		void InitDetected();
 
@@ -3894,7 +3926,8 @@ None
 
 Description
 -----------
-Initializes a scan of the selected objects. @sa selectedowner(), moreselected(), nextselected().
+Initializes a scan of the selected objects. 
+See also: SelectedOwner(), MoreSelected(), NextSelected().
 ") InitSelected;
 		void InitSelected();
 
@@ -3912,7 +3945,7 @@ bool
 
 Description
 -----------
-Returns true if there is a non-null interactive object in neutral point. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") IsCurrent;
 		Standard_Boolean IsCurrent(const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -3930,7 +3963,7 @@ bool
 
 Description
 -----------
-Returns true if object is displayed in the interactive context.
+Returns true if Object is displayed in the interactive context.
 ") IsDisplayed;
 		Standard_Boolean IsDisplayed(const opencascade::handle<AIS_InteractiveObject> & anIobj);
 
@@ -3967,7 +4000,8 @@ bool
 
 Description
 -----------
-Returns true if the object is marked as highlighted via its global status @param theobj [in] the object to check.
+Returns true if the object is marked as highlighted via its global status 
+Input parameter: theObj the object to check.
 ") IsHilighted;
 		Standard_Boolean IsHilighted(const opencascade::handle<AIS_InteractiveObject> & theObj);
 
@@ -3985,7 +4019,8 @@ bool
 
 Description
 -----------
-Returns true if the owner is marked as selected @param theowner [in] the owner to check.
+Returns true if the owner is marked as selected 
+Input parameter: theOwner the owner to check.
 ") IsHilighted;
 		Standard_Boolean IsHilighted(const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -4052,7 +4087,7 @@ int
 
 Description
 -----------
-Returns the number of u and v isoparameters displayed.
+Returns the number of U and V isoparameters displayed.
 ") IsoNumber;
 		Standard_Integer IsoNumber(const AIS_TypeOfIso WhichIsos = AIS_TOI_Both);
 
@@ -4070,7 +4105,7 @@ None
 
 Description
 -----------
-Returns true if drawing isoparameters on planes is enabled.
+Returns True if drawing isoparameters on planes is enabled.
 ") IsoOnPlane;
 		void IsoOnPlane(const Standard_Boolean theToSwitchOn);
 
@@ -4083,7 +4118,7 @@ bool
 
 Description
 -----------
-Returns true if drawing isoparameters on planes is enabled. if <foruisos> = false,.
+Returns True if drawing isoparameters on planes is enabled. if <forUIsos> = False,.
 ") IsoOnPlane;
 		Standard_Boolean IsoOnPlane();
 
@@ -4102,7 +4137,7 @@ None
 
 Description
 -----------
-Enables or disables on-triangulation build for isolines for a particular object. in case if on-triangulation builder is disabled, default on-plane builder will compute isolines for the object given.
+Enables or disables on-triangulation build for isolines for a particular object. In case if on-triangulation builder is disabled, default on-plane builder will compute isolines for the object given.
 ") IsoOnTriangulation;
 		void IsoOnTriangulation(const Standard_Boolean theIsEnabled, const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -4120,7 +4155,7 @@ None
 
 Description
 -----------
-Enables or disables on-triangulation build for isolines for default drawer. in case if on-triangulation builder is disabled, default on-plane builder will compute isolines for the object given.
+Enables or disables on-triangulation build for isolines for default drawer. In case if on-triangulation builder is disabled, default on-plane builder will compute isolines for the object given.
 ") IsoOnTriangulation;
 		void IsoOnTriangulation(const Standard_Boolean theToSwitchOn);
 
@@ -4146,7 +4181,7 @@ opencascade::handle<V3d_View>
 
 Description
 -----------
-Returns last active view (argument of moveto()/select() methods).
+Returns last active View (argument of MoveTo()/Select() methods).
 ") LastActiveView;
 		opencascade::handle<V3d_View> LastActiveView();
 
@@ -4165,7 +4200,7 @@ None
 
 Description
 -----------
-Allows you to load the interactive object with a given selection mode, and/or with the desired decomposition option, whether the object is visualized or not. the loaded objects will be selectable but displayable in highlighting only when detected by the selector.
+Allows you to load the Interactive Object with a given selection mode, and/or with the desired decomposition option, whether the object is visualized or not. The loaded objects will be selectable but displayable in highlighting only when detected by the Selector.
 ") Load;
 		void Load(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Integer theSelectionMode = -1);
 
@@ -4203,7 +4238,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns the location of the object.
+Returns the location of the Object.
 ") Location;
 		TopLoc_Location Location(const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -4242,7 +4277,7 @@ bool
 
 Description
 -----------
-Returns true if there is another object found by the scan of the list of current objects. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") MoreCurrent;
 		Standard_Boolean MoreCurrent();
 
@@ -4255,7 +4290,8 @@ bool
 
 Description
 -----------
-Return true if there is more mouse-detected objects after the current one during iteration through mouse-detected interactive objects. @sa detectedcurrentowner(), initdetected(), nextdetected().
+Return True if there is more mouse-detected objects after the current one during iteration through mouse-detected interactive objects. 
+See also: DetectedCurrentOwner(), InitDetected(), NextDetected().
 ") MoreDetected;
 		Standard_Boolean MoreDetected();
 
@@ -4268,7 +4304,8 @@ bool
 
 Description
 -----------
-Returns true if there is another object found by the scan of the list of selected objects. @sa selectedowner(), initselected(), nextselected().
+Returns true if there is another object found by the scan of the list of selected objects. 
+See also: SelectedOwner(), InitSelected(), NextSelected().
 ") MoreSelected;
 		Standard_Boolean MoreSelected();
 
@@ -4289,7 +4326,10 @@ AIS_StatusOfDetection
 
 Description
 -----------
-Relays mouse position in pixels thexpix and theypix to the interactive context selectors. this is done by the view theview passing this position to the main viewer and updating it. if thetoredrawonupdate is set to false, callee should call redrawimmediate() to highlight detected object. @sa pickingstrategy() @sa highlightstyle() defining default dynamic highlight styles of detected owners  (prs3d_typeofhighlight_dynamic and prs3d_typeofhighlight_localdynamic) @sa prsmgr_presentableobject::dynamichilightattributes() defining per-object dynamic highlight style of detected owners (overrides defaults).
+Relays mouse position in pixels theXPix and theYPix to the interactive context selectors. This is done by the view theView passing this position to the main viewer and updating it. If theToRedrawOnUpdate is set to false, callee should call RedrawImmediate() to highlight detected object. 
+See also: PickingStrategy() 
+See also: HighlightStyle() defining default dynamic highlight styles of detected owners  (Prs3d_TypeOfHighlight_Dynamic and Prs3d_TypeOfHighlight_LocalDynamic) 
+See also: PrsMgr_PresentableObject::DynamicHilightAttributes() defining per-object dynamic highlight style of detected owners (overrides defaults).
 ") MoveTo;
 		AIS_StatusOfDetection MoveTo(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawOnUpdate);
 
@@ -4309,7 +4349,8 @@ AIS_StatusOfDetection
 
 Description
 -----------
-Relays axis theaxis to the interactive context selectors. this is done by the view theview passing this axis to the main viewer and updating it. if thetoredrawonupdate is set to false, callee should call redrawimmediate() to highlight detected object. @sa pickingstrategy().
+Relays axis theAxis to the interactive context selectors. This is done by the view theView passing this axis to the main viewer and updating it. If theToRedrawOnUpdate is set to false, callee should call RedrawImmediate() to highlight detected object. 
+See also: PickingStrategy().
 ") MoveTo;
 		AIS_StatusOfDetection MoveTo(const gp_Ax1 & theAxis, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToRedrawOnUpdate);
 
@@ -4335,7 +4376,8 @@ int
 
 Description
 -----------
-Count a number of selected entities using initselected()+moreselected()+nextselected() iterator. @sa selectedowner(), initselected(), moreselected(), nextselected().
+Count a number of selected entities using InitSelected()+MoreSelected()+NextSelected() iterator. 
+See also: SelectedOwner(), InitSelected(), MoreSelected(), NextSelected().
 ") NbSelected;
 		Standard_Integer NbSelected();
 
@@ -4348,7 +4390,7 @@ None
 
 Description
 -----------
-Continues the scan to the next object in the list of current objects. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") NextCurrent;
 		void NextCurrent();
 
@@ -4361,7 +4403,8 @@ None
 
 Description
 -----------
-Gets next current object during iteration through mouse-detected interactive objects. @sa detectedcurrentowner(), initdetected(), moredetected().
+Gets next current object during iteration through mouse-detected interactive objects. 
+See also: DetectedCurrentOwner(), InitDetected(), MoreDetected().
 ") NextDetected;
 		void NextDetected();
 
@@ -4374,7 +4417,8 @@ None
 
 Description
 -----------
-Continues the scan to the next object in the list of selected objects. @sa selectedowner(), initselected(), moreselected().
+Continues the scan to the next object in the list of selected objects. 
+See also: SelectedOwner(), InitSelected(), MoreSelected().
 ") NextSelected;
 		void NextSelected();
 
@@ -4406,7 +4450,7 @@ None
 
 Description
 -----------
-Returns the list thelistofio of objects with indicated display status particular type whichkind and signature whichsignature. by default, whichsignature equals 1. this means that there is a check on type only.
+Returns the list theListOfIO of objects with indicated display status particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 ") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus(const PrsMgr_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
 
@@ -4427,7 +4471,7 @@ None
 
 Description
 -----------
-Gives the list of objects with indicated display status type and signature by default, <whichsignature> = -1 means control only on <whichkind>.
+gives the list of objects with indicated display status Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus(const AIS_KindOfInteractive WhichKind, const Standard_Integer WhichSignature, const PrsMgr_DisplayStatus theStatus, AIS_ListOfInteractive & theListOfIO);
 
@@ -4468,7 +4512,7 @@ None
 
 Description
 -----------
-Fills <alistofio> with objects of a particular type and signature with no consideration of display status. by default, <whichsignature> = -1 means control only on <whichkind>. if <whichkind> = ais_kindofinteractive_none and <whichsignature> = -1, all the objects are put into the list.
+fills <aListOfIO> with objects of a particular Type and Signature with no consideration of display status. by Default, <WhichSignature> = -1 means control only on <WhichKind>. if <WhichKind> = AIS_KindOfInteractive_None and <WhichSignature> = -1, all the objects are put into the list.
 ") ObjectsInside;
 		void ObjectsInside(AIS_ListOfInteractive & aListOfIO, const AIS_KindOfInteractive WhichKind = AIS_KindOfInteractive_None, const Standard_Integer WhichSignature = -1);
 
@@ -4481,7 +4525,8 @@ SelectMgr_PickingStrategy
 
 Description
 -----------
-Return picking strategy; selectmgr_pickingstrategy_firstacceptable by default. @sa moveto(), filters().
+Return picking strategy; SelectMgr_PickingStrategy_FirstAcceptable by default. 
+See also: MoveTo(), Filters().
 ") PickingStrategy;
 		SelectMgr_PickingStrategy PickingStrategy();
 
@@ -4494,7 +4539,7 @@ int
 
 Description
 -----------
-Returns the pixel tolerance, default is 2. pixel tolerance extends sensitivity within moveto() operation (picking by point) and can be adjusted by application based on user input precision (e.g. screen pixel density, input device precision, etc.).
+Returns the pixel tolerance, default is 2. Pixel Tolerance extends sensitivity within MoveTo() operation (picking by point) and can be adjusted by application based on user input precision (e.g. screen pixel density, input device precision, etc.).
 ") PixelTolerance;
 		Standard_Integer PixelTolerance();
 
@@ -4512,7 +4557,7 @@ YSize: float
 
 Description
 -----------
-Returns true if the length in the x direction xsize is the same as that in the y direction ysize.
+Returns true if the length in the X direction XSize is the same as that in the Y direction YSize.
 ") PlaneSize;
 		Standard_Boolean PlaneSize(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4532,7 +4577,7 @@ aUnits: float
 
 Description
 -----------
-Retrieves current polygon offsets settings for object.
+Retrieves current polygon offsets settings for Object.
 ") PolygonOffsets;
 		void PolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & anObj, Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
@@ -4545,7 +4590,7 @@ None
 
 Description
 -----------
-Rebuilds 1st level of bvh selection forcibly.
+Rebuilds 1st level of BVH selection forcibly.
 ") RebuildSelectionStructs;
 		void RebuildSelectionStructs();
 
@@ -4565,7 +4610,7 @@ None
 
 Description
 -----------
-Recomputes the displayed presentations, flags the others. doesn't update presentations.
+Recomputes the displayed presentations, flags the others. Doesn't update presentations.
 ") RecomputePrsOnly;
 		void RecomputePrsOnly(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer, const Standard_Boolean theAllModes = Standard_False);
 
@@ -4583,7 +4628,7 @@ None
 
 Description
 -----------
-Recomputes the active selections, flags the others. doesn't update presentations.
+Recomputes the active selections, flags the others. Doesn't update presentations.
 ") RecomputeSelectionOnly;
 		void RecomputeSelectionOnly(const opencascade::handle<AIS_InteractiveObject> & anIObj);
 
@@ -4603,7 +4648,7 @@ None
 
 Description
 -----------
-Recomputes the seen parts presentation of the object. if theallmodes equals true, all presentations are present in the object even if unseen.
+Recomputes the seen parts presentation of the Object. If theAllModes equals true, all presentations are present in the object even if unseen.
 ") Redisplay;
 		void Redisplay(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer, const Standard_Boolean theAllModes = Standard_False);
 
@@ -4623,7 +4668,7 @@ None
 
 Description
 -----------
-Recomputes the prs/selection of displayed objects of a given type and a given signature. if signature = -1 doesn't take signature criterion.
+Recomputes the Prs/Selection of displayed objects of a given type and a given signature. if signature = -1 doesn't take signature criterion.
 ") Redisplay;
 		void Redisplay(const AIS_KindOfInteractive theTypeOfObject, const Standard_Integer theSignature, const Standard_Boolean theToUpdateViewer);
 
@@ -4660,7 +4705,7 @@ None
 
 Description
 -----------
-Removes object from every viewer.
+Removes Object from every viewer.
 ") Remove;
 		void Remove(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -4678,7 +4723,7 @@ None
 
 Description
 -----------
-Removes all the objects from context.
+Removes all the objects from Context.
 ") RemoveAll;
 		void RemoveAll(const Standard_Boolean theToUpdateViewer);
 
@@ -4727,7 +4772,7 @@ None
 
 Description
 -----------
-Puts the object back into its initial position.
+Puts the Object back into its initial position.
 ") ResetLocation;
 		void ResetLocation(const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -4746,7 +4791,10 @@ AIS_StatusOfPick
 
 Description
 -----------
-Sets list of owner selected/deselected using specified selection scheme. @param theowners owners to change selection state @param theselscheme selection scheme return picking status.
+Sets list of owner selected/deselected using specified selection scheme. 
+Parameter theOwners owners to change selection state 
+Parameter theSelScheme selection scheme 
+Return: picking status.
 ") Select;
 		AIS_StatusOfPick Select(const AIS_NArray1OfEntityOwner & theOwners, const AIS_SelectionScheme theSelScheme);
 
@@ -4769,7 +4817,7 @@ AIS_StatusOfPick
 
 Description
 -----------
-Selects everything found in the bounding rectangle defined by the pixel minima and maxima, xpmin, ypmin, xpmax, and ypmax in the view. the objects detected are passed to the main viewer, which is then updated.
+Selects everything found in the bounding rectangle defined by the pixel minima and maxima, XPMin, YPMin, XPMax, and YPMax in the view. The objects detected are passed to the main viewer, which is then updated.
 ") Select;
 		AIS_StatusOfPick Select(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToUpdateViewer);
 
@@ -4789,7 +4837,7 @@ AIS_StatusOfPick
 
 Description
 -----------
-Polyline selection; clears the previous picked list.
+polyline selection; clears the previous picked list.
 ") Select;
 		AIS_StatusOfPick Select(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToUpdateViewer);
 
@@ -4807,7 +4855,8 @@ AIS_StatusOfPick
 
 Description
 -----------
-Stores and hilights the previous detected; unhilights the previous picked. @sa moveto().
+Stores and hilights the previous detected; Unhilights the previous picked. 
+See also: MoveTo().
 ") Select;
 		AIS_StatusOfPick Select(const Standard_Boolean theToUpdateViewer);
 
@@ -4825,7 +4874,11 @@ AIS_StatusOfPick
 
 Description
 -----------
-Select and hilights the previous detected via ais_interactivecontext::moveto() method; unhilights the previous picked. viewer should be explicitly redrawn after selection. @param theselscheme [in] selection scheme return picking status //! @sa highlightstyle() defining default highlight styles of selected owners (prs3d_typeofhighlight_selected and prs3d_typeofhighlight_localselected) @sa prsmgr_presentableobject::hilightattributes() defining per-object highlight style of selected owners (overrides defaults).
+Select and hilights the previous detected via AIS_InteractiveContext::MoveTo() method; unhilights the previous picked. Viewer should be explicitly redrawn after selection. 
+Input parameter: theSelScheme selection scheme 
+Return: picking status //! 
+See also: HighlightStyle() defining default highlight styles of selected owners (Prs3d_TypeOfHighlight_Selected and Prs3d_TypeOfHighlight_LocalSelected) 
+See also: PrsMgr_PresentableObject::HilightAttributes() defining per-object highlight style of selected owners (overrides defaults).
 ") SelectDetected;
 		AIS_StatusOfPick SelectDetected(const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
 
@@ -4845,7 +4898,11 @@ AIS_StatusOfPick
 
 Description
 -----------
-Selects the topmost object picked by the point in the view, viewer should be explicitly redrawn after selection. @param thepnt [in] point pixel coordinates within the view @param theview [in] active view where point is defined @param theselscheme [in] selection scheme return picking status.
+Selects the topmost object picked by the point in the view, Viewer should be explicitly redrawn after selection. 
+Input parameter: thePnt point pixel coordinates within the view 
+Input parameter: theView active view where point is defined 
+Input parameter: theSelScheme selection scheme 
+Return: picking status.
 ") SelectPoint;
 		AIS_StatusOfPick SelectPoint(const Graphic3d_Vec2i & thePnt, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
 
@@ -4865,7 +4922,11 @@ AIS_StatusOfPick
 
 Description
 -----------
-Select everything found in the polygon defined by bounding polyline. viewer should be explicitly redrawn after selection. @param thepolyline [in] polyline defining polygon bounds (in pixels) @param theview [in] active view where polyline is defined @param theselscheme [in] selection scheme return picking status.
+Select everything found in the polygon defined by bounding polyline. Viewer should be explicitly redrawn after selection. 
+Input parameter: thePolyline polyline defining polygon bounds (in pixels) 
+Input parameter: theView active view where polyline is defined 
+Input parameter: theSelScheme selection scheme 
+Return: picking status.
 ") SelectPolygon;
 		AIS_StatusOfPick SelectPolygon(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
 
@@ -4886,7 +4947,13 @@ AIS_StatusOfPick
 
 Description
 -----------
-Selects objects within the bounding rectangle. viewer should be explicitly redrawn after selection. @param thepntmin [in] rectangle lower point (in pixels) @param thepntmax [in] rectangle upper point (in pixels) @param theview [in] active view where rectangle is defined @param theselscheme [in] selection scheme return picking status @sa stdselect_viewerselector3d::allowoverlapdetection().
+Selects objects within the bounding rectangle. Viewer should be explicitly redrawn after selection. 
+Input parameter: thePntMin rectangle lower point (in pixels) 
+Input parameter: thePntMax rectangle upper point (in pixels) 
+Input parameter: theView active view where rectangle is defined 
+Input parameter: theSelScheme selection scheme 
+Return: picking status 
+See also: StdSelect_ViewerSelector3d::AllowOverlapDetection().
 ") SelectRectangle;
 		AIS_StatusOfPick SelectRectangle(const Graphic3d_Vec2i & thePntMin, const Graphic3d_Vec2i & thePntMax, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
 
@@ -4899,7 +4966,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Return opencascade::handle<ais_interactiveobject>::downcast (selectedowner()->selectable()). @sa selectedowner().
+Return opencascade::handle<AIS_InteractiveObject>::DownCast (SelectedOwner()->Selectable()). 
+See also: SelectedOwner().
 ") SelectedInteractive;
 		opencascade::handle<AIS_InteractiveObject> SelectedInteractive();
 
@@ -4912,7 +4980,8 @@ opencascade::handle<SelectMgr_EntityOwner>
 
 Description
 -----------
-Returns the owner of the selected entity. @sa initselected(), moreselected(), nextselected().
+Returns the owner of the selected entity. 
+See also: InitSelected(), MoreSelected(), NextSelected().
 ") SelectedOwner;
 		opencascade::handle<SelectMgr_EntityOwner> SelectedOwner();
 
@@ -4925,7 +4994,8 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the selected shape. basically it is just a shape returned stored by stdselect_brepowner with graphic transformation being applied: @code const opencascade::handle<stdselect_brepowner> abrepowner = opencascade::handle<stdselect_brepowner>::downcast (selectedowner()); topods_shape aselshape = abrepowner->shape(); topods_shape alocatedshape = aselshape.located (abrepowner->location() * aselshape.location()); @endcode @sa selectedowner(), hasselectedshape().
+Returns the selected shape. Basically it is just a shape returned stored by StdSelect_BRepOwner with graphic transformation being applied: @code const opencascade::handle<StdSelect_BRepOwner> aBRepOwner = opencascade::handle<StdSelect_BRepOwner>::DownCast (SelectedOwner()); TopoDS_Shape aSelShape = aBRepOwner->Shape(); TopoDS_Shape aLocatedShape = aSelShape.Located (aBRepOwner->Location() * aSelShape.Location()); @endcode 
+See also: SelectedOwner(), HasSelectedShape().
 ") SelectedShape;
 		TopoDS_Shape SelectedShape();
 
@@ -4964,7 +5034,7 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns current selection style settings corrsponding to prs3d_typeofhighlight_selected. this is just a short-cut to highlightstyle(prs3d_typeofhighlight_selected).
+Returns current selection style settings corrsponding to Prs3d_TypeOfHighlight_Selected. This is just a short-cut to HighlightStyle(Prs3d_TypeOfHighlight_Selected).
 ") SelectionStyle;
 		const opencascade::handle<Prs3d_Drawer> & SelectionStyle();
 
@@ -4984,7 +5054,7 @@ None
 
 Description
 -----------
-Calls the ais_shape setangleanddeviation to set both angle and deviation coefficients.
+Calls the AIS_Shape SetAngleAndDeviation to set both Angle and Deviation coefficients.
 ") SetAngleAndDeviation;
 		void SetAngleAndDeviation(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theAngle, const Standard_Boolean theToUpdateViewer);
 
@@ -5020,7 +5090,8 @@ None
 
 Description
 -----------
-Sets the highlighting status of detected and selected entities. this function allows you to disconnect the automatic mode. //! moveto() will fill the list of detected entities and select() will set selected state to detected objects regardless of this flag, but with disabled automatichiligh() their highlighting state will be left unaffected, so that application will be able performing custom highlighting in a different way, if needed. //! this api should be distinguished from selectmgr_selectableobject::setautohilight() that is used to implement custom highlighting logic for a specific interactive object class. //! @sa moveto(), select(), hilightwithcolor(), unhilight().
+Sets the highlighting status of detected and selected entities. This function allows you to disconnect the automatic mode. //! MoveTo() will fill the list of detected entities and Select() will set selected state to detected objects regardless of this flag, but with disabled AutomaticHiligh() their highlighting state will be left unaffected, so that application will be able performing custom highlighting in a different way, if needed. //! This API should be distinguished from SelectMgr_SelectableObject::SetAutoHilight() that is used to implement custom highlighting logic for a specific interactive object class. //! 
+See also: MoveTo(), Select(), HilightWithColor(), Unhilight().
 ") SetAutomaticHilight;
 		void SetAutomaticHilight(Standard_Boolean theStatus);
 
@@ -5059,7 +5130,7 @@ None
 
 Description
 -----------
-Change the current facing model apply on polygons for setcolor(), settransparency(), setmaterial() methods default facing model is aspect_tofm_two_side. this mean that attributes is applying both on the front and back face.
+change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
 ") SetCurrentFacingModel;
 		void SetCurrentFacingModel(const opencascade::handle<AIS_InteractiveObject> & aniobj, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
 
@@ -5078,7 +5149,7 @@ None
 
 Description
 -----------
-Updates the view of the current object in open context. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") SetCurrentObject;
 		void SetCurrentObject(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -5096,7 +5167,7 @@ None
 
 Description
 -----------
-Sets the default attribute manager; should be set at context creation time. warning - this setter doesn't update links to the default drawer of already displayed objects!.
+Sets the default attribute manager; should be set at context creation time. Warning - this setter doesn't update links to the default drawer of already displayed objects!.
 ") SetDefaultDrawer;
 		void SetDefaultDrawer(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -5134,7 +5205,7 @@ None
 
 Description
 -----------
-Default 20 degrees.
+default 20 degrees.
 ") SetDeviationAngle;
 		void SetDeviationAngle(const Standard_Real theAngle);
 
@@ -5154,7 +5225,7 @@ None
 
 Description
 -----------
-Sets the deviation coefficient thecoefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient thecoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through the method: setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
+Sets the deviation coefficient theCoefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient theCoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 ") SetDeviationCoefficient;
 		void SetDeviationCoefficient(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theCoefficient, const Standard_Boolean theToUpdateViewer);
 
@@ -5172,7 +5243,7 @@ None
 
 Description
 -----------
-Sets the deviation coefficient thecoefficient. drawings of curves or patches are made with respect to a maximal chordal deviation. a deviation coefficient is used in the shading display mode. the shape is seen decomposed into triangles. these are used to calculate reflection of light from the surface of the object. the triangles are formed from chords of the curves in the shape. the deviation coefficient thecoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. if this limit is reached, a new triangle is begun. this deviation is absolute and is set through the method: setmaximalchordialdeviation. the default value is 0.001. in drawing shapes, however, you are allowed to ask for a relative deviation. this deviation will be: sizeofobject * deviationcoefficient.
+Sets the deviation coefficient theCoefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient theCoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 ") SetDeviationCoefficient;
 		void SetDeviationCoefficient(const Standard_Real theCoefficient);
 
@@ -5191,7 +5262,7 @@ None
 
 Description
 -----------
-Sets the display mode of seen interactive objects (which have no overridden display mode).
+Sets the display mode of seen Interactive Objects (which have no overridden Display Mode).
 ") SetDisplayMode;
 		void SetDisplayMode(const Standard_Integer theMode, const Standard_Boolean theToUpdateViewer);
 
@@ -5211,7 +5282,7 @@ None
 
 Description
 -----------
-Sets the display mode of seen interactive objects. themode provides the display mode index of the entity theiobj.
+Sets the display mode of seen Interactive Objects. theMode provides the display mode index of the entity theIObj.
 ") SetDisplayMode;
 		void SetDisplayMode(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theMode, const Standard_Boolean theToUpdateViewer);
 
@@ -5230,7 +5301,7 @@ None
 
 Description
 -----------
-Sets the display priority of the seen parts presentation of the object.
+Sets the display priority of the seen parts presentation of the Object.
 ") SetDisplayPriority;
 		void SetDisplayPriority(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Graphic3d_DisplayPriority thePriority);
 
@@ -5267,7 +5338,8 @@ None
 
 Description
 -----------
-Sets the context selection filter type. selectmgr_typefilter_or selection filter is used by default. @param thefiltertype the filter type.
+Sets the context selection filter type. SelectMgr_TypeFilter_OR selection filter is used by default. 
+Parameter theFilterType the filter type.
 ") SetFilterType;
 		void SetFilterType(const SelectMgr_FilterType theFilterType);
 
@@ -5285,7 +5357,7 @@ None
 
 Description
 -----------
-Sets the hidden line aspect anaspect. aspect defines display attributes for hidden lines in hlr projections.
+Sets the hidden line aspect anAspect. Aspect defines display attributes for hidden lines in HLR projections.
 ") SetHiddenLineAspect;
 		void SetHiddenLineAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -5304,7 +5376,7 @@ None
 
 Description
 -----------
-Setup highlight style settings. tip: it is better modifying existing style returned by method highlightstyle() instead of creating a new prs3d_drawer to avoid unexpected results due misconfiguration. //! if a new highlight style is created, its presentation zlayer should be checked, otherwise highlighting might not work as expected.
+Setup highlight style settings. Tip: it is better modifying existing style returned by method HighlightStyle() instead of creating a new Prs3d_Drawer to avoid unexpected results due misconfiguration. //! If a new highlight style is created, its presentation Zlayer should be checked, otherwise highlighting might not work as expected.
 ") SetHighlightStyle;
 		void SetHighlightStyle(const Prs3d_TypeOfHighlight theStyleType, const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -5322,7 +5394,7 @@ None
 
 Description
 -----------
-Setup the style of dynamic highlighting corrsponding to prs3d_typeofhighlight_selected. this is just a short-cut to sethighlightstyle(prs3d_typeofhighlight_dynamic,thestyle).
+Setup the style of dynamic highlighting corrsponding to Prs3d_TypeOfHighlight_Selected. This is just a short-cut to SetHighlightStyle(Prs3d_TypeOfHighlight_Dynamic,theStyle).
 ") SetHighlightStyle;
 		void SetHighlightStyle(const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -5341,7 +5413,7 @@ None
 
 Description
 -----------
-Sets the number of u and v isoparameters displayed.
+Sets the number of U and V isoparameters displayed.
 ") SetIsoNumber;
 		void SetIsoNumber(const Standard_Integer NbIsos, const AIS_TypeOfIso WhichIsos = AIS_TOI_Both);
 
@@ -5380,7 +5452,7 @@ None
 
 Description
 -----------
-Puts the location on the initial graphic representation and the selection for the object.
+Puts the location on the initial graphic representation and the selection for the Object.
 ") SetLocation;
 		void SetLocation(const opencascade::handle<AIS_InteractiveObject> & theObject, const TopLoc_Location & theLocation);
 
@@ -5400,7 +5472,7 @@ None
 
 Description
 -----------
-Provides the type of material setting for the view of the object.
+Provides the type of material setting for the view of the Object.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Graphic3d_MaterialAspect & theMaterial, const Standard_Boolean theToUpdateViewer);
 
@@ -5418,7 +5490,7 @@ None
 
 Description
 -----------
-Setup picking strategy - which entities detected by picking line will be accepted, considering selection filters. by default (selectmgr_pickingstrategy_firstacceptable), selection filters reduce the list of entities so that the context accepts topmost in remaining. //! this means that entities behind non-selectable (by filters) parts can be picked by user. if this behavior is undesirable, and user wants that non-selectable (by filters) parts should remain an obstacle for picking, selectmgr_pickingstrategy_onlytopmost can be set instead. //! notice, that since selection manager operates only objects registered in it, selectmgr_pickingstrategy_onlytopmost will not prevent picking entities behind visible by unregistered in selection manager presentations (e.g. deactivated). hence, selectmgr_pickingstrategy_onlytopmost changes behavior only with selection filters enabled.
+Setup picking strategy - which entities detected by picking line will be accepted, considering Selection Filters. By default (SelectMgr_PickingStrategy_FirstAcceptable), Selection Filters reduce the list of entities so that the context accepts topmost in remaining. //! This means that entities behind non-selectable (by filters) parts can be picked by user. If this behavior is undesirable, and user wants that non-selectable (by filters) parts should remain an obstacle for picking, SelectMgr_PickingStrategy_OnlyTopmost can be set instead. //! Notice, that since Selection Manager operates only objects registered in it, SelectMgr_PickingStrategy_OnlyTopmost will NOT prevent picking entities behind visible by unregistered in Selection Manager presentations (e.g. deactivated). Hence, SelectMgr_PickingStrategy_OnlyTopmost changes behavior only with Selection Filters enabled.
 ") SetPickingStrategy;
 		void SetPickingStrategy(const SelectMgr_PickingStrategy theStrategy);
 
@@ -5436,7 +5508,8 @@ None
 
 Description
 -----------
-Setup pixel tolerance for moveto() operation. @sa moveto().
+Setup pixel tolerance for MoveTo() operation. 
+See also: MoveTo().
 ") SetPixelTolerance;
 		void SetPixelTolerance(const Standard_Integer thePrecision = 2);
 
@@ -5456,7 +5529,7 @@ None
 
 Description
 -----------
-Sets the plane size defined by the length in the x direction xsize and that in the y direction ysize.
+Sets the plane size defined by the length in the X direction XSize and that in the Y direction YSize.
 ") SetPlaneSize;
 		void SetPlaneSize(const Standard_Real theSizeX, const Standard_Real theSizeY, const Standard_Boolean theToUpdateViewer);
 
@@ -5475,7 +5548,7 @@ None
 
 Description
 -----------
-Sets the plane size asize.
+Sets the plane size aSize.
 ") SetPlaneSize;
 		void SetPlaneSize(const Standard_Real theSize, const Standard_Boolean theToUpdateViewer);
 
@@ -5497,7 +5570,7 @@ None
 
 Description
 -----------
-Sets up polygon offsets for the given ais_interactiveobject. it simply calls ais_interactiveobject::setpolygonoffsets().
+Sets up polygon offsets for the given AIS_InteractiveObject. It simply calls AIS_InteractiveObject::SetPolygonOffsets().
 ") SetPolygonOffsets;
 		void SetPolygonOffsets(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Integer theMode, const Standard_ShortReal theFactor, const Standard_ShortReal theUnits, const Standard_Boolean theToUpdateViewer);
 
@@ -5516,7 +5589,7 @@ None
 
 Description
 -----------
-Unhighlights previously selected owners and marks them as not selected. marks owner given as selected and highlights it. performs selection filters check.
+Unhighlights previously selected owners and marks them as not selected. Marks owner given as selected and highlights it. Performs selection filters check.
 ") SetSelected;
 		void SetSelected(const opencascade::handle<SelectMgr_EntityOwner> & theOwners, const Standard_Boolean theToUpdateViewer);
 
@@ -5535,7 +5608,7 @@ None
 
 Description
 -----------
-Puts the interactive object aniobj in the list of selected objects. performs selection filters check.
+Puts the interactive object aniObj in the list of selected objects. Performs selection filters check.
 ") SetSelected;
 		void SetSelected(const opencascade::handle<AIS_InteractiveObject> & theObject, const Standard_Boolean theToUpdateViewer);
 
@@ -5554,7 +5627,7 @@ None
 
 Description
 -----------
-Sets the graphic basic aspect to the current presentation of all selected objects.
+Sets the graphic basic aspect to the current presentation of ALL selected objects.
 ") SetSelectedAspect;
 		void SetSelectedAspect(const opencascade::handle<Prs3d_BasicAspect> & theAspect, const Standard_Boolean theToUpdateViewer);
 
@@ -5573,7 +5646,10 @@ bool
 
 Description
 -----------
-Updates selected state of specified owner without calling hilightselected(). has no effect if selected state is not changed, and redirects to addorremoveselected() otherwise. @param theowner owner object to set selected state @param theisselected new selected state return true if selected state has been changed.
+Updates Selected state of specified owner without calling HilightSelected(). Has no effect if Selected state is not changed, and redirects to AddOrRemoveSelected() otherwise. 
+Parameter theOwner owner object to set selected state 
+Parameter theIsSelected new selected state 
+Return: True if Selected state has been changed.
 ") SetSelectedState;
 		Standard_Boolean SetSelectedState(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Standard_Boolean theIsSelected);
 
@@ -5591,7 +5667,8 @@ None
 
 Description
 -----------
-Sets selection instance to manipulate a container of selected owners @param theselection an instance of the selection.
+Sets selection instance to manipulate a container of selected owners 
+Parameter theSelection an instance of the selection.
 ") SetSelection;
 		void SetSelection(const opencascade::handle<AIS_Selection> & theSelection);
 
@@ -5613,7 +5690,12 @@ None
 
 Description
 -----------
-Activates or deactivates the selection mode for specified object. has no effect if selection mode was already active/deactivated. @param theobj object to activate/deactivate selection mode @param themode selection mode to activate/deactivate;  deactivation of -1 selection mode will effectively deactivate all selection modes;  activation of -1 selection mode with ais_selectionmodesconcurrency_single  will deactivate all selection modes, and will has no effect otherwise @param thetoactivate activation/deactivation flag @param theconcurrency specifies how to handle already activated selection modes;  default value (ais_selectionmodesconcurrency_multiple) means active selection modes should be left as is,  ais_selectionmodesconcurrency_single can be used if only one selection mode is expected to be active  and ais_selectionmodesconcurrency_globalorlocal can be used if either ais_interactiveobject::globalselectionmode()  or any combination of local selection modes is acceptable;  this value is considered only if thetoactivate set to true @param theisforce when set to true, the display status will be ignored while activating selection mode.
+Activates or deactivates the selection mode for specified object. Has no effect if selection mode was already active/deactivated. 
+Parameter theObj object to activate/deactivate selection mode 
+Parameter theMode selection mode to activate/deactivate;  deactivation of -1 selection mode will effectively deactivate all  selection modes; activation of -1 selection mode with  AIS_SelectionModesConcurrency_Single will deactivate all selection  modes, and will has no effect otherwise 
+Parameter theToActivate activation/deactivation flag 
+Parameter theConcurrency specifies how to handle already activated selection modes;  default value (AIS_SelectionModesConcurrency_Multiple) means active  selection modes should be left as is,  AIS_SelectionModesConcurrency_Single can be used if only one selection  mode is expected to be active and  AIS_SelectionModesConcurrency_GlobalOrLocal can be used if either  AIS_InteractiveObject::GlobalSelectionMode() or any combination of Local  selection modes is acceptable; this value is considered only if  theToActivate set to True 
+Parameter theIsForce when set to True, the display status will be ignored while activating selection mode.
 ") SetSelectionModeActive;
 		void SetSelectionModeActive(const opencascade::handle<AIS_InteractiveObject> & theObj, const Standard_Integer theMode, const Standard_Boolean theToActivate, const AIS_SelectionModesConcurrency theConcurrency = AIS_SelectionModesConcurrency_Multiple, const Standard_Boolean theIsForce = Standard_False);
 
@@ -5633,7 +5715,7 @@ None
 
 Description
 -----------
-Allows to manage sensitivity of a particular selection of interactive object theobject and changes previous sensitivity value of all sensitive entities in selection with themode to the given thenewsensitivity.
+Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
 ") SetSelectionSensitivity;
 		void SetSelectionSensitivity(const opencascade::handle<AIS_InteractiveObject> & theObject, const Standard_Integer theMode, const Standard_Integer theNewSensitivity);
 
@@ -5651,7 +5733,7 @@ None
 
 Description
 -----------
-Setup the style of selection highlighting. this is just a short-cut to sethighlightstyle(prs3d_typeofhighlight_selected,thestyle).
+Setup the style of selection highlighting. This is just a short-cut to SetHighlightStyle(Prs3d_TypeOfHighlight_Selected,theStyle).
 ") SetSelectionStyle;
 		void SetSelectionStyle(const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -5669,7 +5751,7 @@ None
 
 Description
 -----------
-Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). the method sets up the color for such highlighting. by default, this is quantity_noc_gray40.
+Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). The method sets up the color for such highlighting. By default, this is Quantity_NOC_GRAY40.
 ") SetSubIntensityColor;
 		void SetSubIntensityColor(const Quantity_Color & theColor);
 
@@ -5687,7 +5769,8 @@ None
 
 Description
 -----------
-Specify whether selected object must be hilighted when mouse cursor is moved above it (in moveto method). by default this value is false and selected object is not hilighted in this case. @sa moveto().
+Specify whether selected object must be hilighted when mouse cursor is moved above it (in MoveTo method). By default this value is false and selected object is not hilighted in this case. 
+See also: MoveTo().
 ") SetToHilightSelected;
 		void SetToHilightSelected(const Standard_Boolean toHilight);
 
@@ -5726,7 +5809,7 @@ None
 
 Description
 -----------
-Provides the transparency settings for viewing the object. the transparency value avalue may be between 0.0, opaque, and 1.0, fully transparent.
+Provides the transparency settings for viewing the Object. The transparency value aValue may be between 0.0, opaque, and 1.0, fully transparent.
 ") SetTransparency;
 		void SetTransparency(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theValue, const Standard_Boolean theToUpdateViewer);
 
@@ -5745,7 +5828,7 @@ None
 
 Description
 -----------
-Sets the size asize of the trihedron. is used to change the default value 100 mm for display of trihedra. use of this function in one of your own interactive objects requires a call to the compute function of the new class. this will recalculate the presentation for every trihedron displayed.
+Sets the size aSize of the trihedron. Is used to change the default value 100 mm for display of trihedra. Use of this function in one of your own interactive objects requires a call to the Compute function of the new class. This will recalculate the presentation for every trihedron displayed.
 ") SetTrihedronSize;
 		void SetTrihedronSize(const Standard_Real theSize, const Standard_Boolean theToUpdateViewer);
 
@@ -5765,7 +5848,7 @@ None
 
 Description
 -----------
-Setup object visibility in specified view. has no effect if object is not displayed in this context.
+Setup object visibility in specified view. Has no effect if object is not displayed in this context.
 ") SetViewAffinity;
 		void SetViewAffinity(const opencascade::handle<AIS_InteractiveObject> & theIObj, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theIsVisible);
 
@@ -5785,7 +5868,7 @@ None
 
 Description
 -----------
-Sets the width of the object.
+Sets the width of the Object.
 ") SetWidth;
 		virtual void SetWidth(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Real theValue, const Standard_Boolean theToUpdateViewer);
 
@@ -5804,7 +5887,7 @@ None
 
 Description
 -----------
-Set z layer id for interactive object. the z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. the ids for z layers are generated by v3d_viewer.
+Set Z layer id for interactive object. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer.
 ") SetZLayer;
 		void SetZLayer(const opencascade::handle<AIS_InteractiveObject> & theIObj, int theLayerId);
 
@@ -5822,7 +5905,8 @@ AIS_StatusOfPick
 
 Description
 -----------
-Adds the last detected to the list of previous picked. if the last detected was already declared as picked, removes it from the picked list. @sa moveto().
+Adds the last detected to the list of previous picked. If the last detected was already declared as picked, removes it from the Picked List. 
+See also: MoveTo().
 ") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect(const Standard_Boolean theToUpdateViewer);
 
@@ -5842,7 +5926,7 @@ AIS_StatusOfPick
 
 Description
 -----------
-Adds the last detected to the list of previous picked. if the last detected was already declared as picked, removes it from the picked list.
+Adds the last detected to the list of previous picked. If the last detected was already declared as picked, removes it from the Picked List.
 ") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToUpdateViewer);
 
@@ -5878,7 +5962,7 @@ Quantity_Color
 
 Description
 -----------
-Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). the method returns the color of such highlighting. by default, it is quantity_noc_gray40.
+Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). The method returns the color of such highlighting. By default, it is Quantity_NOC_GRAY40.
 ") SubIntensityColor;
 		const Quantity_Color & SubIntensityColor();
 
@@ -5897,7 +5981,7 @@ None
 
 Description
 -----------
-Removes the subintensity option for the entity. if a local context is open, the presentation of the interactive object activates the selection mode.
+Removes the subintensity option for the entity. If a local context is open, the presentation of the Interactive Object activates the selection mode.
 ") SubIntensityOff;
 		void SubIntensityOff(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -5916,7 +6000,7 @@ None
 
 Description
 -----------
-Highlights, and removes highlights from, the displayed object which is displayed at neutral point with subintensity color. available only for active local context. there is no effect if there is no local context. if a local context is open, the presentation of the interactive object activates the selection mode.
+Highlights, and removes highlights from, the displayed object which is displayed at Neutral Point with subintensity color. Available only for active local context. There is no effect if there is no local context. If a local context is open, the presentation of the Interactive Object activates the selection mode.
 ") SubIntensityOn;
 		void SubIntensityOn(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -5929,7 +6013,8 @@ bool
 
 Description
 -----------
-Return value specified whether selected object must be hilighted when mouse cursor is moved above it @sa moveto().
+Return value specified whether selected object must be hilighted when mouse cursor is moved above it 
+See also: MoveTo().
 ") ToHilightSelected;
 		Standard_Boolean ToHilightSelected();
 
@@ -5942,7 +6027,7 @@ float
 
 Description
 -----------
-Returns the current value of trihedron size.
+returns the current value of trihedron size.
 ") TrihedronSize;
 		Standard_Real TrihedronSize();
 
@@ -5961,7 +6046,7 @@ None
 
 Description
 -----------
-Removes hilighting from the object.
+Removes hilighting from the Object.
 ") Unhilight;
 		void Unhilight(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -5979,7 +6064,7 @@ None
 
 Description
 -----------
-Removes highlighting from current objects. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") UnhilightCurrents;
 		void UnhilightCurrents(const Standard_Boolean theToUpdateViewer);
 
@@ -6035,7 +6120,7 @@ None
 
 Description
 -----------
-Unsets the display mode of seen interactive objects.
+Unsets the display mode of seen Interactive Objects.
 ") UnsetDisplayMode;
 		void UnsetDisplayMode(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -6054,7 +6139,7 @@ None
 
 Description
 -----------
-Removes the settings for local attributes of the object and returns to defaults.
+Removes the settings for local attributes of the Object and returns to defaults.
 ") UnsetLocalAttributes;
 		void UnsetLocalAttributes(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -6073,7 +6158,7 @@ None
 
 Description
 -----------
-Removes the type of material setting for viewing the object.
+Removes the type of material setting for viewing the Object.
 ") UnsetMaterial;
 		void UnsetMaterial(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -6092,7 +6177,7 @@ None
 
 Description
 -----------
-Removes the transparency settings for viewing the object.
+Removes the transparency settings for viewing the Object.
 ") UnsetTransparency;
 		void UnsetTransparency(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -6111,7 +6196,7 @@ None
 
 Description
 -----------
-Removes the width setting of the object.
+Removes the width setting of the Object.
 ") UnsetWidth;
 		virtual void UnsetWidth(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theToUpdateViewer);
 
@@ -6130,7 +6215,7 @@ None
 
 Description
 -----------
-Updates displayed interactive object by checking and recomputing its flagged as 'to be recomputed' presentation and selection structures. this method does not force any recomputation on its own. the method recomputes selections even if they are loaded without activation in particular selector.
+Updates displayed interactive object by checking and recomputing its flagged as 'to be recomputed' presentation and selection structures. This method does not force any recomputation on its own. The method recomputes selections even if they are loaded without activation in particular selector.
 ") Update;
 		void Update(const opencascade::handle<AIS_InteractiveObject> & theIObj, const Standard_Boolean theUpdateViewer);
 
@@ -6143,7 +6228,7 @@ None
 
 Description
 -----------
-Updates the list of current objects, i.e. hilights new current objects, removes hilighting from former current objects. objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
+No available documentation.
 ") UpdateCurrent;
 		void UpdateCurrent();
 
@@ -6174,7 +6259,8 @@ None
 
 Description
 -----------
-Updates the list of selected objects: i.e. highlights the newly selected ones and unhighlights previously selected objects. @sa hilightselected().
+Updates the list of selected objects: i.e. highlights the newly selected ones and unhighlights previously selected objects. 
+See also: HilightSelected().
 ") UpdateSelected;
 		void UpdateSelected(Standard_Boolean theToUpdateViewer);
 
@@ -6192,7 +6278,7 @@ float
 
 Description
 -----------
-Returns the width of the interactive object in the interactive context.
+Returns the width of the Interactive Object in the interactive context.
 ") Width;
 		virtual Standard_Real Width(const opencascade::handle<AIS_InteractiveObject> & aniobj);
 
@@ -6230,7 +6316,7 @@ None
 
 Description
 -----------
-Each interactive object has methods which allow us to attribute an owner to it in the form of a transient. this method removes the owner from the graphic entity.
+Each Interactive Object has methods which allow us to attribute an Owner to it in the form of a Transient. This method removes the owner from the graphic entity.
 ") ClearOwner;
 		void ClearOwner();
 
@@ -6277,7 +6363,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the owner of the interactive object. the owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient. there are two types of owners: - direct owners, decomposition shapes such as edges, wires, and faces. - users, presentable objects connecting to sensitive primitives, or a shape which has been decomposed.
+Returns the owner of the Interactive Object. The owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient. There are two types of owners: - Direct owners, decomposition shapes such as edges, wires, and faces. - Users, presentable objects connecting to sensitive primitives, or a shape which has been decomposed.
 ") GetOwner;
 		const opencascade::handle<Standard_Transient> & GetOwner();
 
@@ -6290,7 +6376,7 @@ bool
 
 Description
 -----------
-Indicates whether the interactive object has a pointer to an interactive context.
+Indicates whether the Interactive Object has a pointer to an interactive context.
 ") HasInteractiveContext;
 		Standard_Boolean HasInteractiveContext();
 
@@ -6303,7 +6389,7 @@ bool
 
 Description
 -----------
-Returns true if the object has an owner attributed to it. the owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient.
+Returns true if the object has an owner attributed to it. The owner can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of, and takes the form of a transient.
 ") HasOwner;
 		Standard_Boolean HasOwner();
 
@@ -6316,7 +6402,7 @@ bool
 
 Description
 -----------
-Returns true when this object has a presentation in the current displaymode().
+Returns True when this object has a presentation in the current DisplayMode().
 ") HasPresentation;
 		Standard_Boolean HasPresentation();
 
@@ -6342,7 +6428,7 @@ opencascade::handle<Prs3d_Presentation>
 
 Description
 -----------
-Returns the current presentation of this object according to the current displaymode().
+Returns the current presentation of this object according to the current DisplayMode().
 ") Presentation;
 		opencascade::handle<Prs3d_Presentation> Presentation();
 
@@ -6365,7 +6451,14 @@ bool
 
 Description
 -----------
-Drag object in the viewer. @param thectx [in] interactive context @param theview [in] active view @param theowner [in] the owner of detected entity @param thedragfrom [in] drag start point @param thedragto [in] drag end point @param theaction [in] drag action return false if object rejects dragging action (e.g. ais_dragaction_start).
+Drag object in the viewer. 
+Input parameter: theCtx interactive context 
+Input parameter: theView active View 
+Input parameter: theOwner the owner of detected entity 
+Input parameter: theDragFrom drag start point 
+Input parameter: theDragTo drag end point 
+Input parameter: theAction drag action 
+Return: False if object rejects dragging action (e.g. AIS_DragAction_Start).
 ") ProcessDragging;
 		virtual Standard_Boolean ProcessDragging(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Graphic3d_Vec2i & theDragFrom, const Graphic3d_Vec2i & theDragTo, const AIS_DragAction theAction);
 
@@ -6383,7 +6476,7 @@ None
 
 Description
 -----------
-Updates the active presentation; if <allmodes> = standard_true all the presentations inside are recomputed. important: it is preferable to call redisplay method of corresponding ais_interactivecontext instance for cases when it is accessible. this method just redirects call to myctxptr, so this class field must be up to date for proper result.
+Updates the active presentation; if <AllModes> = Standard_True all the presentations inside are recomputed. IMPORTANT: It is preferable to call Redisplay method of corresponding AIS_InteractiveContext instance for cases when it is accessible. This method just redirects call to myCTXPtr, so this class field must be up to date for proper result.
 ") Redisplay;
 		void Redisplay(const Standard_Boolean AllModes = Standard_False);
 
@@ -6419,7 +6512,7 @@ None
 
 Description
 -----------
-Sets the interactive context actx and provides a link to the default drawing tool or 'drawer' if there is none.
+Sets the interactive context aCtx and provides a link to the default drawing tool or 'Drawer' if there is none.
 ") SetContext;
 		virtual void SetContext(const opencascade::handle<AIS_InteractiveContext> & aCtx);
 
@@ -6437,7 +6530,7 @@ None
 
 Description
 -----------
-Allows you to attribute the owner theapplicativeentity to an interactive object. this can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of. the owner takes the form of a transient.
+Allows you to attribute the owner theApplicativeEntity to an Interactive Object. This can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of. The owner takes the form of a transient.
 ") SetOwner;
 		void SetOwner(const opencascade::handle<Standard_Transient> & theApplicativeEntity);
 
@@ -6450,7 +6543,7 @@ int
 
 Description
 -----------
-Specifies additional characteristics of interactive object of type(); -1 by default. among the datums, this signature is attributed to the shape. the remaining datums have the following default signatures: - point signature 1 - axis  signature 2 - trihedron signature 3 - planetrihedron signature 4 - line  signature 5 - circle signature 6 - plane signature 7.
+Specifies additional characteristics of Interactive Object of Type(); -1 by default. Among the datums, this signature is attributed to the shape. The remaining datums have the following default signatures: - Point signature 1 - Axis  signature 2 - Trihedron signature 3 - PlaneTrihedron signature 4 - Line  signature 5 - Circle signature 6 - Plane signature 7.
 ") Signature;
 		virtual Standard_Integer Signature();
 
@@ -6463,7 +6556,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Returns the kind of interactive object; ais_kindofinteractive_none by default.
+Returns the kind of Interactive Object; AIS_KindOfInteractive_None by default.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -6539,7 +6632,7 @@ None
 
 Description
 -----------
-Highlights selectable object's presentation with display mode in presentation manager with given highlight style. also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to selectmgr_selectableobject::hilightownerwithcolor method.
+Highlights selectable object's presentation with display mode in presentation manager with given highlight style. Also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to SelectMgr_SelectableObject::HilightOwnerWithColor method.
 ") HilightWithColor;
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
@@ -6620,7 +6713,7 @@ int
 
 Description
 -----------
-Return index of manipulator axis.
+Return: index of manipulator axis.
 ") Index;
 		Standard_Integer Index();
 
@@ -6737,7 +6830,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 
 Description
 -----------
-Return last detected points. warning! indexation starts with 0 (shifted by -1 comparing to graphic3d_arrayofpoints::vertice()).
+Return last detected points. WARNING! Indexation starts with 0 (shifted by -1 comparing to Graphic3d_ArrayOfPoints::Vertice()).
 ") DetectedPoints;
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & DetectedPoints();
 
@@ -6783,7 +6876,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 
 Description
 -----------
-Return selected points. warning! indexation starts with 0 (shifted by -1 comparing to graphic3d_arrayofpoints::vertice()).
+Return selected points. WARNING! Indexation starts with 0 (shifted by -1 comparing to Graphic3d_ArrayOfPoints::Vertice()).
 ") SelectedPoints;
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & SelectedPoints();
 
@@ -6829,7 +6922,7 @@ None
 
 Description
 -----------
-Creates a new selection.
+creates a new selection.
 ") AIS_Selection;
 		 AIS_Selection();
 
@@ -6847,7 +6940,7 @@ AIS_SelectStatus
 
 Description
 -----------
-The object is always add int the selection. faster when the number of objects selected is great.
+the object is always add int the selection. faster when the number of objects selected is great.
 ") AddSelect;
 		virtual AIS_SelectStatus AddSelect(const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -6860,7 +6953,7 @@ None
 
 Description
 -----------
-Removes all the object of the selection.
+removes all the object of the selection.
 ") Clear;
 		virtual void Clear();
 
@@ -6880,7 +6973,10 @@ None
 
 Description
 -----------
-Clears the selection and adds the object in the selection. @param[in] theobject element to change selection state @param[in] thefilter context filter @param[in] theisdetected flag of object detection.
+clears the selection and adds the object in the selection. 
+Input parameter: theObject element to change selection state 
+Input parameter: theFilter context filter 
+Input parameter: theIsDetected flag of object detection.
 ") ClearAndSelect;
 		virtual void ClearAndSelect(const opencascade::handle<SelectMgr_EntityOwner> & theObject, const opencascade::handle<SelectMgr_Filter> & theFilter, const Standard_Boolean theIsDetected);
 
@@ -6937,7 +7033,7 @@ bool
 
 Description
 -----------
-Checks if the object is in the selection.
+checks if the object is in the selection.
 ") IsSelected;
 		Standard_Boolean IsSelected(const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -6997,7 +7093,12 @@ AIS_SelectStatus
 
 Description
 -----------
-If the object is not yet in the selection, it will be added. if the object is already in the selection, it will be removed. @param[in] theowner element to change selection state @param[in] thefilter context filter @param[in] theselscheme selection scheme @param[in] theisdetected flag of object detection return result of selection.
+if the object is not yet in the selection, it will be added. if the object is already in the selection, it will be removed. 
+Input parameter: theOwner element to change selection state 
+Input parameter: theFilter context filter 
+Input parameter: theSelScheme selection scheme 
+Input parameter: theIsDetected flag of object detection 
+Return: result of selection.
 ") Select;
 		virtual AIS_SelectStatus Select(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Filter> & theFilter, const AIS_SelectionScheme theSelScheme, const Standard_Boolean theIsDetected);
 
@@ -7018,7 +7119,11 @@ None
 
 Description
 -----------
-Select or deselect owners depending on the selection scheme. @param[in] thepickedowners elements to change selection state @param[in] theselscheme selection scheme, defines how owner is selected @param[in] thetoallowseloverlap selection flag, if true - overlapped entities are allowed @param[in] thefilter context filter to skip not acceptable owners.
+Select or deselect owners depending on the selection scheme. 
+Input parameter: thePickedOwners elements to change selection state 
+Input parameter: theSelScheme selection scheme, defines how owner is selected 
+Input parameter: theToAllowSelOverlap selection flag, if true - overlapped entities are allowed 
+Input parameter: theFilter context filter to skip not acceptable owners.
 ") SelectOwners;
 		virtual void SelectOwners(const AIS_NArray1OfEntityOwner & thePickedOwners, const AIS_SelectionScheme theSelScheme, const Standard_Boolean theToAllowSelOverlap, const opencascade::handle<SelectMgr_Filter> & theFilter);
 
@@ -7067,7 +7172,7 @@ None
 
 Description
 -----------
-Creates an owner of ais_trihedron object.
+Creates an owner of AIS_Trihedron object.
 ") AIS_TrihedronOwner;
 		 AIS_TrihedronOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const Prs3d_DatumParts theDatumPart, const Standard_Integer thePriority);
 
@@ -7119,7 +7224,7 @@ bool
 
 Description
 -----------
-Returns true if the presentation manager thepm highlights selections corresponding to the selection mode amode.
+Returns true if the presentation manager thePM highlights selections corresponding to the selection mode aMode.
 ") IsHilighted;
 		Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode);
 
@@ -7138,7 +7243,7 @@ None
 
 Description
 -----------
-Removes highlighting from the owner of a detected selectable object in the presentation manager thepm.
+Removes highlighting from the owner of a detected selectable object in the presentation manager thePM.
 ") Unhilight;
 		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode);
 
@@ -7172,7 +7277,7 @@ None
 
 Description
 -----------
-Initializes filter for type, agivenkind.
+Initializes filter for type, aGivenKind.
 ") AIS_TypeFilter;
 		 AIS_TypeFilter(const AIS_KindOfInteractive aGivenKind);
 
@@ -7190,7 +7295,7 @@ bool
 
 Description
 -----------
-Returns false if the transient is not an interactive object, or if the type of the interactive object is not the same as that stored in the filter.
+Returns False if the transient is not an Interactive Object, or if the type of the Interactive Object is not the same as that stored in the filter.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -7252,7 +7357,10 @@ None
 
 Description
 -----------
-Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
+Add touch point with the given ID. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter thePnt touch coordinates 
+Parameter theClearBefore if True previously registered touches will be removed.
 ") AddTouchPoint;
 		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
 
@@ -7334,7 +7442,7 @@ None
 
 Description
 -----------
-Modify view camera to fit all objects. default implementation fits either all visible and all selected objects (swapped on each call).
+Modify view camera to fit all objects. Default implementation fits either all visible and all selected objects (swapped on each call).
 ") FitAllAuto;
 		virtual void FitAllAuto(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -7354,7 +7462,10 @@ None
 
 Description
 -----------
-Update buffer for rendering thread. this method is expected to be called within synchronization barrier between gui and rendering threads (e.g. gui thread should be locked beforehand to avoid data races). @param thectx interactive context @param theview active view @param thetohandle if true, the handleviewevents() will be called.
+Update buffer for rendering thread. This method is expected to be called within synchronization barrier between GUI and Rendering threads (e.g. GUI thread should be locked beforehand to avoid data races). 
+Parameter theCtx interactive context 
+Parameter theView active view 
+Parameter theToHandle if True, the HandleViewEvents() will be called.
 ") FlushViewEvents;
 		virtual void FlushViewEvents(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, Standard_Boolean theToHandle = Standard_False);
 
@@ -7373,7 +7484,7 @@ gp_Pnt
 
 Description
 -----------
-Compute rotation gravity center point depending on rotation mode. this method is expected to be called from rendering thread.
+Compute rotation gravity center point depending on rotation mode. This method is expected to be called from rendering thread.
 ") GravityPoint;
 		virtual gp_Pnt GravityPoint(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -7405,7 +7516,7 @@ bool
 
 Description
 -----------
-Return true if previous position of moveto has been defined.
+Return True if previous position of MoveTo has been defined.
 ") HasPreviousMoveTo;
 		bool HasPreviousMoveTo();
 
@@ -7436,7 +7547,7 @@ bool
 
 Description
 -----------
-Return true if continuous redrawing is enabled; false by default. this option would request a next viewer frame to be completely redrawn right after current frame is finished.
+Return True if continuous redrawing is enabled; False by default. This option would request a next viewer frame to be completely redrawn right after current frame is finished.
 ") IsContinuousRedraw;
 		bool IsContinuousRedraw();
 
@@ -7456,7 +7567,9 @@ None
 
 Description
 -----------
-Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+Press key. Default implementation updates internal cache. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyDown;
 		virtual void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
 
@@ -7477,7 +7590,7 @@ None
 
 Description
 -----------
-Simulate key up/down events from axis value. default implementation updates internal cache.
+Simulate key up/down events from axis value. Default implementation updates internal cache.
 ") KeyFromAxis;
 		virtual void KeyFromAxis(Aspect_VKey theNegative, Aspect_VKey thePositive, double theTime, double thePressure);
 
@@ -7496,7 +7609,9 @@ None
 
 Description
 -----------
-Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+Release key. Default implementation updates internal cache. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyUp;
 		virtual void KeyUp(Aspect_VKey theKey, double theTime);
 
@@ -7522,7 +7637,7 @@ float
 
 Description
 -----------
-Return mouse input acceleration ratio in first person mode; 1.0 by default.
+Return mouse input acceleration ratio in First Person mode; 1.0 by default.
 ") MouseAcceleration;
 		float MouseAcceleration();
 
@@ -7574,7 +7689,7 @@ AIS_NavigationMode
 
 Description
 -----------
-Return camera navigation mode; ais_navigationmode_orbit by default.
+Return camera navigation mode; AIS_NavigationMode_Orbit by default.
 ") NavigationMode;
 		AIS_NavigationMode NavigationMode();
 
@@ -7587,7 +7702,7 @@ opencascade::handle<AIS_Animation>
 
 Description
 -----------
-Return objects animation; empty (but not null) animation by default.
+Return objects animation; empty (but not NULL) animation by default.
 ") ObjectsAnimation;
 		const opencascade::handle<AIS_Animation> & ObjectsAnimation();
 
@@ -7607,7 +7722,7 @@ None
 
 Description
 -----------
-Callback called by handlemoveto() on dragging object in 3d viewer. this method is expected to be called from rendering thread.
+Callback called by handleMoveTo() on dragging object in 3D Viewer. This method is expected to be called from rendering thread.
 ") OnObjectDragged;
 		virtual void OnObjectDragged(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, AIS_DragAction theAction);
 
@@ -7626,7 +7741,7 @@ None
 
 Description
 -----------
-Callback called by handlemoveto() on selection in 3d viewer. this method is expected to be called from rendering thread.
+Callback called by handleMoveTo() on Selection in 3D Viewer. This method is expected to be called from rendering thread.
 ") OnSelectionChanged;
 		virtual void OnSelectionChanged(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -7646,7 +7761,7 @@ None
 
 Description
 -----------
-Callback called by handleviewevents() on selection of another (sub)view. this method is expected to be called from rendering thread.
+Callback called by HandleViewEvents() on Selection of another (sub)view. This method is expected to be called from rendering thread.
 ") OnSubviewChanged;
 		virtual void OnSubviewChanged(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theOldView, const opencascade::handle<V3d_View> & theNewView);
 
@@ -7680,7 +7795,11 @@ bool
 
 Description
 -----------
-Pick closest point by axis. this method is expected to be called from rendering thread. @param thetoppnt [out] result point @param thectx [in] interactive context @param theview [in] active view @param theaxis [in] selection axis return true if result has been found.
+Pick closest point by axis. This method is expected to be called from rendering thread. @param[out] theTopPnt result point 
+Input parameter: theCtx interactive context 
+Input parameter: theView active view 
+Input parameter: theAxis selection axis 
+Return: True if result has been found.
 ") PickAxis;
 		virtual bool PickAxis(gp_Pnt & theTopPnt, const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const gp_Ax1 & theAxis);
 
@@ -7702,7 +7821,12 @@ bool
 
 Description
 -----------
-Pick closest point under mouse cursor. this method is expected to be called from rendering thread. @param thepnt [out] result point @param thectx [in] interactive context @param theview [in] active view @param thecursor [in] mouse cursor @param thetosticktopickray [in] when true, the result point will lie on picking ray return true if result has been found.
+Pick closest point under mouse cursor. This method is expected to be called from rendering thread. @param[out] thePnt result point 
+Input parameter: theCtx interactive context 
+Input parameter: theView active view 
+Input parameter: theCursor mouse cursor 
+Input parameter: theToStickToPickRay when True, the result point will lie on picking ray 
+Return: True if result has been found.
 ") PickPoint;
 		virtual bool PickPoint(gp_Pnt & thePnt, const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const Graphic3d_Vec2i & theCursor, bool theToStickToPickRay);
 
@@ -7715,7 +7839,7 @@ Graphic3d_Vec2i
 
 Description
 -----------
-Return previous position of moveto event in 3d viewer.
+Return previous position of MoveTo event in 3D viewer.
 ") PreviousMoveTo;
 		const Graphic3d_Vec2i & PreviousMoveTo();
 
@@ -7728,7 +7852,7 @@ None
 
 Description
 -----------
-Handle window close event. default implementation does nothing.
+Handle window close event. Default implementation does nothing.
 ") ProcessClose;
 		virtual void ProcessClose();
 
@@ -7746,7 +7870,7 @@ None
 
 Description
 -----------
-Handle window resize event. default implementation does nothing.
+Handle window resize event. Default implementation does nothing.
 ") ProcessConfigure;
 		virtual void ProcessConfigure(bool theIsResized);
 
@@ -7759,7 +7883,7 @@ None
 
 Description
 -----------
-Handle expose event (window content has been invalidation and should be redrawn). default implementation does nothing.
+Handle expose event (window content has been invalidation and should be redrawn). Default implementation does nothing.
 ") ProcessExpose;
 		virtual void ProcessExpose();
 
@@ -7777,7 +7901,7 @@ None
 
 Description
 -----------
-Handle focus event. default implementation resets cached input state (pressed keys).
+Handle focus event. Default implementation resets cached input state (pressed keys).
 ") ProcessFocus;
 		virtual void ProcessFocus(bool theIsActivated);
 
@@ -7790,7 +7914,7 @@ None
 
 Description
 -----------
-Handle window input event immediately. default implementation does nothing - input events are accumulated in internal buffer until explicit flushviewevents() call.
+Handle window input event immediately. Default implementation does nothing - input events are accumulated in internal buffer until explicit FlushViewEvents() call.
 ") ProcessInput;
 		virtual void ProcessInput();
 
@@ -7809,7 +7933,10 @@ bool
 
 Description
 -----------
-Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points return true if point has been removed.
+Remove touch point with the given ID. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter theClearSelectPnts if True will initiate clearing of selection points 
+Return: True if point has been removed.
 ") RemoveTouchPoint;
 		virtual bool RemoveTouchPoint(Standard_Size theId, Standard_Boolean theClearSelectPnts = false);
 
@@ -7822,7 +7949,7 @@ None
 
 Description
 -----------
-Reset previous position of moveto.
+Reset previous position of MoveTo.
 ") ResetPreviousMoveTo;
 		void ResetPreviousMoveTo();
 
@@ -7835,7 +7962,7 @@ None
 
 Description
 -----------
-Reset input state (pressed keys, mouse buttons, etc.) e.g. on window focus loss. this method is expected to be called from ui thread.
+Reset input state (pressed keys, mouse buttons, etc.) e.g. on window focus loss. This method is expected to be called from UI thread.
 ") ResetViewInput;
 		virtual void ResetViewInput();
 
@@ -7848,7 +7975,7 @@ AIS_RotationMode
 
 Description
 -----------
-Return camera rotation mode, ais_rotationmode_bndboxactive by default.
+Return camera rotation mode, AIS_RotationMode_BndBoxActive by default.
 ") RotationMode;
 		AIS_RotationMode RotationMode();
 
@@ -7867,7 +7994,9 @@ None
 
 Description
 -----------
-Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnt picking point @param thescheme selection scheme.
+Perform selection in 3D viewer. This method is expected to be called from UI thread. 
+Parameter thePnt picking point 
+Parameter theScheme selection scheme.
 ") SelectInViewer;
 		virtual void SelectInViewer(const Graphic3d_Vec2i & thePnt, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
 
@@ -7886,7 +8015,9 @@ None
 
 Description
 -----------
-Perform selection in 3d viewer. this method is expected to be called from ui thread. @param thepnts picking point @param thescheme selection scheme.
+Perform selection in 3D viewer. This method is expected to be called from UI thread. 
+Parameter thePnts picking point 
+Parameter theScheme selection scheme.
 ") SelectInViewer;
 		virtual void SelectInViewer(const NCollection_Sequence<Graphic3d_Vec2i> & thePnts, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
 
@@ -7994,7 +8125,7 @@ None
 
 Description
 -----------
-Set if zfocus change is allowed.
+Set if ZFocus change is allowed.
 ") SetAllowZFocus;
 		void SetAllowZFocus(bool theToEnable);
 
@@ -8048,7 +8179,7 @@ None
 
 Description
 -----------
-Set if auxiliary tracked xr devices should be displayed.
+Set if auxiliary tracked XR devices should be displayed.
 ") SetDisplayXRAuxDevices;
 		void SetDisplayXRAuxDevices(bool theToDisplay);
 
@@ -8066,7 +8197,7 @@ None
 
 Description
 -----------
-Set if tracked xr hand controllers should be displayed.
+Set if tracked XR hand controllers should be displayed.
 ") SetDisplayXRHands;
 		void SetDisplayXRHands(bool theToDisplay);
 
@@ -8102,7 +8233,7 @@ None
 
 Description
 -----------
-Set if camera up orientation within ais_navigationmode_orbit rotation mode should be forced z up.
+Set if camera up orientation within AIS_NavigationMode_Orbit rotation mode should be forced Z up.
 ") SetLockOrbitZUp;
 		void SetLockOrbitZUp(bool theToForceUp);
 
@@ -8192,7 +8323,7 @@ None
 
 Description
 -----------
-Set object animation to be handled within handleviewredraw().
+Set object animation to be handled within handleViewRedraw().
 ") SetObjectsAnimation;
 		void SetObjectsAnimation(const opencascade::handle<AIS_Animation> & theAnimation);
 
@@ -8264,7 +8395,7 @@ None
 
 Description
 -----------
-Set if panning anchor point within perspective projection should be displayed in 3d viewer.
+Set if panning anchor point within perspective projection should be displayed in 3D Viewer.
 ") SetShowPanAnchorPoint;
 		void SetShowPanAnchorPoint(bool theToShow);
 
@@ -8282,7 +8413,7 @@ None
 
 Description
 -----------
-Set if rotation point should be displayed in 3d viewer.
+Set if rotation point should be displayed in 3D Viewer.
 ") SetShowRotateCenter;
 		void SetShowRotateCenter(bool theToShow);
 
@@ -8372,7 +8503,7 @@ None
 
 Description
 -----------
-Set view animation to be handled within handleviewredraw().
+Set view animation to be handled within handleViewRedraw().
 ") SetViewAnimation;
 		void SetViewAnimation(const opencascade::handle<AIS_AnimationCamera> & theAnimation);
 
@@ -8434,7 +8565,7 @@ bool
 
 Description
 -----------
-Return true if dragging object is allowed; true by default.
+Return True if dragging object is allowed; True by default.
 ") ToAllowDragging;
 		bool ToAllowDragging();
 
@@ -8447,7 +8578,7 @@ bool
 
 Description
 -----------
-Return true if dynamic highlight on mouse move is allowed; true by default.
+Return True if dynamic highlight on mouse move is allowed; True by default.
 ") ToAllowHighlight;
 		bool ToAllowHighlight();
 
@@ -8460,7 +8591,7 @@ bool
 
 Description
 -----------
-Return true if panning is allowed; true by default.
+Return True if panning is allowed; True by default.
 ") ToAllowPanning;
 		bool ToAllowPanning();
 
@@ -8473,7 +8604,7 @@ bool
 
 Description
 -----------
-Return true if camera rotation is allowed; true by default.
+Return True if camera rotation is allowed; True by default.
 ") ToAllowRotation;
 		bool ToAllowRotation();
 
@@ -8486,7 +8617,7 @@ bool
 
 Description
 -----------
-Return true if z-rotation via two-touches gesture is enabled; false by default.
+Return True if z-rotation via two-touches gesture is enabled; False by default.
 ") ToAllowTouchZRotation;
 		bool ToAllowTouchZRotation();
 
@@ -8499,7 +8630,7 @@ bool
 
 Description
 -----------
-Return true if zfocus change is allowed; true by default.
+Return True if ZFocus change is allowed; True by default.
 ") ToAllowZFocus;
 		bool ToAllowZFocus();
 
@@ -8512,7 +8643,7 @@ bool
 
 Description
 -----------
-Return true if zooming is allowed; true by default.
+Return True if zooming is allowed; True by default.
 ") ToAllowZooming;
 		bool ToAllowZooming();
 
@@ -8525,7 +8656,7 @@ bool
 
 Description
 -----------
-Return true to display auxiliary tracked xr devices (like tracking stations).
+Return True to display auxiliary tracked XR devices (like tracking stations).
 ") ToDisplayXRAuxDevices;
 		bool ToDisplayXRAuxDevices();
 
@@ -8538,7 +8669,7 @@ bool
 
 Description
 -----------
-Return true to display xr hand controllers.
+Return True to display XR hand controllers.
 ") ToDisplayXRHands;
 		bool ToDisplayXRHands();
 
@@ -8551,7 +8682,7 @@ bool
 
 Description
 -----------
-Return true if pitch direction should be inverted while processing aspect_vkey_navlookup/aspect_vkey_navlookdown; false by default.
+Return True if pitch direction should be inverted while processing Aspect_VKey_NavLookUp/Aspect_VKey_NavLookDown; False by default.
 ") ToInvertPitch;
 		bool ToInvertPitch();
 
@@ -8564,7 +8695,7 @@ bool
 
 Description
 -----------
-Return true if camera up orientation within ais_navigationmode_orbit rotation mode should be forced z up; false by default.
+Return True if camera up orientation within AIS_NavigationMode_Orbit rotation mode should be forced Z up; False by default.
 ") ToLockOrbitZUp;
 		bool ToLockOrbitZUp();
 
@@ -8577,7 +8708,7 @@ bool
 
 Description
 -----------
-Return true if object animation should be paused on mouse click; false by default.
+Return True if object animation should be paused on mouse click; False by default.
 ") ToPauseObjectsAnimation;
 		bool ToPauseObjectsAnimation();
 
@@ -8590,7 +8721,7 @@ bool
 
 Description
 -----------
-Return true if panning anchor point within perspective projection should be displayed in 3d viewer; true by default.
+Return True if panning anchor point within perspective projection should be displayed in 3D Viewer; True by default.
 ") ToShowPanAnchorPoint;
 		bool ToShowPanAnchorPoint();
 
@@ -8603,7 +8734,7 @@ bool
 
 Description
 -----------
-Return true if rotation point should be displayed in 3d viewer; true by default.
+Return True if rotation point should be displayed in 3D Viewer; True by default.
 ") ToShowRotateCenter;
 		bool ToShowRotateCenter();
 
@@ -8616,7 +8747,7 @@ bool
 
 Description
 -----------
-Return true if picked point should be projected to picking ray on rotating around point; true by default.
+Return True if picked point should be projected to picking ray on rotating around point; True by default.
 ") ToStickToRayOnRotation;
 		bool ToStickToRayOnRotation();
 
@@ -8629,7 +8760,7 @@ bool
 
 Description
 -----------
-Return true if picked point should be projected to picking ray on zooming at point; true by default.
+Return True if picked point should be projected to picking ray on zooming at point; True by default.
 ") ToStickToRayOnZoom;
 		bool ToStickToRayOnZoom();
 
@@ -8642,7 +8773,7 @@ float
 
 Description
 -----------
-Return scale factor for adjusting tolerances for starting multi-touch gestures; 1.0 by default this scale factor is expected to be computed from touch screen resolution.
+Return scale factor for adjusting tolerances for starting multi-touch gestures; 1.0 by default This scale factor is expected to be computed from touch screen resolution.
 ") TouchToleranceScale;
 		float TouchToleranceScale();
 
@@ -8681,7 +8812,12 @@ bool
 
 Description
 -----------
-Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if view should be redrawn.
+Handle mouse button press/release event. This method is expected to be called from UI thread. 
+Parameter thePoint mouse cursor position 
+Parameter theButtons pressed buttons 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if View should be redrawn.
 ") UpdateMouseButtons;
 		virtual bool UpdateMouseButtons(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -8702,7 +8838,12 @@ bool
 
 Description
 -----------
-Handle mouse button click event (emulated by updatemousebuttons() while releasing single button). note that as this method is called by updatemousebuttons(), it should be executed from ui thread. default implementation redirects to selectinviewer(). this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebutton clicked button @param themodifiers key modifiers @param theisdoubleclick flag indicating double mouse click return true if view should be redrawn.
+Handle mouse button click event (emulated by UpdateMouseButtons() while releasing single button). Note that as this method is called by UpdateMouseButtons(), it should be executed from UI thread. Default implementation redirects to SelectInViewer(). This method is expected to be called from UI thread. 
+Parameter thePoint mouse cursor position 
+Parameter theButton clicked button 
+Parameter theModifiers key modifiers 
+Parameter theIsDoubleClick flag indicating double mouse click 
+Return: True if View should be redrawn.
 ") UpdateMouseClick;
 		virtual bool UpdateMouseClick(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
 
@@ -8723,7 +8864,12 @@ bool
 
 Description
 -----------
-Handle mouse cursor movement event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if view should be redrawn.
+Handle mouse cursor movement event. This method is expected to be called from UI thread. 
+Parameter thePoint mouse cursor position 
+Parameter theButtons pressed buttons 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if View should be redrawn.
 ") UpdateMousePosition;
 		virtual bool UpdateMousePosition(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -8741,7 +8887,9 @@ bool
 
 Description
 -----------
-Update mouse scroll event; redirects to updatezoom by default. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta return true if new event has been created or false if existing one has been updated.
+Update mouse scroll event; redirects to UpdateZoom by default. This method is expected to be called from UI thread. 
+Parameter theDelta mouse cursor position and delta 
+Return: True if new event has been created or False if existing one has been updated.
 ") UpdateMouseScroll;
 		virtual bool UpdateMouseScroll(const Aspect_ScrollDelta & theDelta);
 
@@ -8760,7 +8908,9 @@ None
 
 Description
 -----------
-Update polygonal selection tool. this method is expected to be called from ui thread. @param thepnt new point to add to polygon @param thetoappend append new point or update the last point.
+Update polygonal selection tool. This method is expected to be called from UI thread. 
+Parameter thePnt new point to add to polygon 
+Parameter theToAppend append new point or update the last point.
 ") UpdatePolySelection;
 		virtual void UpdatePolySelection(const Graphic3d_Vec2i & thePnt, bool theToAppend);
 
@@ -8779,7 +8929,9 @@ None
 
 Description
 -----------
-Update rectangle selection tool. this method is expected to be called from ui thread. @param thepntfrom rectangle first corner @param thepntto rectangle another corner.
+Update rectangle selection tool. This method is expected to be called from UI thread. 
+Parameter thePntFrom rectangle first corner 
+Parameter thePntTo rectangle another corner.
 ") UpdateRubberBand;
 		virtual void UpdateRubberBand(const Graphic3d_Vec2i & thePntFrom, const Graphic3d_Vec2i & thePntTo);
 
@@ -8798,7 +8950,9 @@ None
 
 Description
 -----------
-Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
+Update touch point with the given ID. If point with specified ID was not registered before, it will be added. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter thePnt touch coordinates.
 ") UpdateTouchPoint;
 		virtual void UpdateTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt);
 
@@ -8817,7 +8971,7 @@ None
 
 Description
 -----------
-Reset view orientation. this method is expected to be called from ui thread.
+Reset view orientation. This method is expected to be called from UI thread.
 ") UpdateViewOrientation;
 		virtual void UpdateViewOrientation(V3d_TypeOfOrientation theOrientation, bool theToFitAll);
 
@@ -8835,7 +8989,9 @@ bool
 
 Description
 -----------
-Update z rotation event. @param theangle rotation angle, in radians. return true if new zoom event has been created or false if existing one has been updated.
+Update Z rotation event. 
+Parameter theAngle rotation angle, in radians. 
+Return: True if new zoom event has been created or False if existing one has been updated.
 ") UpdateZRotation;
 		virtual bool UpdateZRotation(double theAngle);
 
@@ -8853,7 +9009,9 @@ bool
 
 Description
 -----------
-Update zoom event (e.g. from mouse scroll). this method is expected to be called from ui thread. @param thedelta mouse cursor position to zoom at and zoom delta return true if new zoom event has been created or false if existing one has been updated.
+Update zoom event (e.g. from mouse scroll). This method is expected to be called from UI thread. 
+Parameter theDelta mouse cursor position to zoom at and zoom delta 
+Return: True if new zoom event has been created or False if existing one has been updated.
 ") UpdateZoom;
 		virtual bool UpdateZoom(const Aspect_ScrollDelta & theDelta);
 
@@ -8866,7 +9024,7 @@ opencascade::handle<AIS_AnimationCamera>
 
 Description
 -----------
-Return view animation; empty (but not null) animation by default.
+Return view animation; empty (but not NULL) animation by default.
 ") ViewAnimation;
 		const opencascade::handle<AIS_AnimationCamera> & ViewAnimation();
 
@@ -8912,7 +9070,7 @@ None
 
 Description
 -----------
-Perform immediate camera actions (rotate/zoom/pan) on gesture progress. this method is expected to be called from rendering thread.
+Perform immediate camera actions (rotate/zoom/pan) on gesture progress. This method is expected to be called from rendering thread.
 ") handleCameraActions;
 		virtual void handleCameraActions(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const AIS_WalkDelta & theWalk);
 
@@ -8931,7 +9089,7 @@ None
 
 Description
 -----------
-Perform moveto/selection/dragging. this method is expected to be called from rendering thread.
+Perform moveto/selection/dragging. This method is expected to be called from rendering thread.
 ") handleMoveTo;
 		virtual void handleMoveTo(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -8950,7 +9108,7 @@ AIS_WalkDelta
 
 Description
 -----------
-Perform navigation (aspect_vkey_navforward and similar keys). this method is expected to be called from rendering thread.
+Perform navigation (Aspect_VKey_NavForward and similar keys). This method is expected to be called from rendering thread.
 ") handleNavigationKeys;
 		virtual AIS_WalkDelta handleNavigationKeys(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -8970,7 +9128,10 @@ None
 
 Description
 -----------
-Handle orbital rotation events mygl.orbitrotation. @param theview view to modify @param thepnt 3d point to rotate around @param thetolockzup amend camera to exclude roll angle (put camera up vector to plane containing global z and view direction).
+Handle orbital rotation events myGL.OrbitRotation. 
+Parameter theView view to modify 
+Parameter thePnt 3D point to rotate around 
+Parameter theToLockZUp amend camera to exclude roll angle (put camera Up vector to plane containing global Z and view direction).
 ") handleOrbitRotation;
 		virtual void handleOrbitRotation(const opencascade::handle<V3d_View> & theView, const gp_Pnt & thePnt, bool theToLockZUp);
 
@@ -8988,7 +9149,7 @@ None
 
 Description
 -----------
-Handle panning event mygl.panning.
+Handle panning event myGL.Panning.
 ") handlePanning;
 		virtual void handlePanning(const opencascade::handle<V3d_View> & theView);
 
@@ -9007,7 +9168,7 @@ None
 
 Description
 -----------
-Handle hot-keys defining new camera orientation (aspect_vkey_viewtop and similar keys). default implementation starts an animated transaction from the current to the target camera orientation, when specific action key was pressed. this method is expected to be called from rendering thread.
+Handle hot-keys defining new camera orientation (Aspect_VKey_ViewTop and similar keys). Default implementation starts an animated transaction from the current to the target camera orientation, when specific action key was pressed. This method is expected to be called from rendering thread.
 ") handleViewOrientationKeys;
 		virtual void handleViewOrientationKeys(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -9026,7 +9187,7 @@ None
 
 Description
 -----------
-Handle view redraw. this method is expected to be called from rendering thread.
+Handle view redraw. This method is expected to be called from rendering thread.
 ") handleViewRedraw;
 		virtual void handleViewRedraw(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -9048,7 +9209,12 @@ None
 
 Description
 -----------
-Handle view direction rotation events mygl.viewrotation. this method is expected to be called from rendering thread. @param theview camera to modify @param theyawextra extra yaw increment @param thepitchextra extra pitch increment @param theroll roll value @param thetorestartonincrement flag indicating flight mode.
+Handle view direction rotation events myGL.ViewRotation. This method is expected to be called from rendering thread. 
+Parameter theView camera to modify 
+Parameter theYawExtra extra yaw increment 
+Parameter thePitchExtra extra pitch increment 
+Parameter theRoll roll value 
+Parameter theToRestartOnIncrement flag indicating flight mode.
 ") handleViewRotation;
 		virtual void handleViewRotation(const opencascade::handle<V3d_View> & theView, double theYawExtra, double thePitchExtra, double theRoll, bool theToRestartOnIncrement);
 
@@ -9087,7 +9253,7 @@ None
 
 Description
 -----------
-Perform xr input. this method is expected to be called from rendering thread.
+Perform XR input. This method is expected to be called from rendering thread.
 ") handleXRInput;
 		virtual void handleXRInput(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const AIS_WalkDelta & theWalk);
 
@@ -9108,7 +9274,7 @@ int
 
 Description
 -----------
-Perform picking with/without dynamic highlighting for xr pose.
+Perform picking with/without dynamic highlighting for XR pose.
 ") handleXRMoveTo;
 		virtual Standard_Integer handleXRMoveTo(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const gp_Trsf & thePose, const Standard_Boolean theToHighlight);
 
@@ -9146,7 +9312,7 @@ None
 
 Description
 -----------
-Display auxiliary xr presentations.
+Display auxiliary XR presentations.
 ") handleXRPresentations;
 		virtual void handleXRPresentations(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView);
 
@@ -9203,7 +9369,7 @@ None
 
 Description
 -----------
-Handle zscroll event mygl.zoomactions. this method is expected to be called from rendering thread.
+Handle ZScroll event myGL.ZoomActions. This method is expected to be called from rendering thread.
 ") handleZFocusScroll;
 		virtual void handleZFocusScroll(const opencascade::handle<V3d_View> & theView, const Aspect_ScrollDelta & theParams);
 
@@ -9221,7 +9387,7 @@ None
 
 Description
 -----------
-Handle z rotation event mygl.zrotate.
+Handle Z rotation event myGL.ZRotate.
 ") handleZRotate;
 		virtual void handleZRotate(const opencascade::handle<V3d_View> & theView);
 
@@ -9241,7 +9407,7 @@ None
 
 Description
 -----------
-Handle zoom event mygl.zoomactions. this method is expected to be called from rendering thread.
+Handle zoom event myGL.ZoomActions. This method is expected to be called from rendering thread.
 ") handleZoom;
 		virtual void handleZoom(const opencascade::handle<V3d_View> & theView, const Aspect_ScrollDelta & theParams, const gp_Pnt * thePnt);
 
@@ -9316,7 +9482,7 @@ bool
 
 Description
 -----------
-Return true if another frame should be drawn right after this one.
+Return True if another frame should be drawn right after this one.
 ") toAskNextFrame;
 		bool toAskNextFrame();
 
@@ -9384,7 +9550,7 @@ bool
 
 Description
 -----------
-Return true. this owner will always call method hilight for its selectable object when the owner is detected.
+Return: True. This owner will always call method Hilight for its Selectable Object when the owner is detected.
 ") IsForcedHilight;
 		virtual Standard_Boolean IsForcedHilight();
 
@@ -9475,16 +9641,6 @@ class AIS_ViewInputBuffer {
 		class _orbitRotation {};
 		class _viewRotation {};
 		class _zrotateParams {};
-		bool IsNewGesture;
-		NCollection_Sequence<Aspect_ScrollDelta > ZoomActions;
-		_orientation Orientation;
-		_highlighting MoveTo;
-		_selection Selection;
-		_panningParams Panning;
-		_draggingParams Dragging;
-		_orbitRotation OrbitRotation;
-		_viewRotation ViewRotation;
-		_zrotateParams ZRotate;
 		/****** AIS_ViewInputBuffer::AIS_ViewInputBuffer ******/
 		/****** md5 signature: 745d73c10e784c3d8e971b2aac633943 ******/
 		%feature("compactdefaultargs") AIS_ViewInputBuffer;
@@ -9560,7 +9716,7 @@ bool
 
 Description
 -----------
-Return true if navigation keys are pressed even if delta from the previous frame is empty.
+Return True if navigation keys are pressed even if delta from the previous frame is empty.
 ") IsDefined;
 		bool IsDefined();
 
@@ -9573,7 +9729,7 @@ bool
 
 Description
 -----------
-Return true when both rotation and translation deltas are empty.
+Return True when both Rotation and Translation deltas are empty.
 ") IsEmpty;
 		bool IsEmpty();
 
@@ -9684,7 +9840,7 @@ bool
 
 Description
 -----------
-Return true if translation delta is defined.
+Return True if translation delta is defined.
 ") ToMove;
 		bool ToMove();
 
@@ -9697,7 +9853,7 @@ bool
 
 Description
 -----------
-Return true if rotation delta is defined.
+Return True if rotation delta is defined.
 ") ToRotate;
 		bool ToRotate();
 
@@ -9715,9 +9871,6 @@ Return true if rotation delta is defined.
 *********************/
 class AIS_WalkPart {
 	public:
-		float Value;
-		float Pressure;
-		float Duration;
 		/****** AIS_WalkPart::AIS_WalkPart ******/
 		/****** md5 signature: 5e3a0f6962670df498761fa44109c312 ******/
 		%feature("compactdefaultargs") AIS_WalkPart;
@@ -9740,7 +9893,7 @@ bool
 
 Description
 -----------
-Return true if delta is empty.
+Return True if delta is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
@@ -9900,7 +10053,7 @@ None
 
 Description
 -----------
-Initializes the line acomponent.
+Initializes the line aComponent.
 ") AIS_Axis;
 		 AIS_Axis(const opencascade::handle<Geom_Line> & aComponent);
 
@@ -9919,7 +10072,7 @@ None
 
 Description
 -----------
-Initializes the axis2 position acomponent. the coordinate system used is right-handed.
+initializes the axis2 position aComponent. The coordinate system used is right-handed.
 ") AIS_Axis;
 		 AIS_Axis(const opencascade::handle<Geom_Axis2Placement> & aComponent, const AIS_TypeOfAxis anAxisType);
 
@@ -9937,7 +10090,7 @@ None
 
 Description
 -----------
-Initializes the axis1 position anaxis.
+Initializes the axis1 position anAxis.
 ") AIS_Axis;
 		 AIS_Axis(const opencascade::handle<Geom_Axis1Placement> & anAxis);
 
@@ -9956,7 +10109,9 @@ None
 
 Description
 -----------
-Initializes the ray as axis with start point and direction @param[in] theaxis start point and direction of the ray @param[in] thelength optional length of the ray (ray is infinite by default).
+Initializes the ray as axis with start point and direction 
+Input parameter: theAxis Start point and direction of the ray 
+Input parameter: theLength Optional length of the ray (ray is infinite by default).
 ") AIS_Axis;
 		 AIS_Axis(const gp_Ax1 & theAxis, const Standard_Real theLength = -1);
 
@@ -9974,7 +10129,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object accepts the display mode amode.
+Returns true if the interactive object accepts the display mode aMode.
 ") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode);
 
@@ -9987,7 +10142,7 @@ opencascade::handle<Geom_Axis2Placement>
 
 Description
 -----------
-Returns the position of axis2 and positions it by identifying it as the x, y, or z axis and giving its direction in 3d space. the coordinate system used is right-handed.
+Returns the position of axis2 and positions it by identifying it as the x, y, or z axis and giving its direction in 3D space. The coordinate system used is right-handed.
 ") Axis2Placement;
 		const opencascade::handle<Geom_Axis2Placement> & Axis2Placement();
 
@@ -10000,7 +10155,7 @@ opencascade::handle<Geom_Line>
 
 Description
 -----------
-Returns the axis entity acomponent and identifies it as a component of a shape.
+Returns the axis entity aComponent and identifies it as a component of a shape.
 ") Component;
 		const opencascade::handle<Geom_Line> & Component();
 
@@ -10013,7 +10168,7 @@ bool
 
 Description
 -----------
-Returns a signature of 2 for axis datums. when you activate mode 2 by a signature, you pick ais objects of type ais_axis.
+Returns a signature of 2 for axis datums. When you activate mode 2 by a signature, you pick AIS objects of type AIS_Axis.
 ") IsXYZAxis;
 		Standard_Boolean IsXYZAxis();
 
@@ -10031,7 +10186,7 @@ None
 
 Description
 -----------
-Constructs a new line to serve as the axis anaxis in 3d space.
+Constructs a new line to serve as the axis anAxis in 3D space.
 ") SetAxis1Placement;
 		void SetAxis1Placement(const opencascade::handle<Geom_Axis1Placement> & anAxis);
 
@@ -10050,7 +10205,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for acomponent:the position and direction of an axis in 3d space. the coordinate system used is right-handed.
+Allows you to provide settings for aComponent:the position and direction of an axis in 3D space. The coordinate system used is right-handed.
 ") SetAxis2Placement;
 		void SetAxis2Placement(const opencascade::handle<Geom_Axis2Placement> & aComponent, const AIS_TypeOfAxis anAxisType);
 
@@ -10086,7 +10241,7 @@ None
 
 Description
 -----------
-Sets the coordinates of the lin acomponent.
+Sets the coordinates of the lin aComponent.
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Line> & aComponent);
 
@@ -10122,7 +10277,7 @@ None
 
 Description
 -----------
-Constructs the entity thetypeaxis to stock information concerning type of axis.
+Constructs the entity theTypeAxis to stock information concerning type of axis.
 ") SetTypeOfAxis;
 		void SetTypeOfAxis(const AIS_TypeOfAxis theTypeAxis);
 
@@ -10382,7 +10537,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for constructing ais circle datums initializes the circle acircle.
+Initializes this algorithm for constructing AIS circle datums initializes the circle aCircle.
 ") AIS_Circle;
 		 AIS_Circle(const opencascade::handle<Geom_Circle> & aCircle);
 
@@ -10403,7 +10558,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for constructing ais circle datums. initializes the circle thecircle, the arc starting point theustart, the arc ending point theuend, and the type of sensitivity theisfilledcirclesens.
+Initializes this algorithm for constructing AIS circle datums. Initializes the circle theCircle, the arc starting point theUStart, the arc ending point theUEnd, and the type of sensitivity theIsFilledCircleSens.
 ") AIS_Circle;
 		 AIS_Circle(const opencascade::handle<Geom_Circle> & theCircle, const Standard_Real theUStart, const Standard_Real theUEnd, const Standard_Boolean theIsFilledCircleSens = Standard_False);
 
@@ -10416,7 +10571,7 @@ opencascade::handle<Geom_Circle>
 
 Description
 -----------
-Returns the circle component defined in setcircle.
+Returns the circle component defined in SetCircle.
 ") Circle;
 		const opencascade::handle<Geom_Circle> & Circle();
 
@@ -10447,7 +10602,7 @@ theU2: float
 
 Description
 -----------
-Constructs instances of the starting point and the end point parameters, theu1 and theu2.
+Constructs instances of the starting point and the end point parameters, theU1 and theU2.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -10465,7 +10620,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the circle datum acircle.
+Allows you to provide settings for the circle datum aCircle.
 ") SetCircle;
 		void SetCircle(const opencascade::handle<Geom_Circle> & theCircle);
 
@@ -10501,7 +10656,7 @@ None
 
 Description
 -----------
-Sets the type of sensitivity for the circle. if theisfilledcirclesens set to standard_true then the whole circle will be detectable, otherwise only the boundary of the circle.
+Sets the type of sensitivity for the circle. If theIsFilledCircleSens set to Standard_True then the whole circle will be detectable, otherwise only the boundary of the circle.
 ") SetFilledCircleSens;
 		void SetFilledCircleSens(const Standard_Boolean theIsFilledCircleSens);
 
@@ -10519,7 +10674,7 @@ None
 
 Description
 -----------
-Allows you to set the parameter theu for the starting point of an arc.
+Allows you to set the parameter theU for the starting point of an arc.
 ") SetFirstParam;
 		void SetFirstParam(const Standard_Real theU);
 
@@ -10537,7 +10692,7 @@ None
 
 Description
 -----------
-Allows you to provide the parameter theu for the end point of an arc.
+Allows you to provide the parameter theU for the end point of an arc.
 ") SetLastParam;
 		void SetLastParam(const Standard_Real theU);
 
@@ -10555,7 +10710,7 @@ None
 
 Description
 -----------
-Assigns the width avalue to the solid line boundary of the circle datum.
+Assigns the width aValue to the solid line boundary of the circle datum.
 ") SetWidth;
 		void SetWidth(const Standard_Real aValue);
 
@@ -10581,7 +10736,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Indicates that the type of interactive object is a datum.
+Indicates that the type of Interactive Object is a datum.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -10816,7 +10971,7 @@ Aspect_TypeOfColorScaleData
 
 Description
 -----------
-Returns the type of colors, aspect_tocsd_auto by default. aspect_tocsd_auto - value between red and blue aspect_tocsd_user - user specified color from color map.
+Returns the type of colors, Aspect_TOCSD_AUTO by default. Aspect_TOCSD_AUTO - value between Red and Blue Aspect_TOCSD_USER - user specified color from color map.
 ") GetColorType;
 		Aspect_TypeOfColorScaleData GetColorType();
 
@@ -10860,7 +11015,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the format for numbers, '%.4g' by default. the same like format for function printf(). used if getlabeltype() is tocsd_auto;.
+Returns the format for numbers, '%.4g' by default. The same like format for function printf(). Used if GetLabelType() is TOCSD_AUTO;.
 ") GetFormat;
 		const TCollection_AsciiString & GetFormat();
 
@@ -10891,7 +11046,7 @@ Quantity_Color
 
 Description
 -----------
-Returns the user specified color from color map with index (starts at 1). returns default color if index is out of range in color map.
+Returns the user specified color from color map with index (starts at 1). Returns default color if index is out of range in color map.
 ") GetIntervalColor;
 		Quantity_Color GetIntervalColor(const Standard_Integer theIndex);
 
@@ -10909,7 +11064,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the user specified label with index theindex. index is in range from 1 to getnumberofintervals() or to getnumberofintervals() + 1 if islabelatborder() is true. returns empty string if label not defined.
+Returns the user specified label with index theIndex. Index is in range from 1 to GetNumberOfIntervals() or to GetNumberOfIntervals() + 1 if IsLabelAtBorder() is true. Returns empty string if label not defined.
 ") GetLabel;
 		TCollection_ExtendedString GetLabel(const Standard_Integer theIndex);
 
@@ -10922,7 +11077,7 @@ Aspect_TypeOfColorScalePosition
 
 Description
 -----------
-Returns the position of labels concerning color filled rectangles, aspect_tocsp_right by default.
+Returns the position of labels concerning color filled rectangles, Aspect_TOCSP_RIGHT by default.
 ") GetLabelPosition;
 		Aspect_TypeOfColorScalePosition GetLabelPosition();
 
@@ -10935,7 +11090,7 @@ Aspect_TypeOfColorScaleData
 
 Description
 -----------
-Returns the type of labels, aspect_tocsd_auto by default. aspect_tocsd_auto - labels as boundary values for intervals aspect_tocsd_user - user specified label is used.
+Returns the type of labels, Aspect_TOCSD_AUTO by default. Aspect_TOCSD_AUTO - labels as boundary values for intervals Aspect_TOCSD_USER - user specified label is used.
 ") GetLabelType;
 		Aspect_TypeOfColorScaleData GetLabelType();
 
@@ -11085,7 +11240,7 @@ Aspect_TypeOfColorScalePosition
 
 Description
 -----------
-Returns the position of color scale title, aspect_tocsp_left by default.
+Returns the position of color scale title, Aspect_TOCSP_LEFT by default.
 ") GetTitlePosition;
 		Aspect_TypeOfColorScalePosition GetTitlePosition();
 
@@ -11168,7 +11323,7 @@ bool
 
 Description
 -----------
-Returns true if the labels are placed at border of color intervals, true by default. the automatically generated label will show value exactly on the current position: - value connecting two neighbor intervals (true) - value in the middle of interval (false).
+Returns True if the labels are placed at border of color intervals, True by default. The automatically generated label will show value exactly on the current position: - value connecting two neighbor intervals (True) - value in the middle of interval (False).
 ") IsLabelAtBorder;
 		Standard_Boolean IsLabelAtBorder();
 
@@ -11181,7 +11336,7 @@ bool
 
 Description
 -----------
-Returns true if the color scale has logarithmic intervals, false by default.
+Returns True if the color scale has logarithmic intervals, False by default.
 ") IsLogarithmic;
 		Standard_Boolean IsLogarithmic();
 
@@ -11194,7 +11349,7 @@ bool
 
 Description
 -----------
-Returns true if the labels and colors used in reversed order, false by default. - normal, bottom-up order with minimal value on the bottom and maximum value on top. - reversed, top-down order with maximum value on the bottom and minimum value on top.
+Returns True if the labels and colors used in reversed order, False by default. - Normal, bottom-up order with Minimal value on the Bottom and Maximum value on Top. - Reversed, top-down order with Maximum value on the Bottom and Minimum value on Top.
 ") IsReversed;
 		Standard_Boolean IsReversed();
 
@@ -11207,7 +11362,7 @@ bool
 
 Description
 -----------
-Return true if color transition between neighbor intervals should be linearly interpolated, false by default.
+Return True if color transition between neighbor intervals should be linearly interpolated, False by default.
 ") IsSmoothTransition;
 		Standard_Boolean IsSmoothTransition();
 
@@ -11241,7 +11396,11 @@ Aspect_SequenceOfColor
 
 Description
 -----------
-Generates sequence of colors of the same lightness value in cie lch color space (see #quantity_toc_cielch), with hue values in the specified range. the colors are distributed across the range such as to have perceptually same difference between neighbour colors. for each color, maximal chroma value fitting in srgb gamut is used. //! @param thenbcolors - number of colors to generate @param thelightness - lightness to be used (0 is black, 100 is white, 32 is lightness of pure blue) @param thehuefrom - hue value at the start of the scale @param thehueto - hue value defining the end of the scale hue value can be out of the range [0, 360], interpreted as modulo 360. the colors of the scale will be in the order of increasing hue if thehueto > thehuefrom, and decreasing otherwise.
+Generates sequence of colors of the same lightness value in CIE Lch color space (see #Quantity_TOC_CIELch), with hue values in the specified range. The colors are distributed across the range such as to have perceptually same difference between neighbour colors. For each color, maximal chroma value fitting in sRGB gamut is used. //! 
+Parameter theNbColors - number of colors to generate 
+Parameter theLightness - lightness to be used (0 is black, 100 is white, 32 is lightness of pure blue) 
+Parameter theHueFrom - hue value at the start of the scale 
+Parameter theHueTo - hue value defining the end of the scale //! Hue value can be out of the range [0, 360], interpreted as modulo 360. The colors of the scale will be in the order of increasing hue if theHueTo > theHueFrom, and decreasing otherwise.
 ") MakeUniformColors;
 		static Aspect_SequenceOfColor MakeUniformColors(Standard_Integer theNbColors, Standard_Real theLightness, Standard_Real theHueFrom, Standard_Real theHueTo);
 
@@ -11296,7 +11455,7 @@ None
 
 Description
 -----------
-Sets the type of colors. aspect_tocsd_auto - value between red and blue aspect_tocsd_user - user specified color from color map.
+Sets the type of colors. Aspect_TOCSD_AUTO - value between Red and Blue Aspect_TOCSD_USER - user specified color from color map.
 ") SetColorType;
 		void SetColorType(const Aspect_TypeOfColorScaleData theType);
 
@@ -11314,7 +11473,7 @@ None
 
 Description
 -----------
-Sets the color scale colors. the length of the sequence should be equal to getnumberofintervals().
+Sets the color scale colors. The length of the sequence should be equal to GetNumberOfIntervals().
 ") SetColors;
 		void SetColors(const Aspect_SequenceOfColor & theSeq);
 
@@ -11369,7 +11528,7 @@ None
 
 Description
 -----------
-Sets hue angle range corresponding to minimum and maximum values. the valid angle range is [0, 360], see quantity_color and quantity_toc_hls for more details.
+Sets hue angle range corresponding to minimum and maximum values. The valid angle range is [0, 360], see Quantity_Color and Quantity_TOC_HLS for more details.
 ") SetHueRange;
 		void SetHueRange(const Standard_Real theMinAngle, const Standard_Real theMaxAngle);
 
@@ -11388,7 +11547,9 @@ None
 
 Description
 -----------
-Sets the color of the specified interval. note that list is automatically resized to include specified index. @param thecolor color value to set @param theindex index in range [1, getnumberofintervals()];  appended to the end of list if -1 is specified.
+Sets the color of the specified interval. Note that list is automatically resized to include specified index. 
+Parameter theColor color value to set 
+Parameter theIndex index in range [1, GetNumberOfIntervals()];  appended to the end of list if -1 is specified.
 ") SetIntervalColor;
 		void SetIntervalColor(const Quantity_Color & theColor, const Standard_Integer theIndex);
 
@@ -11407,7 +11568,9 @@ None
 
 Description
 -----------
-Sets the color scale label at index. note that list is automatically resized to include specified index. @param thelabel new label text @param theindex index in range [1, getnumberofintervals()] or [1, getnumberofintervals() + 1] if islabelatborder() is true;  label is appended to the end of list if negative index is specified.
+Sets the color scale label at index. Note that list is automatically resized to include specified index. 
+Parameter theLabel new label text 
+Parameter theIndex index in range [1, GetNumberOfIntervals()] or [1, GetNumberOfIntervals() + 1] if IsLabelAtBorder() is true;  label is appended to the end of list if negative index is specified.
 ") SetLabel;
 		void SetLabel(TCollection_ExtendedString theLabel, const Standard_Integer theIndex);
 
@@ -11425,7 +11588,7 @@ None
 
 Description
 -----------
-Sets true if the labels are placed at border of color intervals (true by default). if set to false, labels will be drawn at color intervals rather than at borders.
+Sets true if the labels are placed at border of color intervals (True by default). If set to False, labels will be drawn at color intervals rather than at borders.
 ") SetLabelAtBorder;
 		void SetLabelAtBorder(const Standard_Boolean theOn);
 
@@ -11461,7 +11624,7 @@ None
 
 Description
 -----------
-Sets the type of labels. aspect_tocsd_auto - labels as boundary values for intervals aspect_tocsd_user - user specified label is used.
+Sets the type of labels. Aspect_TOCSD_AUTO - labels as boundary values for intervals Aspect_TOCSD_USER - user specified label is used.
 ") SetLabelType;
 		void SetLabelType(const Aspect_TypeOfColorScaleData theType);
 
@@ -11479,7 +11642,7 @@ None
 
 Description
 -----------
-Sets the color scale labels. the length of the sequence should be equal to getnumberofintervals() or to getnumberofintervals() + 1 if islabelatborder() is true. if length of the sequence does not much the number of intervals, then these labels will be considered as 'free' and will be located at the virtual intervals corresponding to the number of labels (with flag islabelatborder() having the same effect as in normal case).
+Sets the color scale labels. The length of the sequence should be equal to GetNumberOfIntervals() or to GetNumberOfIntervals() + 1 if IsLabelAtBorder() is true. If length of the sequence does not much the number of intervals, then these labels will be considered as 'free' and will be located at the virtual intervals corresponding to the number of labels (with flag IsLabelAtBorder() having the same effect as in normal case).
 ") SetLabels;
 		void SetLabels(const TColStd_SequenceOfExtendedString & theSeq);
 
@@ -11589,7 +11752,7 @@ None
 
 Description
 -----------
-Sets the minimal and maximal value of color scale. note that values order will be ignored - the minimum and maximum values will be swapped if needed. ::setreversed() should be called to swap displaying order.
+Sets the minimal and maximal value of color scale. Note that values order will be ignored - the minimum and maximum values will be swapped if needed. ::SetReversed() should be called to swap displaying order.
 ") SetRange;
 		void SetRange(const Standard_Real theMin, const Standard_Real theMax);
 
@@ -11698,7 +11861,7 @@ None
 
 Description
 -----------
-Sets the color scale title position.
+No available documentation.
 ") SetTitlePosition;
 		void SetTitlePosition(const Aspect_TypeOfColorScalePosition thePos);
 
@@ -11718,7 +11881,7 @@ None
 
 Description
 -----------
-Populates colors scale by colors of the same lightness value in cie lch color space, distributed by hue, with perceptually uniform differences between consequent colors. see makeuniformcolors() for description of parameters.
+Populates colors scale by colors of the same lightness value in CIE Lch color space, distributed by hue, with perceptually uniform differences between consequent colors. See MakeUniformColors() for description of parameters.
 ") SetUniformColors;
 		void SetUniformColors(Standard_Real theLightness, Standard_Real theHueFrom, Standard_Real theHueTo);
 
@@ -11772,7 +11935,8 @@ int
 
 Description
 -----------
-Returns the height of text. @param thetext [in] the text of which to calculate height.
+Returns the height of text. 
+Input parameter: theText the text of which to calculate height.
 ") TextHeight;
 		Standard_Integer TextHeight(TCollection_ExtendedString theText);
 
@@ -11811,7 +11975,8 @@ int
 
 Description
 -----------
-Returns the width of text. @param thetext [in] the text of which to calculate width.
+Returns the width of text. 
+Input parameter: theText the text of which to calculate width.
 ") TextWidth;
 		Standard_Integer TextWidth(TCollection_ExtendedString theText);
 
@@ -11829,7 +11994,7 @@ float
 
 Description
 -----------
-Shift hue into valid range. lightness and saturation should be specified in valid range [0.0, 1.0], however hue might be given out of quantity_color range to specify desired range for interpolation.
+Shift hue into valid range. Lightness and Saturation should be specified in valid range [0.0, 1.0], however Hue might be given out of Quantity_Color range to specify desired range for interpolation.
 ") hueToValidRange;
 		static Standard_Real hueToValidRange(const Standard_Real theHue);
 
@@ -11863,7 +12028,7 @@ None
 
 Description
 -----------
-Disconnects the previous view and sets highlight mode to 0. this highlights the wireframe presentation atypeofpresentation3d. top_allview deactivates hidden line removal.
+Disconnects the previous view and sets highlight mode to 0. This highlights the wireframe presentation aTypeOfPresentation3d. Top_AllView deactivates hidden line removal.
 ") AIS_ConnectedInteractive;
 		 AIS_ConnectedInteractive(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
 
@@ -11894,7 +12059,7 @@ bool
 
 Description
 -----------
-Informs the graphic context that the interactive object may be decomposed into sub-shapes for dynamic selection.
+Informs the graphic context that the interactive Object may be decomposed into sub-shapes for dynamic selection.
 ") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition();
 
@@ -11912,7 +12077,7 @@ None
 
 Description
 -----------
-Establishes the connection between the connected interactive object, anotheriobj, and its reference.
+Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference.
 ") Connect;
 		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj);
 
@@ -11931,7 +12096,7 @@ None
 
 Description
 -----------
-Establishes the connection between the connected interactive object, anotheriobj, and its reference. locates instance in alocation.
+Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference. Locates instance in aLocation.
 ") Connect;
 		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const gp_Trsf & theLocation);
 
@@ -11950,7 +12115,7 @@ None
 
 Description
 -----------
-Establishes the connection between the connected interactive object, anotheriobj, and its reference. locates instance in alocation.
+Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference. Locates instance in aLocation.
 ") Connect;
 		void Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<TopLoc_Datum3D> & theLocation);
 
@@ -11963,7 +12128,7 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Returns the connection with the reference interactive object.
+Returns the connection with the reference Interactive Object.
 ") ConnectedTo;
 		const opencascade::handle<AIS_InteractiveObject> & ConnectedTo();
 
@@ -11976,7 +12141,7 @@ None
 
 Description
 -----------
-Clears the connection with a source reference. the presentation will no longer be displayed. warning must be done before deleting the presentation.
+Clears the connection with a source reference. The presentation will no longer be displayed. Warning Must be done before deleting the presentation.
 ") Disconnect;
 		void Disconnect();
 
@@ -12015,7 +12180,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Returns koi_object.
+Returns KOI_Object.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -12049,7 +12214,7 @@ None
 
 Description
 -----------
-Initializes the light source by copying graphic3d_clight settings.
+Initializes the light source by copying Graphic3d_CLight settings.
 ") AIS_LightSource;
 		 AIS_LightSource(const opencascade::handle<Graphic3d_CLight> & theLightSource);
 
@@ -12062,7 +12227,7 @@ int
 
 Description
 -----------
-Returns sensitive sphere arc size in pixels; 20 by default.
+Returns Sensitive sphere arc size in pixels; 20 by default.
 ") ArcSize;
 		Standard_Integer ArcSize();
 
@@ -12075,7 +12240,7 @@ bool
 
 Description
 -----------
-Returns true if transform-persistence is allowed; true by default for ambient and directional lights and false by default for positional and spot lights.
+Returns True if transform-persistence is allowed; True by default for Ambient and Directional lights and False by default for Positional and Spot lights.
 ") IsZoomable;
 		bool IsZoomable();
 
@@ -12106,7 +12271,8 @@ opencascade::handle<Graphic3d_MarkerImage>
 
 Description
 -----------
-Returns light source icon. @param theisenabled [in] marker index for enabled/disabled light source states.
+Returns light source icon. 
+Input parameter: theIsEnabled marker index for enabled/disabled light source states.
 ") MarkerImage;
 		const opencascade::handle<Graphic3d_MarkerImage> & MarkerImage(bool theIsEnabled);
 
@@ -12124,7 +12290,8 @@ Aspect_TypeOfMarker
 
 Description
 -----------
-Returns light source icon. @param theisenabled [in] marker index for enabled/disabled light source states.
+Returns light source icon. 
+Input parameter: theIsEnabled marker index for enabled/disabled light source states.
 ") MarkerType;
 		Aspect_TypeOfMarker MarkerType(bool theIsEnabled);
 
@@ -12425,7 +12592,7 @@ bool
 
 Description
 -----------
-Returns true if the light source name should be displayed; true by default.
+Returns True if the light source name should be displayed; True by default.
 ") ToDisplayName;
 		Standard_Boolean ToDisplayName();
 
@@ -12438,7 +12605,7 @@ bool
 
 Description
 -----------
-Returns true to display light source range as sphere (positional light) or cone (spot light); true by default. has no effect for non-zoomable presentation.
+Returns True to display light source range as sphere (positional light) or cone (spot light); True by default. Has no effect for non-zoomable presentation.
 ") ToDisplayRange;
 		Standard_Boolean ToDisplayRange();
 
@@ -12451,7 +12618,7 @@ bool
 
 Description
 -----------
-Returns true if mouse click will turn light on/off; true by default.
+Returns True if mouse click will turn light on/off; True by default.
 ") ToSwitchOnClick;
 		bool ToSwitchOnClick();
 
@@ -12496,7 +12663,7 @@ None
 
 Description
 -----------
-Initializes the line aline.
+Initializes the line aLine.
 ") AIS_Line;
 		 AIS_Line(const opencascade::handle<Geom_Line> & aLine);
 
@@ -12515,7 +12682,7 @@ None
 
 Description
 -----------
-Initializes a starting point astartpoint and a finishing point aendpoint for the line.
+Initializes a starting point aStartPoint and a finishing point aEndPoint for the line.
 ") AIS_Line;
 		 AIS_Line(const opencascade::handle<Geom_Point> & aStartPoint, const opencascade::handle<Geom_Point> & aEndPoint);
 
@@ -12547,7 +12714,7 @@ None
 
 Description
 -----------
-Returns the starting point thepstart and the end point thepend of the line set by setpoints.
+Returns the starting point thePStart and the end point thePEnd of the line set by SetPoints.
 ") Points;
 		void Points(opencascade::handle<Geom_Point> & thePStart, opencascade::handle<Geom_Point> & thePEnd);
 
@@ -12565,7 +12732,7 @@ None
 
 Description
 -----------
-Provides a new color setting acolor for the line in the drawing tool, or 'drawer'.
+Provides a new color setting aColor for the line in the drawing tool, or 'Drawer'.
 ") SetColor;
 		void SetColor(const Quantity_Color & aColor);
 
@@ -12583,7 +12750,7 @@ None
 
 Description
 -----------
-Instantiates an infinite line.
+instantiates an infinite line.
 ") SetLine;
 		void SetLine(const opencascade::handle<Geom_Line> & theLine);
 
@@ -12602,7 +12769,7 @@ None
 
 Description
 -----------
-Sets the starting point thepstart and ending point thepend of the infinite line to create a finite line segment.
+Sets the starting point thePStart and ending point thePEnd of the infinite line to create a finite line segment.
 ") SetPoints;
 		void SetPoints(const opencascade::handle<Geom_Point> & thePStart, const opencascade::handle<Geom_Point> & thePEnd);
 
@@ -12620,7 +12787,7 @@ None
 
 Description
 -----------
-Provides the new width setting avalue for the line in the drawing tool, or 'drawer'.
+Provides the new width setting aValue for the line in the drawing tool, or 'Drawer'.
 ") SetWidth;
 		void SetWidth(const Standard_Real aValue);
 
@@ -12646,7 +12813,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Returns the type datum.
+Returns the type Datum.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -12700,6 +12867,25 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		class Cube {};
 		class Sector {};
 		class Axis {};
+/* public enums */
+enum ManipulatorSkin {
+	ManipulatorSkin_Shaded = 0,
+	ManipulatorSkin_Flat = 1,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class ManipulatorSkin(IntEnum):
+	ManipulatorSkin_Shaded = 0
+	ManipulatorSkin_Flat = 1
+ManipulatorSkin_Shaded = ManipulatorSkin.ManipulatorSkin_Shaded
+ManipulatorSkin_Flat = ManipulatorSkin.ManipulatorSkin_Flat
+};
+/* end python proxy for enums */
+
 		/****** AIS_Manipulator::AIS_Manipulator ******/
 		/****** md5 signature: d6d73953b5293a4bb9f85d59f84e4550 ******/
 		%feature("compactdefaultargs") AIS_Manipulator;
@@ -12772,7 +12958,7 @@ None
 
 Description
 -----------
-Attaches himself to the input interactive object and become displayed in the same context. it is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
+Attaches himself to the input interactive object and become displayed in the same context. It is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
 ") Attach;
 		void Attach(const opencascade::handle<AIS_InteractiveObject> & theObject, OptionsForAttach theOptions = OptionsForAttach());
 
@@ -12791,7 +12977,7 @@ None
 
 Description
 -----------
-Attaches himself to the input interactive object group and become displayed in the same context. it become attached to the first object, baut manage manipulation of the whole group. it is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
+Attaches himself to the input interactive object group and become displayed in the same context. It become attached to the first object, baut manage manipulation of the whole group. It is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
 ") Attach;
 		void Attach(const opencascade::handle<AIS_ManipulatorObjectSequence> & theObject, OptionsForAttach theOptions = OptionsForAttach());
 
@@ -12824,7 +13010,7 @@ None
 
 Description
 -----------
-Fills presentation. @note manipulator presentation does not use display mode and for all modes has the same presentation.
+Fills presentation. @note Manipulator presentation does not use display mode and for all modes has the same presentation.
 ") Compute;
 		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
 
@@ -12843,7 +13029,8 @@ None
 
 Description
 -----------
-Computes selection sensitive zones (triangulation) for manipulator. @param thenode [in] selection mode that is treated as transformation mode.
+Computes selection sensitive zones (triangulation) for manipulator. 
+Input parameter: theNode Selection mode that is treated as transformation mode.
 ") ComputeSelection;
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
@@ -12856,7 +13043,8 @@ None
 
 Description
 -----------
-Make inactive the current selected manipulator part and reset current axis index and current mode. after its call hasactivemode() returns false. @sa hasactivemode().
+Make inactive the current selected manipulator part and reset current axis index and current mode. After its call HasActiveMode() returns false. 
+See also: HasActiveMode().
 ") DeactivateCurrentMode;
 		void DeactivateCurrentMode();
 
@@ -12887,7 +13075,7 @@ None
 
 Description
 -----------
-Enable manipualtion mode. @warning it activates selection mode in the current context. if manipulator is not displayed, no mode will be activated.
+Enable manipualtion mode. @warning It activates selection mode in the current context. If manipulator is not displayed, no mode will be activated.
 ") EnableMode;
 		void EnableMode(const AIS_ManipulatorMode theMode);
 
@@ -12900,7 +13088,7 @@ bool
 
 Description
 -----------
-Return true if some part of manipulator is selected (transformation mode is active, and owning object can be transformed).
+Return: true if some part of manipulator is selected (transformation mode is active, and owning object can be transformed).
 ") HasActiveMode;
 		Standard_Boolean HasActiveMode();
 
@@ -12965,7 +13153,7 @@ bool
 
 Description
 -----------
-Return true if manipulator is attached to some interactive object (has owning object).
+Return: true if manipulator is attached to some interactive object (has owning object).
 ") IsAttached;
 		Standard_Boolean IsAttached();
 
@@ -12978,7 +13166,7 @@ bool
 
 Description
 -----------
-Disables auto highlighting to use hilightselected() and hilightownerwithcolor() overridden methods.
+Disables auto highlighting to use HilightSelected() and HilightOwnerWithColor() overridden methods.
 ") IsAutoHilight;
 		virtual Standard_Boolean IsAutoHilight();
 
@@ -12991,7 +13179,7 @@ bool
 
 Description
 -----------
-Return true if manual mode activation is enabled.
+Return: true if manual mode activation is enabled.
 ") IsModeActivationOnDetection;
 		Standard_Boolean IsModeActivationOnDetection();
 
@@ -13004,7 +13192,7 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Return the first (leading) object of the owning objects.
+Return: the first (leading) object of the owning objects.
 ") Object;
 		opencascade::handle<AIS_InteractiveObject> Object();
 
@@ -13022,7 +13210,7 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Return one of the owning objects. @warning raises program error if theindex is more than owning objects count or less than 1.
+Return: one of the owning objects. @warning raises program error if theIndex is more than owning objects count or less than 1.
 ") Object;
 		opencascade::handle<AIS_InteractiveObject> Object(const Standard_Integer theIndex);
 
@@ -13043,7 +13231,8 @@ bool
 
 Description
 -----------
-Computes transformation of parent object according to the active mode and input motion vector. you can use this method to get object transformation according to current mode or use own algorithm to implement any other transformation for modes. return transformation of parent object.
+Computes transformation of parent object according to the active mode and input motion vector. You can use this method to get object transformation according to current mode or use own algorithm to implement any other transformation for modes. 
+Return: transformation of parent object.
 ") ObjectTransformation;
 		Standard_Boolean ObjectTransformation(const Standard_Integer theX, const Standard_Integer theY, const opencascade::handle<V3d_View> & theView, gp_Trsf & theTrsf);
 
@@ -13056,7 +13245,7 @@ opencascade::handle<AIS_ManipulatorObjectSequence>
 
 Description
 -----------
-Return all owning objects.
+Return: all owning objects.
 ") Objects;
 		opencascade::handle<AIS_ManipulatorObjectSequence> Objects();
 
@@ -13069,7 +13258,7 @@ gp_Ax2
 
 Description
 -----------
-Return poition of manipulator interactive object.
+Return: poition of manipulator interactive object.
 ") Position;
 		const gp_Ax2 Position();
 
@@ -13092,9 +13281,53 @@ bool
 
 Description
 -----------
-Drag object in the viewer. @param thectx [in] interactive context @param theview [in] active view @param theowner [in] the owner of detected entity @param thedragfrom [in] drag start point @param thedragto [in] drag end point @param theaction [in] drag action return false if object rejects dragging action (e.g. ais_dragaction_start).
+Drag object in the viewer. 
+Input parameter: theCtx interactive context 
+Input parameter: theView active View 
+Input parameter: theOwner the owner of detected entity 
+Input parameter: theDragFrom drag start point 
+Input parameter: theDragTo drag end point 
+Input parameter: theAction drag action 
+Return: False if object rejects dragging action (e.g. AIS_DragAction_Start).
 ") ProcessDragging;
 		virtual Standard_Boolean ProcessDragging(const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Graphic3d_Vec2i & theDragFrom, const Graphic3d_Vec2i & theDragTo, const AIS_DragAction theAction);
+
+		/****** AIS_Manipulator::RecomputeSelection ******/
+		/****** md5 signature: 25d3db43686d21021cd3d58d65eb3a05 ******/
+		%feature("compactdefaultargs") RecomputeSelection;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: AIS_ManipulatorMode
+
+Return
+-------
+None
+
+Description
+-----------
+Recomputes sensitive primitives for the given selection mode. 
+Parameter theMode selection mode to recompute sensitive primitives.
+") RecomputeSelection;
+		void RecomputeSelection(const AIS_ManipulatorMode theMode);
+
+		/****** AIS_Manipulator::RecomputeTransformation ******/
+		/****** md5 signature: ad861420f0798665e2a57dd4c406d4bd ******/
+		%feature("compactdefaultargs") RecomputeTransformation;
+		%feature("autodoc", "
+Parameters
+----------
+theCamera: Graphic3d_Camera
+
+Return
+-------
+None
+
+Description
+-----------
+Apply camera transformation to flat skin manipulator.
+") RecomputeTransformation;
+		void RecomputeTransformation(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****** AIS_Manipulator::SetGap ******/
 		/****** md5 signature: 93bbf4c4c799016d4246a94510cb49b4 ******/
@@ -13128,7 +13361,7 @@ None
 
 Description
 -----------
-Enables mode activation on detection (highlighting). by default, mode is activated on selection of manipulator part. @warning if this mode is enabled, selection of parts does nothing.
+Enables mode activation on detection (highlighting). By default, mode is activated on selection of manipulator part. @warning If this mode is enabled, selection of parts does nothing.
 ") SetModeActivationOnDetection;
 		void SetModeActivationOnDetection(const Standard_Boolean theToEnable);
 
@@ -13148,7 +13381,7 @@ None
 
 Description
 -----------
-Disable or enable visual parts for translation, rotation or scaling for some axis. by default all parts are enabled (will be displayed). @warning enabling or disabling of visual parts of manipulator does not manage the manipulation (selection) mode. @warning raises program error if axis index is < 0 or > 2.
+Disable or enable visual parts for translation, rotation or scaling for some axis. By default all parts are enabled (will be displayed). @warning Enabling or disabling of visual parts of manipulator does not manage the manipulation (selection) mode. @warning Raises program error if axis index is < 0 or > 2.
 ") SetPart;
 		void SetPart(const Standard_Integer theAxisIndex, const AIS_ManipulatorMode theMode, const Standard_Boolean theIsEnabled);
 
@@ -13167,7 +13400,7 @@ None
 
 Description
 -----------
-Disable or enable visual parts for translation, rotation or scaling for all axes. by default all parts are enabled (will be displayed). @warning enabling or disabling of visual parts of manipulator does not manage the manipulation (selection) mode. @warning raises program error if axis index is < 0 or > 2.
+Disable or enable visual parts for translation, rotation or scaling for ALL axes. By default all parts are enabled (will be displayed). @warning Enabling or disabling of visual parts of manipulator does not manage the manipulation (selection) mode. @warning Raises program error if axis index is < 0 or > 2.
 ") SetPart;
 		void SetPart(const AIS_ManipulatorMode theMode, const Standard_Boolean theIsEnabled);
 
@@ -13207,6 +13440,24 @@ Sets size (length of side of the manipulator cubic bounding box.
 ") SetSize;
 		void SetSize(const Standard_ShortReal theSideLength);
 
+		/****** AIS_Manipulator::SetSkinMode ******/
+		/****** md5 signature: 54ec9dc8d4d778610619c493ddb68c31 ******/
+		%feature("compactdefaultargs") SetSkinMode;
+		%feature("autodoc", "
+Parameters
+----------
+theSkinMode: ManipulatorSkin
+
+Return
+-------
+None
+
+Description
+-----------
+Sets skin mode for the manipulator.
+") SetSkinMode;
+		void SetSkinMode(ManipulatorSkin theSkinMode);
+
 		/****** AIS_Manipulator::SetTransformPersistence ******/
 		/****** md5 signature: 55e7ba0326b97d41dc89997ba6b5628e ******/
 		%feature("compactdefaultargs") SetTransformPersistence;
@@ -13221,7 +13472,7 @@ None
 
 Description
 -----------
-Redefines transform persistence management to setup transformation for sub-presentation of axes. @warning this interactive object does not support custom transformation persistence when using \sa zoompersistence mode. in this mode the transformation persistence flags for presentations are overridden by this class. @warning invokes debug assertion to catch incompatible usage of the method with \sa zoompersistence mode, silently does nothing in release mode. @warning revise use of adjustsize argument of of \sa attachtoobjects method when enabling zoom persistence.
+Redefines transform persistence management to setup transformation for sub-presentation of axes. @warning this interactive object does not support custom transformation persistence when using \sa ZoomPersistence mode. In this mode the transformation persistence flags for presentations are overridden by this class. @warning Invokes debug assertion to catch incompatible usage of the method with \sa ZoomPersistence mode, silently does nothing in release mode. @warning revise use of AdjustSize argument of of \sa AttachToObjects method when enabling zoom persistence.
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -13239,7 +13490,7 @@ None
 
 Description
 -----------
-Enable or disable zoom persistence mode for the manipulator. with this mode turned on the presentation will keep fixed screen size. @warning when turned on this option overrides transform persistence properties and local transformation to achieve necessary visual effect. @warning revise use of adjustsize argument of of \sa attachtoobjects method when enabling zoom persistence.
+Enable or disable zoom persistence mode for the manipulator. With this mode turned on the presentation will keep fixed screen size. @warning when turned on this option overrides transform persistence properties and local transformation to achieve necessary visual effect. @warning revise use of AdjustSize argument of of \sa AttachToObjects method when enabling zoom persistence.
 ") SetZoomPersistence;
 		void SetZoomPersistence(const Standard_Boolean theToEnable);
 
@@ -13255,6 +13506,19 @@ Description
 No available documentation.
 ") Size;
 		Standard_ShortReal Size();
+
+		/****** AIS_Manipulator::SkinMode ******/
+		/****** md5 signature: 688c8135f1ec26fffa795d0d9d9cd548 ******/
+		%feature("compactdefaultargs") SkinMode;
+		%feature("autodoc", "Return
+-------
+AIS_Manipulator::ManipulatorSkin
+
+Description
+-----------
+Return: current manipulator skin mode.
+") SkinMode;
+		AIS_Manipulator::ManipulatorSkin SkinMode();
 
 		/****** AIS_Manipulator::StartTransform ******/
 		/****** md5 signature: 0e42457948e68fa72b81e5837dd4f985 ******/
@@ -13272,7 +13536,7 @@ None
 
 Description
 -----------
-Init start (reference) transformation. @warning it is used in chain with starttransform-transform(gp_trsf)-stoptransform and is used only for custom transform set. if transform(const standard_integer, const standard_integer) is used, initial data is set automatically, and it is reset on deactivatecurrentmode call if it is not reset yet.
+Init start (reference) transformation. @warning It is used in chain with StartTransform-Transform(gp_Trsf)-StopTransform and is used only for custom transform set. If Transform(const Standard_Integer, const Standard_Integer) is used, initial data is set automatically, and it is reset on DeactivateCurrentMode call if it is not reset yet.
 ") StartTransform;
 		void StartTransform(const Standard_Integer theX, const Standard_Integer theY, const opencascade::handle<V3d_View> & theView);
 
@@ -13321,7 +13585,8 @@ None
 
 Description
 -----------
-Reset start (reference) transformation. @param thetoapply [in] option to apply or to cancel the started transformation. @warning it is used in chain with starttransform-transform(gp_trsf)-stoptransform and is used only for custom transform set.
+Reset start (reference) transformation. 
+Input parameter: theToApply option to apply or to cancel the started transformation. @warning It is used in chain with StartTransform-Transform(gp_Trsf)-StopTransform and is used only for custom transform set.
 ") StopTransform;
 		void StopTransform(const Standard_Boolean theToApply = Standard_True);
 
@@ -13339,7 +13604,7 @@ None
 
 Description
 -----------
-Apply to the owning objects the input transformation. @remark the transformation is set using setlocaltransformation for owning objects. the location of the manipulator is stored also in local transformation, so that there's no need to redisplay objects. @warning it is used in chain with starttransform-transform(gp_trsf)-stoptransform and is used only for custom transform set. @warning it will does nothing if transformation is not initiated (with starttransform() call).
+Apply to the owning objects the input transformation. @remark The transformation is set using SetLocalTransformation for owning objects. The location of the manipulator is stored also in Local Transformation, so that there's no need to redisplay objects. @warning It is used in chain with StartTransform-Transform(gp_Trsf)-StopTransform and is used only for custom transform set. @warning It will does nothing if transformation is not initiated (with StartTransform() call).
 ") Transform;
 		void Transform(const gp_Trsf & aTrsf);
 
@@ -13359,7 +13624,7 @@ gp_Trsf
 
 Description
 -----------
-Apply transformation made from mouse moving from start position (save on the first transform() call and reset on deactivatecurrentmode() call.) to the in/out mouse position (thex, they).
+Apply transformation made from mouse moving from start position (save on the first Transform() call and reset on DeactivateCurrentMode() call.) to the in/out mouse position (theX, theY).
 ") Transform;
 		gp_Trsf Transform(const Standard_Integer theX, const Standard_Integer theY, const opencascade::handle<V3d_View> & theView);
 
@@ -13549,7 +13814,7 @@ None
 
 Description
 -----------
-Initializes the interactive object with multiple connections to ais_interactive objects.
+Initializes the Interactive Object with multiple connections to AIS_Interactive objects.
 ") AIS_MultipleConnectedInteractive;
 		 AIS_MultipleConnectedInteractive();
 
@@ -13562,7 +13827,7 @@ bool
 
 Description
 -----------
-Informs the graphic context that the interactive object may be decomposed into sub-shapes for dynamic selection.
+Informs the graphic context that the interactive Object may be decomposed into sub-shapes for dynamic selection.
 ") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition();
 
@@ -13582,7 +13847,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Establishes the connection between the connected interactive object, theinteractive, and its reference. locates instance in thelocation and applies specified transformation persistence mode. return created instance object (ais_connectedinteractive or ais_multipleconnectedinteractive).
+Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and applies specified transformation persistence mode. 
+Return: created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive).
 ") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const opencascade::handle<TopLoc_Datum3D> & theLocation, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -13600,7 +13866,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Establishes the connection between the connected interactive object, theinteractive, and its reference. copies local transformation and transformation persistence mode from theinteractive. return created instance object (ais_connectedinteractive or ais_multipleconnectedinteractive).
+Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Copies local transformation and transformation persistence mode from theInteractive. 
+Return: created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive).
 ") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj);
 
@@ -13619,7 +13886,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Establishes the connection between the connected interactive object, theinteractive, and its reference. locates instance in thelocation and copies transformation persistence mode from theinteractive. return created instance object (ais_connectedinteractive or ais_multipleconnectedinteractive).
+Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and copies transformation persistence mode from theInteractive. 
+Return: created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive).
 ") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const gp_Trsf & theLocation);
 
@@ -13639,7 +13907,8 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Establishes the connection between the connected interactive object, theinteractive, and its reference. locates instance in thelocation and applies specified transformation persistence mode. return created instance object (ais_connectedinteractive or ais_multipleconnectedinteractive).
+Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and applies specified transformation persistence mode. 
+Return: created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive).
 ") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect(const opencascade::handle<AIS_InteractiveObject> & theAnotherObj, const gp_Trsf & theLocation, const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -13657,7 +13926,7 @@ None
 
 Description
 -----------
-Removes the connection with theinteractive.
+Removes the connection with theInteractive.
 ") Disconnect;
 		void Disconnect(const opencascade::handle<AIS_InteractiveObject> & theInteractive);
 
@@ -13788,7 +14057,7 @@ None
 
 Description
 -----------
-Initializes the plane acomponent. if the mode acurrentmode equals true, the drawing tool, 'drawer' is not initialized.
+initializes the plane aComponent. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 ") AIS_Plane;
 		 AIS_Plane(const opencascade::handle<Geom_Plane> & aComponent, const Standard_Boolean aCurrentMode = Standard_False);
 
@@ -13808,7 +14077,7 @@ None
 
 Description
 -----------
-Initializes the plane acomponent and the point acenter. if the mode acurrentmode equals true, the drawing tool, 'drawer' is not initialized. acurrentmode equals true, the drawing tool, 'drawer' is not initialized.
+initializes the plane aComponent and the point aCenter. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized. aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 ") AIS_Plane;
 		 AIS_Plane(const opencascade::handle<Geom_Plane> & aComponent, const gp_Pnt & aCenter, const Standard_Boolean aCurrentMode = Standard_False);
 
@@ -13830,7 +14099,7 @@ None
 
 Description
 -----------
-Initializes the plane acomponent, the point acenter, and the minimum and maximum points, apmin and apmax. if the mode acurrentmode equals true, the drawing tool, 'drawer' is not initialized.
+initializes the plane aComponent, the point aCenter, and the minimum and maximum points, aPmin and aPmax. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 ") AIS_Plane;
 		 AIS_Plane(const opencascade::handle<Geom_Plane> & aComponent, const gp_Pnt & aCenter, const gp_Pnt & aPmin, const gp_Pnt & aPmax, const Standard_Boolean aCurrentMode = Standard_False);
 
@@ -13868,7 +14137,7 @@ bool
 
 Description
 -----------
-Returns true if the display mode selected, amode, is valid for planes.
+Returns true if the display mode selected, aMode, is valid for planes.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode);
 
@@ -13881,7 +14150,7 @@ opencascade::handle<Geom_Axis2Placement>
 
 Description
 -----------
-Returns the position of the plane's axis2 system identifying the x, y, or z axis and giving the plane a direction in 3d space. an axis2 system is a right-handed coordinate system.
+Returns the position of the plane's axis2 system identifying the x, y, or z axis and giving the plane a direction in 3D space. An axis2 system is a right-handed coordinate system.
 ") Axis2Placement;
 		opencascade::handle<Geom_Axis2Placement> Axis2Placement();
 
@@ -13907,7 +14176,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Returns the component specified in setcomponent.
+Returns the component specified in SetComponent.
 ") Component;
 		const opencascade::handle<Geom_Plane> & Component();
 
@@ -13939,7 +14208,7 @@ bool
 
 Description
 -----------
-Returns the non-default current display mode set by setcurrentmode.
+Returns the non-default current display mode set by SetCurrentMode.
 ") CurrentMode;
 		Standard_Boolean CurrentMode();
 
@@ -13999,7 +14268,7 @@ bool
 
 Description
 -----------
-Returns the settings for the selected plane acomponent, provided in setplaneattributes. these include the points acenter, apmin, and apmax.
+Returns the settings for the selected plane aComponent, provided in SetPlaneAttributes. These include the points aCenter, aPmin, and aPmax.
 ") PlaneAttributes;
 		Standard_Boolean PlaneAttributes(opencascade::handle<Geom_Plane> & aComponent, gp_Pnt & aCenter, gp_Pnt & aPmin, gp_Pnt & aPmax);
 
@@ -14018,7 +14287,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the position and direction of one of the plane's axes, acomponent, in 3d space. the coordinate system used is right-handed, and the type of plane aplanetype is one of: - ais_ topl_unknown - ais_ topl_xyplane - ais_ topl_xzplane - ais_ topl_yzplane}.
+Allows you to provide settings for the position and direction of one of the plane's axes, aComponent, in 3D space. The coordinate system used is right-handed, and the type of plane aPlaneType is one of: - AIS_ TOPL_Unknown - AIS_ TOPL_XYPlane - AIS_ TOPL_XZPlane - AIS_ TOPL_YZPlane}.
 ") SetAxis2Placement;
 		void SetAxis2Placement(const opencascade::handle<Geom_Axis2Placement> & aComponent, const AIS_TypeOfPlane aPlaneType);
 
@@ -14036,7 +14305,7 @@ None
 
 Description
 -----------
-Provides settings for the center thecenter other than (0, 0, 0).
+Provides settings for the center theCenter other than (0, 0, 0).
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
 
@@ -14072,7 +14341,7 @@ None
 
 Description
 -----------
-Creates an instance of the plane acomponent.
+Creates an instance of the plane aComponent.
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Plane> & aComponent);
 
@@ -14090,7 +14359,7 @@ None
 
 Description
 -----------
-Connection to <actx> default drawer implies a recomputation of frame values.
+connection to <aCtx> default drawer implies a recomputation of Frame values.
 ") SetContext;
 		virtual void SetContext(const opencascade::handle<AIS_InteractiveContext> & aCtx);
 
@@ -14147,7 +14416,7 @@ None
 
 Description
 -----------
-Allows you to provide settings other than default ones for the selected plane. these include: center point acenter, maximum apmax and minimum apmin.
+Allows you to provide settings other than default ones for the selected plane. These include: center point aCenter, maximum aPmax and minimum aPmin.
 ") SetPlaneAttributes;
 		void SetPlaneAttributes(const opencascade::handle<Geom_Plane> & aComponent, const gp_Pnt & aCenter, const gp_Pnt & aPmin, const gp_Pnt & aPmax);
 
@@ -14184,7 +14453,7 @@ None
 
 Description
 -----------
-Sets the size defined by the length along the x axis xval and the length along the y axis yval.
+Sets the size defined by the length along the X axis XVal and the length along the Y axis YVal.
 ") SetSize;
 		void SetSize(const Standard_Real Xval, const Standard_Real YVal);
 
@@ -14345,7 +14614,7 @@ None
 
 Description
 -----------
-Initializes the plane aplane. the plane trihedron is constructed from this and an axis.
+Initializes the plane aPlane. The plane trihedron is constructed from this and an axis.
 ") AIS_PlaneTrihedron;
 		 AIS_PlaneTrihedron(const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -14363,7 +14632,7 @@ bool
 
 Description
 -----------
-Returns true if the display mode selected, amode, is valid.
+Returns true if the display mode selected, aMode, is valid.
 ") AcceptDisplayMode;
 		Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode);
 
@@ -14376,7 +14645,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Returns the component specified in setcomponent.
+Returns the component specified in SetComponent.
 ") Component;
 		opencascade::handle<Geom_Plane> Component();
 
@@ -14389,7 +14658,7 @@ float
 
 Description
 -----------
-Returns the length of x and y axes.
+Returns the length of X and Y axes.
 ") GetLength;
 		Standard_Real GetLength();
 
@@ -14420,7 +14689,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the color acolor.
+Allows you to provide settings for the color aColor.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -14438,7 +14707,7 @@ None
 
 Description
 -----------
-Creates an instance of the component object aplane.
+Creates an instance of the component object aPlane.
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -14456,7 +14725,7 @@ None
 
 Description
 -----------
-Sets the length of the x and y axes.
+Sets the length of the X and Y axes.
 ") SetLength;
 		void SetLength(const Standard_Real theLength);
 
@@ -14518,7 +14787,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Returns datum as the type of interactive object.
+Returns datum as the type of Interactive Object.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -14531,7 +14800,7 @@ opencascade::handle<AIS_Line>
 
 Description
 -----------
-Returns the 'xaxis'.
+Returns the 'XAxis'.
 ") XAxis;
 		opencascade::handle<AIS_Line> XAxis();
 
@@ -14544,7 +14813,7 @@ opencascade::handle<AIS_Line>
 
 Description
 -----------
-Returns the 'yaxis'.
+Returns the 'YAxis'.
 ") YAxis;
 		opencascade::handle<AIS_Line> YAxis();
 
@@ -14578,7 +14847,7 @@ None
 
 Description
 -----------
-Initializes the point acomponent from which the point datum will be built.
+Initializes the point aComponent from which the point datum will be built.
 ") AIS_Point;
 		 AIS_Point(const opencascade::handle<Geom_Point> & aComponent);
 
@@ -14609,7 +14878,7 @@ opencascade::handle<Geom_Point>
 
 Description
 -----------
-Returns the component specified in setcomponent.
+Returns the component specified in SetComponent.
 ") Component;
 		opencascade::handle<Geom_Point> Component();
 
@@ -14640,7 +14909,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the color.
+Allows you to provide settings for the Color.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -14658,7 +14927,7 @@ None
 
 Description
 -----------
-Constructs an instance of the point acomponent.
+Constructs an instance of the point aComponent.
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Point> & aComponent);
 
@@ -14676,7 +14945,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for a marker. these include - type of marker, - marker color, - scale factor.
+Allows you to provide settings for a marker. These include - type of marker, - marker color, - scale factor.
 ") SetMarker;
 		void SetMarker(const Aspect_TypeOfMarker aType);
 
@@ -14829,7 +15098,8 @@ opencascade::handle<Graphic3d_ArrayOfPoints>
 
 Description
 -----------
-Get the points array. method might be overridden to fill in points array dynamically from application data structures. return the array of points.
+Get the points array. Method might be overridden to fill in points array dynamically from application data structures. 
+Return: the array of points.
 ") GetPoints;
 		virtual const opencascade::handle<Graphic3d_ArrayOfPoints> GetPoints();
 
@@ -14847,7 +15117,7 @@ None
 
 Description
 -----------
-Setup custom color. affects presentation only when no per-point color attribute has been assigned.
+Setup custom color. Affects presentation only when no per-point color attribute has been assigned.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -14865,7 +15135,7 @@ None
 
 Description
 -----------
-Setup custom material. affects presentation only when normals are defined.
+Setup custom material. Affects presentation only when normals are defined.
 ") SetMaterial;
 		virtual void SetMaterial(const Graphic3d_MaterialAspect & theMat);
 
@@ -14883,7 +15153,8 @@ None
 
 Description
 -----------
-Sets the points from array of points. method will not copy the input data - array will be stored as handle. @param thepoints [in] the array of points.
+Sets the points from array of points. Method will not copy the input data - array will be stored as handle. 
+Input parameter: thePoints the array of points.
 ") SetPoints;
 		virtual void SetPoints(const opencascade::handle<Graphic3d_ArrayOfPoints> & thePoints);
 
@@ -14903,7 +15174,10 @@ None
 
 Description
 -----------
-Sets the points with optional colors. the input data will be copied into internal buffer. the input arrays should have equal length, otherwise the presentation will not be computed and displayed. @param thecoords [in] the array of coordinates @param thecolors [in] optional array of colors @param thenormals [in] optional array of normals.
+Sets the points with optional colors. The input data will be copied into internal buffer. The input arrays should have equal length, otherwise the presentation will not be computed and displayed. 
+Input parameter: theCoords the array of coordinates 
+Input parameter: theColors optional array of colors 
+Input parameter: theNormals optional array of normals.
 ") SetPoints;
 		virtual void SetPoints(const opencascade::handle<TColgp_HArray1OfPnt> & theCoords, const opencascade::handle<Quantity_HArray1OfColor> & theColors = NULL, const opencascade::handle<TColgp_HArray1OfDir> & theNormals = NULL);
 
@@ -14958,7 +15232,7 @@ None
 
 Description
 -----------
-Constructs rubber band with default configuration: empty filling and white solid lines. @warning it binds this object with graphic3d_zlayerid_toposd layer.
+Constructs rubber band with default configuration: empty filling and white solid lines. @warning It binds this object with Graphic3d_ZLayerId_TopOSD layer.
 ") AIS_RubberBand;
 		 AIS_RubberBand();
 
@@ -14979,7 +15253,10 @@ None
 
 Description
 -----------
-Consructs the rubber band with empty filling and defined line style. @param thelinecolor [in] color of rubber band lines @param thetype [in] type of rubber band lines @param thelinewidth [in] width of rubber band line. by default it is 1. @warning it binds this object with graphic3d_zlayerid_toposd layer.
+Constructs the rubber band with empty filling and defined line style. 
+Input parameter: theLineColor color of rubber band lines 
+Input parameter: theType type of rubber band lines 
+Input parameter: theLineWidth width of rubber band line. By default it is 1. @warning It binds this object with Graphic3d_ZLayerId_TopOSD layer.
 ") AIS_RubberBand;
 		 AIS_RubberBand(const Quantity_Color & theLineColor, const Aspect_TypeOfLine theType, const Standard_Real theLineWidth = 1.0, const Standard_Boolean theIsPolygonClosed = Standard_True);
 
@@ -15002,7 +15279,12 @@ None
 
 Description
 -----------
-Constructs the rubber band with defined filling and line parameters. @param thelinecolor [in] color of rubber band lines @param thetype [in] type of rubber band lines @param thefillcolor [in] color of rubber band filling @param thetransparency [in] transparency of the filling. 0 is for opaque filling. by default it is transparent. @param thelinewidth [in] width of rubber band line. by default it is 1. @warning it binds this object with graphic3d_zlayerid_toposd layer.
+Constructs the rubber band with defined filling and line parameters. 
+Input parameter: theLineColor color of rubber band lines 
+Input parameter: theType type of rubber band lines 
+Input parameter: theFillColor color of rubber band filling 
+Input parameter: theTransparency transparency of the filling. 0 is for opaque filling. By default it is transparent. 
+Input parameter: theLineWidth width of rubber band line. By default it is 1. @warning It binds this object with Graphic3d_ZLayerId_TopOSD layer.
 ") AIS_RubberBand;
 		 AIS_RubberBand(const Quantity_Color & theLineColor, const Aspect_TypeOfLine theType, const Quantity_Color theFillColor, const Standard_Real theTransparency = 1.0, const Standard_Real theLineWidth = 1.0, const Standard_Boolean theIsPolygonClosed = Standard_True);
 
@@ -15020,7 +15302,8 @@ None
 
 Description
 -----------
-Adds last point to the list of points. they are used to build polygon for rubber band. @sa removelastpoint(), getpoints().
+Adds last point to the list of points. They are used to build polygon for rubber band. 
+See also: RemoveLastPoint(), GetPoints().
 ") AddPoint;
 		void AddPoint(const Graphic3d_Vec2i & thePoint);
 
@@ -15046,7 +15329,7 @@ Quantity_Color
 
 Description
 -----------
-Return the color of rubber band filling.
+Return: the color of rubber band filling.
 ") FillColor;
 		Quantity_Color FillColor();
 
@@ -15059,7 +15342,7 @@ float
 
 Description
 -----------
-Return fill transparency.
+Return: fill transparency.
 ") FillTransparency;
 		Standard_Real FillTransparency();
 
@@ -15072,7 +15355,7 @@ bool
 
 Description
 -----------
-Return true if filling of rubber band is enabled.
+Return: true if filling of rubber band is enabled.
 ") IsFilling;
 		Standard_Boolean IsFilling();
 
@@ -15085,7 +15368,7 @@ bool
 
 Description
 -----------
-Return true if automatic closing of rubber band is enabled.
+Return: true if automatic closing of rubber band is enabled.
 ") IsPolygonClosed;
 		Standard_Boolean IsPolygonClosed();
 
@@ -15098,7 +15381,7 @@ Quantity_Color
 
 Description
 -----------
-Return the color attributes.
+Return: the Color attributes.
 ") LineColor;
 		Quantity_Color LineColor();
 
@@ -15111,7 +15394,7 @@ Aspect_TypeOfLine
 
 Description
 -----------
-Return type of lines.
+Return: type of lines.
 ") LineType;
 		Aspect_TypeOfLine LineType();
 
@@ -15124,7 +15407,7 @@ float
 
 Description
 -----------
-Return width of lines.
+Return: width of lines.
 ") LineWidth;
 		Standard_Real LineWidth();
 
@@ -15137,7 +15420,7 @@ NCollection_Sequence<Graphic3d_Vec2i>
 
 Description
 -----------
-Return points for the rubber band polygon.
+Return: points for the rubber band polygon.
 ") Points;
 		const NCollection_Sequence<Graphic3d_Vec2i> & Points();
 
@@ -15150,7 +15433,8 @@ None
 
 Description
 -----------
-Remove last point from the list of points for the rubber band polygon. @sa addpoint(), getpoints().
+Remove last point from the list of points for the rubber band polygon. 
+See also: AddPoint(), GetPoints().
 ") RemoveLastPoint;
 		void RemoveLastPoint();
 
@@ -15186,7 +15470,8 @@ None
 
 Description
 -----------
-Sets fill transparency. @param thevalue [in] the transparency value. 1.0 is for transparent background.
+Sets fill transparency. 
+Input parameter: theValue the transparency value. 1.0 is for transparent background.
 ") SetFillTransparency;
 		void SetFillTransparency(const Standard_Real theValue);
 
@@ -15223,7 +15508,9 @@ None
 
 Description
 -----------
-Enable filling of rubber band with defined parameters. @param thecolor [in] color of filling @param thetransparency [in] transparency of the filling. 0 is for opaque filling.
+Enable filling of rubber band with defined parameters. 
+Input parameter: theColor color of filling 
+Input parameter: theTransparency transparency of the filling. 0 is for opaque filling.
 ") SetFilling;
 		void SetFilling(const Quantity_Color theColor, const Standard_Real theTransparency);
 
@@ -15381,7 +15668,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object accepts shape decomposition.
+Returns true if the Interactive Object accepts shape decomposition.
 ") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition();
 
@@ -15412,7 +15699,7 @@ None
 
 Description
 -----------
-Returns the color attributes of the shape accordingly to the current facing model;.
+Returns the Color attributes of the shape accordingly to the current facing model;.
 ") Color;
 		virtual void Color(Quantity_Color & aColor);
 
@@ -15446,7 +15733,7 @@ Graphic3d_NameOfMaterial
 
 Description
 -----------
-Returns the nameofmaterial attributes of the shape accordingly to the current facing model;.
+Returns the NameOfMaterial attributes of the shape accordingly to the current facing model;.
 ") Material;
 		virtual Graphic3d_NameOfMaterial Material();
 
@@ -15464,7 +15751,7 @@ aPreviousAngle: float
 
 Description
 -----------
-Returns true and the values of the deviation angle anangle and the previous deviation angle apreviousangle. if these values are not already set, false is returned.
+Returns true and the values of the deviation angle anAngle and the previous deviation angle aPreviousAngle. If these values are not already set, false is returned.
 ") OwnDeviationAngle;
 		Standard_Boolean OwnDeviationAngle(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -15482,7 +15769,7 @@ aPreviousCoefficient: float
 
 Description
 -----------
-Returns true and the values of the deviation coefficient acoefficient and the previous deviation coefficient apreviouscoefficient. if these values are not already set, false is returned.
+Returns true and the values of the deviation coefficient aCoefficient and the previous deviation coefficient aPreviousCoefficient. If these values are not already set, false is returned.
 ") OwnDeviationCoefficient;
 		Standard_Boolean OwnDeviationCoefficient(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -15536,7 +15823,7 @@ None
 
 Description
 -----------
-Alias for ::setshape().
+Alias for ::SetShape().
 ") Set;
 		void Set(const TopoDS_Shape & theShape);
 
@@ -15554,7 +15841,7 @@ None
 
 Description
 -----------
-This compute a new angle and deviation from the value anangle and set the values stored in mydrawer with these that become local to the shape.
+this compute a new angle and Deviation from the value anAngle and set the values stored in myDrawer with these that become local to the shape.
 ") SetAngleAndDeviation;
 		void SetAngleAndDeviation(const Standard_Real anAngle);
 
@@ -15572,7 +15859,7 @@ None
 
 Description
 -----------
-Sets the color acolor in the reconstructed compound shape. acts via the drawer methods below on the appearance of: - free boundaries: prs3d_drawer_freeboundaryaspect, - isos: prs3d_drawer_uisoaspect, prs3ddrawer_visoaspect, - shared boundaries: prs3d_drawer_unfreeboundaryaspect, - shading: prs3d_drawer_shadingaspect, - visible line color in hidden line mode: prs3d_drawer_seenlineaspect - hidden line color in hidden line mode: prs3d_drawer_hiddenlineaspect.
+Sets the color aColor in the reconstructed compound shape. Acts via the Drawer methods below on the appearance of: - free boundaries: Prs3d_Drawer_FreeBoundaryAspect, - isos: Prs3d_Drawer_UIsoAspect, Prs3dDrawer_VIsoAspect, - shared boundaries: Prs3d_Drawer_UnFreeBoundaryAspect, - shading: Prs3d_Drawer_ShadingAspect, - visible line color in hidden line mode: Prs3d_Drawer_SeenLineAspect - hidden line color in hidden line mode: Prs3d_Drawer_HiddenLineAspect.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -15590,7 +15877,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the material aname in the reconstructed compound shape.
+Allows you to provide settings for the material aName in the reconstructed compound shape.
 ") SetMaterial;
 		virtual void SetMaterial(const Graphic3d_MaterialAspect & aName);
 
@@ -15621,7 +15908,7 @@ None
 
 Description
 -----------
-Sets myowndeviationangle field in prs3d_drawer & recomputes presentation.
+sets myOwnDeviationAngle field in Prs3d_Drawer & recomputes presentation.
 ") SetOwnDeviationAngle;
 		void SetOwnDeviationAngle(const Standard_Real anAngle);
 
@@ -15670,7 +15957,7 @@ None
 
 Description
 -----------
-Constructs an instance of the shape object theshape.
+Constructs an instance of the shape object theShape.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theShape);
 
@@ -15688,7 +15975,7 @@ None
 
 Description
 -----------
-Use this method to change the origin of the texture. the texel (0,0) will be mapped to the surface (myuvorigin.x(), myuvorigin.y()).
+Use this method to change the origin of the texture. The texel (0,0) will be mapped to the surface (myUVOrigin.X(), myUVOrigin.Y()).
 ") SetTextureOriginUV;
 		void SetTextureOriginUV(const gp_Pnt2d & theOriginUV);
 
@@ -15706,7 +15993,7 @@ None
 
 Description
 -----------
-Sets the number of occurrences of the texture on each face. the texture itself is parameterized in (0,1) by (0,1). each face of the shape to be textured is parameterized in uv space (umin,umax) by (vmin,vmax).
+Sets the number of occurrences of the texture on each face. The texture itself is parameterized in (0,1) by (0,1). Each face of the shape to be textured is parameterized in UV space (Umin,Umax) by (Vmin,Vmax).
 ") SetTextureRepeatUV;
 		void SetTextureRepeatUV(const gp_Pnt2d & theRepeatUV);
 
@@ -15724,7 +16011,7 @@ None
 
 Description
 -----------
-Use this method to scale the texture (percent of the face). you can specify a scale factor for both u and v. example: if you set scaleu and scalev to 0.5 and you enable texture repeat, the texture will appear twice on the face in each direction.
+Use this method to scale the texture (percent of the face). You can specify a scale factor for both U and V. Example: if you set ScaleU and ScaleV to 0.5 and you enable texture repeat, the texture will appear twice on the face in each direction.
 ") SetTextureScaleUV;
 		void SetTextureScaleUV(const gp_Pnt2d & theScaleUV);
 
@@ -15742,7 +16029,7 @@ None
 
 Description
 -----------
-Sets the value avalue for transparency in the reconstructed compound shape.
+Sets the value aValue for transparency in the reconstructed compound shape.
 ") SetTransparency;
 		virtual void SetTransparency(const Standard_Real aValue = 0.6);
 
@@ -15760,7 +16047,7 @@ None
 
 Description
 -----------
-Sets the type of hlr algorithm used by the shape.
+Sets the type of HLR algorithm used by the shape.
 ") SetTypeOfHLR;
 		void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR);
 
@@ -15778,7 +16065,7 @@ None
 
 Description
 -----------
-Sets the value avalue for line width in the reconstructed compound shape. changes line aspects for lines presentation.
+Sets the value aValue for line width in the reconstructed compound shape. Changes line aspects for lines presentation.
 ") SetWidth;
 		virtual void SetWidth(const Standard_Real aValue);
 
@@ -15804,7 +16091,7 @@ int
 
 Description
 -----------
-Returns index 0. this value refers to shape from topabs_shapeenum.
+Returns index 0. This value refers to SHAPE from TopAbs_ShapeEnum.
 ") Signature;
 		virtual Standard_Integer Signature();
 
@@ -15817,7 +16104,7 @@ gp_Pnt2d
 
 Description
 -----------
-Return texture origin uv position; (0, 0) by default.
+Return texture origin UV position; (0, 0) by default.
 ") TextureOriginUV;
 		const gp_Pnt2d TextureOriginUV();
 
@@ -15830,7 +16117,7 @@ gp_Pnt2d
 
 Description
 -----------
-Return texture repeat uv values; (1, 1) by default.
+Return texture repeat UV values; (1, 1) by default.
 ") TextureRepeatUV;
 		const gp_Pnt2d TextureRepeatUV();
 
@@ -15843,7 +16130,7 @@ gp_Pnt2d
 
 Description
 -----------
-Return scale factor for uv coordinates; (1, 1) by default.
+Return scale factor for UV coordinates; (1, 1) by default.
 ") TextureScaleUV;
 		const gp_Pnt2d TextureScaleUV();
 
@@ -15869,7 +16156,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Returns object as the type of interactive object.
+Returns Object as the type of Interactive Object.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -15882,7 +16169,7 @@ Prs3d_TypeOfHLR
 
 Description
 -----------
-Gets the type of hlr algorithm.
+Gets the type of HLR algorithm.
 ") TypeOfHLR;
 		Prs3d_TypeOfHLR TypeOfHLR();
 
@@ -15947,7 +16234,7 @@ float
 
 Description
 -----------
-Gives back the angle initial value put by the user.
+gives back the angle initial value put by the User.
 ") UserAngle;
 		Standard_Real UserAngle();
 
@@ -15968,7 +16255,7 @@ None
 
 Description
 -----------
-Compute hlr presentation for specified shape.
+Compute HLR presentation for specified shape.
 ") computeHlrPresentation;
 		static void computeHlrPresentation(const opencascade::handle<Graphic3d_Camera> & theProjector, const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -16003,7 +16290,7 @@ None
 
 Description
 -----------
-Initializes the signature filter, adding the signature specification, agivensignature, to that for type, agivenkind, in ais_typefilter.
+Initializes the signature filter, adding the signature specification, aGivenSignature, to that for type, aGivenKind, in AIS_TypeFilter.
 ") AIS_SignatureFilter;
 		 AIS_SignatureFilter(const AIS_KindOfInteractive aGivenKind, const Standard_Integer aGivenSignature);
 
@@ -16021,7 +16308,7 @@ bool
 
 Description
 -----------
-Returns false if the transient is not an ais_interactiveobject. returns false if the signature of interactiveobject is not the same as the stored one in the filter...
+Returns False if the transient is not an AIS_InteractiveObject. Returns False if the signature of InteractiveObject is not the same as the stored one in the filter...
 ") IsOk;
 		Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -16068,7 +16355,7 @@ bool
 
 Description
 -----------
-Return true for supported display mode.
+Return True for supported display mode.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -16120,7 +16407,7 @@ bool
 
 Description
 -----------
-Returns true if the current text placement mode uses text orientation in the model 3d space.
+Returns true if the current text placement mode uses text orientation in the model 3D space.
 ") HasOrientation3D;
 		Standard_Boolean HasOrientation3D();
 
@@ -16146,7 +16433,7 @@ gp_Ax2
 
 Description
 -----------
-Returns label orientation in the model 3d space.
+Returns label orientation in the model 3D space.
 ") Orientation3D;
 		const gp_Ax2 Orientation3D();
 
@@ -16213,7 +16500,7 @@ None
 
 Description
 -----------
-Modifies the colour of the subtitle for the todt_subtitle textdisplaytype and the colour of backgroubd for the todt_dekale textdisplaytype.
+Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType and the colour of backgroubd for the TODT_DEKALE TextDisplayType.
 ") SetColorSubTitle;
 		void SetColorSubTitle(const Quantity_Color & theColor);
 
@@ -16231,7 +16518,7 @@ None
 
 Description
 -----------
-Define the display type of the text. //! todt_normal default display. text only. todt_subtitle there is a subtitle under the text. todt_dekale the text is displayed with a 3d style. todt_blend the text is displayed in xor. todt_dimension dimension line under text will be invisible.
+Define the display type of the text. //! TODT_NORMAL Default display. Text only. TODT_SUBTITLE There is a subtitle under the text. TODT_DEKALE The text is displayed with a 3D style. TODT_BLEND The text is displayed in XOR. TODT_DIMENSION Dimension line under text will be invisible.
 ") SetDisplayType;
 		void SetDisplayType(const Aspect_TypeOfDisplayText theDisplayType);
 
@@ -16357,7 +16644,7 @@ None
 
 Description
 -----------
-Setup label orientation in the model 3d space.
+Setup label orientation in the model 3D space.
 ") SetOrientation3D;
 		void SetOrientation3D(const gp_Ax2 & theOrientation);
 
@@ -16429,7 +16716,7 @@ None
 
 Description
 -----------
-Setup text formatter for presentation. it's empty by default.
+Setup text formatter for presentation. It's empty by default.
 ") SetTextFormatter;
 		void SetTextFormatter(const opencascade::handle<Font_TextFormatter> & theFormatter);
 
@@ -16509,7 +16796,7 @@ opencascade::handle<Font_TextFormatter>
 
 Description
 -----------
-Returns text presentation formatter; null by default, which means standard text formatter will be used.
+Returns text presentation formatter; NULL by default, which means standard text formatter will be used.
 ") TextFormatter;
 		const opencascade::handle<Font_TextFormatter> & TextFormatter();
 
@@ -16522,7 +16809,7 @@ None
 
 Description
 -----------
-Reset label orientation in the model 3d space.
+Reset label orientation in the model 3D space.
 ") UnsetOrientation3D;
 		void UnsetOrientation3D();
 
@@ -16569,7 +16856,7 @@ None
 
 Description
 -----------
-Constructs the triangulation display object.
+Constructs the Triangulation display object.
 ") AIS_Triangulation;
 		 AIS_Triangulation(const opencascade::handle<Poly_Triangulation> & aTriangulation);
 
@@ -16582,7 +16869,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Get the color for each node. each 32-bit color is alpha << 24 + blue << 16 + green << 8 + red.
+Get the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red.
 ") GetColors;
 		opencascade::handle<TColStd_HArray1OfInteger> GetColors();
 
@@ -16595,7 +16882,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Returns poly_triangulation .
+Returns Poly_Triangulation .
 ") GetTriangulation;
 		opencascade::handle<Poly_Triangulation> GetTriangulation();
 
@@ -16626,7 +16913,7 @@ None
 
 Description
 -----------
-Set the color for each node. each 32-bit color is alpha << 24 + blue << 16 + green << 8 + red order of color components is essential for further usage by opengl.
+Set the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red Order of color components is essential for further usage by OpenGL.
 ") SetColors;
 		void SetColors(const opencascade::handle<TColStd_HArray1OfInteger> & aColor);
 
@@ -16644,7 +16931,7 @@ None
 
 Description
 -----------
-Sets the value avalue for transparency in the reconstructed compound shape.
+Sets the value aValue for transparency in the reconstructed compound shape.
 ") SetTransparency;
 		virtual void SetTransparency(const Standard_Real aValue = 0.6);
 
@@ -16727,7 +17014,7 @@ bool
 
 Description
 -----------
-Returns true if the display mode selected, amode, is valid for trihedron datums.
+Returns true if the display mode selected, aMode, is valid for trihedron datums.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -16766,7 +17053,7 @@ opencascade::handle<Geom_Axis2Placement>
 
 Description
 -----------
-Returns the right-handed coordinate system set in setcomponent.
+Returns the right-handed coordinate system set in SetComponent.
 ") Component;
 		const opencascade::handle<Geom_Axis2Placement> & Component();
 
@@ -16893,7 +17180,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns text of axis. parameter thepart should be xaxis, yaxis or zaxis.
+Returns text of axis. Parameter thePart should be XAxis, YAxis or ZAxis.
 ") Label;
 		const TCollection_ExtendedString & Label(Prs3d_DatumParts thePart);
 
@@ -16966,7 +17253,7 @@ None
 
 Description
 -----------
-Sets color of z-axis. //standard_deprecated('this method is deprecated - setcolor() should be called instead').
+Sets color of z-axis. //Standard_DEPRECATED(//DEPRECATION_WARNING).
 ") SetAxisColor;
 		void SetAxisColor(const Quantity_Color & theColor);
 
@@ -16984,7 +17271,7 @@ None
 
 Description
 -----------
-Sets the color thecolor for this trihedron object, it changes color of axes.
+Sets the color theColor for this trihedron object, it changes color of axes.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -17002,7 +17289,7 @@ None
 
 Description
 -----------
-Constructs the right-handed coordinate system acomponent.
+Constructs the right-handed coordinate system aComponent.
 ") SetComponent;
 		void SetComponent(const opencascade::handle<Geom_Axis2Placement> & theComponent);
 
@@ -17020,7 +17307,7 @@ None
 
 Description
 -----------
-Sets shading or wireframe display mode, triangle or segment graphic group is used relatively.
+Sets Shading or Wireframe display mode, triangle or segment graphic group is used relatively.
 ") SetDatumDisplayMode;
 		void SetDatumDisplayMode(Prs3d_DatumMode theMode);
 
@@ -17039,7 +17326,7 @@ None
 
 Description
 -----------
-Sets color of datum part: origin or some of trihedron axes. if presentation is shading mode, this color is set for both sides of facing model.
+Sets color of datum part: origin or some of trihedron axes. If presentation is shading mode, this color is set for both sides of facing model.
 ") SetDatumPartColor;
 		void SetDatumPartColor(const Prs3d_DatumParts thePart, const Quantity_Color & theColor);
 
@@ -17076,7 +17363,7 @@ None
 
 Description
 -----------
-Sets text label for trihedron axis. parameter thepart should be xaxis, yaxis or zaxis.
+Sets text label for trihedron axis. Parameter thePart should be XAxis, YAxis or ZAxis.
 ") SetLabel;
 		void SetLabel(const Prs3d_DatumParts thePart, TCollection_ExtendedString theName);
 
@@ -17094,7 +17381,7 @@ None
 
 Description
 -----------
-Sets color of origin. //standard_deprecated('this method is deprecated - setcolor() should be called instead').
+Sets color of origin. //Standard_DEPRECATED(//DEPRECATION_WARNING).
 ") SetOriginColor;
 		void SetOriginColor(const Quantity_Color & theColor);
 
@@ -17186,7 +17473,7 @@ None
 
 Description
 -----------
-Sets color of x-axis. //standard_deprecated('this method is deprecated - setcolor() should be called instead').
+Sets color of x-axis. //Standard_DEPRECATED(//DEPRECATION_WARNING).
 ") SetXAxisColor;
 		void SetXAxisColor(const Quantity_Color & theColor);
 
@@ -17204,7 +17491,7 @@ None
 
 Description
 -----------
-Sets color of y-axis. //standard_deprecated('this method is deprecated - setcolor() should be called instead').
+Sets color of y-axis. //Standard_DEPRECATED(//DEPRECATION_WARNING).
 ") SetYAxisColor;
 		void SetYAxisColor(const Quantity_Color & theColor);
 
@@ -17217,7 +17504,7 @@ int
 
 Description
 -----------
-Returns index 3, selection of the planes xoy, yoz, xoz.
+Returns index 3, selection of the planes XOY, YOZ, XOZ.
 ") Signature;
 		virtual Standard_Integer Signature();
 
@@ -17230,7 +17517,7 @@ float
 
 Description
 -----------
-Returns the size of trihedron object; 100.0 by default.
+Returns the size of trihedron object; 100.0 by DEFAULT.
 ") Size;
 		Standard_Real Size();
 
@@ -17269,7 +17556,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Indicates that the type of interactive object is datum.
+Indicates that the type of Interactive Object is datum.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -17295,7 +17582,7 @@ None
 
 Description
 -----------
-Removes any non-default settings for size of this trihedron object. if the object has 1 color, the default size of the drawer is reproduced, otherwise datumaspect becomes null.
+Removes any non-default settings for size of this trihedron object. If the object has 1 color, the default size of the drawer is reproduced, otherwise DatumAspect becomes null.
 ") UnsetSize;
 		void UnsetSize();
 
@@ -17342,7 +17629,7 @@ bool
 
 Description
 -----------
-Return true for supported display mode.
+Return True for supported display mode.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -17368,7 +17655,7 @@ float
 
 Description
 -----------
-Return padding between axes and 3d part (box); 10 by default.
+Return padding between axes and 3D part (box); 10 by default.
 ") AxesPadding;
 		Standard_Real AxesPadding();
 
@@ -17412,7 +17699,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return axes labels or empty string if undefined. default labels: x, y, z.
+Return axes labels or empty string if undefined. Default labels: X, Y, Z.
 ") AxisLabel;
 		TCollection_AsciiString AxisLabel(Prs3d_DatumParts theAxis);
 
@@ -17425,7 +17712,7 @@ Quantity_Color
 
 Description
 -----------
-Return value of front color for the 3d part of object.
+Return value of front color for the 3D part of object.
 ") BoxColor;
 		const Quantity_Color & BoxColor();
 
@@ -17521,7 +17808,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return box side label or empty string if undefined. default labels: front, back, left, right, top, bottom.
+Return box side label or empty string if undefined. Default labels: FRONT, BACK, LEFT, RIGHT, TOP, BOTTOM.
 ") BoxSideLabel;
 		TCollection_AsciiString BoxSideLabel(V3d_TypeOfOrientation theSide);
 
@@ -17547,7 +17834,7 @@ float
 
 Description
 -----------
-Return transparency for 3d part of object.
+Return transparency for 3D part of object.
 ") BoxTransparency;
 		Standard_Real BoxTransparency();
 
@@ -17580,7 +17867,10 @@ None
 
 Description
 -----------
-Compute 3d part of view cube. @param theprsmgr [in] presentation manager. @param theprs [in] input presentation that is to be filled with flat presentation primitives. @param themode [in] display mode. @warning this object accept only 0 display mode.
+Compute 3D part of View Cube. 
+Input parameter: thePrsMgr presentation manager. 
+Input parameter: thePrs input presentation that is to be filled with flat presentation primitives. 
+Input parameter: theMode display mode. @warning this object accept only 0 display mode.
 ") Compute;
 		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theMode = 0);
 
@@ -17599,7 +17889,9 @@ None
 
 Description
 -----------
-Redefine computing of sensitive entities for view cube. @param theselection [in] input selection object that is to be filled with sensitive entities. @param themode [in] selection mode. @warning object accepts only 0 selection mode.
+Redefine computing of sensitive entities for View Cube. 
+Input parameter: theSelection input selection object that is to be filled with sensitive entities. 
+Input parameter: theMode selection mode. @warning object accepts only 0 selection mode.
 ") ComputeSelection;
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
@@ -17625,7 +17917,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return font name that is used for displaying of sides and axes text. alias for: @code attributes()->textaspect()->aspect()->setfont() @endcode.
+Return font name that is used for displaying of sides and axes text. Alias for: @code Attributes()->TextAspect()->Aspect()->SetFont() @endcode.
 ") Font;
 		const TCollection_AsciiString & Font();
 
@@ -17682,7 +17974,7 @@ bool
 
 Description
 -----------
-Return true if view cube has unfinished animation of view camera.
+Return: True if View Cube has unfinished animation of view camera.
 ") HasAnimation;
 		Standard_Boolean HasAnimation();
 
@@ -17702,7 +17994,10 @@ None
 
 Description
 -----------
-Method which highlights input owner belonging to this selectable object. @param thepm [in] presentation manager @param thestyle [in] style for dynamic highlighting. @param theowner [in] input entity owner.
+Method which highlights input owner belonging to this selectable object. 
+Input parameter: thePM presentation manager 
+Input parameter: theStyle style for dynamic highlighting. 
+Input parameter: theOwner input entity owner.
 ") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -17747,7 +18042,7 @@ bool
 
 Description
 -----------
-Disables auto highlighting to use hilightselected() and hilightownerwithcolor() overridden methods.
+Disables auto highlighting to use HilightSelected() and HilightOwnerWithColor() overridden methods.
 ") IsAutoHilight;
 		virtual Standard_Boolean IsAutoHilight();
 
@@ -17765,7 +18060,7 @@ bool
 
 Description
 -----------
-Return true if specified orientation belongs to box corner (vertex).
+Return True if specified orientation belongs to box corner (vertex).
 ") IsBoxCorner;
 		static bool IsBoxCorner(V3d_TypeOfOrientation theOrient);
 
@@ -17783,7 +18078,7 @@ bool
 
 Description
 -----------
-Return true if specified orientation belongs to box edge.
+Return True if specified orientation belongs to box edge.
 ") IsBoxEdge;
 		static bool IsBoxEdge(V3d_TypeOfOrientation theOrient);
 
@@ -17801,7 +18096,7 @@ bool
 
 Description
 -----------
-Return true if specified orientation belongs to box side.
+Return True if specified orientation belongs to box side.
 ") IsBoxSide;
 		static bool IsBoxSide(V3d_TypeOfOrientation theOrient);
 
@@ -17814,7 +18109,7 @@ bool
 
 Description
 -----------
-Return true if camera animation should be done in uninterruptible loop; true by default.
+Return True if camera animation should be done in uninterruptible loop; True by default.
 ") IsFixedAnimationLoop;
 		Standard_Boolean IsFixedAnimationLoop();
 
@@ -17827,7 +18122,7 @@ bool
 
 Description
 -----------
-Return true if application expects y-up viewer orientation instead of z-up; false by default.
+Return True if application expects Y-up viewer orientation instead of Z-up; False by default.
 ") IsYup;
 		Standard_Boolean IsYup();
 
@@ -17840,7 +18135,7 @@ None
 
 Description
 -----------
-Reset all size and style parameters to default. @warning it doesn't reset position of view cube.
+Reset all size and style parameters to default. @warning It doesn't reset position of View Cube.
 ") ResetStyles;
 		void ResetStyles();
 
@@ -17853,7 +18148,7 @@ float
 
 Description
 -----------
-Return relative radius of side corners (round rectangle); 0.0 by default. the value in within [0, 0.5] range meaning absolute radius = roundradius() / size().
+Return relative radius of side corners (round rectangle); 0.0 by default. The value in within [0, 0.5] range meaning absolute radius = RoundRadius() / Size().
 ") RoundRadius;
 		Standard_Real RoundRadius();
 
@@ -17871,7 +18166,7 @@ None
 
 Description
 -----------
-Enable/disable automatic camera transformation on selection (highlighting). the automatic logic can be disabled if application wants performing action manually basing on picking results (ais_viewcubeowner).
+Enable/disable automatic camera transformation on selection (highlighting). The automatic logic can be disabled if application wants performing action manually basing on picking results (AIS_ViewCubeOwner).
 ") SetAutoStartAnimation;
 		void SetAutoStartAnimation(bool theToEnable);
 
@@ -17927,7 +18222,7 @@ None
 
 Description
 -----------
-Set new value of padding between axes and 3d part (box).
+Set new value of padding between axes and 3D part (box).
 ") SetAxesPadding;
 		void SetAxesPadding(Standard_Real theValue);
 
@@ -17981,7 +18276,8 @@ None
 
 Description
 -----------
-Set new value of front color for the 3d part of object. @param thecolor [in] input color value.
+Set new value of front color for the 3D part of object. 
+Input parameter: theColor input color value.
 ") SetBoxColor;
 		void SetBoxColor(const Quantity_Color & theColor);
 
@@ -18090,7 +18386,8 @@ None
 
 Description
 -----------
-Set new value of transparency for 3d part of object. @param thevalue [in] input transparency value.
+Set new value of transparency for 3D part of object. 
+Input parameter: theValue input transparency value.
 ") SetBoxTransparency;
 		void SetBoxTransparency(Standard_Real theValue);
 
@@ -18108,7 +18405,8 @@ None
 
 Description
 -----------
-Set new value of color for the whole object. @param thecolor [in] input color value.
+Set new value of color for the whole object. 
+Input parameter: theColor input color value.
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -18144,7 +18442,7 @@ None
 
 Description
 -----------
-Enable/disable drawing of edges of view cube.
+Enable/disable drawing of edges of View Cube.
 ") SetDrawEdges;
 		void SetDrawEdges(Standard_Boolean theValue);
 
@@ -18162,7 +18460,7 @@ None
 
 Description
 -----------
-Enable/disable drawing of vertices (corners) of view cube.
+Enable/disable drawing of vertices (corners) of View Cube.
 ") SetDrawVertices;
 		void SetDrawVertices(Standard_Boolean theValue);
 
@@ -18180,7 +18478,8 @@ None
 
 Description
 -----------
-Set duration of animation. @param thevalue [in] input value of duration in seconds.
+Set duration of animation. 
+Input parameter: theValue input value of duration in seconds.
 ") SetDuration;
 		void SetDuration(Standard_Real theValue);
 
@@ -18234,7 +18533,7 @@ None
 
 Description
 -----------
-Set font name that is used for displaying of sides and axes text. alias for: @code attributes()->textaspect()->setfont() @endcode.
+Set font name that is used for displaying of sides and axes text. Alias for: @code Attributes()->TextAspect()->SetFont() @endcode.
 ") SetFont;
 		void SetFont(TCollection_AsciiString theFont);
 
@@ -18252,7 +18551,7 @@ None
 
 Description
 -----------
-Change font height. alias for: @code attributes()->textaspect()->setheight() @endcode.
+Change font height. Alias for: @code Attributes()->TextAspect()->SetHeight() @endcode.
 ") SetFontHeight;
 		void SetFontHeight(Standard_Real theValue);
 
@@ -18270,7 +18569,7 @@ None
 
 Description
 -----------
-Set color of sides back material. alias for: @code attributes()->shadingaspect()->aspect()->changebackmaterial().setcolor() @endcode.
+Set color of sides back material. Alias for: @code Attributes()->ShadingAspect()->Aspect()->ChangeBackMaterial().SetColor() @endcode.
 ") SetInnerColor;
 		void SetInnerColor(const Quantity_Color & theColor);
 
@@ -18306,7 +18605,7 @@ None
 
 Description
 -----------
-Set if new camera up direction should be always set to default value for a new camera direction.
+Set if new camera Up direction should be always set to default value for a new camera Direction.
 ") SetResetCamera;
 		void SetResetCamera(Standard_Boolean theToReset);
 
@@ -18324,7 +18623,7 @@ None
 
 Description
 -----------
-Set relative radius of view cube sides corners (round rectangle). the value should be within [0, 0.5] range.
+Set relative radius of View Cube sides corners (round rectangle). The value should be within [0, 0.5] range.
 ") SetRoundRadius;
 		void SetRoundRadius(const Standard_Real theValue);
 
@@ -18343,7 +18642,8 @@ None
 
 Description
 -----------
-Sets size (width and height) of view cube sides. @param thetoadaptanother if true, then other parameters will be adapted to specified size.
+Sets size (width and height) of View cube sides. 
+Parameter theToAdaptAnother if True, then other parameters will be adapted to specified size.
 ") SetSize;
 		void SetSize(Standard_Real theValue, Standard_Boolean theToAdaptAnother = true);
 
@@ -18361,7 +18661,7 @@ None
 
 Description
 -----------
-Set color of text labels on box sides. alias for: @code attributes()->textaspect()->setcolor() @endcode.
+Set color of text labels on box sides. Alias for: @code Attributes()->TextAspect()->SetColor() @endcode.
 ") SetTextColor;
 		void SetTextColor(const Quantity_Color & theColor);
 
@@ -18379,7 +18679,8 @@ None
 
 Description
 -----------
-Set new value of transparency for the whole object. @param thevalue [in] input transparency value.
+Set new value of transparency for the whole object. 
+Input parameter: theValue input transparency value.
 ") SetTransparency;
 		virtual void SetTransparency(const Standard_Real theValue);
 
@@ -18416,7 +18717,7 @@ None
 
 Description
 -----------
-Set if application expects y-up viewer orientation instead of z-up.
+Set if application expects Y-up viewer orientation instead of Z-up.
 ") SetYup;
 		void SetYup(Standard_Boolean theIsYup, Standard_Boolean theToUpdateLabels = Standard_True);
 
@@ -18429,7 +18730,7 @@ float
 
 Description
 -----------
-Return size (width and height) of view cube sides; 100 by default.
+Return: size (width and height) of View cube sides; 100 by default.
 ") Size;
 		Standard_Real Size();
 
@@ -18447,7 +18748,8 @@ None
 
 Description
 -----------
-Start camera transformation corresponding to the input detected owner. @param theowner [in] detected owner.
+Start camera transformation corresponding to the input detected owner. 
+Input parameter: theOwner detected owner.
 ") StartAnimation;
 		virtual void StartAnimation(const opencascade::handle<AIS_ViewCubeOwner> & theOwner);
 
@@ -18460,7 +18762,7 @@ Quantity_Color
 
 Description
 -----------
-Return text color of labels of box sides; black by default.
+Return text color of labels of box sides; BLACK by default.
 ") TextColor;
 		const Quantity_Color & TextColor();
 
@@ -18473,7 +18775,7 @@ bool
 
 Description
 -----------
-Return true if automatic camera transformation on selection (highlighting) is enabled; true by default.
+Return True if automatic camera transformation on selection (highlighting) is enabled; True by default.
 ") ToAutoStartAnimation;
 		Standard_Boolean ToAutoStartAnimation();
 
@@ -18486,7 +18788,7 @@ bool
 
 Description
 -----------
-Return true if trihedron is drawn; true by default.
+Return: True if trihedron is drawn; True by default.
 ") ToDrawAxes;
 		Standard_Boolean ToDrawAxes();
 
@@ -18499,7 +18801,7 @@ bool
 
 Description
 -----------
-Return true if edges of view cube is drawn; true by default.
+Return: True if edges of View Cube is drawn; True by default.
 ") ToDrawEdges;
 		Standard_Boolean ToDrawEdges();
 
@@ -18512,7 +18814,7 @@ bool
 
 Description
 -----------
-Return true if vertices (vertex) of view cube is drawn; true by default.
+Return True if vertices (vertex) of View Cube is drawn; True by default.
 ") ToDrawVertices;
 		Standard_Boolean ToDrawVertices();
 
@@ -18525,7 +18827,7 @@ bool
 
 Description
 -----------
-Return true if animation should fit selected objects and false to fit entire scene; true by default.
+Return True if animation should fit selected objects and False to fit entire scene; True by default.
 ") ToFitSelected;
 		Standard_Boolean ToFitSelected();
 
@@ -18538,7 +18840,7 @@ bool
 
 Description
 -----------
-Return true if new camera up direction should be always set to default value for a new camera direction; false by default. when this flag is false, the new camera up will be set as current up orthogonalized to the new camera direction, and will set to default up on second click.
+Return True if new camera Up direction should be always set to default value for a new camera Direction; False by default. When this flag is False, the new camera Up will be set as current Up orthogonalized to the new camera Direction, and will set to default Up on second click.
 ") ToResetCameraUp;
 		Standard_Boolean ToResetCameraUp();
 
@@ -18551,7 +18853,8 @@ None
 
 Description
 -----------
-Set default parameters for visual attributes @sa attributes().
+Set default parameters for visual attributes 
+See also: Attributes().
 ") UnsetAttributes;
 		virtual void UnsetAttributes();
 
@@ -18621,7 +18924,8 @@ bool
 
 Description
 -----------
-Perform one step of current camera transformation. thetoupdate [in] enable/disable update of view. return true if animation is not stopped.
+Perform one step of current camera transformation. theToUpdate[in] enable/disable update of view. 
+Return: True if animation is not stopped.
 ") UpdateAnimation;
 		virtual Standard_Boolean UpdateAnimation(const Standard_Boolean theToUpdate);
 
@@ -18841,7 +19145,13 @@ None
 
 Description
 -----------
-Constructor with initialization. @param[in] theanimationname animation identifier @param[in] thecontext interactive context where object have been displayed @param[in] theobject object to apply rotation @param[in] theaxis rotation axis @param[in] theanglestart rotation angle at the start of animation @param[in] theangleend rotation angle at the end of animation.
+Constructor with initialization. 
+Input parameter: theAnimationName animation identifier 
+Input parameter: theContext interactive context where object have been displayed 
+Input parameter: theObject object to apply rotation 
+Input parameter: theAxis rotation axis 
+Input parameter: theAngleStart rotation angle at the start of animation 
+Input parameter: theAngleEnd rotation angle at the end of animation.
 ") AIS_AnimationAxisRotation;
 		 AIS_AnimationAxisRotation(TCollection_AsciiString theAnimationName, const opencascade::handle<AIS_InteractiveContext> & theContext, const opencascade::handle<AIS_InteractiveObject> & theObject, const gp_Ax1 & theAxis, const Standard_Real theAngleStart, const Standard_Real theAngleEnd);
 
@@ -18879,7 +19189,12 @@ None
 
 Description
 -----------
-Constructor with initialization. note that start/end transformations specify exactly local transformation of the object, not the transformation to be applied to existing local transformation. @param[in] theanimationname animation identifier @param[in] thecontext interactive context where object have been displayed @param[in] theobject object to apply local transformation @param[in] thetrsfstart local transformation at the start of animation (e.g. theobject->localtransformation()) @param[in] thetrsfend local transformation at the end of animation.
+Constructor with initialization. Note that start/end transformations specify exactly local transformation of the object, not the transformation to be applied to existing local transformation. 
+Input parameter: theAnimationName animation identifier 
+Input parameter: theContext interactive context where object have been displayed 
+Input parameter: theObject object to apply local transformation 
+Input parameter: theTrsfStart local transformation at the start of animation (e.g. theObject->LocalTransformation()) 
+Input parameter: theTrsfEnd local transformation at the end of animation.
 ") AIS_AnimationObject;
 		 AIS_AnimationObject(TCollection_AsciiString theAnimationName, const opencascade::handle<AIS_InteractiveContext> & theContext, const opencascade::handle<AIS_InteractiveObject> & theObject, const gp_Trsf & theTrsfStart, const gp_Trsf & theTrsfEnd);
 
@@ -18975,7 +19290,7 @@ opencascade::handle<AIS_ColoredDrawer>
 
 Description
 -----------
-Customize properties of specified sub-shape. the shape will be stored in the map but ignored, if it is not sub-shape of main shape! this method can be used to mark sub-shapes with customizable properties.
+Customize properties of specified sub-shape. The shape will be stored in the map but ignored, if it is not sub-shape of main Shape! This method can be used to mark sub-shapes with customizable properties.
 ") CustomAspects;
 		virtual opencascade::handle<AIS_ColoredDrawer> CustomAspects(const TopoDS_Shape & theShape);
 
@@ -19136,7 +19451,8 @@ None
 
 Description
 -----------
-Reset custom properties of specified sub-shape. @param thetounregister unregister or not sub-shape from the map.
+Reset custom properties of specified sub-shape. 
+Parameter theToUnregister unregister or not sub-shape from the map.
 ") UnsetCustomAspects;
 		void UnsetCustomAspects(const TopoDS_Shape & theShape, const Standard_Boolean theToUnregister = Standard_False);
 
@@ -19214,7 +19530,7 @@ bool
 
 Description
 -----------
-Return true if specified display mode is supported (extends ais_shape with display mode 3).
+Return true if specified display mode is supported (extends AIS_Shape with Display Mode 3).
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -19294,7 +19610,7 @@ None
 
 Description
 -----------
-Sets the texture source. <thetexturefilename> can specify path to texture image or one of the standard predefined textures. the accepted file types are those used in image_alienpixmap with extensions such as rgb, png, jpg and more. to specify the standard predefined texture, the <thetexturefilename> should contain integer - the graphic3d_nameoftexture2d enumeration index. setting texture source using this method resets the source pixmap (if was set previously).
+Sets the texture source. <theTextureFileName> can specify path to texture image or one of the standard predefined textures. The accepted file types are those used in Image_AlienPixMap with extensions such as rgb, png, jpg and more. To specify the standard predefined texture, the <theTextureFileName> should contain integer - the Graphic3d_NameOfTexture2D enumeration index. Setting texture source using this method resets the source pixmap (if was set previously).
 ") SetTextureFileName;
 		virtual void SetTextureFileName(TCollection_AsciiString theTextureFileName);
 
@@ -19340,7 +19656,7 @@ None
 
 Description
 -----------
-Use this method to change the origin of the texture. the texel (0,0) will be mapped to the surface (uorigin,vorigin).
+Use this method to change the origin of the texture. The texel (0,0) will be mapped to the surface (UOrigin,VOrigin).
 ") SetTextureOrigin;
 		void SetTextureOrigin(const Standard_Boolean theToSetTextureOrigin, const Standard_Real theUOrigin = 0.0, const Standard_Real theVOrigin = 0.0);
 
@@ -19358,7 +19674,7 @@ None
 
 Description
 -----------
-Sets the texture source. <thetexturepixmap> specifies image data. please note that the data should be in bottom-up order, the flag of image_pixmap::istopdown() will be ignored by graphic driver. setting texture source using this method resets the source by filename (if was set previously).
+Sets the texture source. <theTexturePixMap> specifies image data. Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown() will be ignored by graphic driver. Setting texture source using this method resets the source by filename (if was set previously).
 ") SetTexturePixMap;
 		virtual void SetTexturePixMap(const opencascade::handle<Image_PixMap> & theTexturePixMap);
 
@@ -19378,7 +19694,7 @@ None
 
 Description
 -----------
-Sets the number of occurrences of the texture on each face. the texture itself is parameterized in (0,1) by (0,1). each face of the shape to be textured is parameterized in uv space (umin,umax) by (vmin,vmax). if repeatyn is set to false, texture coordinates are clamped in the range (0,1)x(0,1) of the face.
+Sets the number of occurrences of the texture on each face. The texture itself is parameterized in (0,1) by (0,1). Each face of the shape to be textured is parameterized in UV space (Umin,Umax) by (Vmin,Vmax). If RepeatYN is set to false, texture coordinates are clamped in the range (0,1)x(0,1) of the face.
 ") SetTextureRepeat;
 		void SetTextureRepeat(const Standard_Boolean theToRepeat, const Standard_Real theURepeat = 1.0, const Standard_Real theVRepeat = 1.0);
 
@@ -19398,7 +19714,7 @@ None
 
 Description
 -----------
-Use this method to scale the texture (percent of the face). you can specify a scale factor for both u and v. example: if you set scaleu and scalev to 0.5 and you enable texture repeat, the texture will appear twice on the face in each direction.
+Use this method to scale the texture (percent of the face). You can specify a scale factor for both U and V. Example: if you set ScaleU and ScaleV to 0.5 and you enable texture repeat, the texture will appear twice on the face in each direction.
 ") SetTextureScale;
 		void SetTextureScale(const Standard_Boolean theToSetTextureScale, const Standard_Real theScaleU = 1.0, const Standard_Real theScaleV = 1.0);
 
@@ -19411,7 +19727,7 @@ str
 
 Description
 -----------
-Return path to the texture file.
+Return: path to the texture file.
 ") TextureFile;
 		Standard_CString TextureFile();
 
@@ -19424,7 +19740,7 @@ bool
 
 Description
 -----------
-Return flag to control texture mapping (for presentation mode 3).
+Return: flag to control texture mapping (for presentation mode 3).
 ") TextureMapState;
 		Standard_Boolean TextureMapState();
 
@@ -19437,7 +19753,7 @@ bool
 
 Description
 -----------
-Return true if texture color modulation is turned on.
+Return: true if texture color modulation is turned on.
 ") TextureModulate;
 		Standard_Boolean TextureModulate();
 
@@ -19450,7 +19766,7 @@ bool
 
 Description
 -----------
-Return true if texture uv origin has been modified.
+Return: true if texture UV origin has been modified.
 ") TextureOrigin;
 		Standard_Boolean TextureOrigin();
 
@@ -19463,7 +19779,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Return the source pixmap for texture map.
+Return: the source pixmap for texture map.
 ") TexturePixMap;
 		const opencascade::handle<Image_PixMap> & TexturePixMap();
 
@@ -19476,7 +19792,7 @@ bool
 
 Description
 -----------
-Return texture repeat flag.
+Return: texture repeat flag.
 ") TextureRepeat;
 		Standard_Boolean TextureRepeat();
 
@@ -19489,7 +19805,7 @@ bool
 
 Description
 -----------
-Return true if scale factor should be applied to texture mapping.
+Return: true if scale factor should be applied to texture mapping.
 ") TextureScale;
 		Standard_Boolean TextureScale();
 
@@ -19502,7 +19818,7 @@ float
 
 Description
 -----------
-Return scale factor for u coordinate (1.0 by default).
+Return: scale factor for U coordinate (1.0 by default).
 ") TextureScaleU;
 		Standard_Real TextureScaleU();
 
@@ -19515,7 +19831,7 @@ float
 
 Description
 -----------
-Return scale factor for v coordinate (1.0 by default).
+Return: scale factor for V coordinate (1.0 by default).
 ") TextureScaleV;
 		Standard_Real TextureScaleV();
 
@@ -19528,7 +19844,7 @@ float
 
 Description
 -----------
-Return texture origin u position (0.0 by default).
+Return: texture origin U position (0.0 by default).
 ") TextureUOrigin;
 		Standard_Real TextureUOrigin();
 
@@ -19541,7 +19857,7 @@ float
 
 Description
 -----------
-Return texture origin v position (0.0 by default).
+Return: texture origin V position (0.0 by default).
 ") TextureVOrigin;
 		Standard_Real TextureVOrigin();
 
@@ -19554,7 +19870,7 @@ float
 
 Description
 -----------
-Return texture repeat u value.
+Return: texture repeat U value.
 ") URepeat;
 		Standard_Real URepeat();
 
@@ -19593,7 +19909,7 @@ None
 
 Description
 -----------
-Use this method to display the textured shape without recomputing the whole presentation. use this method when only the texture content has been changed. if other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myshape->displaymode() == 3) { myaiscontext->recomputeprsonly (myshape); } else { myaiscontext->setdisplaymode (myshape, 3, standard_false); myaiscontext->display (myshape, standard_true); } @endcode.
+Use this method to display the textured shape without recomputing the whole presentation. Use this method when ONLY the texture content has been changed. If other parameters (ie: scale factors, texture origin, texture repeat...) have changed, the whole presentation has to be recomputed: @code if (myShape->DisplayMode() == 3) { myAISContext->RecomputePrsOnly (myShape); } else { myAISContext->SetDisplayMode (myShape, 3, Standard_False); myAISContext->Display (myShape, Standard_True); } @endcode.
 ") UpdateAttributes;
 		void UpdateAttributes();
 
@@ -19606,7 +19922,7 @@ float
 
 Description
 -----------
-Return texture repeat v value.
+Return: texture repeat V value.
 ") VRepeat;
 		Standard_Real VRepeat();
 

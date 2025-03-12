@@ -161,7 +161,7 @@ None
 
 Description
 -----------
-Creates an algorithm to classify the point p with tolerance <t> on the face described by <f>.
+Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
 ") Geom2dHatch_Classifier;
 		 Geom2dHatch_Classifier(Geom2dHatch_Elements & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -174,7 +174,7 @@ Geom2dAdaptor_Curve
 
 Description
 -----------
-Returns the edge used to determine the classification. when the state is on this is the edge containing the point.
+Returns the Edge used to determine the classification. When the State is ON this is the Edge containing the point.
 ") Edge;
 		Geom2dAdaptor_Curve Edge();
 
@@ -187,7 +187,7 @@ float
 
 Description
 -----------
-Returns the parameter on edge() used to determine the classification.
+Returns the parameter on Edge() used to determine the classification.
 ") EdgeParameter;
 		Standard_Real EdgeParameter();
 
@@ -200,7 +200,7 @@ bool
 
 Description
 -----------
-Returns true if the face contains no wire. the state is in.
+Returns True if the face contains no wire. The state is IN.
 ") NoWires;
 		Standard_Boolean NoWires();
 
@@ -220,7 +220,7 @@ None
 
 Description
 -----------
-Classify the point p with tolerance <t> on the face described by <f>.
+Classify the Point P with Tolerance <T> on the face described by <F>.
 ") Perform;
 		void Perform(Geom2dHatch_Elements & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -233,7 +233,7 @@ IntRes2d_Position
 
 Description
 -----------
-Returns the position of the point on the edge returned by edge.
+Returns the position of the point on the edge returned by Edge.
 ") Position;
 		IntRes2d_Position Position();
 
@@ -246,7 +246,7 @@ bool
 
 Description
 -----------
-Returns true when the state was computed by a rejection. the state is out.
+Returns True when the state was computed by a rejection. The state is OUT.
 ") Rejected;
 		Standard_Boolean Rejected();
 
@@ -759,7 +759,7 @@ int
 
 Description
 -----------
-Returns 0 if the last compared edge had no relevant intersection. else returns the index of this intersection in the last intersection algorithm.
+Returns 0 if the last compared edge had no relevant intersection. Else returns the index of this intersection in the last intersection algorithm.
 ") ClosestIntersection;
 		Standard_Integer ClosestIntersection();
 
@@ -778,7 +778,7 @@ None
 
 Description
 -----------
-Updates the classification process with the edge <e> from the boundary.
+Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const Geom2dAdaptor_Curve & E, const TopAbs_Orientation Or);
 
@@ -804,7 +804,7 @@ bool
 
 Description
 -----------
-Returns the standard_true if the closest intersection point represents head or end of the edge. returns standard_false otherwise.
+Returns the Standard_True if the closest intersection point represents head or end of the edge. Returns Standard_False otherwise.
 ") IsHeadOrEnd;
 		Standard_Boolean IsHeadOrEnd();
 
@@ -837,7 +837,7 @@ None
 
 Description
 -----------
-Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the line segment in intersections.
+Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the line segment in intersections.
 ") Reset;
 		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
@@ -1025,7 +1025,7 @@ None
 
 Description
 -----------
-Computes the domains of the indh-th hatching.
+Computes the domains of the IndH-th hatching.
 ") ComputeDomains;
 		void ComputeDomains(const Standard_Integer IndH);
 
@@ -1106,7 +1106,7 @@ HatchGen_Domain
 
 Description
 -----------
-Returns the idom-th domain of the indh-th hatching.
+Returns the IDom-th domain of the IndH-th hatching.
 ") Domain;
 		const HatchGen_Domain & Domain(const Standard_Integer IndH, const Standard_Integer IDom);
 
@@ -1137,7 +1137,7 @@ Geom2dAdaptor_Curve
 
 Description
 -----------
-Returns the curve associated to the inde-th element.
+Returns the curve associated to the IndE-th element.
 ") ElementCurve;
 		Geom2dAdaptor_Curve ElementCurve(const Standard_Integer IndE);
 
@@ -1155,7 +1155,7 @@ Geom2dAdaptor_Curve
 
 Description
 -----------
-Returns the curve associated to the indh-th hatching.
+Returns the curve associated to the IndH-th hatching.
 ") HatchingCurve;
 		Geom2dAdaptor_Curve HatchingCurve(const Standard_Integer IndH);
 
@@ -1266,7 +1266,7 @@ int
 
 Description
 -----------
-Returns the number of domains of the indh-th hatching. only one 'infinite' domain means that the hatching is fully included in the contour defined by the elements.
+Returns the number of domains of the IndH-th hatching. Only ONE 'INFINITE' domain means that the hatching is fully included in the contour defined by the elements.
 ") NbDomains;
 		Standard_Integer NbDomains(const Standard_Integer IndH);
 
@@ -1284,7 +1284,7 @@ int
 
 Description
 -----------
-Returns the number of intersection points of the indh-th hatching.
+Returns the number of intersection points of the IndH-th hatching.
 ") NbPoints;
 		Standard_Integer NbPoints(const Standard_Integer IndH);
 
@@ -1303,7 +1303,7 @@ HatchGen_PointOnHatching
 
 Description
 -----------
-Returns the indp-th intersection point of the indh-th hatching.
+Returns the IndP-th intersection point of the IndH-th hatching.
 ") Point;
 		const HatchGen_PointOnHatching & Point(const Standard_Integer IndH, const Standard_Integer IndP);
 
@@ -1321,7 +1321,7 @@ None
 
 Description
 -----------
-Removes the inde-th element from the hatcher.
+Removes the IndE-th element from the hatcher.
 ") RemElement;
 		void RemElement(const Standard_Integer IndE);
 
@@ -1339,7 +1339,7 @@ None
 
 Description
 -----------
-Removes the indh-th hatching from the hatcher.
+Removes the IndH-th hatching from the hatcher.
 ") RemHatching;
 		void RemHatching(const Standard_Integer IndH);
 
@@ -1357,7 +1357,7 @@ HatchGen_ErrorStatus
 
 Description
 -----------
-Returns the status about the indh-th hatching.
+Returns the status about the IndH-th hatching.
 ") Status;
 		HatchGen_ErrorStatus Status(const Standard_Integer IndH);
 
@@ -1406,7 +1406,7 @@ None
 
 Description
 -----------
-Trims the indh-th hatching by the elements already given.
+Trims the IndH-th hatching by the elements already given.
 ") Trim;
 		void Trim(const Standard_Integer IndH);
 
@@ -1424,7 +1424,7 @@ bool
 
 Description
 -----------
-Returns the fact that the intersections were computed for the indh-th hatching.
+Returns the fact that the intersections were computed for the IndH-th hatching.
 ") TrimDone;
 		Standard_Boolean TrimDone(const Standard_Integer IndH);
 
@@ -1442,7 +1442,7 @@ bool
 
 Description
 -----------
-Returns the fact that the intersections failed for the indh-th hatching.
+Returns the fact that the intersections failed for the IndH-th hatching.
 ") TrimFailed;
 		Standard_Boolean TrimFailed(const Standard_Integer IndH);
 
@@ -1559,7 +1559,7 @@ HatchGen_PointOnHatching
 
 Description
 -----------
-Returns the index-th intersection point of the hatching. the exception outofrange is raised if index < 1 or index > nbpoints.
+Returns the Index-th intersection point of the hatching. The exception OutOfRange is raised if Index < 1 or Index > NbPoints.
 ") ChangePoint;
 		HatchGen_PointOnHatching & ChangePoint(const Standard_Integer Index);
 
@@ -1572,7 +1572,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns a point on the curve. this point will be used for the classification.
+Returns a point on the curve. This point will be used for the classification.
 ") ClassificationPoint;
 		gp_Pnt2d ClassificationPoint();
 
@@ -1629,7 +1629,7 @@ HatchGen_Domain
 
 Description
 -----------
-Returns the index-th domain of the hatching. the exception outofrange is raised if index < 1 or index > nbdomains.
+Returns the Index-th domain of the hatching. The exception OutOfRange is raised if Index < 1 or Index > NbDomains.
 ") Domain;
 		const HatchGen_Domain & Domain(const Standard_Integer Index);
 
@@ -1704,7 +1704,7 @@ HatchGen_PointOnHatching
 
 Description
 -----------
-Returns the index-th intersection point of the hatching. the exception outofrange is raised if index < 1 or index > nbpoints.
+Returns the Index-th intersection point of the hatching. The exception OutOfRange is raised if Index < 1 or Index > NbPoints.
 ") Point;
 		const HatchGen_PointOnHatching & Point(const Standard_Integer Index);
 
@@ -1722,7 +1722,7 @@ None
 
 Description
 -----------
-Removes the index-th domain of the hatching. the exception outofrange is raised if index < 1 or index > nbdomains.
+Removes the Index-th domain of the hatching. The exception OutOfRange is raised if Index < 1 or Index > NbDomains.
 ") RemDomain;
 		void RemDomain(const Standard_Integer Index);
 
@@ -1740,7 +1740,7 @@ None
 
 Description
 -----------
-Removes the index-th intersection point of the hatching. the exception outofrange is raised if index < 1 or index > nbpoints.
+Removes the Index-th intersection point of the hatching. The exception OutOfRange is raised if Index < 1 or Index > NbPoints.
 ") RemPoint;
 		void RemPoint(const Standard_Integer Index);
 
@@ -1911,7 +1911,7 @@ None
 
 Description
 -----------
-Intersects the curves c1 and c2. the results are retrieved by the usual methods described in intres2d_intersection. creates an intersector.
+Intersects the curves C1 and C2. The results are retrieved by the usual methods described in IntRes2d_Intersection. Creates an intersector.
 ") Intersect;
 		void Intersect(const Geom2dAdaptor_Curve & C1, const Geom2dAdaptor_Curve & C2);
 
@@ -1932,7 +1932,7 @@ C: float
 
 Description
 -----------
-Returns in <t>, <n> and <c> the tangent, normal and curvature of the edge <e> at parameter value <u>.
+Returns in <T>, <N> and <C> the tangent, normal and curvature of the edge <E> at parameter value <U>.
 ") LocalGeometry;
 		void LocalGeometry(const Geom2dAdaptor_Curve & E, const Standard_Real U, gp_Dir2d & T, gp_Dir2d & N, Standard_Real &OutValue);
 
@@ -1953,7 +1953,7 @@ None
 
 Description
 -----------
-Performs the intersection between the 2d line segment (<l>, <p>) and the curve <e>. the line segment is the part of the 2d line <l> of parameter range [0, <p>] (p is positive and can be reallast()). tol is the tolerance on the segment. the order is relevant, the first argument is the segment, the second the edge.
+Performs the intersection between the 2d line segment (<L>, <P>) and the Curve <E>. The line segment is the part of the 2d line <L> of parameter range [0, <P>] (P is positive and can be RealLast()). Tol is the Tolerance on the segment. The order is relevant, the first argument is the segment, the second the Edge.
 ") Perform;
 		void Perform(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol, const Geom2dAdaptor_Curve & E);
 

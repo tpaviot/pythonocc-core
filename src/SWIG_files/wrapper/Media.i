@@ -150,7 +150,7 @@ bool
 
 Description
 -----------
-(re-)initialize the pool.
+(Re-)initialize the pool.
 ") Init;
 		bool Init(int theBufferSize);
 
@@ -249,7 +249,7 @@ None
 
 Description
 -----------
-Avcodec_flush_buffers() wrapper.
+avcodec_flush_buffers() wrapper.
 ") Flush;
 		void Flush();
 
@@ -269,7 +269,10 @@ bool
 
 Description
 -----------
-Open codec specified within the stream. @param thestream stream to open @param theptsstartbase pts start in seconds @param thenbthreads amount of threads to use for avmedia_type_video stream; -1 means osd_parallel::nblogicalprocessors(),  0 means auto by ffmpeg itself >0 means specified number of threads (decoder should support multi-threading to take effect).
+Open codec specified within the stream. 
+Parameter theStream stream to open 
+Parameter thePtsStartBase PTS start in seconds 
+Parameter theNbThreads amount of threads to use for AVMEDIA_TYPE_VIDEO stream; -1 means OSD_Parallel::NbLogicalProcessors(),  0 means auto by FFmpeg itself >0 means specified number of threads (decoder should support multi-threading to take effect).
 ") Init;
 		bool Init(const AVStream & theStream, double thePtsStartBase, int theNbThreads = -1);
 
@@ -290,7 +293,11 @@ bool
 
 Description
 -----------
-Open codec. @param thestream stream to open @param theptsstartbase pts start in seconds @param thenbthreads amount of threads to use for avmedia_type_video stream; -1 means osd_parallel::nblogicalprocessors(),  0 means auto by ffmpeg itself >0 means specified number of threads (decoder should support multi-threading to take effect) @param thecodecid codec (avcodecid) to open.
+Open codec. 
+Parameter theStream stream to open 
+Parameter thePtsStartBase PTS start in seconds 
+Parameter theNbThreads amount of threads to use for AVMEDIA_TYPE_VIDEO stream; -1 means OSD_Parallel::NbLogicalProcessors(),  0 means auto by FFmpeg itself >0 means specified number of threads (decoder should support multi-threading to take effect) 
+Parameter theCodecId codec (AVCodecID) to open.
 ") Init;
 		bool Init(const AVStream & theStream, double thePtsStartBase, int theNbThreads, int theCodecId);
 
@@ -308,7 +315,7 @@ bool
 
 Description
 -----------
-Avcodec_receive_frame() wrapper.
+avcodec_receive_frame() wrapper.
 ") ReceiveFrame;
 		bool ReceiveFrame(const opencascade::handle<Media_Frame> & theFrame);
 
@@ -326,7 +333,7 @@ bool
 
 Description
 -----------
-Avcodec_send_packet() wrapper.
+avcodec_send_packet() wrapper.
 ") SendPacket;
 		bool SendPacket(const opencascade::handle<Media_Packet> & thePacket);
 
@@ -339,7 +346,7 @@ int
 
 Description
 -----------
-Return source frame width.
+Return: source frame width.
 ") SizeX;
 		int SizeX();
 
@@ -352,7 +359,7 @@ int
 
 Description
 -----------
-Return source frame height.
+Return: source frame height.
 ") SizeY;
 		int SizeY();
 
@@ -451,7 +458,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns string description for averror code.
+Returns string description for AVError code.
 ") FormatAVErrorDescription;
 		static TCollection_AsciiString FormatAVErrorDescription(int theErrCodeAV);
 
@@ -506,7 +513,9 @@ double
 
 Description
 -----------
-Convert time units into seconds for context. @param thetimeunits value to convert return converted time units in seconds.
+Convert time units into seconds for context. 
+Parameter theTimeUnits value to convert 
+Return: converted time units in seconds.
 ") FormatUnitsToSeconds;
 		static double FormatUnitsToSeconds(int64_t theTimeUnits);
 
@@ -550,7 +559,7 @@ double
 
 Description
 -----------
-Return pts start base in seconds.
+Return PTS start base in seconds.
 ") PtsStartBase;
 		double PtsStartBase();
 
@@ -568,7 +577,7 @@ bool
 
 Description
 -----------
-Av_read_frame() wrapper.
+av_read_frame() wrapper.
 ") ReadPacket;
 		bool ReadPacket(const opencascade::handle<Media_Packet> & thePacket);
 
@@ -586,7 +595,9 @@ int64_t
 
 Description
 -----------
-Convert seconds into time units for context. @param thetimeseconds value to convert return time units.
+Convert seconds into time units for context. 
+Parameter theTimeSeconds value to convert 
+Return: time units.
 ") SecondsToUnits;
 		static int64_t SecondsToUnits(double theTimeSeconds);
 
@@ -605,7 +616,10 @@ int64_t
 
 Description
 -----------
-Convert seconds into time units. @param thetimebase the timebase @param thetimeseconds value to convert return time units.
+Convert seconds into time units. 
+Parameter theTimeBase the timebase 
+Parameter theTimeSeconds value to convert 
+Return: time units.
 ") SecondsToUnits;
 		static int64_t SecondsToUnits(const AVRational & theTimeBase, double theTimeSeconds);
 
@@ -700,7 +714,10 @@ int64_t
 
 Description
 -----------
-Convert seconds into time units for stream. @param thestream the stream @param thetimeseconds value to convert return time units.
+Convert seconds into time units for stream. 
+Parameter theStream the stream 
+Parameter theTimeSeconds value to convert 
+Return: time units.
 ") StreamSecondsToUnits;
 		static int64_t StreamSecondsToUnits(const AVStream & theStream, double theTimeSeconds);
 
@@ -719,7 +736,10 @@ double
 
 Description
 -----------
-Convert time units into seconds using stream base. @param thestream the stream; @param thetimeunits value to convert; return converted time units in seconds.
+Convert time units into seconds using stream base. 
+Parameter theStream the stream; 
+Parameter theTimeUnits value to convert; 
+Return: converted time units in seconds.
 ") StreamUnitsToSeconds;
 		static double StreamUnitsToSeconds(const AVStream & theStream, int64_t theTimeUnits);
 
@@ -738,7 +758,10 @@ double
 
 Description
 -----------
-Convert time units into seconds. returns zero for invalid value. @param thetimebase the timebase @param thetimeunits value to convert return converted time units in seconds.
+Convert time units into seconds. Returns zero for invalid value. 
+Parameter theTimeBase the timebase 
+Parameter theTimeUnits value to convert 
+Return: converted time units in seconds.
 ") UnitsToSeconds;
 		static double UnitsToSeconds(const AVRational & theTimeBase, int64_t theTimeUnits);
 
@@ -780,7 +803,7 @@ int64_t
 
 Description
 -----------
-Return frame timestamp estimated using various heuristics, in stream time base.
+Return: frame timestamp estimated using various heuristics, in stream time base.
 ") BestEffortTimestamp;
 		int64_t BestEffortTimestamp();
 
@@ -806,7 +829,7 @@ int
 
 Description
 -----------
-Return pixel format (avpixelformat).
+Return pixel format (AVPixelFormat).
 ") Format;
 		int Format();
 
@@ -824,7 +847,7 @@ Image_Format
 
 Description
 -----------
-Convert pixel format from ffmpeg (avpixelformat) to occt.
+Convert pixel format from FFmpeg (AVPixelFormat) to OCCT.
 ") FormatFFmpeg2Occt;
 		static Image_Format FormatFFmpeg2Occt(int theFormat);
 
@@ -842,7 +865,7 @@ int
 
 Description
 -----------
-Convert pixel format from occt to ffmpeg (avpixelformat). returns -1 (av_pix_fmt_none) if undefined.
+Convert pixel format from OCCT to FFmpeg (AVPixelFormat). Returns -1 (AV_PIX_FMT_NONE) if undefined.
 ") FormatOcct2FFmpeg;
 		static int FormatOcct2FFmpeg(Image_Format theFormat);
 
@@ -899,7 +922,7 @@ bool
 
 Description
 -----------
-Return true if yuv range is full.
+Return True if YUV range is full.
 ") IsFullRangeYUV;
 		bool IsFullRangeYUV();
 
@@ -930,7 +953,7 @@ int
 
 Description
 -----------
-Return linesize in bytes for specified data plane.
+Return: linesize in bytes for specified data plane.
 ") LineSize;
 		int LineSize(int thePlaneId);
 
@@ -943,7 +966,7 @@ float
 
 Description
 -----------
-Return par.
+Return PAR.
 ") PixelAspectRatio;
 		float PixelAspectRatio();
 
@@ -961,7 +984,7 @@ uint8_t *
 
 Description
 -----------
-Access data plane for specified id.
+Access data plane for specified Id.
 ") Plane;
 		uint8_t * Plane(int thePlaneId);
 
@@ -974,7 +997,7 @@ double
 
 Description
 -----------
-Return presentation timestamp (pts).
+Return presentation timestamp (PTS).
 ") Pts;
 		double Pts();
 
@@ -1010,7 +1033,7 @@ None
 
 Description
 -----------
-Set par.
+Set PAR.
 ") SetPixelAspectRatio;
 		void SetPixelAspectRatio(float theRatio);
 
@@ -1028,7 +1051,7 @@ None
 
 Description
 -----------
-Set presentation timestamp (pts).
+Set presentation timestamp (PTS).
 ") SetPts;
 		void SetPts(double thePts);
 
@@ -1086,7 +1109,7 @@ None
 
 Description
 -----------
-Swap avframe* within two frames.
+Swap AVFrame* within two frames.
 ") Swap;
 		static void Swap(const opencascade::handle<Media_Frame> & theFrame1, const opencascade::handle<Media_Frame> & theFrame2);
 
@@ -1099,7 +1122,7 @@ None
 
 Description
 -----------
-Av_frame_unref() wrapper.
+av_frame_unref() wrapper.
 ") Unref;
 		void Unref();
 
@@ -1226,7 +1249,7 @@ int64_t
 
 Description
 -----------
-Return decoding timestamp (dts).
+Return decoding timestamp (DTS).
 ") Dts;
 		int64_t Dts();
 
@@ -1239,7 +1262,7 @@ int64_t
 
 Description
 -----------
-Return duration.
+Return Duration.
 ") Duration;
 		int64_t Duration();
 
@@ -1252,7 +1275,7 @@ double
 
 Description
 -----------
-Return duration in seconds.
+Return Duration in seconds.
 ") DurationSeconds;
 		double DurationSeconds();
 
@@ -1265,7 +1288,7 @@ bool
 
 Description
 -----------
-Return true for a key frame.
+Return True for a key frame.
 ") IsKeyFrame;
 		bool IsKeyFrame();
 
@@ -1291,7 +1314,7 @@ int64_t
 
 Description
 -----------
-Return presentation timestamp (pts).
+Return presentation timestamp (PTS).
 ") Pts;
 		int64_t Pts();
 
@@ -1309,7 +1332,7 @@ None
 
 Description
 -----------
-Set duration in seconds.
+Set Duration in seconds.
 ") SetDurationSeconds;
 		void SetDurationSeconds(double theDurationSec);
 
@@ -1361,7 +1384,7 @@ None
 
 Description
 -----------
-Av_packet_unref() wrapper.
+av_packet_unref() wrapper.
 ") Unref;
 		void Unref();
 
@@ -1395,7 +1418,7 @@ None
 
 Description
 -----------
-Main constructor. note that frame queue is stored as pointer, and it is expected that this context is stored as a class field of frame queue.
+Main constructor. Note that Frame Queue is stored as pointer, and it is expected that this context is stored as a class field of Frame Queue.
 ") Media_PlayerContext;
 		 Media_PlayerContext(Media_IFrameQueue * theFrameQueue);
 
@@ -1414,7 +1437,8 @@ opencascade::handle<Media_Frame>
 
 Description
 -----------
-Dump first video frame. @param thesrcvideo [in] path to the video @param themediainfo [out] video description.
+Dump first video frame. 
+Input parameter: theSrcVideo path to the video @param[out] theMediaInfo video description.
 ") DumpFirstFrame;
 		static opencascade::handle<Media_Frame> DumpFirstFrame(TCollection_AsciiString theSrcVideo, TCollection_AsciiString & theMediaInfo);
 
@@ -1435,7 +1459,10 @@ bool
 
 Description
 -----------
-Dump first video frame. @param thesrcvideo [in] path to the video @param theoutimage [in] path to make a screenshot @param themediainfo [out] video description @param themaxsize [in] when positive - downscales image to specified size.
+Dump first video frame. 
+Input parameter: theSrcVideo path to the video 
+Input parameter: theOutImage path to make a screenshot @param[out] theMediaInfo video description 
+Input parameter: theMaxSize when positive - downscales image to specified size.
 ") DumpFirstFrame;
 		static bool DumpFirstFrame(TCollection_AsciiString theSrcVideo, TCollection_AsciiString theOutImage, TCollection_AsciiString & theMediaInfo, int theMaxSize = 0);
 
@@ -1467,7 +1494,7 @@ theDuration: float
 
 Description
 -----------
-Pause/pause playback depending on the current state.
+Pause/Pause playback depending on the current state.
 ") PlayPause;
 		void PlayPause(Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1535,7 +1562,7 @@ None
 
 Description
 -----------
-Set if queue requires rgb pixel format or can handle also yuv pixel format.
+Set if queue requires RGB pixel format or can handle also YUV pixel format.
 ") SetForceRgb;
 		void SetForceRgb(bool theToForce);
 
@@ -1567,7 +1594,7 @@ bool
 
 Description
 -----------
-Return true if queue requires rgb pixel format or can handle also yuv pixel format; true by default.
+Return True if queue requires RGB pixel format or can handle also YUV pixel format; True by default.
 ") ToForceRgb;
 		bool ToForceRgb();
 
@@ -1636,7 +1663,11 @@ bool
 
 Description
 -----------
-Sws_getcontext() wrapper - creates conversion context. @param thesrcdims dimensions of input frame @param thesrcformat pixel format (avpixelformat) of input frame @param theresdims dimensions of destination frame @param theresformat pixel format (avpixelformat) of destination frame.
+sws_getContext() wrapper - creates conversion context. 
+Parameter theSrcDims dimensions of input frame 
+Parameter theSrcFormat pixel format (AVPixelFormat) of input frame 
+Parameter theResDims dimensions of destination frame 
+Parameter theResFormat pixel format (AVPixelFormat) of destination frame.
 ") Init;
 		bool Init(const Graphic3d_Vec2i & theSrcDims, int theSrcFormat, const Graphic3d_Vec2i & theResDims, int theResFormat);
 
@@ -1649,7 +1680,7 @@ bool
 
 Description
 -----------
-Return true if context was initialized.
+Return True if context was initialized.
 ") IsValid;
 		bool IsValid();
 
@@ -1662,7 +1693,7 @@ None
 
 Description
 -----------
-Sws_freecontext() wrapper.
+sws_freeContext() wrapper.
 ") Release;
 		void Release();
 

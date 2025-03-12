@@ -114,7 +114,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <thedrivertable>.
+Adds the attribute drivers to <theDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -159,7 +159,7 @@ None
 
 Description
 -----------
-Clear myshapeset.
+Clear myShapeSet.
 ") Clear;
 		void Clear();
 
@@ -190,7 +190,7 @@ BinTools_LocationSet
 
 Description
 -----------
-Get the shapes locations.
+get the shapes locations.
 ") GetShapesLocations;
 		BinTools_LocationSet & GetShapesLocations();
 
@@ -301,7 +301,7 @@ None
 
 Description
 -----------
-Input the shapes from bin document file.
+Input the shapes from Bin Document file.
 ") ReadShapeSection;
 		void ReadShapeSection(std::istream & theIS, const Message_ProgressRange & therange = Message_ProgressRange());
 
@@ -319,7 +319,7 @@ None
 
 Description
 -----------
-Set whether to store triangulation with normals.
+set whether to store triangulation with normals.
 ") SetWithNormals;
 		void SetWithNormals(const Standard_Boolean isWithNormals);
 
@@ -337,7 +337,7 @@ None
 
 Description
 -----------
-Set whether to store triangulation.
+set whether to store triangulation.
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean isWithTriangles);
 
@@ -374,7 +374,7 @@ theOS: Standard_OStream
 
 Description
 -----------
-Output the shapes into bin document file.
+Output the shapes into Bin Document file.
 ") WriteShapeSection;
 		void WriteShapeSection(std::ostream &OutValue, const Standard_Integer theDocVer, const Message_ProgressRange & therange = Message_ProgressRange());
 

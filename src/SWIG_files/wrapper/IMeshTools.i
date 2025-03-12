@@ -101,7 +101,9 @@ IMeshTools_MeshAlgoType_Delabella = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoT
 %wrap_handle(IMeshTools_CurveTessellator)
 %wrap_handle(IMeshTools_MeshAlgo)
 %wrap_handle(IMeshTools_MeshAlgoFactory)
+%wrap_handle(IMeshTools_MeshBuilder)
 %wrap_handle(IMeshTools_ModelAlgo)
+%wrap_handle(IMeshTools_ModelBuilder)
 %wrap_handle(IMeshTools_ShapeExplorer)
 %wrap_handle(IMeshTools_ShapeVisitor)
 /* end handles declaration */
@@ -139,7 +141,8 @@ bool
 
 Description
 -----------
-Builds model using assigned model builder. return true on success, false elsewhere.
+Builds model using assigned model builder. 
+Return: True on success, False elsewhere.
 ") BuildModel;
 		virtual Standard_Boolean BuildModel();
 
@@ -178,7 +181,8 @@ bool
 
 Description
 -----------
-Performs discretization of model edges using assigned edge discret algorithm. return true on success, false elsewhere.
+Performs discretization of model edges using assigned edge discret algorithm. 
+Return: True on success, False elsewhere.
 ") DiscretizeEdges;
 		virtual Standard_Boolean DiscretizeEdges();
 
@@ -196,9 +200,23 @@ bool
 
 Description
 -----------
-Performs meshing of faces of discrete model using assigned meshing algorithm. return true on success, false elsewhere.
+Performs meshing of faces of discrete model using assigned meshing algorithm. 
+Return: True on success, False elsewhere.
 ") DiscretizeFaces;
 		virtual Standard_Boolean DiscretizeFaces(const Message_ProgressRange & theRange);
+
+		/****** IMeshTools_Context::GetEdgeDiscret ******/
+		/****** md5 signature: ce582c5e77a4f5b403d518f2466cd084 ******/
+		%feature("compactdefaultargs") GetEdgeDiscret;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<IMeshTools_ModelAlgo>
+
+Description
+-----------
+Gets instance of a tool to be used to discretize edges of a model.
+") GetEdgeDiscret;
+		const opencascade::handle<IMeshTools_ModelAlgo> & GetEdgeDiscret();
 
 		/****** IMeshTools_Context::GetFaceDiscret ******/
 		/****** md5 signature: ac18004e7beb332d1ceaa528692bb549 ******/
@@ -212,6 +230,32 @@ Description
 Gets instance of meshing algorithm.
 ") GetFaceDiscret;
 		const opencascade::handle<IMeshTools_ModelAlgo> & GetFaceDiscret();
+
+		/****** IMeshTools_Context::GetModel ******/
+		/****** md5 signature: 24f1cf3fcfcf239875c45dd0d1d46fc2 ******/
+		%feature("compactdefaultargs") GetModel;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<IMeshData_Model>
+
+Description
+-----------
+Returns discrete model of a shape.
+") GetModel;
+		const opencascade::handle<IMeshData_Model> & GetModel();
+
+		/****** IMeshTools_Context::GetModelBuilder ******/
+		/****** md5 signature: d5101e8d776bbed24d8360730942dbe8 ******/
+		%feature("compactdefaultargs") GetModelBuilder;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<IMeshTools_ModelBuilder>
+
+Description
+-----------
+Gets instance of a tool to be used to build discrete model.
+") GetModelBuilder;
+		const opencascade::handle<IMeshTools_ModelBuilder> & GetModelBuilder();
 
 		/****** IMeshTools_Context::GetModelHealer ******/
 		/****** md5 signature: b4d4c336d1a6d7891f8c737038e3f01a ******/
@@ -274,7 +318,8 @@ bool
 
 Description
 -----------
-Performs healing of discrete model built by discretizeedges() method using assigned healing algorithm. return true on success, false elsewhere.
+Performs healing of discrete model built by DiscretizeEdges() method using assigned healing algorithm. 
+Return: True on success, False elsewhere.
 ") HealModel;
 		virtual Standard_Boolean HealModel();
 
@@ -287,7 +332,8 @@ bool
 
 Description
 -----------
-Performs post-processing of discrete model using assigned algorithm. return true on success, false elsewhere.
+Performs post-processing of discrete model using assigned algorithm. 
+Return: True on success, False elsewhere.
 ") PostProcessModel;
 		virtual Standard_Boolean PostProcessModel();
 
@@ -300,17 +346,18 @@ bool
 
 Description
 -----------
-Performs pre-processing of discrete model using assigned algorithm. performs auxiliary actions such as cleaning shape from old triangulation. return true on success, false elsewhere.
+Performs pre-processing of discrete model using assigned algorithm. Performs auxiliary actions such as cleaning shape from old triangulation. 
+Return: True on success, False elsewhere.
 ") PreProcessModel;
 		virtual Standard_Boolean PreProcessModel();
 
 		/****** IMeshTools_Context::SetEdgeDiscret ******/
-		/****** md5 signature: 291d959210d87db25e70ab768c6129d2 ******/
+		/****** md5 signature: 1e4c2fe104d7520ec671965e13467125 ******/
 		%feature("compactdefaultargs") SetEdgeDiscret;
 		%feature("autodoc", "
 Parameters
 ----------
-theEdgeDiscret: Handle ( IMeshTools_ModelAlgo )
+theEdgeDiscret: IMeshTools_ModelAlgo
 
 Return
 -------
@@ -320,7 +367,7 @@ Description
 -----------
 Sets instance of a tool to be used to discretize edges of a model.
 ") SetEdgeDiscret;
-		void SetEdgeDiscret(const Handle ( IMeshTools_ModelAlgo ) & theEdgeDiscret);
+		void SetEdgeDiscret(const opencascade::handle<IMeshTools_ModelAlgo> & theEdgeDiscret);
 
 		/****** IMeshTools_Context::SetFaceDiscret ******/
 		/****** md5 signature: e5f88be0158f99b3a420ac23970c0074 ******/
@@ -341,12 +388,12 @@ Sets instance of meshing algorithm.
 		void SetFaceDiscret(const opencascade::handle<IMeshTools_ModelAlgo> & theFaceDiscret);
 
 		/****** IMeshTools_Context::SetModelBuilder ******/
-		/****** md5 signature: a40dc296e168fb353aa98930e685955e ******/
+		/****** md5 signature: 8b7c488d971f90f06745a025f0387624 ******/
 		%feature("compactdefaultargs") SetModelBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBuilder: Handle ( IMeshTools_ModelBuilder )
+theBuilder: IMeshTools_ModelBuilder
 
 Return
 -------
@@ -356,7 +403,7 @@ Description
 -----------
 Sets instance of a tool to be used to build discrete model.
 ") SetModelBuilder;
-		void SetModelBuilder(const Handle ( IMeshTools_ModelBuilder ) & theBuilder);
+		void SetModelBuilder(const opencascade::handle<IMeshTools_ModelBuilder> & theBuilder);
 
 		/****** IMeshTools_Context::SetModelHealer ******/
 		/****** md5 signature: 5abcede778d7925cf655f85c1b509e25 ******/
@@ -457,7 +504,11 @@ theParameter: float
 
 Description
 -----------
-Returns parameters of solution with the given index. @param theindex index of tessellation point. @param thepoint tessellation point. @param theparameter parameters on pcurve corresponded to the solution. return true in case of valid result, false elewhere.
+Returns parameters of solution with the given index. 
+Parameter theIndex index of tessellation point. 
+Parameter thePoint tessellation point. 
+Parameter theParameter parameters on PCurve corresponded to the solution. 
+Return: True in case of valid result, false elewhere.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Integer theIndex, gp_Pnt & thePoint, Standard_Real &OutValue);
 
@@ -564,12 +615,12 @@ Constructor.
 		 IMeshTools_MeshBuilder();
 
 		/****** IMeshTools_MeshBuilder::IMeshTools_MeshBuilder ******/
-		/****** md5 signature: dfa758d15aa71e4174ca043ace7bbb14 ******/
+		/****** md5 signature: 4c8ec20c9f4012a04a7b21ad57829b7e ******/
 		%feature("compactdefaultargs") IMeshTools_MeshBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
-theContext: Handle ( IMeshTools_Context )
+theContext: IMeshTools_Context
 
 Return
 -------
@@ -579,7 +630,20 @@ Description
 -----------
 Constructor.
 ") IMeshTools_MeshBuilder;
-		 IMeshTools_MeshBuilder(const Handle ( IMeshTools_Context ) & theContext);
+		 IMeshTools_MeshBuilder(const opencascade::handle<IMeshTools_Context> & theContext);
+
+		/****** IMeshTools_MeshBuilder::GetContext ******/
+		/****** md5 signature: b29272ba26ba166142ff3acd406b529c ******/
+		%feature("compactdefaultargs") GetContext;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<IMeshTools_Context>
+
+Description
+-----------
+Gets context of algorithm.
+") GetContext;
+		const opencascade::handle<IMeshTools_Context> & GetContext();
 
 		/****** IMeshTools_MeshBuilder::Perform ******/
 		/****** md5 signature: 3be29591efb89b639a8e87056a3f4905 ******/
@@ -600,12 +664,12 @@ Performs meshing to the shape using current context.
 		virtual void Perform(const Message_ProgressRange & theRange);
 
 		/****** IMeshTools_MeshBuilder::SetContext ******/
-		/****** md5 signature: 8be830571630dd25f35c28c52255700c ******/
+		/****** md5 signature: a6c4f956fb3adf9dd9e1a78616f8dd32 ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
 ----------
-theContext: Handle ( IMeshTools_Context )
+theContext: IMeshTools_Context
 
 Return
 -------
@@ -615,10 +679,12 @@ Description
 -----------
 Sets context for algorithm.
 ") SetContext;
-		void SetContext(const Handle ( IMeshTools_Context ) & theContext);
+		void SetContext(const opencascade::handle<IMeshTools_Context> & theContext);
 
 };
 
+
+%make_alias(IMeshTools_MeshBuilder)
 
 %extend IMeshTools_MeshBuilder {
 	%pythoncode {
@@ -633,12 +699,12 @@ Sets context for algorithm.
 class IMeshTools_ModelAlgo : public Standard_Transient {
 	public:
 		/****** IMeshTools_ModelAlgo::Perform ******/
-		/****** md5 signature: b6028ab33842d8e695a3691d5ce74e92 ******/
+		/****** md5 signature: 6cef19470b6f4c97be106ac4c7b388f4 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theModel: Handle ( IMeshData_Model )
+theModel: IMeshData_Model
 theParameters: IMeshTools_Parameters
 theRange: Message_ProgressRange
 
@@ -650,7 +716,7 @@ Description
 -----------
 Exceptions protected processing of the given model.
 ") Perform;
-		Standard_Boolean Perform(const Handle ( IMeshData_Model ) & theModel, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
+		Standard_Boolean Perform(const opencascade::handle<IMeshData_Model> & theModel, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange);
 
 };
 
@@ -669,8 +735,29 @@ Exceptions protected processing of the given model.
 %nodefaultctor IMeshTools_ModelBuilder;
 class IMeshTools_ModelBuilder : public Message_Algorithm {
 	public:
+		/****** IMeshTools_ModelBuilder::Perform ******/
+		/****** md5 signature: 8aa499e77d3fa94c19a4451782337708 ******/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+theParameters: IMeshTools_Parameters
+
+Return
+-------
+opencascade::handle<IMeshData_Model>
+
+Description
+-----------
+Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
+") Perform;
+		opencascade::handle<IMeshData_Model> Perform(const TopoDS_Shape & theShape, const IMeshTools_Parameters & theParameters);
+
 };
 
+
+%make_alias(IMeshTools_ModelBuilder)
 
 %extend IMeshTools_ModelBuilder {
 	%pythoncode {
@@ -683,21 +770,6 @@ class IMeshTools_ModelBuilder : public Message_Algorithm {
 ******************************/
 class IMeshTools_Parameters {
 	public:
-		IMeshTools_MeshAlgoType MeshAlgo;
-		float Angle;
-		float Deflection;
-		float AngleInterior;
-		float DeflectionInterior;
-		float MinSize;
-		bool InParallel;
-		bool Relative;
-		bool InternalVerticesMode;
-		bool ControlSurfaceDeflection;
-		bool EnableControlSurfaceDeflectionAllSurfaces;
-		bool CleanModel;
-		bool AdjustMinSize;
-		bool ForceFaceDeflection;
-		bool AllowQualityDecrease;
 		/****** IMeshTools_Parameters::IMeshTools_Parameters ******/
 		/****** md5 signature: 354732bb8aea0c3d5affb49a91591d02 ******/
 		%feature("compactdefaultargs") IMeshTools_Parameters;
@@ -720,7 +792,7 @@ float
 
 Description
 -----------
-Returns factor used to compute default value of minsize (minimum mesh edge length) from deflection.
+Returns factor used to compute default value of MinSize (minimum mesh edge length) from deflection.
 ") RelMinSize;
 		static Standard_Real RelMinSize();
 
@@ -757,12 +829,12 @@ Constructor.
 		 IMeshTools_ShapeExplorer(const TopoDS_Shape & theShape);
 
 		/****** IMeshTools_ShapeExplorer::Accept ******/
-		/****** md5 signature: cbab5f4b453459b79aedefc30807e3eb ******/
+		/****** md5 signature: 33ed41e9f10d249cc4ff013e9601bf78 ******/
 		%feature("compactdefaultargs") Accept;
 		%feature("autodoc", "
 Parameters
 ----------
-theVisitor: Handle ( IMeshTools_ShapeVisitor )
+theVisitor: IMeshTools_ShapeVisitor
 
 Return
 -------
@@ -772,7 +844,7 @@ Description
 -----------
 Starts exploring of a shape.
 ") Accept;
-		virtual void Accept(const Handle ( IMeshTools_ShapeVisitor ) & theVisitor);
+		virtual void Accept(const opencascade::handle<IMeshTools_ShapeVisitor> & theVisitor);
 
 };
 
@@ -805,7 +877,7 @@ None
 
 Description
 -----------
-Handles topods_face object.
+Handles TopoDS_Face object.
 ") Visit;
 		virtual void Visit(const TopoDS_Face & theFace);
 
@@ -823,7 +895,7 @@ None
 
 Description
 -----------
-Handles topods_edge object.
+Handles TopoDS_Edge object.
 ") Visit;
 		virtual void Visit(const TopoDS_Edge & theEdge);
 

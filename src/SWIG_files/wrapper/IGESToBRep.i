@@ -53,6 +53,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igestobrep.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<ShapeExtend_module.hxx>
+#include<DE_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TColGeom_module.hxx>
 #include<TopTools_module.hxx>
@@ -64,6 +65,12 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igestobrep.html"
 #include<BRep_module.hxx>
 #include<Poly_module.hxx>
 #include<BRepTools_module.hxx>
+#include<TDF_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XSControl_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -80,6 +87,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igestobrep.html"
 %import Geom.i
 %import gp.i
 %import ShapeExtend.i
+%import DE.i
 %import Geom2d.i
 
 %pythoncode {
@@ -123,7 +131,7 @@ opencascade::handle<IGESToBRep_AlgoContainer>
 
 Description
 -----------
-Returns default algocontainer.
+Returns default AlgoContainer.
 ") AlgoContainer;
 		static opencascade::handle<IGESToBRep_AlgoContainer> AlgoContainer();
 
@@ -155,7 +163,7 @@ None
 
 Description
 -----------
-Creates and initializes default algocontainer.
+Creates and initializes default AlgoContainer.
 ") Init;
 		static void Init();
 
@@ -173,7 +181,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transferbrepentity. ex: vertexlist, edgelist, loop, face, shell, manifold solid brep object from igessolid: 502, 504, 508, 510, 514, 186.
+Return True if the IGESEntity can be transferred by TransferBRepEntity. ex: VertexList, EdgeList, Loop, Face, Shell, Manifold Solid BRep Object from IGESSolid: 502, 504, 508, 510, 514, 186.
 ") IsBRepEntity;
 		static Standard_Boolean IsBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -191,7 +199,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transferbasiccurve. ex: circulararc, conicarc, line, copiousdata, bsplinecurve, splinecurve... from igesgeom: 104,110,112,126.
+Return True if the IGESEntity can be transferred by TransferBasicCurve. ex: CircularArc, ConicArc, Line, CopiousData, BSplineCurve, SplineCurve... from IGESGeom: 104,110,112,126.
 ") IsBasicCurve;
 		static Standard_Boolean IsBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -209,7 +217,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transferbasicsurface. ex: bsplinesurface, splinesurface... from igesgeom: 114,128.
+Return True if the IGESEntity can be transferred by TransferBasicSurface. ex: BSplineSurface, SplineSurface... from IGESGeom: 114,128.
 ") IsBasicSurface;
 		static Standard_Boolean IsBasicSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -227,7 +235,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transfercurveandsurface. ex: all igesentity from igesgeom.
+Return True if the IGESEntity can be transferred by TransferCurveAndSurface. ex: All IGESEntity from IGESGeom.
 ") IsCurveAndSurface;
 		static Standard_Boolean IsCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -245,7 +253,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transfertopocurve. ex: all curves from igesgeom: all basic curves,102,130,142,144.
+Return True if the IGESEntity can be transferred by TransferTopoCurve. ex: all Curves from IGESGeom: all basic curves,102,130,142,144.
 ") IsTopoCurve;
 		static Standard_Boolean IsTopoCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -263,7 +271,7 @@ bool
 
 Description
 -----------
-Return true if the igesentity can be transferred by transfertoposurface. ex: all surfaces from igesgeom: all basic surfaces,108,118,120,122,141,143.
+Return True if the IGESEntity can be transferred by TransferTopoSurface. ex: All Surfaces from IGESGeom: all basic surfaces,108,118,120,122,141,143.
 ") IsTopoSurface;
 		static Standard_Boolean IsTopoSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -281,7 +289,7 @@ None
 
 Description
 -----------
-Sets default algocontainer.
+Sets default AlgoContainer.
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<IGESToBRep_AlgoContainer> & aContainer);
 
@@ -377,7 +385,7 @@ None
 
 Description
 -----------
----purpose by default continuity = 0 if continuity = 1: try c1 if continuity = 2: try c2.
+---Purpose By default continuity = 0 if continuity = 1: try C1 if continuity = 2: try C2.
 ") SetContinuity;
 		void SetContinuity(const Standard_Integer continuity = 0);
 
@@ -475,7 +483,7 @@ None
 
 Description
 -----------
-Sets toolcontainer.
+Sets ToolContainer.
 ") SetToolContainer;
 		void SetToolContainer(const opencascade::handle<IGESToBRep_ToolContainer> & TC);
 
@@ -488,7 +496,7 @@ opencascade::handle<IGESToBRep_ToolContainer>
 
 Description
 -----------
-Returns toolcontainer.
+Returns ToolContainer.
 ") ToolContainer;
 		opencascade::handle<IGESToBRep_ToolContainer> ToolContainer();
 
@@ -517,7 +525,7 @@ None
 
 Description
 -----------
-Creates a tool curveandsurface ready to run, with epsilons set to 1.e-04, mymodetopo to true, the optimization of the continuity to false.
+Creates a tool CurveAndSurface ready to run, with epsilons set to 1.E-04, myModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_CurveAndSurface;
 		 IGESToBRep_CurveAndSurface();
 
@@ -540,7 +548,7 @@ None
 
 Description
 -----------
-Creates a tool curveandsurface ready to run.
+Creates a tool CurveAndSurface ready to run.
 ") IGESToBRep_CurveAndSurface;
 		 IGESToBRep_CurveAndSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
@@ -559,7 +567,7 @@ None
 
 Description
 -----------
-Set in 'mymap' the result of the transfer of the entity of the igesentity start ( type vertexlist or edgelist).
+set in 'myMap' the result of the transfer of the entity of the IGESEntity start ( type VertexList or EdgeList).
 ") AddShapeResult;
 		void AddShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Shape & result);
 
@@ -572,7 +580,7 @@ int
 
 Description
 -----------
-Returns the value of 'mycontinuity'.
+Returns the value of 'myContinuity'.
 ") GetContinuity;
 		Standard_Integer GetContinuity();
 
@@ -585,7 +593,7 @@ float
 
 Description
 -----------
-Returns the value of 'myepscoeff'.
+Returns the value of 'myEpsCoeff'.
 ") GetEpsCoeff;
 		Standard_Real GetEpsCoeff();
 
@@ -598,7 +606,7 @@ float
 
 Description
 -----------
-Returns the value of 'myepsgeom'.
+Returns the value of 'myEpsGeom'.
 ") GetEpsGeom;
 		Standard_Real GetEpsGeom();
 
@@ -611,7 +619,7 @@ float
 
 Description
 -----------
-Returns the value of 'myeps'.
+Returns the value of 'myEps'.
 ") GetEpsilon;
 		Standard_Real GetEpsilon();
 
@@ -624,7 +632,7 @@ float
 
 Description
 -----------
-Returns the value of 'mymaxtol'.
+Returns the value of 'myMaxTol'.
 ") GetMaxTol;
 		Standard_Real GetMaxTol();
 
@@ -637,7 +645,7 @@ float
 
 Description
 -----------
-Returns the value of 'mymintol'.
+Returns the value of 'myMinTol'.
 ") GetMinTol;
 		Standard_Real GetMinTol();
 
@@ -650,7 +658,7 @@ bool
 
 Description
 -----------
-Returns the value of 'mymodeapprox'.
+Returns the value of 'myModeApprox'.
 ") GetModeApprox;
 		Standard_Boolean GetModeApprox();
 
@@ -663,7 +671,7 @@ bool
 
 Description
 -----------
-Returns the value of 'mymodeistopo'.
+Returns the value of 'myModeIsTopo'.
 ") GetModeTransfer;
 		Standard_Boolean GetModeTransfer();
 
@@ -676,7 +684,7 @@ opencascade::handle<IGESData_IGESModel>
 
 Description
 -----------
-Returns the value of 'mymodel'.
+Returns the value of 'myModel'.
 ") GetModel;
 		opencascade::handle<IGESData_IGESModel> GetModel();
 
@@ -689,7 +697,7 @@ bool
 
 Description
 -----------
-Returns the value of 'mycontisopti'.
+Returns the value of 'myContIsOpti'.
 ") GetOptimized;
 		Standard_Boolean GetOptimized();
 
@@ -707,7 +715,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the result of the transfer of the igesentity 'start' contained in 'mymap' . (if hasshaperesult is true).
+Returns the result of the transfer of the IGESEntity 'start' contained in 'myMap' . (if HasShapeResult is True).
 ") GetShapeResult;
 		TopoDS_Shape GetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -726,7 +734,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the numth result of the igesentity start (type vertexlist or edgelist) in 'mymap'. (if nbshaperesult is not null).
+Returns the numth result of the IGESEntity start (type VertexList or EdgeList) in 'myMap'. (if NbShapeResult is not null).
 ") GetShapeResult;
 		TopoDS_Shape GetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const Standard_Integer num);
 
@@ -739,7 +747,7 @@ int
 
 Description
 -----------
-Returns the value of ' mysurfacecurve' 0 = value in file , 2 = kepp 2d and compute 3d 3 = keep 3d and compute 2d.
+Returns the value of 'mySurfaceCurve' 0 = value in file, 2 = keep 2d and compute 3d, 3 = keep 3d and compute 2d.
 ") GetSurfaceCurve;
 		Standard_Integer GetSurfaceCurve();
 
@@ -752,7 +760,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the value of 'mymsgreg'.
+Returns the value of 'myMsgReg'.
 ") GetTransferProcess;
 		opencascade::handle<Transfer_TransientProcess> GetTransferProcess();
 
@@ -778,7 +786,7 @@ float
 
 Description
 -----------
-Returns the value of ' myunitfactor'.
+Returns the value of ' myUnitFactor'.
 ") GetUnitFactor;
 		Standard_Real GetUnitFactor();
 
@@ -796,7 +804,7 @@ bool
 
 Description
 -----------
-Returns true if start was already treated and has a result in 'mymap' else returns false.
+Returns True if start was already treated and has a result in 'myMap' else returns False.
 ") HasShapeResult;
 		Standard_Boolean HasShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -809,7 +817,7 @@ None
 
 Description
 -----------
-Initializes the field of the tool curveandsurface with default creating values.
+Initializes the field of the tool CurveAndSurface with default creating values.
 ") Init;
 		void Init();
 
@@ -827,7 +835,7 @@ int
 
 Description
 -----------
-Returns the number of shapes results contained in 'mymap' for the igesentity start ( type vertexlist or edgelist).
+Returns the number of shapes results contained in 'myMap' for the IGESEntity start ( type VertexList or EdgeList).
 ") NbShapeResult;
 		Standard_Integer NbShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -846,7 +854,7 @@ None
 
 Description
 -----------
-Records a new fail message.
+Records a new Fail message.
 ") SendFail;
 		void SendFail(const opencascade::handle<IGESData_IGESEntity> & start, const Message_Msg & amsg);
 
@@ -865,7 +873,7 @@ None
 
 Description
 -----------
-Records a new information message from the definition of a msg (original+value).
+Records a new Information message from the definition of a Msg (Original+Value).
 ") SendMsg;
 		void SendMsg(const opencascade::handle<IGESData_IGESEntity> & start, const Message_Msg & amsg);
 
@@ -884,7 +892,7 @@ None
 
 Description
 -----------
-Records a new warning message.
+Records a new Warning message.
 ") SendWarning;
 		void SendWarning(const opencascade::handle<IGESData_IGESEntity> & start, const Message_Msg & amsg);
 
@@ -902,7 +910,7 @@ None
 
 Description
 -----------
-Changes the value of 'mycontinuity' if continuity = 0 do nothing else if continuity = 1 try c1 if continuity = 2 try c2.
+Changes the value of 'myContinuity' if continuity = 0 do nothing else if continuity = 1 try C1 if continuity = 2 try C2.
 ") SetContinuity;
 		void SetContinuity(const Standard_Integer continuity);
 
@@ -920,7 +928,7 @@ None
 
 Description
 -----------
-Changes the value of 'myepscoeff'.
+Changes the value of 'myEpsCoeff'.
 ") SetEpsCoeff;
 		void SetEpsCoeff(const Standard_Real eps);
 
@@ -938,7 +946,7 @@ None
 
 Description
 -----------
-Changes the value of 'myepsgeom'.
+Changes the value of 'myEpsGeom'.
 ") SetEpsGeom;
 		void SetEpsGeom(const Standard_Real eps);
 
@@ -956,7 +964,7 @@ None
 
 Description
 -----------
-Changes the value of 'myeps'.
+Changes the value of 'myEps'.
 ") SetEpsilon;
 		void SetEpsilon(const Standard_Real eps);
 
@@ -974,7 +982,7 @@ None
 
 Description
 -----------
-Changes the value of 'mymaxtol'.
+Changes the value of 'myMaxTol'.
 ") SetMaxTol;
 		void SetMaxTol(const Standard_Real maxtol);
 
@@ -992,7 +1000,7 @@ None
 
 Description
 -----------
-Changes the value of 'mymintol'.
+Changes the value of 'myMinTol'.
 ") SetMinTol;
 		void SetMinTol(const Standard_Real mintol);
 
@@ -1010,7 +1018,7 @@ None
 
 Description
 -----------
-Changes the value of 'mymodeapprox'.
+Changes the value of 'myModeApprox'.
 ") SetModeApprox;
 		void SetModeApprox(const Standard_Boolean mode);
 
@@ -1028,7 +1036,7 @@ None
 
 Description
 -----------
-Changes the value of 'mymodeistopo'.
+Changes the value of 'myModeIsTopo'.
 ") SetModeTransfer;
 		void SetModeTransfer(const Standard_Boolean mode);
 
@@ -1046,7 +1054,7 @@ None
 
 Description
 -----------
-Set the value of 'mymodel'.
+Set the value of 'myModel'.
 ") SetModel;
 		void SetModel(const opencascade::handle<IGESData_IGESModel> & model);
 
@@ -1064,7 +1072,7 @@ None
 
 Description
 -----------
-Changes the value of 'mycontisopti'.
+Changes the value of 'myContIsOpti'.
 ") SetOptimized;
 		void SetOptimized(const Standard_Boolean optimized);
 
@@ -1083,7 +1091,7 @@ None
 
 Description
 -----------
-Set in 'mymap' the result of the transfer of the igesentity 'start'.
+set in 'myMap' the result of the transfer of the IGESEntity 'start'.
 ") SetShapeResult;
 		void SetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Shape & result);
 
@@ -1119,7 +1127,7 @@ None
 
 Description
 -----------
-Changes the value of 'mysurfacecurve'.
+Changes the value of 'mySurfaceCurve'.
 ") SetSurfaceCurve;
 		void SetSurfaceCurve(const Standard_Integer ival);
 
@@ -1137,7 +1145,7 @@ None
 
 Description
 -----------
-Set the value of 'mymsgreg'.
+Set the value of 'myMsgReg'.
 ") SetTransferProcess;
 		void SetTransferProcess(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1169,7 +1177,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the result of the transfert of any iges curve or surface entity. if the transfer has failed, this member return a nullentity.
+Returns the result of the transfert of any IGES Curve or Surface Entity. If the transfer has failed, this member return a NullEntity.
 ") TransferCurveAndSurface;
 		TopoDS_Shape TransferCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1188,7 +1196,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the result of the transfert the geometry of any igesentity. if the transfer has failed, this member return a nullentity.
+Returns the result of the transfert the geometry of any IGESEntity. If the transfer has failed, this member return a NullEntity.
 ") TransferGeometry;
 		TopoDS_Shape TransferGeometry(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1201,7 +1209,7 @@ None
 
 Description
 -----------
-Sets values of 'mymintol' and 'mymaxtol' as follows mymaxtol = max ('read.maxprecision.val', myepsgeom * myunitfactor) mymintol = precision::confusion() remark: this method is automatically invoked each time the values of 'myepsgeom' or 'myunitfactor' are changed.
+Sets values of 'myMinTol' and 'myMaxTol' as follows myMaxTol = Max ('read.maxprecision.val', myEpsGeom * myUnitFactor) myMinTol = Precision::Confusion() Remark: This method is automatically invoked each time the values of 'myEpsGeom' or 'myUnitFactor' are changed.
 ") UpdateMinMaxTol;
 		void UpdateMinMaxTol();
 
@@ -1267,7 +1275,7 @@ None
 
 Description
 -----------
-Checks result of translation of iges boundary entities (types 141, 142 or 508). checks consistency of 2d and 3d representations and keeps only one if they are inconsistent. <result>: result of translation (returned by transfer), <checkclosure>: false for 142 without parent 144 entity, otherwise true, <okcurve3d>, <okcurve2d>: those returned by transfer.
+Checks result of translation of IGES boundary entities (types 141, 142 or 508). Checks consistency of 2D and 3D representations and keeps only one if they are inconsistent. <result>: result of translation (returned by Transfer), <checkclosure>: False for 142 without parent 144 entity, otherwise True, <okCurve3d>, <okCurve2d>: those returned by Transfer.
 ") Check;
 		virtual void Check(const Standard_Boolean result, const Standard_Boolean checkclosure, const Standard_Boolean okCurve3d, const Standard_Boolean okCurve2d);
 
@@ -1290,7 +1298,7 @@ None
 
 Description
 -----------
-Inits the object with parameters common for all types of iges boundaries. <cs>: object to be used for retrieving translation parameters and sending messages, <entity>: boundary entity to be processed, <face>, <trans>, <ufact>: as for igestobrep_topocurve <filepreference>: preferred representation (2 or 3) given in the iges file.
+Inits the object with parameters common for all types of IGES boundaries. <CS>: object to be used for retrieving translation parameters and sending messages, <entity>: boundary entity to be processed, <face>, <trans>, <uFact>: as for IGESToBRep_TopoCurve <filepreference>: preferred representation (2 or 3) given in the IGES file.
 ") Init;
 		void Init(const IGESToBRep_CurveAndSurface & CS, const opencascade::handle<IGESData_IGESEntity> & entity, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact, const Standard_Integer filepreference);
 
@@ -1313,7 +1321,7 @@ okCurve2d: bool
 
 Description
 -----------
-Translates 141 and 142 entities. returns true if the curve has been successfully translated, otherwise returns false. <okcurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to true before first call), <curve3d>: model space curve for 142 and current model space curve for 141, <toreverse3d>: false for 142 and current orientation flag for 141, <curves2d>: 1 parameter space curve for 142 or list of them for current model space curves for 141, <number>: 1 for 142 and rank number of model space curve for 141.
+Translates 141 and 142 entities. Returns True if the curve has been successfully translated, otherwise returns False. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: model space curve for 142 and current model space curve for 141, <toreverse3d>: False for 142 and current orientation flag for 141, <curves2d>: 1 parameter space curve for 142 or list of them for current model space curves for 141, <number>: 1 for 142 and rank number of model space curve for 141.
 ") Transfer;
 		Standard_Boolean Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<IGESData_IGESEntity> & curve3d, const Standard_Boolean toreverse3d, const opencascade::handle<IGESData_HArray1OfIGESEntity> & curves2d, const Standard_Integer number);
 
@@ -1337,7 +1345,7 @@ okCurve2d: bool
 
 Description
 -----------
-Translates 508 entity. returns true if the curve has been successfully translated, otherwise returns false. input object igesboundary must be created and initialized before. <okcurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to true before first call), <curve3d>: result of translation of current edge, <curves2d>: list of parameter space curves for edge, <toreverse2d>: orientation flag of current edge in respect to its model space curve, <number>: rank number of edge, <lsewd>: returns the result of translation of current edge.
+Translates 508 entity. Returns True if the curve has been successfully translated, otherwise returns False. Input object IGESBoundary must be created and initialized before. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: result of translation of current edge, <curves2d>: list of parameter space curves for edge, <toreverse2d>: orientation flag of current edge in respect to its model space curve, <number>: rank number of edge, <lsewd>: returns the result of translation of current edge.
 ") Transfer;
 		Standard_Boolean Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<ShapeExtend_WireData> & curve3d, const opencascade::handle<IGESData_HArray1OfIGESEntity> & curves2d, const Standard_Boolean toreverse2d, const Standard_Integer number, opencascade::handle<ShapeExtend_WireData> & lsewd);
 
@@ -1363,7 +1371,7 @@ opencascade::handle<ShapeExtend_WireData>
 
 Description
 -----------
-Returns the wire from 2d curves (edges contain pcurves only).
+Returns the wire from 2D curves (edges contain pcurves only).
 ") WireData2d;
 		opencascade::handle<ShapeExtend_WireData> WireData2d();
 
@@ -1376,7 +1384,7 @@ opencascade::handle<ShapeExtend_WireData>
 
 Description
 -----------
-Returns the wire from 3d curves (edges contain 3d curves and may contain pcurves).
+Returns the wire from 3D curves (edges contain 3D curves and may contain pcurves).
 ") WireData3d;
 		opencascade::handle<ShapeExtend_WireData> WireData3d();
 
@@ -1405,7 +1413,7 @@ None
 
 Description
 -----------
-Creates a reader.
+Creates a Reader.
 ") IGESToBRep_Reader;
 		 IGESToBRep_Reader();
 
@@ -1418,7 +1426,7 @@ opencascade::handle<IGESToBRep_Actor>
 
 Description
 -----------
-Returns 'theactor'.
+Returns 'theActor'.
 ") Actor;
 		opencascade::handle<IGESToBRep_Actor> Actor();
 
@@ -1436,7 +1444,7 @@ bool
 
 Description
 -----------
-Checks the iges file that was loaded into memory. displays error messages in the default message file if withprint is true. returns true if no fail message was found and false if there was at least one fail message.
+Checks the IGES file that was loaded into memory. Displays error messages in the default message file if withprint is true. Returns True if no fail message was found and False if there was at least one fail message.
 ") Check;
 		Standard_Boolean Check(const Standard_Boolean withprint);
 
@@ -1453,6 +1461,34 @@ Clears the results between two translation operations.
 ") Clear;
 		void Clear();
 
+		/****** IGESToBRep_Reader::GetShapeFixParameters ******/
+		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
+		/****** IGESToBRep_Reader::GetShapeProcessFlags ******/
+		/****** md5 signature: 154ac0ed4a5b957edb90a1bb81c83699 ******/
+		%feature("compactdefaultargs") GetShapeProcessFlags;
+		%feature("autodoc", "Return
+-------
+ShapeProcess::OperationsFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: The flags defining operations to be performed on shapes.
+") GetShapeProcessFlags;
+		const ShapeProcess::OperationsFlags & GetShapeProcessFlags();
+
 		/****** IGESToBRep_Reader::IsDone ******/
 		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
@@ -1462,7 +1498,7 @@ bool
 
 Description
 -----------
-Returns true if the last transfer/transferroots was a success.
+Returns True if the LAST Transfer/TransferRoots was a success.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1480,7 +1516,7 @@ int
 
 Description
 -----------
-Loads a model from a file.returns 0 if success. returns 1 if the file could not be opened, returns -1 if an error occurred while the file was being loaded.
+Loads a Model from a file.Returns 0 if success. returns 1 if the file could not be opened, returns -1 if an error occurred while the file was being loaded.
 ") LoadFile;
 		Standard_Integer LoadFile(Standard_CString filename);
 
@@ -1493,7 +1529,7 @@ opencascade::handle<IGESData_IGESModel>
 
 Description
 -----------
-Returns the model to be worked on.
+Returns the Model to be worked on.
 ") Model;
 		opencascade::handle<IGESData_IGESModel> Model();
 
@@ -1537,9 +1573,87 @@ None
 
 Description
 -----------
-Specifies a model to work on also clears the result and done status, sets transientprocess.
+Specifies a Model to work on Also clears the result and Done status, sets TransientProcess.
 ") SetModel;
 		void SetModel(const opencascade::handle<IGESData_IGESModel> & model);
+
+		/****** IGESToBRep_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** IGESToBRep_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** IGESToBRep_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+
+		/****** IGESToBRep_Reader::SetShapeProcessFlags ******/
+		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
+		%feature("compactdefaultargs") SetShapeProcessFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetShapeProcessFlags;
+		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
 
 		/****** IGESToBRep_Reader::SetTransientProcess ******/
 		/****** md5 signature: 9c0acd3b342d08985d434686c53eeecd ******/
@@ -1555,7 +1669,7 @@ None
 
 Description
 -----------
-Allows to set an already defined transientprocess (to be called after loadfile or setmodel).
+Allows to set an already defined TransientProcess (to be called after LoadFile or SetModel).
 ") SetTransientProcess;
 		void SetTransientProcess(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1592,7 +1706,7 @@ bool
 
 Description
 -----------
-Transfers an entity given its rank in the model (root or not) returns true if it is recognized as geom-topol. (but it can have failed: see isdone).
+Transfers an Entity given its rank in the Model (Root or not) Returns True if it is recognized as Geom-Topol. (But it can have failed: see IsDone).
 ") Transfer;
 		Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1611,7 +1725,7 @@ None
 
 Description
 -----------
-Translates root entities in an iges file. standard_true is the default value and means that only visible root entities are translated. standard_false translates all of the roots (visible and invisible).
+Translates root entities in an IGES file. Standard_True is the default value and means that only visible root entities are translated. Standard_False translates all of the roots (visible and invisible).
 ") TransferRoots;
 		void TransferRoots(const Standard_Boolean onlyvisible = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1624,7 +1738,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the transientprocess.
+Returns the TransientProcess.
 ") TransientProcess;
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
@@ -1637,7 +1751,7 @@ float
 
 Description
 -----------
-Returns the tolerance which has been actually used, converted in millimeters (either that from file or that from session, according the mode).
+Returns the Tolerance which has been actually used, converted in millimeters (either that from File or that from Session, according the mode).
 ") UsedTolerance;
 		Standard_Real UsedTolerance();
 
@@ -1677,7 +1791,7 @@ opencascade::handle<IGESToBRep_IGESBoundary>
 
 Description
 -----------
-Returns igestobrep_igesboundary.
+Returns IGESToBRep_IGESBoundary.
 ") IGESBoundary;
 		virtual opencascade::handle<IGESToBRep_IGESBoundary> IGESBoundary();
 
@@ -1706,7 +1820,7 @@ None
 
 Description
 -----------
-Creates a tool brepentity ready to run, with epsilons set to 1.e-04, themodetopo to true, the optimization of the continuity to false.
+Creates a tool BRepEntity ready to run, with epsilons set to 1.E-04, TheModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_BRepEntity;
 		 IGESToBRep_BRepEntity();
 
@@ -1724,7 +1838,7 @@ None
 
 Description
 -----------
-Creates a tool brepentity ready to run and sets its fields as cs's.
+Creates a tool BRepEntity ready to run and sets its fields as CS's.
 ") IGESToBRep_BRepEntity;
 		 IGESToBRep_BRepEntity(const IGESToBRep_CurveAndSurface & CS);
 
@@ -1747,7 +1861,7 @@ None
 
 Description
 -----------
-Creates a tool brepentity ready to run.
+Creates a tool BRepEntity ready to run.
 ") IGESToBRep_BRepEntity;
 		 IGESToBRep_BRepEntity(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
@@ -1766,7 +1880,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the brepentity': face, shell or manifoldsolid.
+Transfer the BRepEntity': Face, Shell or ManifoldSolid.
 ") TransferBRepEntity;
 		TopoDS_Shape TransferBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1785,7 +1899,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the entity number 'index' of the edgelist 'start'.
+Transfer the entity number 'index' of the EdgeList 'start'.
 ") TransferEdge;
 		TopoDS_Shape TransferEdge(const opencascade::handle<IGESSolid_EdgeList> & start, const Standard_Integer index);
 
@@ -1803,7 +1917,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the face entity.
+Transfer the Face Entity.
 ") TransferFace;
 		TopoDS_Shape TransferFace(const opencascade::handle<IGESSolid_Face> & start);
 
@@ -1824,7 +1938,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the loop entity.
+Transfer the Loop Entity.
 ") TransferLoop;
 		TopoDS_Shape TransferLoop(const opencascade::handle<IGESSolid_Loop> & start, const TopoDS_Face & Face, const gp_Trsf2d & trans, const Standard_Real uFact);
 
@@ -1843,7 +1957,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the manifoldsolid entity.
+Transfer the ManifoldSolid Entity.
 ") TransferManifoldSolid;
 		TopoDS_Shape TransferManifoldSolid(const opencascade::handle<IGESSolid_ManifoldSolid> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1862,7 +1976,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfer the shell entity.
+Transfer the Shell Entity.
 ") TransferShell;
 		TopoDS_Shape TransferShell(const opencascade::handle<IGESSolid_Shell> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1881,7 +1995,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Transfer the entity number 'index' of the vertexlist 'start'.
+Transfer the entity number 'index' of the VertexList 'start'.
 ") TransferVertex;
 		TopoDS_Vertex TransferVertex(const opencascade::handle<IGESSolid_VertexList> & start, const Standard_Integer index);
 
@@ -1908,7 +2022,7 @@ None
 
 Description
 -----------
-Creates a tool basiccurve ready to run, with epsilons set to 1.e-04, themodetopo to true, the optimization of the continuity to false.
+Creates a tool BasicCurve ready to run, with epsilons set to 1.E-04, TheModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_BasicCurve;
 		 IGESToBRep_BasicCurve();
 
@@ -1926,7 +2040,7 @@ None
 
 Description
 -----------
-Creates a tool basiccurve ready to run and sets its fields as cs's.
+Creates a tool BasicCurve ready to run and sets its fields as CS's.
 ") IGESToBRep_BasicCurve;
 		 IGESToBRep_BasicCurve(const IGESToBRep_CurveAndSurface & CS);
 
@@ -1949,7 +2063,7 @@ None
 
 Description
 -----------
-Creates a tool basiccurve ready to run.
+Creates a tool BasicCurve ready to run.
 ") IGESToBRep_BasicCurve;
 		 IGESToBRep_BasicCurve(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
@@ -1985,7 +2099,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Transfert a igesentity which answer true to the member: igestobrep::isbasiccurve(igesentity). the igesentity must be a curve uv and its associed trsf must be planar .if this entity could not be converted, this member returns a nullentity.
+Transfert a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). The IGESEntity must be a curve UV and its associed TRSF must be planar .If this Entity could not be converted, this member returns a NullEntity.
 ") Transfer2dBasicCurve;
 		opencascade::handle<Geom2d_Curve> Transfer2dBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -2111,7 +2225,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Transfert a igesentity which answer true to the member: igestobrep::isbasiccurve(igesentity). if this entity could not be converted, this member returns a nullentity.
+Transfert a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). If this Entity could not be converted, this member returns a NullEntity.
 ") TransferBasicCurve;
 		opencascade::handle<Geom_Curve> TransferBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -2246,7 +2360,7 @@ None
 
 Description
 -----------
-Creates a tool basicsurface ready to run, with epsilons set to 1.e-04, themodetopo to true, the optimization of the continuity to false.
+Creates a tool BasicSurface ready to run, with epsilons set to 1.E-04, TheModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_BasicSurface;
 		 IGESToBRep_BasicSurface();
 
@@ -2264,7 +2378,7 @@ None
 
 Description
 -----------
-Creates a tool basicsurface ready to run and sets its fields as cs's.
+Creates a tool BasicSurface ready to run and sets its fields as CS's.
 ") IGESToBRep_BasicSurface;
 		 IGESToBRep_BasicSurface(const IGESToBRep_CurveAndSurface & CS);
 
@@ -2287,7 +2401,7 @@ None
 
 Description
 -----------
-Creates a tool basicsurface ready to run.
+Creates a tool BasicSurface ready to run.
 ") IGESToBRep_BasicSurface;
 		 IGESToBRep_BasicSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
@@ -2305,7 +2419,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns bsplinesurface from geom if the transfer has succeeded.
+Returns BSplineSurface from Geom if the transfer has succeeded.
 ") TransferBSplineSurface;
 		opencascade::handle<Geom_BSplineSurface> TransferBSplineSurface(const opencascade::handle<IGESGeom_BSplineSurface> & start);
 
@@ -2323,7 +2437,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns surface from geom if the last transfer has succeeded.
+Returns Surface from Geom if the last transfer has succeeded.
 ") TransferBasicSurface;
 		opencascade::handle<Geom_Surface> TransferBasicSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -2341,7 +2455,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Returns plane from geom if the transfer has succeeded.
+Returns Plane from Geom if the transfer has succeeded.
 ") TransferPlaneSurface;
 		opencascade::handle<Geom_Plane> TransferPlaneSurface(const opencascade::handle<IGESSolid_PlaneSurface> & start);
 
@@ -2359,7 +2473,7 @@ opencascade::handle<Geom_ConicalSurface>
 
 Description
 -----------
-Returns conicalsurface from geom if the transfer has succeeded.
+Returns ConicalSurface from Geom if the transfer has succeeded.
 ") TransferRigthConicalSurface;
 		opencascade::handle<Geom_ConicalSurface> TransferRigthConicalSurface(const opencascade::handle<IGESSolid_ConicalSurface> & start);
 
@@ -2377,7 +2491,7 @@ opencascade::handle<Geom_CylindricalSurface>
 
 Description
 -----------
-Returns cylindricalsurface from geom if the transfer has succeeded.
+Returns CylindricalSurface from Geom if the transfer has succeeded.
 ") TransferRigthCylindricalSurface;
 		opencascade::handle<Geom_CylindricalSurface> TransferRigthCylindricalSurface(const opencascade::handle<IGESSolid_CylindricalSurface> & start);
 
@@ -2395,7 +2509,7 @@ opencascade::handle<Geom_SphericalSurface>
 
 Description
 -----------
-Returns sphericalsurface from geom if the transfer has succeeded.
+Returns SphericalSurface from Geom if the transfer has succeeded.
 ") TransferSphericalSurface;
 		opencascade::handle<Geom_SphericalSurface> TransferSphericalSurface(const opencascade::handle<IGESSolid_SphericalSurface> & start);
 
@@ -2413,7 +2527,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns bsplinesurface from geom if the transfer has succeeded.
+Returns BSplineSurface from Geom if the transfer has succeeded.
 ") TransferSplineSurface;
 		opencascade::handle<Geom_BSplineSurface> TransferSplineSurface(const opencascade::handle<IGESGeom_SplineSurface> & start);
 
@@ -2431,7 +2545,7 @@ opencascade::handle<Geom_ToroidalSurface>
 
 Description
 -----------
-Returns sphericalsurface from geom if the transfer has succeeded.
+Returns SphericalSurface from Geom if the transfer has succeeded.
 ") TransferToroidalSurface;
 		opencascade::handle<Geom_ToroidalSurface> TransferToroidalSurface(const opencascade::handle<IGESSolid_ToroidalSurface> & start);
 
@@ -2458,7 +2572,7 @@ None
 
 Description
 -----------
-Creates a tool topocurve ready to run, with epsilons set to 1.e-04, themodetopo to true, the optimization of the continuity to false.
+Creates a tool TopoCurve ready to run, with epsilons set to 1.E-04, TheModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_TopoCurve;
 		 IGESToBRep_TopoCurve();
 
@@ -2476,7 +2590,7 @@ None
 
 Description
 -----------
-Creates a tool topocurve ready to run and sets its fields as cs's.
+Creates a tool TopoCurve ready to run and sets its fields as CS's.
 ") IGESToBRep_TopoCurve;
 		 IGESToBRep_TopoCurve(const IGESToBRep_CurveAndSurface & CS);
 
@@ -2494,7 +2608,7 @@ None
 
 Description
 -----------
-Creates a tool topocurve ready to run and sets its fields as cs's.
+Creates a tool TopoCurve ready to run and sets its fields as CS's.
 ") IGESToBRep_TopoCurve;
 		 IGESToBRep_TopoCurve(const IGESToBRep_TopoCurve & CS);
 
@@ -2517,7 +2631,7 @@ None
 
 Description
 -----------
-Creates a tool topocurve ready to run.
+Creates a tool TopoCurve ready to run.
 ") IGESToBRep_TopoCurve;
 		 IGESToBRep_TopoCurve(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 
@@ -2566,7 +2680,7 @@ bool
 
 Description
 -----------
-Returns thebadcase flag.
+Returns TheBadCase flag.
 ") BadCase;
 		Standard_Boolean BadCase();
 
@@ -2584,7 +2698,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns a curve given its rank, by default the first one (null curvee if out of range) in 'thecurves'.
+Returns a Curve given its rank, by default the first one (null Curvee if out of range) in 'TheCurves'.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve(const Standard_Integer num = 1);
 
@@ -2602,7 +2716,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns a curve given its rank, by default the first one (null curvee if out of range) in 'thecurves2d'.
+Returns a Curve given its rank, by default the first one (null Curvee if out of range) in 'TheCurves2d'.
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer num = 1);
 
@@ -2615,7 +2729,7 @@ int
 
 Description
 -----------
-Returns the count of curves in 'thecurves'.
+Returns the count of Curves in 'TheCurves'.
 ") NbCurves;
 		Standard_Integer NbCurves();
 
@@ -2628,7 +2742,7 @@ int
 
 Description
 -----------
-Returns the count of curves in 'thecurves2d'.
+Returns the count of Curves in 'TheCurves2d'.
 ") NbCurves2d;
 		Standard_Integer NbCurves2d();
 
@@ -2646,7 +2760,7 @@ None
 
 Description
 -----------
-Sets thebadcase flag.
+Sets TheBadCase flag.
 ") SetBadCase;
 		void SetBadCase(const Standard_Boolean value);
 
@@ -2787,7 +2901,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfers a boundary directly on a face to trim it.
+Transfers a Boundary directly on a face to trim it.
 ") TransferBoundaryOnFace;
 		TopoDS_Shape TransferBoundaryOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_Boundary> & start, const gp_Trsf2d & trans, const Standard_Real uFact);
 
@@ -2827,7 +2941,7 @@ TopoDS_Shape
 
 Description
 -----------
-Transfers a curveonsurface directly on a face to trim it. the curveonsurface have to be defined outer or inner.
+Transfers a CurveOnSurface directly on a face to trim it. The CurveOnSurface have to be defined Outer or Inner.
 ") TransferCurveOnFace;
 		TopoDS_Shape TransferCurveOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_CurveOnSurface> & start, const gp_Trsf2d & trans, const Standard_Real uFact, const Standard_Boolean IsCurv);
 
@@ -2944,7 +3058,7 @@ None
 
 Description
 -----------
-Creates a tool toposurface ready to run, with epsilons set to 1.e-04, themodetopo to true, the optimization of the continuity to false.
+Creates a tool TopoSurface ready to run, with epsilons set to 1.E-04, TheModeTopo to True, the optimization of the continuity to False.
 ") IGESToBRep_TopoSurface;
 		 IGESToBRep_TopoSurface();
 
@@ -2962,7 +3076,7 @@ None
 
 Description
 -----------
-Creates a tool toposurface ready to run and sets its fields as cs's.
+Creates a tool TopoSurface ready to run and sets its fields as CS's.
 ") IGESToBRep_TopoSurface;
 		 IGESToBRep_TopoSurface(const IGESToBRep_CurveAndSurface & CS);
 
@@ -2985,7 +3099,7 @@ None
 
 Description
 -----------
-Creates a tool toposurface ready to run.
+Creates a tool TopoSurface ready to run.
 ") IGESToBRep_TopoSurface;
 		 IGESToBRep_TopoSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
 

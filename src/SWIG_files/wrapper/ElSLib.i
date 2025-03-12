@@ -232,7 +232,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + v * zdirection + (radius + v * tan (semiangle)) * (cos(u) * xdirection + sin(u) * ydirection).
+parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection).
 ") ConeParameters;
 		static void ConeParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -253,7 +253,7 @@ gp_Lin
 
 Description
 -----------
-Compute the u isoparametric gp_lin of the cone.
+compute the U Isoparametric gp_Lin of the cone.
 ") ConeUIso;
 		static gp_Lin ConeUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const Standard_Real U);
 
@@ -274,7 +274,7 @@ gp_Circ
 
 Description
 -----------
-Compute the v isoparametric gp_circ of the cone.
+compute the V Isoparametric gp_Circ of the cone.
 ") ConeVIso;
 		static gp_Circ ConeVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const Standard_Real V);
 
@@ -444,7 +444,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + v * zdirection + radius * (cos(u) * xdirection + sin (u) * ydirection).
+parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection).
 ") CylinderParameters;
 		static void CylinderParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -464,7 +464,7 @@ gp_Lin
 
 Description
 -----------
-Compute the u isoparametric gp_lin of the cylinder.
+compute the U Isoparametric gp_Lin of the cylinder.
 ") CylinderUIso;
 		static gp_Lin CylinderUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real U);
 
@@ -484,7 +484,7 @@ gp_Circ
 
 Description
 -----------
-Compute the v isoparametric gp_circ of the cylinder.
+compute the V Isoparametric gp_Circ of the cylinder.
 ") CylinderVIso;
 		static gp_Circ CylinderVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real V);
 
@@ -526,7 +526,7 @@ None
 
 Description
 -----------
-For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point p of parameters (u, v).inline.
+For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point P of parameters (U, V).inline.
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P);
 
@@ -633,7 +633,7 @@ None
 
 Description
 -----------
-For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes: - the point p of parameters (u, v), and - the first derivative vectors vu and vv at this point in the u and v parametric directions respectively.
+For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively.
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
@@ -751,7 +751,7 @@ None
 
 Description
 -----------
-For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point p of parameters (u, v), and - the first derivative vectors vu and vv at this point in the u and v parametric directions respectively, and - the second derivative vectors vuu, vvv and vuv at this point.
+For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point.
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
@@ -859,7 +859,7 @@ None
 
 Description
 -----------
-For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point p of parameters (u,v), and - the first derivative vectors vu and vv at this point in the u and v parametric directions respectively, and - the second derivative vectors vuu, vvv and vuv at this point, and - the third derivative vectors vuuu, vvvv, vuuv and vuvv at this point.
+For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U,V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point, and - the third derivative vectors Vuuu, Vvvv, Vuuv and Vuvv at this point.
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -949,7 +949,7 @@ None
 
 Description
 -----------
-Surface evaluation the following functions compute the point and the derivatives on elementary surfaces defined with their geometric characteristics. you don't need to create the surface to use these functions. these functions are called by the previous ones. example: a cylinder is defined with its position and its radius.
+Surface evaluation The following functions compute the point and the derivatives on elementary surfaces defined with their geometric characteristics. You don't need to create the surface to use these functions. These functions are called by the previous ones. Example: A cylinder is defined with its position and its radius.
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -971,7 +971,7 @@ gp_Vec
 
 Description
 -----------
-For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the derivative vector of order nu and nv in the u and v parametric directions respectively, at the point of parameters (u, v).
+For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the derivative vector of order Nu and Nv in the u and v parametric directions respectively, at the point of parameters (U, V).
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, const Standard_Integer Nu, const Standard_Integer Nv);
 
@@ -1079,7 +1079,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = pl.location() + u * pl.xdirection() + v * pl.ydirection().
+parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection().
 ") Parameters;
 		static void Parameters(const gp_Pln & Pl, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1099,7 +1099,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + v * zdirection + radius * (cos(u) * xdirection + sin (u) * ydirection).
+parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection).
 ") Parameters;
 		static void Parameters(const gp_Cylinder & C, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1119,7 +1119,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + v * zdirection + (radius + v * tan (semiangle)) * (cos(u) * xdirection + sin(u) * ydirection).
+parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection).
 ") Parameters;
 		static void Parameters(const gp_Cone & C, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1139,7 +1139,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + radius * cos (v) * (cos (u) * xdirection + sin (u) * ydirection) + radius * sin (v) * zdirection.
+parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) + Radius * Sin (V) * ZDirection.
 ") Parameters;
 		static void Parameters(const gp_Sphere & S, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1159,7 +1159,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + (majorradius + minorradius * cos(u)) * (cos(v) * xdirection - sin(v) * ydirection) + minorradius * sin(u) * zdirection.
+parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection.
 ") Parameters;
 		static void Parameters(const gp_Torus & T, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1245,7 +1245,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = pl.location() + u * pl.xdirection() + v * pl.ydirection().
+parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirection().
 ") PlaneParameters;
 		static void PlaneParameters(const gp_Ax3 & Pos, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1264,7 +1264,7 @@ gp_Lin
 
 Description
 -----------
-Compute the u isoparametric gp_lin of the plane.
+compute the U Isoparametric gp_Lin of the plane.
 ") PlaneUIso;
 		static gp_Lin PlaneUIso(const gp_Ax3 & Pos, const Standard_Real U);
 
@@ -1283,7 +1283,7 @@ gp_Lin
 
 Description
 -----------
-Compute the v isoparametric gp_lin of the plane.
+compute the V Isoparametric gp_Lin of the plane.
 ") PlaneVIso;
 		static gp_Lin PlaneVIso(const gp_Ax3 & Pos, const Standard_Real V);
 
@@ -1451,7 +1451,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + radius * cos (v) * (cos (u) * xdirection + sin (u) * ydirection) + radius * sin (v) * zdirection.
+parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) + Radius * Sin (V) * ZDirection.
 ") SphereParameters;
 		static void SphereParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1471,7 +1471,7 @@ gp_Circ
 
 Description
 -----------
-Compute the u isoparametric gp_circ of the sphere, (the meridian is not trimmed).
+compute the U Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 ") SphereUIso;
 		static gp_Circ SphereUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real U);
 
@@ -1491,7 +1491,7 @@ gp_Circ
 
 Description
 -----------
-Compute the v isoparametric gp_circ of the sphere, (the meridian is not trimmed).
+compute the V Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 ") SphereVIso;
 		static gp_Circ SphereVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real V);
 
@@ -1620,7 +1620,7 @@ None
 
 Description
 -----------
-The following functions compute the parametric values corresponding to a given point on a elementary surface. the point should be on the surface.
+The following functions compute the parametric values corresponding to a given point on a elementary surface. The point should be on the surface.
 ") TorusD3;
 		static void TorusD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
@@ -1666,7 +1666,7 @@ V: float
 
 Description
 -----------
-Parametrization p (u, v) = location + (majorradius + minorradius * cos(u)) * (cos(v) * xdirection - sin(v) * ydirection) + minorradius * sin(u) * zdirection.
+parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection.
 ") TorusParameters;
 		static void TorusParameters(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1687,7 +1687,7 @@ gp_Circ
 
 Description
 -----------
-Compute the u isoparametric gp_circ of the torus.
+compute the U Isoparametric gp_Circ of the torus.
 ") TorusUIso;
 		static gp_Circ TorusUIso(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Real U);
 
@@ -1708,7 +1708,7 @@ gp_Circ
 
 Description
 -----------
-Compute the v isoparametric gp_circ of the torus.
+compute the V Isoparametric gp_Circ of the torus.
 ") TorusVIso;
 		static gp_Circ TorusVIso(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Real V);
 
@@ -1750,7 +1750,7 @@ gp_Pnt
 
 Description
 -----------
-For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point of parameters (u, v).
+For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point of parameters (U, V).
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl);
 

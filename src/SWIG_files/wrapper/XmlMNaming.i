@@ -118,7 +118,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <adrivertable>.
+Adds the attribute drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & aMessageDriver);
 
@@ -163,7 +163,7 @@ None
 
 Description
 -----------
-Clear myshapeset.
+Clear myShapeSet.
 ") Clear;
 		void Clear();
 
@@ -176,7 +176,7 @@ TopTools_LocationSet
 
 Description
 -----------
-Get the format of topology.
+get the format of topology.
 ") GetShapesLocations;
 		TopTools_LocationSet & GetShapesLocations();
 
@@ -248,7 +248,7 @@ None
 
 Description
 -----------
-Input the shapes from dom element.
+Input the shapes from DOM element.
 ") ReadShapeSection;
 		void ReadShapeSection(const XmlObjMgt_Element & anElement, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -268,7 +268,7 @@ None
 
 Description
 -----------
-Output the shapes into dom element.
+Output the shapes into DOM element.
 ") WriteShapeSection;
 		void WriteShapeSection(XmlObjMgt_Element & anElement, TDocStd_FormatVersion theStorageFormatVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -420,7 +420,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Return myelement.
+return myElement.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
@@ -433,7 +433,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Return myelement.
+return myElement.
 ") Element;
 		XmlObjMgt_Element & Element();
 

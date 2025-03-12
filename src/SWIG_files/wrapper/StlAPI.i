@@ -101,7 +101,7 @@ bool
 
 Description
 -----------
-Legacy interface. read stl file and create a shape composed of triangular faces, one per facet. this approach is very inefficient, especially for large files. consider reading stl file to poly_triangulation object instead (see class rwstl).
+Legacy interface. Read STL file and create a shape composed of triangular faces, one per facet. This approach is very inefficient, especially for large files. Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString aFile);
 
@@ -121,7 +121,7 @@ bool
 
 Description
 -----------
-Convert and write shape to stl format. file is written in binary if aasciimode is false otherwise it is written in ascii (by default).
+Convert and write shape to STL format. File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default).
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theAsciiMode = Standard_True);
 
@@ -154,7 +154,8 @@ bool
 
 Description
 -----------
-Reads stl file to the topods_shape (each triangle is converted to the face). return true if reading is successful.
+Reads STL file to the TopoDS_Shape (each triangle is converted to the face). 
+Return: True if reading is successful.
 ") Read;
 		Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFileName);
 
@@ -181,7 +182,7 @@ None
 
 Description
 -----------
-Creates a writer object with default parameters: asciimode.
+Creates a writer object with default parameters: ASCIIMode.
 ") StlAPI_Writer;
 		 StlAPI_Writer();
 
@@ -214,7 +215,7 @@ bool
 
 Description
 -----------
-Converts a given shape to stl format and writes it to file with a given filename. eturn the error state.
+Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 ") Write;
 		Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 

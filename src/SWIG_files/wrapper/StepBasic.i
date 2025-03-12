@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepbasic.html"
 #include<TCollection_module.hxx>
 #include<StepData_module.hxx>
 #include<TColStd_module.hxx>
+#include<StepRepr_module.hxx>
 #include<Interface_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TCollection_module.hxx>
@@ -65,6 +66,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepbasic.html"
 %import TCollection.i
 %import StepData.i
 %import TColStd.i
+%import StepRepr.i
 %import Interface.i
 
 %pythoncode {
@@ -297,6 +299,8 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_ExternalSource)
 %wrap_handle(StepBasic_ExternallyDefinedItem)
 %wrap_handle(StepBasic_GeneralProperty)
+%wrap_handle(StepBasic_GeneralPropertyAssociation)
+%wrap_handle(StepBasic_GeneralPropertyRelationship)
 %wrap_handle(StepBasic_Group)
 %wrap_handle(StepBasic_GroupAssignment)
 %wrap_handle(StepBasic_GroupRelationship)
@@ -470,7 +474,7 @@ opencascade::handle<StepBasic_ActionMethod>
 
 Description
 -----------
-Returns field chosenmethod.
+Returns field ChosenMethod.
 ") ChosenMethod;
 		opencascade::handle<StepBasic_ActionMethod> ChosenMethod();
 
@@ -483,7 +487,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -496,7 +500,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -530,7 +534,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -548,7 +552,7 @@ None
 
 Description
 -----------
-Set field chosenmethod.
+Set field ChosenMethod.
 ") SetChosenMethod;
 		void SetChosenMethod(const opencascade::handle<StepBasic_ActionMethod> & ChosenMethod);
 
@@ -566,7 +570,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -584,7 +588,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -626,7 +630,7 @@ opencascade::handle<StepBasic_Action>
 
 Description
 -----------
-Returns field assignedaction.
+Returns field AssignedAction.
 ") AssignedAction;
 		opencascade::handle<StepBasic_Action> AssignedAction();
 
@@ -662,7 +666,7 @@ None
 
 Description
 -----------
-Set field assignedaction.
+Set field AssignedAction.
 ") SetAssignedAction;
 		void SetAssignedAction(const opencascade::handle<StepBasic_Action> & AssignedAction);
 
@@ -704,7 +708,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field consequence.
+Returns field Consequence.
 ") Consequence;
 		opencascade::handle<TCollection_HAsciiString> Consequence();
 
@@ -717,7 +721,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -730,7 +734,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -765,7 +769,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -778,7 +782,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<TCollection_HAsciiString> Purpose();
 
@@ -796,7 +800,7 @@ None
 
 Description
 -----------
-Set field consequence.
+Set field Consequence.
 ") SetConsequence;
 		void SetConsequence(const opencascade::handle<TCollection_HAsciiString> & Consequence);
 
@@ -814,7 +818,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -832,7 +836,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -850,7 +854,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<TCollection_HAsciiString> & Purpose);
 
@@ -892,7 +896,7 @@ opencascade::handle<StepBasic_VersionedActionRequest>
 
 Description
 -----------
-Returns field assignedactionrequest.
+Returns field AssignedActionRequest.
 ") AssignedActionRequest;
 		opencascade::handle<StepBasic_VersionedActionRequest> AssignedActionRequest();
 
@@ -928,7 +932,7 @@ None
 
 Description
 -----------
-Set field assignedactionrequest.
+Set field AssignedActionRequest.
 ") SetAssignedActionRequest;
 		void SetAssignedActionRequest(const opencascade::handle<StepBasic_VersionedActionRequest> & AssignedActionRequest);
 
@@ -989,7 +993,7 @@ opencascade::handle<StepBasic_ActionMethod>
 
 Description
 -----------
-Returns field method.
+Returns field Method.
 ") Method;
 		opencascade::handle<StepBasic_ActionMethod> Method();
 
@@ -1002,7 +1006,7 @@ opencascade::handle<StepBasic_VersionedActionRequest>
 
 Description
 -----------
-Returns field request.
+Returns field Request.
 ") Request;
 		opencascade::handle<StepBasic_VersionedActionRequest> Request();
 
@@ -1020,7 +1024,7 @@ None
 
 Description
 -----------
-Set field method.
+Set field Method.
 ") SetMethod;
 		void SetMethod(const opencascade::handle<StepBasic_ActionMethod> & Method);
 
@@ -1038,7 +1042,7 @@ None
 
 Description
 -----------
-Set field request.
+Set field Request.
 ") SetRequest;
 		void SetRequest(const opencascade::handle<StepBasic_VersionedActionRequest> & Request);
 
@@ -1067,7 +1071,7 @@ None
 
 Description
 -----------
-Returns a address.
+Returns a Address.
 ") StepBasic_Address;
 		 StepBasic_Address();
 
@@ -1821,7 +1825,7 @@ None
 
 Description
 -----------
-Returns a applicationcontext.
+Returns a ApplicationContext.
 ") StepBasic_ApplicationContext;
 		 StepBasic_ApplicationContext();
 
@@ -1899,7 +1903,7 @@ None
 
 Description
 -----------
-Returns a applicationcontextelement.
+Returns a ApplicationContextElement.
 ") StepBasic_ApplicationContextElement;
 		 StepBasic_ApplicationContextElement();
 
@@ -2009,7 +2013,7 @@ None
 
 Description
 -----------
-Returns a applicationprotocoldefinition.
+Returns a ApplicationProtocolDefinition.
 ") StepBasic_ApplicationProtocolDefinition;
 		 StepBasic_ApplicationProtocolDefinition();
 
@@ -2183,7 +2187,7 @@ None
 
 Description
 -----------
-Returns a approval.
+Returns a Approval.
 ") StepBasic_Approval;
 		 StepBasic_Approval();
 
@@ -2468,7 +2472,7 @@ None
 
 Description
 -----------
-Returns a approvalpersonorganization.
+Returns a ApprovalPersonOrganization.
 ") StepBasic_ApprovalPersonOrganization;
 		 StepBasic_ApprovalPersonOrganization();
 
@@ -2610,7 +2614,7 @@ None
 
 Description
 -----------
-Returns a approvalrelationship.
+Returns a ApprovalRelationship.
 ") StepBasic_ApprovalRelationship;
 		 StepBasic_ApprovalRelationship();
 
@@ -2784,7 +2788,7 @@ None
 
 Description
 -----------
-Returns a approvalrole.
+Returns a ApprovalRole.
 ") StepBasic_ApprovalRole;
 		 StepBasic_ApprovalRole();
 
@@ -2862,7 +2866,7 @@ None
 
 Description
 -----------
-Returns a approvalstatus.
+Returns a ApprovalStatus.
 ") StepBasic_ApprovalStatus;
 		 StepBasic_ApprovalStatus();
 
@@ -2973,7 +2977,7 @@ opencascade::handle<StepBasic_CertificationType>
 
 Description
 -----------
-Returns field kind.
+Returns field Kind.
 ") Kind;
 		opencascade::handle<StepBasic_CertificationType> Kind();
 
@@ -2986,7 +2990,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -2999,7 +3003,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<TCollection_HAsciiString> Purpose();
 
@@ -3017,7 +3021,7 @@ None
 
 Description
 -----------
-Set field kind.
+Set field Kind.
 ") SetKind;
 		void SetKind(const opencascade::handle<StepBasic_CertificationType> & Kind);
 
@@ -3035,7 +3039,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -3053,7 +3057,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<TCollection_HAsciiString> & Purpose);
 
@@ -3095,7 +3099,7 @@ opencascade::handle<StepBasic_Certification>
 
 Description
 -----------
-Returns field assignedcertification.
+Returns field AssignedCertification.
 ") AssignedCertification;
 		opencascade::handle<StepBasic_Certification> AssignedCertification();
 
@@ -3131,7 +3135,7 @@ None
 
 Description
 -----------
-Set field assignedcertification.
+Set field AssignedCertification.
 ") SetAssignedCertification;
 		void SetAssignedCertification(const opencascade::handle<StepBasic_Certification> & AssignedCertification);
 
@@ -3173,7 +3177,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -3209,7 +3213,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -3251,7 +3255,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -3264,7 +3268,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -3297,7 +3301,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -3315,7 +3319,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -3333,7 +3337,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -3395,7 +3399,7 @@ opencascade::handle<StepBasic_ContractType>
 
 Description
 -----------
-Returns field kind.
+Returns field Kind.
 ") Kind;
 		opencascade::handle<StepBasic_ContractType> Kind();
 
@@ -3408,7 +3412,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -3421,7 +3425,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<TCollection_HAsciiString> Purpose();
 
@@ -3439,7 +3443,7 @@ None
 
 Description
 -----------
-Set field kind.
+Set field Kind.
 ") SetKind;
 		void SetKind(const opencascade::handle<StepBasic_ContractType> & Kind);
 
@@ -3457,7 +3461,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -3475,7 +3479,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<TCollection_HAsciiString> & Purpose);
 
@@ -3517,7 +3521,7 @@ opencascade::handle<StepBasic_Contract>
 
 Description
 -----------
-Returns field assignedcontract.
+Returns field AssignedContract.
 ") AssignedContract;
 		opencascade::handle<StepBasic_Contract> AssignedContract();
 
@@ -3553,7 +3557,7 @@ None
 
 Description
 -----------
-Set field assignedcontract.
+Set field AssignedContract.
 ") SetAssignedContract;
 		void SetAssignedContract(const opencascade::handle<StepBasic_Contract> & AssignedContract);
 
@@ -3595,7 +3599,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -3631,7 +3635,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -3660,7 +3664,7 @@ None
 
 Description
 -----------
-Returns a coordinateduniversaltimeoffset.
+Returns a CoordinatedUniversalTimeOffset.
 ") StepBasic_CoordinatedUniversalTimeOffset;
 		 StepBasic_CoordinatedUniversalTimeOffset();
 
@@ -3829,7 +3833,7 @@ None
 
 Description
 -----------
-Returns a date.
+Returns a Date.
 ") StepBasic_Date;
 		 StepBasic_Date();
 
@@ -3907,7 +3911,7 @@ None
 
 Description
 -----------
-Returns a dateandtime.
+Returns a DateAndTime.
 ") StepBasic_DateAndTime;
 		 StepBasic_DateAndTime();
 
@@ -4211,7 +4215,7 @@ None
 
 Description
 -----------
-Returns a daterole.
+Returns a DateRole.
 ") StepBasic_DateRole;
 		 StepBasic_DateRole();
 
@@ -4289,7 +4293,7 @@ None
 
 Description
 -----------
-Returns a datetimerole.
+Returns a DateTimeRole.
 ") StepBasic_DateTimeRole;
 		 StepBasic_DateTimeRole();
 
@@ -4367,7 +4371,7 @@ None
 
 Description
 -----------
-Returns a datetimeselect selecttype.
+Returns a DateTimeSelect SelectType.
 ") StepBasic_DateTimeSelect;
 		 StepBasic_DateTimeSelect();
 
@@ -4385,7 +4389,7 @@ int
 
 Description
 -----------
-Recognizes a datetimeselect kind entity that is: 1 -> date 2 -> localtime 3 -> dateandtime 0 else.
+Recognizes a DateTimeSelect Kind Entity that is: 1 -> Date 2 -> LocalTime 3 -> DateAndTime 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4398,7 +4402,7 @@ opencascade::handle<StepBasic_Date>
 
 Description
 -----------
-Returns value as a date (null if another type).
+returns Value as a Date (Null if another type).
 ") Date;
 		opencascade::handle<StepBasic_Date> Date();
 
@@ -4411,7 +4415,7 @@ opencascade::handle<StepBasic_DateAndTime>
 
 Description
 -----------
-Returns value as a dateandtime (null if another type).
+returns Value as a DateAndTime (Null if another type).
 ") DateAndTime;
 		opencascade::handle<StepBasic_DateAndTime> DateAndTime();
 
@@ -4424,7 +4428,7 @@ opencascade::handle<StepBasic_LocalTime>
 
 Description
 -----------
-Returns value as a localtime (null if another type).
+returns Value as a LocalTime (Null if another type).
 ") LocalTime;
 		opencascade::handle<StepBasic_LocalTime> LocalTime();
 
@@ -4670,7 +4674,7 @@ None
 
 Description
 -----------
-Returns a dimensionalexponents.
+Returns a DimensionalExponents.
 ") StepBasic_DimensionalExponents;
 		 StepBasic_DimensionalExponents();
 
@@ -4953,7 +4957,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -4966,7 +4970,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -4979,7 +4983,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field id.
+Returns field Id.
 ") Id;
 		opencascade::handle<TCollection_HAsciiString> Id();
 
@@ -5014,7 +5018,7 @@ opencascade::handle<StepBasic_DocumentType>
 
 Description
 -----------
-Returns field kind.
+Returns field Kind.
 ") Kind;
 		opencascade::handle<StepBasic_DocumentType> Kind();
 
@@ -5027,7 +5031,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -5045,7 +5049,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -5063,7 +5067,7 @@ None
 
 Description
 -----------
-Set field id.
+Set field Id.
 ") SetId;
 		void SetId(const opencascade::handle<TCollection_HAsciiString> & Id);
 
@@ -5081,7 +5085,7 @@ None
 
 Description
 -----------
-Set field kind.
+Set field Kind.
 ") SetKind;
 		void SetKind(const opencascade::handle<StepBasic_DocumentType> & Kind);
 
@@ -5099,7 +5103,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -5141,7 +5145,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -5154,7 +5158,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -5189,7 +5193,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -5202,7 +5206,7 @@ StepBasic_ProductOrFormationOrDefinition
 
 Description
 -----------
-Returns field relatedproduct.
+Returns field RelatedProduct.
 ") RelatedProduct;
 		StepBasic_ProductOrFormationOrDefinition RelatedProduct();
 
@@ -5215,7 +5219,7 @@ opencascade::handle<StepBasic_Document>
 
 Description
 -----------
-Returns field relatingdocument.
+Returns field RelatingDocument.
 ") RelatingDocument;
 		opencascade::handle<StepBasic_Document> RelatingDocument();
 
@@ -5233,7 +5237,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -5251,7 +5255,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -5269,7 +5273,7 @@ None
 
 Description
 -----------
-Set field relatedproduct.
+Set field RelatedProduct.
 ") SetRelatedProduct;
 		void SetRelatedProduct(const StepBasic_ProductOrFormationOrDefinition & RelatedProduct);
 
@@ -5287,7 +5291,7 @@ None
 
 Description
 -----------
-Set field relatingdocument.
+Set field RelatingDocument.
 ") SetRelatingDocument;
 		void SetRelatingDocument(const opencascade::handle<StepBasic_Document> & RelatingDocument);
 
@@ -5619,7 +5623,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -5632,7 +5636,7 @@ opencascade::handle<StepBasic_Document>
 
 Description
 -----------
-Returns field representeddocument.
+Returns field RepresentedDocument.
 ") RepresentedDocument;
 		opencascade::handle<StepBasic_Document> RepresentedDocument();
 
@@ -5650,7 +5654,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -5668,7 +5672,7 @@ None
 
 Description
 -----------
-Set field representeddocument.
+Set field RepresentedDocument.
 ") SetRepresentedDocument;
 		void SetRepresentedDocument(const opencascade::handle<StepBasic_Document> & RepresentedDocument);
 
@@ -6008,7 +6012,7 @@ opencascade::handle<StepBasic_Effectivity>
 
 Description
 -----------
-Returns field assignedeffectivity.
+Returns field AssignedEffectivity.
 ") AssignedEffectivity;
 		opencascade::handle<StepBasic_Effectivity> AssignedEffectivity();
 
@@ -6044,7 +6048,7 @@ None
 
 Description
 -----------
-Set field assignedeffectivity.
+Set field AssignedEffectivity.
 ") SetAssignedEffectivity;
 		void SetAssignedEffectivity(const opencascade::handle<StepBasic_Effectivity> & AssignedEffectivity);
 
@@ -6086,7 +6090,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns field angles.
+Returns field Angles.
 ") Angles;
 		opencascade::handle<TColStd_HArray1OfReal> Angles();
 
@@ -6122,7 +6126,7 @@ None
 
 Description
 -----------
-Set field angles.
+Set field Angles.
 ") SetAngles;
 		void SetAngles(const opencascade::handle<TColStd_HArray1OfReal> & Angles);
 
@@ -6187,7 +6191,7 @@ None
 
 Description
 -----------
-Set field sourceid.
+Set field SourceId.
 ") SetSourceId;
 		void SetSourceId(const StepBasic_SourceItem & SourceId);
 
@@ -6200,7 +6204,7 @@ StepBasic_SourceItem
 
 Description
 -----------
-Returns field sourceid.
+Returns field SourceId.
 ") SourceId;
 		StepBasic_SourceItem SourceId();
 
@@ -6261,7 +6265,7 @@ StepBasic_SourceItem
 
 Description
 -----------
-Returns field itemid.
+Returns field ItemId.
 ") ItemId;
 		StepBasic_SourceItem ItemId();
 
@@ -6279,7 +6283,7 @@ None
 
 Description
 -----------
-Set field itemid.
+Set field ItemId.
 ") SetItemId;
 		void SetItemId(const StepBasic_SourceItem & ItemId);
 
@@ -6297,7 +6301,7 @@ None
 
 Description
 -----------
-Set field source.
+Set field Source.
 ") SetSource;
 		void SetSource(const opencascade::handle<StepBasic_ExternalSource> & Source);
 
@@ -6310,7 +6314,7 @@ opencascade::handle<StepBasic_ExternalSource>
 
 Description
 -----------
-Returns field source.
+Returns field Source.
 ") Source;
 		opencascade::handle<StepBasic_ExternalSource> Source();
 
@@ -6352,7 +6356,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -6365,7 +6369,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -6378,7 +6382,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field id.
+Returns field Id.
 ") Id;
 		opencascade::handle<TCollection_HAsciiString> Id();
 
@@ -6412,7 +6416,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -6430,7 +6434,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -6448,7 +6452,7 @@ None
 
 Description
 -----------
-Set field id.
+Set field Id.
 ") SetId;
 		void SetId(const opencascade::handle<TCollection_HAsciiString> & Id);
 
@@ -6466,7 +6470,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -6476,6 +6480,368 @@ Set field name.
 %make_alias(StepBasic_GeneralProperty)
 
 %extend StepBasic_GeneralProperty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class StepBasic_GeneralPropertyAssociation *
+*********************************************/
+class StepBasic_GeneralPropertyAssociation : public Standard_Transient {
+	public:
+		/****** StepBasic_GeneralPropertyAssociation::StepBasic_GeneralPropertyAssociation ******/
+		/****** md5 signature: d92f9ce9a71752f932dfdb6ae43467b3 ******/
+		%feature("compactdefaultargs") StepBasic_GeneralPropertyAssociation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Empty constructor.
+") StepBasic_GeneralPropertyAssociation;
+		 StepBasic_GeneralPropertyAssociation();
+
+		/****** StepBasic_GeneralPropertyAssociation::Description ******/
+		/****** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ******/
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+Returns field Description.
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description();
+
+		/****** StepBasic_GeneralPropertyAssociation::GeneralProperty ******/
+		/****** md5 signature: 644fc2281dcbe4ea457975f6595935d0 ******/
+		%feature("compactdefaultargs") GeneralProperty;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepBasic_GeneralProperty>
+
+Description
+-----------
+Returns field GeneralProperty.
+") GeneralProperty;
+		opencascade::handle<StepBasic_GeneralProperty> GeneralProperty();
+
+		/****** StepBasic_GeneralPropertyAssociation::Init ******/
+		/****** md5 signature: aac707e1c729ad5d01c97d875d4a5127 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+aName: TCollection_HAsciiString
+aDescription: TCollection_HAsciiString
+aGeneralProperty: StepBasic_GeneralProperty
+aPropertyDefinition: StepRepr_PropertyDefinition
+
+Return
+-------
+None
+
+Description
+-----------
+Initialize all fields (own and inherited).
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_GeneralProperty> & aGeneralProperty, const opencascade::handle<StepRepr_PropertyDefinition> & aPropertyDefinition);
+
+		/****** StepBasic_GeneralPropertyAssociation::Name ******/
+		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+Returns field Name.
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name();
+
+		/****** StepBasic_GeneralPropertyAssociation::PropertyDefinition ******/
+		/****** md5 signature: 4b7b4910929a0e1832918f8266d39349 ******/
+		%feature("compactdefaultargs") PropertyDefinition;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepRepr_PropertyDefinition>
+
+Description
+-----------
+Returns field PropertyDefinition.
+") PropertyDefinition;
+		opencascade::handle<StepRepr_PropertyDefinition> PropertyDefinition();
+
+		/****** StepBasic_GeneralPropertyAssociation::SetDescription ******/
+		/****** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ******/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "
+Parameters
+----------
+Description: TCollection_HAsciiString
+
+Return
+-------
+None
+
+Description
+-----------
+Set field Description.
+") SetDescription;
+		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
+
+		/****** StepBasic_GeneralPropertyAssociation::SetGeneralProperty ******/
+		/****** md5 signature: c717be43fca41e8f95ceb826eb9c6f8e ******/
+		%feature("compactdefaultargs") SetGeneralProperty;
+		%feature("autodoc", "
+Parameters
+----------
+GeneralProperty: StepBasic_GeneralProperty
+
+Return
+-------
+None
+
+Description
+-----------
+Set field GeneralProperty.
+") SetGeneralProperty;
+		void SetGeneralProperty(const opencascade::handle<StepBasic_GeneralProperty> & GeneralProperty);
+
+		/****** StepBasic_GeneralPropertyAssociation::SetName ******/
+		/****** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ******/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "
+Parameters
+----------
+Name: TCollection_HAsciiString
+
+Return
+-------
+None
+
+Description
+-----------
+Set field Name.
+") SetName;
+		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
+
+		/****** StepBasic_GeneralPropertyAssociation::SetPropertyDefinition ******/
+		/****** md5 signature: 2a184e5fd944a00733d8bb4e20c8aa04 ******/
+		%feature("compactdefaultargs") SetPropertyDefinition;
+		%feature("autodoc", "
+Parameters
+----------
+PropertyDefinition: StepRepr_PropertyDefinition
+
+Return
+-------
+None
+
+Description
+-----------
+Set field PropertyDefinition.
+") SetPropertyDefinition;
+		void SetPropertyDefinition(const opencascade::handle<StepRepr_PropertyDefinition> & PropertyDefinition);
+
+};
+
+
+%make_alias(StepBasic_GeneralPropertyAssociation)
+
+%extend StepBasic_GeneralPropertyAssociation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************************************
+* class StepBasic_GeneralPropertyRelationship *
+**********************************************/
+class StepBasic_GeneralPropertyRelationship : public Standard_Transient {
+	public:
+		/****** StepBasic_GeneralPropertyRelationship::StepBasic_GeneralPropertyRelationship ******/
+		/****** md5 signature: 634d6c07c1c914499fe5c3b40f803baa ******/
+		%feature("compactdefaultargs") StepBasic_GeneralPropertyRelationship;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Empty constructor.
+") StepBasic_GeneralPropertyRelationship;
+		 StepBasic_GeneralPropertyRelationship();
+
+		/****** StepBasic_GeneralPropertyRelationship::Description ******/
+		/****** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ******/
+		%feature("compactdefaultargs") Description;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+Returns field Description.
+") Description;
+		opencascade::handle<TCollection_HAsciiString> Description();
+
+		/****** StepBasic_GeneralPropertyRelationship::HasDescription ******/
+		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		%feature("compactdefaultargs") HasDescription;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns True if optional field Description is defined.
+") HasDescription;
+		Standard_Boolean HasDescription();
+
+		/****** StepBasic_GeneralPropertyRelationship::Init ******/
+		/****** md5 signature: fdc1ee70eb7123ed6e55eaaf851d1d1b ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+aName: TCollection_HAsciiString
+hasDescription: bool
+aDescription: TCollection_HAsciiString
+aRelatingGeneralProperty: StepBasic_GeneralProperty
+aRelatedGeneralProperty: StepBasic_GeneralProperty
+
+Return
+-------
+None
+
+Description
+-----------
+Initialize all fields (own and inherited).
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_GeneralProperty> & aRelatingGeneralProperty, const opencascade::handle<StepBasic_GeneralProperty> & aRelatedGeneralProperty);
+
+		/****** StepBasic_GeneralPropertyRelationship::Name ******/
+		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+Returns field Name.
+") Name;
+		opencascade::handle<TCollection_HAsciiString> Name();
+
+		/****** StepBasic_GeneralPropertyRelationship::RelatedGeneralProperty ******/
+		/****** md5 signature: 021176ea5d09f1dfcb1750ca16eef11d ******/
+		%feature("compactdefaultargs") RelatedGeneralProperty;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepBasic_GeneralProperty>
+
+Description
+-----------
+Returns field RelatedGeneralProperty.
+") RelatedGeneralProperty;
+		opencascade::handle<StepBasic_GeneralProperty> RelatedGeneralProperty();
+
+		/****** StepBasic_GeneralPropertyRelationship::RelatingGeneralProperty ******/
+		/****** md5 signature: a56dd4bdfca646aa65b1d7c84dba6e91 ******/
+		%feature("compactdefaultargs") RelatingGeneralProperty;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepBasic_GeneralProperty>
+
+Description
+-----------
+Returns field RelatingGeneralProperty.
+") RelatingGeneralProperty;
+		opencascade::handle<StepBasic_GeneralProperty> RelatingGeneralProperty();
+
+		/****** StepBasic_GeneralPropertyRelationship::SetDescription ******/
+		/****** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ******/
+		%feature("compactdefaultargs") SetDescription;
+		%feature("autodoc", "
+Parameters
+----------
+Description: TCollection_HAsciiString
+
+Return
+-------
+None
+
+Description
+-----------
+Set field Description.
+") SetDescription;
+		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
+
+		/****** StepBasic_GeneralPropertyRelationship::SetName ******/
+		/****** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ******/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "
+Parameters
+----------
+Name: TCollection_HAsciiString
+
+Return
+-------
+None
+
+Description
+-----------
+Set field Name.
+") SetName;
+		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
+
+		/****** StepBasic_GeneralPropertyRelationship::SetRelatedGeneralProperty ******/
+		/****** md5 signature: adda91d5a6d2c00cff734156e87e9048 ******/
+		%feature("compactdefaultargs") SetRelatedGeneralProperty;
+		%feature("autodoc", "
+Parameters
+----------
+RelatedGeneralProperty: StepBasic_GeneralProperty
+
+Return
+-------
+None
+
+Description
+-----------
+Set field RelatedGeneralProperty.
+") SetRelatedGeneralProperty;
+		void SetRelatedGeneralProperty(const opencascade::handle<StepBasic_GeneralProperty> & RelatedGeneralProperty);
+
+		/****** StepBasic_GeneralPropertyRelationship::SetRelatingGeneralProperty ******/
+		/****** md5 signature: ae216cacb8c391ce335a5b8d8c868914 ******/
+		%feature("compactdefaultargs") SetRelatingGeneralProperty;
+		%feature("autodoc", "
+Parameters
+----------
+RelatingGeneralProperty: StepBasic_GeneralProperty
+
+Return
+-------
+None
+
+Description
+-----------
+Set field RelatingGeneralProperty.
+") SetRelatingGeneralProperty;
+		void SetRelatingGeneralProperty(const opencascade::handle<StepBasic_GeneralProperty> & RelatingGeneralProperty);
+
+};
+
+
+%make_alias(StepBasic_GeneralPropertyRelationship)
+
+%extend StepBasic_GeneralPropertyRelationship {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6508,7 +6874,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -6521,7 +6887,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -6554,7 +6920,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -6572,7 +6938,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -6590,7 +6956,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -6632,7 +6998,7 @@ opencascade::handle<StepBasic_Group>
 
 Description
 -----------
-Returns field assignedgroup.
+Returns field AssignedGroup.
 ") AssignedGroup;
 		opencascade::handle<StepBasic_Group> AssignedGroup();
 
@@ -6668,7 +7034,7 @@ None
 
 Description
 -----------
-Set field assignedgroup.
+Set field AssignedGroup.
 ") SetAssignedGroup;
 		void SetAssignedGroup(const opencascade::handle<StepBasic_Group> & AssignedGroup);
 
@@ -6710,7 +7076,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -6723,7 +7089,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -6758,7 +7124,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -6771,7 +7137,7 @@ opencascade::handle<StepBasic_Group>
 
 Description
 -----------
-Returns field relatedgroup.
+Returns field RelatedGroup.
 ") RelatedGroup;
 		opencascade::handle<StepBasic_Group> RelatedGroup();
 
@@ -6784,7 +7150,7 @@ opencascade::handle<StepBasic_Group>
 
 Description
 -----------
-Returns field relatinggroup.
+Returns field RelatingGroup.
 ") RelatingGroup;
 		opencascade::handle<StepBasic_Group> RelatingGroup();
 
@@ -6802,7 +7168,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -6820,7 +7186,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -6838,7 +7204,7 @@ None
 
 Description
 -----------
-Set field relatedgroup.
+Set field RelatedGroup.
 ") SetRelatedGroup;
 		void SetRelatedGroup(const opencascade::handle<StepBasic_Group> & RelatedGroup);
 
@@ -6856,7 +7222,7 @@ None
 
 Description
 -----------
-Set field relatinggroup.
+Set field RelatingGroup.
 ") SetRelatingGroup;
 		void SetRelatingGroup(const opencascade::handle<StepBasic_Group> & RelatingGroup);
 
@@ -6898,7 +7264,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field assignedid.
+Returns field AssignedId.
 ") AssignedId;
 		opencascade::handle<TCollection_HAsciiString> AssignedId();
 
@@ -6930,7 +7296,7 @@ opencascade::handle<StepBasic_IdentificationRole>
 
 Description
 -----------
-Returns field role.
+Returns field Role.
 ") Role;
 		opencascade::handle<StepBasic_IdentificationRole> Role();
 
@@ -6948,7 +7314,7 @@ None
 
 Description
 -----------
-Set field assignedid.
+Set field AssignedId.
 ") SetAssignedId;
 		void SetAssignedId(const opencascade::handle<TCollection_HAsciiString> & AssignedId);
 
@@ -6966,7 +7332,7 @@ None
 
 Description
 -----------
-Set field role.
+Set field Role.
 ") SetRole;
 		void SetRole(const opencascade::handle<StepBasic_IdentificationRole> & Role);
 
@@ -7008,7 +7374,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -7021,7 +7387,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -7054,7 +7420,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -7072,7 +7438,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -7090,7 +7456,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -7119,7 +7485,7 @@ None
 
 Description
 -----------
-Returns a localtime.
+Returns a LocalTime.
 ") StepBasic_LocalTime;
 		 StepBasic_LocalTime();
 
@@ -7420,7 +7786,7 @@ None
 
 Description
 -----------
-Returns a measurewithunit.
+Returns a MeasureWithUnit.
 ") StepBasic_MeasureWithUnit;
 		 StepBasic_MeasureWithUnit();
 
@@ -7574,7 +7940,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field assignedname.
+Returns field AssignedName.
 ") AssignedName;
 		opencascade::handle<TCollection_HAsciiString> AssignedName();
 
@@ -7610,7 +7976,7 @@ None
 
 Description
 -----------
-Set field assignedname.
+Set field AssignedName.
 ") SetAssignedName;
 		void SetAssignedName(const opencascade::handle<TCollection_HAsciiString> & AssignedName);
 
@@ -7639,7 +8005,7 @@ None
 
 Description
 -----------
-Returns a namedunit.
+Returns a NamedUnit.
 ") StepBasic_NamedUnit;
 		 StepBasic_NamedUnit();
 
@@ -7730,7 +8096,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -7743,7 +8109,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -7776,7 +8142,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -7794,7 +8160,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -7812,7 +8178,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -7841,7 +8207,7 @@ None
 
 Description
 -----------
-Returns a organization.
+Returns a Organization.
 ") StepBasic_Organization;
 		 StepBasic_Organization();
 
@@ -8107,7 +8473,7 @@ None
 
 Description
 -----------
-Returns a organizationrole.
+Returns a OrganizationRole.
 ") StepBasic_OrganizationRole;
 		 StepBasic_OrganizationRole();
 
@@ -8185,7 +8551,7 @@ None
 
 Description
 -----------
-Returns a person.
+Returns a Person.
 ") StepBasic_Person;
 		 StepBasic_Person();
 
@@ -8651,7 +9017,7 @@ None
 
 Description
 -----------
-Returns a personandorganization.
+Returns a PersonAndOrganization.
 ") StepBasic_PersonAndOrganization;
 		 StepBasic_PersonAndOrganization();
 
@@ -8858,7 +9224,7 @@ None
 
 Description
 -----------
-Returns a personandorganizationrole.
+Returns a PersonAndOrganizationRole.
 ") StepBasic_PersonAndOrganizationRole;
 		 StepBasic_PersonAndOrganizationRole();
 
@@ -8936,7 +9302,7 @@ None
 
 Description
 -----------
-Returns a personorganizationselect selecttype.
+Returns a PersonOrganizationSelect SelectType.
 ") StepBasic_PersonOrganizationSelect;
 		 StepBasic_PersonOrganizationSelect();
 
@@ -8954,7 +9320,7 @@ int
 
 Description
 -----------
-Recognizes a personorganizationselect kind entity that is: 1 -> person 2 -> organization 3 -> personandorganization 0 else.
+Recognizes a PersonOrganizationSelect Kind Entity that is: 1 -> Person 2 -> Organization 3 -> PersonAndOrganization 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -8967,7 +9333,7 @@ opencascade::handle<StepBasic_Organization>
 
 Description
 -----------
-Returns value as a organization (null if another type).
+returns Value as a Organization (Null if another type).
 ") Organization;
 		opencascade::handle<StepBasic_Organization> Organization();
 
@@ -8980,7 +9346,7 @@ opencascade::handle<StepBasic_Person>
 
 Description
 -----------
-Returns value as a person (null if another type).
+returns Value as a Person (Null if another type).
 ") Person;
 		opencascade::handle<StepBasic_Person> Person();
 
@@ -8993,7 +9359,7 @@ opencascade::handle<StepBasic_PersonAndOrganization>
 
 Description
 -----------
-Returns value as a personandorganization (null if another type).
+returns Value as a PersonAndOrganization (Null if another type).
 ") PersonAndOrganization;
 		opencascade::handle<StepBasic_PersonAndOrganization> PersonAndOrganization();
 
@@ -9020,7 +9386,7 @@ None
 
 Description
 -----------
-Returns a product.
+Returns a Product.
 ") StepBasic_Product;
 		 StepBasic_Product();
 
@@ -9225,7 +9591,7 @@ None
 
 Description
 -----------
-Returns a productcategory.
+Returns a ProductCategory.
 ") StepBasic_ProductCategory;
 		 StepBasic_ProductCategory();
 
@@ -9375,7 +9741,7 @@ opencascade::handle<StepBasic_ProductCategory>
 
 Description
 -----------
-Returns field category.
+Returns field Category.
 ") Category;
 		opencascade::handle<StepBasic_ProductCategory> Category();
 
@@ -9388,7 +9754,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -9401,7 +9767,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -9436,7 +9802,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -9454,7 +9820,7 @@ None
 
 Description
 -----------
-Set field category.
+Set field Category.
 ") SetCategory;
 		void SetCategory(const opencascade::handle<StepBasic_ProductCategory> & Category);
 
@@ -9472,7 +9838,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -9490,7 +9856,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -9508,7 +9874,7 @@ None
 
 Description
 -----------
-Set field subcategory.
+Set field SubCategory.
 ") SetSubCategory;
 		void SetSubCategory(const opencascade::handle<StepBasic_ProductCategory> & SubCategory);
 
@@ -9521,7 +9887,7 @@ opencascade::handle<StepBasic_ProductCategory>
 
 Description
 -----------
-Returns field subcategory.
+Returns field SubCategory.
 ") SubCategory;
 		opencascade::handle<StepBasic_ProductCategory> SubCategory();
 
@@ -9550,7 +9916,7 @@ None
 
 Description
 -----------
-Returns a productdefinition.
+Returns a ProductDefinition.
 ") StepBasic_ProductDefinition;
 		 StepBasic_ProductDefinition();
 
@@ -9724,7 +10090,7 @@ None
 
 Description
 -----------
-Returns a productdefinitionformation.
+Returns a ProductDefinitionFormation.
 ") StepBasic_ProductDefinitionFormation;
 		 StepBasic_ProductDefinitionFormation();
 
@@ -9879,7 +10245,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -9892,7 +10258,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field id.
+Returns field Id.
 ") Id;
 		opencascade::handle<TCollection_HAsciiString> Id();
 
@@ -9927,7 +10293,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -9940,7 +10306,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns field relatedproductdefinitionformation.
+Returns field RelatedProductDefinitionFormation.
 ") RelatedProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> RelatedProductDefinitionFormation();
 
@@ -9953,7 +10319,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns field relatingproductdefinitionformation.
+Returns field RelatingProductDefinitionFormation.
 ") RelatingProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> RelatingProductDefinitionFormation();
 
@@ -9971,7 +10337,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -9989,7 +10355,7 @@ None
 
 Description
 -----------
-Set field id.
+Set field Id.
 ") SetId;
 		void SetId(const opencascade::handle<TCollection_HAsciiString> & Id);
 
@@ -10007,7 +10373,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -10025,7 +10391,7 @@ None
 
 Description
 -----------
-Set field relatedproductdefinitionformation.
+Set field RelatedProductDefinitionFormation.
 ") SetRelatedProductDefinitionFormation;
 		void SetRelatedProductDefinitionFormation(const opencascade::handle<StepBasic_ProductDefinitionFormation> & RelatedProductDefinitionFormation);
 
@@ -10043,7 +10409,7 @@ None
 
 Description
 -----------
-Set field relatingproductdefinitionformation.
+Set field RelatingProductDefinitionFormation.
 ") SetRelatingProductDefinitionFormation;
 		void SetRelatingProductDefinitionFormation(const opencascade::handle<StepBasic_ProductDefinitionFormation> & RelatingProductDefinitionFormation);
 
@@ -10072,7 +10438,7 @@ None
 
 Description
 -----------
-Returns a productdefinitionorreference selecttype.
+Returns a ProductDefinitionOrReference SelectType.
 ") StepBasic_ProductDefinitionOrReference;
 		 StepBasic_ProductDefinitionOrReference();
 
@@ -10090,7 +10456,7 @@ int
 
 Description
 -----------
-Recognizes a productdefinitionorreference kind entity that is: 1 -> productdefinition 2 -> productdefinitionreference 3 -> productdefinitionreferencewithlocalpresentation 0 else.
+Recognizes a ProductDefinitionOrReference Kind Entity that is: 1 -> ProductDefinition 2 -> ProductDefinitionReference 3 -> ProductDefinitionReferenceWithLocalPresentation 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10103,7 +10469,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -10116,7 +10482,7 @@ opencascade::handle<StepBasic_ProductDefinitionReference>
 
 Description
 -----------
-Returns value as a productdefinitionreference (null if another type).
+returns Value as a ProductDefinitionReference (Null if another type).
 ") ProductDefinitionReference;
 		opencascade::handle<StepBasic_ProductDefinitionReference> ProductDefinitionReference();
 
@@ -10129,7 +10495,7 @@ opencascade::handle<StepBasic_ProductDefinitionReferenceWithLocalRepresentation>
 
 Description
 -----------
-Returns value as a productdefinitionreferencewithlocalrepresentation (null if another type).
+returns Value as a ProductDefinitionReferenceWithLocalRepresentation (Null if another type).
 ") ProductDefinitionReferenceWithLocalRepresentation;
 		opencascade::handle<StepBasic_ProductDefinitionReferenceWithLocalRepresentation> ProductDefinitionReferenceWithLocalRepresentation();
 
@@ -10169,7 +10535,7 @@ bool
 
 Description
 -----------
-Returns true if idowningorganizationname exists.
+Returns true if IdOwningOrganizationName exists.
 ") HasIdOwningOrganizationName;
 		Standard_Boolean HasIdOwningOrganizationName();
 
@@ -10182,7 +10548,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field idowningorganizationname.
+Returns field IdOwningOrganizationName.
 ") IdOwningOrganizationName;
 		opencascade::handle<TCollection_HAsciiString> IdOwningOrganizationName();
 
@@ -10238,7 +10604,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field productdefinitionformationid.
+Returns field ProductDefinitionFormationId.
 ") ProductDefinitionFormationId;
 		opencascade::handle<TCollection_HAsciiString> ProductDefinitionFormationId();
 
@@ -10251,7 +10617,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field productdefinitionid.
+Returns field ProductDefinitionId.
 ") ProductDefinitionId;
 		opencascade::handle<TCollection_HAsciiString> ProductDefinitionId();
 
@@ -10264,7 +10630,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field productid.
+Returns field ProductId.
 ") ProductId;
 		opencascade::handle<TCollection_HAsciiString> ProductId();
 
@@ -10282,7 +10648,7 @@ None
 
 Description
 -----------
-Set field idowningorganizationname.
+Set field IdOwningOrganizationName.
 ") SetIdOwningOrganizationName;
 		void SetIdOwningOrganizationName(const opencascade::handle<TCollection_HAsciiString> & theIdOwningOrganizationName);
 
@@ -10300,7 +10666,7 @@ None
 
 Description
 -----------
-Set field productdefinitionformationid.
+Set field ProductDefinitionFormationId.
 ") SetProductDefinitionFormationId;
 		void SetProductDefinitionFormationId(const opencascade::handle<TCollection_HAsciiString> & theProductDefinitionFormationId);
 
@@ -10318,7 +10684,7 @@ None
 
 Description
 -----------
-Set field productdefinitionid.
+Set field ProductDefinitionId.
 ") SetProductDefinitionId;
 		void SetProductDefinitionId(const opencascade::handle<TCollection_HAsciiString> & theProductDefinitionId);
 
@@ -10336,7 +10702,7 @@ None
 
 Description
 -----------
-Set field productid.
+Set field ProductId.
 ") SetProductId;
 		void SetProductId(const opencascade::handle<TCollection_HAsciiString> & theProductId);
 
@@ -10354,7 +10720,7 @@ None
 
 Description
 -----------
-Set field source.
+Set field Source.
 ") SetSource;
 		void SetSource(const opencascade::handle<StepBasic_ExternalSource> & theSource);
 
@@ -10367,7 +10733,7 @@ opencascade::handle<StepBasic_ExternalSource>
 
 Description
 -----------
-Returns field source.
+Returns field Source.
 ") Source;
 		opencascade::handle<StepBasic_ExternalSource> Source();
 
@@ -10409,7 +10775,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -10422,7 +10788,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -10435,7 +10801,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field id.
+Returns field Id.
 ") Id;
 		opencascade::handle<TCollection_HAsciiString> Id();
 
@@ -10494,7 +10860,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -10507,7 +10873,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns field relatedproductdefinition.
+Returns field RelatedProductDefinition.
 ") RelatedProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> RelatedProductDefinition();
 
@@ -10520,7 +10886,7 @@ StepBasic_ProductDefinitionOrReference
 
 Description
 -----------
-Returns field relatedproductdefinition in ap242.
+Returns field RelatedProductDefinition in AP242.
 ") RelatedProductDefinitionAP242;
 		StepBasic_ProductDefinitionOrReference RelatedProductDefinitionAP242();
 
@@ -10533,7 +10899,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns field relatingproductdefinition.
+Returns field RelatingProductDefinition.
 ") RelatingProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> RelatingProductDefinition();
 
@@ -10546,7 +10912,7 @@ StepBasic_ProductDefinitionOrReference
 
 Description
 -----------
-Returns field relatingproductdefinition in ap242.
+Returns field RelatingProductDefinition in AP242.
 ") RelatingProductDefinitionAP242;
 		StepBasic_ProductDefinitionOrReference RelatingProductDefinitionAP242();
 
@@ -10564,7 +10930,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -10582,7 +10948,7 @@ None
 
 Description
 -----------
-Set field id.
+Set field Id.
 ") SetId;
 		void SetId(const opencascade::handle<TCollection_HAsciiString> & Id);
 
@@ -10600,7 +10966,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -10618,7 +10984,7 @@ None
 
 Description
 -----------
-Set field relatedproductdefinition.
+Set field RelatedProductDefinition.
 ") SetRelatedProductDefinition;
 		void SetRelatedProductDefinition(const opencascade::handle<StepBasic_ProductDefinition> & RelatedProductDefinition);
 
@@ -10636,7 +11002,7 @@ None
 
 Description
 -----------
-Set field relatedproductdefinition in ap242.
+Set field RelatedProductDefinition in AP242.
 ") SetRelatedProductDefinition;
 		void SetRelatedProductDefinition(const StepBasic_ProductDefinitionOrReference & RelatedProductDefinition);
 
@@ -10654,7 +11020,7 @@ None
 
 Description
 -----------
-Set field relatingproductdefinition.
+Set field RelatingProductDefinition.
 ") SetRelatingProductDefinition;
 		void SetRelatingProductDefinition(const opencascade::handle<StepBasic_ProductDefinition> & RelatingProductDefinition);
 
@@ -10672,7 +11038,7 @@ None
 
 Description
 -----------
-Set field relatingproductdefinition in ap242.
+Set field RelatingProductDefinition in AP242.
 ") SetRelatingProductDefinition;
 		void SetRelatingProductDefinition(const StepBasic_ProductDefinitionOrReference & RelatingProductDefinition);
 
@@ -10719,7 +11085,7 @@ int
 
 Description
 -----------
-Recognizes a kind of productorformationordefinition select type 1 -> product from stepbasic 2 -> productdefinitionformation from stepbasic 3 -> productdefinition from stepbasic 0 else.
+Recognizes a kind of ProductOrFormationOrDefinition select type 1 -> Product from StepBasic 2 -> ProductDefinitionFormation from StepBasic 3 -> ProductDefinition from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10732,7 +11098,7 @@ opencascade::handle<StepBasic_Product>
 
 Description
 -----------
-Returns value as product (or null if another type).
+Returns Value as Product (or Null if another type).
 ") Product;
 		opencascade::handle<StepBasic_Product> Product();
 
@@ -10745,7 +11111,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -10758,7 +11124,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -10817,7 +11183,7 @@ StepBasic_RoleSelect
 
 Description
 -----------
-Returns field itemwithrole.
+Returns field ItemWithRole.
 ") ItemWithRole;
 		StepBasic_RoleSelect ItemWithRole();
 
@@ -10830,7 +11196,7 @@ opencascade::handle<StepBasic_ObjectRole>
 
 Description
 -----------
-Returns field role.
+Returns field Role.
 ") Role;
 		opencascade::handle<StepBasic_ObjectRole> Role();
 
@@ -10848,7 +11214,7 @@ None
 
 Description
 -----------
-Set field itemwithrole.
+Set field ItemWithRole.
 ") SetItemWithRole;
 		void SetItemWithRole(const StepBasic_RoleSelect & ItemWithRole);
 
@@ -10866,7 +11232,7 @@ None
 
 Description
 -----------
-Set field role.
+Set field Role.
 ") SetRole;
 		void SetRole(const opencascade::handle<StepBasic_ObjectRole> & Role);
 
@@ -10908,7 +11274,7 @@ opencascade::handle<StepBasic_ActionAssignment>
 
 Description
 -----------
-Returns value as actionassignment (or null if another type).
+Returns Value as ActionAssignment (or Null if another type).
 ") ActionAssignment;
 		opencascade::handle<StepBasic_ActionAssignment> ActionAssignment();
 
@@ -10921,7 +11287,7 @@ opencascade::handle<StepBasic_ActionRequestAssignment>
 
 Description
 -----------
-Returns value as actionrequestassignment (or null if another type).
+Returns Value as ActionRequestAssignment (or Null if another type).
 ") ActionRequestAssignment;
 		opencascade::handle<StepBasic_ActionRequestAssignment> ActionRequestAssignment();
 
@@ -10934,7 +11300,7 @@ opencascade::handle<StepBasic_ApprovalAssignment>
 
 Description
 -----------
-Returns value as approvalassignment (or null if another type).
+Returns Value as ApprovalAssignment (or Null if another type).
 ") ApprovalAssignment;
 		opencascade::handle<StepBasic_ApprovalAssignment> ApprovalAssignment();
 
@@ -10947,7 +11313,7 @@ opencascade::handle<StepBasic_ApprovalDateTime>
 
 Description
 -----------
-Returns value as approvaldatetime (or null if another type).
+Returns Value as ApprovalDateTime (or Null if another type).
 ") ApprovalDateTime;
 		opencascade::handle<StepBasic_ApprovalDateTime> ApprovalDateTime();
 
@@ -10965,7 +11331,7 @@ int
 
 Description
 -----------
-Recognizes a kind of roleselect select type 1 -> actionassignment from stepbasic 2 -> actionrequestassignment from stepbasic 3 -> approvalassignment from stepbasic 4 -> approvaldatetime from stepbasic 5 -> certificationassignment from stepbasic 6 -> contractassignment from stepbasic 7 -> documentreference from stepbasic 8 -> effectivityassignment from stepbasic 9 -> groupassignment from stepbasic 10 -> nameassignment from stepbasic 11 -> securityclassificationassignment from stepbasic 0 else.
+Recognizes a kind of RoleSelect select type 1 -> ActionAssignment from StepBasic 2 -> ActionRequestAssignment from StepBasic 3 -> ApprovalAssignment from StepBasic 4 -> ApprovalDateTime from StepBasic 5 -> CertificationAssignment from StepBasic 6 -> ContractAssignment from StepBasic 7 -> DocumentReference from StepBasic 8 -> EffectivityAssignment from StepBasic 9 -> GroupAssignment from StepBasic 10 -> NameAssignment from StepBasic 11 -> SecurityClassificationAssignment from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10978,7 +11344,7 @@ opencascade::handle<StepBasic_CertificationAssignment>
 
 Description
 -----------
-Returns value as certificationassignment (or null if another type).
+Returns Value as CertificationAssignment (or Null if another type).
 ") CertificationAssignment;
 		opencascade::handle<StepBasic_CertificationAssignment> CertificationAssignment();
 
@@ -10991,7 +11357,7 @@ opencascade::handle<StepBasic_ContractAssignment>
 
 Description
 -----------
-Returns value as contractassignment (or null if another type).
+Returns Value as ContractAssignment (or Null if another type).
 ") ContractAssignment;
 		opencascade::handle<StepBasic_ContractAssignment> ContractAssignment();
 
@@ -11004,7 +11370,7 @@ opencascade::handle<StepBasic_DocumentReference>
 
 Description
 -----------
-Returns value as documentreference (or null if another type).
+Returns Value as DocumentReference (or Null if another type).
 ") DocumentReference;
 		opencascade::handle<StepBasic_DocumentReference> DocumentReference();
 
@@ -11017,7 +11383,7 @@ opencascade::handle<StepBasic_EffectivityAssignment>
 
 Description
 -----------
-Returns value as effectivityassignment (or null if another type).
+Returns Value as EffectivityAssignment (or Null if another type).
 ") EffectivityAssignment;
 		opencascade::handle<StepBasic_EffectivityAssignment> EffectivityAssignment();
 
@@ -11030,7 +11396,7 @@ opencascade::handle<StepBasic_GroupAssignment>
 
 Description
 -----------
-Returns value as groupassignment (or null if another type).
+Returns Value as GroupAssignment (or Null if another type).
 ") GroupAssignment;
 		opencascade::handle<StepBasic_GroupAssignment> GroupAssignment();
 
@@ -11043,7 +11409,7 @@ opencascade::handle<StepBasic_NameAssignment>
 
 Description
 -----------
-Returns value as nameassignment (or null if another type).
+Returns Value as NameAssignment (or Null if another type).
 ") NameAssignment;
 		opencascade::handle<StepBasic_NameAssignment> NameAssignment();
 
@@ -11056,7 +11422,7 @@ opencascade::handle<StepBasic_SecurityClassificationAssignment>
 
 Description
 -----------
-Returns value as securityclassificationassignment (or null if another type).
+Returns Value as SecurityClassificationAssignment (or Null if another type).
 ") SecurityClassificationAssignment;
 		opencascade::handle<StepBasic_SecurityClassificationAssignment> SecurityClassificationAssignment();
 
@@ -11083,7 +11449,7 @@ None
 
 Description
 -----------
-Returns a securityclassification.
+Returns a SecurityClassification.
 ") StepBasic_SecurityClassification;
 		 StepBasic_SecurityClassification();
 
@@ -11290,7 +11656,7 @@ None
 
 Description
 -----------
-Returns a securityclassificationlevel.
+Returns a SecurityClassificationLevel.
 ") StepBasic_SecurityClassificationLevel;
 		 StepBasic_SecurityClassificationLevel();
 
@@ -11441,7 +11807,7 @@ None
 
 Description
 -----------
-Returns a sizeselect selecttype.
+Returns a SizeSelect SelectType.
 ") StepBasic_SizeSelect;
 		 StepBasic_SizeSelect();
 
@@ -11459,7 +11825,7 @@ int
 
 Description
 -----------
-Recognizes a selectmember as real, named as parameter_value 1 -> positivelengthmeasure i.e. real 0 else (i.e. entity).
+Recognizes a SelectMember as Real, named as PARAMETER_VALUE 1 -> PositiveLengthMeasure i.e. Real 0 else (i.e. Entity).
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -11477,7 +11843,7 @@ int
 
 Description
 -----------
-Recognizes a trimmingselect kind entity that is: 1 -> sizemember 0 else (i.e. real).
+Recognizes a TrimmingSelect Kind Entity that is: 1 -> SizeMember 0 else (i.e. Real).
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -11490,7 +11856,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a sizemember (positive_length_measure) as preferred.
+Returns a SizeMember (POSITIVE_LENGTH_MEASURE) as preferred.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -11503,7 +11869,7 @@ float
 
 Description
 -----------
-Returns value as a real (null if another type).
+returns Value as a Real (Null if another type).
 ") RealValue;
 		Standard_Real RealValue();
 
@@ -11566,7 +11932,7 @@ int
 
 Description
 -----------
-Recognizes a kind of sourceitem select type 1 -> hasciistring from tcollection 0 else.
+Recognizes a kind of SourceItem select type 1 -> HAsciiString from TCollection 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -11579,7 +11945,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as identifier (or null if another type).
+Returns Value as Identifier (or Null if another type).
 ") Identifier;
 		opencascade::handle<TCollection_HAsciiString> Identifier();
 
@@ -11637,7 +12003,7 @@ int
 
 Description
 -----------
-Recognizes a type of unit entity 1 -> namedunit 2 -> derivedunit.
+Recognizes a type of Unit Entity 1 -> NamedUnit 2 -> DerivedUnit.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -11650,7 +12016,7 @@ opencascade::handle<StepBasic_DerivedUnit>
 
 Description
 -----------
-Returns value as a derivedunit (null if another type).
+returns Value as a DerivedUnit (Null if another type).
 ") DerivedUnit;
 		opencascade::handle<StepBasic_DerivedUnit> DerivedUnit();
 
@@ -11663,7 +12029,7 @@ opencascade::handle<StepBasic_NamedUnit>
 
 Description
 -----------
-Returns value as a namedunit (null if another type).
+returns Value as a NamedUnit (Null if another type).
 ") NamedUnit;
 		opencascade::handle<StepBasic_NamedUnit> NamedUnit();
 
@@ -11703,7 +12069,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -11716,7 +12082,7 @@ bool
 
 Description
 -----------
-Returns true if optional field description is defined.
+Returns True if optional field Description is defined.
 ") HasDescription;
 		Standard_Boolean HasDescription();
 
@@ -11729,7 +12095,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field id.
+Returns field Id.
 ") Id;
 		opencascade::handle<TCollection_HAsciiString> Id();
 
@@ -11764,7 +12130,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<TCollection_HAsciiString> Purpose();
 
@@ -11782,7 +12148,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -11800,7 +12166,7 @@ None
 
 Description
 -----------
-Set field id.
+Set field Id.
 ") SetId;
 		void SetId(const opencascade::handle<TCollection_HAsciiString> & Id);
 
@@ -11818,7 +12184,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<TCollection_HAsciiString> & Purpose);
 
@@ -11836,7 +12202,7 @@ None
 
 Description
 -----------
-Set field version.
+Set field Version.
 ") SetVersion;
 		void SetVersion(const opencascade::handle<TCollection_HAsciiString> & Version);
 
@@ -11849,7 +12215,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field version.
+Returns field Version.
 ") Version;
 		opencascade::handle<TCollection_HAsciiString> Version();
 
@@ -11907,7 +12273,7 @@ None
 
 Description
 -----------
-Returns a calendardate.
+Returns a CalendarDate.
 ") StepBasic_CalendarDate;
 		 StepBasic_CalendarDate();
 
@@ -12018,7 +12384,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunit.
+Returns a ConversionBasedUnit.
 ") StepBasic_ConversionBasedUnit;
 		 StepBasic_ConversionBasedUnit();
 
@@ -12171,7 +12537,7 @@ opencascade::handle<StepBasic_CharacterizedObject>
 
 Description
 -----------
-Returns data for supertype characterizedobject.
+Returns data for supertype CharacterizedObject.
 ") CharacterizedObject;
 		opencascade::handle<StepBasic_CharacterizedObject> CharacterizedObject();
 
@@ -12214,7 +12580,7 @@ None
 
 Description
 -----------
-Set data for supertype characterizedobject.
+Set data for supertype CharacterizedObject.
 ") SetCharacterizedObject;
 		void SetCharacterizedObject(const opencascade::handle<StepBasic_CharacterizedObject> & CharacterizedObject);
 
@@ -12310,7 +12676,7 @@ None
 
 Description
 -----------
-Set field source.
+Set field Source.
 ") SetSource;
 		void SetSource(const opencascade::handle<StepBasic_ExternalSource> & Source);
 
@@ -12323,7 +12689,7 @@ opencascade::handle<StepBasic_ExternalSource>
 
 Description
 -----------
-Returns field source.
+Returns field Source.
 ") Source;
 		opencascade::handle<StepBasic_ExternalSource> Source();
 
@@ -12352,7 +12718,7 @@ None
 
 Description
 -----------
-Returns a lengthmeasurewithunit.
+Returns a LengthMeasureWithUnit.
 ") StepBasic_LengthMeasureWithUnit;
 		 StepBasic_LengthMeasureWithUnit();
 
@@ -12381,7 +12747,7 @@ None
 
 Description
 -----------
-Returns a lengthunit.
+Returns a LengthUnit.
 ") StepBasic_LengthUnit;
 		 StepBasic_LengthUnit();
 
@@ -12410,7 +12776,7 @@ None
 
 Description
 -----------
-Returns a massmeasurewithunit.
+Returns a MassMeasureWithUnit.
 ") StepBasic_MassMeasureWithUnit;
 		 StepBasic_MassMeasureWithUnit();
 
@@ -12468,7 +12834,7 @@ None
 
 Description
 -----------
-Returns a ordinaldate.
+Returns a OrdinalDate.
 ") StepBasic_OrdinalDate;
 		 StepBasic_OrdinalDate();
 
@@ -12547,7 +12913,7 @@ None
 
 Description
 -----------
-Returns a organizationaladdress.
+Returns a OrganizationalAddress.
 ") StepBasic_OrganizationalAddress;
 		 StepBasic_OrganizationalAddress();
 
@@ -12712,7 +13078,7 @@ None
 
 Description
 -----------
-Returns a personaladdress.
+Returns a PersonalAddress.
 ") StepBasic_PersonalAddress;
 		 StepBasic_PersonalAddress();
 
@@ -12906,7 +13272,7 @@ None
 
 Description
 -----------
-Returns a planeanglemeasurewithunit.
+Returns a PlaneAngleMeasureWithUnit.
 ") StepBasic_PlaneAngleMeasureWithUnit;
 		 StepBasic_PlaneAngleMeasureWithUnit();
 
@@ -12935,7 +13301,7 @@ None
 
 Description
 -----------
-Returns a planeangleunit.
+Returns a PlaneAngleUnit.
 ") StepBasic_PlaneAngleUnit;
 		 StepBasic_PlaneAngleUnit();
 
@@ -12997,7 +13363,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field marketsegmenttype.
+Returns field MarketSegmentType.
 ") MarketSegmentType;
 		opencascade::handle<TCollection_HAsciiString> MarketSegmentType();
 
@@ -13015,7 +13381,7 @@ None
 
 Description
 -----------
-Set field marketsegmenttype.
+Set field MarketSegmentType.
 ") SetMarketSegmentType;
 		void SetMarketSegmentType(const opencascade::handle<TCollection_HAsciiString> & MarketSegmentType);
 
@@ -13044,7 +13410,7 @@ None
 
 Description
 -----------
-Returns a productcontext.
+Returns a ProductContext.
 ") StepBasic_ProductContext;
 		 StepBasic_ProductContext();
 
@@ -13124,7 +13490,7 @@ None
 
 Description
 -----------
-Returns a productdefinitioncontext.
+Returns a ProductDefinitionContext.
 ") StepBasic_ProductDefinitionContext;
 		 StepBasic_ProductDefinitionContext();
 
@@ -13283,7 +13649,7 @@ None
 
 Description
 -----------
-Returns a productdefinitionformationwithspecifiedsource.
+Returns a ProductDefinitionFormationWithSpecifiedSource.
 ") StepBasic_ProductDefinitionFormationWithSpecifiedSource;
 		 StepBasic_ProductDefinitionFormationWithSpecifiedSource();
 
@@ -13364,7 +13730,7 @@ None
 
 Description
 -----------
-Returns a productdefinitionreferencewithlocalrepresentation.
+Returns a ProductDefinitionReferenceWithLocalRepresentation.
 ") StepBasic_ProductDefinitionReferenceWithLocalRepresentation;
 		 StepBasic_ProductDefinitionReferenceWithLocalRepresentation();
 
@@ -13404,7 +13770,7 @@ None
 
 Description
 -----------
-Set field source.
+Set field Source.
 ") SetSource;
 		void SetSource(const opencascade::handle<StepBasic_ExternalSource> & theSource);
 
@@ -13417,7 +13783,7 @@ opencascade::handle<StepBasic_ExternalSource>
 
 Description
 -----------
-Returns field source.
+Returns field Source.
 ") Source;
 		opencascade::handle<StepBasic_ExternalSource> Source();
 
@@ -13578,7 +13944,7 @@ None
 
 Description
 -----------
-Returns a productrelatedproductcategory.
+Returns a ProductRelatedProductCategory.
 ") StepBasic_ProductRelatedProductCategory;
 		 StepBasic_ProductRelatedProductCategory();
 
@@ -13690,7 +14056,7 @@ None
 
 Description
 -----------
-Returns a ratiomeasurewithunit.
+Returns a RatioMeasureWithUnit.
 ") StepBasic_RatioMeasureWithUnit;
 		 StepBasic_RatioMeasureWithUnit();
 
@@ -13719,7 +14085,7 @@ None
 
 Description
 -----------
-Returns a ratiounit.
+Returns a RatioUnit.
 ") StepBasic_RatioUnit;
 		 StepBasic_RatioUnit();
 
@@ -13748,7 +14114,7 @@ None
 
 Description
 -----------
-Returns a siunit.
+Returns a SiUnit.
 ") StepBasic_SiUnit;
 		 StepBasic_SiUnit();
 
@@ -13916,7 +14282,7 @@ None
 
 Description
 -----------
-Returns a solidanglemeasurewithunit.
+Returns a SolidAngleMeasureWithUnit.
 ") StepBasic_SolidAngleMeasureWithUnit;
 		 StepBasic_SolidAngleMeasureWithUnit();
 
@@ -13945,7 +14311,7 @@ None
 
 Description
 -----------
-Returns a solidangleunit.
+Returns a SolidAngleUnit.
 ") StepBasic_SolidAngleUnit;
 		 StepBasic_SolidAngleUnit();
 
@@ -14003,7 +14369,7 @@ None
 
 Description
 -----------
-Returns a timemeasurewithunit.
+Returns a TimeMeasureWithUnit.
 ") StepBasic_TimeMeasureWithUnit;
 		 StepBasic_TimeMeasureWithUnit();
 
@@ -14032,7 +14398,7 @@ None
 
 Description
 -----------
-Returns a timeunit.
+Returns a TimeUnit.
 ") StepBasic_TimeUnit;
 		 StepBasic_TimeUnit();
 
@@ -14061,7 +14427,7 @@ None
 
 Description
 -----------
-Returns a uncertaintymeasurewithunit.
+Returns a UncertaintyMeasureWithUnit.
 ") StepBasic_UncertaintyMeasureWithUnit;
 		 StepBasic_UncertaintyMeasureWithUnit();
 
@@ -14202,7 +14568,7 @@ None
 
 Description
 -----------
-Returns a weekofyearanddaydate.
+Returns a WeekOfYearAndDayDate.
 ") StepBasic_WeekOfYearAndDayDate;
 		 StepBasic_WeekOfYearAndDayDate();
 
@@ -14340,7 +14706,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandareaunit.
+Returns a ConversionBasedUnitAndAreaUnit.
 ") StepBasic_ConversionBasedUnitAndAreaUnit;
 		 StepBasic_ConversionBasedUnitAndAreaUnit();
 
@@ -14400,7 +14766,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandlengthunit.
+Returns a ConversionBasedUnitAndLengthUnit.
 ") StepBasic_ConversionBasedUnitAndLengthUnit;
 		 StepBasic_ConversionBasedUnitAndLengthUnit();
 
@@ -14480,7 +14846,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandlengthunit.
+Returns a ConversionBasedUnitAndLengthUnit.
 ") StepBasic_ConversionBasedUnitAndMassUnit;
 		 StepBasic_ConversionBasedUnitAndMassUnit();
 
@@ -14560,7 +14926,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandplaneangleunit.
+Returns a ConversionBasedUnitAndPlaneAngleUnit.
 ") StepBasic_ConversionBasedUnitAndPlaneAngleUnit;
 		 StepBasic_ConversionBasedUnitAndPlaneAngleUnit();
 
@@ -14640,7 +15006,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandratiounit.
+Returns a ConversionBasedUnitAndRatioUnit.
 ") StepBasic_ConversionBasedUnitAndRatioUnit;
 		 StepBasic_ConversionBasedUnitAndRatioUnit();
 
@@ -14720,7 +15086,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandsolidangleunit.
+Returns a ConversionBasedUnitAndSolidAngleUnit.
 ") StepBasic_ConversionBasedUnitAndSolidAngleUnit;
 		 StepBasic_ConversionBasedUnitAndSolidAngleUnit();
 
@@ -14800,7 +15166,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandtimeunit.
+Returns a ConversionBasedUnitAndTimeUnit.
 ") StepBasic_ConversionBasedUnitAndTimeUnit;
 		 StepBasic_ConversionBasedUnitAndTimeUnit();
 
@@ -14880,7 +15246,7 @@ None
 
 Description
 -----------
-Returns a conversionbasedunitandvolumeunit.
+Returns a ConversionBasedUnitAndVolumeUnit.
 ") StepBasic_ConversionBasedUnitAndVolumeUnit;
 		 StepBasic_ConversionBasedUnitAndVolumeUnit();
 
@@ -14969,7 +15335,7 @@ None
 
 Description
 -----------
-Returns a mechanicalcontext.
+Returns a MechanicalContext.
 ") StepBasic_MechanicalContext;
 		 StepBasic_MechanicalContext();
 
@@ -14998,7 +15364,7 @@ None
 
 Description
 -----------
-Returns a producttype.
+Returns a ProductType.
 ") StepBasic_ProductType;
 		 StepBasic_ProductType();
 
@@ -15027,7 +15393,7 @@ None
 
 Description
 -----------
-Returns a siunitandareaunit.
+Returns a SiUnitAndAreaUnit.
 ") StepBasic_SiUnitAndAreaUnit;
 		 StepBasic_SiUnitAndAreaUnit();
 
@@ -15087,7 +15453,7 @@ None
 
 Description
 -----------
-Returns a siunitandlengthunit.
+Returns a SiUnitAndLengthUnit.
 ") StepBasic_SiUnitAndLengthUnit;
 		 StepBasic_SiUnitAndLengthUnit();
 
@@ -15167,7 +15533,7 @@ None
 
 Description
 -----------
-Returns a siunitandmassunit.
+Returns a SiUnitAndMassUnit.
 ") StepBasic_SiUnitAndMassUnit;
 		 StepBasic_SiUnitAndMassUnit();
 
@@ -15247,7 +15613,7 @@ None
 
 Description
 -----------
-Returns a siunitandplaneangleunit.
+Returns a SiUnitAndPlaneAngleUnit.
 ") StepBasic_SiUnitAndPlaneAngleUnit;
 		 StepBasic_SiUnitAndPlaneAngleUnit();
 
@@ -15327,7 +15693,7 @@ None
 
 Description
 -----------
-Returns a siunitandratiounit.
+Returns a SiUnitAndRatioUnit.
 ") StepBasic_SiUnitAndRatioUnit;
 		 StepBasic_SiUnitAndRatioUnit();
 
@@ -15407,7 +15773,7 @@ None
 
 Description
 -----------
-Returns a siunitandsolidangleunit.
+Returns a SiUnitAndSolidAngleUnit.
 ") StepBasic_SiUnitAndSolidAngleUnit;
 		 StepBasic_SiUnitAndSolidAngleUnit();
 
@@ -15487,7 +15853,7 @@ None
 
 Description
 -----------
-Returns a siunitandthermodynamictemperatureunit.
+Returns a SiUnitAndThermodynamicTemperatureUnit.
 ") StepBasic_SiUnitAndThermodynamicTemperatureUnit;
 		 StepBasic_SiUnitAndThermodynamicTemperatureUnit();
 
@@ -15567,7 +15933,7 @@ None
 
 Description
 -----------
-Returns a siunitandtimeunit.
+Returns a SiUnitAndTimeUnit.
 ") StepBasic_SiUnitAndTimeUnit;
 		 StepBasic_SiUnitAndTimeUnit();
 
@@ -15647,7 +16013,7 @@ None
 
 Description
 -----------
-Returns a siunitandvolumeunit.
+Returns a SiUnitAndVolumeUnit.
 ") StepBasic_SiUnitAndVolumeUnit;
 		 StepBasic_SiUnitAndVolumeUnit();
 

@@ -101,7 +101,7 @@ None
 
 Description
 -----------
-Makes a cylindrical projection of wire om shape.
+Makes a Cylindrical projection of Wire om Shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Dir & D);
 
@@ -121,7 +121,7 @@ None
 
 Description
 -----------
-Makes a conical projection of wire om shape.
+Makes a Conical projection of Wire om Shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Pnt & P);
 
@@ -160,7 +160,7 @@ bool
 
 Description
 -----------
-Returns false if the section failed.
+returns False if the section failed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -173,7 +173,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current result wire.
+Returns True if there is a current result wire.
 ") More;
 		Standard_Boolean More();
 

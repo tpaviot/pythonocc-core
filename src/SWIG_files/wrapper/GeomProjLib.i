@@ -107,7 +107,7 @@ Tolerance: float
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] <tolerance> is used as input if the projection needs an approximation. in this case, the reached tolerance is set in <tolerance> as output. warning: if the projection has failed, this method returns a null handle.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING: if the projection has failed, this method returns a null Handle.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, Standard_Real &OutValue);
 
@@ -128,7 +128,7 @@ Tolerance: float
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] <tolerance> is used as input if the projection needs an approximation. in this case, the reached tolerance is set in <tolerance> as output. warning: if the projection has failed, this method returns a null handle.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING: if the projection has failed, this method returns a null Handle.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, Standard_Real &OutValue);
 
@@ -149,7 +149,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] if the projection needs an approximation, precision::papproximation() is used. warning: if the projection has failed, this method returns a null handle.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] If the projection needs an approximation, Precision::PApproximation() is used. WARNING: if the projection has failed, this method returns a null Handle.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S);
 
@@ -168,7 +168,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning: if the projection has failed, this method returns a null handle.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING: if the projection has failed, this method returns a null Handle.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
@@ -191,7 +191,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning: if the projection has failed, this method returns a null handle. can expand a little the bounds of surface.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING: if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin);
 
@@ -214,7 +214,7 @@ Tolerance: float
 
 Description
 -----------
-Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning: if the projection has failed, this method returns a null handle. can expand a little the bounds of surface.
+gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING: if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface.
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin, Standard_Real &OutValue);
 
@@ -233,7 +233,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Constructs the 3d-curve from the normal projection of the curve <c> on the surface <s>. warning: if the projection has failed, returns a null handle.
+Constructs the 3d-curve from the normal projection of the Curve <C> on the surface <S>. WARNING: if the projection has failed, returns a null Handle.
 ") Project;
 		static opencascade::handle<Geom_Curve> Project(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
@@ -254,7 +254,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Constructs the 3d-curves from the projection of the curve <curve> on the plane <plane> along the direction <dir>. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it means: proj(c(u)) = pc(u) for each u. otherwise, the parametrization may change.
+Constructs the 3d-curves from the projection of the curve <Curve> on the plane <Plane> along the direction <Dir>. If <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It means: proj(C(u)) = PC(u) for each u. Otherwise, the parametrization may change.
 ") ProjectOnPlane;
 		static opencascade::handle<Geom_Curve> ProjectOnPlane(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Plane> & Plane, const gp_Dir & Dir, const Standard_Boolean KeepParametrization);
 

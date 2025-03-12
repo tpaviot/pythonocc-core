@@ -177,7 +177,7 @@ bool
 
 Description
 -----------
-Returns true if plane is specified.
+Returns True if plane is specified.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
@@ -190,7 +190,7 @@ bool
 
 Description
 -----------
-Returns true if the attachment point on the annotated object is specified.
+Returns True if the attachment point on the annotated object is specified.
 ") HasPoint;
 		Standard_Boolean HasPoint();
 
@@ -203,7 +203,7 @@ bool
 
 Description
 -----------
-Returns true if the text position is specified.
+Returns True if the text position is specified.
 ") HasPointText;
 		Standard_Boolean HasPointText();
 

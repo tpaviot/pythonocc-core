@@ -1683,7 +1683,7 @@ None
 
 Description
 -----------
-Creates quantity_noc_yellow color (for historical reasons).
+Creates Quantity_NOC_YELLOW color (for historical reasons).
 ") Quantity_Color;
 		 Quantity_Color();
 
@@ -1722,7 +1722,7 @@ None
 
 Description
 -----------
-Creates a color according to the definition system thetype. throws exception if values are out of range.
+Creates a color according to the definition system theType. Throws exception if values are out of range.
 ") Quantity_Color;
 		 Quantity_Color(const Standard_Real theC1, const Standard_Real theC2, const Standard_Real theC3, const Quantity_TypeOfColor theType);
 
@@ -1740,7 +1740,7 @@ None
 
 Description
 -----------
-Define color from linear rgb values.
+Define color from linear RGB values.
 ") Quantity_Color;
 		 Quantity_Color(const NCollection_Vec3<float> & theRgb);
 
@@ -1759,7 +1759,7 @@ None
 
 Description
 -----------
-Convert integer argb value to color. alpha bits are ignored. note that this packing does not involve linear -> non-linear srgb conversion, as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
+Convert integer ARGB value to Color. Alpha bits are ignored. Note that this packing does NOT involve linear -> non-linear sRGB conversion, as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
 ") Argb2color;
 		static void Argb2color(const Standard_Integer theARGB, Quantity_Color & theColor);
 
@@ -1772,7 +1772,7 @@ float
 
 Description
 -----------
-Returns the blue component (quantity of blue) of the color within range [0.0; 1.0].
+Returns the Blue component (quantity of blue) of the color within range [0.0; 1.0].
 ") Blue;
 		Standard_Real Blue();
 
@@ -1790,7 +1790,7 @@ None
 
 Description
 -----------
-Increases or decreases the contrast (variation of the saturation). the delta is a percentage. any value greater than zero will increase the contrast. the variation is expressed as a percentage of the current value.
+Increases or decreases the contrast (variation of the saturation). The delta is a percentage. Any value greater than zero will increase the contrast. The variation is expressed as a percentage of the current value.
 ") ChangeContrast;
 		void ChangeContrast(const Standard_Real theDelta);
 
@@ -1808,7 +1808,7 @@ None
 
 Description
 -----------
-Increases or decreases the intensity (variation of the lightness). the delta is a percentage. any value greater than zero will increase the intensity. the variation is expressed as a percentage of the current value.
+Increases or decreases the intensity (variation of the lightness). The delta is a percentage. Any value greater than zero will increase the intensity. The variation is expressed as a percentage of the current value.
 ") ChangeIntensity;
 		void ChangeIntensity(const Standard_Real theDelta);
 
@@ -1826,7 +1826,8 @@ theARGB: int
 
 Description
 -----------
-Convert the color value to argb integer value, with alpha equals to 0. so the output is formatted as 0x00rrggbb. note that this unpacking does not involve non-linear srgb -> linear rgb conversion, as would be usually expected for rgb color packed into 4 bytes. @param thecolor [in] color to convert @param theargb [out] result color encoded as integer.
+Convert the color value to ARGB integer value, with alpha equals to 0. So the output is formatted as 0x00RRGGBB. Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion, as would be usually expected for RGB color packed into 4 bytes. 
+Input parameter: theColor color to convert @param[out] theARGB result color encoded as integer.
 ") Color2argb;
 		static void Color2argb(const Quantity_Color & theColor, Standard_Integer &OutValue);
 
@@ -1845,7 +1846,10 @@ bool
 
 Description
 -----------
-Parses the string as a hex color (like '#ff0' for short srgb color, or '#ffff00' for srgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing return true if parsing was successful, or false otherwise.
+Parses the string as a hex color (like '#FF0' for short sRGB color, or '#FFFF00' for sRGB color) 
+Parameter theHexColorString the string to be parsed 
+Parameter theColor a color that is a result of parsing 
+Return: true if parsing was successful, or false otherwise.
 ") ColorFromHex;
 		static bool ColorFromHex(Standard_CString theHexColorString, Quantity_Color & theColor);
 
@@ -1863,7 +1867,7 @@ theColor: Quantity_NameOfColor
 
 Description
 -----------
-Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown.
+Finds color from predefined names. For example, the name of the color which corresponds to 'BLACK' is Quantity_NOC_BLACK. Returns False if name is unknown.
 ") ColorFromName;
 		static Standard_Boolean ColorFromName(Standard_CString theName, Quantity_NameOfColor &OutValue);
 
@@ -1882,7 +1886,10 @@ bool
 
 Description
 -----------
-Finds color from predefined names. @param thecolornamestring the color name @param thecolor a found color return false if the color name is unknown, or true if the search by color name was successful.
+Finds color from predefined names. 
+Parameter theColorNameString the color name 
+Parameter theColor a found color 
+Return: false if the color name is unknown, or true if the search by color name was successful.
 ") ColorFromName;
 		static Standard_Boolean ColorFromName(Standard_CString theColorNameString, Quantity_Color & theColor);
 
@@ -1901,7 +1908,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns hex srgb string in format '#ffaaff'.
+Returns hex sRGB string in format '#FFAAFF'.
 ") ColorToHex;
 		static TCollection_AsciiString ColorToHex(const Quantity_Color & theColor, const bool theToPrefixHash = true);
 
@@ -1919,7 +1926,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts hls components into linear rgb ones.
+Converts HLS components into linear RGB ones.
 ") Convert_HLS_To_LinearRGB;
 		static NCollection_Vec3<float > Convert_HLS_To_LinearRGB(const NCollection_Vec3<float> & theHls);
 
@@ -1937,7 +1944,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts hls components into rgb ones.
+Converts HLS components into RGB ones.
 ") Convert_HLS_To_sRGB;
 		static NCollection_Vec3<float > Convert_HLS_To_sRGB(const NCollection_Vec3<float> & theHls);
 
@@ -1955,7 +1962,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts cie lab components into cie lch ones.
+Converts CIE Lab components into CIE Lch ones.
 ") Convert_Lab_To_Lch;
 		static NCollection_Vec3<float > Convert_Lab_To_Lch(const NCollection_Vec3<float> & theLab);
 
@@ -1973,7 +1980,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts cie lab components into linear rgb ones. note that the resulting values may be out of the valid range for rgb.
+Converts CIE Lab components into linear RGB ones. Note that the resulting values may be out of the valid range for RGB.
 ") Convert_Lab_To_LinearRGB;
 		static NCollection_Vec3<float > Convert_Lab_To_LinearRGB(const NCollection_Vec3<float> & theLab);
 
@@ -1991,7 +1998,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts cie lch components into cie lab ones.
+Converts CIE Lch components into CIE Lab ones.
 ") Convert_Lch_To_Lab;
 		static NCollection_Vec3<float > Convert_Lch_To_Lab(const NCollection_Vec3<float> & theLch);
 
@@ -2009,7 +2016,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts linear rgb components into hls ones.
+Converts Linear RGB components into HLS ones.
 ") Convert_LinearRGB_To_HLS;
 		static NCollection_Vec3<float > Convert_LinearRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
 
@@ -2027,7 +2034,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts linear rgb components into cie lab ones.
+Converts linear RGB components into CIE Lab ones.
 ") Convert_LinearRGB_To_Lab;
 		static NCollection_Vec3<float > Convert_LinearRGB_To_Lab(const NCollection_Vec3<float> & theRgb);
 
@@ -2045,7 +2052,7 @@ float
 
 Description
 -----------
-Convert linear rgb component into srgb using opengl specs formula (double precision), also known as gamma correction.
+Convert linear RGB component into sRGB using OpenGL specs formula (double precision), also known as gamma correction.
 ") Convert_LinearRGB_To_sRGB;
 		static Standard_Real Convert_LinearRGB_To_sRGB(Standard_Real theLinearValue);
 
@@ -2063,7 +2070,7 @@ float
 
 Description
 -----------
-Convert linear rgb component into srgb using opengl specs formula (single precision), also known as gamma correction.
+Convert linear RGB component into sRGB using OpenGL specs formula (single precision), also known as gamma correction.
 ") Convert_LinearRGB_To_sRGB;
 		static float Convert_LinearRGB_To_sRGB(float theLinearValue);
 
@@ -2081,7 +2088,7 @@ float
 
 Description
 -----------
-Convert linear rgb component into srgb using approximated uniform gamma coefficient 2.2.
+Convert linear RGB component into sRGB using approximated uniform gamma coefficient 2.2.
 ") Convert_LinearRGB_To_sRGB_approx22;
 		static float Convert_LinearRGB_To_sRGB_approx22(float theLinearValue);
 
@@ -2099,7 +2106,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Convert linear rgb components into srgb using approximated uniform gamma coefficient 2.2.
+Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2.
 ") Convert_LinearRGB_To_sRGB_approx22;
 		static NCollection_Vec3<float > Convert_LinearRGB_To_sRGB_approx22(const NCollection_Vec3<float> & theRGB);
 
@@ -2117,7 +2124,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Converts srgb components into hls ones.
+Converts sRGB components into HLS ones.
 ") Convert_sRGB_To_HLS;
 		static NCollection_Vec3<float > Convert_sRGB_To_HLS(const NCollection_Vec3<float> & theRgb);
 
@@ -2135,7 +2142,7 @@ float
 
 Description
 -----------
-Convert srgb component into linear rgb using opengl specs formula (double precision), also known as gamma correction.
+Convert sRGB component into linear RGB using OpenGL specs formula (double precision), also known as gamma correction.
 ") Convert_sRGB_To_LinearRGB;
 		static Standard_Real Convert_sRGB_To_LinearRGB(Standard_Real thesRGBValue);
 
@@ -2153,7 +2160,7 @@ float
 
 Description
 -----------
-Convert srgb component into linear rgb using opengl specs formula (single precision), also known as gamma correction.
+Convert sRGB component into linear RGB using OpenGL specs formula (single precision), also known as gamma correction.
 ") Convert_sRGB_To_LinearRGB;
 		static float Convert_sRGB_To_LinearRGB(float thesRGBValue);
 
@@ -2171,7 +2178,7 @@ float
 
 Description
 -----------
-Convert srgb component into linear rgb using approximated uniform gamma coefficient 2.2.
+Convert sRGB component into linear RGB using approximated uniform gamma coefficient 2.2.
 ") Convert_sRGB_To_LinearRGB_approx22;
 		static float Convert_sRGB_To_LinearRGB_approx22(float thesRGBValue);
 
@@ -2189,7 +2196,7 @@ NCollection_Vec3<float >
 
 Description
 -----------
-Convert srgb components into linear rgb using approximated uniform gamma coefficient 2.2.
+Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2.
 ") Convert_sRGB_To_LinearRGB_approx22;
 		static NCollection_Vec3<float > Convert_sRGB_To_LinearRGB_approx22(const NCollection_Vec3<float> & theRGB);
 
@@ -2208,7 +2215,7 @@ DI: float
 
 Description
 -----------
-Returns the percentage change of contrast and intensity between this and another color. <dc> and <di> are percentages, either positive or negative. the calculation is with respect to this color. if <dc> is positive then <self> is more contrasty. if <di> is positive then <self> is more intense.
+Returns the percentage change of contrast and intensity between this and another color. <DC> and <DI> are percentages, either positive or negative. The calculation is with respect to this color. If <DC> is positive then <self> is more contrasty. If <DI> is positive then <self> is more intense.
 ") Delta;
 		void Delta(const Quantity_Color & theColor, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2226,7 +2233,7 @@ float
 
 Description
 -----------
-Returns the value of the perceptual difference between this color and @p theother, computed using the ciede2000 formula. the difference is in range [0, 100.], with 1 approximately corresponding to the minimal percievable difference (usually difference 5 or greater is needed for the difference to be recognizable in practice).
+Returns the value of the perceptual difference between this color and @p theOther, computed using the CIEDE2000 formula. The difference is in range [0, 100.], with 1 approximately corresponding to the minimal perceivable difference (usually difference 5 or greater is needed for the difference to be recognizable in practice).
 ") DeltaE2000;
 		Standard_Real DeltaE2000(const Quantity_Color & theOther);
 
@@ -2244,7 +2251,7 @@ float
 
 Description
 -----------
-Returns the distance between two colors. it's a value between 0 and the square root of 3 (the black/white distance).
+Returns the distance between two colors. It's a value between 0 and the square root of 3 (the black/white distance).
 ") Distance;
 		Standard_Real Distance(const Quantity_Color & theColor);
 
@@ -2291,7 +2298,7 @@ float
 
 Description
 -----------
-Returns the green component (quantity of green) of the color within range [0.0; 1.0].
+Returns the Green component (quantity of green) of the color within range [0.0; 1.0].
 ") Green;
 		Standard_Real Green();
 
@@ -2313,7 +2320,7 @@ theB: float
 
 Description
 -----------
-Converts hls components into srgb ones.
+Converts HLS components into sRGB ones.
 ") HlsRgb;
 		static void HlsRgb(const Standard_Real theH, const Standard_Real theL, const Standard_Real theS, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2326,7 +2333,7 @@ float
 
 Description
 -----------
-Returns the hue component (hue angle) of the color in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0).
+Returns the Hue component (hue angle) of the color in degrees within range [0.0; 360.0], 0.0 being Red. -1.0 is a special value reserved for grayscale color (S should be 0.0).
 ") Hue;
 		Standard_Real Hue();
 
@@ -2365,7 +2372,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between two colors is greater than epsilon().
+Returns True if the distance between two colors is greater than Epsilon().
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const Quantity_Color & theOther);
 
@@ -2383,7 +2390,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between two colors is no greater than epsilon().
+Returns True if the distance between two colors is no greater than Epsilon().
 ") IsEqual;
 		Standard_Boolean IsEqual(const Quantity_Color & theOther);
 
@@ -2396,7 +2403,7 @@ float
 
 Description
 -----------
-Returns the light component (value of the lightness) of the color within range [0.0; 1.0].
+Returns the Light component (value of the lightness) of the color within range [0.0; 1.0].
 ") Light;
 		Standard_Real Light();
 
@@ -2409,7 +2416,7 @@ Quantity_NameOfColor
 
 Description
 -----------
-Returns the name of the nearest color from the quantity_nameofcolor enumeration.
+Returns the name of the nearest color from the Quantity_NameOfColor enumeration.
 ") Name;
 		Quantity_NameOfColor Name();
 
@@ -2429,7 +2436,7 @@ Quantity_NameOfColor
 
 Description
 -----------
-Returns the color from quantity_nameofcolor enumeration nearest to specified rgb values.
+Returns the color from Quantity_NameOfColor enumeration nearest to specified RGB values.
 ") Name;
 		static Quantity_NameOfColor Name(const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
@@ -2442,7 +2449,7 @@ float
 
 Description
 -----------
-Returns the red component (quantity of red) of the color within range [0.0; 1.0].
+Returns the Red component (quantity of red) of the color within range [0.0; 1.0].
 ") Red;
 		Standard_Real Red();
 
@@ -2477,7 +2484,7 @@ theS: float
 
 Description
 -----------
-Converts srgb components into hls ones.
+Converts sRGB components into HLS ones.
 ") RgbHls;
 		static void RgbHls(const Standard_Real theR, const Standard_Real theG, const Standard_Real theB, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2490,7 +2497,7 @@ float
 
 Description
 -----------
-Returns the saturation component (value of the saturation) of the color within range [0.0; 1.0].
+Returns the Saturation component (value of the saturation) of the color within range [0.0; 1.0].
 ") Saturation;
 		Standard_Real Saturation();
 
@@ -2547,7 +2554,7 @@ None
 
 Description
 -----------
-Updates a color according to the mode specified by thetype. throws exception if values are out of range.
+Updates a color according to the mode specified by theType. Throws exception if values are out of range.
 ") SetValues;
 		void SetValues(const Standard_Real theC1, const Standard_Real theC2, const Standard_Real theC3, const Quantity_TypeOfColor theType);
 
@@ -2583,7 +2590,7 @@ str
 
 Description
 -----------
-Returns the name of the color identified by the given quantity_nameofcolor enumeration value.
+Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
 ") StringName;
 		static Standard_CString StringName(const Quantity_NameOfColor theColor);
 
@@ -2603,7 +2610,7 @@ theC3: float
 
 Description
 -----------
-Returns in thec1, thec2 and thec3 the components of this color according to the color system definition thetype.
+Returns in theC1, theC2 and theC3 the components of this color according to the color system definition theType.
 ") Values;
 		void Values(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const Quantity_TypeOfColor theType);
 
@@ -2694,7 +2701,7 @@ None
 
 Description
 -----------
-Creates the color with specified rgb value.
+Creates the color with specified RGB value.
 ") Quantity_ColorRGBA;
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb);
 
@@ -2713,7 +2720,7 @@ None
 
 Description
 -----------
-Creates the color with specified rgba values.
+Creates the color with specified RGBA values.
 ") Quantity_ColorRGBA;
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb, float theAlpha);
 
@@ -2731,7 +2738,7 @@ None
 
 Description
 -----------
-Creates the color from rgba vector.
+Creates the color from RGBA vector.
 ") Quantity_ColorRGBA;
 		 Quantity_ColorRGBA(const NCollection_Vec4<float> & theRgba);
 
@@ -2752,7 +2759,7 @@ None
 
 Description
 -----------
-Creates the color from rgba values.
+Creates the color from RGBA values.
 ") Quantity_ColorRGBA;
 		 Quantity_ColorRGBA(float theRed, float theGreen, float theBlue, float theAlpha);
 
@@ -2778,7 +2785,7 @@ Quantity_Color
 
 Description
 -----------
-Modify rgb color components without affecting alpha value.
+Modify RGB color components without affecting alpha value.
 ") ChangeRGB;
 		Quantity_Color & ChangeRGB();
 
@@ -2798,7 +2805,11 @@ bool
 
 Description
 -----------
-Parses the string as a hex color (like '#ff0' for short srgb color, '#ff0f' for short srgba color, '#ffff00' for rgb color, or '#ffff00ff' for rgba color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing @param thealphacomponentisoff the flag that indicates if a color alpha component is presented in the input string (false) or not (true) return true if parsing was successful, or false otherwise.
+Parses the string as a hex color (like '#FF0' for short sRGB color, '#FF0F' for short sRGBA color, '#FFFF00' for RGB color, or '#FFFF00FF' for RGBA color) 
+Parameter theHexColorString the string to be parsed 
+Parameter theColor a color that is a result of parsing 
+Parameter theAlphaComponentIsOff the flag that indicates if a color alpha component is presented in the input string (false) or not (true) 
+Return: true if parsing was successful, or false otherwise.
 ") ColorFromHex;
 		static bool ColorFromHex(const char * const theHexColorString, Quantity_ColorRGBA & theColor, const bool theAlphaComponentIsOff = false);
 
@@ -2817,7 +2828,10 @@ bool
 
 Description
 -----------
-Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. an alpha component is set to 1.0. @param thecolornamestring the color name @param thecolor a found color return false if the color name is unknown, or true if the search by color name was successful.
+Finds color from predefined names. For example, the name of the color which corresponds to 'BLACK' is Quantity_NOC_BLACK. An alpha component is set to 1.0. 
+Parameter theColorNameString the color name 
+Parameter theColor a found color 
+Return: false if the color name is unknown, or true if the search by color name was successful.
 ") ColorFromName;
 		static Standard_Boolean ColorFromName(Standard_CString theColorNameString, Quantity_ColorRGBA & theColor);
 
@@ -2836,7 +2850,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns hex srgba string in format '#rrggbbaa'.
+Returns hex sRGBA string in format '#RRGGBBAA'.
 ") ColorToHex;
 		static TCollection_AsciiString ColorToHex(const Quantity_ColorRGBA & theColor, const bool theToPrefixHash = true);
 
@@ -2854,7 +2868,7 @@ NCollection_Vec4<float >
 
 Description
 -----------
-Convert linear rgb components into srgb using opengl specs formula.
+Convert linear RGB components into sRGB using OpenGL specs formula.
 ") Convert_LinearRGB_To_sRGB;
 		static NCollection_Vec4<float > Convert_LinearRGB_To_sRGB(const NCollection_Vec4<float> & theRGB);
 
@@ -2872,7 +2886,7 @@ NCollection_Vec4<float >
 
 Description
 -----------
-Convert srgb components into linear rgb using opengl specs formula.
+Convert sRGB components into linear RGB using OpenGL specs formula.
 ") Convert_sRGB_To_LinearRGB;
 		static NCollection_Vec4<float > Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
 
@@ -2906,7 +2920,7 @@ Quantity_Color
 
 Description
 -----------
-Return rgb color value.
+Return RGB color value.
 ") GetRGB;
 		const Quantity_Color & GetRGB();
 
@@ -2945,7 +2959,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between colors is greater than epsilon().
+Returns true if the distance between colors is greater than Epsilon().
 ") IsDifferent;
 		bool IsDifferent(const Quantity_ColorRGBA & theOther);
 
@@ -2963,7 +2977,7 @@ bool
 
 Description
 -----------
-Two colors are considered to be equal if their distance is no greater than epsilon().
+Two colors are considered to be equal if their distance is no greater than Epsilon().
 ") IsEqual;
 		bool IsEqual(const Quantity_ColorRGBA & theOther);
 
@@ -2999,7 +3013,7 @@ None
 
 Description
 -----------
-Assign rgb color components without affecting alpha value.
+Assign RGB color components without affecting alpha value.
 ") SetRGB;
 		void SetRGB(const Quantity_Color & theRgb);
 
@@ -3093,7 +3107,7 @@ None
 
 Description
 -----------
-Constructs a default date (00:00 gmt, january 1, 1979 (zero hour)); use the function setvalues to define the required date; or.
+Constructs a default date (00:00 GMT, January 1, 1979 (zero hour)); use the function SetValues to define the required date; or.
 ") Quantity_Date;
 		 Quantity_Date();
 
@@ -3118,7 +3132,7 @@ None
 
 Description
 -----------
-Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. with: 1 <= mm <= 12 1 <= dd <= max number of days of <mm> 1979 <= yyyy 0 <= hh <= 23 0 <= mn <= 59 0 <= ss <= 59 0 <= mis <= 999 0 <= mics <= 999 exceptions quantity_datedefinitionerror if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
+Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. With: 1 <= mm <= 12 1 <= dd <= max number of days of <mm> 1979 <= yyyy 0 <= hh <= 23 0 <= mn <= 59 0 <= ss <= 59 0 <= mis <= 999 0 <= mics <= 999 Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
 ") Quantity_Date;
 		 Quantity_Date(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yyyy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
@@ -3136,7 +3150,7 @@ Quantity_Date
 
 Description
 -----------
-Adds a period to a date and returns the new date.
+Adds a Period to a Date and returns the new Date.
 ") Add;
 		Quantity_Date Add(const Quantity_Period & aPeriod);
 
@@ -3149,7 +3163,7 @@ int
 
 Description
 -----------
-Returns day of a date.
+Returns Day of a Date.
 ") Day;
 		Standard_Integer Day();
 
@@ -3167,7 +3181,7 @@ Quantity_Period
 
 Description
 -----------
-Subtracts one date from another one to find the period between and returns the value. the result is the absolute value between the difference of two dates.
+Subtracts one Date from another one to find the period between and returns the value. The result is the absolute value between the difference of two dates.
 ") Difference;
 		Quantity_Period Difference(const Quantity_Date & anOther);
 
@@ -3180,7 +3194,7 @@ int
 
 Description
 -----------
-Returns hour of a date.
+Returns Hour of a Date.
 ") Hour;
 		Standard_Integer Hour();
 
@@ -3198,7 +3212,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is earlier than <other>.
+Returns True if <self> is earlier than <other>.
 ") IsEarlier;
 		Standard_Boolean IsEarlier(const Quantity_Date & anOther);
 
@@ -3216,7 +3230,7 @@ bool
 
 Description
 -----------
-Returns true if both <self> and <other> are equal. this method is an alias of operator ==.
+Returns True if both <self> and <other> are equal. This method is an alias of operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Quantity_Date & anOther);
 
@@ -3234,7 +3248,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is later then <other>.
+Returns True if <self> is later then <other>.
 ") IsLater;
 		Standard_Boolean IsLater(const Quantity_Date & anOther);
 
@@ -3252,7 +3266,7 @@ bool
 
 Description
 -----------
-Returns true if a year is a leap year. the leap years are divisible by 4 and not by 100 except the years divisible by 400.
+Returns true if a year is a leap year. The leap years are divisible by 4 and not by 100 except the years divisible by 400.
 ") IsLeap;
 		static Standard_Boolean IsLeap(const Standard_Integer yy);
 
@@ -3277,7 +3291,7 @@ bool
 
 Description
 -----------
-Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. a date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to january and 12 to december), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].c.
+Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. A date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to January and 12 to December), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].C.
 ") IsValid;
 		static Standard_Boolean IsValid(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
@@ -3290,7 +3304,7 @@ int
 
 Description
 -----------
-Returns microsecond of a date.
+Returns microsecond of a Date.
 ") MicroSecond;
 		Standard_Integer MicroSecond();
 
@@ -3303,7 +3317,7 @@ int
 
 Description
 -----------
-Returns millisecond of a date.
+Returns millisecond of a Date.
 ") MilliSecond;
 		Standard_Integer MilliSecond();
 
@@ -3316,7 +3330,7 @@ int
 
 Description
 -----------
-Returns minute of a date.
+Returns minute of a Date.
 ") Minute;
 		Standard_Integer Minute();
 
@@ -3329,7 +3343,7 @@ int
 
 Description
 -----------
-Returns month of a date.
+Returns month of a Date.
 ") Month;
 		Standard_Integer Month();
 
@@ -3342,7 +3356,7 @@ int
 
 Description
 -----------
-Returns seconde of a date.
+Returns seconde of a Date.
 ") Second;
 		Standard_Integer Second();
 
@@ -3367,7 +3381,7 @@ None
 
 Description
 -----------
-Assigns to this date the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0). exceptions quantity_datedefinitionerror if mm, dd, hh, mn, ss, mis and mics are not components of a valid date.
+Assigns to this date the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0). Exceptions Quantity_DateDefinitionError if mm, dd, hh, mn, ss, mis and mics are not components of a valid date.
 ") SetValues;
 		void SetValues(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
@@ -3385,7 +3399,7 @@ Quantity_Date
 
 Description
 -----------
-Subtracts a period from a date and returns the new date. raises an exception if the result date is anterior to jan 1, 1979.
+Subtracts a period from a Date and returns the new Date. Raises an exception if the result date is anterior to Jan 1, 1979.
 ") Subtract;
 		Quantity_Date Subtract(const Quantity_Period & aPeriod);
 
@@ -3409,7 +3423,7 @@ mics: int
 
 Description
 -----------
-Gets a complete date. - in mm - the month, - in dd - the day, - in yyyy - the year, - in hh - the hour, - in mn - the minute, - in ss - the second, - in mis - the millisecond, and - in mics - the microsecond.
+Gets a complete Date. - in mm - the month, - in dd - the day, - in yyyy - the year, - in hh - the hour, - in mn - the minute, - in ss - the second, - in mis - the millisecond, and - in mics - the microsecond.
 ") Values;
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3422,7 +3436,7 @@ int
 
 Description
 -----------
-Returns year of a date.
+Returns year of a Date.
 ") Year;
 		Standard_Integer Year();
 
@@ -3527,7 +3541,7 @@ None
 
 Description
 -----------
-Creates a period with: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
+Creates a Period With: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
 ") Quantity_Period;
 		 Quantity_Period(const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
@@ -3546,7 +3560,7 @@ None
 
 Description
 -----------
-Creates a period with a number of seconds and microseconds. exceptions quantity_perioddefinitionerror: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - mics is less than 0.
+Creates a Period with a number of seconds and microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 ") Quantity_Period;
 		 Quantity_Period(const Standard_Integer ss, const Standard_Integer mics = 0);
 
@@ -3564,7 +3578,7 @@ Quantity_Period
 
 Description
 -----------
-Adds one period to another one.
+Adds one Period to another one.
 ") Add;
 		Quantity_Period Add(const Quantity_Period & anOther);
 
@@ -3582,7 +3596,7 @@ bool
 
 Description
 -----------
-Returns true if both <self> and <other> are equal.
+Returns True if both <self> and <other> are equal.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Quantity_Period & anOther);
 
@@ -3600,7 +3614,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is longer then <other>.
+Returns True if <self> is longer then <other>.
 ") IsLonger;
 		Standard_Boolean IsLonger(const Quantity_Period & anOther);
 
@@ -3618,7 +3632,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is shorter than <other>.
+Returns True if <self> is shorter than <other>.
 ") IsShorter;
 		Standard_Boolean IsShorter(const Quantity_Period & anOther);
 
@@ -3641,7 +3655,7 @@ bool
 
 Description
 -----------
-Checks the validity of a period in form (dd,hh,mn,ss,mil,mic) with: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
+Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic) With: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
 ") IsValid;
 		static Standard_Boolean IsValid(const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
@@ -3660,7 +3674,7 @@ bool
 
 Description
 -----------
-Checks the validity of a period in form (ss,mic) with: 0 <= ss 0 <= mics.
+Checks the validity of a Period in form (ss,mic) With: 0 <= ss 0 <= mics.
 ") IsValid;
 		static Standard_Boolean IsValid(const Standard_Integer ss, const Standard_Integer mics = 0);
 
@@ -3702,7 +3716,7 @@ None
 
 Description
 -----------
-Assigns to this period the time interval defined - with ss seconds and mics (defaulted to 0) microseconds. exceptions quantity_perioddefinitionerror: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - mics is less than 0.
+Assigns to this period the time interval defined - with Ss seconds and Mics (defaulted to 0) microseconds. Exceptions Quantity_PeriodDefinitionError: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - Ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - Mics is less than 0.
 ") SetValues;
 		void SetValues(const Standard_Integer ss, const Standard_Integer mics = 0);
 
@@ -3720,7 +3734,7 @@ Quantity_Period
 
 Description
 -----------
-Subtracts one period from another and returns the difference.
+Subtracts one Period from another and returns the difference.
 ") Subtract;
 		Quantity_Period Subtract(const Quantity_Period & anOther);
 
@@ -3742,7 +3756,7 @@ mics: int
 
 Description
 -----------
-Decomposes this period into a number of days,hours, minutes,seconds,milliseconds and microseconds example of return values: 2 days, 15 hours, 0 minute , 0 second 0 millisecond and 0 microsecond.
+Decomposes this period into a number of days,hours, minutes,seconds,milliseconds and microseconds Example of return values: 2 days, 15 hours, 0 minute , 0 second 0 millisecond and 0 microsecond.
 ") Values;
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3760,7 +3774,7 @@ mics: int
 
 Description
 -----------
-Returns the number of seconds in ss and the number of remainding microseconds in mics of this period. example of return values: 3600 seconds and 0 microseconds.
+Returns the number of seconds in Ss and the number of remainding microseconds in Mics of this period. Example of return values: 3600 seconds and 0 microseconds.
 ") Values;
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue);
 

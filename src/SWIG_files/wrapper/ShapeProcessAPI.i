@@ -131,7 +131,7 @@ None
 
 Description
 -----------
-Clears mymap with accumulated history.
+Clears myMap with accumulated history.
 ") ClearMap;
 		void ClearMap();
 
@@ -157,7 +157,7 @@ TopTools_DataMapOfShapeShape
 
 Description
 -----------
-Returns mymap with accumulated history.
+Returns myMap with accumulated history.
 ") Map;
 		const TopTools_DataMapOfShapeShape & Map();
 
@@ -178,7 +178,7 @@ TopoDS_Shape
 
 Description
 -----------
-Performs sequence of operators stored in myrsc. if <fillmap> is true adds history 'shape-shape' into mymap for shape and its subshapes until level <until> (included). if <until> is topabs_shape, all the subshapes are considered.
+Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 ") PrepareShape;
 		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -191,7 +191,7 @@ None
 
 Description
 -----------
-Prints result of preparation onto the messenger of the context. note that results can be accumulated from previous preparations it method clearmap was not called before prepareshape.
+Prints result of preparation onto the messenger of the context. Note that results can be accumulated from previous preparations it method ClearMap was not called before PrepareShape.
 ") PrintPreparationResult;
 		void PrintPreparationResult();
 

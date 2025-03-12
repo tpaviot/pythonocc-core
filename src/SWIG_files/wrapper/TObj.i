@@ -170,7 +170,7 @@ bool
 
 Description
 -----------
-Create the ocaf document from scratch.
+Create the OCAF document from scratch.
 ") CreateNewDocument;
 		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString theFormat);
 
@@ -210,7 +210,7 @@ None
 
 Description
 -----------
-Signal error during load or save default imiplementation is empty.
+Signal error during Load or Save Default imiplementation is empty.
 ") ErrorMessage;
 		virtual void ErrorMessage(TCollection_ExtendedString theMsg, const Message_Gravity theLevel);
 
@@ -228,7 +228,7 @@ None
 
 Description
 -----------
-Signal error during load or save default imiplementation invoke previous declaration with 0.
+Signal error during Load or Save Default imiplementation invoke previous declaration with 0.
 ") ErrorMessage;
 		virtual void ErrorMessage(TCollection_ExtendedString theMsg);
 
@@ -273,7 +273,7 @@ bool
 
 Description
 -----------
-Loading the ocaf document from a file.
+Loading the OCAF document from a file.
 ") LoadDocument;
 		virtual Standard_Boolean LoadDocument(TCollection_ExtendedString theSourceFile, opencascade::handle<TDocStd_Document> & theTargetDoc);
 
@@ -292,7 +292,7 @@ bool
 
 Description
 -----------
-Loading the ocaf document from a stream.
+Loading the OCAF document from a stream.
 ") LoadDocument;
 		virtual Standard_Boolean LoadDocument(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theTargetDoc);
 
@@ -318,7 +318,7 @@ str
 
 Description
 -----------
-Return name of resource (i.e. 'tobj').
+Return name of resource (i.e. 'TObj').
 ") ResourcesName;
 		virtual Standard_CString ResourcesName();
 
@@ -337,7 +337,7 @@ bool
 
 Description
 -----------
-Saving the ocaf document to a file.
+Saving the OCAF document to a file.
 ") SaveDocument;
 		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, TCollection_ExtendedString theTargetFile);
 
@@ -355,7 +355,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Saving the ocaf document to a stream.
+Saving the OCAF document to a stream.
 ") SaveDocument;
 		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, std::ostream &OutValue);
 
@@ -373,7 +373,7 @@ None
 
 Description
 -----------
-Sets the verbose flag, meaning that load/save models should show cpu and elapsed times.
+Sets the verbose flag, meaning that load/save models should show CPU and elapsed times.
 ") SetVerbose;
 		void SetVerbose(const Standard_Boolean isVerbose);
 
@@ -425,7 +425,7 @@ int
 
 Description
 -----------
-Binds standard_type to the map; returns index of bound type.
+Binds Standard_Type to the map; returns index of bound type.
 ") BindType;
 		static Standard_Integer BindType(const opencascade::handle<Standard_Type> & theType);
 
@@ -487,7 +487,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Finds standard_type by index; returns null handle if not found.
+Finds Standard_Type by index; returns NULL handle if not found.
 ") FindType;
 		static opencascade::handle<Standard_Type> FindType(const Standard_Integer theTypeIndex);
 
@@ -505,7 +505,7 @@ int
 
 Description
 -----------
-Rinds index by standard_type; returns 0 if not found.
+Rinds index by Standard_Type; returns 0 if not found.
 ") FindTypeIndex;
 		static Standard_Integer FindTypeIndex(const opencascade::handle<Standard_Type> & theType);
 
@@ -518,7 +518,7 @@ int
 
 Description
 -----------
-Returns the version of application which wrote the currently read document. returns 0 if it has not been set yet for the current document.
+Returns the version of application which wrote the currently read document. Returns 0 if it has not been set yet for the current document.
 ") GetAppVersion;
 		static Standard_Integer GetAppVersion();
 
@@ -633,7 +633,7 @@ bool
 
 Description
 -----------
-Performs all checks. descendants should call parent method before doing own checks. this implementation checks ocaf references and back references between objects of the model. returns true if no inconsistencies found.
+Performs all checks. Descendants should call parent method before doing own checks. This implementation checks OCAF references and back references between objects of the model. Returns true if no inconsistencies found.
 ") Perform;
 		virtual Standard_Boolean Perform();
 
@@ -682,7 +682,7 @@ None
 
 Description
 -----------
-Abort the command transaction. do nothing if there is no command transaction open.
+Abort the Command transaction. Do nothing If there is no Command transaction open.
 ") AbortCommand;
 		void AbortCommand();
 
@@ -713,7 +713,7 @@ None
 
 Description
 -----------
-Close free ocaf document.
+Close Free OCAF document.
 ") CloseDocument;
 		void CloseDocument(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -726,7 +726,7 @@ None
 
 Description
 -----------
-Commit the command transaction. do nothing if there is no command transaction open.
+Commit the Command transaction. Do nothing If there is no Command transaction open.
 ") CommitCommand;
 		void CommitCommand();
 
@@ -764,7 +764,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns an object by given name (or null if not found).
+Returns an Object by given Name (or Null if not found).
 ") FindObject;
 		virtual opencascade::handle<TObj_Object> FindObject(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -790,7 +790,7 @@ opencascade::handle<TObj_CheckModel>
 
 Description
 -----------
-Returns the tool checking model consistency. descendant may redefine it to return its own tool.
+Returns the tool checking model consistency. Descendant may redefine it to return its own tool.
 ") GetChecker;
 		virtual opencascade::handle<TObj_CheckModel> GetChecker();
 
@@ -803,7 +803,7 @@ opencascade::handle<TObj_ObjectIterator>
 
 Description
 -----------
-Returns an iterator on objects in the main partition.
+Returns an Iterator on objects in the main partition.
 ") GetChildren;
 		virtual opencascade::handle<TObj_ObjectIterator> GetChildren();
 
@@ -829,7 +829,7 @@ opencascade::handle<TDocStd_Document>
 
 Description
 -----------
-Returns ocaf document of model.
+Returns OCAF document of Model.
 ") GetDocument;
 		opencascade::handle<TDocStd_Document> GetDocument();
 
@@ -847,7 +847,7 @@ opencascade::handle<TObj_Model>
 
 Description
 -----------
-Returns model which contains a document with the label, or null handle if label is null.
+Returns model which contains a document with the label, or NULL handle if label is NULL.
 ") GetDocumentModel;
 		static opencascade::handle<TObj_Model> GetDocumentModel(const TDF_Label & theLabel);
 
@@ -873,7 +873,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the format for save/restore. this implementation returns 'binocaf'. the method should be redefined for those models that should use another format.
+Returns the format for save/restore. This implementation returns 'BinOcaf'. The method should be redefined for those models that should use another format.
 ") GetFormat;
 		virtual TCollection_ExtendedString GetFormat();
 
@@ -886,7 +886,7 @@ int
 
 Description
 -----------
-Returns the version of format stored in tobj file.
+Returns the version of format stored in TObj file.
 ") GetFormatVersion;
 		Standard_Integer GetFormatVersion();
 
@@ -899,7 +899,7 @@ Standard_GUID
 
 Description
 -----------
-Defines interface guid for tobj_model.
+Defines interface GUID for TObj_Model.
 ") GetGUID;
 		virtual Standard_GUID GetGUID();
 
@@ -912,7 +912,7 @@ TDF_Label
 
 Description
 -----------
-Returns ocaf label on which model data are stored.
+Returns OCAF label on which model data are stored.
 ") GetLabel;
 		TDF_Label GetLabel();
 
@@ -951,7 +951,7 @@ opencascade::handle<TObj_ObjectIterator>
 
 Description
 -----------
-Returns an iterator on all objects in the model.
+Returns an Iterator on all objects in the Model.
 ") GetObjects;
 		virtual opencascade::handle<TObj_ObjectIterator> GetObjects();
 
@@ -977,7 +977,7 @@ bool
 
 Description
 -----------
-Returns true if a command transaction is open starting, finishing the transaction.
+Returns True if a Command transaction is open Starting, finishing the transaction.
 ") HasOpenCommand;
 		Standard_Boolean HasOpenCommand();
 
@@ -1009,7 +1009,7 @@ bool
 
 Description
 -----------
-Returns true is name is registered in the names map the input argument may be null handle, then model check in own global container.
+Returns True is name is registered in the names map The input argument may be NULL handle, then model check in own global container.
 ") IsRegisteredName;
 		Standard_Boolean IsRegisteredName(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -1027,7 +1027,7 @@ bool
 
 Description
 -----------
-Load the ocaf model from a file. if the filename is empty or file does not exists, it just initializes model by empty data.
+Load the OCAF model from a file. If the filename is empty or file does not exists, it just initializes model by empty data.
 ") Load;
 		virtual Standard_Boolean Load(TCollection_ExtendedString theFile);
 
@@ -1045,7 +1045,7 @@ bool
 
 Description
 -----------
-Load the ocaf model from a stream. if case of failure, it initializes the model by empty data.
+Load the OCAF model from a stream. If case of failure, it initializes the model by empty data.
 ") Load;
 		virtual Standard_Boolean Load(std::istream & theIStream);
 
@@ -1103,7 +1103,7 @@ bool
 
 Description
 -----------
-Pastes me to the new model references will not be copied if thereloctable is not 0 if thereloctable is not null thereloctable is filled by objects.
+Pastes me to the new model references will not be copied if theRelocTable is not 0 if theRelocTable is not NULL theRelocTable is filled by objects.
 ") Paste;
 		virtual Standard_Boolean Paste(opencascade::handle<TObj_Model > theModel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
 
@@ -1123,7 +1123,7 @@ None
 
 Description
 -----------
-Register name in the map the input argument may be null handle, then model check in own global container.
+Register name in the map The input argument may be NULL handle, then model check in own global container.
 ") RegisterName;
 		void RegisterName(const opencascade::handle<TCollection_HExtendedString> & theName, const TDF_Label & theLabel, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -1189,7 +1189,7 @@ None
 
 Description
 -----------
-Sets ocaf label on which model data are stored. used by persistence mechanism.
+Sets OCAF label on which model data are stored. Used by persistence mechanism.
 ") SetLabel;
 		void SetLabel(const TDF_Label & theLabel);
 
@@ -1262,7 +1262,7 @@ None
 
 Description
 -----------
-Unregisters name from the map the input argument may be null handle, then model check in own global container.
+Unregisters name from the map The input argument may be NULL handle, then model check in own global container.
 ") UnRegisterName;
 		void UnRegisterName(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -1275,7 +1275,7 @@ bool
 
 Description
 -----------
-This method is called before activating this model.
+this method is called before activating this model.
 ") Update;
 		virtual Standard_Boolean Update();
 
@@ -1346,7 +1346,7 @@ None
 
 Description
 -----------
-Registers another object as being dependent on this one. stores back references under sublabel 2 (purely transient data, not subject to persistency).
+Registers another object as being dependent on this one. Stores back references under sublabel 2 (purely transient data, not subject to persistency).
 ") AddBackReference;
 		virtual void AddBackReference(const opencascade::handle<TObj_Object> & theObject);
 
@@ -1359,7 +1359,7 @@ None
 
 Description
 -----------
-Performs updating the links and dependances of the object which are not stored in persistence. should be redefined if necessary.
+Performs updating the links and dependences of the object which are not stored in persistence. Should be redefined if necessary.
 ") AfterRetrieval;
 		virtual void AfterRetrieval();
 
@@ -1377,7 +1377,7 @@ None
 
 Description
 -----------
-Invokes from tobj_treference::beforeforget(). thelabel - label on that reference become removed default implementation is empty.
+Invokes from TObj_TReference::BeforeForget(). theLabel - label on that reference become removed Default implementation is empty.
 ") BeforeForgetReference;
 		virtual void BeforeForgetReference(const TDF_Label &);
 
@@ -1390,7 +1390,7 @@ None
 
 Description
 -----------
-Performs storing the objects transient fields in ocaf document which were outside transaction mechanism. default implementation does nothing.
+Performs storing the objects transient fields in OCAF document which were outside transaction mechanism. Default implementation does nothing.
 ") BeforeStoring;
 		virtual void BeforeStoring();
 
@@ -1426,7 +1426,7 @@ bool
 
 Description
 -----------
-Returns true if the referred object theobject can be deleted without deletion of this object. default implementation does nothing and returns false.
+Returns True if the referred object theObject can be deleted without deletion of this object. Default implementation does nothing and returns False.
 ") CanRemoveReference;
 		virtual Standard_Boolean CanRemoveReference(const opencascade::handle<TObj_Object> & theObject);
 
@@ -1457,7 +1457,7 @@ None
 
 Description
 -----------
-Clears flags by the mask.
+clears flags by the mask.
 ") ClearFlags;
 		void ClearFlags(const Standard_Integer theMask = ~0);
 
@@ -1476,7 +1476,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Copy me to other label thetargetlabel new object will not have all the reference that has me. coping object with data and childs, but change name by adding string '_copy' as result return handle of new object (null handle is something wrong) note: backreferences not coping. after cloning all objects it is necessary to call copy references with the same relocation table.
+Copy me to other label theTargetLabel New object will not have all the reference that has me. Coping object with data and childs, but change name by adding string '_copy' As result return handle of new object (null handle is something wrong) NOTE: BackReferences not coping. After cloning all objects it is necessary to call copy references with the same relocation table.
 ") Clone;
 		virtual opencascade::handle<TObj_Object> Clone(const TDF_Label & theTargetLabel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
 
@@ -1514,7 +1514,7 @@ None
 
 Description
 -----------
-Coping the references. return standard_false is target object is different type.
+Coping the references. return Standard_False is Target object is different type.
 ") CopyReferences;
 		virtual void CopyReferences(const opencascade::handle<TObj_Object> & theTargetObject, const opencascade::handle<TDF_RelocationTable> & theRelocTable);
 
@@ -1532,7 +1532,7 @@ bool
 
 Description
 -----------
-Deletes the object from the model. the dependent objects are either deleted or modified when possible (see description of tobj_deletingmode enumeration for more details) returns true if deletion was successful. checks if object can be deleted. should be redefined for each specific kind of object.
+Deletes the object from the model. The dependent objects are either deleted or modified when possible (see description of TObj_DeletingMode enumeration for more details) Returns True if deletion was successful. Checks if object can be deleted. Should be redefined for each specific kind of object.
 ") Detach;
 		virtual Standard_Boolean Detach(const TObj_DeletingMode theMode = TObj_FreeOnly);
 
@@ -1551,7 +1551,7 @@ bool
 
 Description
 -----------
-Deletes the object from the label. checks if object can be deleted. finds object on the label and detaches it by calling previous method. returns true if there is no object on the label after detaching.
+Deletes the object from the label. Checks if object can be deleted. Finds object on the label and detaches it by calling previous method. Returns true if there is no object on the label after detaching.
 ") Detach;
 		static Standard_Boolean Detach(const TDF_Label & theLabel, const TObj_DeletingMode theMode = TObj_FreeOnly);
 
@@ -1569,7 +1569,7 @@ opencascade::handle<TObj_ObjectIterator>
 
 Description
 -----------
-Returns iterator for the objects which depend on this one. these referring objects may belong to other models. thetype narrows a variety of iterated objects.
+Returns iterator for the objects which depend on this one. These referring objects may belong to other models. theType narrows a variety of iterated objects.
 ") GetBackReferences;
 		virtual opencascade::handle<TObj_ObjectIterator> GetBackReferences(const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -1588,7 +1588,7 @@ bool
 
 Description
 -----------
-Return true if this refers to the model theroot belongs to and a referred label is not a descendant of theroot. in this case thebadreference returns the currently referred label.
+Return True if this refers to the model theRoot belongs to and a referred label is not a descendant of theRoot. In this case theBadReference returns the currently referred label.
 ") GetBadReference;
 		virtual Standard_Boolean GetBadReference(const TDF_Label & theRoot, TDF_Label & theBadReference);
 
@@ -1619,7 +1619,7 @@ opencascade::handle<TObj_ObjectIterator>
 
 Description
 -----------
-Returns iterator for the child objects. this method provides tree-like view of the objects hierarchy. the references to other objects are not considered as children. thetype narrows a variety of iterated objects the default implementation search for children on 1 sublavel of the children sub label.
+Returns iterator for the child objects. This method provides tree-like view of the objects hierarchy. The references to other objects are not considered as children. theType narrows a variety of iterated objects The default implementation search for children on 1 sublavel of the children sub label.
 ") GetChildren;
 		virtual opencascade::handle<TObj_ObjectIterator> GetChildren(const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -1632,7 +1632,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label which is the root for data ocaf sub-tree.
+Returns the label which is the root for data OCAF sub-tree.
 ") GetDataLabel;
 		TDF_Label GetDataLabel();
 
@@ -1645,7 +1645,7 @@ opencascade::handle<TObj_TNameContainer>
 
 Description
 -----------
-Returns the map of names of the objects default implementation returns global dictionary of the model.
+Returns the map of names of the objects Default implementation returns global Dictionary of the model.
 ") GetDictionary;
 		virtual opencascade::handle<TObj_TNameContainer> GetDictionary();
 
@@ -1663,7 +1663,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns the father object, which may be null thetype gives type of father object to search.
+Returns the father object, which may be NULL theType gives type of father object to search.
 ") GetFatherObject;
 		opencascade::handle<TObj_Object> GetFatherObject(const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -1689,7 +1689,7 @@ TDF_Label
 
 Description
 -----------
-Returns the ocaf label on which object`s data are stored.
+Returns the OCAF label on which object`s data are stored.
 ") GetLabel;
 		TDF_Label GetLabel();
 
@@ -1733,7 +1733,7 @@ bool
 
 Description
 -----------
-Returns the standard_true is object has name and returns name to thename.
+Returns the Standard_True is object has name and returns name to theName.
 ") GetName;
 		Standard_Boolean GetName(TCollection_ExtendedString & theName);
 
@@ -1751,7 +1751,7 @@ bool
 
 Description
 -----------
-Returns the standard_true is object has name and returns name to thename.
+Returns the Standard_True is object has name and returns name to theName.
 ") GetName;
 		Standard_Boolean GetName(TCollection_AsciiString & theName);
 
@@ -1789,7 +1789,7 @@ bool
 
 Description
 -----------
-Returns the object attached to a given label. returns false if no object of type tobj_object is stored on the specified label. if issuper is true tries to find on the super labels.
+Returns the Object attached to a given label. Returns False if no object of type TObj_Object is stored on the specified label. If isSuper is true tries to find on the super labels.
 ") GetObj;
 		static Standard_Boolean GetObj(const TDF_Label & theLabel, opencascade::handle<TObj_Object> & theResult, const Standard_Boolean isSuper = Standard_False);
 
@@ -1802,7 +1802,7 @@ int
 
 Description
 -----------
-Returns order of object (or tag of their label if order is not initialised).
+returns order of object (or tag of their label if order is not initialised).
 ") GetOrder;
 		virtual Standard_Integer GetOrder();
 
@@ -1815,7 +1815,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label which is the root for reference ocaf sub-tree.
+Returns the label which is the root for reference OCAF sub-tree.
 ") GetReferenceLabel;
 		TDF_Label GetReferenceLabel();
 
@@ -1833,7 +1833,7 @@ opencascade::handle<TObj_ObjectIterator>
 
 Description
 -----------
-Returns an iterator containing objects that compose the this one thetype narrows a variety of iterated objects.
+Returns an Iterator containing objects that compose the this one theType narrows a variety of iterated objects.
 ") GetReferences;
 		virtual opencascade::handle<TObj_ObjectIterator> GetReferences(const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -1846,7 +1846,7 @@ int
 
 Description
 -----------
-Returns flags (bitmask) that define properties of objects of that type by default returns flag visible.
+Returns flags (bitmask) that define properties of objects of that type By default returns flag Visible.
 ") GetTypeFlags;
 		virtual Standard_Integer GetTypeFlags();
 
@@ -1859,7 +1859,7 @@ bool
 
 Description
 -----------
-Returns true if object has 1 or more back references.
+Returns True if object has 1 or more back references.
 ") HasBackReferences;
 		Standard_Boolean HasBackReferences();
 
@@ -1872,7 +1872,7 @@ bool
 
 Description
 -----------
-/** * public methods to check modifications of the object since last commit */ returns true if object attributes or or his children were modified in the current open transaction.
+/** * Public methods to check modifications of the object since last commit */ Returns true if object attributes or its children were modified in the current open transaction.
 ") HasModifications;
 		Standard_Boolean HasModifications();
 
@@ -1890,7 +1890,7 @@ bool
 
 Description
 -----------
-Returns true if object has reference to indicated object.
+Returns True if object has reference to indicated object.
 ") HasReference;
 		virtual Standard_Boolean HasReference(const opencascade::handle<TObj_Object> & theObject);
 
@@ -1903,7 +1903,7 @@ bool
 
 Description
 -----------
-Checks that object alive in model default implementation checks that object has tobject attribute at own label.
+Checks that object alive in model Default implementation checks that object has TObject attribute at own label.
 ") IsAlive;
 		virtual Standard_Boolean IsAlive();
 
@@ -1923,7 +1923,7 @@ bool
 
 Description
 -----------
-Make that each reference pointing to a descendant label of thefromroot to point to an equivalent label under thetoroot. return false if a resulting reference does not point to an tobj_object example: a referred object label = 0:3:24:7:2:7 thefromroot = 0:3:24 thetoroot = 0:2 a new referred label = 0:2:7:2:7.
+Make that each reference pointing to a descendant label of theFromRoot to point to an equivalent label under theToRoot. Return False if a resulting reference does not point to an TObj_Object Example: a referred object label = 0:3:24:7:2:7 theFromRoot = 0:3:24 theToRoot = 0:2 a new referred label = 0:2:7:2:7.
 ") RelocateReferences;
 		virtual Standard_Boolean RelocateReferences(const TDF_Label & theFromRoot, const TDF_Label & theToRoot, const Standard_Boolean theUpdateBackRefs = Standard_True);
 
@@ -1955,7 +1955,7 @@ None
 
 Description
 -----------
-Removes information on dependent object (back reference). if thesingleonly is true only the first back reference is removed in the case of duplicate items.
+Removes information on dependent object (back reference). If theSingleOnly is true only the first back reference is removed in the case of duplicate items.
 ") RemoveBackReference;
 		virtual void RemoveBackReference(const opencascade::handle<TObj_Object> & theObject, const Standard_Boolean theSingleOnly = Standard_True);
 
@@ -1991,7 +1991,7 @@ None
 
 Description
 -----------
-Removes reference to the object by replace reference to null object.
+Removes reference to the object by replace reference to NULL object.
 ") RemoveReference;
 		virtual void RemoveReference(const opencascade::handle<TObj_Object> & theObject);
 
@@ -2010,7 +2010,7 @@ None
 
 Description
 -----------
-Replace reference from old object to new object. if it is not possible, may raise exception. if new object is null then simple remove reference to old object.
+Replace reference from old object to new object. If it is not possible, may raise exception. If new object is null then simple remove reference to old object.
 ") ReplaceReference;
 		virtual void ReplaceReference(const opencascade::handle<TObj_Object> & theOldObject, const opencascade::handle<TObj_Object> & theNewObject);
 
@@ -2046,7 +2046,7 @@ bool
 
 Description
 -----------
-Sets name of the object. returns false if thename is not unique.
+Sets name of the object. Returns False if theName is not unique.
 ") SetName;
 		virtual Standard_Boolean SetName(const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -2064,7 +2064,7 @@ bool
 
 Description
 -----------
-Sets name of the object. returns false if thename is not unique.
+Sets name of the object. Returns False if theName is not unique.
 ") SetName;
 		Standard_Boolean SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -2082,7 +2082,7 @@ bool
 
 Description
 -----------
-Sets name of the object. returns false if thename is not unique.
+Sets name of the object. Returns False if theName is not unique.
 ") SetName;
 		Standard_Boolean SetName(Standard_CString name);
 
@@ -2100,7 +2100,7 @@ bool
 
 Description
 -----------
-Sets order of object.
+sets order of object.
 ") SetOrder;
 		virtual Standard_Boolean SetOrder(const Standard_Integer & theIndx);
 
@@ -2118,7 +2118,7 @@ bool
 
 Description
 -----------
-Tests flags by the mask.
+tests flags by the mask.
 ") TestFlags;
 		Standard_Boolean TestFlags(const Standard_Integer theMask);
 
@@ -2165,7 +2165,7 @@ bool
 
 Description
 -----------
-Returns true if iteration is not finished and method current() will give the object. default implementation returns false.
+Returns True if iteration is not finished and method Current() will give the object. Default implementation returns False.
 ") More;
 		virtual Standard_Boolean More();
 
@@ -2178,7 +2178,7 @@ None
 
 Description
 -----------
-Iterates to the next object default implementation does nothing.
+Iterates to the next object Default implementation does nothing.
 ") Next;
 		virtual void Next();
 
@@ -2191,7 +2191,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns current object (or null if iteration has finished) default implementation returns null handle.
+Returns current object (or null if iteration has finished) Default implementation returns null handle.
 ") Value;
 		virtual opencascade::handle<TObj_Object> Value();
 
@@ -2228,7 +2228,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Creates and returns a new object of the registered type if the type is not registered, returns null handle.
+Creates and returns a new object of the registered type If the type is not registered, returns Null handle.
 ") CreateNewObject;
 		static opencascade::handle<TObj_Object> CreateNewObject(Standard_CString theType, const TDF_Label & theLabel);
 
@@ -2292,7 +2292,7 @@ bool
 
 Description
 -----------
-Clears my modification delta; called after application of thedelta.
+Clears my modification delta; called after application of theDelta.
 ") AfterUndo;
 		Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean toForce);
 
@@ -2318,7 +2318,7 @@ None
 
 Description
 -----------
-It is called just before commit or abort transaction and does backup() to create a delta.
+It is called just before Commit or Abort transaction and does Backup() to create a delta.
 ") BeforeCommitTransaction;
 		void BeforeCommitTransaction();
 
@@ -2362,7 +2362,7 @@ None
 
 Description
 -----------
-Applies thedelta to this.
+Applies theDelta to this.
 ") DeltaOnModification;
 		void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & theDelta);
 
@@ -2375,7 +2375,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2406,7 +2406,7 @@ bool
 
 Description
 -----------
-Returns true if the value with the given id is present.
+Returns true if the value with the given ID is present.
 ") HasValue;
 		Standard_Boolean HasValue(const Standard_Size theId);
 
@@ -2419,7 +2419,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of this attribute.
+Returns the ID of this attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2432,7 +2432,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_tintsparsearray attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TIntSparseArray attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -2469,7 +2469,7 @@ None
 
 Description
 -----------
-Restores the set using info saved in backup attribute thedelta.
+Restores the set using info saved in backup attribute theDelta.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theDelta);
 
@@ -2487,7 +2487,7 @@ opencascade::handle<TObj_TIntSparseArray>
 
 Description
 -----------
-Creates tobj_tintsparsearray attribute on given label.
+Creates TObj_TIntSparseArray attribute on given label.
 ") Set;
 		static opencascade::handle<TObj_TIntSparseArray> Set(const TDF_Label & theLabel);
 
@@ -2505,7 +2505,7 @@ None
 
 Description
 -----------
-Sets the flag pointing to the necessity to maintain a modification delta. it is called by the retrieval driver.
+Sets the flag pointing to the necessity to maintain a modification delta. It is called by the retrieval driver.
 ") SetDoBackup;
 		void SetDoBackup(const Standard_Boolean toDo);
 
@@ -2524,7 +2524,7 @@ None
 
 Description
 -----------
-Sets the value with the given id. raises an exception if theid is not positive.
+Sets the value with the given ID. Raises an exception if theId is not positive.
 ") SetValue;
 		void SetValue(const Standard_Size theId, const Standard_Integer theValue);
 
@@ -2555,7 +2555,7 @@ None
 
 Description
 -----------
-Unsets the value with the given id. raises an exception if theid is not positive.
+Unsets the value with the given ID. Raises an exception if theId is not positive.
 ") UnsetValue;
 		void UnsetValue(const Standard_Size theId);
 
@@ -2573,7 +2573,7 @@ int
 
 Description
 -----------
-Returns the value by its id. raises an exception if no value is stored with this id.
+Returns the value by its ID. Raises an exception if no value is stored with this ID.
 ") Value;
 		Standard_Integer Value(const Standard_Size theId);
 
@@ -2615,7 +2615,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2628,7 +2628,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of tobj_tmodel attribute.
+Returns the ID of TObj_TModel attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2641,7 +2641,7 @@ opencascade::handle<TObj_Model>
 
 Description
 -----------
-Returns the model object.
+Returns the Model object.
 ") Model;
 		opencascade::handle<TObj_Model> Model();
 
@@ -2654,7 +2654,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_tmodel attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TModel attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -2691,7 +2691,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <thewith> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -2709,7 +2709,7 @@ None
 
 Description
 -----------
-Sets the model object.
+Sets the Model object.
 ") Set;
 		void Set(const opencascade::handle<TObj_Model> & theModel);
 
@@ -2764,7 +2764,7 @@ TObj_DataMapOfNameLabel
 
 Description
 -----------
-Returns the tobj_datamapofnamelabel object.
+Returns the TObj_DataMapOfNameLabel object.
 ") Get;
 		const TObj_DataMapOfNameLabel & Get();
 
@@ -2777,7 +2777,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2790,7 +2790,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of tobj_tnamecontainer attribute.
+Returns the ID of TObj_TNameContainer attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2808,7 +2808,7 @@ bool
 
 Description
 -----------
-Return true is thename is registered in the map.
+Return True is theName is registered in the Map.
 ") IsRegistered;
 		Standard_Boolean IsRegistered(const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -2821,7 +2821,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_tnamecontainer attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TNameContainer attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -2895,7 +2895,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <thewith> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -2913,7 +2913,7 @@ opencascade::handle<TObj_TNameContainer>
 
 Description
 -----------
-Creates tobj_datamapofnamelabel attribute on given label if not exist.
+Creates TObj_DataMapOfNameLabel attribute on given label if not exist.
 ") Set;
 		static opencascade::handle<TObj_TNameContainer> Set(const TDF_Label & theLabel);
 
@@ -2931,7 +2931,7 @@ None
 
 Description
 -----------
-Sets the tobj_datamapofnamelabel object.
+Sets the TObj_DataMapOfNameLabel object.
 ") Set;
 		void Set(const TObj_DataMapOfNameLabel & theElem);
 
@@ -2979,7 +2979,7 @@ bool
 
 Description
 -----------
-Tell tobj_object to rise from the dead, i.e. (myelem->isalive() == true) after that.
+Tell TObj_Object to rise from the dead, i.e. (myElem->IsAlive() == true) after that.
 ") AfterUndo;
 		Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt);
 
@@ -2992,7 +2992,7 @@ None
 
 Description
 -----------
-Tell tobj_object to die, i.e. (myelem->isalive() == false) after that.
+Tell TObj_Object to die, i.e. (myElem->IsAlive() == false) after that.
 ") BeforeForget;
 		void BeforeForget();
 
@@ -3005,7 +3005,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns the tobj_object object.
+Returns the TObj_Object object.
 ") Get;
 		opencascade::handle<TObj_Object> Get();
 
@@ -3018,7 +3018,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -3031,7 +3031,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of tobj_tobject attribute.
+Returns the ID of TObj_TObject attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -3044,7 +3044,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_tobject attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TObject attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -3081,7 +3081,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <thewith> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -3100,7 +3100,7 @@ opencascade::handle<TObj_TObject>
 
 Description
 -----------
-Creates tobj_tobject attribute on given label.
+Creates TObj_TObject attribute on given label.
 ") Set;
 		static opencascade::handle<TObj_TObject> Set(const TDF_Label & theLabel, const opencascade::handle<TObj_Object> & theElem);
 
@@ -3118,7 +3118,7 @@ None
 
 Description
 -----------
-Sets the tobj_object object.
+Sets the TObj_Object object.
 ") Set;
 		void Set(const opencascade::handle<TObj_Object> & theElem);
 
@@ -3197,7 +3197,7 @@ bool
 
 Description
 -----------
-It is necessary for tranzaction mechanism (undo/redo).
+It is necessary for tranzaction mechanism (Undo/Redo).
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean isForced = Standard_False);
 
@@ -3229,7 +3229,7 @@ bool
 
 Description
 -----------
-It is necessary for tranzaction mechanism (undo/redo).
+It is necessary for tranzaction mechanism (Undo/Redo).
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean isForced = Standard_False);
 
@@ -3242,7 +3242,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns the referenced theobject.
+Returns the referenced theObject.
 ") Get;
 		opencascade::handle<TObj_Object> Get();
 
@@ -3255,7 +3255,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -3281,7 +3281,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label of master object.
+Returns the Label of master object.
 ") GetMasterLabel;
 		TDF_Label GetMasterLabel();
 
@@ -3294,7 +3294,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of tobj_treference attribute.
+Returns the ID of TObj_TReference attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -3307,7 +3307,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_treference attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TReference attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -3344,7 +3344,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <thewith> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -3364,7 +3364,7 @@ opencascade::handle<TObj_TReference>
 
 Description
 -----------
-Creates reference on tdf_label <thelabel> to the object <theobject> and creates backreference from the object <theobject> to <themaster> one.
+Creates reference on TDF_Label <theLabel> to the object <theObject> and creates backreference from the object <theObject> to <theMaster> one.
 ") Set;
 		static opencascade::handle<TObj_TReference> Set(const TDF_Label & theLabel, const opencascade::handle<TObj_Object> & theObject, const opencascade::handle<TObj_Object> & theMaster);
 
@@ -3383,7 +3383,7 @@ None
 
 Description
 -----------
-Sets the reference to the theobject.
+Sets the reference to the theObject.
 ") Set;
 		void Set(const opencascade::handle<TObj_Object> & theObject, const TDF_Label & theMasterLabel);
 
@@ -3402,7 +3402,7 @@ None
 
 Description
 -----------
-Sets the reference to the theobject at indicated label. it is method for persistent only. don`t use anywhere else.
+Sets the reference to the theObject at indicated Label. It is method for persistent only. Don`t use anywhere else.
 ") Set;
 		void Set(const TDF_Label & theLabel, const TDF_Label & theMasterLabel);
 
@@ -3461,7 +3461,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the xyz.
+Returns the XYZ.
 ") Get;
 		gp_XYZ Get();
 
@@ -3474,7 +3474,7 @@ Standard_GUID
 
 Description
 -----------
-This method is used in implementation of id().
+This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -3487,7 +3487,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of tobj_txyz attribute.
+Returns the ID of TObj_TXYZ attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -3500,7 +3500,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty tobj_txyz attribute. it is used by the copy algorithm.
+Returns an new empty TObj_TXYZ attribute. It is used by the copy algorithm.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -3537,7 +3537,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <thewith> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -3556,7 +3556,7 @@ opencascade::handle<TObj_TXYZ>
 
 Description
 -----------
-Creates attribute and sets the xyz.
+Creates attribute and sets the XYZ.
 ") Set;
 		static opencascade::handle<TObj_TXYZ> Set(const TDF_Label & theLabel, const gp_XYZ & theXYZ);
 
@@ -3574,7 +3574,7 @@ None
 
 Description
 -----------
-Sets the xyz.
+Sets the XYZ.
 ") Set;
 		void Set(const gp_XYZ & theXYZ);
 
@@ -3617,7 +3617,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		virtual Standard_Boolean More();
 
@@ -3630,7 +3630,7 @@ None
 
 Description
 -----------
-Move to the next item.
+Move to the next Item.
 ") Next;
 		virtual void Next();
 
@@ -3677,7 +3677,7 @@ None
 
 Description
 -----------
-/** * constructor */ creates iterator and initialize it by model`s label.
+/** * Constructor */ Creates Iterator and initialize it by Model`s label.
 ") TObj_ModelIterator;
 		 TObj_ModelIterator(const opencascade::handle<TObj_Model> & theModel);
 
@@ -3690,7 +3690,7 @@ bool
 
 Description
 -----------
-Returns true if iteration is not finished and method value() will give the object.
+Returns True if iteration is not finished and method Value() will give the object.
 ") More;
 		virtual Standard_Boolean More();
 
@@ -3716,7 +3716,7 @@ opencascade::handle<TObj_Object>
 
 Description
 -----------
-Returns current object (or mainobj of model if iteration has finished).
+Returns current object (or MainObj of Model if iteration has finished).
 ") Value;
 		virtual opencascade::handle<TObj_Object> Value();
 
@@ -3746,7 +3746,7 @@ None
 
 Description
 -----------
-Performs updating the links and dependencies of the object which are not stored in persistence. does not register the partition name.
+Performs updating the links and dependencies of the object which are not stored in persistence. Does not register the partition name.
 ") AfterRetrieval;
 		virtual void AfterRetrieval();
 
@@ -3778,7 +3778,7 @@ int
 
 Description
 -----------
-Return last index in partition (reserved);.
+Return Last index in partition (reserved);.
 ") GetLastIndex;
 		Standard_Integer GetLastIndex();
 
@@ -3809,7 +3809,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Generates and returns name for new object in partition. if theistochangecount is true partition increase own counter to generate new name next time starting from new counter value.
+Generates and returns name for new object in partition. if theIsToChangeCount is true partition increase own counter to generate new name next time starting from new counter value.
 ") GetNewName;
 		opencascade::handle<TCollection_HExtendedString> GetNewName(const Standard_Boolean theIsToChangeCount = Standard_True);
 
@@ -3827,7 +3827,7 @@ opencascade::handle<TObj_Partition>
 
 Description
 -----------
-Returns the partition in which object is stored. null partition returned if not found.
+Returns the partition in which object is stored. Null partition returned if not found.
 ") GetPartition;
 		static opencascade::handle<TObj_Partition> GetPartition(const opencascade::handle<TObj_Object> & theObject);
 
@@ -3840,7 +3840,7 @@ TDF_Label
 
 Description
 -----------
-Creates and returns label for new object in partition.
+Creates and Returns label for new object in partition.
 ") NewLabel;
 		TDF_Label NewLabel();
 
@@ -3858,7 +3858,7 @@ None
 
 Description
 -----------
-Sets last index in partition (reserved);.
+Sets Last index in partition (reserved);.
 ") SetLastIndex;
 		void SetLastIndex(const Standard_Integer theIndex);
 
@@ -3955,7 +3955,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		virtual Standard_Boolean More();
 
@@ -3968,7 +3968,7 @@ None
 
 Description
 -----------
-Move to the next item.
+Move to the next Item.
 ") Next;
 		virtual void Next();
 
@@ -4015,7 +4015,7 @@ None
 
 Description
 -----------
-Constructor.
+constructor.
 ") TObj_HiddenPartition;
 		 TObj_HiddenPartition(const TDF_Label & theLabel);
 
@@ -4028,7 +4028,7 @@ int
 
 Description
 -----------
-Returns all flags of father except visible.
+Returns all flags of father except Visible.
 ") GetTypeFlags;
 		virtual Standard_Integer GetTypeFlags();
 
@@ -4065,7 +4065,11 @@ None
 
 Description
 -----------
-Creates the iterator on tobj objects on the sub-labels of thelabel. @param thelabel start label for searching @param thetype type of the found objects, or all types if null @param therecursive search children recursively, not only on sub-labels of thelabel @param theallsubchildren do not stop at the first level of children, but search for sub-children too.
+Creates the iterator on TObj objects on the sub-labels of theLabel. 
+Parameter theLabel start label for searching 
+Parameter theType type of the found objects, or all types if Null 
+Parameter theRecursive search children recursively, not only on sub-labels of theLabel 
+Parameter theAllSubChildren do not stop at the first level of children, but search for sub-children too.
 ") TObj_OcafObjectIterator;
 		 TObj_OcafObjectIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_False, const Standard_Boolean theAllSubChildren = Standard_False);
 
@@ -4101,7 +4105,7 @@ None
 
 Description
 -----------
-Creates the iterator on references in partition thetype narrows a variety of iterated objects.
+Creates the iterator on references in partition theType narrows a variety of iterated objects.
 ") TObj_ReferenceIterator;
 		 TObj_ReferenceIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_True);
 

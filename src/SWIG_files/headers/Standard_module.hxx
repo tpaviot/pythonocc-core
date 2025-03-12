@@ -93,6 +93,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_UUID.hxx>
 #include<Standard_Underflow.hxx>
 #include<Standard_Version.hxx>
+#include<Standard_VersionInfo.hxx>
 #include<Standard_WarningDisableFunctionCast.hxx>
 #include<Standard_WarningsDisable.hxx>
 #include<Standard_WarningsRestore.hxx>

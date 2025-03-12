@@ -137,7 +137,7 @@ None
 
 Description
 -----------
-Defines format 'tobjxml' and registers its read and write drivers in the specified application.
+Defines format 'TObjXml' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
@@ -155,7 +155,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a driver corresponding to <aguid>. used for plugin.
+Returns a driver corresponding to <aGUID>. Used for plugin.
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & aGUID);
 

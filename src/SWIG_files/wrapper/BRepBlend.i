@@ -178,7 +178,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -201,7 +201,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
@@ -227,7 +227,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param.
+compute the first derivative in v direction of the section for v = param.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -256,7 +256,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param.
+compute the second derivative in v direction of the section for v = param.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -274,7 +274,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation.
+Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -295,7 +295,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -314,7 +314,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -327,7 +327,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal or not.
+Returns if the section is rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -345,7 +345,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -358,7 +358,7 @@ float
 
 Description
 -----------
-Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
+Returns the length of the maximum section. This information is useful to perform well conditioned rational approximation.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -376,7 +376,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -389,7 +389,7 @@ int
 
 Description
 -----------
-Get the number of 2d curves to approximate.
+get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
@@ -407,7 +407,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -448,7 +448,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> -- this information is usfull to find an good tolerance in 2d approximation.
+Returns the resolutions in the sub-space 2d <Index> -- This information is usfull to find an good tolerance in 2d approximation.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -467,7 +467,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -486,7 +486,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the fonction this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the fonction This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -505,7 +505,7 @@ None
 
 Description
 -----------
-Is usfull, if (me) have to be run numerical algorithme to perform d0, d1 or d2.
+Is usfull, if (me) have to be run numerical algorithme to perform D0, D1 or D2.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -589,7 +589,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -608,7 +608,7 @@ W3: float
 
 Description
 -----------
-Returns the weights (as percent) associed to the criterium used in the optimization.
+returns the Weights (as percent) associed to the criterium used in the optimization.
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -767,7 +767,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Returns the type of parametrization used in the approximation.
+returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
@@ -844,7 +844,7 @@ None
 
 Description
 -----------
-Define the continuity used in the approximation.
+Define the Continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
@@ -864,7 +864,7 @@ None
 
 Description
 -----------
-Define the weights associed to the criterium used in the optimization. //! if wi <= 0.
+define the Weights associed to the criterium used in the optimization. //! if Wi <= 0.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
@@ -1107,7 +1107,7 @@ None
 
 Description
 -----------
-Approximation of the new surface (and eventually the 2d curves on the support surfaces). normally the 2d curve are approximated with an tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used.
+Approximation of the new Surface (and eventually the 2d Curves on the support surfaces). Normally the 2d curve are approximated with an tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used.
 ") BRepBlend_AppSurface;
 		 BRepBlend_AppSurface(const opencascade::handle<Approx_SweepFunction> & Funct, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Real TolAngular, const GeomAbs_Shape Continuity = GeomAbs_C0, const Standard_Integer Degmax = 11, const Standard_Integer Segmax = 50);
 
@@ -1221,7 +1221,7 @@ o: Standard_OStream
 
 Description
 -----------
-Display information on approximation.
+display information on approximation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1252,7 +1252,7 @@ float
 
 Description
 -----------
-Returns the maximum error in the <index> 2d curve approximation.
+returns the maximum error in the <Index> 2d curve approximation.
 ") Max2dError;
 		Standard_Real Max2dError(const Standard_Integer Index);
 
@@ -1265,7 +1265,7 @@ float
 
 Description
 -----------
-Returns the maximum error in the surface approximation.
+returns the maximum error in the surface approximation.
 ") MaxErrorOnSurf;
 		Standard_Real MaxErrorOnSurf();
 
@@ -1482,7 +1482,7 @@ Ulast: float
 
 Description
 -----------
-Returns the parametric limits on the arc c. these limits must be finite: they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
+Returns the parametric limits on the arc C. These limits must be finite: they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
 ") Bounds;
 		static void Bounds(const opencascade::handle<Adaptor2d_Curve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1582,7 +1582,7 @@ float
 
 Description
 -----------
-Returns the parameter of the vertex v on the edge a.
+Returns the parameter of the vertex V on the edge A.
 ") Parameter;
 		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A);
 
@@ -1603,7 +1603,7 @@ Dist: float
 
 Description
 -----------
-Projects the point p on the arc c. if the methods returns standard_true, the projection is successful, and paramproj is the parameter on the arc of the projected point, dist is the distance between p and the curve.. if the method returns standard_false, param proj and dist are not significant.
+Projects the point P on the arc C. If the methods returns Standard_True, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Dist is the distance between P and the curve.. If the method returns Standard_False, Param proj and Dist are not significant.
 ") Project;
 		static Standard_Boolean Project(const gp_Pnt2d & P, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor2d_Curve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1694,7 +1694,7 @@ float
 
 Description
 -----------
-Returns the parametric tolerance on the arc a used to consider that the vertex and another point meet, i-e if abs(parameter(vertex)-parameter(otherpnt))<= tolerance, the points are 'merged'.
+Returns the parametric tolerance on the arc A used to consider that the vertex and another point meet, i-e if Abs(Parameter(Vertex)-Parameter(OtherPnt))<= Tolerance, the points are 'merged'.
 ") Tolerance;
 		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A);
 
@@ -1749,7 +1749,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1768,7 +1768,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -1787,7 +1787,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -1806,7 +1806,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -1819,7 +1819,7 @@ int
 
 Description
 -----------
-Returns 2.
+returns 2.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -1855,7 +1855,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		void Set(const gp_Pnt & P);
 
@@ -1874,7 +1874,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1894,7 +1894,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1966,7 +1966,7 @@ None
 
 Description
 -----------
-Creates an extremity on a surface. this extremity matches the vertex <vtx>.
+Creates an extremity on a surface. This extremity matches the vertex <Vtx>.
 ") BRepBlend_Extremity;
 		 BRepBlend_Extremity(const gp_Pnt & P, const Standard_Real U, const Standard_Real V, const Standard_Real Param, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & Vtx);
 
@@ -2008,7 +2008,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is on the arc a, at parameter param.
+Sets the values of a point which is on the arc A, at parameter Param.
 ") AddArc;
 		void AddArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
@@ -2021,7 +2021,7 @@ bool
 
 Description
 -----------
-Returns true if the tangent is stored.
+Returns True if the Tangent is stored.
 ") HasTangent;
 		Standard_Boolean HasTangent();
 
@@ -2034,7 +2034,7 @@ bool
 
 Description
 -----------
-Returns standard_true when the point coincide with an existing vertex.
+Returns Standard_True when the point coincide with an existing vertex.
 ") IsVertex;
 		Standard_Boolean IsVertex();
 
@@ -2047,7 +2047,7 @@ int
 
 Description
 -----------
-Returns the number of arc containing the extremity. if the method returns 0, the point is inside the surface. otherwise, the extremity lies on at least 1 arc, and all the information (arc, parameter, transitions) are given by the point on restriction (pointonrst) returned by the next method.
+Returns the number of arc containing the extremity. If the method returns 0, the point is inside the surface. Otherwise, the extremity lies on at least 1 arc, and all the information (arc, parameter, transitions) are given by the point on restriction (PointOnRst) returned by the next method.
 ") NbPointOnRst;
 		Standard_Integer NbPointOnRst();
 
@@ -2172,7 +2172,7 @@ None
 
 Description
 -----------
-Set the values for an extremity on a surface.this extremity matches the vertex <vtx>.
+Set the values for an extremity on a surface.This extremity matches the vertex <Vtx>.
 ") SetValue;
 		void SetValue(const gp_Pnt & P, const Standard_Real U, const Standard_Real V, const Standard_Real Param, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & Vtx);
 
@@ -2263,7 +2263,7 @@ opencascade::handle<Adaptor3d_HVertex>
 
 Description
 -----------
-Returns the vertex when isvertex returns standard_true.
+Returns the vertex when IsVertex returns Standard_True.
 ") Vertex;
 		const opencascade::handle<Adaptor3d_HVertex> & Vertex();
 
@@ -2369,7 +2369,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -2390,7 +2390,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -2412,7 +2412,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2435,7 +2435,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -2455,7 +2455,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, const Standard_Integer N);
 
@@ -2509,7 +2509,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -2547,7 +2547,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2638,7 +2638,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_Curve2d> & C, const GeomAbs_Shape S);
 
@@ -2713,7 +2713,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real R3d);
 
@@ -2732,7 +2732,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U);
 
@@ -2838,7 +2838,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
@@ -2859,7 +2859,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -2881,7 +2881,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -2904,7 +2904,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -2924,7 +2924,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec DN(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, const Standard_Integer N);
 
@@ -2978,7 +2978,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -3016,7 +3016,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3107,7 +3107,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor3d_Curve> & C, const GeomAbs_Shape S);
 
@@ -3182,7 +3182,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real R3d);
 
@@ -3201,7 +3201,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U);
 
@@ -3272,7 +3272,7 @@ BRepBlend_Extremity
 
 Description
 -----------
-Returns the end point on s1.
+Returns the end point on S1.
 ") EndPointOnFirst;
 		const BRepBlend_Extremity & EndPointOnFirst();
 
@@ -3285,7 +3285,7 @@ BRepBlend_Extremity
 
 Description
 -----------
-Returns the point on s2.
+Returns the point on S2.
 ") EndPointOnSecond;
 		const BRepBlend_Extremity & EndPointOnSecond();
 
@@ -3335,7 +3335,7 @@ Blend_Point
 
 Description
 -----------
-Returns the point of range index.
+Returns the point of range Index.
 ") Point;
 		const Blend_Point & Point(const Standard_Integer Index);
 
@@ -3372,7 +3372,7 @@ None
 
 Description
 -----------
-Removes from <self> all the items of positions between <fromindex> and <toindex>. raises an exception if the indices are out of bounds.
+Removes from <self> all the items of positions between <FromIndex> and <ToIndex>. Raises an exception if the indices are out of bounds.
 ") Remove;
 		void Remove(const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3391,7 +3391,7 @@ None
 
 Description
 -----------
-Sets the value of the transition of the line on s1 and the line on s2.
+Sets the value of the transition of the line on S1 and the line on S2.
 ") Set;
 		void Set(const IntSurf_TypeTrans TranS1, const IntSurf_TypeTrans TranS2);
 
@@ -3460,7 +3460,7 @@ BRepBlend_Extremity
 
 Description
 -----------
-Returns the start point on s1.
+Returns the start point on S1.
 ") StartPointOnFirst;
 		const BRepBlend_Extremity & StartPointOnFirst();
 
@@ -3473,7 +3473,7 @@ BRepBlend_Extremity
 
 Description
 -----------
-Returns the start point on s2.
+Returns the start point on S2.
 ") StartPointOnSecond;
 		const BRepBlend_Extremity & StartPointOnSecond();
 
@@ -3499,7 +3499,7 @@ IntSurf_TypeTrans
 
 Description
 -----------
-Returns the type of the transition of the line defined on the first surface. the transition is 'constant' along the line. the transition is in if the line is oriented in such a way that the system of vectors (n,drac,t) is right-handed, where n is the normal to the first surface at a point p, drac is a vector tangent to the blending patch, oriented towards the valid part of this patch, t is the tangent to the line on s1 at p. the transitioon is out when the system of vectors is left-handed.
+Returns the type of the transition of the line defined on the first surface. The transition is 'constant' along the line. The transition is IN if the line is oriented in such a way that the system of vectors (N,DRac,T) is right-handed, where N is the normal to the first surface at a point P, DRac is a vector tangent to the blending patch, oriented towards the valid part of this patch, T is the tangent to the line on S1 at P. The transitioon is OUT when the system of vectors is left-handed.
 ") TransitionOnS1;
 		IntSurf_TypeTrans TransitionOnS1();
 
@@ -3512,7 +3512,7 @@ IntSurf_TypeTrans
 
 Description
 -----------
-Returns the type of the transition of the line defined on the second surface. the transition is 'constant' along the line.
+Returns the type of the transition of the line defined on the second surface. The transition is 'constant' along the line.
 ") TransitionOnS2;
 		IntSurf_TypeTrans TransitionOnS2();
 
@@ -3562,7 +3562,7 @@ None
 
 Description
 -----------
-Creates the pointonrst on the arc a, at parameter param, with the transition tline on the walking line, and tarc on the arc a.
+Creates the PointOnRst on the arc A, at parameter Param, with the transition TLine on the walking line, and TArc on the arc A.
 ") BRepBlend_PointOnRst;
 		 BRepBlend_PointOnRst(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
@@ -3588,7 +3588,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point on the arc returned by the method arc().
+Returns the parameter of the point on the arc returned by the method Arc().
 ") ParameterOnArc;
 		Standard_Real ParameterOnArc();
 
@@ -3609,7 +3609,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is on the arc a, at parameter param.
+Sets the values of a point which is on the arc A, at parameter Param.
 ") SetArc;
 		void SetArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
@@ -3622,7 +3622,7 @@ IntSurf_Transition
 
 Description
 -----------
-Returns the transition of the point on the arc returned by arc().
+Returns the transition of the point on the arc returned by Arc().
 ") TransitionOnArc;
 		const IntSurf_Transition & TransitionOnArc();
 
@@ -3693,7 +3693,7 @@ bool
 
 Description
 -----------
-Give the center of circle define by ptrst1, ptrst2 and radius ray.
+Give the center of circle define by PtRst1, PtRst2 and radius ray.
 ") CenterCircleRst1Rst2;
 		Standard_Boolean CenterCircleRst1Rst2(const gp_Pnt & PtRst1, const gp_Pnt & PtRst2, const gp_Vec & np, gp_Pnt & Center, gp_Vec & VdMed);
 
@@ -3734,7 +3734,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3766,7 +3766,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -3858,7 +3858,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -3877,7 +3877,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3890,7 +3890,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -3989,7 +3989,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -4041,7 +4041,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnRst1;
 		const gp_Pnt2d Pnt2dOnRst1();
 
@@ -4054,7 +4054,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst2;
 		const gp_Pnt2d Pnt2dOnRst2();
 
@@ -4194,7 +4194,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -4252,7 +4252,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -4360,7 +4360,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -4380,7 +4380,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -4439,7 +4439,7 @@ bool
 
 Description
 -----------
-Gives the center of circle defined by ptrst1, ptrst2 and radius ray.
+Gives the center of circle defined by PtRst1, PtRst2 and radius ray.
 ") CenterCircleRst1Rst2;
 		Standard_Boolean CenterCircleRst1Rst2(const gp_Pnt & PtRst1, const gp_Pnt & PtRst2, const gp_Vec & np, gp_Pnt & Center, gp_Vec & VdMed);
 
@@ -4480,7 +4480,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -4512,7 +4512,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -4604,7 +4604,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -4623,7 +4623,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -4636,7 +4636,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -4735,7 +4735,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -4787,7 +4787,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnRst1;
 		const gp_Pnt2d Pnt2dOnRst1();
 
@@ -4800,7 +4800,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst2;
 		const gp_Pnt2d Pnt2dOnRst2();
 
@@ -4940,7 +4940,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -4998,7 +4998,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -5105,7 +5105,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5125,7 +5125,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5378,7 +5378,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5397,7 +5397,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -5416,7 +5416,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -5435,7 +5435,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -5448,7 +5448,7 @@ int
 
 Description
 -----------
-Returns 3.
+returns 3.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -5504,7 +5504,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5524,7 +5524,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5578,7 +5578,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5597,7 +5597,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -5616,7 +5616,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -5635,7 +5635,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -5648,7 +5648,7 @@ int
 
 Description
 -----------
-Returns 3.
+returns 3.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -5703,7 +5703,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5723,7 +5723,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5775,7 +5775,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5794,7 +5794,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -5813,7 +5813,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -5832,7 +5832,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -5845,7 +5845,7 @@ int
 
 Description
 -----------
-Returns 3.
+returns 3.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -5882,7 +5882,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		void Set(const gp_Pnt & P);
 
@@ -5901,7 +5901,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5921,7 +5921,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5974,7 +5974,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5993,7 +5993,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -6012,7 +6012,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -6031,7 +6031,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -6044,7 +6044,7 @@ int
 
 Description
 -----------
-Returns 3.
+returns 3.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -6080,7 +6080,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		void Set(const gp_Pnt & P);
 
@@ -6099,7 +6099,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6119,7 +6119,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -6174,7 +6174,7 @@ bool
 
 Description
 -----------
-Enables implementation of a criterion of decrochage specific to the function. warning: can be called without previous call of issolution but the values calculated can be senseless.
+Enables implementation of a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.
 ") Decroch;
 		Standard_Boolean Decroch(const math_Vector & Sol, gp_Vec & NS, gp_Vec & TgS);
 
@@ -6193,7 +6193,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6225,7 +6225,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -6317,7 +6317,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -6336,7 +6336,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -6349,7 +6349,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -6448,7 +6448,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -6487,7 +6487,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst;
 		const gp_Pnt2d Pnt2dOnRst();
 
@@ -6500,7 +6500,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnS;
 		const gp_Pnt2d Pnt2dOnS();
 
@@ -6620,7 +6620,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -6697,7 +6697,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -6805,7 +6805,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6825,7 +6825,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -6900,7 +6900,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6932,7 +6932,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -7024,7 +7024,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -7043,7 +7043,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -7056,7 +7056,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -7155,7 +7155,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -7194,7 +7194,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst;
 		const gp_Pnt2d Pnt2dOnRst();
 
@@ -7207,7 +7207,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnS;
 		const gp_Pnt2d Pnt2dOnS();
 
@@ -7327,7 +7327,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -7404,7 +7404,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -7511,7 +7511,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -7531,7 +7531,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -7915,7 +7915,7 @@ No available documentation.
 		Standard_Boolean Continu(Blend_Function & F, Blend_FuncInv & FInv, const Standard_Real P, const Standard_Boolean OnS1);
 
 		/****** BRepBlend_Walking::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: fbb42ba7dccdaf2fe81e0200c743c59b ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7928,7 +7928,7 @@ No available documentation.
 		Standard_Boolean IsDone();
 
 		/****** BRepBlend_Walking::Line ******/
-		/****** md5 signature: 9bbdb2164431d955d7a3a08a37fd239f ******/
+		/****** md5 signature: b1091aed695b71aa16f6f258d9818bca ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -7978,18 +7978,17 @@ Pdep: float
 ParDep: math_Vector
 Tol3d: float
 TolGuide: float
-Pos1: TopAbs_State
-Pos2: TopAbs_State
 
 Return
 -------
-bool
+Pos1: TopAbs_State
+Pos2: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") PerformFirstSection;
-		Standard_Boolean PerformFirstSection(Blend_Function & F, const Standard_Real Pdep, math_Vector & ParDep, const Standard_Real Tol3d, const Standard_Real TolGuide, TopAbs_State & Pos1, TopAbs_State & Pos2);
+		Standard_Boolean PerformFirstSection(Blend_Function & F, const Standard_Real Pdep, math_Vector & ParDep, const Standard_Real Tol3d, const Standard_Real TolGuide, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** BRepBlend_Walking::PerformFirstSection ******/
 		/****** md5 signature: 7464aaa5cedcb060541546a3a1ff5540 ******/
@@ -8038,7 +8037,7 @@ To define different domains for control and clipping.
 		void SetDomainsToRecadre(const opencascade::handle<Adaptor3d_TopolTool> & RecDomain1, const opencascade::handle<Adaptor3d_TopolTool> & RecDomain2);
 
 		/****** BRepBlend_Walking::TwistOnS1 ******/
-		/****** md5 signature: 9e7cba134041c48814f8e911bc7ceb7d ******/
+		/****** md5 signature: 474e20dc041df2edd7db29b1c38c0fef ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "Return
 -------
@@ -8051,7 +8050,7 @@ No available documentation.
 		Standard_Boolean TwistOnS1();
 
 		/****** BRepBlend_Walking::TwistOnS2 ******/
-		/****** md5 signature: d09d14bd26a5c6922f795ecb44cf2f66 ******/
+		/****** md5 signature: d6b6b53531e7399ff67cda818415c62a ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "Return
 -------

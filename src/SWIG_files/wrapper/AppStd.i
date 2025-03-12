@@ -118,7 +118,7 @@ str
 
 Description
 -----------
-Returns the file name which contains application resources.
+returns the file name which contains application resources.
 ") ResourcesName;
 		Standard_CString ResourcesName();
 

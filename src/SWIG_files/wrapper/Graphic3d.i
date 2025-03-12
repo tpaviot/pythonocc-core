@@ -145,6 +145,7 @@ enum Graphic3d_BufferType {
 	Graphic3d_BT_Depth = 2,
 	Graphic3d_BT_RGB_RayTraceHdrLeft = 3,
 	Graphic3d_BT_Red = 4,
+	Graphic3d_BT_ShadowMap = 5,
 };
 
 enum Graphic3d_CappingFlags {
@@ -503,7 +504,10 @@ enum Graphic3d_TransModeFlags {
 	Graphic3d_TMF_TriedronPers = 32,
 	Graphic3d_TMF_2d = 64,
 	Graphic3d_TMF_CameraPers = 128,
+	Graphic3d_TMF_OrthoPers = 256,
+	Graphic3d_TMF_AxialScalePers = 512,
 	Graphic3d_TMF_ZoomRotatePers = Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers,
+	Graphic3d_TMF_AxialZoomPers = Graphic3d_TMF_ZoomPers | Graphic3d_TMF_AxialScalePers,
 };
 
 enum Graphic3d_TypeOfAnswer {
@@ -765,11 +769,13 @@ class Graphic3d_BufferType(IntEnum):
 	Graphic3d_BT_Depth = 2
 	Graphic3d_BT_RGB_RayTraceHdrLeft = 3
 	Graphic3d_BT_Red = 4
+	Graphic3d_BT_ShadowMap = 5
 Graphic3d_BT_RGB = Graphic3d_BufferType.Graphic3d_BT_RGB
 Graphic3d_BT_RGBA = Graphic3d_BufferType.Graphic3d_BT_RGBA
 Graphic3d_BT_Depth = Graphic3d_BufferType.Graphic3d_BT_Depth
 Graphic3d_BT_RGB_RayTraceHdrLeft = Graphic3d_BufferType.Graphic3d_BT_RGB_RayTraceHdrLeft
 Graphic3d_BT_Red = Graphic3d_BufferType.Graphic3d_BT_Red
+Graphic3d_BT_ShadowMap = Graphic3d_BufferType.Graphic3d_BT_ShadowMap
 
 class Graphic3d_CappingFlags(IntEnum):
 	Graphic3d_CappingFlags_None = 0
@@ -1320,14 +1326,20 @@ class Graphic3d_TransModeFlags(IntEnum):
 	Graphic3d_TMF_TriedronPers = 32
 	Graphic3d_TMF_2d = 64
 	Graphic3d_TMF_CameraPers = 128
+	Graphic3d_TMF_OrthoPers = 256
+	Graphic3d_TMF_AxialScalePers = 512
 	Graphic3d_TMF_ZoomRotatePers = Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers
+	Graphic3d_TMF_AxialZoomPers = Graphic3d_TMF_ZoomPers | Graphic3d_TMF_AxialScalePers
 Graphic3d_TMF_None = Graphic3d_TransModeFlags.Graphic3d_TMF_None
 Graphic3d_TMF_ZoomPers = Graphic3d_TransModeFlags.Graphic3d_TMF_ZoomPers
 Graphic3d_TMF_RotatePers = Graphic3d_TransModeFlags.Graphic3d_TMF_RotatePers
 Graphic3d_TMF_TriedronPers = Graphic3d_TransModeFlags.Graphic3d_TMF_TriedronPers
 Graphic3d_TMF_2d = Graphic3d_TransModeFlags.Graphic3d_TMF_2d
 Graphic3d_TMF_CameraPers = Graphic3d_TransModeFlags.Graphic3d_TMF_CameraPers
+Graphic3d_TMF_OrthoPers = Graphic3d_TransModeFlags.Graphic3d_TMF_OrthoPers
+Graphic3d_TMF_AxialScalePers = Graphic3d_TransModeFlags.Graphic3d_TMF_AxialScalePers
 Graphic3d_TMF_ZoomRotatePers = Graphic3d_TransModeFlags.Graphic3d_TMF_ZoomRotatePers
+Graphic3d_TMF_AxialZoomPers = Graphic3d_TransModeFlags.Graphic3d_TMF_AxialZoomPers
 
 class Graphic3d_TypeOfAnswer(IntEnum):
 	Graphic3d_TOA_YES = 0
@@ -1653,12 +1665,14 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %wrap_handle(Graphic3d_AspectLine3d)
 %wrap_handle(Graphic3d_AspectMarker3d)
 %wrap_handle(Graphic3d_AspectText3d)
+%wrap_handle(Graphic3d_AttribBuffer)
 %wrap_handle(Graphic3d_CView)
 %wrap_handle(Graphic3d_MediaTextureSet)
 %wrap_handle(Graphic3d_TextureEnv)
 %wrap_handle(Graphic3d_TextureMap)
 %wrap_handle(Graphic3d_TransformPersScaledAbove)
 %wrap_handle(Graphic3d_CubeMap)
+%wrap_handle(Graphic3d_MutableIndexBuffer)
 %wrap_handle(Graphic3d_Texture1D)
 %wrap_handle(Graphic3d_Texture2D)
 %wrap_handle(Graphic3d_Texture3D)
@@ -1815,7 +1829,8 @@ int
 
 Description
 -----------
-Adds a bound of length theedgenumber in the bound array return the actual bounds number.
+Adds a bound of length theEdgeNumber in the bound array 
+Return: the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber);
 
@@ -1834,7 +1849,8 @@ int
 
 Description
 -----------
-Adds a bound of length theedgenumber and bound color thebcolor in the bound array. warning: thebcolor is ignored when the hasbcolors constructor parameter is false return the actual bounds number.
+Adds a bound of length theEdgeNumber and bound color theBColor in the bound array. Warning: theBColor is ignored when the hasBColors constructor parameter is False 
+Return: the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber, const Quantity_Color & theBColor);
 
@@ -1855,7 +1871,8 @@ int
 
 Description
 -----------
-Adds a bound of length theedgenumber and bound color coordinates in the bound array. warning: <ther,theg,theb> are ignored when the hasbcolors constructor parameter is false return the actual bounds number.
+Adds a bound of length theEdgeNumber and bound color coordinates in the bound array. Warning: <theR,theG,theB> are ignored when the hasBColors constructor parameter is False 
+Return: the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
@@ -1873,7 +1890,8 @@ int
 
 Description
 -----------
-Adds an edge in the range [1,vertexnumber()] in the array. return the actual edges number.
+Adds an edge in the range [1,VertexNumber()] in the array. 
+Return: the actual edges number.
 ") AddEdge;
 		Standard_Integer AddEdge(const Standard_Integer theVertexIndex);
 
@@ -1892,7 +1910,8 @@ int
 
 Description
 -----------
-Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array. return the actual edges number.
+Convenience method, adds two vertex indices (a segment) in the range [1,VertexNumber()] in the array. 
+Return: the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2);
 
@@ -1912,7 +1931,8 @@ int
 
 Description
 -----------
-Convenience method, adds three vertex indices (a triangle) in the range [1,vertexnumber()] in the array. return the actual edges number.
+Convenience method, adds three vertex indices (a triangle) in the range [1,VertexNumber()] in the array. 
+Return: the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3);
 
@@ -1933,7 +1953,8 @@ int
 
 Description
 -----------
-Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array. return the actual edges number.
+Convenience method, adds four vertex indices (a quad) in the range [1,VertexNumber()] in the array. 
+Return: the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
@@ -1953,7 +1974,10 @@ None
 
 Description
 -----------
-Add line strip (polyline) into indexed segments array. n-1 segments are added from n input nodes (or n with closed flag). raises exception if array is not of type graphic3d_topa_segments. @param thevertexlower [in] index of first node defining line strip fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
+Add line strip (polyline) into indexed segments array. N-1 segments are added from N input nodes (or N with closed flag). Raises exception if array is not of type Graphic3d_TOPA_SEGMENTS. 
+Input parameter: theVertexLower index of first node defining line strip fun (center) 
+Input parameter: theVertexUpper index of last node defining triangle fun 
+Input parameter: theToClose close triangle fan (connect first and last points).
 ") AddPolylineEdges;
 		void AddPolylineEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper, Standard_Boolean theToClose);
 
@@ -1974,7 +1998,8 @@ int
 
 Description
 -----------
-Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array of quads. raises exception if array is not of type graphic3d_topa_quadrangles. return the actual edges number.
+Convenience method, adds four vertex indices (a quad) in the range [1,VertexNumber()] in the array of quads. Raises exception if array is not of type Graphic3d_TOPA_QUADRANGLES. 
+Return: the actual edges number.
 ") AddQuadEdges;
 		Standard_Integer AddQuadEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
@@ -1995,7 +2020,8 @@ int
 
 Description
 -----------
-Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
+Convenience method, adds quad indices in the range [1,VertexNumber()] into array or triangles as two triangles. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Return: the actual edges number.
 ") AddQuadTriangleEdges;
 		Standard_Integer AddQuadTriangleEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
@@ -2013,7 +2039,8 @@ int
 
 Description
 -----------
-Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
+Convenience method, adds quad indices in the range [1,VertexNumber()] into array or triangles as two triangles. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Return: the actual edges number.
 ") AddQuadTriangleEdges;
 		Standard_Integer AddQuadTriangleEdges(const Graphic3d_Vec4i & theIndexes);
 
@@ -2032,7 +2059,8 @@ int
 
 Description
 -----------
-Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array of segments (graphic3d_topa_segments). raises exception if array is not of type graphic3d_topa_segments. return the actual edges number.
+Convenience method, adds two vertex indices (a segment) in the range [1,VertexNumber()] in the array of segments (Graphic3d_TOPA_SEGMENTS). Raises exception if array is not of type Graphic3d_TOPA_SEGMENTS. 
+Return: the actual edges number.
 ") AddSegmentEdges;
 		Standard_Integer AddSegmentEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2);
 
@@ -2052,7 +2080,8 @@ int
 
 Description
 -----------
-Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
+Convenience method, adds three vertex indices of triangle in the range [1,VertexNumber()] in the array of triangles. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Return: the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3);
 
@@ -2070,7 +2099,8 @@ int
 
 Description
 -----------
-Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
+Convenience method, adds three vertex indices of triangle in the range [1,VertexNumber()] in the array of triangles. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Return: the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(const Graphic3d_Vec3i & theIndexes);
 
@@ -2088,7 +2118,8 @@ int
 
 Description
 -----------
-Convenience method, adds three vertex indices (4th component is ignored) of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
+Convenience method, adds three vertex indices (4th component is ignored) of triangle in the range [1,VertexNumber()] in the array of triangles. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Return: the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(const Graphic3d_Vec4i & theIndexes);
 
@@ -2108,7 +2139,10 @@ None
 
 Description
 -----------
-Add triangle fan into indexed triangulation array. n-2 triangles are added from n input nodes (or n-1 with closed flag). raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
+Add triangle fan into indexed triangulation array. N-2 triangles are added from N input nodes (or N-1 with closed flag). Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Input parameter: theVertexLower index of first node defining triangle fun (center) 
+Input parameter: theVertexUpper index of last node defining triangle fun 
+Input parameter: theToClose close triangle fan (connect first and last points).
 ") AddTriangleFanEdges;
 		void AddTriangleFanEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper, Standard_Boolean theToClose);
 
@@ -2127,7 +2161,9 @@ None
 
 Description
 -----------
-Add triangle strip into indexed triangulation array. n-2 triangles are added from n input nodes. raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle strip @param thevertexupper [in] index of last node defining triangle strip.
+Add triangle strip into indexed triangulation array. N-2 triangles are added from N input nodes. Raises exception if array is not of type Graphic3d_TOPA_TRIANGLES. 
+Input parameter: theVertexLower index of first node defining triangle strip 
+Input parameter: theVertexUpper index of last node defining triangle strip.
 ") AddTriangleStripEdges;
 		void AddTriangleStripEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper);
 
@@ -2145,7 +2181,8 @@ int
 
 Description
 -----------
-Adds a vertice in the array. return the actual vertex number.
+Adds a vertice in the array. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex);
 
@@ -2163,7 +2200,8 @@ int
 
 Description
 -----------
-Adds a vertice in the array. return the actual vertex number.
+Adds a vertice in the array. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Graphic3d_Vec3 & theVertex);
 
@@ -2183,7 +2221,8 @@ int
 
 Description
 -----------
-Adds a vertice in the array. return the actual vertex number.
+Adds a vertice in the array. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
@@ -2203,7 +2242,8 @@ int
 
 Description
 -----------
-Adds a vertice in the array. return the actual vertex number.
+Adds a vertice in the array. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
@@ -2222,7 +2262,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false return the actual vertex number.
+Adds a vertice and vertex color in the vertex array. Warning: theColor is ignored when the hasVColors constructor parameter is False 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Quantity_Color & theColor);
 
@@ -2241,7 +2282,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode return the actual vertex number.
+Adds a vertice and vertex color in the vertex array. Warning: theColor is ignored when the hasVColors constructor parameter is False @code theColor32 = Alpha << 24 + Blue << 16 + Green << 8 + Red @endcode 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Standard_Integer theColor32);
 
@@ -2260,7 +2302,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false return the actual vertex number.
+Adds a vertice and vertex color in the vertex array. Warning: theColor is ignored when the hasVColors constructor parameter is False 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Graphic3d_Vec4ub & theColor);
 
@@ -2279,7 +2322,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex normal in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex normal in the vertex array. Warning: theNormal is ignored when the hasVNormals constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal);
 
@@ -2302,7 +2346,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex normal in the vertex array. Warning: Normal is ignored when the hasVNormals constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ);
 
@@ -2325,7 +2370,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex normal in the vertex array. Warning: Normal is ignored when the hasVNormals constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theNX, const Standard_ShortReal theNY, const Standard_ShortReal theNZ);
 
@@ -2345,7 +2391,8 @@ int
 
 Description
 -----------
-Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. return the actual vertex number.
+Adds a vertice,vertex normal and color in the vertex array. Warning: theNormal is ignored when the hasVNormals constructor parameter is False and theColor is ignored when the hasVColors constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const Quantity_Color & theColor);
 
@@ -2365,7 +2412,8 @@ int
 
 Description
 -----------
-Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode return the actual vertex number.
+Adds a vertice,vertex normal and color in the vertex array. Warning: theNormal is ignored when the hasVNormals constructor parameter is False and theColor is ignored when the hasVColors constructor parameter is False. @code theColor32 = Alpha << 24 + Blue << 16 + Green << 8 + Red @endcode 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const Standard_Integer theColor32);
 
@@ -2384,7 +2432,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex texture in the vertex array. thetexel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex texture in the vertex array. theTexel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Pnt2d & theTexel);
 
@@ -2406,7 +2455,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex texture coordinates in the vertex array. Texel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theTX, const Standard_Real theTY);
 
@@ -2428,7 +2478,8 @@ int
 
 Description
 -----------
-Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice and vertex texture coordinates in the vertex array. Texel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theTX, const Standard_ShortReal theTY);
 
@@ -2448,7 +2499,8 @@ int
 
 Description
 -----------
-Adds a vertice,vertex normal and texture in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thetexel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice,vertex normal and texture in the vertex array. Warning: theNormal is ignored when the hasVNormals constructor parameter is False and theTexel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const gp_Pnt2d & theTexel);
 
@@ -2473,7 +2525,8 @@ int
 
 Description
 -----------
-Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice,vertex normal and texture in the vertex array. Warning: Normal is ignored when the hasVNormals constructor parameter is False and Texel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ, const Standard_Real theTX, const Standard_Real theTY);
 
@@ -2498,7 +2551,8 @@ int
 
 Description
 -----------
-Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
+Adds a vertice,vertex normal and texture in the vertex array. Warning: Normal is ignored when the hasVNormals constructor parameter is False and Texel is ignored when the hasVTexels constructor parameter is False. 
+Return: the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theNX, const Standard_ShortReal theNY, const Standard_ShortReal theNZ, const Standard_ShortReal theTX, const Standard_ShortReal theTY);
 
@@ -2529,7 +2583,7 @@ int
 
 Description
 -----------
-Returns the edge number at rank therank.
+Returns the edge number at rank theRank.
 ") Bound;
 		Standard_Integer Bound(const Standard_Integer theRank);
 
@@ -2547,7 +2601,7 @@ Quantity_Color
 
 Description
 -----------
-Returns the bound color at rank therank from the bound table if defined.
+Returns the bound color at rank theRank from the bound table if defined.
 ") BoundColor;
 		Quantity_Color BoundColor(const Standard_Integer theRank);
 
@@ -2567,7 +2621,7 @@ theB: float
 
 Description
 -----------
-Returns the bound color values at rank therank from the bound table if defined.
+Returns the bound color values at rank theRank from the bound table if defined.
 ") BoundColor;
 		void BoundColor(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2606,7 +2660,7 @@ opencascade::handle<Graphic3d_BoundBuffer>
 
 Description
 -----------
-Returns optional bounds buffer.
+primitives / assigning colors) Returns optional bounds buffer.
 ") Bounds;
 		const opencascade::handle<Graphic3d_BoundBuffer> & Bounds();
 
@@ -2667,7 +2721,7 @@ int
 
 Description
 -----------
-Returns the vertex index at rank therank in the range [1,edgenumber()].
+Returns the vertex index at rank theRank in the range [1,EdgeNumber()].
 ") Edge;
 		Standard_Integer Edge(const Standard_Integer theRank);
 
@@ -2706,7 +2760,7 @@ bool
 
 Description
 -----------
-Returns true when bound colors array is defined.
+Returns True when bound colors array is defined.
 ") HasBoundColors;
 		Standard_Boolean HasBoundColors();
 
@@ -2719,7 +2773,7 @@ bool
 
 Description
 -----------
-Returns true when vertex colors array is defined.
+Returns True when vertex colors array is defined.
 ") HasVertexColors;
 		Standard_Boolean HasVertexColors();
 
@@ -2732,7 +2786,7 @@ bool
 
 Description
 -----------
-Returns true when vertex normals array is defined.
+Returns True when vertex normals array is defined.
 ") HasVertexNormals;
 		Standard_Boolean HasVertexNormals();
 
@@ -2745,7 +2799,7 @@ bool
 
 Description
 -----------
-Returns true when vertex texels array is defined.
+Returns True when vertex texels array is defined.
 ") HasVertexTexels;
 		Standard_Boolean HasVertexTexels();
 
@@ -2771,7 +2825,7 @@ bool
 
 Description
 -----------
-Returns true only when the contains of this array is available.
+Returns True only when the contains of this array is available.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -2803,7 +2857,7 @@ None
 
 Description
 -----------
-Change the bound color of rank theindex in the array.
+Change the bound color of rank theIndex in the array.
 ") SetBoundColor;
 		void SetBoundColor(const Standard_Integer theIndex, const Quantity_Color & theColor);
 
@@ -2824,7 +2878,7 @@ None
 
 Description
 -----------
-Change the bound color of rank theindex in the array.
+Change the bound color of rank theIndex in the array.
 ") SetBoundColor;
 		void SetBoundColor(const Standard_Integer theIndex, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
@@ -2843,7 +2897,9 @@ None
 
 Description
 -----------
-Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node color.
+Change the vertex color in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theColor node color.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Quantity_Color & theColor);
 
@@ -2864,7 +2920,11 @@ None
 
 Description
 -----------
-Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] ther red color value within [0, 1] range @param[in] theg green color value within [0, 1] range @param[in] theb blue color value within [0, 1] range.
+Change the vertex color in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theR red color value within [0, 1] range 
+Input parameter: theG green color value within [0, 1] range 
+Input parameter: theB blue color value within [0, 1] range.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
@@ -2883,7 +2943,9 @@ None
 
 Description
 -----------
-Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node rgba color values within [0, 255] range.
+Change the vertex color in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theColor node RGBA color values within [0, 255] range.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Graphic3d_Vec4ub & theColor);
 
@@ -2902,7 +2964,9 @@ None
 
 Description
 -----------
-Change the vertex color in the array. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor32 packed rgba color values.
+Change the vertex color in the array. @code theColor32 = Alpha << 24 + Blue << 16 + Green << 8 + Red @endcode 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theColor32 packed RGBA color values.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Standard_Integer theColor32);
 
@@ -2921,7 +2985,9 @@ None
 
 Description
 -----------
-Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenormal normalized surface normal.
+Change the vertex normal in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theNormal normalized surface normal.
 ") SetVertexNormal;
 		void SetVertexNormal(const Standard_Integer theIndex, const gp_Dir & theNormal);
 
@@ -2942,7 +3008,11 @@ None
 
 Description
 -----------
-Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenx surface normal x component @param[in] theny surface normal y component @param[in] thenz surface normal z component.
+Change the vertex normal in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theNX surface normal X component 
+Input parameter: theNY surface normal Y component 
+Input parameter: theNZ surface normal Z component.
 ") SetVertexNormal;
 		void SetVertexNormal(const Standard_Integer theIndex, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ);
 
@@ -2961,7 +3031,9 @@ None
 
 Description
 -----------
-Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetexel node uv coordinates.
+Change the vertex texel in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theTexel node UV coordinates.
 ") SetVertexTexel;
 		void SetVertexTexel(const Standard_Integer theIndex, const gp_Pnt2d & theTexel);
 
@@ -2981,7 +3053,10 @@ None
 
 Description
 -----------
-Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetx node u coordinate @param[in] thety node v coordinate.
+Change the vertex texel in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theTX node U coordinate 
+Input parameter: theTY node V coordinate.
 ") SetVertexTexel;
 		void SetVertexTexel(const Standard_Integer theIndex, const Standard_Real theTX, const Standard_Real theTY);
 
@@ -3000,7 +3075,9 @@ None
 
 Description
 -----------
-Change the vertice of rank theindex in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thevertex 3d coordinates.
+Change the vertice of rank theIndex in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theVertex 3D coordinates.
 ") SetVertice;
 		void SetVertice(const Standard_Integer theIndex, const gp_Pnt & theVertex);
 
@@ -3021,7 +3098,11 @@ None
 
 Description
 -----------
-Change the vertice in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thex coordinate x @param[in] they coordinate y @param[in] thez coordinate z.
+Change the vertice in the array. 
+Input parameter: theIndex node index within [1, VertexNumberAllocated()] range 
+Input parameter: theX coordinate X 
+Input parameter: theY coordinate Y 
+Input parameter: theZ coordinate Z.
 ") SetVertice;
 		void SetVertice(const Standard_Integer theIndex, const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
@@ -3065,7 +3146,9 @@ Quantity_Color
 
 Description
 -----------
-Returns the vertex color at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return node color rgb value.
+Returns the vertex color at rank theRank from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range 
+Return: node color RGB value.
 ") VertexColor;
 		Quantity_Color VertexColor(const Standard_Integer theRank);
 
@@ -3084,7 +3167,8 @@ None
 
 Description
 -----------
-Returns the vertex color from the vertex table if defined. @param[in] theindex node index within [1, vertexnumber()] range @param[out] thecolor node rgba color values within [0, 255] range.
+Returns the vertex color from the vertex table if defined. 
+Input parameter: theIndex node index within [1, VertexNumber()] range @param[out] theColor node RGBA color values within [0, 255] range.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theIndex, Graphic3d_Vec4ub & theColor);
 
@@ -3104,7 +3188,8 @@ theB: float
 
 Description
 -----------
-Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] ther node red color component value within [0, 1] range @param[out] theg node green color component value within [0, 1] range @param[out] theb node blue color component value within [0, 1] range.
+Returns the vertex color values from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range @param[out] theR node red color component value within [0, 1] range @param[out] theG node green color component value within [0, 1] range @param[out] theB node blue color component value within [0, 1] range.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3122,7 +3207,8 @@ theColor: int
 
 Description
 -----------
-Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thecolor node rgba color packed into 32-bit integer.
+Returns the vertex color values from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range @param[out] theColor node RGBA color packed into 32-bit integer.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theRank, Standard_Integer &OutValue);
 
@@ -3140,7 +3226,9 @@ gp_Dir
 
 Description
 -----------
-Returns the vertex normal from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return normalized 3d vector defining surface normal.
+Returns the vertex normal from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range 
+Return: normalized 3D vector defining surface normal.
 ") VertexNormal;
 		gp_Dir VertexNormal(const Standard_Integer theRank);
 
@@ -3160,7 +3248,8 @@ theNZ: float
 
 Description
 -----------
-Returns the vertex normal coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thenx normal x coordinate @param[out] theny normal y coordinate @param[out] thenz normal z coordinate.
+Returns the vertex normal coordinates at rank theRank from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range @param[out] theNX normal X coordinate @param[out] theNY normal Y coordinate @param[out] theNZ normal Z coordinate.
 ") VertexNormal;
 		void VertexNormal(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3204,7 +3293,9 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the vertex texture at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return uv coordinates.
+Returns the vertex texture at rank theRank from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range 
+Return: UV coordinates.
 ") VertexTexel;
 		gp_Pnt2d VertexTexel(const Standard_Integer theRank);
 
@@ -3223,7 +3314,8 @@ theTY: float
 
 Description
 -----------
-Returns the vertex texture coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thetx texel u coordinate value @param[out] thety texel v coordinate value.
+Returns the vertex texture coordinates at rank theRank from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range @param[out] theTX texel U coordinate value @param[out] theTY texel V coordinate value.
 ") VertexTexel;
 		void VertexTexel(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3241,7 +3333,9 @@ gp_Pnt
 
 Description
 -----------
-Returns the vertice from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return node 3d coordinates.
+Returns the vertice from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range 
+Return: node 3D coordinates.
 ") Vertice;
 		gp_Pnt Vertice(const Standard_Integer theRank);
 
@@ -3261,7 +3355,8 @@ theZ: float
 
 Description
 -----------
-Returns the vertice coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thex node x coordinate value @param[out] they node y coordinate value @param[out] thez node z coordinate value.
+Returns the vertice coordinates at rank theRank from the vertex table if defined. 
+Input parameter: theRank node index within [1, VertexNumber()] range @param[out] theX node X coordinate value @param[out] theY node Y coordinate value @param[out] theZ node Z coordinate value.
 ") Vertice;
 		void Vertice(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3316,7 +3411,7 @@ float
 
 Description
 -----------
-Returns alpha cutoff threshold, for discarding fragments within graphic3d_alphamode_mask mode (0.5 by default). if the alpha value is greater than or equal to this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.
+Returns alpha cutoff threshold, for discarding fragments within Graphic3d_AlphaMode_Mask mode (0.5 by default). If the alpha value is greater than or equal to this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.
 ") AlphaCutoff;
 		Standard_ShortReal AlphaCutoff();
 
@@ -3329,7 +3424,7 @@ Graphic3d_AlphaMode
 
 Description
 -----------
-Returns the way how alpha value should be treated (graphic3d_alphamode_blendauto by default, for backward compatibility).
+Returns the way how alpha value should be treated (Graphic3d_AlphaMode_BlendAuto by default, for backward compatibility).
 ") AlphaMode;
 		Graphic3d_AlphaMode AlphaMode();
 
@@ -3446,7 +3541,7 @@ Quantity_Color
 
 Description
 -----------
-Return text background/shadow color; equals to edgecolor() property.
+Return text background/shadow color; equals to EdgeColor() property.
 ") ColorSubTitle;
 		const Quantity_Color & ColorSubTitle();
 
@@ -3459,7 +3554,7 @@ Quantity_ColorRGBA
 
 Description
 -----------
-Returns text background/shadow color; equals to edgecolor() property.
+Returns text background/shadow color; equals to EdgeColor() property.
 ") ColorSubTitleRGBA;
 		const Quantity_ColorRGBA & ColorSubTitleRGBA();
 
@@ -3568,7 +3663,7 @@ Aspect_TypeOfLine
 
 Description
 -----------
-Return edges line type (same as linetype()).
+Return edges line type (same as LineType()).
 ") EdgeLineType;
 		Aspect_TypeOfLine EdgeLineType();
 
@@ -3581,7 +3676,7 @@ float
 
 Description
 -----------
-Return width for edges in pixels (same as linewidth()).
+Return width for edges in pixels (same as LineWidth()).
 ") EdgeWidth;
 		Standard_ShortReal EdgeWidth();
 
@@ -3594,7 +3689,7 @@ Graphic3d_TypeOfBackfacingModel
 
 Description
 -----------
-Return face culling mode; graphic3d_faceculling_backclosed by default. a back-facing polygon is defined as a polygon whose vertices are in a clockwise order with respect to screen coordinates.
+Return face culling mode; Graphic3d_FaceCulling_BackClosed by default. A back-facing polygon is defined as a polygon whose vertices are in a clockwise order with respect to screen coordinates.
 ") FaceCulling;
 		Graphic3d_TypeOfBackfacingModel FaceCulling();
 
@@ -3620,7 +3715,7 @@ opencascade::handle<Graphic3d_HatchStyle>
 
 Description
 -----------
-Returns the hatch type used when interiorstyle is is_hatch.
+Returns the hatch type used when InteriorStyle is IS_HATCH.
 ") HatchStyle;
 		const opencascade::handle<Graphic3d_HatchStyle> & HatchStyle();
 
@@ -3659,7 +3754,7 @@ Aspect_InteriorStyle
 
 Description
 -----------
-Return interior rendering style; aspect_is_solid by default.
+Return interior rendering style; Aspect_IS_SOLID by default.
 ") InteriorStyle;
 		Aspect_InteriorStyle InteriorStyle();
 
@@ -3690,7 +3785,7 @@ bool
 
 Description
 -----------
-Returns true if marker should be drawn using marker sprite (either user-provided or generated).
+Returns True if marker should be drawn using marker sprite (either user-provided or generated).
 ") IsMarkerSprite;
 		bool IsMarkerSprite();
 
@@ -3703,7 +3798,7 @@ bool
 
 Description
 -----------
-Returns true when the text zoomable is on.
+Returns True when the Text Zoomable is on.
 ") IsTextZoomable;
 		bool IsTextZoomable();
 
@@ -3716,7 +3811,7 @@ uint16_t
 
 Description
 -----------
-Return custom stipple line pattern; 0xffff by default.
+Return custom stipple line pattern; 0xFFFF by default.
 ") LinePattern;
 		uint16_t LinePattern();
 
@@ -3742,7 +3837,7 @@ Aspect_TypeOfLine
 
 Description
 -----------
-Return line type; aspect_tol_solid by default.
+No available documentation.
 ") LineType;
 		Aspect_TypeOfLine LineType();
 
@@ -3768,7 +3863,7 @@ opencascade::handle<Graphic3d_MarkerImage>
 
 Description
 -----------
-Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
+Returns marker's image texture. Could be null handle if marker aspect has been initialized as default type of marker.
 ") MarkerImage;
 		const opencascade::handle<Graphic3d_MarkerImage> & MarkerImage();
 
@@ -3794,7 +3889,7 @@ Aspect_TypeOfMarker
 
 Description
 -----------
-Return marker type; aspect_tom_point by default.
+No available documentation.
 ") MarkerType;
 		Aspect_TypeOfMarker MarkerType();
 
@@ -3935,7 +4030,7 @@ None
 
 Description
 -----------
-Modifies text background/shadow color; equals to edgecolor() property.
+Modifies text background/shadow color; equals to EdgeColor() property.
 ") SetColorSubTitle;
 		void SetColorSubTitle(const Quantity_Color & theColor);
 
@@ -3953,7 +4048,7 @@ None
 
 Description
 -----------
-Modifies text background/shadow color; equals to edgecolor() property.
+Modifies text background/shadow color; equals to EdgeColor() property.
 ") SetColorSubTitle;
 		void SetColorSubTitle(const Quantity_ColorRGBA & theColor);
 
@@ -4087,7 +4182,7 @@ None
 
 Description
 -----------
-Modifies the edge line type (same as setlinetype()).
+Modifies the edge line type (same as SetLineType()).
 ") SetEdgeLineType;
 		void SetEdgeLineType(Aspect_TypeOfLine theType);
 
@@ -4100,7 +4195,7 @@ None
 
 Description
 -----------
-The edges of fillareas are not drawn.
+The edges of FillAreas are not drawn.
 ") SetEdgeOff;
 		void SetEdgeOff();
 
@@ -4113,7 +4208,7 @@ None
 
 Description
 -----------
-The edges of fillareas are drawn.
+The edges of FillAreas are drawn.
 ") SetEdgeOn;
 		void SetEdgeOn();
 
@@ -4131,7 +4226,7 @@ None
 
 Description
 -----------
-Modifies the edge thickness (same as setlinewidth()).
+Modifies the edge thickness (same as SetLineWidth()).
 ") SetEdgeWidth;
 		void SetEdgeWidth(Standard_Real theWidth);
 
@@ -4185,7 +4280,7 @@ None
 
 Description
 -----------
-Modifies the hatch type used when interiorstyle is is_hatch.
+Modifies the hatch type used when InteriorStyle is IS_HATCH.
 ") SetHatchStyle;
 		void SetHatchStyle(const opencascade::handle<Graphic3d_HatchStyle> & theStyle);
 
@@ -4203,7 +4298,7 @@ None
 
 Description
 -----------
-Modifies the hatch type used when interiorstyle is is_hatch @warning this method always creates a new handle for a given hatch style.
+Modifies the hatch type used when InteriorStyle is IS_HATCH @warning This method always creates a new handle for a given hatch style.
 ") SetHatchStyle;
 		void SetHatchStyle(const Aspect_HatchStyle theStyle);
 
@@ -4275,7 +4370,7 @@ None
 
 Description
 -----------
-Modifies the stipple line pattern, and changes line type to aspect_tol_userdefined for non-standard pattern.
+Modifies the stipple line pattern, and changes line type to Aspect_TOL_USERDEFINED for non-standard pattern.
 ") SetLinePattern;
 		void SetLinePattern(uint16_t thePattern);
 
@@ -4329,7 +4424,7 @@ None
 
 Description
 -----------
-Modifies the line thickness warning: raises standard_outofrange if the width is a negative value.
+Modifies the line thickness Warning: Raises Standard_OutOfRange if the width is a negative value.
 ") SetLineWidth;
 		void SetLineWidth(Standard_ShortReal theWidth);
 
@@ -4365,7 +4460,7 @@ None
 
 Description
 -----------
-Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
+Modifies the scale factor. Marker type Aspect_TOM_POINT is not affected by the marker size scale factor. It is always the smallest displayable dot. Warning: Raises Standard_OutOfRange if the scale is a negative value.
 ") SetMarkerScale;
 		void SetMarkerScale(const Standard_ShortReal theScale);
 
@@ -4421,7 +4516,7 @@ None
 
 Description
 -----------
-Sets up opengl polygon offsets mechanism. <amode> parameter can contain various combinations of aspect_polygonoffsetmode enumeration elements (aspect_pom_none means that polygon offsets are not changed). if <amode> is different from aspect_pom_off and aspect_pom_none, then <afactor> and <aunits> arguments are used by graphic renderer to calculate a depth offset value: //! offset = <afactor> * m + <aunits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific) //! default settings for occ 3d viewer: mode = aspect_pom_fill, factor = 1., units = 0. //! negative offset values move polygons closer to the viewport, while positive values shift polygons away. consult opengl reference for details (glpolygonoffset function description).
+Sets up OpenGL polygon offsets mechanism. <aMode> parameter can contain various combinations of Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means that polygon offsets are not changed). If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits> arguments are used by graphic renderer to calculate a depth offset value: //! offset = <aFactor> * m + <aUnits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific) //! Default settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0. //! Negative offset values move polygons closer to the viewport, while positive values shift polygons away. Consult OpenGL reference for details (glPolygonOffset function description).
 ") SetPolygonOffsets;
 		void SetPolygonOffsets(const Standard_Integer theMode, const Standard_ShortReal theFactor = 1.0f, const Standard_ShortReal theUnits = 0.0f);
 
@@ -4439,7 +4534,7 @@ None
 
 Description
 -----------
-Sets up opengl/glsl shader program.
+Sets up OpenGL/GLSL shader program.
 ") SetShaderProgram;
 		void SetShaderProgram(const opencascade::handle<Graphic3d_ShaderProgram> & theProgram);
 
@@ -4565,7 +4660,7 @@ None
 
 Description
 -----------
-Turns usage of aspect text.
+Turns usage of Aspect text.
 ") SetTextFontAspect;
 		void SetTextFontAspect(Font_FontAspect theFontAspect);
 
@@ -4619,7 +4714,7 @@ None
 
 Description
 -----------
-Assign texture to be mapped. see also settexturemapon() to actually activate texture mapping. ////standard_deprecated('deprecated method, settextureset() should be used instead').
+Assign texture to be mapped. See also SetTextureMapOn() to actually activate texture mapping.
 ") SetTextureMap;
 		void SetTextureMap(const opencascade::handle<Graphic3d_TextureMap> & theTexture);
 
@@ -4707,7 +4802,7 @@ Graphic3d_TypeOfShadingModel
 
 Description
 -----------
-Returns shading model; graphic3d_typeofshadingmodel_default by default. graphic3d_tosm_default means that shading model set as default for entire viewer will be used.
+Returns shading model; Graphic3d_TypeOfShadingModel_DEFAULT by default. Graphic3d_TOSM_DEFAULT means that Shading Model set as default for entire Viewer will be used.
 ") ShadingModel;
 		Graphic3d_TypeOfShadingModel ShadingModel();
 
@@ -4733,7 +4828,7 @@ float
 
 Description
 -----------
-Returns angle of degree.
+Returns Angle of degree.
 ") TextAngle;
 		Standard_ShortReal TextAngle();
 
@@ -4746,7 +4841,7 @@ Aspect_TypeOfDisplayText
 
 Description
 -----------
-Returns display type; aspect_todt_normal by default.
+Returns display type; Aspect_TODT_NORMAL by default.
 ") TextDisplayType;
 		Aspect_TypeOfDisplayText TextDisplayType();
 
@@ -4759,7 +4854,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the font; null string by default.
+No available documentation.
 ") TextFont;
 		const opencascade::handle<TCollection_HAsciiString> & TextFont();
 
@@ -4772,7 +4867,7 @@ Font_FontAspect
 
 Description
 -----------
-Returns text fontaspect.
+Returns text FontAspect.
 ") TextFontAspect;
 		Font_FontAspect TextFontAspect();
 
@@ -4785,7 +4880,7 @@ Aspect_TypeOfStyleText
 
 Description
 -----------
-Returns the text style; aspect_tost_normal by default.
+Returns the text style; Aspect_TOST_NORMAL by default.
 ") TextStyle;
 		Aspect_TypeOfStyleText TextStyle();
 
@@ -4798,7 +4893,7 @@ opencascade::handle<Graphic3d_TextureMap>
 
 Description
 -----------
-Return texture to be mapped. ////standard_deprecated('deprecated method, textureset() should be used instead').
+Return texture to be mapped.
 ") TextureMap;
 		opencascade::handle<Graphic3d_TextureMap> TextureMap();
 
@@ -4837,7 +4932,7 @@ bool
 
 Description
 -----------
-Returns true if mesh edges should be drawn (false by default).
+No available documentation.
 ") ToDrawEdges;
 		bool ToDrawEdges();
 
@@ -4850,7 +4945,7 @@ bool
 
 Description
 -----------
-Returns true if silhouette (outline) should be drawn (with edge color and width); false by default.
+Returns True if silhouette (outline) should be drawn (with edge color and width); False by default.
 ") ToDrawSilhouette;
 		bool ToDrawSilhouette();
 
@@ -4876,7 +4971,7 @@ bool
 
 Description
 -----------
-Returns true if drawing element edges should discard first edge in triangle; false by default. graphics hardware works mostly with triangles, so that wireframe presentation will draw triangle edges by default. this flag allows rendering wireframe presentation of quad-only array split into triangles. for this, quads should be split in specific order, so that the quad diagonal (to be not rendered) goes first: 1------2 / / triangle #1: 2-0-1; triangle #2: 0-2-3 0------3.
+Returns True if drawing element edges should discard first edge in triangle; False by default. Graphics hardware works mostly with triangles, so that wireframe presentation will draw triangle edges by default. This flag allows rendering wireframe presentation of quad-only array split into triangles. For this, quads should be split in specific order, so that the quad diagonal (to be NOT rendered) goes first: 1------2 / / Triangle #1: 2-0-1; Triangle #2: 0-2-3 0------3.
 ") ToSkipFirstEdge;
 		bool ToSkipFirstEdge();
 
@@ -4909,8 +5004,6 @@ No available documentation.
 ****************************/
 class Graphic3d_Attribute {
 	public:
-		Graphic3d_TypeOfAttribute Id;
-		Graphic3d_TypeOfData DataType;
 		/****** Graphic3d_Attribute::Stride ******/
 		/****** md5 signature: a77b679b88eb698b5f0f9ecff72ba9ba ******/
 		%feature("compactdefaultargs") Stride;
@@ -4938,7 +5031,7 @@ int
 
 Description
 -----------
-Return size of attribute of specified data type.
+Return: size of attribute of specified data type.
 ") Stride;
 		static Standard_Integer Stride(const Graphic3d_TypeOfData theType);
 
@@ -4956,14 +5049,6 @@ Return size of attribute of specified data type.
 ***********************/
 class Graphic3d_BSDF {
 	public:
-		Graphic3d_Vec4 Kc;
-		Graphic3d_Vec3 Kd;
-		Graphic3d_Vec4 Ks;
-		Graphic3d_Vec3 Kt;
-		Graphic3d_Vec3 Le;
-		Graphic3d_Vec4 Absorption;
-		Graphic3d_Fresnel FresnelCoat;
-		Graphic3d_Fresnel FresnelBase;
 		/****** Graphic3d_BSDF::Graphic3d_BSDF ******/
 		/****** md5 signature: ef3e719f8cae4402739eaa9a4c4dfb45 ******/
 		%feature("compactdefaultargs") Graphic3d_BSDF;
@@ -4973,7 +5058,7 @@ None
 
 Description
 -----------
-Creates uninitialized bsdf.
+Creates uninitialized BSDF.
 ") Graphic3d_BSDF;
 		 Graphic3d_BSDF();
 
@@ -4991,7 +5076,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Creates bsdf describing diffuse (lambertian) surface.
+Creates BSDF describing diffuse (Lambertian) surface.
 ") CreateDiffuse;
 		static Graphic3d_BSDF CreateDiffuse(const Graphic3d_Vec3 & theWeight);
 
@@ -5012,7 +5097,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Creates bsdf describing glass-like object. glass-like bsdf mixes refraction and reflection effects at grazing angles using physically-based fresnel dielectric model.
+Creates BSDF describing glass-like object. Glass-like BSDF mixes refraction and reflection effects at grazing angles using physically-based Fresnel dielectric model.
 ") CreateGlass;
 		static Graphic3d_BSDF CreateGlass(const Graphic3d_Vec3 & theWeight, const Graphic3d_Vec3 & theAbsorptionColor, const Standard_ShortReal theAbsorptionCoeff, const Standard_ShortReal theRefractionIndex);
 
@@ -5032,7 +5117,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Creates bsdf describing polished metallic-like surface.
+Creates BSDF describing polished metallic-like surface.
 ") CreateMetallic;
 		static Graphic3d_BSDF CreateMetallic(const Graphic3d_Vec3 & theWeight, const Graphic3d_Fresnel & theFresnel, const Standard_ShortReal theRoughness);
 
@@ -5050,7 +5135,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Creates bsdf from pbr metallic-roughness material.
+Creates BSDF from PBR metallic-roughness material.
 ") CreateMetallicRoughness;
 		static Graphic3d_BSDF CreateMetallicRoughness(const Graphic3d_PBRMaterial & thePbr);
 
@@ -5070,7 +5155,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Creates bsdf describing transparent object. transparent bsdf models simple transparency without refraction (the ray passes straight through the surface).
+Creates BSDF describing transparent object. Transparent BSDF models simple transparency without refraction (the ray passes straight through the surface).
 ") CreateTransparent;
 		static Graphic3d_BSDF CreateTransparent(const Graphic3d_Vec3 & theWeight, const Graphic3d_Vec3 & theAbsorptionColor, const Standard_ShortReal theAbsorptionCoeff);
 
@@ -5104,7 +5189,7 @@ None
 
 Description
 -----------
-Normalizes bsdf components.
+Normalizes BSDF components.
 ") Normalize;
 		void Normalize();
 
@@ -5136,10 +5221,6 @@ def __eq__(self, right):
 ******************************/
 class Graphic3d_BoundBuffer : public NCollection_Buffer {
 	public:
-		Graphic3d_Vec4 * Colors;
-		int * Bounds;
-		int NbBounds;
-		int NbMaxBounds;
 		/****** Graphic3d_BoundBuffer::Graphic3d_BoundBuffer ******/
 		/****** md5 signature: bc430c6678816ed8a40cb9c1495ede84 ******/
 		%feature("compactdefaultargs") Graphic3d_BoundBuffer;
@@ -5217,8 +5298,6 @@ Allocates new empty array.
 ******************************/
 class Graphic3d_BufferRange {
 	public:
-		int Start;
-		int Length;
 		/****** Graphic3d_BufferRange::Graphic3d_BufferRange ******/
 		/****** md5 signature: 94437812d48eee6ddb30061db0a9b246 ******/
 		%feature("compactdefaultargs") Graphic3d_BufferRange;
@@ -5273,7 +5352,7 @@ bool
 
 Description
 -----------
-Return true if range is empty.
+Return True if range is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -5304,7 +5383,7 @@ int
 
 Description
 -----------
-Return the upper element within the range.
+Return the Upper element within the range.
 ") Upper;
 		Standard_Integer Upper();
 
@@ -5337,7 +5416,7 @@ Graphic3d_BndBox3d
 
 Description
 -----------
-Returns aabb of the structure.
+Returns AABB of the structure.
 ") Box;
 		virtual Graphic3d_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -5356,7 +5435,7 @@ float
 
 Description
 -----------
-Calculates center of the aabb along given axis.
+Calculates center of the AABB along given axis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -5469,7 +5548,7 @@ float
 
 Description
 -----------
-Returns an angle in radians of the cone created by the spot; 30 degrees by default.
+No available documentation.
 ") Angle;
 		Standard_ShortReal Angle();
 
@@ -5500,7 +5579,7 @@ Quantity_Color
 
 Description
 -----------
-Returns the color of the light source; white by default.
+Returns the color of the light source; WHITE by default.
 ") Color;
 		const Quantity_Color & Color();
 
@@ -5513,7 +5592,7 @@ float
 
 Description
 -----------
-Returns intensity distribution of the spot light, within [0.0, 1.0] range; 1.0 by default. this coefficient should be converted into spotlight exponent within [0.0, 128.0] range: @code float aspotexponent = concentration() * 128.0; anattenuation *= pow (acosa, aspotexponent);' @endcode the concentration factor determines the dispersion of the light on the surface, the default value (1.0) corresponds to a minimum of dispersion.
+Returns intensity distribution of the spot light, within [0.0, 1.0] range; 1.0 by default. This coefficient should be converted into spotlight exponent within [0.0, 128.0] range: @code float aSpotExponent = Concentration() * 128.0; anAttenuation *= pow (aCosA, aSpotExponent);' @endcode The concentration factor determines the dispersion of the light on the surface, the default value (1.0) corresponds to a minimum of dispersion.
 ") Concentration;
 		Standard_ShortReal Concentration();
 
@@ -5526,7 +5605,7 @@ float
 
 Description
 -----------
-Returns constant attenuation factor of positional/spot light source; 1.0f by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
+Returns constant attenuation factor of positional/spot light source; 1.0f by default. Distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anAttenuation = 1.0 / (ConstAttenuation() + LinearAttenuation() * theDistance + QuadraticAttenuation() * theDistance * theDistance); @endcode.
 ") ConstAttenuation;
 		Standard_ShortReal ConstAttenuation();
 
@@ -5557,7 +5636,7 @@ gp_Dir
 
 Description
 -----------
-Returns direction of directional/spot light.
+No available documentation.
 ") Direction;
 		gp_Dir Direction();
 
@@ -5576,7 +5655,7 @@ theVz: float
 
 Description
 -----------
-Returns the thevx, thevy, thevz direction of the light source.
+Returns the theVx, theVy, theVz direction of the light source.
 ") Direction;
 		void Direction(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5589,7 +5668,7 @@ gp_Pnt
 
 Description
 -----------
-Returns location of positional/spot/directional light, which is the same as returned by position().
+Returns location of positional/spot/directional light, which is the same as returned by Position().
 ") DisplayPosition;
 		const gp_Pnt DisplayPosition();
 
@@ -5623,7 +5702,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return light resource identifier string.
+No available documentation.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
@@ -5636,7 +5715,7 @@ bool
 
 Description
 -----------
-Returns true if maximum distance of point light source is defined.
+Returns True if maximum distance of point light source is defined.
 ") HasRange;
 		bool HasRange();
 
@@ -5649,7 +5728,7 @@ bool
 
 Description
 -----------
-Alias for isheadlight().
+Alias for IsHeadlight().
 ") Headlight;
 		Standard_Boolean Headlight();
 
@@ -5662,7 +5741,7 @@ float
 
 Description
 -----------
-Returns the intensity of light source; 1.0 by default.
+No available documentation.
 ") Intensity;
 		Standard_ShortReal Intensity();
 
@@ -5675,7 +5754,7 @@ bool
 
 Description
 -----------
-Check that the light source is turned on; true by default. this flag affects all occurrences of light sources, where it was registered and activated; so that it is possible defining an active light in view which is actually in disabled state.
+Check that the light source is turned on; True by default. This flag affects all occurrences of light sources, where it was registered and activated; so that it is possible defining an active light in View which is actually in disabled state.
 ") IsEnabled;
 		Standard_Boolean IsEnabled();
 
@@ -5688,7 +5767,7 @@ bool
 
 Description
 -----------
-Returns true if the light is a headlight; false by default. headlight flag means that light position/direction are defined not in a world coordinate system, but relative to the camera orientation.
+Returns true if the light is a headlight; False by default. Headlight flag means that light position/direction are defined not in a World coordinate system, but relative to the camera orientation.
 ") IsHeadlight;
 		Standard_Boolean IsHeadlight();
 
@@ -5701,7 +5780,7 @@ float
 
 Description
 -----------
-Returns linear attenuation factor of positional/spot light source; 0.0 by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
+Returns linear attenuation factor of positional/spot light source; 0.0 by default. Distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anAttenuation = 1.0 / (ConstAttenuation() + LinearAttenuation() * theDistance + QuadraticAttenuation() * theDistance * theDistance); @endcode.
 ") LinearAttenuation;
 		Standard_ShortReal LinearAttenuation();
 
@@ -5727,7 +5806,7 @@ Graphic3d_Vec4
 
 Description
 -----------
-Returns the color of the light source with dummy alpha component, which should be ignored.
+Returns the color of the light source with dummy Alpha component, which should be ignored.
 ") PackedColor;
 		const Graphic3d_Vec4 & PackedColor();
 
@@ -5779,7 +5858,7 @@ gp_Pnt
 
 Description
 -----------
-Returns location of positional/spot light; (0, 0, 0) by default.
+No available documentation.
 ") Position;
 		const gp_Pnt Position();
 
@@ -5811,7 +5890,7 @@ float
 
 Description
 -----------
-Returns maximum distance on which point light source affects to objects and is considered during illumination calculations. 0.0 means disabling range considering at all without any distance limits. has sense only for point light sources (positional and spot). .
+Returns maximum distance on which point light source affects to objects and is considered during illumination calculations. 0.0 means disabling range considering at all without any distance limits. Has sense only for point light sources (positional and spot).
 ") Range;
 		Standard_ShortReal Range();
 
@@ -5824,7 +5903,7 @@ Standard_Size
 
 Description
 -----------
-Return modification counter.
+Return: modification counter.
 ") Revision;
 		Standard_Size Revision();
 
@@ -5842,7 +5921,7 @@ None
 
 Description
 -----------
-Angle in radians of the cone created by the spot, should be within range (0.0, m_pi).
+Angle in radians of the cone created by the spot, should be within range (0.0, M_PI).
 ") SetAngle;
 		void SetAngle(Standard_ShortReal theAngle);
 
@@ -5971,7 +6050,7 @@ None
 
 Description
 -----------
-Setup location of positional/spot/directional light, which is the same as setposition() but allows directional light source (technically having no position, but this point can be used for displaying light source presentation).
+Setup location of positional/spot/directional light, which is the same as SetPosition() but allows directional light source (technically having no position, but this point can be used for displaying light source presentation).
 ") SetDisplayPosition;
 		void SetDisplayPosition(const gp_Pnt & thePosition);
 
@@ -5989,7 +6068,7 @@ None
 
 Description
 -----------
-Change enabled state of the light state. this call does not remove or deactivate light source in views/viewers; instead it turns it off so that it just have no effect.
+Change enabled state of the light state. This call does not remove or deactivate light source in Views/Viewers; instead it turns it OFF so that it just have no effect.
 ") SetEnabled;
 		void SetEnabled(Standard_Boolean theIsOn);
 
@@ -6099,7 +6178,7 @@ None
 
 Description
 -----------
-Modifies maximum distance on which point light source affects to objects and is considered during illumination calculations. positional and spot lights are only point light sources. 0.0 means disabling range considering at all without any distance limits.
+Modifies maximum distance on which point light source affects to objects and is considered during illumination calculations. Positional and spot lights are only point light sources. 0.0 means disabling range considering at all without any distance limits.
 ") SetRange;
 		void SetRange(Standard_ShortReal theValue);
 
@@ -6117,7 +6196,7 @@ None
 
 Description
 -----------
-Modifies the smoothing angle (in radians) of directional light source; should be within range [0.0, m_pi/2].
+Modifies the smoothing angle (in radians) of directional light source; should be within range [0.0, M_PI/2].
 ") SetSmoothAngle;
 		void SetSmoothAngle(Standard_ShortReal theValue);
 
@@ -6161,7 +6240,7 @@ bool
 
 Description
 -----------
-Return true if shadow casting is enabled; false by default. has no effect in ray-tracing rendering mode.
+Return True if shadow casting is enabled; False by default. Has no effect in Ray-Tracing rendering mode.
 ") ToCastShadows;
 		Standard_Boolean ToCastShadows();
 
@@ -6174,7 +6253,7 @@ Graphic3d_TypeOfLightSource
 
 Description
 -----------
-Returns the type of the light, cannot be changed after object construction.
+Returns the Type of the Light, cannot be changed after object construction.
 ") Type;
 		Graphic3d_TypeOfLightSource Type();
 
@@ -6197,15 +6276,6 @@ class Graphic3d_CStructure : public Standard_Transient {
 	public:
 		class SubclassStructIterator {};
 		class SubclassGroupIterator {};
-		opencascade::handle<Graphic3d_ViewAffinity > ViewAffinity;
-		unsigned IsInfinite;
-		unsigned stick;
-		unsigned highlight;
-		unsigned visible;
-		unsigned HLRValidation;
-		unsigned IsForHighlight;
-		unsigned IsMutable;
-		unsigned Is2dText;
 		/****** Graphic3d_CStructure::BndBoxClipCheck ******/
 		/****** md5 signature: ba16999388552eb20836b46e7cf59d0f ******/
 		%feature("compactdefaultargs") BndBoxClipCheck;
@@ -6215,7 +6285,7 @@ bool
 
 Description
 -----------
-Returns whether check of object's bounding box clipping is enabled before drawing of object; true by default.
+Returns whether check of object's bounding box clipping is enabled before drawing of object; True by default.
 ") BndBoxClipCheck;
 		Standard_Boolean BndBoxClipCheck();
 
@@ -6228,7 +6298,7 @@ Graphic3d_BndBox3d
 
 Description
 -----------
-Return bounding box of this presentation.
+Return: bounding box of this presentation.
 ") BoundingBox;
 		const Graphic3d_BndBox3d & BoundingBox();
 
@@ -6241,7 +6311,7 @@ Graphic3d_BndBox3d
 
 Description
 -----------
-Return bounding box of this presentation without transformation matrix applied.
+Return: bounding box of this presentation without transformation matrix applied.
 ") ChangeBoundingBox;
 		Graphic3d_BndBox3d & ChangeBoundingBox();
 
@@ -6267,7 +6337,7 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 
 Description
 -----------
-Return associated clip planes.
+Return: associated clip planes.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
@@ -6337,7 +6407,7 @@ opencascade::handle<Graphic3d_GraphicDriver>
 
 Description
 -----------
-Return graphic driver created this structure.
+Return: graphic driver created this structure.
 ") GraphicDriver;
 		const opencascade::handle<Graphic3d_GraphicDriver> & GraphicDriver();
 
@@ -6381,7 +6451,7 @@ Graphic3d_SequenceOfGroup
 
 Description
 -----------
-Return graphic groups.
+Return: graphic groups.
 ") Groups;
 		const Graphic3d_SequenceOfGroup & Groups();
 
@@ -6394,7 +6464,7 @@ bool
 
 Description
 -----------
-Return true if some groups might have transform persistence; false by default.
+Return True if some groups might have transform persistence; False by default.
 ") HasGroupTransformPersistence;
 		bool HasGroupTransformPersistence();
 
@@ -6420,7 +6490,7 @@ int
 
 Description
 -----------
-Return structure id (generated by graphic3d_graphicdriver::newidentification() during structure construction).
+Return structure id (generated by Graphic3d_GraphicDriver::NewIdentification() during structure construction).
 ") Identification;
 		Standard_Integer Identification();
 
@@ -6433,7 +6503,7 @@ bool
 
 Description
 -----------
-Checks if the structure should be included into bvh tree or not.
+Checks if the structure should be included into BVH tree or not.
 ") IsAlwaysRendered;
 		Standard_Boolean IsAlwaysRendered();
 
@@ -6446,7 +6516,7 @@ bool
 
 Description
 -----------
-Returns false if the structure hits the current view volume, otherwise returns true.
+Returns False if the structure hits the current view volume, otherwise returns True.
 ") IsCulled;
 		Standard_Boolean IsCulled();
 
@@ -6477,7 +6547,7 @@ bool
 
 Description
 -----------
-Return structure visibility considering both view affinity and global visibility state.
+Return structure visibility considering both View Affinity and global visibility state.
 ") IsVisible;
 		bool IsVisible(const Standard_Integer theViewId);
 
@@ -6490,7 +6560,7 @@ None
 
 Description
 -----------
-Marks structure as overlapping the current view volume one. the method is called during traverse of bvh tree.
+Marks structure as overlapping the current view volume one. The method is called during traverse of BVH tree.
 ") MarkAsNotCulled;
 		void MarkAsNotCulled();
 
@@ -6619,7 +6689,7 @@ None
 
 Description
 -----------
-Marks structure as culled/not culled - note that isalwaysrendered() is ignored here!.
+Marks structure as culled/not culled - note that IsAlwaysRendered() is ignored here!.
 ") SetCulled;
 		void SetCulled(Standard_Boolean theIsCulled);
 
@@ -6727,7 +6797,7 @@ None
 
 Description
 -----------
-Set z layer id to display the structure in specified layer.
+Set z layer ID to display the structure in specified layer.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayerIndex);
 
@@ -6784,7 +6854,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Get z layer id.
+Get z layer ID.
 ") ZLayer;
 		Graphic3d_ZLayerId ZLayer();
 
@@ -6889,7 +6959,7 @@ None
 
 Description
 -----------
-Default constructor. initializes camera with the following properties: eye (0, 0, -2); center (0, 0, 0); up (0, 1, 0); type (orthographic); fovy (45); scale (1000); isstereo(false); znear (0.001); zfar (3000.0); aspect(1); zfocus(1.0); zfocustype(relative); iod(0.05); iodtype(relative).
+Default constructor. Initializes camera with the following properties: Eye (0, 0, -2); Center (0, 0, 0); Up (0, 1, 0); Type (Orthographic); FOVy (45); Scale (1000); IsStereo(false); ZNear (0.001); ZFar (3000.0); Aspect(1); ZFocus(1.0); ZFocusType(Relative); IOD(0.05); IODType(Relative).
 ") Graphic3d_Camera;
 		 Graphic3d_Camera();
 
@@ -6907,7 +6977,8 @@ None
 
 Description
 -----------
-Copy constructor. @param theother [in] the camera to copy from.
+Copy constructor. 
+Input parameter: theOther the camera to copy from.
 ") Graphic3d_Camera;
 		 Graphic3d_Camera(const opencascade::handle<Graphic3d_Camera> & theOther);
 
@@ -6920,7 +6991,8 @@ float
 
 Description
 -----------
-Get camera display ratio. return display ratio.
+Get camera display ratio. 
+Return: display ratio.
 ") Aspect;
 		Standard_Real Aspect();
 
@@ -6933,7 +7005,8 @@ gp_XYZ
 
 Description
 -----------
-Get camera axial scale. return camera's axial scale.
+Get camera axial scale. 
+Return: Camera's axial scale.
 ") AxialScale;
 		const gp_XYZ AxialScale();
 
@@ -6946,7 +7019,8 @@ gp_Pnt
 
 Description
 -----------
-Get center of the camera, e.g. the point where camera looks at. this point is computed as eye() translated along direction() at distance(). return the point where the camera looks at.
+Get Center of the camera, e.g. the point where camera looks at. This point is computed as Eye() translated along Direction() at Distance(). 
+Return: the point where the camera looks at.
 ") Center;
 		gp_Pnt Center();
 
@@ -6964,7 +7038,9 @@ gp_Pnt
 
 Description
 -----------
-Convert point from projection coordinate space to view coordinate space. @param thepnt [in] the point in ndc. return point in vcs.
+Convert point from projection coordinate space to view coordinate space. 
+Input parameter: thePnt the point in NDC. 
+Return: point in VCS.
 ") ConvertProj2View;
 		gp_Pnt ConvertProj2View(const gp_Pnt & thePnt);
 
@@ -6982,7 +7058,9 @@ gp_Pnt
 
 Description
 -----------
-Convert point from view coordinate space to projection coordinate space. @param thepnt [in] the point in vcs. return point in ndc.
+Convert point from view coordinate space to projection coordinate space. 
+Input parameter: thePnt the point in VCS. 
+Return: point in NDC.
 ") ConvertView2Proj;
 		gp_Pnt ConvertView2Proj(const gp_Pnt & thePnt);
 
@@ -7000,7 +7078,9 @@ gp_Pnt
 
 Description
 -----------
-Convert point from view coordinate space to world coordinates. @param thepnt [in] the 3d point in vcs. return point in wcs.
+Convert point from view coordinate space to world coordinates. 
+Input parameter: thePnt the 3D point in VCS. 
+Return: point in WCS.
 ") ConvertView2World;
 		gp_Pnt ConvertView2World(const gp_Pnt & thePnt);
 
@@ -7018,7 +7098,9 @@ gp_Pnt
 
 Description
 -----------
-Convert point from world coordinate space to view coordinate space. @param thepnt [in] the 3d point in wcs. return point in vcs.
+Convert point from world coordinate space to view coordinate space. 
+Input parameter: thePnt the 3D point in WCS. 
+Return: point in VCS.
 ") ConvertWorld2View;
 		gp_Pnt ConvertWorld2View(const gp_Pnt & thePnt);
 
@@ -7036,7 +7118,8 @@ None
 
 Description
 -----------
-Copy properties of another camera. @param theother [in] the camera to copy from.
+Copy properties of another camera. 
+Input parameter: theOther the camera to copy from.
 ") Copy;
 		void Copy(const opencascade::handle<Graphic3d_Camera> & theOther);
 
@@ -7085,7 +7168,7 @@ gp_Dir
 
 Description
 -----------
-Get camera look direction. return camera look direction.
+No available documentation.
 ") Direction;
 		const gp_Dir Direction();
 
@@ -7098,7 +7181,8 @@ float
 
 Description
 -----------
-Get distance of eye from camera center. return the distance.
+Get distance of Eye from camera Center. 
+Return: the distance.
 ") Distance;
 		Standard_Real Distance();
 
@@ -7132,7 +7216,8 @@ gp_Pnt
 
 Description
 -----------
-Get camera eye position. return camera eye location.
+Get camera Eye position. 
+Return: camera eye location.
 ") Eye;
 		const gp_Pnt Eye();
 
@@ -7145,7 +7230,7 @@ float
 
 Description
 -----------
-Get field of view (fov) restriction for 2d on-screen elements; 180 degrees by default. when 2d fov is smaller than fovy or fovx, 2d elements defined within offset from view corner will be extended to fit into specified 2d fov. this can be useful to make 2d elements sharply visible, like in case of hmd normally having extra large fovy.
+Get Field Of View (FOV) restriction for 2D on-screen elements; 180 degrees by default. When 2D FOV is smaller than FOVy or FOVx, 2D elements defined within offset from view corner will be extended to fit into specified 2D FOV. This can be useful to make 2D elements sharply visible, like in case of HMD normally having extra large FOVy.
 ") FOV2d;
 		Standard_Real FOV2d();
 
@@ -7158,7 +7243,8 @@ float
 
 Description
 -----------
-Get field of view (fov) in x axis. return the fov value in degrees.
+Get Field Of View (FOV) in x axis. 
+Return: the FOV value in degrees.
 ") FOVx;
 		Standard_Real FOVx();
 
@@ -7171,7 +7257,8 @@ float
 
 Description
 -----------
-Get field of view (fov) in y axis. return the fov value in degrees.
+Get Field Of View (FOV) in y axis. 
+Return: the FOV value in degrees.
 ") FOVy;
 		Standard_Real FOVy();
 
@@ -7191,7 +7278,7 @@ bool
 
 Description
 -----------
-Adjust camera to fit in specified aabb.
+Adjust camera to fit in specified AABB.
 ") FitMinMax;
 		bool FitMinMax(const Bnd_Box & theBox, const Standard_Real theResolution, const bool theToEnlargeIfLine);
 
@@ -7214,7 +7301,7 @@ None
 
 Description
 -----------
-Calculate wcs frustum planes for the camera projection volume. frustum is a convex volume determined by six planes directing inwards. the frustum planes are usually used as inputs for camera algorithms. thus, if any changes to projection matrix calculation are necessary, the frustum planes calculation should be also touched. @param theleft [out] the frustum plane for left side of view. @param theright [out] the frustum plane for right side of view. @param thebottom [out] the frustum plane for bottom side of view. @param thetop [out] the frustum plane for top side of view. @param thenear [out] the frustum plane for near side of view. @param thefar [out] the frustum plane for far side of view.
+Calculate WCS frustum planes for the camera projection volume. Frustum is a convex volume determined by six planes directing inwards. The frustum planes are usually used as inputs for camera algorithms. Thus, if any changes to projection matrix calculation are necessary, the frustum planes calculation should be also touched. @param[out] theLeft the frustum plane for left side of view. @param[out] theRight the frustum plane for right side of view. @param[out] theBottom the frustum plane for bottom side of view. @param[out] theTop the frustum plane for top side of view. @param[out] theNear the frustum plane for near side of view. @param[out] theFar the frustum plane for far side of view.
 ") Frustum;
 		void Frustum(gp_Pln & theLeft, gp_Pln & theRight, gp_Pln & theBottom, gp_Pln & theTop, gp_Pln & theNear, gp_Pln & theFar);
 
@@ -7233,7 +7320,7 @@ None
 
 Description
 -----------
-Fill array of current view frustum corners. the size of this array is equal to frustumverticesnb. the order of vertices is as defined in frustumvert_* enumeration.
+Fill array of current view frustum corners. The size of this array is equal to FrustumVerticesNB. The order of vertices is as defined in FrustumVert_* enumeration.
 ") FrustumPoints;
 		void FrustumPoints(NCollection_Array1<Graphic3d_Vec3d> & thePoints, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
@@ -7246,7 +7333,8 @@ Graphic3d_Camera::IODType
 
 Description
 -----------
-Get intraocular distance definition type. return definition type used for intraocular distance.
+Get Intraocular distance definition type. 
+Return: definition type used for Intraocular distance.
 ") GetIODType;
 		Graphic3d_Camera::IODType GetIODType();
 
@@ -7259,7 +7347,8 @@ float
 
 Description
 -----------
-Get intraocular distance value. return absolute or relative iod value depending on its definition type.
+Get Intraocular distance value. 
+Return: absolute or relative IOD value depending on its definition type.
 ") IOD;
 		Standard_Real IOD();
 
@@ -7280,7 +7369,11 @@ None
 
 Description
 -----------
-Linear interpolation tool for camera orientation and position. this tool interpolates camera parameters scale, eye, center, rotation (up and direction vectors) independently. @sa graphic3d_cameralerp //! eye/center interpolation is performed through defining an anchor point in-between center and eye. the anchor position is defined as point near to the camera point which has smaller translation part. the main idea is to keep the distance between center and eye (which will change if center and eye translation will be interpolated independently). e.g.: - when both center and eye are moved at the same vector -> both will be just translated by straight line; - when center is not moved -> camera eye will move around center through arc; - when eye is not moved -> camera center will move around eye through arc; - when both center and eye are move by different vectors -> transformation will be something in between, and will try interpolate linearly the distance between center and eye. //! this transformation might be not in line with user expectations. in this case, application might define intermediate camera positions for interpolation or implement own interpolation logic. //! @param thestart [in] initial camera position @param theend [in] final camera position @param thet [in] step between initial and final positions within [0,1] range @param thecamera [out] interpolation result.
+Linear interpolation tool for camera orientation and position. This tool interpolates camera parameters scale, eye, center, rotation (up and direction vectors) independently. 
+See also: Graphic3d_CameraLerp //! Eye/Center interpolation is performed through defining an anchor point in-between Center and Eye. The anchor position is defined as point near to the camera point which has smaller translation part. The main idea is to keep the distance between Center and Eye (which will change if Center and Eye translation will be interpolated independently). E.g.: - When both Center and Eye are moved at the same vector -> both will be just translated by straight line; - When Center is not moved -> camera Eye will move around Center through arc; - When Eye is not moved -> camera Center will move around Eye through arc; - When both Center and Eye are move by different vectors -> transformation will be something in between, and will try interpolate linearly the distance between Center and Eye. //! This transformation might be not in line with user expectations. In this case, application might define intermediate camera positions for interpolation or implement own interpolation logic. //! 
+Input parameter: theStart initial camera position 
+Input parameter: theEnd final camera position 
+Input parameter: theT step between initial and final positions within [0,1] range @param[out] theCamera interpolation result.
 ") Interpolate;
 		static void Interpolate(const opencascade::handle<Graphic3d_Camera> & theStart, const opencascade::handle<Graphic3d_Camera> & theEnd, const double theT, opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -7293,7 +7386,7 @@ None
 
 Description
 -----------
-Invalidate orientation matrix. the matrix will be updated on request.
+Invalidate orientation matrix. The matrix will be updated on request.
 ") InvalidateOrientation;
 		void InvalidateOrientation();
 
@@ -7306,7 +7399,7 @@ None
 
 Description
 -----------
-Invalidate state of projection matrix. the matrix will be updated on request.
+Invalidate state of projection matrix. The matrix will be updated on request.
 ") InvalidateProjection;
 		void InvalidateProjection();
 
@@ -7319,7 +7412,7 @@ bool
 
 Description
 -----------
-Return true if custom projection matrix is set.
+Return True if custom projection matrix is set.
 ") IsCustomMonoProjection;
 		bool IsCustomMonoProjection();
 
@@ -7332,7 +7425,7 @@ bool
 
 Description
 -----------
-Return true if custom stereo frustums are set.
+Return True if custom stereo frustums are set.
 ") IsCustomStereoFrustum;
 		bool IsCustomStereoFrustum();
 
@@ -7345,7 +7438,7 @@ bool
 
 Description
 -----------
-Return true if custom stereo projection matrices are set.
+Return True if custom stereo projection matrices are set.
 ") IsCustomStereoProjection;
 		bool IsCustomStereoProjection();
 
@@ -7358,7 +7451,8 @@ bool
 
 Description
 -----------
-Check that the camera projection is orthographic. return boolean flag that indicates whether the camera's projection is orthographic or not.
+Check that the camera projection is orthographic. 
+Return: boolean flag that indicates whether the camera's projection is orthographic or not.
 ") IsOrthographic;
 		Standard_Boolean IsOrthographic();
 
@@ -7371,7 +7465,8 @@ bool
 
 Description
 -----------
-Check whether the camera projection is stereo. please note that stereo rendering is now implemented with support of quad buffering. return boolean flag indicating whether the stereographic l/r projection is chosen.
+Check whether the camera projection is stereo. Please note that stereo rendering is now implemented with support of Quad buffering. 
+Return: boolean flag indicating whether the stereographic L/R projection is chosen.
 ") IsStereo;
 		Standard_Boolean IsStereo();
 
@@ -7384,7 +7479,7 @@ bool
 
 Description
 -----------
-Return true if camera should calculate projection matrix for [0, 1] depth range or for [-1, 1] range. false by default.
+Return True if camera should calculate projection matrix for [0, 1] depth range or for [-1, 1] range. False by default.
 ") IsZeroToOneDepth;
 		Standard_Boolean IsZeroToOneDepth();
 
@@ -7402,7 +7497,9 @@ None
 
 Description
 -----------
-Sets camera eye position. unlike seteye(), this method only changes eye point and preserves camera direction. @param theeye [in] the location of camera's eye. @sa seteye().
+Sets camera Eye position. Unlike SetEye(), this method only changes Eye point and preserves camera direction. 
+Input parameter: theEye the location of camera's Eye. 
+See also: SetEye().
 ") MoveEyeTo;
 		void MoveEyeTo(const gp_Pnt & theEye);
 
@@ -7415,7 +7512,7 @@ float
 
 Description
 -----------
-Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovx exceeds fov2d.
+Return offset to the view corner in NDC space within dimension X for 2d on-screen elements, which is normally 0.5. Can be clamped when FOVx exceeds FOV2d.
 ") NDC2dOffsetX;
 		Standard_Real NDC2dOffsetX();
 
@@ -7428,7 +7525,7 @@ float
 
 Description
 -----------
-Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovy exceeds fov2d.
+Return offset to the view corner in NDC space within dimension X for 2d on-screen elements, which is normally 0.5. Can be clamped when FOVy exceeds FOV2d.
 ") NDC2dOffsetY;
 		Standard_Real NDC2dOffsetY();
 
@@ -7441,7 +7538,7 @@ Graphic3d_Mat4d
 
 Description
 -----------
-Get orientation matrix. return camera orientation matrix.
+No available documentation.
 ") OrientationMatrix;
 		const Graphic3d_Mat4d & OrientationMatrix();
 
@@ -7454,7 +7551,8 @@ Graphic3d_Mat4
 
 Description
 -----------
-Get orientation matrix of standard_shortreal precision. return camera orientation matrix.
+Get orientation matrix of Standard_ShortReal precision. 
+Return: camera orientation matrix.
 ") OrientationMatrixF;
 		const Graphic3d_Mat4 & OrientationMatrixF();
 
@@ -7498,7 +7596,7 @@ gp_Pnt
 
 Description
 -----------
-Project point from world coordinate space to normalized device coordinates (mapping). @param thepnt [in] the 3d point in wcs. return mapped point in ndc.
+No available documentation.
 ") Project;
 		gp_Pnt Project(const gp_Pnt & thePnt);
 
@@ -7511,7 +7609,8 @@ Graphic3d_Mat4d
 
 Description
 -----------
-Get monographic or middle point projection matrix used for monographic rendering and for point projection / unprojection. return monographic projection matrix.
+Get monographic or middle point projection matrix used for monographic rendering and for point projection / unprojection. 
+Return: monographic projection matrix.
 ") ProjectionMatrix;
 		const Graphic3d_Mat4d & ProjectionMatrix();
 
@@ -7524,7 +7623,8 @@ Graphic3d_Mat4
 
 Description
 -----------
-Get monographic or middle point projection matrix of standard_shortreal precision used for monographic rendering and for point projection / unprojection. return monographic projection matrix.
+Get monographic or middle point projection matrix of Standard_ShortReal precision used for monographic rendering and for point projection / unprojection. 
+Return: monographic projection matrix.
 ") ProjectionMatrixF;
 		const Graphic3d_Mat4 & ProjectionMatrixF();
 
@@ -7550,7 +7650,7 @@ Graphic3d_Mat4d
 
 Description
 -----------
-Return stereographic matrix computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
+Return: stereographic matrix computed for left eye. Please note that this method is used for rendering for <i>Projection_Stereo</i>.
 ") ProjectionStereoLeft;
 		const Graphic3d_Mat4d & ProjectionStereoLeft();
 
@@ -7563,7 +7663,7 @@ Graphic3d_Mat4
 
 Description
 -----------
-Return stereographic matrix of standard_shortreal precision computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
+Return: stereographic matrix of Standard_ShortReal precision computed for left eye. Please note that this method is used for rendering for <i>Projection_Stereo</i>.
 ") ProjectionStereoLeftF;
 		const Graphic3d_Mat4 & ProjectionStereoLeftF();
 
@@ -7576,7 +7676,7 @@ Graphic3d_Mat4d
 
 Description
 -----------
-Return stereographic matrix computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
+Return: stereographic matrix computed for right eye. Please note that this method is used for rendering for <i>Projection_Stereo</i>.
 ") ProjectionStereoRight;
 		const Graphic3d_Mat4d & ProjectionStereoRight();
 
@@ -7589,7 +7689,7 @@ Graphic3d_Mat4
 
 Description
 -----------
-Return stereographic matrix of standard_shortreal precision computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
+Return: stereographic matrix of Standard_ShortReal precision computed for right eye. Please note that this method is used for rendering for <i>Projection_Stereo</i>.
 ") ProjectionStereoRightF;
 		const Graphic3d_Mat4 & ProjectionStereoRightF();
 
@@ -7602,7 +7702,7 @@ Graphic3d_Camera::Projection
 
 Description
 -----------
-Return camera projection type.
+Return: camera projection type.
 ") ProjectionType;
 		Graphic3d_Camera::Projection ProjectionType();
 
@@ -7628,7 +7728,8 @@ float
 
 Description
 -----------
-Get camera scale. return camera scale factor.
+Get camera scale. 
+Return: camera scale factor.
 ") Scale;
 		Standard_Real Scale();
 
@@ -7646,7 +7747,8 @@ None
 
 Description
 -----------
-Changes width / height display ratio. @param theaspect [in] the display ratio.
+Changes width / height display ratio. 
+Input parameter: theAspect the display ratio.
 ") SetAspect;
 		void SetAspect(const Standard_Real theAspect);
 
@@ -7664,7 +7766,8 @@ None
 
 Description
 -----------
-Set camera axial scale. @param theaxialscale [in] the axial scale vector.
+Set camera axial scale. 
+Input parameter: theAxialScale the axial scale vector.
 ") SetAxialScale;
 		void SetAxialScale(const gp_XYZ & theAxialScale);
 
@@ -7682,7 +7785,8 @@ None
 
 Description
 -----------
-Sets center of the camera, e.g. the point where camera looks at. this methods changes camera direction, so that the new direction is computed from current eye position to specified center position. @param thecenter [in] the point where the camera looks at.
+Sets Center of the camera, e.g. the point where camera looks at. This methods changes camera direction, so that the new direction is computed from current Eye position to specified Center position. 
+Input parameter: theCenter the point where the camera looks at.
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
 
@@ -7719,7 +7823,7 @@ None
 
 Description
 -----------
-Set custom stereo frustums. these can be retrieved from apis like openvr.
+Set custom stereo frustums. These can be retrieved from APIs like OpenVR.
 ") SetCustomStereoFrustums;
 		void SetCustomStereoFrustums(const Aspect_FrustumLRBT<Standard_Real> & theFrustumL, const Aspect_FrustumLRBT<Standard_Real> & theFrustumR);
 
@@ -7740,7 +7844,11 @@ None
 
 Description
 -----------
-Set custom stereo projection matrices. @param theprojl [in] left eye projection matrix @param theheadtoeyel [in] left head to eye translation matrix @param theprojr [in] right eye projection matrix @param theheadtoeyer [in] right head to eye translation matrix.
+Set custom stereo projection matrices. 
+Input parameter: theProjL left eye projection matrix 
+Input parameter: theHeadToEyeL left head to eye translation matrix 
+Input parameter: theProjR right eye projection matrix 
+Input parameter: theHeadToEyeR right head to eye translation matrix.
 ") SetCustomStereoProjection;
 		void SetCustomStereoProjection(const Graphic3d_Mat4d & theProjL, const Graphic3d_Mat4d & theHeadToEyeL, const Graphic3d_Mat4d & theProjR, const Graphic3d_Mat4d & theHeadToEyeR);
 
@@ -7758,7 +7866,8 @@ None
 
 Description
 -----------
-Sets camera look direction and computes the new eye position relative to current center. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
+Sets camera look direction and computes the new Eye position relative to current Center. WARNING! This method does NOT verify that the current Up() vector is orthogonal to the new Direction. 
+Input parameter: theDir the direction.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDir);
 
@@ -7776,7 +7885,8 @@ None
 
 Description
 -----------
-Sets camera look direction preserving the current eye() position. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
+Sets camera look direction preserving the current Eye() position. WARNING! This method does NOT verify that the current Up() vector is orthogonal to the new Direction. 
+Input parameter: theDir the direction.
 ") SetDirectionFromEye;
 		void SetDirectionFromEye(const gp_Dir & theDir);
 
@@ -7794,7 +7904,8 @@ None
 
 Description
 -----------
-Set distance of eye from camera center. @param thedistance [in] the distance.
+Set distance of Eye from camera Center. 
+Input parameter: theDistance the distance.
 ") SetDistance;
 		void SetDistance(const Standard_Real theDistance);
 
@@ -7812,7 +7923,9 @@ None
 
 Description
 -----------
-Sets camera eye position. warning! for backward compatibility reasons, this method also changes view direction, so that the new direction is computed from new eye position to old center position. @param theeye [in] the location of camera's eye. @sa moveeyeto(), seteyeandcenter().
+Sets camera Eye position. WARNING! For backward compatibility reasons, this method also changes view direction, so that the new direction is computed from new Eye position to old Center position. 
+Input parameter: theEye the location of camera's Eye. 
+See also: MoveEyeTo(), SetEyeAndCenter().
 ") SetEye;
 		void SetEye(const gp_Pnt & theEye);
 
@@ -7831,7 +7944,9 @@ None
 
 Description
 -----------
-Sets camera eye and center positions. @param theeye [in] the location of camera's eye @param thecenter [in] the location of camera's center.
+Sets camera Eye and Center positions. 
+Input parameter: theEye the location of camera's Eye 
+Input parameter: theCenter the location of camera's Center.
 ") SetEyeAndCenter;
 		void SetEyeAndCenter(const gp_Pnt & theEye, const gp_Pnt & theCenter);
 
@@ -7849,7 +7964,7 @@ None
 
 Description
 -----------
-Set field of view (fov) restriction for 2d on-screen elements.
+Set Field Of View (FOV) restriction for 2D on-screen elements.
 ") SetFOV2d;
 		void SetFOV2d(Standard_Real theFOV);
 
@@ -7867,7 +7982,8 @@ None
 
 Description
 -----------
-Set field of view (fov) in y axis for perspective projection. field of view in x axis is automatically scaled from view aspect ratio. @param thefovy [in] the fov in degrees.
+Set Field Of View (FOV) in y axis for perspective projection. Field of View in x axis is automatically scaled from view aspect ratio. 
+Input parameter: theFOVy the FOV in degrees.
 ") SetFOVy;
 		void SetFOVy(const Standard_Real theFOVy);
 
@@ -7886,7 +8002,9 @@ None
 
 Description
 -----------
-Sets intraocular distance. @param thetype [in] the iod definition type. iod can be defined as absolute value or relatively to (as coefficient of) camera focal length. @param theiod [in] the intraocular distance.
+Sets Intraocular distance. 
+Input parameter: theType the IOD definition type. IOD can be defined as absolute value or relatively to (as coefficient of) camera focal length. 
+Input parameter: theIOD the Intraocular distance.
 ") SetIOD;
 		void SetIOD(IODType theType, const Standard_Real theIOD);
 
@@ -7917,7 +8035,8 @@ None
 
 Description
 -----------
-Change camera projection type. when switching to perspective projection from orthographic one, the znear and zfar are reset to default values (0.001, 3000.0) if less than 0.0. @param[in] theprojection the camera projection type.
+Change camera projection type. When switching to perspective projection from orthographic one, the ZNear and ZFar are reset to default values (0.001, 3000.0) if less than 0.0. 
+Input parameter: theProjection the camera projection type.
 ") SetProjectionType;
 		void SetProjectionType(Projection theProjection);
 
@@ -7935,7 +8054,8 @@ None
 
 Description
 -----------
-Sets camera scale. for orthographic projection the scale factor corresponds to parallel scale of view mapping (i.e. size of viewport). for perspective camera scale is converted to distance. the scale specifies equal size of the view projection in both dimensions assuming that the aspect is 1.0. the projection height and width are specified with the scale and correspondingly multiplied by the aspect. @param thescale [in] the scale factor.
+Sets camera scale. For orthographic projection the scale factor corresponds to parallel scale of view mapping (i.e. size of viewport). For perspective camera scale is converted to distance. The scale specifies equal size of the view projection in both dimensions assuming that the aspect is 1.0. The projection height and width are specified with the scale and correspondingly multiplied by the aspect. 
+Input parameter: theScale the scale factor.
 ") SetScale;
 		void SetScale(const Standard_Real theScale);
 
@@ -7953,7 +8073,8 @@ None
 
 Description
 -----------
-Sets the tile defining the drawing sub-area within view. note that tile defining a region outside the view boundaries is also valid - use method graphic3d_cameratile::cropped() to assign a cropped copy. @param thetile tile definition.
+Sets the Tile defining the drawing sub-area within View. Note that tile defining a region outside the view boundaries is also valid - use method Graphic3d_CameraTile::Cropped() to assign a cropped copy. 
+Parameter theTile tile definition.
 ") SetTile;
 		void SetTile(const Graphic3d_CameraTile & theTile);
 
@@ -7971,7 +8092,9 @@ None
 
 Description
 -----------
-Sets camera up direction vector, orthogonal to camera direction. warning! this method does not verify that the new up vector is orthogonal to the current direction(). @param theup [in] the up direction vector. @sa orthogonalizeup().
+Sets camera Up direction vector, orthogonal to camera direction. WARNING! This method does NOT verify that the new Up vector is orthogonal to the current Direction(). 
+Input parameter: theUp the Up direction vector. 
+See also: OrthogonalizeUp().
 ") SetUp;
 		void SetUp(const gp_Dir & theUp);
 
@@ -7990,7 +8113,9 @@ None
 
 Description
 -----------
-Sets stereographic focus distance. @param thetype [in] the focus definition type. focus can be defined as absolute value or relatively to (as coefficient of) coefficient of camera focal length. @param thezfocus [in] the focus absolute value or coefficient depending on the passed definition type.
+Sets stereographic focus distance. 
+Input parameter: theType the focus definition type. Focus can be defined as absolute value or relatively to (as coefficient of) coefficient of camera focal length. 
+Input parameter: theZFocus the focus absolute value or coefficient depending on the passed definition type.
 ") SetZFocus;
 		void SetZFocus(FocusType theType, const Standard_Real theZFocus);
 
@@ -8009,7 +8134,9 @@ None
 
 Description
 -----------
-Change the near and far z-clipping plane positions. for orthographic projection, theznear, thezfar can be negative or positive. for perspective projection, only positive values are allowed. program error exception is raised if non-positive values are specified for perspective projection or theznear >= thezfar. @param theznear [in] the distance of the plane from the eye. @param thezfar [in] the distance of the plane from the eye.
+Change the Near and Far Z-clipping plane positions. For orthographic projection, theZNear, theZFar can be negative or positive. For perspective projection, only positive values are allowed. Program error exception is raised if non-positive values are specified for perspective projection or theZNear >= theZFar. 
+Input parameter: theZNear the distance of the plane from the Eye. 
+Input parameter: theZFar the distance of the plane from the Eye.
 ") SetZRange;
 		void SetZRange(const Standard_Real theZNear, const Standard_Real theZFar);
 
@@ -8061,7 +8188,7 @@ None
 
 Description
 -----------
-Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
+Get stereo projection matrices. @param[out] theProjL left eye projection matrix @param[out] theHeadToEyeL left head to eye translation matrix @param[out] theProjR right eye projection matrix @param[out] theHeadToEyeR right head to eye translation matrix.
 ") StereoProjection;
 		void StereoProjection(Graphic3d_Mat4d & theProjL, Graphic3d_Mat4d & theHeadToEyeL, Graphic3d_Mat4d & theProjR, Graphic3d_Mat4d & theHeadToEyeR);
 
@@ -8082,7 +8209,7 @@ None
 
 Description
 -----------
-Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
+Get stereo projection matrices. @param[out] theProjL left eye projection matrix @param[out] theHeadToEyeL left head to eye translation matrix @param[out] theProjR right eye projection matrix @param[out] theHeadToEyeR right head to eye translation matrix.
 ") StereoProjectionF;
 		void StereoProjectionF(Graphic3d_Mat4 & theProjL, Graphic3d_Mat4 & theHeadToEyeL, Graphic3d_Mat4 & theProjR, Graphic3d_Mat4 & theHeadToEyeR);
 
@@ -8113,7 +8240,7 @@ None
 
 Description
 -----------
-Transform orientation components of the camera: eye, up and center points. @param thetrsf [in] the transformation to apply.
+No available documentation.
 ") Transform;
 		void Transform(const gp_Trsf & theTrsf);
 
@@ -8131,7 +8258,9 @@ gp_Pnt
 
 Description
 -----------
-Unproject point from normalized device coordinates to world coordinate space. @param thepnt [in] the ndc point. return 3d point in wcs.
+Unproject point from normalized device coordinates to world coordinate space. 
+Input parameter: thePnt the NDC point. 
+Return: 3D point in WCS.
 ") UnProject;
 		gp_Pnt UnProject(const gp_Pnt & thePnt);
 
@@ -8144,7 +8273,8 @@ gp_Dir
 
 Description
 -----------
-Get camera up direction vector. return camera's up direction vector.
+Get camera Up direction vector. 
+Return: Camera's Up direction vector.
 ") Up;
 		const gp_Dir Up();
 
@@ -8157,7 +8287,8 @@ gp_XYZ
 
 Description
 -----------
-Calculate view plane size at center (target) point and distance between zfar and znear planes. return values in form of gp_pnt (width, height, depth).
+Calculate view plane size at center (target) point and distance between ZFar and ZNear planes. 
+Return: values in form of gp_Pnt (Width, Height, Depth).
 ") ViewDimensions;
 		gp_XYZ ViewDimensions();
 
@@ -8175,7 +8306,9 @@ gp_XYZ
 
 Description
 -----------
-Calculate view plane size at center point with specified z offset and distance between zfar and znear planes. @param thezvalue [in] the distance from the eye in eye-to-center direction return values in form of gp_pnt (width, height, depth).
+Calculate view plane size at center point with specified Z offset and distance between ZFar and ZNear planes. 
+Input parameter: theZValue the distance from the eye in eye-to-center direction 
+Return: values in form of gp_Pnt (Width, Height, Depth).
 ") ViewDimensions;
 		gp_XYZ ViewDimensions(const Standard_Real theZValue);
 
@@ -8188,7 +8321,7 @@ Graphic3d_WorldViewProjState
 
 Description
 -----------
-Return projection modification state of the camera.
+No available documentation.
 ") WorldViewProjState;
 		const Graphic3d_WorldViewProjState & WorldViewProjState();
 
@@ -8214,7 +8347,8 @@ float
 
 Description
 -----------
-Get the far z-clipping plane position. return the distance of the plane from the eye.
+Get the Far Z-clipping plane position. 
+Return: the distance of the plane from the Eye.
 ") ZFar;
 		Standard_Real ZFar();
 
@@ -8235,7 +8369,10 @@ theZFar: float
 
 Description
 -----------
-Estimate z-min and z-max planes of projection volume to match the displayed objects. the methods ensures that view volume will be close by depth range to the displayed objects. fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. for zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. @param[in] thescalefactor the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed. @param[in] theminmax applicative min max boundaries. @param[in] thegraphicbb real graphical boundaries (not accounting infinite flag).
+Estimate Z-min and Z-max planes of projection volume to match the displayed objects. The methods ensures that view volume will be close by depth range to the displayed objects. Fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. For zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. 
+Input parameter: theScaleFactor the scale factor for Z-range. The range between Z-min, Z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. Program error exception is thrown if negative or zero value is passed. 
+Input parameter: theMinMax applicative min max boundaries. 
+Input parameter: theGraphicBB real graphical boundaries (not accounting infinite flag).
 ") ZFitAll;
 		bool ZFitAll(const Standard_Real theScaleFactor, const Bnd_Box & theMinMax, const Bnd_Box & theGraphicBB, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -8255,7 +8392,7 @@ None
 
 Description
 -----------
-Change z-min and z-max planes of projection volume to match the displayed objects.
+Change Z-min and Z-max planes of projection volume to match the displayed objects.
 ") ZFitAll;
 		void ZFitAll(const Standard_Real theScaleFactor, const Bnd_Box & theMinMax, const Bnd_Box & theGraphicBB);
 
@@ -8268,7 +8405,8 @@ float
 
 Description
 -----------
-Get stereographic focus value. return absolute or relative stereographic focus value depending on its definition type.
+Get stereographic focus value. 
+Return: absolute or relative stereographic focus value depending on its definition type.
 ") ZFocus;
 		Standard_Real ZFocus();
 
@@ -8281,7 +8419,8 @@ Graphic3d_Camera::FocusType
 
 Description
 -----------
-Get stereographic focus definition type. return definition type used for stereographic focus.
+Get stereographic focus definition type. 
+Return: definition type used for stereographic focus.
 ") ZFocusType;
 		Graphic3d_Camera::FocusType ZFocusType();
 
@@ -8294,7 +8433,8 @@ float
 
 Description
 -----------
-Get the near z-clipping plane position. return the distance of the plane from the eye.
+Get the Near Z-clipping plane position. 
+Return: the distance of the plane from the Eye.
 ") ZNear;
 		Standard_Real ZNear();
 
@@ -8314,10 +8454,6 @@ Get the near z-clipping plane position. return the distance of the plane from th
 *****************************/
 class Graphic3d_CameraTile {
 	public:
-		Graphic3d_Vec2i TotalSize;
-		Graphic3d_Vec2i TileSize;
-		Graphic3d_Vec2i Offset;
-		bool IsTopDown;
 		/****** Graphic3d_CameraTile::Graphic3d_CameraTile ******/
 		/****** md5 signature: a7ff85bc9b9a5b07dcd347f9ff8a974a ******/
 		%feature("compactdefaultargs") Graphic3d_CameraTile;
@@ -8327,7 +8463,7 @@ None
 
 Description
 -----------
-Default constructor. initializes the empty tile of zero size and lower-left offset orientation. such tile is considered uninitialized (invalid).
+Default constructor. Initializes the empty Tile of zero size and lower-left offset orientation. Such Tile is considered uninitialized (invalid).
 ") Graphic3d_CameraTile;
 		 Graphic3d_CameraTile();
 
@@ -8374,7 +8510,7 @@ bool
 
 Description
 -----------
-Return true if tile has been defined.
+Return true if Tile has been defined.
 ") IsValid;
 		bool IsValid();
 
@@ -8429,7 +8565,7 @@ None
 
 Description
 -----------
-Default constructor. initializes clip plane container with the following properties: - equation (0.0, 0.0, 1.0, 0) - ison (true), - iscapping (false), - material (graphic3d_nameofmaterial_default), - texture (null), - hatchstyle (aspect_hs_horizontal), - ishatchon (false).
+Default constructor. Initializes clip plane container with the following properties: - Equation (0.0, 0.0, 1.0, 0) - IsOn (True), - IsCapping (False), - Material (Graphic3d_NameOfMaterial_DEFAULT), - Texture (NULL), - HatchStyle (Aspect_HS_HORIZONTAL), - IsHatchOn (False).
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane();
 
@@ -8447,7 +8583,8 @@ None
 
 Description
 -----------
-Copy constructor. @param theother [in] the copied plane.
+Copy constructor. 
+Input parameter: theOther the copied plane.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const Graphic3d_ClipPlane & theOther);
 
@@ -8465,7 +8602,8 @@ None
 
 Description
 -----------
-Construct clip plane for the passed equation. by default the plane is on, capping is turned off. @param theequation [in] the plane equation.
+Construct clip plane for the passed equation. By default the plane is on, capping is turned off. 
+Input parameter: theEquation the plane equation.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const Graphic3d_Vec4d & theEquation);
 
@@ -8483,7 +8621,8 @@ None
 
 Description
 -----------
-Construct clip plane from the passed geometrical definition. by default the plane is on, capping is turned off. @param theplane [in] the plane.
+Construct clip plane from the passed geometrical definition. By default the plane is on, capping is turned off. 
+Input parameter: thePlane the plane.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const gp_Pln & thePlane);
 
@@ -8496,7 +8635,8 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 
 Description
 -----------
-Return capping aspect. return capping surface rendering aspect.
+Return capping aspect. 
+Return: capping surface rendering aspect.
 ") CappingAspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & CappingAspect();
 
@@ -8522,7 +8662,7 @@ opencascade::handle<Graphic3d_HatchStyle>
 
 Description
 -----------
-Return hatching style.
+Return: hatching style.
 ") CappingCustomHatch;
 		const opencascade::handle<Graphic3d_HatchStyle> & CappingCustomHatch();
 
@@ -8535,7 +8675,7 @@ Aspect_HatchStyle
 
 Description
 -----------
-Return hatching style.
+Return: hatching style.
 ") CappingHatch;
 		Aspect_HatchStyle CappingHatch();
 
@@ -8548,7 +8688,7 @@ Graphic3d_MaterialAspect
 
 Description
 -----------
-Return capping material.
+Return: capping material.
 ") CappingMaterial;
 		const Graphic3d_MaterialAspect & CappingMaterial();
 
@@ -8561,7 +8701,7 @@ opencascade::handle<Graphic3d_TextureMap>
 
 Description
 -----------
-Return capping texture map.
+Return: capping texture map.
 ") CappingTexture;
 		opencascade::handle<Graphic3d_TextureMap> CappingTexture();
 
@@ -8587,7 +8727,7 @@ opencascade::handle<Graphic3d_ClipPlane>
 
 Description
 -----------
-Return the previous plane in a chain of planes defining logical and operation, or null if there is no chain or it is a first element in chain. when clipping is defined by a chain of planes, it cuts a space only in case if check fails for all planes in chain.
+Return the previous plane in a Chain of Planes defining logical AND operation, or NULL if there is no Chain or it is a first element in Chain. When clipping is defined by a Chain of Planes, it cuts a space only in case if check fails for all Planes in Chain.
 ") ChainPreviousPlane;
 		opencascade::handle<Graphic3d_ClipPlane> ChainPreviousPlane();
 
@@ -8600,7 +8740,8 @@ opencascade::handle<Graphic3d_ClipPlane>
 
 Description
 -----------
-Clone plane. virtual method to simplify copying procedure if plane class is redefined at application level to add specific fields to it e.g. id, name, etc. return new instance of clipping plane with same properties and attributes.
+Clone plane. Virtual method to simplify copying procedure if plane class is redefined at application level to add specific fields to it e.g. id, name, etc. 
+Return: new instance of clipping plane with same properties and attributes.
 ") Clone;
 		virtual opencascade::handle<Graphic3d_ClipPlane> Clone();
 
@@ -8634,7 +8775,8 @@ Graphic3d_Vec4d
 
 Description
 -----------
-Get 4-component equation vector for clipping plane. return clipping plane equation vector.
+Get 4-component equation vector for clipping plane. 
+Return: clipping plane equation vector.
 ") GetEquation;
 		const Graphic3d_Vec4d & GetEquation();
 
@@ -8647,7 +8789,8 @@ TCollection_AsciiString
 
 Description
 -----------
-This id is used for managing associated resources in graphical driver. the clip plane can be assigned within a range of io which can be displayed in separate opengl contexts. for each of the context an associated opengl resource for graphical aspects should be created and kept. the resources are stored in graphical driver for each of individual groups of shared context under the clip plane identifier. return clip plane resource identifier string.
+This ID is used for managing associated resources in graphical driver. The clip plane can be assigned within a range of IO which can be displayed in separate OpenGl contexts. For each of the context an associated OpenGl resource for graphical aspects should be created and kept. The resources are stored in graphical driver for each of individual groups of shared context under the clip plane identifier. 
+Return: clip plane resource identifier string.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
@@ -8665,7 +8808,7 @@ bool
 
 Description
 -----------
-Check if the given bounding box is fully inside (or touches from inside) the half-space (e.g. not discarded by clipping plane).
+Check if the given bounding box is fully inside (or touches from inside) the half-space (e.g. NOT discarded by clipping plane).
 ") IsBoxFullInHalfspace;
 		bool IsBoxFullInHalfspace(const Graphic3d_BndBox3d & theBox);
 
@@ -8696,7 +8839,8 @@ bool
 
 Description
 -----------
-Check state of capping surface rendering. return true (turned on) or false depending on the state.
+Check state of capping surface rendering. 
+Return: true (turned on) or false depending on the state.
 ") IsCapping;
 		Standard_Boolean IsCapping();
 
@@ -8709,7 +8853,7 @@ bool
 
 Description
 -----------
-Return true if this item defines a conjunction (logical and) between a set of planes. graphic3d_clipplane item defines either a clipping halfspace (single clipping plane) or a clipping volume defined by a logical and (conjunction) operation between a set of planes defined as a chain (so that the volume cuts a space only in case if check fails for all planes in the chain). //! note that graphic3d_clipplane item cannot: - define a chain with logical or (disjunction) operation; this should be done through graphic3d_sequenceofhclipplane. - define nested chains. - disable chain items; only entire chain can be disabled (by disabled a head of chain). //! the head of a chain defines all visual properties of the chain, so that graphic3d_clipplane of next items in a chain merely defines only geometrical definition of the plane.
+Return True if this item defines a conjunction (logical AND) between a set of Planes. Graphic3d_ClipPlane item defines either a Clipping halfspace (single Clipping Plane) or a Clipping volume defined by a logical AND (conjunction) operation between a set of Planes defined as a Chain (so that the volume cuts a space only in case if check fails for ALL Planes in the Chain). //! Note that Graphic3d_ClipPlane item cannot: - Define a Chain with logical OR (disjunction) operation; this should be done through Graphic3d_SequenceOfHClipPlane. - Define nested Chains. - Disable Chain items; only entire Chain can be disabled (by disabled a head of Chain). //! The head of a Chain defines all visual properties of the Chain, so that Graphic3d_ClipPlane of next items in a Chain merely defines only geometrical definition of the plane.
 ") IsChain;
 		Standard_Boolean IsChain();
 
@@ -8722,7 +8866,7 @@ bool
 
 Description
 -----------
-Return true if hatching mask is turned on.
+Return: True if hatching mask is turned on.
 ") IsHatchOn;
 		Standard_Boolean IsHatchOn();
 
@@ -8735,7 +8879,8 @@ bool
 
 Description
 -----------
-Check that the clipping plane is turned on. return boolean flag indicating whether the plane is in on or off state.
+Check that the clipping plane is turned on. 
+Return: boolean flag indicating whether the plane is in on or off state.
 ") IsOn;
 		Standard_Boolean IsOn();
 
@@ -8766,7 +8911,7 @@ unsigned int
 
 Description
 -----------
-Return modification counter for aspect.
+Return: modification counter for aspect.
 ") MCountAspect;
 		unsigned int MCountAspect();
 
@@ -8779,7 +8924,7 @@ unsigned int
 
 Description
 -----------
-Return modification counter for equation.
+Return: modification counter for equation.
 ") MCountEquation;
 		unsigned int MCountEquation();
 
@@ -8792,7 +8937,7 @@ int
 
 Description
 -----------
-Return the number of chains in forward direction (including this item, so it is always >= 1). for a head of chain - returns the length of entire chain.
+Return the number of chains in forward direction (including this item, so it is always >= 1). For a head of Chain - returns the length of entire Chain.
 ") NbChainNextPlanes;
 		Standard_Integer NbChainNextPlanes();
 
@@ -8864,7 +9009,7 @@ bool
 
 Description
 -----------
-Check if the given bounding box is in and touch the clipping planes.
+Check if the given bounding box is In and touch the clipping planes.
 ") ProbeBoxTouch;
 		Standard_Boolean ProbeBoxTouch(const Graphic3d_BndBox3d & theBox);
 
@@ -8913,7 +9058,8 @@ Graphic3d_Vec4d
 
 Description
 -----------
-Get 4-component equation vector for clipping plane. return clipping plane equation vector.
+Get 4-component equation vector for clipping plane. 
+Return: clipping plane equation vector.
 ") ReversedEquation;
 		const Graphic3d_Vec4d & ReversedEquation();
 
@@ -8931,7 +9077,8 @@ None
 
 Description
 -----------
-Change state of capping surface rendering. @param theison [in] the flag specifying whether the graphic driver should perform rendering of capping surface produced by this plane. the graphic driver produces this surface for convex graphics by means of stencil-test and multi-pass rendering.
+Change state of capping surface rendering. 
+Input parameter: theIsOn the flag specifying whether the graphic driver should perform rendering of capping surface produced by this plane. The graphic driver produces this surface for convex graphics by means of stencil-test and multi-pass rendering.
 ") SetCapping;
 		void SetCapping(const Standard_Boolean theIsOn);
 
@@ -8985,7 +9132,8 @@ None
 
 Description
 -----------
-Set custom hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch pattern.
+Set custom hatch style (stipple) and turn hatching on. 
+Input parameter: theStyle the hatch pattern.
 ") SetCappingCustomHatch;
 		void SetCappingCustomHatch(const opencascade::handle<Graphic3d_HatchStyle> & theStyle);
 
@@ -9003,7 +9151,8 @@ None
 
 Description
 -----------
-Set hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch style.
+Set hatch style (stipple) and turn hatching on. 
+Input parameter: theStyle the hatch style.
 ") SetCappingHatch;
 		void SetCappingHatch(const Aspect_HatchStyle theStyle);
 
@@ -9047,7 +9196,8 @@ None
 
 Description
 -----------
-Set material for rendering capping surface. @param themat [in] the material.
+Set material for rendering capping surface. 
+Input parameter: theMat the material.
 ") SetCappingMaterial;
 		void SetCappingMaterial(const Graphic3d_MaterialAspect & theMat);
 
@@ -9065,7 +9215,8 @@ None
 
 Description
 -----------
-Set texture to be applied on capping surface. @param thetexture [in] the texture.
+Set texture to be applied on capping surface. 
+Input parameter: theTexture the texture.
 ") SetCappingTexture;
 		void SetCappingTexture(const opencascade::handle<Graphic3d_TextureMap> & theTexture);
 
@@ -9083,7 +9234,7 @@ None
 
 Description
 -----------
-Set the next plane in a chain of planes. this operation also updates relationship between chains (previous/next items), so that the previously set next plane is cut off.
+Set the next plane in a Chain of Planes. This operation also updates relationship between chains (Previous/Next items), so that the previously set Next plane is cut off.
 ") SetChainNextPlane;
 		void SetChainNextPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -9101,7 +9252,8 @@ None
 
 Description
 -----------
-Set plane equation by its geometrical definition. the equation is specified in 'world' coordinate system. @param theplane [in] the plane.
+Set plane equation by its geometrical definition. The equation is specified in 'world' coordinate system. 
+Input parameter: thePlane the plane.
 ") SetEquation;
 		void SetEquation(const gp_Pln & thePlane);
 
@@ -9119,7 +9271,8 @@ None
 
 Description
 -----------
-Set 4-component equation vector for clipping plane. the equation is specified in 'world' coordinate system. @param theequation [in] the xyzw (or 'abcd') equation vector.
+Set 4-component equation vector for clipping plane. The equation is specified in 'world' coordinate system. 
+Input parameter: theEquation the XYZW (or 'ABCD') equation vector.
 ") SetEquation;
 		void SetEquation(const Graphic3d_Vec4d & theEquation);
 
@@ -9137,7 +9290,8 @@ None
 
 Description
 -----------
-Change state of the clipping plane. @param theison [in] the flag specifying whether the graphic driver clipping by this plane should be turned on or off.
+Change state of the clipping plane. 
+Input parameter: theIsOn the flag specifying whether the graphic driver clipping by this plane should be turned on or off.
 ") SetOn;
 		void SetOn(const Standard_Boolean theIsOn);
 
@@ -9204,7 +9358,8 @@ gp_Pln
 
 Description
 -----------
-Get geometrical definition. return geometrical definition of clipping plane.
+Get geometrical definition. 
+Return: geometrical definition of clipping plane.
 ") ToPlane;
 		const gp_Pln ToPlane();
 
@@ -9217,7 +9372,7 @@ bool
 
 Description
 -----------
-Flag indicating whether material for capping plane should be taken from object. default value: false (use dedicated capping plane material).
+Flag indicating whether material for capping plane should be taken from object. Default value: False (use dedicated capping plane material).
 ") ToUseObjectMaterial;
 		bool ToUseObjectMaterial();
 
@@ -9243,7 +9398,7 @@ bool
 
 Description
 -----------
-Flag indicating whether shader program for capping plane should be taken from object. default value: false.
+Flag indicating whether shader program for capping plane should be taken from object. Default value: False.
 ") ToUseObjectShader;
 		bool ToUseObjectShader();
 
@@ -9256,7 +9411,7 @@ bool
 
 Description
 -----------
-Flag indicating whether texture for capping plane should be taken from object. default value: false.
+Flag indicating whether texture for capping plane should be taken from object. Default value: False.
 ") ToUseObjectTexture;
 		bool ToUseObjectTexture();
 
@@ -9303,7 +9458,7 @@ None
 
 Description
 -----------
-Caches view volume's vertices projections along its normals and aabbs dimensions. must be called at the beginning of each bvh tree traverse loop.
+Caches view volume's vertices projections along its normals and AABBs dimensions. Must be called at the beginning of each BVH tree traverse loop.
 ") CacheClipPtsProjections;
 		void CacheClipPtsProjections();
 
@@ -9363,7 +9518,11 @@ bool
 
 Description
 -----------
-Checks whether given aabb should be entirely culled or not. @param thectx [in] culling properties @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely outside of view frustum or culled by size/distance; false in case of partial or complete overlap (use theisinside to distinguish).
+Checks whether given AABB should be entirely culled or not. 
+Input parameter: theCtx culling properties 
+Input parameter: theMinPnt maximum point of AABB 
+Input parameter: theMaxPnt minimum point of AABB @param[out] theIsInside flag indicating if AABB is fully inside; initial value should be set to True 
+Return: True if AABB is completely outside of view frustum or culled by size/distance; False in case of partial or complete overlap (use theIsInside to distinguish).
 ") IsCulled;
 		bool IsCulled(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
@@ -9383,7 +9542,11 @@ bool
 
 Description
 -----------
-Detects if aabb overlaps view volume using separating axis theorem (sat). @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely outside of view frustum; false in case of partial or complete overlap (use theisinside to distinguish) @sa selectmgr_frustum::hasoverlap().
+Detects if AABB overlaps view volume using separating axis theorem (SAT). 
+Input parameter: theMinPnt maximum point of AABB 
+Input parameter: theMaxPnt minimum point of AABB @param[out] theIsInside flag indicating if AABB is fully inside; initial value should be set to True 
+Return: True if AABB is completely outside of view frustum; False in case of partial or complete overlap (use theIsInside to distinguish) 
+See also: SelectMgr_Frustum::hasOverlap().
 ") IsOutFrustum;
 		bool IsOutFrustum(const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
@@ -9404,7 +9567,10 @@ bool
 
 Description
 -----------
-Returns true if given aabb should be discarded by distance culling criterion. @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely behind culling distance; false in case of partial or complete overlap (use theisinside to distinguish).
+Returns True if given AABB should be discarded by distance culling criterion. 
+Input parameter: theMinPnt maximum point of AABB 
+Input parameter: theMaxPnt minimum point of AABB @param[out] theIsInside flag indicating if AABB is fully inside; initial value should be set to True 
+Return: True if AABB is completely behind culling distance; False in case of partial or complete overlap (use theIsInside to distinguish).
 ") IsTooDistant;
 		bool IsTooDistant(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
@@ -9424,7 +9590,7 @@ bool
 
 Description
 -----------
-Returns true if given aabb should be discarded by size culling criterion.
+Returns True if given AABB should be discarded by size culling criterion.
 ") IsTooSmall;
 		bool IsTooSmall(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt);
 
@@ -9456,7 +9622,9 @@ None
 
 Description
 -----------
-Retrieves view volume's planes equations and its vertices from projection and world-view matrices. @param thecamera [in] camera definition @param themodelworld [in] optional object transformation for computing frustum in object local coordinate system.
+Retrieves view volume's planes equations and its vertices from projection and world-view matrices. 
+Input parameter: theCamera camera definition 
+Input parameter: theModelWorld optional object transformation for computing frustum in object local coordinate system.
 ") SetViewVolume;
 		void SetViewVolume(const opencascade::handle<Graphic3d_Camera> & theCamera, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
@@ -9495,7 +9663,9 @@ float
 
 Description
 -----------
-Calculates signed distance from plane to point. @param thenormal [in] the plane's normal. @param thepnt [in].
+Calculates signed distance from plane to point. 
+Input parameter: theNormal the plane's normal. 
+Input parameter: thePnt.
 ") SignedPlanePointDistance;
 		Standard_Real SignedPlanePointDistance(const Graphic3d_Vec4d & theNormal, const Graphic3d_Vec4d & thePnt);
 
@@ -9600,7 +9770,7 @@ Graphic3d_FrameStatsDataTmp
 
 Description
 -----------
-Returns currently filling data frame for modification, should be called between ::framestart() and ::frameend() calls.
+Returns currently filling data frame for modification, should be called between ::FrameStart() and ::FrameEnd() calls.
 ") ActiveDataFrame;
 		Graphic3d_FrameStatsDataTmp & ActiveDataFrame();
 
@@ -9618,7 +9788,7 @@ Standard_Size
 
 Description
 -----------
-Returns value of specified counter for modification, should be called between ::framestart() and ::frameend() calls.
+Returns value of specified counter for modification, should be called between ::FrameStart() and ::FrameEnd() calls.
 ") ChangeCounter;
 		Standard_Size & ChangeCounter(Graphic3d_FrameStatsCounter theCounter);
 
@@ -9662,7 +9832,7 @@ Standard_Size
 
 Description
 -----------
-Returns value of specified counter, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
+Returns value of specified counter, cached between stats updates. Should NOT be called between ::FrameStart() and ::FrameEnd() calls.
 ") CounterValue;
 		Standard_Size CounterValue(Graphic3d_FrameStatsCounter theCounter);
 
@@ -9757,7 +9927,7 @@ float
 
 Description
 -----------
-Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
+Returns FPS (frames per seconds, elapsed time). This number indicates an actual frame rate averaged for several frames within UpdateInterval() duration, basing on a real elapsed time between updates.
 ") FrameRate;
 		Standard_Real FrameRate();
 
@@ -9770,7 +9940,7 @@ float
 
 Description
 -----------
-Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
+Returns CPU FPS (frames per seconds, CPU time). This number indicates a PREDICTED frame rate, basing on CPU elapsed time between updates and NOT real elapsed time (which might include periods of CPU inactivity). Number is expected to be greater then actual frame rate returned by FrameRate(). Values significantly greater actual frame rate indicate that rendering is limited by GPU performance (CPU is stalled in-between), while values around actual frame rate indicate rendering being limited by CPU performance (GPU is stalled in-between).
 ") FrameRateCpu;
 		Standard_Real FrameRateCpu();
 
@@ -9802,7 +9972,7 @@ bool
 
 Description
 -----------
-Returns true if some layers have been culled.
+Returns True if some Layers have been culled.
 ") HasCulledLayers;
 		Standard_Boolean HasCulledLayers();
 
@@ -9815,7 +9985,7 @@ bool
 
 Description
 -----------
-Returns true if some structures have been culled.
+Returns True if some structures have been culled.
 ") HasCulledStructs;
 		Standard_Boolean HasCulledStructs();
 
@@ -9841,7 +10011,7 @@ Graphic3d_FrameStatsData
 
 Description
 -----------
-Returns last data frame, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
+Returns last data frame, cached between stats updates. Should NOT be called between ::FrameStart() and ::FrameEnd() calls.
 ") LastDataFrame;
 		const Graphic3d_FrameStatsData & LastDataFrame();
 
@@ -9908,7 +10078,7 @@ float
 
 Description
 -----------
-Returns value of specified timer for modification, should be called between ::framestart() and ::frameend() calls. should not be called between ::framestart() and ::frameend() calls.
+Returns value of specified timer for modification, should be called between ::FrameStart() and ::FrameEnd() calls. Should NOT be called between ::FrameStart() and ::FrameEnd() calls.
 ") TimerValue;
 		Standard_Real TimerValue(Graphic3d_FrameStatsTimer theTimer);
 
@@ -10035,7 +10205,7 @@ float
 
 Description
 -----------
-Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
+Returns FPS (frames per seconds, elapsed time). This number indicates an actual frame rate averaged for several frames within UpdateInterval() duration, basing on a real elapsed time between updates.
 ") FrameRate;
 		Standard_Real FrameRate();
 
@@ -10048,7 +10218,7 @@ float
 
 Description
 -----------
-Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
+Returns CPU FPS (frames per seconds, CPU time). This number indicates a PREDICTED frame rate, basing on CPU elapsed time between updates and NOT real elapsed time (which might include periods of CPU inactivity). Number is expected to be greater then actual frame rate returned by FrameRate(). Values significantly greater actual frame rate indicate that rendering is limited by GPU performance (CPU is stalled in-between), while values around actual frame rate indicate rendering being limited by CPU performance (GPU is stalled in-between).
 ") FrameRateCpu;
 		Standard_Real FrameRateCpu();
 
@@ -10061,7 +10231,7 @@ float
 
 Description
 -----------
-Returns fps for immediate redraws.
+Returns FPS for immediate redraws.
 ") ImmediateFrameRate;
 		Standard_Real ImmediateFrameRate();
 
@@ -10074,7 +10244,7 @@ float
 
 Description
 -----------
-Returns cpu fps for immediate redraws.
+Returns CPU FPS for immediate redraws.
 ") ImmediateFrameRateCpu;
 		Standard_Real ImmediateFrameRateCpu();
 
@@ -10132,7 +10302,7 @@ None
 
 Description
 -----------
-Creates uninitialized fresnel factor.
+Creates uninitialized Fresnel factor.
 ") Graphic3d_Fresnel;
 		 Graphic3d_Fresnel();
 
@@ -10151,7 +10321,7 @@ Graphic3d_Fresnel
 
 Description
 -----------
-Creates fresnel factor for physical-based conductor model.
+Creates Fresnel factor for physical-based conductor model.
 ") CreateConductor;
 		static Graphic3d_Fresnel CreateConductor(Standard_ShortReal theRefractionIndex, Standard_ShortReal theAbsorptionIndex);
 
@@ -10170,7 +10340,7 @@ Graphic3d_Fresnel
 
 Description
 -----------
-Creates fresnel factor for physical-based conductor model (spectral version).
+Creates Fresnel factor for physical-based conductor model (spectral version).
 ") CreateConductor;
 		static Graphic3d_Fresnel CreateConductor(const Graphic3d_Vec3 & theRefractionIndex, const Graphic3d_Vec3 & theAbsorptionIndex);
 
@@ -10188,7 +10358,7 @@ Graphic3d_Fresnel
 
 Description
 -----------
-Creates fresnel factor for constant reflection.
+Creates Fresnel factor for constant reflection.
 ") CreateConstant;
 		static Graphic3d_Fresnel CreateConstant(const Standard_ShortReal theReflection);
 
@@ -10206,7 +10376,7 @@ Graphic3d_Fresnel
 
 Description
 -----------
-Creates fresnel factor for physical-based dielectric model.
+Creates Fresnel factor for physical-based dielectric model.
 ") CreateDielectric;
 		static Graphic3d_Fresnel CreateDielectric(Standard_ShortReal theRefractionIndex);
 
@@ -10224,7 +10394,7 @@ Graphic3d_Fresnel
 
 Description
 -----------
-Creates schlick's approximation of fresnel factor.
+Creates Schlick's approximation of Fresnel factor.
 ") CreateSchlick;
 		static Graphic3d_Fresnel CreateSchlick(const Graphic3d_Vec3 & theSpecularColor);
 
@@ -10258,7 +10428,7 @@ Graphic3d_FresnelModel
 
 Description
 -----------
-Returns type of fresnel.
+Returns type of Fresnel.
 ") FresnelType;
 		Graphic3d_FresnelModel FresnelType();
 
@@ -10271,7 +10441,7 @@ Graphic3d_Vec4
 
 Description
 -----------
-Returns serialized representation of fresnel factor.
+Returns serialized representation of Fresnel factor.
 ") Serialize;
 		Graphic3d_Vec4 Serialize();
 
@@ -10327,7 +10497,7 @@ None
 
 Description
 -----------
-Default constructor constructs the default graduated trihedron with grid, x, y, z axes, and tickmarks.
+Default constructor Constructs the default graduated trihedron with grid, X, Y, Z axes, and tickmarks.
 ") Graphic3d_GraduatedTrihedron;
 		 Graphic3d_GraduatedTrihedron(TCollection_AsciiString theNamesFont = "Arial", const Font_FontAspect & theNamesStyle = Font_FA_Bold, const Standard_Integer theNamesSize = 12, TCollection_AsciiString theValuesFont = "Arial", const Font_FontAspect & theValuesStyle = Font_FA_Regular, const Standard_Integer theValuesSize = 12, const Standard_ShortReal theArrowsLength = 30.0f, const Quantity_Color theGridColor = Quantity_NOC_WHITE, const Standard_Boolean theToDrawGrid = Standard_True, const Standard_Boolean theToDrawAxes = Standard_True);
 
@@ -10876,7 +11046,7 @@ None
 
 Description
 -----------
-Enables/disables usage of opengl vertex buffer arrays while drawing primitive arrays.
+enables/disables usage of OpenGL vertex buffer arrays while drawing primitive arrays.
 ") EnableVBO;
 		virtual void EnableVBO(const Standard_Boolean status);
 
@@ -10889,7 +11059,7 @@ opencascade::handle<Aspect_DisplayConnection>
 
 Description
 -----------
-Returns handle to display connection.
+returns Handle to display connection.
 ") GetDisplayConnection;
 		const opencascade::handle<Aspect_DisplayConnection> & GetDisplayConnection();
 
@@ -10966,7 +11136,10 @@ None
 
 Description
 -----------
-Adds a layer to all views. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
+Adds a layer to all views. 
+Input parameter: theNewLayerId id of new layer, should be > 0 (negative values are reserved for default layers). 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerBefore id of layer to append new layer after.
 ") InsertLayerAfter;
 		virtual void InsertLayerAfter(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
@@ -10986,7 +11159,10 @@ None
 
 Description
 -----------
-Adds a layer to all views. to add a structure to desired layer on display it is necessary to set the layer id for the structure. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
+Adds a layer to all views. To add a structure to desired layer on display it is necessary to set the layer ID for the structure. 
+Input parameter: theNewLayerId id of new layer, should be > 0 (negative values are reserved for default layers). 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerAfter id of layer to append new layer before.
 ") InsertLayerBefore;
 		virtual void InsertLayerBefore(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
@@ -10999,7 +11175,7 @@ bool
 
 Description
 -----------
-Returns true if vertical synchronization with display refresh rate (vsync) should be used; true by default.
+Returns True if vertical synchronization with display refresh rate (VSync) should be used; True by default.
 ") IsVerticalSync;
 		virtual bool IsVerticalSync();
 
@@ -11018,7 +11194,7 @@ bool
 
 Description
 -----------
-Returns information about gpu memory usage.
+Returns information about GPU memory usage.
 ") MemoryInfo;
 		virtual Standard_Boolean MemoryInfo(Standard_Size & theFreeBytes, TCollection_AsciiString & theInfo);
 
@@ -11103,7 +11279,7 @@ None
 
 Description
 -----------
-Removes z layer. all structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer). by default, there are always default bottom-level layer that can't be removed. the passed thelayerid should be not less than 0 (reserved for default layers that can not be removed).
+Removes Z layer. All structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer). By default, there are always default bottom-level layer that can't be removed. The passed theLayerId should be not less than 0 (reserved for default layers that can not be removed).
 ") RemoveZLayer;
 		virtual void RemoveZLayer(int theLayerId);
 
@@ -11121,7 +11297,7 @@ None
 
 Description
 -----------
-Set if vertical synchronization with display refresh rate (vsync) should be used.
+Set if vertical synchronization with display refresh rate (VSync) should be used.
 ") SetVerticalSync;
 		virtual void SetVerticalSync(bool theToEnable);
 
@@ -11140,7 +11316,7 @@ None
 
 Description
 -----------
-Sets the settings for a single z layer.
+Sets the settings for a single Z layer.
 ") SetZLayerSettings;
 		virtual void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
 
@@ -11181,7 +11357,7 @@ bool
 
 Description
 -----------
-Returns view associated with the window if it is exists and is activated. returns standard_true if the view associated to the window exists.
+Returns view associated with the window if it is exists and is activated. Returns Standard_True if the view associated to the window exists.
 ") ViewExists;
 		virtual Standard_Boolean ViewExists(const opencascade::handle<Aspect_Window> & theWindow, opencascade::handle<Graphic3d_CView> & theView);
 
@@ -11199,7 +11375,7 @@ Graphic3d_ZLayerSettings
 
 Description
 -----------
-Returns the settings of a single z layer.
+Returns the settings of a single Z layer.
 ") ZLayerSettings;
 		virtual const Graphic3d_ZLayerSettings & ZLayerSettings(int theLayerId);
 
@@ -11217,7 +11393,7 @@ None
 
 Description
 -----------
-Returns list of z layers defined for the graphical driver.
+Returns list of Z layers defined for the graphical driver.
 ") ZLayers;
 		virtual void ZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
@@ -11269,7 +11445,7 @@ opencascade::handle<Graphic3d_GraphicDriverFactory>
 
 Description
 -----------
-Return default driver factory or null if no one was registered.
+Return default driver factory or NULL if no one was registered.
 ") DefaultDriverFactory;
 		static opencascade::handle<Graphic3d_GraphicDriverFactory> DefaultDriverFactory();
 
@@ -11314,7 +11490,9 @@ None
 
 Description
 -----------
-Registers factory. @param thefactory [in] factory to register @param theispreferred [in] add to the beginning of the list when true, or add to the end otherwise.
+Registers factory. 
+Input parameter: theFactory factory to register 
+Input parameter: theIsPreferred add to the beginning of the list when True, or add to the end otherwise.
 ") RegisterFactory;
 		static void RegisterFactory(const opencascade::handle<Graphic3d_GraphicDriverFactory> & theFactory, bool theIsPreferred = false);
 
@@ -11466,7 +11644,7 @@ None
 
 Description
 -----------
-Suppress all primitives and attributes of <self>. to clear group without update in graphic3d_structuremanager pass standard_false as <theupdatestructuremgr>. this used on context and viewer destruction, when the pointer to structure manager in graphic3d_structure could be already released (pointers are used here to avoid handle cross-reference);.
+Suppress all primitives and attributes of <self>. To clear group without update in Graphic3d_StructureManager pass Standard_False as <theUpdateStructureMgr>. This used on context and viewer destruction, when the pointer to structure manager in Graphic3d_Structure could be already released (pointers are used here to avoid handle cross-reference);.
 ") Clear;
 		virtual void Clear(const Standard_Boolean theUpdateStructureMgr = Standard_True);
 
@@ -11513,7 +11691,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the group <self> is deleted. <self> is deleted after the call remove (me) or the associated structure is deleted.
+Returns Standard_True if the group <self> is deleted. <self> is deleted after the call Remove (me) or the associated structure is deleted.
 ") IsDeleted;
 		Standard_Boolean IsDeleted();
 
@@ -11526,7 +11704,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the group <self> is empty.
+Returns Standard_True if the group <self> is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -11580,7 +11758,7 @@ None
 
 Description
 -----------
-Suppress the group <self> in the structure. warning: no more graphic operations in <self> after this call. modifies the current modelling transform persistence (pan, zoom or rotate) get the current modelling transform persistence (pan, zoom or rotate).
+Suppress the group <self> in the structure. Warning: No more graphic operations in <self> after this call. Modifies the current modelling transform persistence (pan, zoom or rotate) Get the current modelling transform persistence (pan, zoom or rotate).
 ") Remove;
 		void Remove();
 
@@ -11635,7 +11813,7 @@ None
 
 Description
 -----------
-Sets the flipping to theisenabled state.
+sets the flipping to theIsEnabled state.
 ") SetFlippingOptions;
 		virtual void SetFlippingOptions(const Standard_Boolean theIsEnabled, const gp_Ax2 & theRefPlane);
 
@@ -11694,7 +11872,7 @@ None
 
 Description
 -----------
-Sets the stencil test to theisenabled state;.
+sets the stencil test to theIsEnabled state;.
 ") SetStencilTestOptions;
 		virtual void SetStencilTestOptions(const Standard_Boolean theIsEnabled);
 
@@ -11715,6 +11893,24 @@ Description
 Set transformation persistence.
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
+
+		/****** Graphic3d_Group::SetTransformation ******/
+		/****** md5 signature: b30231aa04431d338ff7405e6d3fd51a ******/
+		%feature("compactdefaultargs") SetTransformation;
+		%feature("autodoc", "
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Assign transformation.
+") SetTransformation;
+		virtual void SetTransformation(const gp_Trsf & theTrsf);
 
 		/****** Graphic3d_Group::Structure ******/
 		/****** md5 signature: 81c8bb8d3594116a073834f280567560 ******/
@@ -11763,7 +11959,7 @@ None
 
 Description
 -----------
-Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). aangle: orientation of the text (with respect to the horizontal).
+Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight: Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space). AAngle: Orientation of the text (with respect to the horizontal).
 ") Text;
 		virtual void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
@@ -11784,7 +11980,7 @@ None
 
 Description
 -----------
-Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle: pi / 2. atp: tp_right ahta: hta_left avta: vta_bottom.
+Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight: Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space). The other attributes have the following default values: AAngle: PI / 2. ATp: TP_RIGHT AHta: HTA_LEFT AVta: VTA_BOTTOM.
 ") Text;
 		void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
@@ -11809,7 +12005,7 @@ None
 
 Description
 -----------
-Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). aangle: orientation of the text (with respect to the horizontal).
+Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight: Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space). AAngle: Orientation of the text (with respect to the horizontal).
 ") Text;
 		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
@@ -11830,7 +12026,7 @@ None
 
 Description
 -----------
-Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle: pi / 2. atp: tp_right ahta: hta_left avta: vta_bottom.
+Creates the string <AText> at position <APoint>. The 3D point of attachment is projected. The text is written in the plane of projection. The attributes are given with respect to the plane of projection. AHeight: Height of text. (Relative to the Normalized Projection Coordinates (NPC) Space). The other attributes have the following default values: AAngle: PI / 2. ATp: TP_RIGHT AHta: HTA_LEFT AVta: VTA_BOTTOM.
 ") Text;
 		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
@@ -11856,7 +12052,7 @@ None
 
 Description
 -----------
-Creates the string <thetext> at orientation <theorientation> in 3d space.
+Creates the string <theText> at orientation <theOrientation> in 3D space.
 ") Text;
 		virtual void Text(Standard_CString theTextUtf, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
@@ -11882,7 +12078,7 @@ None
 
 Description
 -----------
-Creates the string <thetext> at orientation <theorientation> in 3d space.
+Creates the string <theText> at orientation <theOrientation> in 3D space.
 ") Text;
 		virtual void Text(TCollection_ExtendedString theText, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
@@ -11898,6 +12094,19 @@ Description
 Return transformation persistence.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
+
+		/****** Graphic3d_Group::Transformation ******/
+		/****** md5 signature: 4340f0c35d6856faf6f9daeca03f9595 ******/
+		%feature("compactdefaultargs") Transformation;
+		%feature("autodoc", "Return
+-------
+gp_Trsf
+
+Description
+-----------
+Return transformation.
+") Transformation;
+		const gp_Trsf Transformation();
 
 };
 
@@ -11933,7 +12142,7 @@ None
 
 Description
 -----------
-Creates a new custom hatch style with the given pattern and unique style id @warning raises a program error if given pattern image is not a valid 32*32 bitmap.
+Creates a new custom hatch style with the given pattern and unique style id @warning Raises a program error if given pattern image is not a valid 32*32 bitmap.
 ") Graphic3d_HatchStyle;
 		 Graphic3d_HatchStyle(const opencascade::handle<Image_PixMap> & thePattern);
 
@@ -11951,7 +12160,7 @@ None
 
 Description
 -----------
-Creates a new predefined hatch style with the given id in aspect_hatchstyle enum. gpu memory for the pattern will not be allocated.
+Creates a new predefined hatch style with the given id in Aspect_HatchStyle enum. GPU memory for the pattern will not be allocated.
 ") Graphic3d_HatchStyle;
 		 Graphic3d_HatchStyle(const Aspect_HatchStyle theType);
 
@@ -11985,7 +12194,7 @@ int
 
 Description
 -----------
-In case if predefined occt style is used, returns index in aspect_hatchstyle enumeration. if the style is custom, returns unique index of the style.
+In case if predefined OCCT style is used, returns index in Aspect_HatchStyle enumeration. If the style is custom, returns unique index of the style.
 ") HatchType;
 		Standard_Integer HatchType();
 
@@ -12053,7 +12262,7 @@ bool
 
 Description
 -----------
-Append layer of acceptable type (with similar number of priorities or less). returns standard_false if the list can not be accepted.
+Append layer of acceptable type (with similar number of priorities or less). Returns Standard_False if the list can not be accepted.
 ") Append;
 		Standard_Boolean Append(const Graphic3d_Layer & theOther);
 
@@ -12088,7 +12297,13 @@ Bnd_Box
 
 Description
 -----------
-Returns layer bounding box. @param theviewid view index to consider view affinity in structure @param thecamera camera definition @param thewindowwidth viewport width (for applying transformation-persistence) @param thewindowheight viewport height (for applying transformation-persistence) @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) return computed bounding box.
+Returns layer bounding box. 
+Parameter theViewId view index to consider View Affinity in structure 
+Parameter theCamera camera definition 
+Parameter theWindowWidth viewport width (for applying transformation-persistence) 
+Parameter theWindowHeight viewport height (for applying transformation-persistence) 
+Parameter theToIncludeAuxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) 
+Return: computed bounding box.
 ") BoundingBox;
 		Bnd_Box BoundingBox(Standard_Integer theViewId, const opencascade::handle<Graphic3d_Camera> & theCamera, Standard_Integer theWindowWidth, Standard_Integer theWindowHeight, Standard_Boolean theToIncludeAuxiliary);
 
@@ -12101,7 +12316,7 @@ Graphic3d_BvhCStructureSet
 
 Description
 -----------
-Returns set of graphic3d_cstructures structures for building bvh tree.
+Returns set of Graphic3d_CStructures structures for building BVH tree.
 ") CullableStructuresBVH;
 		const Graphic3d_BvhCStructureSet & CullableStructuresBVH();
 
@@ -12114,7 +12329,7 @@ Graphic3d_BvhCStructureSetTrsfPers
 
 Description
 -----------
-Returns set of transform persistent graphic3d_cstructures for building bvh tree.
+Returns set of transform persistent Graphic3d_CStructures for building BVH tree.
 ") CullableTrsfPersStructuresBVH;
 		const Graphic3d_BvhCStructureSetTrsfPers & CullableTrsfPersStructuresBVH();
 
@@ -12148,7 +12363,7 @@ None
 
 Description
 -----------
-Marks bvh tree for given priority list as dirty and marks primitive set for rebuild.
+Marks BVH tree for given priority list as dirty and marks primitive set for rebuild.
 ") InvalidateBVHData;
 		void InvalidateBVHData();
 
@@ -12174,7 +12389,7 @@ bool
 
 Description
 -----------
-Returns true if layer is empty or has been discarded entirely by culling test.
+Returns True if layer is empty or has been discarded entirely by culling test.
 ") IsCulled;
 		bool IsCulled();
 
@@ -12252,7 +12467,7 @@ int
 
 Description
 -----------
-Return the number of structures.
+Return: the number of structures.
 ") NbStructures;
 		Standard_Integer NbStructures();
 
@@ -12265,7 +12480,7 @@ int
 
 Description
 -----------
-Number of not culled structures in the layer.
+Number of NOT culled structures in the layer.
 ") NbStructuresNotCulled;
 		Standard_Integer NbStructuresNotCulled();
 
@@ -12353,7 +12568,7 @@ None
 
 Description
 -----------
-Update culling state - should be called before rendering. traverses through bvh tree to determine which structures are in view volume.
+Update culling state - should be called before rendering. Traverses through BVH tree to determine which structures are in view volume.
 ") UpdateCulling;
 		void UpdateCulling(Standard_Integer theViewId, const Graphic3d_CullingTool & theSelector, const Graphic3d_RenderingParams::FrustumCulling theFrustumCullingState);
 
@@ -12478,7 +12693,8 @@ Graphic3d_Vec4
 
 Description
 -----------
-Returns cumulative ambient color, which is computed as sum of all enabled ambient light sources. values are not clamped (can be greater than 1.0f) and alpha component is fixed to 1.0f. @sa updaterevision().
+Returns cumulative ambient color, which is computed as sum of all enabled ambient light sources. Values are NOT clamped (can be greater than 1.0f) and alpha component is fixed to 1.0f. 
+See also: UpdateRevision().
 ") AmbientColor;
 		const Graphic3d_Vec4 & AmbientColor();
 
@@ -12496,7 +12712,7 @@ bool
 
 Description
 -----------
-Return true if light source is defined in this set.
+Return True if light source is defined in this set.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<Graphic3d_CLight> & theLight);
 
@@ -12522,7 +12738,7 @@ bool
 
 Description
 -----------
-Return true if lights list is empty.
+Return True if lights list is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -12535,7 +12751,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list. example: 'dppp'. @sa updaterevision().
+Returns a string defining a list of enabled light sources as concatenation of letters 'd' (Directional), 'p' (Point), 's' (Spot) depending on the type of light source in the list. Example: 'dppp'. 
+See also: UpdateRevision().
 ") KeyEnabledLong;
 		const TCollection_AsciiString & KeyEnabledLong();
 
@@ -12548,7 +12765,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list, specified only once. example: 'dp'. @sa updaterevision().
+Returns a string defining a list of enabled light sources as concatenation of letters 'd' (Directional), 'p' (Point), 's' (Spot) depending on the type of light source in the list, specified only once. Example: 'dp'. 
+See also: UpdateRevision().
 ") KeyEnabledShort;
 		const TCollection_AsciiString & KeyEnabledShort();
 
@@ -12574,7 +12792,8 @@ int
 
 Description
 -----------
-Returns total amount of enabled lights castings shadows. @sa updaterevision().
+Returns total amount of enabled lights castings shadows. 
+See also: UpdateRevision().
 ") NbCastShadows;
 		Standard_Integer NbCastShadows();
 
@@ -12587,7 +12806,8 @@ int
 
 Description
 -----------
-Returns total amount of enabled lights excluding ambient. @sa updaterevision().
+Returns total amount of enabled lights EXCLUDING ambient. 
+See also: UpdateRevision().
 ") NbEnabled;
 		Standard_Integer NbEnabled();
 
@@ -12605,7 +12825,8 @@ int
 
 Description
 -----------
-Returns total amount of enabled lights of specified type. @sa updaterevision().
+Returns total amount of enabled lights of specified type. 
+See also: UpdateRevision().
 ") NbEnabledLightsOfType;
 		Standard_Integer NbEnabledLightsOfType(Graphic3d_TypeOfLightSource theType);
 
@@ -12654,7 +12875,8 @@ Standard_Size
 
 Description
 -----------
-Return light sources revision. @sa updaterevision().
+Return light sources revision. 
+See also: UpdateRevision().
 ") Revision;
 		Standard_Size Revision();
 
@@ -12667,7 +12889,7 @@ Standard_Size
 
 Description
 -----------
-Update light sources revision.
+No available documentation.
 ") UpdateRevision;
 		Standard_Size UpdateRevision();
 
@@ -12698,7 +12920,7 @@ opencascade::handle<Graphic3d_CLight>
 
 Description
 -----------
-Return the light source for specified index within range [lower(), upper()].
+Return the light source for specified index within range [Lower(), Upper()].
 ") Value;
 		const opencascade::handle<Graphic3d_CLight> & Value(Standard_Integer theIndex);
 
@@ -12733,7 +12955,9 @@ None
 
 Description
 -----------
-Constructor from existing pixmap. @param theimage [in] source image @param theimagealpha [in] colorless image.
+Constructor from existing pixmap. 
+Input parameter: theImage source image 
+Input parameter: theImageAlpha colorless image.
 ") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage(const opencascade::handle<Image_PixMap> & theImage, const opencascade::handle<Image_PixMap> & theImageAlpha = opencascade::handle<Image_PixMap>());
 
@@ -12753,7 +12977,10 @@ None
 
 Description
 -----------
-Creates marker image from array of bytes (method for compatibility with old markers definition). @param thebitmap [in] source bitmap stored as array of bytes @param thewidth [in] number of bits in a row @param theheight [in] number of bits in a column.
+Creates marker image from array of bytes (method for compatibility with old markers definition). 
+Input parameter: theBitMap source bitmap stored as array of bytes 
+Input parameter: theWidth number of bits in a row 
+Input parameter: theHeight number of bits in a column.
 ") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage(const opencascade::handle<TColStd_HArray1OfByte> & theBitMap, const Standard_Integer theWidth, const Standard_Integer theHeight);
 
@@ -12772,7 +12999,9 @@ opencascade::handle<TColStd_HArray1OfByte>
 
 Description
 -----------
-Return marker image as array of bytes. if an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter thealphavalue. @param thealphavalue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' @param theistopdown [in] flag indicating expected rows order in returned bitmap, which is bottom-up by default.
+Return marker image as array of bytes. If an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter theAlphaValue. 
+Parameter theAlphaValue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' 
+Input parameter: theIsTopDown flag indicating expected rows order in returned bitmap, which is bottom-up by default.
 ") GetBitMapArray;
 		opencascade::handle<TColStd_HArray1OfByte> GetBitMapArray(const Standard_Real theAlphaValue = 0.5, const Standard_Boolean theIsTopDown = false);
 
@@ -12785,7 +13014,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Return marker image. if an instance of the class has been initialized with a bitmap, it will be converted to image.
+Return marker image. If an instance of the class has been initialized with a bitmap, it will be converted to image.
 ") GetImage;
 		const opencascade::handle<Image_PixMap> & GetImage();
 
@@ -12798,7 +13027,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Return image alpha as grayscale image. note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as getimage().
+Return image alpha as grayscale image. Note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as GetImage().
 ") GetImageAlpha;
 		const opencascade::handle<Image_PixMap> & GetImageAlpha();
 
@@ -12811,7 +13040,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return an unique id. this id will be used to manage resource in graphic driver.
+Return an unique ID. This ID will be used to manage resource in graphic driver.
 ") GetImageAlphaId;
 		const TCollection_AsciiString & GetImageAlphaId();
 
@@ -12824,7 +13053,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return an unique id. this id will be used to manage resource in graphic driver.
+Return an unique ID. This ID will be used to manage resource in graphic driver.
 ") GetImageId;
 		const TCollection_AsciiString & GetImageId();
 
@@ -12855,7 +13084,7 @@ bool
 
 Description
 -----------
-Return true if marker image has colors (e.g. rgba and not grayscale).
+Return True if marker image has colors (e.g. RGBA and not grayscale).
 ") IsColoredImage;
 		bool IsColoredImage();
 
@@ -12935,7 +13164,7 @@ float
 
 Description
 -----------
-Returns the alpha coefficient of the surface (1.0 - transparency); 1.0 means opaque.
+Returns the alpha coefficient of the surface (1.0 - Transparency); 1.0 means opaque.
 ") Alpha;
 		Standard_ShortReal Alpha();
 
@@ -12961,7 +13190,7 @@ Graphic3d_BSDF
 
 Description
 -----------
-Returns bsdf (bidirectional scattering distribution function).
+Returns BSDF (bidirectional scattering distribution function).
 ") BSDF;
 		const Graphic3d_BSDF & BSDF();
 
@@ -12974,7 +13203,7 @@ Quantity_Color
 
 Description
 -----------
-Returns the diffuse color of the surface. warning! this method does not return color for graphic3d_material_aspect material (color is defined by graphic3d_aspects::interiorcolor()).
+Returns the diffuse color of the surface. WARNING! This method does NOT return color for Graphic3d_MATERIAL_ASPECT material (color is defined by Graphic3d_Aspects::InteriorColor()).
 ") Color;
 		const Quantity_Color & Color();
 
@@ -13039,7 +13268,8 @@ None
 
 Description
 -----------
-Increases or decreases the luminosity. @param thedelta a signed percentage.
+Increases or decreases the luminosity. 
+Parameter theDelta a signed percentage.
 ") IncreaseShine;
 		void IncreaseShine(const Standard_ShortReal theDelta);
 
@@ -13057,7 +13287,7 @@ bool
 
 Description
 -----------
-Returns true if this material differs from specified one.
+Returns True if this material differs from specified one.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const Graphic3d_MaterialAspect & theOther);
 
@@ -13075,7 +13305,7 @@ bool
 
 Description
 -----------
-Returns true if this material is identical to specified one.
+Returns True if this material is identical to specified one.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Graphic3d_MaterialAspect & theOther);
 
@@ -13093,7 +13323,9 @@ theMat: Graphic3d_NameOfMaterial
 
 Description
 -----------
-Finds the material for specified name. @param thename [in] name to find @param themat [out] found material return false if name was unrecognized.
+Finds the material for specified name. 
+Input parameter: theName name to find @param[out] theMat found material 
+Return: False if name was unrecognized.
 ") MaterialFromName;
 		static Standard_Boolean MaterialFromName(Standard_CString theName, Graphic3d_NameOfMaterial &OutValue);
 
@@ -13111,7 +13343,7 @@ Graphic3d_NameOfMaterial
 
 Description
 -----------
-Returns the material for specified name or graphic3d_nameofmaterial_default if name is unknown.
+Returns the material for specified name or Graphic3d_NameOfMaterial_DEFAULT if name is unknown.
 ") MaterialFromName;
 		static Graphic3d_NameOfMaterial MaterialFromName(Standard_CString theName);
 
@@ -13129,7 +13361,7 @@ str
 
 Description
 -----------
-Returns the name of the predefined material of specified rank within range [1, numberofmaterials()].
+Returns the name of the predefined material of specified rank within range [1, NumberOfMaterials()].
 ") MaterialName;
 		static Standard_CString MaterialName(const Standard_Integer theRank);
 
@@ -13142,7 +13374,7 @@ str
 
 Description
 -----------
-Returns the given name of this material. this might be:.
+Returns the given name of this material. This might be:.
 ") MaterialName;
 		Standard_CString MaterialName();
 
@@ -13160,7 +13392,7 @@ Graphic3d_TypeOfMaterial
 
 Description
 -----------
-Returns the type of the predefined material of specified rank within range [1, numberofmaterials()].
+Returns the type of the predefined material of specified rank within range [1, NumberOfMaterials()].
 ") MaterialType;
 		static Graphic3d_TypeOfMaterial MaterialType(const Standard_Integer theRank);
 
@@ -13191,7 +13423,7 @@ bool
 
 Description
 -----------
-Returns true if type of this material is equal to specified type.
+Returns True if type of this material is equal to specified type.
 ") MaterialType;
 		Standard_Boolean MaterialType(const Graphic3d_TypeOfMaterial theType);
 
@@ -13248,7 +13480,7 @@ bool
 
 Description
 -----------
-Returns true if the reflection mode is active, false otherwise.
+Returns True if the reflection mode is active, False otherwise.
 ") ReflectionMode;
 		Standard_Boolean ReflectionMode(const Graphic3d_TypeOfReflection theType);
 
@@ -13287,7 +13519,7 @@ None
 
 Description
 -----------
-Resets the material with the original values according to the material name but leave the current color values untouched for the material of type aspect.
+Resets the material with the original values according to the material name but leave the current color values untouched for the material of type ASPECT.
 ") Reset;
 		void Reset();
 
@@ -13341,7 +13573,7 @@ None
 
 Description
 -----------
-Modifies the bsdf (bidirectional scattering distribution function).
+Modifies the BSDF (bidirectional scattering distribution function).
 ") SetBSDF;
 		void SetBSDF(const Graphic3d_BSDF & theBSDF);
 
@@ -13359,7 +13591,7 @@ None
 
 Description
 -----------
-Modifies the ambient and diffuse color of the surface. warning! has no effect for graphic3d_material_aspect material (color should be set to graphic3d_aspects::setinteriorcolor()).
+Modifies the ambient and diffuse color of the surface. WARNING! Has no effect for Graphic3d_MATERIAL_ASPECT material (color should be set to Graphic3d_Aspects::SetInteriorColor()).
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
@@ -13413,7 +13645,7 @@ None
 
 Description
 -----------
-The current material become a 'userdefined' material. set the name of the 'userdefined' material.
+The current material become a 'UserDefined' material. Set the name of the 'UserDefined' material.
 ") SetMaterialName;
 		void SetMaterialName(TCollection_AsciiString theName);
 
@@ -13467,7 +13699,7 @@ None
 
 Description
 -----------
-Deactivates the reflective properties of the surface with specified reflection type.
+No available documentation.
 ") SetReflectionModeOff;
 		void SetReflectionModeOff(const Graphic3d_TypeOfReflection theType);
 
@@ -13485,7 +13717,7 @@ None
 
 Description
 -----------
-Modifies the refraction index of the material. warning: raises materialdefinitionerror if given value is a lesser than 1.0.
+Modifies the refraction index of the material. Warning: Raises MaterialDefinitionError if given value is a lesser than 1.0.
 ") SetRefractionIndex;
 		void SetRefractionIndex(const Standard_ShortReal theValue);
 
@@ -13503,7 +13735,7 @@ None
 
 Description
 -----------
-Modifies the luminosity of the surface. warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
+Modifies the luminosity of the surface. Warning: Raises MaterialDefinitionError if given value is a negative value or greater than 1.0.
 ") SetShininess;
 		void SetShininess(const Standard_ShortReal theValue);
 
@@ -13539,7 +13771,7 @@ None
 
 Description
 -----------
-Modifies the transparency coefficient of the surface, where 0 is opaque and 1 is fully transparent. transparency is applicable to materials that have at least one of reflection modes (ambient, diffuse, specular or emissive) enabled. see also setreflectionmodeon() and setreflectionmodeoff() methods. //! warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
+Modifies the transparency coefficient of the surface, where 0 is opaque and 1 is fully transparent. Transparency is applicable to materials that have at least one of reflection modes (ambient, diffuse, specular or emissive) enabled. See also SetReflectionModeOn() and SetReflectionModeOff() methods. //! Warning: Raises MaterialDefinitionError if given value is a negative value or greater than 1.0.
 ") SetTransparency;
 		void SetTransparency(const Standard_ShortReal theValue);
 
@@ -13578,7 +13810,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the given name of this material. this might be: - given name set by method ::setmaterialname() - standard name for a material within enumeration - 'userdefined' for non-standard material without name specified externally.
+Returns the given name of this material. This might be: - given name set by method ::SetMaterialName() - standard name for a material within enumeration - 'UserDefined' for non-standard material without name specified externally.
 ") StringName;
 		const TCollection_AsciiString & StringName();
 
@@ -13591,7 +13823,7 @@ float
 
 Description
 -----------
-Returns the transparency coefficient of the surface (1.0 - alpha); 0.0 means opaque.
+Returns the transparency coefficient of the surface (1.0 - Alpha); 0.0 means opaque.
 ") Transparency;
 		Standard_ShortReal Transparency();
 
@@ -13646,7 +13878,7 @@ None
 
 Description
 -----------
-Creates new physically based material in metallic-roughness system. 'metallic' parameter is 0 by default. 'roughness' parameter is 1 by default. 'color' parameter is (0, 0, 0) by default. 'alpha' parameter is 1 by default. 'ior' parameter is 1.5 by default. 'emission' parameter is (0, 0, 0) by default.
+Creates new physically based material in Metallic-Roughness system. 'metallic' parameter is 0 by default. 'roughness' parameter is 1 by default. 'color' parameter is (0, 0, 0) by default. 'alpha' parameter is 1 by default. 'IOR' parameter is 1.5 by default. 'emission' parameter is (0, 0, 0) by default.
 ") Graphic3d_PBRMaterial;
 		 Graphic3d_PBRMaterial();
 
@@ -13664,7 +13896,7 @@ None
 
 Description
 -----------
-Creates new physically based material in metallic-roughness system from graphic3d_bsdf.
+Creates new physically based material in Metallic-Roughness system from Graphic3d_BSDF.
 ") Graphic3d_PBRMaterial;
 		 Graphic3d_PBRMaterial(const Graphic3d_BSDF & theBSDF);
 
@@ -13724,7 +13956,7 @@ Graphic3d_Vec3
 
 Description
 -----------
-Returns light intensity emitted by material. values are greater or equal 0.
+Returns light intensity emitted by material. Values are greater or equal 0.
 ") Emission;
 		Graphic3d_Vec3 Emission();
 
@@ -13743,7 +13975,8 @@ None
 
 Description
 -----------
-Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] thenbintegralsamples number of importance samples in hemisphere integral calculation for every table item.
+Generates 2D look up table of scale and bias for fresnell zero coefficient. It is needed for calculation reflectance part of environment lighting. @param[out] theLUT table storage (must be Image_Format_RGF). 
+Input parameter: theNbIntegralSamples number of importance samples in hemisphere integral calculation for every table item.
 ") GenerateEnvLUT;
 		static void GenerateEnvLUT(const opencascade::handle<Image_PixMap> & theLUT, unsigned int theNbIntegralSamples = 1024);
 
@@ -13769,7 +14002,7 @@ float
 
 Description
 -----------
-Returns material's metallic coefficient in [0, 1] range. 1 for metals and 0 for dielectrics. it is preferable to be exactly 0 or 1. average values are needed for textures mixing in shader.
+Returns material's metallic coefficient in [0, 1] range. 1 for metals and 0 for dielectrics. It is preferable to be exactly 0 or 1. Average values are needed for textures mixing in shader.
 ") Metallic;
 		Standard_ShortReal Metallic();
 
@@ -13787,7 +14020,9 @@ float
 
 Description
 -----------
-Compute material metallicity from common material (specular color). @param thespecular [in] specular color return metallicity within [0..1] range.
+Compute material metallicity from common material (specular color). 
+Input parameter: theSpecular specular color 
+Return: metallicity within [0..1] range.
 ") MetallicFromSpecular;
 		static Standard_ShortReal MetallicFromSpecular(const Quantity_Color & theSpecular);
 
@@ -13813,7 +14048,7 @@ float
 
 Description
 -----------
-Returns roughness mapping parameter in [0, 1] range. roughness is defined in [0, 1] for handful material settings and is mapped to [minroughness, 1] for calculations.
+Returns roughness mapping parameter in [0, 1] range. Roughness is defined in [0, 1] for handful material settings and is mapped to [MinRoughness, 1] for calculations.
 ") NormalizedRoughness;
 		Standard_ShortReal NormalizedRoughness();
 
@@ -13831,7 +14066,7 @@ float
 
 Description
 -----------
-Maps roughness from [0, 1] to [minroughness, 1] for calculations.
+Maps roughness from [0, 1] to [MinRoughness, 1] for calculations.
 ") Roughness;
 		static Standard_ShortReal Roughness(Standard_ShortReal theNormalizedRoughness);
 
@@ -13844,7 +14079,7 @@ float
 
 Description
 -----------
-Returns real value of roughness in [minroughness, 1] range for calculations.
+Returns real value of roughness in [MinRoughness, 1] range for calculations.
 ") Roughness;
 		Standard_ShortReal Roughness();
 
@@ -13863,7 +14098,10 @@ float
 
 Description
 -----------
-Compute material roughness from common material (specular color + shininess). @param thespecular [in] specular color @param theshiness [in] normalized shininess coefficient within [0..1] range return roughness within [0..1] range.
+Compute material roughness from common material (specular color + shininess). 
+Input parameter: theSpecular specular color 
+Input parameter: theShiness normalized shininess coefficient within [0..1] range 
+Return: roughness within [0..1] range.
 ") RoughnessFromSpecular;
 		static Standard_ShortReal RoughnessFromSpecular(const Quantity_Color & theSpecular, const Standard_Real theShiness);
 
@@ -13899,7 +14137,7 @@ None
 
 Description
 -----------
-Generates material in metallic-roughness system from graphic3d_bsdf.
+Generates material in Metallic-Roughness system from Graphic3d_BSDF.
 ") SetBSDF;
 		void SetBSDF(const Graphic3d_BSDF & theBSDF);
 
@@ -13971,7 +14209,7 @@ None
 
 Description
 -----------
-Modifies index of refraction in [1, 3] range. in practice affects only on non-metal materials reflection possibilities.
+Modifies index of refraction in [1, 3] range. In practice affects only on non-metal materials reflection possibilities.
 ") SetIOR;
 		void SetIOR(Standard_ShortReal theIOR);
 
@@ -14026,7 +14264,10 @@ float
 
 Description
 -----------
-Shows how much times less samples can be used in certain roughness value specular ibl map generation in compare with samples number for map with roughness of 1. specular ibl maps with less roughness values have higher resolution but require less samples for the same quality of baking. so that reducing samples number is good strategy to improve performance of baking. the samples number for specular ibl map with roughness of 1 (the maximum possible samples number) is expected to be defined as baking parameter. samples number for other roughness values can be calculated by multiplication origin samples number by this factor. @param theprobability value from 0 to 1 controlling strength of samples reducing. bigger values result in slower reduction to provide better quality but worse performance. value of 1 doesn't affect at all so that 1 will be returned (it can be used to disable reduction strategy). @param theroughness roughness value of current generated specular ibl map (from 0 to 1). return factor to calculate number of samples for current specular ibl map baking. be aware! it has no obligation to return 1 in case of roughness of 1. be aware! it produces poor quality with small number of origin samples. in that case it is recommended to be disabled.
+Shows how much times less samples can be used in certain roughness value specular IBL map generation in compare with samples number for map with roughness of 1. Specular IBL maps with less roughness values have higher resolution but require less samples for the same quality of baking. So that reducing samples number is good strategy to improve performance of baking. The samples number for specular IBL map with roughness of 1 (the maximum possible samples number) is expected to be defined as baking parameter. Samples number for other roughness values can be calculated by multiplication origin samples number by this factor. 
+Parameter theProbability value from 0 to 1 controlling strength of samples reducing. Bigger values result in slower reduction to provide better quality but worse performance. Value of 1 doesn't affect at all so that 1 will be returned (it can be used to disable reduction strategy). 
+Parameter theRoughness roughness value of current generated specular IBL map (from 0 to 1). 
+Return: factor to calculate number of samples for current specular IBL map baking. Be aware! It has no obligation to return 1 in case of roughness of 1. Be aware! It produces poor quality with small number of origin samples. In that case it is recommended to be disabled.
 ") SpecIBLMapSamplesFactor;
 		static Standard_ShortReal SpecIBLMapSamplesFactor(Standard_ShortReal theProbability, Standard_ShortReal theRoughness);
 
@@ -14058,9 +14299,6 @@ def __eq__(self, right):
 ********************************/
 class Graphic3d_PolygonOffset {
 	public:
-		Aspect_PolygonOffsetMode Mode;
-		float Factor;
-		float Units;
 		/****** Graphic3d_PolygonOffset::Graphic3d_PolygonOffset ******/
 		/****** md5 signature: d32d266ad893dbdf6f93b0afae8a9bb9 ******/
 		%feature("compactdefaultargs") Graphic3d_PolygonOffset;
@@ -14145,7 +14383,7 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 
 Description
 -----------
-Return basic presentation fill area aspect, null by default. when set, might be used instead of color() property.
+Return basic presentation fill area aspect, NULL by default. When set, might be used instead of Color() property.
 ") BasicFillAreaAspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & BasicFillAreaAspect();
 
@@ -14158,7 +14396,7 @@ Quantity_Color
 
 Description
 -----------
-Returns basic presentation color, quantity_noc_white by default.
+Returns basic presentation color, Quantity_NOC_WHITE by default.
 ") Color;
 		const Quantity_Color & Color();
 
@@ -14218,7 +14456,7 @@ Aspect_TypeOfHighlightMethod
 
 Description
 -----------
-Returns highlight method, aspect_tohm_color by default.
+Returns highlight method, Aspect_TOHM_COLOR by default.
 ") Method;
 		Aspect_TypeOfHighlightMethod Method();
 
@@ -14254,7 +14492,7 @@ None
 
 Description
 -----------
-Sets basic presentation color (rgb components, does not modifies transparency).
+Sets basic presentation color (RGB components, does not modifies transparency).
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -14326,7 +14564,7 @@ None
 
 Description
 -----------
-Sets presentation zlayer.
+Sets presentation Zlayer.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayer);
 
@@ -14352,7 +14590,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Returns presentation zlayer, graphic3d_zlayerid_default by default. graphic3d_zlayerid_unknown means undefined (a layer of main presentation to be used).
+Returns presentation Zlayer, Graphic3d_ZLayerId_Default by default. Graphic3d_ZLayerId_UNKNOWN means undefined (a layer of main presentation to be used).
 ") ZLayer;
 		Graphic3d_ZLayerId ZLayer();
 
@@ -14473,67 +14711,6 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 };
 /* end python proxy for enums */
 
-		Graphic3d_RenderingMode Method;
-		Graphic3d_TypeOfShadingModel ShadingModel;
-		Graphic3d_RenderTransparentMethod TransparencyMethod;
-		unsigned int Resolution;
-		Font_Hinting FontHinting;
-		float LineFeather;
-		int PbrEnvPow2Size;
-		int PbrEnvSpecMapNbLevels;
-		int PbrEnvBakingDiffNbSamples;
-		int PbrEnvBakingSpecNbSamples;
-		float PbrEnvBakingProbability;
-		float OitDepthFactor;
-		int NbOitDepthPeelingLayers;
-		int NbMsaaSamples;
-		float RenderResolutionScale;
-		int ShadowMapResolution;
-		float ShadowMapBias;
-		bool ToEnableDepthPrepass;
-		bool ToEnableAlphaToCoverage;
-		bool IsGlobalIlluminationEnabled;
-		int SamplesPerPixel;
-		int RaytracingDepth;
-		bool IsShadowEnabled;
-		bool IsReflectionEnabled;
-		bool IsAntialiasingEnabled;
-		bool IsTransparentShadowEnabled;
-		bool UseEnvironmentMapBackground;
-		bool ToIgnoreNormalMapInRayTracing;
-		bool CoherentPathTracingMode;
-		bool AdaptiveScreenSampling;
-		bool AdaptiveScreenSamplingAtomic;
-		bool ShowSamplingTiles;
-		bool TwoSidedBsdfModels;
-		float RadianceClampingValue;
-		bool RebuildRayTracingShaders;
-		int RayTracingTileSize;
-		int NbRayTracingTiles;
-		float CameraApertureRadius;
-		float CameraFocalPlaneDist;
-		FrustumCulling FrustumCullingState;
-		Graphic3d_ToneMappingMethod ToneMappingMethod;
-		float Exposure;
-		float WhitePoint;
-		Graphic3d_StereoMode StereoMode;
-		float HmdFov2d;
-		Anaglyph AnaglyphFilter;
-		Graphic3d_Mat4 AnaglyphLeft;
-		Graphic3d_Mat4 AnaglyphRight;
-		bool ToReverseStereo;
-		bool ToSmoothInterlacing;
-		bool ToMirrorComposer;
-		opencascade::handle<Graphic3d_TransformPers > StatsPosition;
-		opencascade::handle<Graphic3d_TransformPers > ChartPosition;
-		Graphic3d_Vec2i ChartSize;
-		opencascade::handle<Graphic3d_AspectText3d > StatsTextAspect;
-		float StatsUpdateInterval;
-		int StatsTextHeight;
-		int StatsNbFrames;
-		float StatsMaxChartTime;
-		PerfCounters CollectedStats;
-		bool ToShowStats;
 		/****** Graphic3d_RenderingParams::Graphic3d_RenderingParams ******/
 		/****** md5 signature: 604df3cf93dfd3384e91a3c3f46c32b4 ******/
 		%feature("compactdefaultargs") Graphic3d_RenderingParams;
@@ -14623,7 +14800,8 @@ bool
 
 Description
 -----------
-Append a plane. return true if new item has been added (false if item already existed).
+Append a plane. 
+Return: True if new item has been added (False if item already existed).
 ") Append;
 		bool Append(const opencascade::handle<Graphic3d_ClipPlane> & theItem);
 
@@ -14683,7 +14861,7 @@ bool
 
 Description
 -----------
-Return true if sequence is empty.
+Return True if sequence is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
@@ -14779,7 +14957,7 @@ int
 
 Description
 -----------
-Returns attribute location to be bound on glsl program linkage stage.
+Returns attribute location to be bound on GLSL program linkage stage.
 ") Location;
 		int Location();
 
@@ -14858,7 +15036,7 @@ int
 
 Description
 -----------
-Return gapi version major number.
+Return GAPI version major number.
 ") GapiVersionMajor;
 		Standard_Integer GapiVersionMajor();
 
@@ -14871,7 +15049,7 @@ int
 
 Description
 -----------
-Return gapi version minor number.
+Return GAPI version minor number.
 ") GapiVersionMinor;
 		Standard_Integer GapiVersionMinor();
 
@@ -14884,7 +15062,7 @@ bool
 
 Description
 -----------
-Return flag indicating flat shading usage; true by default.
+Return flag indicating flat shading usage; True by default.
 ") HasFlatShading;
 		bool HasFlatShading();
 
@@ -14902,7 +15080,7 @@ bool
 
 Description
 -----------
-Return true if specified extension is available.
+Return True if specified extension is available.
 ") HasGlslExtension;
 		bool HasGlslExtension(Graphic3d_GlslExtension theExt);
 
@@ -14921,7 +15099,7 @@ bool
 
 Description
 -----------
-Return true if detected gl version is greater or equal to requested one.
+Return: true if detected GL version is greater or equal to requested one.
 ") IsGapiGreaterEqual;
 		bool IsGapiGreaterEqual(Standard_Integer theVerMajor, Standard_Integer theVerMinor);
 
@@ -14939,7 +15117,7 @@ None
 
 Description
 -----------
-Set if depth clamping should be emulated by glsl program.
+Set if depth clamping should be emulated by GLSL program.
 ") SetEmulateDepthClamp;
 		void SetEmulateDepthClamp(bool theToEmulate);
 
@@ -14977,7 +15155,7 @@ None
 
 Description
 -----------
-Return gapi version major number.
+Return GAPI version major number.
 ") SetGapiVersion;
 		void SetGapiVersion(Standard_Integer theVerMajor, Standard_Integer theVerMinor);
 
@@ -14995,7 +15173,7 @@ None
 
 Description
 -----------
-Set if red channel should be used instead of alpha for single-channel textures.
+Set if RED channel should be used instead of ALPHA for single-channel textures.
 ") SetUseRedAlpha;
 		void SetUseRedAlpha(bool theUseRedAlpha);
 
@@ -15008,7 +15186,7 @@ bool
 
 Description
 -----------
-Return true if depth clamping should be emulated by glsl program; true by default.
+Return True if depth clamping should be emulated by GLSL program; True by default.
 ") ToEmulateDepthClamp;
 		bool ToEmulateDepthClamp();
 
@@ -15021,7 +15199,7 @@ bool
 
 Description
 -----------
-Return flag indicating flat shading should reverse normal flag; false by default.
+Return flag indicating flat shading should reverse normal flag; False by default.
 ") ToReverseDFdxSign;
 		bool ToReverseDFdxSign();
 
@@ -15034,7 +15212,7 @@ bool
 
 Description
 -----------
-Return true if red channel should be used instead of alpha for single-channel textures (e.g. gapi supports only gl_red textures and not gl_alpha).
+Return True if RED channel should be used instead of ALPHA for single-channel textures (e.g. GAPI supports only GL_RED textures and not GL_ALPHA).
 ") UseRedAlpha;
 		bool UseRedAlpha();
 
@@ -15104,7 +15282,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns unique id used to manage resource in graphic driver.
+Returns unique ID used to manage resource in graphic driver.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
@@ -15203,7 +15381,7 @@ None
 
 Description
 -----------
-Append line to glsl header.
+Append line to GLSL header.
 ") AppendToHeader;
 		void AppendToHeader(TCollection_AsciiString theHeaderLine);
 
@@ -15265,7 +15443,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns unique id used to manage resource in graphic driver.
+Returns unique ID used to manage resource in graphic driver.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
@@ -15278,7 +15456,7 @@ bool
 
 Description
 -----------
-Return true if fragment shader should perform alpha test; false by default.
+Return true if Fragment Shader should perform alpha test; False by default.
 ") HasAlphaTest;
 		Standard_Boolean HasAlphaTest();
 
@@ -15291,7 +15469,7 @@ bool
 
 Description
 -----------
-Return true if standard program header should define default texture sampler occsampler0; true by default for compatibility.
+Return True if standard program header should define default texture sampler occSampler0; True by default for compatibility.
 ") HasDefaultSampler;
 		Standard_Boolean HasDefaultSampler();
 
@@ -15304,7 +15482,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns glsl header (version code and extensions).
+Returns GLSL header (version code and extensions).
 ") Header;
 		const TCollection_AsciiString & Header();
 
@@ -15330,7 +15508,7 @@ bool
 
 Description
 -----------
-Return true if standard program header should define functions and variables used in pbr pipeline. false by default.
+Return True if standard program header should define functions and variables used in PBR pipeline. False by default.
 ") IsPBR;
 		Standard_Boolean IsPBR();
 
@@ -15343,7 +15521,7 @@ int
 
 Description
 -----------
-Return the length of array of clipping planes (the_max_clip_planes), to be used for initialization occclipplaneequations. default value is the_max_clip_planes_default.
+Return the length of array of clipping planes (THE_MAX_CLIP_PLANES), to be used for initialization occClipPlaneEquations. Default value is THE_MAX_CLIP_PLANES_DEFAULT.
 ") NbClipPlanesMax;
 		Standard_Integer NbClipPlanesMax();
 
@@ -15356,7 +15534,7 @@ int
 
 Description
 -----------
-Returns the number (1+) of fragment shader outputs to be written to (more than 1 can be in case of multiple draw buffers); 1 by default.
+Returns the number (1+) of Fragment Shader outputs to be written to (more than 1 can be in case of multiple draw buffers); 1 by default.
 ") NbFragmentOutputs;
 		Standard_Integer NbFragmentOutputs();
 
@@ -15369,7 +15547,7 @@ int
 
 Description
 -----------
-Return the length of array of light sources (the_max_lights), to be used for initialization occlightsources. default value is the_max_lights_default.
+Return the length of array of light sources (THE_MAX_LIGHTS), to be used for initialization occLightSources. Default value is THE_MAX_LIGHTS_DEFAULT.
 ") NbLightsMax;
 		Standard_Integer NbLightsMax();
 
@@ -15382,7 +15560,7 @@ int
 
 Description
 -----------
-Return the length of array of shadow maps (the_nb_shadowmaps); 0 by default.
+Return the length of array of shadow maps (THE_NB_SHADOWMAPS); 0 by default.
 ") NbShadowMaps;
 		Standard_Integer NbShadowMaps();
 
@@ -15395,7 +15573,7 @@ Graphic3d_RenderTransparentMethod
 
 Description
 -----------
-Return if fragment shader color should output to oit buffers; off by default.
+Return if Fragment Shader color should output to OIT buffers; OFF by default.
 ") OitOutput;
 		Graphic3d_RenderTransparentMethod OitOutput();
 
@@ -15565,7 +15743,7 @@ None
 
 Description
 -----------
-Set if fragment shader should perform alpha test. note that this flag is designed for usage with - custom shader program may discard fragment regardless this flag.
+Set if Fragment Shader should perform alpha test. Note that this flag is designed for usage with - custom shader program may discard fragment regardless this flag.
 ") SetAlphaTest;
 		void SetAlphaTest(Standard_Boolean theAlphaTest);
 
@@ -15583,7 +15761,7 @@ None
 
 Description
 -----------
-Set if standard program header should define default texture sampler occsampler0.
+Set if standard program header should define default texture sampler occSampler0.
 ") SetDefaultSampler;
 		void SetDefaultSampler(Standard_Boolean theHasDefSampler);
 
@@ -15601,7 +15779,7 @@ None
 
 Description
 -----------
-Setup glsl header containing language version code and used extensions. will be prepended to the very beginning of the source code. example: @code #version 300 es #extension gl_arb_bindless_texture: require @endcode.
+Setup GLSL header containing language version code and used extensions. Will be prepended to the very beginning of the source code. Example: @code #version 300 es #extension GL_ARB_bindless_texture: require @endcode.
 ") SetHeader;
 		void SetHeader(TCollection_AsciiString theHeader);
 
@@ -15619,7 +15797,7 @@ None
 
 Description
 -----------
-Sets unique id used to manage resource in graphic driver. warning! graphic3d_shaderprogram constructor generates a unique id for proper resource management; however if application overrides it, it is responsibility of application to avoid name collisions.
+Sets unique ID used to manage resource in graphic driver. WARNING! Graphic3d_ShaderProgram constructor generates a unique id for proper resource management; however if application overrides it, it is responsibility of application to avoid name collisions.
 ") SetId;
 		void SetId(TCollection_AsciiString theId);
 
@@ -15637,7 +15815,7 @@ None
 
 Description
 -----------
-Specify the length of array of clipping planes (the_max_clip_planes).
+Specify the length of array of clipping planes (THE_MAX_CLIP_PLANES).
 ") SetNbClipPlanesMax;
 		void SetNbClipPlanesMax(Standard_Integer theNbPlanes);
 
@@ -15655,7 +15833,7 @@ None
 
 Description
 -----------
-Sets the number of fragment shader outputs to be written to. should be done before glsl program initialization.
+Sets the number of Fragment Shader outputs to be written to. Should be done before GLSL program initialization.
 ") SetNbFragmentOutputs;
 		void SetNbFragmentOutputs(const Standard_Integer theNbOutputs);
 
@@ -15673,7 +15851,7 @@ None
 
 Description
 -----------
-Specify the length of array of light sources (the_max_lights).
+Specify the length of array of light sources (THE_MAX_LIGHTS).
 ") SetNbLightsMax;
 		void SetNbLightsMax(Standard_Integer theNbLights);
 
@@ -15691,7 +15869,7 @@ None
 
 Description
 -----------
-Specify the length of array of shadow maps (the_nb_shadowmaps).
+Specify the length of array of shadow maps (THE_NB_SHADOWMAPS).
 ") SetNbShadowMaps;
 		void SetNbShadowMaps(Standard_Integer theNbMaps);
 
@@ -15709,7 +15887,7 @@ None
 
 Description
 -----------
-Set if fragment shader color should output to oit buffers. note that weighted oit also requires at least 2 fragment outputs (color + coverage), and depth peeling requires at least 3 fragment outputs (depth + front color + back color),.
+Set if Fragment Shader color should output to OIT buffers. Note that weighted OIT also requires at least 2 Fragment Outputs (color + coverage), and Depth Peeling requires at least 3 Fragment Outputs (depth + front color + back color),.
 ") SetOitOutput;
 		void SetOitOutput(Graphic3d_RenderTransparentMethod theOutput);
 
@@ -15727,7 +15905,7 @@ None
 
 Description
 -----------
-Sets whether standard program header should define functions and variables used in pbr pipeline.
+Sets whether standard program header should define functions and variables used in PBR pipeline.
 ") SetPBR;
 		void SetPBR(Standard_Boolean theIsPBR);
 
@@ -15763,7 +15941,7 @@ None
 
 Description
 -----------
-Assign the list of custom vertex attributes. should be done before glsl program initialization.
+Assign the list of custom vertex attributes. Should be done before GLSL program initialization.
 ") SetVertexAttributes;
 		void SetVertexAttributes(const Graphic3d_ShaderAttributeList & theAttributes);
 
@@ -15789,7 +15967,8 @@ TCollection_AsciiString
 
 Description
 -----------
-The path to glsl programs determined from csf_shadersdirectory or casroot environment variables. return the root folder with default glsl programs.
+The path to GLSL programs determined from CSF_ShadersDirectory or CASROOT environment variables. 
+Return: the root folder with default GLSL programs.
 ") ShadersFolder;
 		static const TCollection_AsciiString & ShadersFolder();
 
@@ -15802,7 +15981,8 @@ int
 
 Description
 -----------
-Return texture units declared within the program, @sa graphic3d_texturesetbits.
+Return texture units declared within the program, 
+See also: Graphic3d_TextureSetBits.
 ") TextureSetBits;
 		Standard_Integer TextureSetBits();
 
@@ -15815,7 +15995,7 @@ Graphic3d_ShaderVariableList
 
 Description
 -----------
-The list of currently pushed but not applied custom uniform variables. this list is automatically cleared after applying to glsl program.
+The list of currently pushed but not applied custom uniform variables. This list is automatically cleared after applying to GLSL program.
 ") Variables;
 		const Graphic3d_ShaderVariableList & Variables();
 
@@ -15927,7 +16107,9 @@ None
 
 Description
 -----------
-Creates a graphic object in the manager themanager. it will appear in all the views of the visualiser. the structure is not displayed when it is created. @param themanager structure manager holding this structure @param thelinkprs another structure for creating a shadow (linked) structure.
+Creates a graphic object in the manager theManager. It will appear in all the views of the visualiser. The structure is not displayed when it is created. 
+Parameter theManager structure manager holding this structure 
+Parameter theLinkPrs another structure for creating a shadow (linked) structure.
 ") Graphic3d_Structure;
 		 Graphic3d_Structure(const opencascade::handle<Graphic3d_StructureManager> & theManager, const opencascade::handle<Graphic3d_Structure> & theLinkPrs = opencascade::handle<Graphic3d_Structure>());
 
@@ -15947,7 +16129,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the connection is possible between <astructure1> and <astructure2> without a creation of a cycle. //! it's not possible to call the method astructure1->connect (astructure2, typeofconnection) if - the set of all ancestors of <astructure1> contains <astructure1> and if the typeofconnection == toc_descendant - the set of all descendants of <astructure1> contains <astructure2> and if the typeofconnection == toc_ancestor.
+Returns Standard_True if the connection is possible between <AStructure1> and <AStructure2> without a creation of a cycle. //! It's not possible to call the method AStructure1->Connect (AStructure2, TypeOfConnection) if - the set of all ancestors of <AStructure1> contains <AStructure1> and if the TypeOfConnection == TOC_DESCENDANT - the set of all descendants of <AStructure1> contains <AStructure2> and if the TypeOfConnection == TOC_ANCESTOR.
 ") AcceptConnection;
 		static Standard_Boolean AcceptConnection(Graphic3d_Structure * theStructure1, Graphic3d_Structure * theStructure2, Graphic3d_TypeOfConnection theType);
 
@@ -16009,7 +16191,7 @@ None
 
 Description
 -----------
-If withdestruction == standard_true then suppress all the groups of primitives in the structure. and it is mandatory to create a new group in <self>. if withdestruction == standard_false then clears all the groups of primitives in the structure. and all the groups are conserved and empty. they will be erased at the next screen update. the structure itself is conserved. the transformation and the attributes of <self> are conserved. the childs of <self> are conserved.
+if WithDestruction == Standard_True then suppress all the groups of primitives in the structure. and it is mandatory to create a new group in <self>. if WithDestruction == Standard_False then clears all the groups of primitives in the structure. and all the groups are conserved and empty. They will be erased at the next screen update. The structure itself is conserved. The transformation and the attributes of <self> are conserved. The childs of <self> are conserved.
 ") Clear;
 		virtual void Clear(const Standard_Boolean WithDestruction = Standard_True);
 
@@ -16022,7 +16204,8 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 
 Description
 -----------
-Get clip planes slicing the structure on rendering. return set of clip planes.
+Get clip planes slicing the structure on rendering. 
+Return: set of clip planes.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
@@ -16068,7 +16251,7 @@ None
 
 Description
 -----------
-If atype is toc_descendant then add <astructure> as a child structure of <self>. if atype is toc_ancestor then add <astructure> as a parent structure of <self>. the connection propagates display, highlight, erase, remove, and stacks the transformations. no connection if the graph of the structures contains a cycle and <withcheck> is standard_true;.
+If Atype is TOC_DESCENDANT then add <AStructure> as a child structure of <self>. If Atype is TOC_ANCESTOR then add <AStructure> as a parent structure of <self>. The connection propagates Display, Highlight, Erase, Remove, and stacks the transformations. No connection if the graph of the structures contains a cycle and <WithCheck> is Standard_True;.
 ") Connect;
 		void Connect(Graphic3d_Structure * theStructure, Graphic3d_TypeOfConnection theType, Standard_Boolean theWithCheck = Standard_False);
 
@@ -16135,7 +16318,7 @@ None
 
 Description
 -----------
-Suppress the connection between <astructure> and <self>.
+Suppress the connection between <AStructure> and <self>.
 ") Disconnect;
 		void Disconnect(Graphic3d_Structure * theStructure);
 
@@ -16153,7 +16336,7 @@ None
 
 Description
 -----------
-If atype is toc_descendant then suppress all the connections with the child structures of <self>. if atype is toc_ancestor then suppress all the connections with the parent structures of <self>.
+If Atype is TOC_DESCENDANT then suppress all the connections with the child structures of <self>. If Atype is TOC_ANCESTOR then suppress all the connections with the parent structures of <self>.
 ") DisconnectAll;
 		void DisconnectAll(const Graphic3d_TypeOfConnection AType);
 
@@ -16226,7 +16409,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Get z layer id of displayed structure. the method returns -1 if the structure has no id (deleted from graphic driver).
+Get Z layer ID of displayed structure. The method returns -1 if the structure has no ID (deleted from graphic driver).
 ") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer();
 
@@ -16343,7 +16526,9 @@ None
 
 Description
 -----------
-Highlights the structure in all the views with the given style @param thestyle [in] the style (type of highlighting: box/color, color and opacity) @param thetoupdatemgr [in] defines whether related computed structures will be highlighted via structure manager or not.
+Highlights the structure in all the views with the given style 
+Input parameter: theStyle the style (type of highlighting: box/color, color and opacity) 
+Input parameter: theToUpdateMgr defines whether related computed structures will be highlighted via structure manager or not.
 ") Highlight;
 		void Highlight(const opencascade::handle<Graphic3d_PresentationAttributes> & theStyle, const Standard_Boolean theToUpdateMgr = Standard_True);
 
@@ -16382,7 +16567,7 @@ bool
 
 Description
 -----------
-Returns true if this structure is deleted (after remove() call).
+Returns True if this structure is deleted (after Remove() call).
 ") IsDeleted;
 		Standard_Boolean IsDeleted();
 
@@ -16408,7 +16593,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the structure <self> is empty. warning: a structure is empty if: it do not have group or all the groups are empties and it do not have descendant or all the descendants are empties.
+Returns Standard_True if the structure <self> is empty. Warning: A structure is empty if: it do not have group or all the groups are empties and it do not have descendant or all the descendants are empties.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -16434,7 +16619,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the structure <self> is infinite.
+Returns Standard_True if the structure <self> is infinite.
 ") IsInfinite;
 		Standard_Boolean IsInfinite();
 
@@ -16447,7 +16632,7 @@ bool
 
 Description
 -----------
-Returns true if structure has mutable nature (content or location are be changed regularly). mutable structure will be managed in different way than static onces.
+Returns true if structure has mutable nature (content or location are be changed regularly). Mutable structure will be managed in different way than static ones.
 ") IsMutable;
 		Standard_Boolean IsMutable();
 
@@ -16460,7 +16645,7 @@ bool
 
 Description
 -----------
-Returns true if the structure is transformed.
+Returns True if the structure is transformed.
 ") IsTransformed;
 		Standard_Boolean IsTransformed();
 
@@ -16491,7 +16676,7 @@ Bnd_Box
 
 Description
 -----------
-Returns the coordinates of the boundary box of the structure <self>. if <thetoignoreinfiniteflag> is true, the method returns actual graphical boundaries of the graphic3d_group components. otherwise, the method returns boundaries taking into account infinite state of the structure. this approach generally used for application specific fit operation (e.g. fitting the model into screen, not taking into account infinite helper elements). warning: if the structure <self> is empty then the empty box is returned, if the structure <self> is infinite then the whole box is returned.
+Returns the coordinates of the boundary box of the structure <self>. If <theToIgnoreInfiniteFlag> is True, the method returns actual graphical boundaries of the Graphic3d_Group components. Otherwise, the method returns boundaries taking into account infinite state of the structure. This approach generally used for application specific fit operation (e.g. fitting the model into screen, not taking into account infinite helper elements). Warning: If the structure <self> is empty then the empty box is returned, If the structure <self> is infinite then the whole box is returned.
 ") MinMaxValues;
 		Bnd_Box MinMaxValues(const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False);
 
@@ -16511,7 +16696,7 @@ None
 
 Description
 -----------
-Returns <aset> the group of structures: - directly or indirectly connected to <astructure> if the typeofconnection == toc_descendant - to which <astructure> is directly or indirectly connected if the typeofconnection == toc_ancestor.
+Returns <ASet> the group of structures: - directly or indirectly connected to <AStructure> if the TypeOfConnection == TOC_DESCENDANT - to which <AStructure> is directly or indirectly connected if the TypeOfConnection == TOC_ANCESTOR.
 ") Network;
 		static void Network(Graphic3d_Structure * theStructure, const Graphic3d_TypeOfConnection theType, NCollection_Map<Graphic3d_Structure *> & theSet);
 
@@ -16569,7 +16754,7 @@ None
 
 Description
 -----------
-Prints information about the network associated with the structure <astructure>.
+Prints information about the network associated with the structure <AStructure>.
 ") PrintNetwork;
 		static void PrintNetwork(const opencascade::handle<Graphic3d_Structure> & AStructure, const Graphic3d_TypeOfConnection AType);
 
@@ -16582,7 +16767,7 @@ None
 
 Description
 -----------
-Forces a new construction of the structure <self> if <self> is displayed and tos_computed.
+Forces a new construction of the structure <self> if <self> is displayed and TOS_COMPUTED.
 ") ReCompute;
 		void ReCompute();
 
@@ -16600,9 +16785,27 @@ None
 
 Description
 -----------
-Forces a new construction of the structure <self> if <self> is displayed in <aprojetor> and tos_computed.
+Forces a new construction of the structure <self> if <self> is displayed in <aProjetor> and TOS_COMPUTED.
 ") ReCompute;
 		void ReCompute(const opencascade::handle<Graphic3d_DataStructureManager> & aProjector);
+
+		/****** Graphic3d_Structure::RecomputeTransformation ******/
+		/****** md5 signature: 82ed18839859745368af73d0950cafa4 ******/
+		%feature("compactdefaultargs") RecomputeTransformation;
+		%feature("autodoc", "
+Parameters
+----------
+theProjector: Graphic3d_Camera
+
+Return
+-------
+None
+
+Description
+-----------
+Calculates structure transformation for specific camera position.
+") RecomputeTransformation;
+		virtual void RecomputeTransformation(const opencascade::handle<Graphic3d_Camera> & theProjector);
 
 		/****** Graphic3d_Structure::Remove ******/
 		/****** md5 signature: 0346504d7ac570fc8960fb72d5ad5f20 ******/
@@ -16613,7 +16816,7 @@ None
 
 Description
 -----------
-Suppress the structure <self>. it will be erased at the next screen update. warning: no more graphic operations in <self> after this call. category: methods to modify the class definition.
+Suppress the structure <self>. It will be erased at the next screen update. Warning: No more graphic operations in <self> after this call. Category: Methods to modify the class definition.
 ") Remove;
 		void Remove();
 
@@ -16676,7 +16879,7 @@ None
 
 Description
 -----------
-Reset the current priority of the structure to the previous priority. warning: if structure is displayed then the setdisplaypriority() method erases it and displays with the previous priority.
+Reset the current priority of the structure to the previous priority. Warning: If structure is displayed then the SetDisplayPriority() method erases it and displays with the previous priority.
 ") ResetDisplayPriority;
 		void ResetDisplayPriority();
 
@@ -16694,7 +16897,8 @@ None
 
 Description
 -----------
-Changes a sequence of clip planes slicing the structure on rendering. @param theplanes [in] the set of clip planes.
+Changes a sequence of clip planes slicing the structure on rendering. 
+Input parameter: thePlanes the set of clip planes.
 ") SetClipPlanes;
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
@@ -16730,7 +16934,7 @@ None
 
 Description
 -----------
-Modifies the order of displaying the structure. values are between 0 and 10. structures are drawn according to their display priorities in ascending order. a structure of priority 10 is displayed the last and appears over the others. the default value is 5. warning: if structure is displayed then the setdisplaypriority method erases it and displays with the new priority. raises graphic3d_prioritydefinitionerror if priority is greater than 10 or a negative value.
+Modifies the order of displaying the structure. Values are between 0 and 10. Structures are drawn according to their display priorities in ascending order. A structure of priority 10 is displayed the last and appears over the others. The default value is 5. Warning: If structure is displayed then the SetDisplayPriority method erases it and displays with the new priority. Raises Graphic3d_PriorityDefinitionError if Priority is greater than 10 or a negative value.
 ") SetDisplayPriority;
 		void SetDisplayPriority(const Graphic3d_DisplayPriority thePriority);
 
@@ -16784,7 +16988,7 @@ None
 
 Description
 -----------
-Sets infinite flag. when true, the minmaxvalues method returns: thexmin = theymin = thezmin = realfirst(). thexmax = theymax = thezmax = reallast(). by default, structure is created not infinite but empty.
+Sets infinite flag. When True, the MinMaxValues method returns: theXMin = theYMin = theZMin = RealFirst(). theXMax = theYMax = theZMax = RealLast(). By default, structure is created not infinite but empty.
 ") SetInfiniteState;
 		void SetInfiniteState(const Standard_Boolean theToSet);
 
@@ -16802,7 +17006,7 @@ None
 
 Description
 -----------
-Marks the structure <self> representing wired structure needed for highlight only so it won't be added to bvh tree.
+Marks the structure <self> representing wired structure needed for highlight only so it won't be added to BVH tree.
 ") SetIsForHighlight;
 		void SetIsForHighlight(const Standard_Boolean isForHighlight);
 
@@ -16892,7 +17096,7 @@ None
 
 Description
 -----------
-Modifies the visibility indicator to standard_true or standard_false for the structure <self>. the default value at the definition of <self> is standard_true.
+Modifies the visibility indicator to Standard_True or Standard_False for the structure <self>. The default value at the definition of <self> is Standard_True.
 ") SetVisible;
 		void SetVisible(const Standard_Boolean AValue);
 
@@ -16928,7 +17132,7 @@ None
 
 Description
 -----------
-Set z layer id for the structure. the z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers.
+Set Z layer ID for the structure. The Z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers.
 ") SetZLayer;
 		void SetZLayer(int theLayerId);
 
@@ -16947,7 +17151,7 @@ None
 
 Description
 -----------
-Modifies the minimum and maximum zoom coefficients for the structure <self>. the default value at the definition of <self> is unlimited. category: methods to modify the class definition warning: raises structuredefinitionerror if <limitinf> is greater than <limitsup> or if <limitinf> or <limitsup> is a negative value.
+Modifies the minimum and maximum zoom coefficients for the structure <self>. The default value at the definition of <self> is unlimited. Category: Methods to modify the class definition Warning: Raises StructureDefinitionError if <LimitInf> is greater than <LimitSup> or if <LimitInf> or <LimitSup> is a negative value.
 ") SetZoomLimit;
 		void SetZoomLimit(const Standard_Real LimitInf, const Standard_Real LimitSup);
 
@@ -16960,7 +17164,7 @@ opencascade::handle<Graphic3d_TransformPers>
 
 Description
 -----------
-Return transform persistence of the presentable object.
+Return: transform persistence of the presentable object.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
@@ -16996,7 +17200,7 @@ theNewZ: float
 
 Description
 -----------
-Transforms thex, they, thez with the transformation thetrsf.
+Transforms theX, theY, theZ with the transformation theTrsf.
 ") Transforms;
 		static void Transforms(const gp_Trsf & theTrsf, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -17041,7 +17245,7 @@ None
 
 Description
 -----------
-Returns the new structure defined for the new visualization.
+Returns the new Structure defined for the new visualization.
 ") computeHLR;
 		virtual void computeHLR(const opencascade::handle<Graphic3d_Camera> & theProjector, opencascade::handle<Graphic3d_Structure> & theStructure);
 
@@ -17075,7 +17279,7 @@ None
 
 Description
 -----------
-Initializes the viewmanager. currently creating of more than 100 viewer instances is not supported and leads to initializationerror and initialization failure. this limitation might be addressed in some future occt releases. warning: raises initialisationerror if the initialization of the viewmanager failed.
+Initializes the ViewManager. Currently creating of more than 100 viewer instances is not supported and leads to InitializationError and initialization failure. This limitation might be addressed in some future OCCT releases. Warning: Raises InitialisationError if the initialization of the ViewManager failed.
 ") Graphic3d_StructureManager;
 		 Graphic3d_StructureManager(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
@@ -17095,7 +17299,7 @@ None
 
 Description
 -----------
-Changes the display priority of the structure <astructure>.
+Changes the display priority of the structure <AStructure>.
 ") ChangeDisplayPriority;
 		virtual void ChangeDisplayPriority(const opencascade::handle<Graphic3d_Structure> & theStructure, const Graphic3d_DisplayPriority theOldPriority, const Graphic3d_DisplayPriority theNewPriority);
 
@@ -17114,7 +17318,7 @@ None
 
 Description
 -----------
-Change z layer for structure. the z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
+Change Z layer for structure. The Z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 ") ChangeZLayer;
 		virtual void ChangeZLayer(const opencascade::handle<Graphic3d_Structure> & theStructure, int theLayerId);
 
@@ -17357,7 +17561,7 @@ opencascade::handle<Graphic3d_Structure>
 
 Description
 -----------
-Returns the structure with the identification number <aid>.
+Returns the structure with the identification number <AId>.
 ") Identification;
 		virtual opencascade::handle<Graphic3d_Structure> Identification(const Standard_Integer AId);
 
@@ -17370,7 +17574,7 @@ bool
 
 Description
 -----------
-Returns true if device lost flag has been set and presentation data should be reuploaded onto graphics driver.
+Returns True if Device Lost flag has been set and presentation data should be reuploaded onto graphics driver.
 ") IsDeviceLost;
 		Standard_Boolean IsDeviceLost();
 
@@ -17383,7 +17587,7 @@ int
 
 Description
 -----------
-Returns the theoretical maximum number of definable views in the manager. warning: it's not possible to accept an infinite number of definable views because each view must have an identification and we have different managers.
+Returns the theoretical maximum number of definable views in the manager. Warning: It's not possible to accept an infinite number of definable views because each view must have an identification and we have different managers.
 ") MaxNumOfViews;
 		Standard_Integer MaxNumOfViews();
 
@@ -17419,7 +17623,7 @@ None
 
 Description
 -----------
-Forces a new construction of the structure. if <thestructure> is displayed and tos_computed.
+Forces a new construction of the structure. if <theStructure> is displayed and TOS_COMPUTED.
 ") ReCompute;
 		virtual void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
@@ -17438,7 +17642,7 @@ None
 
 Description
 -----------
-Forces a new construction of the structure. if <thestructure> is displayed in <theprojector> and tos_computed.
+Forces a new construction of the structure. if <theStructure> is displayed in <theProjector> and TOS_COMPUTED.
 ") ReCompute;
 		virtual void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<Graphic3d_DataStructureManager> & theProjector);
 
@@ -17451,7 +17655,7 @@ None
 
 Description
 -----------
-Recomputes all structures in the manager. resets device lost flag.
+Recomputes all structures in the manager. Resets Device Lost flag.
 ") RecomputeStructures;
 		void RecomputeStructures();
 
@@ -17469,7 +17673,7 @@ None
 
 Description
 -----------
-Recomputes all structures from thestructures.
+Recomputes all structures from theStructures.
 ") RecomputeStructures;
 		void RecomputeStructures(const NCollection_Map<Graphic3d_Structure *> & theStructures);
 
@@ -17501,7 +17705,7 @@ None
 
 Description
 -----------
-Deletes and erases the 3d structure manager.
+Deletes and erases the 3D structure manager.
 ") Remove;
 		virtual void Remove();
 
@@ -17514,7 +17718,7 @@ None
 
 Description
 -----------
-Sets device lost flag.
+Sets Device Lost flag.
 ") SetDeviceLost;
 		void SetDeviceLost();
 
@@ -17551,7 +17755,7 @@ None
 
 Description
 -----------
-Suppress the highlighting on the structure <astructure>.
+Suppress the highlighting on the structure <AStructure>.
 ") UnHighlight;
 		virtual void UnHighlight(const opencascade::handle<Graphic3d_Structure> & AStructure);
 
@@ -17618,7 +17822,7 @@ None
 
 Description
 -----------
-Invalidates bounding box of specified zlayerid.
+Invalidates bounding box of specified ZLayerId.
 ") Update;
 		virtual void Update(int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
@@ -17691,7 +17895,7 @@ float
 
 Description
 -----------
-Sets height of text. (relative to the normalized projection coordinates (npc) space).
+Sets height of text. (Relative to the Normalized Projection Coordinates (NPC) Space).
 ") Height;
 		Standard_ShortReal Height();
 
@@ -17717,7 +17921,7 @@ gp_Ax2
 
 Description
 -----------
-Returns text orientation in 3d space.
+Returns text orientation in 3D space.
 ") Orientation;
 		const gp_Ax2 Orientation();
 
@@ -17730,7 +17934,7 @@ gp_Pnt
 
 Description
 -----------
-The 3d point of attachment is projected. if the orientation is defined, the text is written in the plane of projection.
+The 3D point of attachment is projected. If the orientation is defined, the text is written in the plane of projection.
 ") Position;
 		const gp_Pnt Position();
 
@@ -17743,7 +17947,7 @@ None
 
 Description
 -----------
-Reset text orientation in 3d space.
+Reset text orientation in 3D space.
 ") ResetOrientation;
 		void ResetOrientation();
 
@@ -17797,7 +18001,7 @@ None
 
 Description
 -----------
-Sets text orientation in 3d space.
+Sets text orientation in 3D space.
 ") SetOrientation;
 		void SetOrientation(const gp_Ax2 & theOrientation);
 
@@ -17949,7 +18153,7 @@ opencascade::handle<Font_TextFormatter>
 
 Description
 -----------
-Return text formatter; null by default, which means standard text formatter will be used.
+Return: text formatter; NULL by default, which means standard text formatter will be used.
 ") TextFormatter;
 		const opencascade::handle<Font_TextFormatter> & TextFormatter();
 
@@ -18004,7 +18208,7 @@ Graphic3d_LevelOfTextureAnisotropy
 
 Description
 -----------
-Return level of anisontropy texture filter. default value is graphic3d_lota_off.
+Return: level of anisontropy texture filter. Default value is Graphic3d_LOTA_OFF.
 ") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter();
 
@@ -18017,7 +18221,7 @@ int
 
 Description
 -----------
-Return base texture mipmap level; 0 by default.
+Return: base texture mipmap level; 0 by default.
 ") BaseLevel;
 		Standard_Integer BaseLevel();
 
@@ -18030,7 +18234,7 @@ Graphic3d_TypeOfTextureFilter
 
 Description
 -----------
-Return texture interpolation filter. default value is graphic3d_totf_nearest.
+Return: texture interpolation filter. Default value is Graphic3d_TOTF_NEAREST.
 ") Filter;
 		Graphic3d_TypeOfTextureFilter Filter();
 
@@ -18043,7 +18247,7 @@ Graphic3d_TypeOfTextureMode
 
 Description
 -----------
-Return texture coordinates generation mode. default value is graphic3d_totm_manual.
+Return: texture coordinates generation mode. Default value is Graphic3d_TOTM_MANUAL.
 ") GenMode;
 		Graphic3d_TypeOfTextureMode GenMode();
 
@@ -18056,7 +18260,7 @@ Graphic3d_Vec4
 
 Description
 -----------
-Return texture coordinates generation plane s.
+Return: texture coordinates generation plane S.
 ") GenPlaneS;
 		const Graphic3d_Vec4 & GenPlaneS();
 
@@ -18069,7 +18273,7 @@ Graphic3d_Vec4
 
 Description
 -----------
-Return texture coordinates generation plane t.
+Return: texture coordinates generation plane T.
 ") GenPlaneT;
 		const Graphic3d_Vec4 & GenPlaneT();
 
@@ -18082,7 +18286,7 @@ bool
 
 Description
 -----------
-Return true if the texture is modulate. default value is false.
+Return: True if the texture is modulate. Default value is False.
 ") IsModulate;
 		Standard_Boolean IsModulate();
 
@@ -18095,7 +18299,7 @@ bool
 
 Description
 -----------
-Return true if the texture repeat is enabled. default value is false.
+Return: True if the texture repeat is enabled. Default value is False.
 ") IsRepeat;
 		Standard_Boolean IsRepeat();
 
@@ -18108,7 +18312,7 @@ int
 
 Description
 -----------
-Return maximum texture mipmap array level; 1000 by default. real rendering limit will take into account mipmap generation flags and presence of mipmaps in loaded image.
+Return maximum texture mipmap array level; 1000 by default. Real rendering limit will take into account mipmap generation flags and presence of mipmaps in loaded image.
 ") MaxLevel;
 		Standard_Integer MaxLevel();
 
@@ -18121,7 +18325,7 @@ float
 
 Description
 -----------
-Return rotation angle in degrees; 0 by default. complete transformation matrix: rotation -> translation -> scale.
+Return rotation angle in degrees; 0 by default. Complete transformation matrix: Rotation -> Translation -> Scale.
 ") Rotation;
 		Standard_ShortReal Rotation();
 
@@ -18147,7 +18351,7 @@ Graphic3d_Vec2
 
 Description
 -----------
-Return scale factor; (1.0; 1.0) by default, which means no scaling. complete transformation matrix: rotation -> translation -> scale.
+Return scale factor; (1.0; 1.0) by default, which means no scaling. Complete transformation matrix: Rotation -> Translation -> Scale.
 ") Scale;
 		const Graphic3d_Vec2 & Scale();
 
@@ -18165,7 +18369,7 @@ None
 
 Description
 -----------
-@param thelevel level of anisontropy texture filter.
+Parameter theLevel level of anisontropy texture filter.
 ") SetAnisoFilter;
 		void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel);
 
@@ -18183,7 +18387,7 @@ None
 
 Description
 -----------
-@param thefilter texture interpolation filter.
+Parameter theFilter texture interpolation filter.
 ") SetFilter;
 		void SetFilter(const Graphic3d_TypeOfTextureFilter theFilter);
 
@@ -18222,7 +18426,7 @@ None
 
 Description
 -----------
-Setups texture mipmap array levels range. the lowest value will be the base level. the remaining one will be the maximum level.
+Setups texture mipmap array levels range. The lowest value will be the base level. The remaining one will be the maximum level.
 ") SetLevelsRange;
 		void SetLevelsRange(Standard_Integer theFirstLevel, Standard_Integer theSecondLevel = 0);
 
@@ -18240,7 +18444,7 @@ None
 
 Description
 -----------
-@param thetomodulate turn modulation on/off.
+Parameter theToModulate turn modulation on/off.
 ") SetModulate;
 		void SetModulate(const Standard_Boolean theToModulate);
 
@@ -18258,7 +18462,7 @@ None
 
 Description
 -----------
-@param thetorepeat turn texture repeat mode on or off (clamping).
+Parameter theToRepeat turn texture repeat mode ON or OFF (clamping).
 ") SetRepeat;
 		void SetRepeat(const Standard_Boolean theToRepeat);
 
@@ -18276,7 +18480,7 @@ None
 
 Description
 -----------
-@param theangledegrees rotation angle.
+Parameter theAngleDegrees rotation angle.
 ") SetRotation;
 		void SetRotation(const Standard_ShortReal theAngleDegrees);
 
@@ -18294,7 +18498,7 @@ None
 
 Description
 -----------
-@param thescale scale factor.
+Parameter theScale scale factor.
 ") SetScale;
 		void SetScale(const Graphic3d_Vec2 theScale);
 
@@ -18330,7 +18534,7 @@ None
 
 Description
 -----------
-@param thevec translation vector.
+Parameter theVec translation vector.
 ") SetTranslation;
 		void SetTranslation(const Graphic3d_Vec2 theVec);
 
@@ -18343,7 +18547,7 @@ Graphic3d_TextureUnit
 
 Description
 -----------
-Default texture unit to be used, default is graphic3d_textureunit_basecolor.
+Default texture unit to be used, default is Graphic3d_TextureUnit_BaseColor.
 ") TextureUnit;
 		Graphic3d_TextureUnit TextureUnit();
 
@@ -18356,7 +18560,7 @@ Graphic3d_Vec2
 
 Description
 -----------
-Return translation vector; (0.0; 0.0), which means no translation. complete transformation matrix: rotation -> translation -> scale.
+Return translation vector; (0.0; 0.0), which means no translation. Complete transformation matrix: Rotation -> Translation -> Scale.
 ") Translation;
 		const Graphic3d_Vec2 & Translation();
 
@@ -18391,7 +18595,9 @@ opencascade::handle<Image_CompressedPixMap>
 
 Description
 -----------
-This method will be called by graphic driver each time when texture resource should be created. it is called in front of getimage() for uploading compressed image formats natively supported by gpu. @param thesupported [in] the list of supported compressed texture formats;  returning image in unsupported format will result in texture upload failure return compressed pixmap or null if image is not in supported compressed format.
+This method will be called by graphic driver each time when texture resource should be created. It is called in front of GetImage() for uploading compressed image formats natively supported by GPU. 
+Input parameter: theSupported the list of supported compressed texture formats;  returning image in unsupported format will result in texture upload  failure 
+Return: compressed pixmap or NULL if image is not in supported compressed format.
 ") GetCompressedImage;
 		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -18404,7 +18610,8 @@ TCollection_AsciiString
 
 Description
 -----------
-This id will be used to manage resource in graphic driver. //! default implementation generates unique id within constructor; inheritors may re-initialize it within their constructor, but should never modify it afterwards. //! multiple graphic3d_textureroot instances with same id will be treated as single texture with different parameters to optimize memory usage though this will be more natural to use same instance of graphic3d_textureroot when possible. //! if this id is set to empty string by inheritor, then independent graphical resource will be created for each instance of graphic3d_aspectfillarea3d where texture will be used. //! return texture identifier.
+This ID will be used to manage resource in graphic driver. //! Default implementation generates unique ID within constructor; inheritors may re-initialize it within their constructor, but should never modify it afterwards. //! Multiple Graphic3d_TextureRoot instances with same ID will be treated as single texture with different parameters to optimize memory usage though this will be more natural to use same instance of Graphic3d_TextureRoot when possible. //! If this ID is set to empty string by inheritor, then independent graphical resource will be created for each instance of Graphic3d_AspectFillArea3d where texture will be used. //! 
+Return: texture identifier.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
@@ -18422,7 +18629,8 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-This method will be called by graphic driver each time when texture resource should be created. default constructors allow defining the texture source as path to texture image or directly as pixmap. if the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). inheritors may dynamically generate the image. notice, image data should be in bottom-up order (see image_pixmap::istopdown())! return the image for texture.
+This method will be called by graphic driver each time when texture resource should be created. Default constructors allow defining the texture source as path to texture image or directly as pixmap. If the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). Inheritors may dynamically generate the image. Notice, image data should be in Bottom-Up order (see Image_PixMap::IsTopDown())! 
+Return: the image for texture.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -18435,7 +18643,7 @@ opencascade::handle<Graphic3d_TextureParams>
 
 Description
 -----------
-Return low-level texture parameters.
+Return: low-level texture parameters.
 ") GetParams;
 		const opencascade::handle<Graphic3d_TextureParams> & GetParams();
 
@@ -18461,7 +18669,7 @@ bool
 
 Description
 -----------
-Return flag indicating color nature of values within the texture; true by default. //! this flag will be used to interpret 8-bit per channel rgb(a) images as srgb(a) textures with implicit linearizion of color components. has no effect on images with floating point values (always considered linearized). //! when set to false, such images will be interpreted as textures will be linear component values, which is useful for rgb(a) textures defining non-color properties (like normalmap/metalness/roughness).
+Return flag indicating color nature of values within the texture; True by default. //! This flag will be used to interpret 8-bit per channel RGB(A) images as sRGB(A) textures with implicit linearizion of color components. Has no effect on images with floating point values (always considered linearized). //! When set to False, such images will be interpreted as textures will be linear component values, which is useful for RGB(A) textures defining non-color properties (like Normalmap/Metalness/Roughness).
 ") IsColorMap;
 		Standard_Boolean IsColorMap();
 
@@ -18474,7 +18682,8 @@ bool
 
 Description
 -----------
-Checks if a texture class is valid or not. return true if the construction of the class is correct.
+Checks if a texture class is valid or not. 
+Return: true if the construction of the class is correct.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
@@ -18500,7 +18709,7 @@ OSD_Path
 
 Description
 -----------
-Returns the full path of the defined texture. it could be empty path if getimage() is overridden to load image not from file.
+Returns the full path of the defined texture. It could be empty path if GetImage() is overridden to load image not from file.
 ") Path;
 		const OSD_Path & Path();
 
@@ -18562,7 +18771,8 @@ TCollection_AsciiString
 
 Description
 -----------
-The path to textures determined from csf_mdtvtexturesdirectory or casroot environment variables. return the root folder with default textures.
+The path to textures determined from CSF_MDTVTexturesDirectory or CASROOT environment variables. 
+Return: the root folder with default textures.
 ") TexturesFolder;
 		static TCollection_AsciiString TexturesFolder();
 
@@ -18575,7 +18785,7 @@ Graphic3d_TypeOfTexture
 
 Description
 -----------
-Return the texture type.
+Return: the texture type.
 ") Type;
 		Graphic3d_TypeOfTexture Type();
 
@@ -18588,7 +18798,7 @@ None
 
 Description
 -----------
-Update image revision. can be used for signaling changes in the texture source (e.g. file update, pixmap update) without re-creating texture source itself (since unique id should be never modified).
+Update image revision. Can be used for signaling changes in the texture source (e.g. file update, pixmap update) without re-creating texture source itself (since unique id should be never modified).
 ") UpdateRevision;
 		void UpdateRevision();
 
@@ -18646,7 +18856,7 @@ None
 
 Description
 -----------
-Set zoom/rotate transformation persistence with an anchor 3d point. anchor point defines the origin of local coordinate system within world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
+Set Zoom/Rotate transformation persistence with an anchor 3D point. Anchor point defines the origin of Local Coordinate system within World Coordinate system. Throws an exception if persistence mode is not Graphic3d_TMF_ZoomPers, Graphic3d_TMF_ZoomRotatePers or Graphic3d_TMF_RotatePers.
 ") Graphic3d_TransformPers;
 		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
 
@@ -18666,7 +18876,7 @@ None
 
 Description
 -----------
-Set 2d/trihedron transformation persistence with a corner and 2d offset. 2d offset defines the origin of local coordinate system as projection of 2d point on screen plane into world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d. the offset is a positive displacement from the view corner in pixels.
+Set 2d/trihedron transformation persistence with a corner and 2D offset. 2D offset defines the origin of Local Coordinate system as projection of 2D point on screen plane into World Coordinate system. Throws an exception if persistence mode is not Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d. The offset is a positive displacement from the view corner in pixels.
 ") Graphic3d_TransformPers;
 		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset = Graphic3d_Vec2i(0,0));
 
@@ -18682,6 +18892,31 @@ Description
 Return the anchor point for zoom/rotate transformation persistence.
 ") AnchorPoint;
 		gp_Pnt AnchorPoint();
+
+		/****** Graphic3d_TransformPers::ComputeApply ******/
+		/****** md5 signature: fd22d5d378a3cf740314df576f7af776 ******/
+		%feature("compactdefaultargs") ComputeApply;
+		%feature("autodoc", "
+Parameters
+----------
+theCamera: Graphic3d_Camera
+theViewportWidth: int
+theViewportHeight: int
+theAnchor: gp_Pnt * (optional, default to NULL)
+
+Return
+-------
+NCollection_Mat4<float >
+
+Description
+-----------
+Perform computations for applying transformation persistence on specified matrices. 
+Input parameter: theCamera camera definition 
+Input parameter: theViewportWidth viewport width 
+Input parameter: theViewportHeight viewport height 
+Input parameter: theAnchor if not NULL, overrides anchor point.
+") ComputeApply;
+		virtual NCollection_Mat4<Standard_Real > ComputeApply(opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight, const gp_Pnt * theAnchor = NULL);
 
 		/****** Graphic3d_TransformPers::Corner2d ******/
 		/****** md5 signature: 47d0ef849af382ad94cf96ab6591598c ******/
@@ -18730,6 +18965,68 @@ Transformation persistence mode flags.
 ") Flags;
 		Graphic3d_TransModeFlags Flags();
 
+		/****** Graphic3d_TransformPers::IsAxial ******/
+		/****** md5 signature: 235fe8a3c3da3ab26c51f6462419c9b8 ******/
+		%feature("compactdefaultargs") IsAxial;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+
+Return
+-------
+bool
+
+Description
+-----------
+Return true if specified mode is axial transformation persistence.
+") IsAxial;
+		static Standard_Boolean IsAxial(Graphic3d_TransModeFlags theMode);
+
+		/****** Graphic3d_TransformPers::IsAxial ******/
+		/****** md5 signature: 8350e74589b9178675bb472853fea2d0 ******/
+		%feature("compactdefaultargs") IsAxial;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return true for Graphic3d_TMF_AxialScalePers modes.
+") IsAxial;
+		Standard_Boolean IsAxial();
+
+		/****** Graphic3d_TransformPers::IsOrthoPers ******/
+		/****** md5 signature: 5df8f671b174fbfe921f850bf16f4a59 ******/
+		%feature("compactdefaultargs") IsOrthoPers;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: Graphic3d_TransModeFlags
+
+Return
+-------
+bool
+
+Description
+-----------
+Return true if specified mode is orthographic projection transformation persistence.
+") IsOrthoPers;
+		static Standard_Boolean IsOrthoPers(Graphic3d_TransModeFlags theMode);
+
+		/****** Graphic3d_TransformPers::IsOrthoPers ******/
+		/****** md5 signature: 251c9d48cafb7a8626ff374dbac400b5 ******/
+		%feature("compactdefaultargs") IsOrthoPers;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return true for Graphic3d_TMF_OrthoPers mode.
+") IsOrthoPers;
+		Standard_Boolean IsOrthoPers();
+
 		/****** Graphic3d_TransformPers::IsTrihedronOr2d ******/
 		/****** md5 signature: 6f4a3b2e29bd3584ee33aa1290e6374b ******/
 		%feature("compactdefaultargs") IsTrihedronOr2d;
@@ -18757,7 +19054,7 @@ bool
 
 Description
 -----------
-Return true for graphic3d_tmf_triedronpers and graphic3d_tmf_2d modes.
+Return true for Graphic3d_TMF_TriedronPers and Graphic3d_TMF_2d modes.
 ") IsTrihedronOr2d;
 		Standard_Boolean IsTrihedronOr2d();
 
@@ -18788,7 +19085,7 @@ bool
 
 Description
 -----------
-Return true for graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers modes.
+Return true for Graphic3d_TMF_ZoomPers, Graphic3d_TMF_ZoomRotatePers or Graphic3d_TMF_RotatePers modes.
 ") IsZoomOrRotate;
 		Standard_Boolean IsZoomOrRotate();
 
@@ -18887,7 +19184,7 @@ None
 
 Description
 -----------
-Set zoom/rotate transformation persistence with an anchor 3d point. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
+Set Zoom/Rotate transformation persistence with an anchor 3D point. Throws an exception if persistence mode is not Graphic3d_TMF_ZoomPers, Graphic3d_TMF_ZoomRotatePers or Graphic3d_TMF_RotatePers.
 ") SetPersistence;
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
 
@@ -18907,7 +19204,7 @@ None
 
 Description
 -----------
-Set 2d/trihedron transformation persistence with a corner and 2d offset. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d.
+Set 2d/trihedron transformation persistence with a corner and 2D offset. Throws an exception if persistence mode is not Graphic3d_TMF_TriedronPers or Graphic3d_TMF_2d.
 ") SetPersistence;
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset);
 
@@ -18927,7 +19224,10 @@ NCollection_Mat3<float >
 
 Description
 -----------
-Create orientation matrix based on camera and view dimensions. default implementation locks rotation by nullifying rotation component. camera and view dimensions are not used, by default. @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport @param theviewportheight [in] the height of viewport.
+Create orientation matrix based on camera and view dimensions. Default implementation locks rotation by nullifying rotation component. Camera and view dimensions are not used, by default. 
+Input parameter: theCamera camera definition 
+Input parameter: theViewportWidth the width of viewport 
+Input parameter: theViewportHeight the height of viewport.
 ") persistentRotationMatrix;
 		virtual NCollection_Mat3<Standard_Real > persistentRotationMatrix(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
@@ -18947,7 +19247,10 @@ float
 
 Description
 -----------
-Find scale value based on the camera position and view dimensions @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
+Find scale value based on the camera position and view dimensions 
+Input parameter: theCamera camera definition 
+Input parameter: theViewportWidth the width of viewport. 
+Input parameter: theViewportHeight the height of viewport.
 ") persistentScale;
 		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
@@ -19146,7 +19449,6 @@ Returns unique identifier of value type.
 *************************/
 class Graphic3d_Vertex {
 	public:
-		float xyz[3];
 		/****** Graphic3d_Vertex::Graphic3d_Vertex ******/
 		/****** md5 signature: 103e205f0886b0005b0cbeab1659769a ******/
 		%feature("compactdefaultargs") Graphic3d_Vertex;
@@ -19176,7 +19478,7 @@ None
 
 Description
 -----------
-Creates a point with thex, they and thez coordinates.
+Creates a point with theX, theY and theZ coordinates.
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
@@ -19196,7 +19498,7 @@ None
 
 Description
 -----------
-Creates a point with thex, they and thez coordinates.
+Creates a point with theX, theY and theZ coordinates.
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
@@ -19326,7 +19628,7 @@ float
 
 Description
 -----------
-Returns the x coordinates.
+Returns the X coordinates.
 ") X;
 		Standard_ShortReal X();
 
@@ -19339,7 +19641,7 @@ float
 
 Description
 -----------
-Returns the y coordinate.
+Returns the Y coordinate.
 ") Y;
 		Standard_ShortReal Y();
 
@@ -19352,7 +19654,7 @@ float
 
 Description
 -----------
-Returns the z coordinate.
+Returns the Z coordinate.
 ") Z;
 		Standard_ShortReal Z();
 
@@ -19504,7 +19806,10 @@ None
 
 Description
 -----------
-Constructor for custom projector type. @param theprojectionstate [in] the projection state. @param theworldviewstate [in] the world view state. @param thecamera [in] the pointer to the class supplying projection and  world view matrices (camera).
+Constructor for custom projector type. 
+Input parameter: theProjectionState the projection state. 
+Input parameter: theWorldViewState the world view state. 
+Input parameter: theCamera the pointer to the class supplying projection and  world view matrices (camera).
 ") Graphic3d_WorldViewProjState;
 		 Graphic3d_WorldViewProjState(const Standard_Size theProjectionState, const Standard_Size theWorldViewState, const Standard_Transient * theCamera = NULL);
 
@@ -19581,7 +19886,8 @@ bool
 
 Description
 -----------
-Compare with other world view projection state. return true when the projection of the given camera state differs from this one.
+Compare with other world view projection state. 
+Return: true when the projection of the given camera state differs from this one.
 ") IsChanged;
 		Standard_Boolean IsChanged(const Graphic3d_WorldViewProjState & theState);
 
@@ -19599,7 +19905,8 @@ bool
 
 Description
 -----------
-Compare projection with other state. return true when the projection of the given camera state differs from this one.
+Compare projection with other state. 
+Return: true when the projection of the given camera state differs from this one.
 ") IsProjectionChanged;
 		Standard_Boolean IsProjectionChanged(const Graphic3d_WorldViewProjState & theState);
 
@@ -19612,7 +19919,8 @@ bool
 
 Description
 -----------
-Check state validity. return true if state is set.
+Check state validity. 
+Return: true if state is set.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -19630,7 +19938,8 @@ bool
 
 Description
 -----------
-Compare world view transformation with other state. return true when the orientation of the given camera state differs from this one.
+Compare world view transformation with other state. 
+Return: true when the orientation of the given camera state differs from this one.
 ") IsWorldViewChanged;
 		Standard_Boolean IsWorldViewChanged(const Graphic3d_WorldViewProjState & theState);
 
@@ -19643,7 +19952,7 @@ Standard_Size
 
 Description
 -----------
-Return projection state counter.
+Return: projection state counter.
 ") ProjectionState;
 		Standard_Size & ProjectionState();
 
@@ -19669,7 +19978,7 @@ Standard_Size
 
 Description
 -----------
-Return world view state counter.
+Return: world view state counter.
 ") WorldViewState;
 		Standard_Size & WorldViewState();
 
@@ -19737,7 +20046,7 @@ Graphic3d_PolygonOffset
 
 Description
 -----------
-Modify glpolygonoffset() arguments.
+Modify glPolygonOffset() arguments.
 ") ChangePolygonOffset;
 		Graphic3d_PolygonOffset & ChangePolygonOffset();
 
@@ -19750,7 +20059,7 @@ float
 
 Description
 -----------
-Return the distance to discard drawing of distant objects (distance from camera eye point); by default it is infinite (distance culling is disabled). since camera eye definition has no strong meaning within orthographic projection, option is considered only within perspective projection. note also that this option has effect only when frustum culling is enabled.
+Return the distance to discard drawing of distant objects (distance from camera Eye point); by default it is Infinite (distance culling is disabled). Since camera eye definition has no strong meaning within orthographic projection, option is considered only within perspective projection. Note also that this option has effect only when frustum culling is enabled.
 ") CullingDistance;
 		Standard_Real CullingDistance();
 
@@ -19763,7 +20072,7 @@ float
 
 Description
 -----------
-Return the size to discard drawing of small objects; by default it is infinite (size culling is disabled). current implementation checks the length of projected diagonal of bounding box in pixels for discarding. note that this option has effect only when frustum culling is enabled.
+Return the size to discard drawing of small objects; by default it is Infinite (size culling is disabled). Current implementation checks the length of projected diagonal of bounding box in pixels for discarding. Note that this option has effect only when frustum culling is enabled.
 ") CullingSize;
 		Standard_Real CullingSize();
 
@@ -19797,7 +20106,8 @@ bool
 
 Description
 -----------
-Return true, if culling of distant objects (distance culling) should be performed; false by default. @sa cullingdistance().
+Return True, if culling of distant objects (distance culling) should be performed; False by default. 
+See also: CullingDistance().
 ") HasCullingDistance;
 		Standard_Boolean HasCullingDistance();
 
@@ -19810,7 +20120,8 @@ bool
 
 Description
 -----------
-Return true, if culling of small objects (size culling) should be performed; false by default. @sa cullingsize().
+Return True, if culling of small objects (size culling) should be performed; False by default. 
+See also: CullingSize().
 ") HasCullingSize;
 		Standard_Boolean HasCullingSize();
 
@@ -19836,7 +20147,7 @@ bool
 
 Description
 -----------
-Returns true if layer should be processed by ray-tracing renderer; true by default. note that this flag is ignored for layers with isimmediate() flag.
+Returns True if layer should be processed by ray-tracing renderer; True by default. Note that this flag is IGNORED for layers with IsImmediate() flag.
 ") IsRaytracable;
 		Standard_Boolean IsRaytracable();
 
@@ -19849,7 +20160,7 @@ opencascade::handle<Graphic3d_LightSet>
 
 Description
 -----------
-Return lights list to be used for rendering presentations within this z-layer; null by default. null list (but not empty list!) means that default lights assigned to the view should be used instead of per-layer lights.
+Return lights list to be used for rendering presentations within this Z-Layer; NULL by default. NULL list (but not empty list!) means that default lights assigned to the View should be used instead of per-layer lights.
 ") Lights;
 		const opencascade::handle<Graphic3d_LightSet> & Lights();
 
@@ -19901,7 +20212,7 @@ Graphic3d_PolygonOffset
 
 Description
 -----------
-Return glpolygonoffset() arguments.
+Return glPolygonOffset() arguments.
 ") PolygonOffset;
 		const Graphic3d_PolygonOffset & PolygonOffset();
 
@@ -20125,7 +20436,7 @@ None
 
 Description
 -----------
-Setup glpolygonoffset() arguments.
+Setup glPolygonOffset() arguments.
 ") SetPolygonOffset;
 		void SetPolygonOffset(const Graphic3d_PolygonOffset & theParams);
 
@@ -20213,7 +20524,7 @@ bool
 
 Description
 -----------
-Return true if layer should be rendered within depth pre-pass; true by default.
+Return True if layer should be rendered within depth pre-pass; True by default.
 ") ToRenderInDepthPrepass;
 		Standard_Boolean ToRenderInDepthPrepass();
 
@@ -20277,7 +20588,9 @@ None
 
 Description
 -----------
-Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thearrayflags array flags.
+Creates an array of points (Graphic3d_TOPA_POINTS). The array must be filled using the AddVertex(Point) method. 
+Parameter theMaxVertexs maximum number of points 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints(Standard_Integer theMaxVertexs, int theArrayFlags);
 
@@ -20297,7 +20610,10 @@ None
 
 Description
 -----------
-Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color @param thehasvnormals when true, addvertex(point,normal) should be used for specifying vertex normal.
+Creates an array of points (Graphic3d_TOPA_POINTS). The array must be filled using the AddVertex(Point) method. 
+Parameter theMaxVertexs maximum number of points 
+Parameter theHasVColors when True, AddVertex(Point,Color) should be used for specifying vertex color 
+Parameter theHasVNormals when True, AddVertex(Point,Normal) should be used for specifying vertex normal.
 ") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints(Standard_Integer theMaxVertexs, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVNormals = Standard_False);
 
@@ -20334,7 +20650,11 @@ None
 
 Description
 -----------
-Creates an array of polygons (graphic3d_topa_polygons), a polygon can be filled as: 1) creating a single polygon defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolygons (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polygons defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolygons (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polygon defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofpolygons (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polygons defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolygons (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
+Creates an array of polygons (Graphic3d_TOPA_POLYGONS), a polygon can be filled as: 1) Creating a single polygon defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfPolygons (7); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x7, y7, z7); @endcode 2) Creating separate polygons defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myArray = Graphic3d_ArrayOfPolygons (7, 2); myArray->AddBound (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddBound (3); myArray->AddVertex (x5, y5, z5); .... myArray->AddVertex (x7, y7, z7); @endcode 3) Creating a single indexed polygon defined with his vertex ans edges, i.e: @code myArray = Graphic3d_ArrayOfPolygons (4, 0, 6); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (4); @endcode 4) Creating separate polygons defined with a predefined number of bounds and the number of edges per bound, i.e: @code myArray = Graphic3d_ArrayOfPolygons (6, 4, 14); myArray->AddBound (3); myArray->AddVertex (x1, y1, z1); myArray->AddVertex (x2, y2, z2); myArray->AddVertex (x3, y3, z3); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddBound (3); myArray->AddVertex (x4, y4, z4); myArray->AddVertex (x5, y5, z5); myArray->AddVertex (x6, y6, z6); myArray->AddEdge (4); myArray->AddEdge (5); myArray->AddEdge (6); myArray->AddBound (4); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddEdge (5); myArray->AddEdge (6); myArray->AddBound (4); myArray->AddEdge (1); myArray->AddEdge (3); myArray->AddEdge (5); myArray->AddEdge (4); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxBounds defines the maximum allowed bound number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfPolygons;
 		 Graphic3d_ArrayOfPolygons(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds, Standard_Integer theMaxEdges, int theArrayFlags);
 
@@ -20358,7 +20678,10 @@ None
 
 Description
 -----------
-Creates an array of polygons (graphic3d_topa_polygons): @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array.
+Creates an array of polygons (Graphic3d_TOPA_POLYGONS): 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxBounds defines the maximum allowed bound number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array.
 ") Graphic3d_ArrayOfPolygons;
 		 Graphic3d_ArrayOfPolygons(const Standard_Integer theMaxVertexs, const Standard_Integer theMaxBounds = 0, const Standard_Integer theMaxEdges = 0, const Standard_Boolean theHasVNormals = Standard_False, const Standard_Boolean theHasVColors = Standard_False, const Standard_Boolean theHasBColors = Standard_False, const Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20395,7 +20718,11 @@ None
 
 Description
 -----------
-Creates an array of polylines (graphic3d_topa_polylines), a polyline can be filled as: 1) creating a single polyline defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolylines (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polylines defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolylines (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polyline defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofpolylines (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polylines defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolylines (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
+Creates an array of polylines (Graphic3d_TOPA_POLYLINES), a polyline can be filled as: 1) Creating a single polyline defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfPolylines (7); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x7, y7, z7); @endcode 2) Creating separate polylines defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myArray = Graphic3d_ArrayOfPolylines (7, 2); myArray->AddBound (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddBound (3); myArray->AddVertex (x5, y5, z5); .... myArray->AddVertex (x7, y7, z7); @endcode 3) Creating a single indexed polyline defined with his vertex and edges, i.e: @code myArray = Graphic3d_ArrayOfPolylines (4, 0, 6); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (4); @endcode 4) creating separate polylines defined with a predefined number of bounds and the number of edges per bound, i.e: @code myArray = Graphic3d_ArrayOfPolylines (6, 4, 14); myArray->AddBound (3); myArray->AddVertex (x1, y1, z1); myArray->AddVertex (x2, y2, z2); myArray->AddVertex (x3, y3, z3); myArray->AddEdge (1); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddBound (3); myArray->AddVertex (x4, y4, z4); myArray->AddVertex (x5, y5, z5); myArray->AddVertex (x6, y6, z6); myArray->AddEdge (4); myArray->AddEdge (5); myArray->AddEdge (6); myArray->AddBound (4); myArray->AddEdge (2); myArray->AddEdge (3); myArray->AddEdge (5); myArray->AddEdge (6); myArray->AddBound (4); myArray->AddEdge (1); myArray->AddEdge (3); myArray->AddEdge (5); myArray->AddEdge (4); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxBounds defines the maximum allowed bound number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfPolylines;
 		 Graphic3d_ArrayOfPolylines(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds, Standard_Integer theMaxEdges, int theArrayFlags);
 
@@ -20417,7 +20744,12 @@ None
 
 Description
 -----------
-Creates an array of polylines (graphic3d_topa_polylines). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true addvertex(point,color) or addvertex(point,normal,color) should be used to specify per-vertex color values @param thehasbcolors when true addbound(number,color) should be used to specify sub-group color.
+Creates an array of polylines (Graphic3d_TOPA_POLYLINES). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxBounds defines the maximum allowed bound number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theHasVColors when True AddVertex(Point,Color) or AddVertex(Point,Normal,Color) should be used to specify per-vertex color values 
+Parameter theHasBColors when True AddBound(number,Color) should be used to specify sub-group color.
 ") Graphic3d_ArrayOfPolylines;
 		 Graphic3d_ArrayOfPolylines(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds = 0, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False);
 
@@ -20453,7 +20785,10 @@ None
 
 Description
 -----------
-Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadranglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayofquadranglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of quadrangle really drawn is: vertexnumber()/2 - min(1, boundnumber()). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array @param thearrayflags array flags.
+Creates an array of quadrangle strips (Graphic3d_TOPA_QUADRANGLESTRIPS), a polygon can be filled as: 1) Creating a single strip defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfQuadrangleStrips (7); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x7, y7, z7); @endcode 2) Creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myArray = Graphic3d_ArrayOfQuadrangleStrips (8, 2); myArray->AddBound (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddBound (4); myArray->AddVertex (x5, y5, z5); .... myArray->AddVertex (x8, y8, z8); @endcode The number of quadrangle really drawn is: VertexNumber()/2 - Min(1, BoundNumber()). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxStrips defines the maximum allowed strip number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfQuadrangleStrips;
 		 Graphic3d_ArrayOfQuadrangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips, int theArrayFlags);
 
@@ -20476,7 +20811,9 @@ None
 
 Description
 -----------
-Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array.
+Creates an array of quadrangle strips (Graphic3d_TOPA_QUADRANGLESTRIPS). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxStrips defines the maximum allowed strip number in the array.
 ") Graphic3d_ArrayOfQuadrangleStrips;
 		 Graphic3d_ArrayOfQuadrangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasSColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20512,7 +20849,10 @@ None
 
 Description
 -----------
-Creates an array of quadrangles (graphic3d_topa_quadrangles), a quadrangle can be filled as: 1) creating a set of quadrangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadrangles (8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x8, y8, z8); @endcode 2) creating a set of indexed quadrangles defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofquadrangles (6, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); myarray->addedges (1, 2, 3, 4); myarray->addedges (3, 4, 5, 6); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array) @param thearrayflags array flags.
+Creates an array of quadrangles (Graphic3d_TOPA_QUADRANGLES), a quadrangle can be filled as: 1) Creating a set of quadrangles defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfQuadrangles (8); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x8, y8, z8); @endcode 2) Creating a set of indexed quadrangles defined with his vertex ans edges, i.e: @code myArray = Graphic3d_ArrayOfQuadrangles (6, 8); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x6, y6, z6); myArray->AddEdges (1, 2, 3, 4); myArray->AddEdges (3, 4, 5, 6); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array (for indexed array) 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfQuadrangles;
 		 Graphic3d_ArrayOfQuadrangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
@@ -20534,7 +20874,9 @@ None
 
 Description
 -----------
-Creates an array of quadrangles (graphic3d_topa_quadrangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array).
+Creates an array of quadrangles (Graphic3d_TOPA_QUADRANGLES). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array (for indexed array).
 ") Graphic3d_ArrayOfQuadrangles;
 		 Graphic3d_ArrayOfQuadrangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20570,7 +20912,10 @@ None
 
 Description
 -----------
-Creates an array of segments (graphic3d_topa_segments), a segment can be filled as: 1) creating a set of segments defined with his vertexes, i.e: @code myarray = graphic3d_arrayofsegments (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); @endcode 2) creating a set of indexed segments defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofsegments (4, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2); myarray->addedges (3, 4); myarray->addedges (2, 4); myarray->addedges (1, 3); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
+Creates an array of segments (Graphic3d_TOPA_SEGMENTS), a segment can be filled as: 1) Creating a set of segments defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfSegments (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); @endcode 2) Creating a set of indexed segments defined with his vertex and edges, i.e: @code myArray = Graphic3d_ArrayOfSegments (4, 8); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddEdges (1, 2); myArray->AddEdges (3, 4); myArray->AddEdges (2, 4); myArray->AddEdges (1, 3); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfSegments;
 		 Graphic3d_ArrayOfSegments(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
@@ -20590,7 +20935,10 @@ None
 
 Description
 -----------
-Creates an array of segments (graphic3d_topa_segments). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color.
+Creates an array of segments (Graphic3d_TOPA_SEGMENTS). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theHasVColors when True, AddVertex(Point,Color) should be used for specifying vertex color.
 ") Graphic3d_ArrayOfSegments;
 		 Graphic3d_ArrayOfSegments(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVColors = Standard_False);
 
@@ -20626,7 +20974,10 @@ None
 
 Description
 -----------
-Creates an array of triangle fans (graphic3d_topa_trianglefans), a polygon can be filled as: 1) creating a single fan defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglefans (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate fans defined with a predefined number of fans and the number of vertex per fan, i.e: @code myarray = graphic3d_arrayoftrianglefans (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array @param thearrayflags array flags.
+Creates an array of triangle fans (Graphic3d_TOPA_TRIANGLEFANS), a polygon can be filled as: 1) Creating a single fan defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfTriangleFans (7); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x7, y7, z7); @endcode 2) creating separate fans defined with a predefined number of fans and the number of vertex per fan, i.e: @code myArray = Graphic3d_ArrayOfTriangleFans (8, 2); myArray->AddBound (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddBound (4); myArray->AddVertex (x5, y5, z5); .... myArray->AddVertex (x8, y8, z8); @endcode The number of triangle really drawn is: VertexNumber() - 2 * Min(1, BoundNumber()) 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxFans defines the maximum allowed fan number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfTriangleFans;
 		 Graphic3d_ArrayOfTriangleFans(Standard_Integer theMaxVertexs, Standard_Integer theMaxFans, int theArrayFlags);
 
@@ -20649,7 +21000,9 @@ None
 
 Description
 -----------
-Creates an array of triangle fans (graphic3d_topa_trianglefans). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array.
+Creates an array of triangle fans (Graphic3d_TOPA_TRIANGLEFANS). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxFans defines the maximum allowed fan number in the array.
 ") Graphic3d_ArrayOfTriangleFans;
 		 Graphic3d_ArrayOfTriangleFans(Standard_Integer theMaxVertexs, Standard_Integer theMaxFans = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20685,7 +21038,10 @@ None
 
 Description
 -----------
-Creates an array of triangle strips (graphic3d_topa_trianglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayoftrianglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thearrayflags array flags.
+Creates an array of triangle strips (Graphic3d_TOPA_TRIANGLESTRIPS), a polygon can be filled as: 1) Creating a single strip defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfTriangleStrips (7); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x7, y7, z7); @endcode 2) Creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myArray = Graphic3d_ArrayOfTriangleStrips (8, 2); myArray->AddBound (4); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddBound (4); myArray->AddVertex (x5, y5, z5); .... myArray->AddVertex (x8, y8, z8); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxStrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: VertexNumber() - 2 * Min(1,  BoundNumber()) 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfTriangleStrips;
 		 Graphic3d_ArrayOfTriangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips, int theArrayFlags);
 
@@ -20708,7 +21064,13 @@ None
 
 Description
 -----------
-Creates an array of triangle strips (graphic3d_topa_trianglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasbcolors when true, addbound(number,color) should be used to specify sub-group color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
+Creates an array of triangle strips (Graphic3d_TOPA_TRIANGLESTRIPS). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxStrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: VertexNumber() - 2 * Min(1,  BoundNumber()) 
+Parameter theHasVNormals when True, AddVertex(Point,Normal), AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation  (defined by order of vertexes within triangle) for proper rendering 
+Parameter theHasVColors when True, AddVertex(Point,Color) or AddVertex(Point,Normal,Color) should be used to specify vertex color 
+Parameter theHasBColors when True, AddBound(number,Color) should be used to specify sub-group color 
+Parameter theHasVTexels when True, AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) should be used to specify vertex UV coordinates.
 ") Graphic3d_ArrayOfTriangleStrips;
 		 Graphic3d_ArrayOfTriangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20744,7 +21106,10 @@ None
 
 Description
 -----------
-Creates an array of triangles (graphic3d_topa_triangles), a triangle can be filled as: 1) creating a set of triangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftriangles (6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); @endcode 3) creating a set of indexed triangles defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayoftriangles (4, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2, 3); myarray->addedges (2, 3, 4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
+Creates an array of triangles (Graphic3d_TOPA_TRIANGLES), a triangle can be filled as: 1) Creating a set of triangles defined with his vertexes, i.e: @code myArray = Graphic3d_ArrayOfTriangles (6); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x6, y6, z6); @endcode 3) Creating a set of indexed triangles defined with his vertex and edges, i.e: @code myArray = Graphic3d_ArrayOfTriangles (4, 6); myArray->AddVertex (x1, y1, z1); .... myArray->AddVertex (x4, y4, z4); myArray->AddEdges (1, 2, 3); myArray->AddEdges (2, 3, 4); @endcode 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theArrayFlags array flags.
 ") Graphic3d_ArrayOfTriangles;
 		 Graphic3d_ArrayOfTriangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
@@ -20766,7 +21131,12 @@ None
 
 Description
 -----------
-Creates an array of triangles (graphic3d_topa_triangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
+Creates an array of triangles (Graphic3d_TOPA_TRIANGLES). 
+Parameter theMaxVertexs defines the maximum allowed vertex number in the array 
+Parameter theMaxEdges defines the maximum allowed edge number in the array 
+Parameter theHasVNormals when True, AddVertex(Point,Normal), AddVertex(Point,Normal,Color) or AddVertex(Point,Normal,Texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation  (defined by order of vertexes within triangle) for proper rendering 
+Parameter theHasVColors when True, AddVertex(Point,Color) or AddVertex(Point,Normal,Color) should be used to specify vertex color 
+Parameter theHasVTexels when True, AddVertex(Point,Texel) or AddVertex(Point,Normal,Texel) should be used to specify vertex UV coordinates.
 ") Graphic3d_ArrayOfTriangles;
 		 Graphic3d_ArrayOfTriangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -20795,7 +21165,7 @@ None
 
 Description
 -----------
-Creates a context table for fill area primitives defined with the following default values: //! interiorstyle: aspect_is_empty interiorcolor: quantity_noc_cyan1 edgecolor: quantity_noc_white edgelinetype: aspect_tol_solid edgewidth: 1.0 frontmaterial: nom_brass backmaterial: nom_brass hatchstyle: aspect_hs_solid //! display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
+Creates a context table for fill area primitives defined with the following default values: //! InteriorStyle: Aspect_IS_EMPTY InteriorColor: Quantity_NOC_CYAN1 EdgeColor: Quantity_NOC_WHITE EdgeLineType: Aspect_TOL_SOLID EdgeWidth: 1.0 FrontMaterial: NOM_BRASS BackMaterial: NOM_BRASS HatchStyle: Aspect_HS_SOLID //! Display of back-facing filled polygons. No distinction between external and internal faces of FillAreas. The edges are not drawn. Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.
 ") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d();
 
@@ -20819,7 +21189,7 @@ None
 
 Description
 -----------
-Creates a context table for fill area primitives defined with the specified values. display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
+Creates a context table for fill area primitives defined with the specified values. Display of back-facing filled polygons. No distinction between external and internal faces of FillAreas. The edges are not drawn. Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.
 ") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d(const Aspect_InteriorStyle theInterior, const Quantity_Color & theInteriorColor, const Quantity_Color & theEdgeColor, const Aspect_TypeOfLine theEdgeLineType, const Standard_Real theEdgeWidth, const Graphic3d_MaterialAspect & theFrontMaterial, const Graphic3d_MaterialAspect & theBackMaterial);
 
@@ -20861,7 +21231,7 @@ None
 
 Description
 -----------
-Creates a context table for line primitives defined with the following default values: //! color = quantity_noc_yellow; type = aspect_tol_solid; width = 1.0;.
+Creates a context table for line primitives defined with the following default values: //! Color = Quantity_NOC_YELLOW; Type = Aspect_TOL_SOLID; Width = 1.0;.
 ") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d();
 
@@ -20881,7 +21251,7 @@ None
 
 Description
 -----------
-Creates a context table for line primitives defined with the specified values. warning: thewidth is the 'line width scale factor'. the nominal line width is 1 pixel. the width of the line is determined by applying the line width scale factor to this nominal line width. the supported line widths vary by 1-pixel units.
+Creates a context table for line primitives defined with the specified values. Warning: theWidth is the 'line width scale factor'. The nominal line width is 1 pixel. The width of the line is determined by applying the line width scale factor to this nominal line width. The supported line widths vary by 1-pixel units.
 ") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d(const Quantity_Color & theColor, Aspect_TypeOfLine theType, Standard_Real theWidth);
 
@@ -20917,7 +21287,7 @@ None
 
 Description
 -----------
-Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
+Modifies the line thickness. Warning: Raises Standard_OutOfRange if the width is a negative value.
 ") SetWidth;
 		void SetWidth(const Standard_Real theWidth);
 
@@ -20935,7 +21305,7 @@ None
 
 Description
 -----------
-Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
+Modifies the line thickness. Warning: Raises Standard_OutOfRange if the width is a negative value.
 ") SetWidth;
 		void SetWidth(Standard_ShortReal theWidth);
 
@@ -20990,7 +21360,7 @@ None
 
 Description
 -----------
-Creates a context table for marker primitives defined with the following default values: //! marker type: tom_x color: yellow scale factor: 1.0.
+Creates a context table for marker primitives defined with the following default values: //! Marker type: TOM_X Color: YELLOW Scale factor: 1.0.
 ") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d();
 
@@ -21062,7 +21432,7 @@ opencascade::handle<Graphic3d_MarkerImage>
 
 Description
 -----------
-Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
+Returns marker's image texture. Could be null handle if marker aspect has been initialized as default type of marker.
 ") GetMarkerImage;
 		const opencascade::handle<Graphic3d_MarkerImage> & GetMarkerImage();
 
@@ -21131,7 +21501,7 @@ None
 
 Description
 -----------
-Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
+Modifies the scale factor. Marker type Aspect_TOM_POINT is not affected by the marker size scale factor. It is always the smallest displayable dot. Warning: Raises Standard_OutOfRange if the scale is a negative value.
 ") SetScale;
 		void SetScale(const Standard_ShortReal theScale);
 
@@ -21209,7 +21579,7 @@ None
 
 Description
 -----------
-Creates a context table for text primitives defined with the following default values: color: quantity_noc_yellow font: font_nof_ascii_mono the style: aspect_tost_normal the display type: aspect_todt_normal.
+Creates a context table for text primitives defined with the following default values: Color: Quantity_NOC_YELLOW Font: Font_NOF_ASCII_MONO The style: Aspect_TOST_NORMAL The display type: Aspect_TODT_NORMAL.
 ") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d();
 
@@ -21232,7 +21602,13 @@ None
 
 Description
 -----------
-Creates a context table for text primitives defined with the specified values. @param thecolor [in] text color @param thefont [in] font family name or alias like font_nof_ascii_mono @param theexpansionfactor [in] deprecated parameter, has no effect @param thespace [in] deprecated parameter, has no effect @param thestyle [in] font style @param thedisplaytype [in] display mode.
+Creates a context table for text primitives defined with the specified values. 
+Input parameter: theColor text color 
+Input parameter: theFont font family name or alias like Font_NOF_ASCII_MONO 
+Input parameter: theExpansionFactor deprecated parameter, has no effect 
+Input parameter: theSpace deprecated parameter, has no effect 
+Input parameter: theStyle font style 
+Input parameter: theDisplayType display mode.
 ") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d(const Quantity_Color & theColor, Standard_CString theFont, Standard_Real theExpansionFactor, Standard_Real theSpace, Aspect_TypeOfStyleText theStyle = Aspect_TOST_NORMAL, Aspect_TypeOfDisplayText theDisplayType = Aspect_TODT_NORMAL);
 
@@ -21318,7 +21694,7 @@ float
 
 Description
 -----------
-Returns angle of degree.
+Returns Angle of degree.
 ") GetTextAngle;
 		Standard_ShortReal GetTextAngle();
 
@@ -21331,7 +21707,7 @@ Font_FontAspect
 
 Description
 -----------
-Returns text fontaspect.
+Returns text FontAspect.
 ") GetTextFontAspect;
 		Font_FontAspect GetTextFontAspect();
 
@@ -21344,7 +21720,7 @@ bool
 
 Description
 -----------
-Returns true when the text zoomable is on.
+Returns True when the Text Zoomable is on.
 ") GetTextZoomable;
 		bool GetTextZoomable();
 
@@ -21652,7 +22028,7 @@ bool
 
 Description
 -----------
-Return true for interleaved array; true by default.
+Return True for interleaved array; True by default.
 ") IsInterleaved;
 		virtual Standard_Boolean IsInterleaved();
 
@@ -21665,7 +22041,7 @@ bool
 
 Description
 -----------
-Return true if data can be invalidated; false by default.
+Return True if data can be invalidated; False by default.
 ") IsMutable;
 		virtual Standard_Boolean IsMutable();
 
@@ -21683,7 +22059,7 @@ None
 
 Description
 -----------
-Setup interleaved/non-interleaved array. warning! filling non-interleaved buffer should be implemented on user side without graphic3d_buffer auxiliary methods designed for interleaved data.
+Setup interleaved/non-interleaved array. WARNING! Filling non-interleaved buffer should be implemented on user side without Graphic3d_Buffer auxiliary methods designed for interleaved data.
 ") SetInterleaved;
 		void SetInterleaved(Standard_Boolean theIsInterleaved);
 
@@ -21739,6 +22115,8 @@ Invalidate specified sub-range of data (as byte offsets).
 };
 
 
+%make_alias(Graphic3d_AttribBuffer)
+
 %extend Graphic3d_AttribBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -21760,7 +22138,7 @@ None
 
 Description
 -----------
-Activates the view. maps presentations defined within structure manager onto this view.
+Activates the view. Maps presentations defined within structure manager onto this view.
 ") Activate;
 		virtual void Activate();
 
@@ -21791,7 +22169,7 @@ Graphic3d_TypeOfBackfacingModel
 
 Description
 -----------
-Return backfacing model used for the view; graphic3d_typeofbackfacingmodel_auto by default, which means that backface culling is defined by each presentation.
+Return backfacing model used for the view; Graphic3d_TypeOfBackfacingModel_Auto by default, which means that backface culling is defined by each presentation.
 ") BackfacingModel;
 		Graphic3d_TypeOfBackfacingModel BackfacingModel();
 
@@ -21953,7 +22331,7 @@ None
 
 Description
 -----------
-Computes the new presentation of the structures displayed in this view with the type graphic3d_tos_computed.
+Computes the new presentation of the structures displayed in this view with the type Graphic3d_TOS_COMPUTED.
 ") Compute;
 		void Compute();
 
@@ -21991,7 +22369,7 @@ None
 
 Description
 -----------
-Compute camera position based on xr pose.
+Compute camera position based on XR pose.
 ") ComputeXRPosedCameraFromBase;
 		void ComputeXRPosedCameraFromBase(Graphic3d_Camera & theCam, const gp_Trsf & theXRTrsf);
 
@@ -22004,7 +22382,7 @@ bool
 
 Description
 -----------
-Returns the computed hlr mode state.
+Returns the computed HLR mode state.
 ") ComputedMode;
 		Standard_Boolean ComputedMode();
 
@@ -22035,7 +22413,7 @@ None
 
 Description
 -----------
-Copy visualization settings from another view. method is used for cloning views in viewer when its required to create view with same view properties.
+Copy visualization settings from another view. Method is used for cloning views in viewer when its required to create view with same view properties.
 ") CopySettings;
 		virtual void CopySettings(const opencascade::handle<Graphic3d_CView> & theOther);
 
@@ -22048,7 +22426,7 @@ None
 
 Description
 -----------
-Deactivates the view. unmaps presentations defined within structure manager. the view in deactivated state will ignore actions on structures such as display().
+Deactivates the view. Unmaps presentations defined within structure manager. The view in deactivated state will ignore actions on structures such as Display().
 ") Deactivate;
 		virtual void Deactivate();
 
@@ -22067,7 +22445,7 @@ None
 
 Description
 -----------
-Fill in the dictionary with diagnostic info. should be called within rendering thread. //! this api should be used only for user output or for creating automated reports. the format of returned information (e.g. key-value layout) is not part of this api and can be changed at any time. thus application should not parse returned information to weed out specific parameters.
+Fill in the dictionary with diagnostic info. Should be called within rendering thread. //! This API should be used only for user output or for creating automated reports. The format of returned information (e.g. key-value layout) is NOT part of this API and can be changed at any time. Thus application should not parse returned information to weed out specific parameters.
 ") DiagnosticInformation;
 		virtual void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
 
@@ -22139,7 +22517,7 @@ None
 
 Description
 -----------
-Change offscreen fbo viewport.
+Change offscreen FBO viewport.
 ") FBOChangeViewport;
 		virtual void FBOChangeViewport(const opencascade::handle<Standard_Transient> & theFbo, const Standard_Integer theWidth, const Standard_Integer theHeight);
 
@@ -22158,7 +22536,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Generate offscreen fbo in the graphic library. if not supported on hardware returns null.
+Generate offscreen FBO in the graphic library. If not supported on hardware returns NULL.
 ") FBOCreate;
 		virtual opencascade::handle<Standard_Transient> FBOCreate(const Standard_Integer theWidth, const Standard_Integer theHeight);
 
@@ -22179,7 +22557,7 @@ theHeightMax: int
 
 Description
 -----------
-Read offscreen fbo configuration.
+Read offscreen FBO configuration.
 ") FBOGetDimensions;
 		virtual void FBOGetDimensions(const opencascade::handle<Standard_Transient> & theFbo, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -22197,7 +22575,7 @@ None
 
 Description
 -----------
-Remove offscreen fbo from the graphic library.
+Remove offscreen FBO from the graphic library.
 ") FBORelease;
 		virtual void FBORelease(opencascade::handle<Standard_Transient> & theFbo);
 
@@ -22241,7 +22619,7 @@ None
 
 Description
 -----------
-Displays graduated trihedron.
+Displays Graduated Trihedron.
 ") GraduatedTrihedronDisplay;
 		virtual void GraduatedTrihedronDisplay(const Graphic3d_GraduatedTrihedron & theTrihedronData);
 
@@ -22254,7 +22632,7 @@ None
 
 Description
 -----------
-Erases graduated trihedron.
+Erases Graduated Trihedron.
 ") GraduatedTrihedronErase;
 		virtual void GraduatedTrihedronErase();
 
@@ -22273,7 +22651,9 @@ None
 
 Description
 -----------
-Sets minimum and maximum points of scene bounding box for graduated trihedron stored in graphic view object. @param themin [in] the minimum point of scene. @param themax [in] the maximum point of scene.
+Sets minimum and maximum points of scene bounding box for Graduated Trihedron stored in graphic view object. 
+Input parameter: theMin the minimum point of scene. 
+Input parameter: theMax the maximum point of scene.
 ") GraduatedTrihedronMinMaxValues;
 		virtual void GraduatedTrihedronMinMaxValues(const Graphic3d_Vec3 theMin, const Graphic3d_Vec3 theMax);
 
@@ -22312,7 +22692,7 @@ bool
 
 Description
 -----------
-Initialize xr session.
+Initialize XR session.
 ") InitXR;
 		virtual bool InitXR();
 
@@ -22332,7 +22712,10 @@ None
 
 Description
 -----------
-Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
+Add a layer to the view. 
+Input parameter: theNewLayerId id of new layer, should be > 0 (negative values are reserved for default layers). 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerBefore id of layer to append new layer after.
 ") InsertLayerAfter;
 		virtual void InsertLayerAfter(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
@@ -22352,7 +22735,10 @@ None
 
 Description
 -----------
-Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
+Add a layer to the view. 
+Input parameter: theNewLayerId id of new layer, should be > 0 (negative values are reserved for default layers). 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerAfter id of layer to append new layer before.
 ") InsertLayerBefore;
 		virtual void InsertLayerBefore(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
@@ -22383,7 +22769,7 @@ None
 
 Description
 -----------
-Marks bvh tree and the set of bvh primitives of correspondent priority list with id thelayerid as outdated.
+Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId as outdated.
 ") InvalidateBVHData;
 		virtual void InvalidateBVHData(int theLayerId);
 
@@ -22401,7 +22787,7 @@ None
 
 Description
 -----------
-Returns the bounding box of all structures displayed in the z layer.
+Returns the bounding box of all structures displayed in the Z layer.
 ") InvalidateZLayerBoundingBox;
 		virtual void InvalidateZLayerBoundingBox(int theLayerId);
 
@@ -22427,7 +22813,7 @@ bool
 
 Description
 -----------
-Return true if there is active xr session.
+Return True if there is active XR session.
 ") IsActiveXR;
 		bool IsActiveXR();
 
@@ -22446,7 +22832,7 @@ bool
 
 Description
 -----------
-Returns standard_true in case if the structure with the given <thestructid> is in list of structures to be computed and stores computed struct to <thecomputedstruct>.
+Returns Standard_True in case if the structure with the given <theStructId> is in list of structures to be computed and stores computed struct to <theComputedStruct>.
 ") IsComputed;
 		Standard_Boolean IsComputed(const Standard_Integer theStructId, opencascade::handle<Graphic3d_Structure> & theComputedStruct);
 
@@ -22459,7 +22845,7 @@ bool
 
 Description
 -----------
-Returns true if the window associated to the view is defined.
+Returns True if the window associated to the view is defined.
 ") IsDefined;
 		virtual Standard_Boolean IsDefined();
 
@@ -22498,7 +22884,7 @@ bool
 
 Description
 -----------
-Return true if subview size is set as proportions relative to parent view.
+Return True if subview size is set as proportions relative to parent view.
 ") IsSubViewRelativeSize;
 		bool IsSubViewRelativeSize();
 
@@ -22511,7 +22897,7 @@ bool
 
 Description
 -----------
-Return true if this is a subview of another view.
+Return True if this is a subview of another view.
 ") IsSubview;
 		bool IsSubview();
 
@@ -22524,7 +22910,7 @@ bool
 
 Description
 -----------
-Return true if this is view performs rendering of subviews and nothing else; false by default. by default, view with subviews will render main scene and blit subviews on top of it. rendering of main scene might become redundant in case if subviews cover entire window of parent view. this flag allows to disable rendering of the main scene in such scenarios without creation of a dedicated v3d_viewer instance just for composing subviews.
+Return True if this is view performs rendering of subviews and nothing else; False by default. By default, view with subviews will render main scene and blit subviews on top of it. Rendering of main scene might become redundant in case if subviews cover entire window of parent view. This flag allows to disable rendering of the main scene in such scenarios without creation of a dedicated V3d_Viewer instance just for composing subviews.
 ") IsSubviewComposer;
 		bool IsSubviewComposer();
 
@@ -22542,7 +22928,7 @@ opencascade::handle<Graphic3d_Layer>
 
 Description
 -----------
-Returns layer with given id or null if undefined.
+Returns layer with given ID or NULL if undefined.
 ") Layer;
 		virtual opencascade::handle<Graphic3d_Layer> Layer(int theLayerId);
 
@@ -22586,7 +22972,9 @@ Bnd_Box
 
 Description
 -----------
-Returns the bounding box of all structures displayed in the view. if thetoincludeauxiliary is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite and other auxiliary structures. @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) return computed bounding box.
+Returns the bounding box of all structures displayed in the view. If theToIncludeAuxiliary is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite and other auxiliary structures. 
+Parameter theToIncludeAuxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) 
+Return: computed bounding box.
 ") MinMaxValues;
 		virtual Bnd_Box MinMaxValues(const Standard_Boolean theToIncludeAuxiliary = Standard_False);
 
@@ -22605,7 +22993,7 @@ Bnd_Box
 
 Description
 -----------
-Returns the coordinates of the boundary box of all structures in the set <theset>. if <thetoignoreinfiniteflag> is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
+Returns the coordinates of the boundary box of all structures in the set <theSet>. If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
 ") MinMaxValues;
 		Bnd_Box MinMaxValues(const Graphic3d_MapOfStructure & theSet, const Standard_Boolean theToIncludeAuxiliary = Standard_False);
 
@@ -22631,7 +23019,7 @@ Graphic3d_CView *
 
 Description
 -----------
-Return parent view or null if this is not a subview.
+Return parent View or NULL if this is not a subview.
 ") ParentView;
 		Graphic3d_CView * ParentView();
 
@@ -22649,7 +23037,9 @@ gp_Trsf
 
 Description
 -----------
-Convert xr pose to world space. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward return transformation defining orientation of xr pose in world space.
+Convert XR pose to world space. 
+Input parameter: thePoseXR transformation defined in VR local coordinate system,  oriented as Y-up, X-right and -Z-forward 
+Return: transformation defining orientation of XR pose in world space.
 ") PoseXRToWorld;
 		gp_Trsf PoseXRToWorld(const gp_Trsf & thePoseXR);
 
@@ -22662,7 +23052,7 @@ opencascade::handle<Graphic3d_Camera>
 
 Description
 -----------
-Returns transient xr camera position with tracked head orientation applied.
+Returns transient XR camera position with tracked head orientation applied.
 ") PosedXRCamera;
 		const opencascade::handle<Graphic3d_Camera> & PosedXRCamera();
 
@@ -22693,7 +23083,7 @@ None
 
 Description
 -----------
-Computes the new presentation of the structure displayed in this view with the type graphic3d_tos_computed.
+Computes the new presentation of the structure displayed in this view with the type Graphic3d_TOS_COMPUTED.
 ") ReCompute;
 		void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
@@ -22732,7 +23122,7 @@ None
 
 Description
 -----------
-Release xr session.
+Release XR session.
 ") ReleaseXR;
 		virtual void ReleaseXR();
 
@@ -22745,7 +23135,7 @@ None
 
 Description
 -----------
-Erases the view and removes from graphic driver. no more graphic operations are allowed in this view after the call.
+Erases the view and removes from graphic driver. No more graphic operations are allowed in this view after the call.
 ") Remove;
 		virtual void Remove();
 
@@ -22781,7 +23171,7 @@ None
 
 Description
 -----------
-Remove z layer from the specified view. all structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). to unset layer id from associated structures use method unsetzlayer (...).
+Remove Z layer from the specified view. All structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). To unset layer ID from associated structures use method UnsetZLayer (...).
 ") RemoveZLayer;
 		virtual void RemoveZLayer(int theLayerId);
 
@@ -22862,7 +23252,9 @@ None
 
 Description
 -----------
-Sets image texture or environment cubemap as background. @param thetexturemap [in] source to set a background;  should be either graphic3d_texture2d or graphic3d_cubemap @param thetoupdatepbrenv [in] defines whether ibl maps will be generated or not  (see generatepbrenvironment()).
+Sets image texture or environment cubemap as background. 
+Input parameter: theTextureMap source to set a background;  should be either Graphic3d_Texture2D or Graphic3d_CubeMap 
+Input parameter: theToUpdatePBREnv defines whether IBL maps will be generated or not  (see GeneratePBREnvironment()).
 ") SetBackgroundImage;
 		virtual void SetBackgroundImage(const opencascade::handle<Graphic3d_TextureMap> & theTextureMap, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
@@ -22989,7 +23381,7 @@ None
 
 Description
 -----------
-Switches computed hlr mode in the view.
+Switches computed HLR mode in the view.
 ") SetComputedMode;
 		void SetComputedMode(const Standard_Boolean theMode);
 
@@ -23043,7 +23435,8 @@ None
 
 Description
 -----------
-Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap.
+Enables or disables IBL (Image Based Lighting) from background cubemap. Has no effect if PBR is not used. 
+Input parameter: theToEnableIBL enable or disable IBL from background cubemap.
 ") SetImageBasedLighting;
 		virtual void SetImageBasedLighting(Standard_Boolean theToEnableIBL);
 
@@ -23061,7 +23454,8 @@ bool
 
 Description
 -----------
-@param thedrawtofrontbuffer advanced option to modify rendering mode: 1. true. drawing immediate mode structures directly to the front buffer over the scene image. fast, so preferred for interactive work (used by default). however these extra drawings will be missed in image dump since it is performed from back buffer. notice that since no pre-buffering used the v-sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. so this is strongly recommended to draw only simple (fast) structures. 2. false. drawing immediate mode structures to the back buffer. the complete scene is redrawn first, so this mode is slower if scene contains complex data and/or v-sync is turned on. but it works in any case and is especially useful for view dump because the dump image is read from the back buffer. return previous mode.
+Parameter theDrawToFrontBuffer Advanced option to modify rendering mode: 1. True. Drawing immediate mode structures directly to the front buffer over the scene image. Fast, so preferred for interactive work (used by default). However these extra drawings will be missed in image dump since it is performed from back buffer. Notice that since no pre-buffering used the V-Sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. So this is strongly recommended to draw only simple (fast) structures. 2. False. Drawing immediate mode structures to the back buffer. The complete scene is redrawn first, so this mode is slower if scene contains complex data and/or V-Sync is turned on. But it works in any case and is especially useful for view dump because the dump image is read from the back buffer. 
+Return: previous mode.
 ") SetImmediateModeDrawToFront;
 		virtual Standard_Boolean SetImmediateModeDrawToFront(const Standard_Boolean theDrawToFrontBuffer);
 
@@ -23097,7 +23491,7 @@ None
 
 Description
 -----------
-Sets transient xr camera position with tracked head orientation applied.
+Sets transient XR camera position with tracked head orientation applied.
 ") SetPosedXRCamera;
 		void SetPosedXRCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -23115,7 +23509,7 @@ None
 
 Description
 -----------
-Sets default shading model of the view. will throw an exception on attempt to set graphic3d_typeofshadingmodel_default.
+Sets default Shading Model of the view. Will throw an exception on attempt to set Graphic3d_TypeOfShadingModel_DEFAULT.
 ") SetShadingModel;
 		void SetShadingModel(Graphic3d_TypeOfShadingModel theModel);
 
@@ -23227,6 +23621,24 @@ Sets environment texture for the view.
 ") SetTextureEnv;
 		virtual void SetTextureEnv(const opencascade::handle<Graphic3d_TextureEnv> & theTextureEnv);
 
+		/****** Graphic3d_CView::SetToFlipOutput ******/
+		/****** md5 signature: 03033f49c51ecda0772aa8779704682d ******/
+		%feature("compactdefaultargs") SetToFlipOutput;
+		%feature("autodoc", "
+Parameters
+----------
+Standard_Boolean: 
+
+Return
+-------
+None
+
+Description
+-----------
+Sets state of flip OY necessity in projection matrix.
+") SetToFlipOutput;
+		virtual void SetToFlipOutput(const Standard_Boolean);
+
 		/****** Graphic3d_CView::SetUnitFactor ******/
 		/****** md5 signature: 0f6b445dcbb608951a49277d2dbdeae6 ******/
 		%feature("compactdefaultargs") SetUnitFactor;
@@ -23279,7 +23691,10 @@ None
 
 Description
 -----------
-Creates and maps rendering window to the view. @param[in] theparentview parent view or null @param[in] thewindow the window @param[in] thecontext the rendering context; if null the context will be created internally.
+Creates and maps rendering window to the view. 
+Input parameter: theParentVIew parent view or NULL 
+Input parameter: theWindow the window 
+Input parameter: theContext the rendering context; if NULL the context will be created internally.
 ") SetWindow;
 		virtual void SetWindow(const opencascade::handle<Graphic3d_CView> & theParentVIew, const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext);
 
@@ -23297,9 +23712,27 @@ None
 
 Description
 -----------
-Set xr session.
+Set XR session.
 ") SetXRSession;
 		void SetXRSession(const opencascade::handle<Aspect_XRSession> & theSession);
+
+		/****** Graphic3d_CView::SetZLayerRedrawMode ******/
+		/****** md5 signature: ea4e4fb7f5aea8bb2e8a50624247d6d7 ******/
+		%feature("compactdefaultargs") SetZLayerRedrawMode;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Sets ZLayerId redraw mode.
+") SetZLayerRedrawMode;
+		void SetZLayerRedrawMode(const Standard_Boolean theMode);
 
 		/****** Graphic3d_CView::SetZLayerSettings ******/
 		/****** md5 signature: 526c66f52cf13826d826173b0d84d35e ******/
@@ -23316,9 +23749,27 @@ None
 
 Description
 -----------
-Sets the settings for a single z layer of specified view.
+Sets the settings for a single Z layer of specified view.
 ") SetZLayerSettings;
 		virtual void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
+
+		/****** Graphic3d_CView::SetZLayerTarget ******/
+		/****** md5 signature: 6247307410ea0389b71e57cd83facdf8 ******/
+		%feature("compactdefaultargs") SetZLayerTarget;
+		%feature("autodoc", "
+Parameters
+----------
+theTarget: int
+
+Return
+-------
+None
+
+Description
+-----------
+Sets ZLayerId target.
+") SetZLayerTarget;
+		void SetZLayerTarget(int theTarget);
 
 		/****** Graphic3d_CView::SetupXRPosedCamera ******/
 		/****** md5 signature: 10b421be502d3cbb0c3da0fb35ba9851 ******/
@@ -23329,7 +23780,7 @@ None
 
 Description
 -----------
-Compute posedxrcamera() based on current xr head pose and make it active.
+Compute PosedXRCamera() based on current XR head pose and make it active.
 ") SetupXRPosedCamera;
 		void SetupXRPosedCamera();
 
@@ -23342,9 +23793,30 @@ Graphic3d_TypeOfShadingModel
 
 Description
 -----------
-Returns default shading model of the view; graphic3d_typeofshadingmodel_phong by default.
+Returns default Shading Model of the view; Graphic3d_TypeOfShadingModel_Phong by default.
 ") ShadingModel;
 		Graphic3d_TypeOfShadingModel ShadingModel();
+
+		/****** Graphic3d_CView::ShadowMapDump ******/
+		/****** md5 signature: 4760cdebca1172516ffb50ead661a97b ******/
+		%feature("compactdefaultargs") ShadowMapDump;
+		%feature("autodoc", "
+Parameters
+----------
+theImage: Image_PixMap
+theLightName: str
+
+Return
+-------
+bool
+
+Description
+-----------
+Dumps the graphical contents of a shadowmap framebuffer into an image. 
+Parameter theImage the image to store the shadow map. 
+Input parameter: theLightName name of the light used to generate the shadow map.
+") ShadowMapDump;
+		virtual Standard_Boolean ShadowMapDump(Image_PixMap & theImage, TCollection_AsciiString theLightName);
 
 		/****** Graphic3d_CView::StatisticInformation ******/
 		/****** md5 signature: be606496c5e13c6784f40079328b5f5b ******/
@@ -23399,7 +23871,7 @@ Aspect_TypeOfTriedronPosition
 
 Description
 -----------
-Return subview position within parent view; aspect_totp_left_upper by default.
+Return subview position within parent view; Aspect_TOTP_LEFT_UPPER by default.
 ") SubviewCorner;
 		Aspect_TypeOfTriedronPosition SubviewCorner();
 
@@ -23425,7 +23897,7 @@ Graphic3d_Vec2d
 
 Description
 -----------
-Return corner offset within parent view; (0.0,0.0) by default. values >= 2 define offset in pixels; values <= 1.0 define offset as fraction of parent view dimensions.
+Return corner offset within parent view; (0.0,0.0) by default. Values >= 2 define offset in pixels; Values <= 1.0 define offset as fraction of parent view dimensions.
 ") SubviewOffset;
 		const Graphic3d_Vec2d & SubviewOffset();
 
@@ -23456,7 +23928,7 @@ Graphic3d_Vec2d
 
 Description
 -----------
-Return subview dimensions; (1.0, 1.0) by default. values >= 2 define size in pixels; values <= 1.0 define size as fraction of parent view.
+Return subview dimensions; (1.0, 1.0) by default. Values >= 2 define size in pixels; Values <= 1.0 define size as fraction of parent view.
 ") SubviewSize;
 		const Graphic3d_Vec2d & SubviewSize();
 
@@ -23495,7 +23967,7 @@ None
 
 Description
 -----------
-Recomputes posedxrcamera() based on basexrcamera() and head orientation.
+Recomputes PosedXRCamera() based on BaseXRCamera() and head orientation.
 ") SynchronizeXRBaseToPosedCamera;
 		void SynchronizeXRBaseToPosedCamera();
 
@@ -23508,7 +23980,7 @@ None
 
 Description
 -----------
-Checks if posedxrcamera() has been modified since setupxrposedcamera() and copies these modifications to basexrcamera().
+Checks if PosedXRCamera() has been modified since SetupXRPosedCamera() and copies these modifications to BaseXRCamera().
 ") SynchronizeXRPosedToBaseCamera;
 		void SynchronizeXRPosedToBaseCamera();
 
@@ -23525,6 +23997,19 @@ Returns environment texture set for the view.
 ") TextureEnv;
 		const opencascade::handle<Graphic3d_TextureEnv> & TextureEnv();
 
+		/****** Graphic3d_CView::ToFlipOutput ******/
+		/****** md5 signature: 366c0b989c7620982da51e7887dd0d15 ******/
+		%feature("compactdefaultargs") ToFlipOutput;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns necessity to flip OY in projection matrix.
+") ToFlipOutput;
+		virtual Standard_Boolean ToFlipOutput();
+
 		/****** Graphic3d_CView::TurnViewXRCamera ******/
 		/****** md5 signature: b541a212e2a9d644acb1e40cadfae6e8 ******/
 		%feature("compactdefaultargs") TurnViewXRCamera;
@@ -23539,7 +24024,7 @@ None
 
 Description
 -----------
-Turn xr camera direction using current (head) eye position as anchor.
+Turn XR camera direction using current (head) eye position as anchor.
 ") TurnViewXRCamera;
 		void TurnViewXRCamera(const gp_Trsf & theTrsfTurn);
 
@@ -23552,7 +24037,7 @@ float
 
 Description
 -----------
-Return unit scale factor defined as scale factor for m (meters); 1.0 by default. normally, view definition is unitless, however some operations like vr input requires proper units mapping.
+Return unit scale factor defined as scale factor for m (meters); 1.0 by default. Normally, view definition is unitless, however some operations like VR input requires proper units mapping.
 ") UnitFactor;
 		Standard_Real UnitFactor();
 
@@ -23565,7 +24050,7 @@ None
 
 Description
 -----------
-Set current camera back to basexrcamera() and copy temporary modifications of posedxrcamera(). calls synchronizexrposedtobasecamera() beforehand.
+Set current camera back to BaseXRCamera() and copy temporary modifications of PosedXRCamera(). Calls SynchronizeXRPosedToBaseCamera() beforehand.
 ") UnsetXRPosedCamera;
 		void UnsetXRPosedCamera();
 
@@ -23583,7 +24068,7 @@ None
 
 Description
 -----------
-Invalidates bounding box of specified zlayerid.
+Invalidates bounding box of specified ZLayerId.
 ") Update;
 		void Update(int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
@@ -23601,7 +24086,8 @@ gp_Ax1
 
 Description
 -----------
-Returns view direction in the world space based on xr pose. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward.
+Returns view direction in the world space based on XR pose. 
+Input parameter: thePoseXR transformation defined in VR local coordinate system,  oriented as Y-up, X-right and -Z-forward.
 ") ViewAxisInWorld;
 		gp_Ax1 ViewAxisInWorld(const gp_Trsf & thePoseXR);
 
@@ -23640,7 +24126,7 @@ opencascade::handle<Aspect_XRSession>
 
 Description
 -----------
-Return xr session.
+Return XR session.
 ") XRSession;
 		const opencascade::handle<Aspect_XRSession> & XRSession();
 
@@ -23653,9 +24139,35 @@ int
 
 Description
 -----------
-Returns the maximum z layer id. first layer id is graphic3d_zlayerid_default, last id is zlayermax().
+Returns the maximum Z layer ID. First layer ID is Graphic3d_ZLayerId_Default, last ID is ZLayerMax().
 ") ZLayerMax;
 		virtual Standard_Integer ZLayerMax();
+
+		/****** Graphic3d_CView::ZLayerRedrawMode ******/
+		/****** md5 signature: eedd9088d8560cef64ff942dc3dc1826 ******/
+		%feature("compactdefaultargs") ZLayerRedrawMode;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns ZLayerId redraw mode.
+") ZLayerRedrawMode;
+		Standard_Boolean ZLayerRedrawMode();
+
+		/****** Graphic3d_CView::ZLayerTarget ******/
+		/****** md5 signature: 1913fc6390a70c6fb6292e356da5572c ******/
+		%feature("compactdefaultargs") ZLayerTarget;
+		%feature("autodoc", "Return
+-------
+Graphic3d_ZLayerId
+
+Description
+-----------
+Returns ZLayerId target.
+") ZLayerTarget;
+		Graphic3d_ZLayerId ZLayerTarget();
 
 };
 
@@ -23897,7 +24409,7 @@ bool
 
 Description
 -----------
-Return true if yuv range is full.
+Return True if YUV range is full.
 ") IsFullRangeYUV;
 		Standard_Boolean IsFullRangeYUV();
 
@@ -23910,7 +24422,7 @@ bool
 
 Description
 -----------
-Return true if texture set defined 3 yuv planes.
+Return True if texture set defined 3 YUV planes.
 ") IsPlanarYUV;
 		Standard_Boolean IsPlanarYUV();
 
@@ -23942,7 +24454,7 @@ None
 
 Description
 -----------
-Open specified file. passing an empty path would close current input.
+Open specified file. Passing an empty path would close current input.
 ") OpenInput;
 		void OpenInput(TCollection_AsciiString thePath, Standard_Boolean theToWait);
 
@@ -23955,7 +24467,7 @@ opencascade::handle<Media_PlayerContext>
 
 Description
 -----------
-Return player context; it can be null until first openinput().
+Return player context; it can be NULL until first OpenInput().
 ") PlayerContext;
 		const opencascade::handle<Media_PlayerContext> & PlayerContext();
 
@@ -24081,7 +24593,7 @@ Graphic3d_NameOfTextureEnv
 
 Description
 -----------
-Returns the name of the predefined textures or not_env_unknown when the name is given as a filename.
+Returns the name of the predefined textures or NOT_ENV_UNKNOWN when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTextureEnv Name();
 
@@ -24112,7 +24624,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of the predefined texture of rank <arank>.
+Returns the name of the predefined texture of rank <aRank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer theRank);
 
@@ -24142,7 +24654,7 @@ Graphic3d_LevelOfTextureAnisotropy
 
 Description
 -----------
-Return level of anisotropy texture filter. default value is graphic3d_lota_off.
+Return: level of anisotropy texture filter. Default value is Graphic3d_LOTA_OFF.
 ") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter();
 
@@ -24155,7 +24667,7 @@ None
 
 Description
 -----------
-Disable texture modulate mode. the image is directly decal on the surface.
+disable texture modulate mode. the image is directly decal on the surface.
 ") DisableModulate;
 		void DisableModulate();
 
@@ -24168,7 +24680,7 @@ None
 
 Description
 -----------
-Use this methods if you want to disable texture repetition on your objects.
+use this methods if you want to disable texture repetition on your objects.
 ") DisableRepeat;
 		void DisableRepeat();
 
@@ -24181,7 +24693,7 @@ None
 
 Description
 -----------
-Disable texture smoothing.
+disable texture smoothing.
 ") DisableSmooth;
 		void DisableSmooth();
 
@@ -24194,7 +24706,7 @@ None
 
 Description
 -----------
-Enable texture modulate mode. the image is modulate with the shading of the surface.
+enable texture modulate mode. the image is modulate with the shading of the surface.
 ") EnableModulate;
 		void EnableModulate();
 
@@ -24207,7 +24719,7 @@ None
 
 Description
 -----------
-Use this methods if you want to enable texture repetition on your objects.
+use this methods if you want to enable texture repetition on your objects.
 ") EnableRepeat;
 		void EnableRepeat();
 
@@ -24220,7 +24732,7 @@ None
 
 Description
 -----------
-Enable texture smoothing.
+enable texture smoothing.
 ") EnableSmooth;
 		void EnableSmooth();
 
@@ -24233,7 +24745,7 @@ bool
 
 Description
 -----------
-Returns true if the texture is modulate.
+Returns True if the texture is modulate.
 ") IsModulate;
 		Standard_Boolean IsModulate();
 
@@ -24246,7 +24758,7 @@ bool
 
 Description
 -----------
-Returns true if the texture repeat is enable.
+Returns True if the texture repeat is enable.
 ") IsRepeat;
 		Standard_Boolean IsRepeat();
 
@@ -24259,7 +24771,7 @@ bool
 
 Description
 -----------
-Returns true if the texture is smoothed.
+Returns True if the texture is smoothed.
 ") IsSmoothed;
 		Standard_Boolean IsSmoothed();
 
@@ -24277,7 +24789,7 @@ None
 
 Description
 -----------
-@param thelevel level of anisotropy texture filter.
+Parameter theLevel level of anisotropy texture filter.
 ") SetAnisoFilter;
 		void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel);
 
@@ -24312,7 +24824,7 @@ None
 
 Description
 -----------
-Create a zoom transformation persistence with an anchor 3d point and a scale value.
+Create a Zoom transformation persistence with an anchor 3D point and a scale value.
 ") Graphic3d_TransformPersScaledAbove;
 		 Graphic3d_TransformPersScaledAbove(const Standard_Real theScale, const gp_Pnt & thePnt);
 
@@ -24332,7 +24844,10 @@ float
 
 Description
 -----------
-Find scale value based on the camera position and view dimensions if the camera scale value less than the persistence scale, zoom persistence is not applied. @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
+Find scale value based on the camera position and view dimensions If the camera scale value less than the persistence scale, zoom persistence is not applied. 
+Input parameter: theCamera camera definition 
+Input parameter: theViewportWidth the width of viewport. 
+Input parameter: theViewportHeight the height of viewport.
 ") persistentScale;
 		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
@@ -24370,7 +24885,7 @@ opencascade::handle<Image_CompressedPixMap>
 
 Description
 -----------
-Returns current cubemap side as compressed pixmap. returns null handle if current side is invalid or if image is not in supported compressed format.
+Returns current cubemap side as compressed PixMap. Returns null handle if current side is invalid or if image is not in supported compressed format.
 ") CompressedValue;
 		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -24409,7 +24924,7 @@ bool
 
 Description
 -----------
-Returns whether the iterator has reached the end (true if it hasn't). .
+Returns whether the iterator has reached the end (true if it hasn't).
 ") More;
 		Standard_Boolean More();
 
@@ -24422,7 +24937,7 @@ None
 
 Description
 -----------
-Moves iterator to the next cubemap side. uses opengl cubemap sides order +x -> -x -> +y -> -y -> +z -> -z.
+Moves iterator to the next cubemap side. Uses OpenGL cubemap sides order +X -> -X -> +Y -> -Y -> +Z -> -Z.
 ") Next;
 		void Next();
 
@@ -24435,7 +24950,7 @@ Graphic3d_CubeMap
 
 Description
 -----------
-Sets iterator state to +x cubemap side.
+Sets iterator state to +X cubemap side.
 ") Reset;
 		Graphic3d_CubeMap & Reset();
 
@@ -24471,7 +24986,7 @@ None
 
 Description
 -----------
-Sets z axis inversion (vertical flipping).
+Sets Z axis inversion (vertical flipping).
 ") SetZInversion;
 		void SetZInversion(Standard_Boolean theZIsInverted);
 
@@ -24489,7 +25004,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Returns pixmap containing current side of cubemap. returns null handle if current side is invalid.
+Returns PixMap containing current side of cubemap. Returns null handle if current side is invalid.
 ") Value;
 		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -24502,7 +25017,7 @@ bool
 
 Description
 -----------
-Returns whether z axis is inverted.
+Returns whether Z axis is inverted.
 ") ZIsInverted;
 		Standard_Boolean ZIsInverted();
 
@@ -24594,7 +25109,7 @@ bool
 
 Description
 -----------
-Return true if data can be invalidated.
+Return True if data can be invalidated.
 ") IsMutable;
 		virtual Standard_Boolean IsMutable();
 
@@ -24632,6 +25147,8 @@ Invalidate specified sub-range of data (as byte offsets).
 };
 
 
+%make_alias(Graphic3d_MutableIndexBuffer)
+
 %extend Graphic3d_MutableIndexBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -24653,7 +25170,7 @@ Graphic3d_NameOfTexture1D
 
 Description
 -----------
-Returns the name of the predefined textures or not_1d_unknown when the name is given as a filename.
+Returns the name of the predefined textures or NOT_1D_UNKNOWN when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTexture1D Name();
 
@@ -24684,7 +25201,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of the predefined texture of rank <arank>.
+Returns the name of the predefined texture of rank <aRank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer aRank);
 
@@ -24718,7 +25235,7 @@ None
 
 Description
 -----------
-Creates a texture from a file. mipmaps levels will be automatically generated if needed.
+Creates a texture from a file. MipMaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(TCollection_AsciiString theFileName);
 
@@ -24736,7 +25253,7 @@ None
 
 Description
 -----------
-Creates a texture from a predefined texture name set. mipmaps levels will be automatically generated if needed.
+Creates a texture from a predefined texture name set. MipMaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(const Graphic3d_NameOfTexture2D theNOT);
 
@@ -24754,7 +25271,7 @@ None
 
 Description
 -----------
-Creates a texture from the pixmap. mipmaps levels will be automatically generated if needed.
+Creates a texture from the pixmap. MipMaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(const opencascade::handle<Image_PixMap> & thePixMap);
 
@@ -24767,7 +25284,7 @@ Graphic3d_NameOfTexture2D
 
 Description
 -----------
-Returns the name of the predefined textures or not_2d_unknown when the name is given as a filename.
+Returns the name of the predefined textures or NOT_2D_UNKNOWN when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTexture2D Name();
 
@@ -24798,7 +25315,7 @@ None
 
 Description
 -----------
-Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
+Assign new image to the texture. Note that this method does not invalidate already uploaded resources - consider calling ::UpdateRevision() if needed.
 ") SetImage;
 		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
 
@@ -24816,7 +25333,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of the predefined texture of rank <arank>.
+Returns the name of the predefined texture of rank <aRank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer theRank);
 
@@ -24922,7 +25439,7 @@ None
 
 Description
 -----------
-Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
+Assign new image to the texture. Note that this method does not invalidate already uploaded resources - consider calling ::UpdateRevision() if needed.
 ") SetImage;
 		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
 
@@ -24959,7 +25476,7 @@ None
 
 Description
 -----------
-Initializes cubemap to be loaded from file. @thepaths - array of paths to separate image files (has to have size equal 6).
+Initializes cubemap to be loaded from file. @thePaths - array of paths to separate image files (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
 		 Graphic3d_CubeMapSeparate(const NCollection_Array1<TCollection_AsciiString> & thePaths);
 
@@ -24977,7 +25494,7 @@ None
 
 Description
 -----------
-Initializes cubemap to be set directly from pixmaps. @theimages - array if pixmaps (has to have size equal 6).
+Initializes cubemap to be set directly from PixMaps. @theImages - array if PixMaps (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
 		 Graphic3d_CubeMapSeparate(const NCollection_Array1<opencascade::handle<Image_PixMap> > & theImages);
 
@@ -24995,7 +25512,7 @@ opencascade::handle<Image_CompressedPixMap>
 
 Description
 -----------
-Returns current cubemap side as compressed pixmap.
+Returns current cubemap side as compressed PixMap.
 ") CompressedValue;
 		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -25013,7 +25530,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Returns null.
+Returns NULL.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats > &);
 
@@ -25026,7 +25543,7 @@ bool
 
 Description
 -----------
-Checks if a texture class is valid or not. returns true if the construction of the class is correct.
+Checks if a texture class is valid or not. Returns true if the construction of the class is correct.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -25044,7 +25561,7 @@ opencascade::handle<Image_PixMap>
 
 Description
 -----------
-Returns current side of cubemap as pixmap. returns null handle if current side or whole cubemap is invalid. all origin images have to have the same sizes, format and quad shapes to form valid cubemap.
+Returns current side of cubemap as PixMap. Returns null handle if current side or whole cubemap is invalid. All origin images have to have the same sizes, format and quad shapes to form valid cubemap.
 ") Value;
 		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -25175,7 +25692,7 @@ None
 
 Description
 -----------
-Creates a texture from the file filename.
+Creates a texture from the file FileName.
 ") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual(TCollection_AsciiString theFileName);
 
@@ -25303,7 +25820,7 @@ theZ2: float
 
 Description
 -----------
-Returns the values of the current segment x1, y1, z1 , x2, y2, z2.
+Returns the values of the current segment X1, Y1, Z1 , X2, Y2, Z2.
 ") Segment;
 		void Segment(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
@@ -25326,7 +25843,7 @@ None
 
 Description
 -----------
-Sets the texture application bounds. defines the way the texture is stretched across facets. default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>.
+Sets the texture application bounds. Defines the way the texture is stretched across facets. Default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>.
 ") SetSegment;
 		void SetSegment(const Standard_ShortReal theX1, const Standard_ShortReal theY1, const Standard_ShortReal theZ1, const Standard_ShortReal theX2, const Standard_ShortReal theY2, const Standard_ShortReal theZ2);
 
@@ -25409,7 +25926,7 @@ Graphic3d_NameOfTexturePlane
 
 Description
 -----------
-Returns the current texture plane name or notp_unknown when the plane is user defined.
+Returns the current texture plane name or NOTP_UNKNOWN when the plane is user defined.
 ") Plane;
 		Graphic3d_NameOfTexturePlane Plane();
 
@@ -25429,7 +25946,7 @@ D: float
 
 Description
 -----------
-Returns the current texture plane s equation.
+Returns the current texture plane S equation.
 ") PlaneS;
 		void PlaneS(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
@@ -25449,7 +25966,7 @@ D: float
 
 Description
 -----------
-Returns the current texture plane t equation.
+Returns the current texture plane T equation.
 ") PlaneT;
 		void PlaneT(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
@@ -25483,7 +26000,7 @@ theVal: float
 
 Description
 -----------
-Returns the current texture s scale value.
+Returns the current texture S scale value.
 ") ScaleS;
 		void ScaleS(Standard_ShortReal &OutValue);
 
@@ -25500,7 +26017,7 @@ theVal: float
 
 Description
 -----------
-Returns the current texture t scale value.
+Returns the current texture T scale value.
 ") ScaleT;
 		void ScaleT(Standard_ShortReal &OutValue);
 
@@ -25518,7 +26035,7 @@ None
 
 Description
 -----------
-Defines the texture projection plane for both s and t texture coordinate default is notp_xy meaning: <1.0, 0.0, 0.0, 0.0> for s and <0.0, 1.0, 0.0, 0.0> for t.
+Defines the texture projection plane for both S and T texture coordinate default is NOTP_XY meaning: <1.0, 0.0, 0.0, 0.0> for S and <0.0, 1.0, 0.0, 0.0> for T.
 ") SetPlane;
 		void SetPlane(const Graphic3d_NameOfTexturePlane thePlane);
 
@@ -25539,7 +26056,7 @@ None
 
 Description
 -----------
-Defines the texture projection plane for texture coordinate s default is <1.0, 0.0, 0.0, 0.0>.
+Defines the texture projection plane for texture coordinate S default is <1.0, 0.0, 0.0, 0.0>.
 ") SetPlaneS;
 		void SetPlaneS(const Standard_ShortReal A, const Standard_ShortReal B, const Standard_ShortReal C, const Standard_ShortReal D);
 
@@ -25560,7 +26077,7 @@ None
 
 Description
 -----------
-Defines the texture projection plane for texture coordinate t default is <0.0, 1.0, 0.0, 0.0>.
+Defines the texture projection plane for texture coordinate T default is <0.0, 1.0, 0.0, 0.0>.
 ") SetPlaneT;
 		void SetPlaneT(const Standard_ShortReal A, const Standard_ShortReal B, const Standard_ShortReal C, const Standard_ShortReal D);
 
@@ -25578,7 +26095,7 @@ None
 
 Description
 -----------
-Sets the rotation angle of the whole texture. the same result might be achieved by recomputing the s and t plane equation but it's not the easiest way... the angle is expressed in degrees default is 0.0.
+Sets the rotation angle of the whole texture. the same result might be achieved by recomputing the S and T plane equation but it's not the easiest way... the angle is expressed in degrees default is 0.0.
 ") SetRotation;
 		void SetRotation(const Standard_ShortReal theVal);
 
@@ -25596,7 +26113,7 @@ None
 
 Description
 -----------
-Defines the texture scale for the s texture coordinate much easier than recomputing the s plane equation but the result is the same default to 1.0.
+Defines the texture scale for the S texture coordinate much easier than recomputing the S plane equation but the result is the same default to 1.0.
 ") SetScaleS;
 		void SetScaleS(const Standard_ShortReal theVal);
 
@@ -25614,7 +26131,7 @@ None
 
 Description
 -----------
-Defines the texture scale for the t texture coordinate much easier than recompution the t plane equation but the result is the same default to 1.0.
+Defines the texture scale for the T texture coordinate much easier than recompution the T plane equation but the result is the same default to 1.0.
 ") SetScaleT;
 		void SetScaleT(const Standard_ShortReal theVal);
 
@@ -25632,7 +26149,7 @@ None
 
 Description
 -----------
-Defines the texture translation for the s texture coordinate you can obtain the same effect by modifying the s plane equation but its not easier. default to 0.0.
+Defines the texture translation for the S texture coordinate you can obtain the same effect by modifying the S plane equation but its not easier. default to 0.0.
 ") SetTranslateS;
 		void SetTranslateS(const Standard_ShortReal theVal);
 
@@ -25650,7 +26167,7 @@ None
 
 Description
 -----------
-Defines the texture translation for the t texture coordinate you can obtain the same effect by modifying the t plane equation but its not easier. default to 0.0.
+Defines the texture translation for the T texture coordinate you can obtain the same effect by modifying the T plane equation but its not easier. default to 0.0.
 ") SetTranslateT;
 		void SetTranslateT(const Standard_ShortReal theVal);
 
@@ -25667,7 +26184,7 @@ theVal: float
 
 Description
 -----------
-Returns the current texture s translation value.
+Returns the current texture S translation value.
 ") TranslateS;
 		void TranslateS(Standard_ShortReal &OutValue);
 
@@ -25684,7 +26201,7 @@ theVal: float
 
 Description
 -----------
-Returns the current texture t translation value.
+Returns the current texture T translation value.
 ") TranslateT;
 		void TranslateT(Standard_ShortReal &OutValue);
 
@@ -25907,6 +26424,14 @@ def Graphic3d_Structure_Transforms(*args):
 @deprecated
 def Graphic3d_TextureRoot_TexturesFolder(*args):
 	return Graphic3d_TextureRoot.TexturesFolder(*args)
+
+@deprecated
+def Graphic3d_TransformPers_IsAxial(*args):
+	return Graphic3d_TransformPers.IsAxial(*args)
+
+@deprecated
+def Graphic3d_TransformPers_IsOrthoPers(*args):
+	return Graphic3d_TransformPers.IsOrthoPers(*args)
 
 @deprecated
 def Graphic3d_TransformPers_IsTrihedronOr2d(*args):

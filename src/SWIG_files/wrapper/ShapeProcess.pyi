@@ -18,10 +18,13 @@ from OCC.Core.ShapeBuild import *
 class shapeprocess:
     @staticmethod
     def FindOperator(name: str, op: ShapeProcess_Operator) -> bool: ...
+    @overload
     @staticmethod
     def Perform(context: ShapeProcess_Context, seq: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
     @staticmethod
     def RegisterOperator(name: str, op: ShapeProcess_Operator) -> bool: ...
+    @staticmethod
+    def ToOperationFlag(theName: str) -> bool: ...
 
 class ShapeProcess_Context(Standard_Transient):
     @overload

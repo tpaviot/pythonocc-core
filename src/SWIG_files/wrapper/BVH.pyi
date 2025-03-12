@@ -23,6 +23,8 @@ BVH_Array4f = NewType("BVH_Array4f", Any)
 # the following typedef cannot be wrapped as is
 BVH_Array4i = NewType("BVH_Array4i", Any)
 # the following typedef cannot be wrapped as is
+BVH_Builder3d = NewType("BVH_Builder3d", Any)
+# the following typedef cannot be wrapped as is
 BVH_EncodedLink = NewType("BVH_EncodedLink", Any)
 # the following typedef cannot be wrapped as is
 BVH_Mat4d = NewType("BVH_Mat4d", Any)

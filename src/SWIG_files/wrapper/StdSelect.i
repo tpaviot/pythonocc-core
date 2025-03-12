@@ -210,7 +210,7 @@ None
 
 Description
 -----------
-Puts the same drawer in every brepowner of sensitiveprimitive used only for hilight of brepowner...
+puts The same drawer in every BRepOwner Of SensitivePrimitive Used Only for hilight Of BRepOwner...
 ") SetDrawerForBRepOwner;
 		static void SetDrawerForBRepOwner(const opencascade::handle<SelectMgr_Selection> & aSelection, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -242,7 +242,7 @@ None
 
 Description
 -----------
-Constructs an owner specification framework defined by the priority apriority.
+Constructs an owner specification framework defined by the priority aPriority.
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const Standard_Integer aPriority);
 
@@ -262,7 +262,7 @@ None
 
 Description
 -----------
-Constructs an owner specification framework defined by the shape ashape and the priority apriority. ashape and apriority are stored in this framework. if more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
+Constructs an owner specification framework defined by the shape aShape and the priority aPriority. aShape and aPriority are stored in this framework. If more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const TopoDS_Shape & aShape, const Standard_Integer aPriority = 0, const Standard_Boolean ComesFromDecomposition = Standard_False);
 
@@ -283,7 +283,7 @@ None
 
 Description
 -----------
-Constructs an owner specification framework defined by the shape ashape, the selectable object theorigin and the priority apriority. ashape, theorigin and apriority are stored in this framework. if more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
+Constructs an owner specification framework defined by the shape aShape, the selectable object theOrigin and the priority aPriority. aShape, theOrigin and aPriority are stored in this framework. If more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const TopoDS_Shape & aShape, const opencascade::handle<SelectMgr_SelectableObject> & theOrigin, const Standard_Integer aPriority = 0, const Standard_Boolean FromDecomposition = Standard_False);
 
@@ -302,7 +302,7 @@ None
 
 Description
 -----------
-Clears the presentation manager object apm of all shapes with the selection mode amode.
+Clears the presentation manager object aPM of all shapes with the selection mode aMode.
 ") Clear;
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
@@ -349,7 +349,7 @@ bool
 
 Description
 -----------
-Returns false if no shape was set.
+returns False if no shape was set.
 ") HasShape;
 		Standard_Boolean HasShape();
 
@@ -362,7 +362,7 @@ int
 
 Description
 -----------
-Returns the highlight mode for this framework. this defines the type of display used to highlight the owner of the shape when it is detected by the selector. the default type of display is wireframe, defined by the index 0.
+Returns the highlight mode for this framework. This defines the type of display used to highlight the owner of the shape when it is detected by the selector. The default type of display is wireframe, defined by the index 0.
 ") HilightMode;
 		Standard_Integer HilightMode();
 
@@ -401,7 +401,7 @@ bool
 
 Description
 -----------
-Returns true if an object with the selection mode amode is highlighted in the presentation manager apm.
+Returns true if an object with the selection mode aMode is highlighted in the presentation manager aPM.
 ") IsHilighted;
 		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
@@ -414,7 +414,7 @@ None
 
 Description
 -----------
-Resets the higlight mode for this framework. this defines the type of display used to highlight the owner of the shape when it is detected by the selector. the default type of display is wireframe, defined by the index 0.
+Resets the higlight mode for this framework. This defines the type of display used to highlight the owner of the shape when it is detected by the selector. The default type of display is wireframe, defined by the index 0.
 ") ResetHilightMode;
 		void ResetHilightMode();
 
@@ -432,7 +432,7 @@ None
 
 Description
 -----------
-Sets the highlight mode for this framework. this defines the type of display used to highlight the owner of the shape when it is detected by the selector. the default type of display is wireframe, defined by the index 0.
+Sets the highlight mode for this framework. This defines the type of display used to highlight the owner of the shape when it is detected by the selector. The default type of display is wireframe, defined by the index 0.
 ") SetHilightMode;
 		void SetHilightMode(const Standard_Integer theMode);
 
@@ -482,7 +482,7 @@ None
 
 Description
 -----------
-Removes highlighting from the type of shape identified the selection mode amode in the presentation manager apm.
+Removes highlighting from the type of shape identified the selection mode aMode in the presentation manager aPM.
 ") Unhilight;
 		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
@@ -543,7 +543,15 @@ None
 
 Description
 -----------
-Computes the sensitive primitives, stores them in the selectmgr_selection object, and returns this object. @param[in] theshape shape to compute sensitive entities @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities @param[in] thedeflection linear deflection @param[in] thedeflangle angular deflection @param[in] thenbponedge sensitivity parameters for edges and wires @param[in] themaxiparam sensitivity parameters for infinite objects (the default value is 500) @param[in] theautotriang flag to compute triangulation for the faces which have none.
+Computes the sensitive primitives, stores them in the SelectMgr_Selection object, and returns this object. 
+Input parameter: theShape shape to compute sensitive entities 
+Input parameter: theOwner selectable owner object 
+Input parameter: theSelection selection to append new sensitive entities 
+Input parameter: theDeflection linear deflection 
+Input parameter: theDeflAngle angular deflection 
+Input parameter: theNbPOnEdge sensitivity parameters for edges and wires 
+Input parameter: theMaxiParam sensitivity parameters for infinite objects (the default value is 500) 
+Input parameter: theAutoTriang flag to compute triangulation for the faces which have none.
 ") ComputeSensitive;
 		static void ComputeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeflAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, const Standard_Boolean theAutoTriang = Standard_True);
 
@@ -568,7 +576,13 @@ None
 
 Description
 -----------
-Create a sensitive edge or sensitive wire. @param[in] theshape either topods_edge or topods_wire to compute sensitive entities @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities @param[in] thedeflection linear deflection @param[in] thedeviationangle angular deflection @param[in] thenbponedge sensitivity parameters @param[out] themaxiparam sensitivity parameters.
+Create a sensitive edge or sensitive wire. 
+Input parameter: theShape either TopoDS_Edge or TopoDS_Wire to compute sensitive entities 
+Input parameter: theOwner selectable owner object 
+Input parameter: theSelection selection to append new sensitive entities 
+Input parameter: theDeflection linear deflection 
+Input parameter: theDeviationAngle angular deflection 
+Input parameter: theNbPOnEdge sensitivity parameters @param[out] theMaxiParam sensitivity parameters.
 ") GetEdgeSensitive;
 		static void GetEdgeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -588,7 +602,10 @@ bool
 
 Description
 -----------
-Creates a sensitive cylinder. @param[in] thesubfacesmap map of cylinder faces @param[in] theowner selectable owner object @param[in] theselection selection to append new sensitive entities.
+Creates a sensitive cylinder. 
+Input parameter: theSubfacesMap map of cylinder faces 
+Input parameter: theOwner selectable owner object 
+Input parameter: theSelection selection to append new sensitive entities.
 ") GetSensitiveForCylinder;
 		static Standard_Boolean GetSensitiveForCylinder(const TopTools_IndexedMapOfShape & theSubfacesMap, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -612,7 +629,13 @@ bool
 
 Description
 -----------
-Creates the 3d sensitive entities for face selection. @param[in] theface face to compute sensitive entities @param[in] theowner selectable owner object @param[out] theoutlist output result list to append created entities @param[in] theautotriang obsolete flag (has no effect) @param[in] thenbponedge sensitivity parameters @param[in] themaxiparam sensitivity parameters @param[in] theinteriorflag flag indicating that face interior (true) or face boundary (false) should be selectable.
+Creates the 3D sensitive entities for Face selection. 
+Input parameter: theFace face to compute sensitive entities 
+Input parameter: theOwner selectable owner object @param[out] theOutList output result list to append created entities 
+Input parameter: theAutoTriang obsolete flag (has no effect) 
+Input parameter: theNbPOnEdge sensitivity parameters 
+Input parameter: theMaxiParam sensitivity parameters 
+Input parameter: theInteriorFlag flag indicating that face interior (True) or face boundary (False) should be selectable.
 ") GetSensitiveForFace;
 		static Standard_Boolean GetSensitiveForFace(const TopoDS_Face & theFace, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, Select3D_EntitySequence & theOutList, const Standard_Boolean theAutoTriang = Standard_True, const Standard_Integer theNbPOnEdge = 9, const Standard_Real theMaxiParam = 500, const Standard_Boolean theInteriorFlag = Standard_True);
 
@@ -631,7 +654,7 @@ int
 
 Description
 -----------
-Returns the standard priority of the shape ashap having the type atype. this priority is passed to a stdselect_brepowner object. you can use the function load to modify the selection priority of an owner to make one entity more selectable than another one.
+Returns the standard priority of the shape aShap having the type aType. This priority is passed to a StdSelect_BRepOwner object. You can use the function Load to modify the selection priority of an owner to make one entity more selectable than another one.
 ") GetStandardPriority;
 		static Standard_Integer GetStandardPriority(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theType);
 
@@ -657,7 +680,7 @@ None
 
 Description
 -----------
-Decomposition of <ashape> into sensitive entities following a mode of decomposition <atype>. these entities are stored in <aselection>. brepowners are created to store the identity of the picked shapes during the selection process. in those brepowners is also stored the original shape. but one can't get the selectable object which was decomposed to give the sensitive entities. maximal parameter is used for infinite objects, to limit the sensitive domain.... if autotriangulation = true, a triangulation will be computed for faces which have no existing one. if autotriangulation = false the old algorithm will be called to compute sensitive entities on faces.
+Decomposition of <aShape> into sensitive entities following a mode of decomposition <aType>. These entities are stored in <aSelection>. BrepOwners are created to store the identity of the picked shapes during the selection process. In those BRepOwners is also stored the original shape. But One can't get the selectable object which was decomposed to give the sensitive entities. maximal parameter is used for infinite objects, to limit the sensitive Domain.... If AutoTriangulation = True, a Triangulation will be computed for faces which have no existing one. if AutoTriangulation = False the old algorithm will be called to compute sensitive entities on faces.
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
@@ -684,7 +707,7 @@ None
 
 Description
 -----------
-Same functionalities ; the only difference is that the selectable object from which the selection comes is stored in each sensitive entityowner; decomposition of <ashape> into sensitive entities following a mode of decomposition <atype>. these entities are stored in <aselection> the major difference is that the known users are first inserted in the brepowners. the original shape is the last user... (see entityowner from selectbasics and brepowner)...
+Same functionalities ; the only difference is that the selectable object from which the selection comes is stored in each Sensitive EntityOwner; decomposition of <aShape> into sensitive entities following a mode of decomposition <aType>. These entities are stored in <aSelection> The Major difference is that the known users are first inserted in the BRepOwners. the original shape is the last user... (see EntityOwner from SelectBasics and BrepOwner)...
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const opencascade::handle<SelectMgr_SelectableObject> & Origin, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
@@ -702,7 +725,7 @@ None
 
 Description
 -----------
-Traverses the selection given and pre-builds bvh trees for heavyweight sensitive entities containing more than bvh_primitive_limit (defined in .cxx file) sub-elements.
+Traverses the selection given and pre-builds BVH trees for heavyweight sensitive entities containing more than BVH_PRIMITIVE_LIMIT (defined in .cxx file) sub-elements.
 ") PreBuildBVH;
 		static void PreBuildBVH(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -734,7 +757,7 @@ None
 
 Description
 -----------
-Constructs an edge filter object defined by the type of edge edge.
+Constructs an edge filter object defined by the type of edge Edge.
 ") StdSelect_EdgeFilter;
 		 StdSelect_EdgeFilter(const StdSelect_TypeOfEdge Edge);
 
@@ -788,7 +811,7 @@ None
 
 Description
 -----------
-Sets the type of edge anewtype. anewtype is to be highlighted in selection.
+Sets the type of edge aNewType. aNewType is to be highlighted in selection.
 ") SetType;
 		void SetType(const StdSelect_TypeOfEdge aNewType);
 
@@ -835,7 +858,7 @@ None
 
 Description
 -----------
-Constructs a face filter object defined by the type of face atypeofface.
+Constructs a face filter object defined by the type of face aTypeOfFace.
 ") StdSelect_FaceFilter;
 		 StdSelect_FaceFilter(const StdSelect_TypeOfFace aTypeOfFace);
 
@@ -889,7 +912,7 @@ None
 
 Description
 -----------
-Sets the type of face anewtype. anewtype is to be highlighted in selection.
+Sets the type of face aNewType. aNewType is to be highlighted in selection.
 ") SetType;
 		void SetType(const StdSelect_TypeOfFace aNewType);
 
@@ -1043,7 +1066,7 @@ None
 
 Description
 -----------
-Constructs a filter object defined by the shape type atype.
+Constructs a filter object defined by the shape type aType.
 ") StdSelect_ShapeTypeFilter;
 		 StdSelect_ShapeTypeFilter(const TopAbs_ShapeEnum aType);
 

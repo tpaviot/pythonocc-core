@@ -161,7 +161,7 @@ None
 
 Description
 -----------
-Methods of package computes the matrix operator, referred to as the 'huyghens operator' of a geometric system at the point q of the space, using the following data: - mass, i.e. the mass of the system, - g, the center of mass of the system. the 'huyghens operator' is used to compute inertia/q, the matrix of inertia of the system at the point q using huyghens' theorem: inertia/q = inertia/g + hoperator (q, g, mass) where inertia/g is the matrix of inertia of the system relative to its center of mass as returned by the function matrixofinertia on any gprop_gprops object.
+methods of package Computes the matrix Operator, referred to as the 'Huyghens Operator' of a geometric system at the point Q of the space, using the following data: - Mass, i.e. the mass of the system, - G, the center of mass of the system. The 'Huyghens Operator' is used to compute Inertia/Q, the matrix of inertia of the system at the point Q using Huyghens' theorem: Inertia/Q = Inertia/G + HOperator (Q, G, Mass) where Inertia/G is the matrix of inertia of the system relative to its center of mass as returned by the function MatrixOfInertia on any GProp_GProps object.
 ") HOperator;
 		static void HOperator(const gp_Pnt & G, const gp_Pnt & Q, const Standard_Real Mass, gp_Mat & Operator);
 
@@ -206,7 +206,7 @@ None
 
 Description
 -----------
-The point systemlocation is used to compute the global properties of the system. for more accuracy it is better to define this point closed to the location of the system. for example it could be a point around the centre of mass of the system. this point is referred to as the reference point for this framework. for greater accuracy it is better for the reference point to be close to the location of the system. it can, for example, be a point near the center of mass of the system. at initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. however, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. to do this, use the function add to define the components of the system. use it once per component of the system, and then use the interrogation functions available to access the computed values.
+The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values.
 ") GProp_GProps;
 		 GProp_GProps(const gp_Pnt & SystemLocation);
 
@@ -225,7 +225,7 @@ None
 
 Description
 -----------
-Either - initializes the global properties retained by this framework from those retained by the framework item, or - brings together the global properties still retained by this framework with those retained by the framework item. the value density, which is 1.0 by default, is used as the density of the system analysed by item. sometimes the density will have already been given at the time of construction of the framework item. this may be the case for example, if item is a gprop_pgprops framework built to compute the global properties of a set of points ; or another gprop_gprops object which already retains composite global properties. in these cases the real density was perhaps already taken into account at the time of construction of item. note that this is not checked: if the density of parts of the system is taken into account two or more times, results of the computation will be false. notes: - the point relative to which the inertia of item is computed (i.e. the reference point of item) may be different from the reference point in this framework. huygens' theorem is applied automatically to transfer inertia values to the reference point in this framework. - the function add is used once per component of the system. after that, you use the interrogation functions available to access values computed for the system. - the system whose global properties are already brought together by this framework is referred to as the current system. however, the current system is not retained by this framework, which maintains only its global properties. exceptions standard_domainerror if density is less than or equal to gp::resolution().
+Either - initializes the global properties retained by this framework from those retained by the framework Item, or - brings together the global properties still retained by this framework with those retained by the framework Item. The value Density, which is 1.0 by default, is used as the density of the system analysed by Item. Sometimes the density will have already been given at the time of construction of the framework Item. This may be the case for example, if Item is a GProp_PGProps framework built to compute the global properties of a set of points ; or another GProp_GProps object which already retains composite global properties. In these cases the real density was perhaps already taken into account at the time of construction of Item. Note that this is not checked: if the density of parts of the system is taken into account two or more times, results of the computation will be false. Notes: - The point relative to which the inertia of Item is computed (i.e. the reference point of Item) may be different from the reference point in this framework. Huygens' theorem is applied automatically to transfer inertia values to the reference point in this framework. - The function Add is used once per component of the system. After that, you use the interrogation functions available to access values computed for the system. - The system whose global properties are already brought together by this framework is referred to as the current system. However, the current system is not retained by this framework, which maintains only its global properties. Exceptions Standard_DomainError if Density is less than or equal to gp::Resolution().
 ") Add;
 		void Add(const GProp_GProps & Item, const Standard_Real Density = 1.0);
 
@@ -238,7 +238,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the center of mass of the current system. if the gravitational field is uniform, it is the center of gravity. the coordinates returned for the center of mass are expressed in the absolute cartesian coordinate system.
+Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system.
 ") CentreOfMass;
 		gp_Pnt CentreOfMass();
 
@@ -251,7 +251,7 @@ float
 
 Description
 -----------
-Returns the mass of the current system. if no density is attached to the components of the current system the returned value corresponds to: - the total length of the edges of the current system if this framework retains only linear properties, as is the case for example, when using only the linearproperties function to combine properties of lines from shapes, or - the total area of the faces of the current system if this framework retains only surface properties, as is the case for example, when using only the surfaceproperties function to combine properties of surfaces from shapes, or - the total volume of the solids of the current system if this framework retains only volume properties, as is the case for example, when using only the volumeproperties function to combine properties of volumes from solids. warning a length, an area, or a volume is computed in the current data unit system. the mass of a single object is obtained by multiplying its length, its area or its volume by the given density. you must be consistent with respect to the units used.
+Returns the mass of the current system. If no density is attached to the components of the current system the returned value corresponds to: - the total length of the edges of the current system if this framework retains only linear properties, as is the case for example, when using only the LinearProperties function to combine properties of lines from shapes, or - the total area of the faces of the current system if this framework retains only surface properties, as is the case for example, when using only the SurfaceProperties function to combine properties of surfaces from shapes, or - the total volume of the solids of the current system if this framework retains only volume properties, as is the case for example, when using only the VolumeProperties function to combine properties of volumes from solids. Warning A length, an area, or a volume is computed in the current data unit system. The mass of a single object is obtained by multiplying its length, its area or its volume by the given density. You must be consistent with respect to the units used.
 ") Mass;
 		Standard_Real Mass();
 
@@ -264,7 +264,7 @@ gp_Mat
 
 Description
 -----------
-Returns the matrix of inertia. it is a symmetrical matrix. the coefficients of the matrix are the quadratic moments of inertia. //! | ixx ixy ixz | matrix = | ixy iyy iyz | | ixz iyz izz | //! the moments of inertia are denoted by ixx, iyy, izz. the products of inertia are denoted by ixy, ixz, iyz. the matrix of inertia is returned in the central coordinate system (g, gx, gy, gz) where g is the centre of mass of the system and gx, gy, gz the directions parallel to the x(1,0,0) y(0,1,0) z(0,0,1) directions of the absolute cartesian coordinate system. it is possible to compute the matrix of inertia at another location point using the huyghens theorem (you can use the method of package gprop: hoperator).
+returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. //! | Ixx Ixy Ixz | matrix = | Ixy Iyy Iyz | | Ixz Iyz Izz | //! The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp: HOperator).
 ") MatrixOfInertia;
 		gp_Mat MatrixOfInertia();
 
@@ -282,7 +282,7 @@ float
 
 Description
 -----------
-Computes the moment of inertia of the material system about the axis a.
+computes the moment of inertia of the material system about the axis A.
 ") MomentOfInertia;
 		Standard_Real MomentOfInertia(const gp_Ax1 & A);
 
@@ -295,7 +295,7 @@ GProp_PrincipalProps
 
 Description
 -----------
-Computes the principal properties of inertia of the current system. there is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. these axes are the principal axes of inertia. their origin is coincident with the center of mass of the system. the associated moments are called the principal moments of inertia. this function computes the eigen values and the eigen vectors of the matrix of inertia of the system. results are stored by using a presentation framework of principal properties of inertia (gprop_principalprops object) which may be queried to access the value sought.
+Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought.
 ") PrincipalProperties;
 		GProp_PrincipalProps PrincipalProperties();
 
@@ -313,7 +313,7 @@ float
 
 Description
 -----------
-Returns the radius of gyration of the current system about the axis a.
+Returns the radius of gyration of the current system about the axis A.
 ") RadiusOfGyration;
 		Standard_Real RadiusOfGyration(const gp_Ax1 & A);
 
@@ -332,7 +332,7 @@ Iz: float
 
 Description
 -----------
-Returns ix, iy, iz, the static moments of inertia of the current system; i.e. the moments of inertia about the three axes of the cartesian coordinate system.
+Returns Ix, Iy, Iz, the static moments of inertia of the current system; i.e. the moments of inertia about the three axes of the Cartesian coordinate system.
 ") StaticMoments;
 		void StaticMoments(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -365,7 +365,7 @@ None
 
 Description
 -----------
-Constructs a framework to analyze the collection of points pnts and computes: - the mean point if the points in question are considered to be coincident within the precision tol, or - the mean line if they are considered to be collinear within the precision tol, or - the mean plane if they are considered to be coplanar within the precision tol, or - the minimal box which contains all the points. use: - the functions ispoint, islinear, isplanar and isspace to find the result of the analysis, and - the function point, line, plane or box to access the computed result.
+Constructs a framework to analyze the collection of points Pnts and computes: - the mean point if the points in question are considered to be coincident within the precision Tol, or - the mean line if they are considered to be collinear within the precision Tol, or - the mean plane if they are considered to be coplanar within the precision Tol, or - the minimal box which contains all the points. Use: - the functions IsPoint, IsLinear, IsPlanar and IsSpace to find the result of the analysis, and - the function Point, Line, Plane or Box to access the computed result.
 ") GProp_PEquation;
 		 GProp_PEquation(const TColgp_Array1OfPnt & Pnts, const Standard_Real Tol);
 
@@ -386,7 +386,7 @@ None
 
 Description
 -----------
-Returns the definition of the smallest box which contains all the points analyzed by this framework if, according to the given precision value, the points are considered to be neither coincident, nor collinear and nor coplanar. this box is centered on the barycenter p of the collection of points. its sides are parallel to the three vectors v1, v2 and v3, the length of which is the length of the box in the corresponding direction. note: vectors v1, v2 and v3 are parallel to the three axes of principal inertia of the system composed of the collection of points where each point is of equal mass. exceptions standard_nosuchobject if, according to the given precision, the points analyzed by this framework are considered to be coincident, collinear or coplanar.
+Returns the definition of the smallest box which contains all the points analyzed by this framework if, according to the given precision value, the points are considered to be neither coincident, nor collinear and nor coplanar. This box is centered on the barycenter P of the collection of points. Its sides are parallel to the three vectors V1, V2 and V3, the length of which is the length of the box in the corresponding direction. Note: Vectors V1, V2 and V3 are parallel to the three axes of principal inertia of the system composed of the collection of points where each point is of equal mass. Exceptions Standard_NoSuchObject if, according to the given precision, the points analyzed by this framework are considered to be coincident, collinear or coplanar.
 ") Box;
 		void Box(gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -399,7 +399,7 @@ bool
 
 Description
 -----------
-Returns true if, according to the given tolerance, the points analyzed by this framework are colinear. use the function line to access the computed result.
+Returns true if, according to the given tolerance, the points analyzed by this framework are colinear. Use the function Line to access the computed result.
 ") IsLinear;
 		Standard_Boolean IsLinear();
 
@@ -412,7 +412,7 @@ bool
 
 Description
 -----------
-Returns true if, according to the given tolerance, the points analyzed by this framework are coplanar. use the function plane to access the computed result.
+Returns true if, according to the given tolerance, the points analyzed by this framework are coplanar. Use the function Plane to access the computed result.
 ") IsPlanar;
 		Standard_Boolean IsPlanar();
 
@@ -425,7 +425,7 @@ bool
 
 Description
 -----------
-Returns true if, according to the given tolerance, the points analyzed by this framework are coincident. use the function point to access the computed result.
+Returns true if, according to the given tolerance, the points analyzed by this framework are coincident. Use the function Point to access the computed result.
 ") IsPoint;
 		Standard_Boolean IsPoint();
 
@@ -438,7 +438,7 @@ bool
 
 Description
 -----------
-Returns true if, according to the given tolerance value, the points analyzed by this framework are neither coincident, nor collinear, nor coplanar. use the function box to query the smallest box that includes the collection of points.
+Returns true if, according to the given tolerance value, the points analyzed by this framework are neither coincident, nor collinear, nor coplanar. Use the function Box to query the smallest box that includes the collection of points.
 ") IsSpace;
 		Standard_Boolean IsSpace();
 
@@ -451,7 +451,7 @@ gp_Lin
 
 Description
 -----------
-Returns the mean line passing near all the points analyzed by this framework if, according to the given precision value, the points are considered to be collinear. exceptions standard_nosuchobject if, according to the given precision, the points analyzed by this framework are considered to be: - coincident, or - not collinear.
+Returns the mean line passing near all the points analyzed by this framework if, according to the given precision value, the points are considered to be collinear. Exceptions Standard_NoSuchObject if, according to the given precision, the points analyzed by this framework are considered to be: - coincident, or - not collinear.
 ") Line;
 		gp_Lin Line();
 
@@ -464,7 +464,7 @@ gp_Pln
 
 Description
 -----------
-Returns the mean plane passing near all the points analyzed by this framework if, according to the given precision, the points are considered to be coplanar. exceptions standard_nosuchobject if, according to the given precision value, the points analyzed by this framework are considered to be: - coincident, or - collinear, or - not coplanar.
+Returns the mean plane passing near all the points analyzed by this framework if, according to the given precision, the points are considered to be coplanar. Exceptions Standard_NoSuchObject if, according to the given precision value, the points analyzed by this framework are considered to be: - coincident, or - collinear, or - not coplanar.
 ") Plane;
 		gp_Pln Plane();
 
@@ -477,7 +477,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the mean point of all the points analyzed by this framework if, according to the given precision, the points are considered to be coincident. exceptions standard_nosuchobject if, according to the given precision, the points analyzed by this framework are not considered to be coincident.
+Returns the mean point of all the points analyzed by this framework if, according to the given precision, the points are considered to be coincident. Exceptions Standard_NoSuchObject if, according to the given precision, the points analyzed by this framework are not considered to be coincident.
 ") Point;
 		gp_Pnt Point();
 
@@ -504,7 +504,7 @@ None
 
 Description
 -----------
-Creates an undefined principalprops.
+creates an undefined PrincipalProps.
 ") GProp_PrincipalProps;
 		 GProp_PrincipalProps();
 
@@ -517,7 +517,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first axis of inertia. //! if the system has a point of symmetry there is an infinity of solutions. it is not possible to defines the three axis of inertia.
+returns the first axis of inertia. //! if the system has a point of symmetry there is an infinity of solutions. It is not possible to defines the three axis of inertia.
 ") FirstAxisOfInertia;
 		const gp_Vec FirstAxisOfInertia();
 
@@ -530,7 +530,7 @@ bool
 
 Description
 -----------
-Returns true if the geometric system has an axis of symmetry. for comparing moments relative tolerance 1.e-10 is used. usually it is enough for objects, restricted by faces with analitycal geometry.
+returns true if the geometric system has an axis of symmetry. For comparing moments relative tolerance 1.e-10 is used. Usually it is enough for objects, restricted by faces with analytical geometry.
 ") HasSymmetryAxis;
 		Standard_Boolean HasSymmetryAxis();
 
@@ -548,7 +548,7 @@ bool
 
 Description
 -----------
-Returns true if the geometric system has an axis of symmetry. atol is relative tolerance for checking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
+returns true if the geometric system has an axis of symmetry. aTol is relative tolerance for checking equality of moments If aTol == 0, relative tolerance is ~ 1.e-16 (Epsilon(I)).
 ") HasSymmetryAxis;
 		Standard_Boolean HasSymmetryAxis(const Standard_Real aTol);
 
@@ -561,7 +561,7 @@ bool
 
 Description
 -----------
-Returns true if the geometric system has a point of symmetry. for comparing moments relative tolerance 1.e-10 is used. usually it is enough for objects, restricted by faces with analitycal geometry.
+returns true if the geometric system has a point of symmetry. For comparing moments relative tolerance 1.e-10 is used. Usually it is enough for objects, restricted by faces with analytical geometry.
 ") HasSymmetryPoint;
 		Standard_Boolean HasSymmetryPoint();
 
@@ -579,7 +579,7 @@ bool
 
 Description
 -----------
-Returns true if the geometric system has a point of symmetry. atol is relative tolerance for checking equality of moments if atol == 0, relative tolerance is ~ 1.e-16 (epsilon(i)).
+returns true if the geometric system has a point of symmetry. aTol is relative tolerance for checking equality of moments If aTol == 0, relative tolerance is ~ 1.e-16 (Epsilon(I)).
 ") HasSymmetryPoint;
 		Standard_Boolean HasSymmetryPoint(const Standard_Real aTol);
 
@@ -598,7 +598,7 @@ Izz: float
 
 Description
 -----------
-Ixx, iyy and izz return the principal moments of inertia in the current system. notes: - if the current system has an axis of symmetry, two of the three values ixx, iyy and izz are equal. they indicate which eigen vectors define an infinity of axes of principal inertia. - if the current system has a center of symmetry, ixx, iyy and izz are equal.
+Ixx, Iyy and Izz return the principal moments of inertia in the current system. Notes: - If the current system has an axis of symmetry, two of the three values Ixx, Iyy and Izz are equal. They indicate which eigen vectors define an infinity of axes of principal inertia. - If the current system has a center of symmetry, Ixx, Iyy and Izz are equal.
 ") Moments;
 		void Moments(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -617,7 +617,7 @@ Rzz: float
 
 Description
 -----------
-Returns the principal radii of gyration rxx, ryy and rzz are the radii of gyration of the current system about its three principal axes of inertia. note that: - if the current system has an axis of symmetry, two of the three values rxx, ryy and rzz are equal. - if the current system has a center of symmetry, rxx, ryy and rzz are equal.
+Returns the principal radii of gyration Rxx, Ryy and Rzz are the radii of gyration of the current system about its three principal axes of inertia. Note that: - If the current system has an axis of symmetry, two of the three values Rxx, Ryy and Rzz are equal. - If the current system has a center of symmetry, Rxx, Ryy and Rzz are equal.
 ") RadiusOfGyration;
 		void RadiusOfGyration(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -630,7 +630,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second axis of inertia. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
+returns the second axis of inertia. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 ") SecondAxisOfInertia;
 		const gp_Vec SecondAxisOfInertia();
 
@@ -643,7 +643,7 @@ gp_Vec
 
 Description
 -----------
-Returns the third axis of inertia. this and the above functions return the first, second or third eigen vector of the matrix of inertia of the current system. the first, second and third principal axis of inertia pass through the center of mass of the current system. they are respectively parallel to these three eigen vectors. note that: - if the current system has an axis of symmetry, any axis is an axis of principal inertia if it passes through the center of mass of the system, and runs parallel to a linear combination of the two eigen vectors of the matrix of inertia, corresponding to the two eigen values which are equal. if the current system has a center of symmetry, any axis passing through the center of mass of the system is an axis of principal inertia. use the functions hassymmetryaxis and hassymmetrypoint to check these particular cases, where the returned eigen vectors define an infinity of principal axis of inertia. - the moments function can be used to know which of the three eigen vectors corresponds to the two eigen values which are equal. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
+returns the third axis of inertia. This and the above functions return the first, second or third eigen vector of the matrix of inertia of the current system. The first, second and third principal axis of inertia pass through the center of mass of the current system. They are respectively parallel to these three eigen vectors. Note that: - If the current system has an axis of symmetry, any axis is an axis of principal inertia if it passes through the center of mass of the system, and runs parallel to a linear combination of the two eigen vectors of the matrix of inertia, corresponding to the two eigen values which are equal. If the current system has a center of symmetry, any axis passing through the center of mass of the system is an axis of principal inertia. Use the functions HasSymmetryAxis and HasSymmetryPoint to check these particular cases, where the returned eigen vectors define an infinity of principal axis of inertia. - The Moments function can be used to know which of the three eigen vectors corresponds to the two eigen values which are equal. //! if the system has a point of symmetry or an axis of symmetry the second and the third axis of symmetry are undefined.
 ") ThirdAxisOfInertia;
 		const gp_Vec ThirdAxisOfInertia();
 
@@ -816,7 +816,7 @@ None
 
 Description
 -----------
-Initializes a framework to compute global properties on a set of points. the point relative to which the inertia of the system is computed will be the origin (0, 0, 0) of the absolute cartesian coordinate system. at initialization, the framework is empty, i.e. it retains no dimensional information such as mass and inertia. it is, however, now able to keep global properties of a set of points while new points are added using the addpoint function. the set of points whose global properties are brought together by this framework will then be referred to as the current system. the current system is, however, not kept by this framework, which only keeps that system's global properties. note that the current system may be more complex than a set of points.
+Initializes a framework to compute global properties on a set of points. The point relative to which the inertia of the system is computed will be the origin (0, 0, 0) of the absolute Cartesian coordinate system. At initialization, the framework is empty, i.e. it retains no dimensional information such as mass and inertia. It is, however, now able to keep global properties of a set of points while new points are added using the AddPoint function. The set of points whose global properties are brought together by this framework will then be referred to as the current system. The current system is, however, not kept by this framework, which only keeps that system's global properties. Note that the current system may be more complex than a set of points.
 ") GProp_PGProps;
 		 GProp_PGProps();
 
@@ -834,7 +834,7 @@ None
 
 Description
 -----------
-Computes the global properties of the system of points pnts. the density of the points are defaulted to all being 1.
+computes the global properties of the system of points Pnts. The density of the points are defaulted to all being 1.
 ") GProp_PGProps;
 		 GProp_PGProps(const TColgp_Array1OfPnt & Pnts);
 
@@ -852,7 +852,7 @@ None
 
 Description
 -----------
-Computes the global properties of the system of points pnts. the density of the points are defaulted to all being 1.
+computes the global properties of the system of points Pnts. The density of the points are defaulted to all being 1.
 ") GProp_PGProps;
 		 GProp_PGProps(const TColgp_Array2OfPnt & Pnts);
 
@@ -871,7 +871,7 @@ None
 
 Description
 -----------
-Computes the global properties of the system of points pnts. a density is associated with each point. //! raises if a density is lower or equal to resolution from package gp. //! raises if the length of pnts and the length of density is not the same.
+computes the global properties of the system of points Pnts. A density is associated with each point. //! raises if a density is lower or equal to Resolution from package gp. //! raises if the length of Pnts and the length of Density is not the same.
 ") GProp_PGProps;
 		 GProp_PGProps(const TColgp_Array1OfPnt & Pnts, const TColStd_Array1OfReal & Density);
 
@@ -890,7 +890,7 @@ None
 
 Description
 -----------
-Computes the global properties of the system of points pnts. a density is associated with each point. //! raised if a density is lower or equal to resolution from package gp. //! raised if the length of pnts and the length of density is not the same.
+computes the global properties of the system of points Pnts. A density is associated with each point. //! Raised if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 ") GProp_PGProps;
 		 GProp_PGProps(const TColgp_Array2OfPnt & Pnts, const TColStd_Array2OfReal & Density);
 
@@ -908,7 +908,7 @@ None
 
 Description
 -----------
-Brings together the global properties already retained by this framework with those induced by the point pnt. pnt may be the first point of the current system. a point mass is attached to the point pnt, it is either equal to 1. or to density.
+Brings together the global properties already retained by this framework with those induced by the point Pnt. Pnt may be the first point of the current system. A point mass is attached to the point Pnt, it is either equal to 1. or to Density.
 ") AddPoint;
 		void AddPoint(const gp_Pnt & P);
 
@@ -927,7 +927,7 @@ None
 
 Description
 -----------
-Adds a new point p with its density in the system of points exceptions standard_domainerror if the mass value density is less than gp::resolution().
+Adds a new point P with its density in the system of points Exceptions Standard_DomainError if the mass value Density is less than gp::Resolution().
 ") AddPoint;
 		void AddPoint(const gp_Pnt & P, const Standard_Real Density);
 
@@ -945,7 +945,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the barycentre of a set of points. the density of the points is defaulted to 1.
+Computes the barycentre of a set of points. The density of the points is defaulted to 1.
 ") Barycentre;
 		static gp_Pnt Barycentre(const TColgp_Array1OfPnt & Pnts);
 
@@ -963,7 +963,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the barycentre of a set of points. the density of the points is defaulted to 1.
+Computes the barycentre of a set of points. The density of the points is defaulted to 1.
 ") Barycentre;
 		static gp_Pnt Barycentre(const TColgp_Array2OfPnt & Pnts);
 
@@ -983,7 +983,7 @@ Mass: float
 
 Description
 -----------
-Computes the barycentre of a set of points. a density is associated with each point. //! raises if a density is lower or equal to resolution from package gp. //! raised if the length of pnts and the length of density is not the same.
+Computes the barycentre of a set of points. A density is associated with each point. //! raises if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 ") Barycentre;
 		static void Barycentre(const TColgp_Array1OfPnt & Pnts, const TColStd_Array1OfReal & Density, Standard_Real &OutValue, gp_Pnt & G);
 
@@ -1003,7 +1003,7 @@ Mass: float
 
 Description
 -----------
-Computes the barycentre of a set of points. a density is associated with each point. //! raised if a density is lower or equal to resolution from package gp. //! raised if the length of pnts and the length of density is not the same.
+Computes the barycentre of a set of points. A density is associated with each point. //! Raised if a density is lower or equal to Resolution from package gp. //! Raised if the length of Pnts and the length of Density is not the same.
 ") Barycentre;
 		static void Barycentre(const TColgp_Array2OfPnt & Pnts, const TColStd_Array2OfReal & Density, Standard_Real &OutValue, gp_Pnt & G);
 

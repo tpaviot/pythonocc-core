@@ -137,7 +137,7 @@ None
 
 Description
 -----------
-Defines format 'tobjbin' and registers its read and write drivers in the specified application.
+Defines format 'TObjBin' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

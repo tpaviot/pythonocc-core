@@ -209,7 +209,7 @@ opencascade::handle<MAT_BasicElt>
 
 Description
 -----------
-Returns one of the basicelt equidistant from <self>.
+Returns one of the BasicElt equidistant from <self>.
 ") FirstElement;
 		opencascade::handle<MAT_BasicElt> FirstElement();
 
@@ -222,7 +222,7 @@ opencascade::handle<MAT_Node>
 
 Description
 -----------
-Returns one node extremity of <self>.
+Returns one Node extremity of <self>.
 ") FirstNode;
 		opencascade::handle<MAT_Node> FirstNode();
 
@@ -254,7 +254,7 @@ bool
 
 Description
 -----------
-Returnst true is there is an arc linked to the node <anode> located on the side <aside> of <self>; if <anode> is not on <self>.
+Returns True if there is an arc linked to the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>.
 ") HasNeighbour;
 		Standard_Boolean HasNeighbour(const opencascade::handle<MAT_Node> & aNode, const MAT_Side aSide);
 
@@ -267,7 +267,7 @@ int
 
 Description
 -----------
-Returns the index of <self> in graph.thearcs.
+Returns the index of <self> in Graph.theArcs.
 ") Index;
 		Standard_Integer Index();
 
@@ -286,7 +286,7 @@ opencascade::handle<MAT_Arc>
 
 Description
 -----------
-Returns the first arc linked to the node <anode> located on the side <aside> of <self>; if hasneighbour() returns false.
+Returns the first arc linked to the Node <aNode> located on the side <aSide> of <self>; if HasNeighbour() returns False.
 ") Neighbour;
 		opencascade::handle<MAT_Arc> Neighbour(const opencascade::handle<MAT_Node> & aNode, const MAT_Side aSide);
 
@@ -299,7 +299,7 @@ opencascade::handle<MAT_BasicElt>
 
 Description
 -----------
-Returns the other basicelt equidistant from <self>.
+Returns the other BasicElt equidistant from <self>.
 ") SecondElement;
 		opencascade::handle<MAT_BasicElt> SecondElement();
 
@@ -312,7 +312,7 @@ opencascade::handle<MAT_Node>
 
 Description
 -----------
-Returns the other node extremity of <self>.
+Returns the other Node extremity of <self>.
 ") SecondNode;
 		opencascade::handle<MAT_Node> SecondNode();
 
@@ -496,7 +496,7 @@ opencascade::handle<MAT_Node>
 
 Description
 -----------
-An arc has two node, if <anode> egal one returns the other. //! if <anode> is not oh <self>.
+An Arc has two Node, if <aNode> equals one Returns the other. //! if <aNode> is not oh <self>.
 ") TheOtherNode;
 		opencascade::handle<MAT_Node> TheOtherNode(const opencascade::handle<MAT_Node> & aNode);
 
@@ -530,7 +530,7 @@ None
 
 Description
 -----------
-Constructor, <aninteger> is the <index> of <self>.
+Constructor, <anInteger> is the <index> of <self>.
 ") MAT_BasicElt;
 		 MAT_BasicElt(const Standard_Integer anInteger);
 
@@ -543,7 +543,7 @@ opencascade::handle<MAT_Arc>
 
 Description
 -----------
-Return <endarcleft> or <endarcright> corresponding to <aside>.
+Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
 ") EndArc;
 		opencascade::handle<MAT_Arc> EndArc();
 
@@ -556,7 +556,7 @@ int
 
 Description
 -----------
-Return the <geomindex> of <self>.
+Return the <GeomIndex> of <self>.
 ") GeomIndex;
 		Standard_Integer GeomIndex();
 
@@ -569,7 +569,7 @@ int
 
 Description
 -----------
-Return the <index> of <self> in graph.thebasicelts.
+Return the <index> of <self> in Graph.TheBasicElts.
 ") Index;
 		Standard_Integer Index();
 
@@ -654,7 +654,7 @@ opencascade::handle<MAT_Arc>
 
 Description
 -----------
-Return <startarcleft> or <startarcright> corresponding to <aside>.
+Return <startArcLeft> or <startArcRight> corresponding to <aSide>.
 ") StartArc;
 		opencascade::handle<MAT_Arc> StartArc();
 
@@ -1381,7 +1381,7 @@ opencascade::handle<MAT_Arc>
 
 Description
 -----------
-Return the arc of index <index> in <thearcs>.
+Return the Arc of index <Index> in <theArcs>.
 ") Arc;
 		opencascade::handle<MAT_Arc> Arc(const Standard_Integer Index);
 
@@ -1399,7 +1399,7 @@ opencascade::handle<MAT_BasicElt>
 
 Description
 -----------
-Return the basicelt of index <index> in <thebasicelts>.
+Return the BasicElt of index <Index> in <theBasicElts>.
 ") BasicElt;
 		opencascade::handle<MAT_BasicElt> BasicElt(const Standard_Integer Index);
 
@@ -1485,7 +1485,7 @@ GeomIndexArc4: int
 
 Description
 -----------
-Merge two basicelts. the end of the basicelt elt1 of indexelt1 becomes the end of the basicelt elt2 of indexelt2. elt2 is replaced in the arcs by elt1, elt2 is eliminated. //! <mergearc1> is true if the fusion of the basicelts => a fusion of two arcs which separated the same elements. in this case <geomindexarc1> and <geomindexarc2> are the geometric index of this arcs. //! if the basicelt corresponds to a close line , the startarc and the endarc of elt1 can separate the same elements . in this case there is a fusion of this arcs, <mergearc2> is true and <geomindexarc3> and <geomindexarc4> are the geometric index of this arcs.
+Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated. //! <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs. //! If the BasicElt corresponds to a close line , the StartArc and the EndArc of Elt1 can separate the same elements . In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
 ") FusionOfBasicElts;
 		void FusionOfBasicElts(const Standard_Integer IndexElt1, const Standard_Integer IndexElt2, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -1503,7 +1503,7 @@ opencascade::handle<MAT_Node>
 
 Description
 -----------
-Return the node of index <index> in <thenodes>.
+Return the Node of index <Index> in <theNodes>.
 ") Node;
 		opencascade::handle<MAT_Node> Node(const Standard_Integer Index);
 
@@ -1576,7 +1576,7 @@ None
 
 Description
 -----------
-Construct <self> from the result of the method <createmat> of the class <mat> from <mat>. //! <semiinfinite>: if some bisector are infinites. <theroots>: set of the bisectors. <nbbasicelts>: number of basic elements. <nbarcs>: number of arcs = number of bisectors.
+Construct <self> from the result of the method <CreateMat> of the class <MAT> from <MAT>. //! <SemiInfinite>: if some bisector are infinites. <TheRoots>: Set of the bisectors. <NbBasicElts>: Number of Basic Elements. <NbArcs>: Number of Arcs = Number of Bisectors.
 ") Perform;
 		void Perform(const Standard_Boolean SemiInfinite, const opencascade::handle<MAT_ListOfBisector> & TheRoots, const Standard_Integer NbBasicElts, const Standard_Integer NbArcs);
 
@@ -2428,7 +2428,7 @@ bool
 
 Description
 -----------
-Returns true if the distance of <self> is infinite.
+Returns True if the distance of <self> is Infinite.
 ") Infinite;
 		Standard_Boolean Infinite();
 
@@ -2446,7 +2446,7 @@ None
 
 Description
 -----------
-Returns in <s> the arcs linked to <self>.
+Returns in <S> the Arcs linked to <self>.
 ") LinkedArcs;
 		void LinkedArcs(MAT_SequenceOfArc & S);
 
@@ -2464,7 +2464,7 @@ None
 
 Description
 -----------
-Returns in <s> the basicelts equidistant to <self>.
+Returns in <S> the BasicElts equidistant to <self>.
 ") NearElts;
 		void NearElts(MAT_SequenceOfBasicElt & S);
 
@@ -2477,7 +2477,7 @@ bool
 
 Description
 -----------
-Returns true if <self> belongs to the figure.
+Returns True if <self> belongs to the figure.
 ") OnBasicElt;
 		Standard_Boolean OnBasicElt();
 
@@ -2490,7 +2490,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is a pending node. (ie: the number of arc linked = 1).
+Returns True if <self> is a pending Node. (ie: the number of Arc Linked = 1).
 ") PendingNode;
 		Standard_Boolean PendingNode();
 
@@ -2879,7 +2879,7 @@ None
 
 Description
 -----------
-Compute the frontier of the zone of proximity.
+Compute the frontier of the Zone of proximity.
 ") MAT_Zone;
 		 MAT_Zone(const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
@@ -2897,7 +2897,7 @@ opencascade::handle<MAT_Arc>
 
 Description
 -----------
-Return the arc number <index> on the frontier. of <self>.
+Return the Arc number <Index> on the frontier. of <self>.
 ") ArcOnFrontier;
 		opencascade::handle<MAT_Arc> ArcOnFrontier(const Standard_Integer Index);
 
@@ -2910,7 +2910,7 @@ bool
 
 Description
 -----------
-Return true if <self> is limited.
+Return True if <self> is Limited.
 ") Limited;
 		Standard_Boolean Limited();
 
@@ -2923,7 +2923,7 @@ bool
 
 Description
 -----------
-Return true if <self> is not empty .
+Return True if <self> is not empty .
 ") NoEmptyZone;
 		Standard_Boolean NoEmptyZone();
 
@@ -2936,7 +2936,7 @@ int
 
 Description
 -----------
-Return the number of arcs on the frontier of <self>.
+Return the number Of Arcs On the frontier of <self>.
 ") NumberOfArcs;
 		Standard_Integer NumberOfArcs();
 
@@ -2954,7 +2954,7 @@ None
 
 Description
 -----------
-Compute the frontier of the zone of proximity.
+Compute the frontier of the Zone of proximity.
 ") Perform;
 		void Perform(const opencascade::handle<MAT_BasicElt> & aBasicElt);
 

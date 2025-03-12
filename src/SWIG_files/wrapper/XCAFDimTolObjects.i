@@ -896,7 +896,7 @@ gp_Ax2
 
 Description
 -----------
-Returns datum target axis. the z axis of the datum placement denotes the normal of the surface pointing away from the material. .
+Returns datum target axis. The Z axis of the datum placement denotes the normal of the surface pointing away from the material.
 ") GetDatumTargetAxis;
 		gp_Ax2 GetDatumTargetAxis();
 
@@ -909,7 +909,7 @@ float
 
 Description
 -----------
-Returns datum target length for line and rectangle types. the length along the x axis of the datum placement.
+Returns datum target length for line and rectangle types. The length along the X axis of the datum placement.
 ") GetDatumTargetLength;
 		Standard_Real GetDatumTargetLength();
 
@@ -948,7 +948,7 @@ float
 
 Description
 -----------
-Returns datum target width for rectangle type. the width along the derived y axis, with the placement itself positioned at the centre of the rectangle.
+Returns datum target width for rectangle type. The width along the derived Y axis, with the placement itself positioned at the centre of the rectangle.
 ") GetDatumTargetWidth;
 		Standard_Real GetDatumTargetWidth();
 
@@ -1096,7 +1096,7 @@ bool
 
 Description
 -----------
-Returns true if the datum has valid parameters for datum target (width, length, circle radius etc).
+Returns True if the datum has valid parameters for datum target (width, length, circle radius etc).
 ") HasDatumTargetParams;
 		Standard_Boolean HasDatumTargetParams();
 
@@ -1109,7 +1109,7 @@ bool
 
 Description
 -----------
-Returns true if the datum has annotation plane.
+Returns True if the datum has annotation plane.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
@@ -1122,7 +1122,7 @@ bool
 
 Description
 -----------
-Returns true if point on the datum target is specified.
+Returns True if point on the datum target is specified.
 ") HasPoint;
 		Standard_Boolean HasPoint();
 
@@ -1135,7 +1135,7 @@ bool
 
 Description
 -----------
-Returns true if the datum text position is specified.
+Returns True if the datum text position is specified.
 ") HasPointText;
 		Standard_Boolean HasPointText();
 
@@ -1148,7 +1148,7 @@ bool
 
 Description
 -----------
-Returns true if the datum target is specified.
+Returns True if the datum target is specified.
 ") IsDatumTarget;
 		Standard_Boolean IsDatumTarget();
 
@@ -1575,7 +1575,7 @@ theGrade: XCAFDimTolObjects_DimensionGrade
 
 Description
 -----------
-Retrieves tolerance class parameters of the dimension. returns true if the dimension is toleranced.
+Retrieves tolerance class parameters of the dimension. Returns True if the dimension is toleranced.
 ") GetClassOfTolerance;
 		Standard_Boolean GetClassOfTolerance(Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance &OutValue, XCAFDimTolObjects_DimensionGrade &OutValue);
 
@@ -1725,7 +1725,7 @@ gp_Pnt
 
 Description
 -----------
-Get connection point (for dimesional_size), get connection point for the first shape (for dimensional_location).
+Get connection point (for dimensional_size), Get connection point for the first shape (for dimensional_location).
 ") GetPoint;
 		gp_Pnt GetPoint();
 
@@ -1855,7 +1855,7 @@ float
 
 Description
 -----------
-Returns the main dimension value. it will be the middle value in case of range dimension.
+Returns the main dimension value. It will be the middle value in case of range dimension.
 ") GetValue;
 		Standard_Real GetValue();
 
@@ -1881,7 +1881,7 @@ bool
 
 Description
 -----------
-Returns true if the object has angular qualifier.
+Returns True if the object has angular qualifier.
 ") HasAngularQualifier;
 		Standard_Boolean HasAngularQualifier();
 
@@ -1907,7 +1907,7 @@ bool
 
 Description
 -----------
-Returns true if the object has annotation plane.
+Returns True if the object has annotation plane.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
@@ -1920,7 +1920,7 @@ bool
 
 Description
 -----------
-Returns true, if connection point exists (for dimesional_size), if connection point for the first shape exists (for dimensional_location).
+Returns true, if connection point exists (for dimensional_size), if connection point for the first shape exists (for dimensional_location).
 ") HasPoint;
 		Standard_Boolean HasPoint();
 
@@ -1946,7 +1946,7 @@ bool
 
 Description
 -----------
-Returns true if the object has dimension qualifier.
+Returns True if the object has dimension qualifier.
 ") HasQualifier;
 		Standard_Boolean HasQualifier();
 
@@ -1959,7 +1959,7 @@ bool
 
 Description
 -----------
-Returns true if the position of dimension text is specified.
+Returns True if the position of dimension text is specified.
 ") HasTextPoint;
 		Standard_Boolean HasTextPoint();
 
@@ -1972,7 +1972,7 @@ bool
 
 Description
 -----------
-Returns true if the form variance was set to not xcafdimtolobjects_dimensionformvariance_none value.
+Returns True if the form variance was set to not XCAFDimTolObjects_DimensionFormVariance_None value.
 ") IsDimWithClassOfTolerance;
 		Standard_Boolean IsDimWithClassOfTolerance();
 
@@ -1985,7 +1985,7 @@ bool
 
 Description
 -----------
-Returns true if the dimension is of +/- tolerance kind. dimension is of +/- tolerance kind if its values array contains three elements defining the main value and the lower/upper tolerances.
+Returns True if the dimension is of +/- tolerance kind. Dimension is of +/- tolerance kind if its values array contains three elements defining the main value and the lower/upper tolerances.
 ") IsDimWithPlusMinusTolerance;
 		Standard_Boolean IsDimWithPlusMinusTolerance();
 
@@ -1998,7 +1998,7 @@ bool
 
 Description
 -----------
-Returns true if the dimension is of range kind. dimension is of range kind if its values array contains two elements defining lower and upper bounds.
+Returns True if the dimension is of range kind. Dimension is of range kind if its values array contains two elements defining lower and upper bounds.
 ") IsDimWithRange;
 		Standard_Boolean IsDimWithRange();
 
@@ -2067,7 +2067,7 @@ None
 
 Description
 -----------
-Sets tolerance class of the dimension. \param thehole - true if the tolerance applies to an internal feature \param theformvariance - represents the fundamental deviation or 'position letter'  of the iso 286 limits-and-fits tolerance classification. \param thegrade - represents the quality or the accuracy grade of a tolerance.
+Sets tolerance class of the dimension. \param theHole - True if the tolerance applies to an internal feature \param theFormVariance - represents the fundamental deviation or 'position letter'  of the ISO 286 limits-and-fits tolerance classification. \param theGrade - represents the quality or the accuracy grade of a tolerance.
 ") SetClassOfTolerance;
 		void SetClassOfTolerance(const Standard_Boolean theHole, const XCAFDimTolObjects_DimensionFormVariance theFormVariance, const XCAFDimTolObjects_DimensionGrade theGrade);
 
@@ -2121,7 +2121,7 @@ bool
 
 Description
 -----------
-Sets the lower value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. returns false in case of range dimension.
+Sets the lower value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. Returns False in case of range dimension.
 ") SetLowerTolValue;
 		Standard_Boolean SetLowerTolValue(const Standard_Real theLowerTolValue);
 
@@ -2212,7 +2212,7 @@ None
 
 Description
 -----------
-Set connection point (for dimesional_size), set connection point for the first shape (for dimensional_location).
+Set connection point (for dimensional_size), Set connection point for the first shape (for dimensional_location).
 ") SetPoint;
 		void SetPoint(const gp_Pnt & thePnt);
 
@@ -2357,7 +2357,7 @@ bool
 
 Description
 -----------
-Sets the upper value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. returns false in case of range dimension.
+Sets the upper value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. Returns False in case of range dimension.
 ") SetUpperTolValue;
 		Standard_Boolean SetUpperTolValue(const Standard_Real theUperTolValue);
 
@@ -2375,7 +2375,7 @@ None
 
 Description
 -----------
-Sets the main dimension value. overwrites previous values.
+Sets the main dimension value. Overwrites previous values.
 ") SetValue;
 		void SetValue(const Standard_Real theValue);
 
@@ -2393,7 +2393,7 @@ None
 
 Description
 -----------
-Replaces current raw array of dimension values with thevalues array.
+Replaces current raw array of dimension values with theValues array.
 ") SetValues;
 		void SetValues(const opencascade::handle<TColStd_HArray1OfReal> & theValue);
 
@@ -2739,7 +2739,7 @@ bool
 
 Description
 -----------
-Returns true if the object has annotation plane.
+Returns True if the object has annotation plane.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
@@ -2752,7 +2752,7 @@ bool
 
 Description
 -----------
-Returns true if reference point is specified.
+Returns True if reference point is specified.
 ") HasPoint;
 		Standard_Boolean HasPoint();
 
@@ -2765,7 +2765,7 @@ bool
 
 Description
 -----------
-Returns true if text position is specified.
+Returns True if text position is specified.
 ") HasPointText;
 		Standard_Boolean HasPointText();
 
@@ -3125,7 +3125,7 @@ None
 
 Description
 -----------
-Returns a sequence of dimensions currently stored in the gd&t table.
+Returns a sequence of Dimensions currently stored in the GD&T table.
 ") GetDimensions;
 		void GetDimensions(XCAFDimTolObjects_DimensionObjectSequence & theDimensionObjectSequence);
 
@@ -3145,7 +3145,7 @@ None
 
 Description
 -----------
-Returns a sequence of tolerances currently stored in the gd&t table.
+Returns a sequence of Tolerances currently stored in the GD&T table.
 ") GetGeomTolerances;
 		void GetGeomTolerances(XCAFDimTolObjects_GeomToleranceObjectSequence & theGeomToleranceObjectSequence, XCAFDimTolObjects_DatumObjectSequence & theDatumObjectSequence, XCAFDimTolObjects_DataMapOfToleranceDatum & theMap);
 
@@ -3164,7 +3164,7 @@ bool
 
 Description
 -----------
-Returns datumobject defined for shape.
+Returns DatumObject defined for Shape.
 ") GetRefDatum;
 		Standard_Boolean GetRefDatum(const TopoDS_Shape & theShape, opencascade::handle<XCAFDimTolObjects_DatumObject> & theDatum);
 
@@ -3183,7 +3183,7 @@ bool
 
 Description
 -----------
-Returns all dimensions defined for shape.
+Returns all Dimensions defined for Shape.
 ") GetRefDimensions;
 		Standard_Boolean GetRefDimensions(const TopoDS_Shape & theShape, XCAFDimTolObjects_DimensionObjectSequence & theDimensions);
 
@@ -3204,7 +3204,7 @@ bool
 
 Description
 -----------
-Returns all geomtolerances defined for shape.
+Returns all GeomTolerances defined for Shape.
 ") GetRefGeomTolerances;
 		Standard_Boolean GetRefGeomTolerances(const TopoDS_Shape & theShape, XCAFDimTolObjects_GeomToleranceObjectSequence & theGeomToleranceObjectSequence, XCAFDimTolObjects_DatumObjectSequence & theDatumObjectSequence, XCAFDimTolObjects_DataMapOfToleranceDatum & theMap);
 

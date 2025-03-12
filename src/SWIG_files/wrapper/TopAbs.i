@@ -160,7 +160,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Reverses the interior/exterior status of each side of the object. so, to take the complement of an object means to reverse the interior/exterior status of its boundary, i.e. inside becomes outside. the method returns the complementary orientation, following the rules in the table below: forward reversed reversed forward internal external external internal //! complement complements the material side. inside becomes outside.
+Reverses the interior/exterior status of each side of the object. So, to take the complement of an object means to reverse the interior/exterior status of its boundary, i.e. inside becomes outside. The method returns the complementary orientation, following the rules in the table below: FORWARD REVERSED REVERSED FORWARD INTERNAL EXTERNAL EXTERNAL INTERNAL //! Complement complements the material side. Inside becomes outside.
 ") Complement;
 		static TopAbs_Orientation Complement(const TopAbs_Orientation Or);
 
@@ -179,7 +179,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Compose the orientation <or1> and <or2>. this composition is not symmetric (if you switch <or1> and <or2> the result is different). it assumes that <or1> is the orientation of a shape s1 containing a shape s2 of orientation or2. the result is the cumulated orientation of s2 in s1. the composition law is: //! \ or2 forward reversed internal external or1 ------------------------------------- forward | forward reversed internal external | reversed | reversed forward internal external | internal | internal internal internal internal | external | external external external external note: the top corner in the table is the most important for the purposes of open cascade topology and shape sharing.
+Compose the Orientation <Or1> and <Or2>. This composition is not symmetric (if you switch <Or1> and <Or2> the result is different). It assumes that <Or1> is the Orientation of a Shape S1 containing a Shape S2 of Orientation Or2. The result is the cumulated orientation of S2 in S1. The composition law is: //! \ Or2 FORWARD REVERSED INTERNAL EXTERNAL Or1 ------------------------------------- FORWARD | FORWARD REVERSED INTERNAL EXTERNAL | REVERSED | REVERSED FORWARD INTERNAL EXTERNAL | INTERNAL | INTERNAL INTERNAL INTERNAL INTERNAL | EXTERNAL | EXTERNAL EXTERNAL EXTERNAL EXTERNAL Note: The top corner in the table is the most important for the purposes of Open CASCADE topology and shape sharing.
 ") Compose;
 		static TopAbs_Orientation Compose(const TopAbs_Orientation Or1, const TopAbs_Orientation Or2);
 
@@ -197,7 +197,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints the name of shape type as a string on the stream.
+Prints the name of Shape type as a String on the Stream.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_ShapeEnum theShapeType, std::ostream &OutValue);
 
@@ -215,7 +215,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints the name of the orientation as a string on the stream.
+Prints the name of the Orientation as a String on the Stream.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_Orientation theOrientation, std::ostream &OutValue);
 
@@ -233,7 +233,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of the state <st> as a string on the stream <s> and returns <s>.
+Prints the name of the State <St> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_State St, std::ostream &OutValue);
 
@@ -251,7 +251,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Xchanges the interior/exterior status of the two sides. this is what happens when the sense of direction is reversed. the following rules apply: //! forward reversed reversed forward internal internal external external //! reverse exchange the material sides.
+xchanges the interior/exterior status of the two sides. This is what happens when the sense of direction is reversed. The following rules apply: //! FORWARD REVERSED REVERSED FORWARD INTERNAL INTERNAL EXTERNAL EXTERNAL //! Reverse exchange the material sides.
 ") Reverse;
 		static TopAbs_Orientation Reverse(const TopAbs_Orientation Or);
 
@@ -269,7 +269,9 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the shape orientation from the given string identifier (using case-insensitive comparison). @param theorientationstring string identifier return shape orientation or topabs_forward if string identifier is invalid.
+Returns the shape orientation from the given string identifier (using case-insensitive comparison). 
+Parameter theOrientationString string identifier 
+Return: shape orientation or TopAbs_FORWARD if string identifier is invalid.
 ") ShapeOrientationFromString;
 		static TopAbs_Orientation ShapeOrientationFromString(Standard_CString theOrientationString);
 
@@ -287,7 +289,10 @@ theOrientation: TopAbs_Orientation
 
 Description
 -----------
-Determines the shape orientation from the given string identifier (using case-insensitive comparison). @param theorientationstring string identifier @param theorientation detected shape orientation return true if string identifier is known.
+Determines the shape orientation from the given string identifier (using case-insensitive comparison). 
+Parameter theOrientationString string identifier 
+Parameter theOrientation detected shape orientation 
+Return: True if string identifier is known.
 ") ShapeOrientationFromString;
 		static Standard_Boolean ShapeOrientationFromString(Standard_CString theOrientationString, TopAbs_Orientation &OutValue);
 
@@ -305,7 +310,9 @@ str
 
 Description
 -----------
-Returns the string name for a given shape orientation. @param theorientation shape orientation return string identifier from the list forward, reversed, internal, external.
+Returns the string name for a given shape orientation. 
+Parameter theOrientation shape orientation 
+Return: string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL.
 ") ShapeOrientationToString;
 		static Standard_CString ShapeOrientationToString(TopAbs_Orientation theOrientation);
 
@@ -323,7 +330,9 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the shape type from the given string identifier (using case-insensitive comparison). @param thetypestring string identifier return shape type or topabs_shape if string identifier is invalid.
+Returns the shape type from the given string identifier (using case-insensitive comparison). 
+Parameter theTypeString string identifier 
+Return: shape type or TopAbs_SHAPE if string identifier is invalid.
 ") ShapeTypeFromString;
 		static TopAbs_ShapeEnum ShapeTypeFromString(Standard_CString theTypeString);
 
@@ -341,7 +350,10 @@ theType: TopAbs_ShapeEnum
 
 Description
 -----------
-Determines the shape type from the given string identifier (using case-insensitive comparison). @param thetypestring string identifier @param thetype detected shape type return true if string identifier is known.
+Determines the shape type from the given string identifier (using case-insensitive comparison). 
+Parameter theTypeString string identifier 
+Parameter theType detected shape type 
+Return: True if string identifier is known.
 ") ShapeTypeFromString;
 		static Standard_Boolean ShapeTypeFromString(Standard_CString theTypeString, TopAbs_ShapeEnum &OutValue);
 
@@ -359,7 +371,9 @@ str
 
 Description
 -----------
-Returns the string name for a given shape type. @param thetype shape type return string identifier from the list compound, compsolid, solid, shell, face, wire, edge, vertex, shape.
+Returns the string name for a given shape type. 
+Parameter theType shape type 
+Return: string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE, VERTEX, SHAPE.
 ") ShapeTypeToString;
 		static Standard_CString ShapeTypeToString(TopAbs_ShapeEnum theType);
 

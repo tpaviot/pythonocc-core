@@ -125,7 +125,7 @@ opencascade::handle<Law_BSpFunc>
 
 Description
 -----------
-This algorithm searches the knot values corresponding to the splitting of a given b-spline law into several arcs with the same continuity. the continuity order is given at the construction time. builds a 1d bspline that is near from lin with null derivatives at the extremities.
+This algorithm searches the knot values corresponding to the splitting of a given B-spline law into several arcs with the same continuity. The continuity order is given at the construction time. Builds a 1d bspline that is near from Lin with null derivatives at the extremities.
 ") MixBnd;
 		static opencascade::handle<Law_BSpFunc> MixBnd(const opencascade::handle<Law_Linear> & Lin);
 
@@ -146,7 +146,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Builds the poles of the 1d bspline that is near from lin with null derivatives at the extremities.
+Builds the poles of the 1d bspline that is near from Lin with null derivatives at the extremities.
 ") MixBnd;
 		static opencascade::handle<TColStd_HArray1OfReal> MixBnd(const Standard_Integer Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const opencascade::handle<Law_Linear> & Lin);
 
@@ -168,7 +168,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Builds the poles of the 1d bspline that is null on the right side of knots(index) (on the left if nulontheright is false) and that is like a t*(1-t)(1-t) curve on the left side of knots(index) (on the right if nulontheright is false). the result curve is c1 with a derivative equal to 1. at first parameter (-1 at last parameter if nulontheright is false). warning: mults(index) must greater or equal to degree-1.
+Builds the poles of the 1d bspline that is null on the right side of Knots(Index) (on the left if NulOnTheRight is false) and that is like a t*(1-t)(1-t) curve on the left side of Knots(Index) (on the right if NulOnTheRight is false). The result curve is C1 with a derivative equal to 1. at first parameter (-1 at last parameter if NulOnTheRight is false). Warning: Mults(Index) must greater or equal to degree-1.
 ") MixTgt;
 		static opencascade::handle<TColStd_HArray1OfReal> MixTgt(const Standard_Integer Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Boolean NulOnTheRight, const Standard_Integer Index);
 
@@ -194,7 +194,7 @@ opencascade::handle<Law_BSpline>
 
 Description
 -----------
-Computes a 1 d curve to reparametrize a curve. its an interpolation of nbpoints points calculated at quasi constant abscissa.
+Computes a 1 d curve to reparametrize a curve. Its an interpolation of NbPoints points calculated at quasi constant abscissa.
 ") Reparametrize;
 		static opencascade::handle<Law_BSpline> Reparametrize(const Adaptor3d_Curve & Curve, const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DFirst, const Standard_Real DLast, const Standard_Boolean Rev, const Standard_Integer NbPoints);
 
@@ -217,7 +217,7 @@ opencascade::handle<Law_BSpline>
 
 Description
 -----------
-Computes a 1 d curve to scale a field of tangency. value is 1. for t = (first+last)/2 . if hasfirst value for t = first is vfirst (null derivative). if haslast value for t = last is vlast (null derivative). //! 1.  _ _/ \_ __/ \__ / vfirst ____/  vlast \____ first  last.
+Computes a 1 d curve to scale a field of tangency. Value is 1. for t = (First+Last)/2 . If HasFirst value for t = First is VFirst (null derivative). If HasLast value for t = Last is VLast (null derivative). //! 1.  _ _/ \_ __/ \__ / VFirst ____/ VLast \____ First  Last.
 ") Scale;
 		static opencascade::handle<Law_BSpline> Scale(const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasF, const Standard_Boolean HasL, const Standard_Real VFirst, const Standard_Real VLast);
 
@@ -276,7 +276,7 @@ None
 
 Description
 -----------
-Creates a non-rational b_spline curve on the basis <knots, multiplicities> of degree <degree>.
+Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Law_BSpline;
 		 Law_BSpline(const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const Standard_Integer Degree, const Standard_Boolean Periodic = Standard_False);
 
@@ -299,7 +299,7 @@ None
 
 Description
 -----------
-Creates a rational b_spline curve on the basis <knots, multiplicities> of degree <degree>.
+Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Law_BSpline;
 		 Law_BSpline(const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const Standard_Integer Degree, const Standard_Boolean Periodic = Standard_False);
 
@@ -312,7 +312,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the global continuity of the curve: c0: only geometric continuity, c1: continuity of the first derivative all along the curve, c2: continuity of the second derivative all along the curve, c3: continuity of the third derivative all along the curve, cn: the order of continuity is infinite. for a b-spline curve of degree d if a knot ui has a multiplicity p the b-spline curve is only cd-p continuous at ui. so the global continuity of the curve can't be greater than cd-p where p is the maximum multiplicity of the interior knots. in the interior of a knot span the curve is infinitely continuously differentiable.
+Returns the global continuity of the curve: C0: only geometric continuity, C1: continuity of the first derivative all along the Curve, C2: continuity of the second derivative all along the Curve, C3: continuity of the third derivative all along the Curve, CN: the order of continuity is infinite. For a B-spline curve of degree d if a knot Ui has a multiplicity p the B-spline curve is only Cd-p continuous at Ui. So the global continuity of the curve can't be greater than Cd-p where p is the maximum multiplicity of the interior Knots. In the interior of a knot span the curve is infinitely continuously differentiable.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -422,7 +422,7 @@ float
 
 Description
 -----------
-The following functions computes the point of parameter u and the derivatives at this point on the b-spline curve arc defined between the knot fromk1 and the knot tok2. u can be out of bounds [knot (fromk1), knot (tok2)] but for the computation we only use the definition of the curve between these two knots. this method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. inside the parametric domain knot (fromk1), knot (tok2) the evaluations are the same as if we consider the whole definition of the curve. of course the evaluations are different outside this parametric domain.
+The following functions computes the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
 ") DN;
 		Standard_Real DN(const Standard_Real U, const Standard_Integer N);
 
@@ -448,7 +448,7 @@ float
 
 Description
 -----------
-Returns the last point of the curve. warnings: the last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than degree.
+Returns the last point of the curve. Warnings: The last point of the curve is different from the last pole of the curve if the multiplicity of the last knot is lower than Degree.
 ") EndPoint;
 		Standard_Real EndPoint();
 
@@ -461,7 +461,7 @@ float
 
 Description
 -----------
-Computes the parametric value of the start point of the curve. it is a knot value.
+Computes the parametric value of the start point of the curve. It is a knot value.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
@@ -474,7 +474,7 @@ int
 
 Description
 -----------
-For a b-spline curve the first parameter (which gives the start point of the curve) is a knot value but if the multiplicity of the first knot index is lower than degree + 1 it is not the first knot of the curve. this method computes the index of the knot corresponding to the first parameter.
+For a B-spline curve the first parameter (which gives the start point of the curve) is a knot value but if the multiplicity of the first knot index is lower than Degree + 1 it is not the first knot of the curve. This method computes the index of the knot corresponding to the first parameter.
 ") FirstUKnotIndex;
 		Standard_Integer FirstUKnotIndex();
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-Increase the degree to <degree>. nothing is done if <degree> is lower or equal to the current degree.
+Increase the degree to <Degree>. Nothing is done if <Degree> is lower or equal to the current degree.
 ") IncreaseDegree;
 		void IncreaseDegree(const Standard_Integer Degree);
 
@@ -511,7 +511,7 @@ None
 
 Description
 -----------
-Increases the multiplicity of the knot <index> to <m>. //! if <m> is lower or equal to the current multiplicity nothing is done. if <m> is higher than the degree the degree is used. if <index> is not in [firstuknotindex, lastuknotindex].
+Increases the multiplicity of the knot <Index> to <M>. //! If <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. If <Index> is not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncreaseMultiplicity;
 		void IncreaseMultiplicity(const Standard_Integer Index, const Standard_Integer M);
 
@@ -531,7 +531,7 @@ None
 
 Description
 -----------
-Increases the multiplicities of the knots in [i1,i2] to <m>. //! for each knot if <m> is lower or equal to the current multiplicity nothing is done. if <m> is higher than the degree the degree is used. if <i1,i2> are not in [firstuknotindex, lastuknotindex].
+Increases the multiplicities of the knots in [I1,I2] to <M>. //! For each knot if <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncreaseMultiplicity;
 		void IncreaseMultiplicity(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer M);
 
@@ -551,7 +551,7 @@ None
 
 Description
 -----------
-Increment the multiplicities of the knots in [i1,i2] by <m>. //! if <m> is not positive nithing is done. //! for each knot the resulting multiplicity is limited to the degree. if <i1,i2> are not in [firstuknotindex, lastuknotindex].
+Increment the multiplicities of the knots in [I1,I2] by <M>. //! If <M> is not positive nithing is done. //! For each knot the resulting multiplicity is limited to the Degree. If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncrementMultiplicity;
 		void IncrementMultiplicity(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer M);
 
@@ -572,7 +572,7 @@ None
 
 Description
 -----------
-Inserts a knot value in the sequence of knots. if <u> is an existing knot the multiplicity is increased by <m>. //! if u is not on the parameter range nothing is done. //! if the multiplicity is negative or null nothing is done. the new multiplicity is limited to the degree. //! the tolerance criterion for knots equality is the max of epsilon(u) and parametrictolerance.
+Inserts a knot value in the sequence of knots. If <U> is an existing knot the multiplicity is increased by <M>. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnot;
 		void InsertKnot(const Standard_Real U, const Standard_Integer M = 1, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_True);
 
@@ -593,7 +593,7 @@ None
 
 Description
 -----------
-Inserts a set of knots values in the sequence of knots. //! for each u = knots(i), m = mults(i) //! if <u> is an existing knot the multiplicity is increased by <m> if <add> is true, increased to <m> if <add> is false. //! if u is not on the parameter range nothing is done. //! if the multiplicity is negative or null nothing is done. the new multiplicity is limited to the degree. //! the tolerance criterion for knots equality is the max of epsilon(u) and parametrictolerance.
+Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnots;
 		void InsertKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_False);
 
@@ -611,7 +611,7 @@ bool
 
 Description
 -----------
-Returns the continuity of the curve, the curve is at least c0. raised if n < 0.
+Returns the continuity of the curve, the curve is at least C0. Raised if N < 0.
 ") IsCN;
 		Standard_Boolean IsCN(const Standard_Integer N);
 
@@ -624,7 +624,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the first point and the last point of the curve is lower or equal to resolution from package gp. warnings: the first and the last point can be different from the first pole and the last pole of the curve.
+Returns true if the distance between the first point and the last point of the curve is lower or equal to Resolution from package gp. Warnings: The first and the last point can be different from the first pole and the last pole of the curve.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
@@ -637,7 +637,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is periodic.
+Returns True if the curve is periodic.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
@@ -650,7 +650,7 @@ bool
 
 Description
 -----------
-Returns true if the weights are not identical. the tolerance criterion is epsilon of the class real.
+Returns True if the weights are not identical. The tolerance criterion is Epsilon of the class Real.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -668,7 +668,7 @@ float
 
 Description
 -----------
-Returns the knot of range index. when there is a knot with a multiplicity greater than 1 the knot is not repeated. the method multiplicity can be used to get the multiplicity of the knot. raised if index < 1 or index > nbknots.
+Returns the knot of range Index. When there is a knot with a multiplicity greater than 1 the knot is not repeated. The method Multiplicity can be used to get the multiplicity of the Knot. Raised if Index < 1 or Index > NbKnots.
 ") Knot;
 		Standard_Real Knot(const Standard_Integer Index);
 
@@ -681,7 +681,7 @@ GeomAbs_BSplKnotDistribution
 
 Description
 -----------
-Returns nonuniform or uniform or quasiuniform or piecewisebezier. if all the knots differ by a positive constant from the preceding knot the bspline curve can be: - uniform if all the knots are of multiplicity 1, - quasiuniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity degree + 1, - piecewisebezier if the first and last knots have multiplicity degree + 1 and if interior knots have multiplicity degree a piecewise bezier with only two knots is a beziercurve. else the curve is non uniform. the tolerance criterion is epsilon from class real.
+Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the knots differ by a positive constant from the preceding knot the BSpline Curve can be: - Uniform if all the knots are of multiplicity 1, - QuasiUniform if all the knots are of multiplicity 1 except for the first and last knot which are of multiplicity Degree + 1, - PiecewiseBezier if the first and last knots have multiplicity Degree + 1 and if interior knots have multiplicity Degree A piecewise Bezier with only two knots is a BezierCurve. else the curve is non uniform. The tolerance criterion is Epsilon from class Real.
 ") KnotDistribution;
 		GeomAbs_BSplKnotDistribution KnotDistribution();
 
@@ -699,7 +699,7 @@ None
 
 Description
 -----------
-Returns the knots sequence. in this sequence the knots with a multiplicity greater than 1 are repeated. example: k = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! raised if the length of k is not equal to nbpoles + degree + 1.
+Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1.
 ") KnotSequence;
 		void KnotSequence(TColStd_Array1OfReal & K);
 
@@ -717,7 +717,7 @@ None
 
 Description
 -----------
-Returns the knot values of the b-spline curve; //! raised if the length of k is not equal to the number of knots.
+returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & K);
 
@@ -730,7 +730,7 @@ float
 
 Description
 -----------
-Computes the parametric value of the end point of the curve. it is a knot value.
+Computes the parametric value of the end point of the curve. It is a knot value.
 ") LastParameter;
 		Standard_Real LastParameter();
 
@@ -743,7 +743,7 @@ int
 
 Description
 -----------
-For a bspline curve the last parameter (which gives the end point of the curve) is a knot value but if the multiplicity of the last knot index is lower than degree + 1 it is not the last knot of the curve. this method computes the index of the knot corresponding to the last parameter.
+For a BSpline curve the last parameter (which gives the end point of the curve) is a knot value but if the multiplicity of the last knot index is lower than Degree + 1 it is not the last knot of the curve. This method computes the index of the knot corresponding to the last parameter.
 ") LastUKnotIndex;
 		Standard_Integer LastUKnotIndex();
 
@@ -891,7 +891,7 @@ I2: int
 
 Description
 -----------
-Locates the parametric value u in the sequence of knots. if 'withknotrepetition' is true we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. knots (i1) <= u <= knots (i2) . if i1 = i2 u is a knot value (the tolerance criterion parametrictolerance is used). . if i1 < 1 => u < knots (1) - abs(parametrictolerance) . if i2 > nbknots => u > knots (nbknots) + abs(parametrictolerance).
+Locates the parametric value U in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. Knots (I1) <= U <= Knots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < Knots (1) - Abs(ParametricTolerance) . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance).
 ") LocateU;
 		void LocateU(const Standard_Real U, const Standard_Real ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean WithKnotRepetition = Standard_False);
 
@@ -904,7 +904,7 @@ int
 
 Description
 -----------
-Returns the value of the maximum degree of the normalized b-spline basis functions in this package.
+Returns the value of the maximum degree of the normalized B-spline basis functions in this package.
 ") MaxDegree;
 		static Standard_Integer MaxDegree();
 
@@ -927,7 +927,7 @@ ErrorStatus: int
 
 Description
 -----------
-Changes the value of the law at parameter u to newvalue. and makes its derivative at u be derivative. startingcondition = -1 means first can move endingcondition = -1 means last point can move startingcondition = 0 means the first point cannot move endingcondition = 0 means the last point cannot move startingcondition = 1 means the first point and tangent cannot move endingcondition = 1 means the last point and tangent cannot move and so forth errorstatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
+Changes the value of the Law at parameter U to NewValue. and makes its derivative at U be derivative. StartingCondition = -1 means first can move EndingCondition = -1 means last point can move StartingCondition = 0 means the first point cannot move EndingCondition = 0 means the last point cannot move StartingCondition = 1 means the first point and tangent cannot move EndingCondition = 1 means the last point and tangent cannot move and so forth ErrorStatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
 ") MovePointAndTangent;
 		void MovePointAndTangent(const Standard_Real U, const Standard_Real NewValue, const Standard_Real Derivative, const Standard_Real Tolerance, const Standard_Integer StartingCondition, const Standard_Integer EndingCondition, Standard_Integer &OutValue);
 
@@ -945,7 +945,7 @@ None
 
 Description
 -----------
-Returns the multiplicity of the knots of the curve. //! raised if the length of m is not equal to nbknots.
+Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 ") Multiplicities;
 		void Multiplicities(TColStd_Array1OfInteger & M);
 
@@ -963,7 +963,7 @@ int
 
 Description
 -----------
-Returns the multiplicity of the knots of range index. raised if index < 1 or index > nbknots.
+Returns the multiplicity of the knots of range Index. Raised if Index < 1 or Index > NbKnots.
 ") Multiplicity;
 		Standard_Integer Multiplicity(const Standard_Integer Index);
 
@@ -976,7 +976,7 @@ int
 
 Description
 -----------
-Returns the number of knots. this method returns the number of knot without repetition of multiple knots.
+Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
@@ -1006,7 +1006,7 @@ U: float
 
 Description
 -----------
-Returns the parameter normalized within the period if the curve is periodic: otherwise does not do anything.
+returns the parameter normalized within the period if the curve is periodic: otherwise does not do anything.
 ") PeriodicNormalization;
 		void PeriodicNormalization(Standard_Real &OutValue);
 
@@ -1024,7 +1024,7 @@ float
 
 Description
 -----------
-Returns the pole of range index. raised if index < 1 or index > nbpoles.
+Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 ") Pole;
 		Standard_Real Pole(const Standard_Integer Index);
 
@@ -1042,7 +1042,7 @@ None
 
 Description
 -----------
-Returns the poles of the b-spline curve; //! raised if the length of p is not equal to the number of poles.
+Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
 ") Poles;
 		void Poles(TColStd_Array1OfReal & P);
 
@@ -1062,7 +1062,7 @@ bool
 
 Description
 -----------
-Decrement the knots multiplicity to <m>. if m is 0 the knot is removed. the poles sequence is modified. //! as there are two ways to compute the new poles the average is computed if the distance is lower than the <tolerance>, else false is returned. //! a low tolerance is used to prevent the modification of the curve. //! a high tolerance is used to 'smooth' the curve. //! raised if index is not in the range [firstuknotindex, lastuknotindex] pole insertion and pole removing this operation is limited to the uniform or quasiuniform bsplinecurve. the knot values are modified . if the bspline is nonuniform or piecewise bezier an exception construction error is raised.
+Decrement the knots multiplicity to <M>. If M is 0 the knot is removed. The Poles sequence is modified. //! As there are two ways to compute the new poles the average is computed if the distance is lower than the <Tolerance>, else False is returned. //! A low tolerance is used to prevent the modification of the curve. //! A high tolerance is used to 'smooth' the curve. //! Raised if Index is not in the range [FirstUKnotIndex, LastUKnotIndex] pole insertion and pole removing this operation is limited to the Uniform or QuasiUniform BSplineCurve. The knot values are modified . If the BSpline is NonUniform or Piecewise Bezier an exception Construction error is raised.
 ") RemoveKnot;
 		Standard_Boolean RemoveKnot(const Standard_Integer Index, const Standard_Integer M, const Standard_Real Tolerance);
 
@@ -1080,7 +1080,7 @@ UTolerance: float
 
 Description
 -----------
-Given tolerance3d returns utolerance such that if f(t) is the curve we have | t1 - t0| < utolerance ===> |f(t1) - f(t0)| < tolerance3d.
+given Tolerance3D returns UTolerance such that if f(t) is the curve we have | t1 - t0| < Utolerance ===> |f(t1) - f(t0)| < Tolerance3D.
 ") Resolution;
 		void Resolution(const Standard_Real Tolerance3D, Standard_Real &OutValue);
 
@@ -1093,7 +1093,7 @@ None
 
 Description
 -----------
-Changes the direction of parametrization of <self>. the knot sequence is modified, the firstparameter and the lastparameter are not modified. the startpoint of the initial curve becomes the endpoint of the reversed curve and the endpoint of the initial curve becomes the startpoint of the reversed curve.
+Changes the direction of parametrization of <self>. The Knot sequence is modified, the FirstParameter and the LastParameter are not modified. The StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
 ") Reverse;
 		void Reverse();
 
@@ -1111,7 +1111,7 @@ float
 
 Description
 -----------
-Returns the parameter on the reversed curve for the point of parameter u on <self>. //! returns ufirst + ulast - u.
+Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns UFirst + ULast - U.
 ") ReversedParameter;
 		Standard_Real ReversedParameter(const Standard_Real U);
 
@@ -1130,7 +1130,7 @@ None
 
 Description
 -----------
-Segments the curve between u1 and u2. the control points are modified, the first and the last point are not the same. warnings: even if <self> is not closed it can become closed after the segmentation for example if u1 or u2 are out of the bounds of the curve <self> or if the curve makes loop. after the segmentation the length of a curve can be null. raises if u2 < u1.
+Segments the curve between U1 and U2. The control points are modified, the first and the last point are not the same. Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the curve <self> or if the curve makes loop. After the segmentation the length of a curve can be null. raises if U2 < U1.
 ") Segment;
 		void Segment(const Standard_Real U1, const Standard_Real U2);
 
@@ -1149,7 +1149,7 @@ None
 
 Description
 -----------
-Changes the knot of range index. the multiplicity of the knot is not modified. raised if k >= knots(index+1) or k <= knots(index-1). raised if index < 1 || index > nbknots.
+Changes the knot of range Index. The multiplicity of the knot is not modified. Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if Index < 1 || Index > NbKnots.
 ") SetKnot;
 		void SetKnot(const Standard_Integer Index, const Standard_Real K);
 
@@ -1169,7 +1169,7 @@ None
 
 Description
 -----------
-Changes the knot of range index with its multiplicity. you can increase the multiplicity of a knot but it is not allowed to decrease the multiplicity of an existing knot. //! raised if k >= knots(index+1) or k <= knots(index-1). raised if m is greater than degree or lower than the previous multiplicity of knot of range index. raised if index < 1 || index > nbknots.
+Changes the knot of range Index with its multiplicity. You can increase the multiplicity of a knot but it is not allowed to decrease the multiplicity of an existing knot. //! Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if M is greater than Degree or lower than the previous multiplicity of knot of range Index. Raised if Index < 1 || Index > NbKnots.
 ") SetKnot;
 		void SetKnot(const Standard_Integer Index, const Standard_Real K, const Standard_Integer M);
 
@@ -1187,7 +1187,7 @@ None
 
 Description
 -----------
-Changes all the knots of the curve the multiplicity of the knots are not modified. //! raised if there is an index such that k (index+1) <= k (index). //! raised if k.lower() < 1 or k.upper() > nbknots.
+Changes all the knots of the curve The multiplicity of the knots are not modified. //! Raised if there is an index such that K (Index+1) <= K (Index). //! Raised if K.Lower() < 1 or K.Upper() > NbKnots.
 ") SetKnots;
 		void SetKnots(const TColStd_Array1OfReal & K);
 
@@ -1200,7 +1200,7 @@ None
 
 Description
 -----------
-Makes a non periodic curve. if the curve was non periodic the curve is not modified.
+Makes a non periodic curve. If the curve was non periodic the curve is not modified.
 ") SetNotPeriodic;
 		void SetNotPeriodic();
 
@@ -1218,7 +1218,7 @@ None
 
 Description
 -----------
-Set the origin of a periodic curve at knot(index) knotvector and poles are modified. raised if the curve is not periodic raised if index not in the range [firstuknotindex , lastuknotindex].
+Set the origin of a periodic curve at Knot(index) KnotVector and poles are modified. Raised if the curve is not periodic Raised if index not in the range [FirstUKnotIndex , LastUKnotIndex].
 ") SetOrigin;
 		void SetOrigin(const Standard_Integer Index);
 
@@ -1231,7 +1231,7 @@ None
 
 Description
 -----------
-Makes a closed b-spline into a periodic curve. the curve is periodic if the knot sequence is periodic and if the curve is closed (the tolerance criterion is resolution from gp). the period t is equal to knot(lastuknotindex) - knot(firstuknotindex). a periodic b-spline can be uniform or not. raised if the curve is not closed.
+Makes a closed B-spline into a periodic curve. The curve is periodic if the knot sequence is periodic and if the curve is closed (The tolerance criterion is Resolution from gp). The period T is equal to Knot(LastUKnotIndex) - Knot(FirstUKnotIndex). A periodic B-spline can be uniform or not. Raised if the curve is not closed.
 ") SetPeriodic;
 		void SetPeriodic();
 
@@ -1250,7 +1250,7 @@ None
 
 Description
 -----------
-Substitutes the pole of range index with p. //! raised if index < 1 || index > nbpoles.
+Substitutes the Pole of range Index with P. //! Raised if Index < 1 || Index > NbPoles.
 ") SetPole;
 		void SetPole(const Standard_Integer Index, const Standard_Real P);
 
@@ -1270,7 +1270,7 @@ None
 
 Description
 -----------
-Substitutes the pole and the weight of range index. if the curve <self> is not rational it can become rational if the curve was rational it can become non rational //! raised if index < 1 || index > nbpoles raised if weight <= 0.0.
+Substitutes the pole and the weight of range Index. If the curve <self> is not rational it can become rational If the curve was rational it can become non rational //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0.
 ") SetPole;
 		void SetPole(const Standard_Integer Index, const Standard_Real P, const Standard_Real Weight);
 
@@ -1289,7 +1289,7 @@ None
 
 Description
 -----------
-Changes the weight for the pole of range index. if the curve was non rational it can become rational. if the curve was rational it can become non rational. //! raised if index < 1 || index > nbpoles raised if weight <= 0.0.
+Changes the weight for the pole of range Index. If the curve was non rational it can become rational. If the curve was rational it can become non rational. //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0.
 ") SetWeight;
 		void SetWeight(const Standard_Integer Index, const Standard_Real Weight);
 
@@ -1302,7 +1302,7 @@ float
 
 Description
 -----------
-Returns the start point of the curve. warnings: this point is different from the first pole of the curve if the multiplicity of the first knot is lower than degree.
+Returns the start point of the curve. Warnings: This point is different from the first pole of the curve if the multiplicity of the first knot is lower than Degree.
 ") StartPoint;
 		Standard_Real StartPoint();
 
@@ -1338,7 +1338,7 @@ float
 
 Description
 -----------
-Returns the weight of the pole of range index . raised if index < 1 or index > nbpoles.
+Returns the weight of the pole of range Index . Raised if Index < 1 or Index > NbPoles.
 ") Weight;
 		Standard_Real Weight(const Standard_Integer Index);
 
@@ -1356,7 +1356,7 @@ None
 
 Description
 -----------
-Returns the weights of the b-spline curve; //! raised if the length of w is not equal to nbpoles.
+Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 ") Weights;
 		void Weights(TColStd_Array1OfReal & W);
 
@@ -1391,7 +1391,7 @@ None
 
 Description
 -----------
-Locates the knot values which correspond to the segmentation of the curve into arcs with a continuity equal to continuityrange. //! raised if continuityrange is not greater or equal zero.
+Locates the knot values which correspond to the segmentation of the curve into arcs with a continuity equal to ContinuityRange. //! Raised if ContinuityRange is not greater or equal zero.
 ") Law_BSplineKnotSplitting;
 		 Law_BSplineKnotSplitting(const opencascade::handle<Law_BSpline> & BasisLaw, const Standard_Integer ContinuityRange);
 
@@ -1422,7 +1422,7 @@ int
 
 Description
 -----------
-Returns the index of the knot corresponding to the splitting of range index. //! raised if index < 1 or index > nbsplits.
+Returns the index of the knot corresponding to the splitting of range Index. //! Raised if Index < 1 or Index > NbSplits.
 ") SplitValue;
 		Standard_Integer SplitValue(const Standard_Integer Index);
 
@@ -1440,7 +1440,7 @@ None
 
 Description
 -----------
-Returns the indexes of the bspline curve knots corresponding to the splitting. //! raised if the length of splitvalues is not equal to nbsplit.
+Returns the indexes of the BSpline curve knots corresponding to the splitting. //! Raised if the length of SplitValues is not equal to NbSPlit.
 ") Splitting;
 		void Splitting(TColStd_Array1OfInteger & SplitValues);
 
@@ -1505,7 +1505,7 @@ D: float
 
 Description
 -----------
-Returns the value f and the first derivative d of the function at the point of parameter x.
+Returns the value F and the first derivative D of the function at the point of parameter X.
 ") D1;
 		virtual void D1(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1525,7 +1525,7 @@ D2: float
 
 Description
 -----------
-Returns the value, first and seconde derivatives at parameter x.
+Returns the value, first and seconde derivatives at parameter X.
 ") D2;
 		virtual void D2(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1544,7 +1544,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1562,7 +1562,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1582,7 +1582,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns a law equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. it is usfule to determines the derivatives in these values <first> and <last> if the law is not cn.
+Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 ") Trim;
 		virtual opencascade::handle<Law_Function> Trim(const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol);
 
@@ -1600,7 +1600,7 @@ float
 
 Description
 -----------
-Returns the value of the function at the point of parameter x.
+Returns the value of the function at the point of parameter X.
 ") Value;
 		virtual Standard_Real Value(const Standard_Real X);
 
@@ -1636,7 +1636,7 @@ None
 
 Description
 -----------
-Tolerance is to check if the points are not too close to one an other. it is also used to check if the tangent vector is not too small. there should be at least 2 points. if periodicflag is true then the curve will be periodic be periodic.
+Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic.
 ") Law_Interpolate;
 		 Law_Interpolate(const opencascade::handle<TColStd_HArray1OfReal> & Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
@@ -1657,7 +1657,7 @@ None
 
 Description
 -----------
-Tolerance is to check if the points are not too close to one an other. it is also used to check if the tangent vector is not too small. there should be at least 2 points. if periodicflag is true then the curve will be periodic be periodic.
+Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic.
 ") Law_Interpolate;
 		 Law_Interpolate(const opencascade::handle<TColStd_HArray1OfReal> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
@@ -1702,7 +1702,7 @@ None
 
 Description
 -----------
-Loads initial and final tangents if any.
+loads initial and final tangents if any.
 ") Load;
 		void Load(const Standard_Real InitialTangent, const Standard_Real FinalTangent);
 
@@ -1721,7 +1721,7 @@ None
 
 Description
 -----------
-Loads the tangents. we should have as many tangents as they are points in the array if tangentflags.value(i) is standard_true use the tangent tangents.value(i) otherwise the tangent is not constrained.
+loads the tangents. We should have as many tangents as they are points in the array if TangentFlags.Value(i) is Standard_True use the tangent Tangents.Value(i) otherwise the tangent is not constrained.
 ") Load;
 		void Load(const TColStd_Array1OfReal & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags);
 
@@ -1887,7 +1887,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1905,7 +1905,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1943,7 +1943,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns a law equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. it is usfule to determines the derivatives in these values <first> and <last> if the law is not cn.
+Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 ") Trim;
 		opencascade::handle<Law_Function> Trim(const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol);
 
@@ -1990,7 +1990,7 @@ None
 
 Description
 -----------
-Construct an empty law.
+Construct an empty Law.
 ") Law_Composite;
 		 Law_Composite();
 
@@ -2010,7 +2010,7 @@ None
 
 Description
 -----------
-Construct an empty, trimmed law.
+Construct an empty, trimmed Law.
 ") Law_Composite;
 		 Law_Composite(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -2046,7 +2046,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns the elementary function of the composite used to compute at parameter w.
+Returns the elementary function of the composite used to compute at parameter W.
 ") ChangeElementaryLaw;
 		opencascade::handle<Law_Function> & ChangeElementaryLaw(const Standard_Real W);
 
@@ -2091,7 +2091,7 @@ D: float
 
 Description
 -----------
-Returns the value and the first derivative at parameter x.
+Returns the value and the first derivative at parameter X.
 ") D1;
 		void D1(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2111,7 +2111,7 @@ D2: float
 
 Description
 -----------
-Returns the value, first and second derivatives at parameter x.
+Returns the value, first and second derivatives at parameter X.
 ") D2;
 		void D2(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2130,7 +2130,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters, i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2161,7 +2161,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2194,7 +2194,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns a law equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. it is usfule to determines the derivatives in these values <first> and <last> if the law is not cn.
+Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 ") Trim;
 		opencascade::handle<Law_Function> Trim(const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol);
 
@@ -2212,7 +2212,7 @@ float
 
 Description
 -----------
-Returns the value at parameter x.
+Returns the value at parameter X.
 ") Value;
 		Standard_Real Value(const Standard_Real X);
 
@@ -2272,7 +2272,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns geomabs_cn.
+Returns GeomAbs_CN.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -2291,7 +2291,7 @@ D: float
 
 Description
 -----------
-Returns the value and the first derivative at parameter x.
+Returns the value and the first derivative at parameter X.
 ") D1;
 		void D1(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2311,7 +2311,7 @@ D2: float
 
 Description
 -----------
-Returns the value, first and second derivatives at parameter x.
+Returns the value, first and second derivatives at parameter X.
 ") D2;
 		void D2(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2368,7 +2368,7 @@ None
 
 Description
 -----------
-Set the radius and the range of the constant law.
+Set the radius and the range of the constant Law.
 ") Set;
 		void Set(const Standard_Real Radius, const Standard_Real PFirst, const Standard_Real PLast);
 
@@ -2406,7 +2406,7 @@ float
 
 Description
 -----------
-Returns the value at parameter x.
+Returns the value at parameter X.
 ") Value;
 		Standard_Real Value(const Standard_Real X);
 
@@ -2466,7 +2466,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns geomabs_cn.
+Returns GeomAbs_CN.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -2485,7 +2485,7 @@ D: float
 
 Description
 -----------
-Returns the value f and the first derivative d of this function at the point of parameter x.
+Returns the value F and the first derivative D of this function at the point of parameter X.
 ") D1;
 		void D1(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2505,7 +2505,7 @@ D2: float
 
 Description
 -----------
-Returns the value, first and second derivatives at parameter x.
+Returns the value, first and second derivatives at parameter X.
 ") D2;
 		void D2(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2563,7 +2563,7 @@ None
 
 Description
 -----------
-Defines this linear evolution law by assigning both: - the bounds pdeb and pfin of the parameter, and - the values valdeb and valfin of the function at these two parametric bounds.
+Defines this linear evolution law by assigning both: - the bounds Pdeb and Pfin of the parameter, and - the values Valdeb and Valfin of the function at these two parametric bounds.
 ") Set;
 		void Set(const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Pfin, const Standard_Real Valfin);
 
@@ -2583,7 +2583,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns a law equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. it is usfule to determines the derivatives in these values <first> and <last> if the law is not cn.
+Returns a law equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. It is usfule to determines the derivatives in these values <First> and <Last> if the Law is not Cn.
 ") Trim;
 		opencascade::handle<Law_Function> Trim(const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol);
 
@@ -2601,7 +2601,7 @@ float
 
 Description
 -----------
-Returns the value of this function at the point of parameter x.
+Returns the value of this function at the point of parameter X.
 ") Value;
 		Standard_Real Value(const Standard_Real X);
 
@@ -2630,7 +2630,7 @@ None
 
 Description
 -----------
-Constructs an empty interpolative evolution law. the function set is used to define the law.
+Constructs an empty interpolative evolution law. The function Set is used to define the law.
 ") Law_Interpol;
 		 Law_Interpol();
 
@@ -2649,7 +2649,7 @@ None
 
 Description
 -----------
-Defines this evolution law by interpolating the set of 2d points parandrad. the y coordinate of a point of parandrad is the value of the function at the parameter point given by its x coordinate. if periodic is true, this function is assumed to be periodic. warning - the x coordinates of points in the table parandrad must be given in ascendant order. - if periodic is true, the first and last y coordinates of points in the table parandrad are assumed to be equal. in addition, with the second syntax, dd and df are also assumed to be equal. if this is not the case, set uses the first value(s) as last value(s).
+Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. Warning - The X coordinates of points in the table ParAndRad must be given in ascendant order. - If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
 ") Set;
 		void Set(const TColgp_Array1OfPnt2d & ParAndRad, const Standard_Boolean Periodic = Standard_False);
 
@@ -2670,7 +2670,7 @@ None
 
 Description
 -----------
-Defines this evolution law by interpolating the set of 2d points parandrad. the y coordinate of a point of parandrad is the value of the function at the parameter point given by its x coordinate. if periodic is true, this function is assumed to be periodic. in the second syntax, dd and df define the values of the first derivative of the function at its first and last points. warning - the x coordinates of points in the table parandrad must be given in ascendant order. - if periodic is true, the first and last y coordinates of points in the table parandrad are assumed to be equal. in addition, with the second syntax, dd and df are also assumed to be equal. if this is not the case, set uses the first value(s) as last value(s).
+Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning - The X coordinates of points in the table ParAndRad must be given in ascendant order. - If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
 ") Set;
 		void Set(const TColgp_Array1OfPnt2d & ParAndRad, const Standard_Real Dd, const Standard_Real Df, const Standard_Boolean Periodic = Standard_False);
 
@@ -2743,7 +2743,7 @@ None
 
 Description
 -----------
-Constructs an empty 's' evolution law.
+Constructs an empty 'S' evolution law.
 ") Law_S;
 		 Law_S();
 
@@ -2764,7 +2764,7 @@ None
 
 Description
 -----------
-Defines this s evolution law by assigning both: - the bounds pdeb and pfin of the parameter, and - the values valdeb and valfin of the function at these two parametric bounds. the function is assumed to have the first derivatives equal to 0 at the two parameter points pdeb and pfin.
+Defines this S evolution law by assigning both: - the bounds Pdeb and Pfin of the parameter, and - the values Valdeb and Valfin of the function at these two parametric bounds. The function is assumed to have the first derivatives equal to 0 at the two parameter points Pdeb and Pfin.
 ") Set;
 		void Set(const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Pfin, const Standard_Real Valfin);
 
@@ -2787,7 +2787,7 @@ None
 
 Description
 -----------
-Defines this s evolution law by assigning - the bounds pdeb and pfin of the parameter, - the values valdeb and valfin of the function at these two parametric bounds, and - the values ddeb and dfin of the first derivative of the function at these two parametric bounds.
+Defines this S evolution law by assigning - the bounds Pdeb and Pfin of the parameter, - the values Valdeb and Valfin of the function at these two parametric bounds, and - the values Ddeb and Dfin of the first derivative of the function at these two parametric bounds.
 ") Set;
 		void Set(const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Ddeb, const Standard_Real Pfin, const Standard_Real Valfin, const Standard_Real Dfin);
 

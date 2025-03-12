@@ -112,7 +112,7 @@ None
 
 Description
 -----------
-Creates a new simple indexed edge. //! for an edge: index is the number of vertices (0, 1 or 2),type is topabs_edge, closed is true if it is a closed edge, beginf is true if the edge is infinite at the begenning, endinf is true if the edge is infinite at the end. //! for a vertex: index is the index of the vertex in the edge (1 or 2), type is topabsvertex, all the other fields have no meanning.
+Creates a new simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, all the other fields have no meanning.
 ") Sweep_NumShape;
 		 Sweep_NumShape(const Standard_Integer Index, const TopAbs_ShapeEnum Type, const Standard_Boolean Closed = Standard_False, const Standard_Boolean BegInf = Standard_False, const Standard_Boolean EndInf = Standard_False);
 
@@ -186,7 +186,7 @@ None
 
 Description
 -----------
-Reinitialize a simple indexed edge. //! for an edge: index is the number of vertices (0, 1 or 2),type is topabs_edge, closed is true if it is a closed edge, beginf is true if the edge is infinite at the begenning, endinf is true if the edge is infinite at the end. //! for a vertex: index is the index of the vertex in the edge (1 or 2), type is topabsvertex, closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
+Reinitialize a simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, Closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
 ") Init;
 		void Init(const Standard_Integer Index, const TopAbs_ShapeEnum Type, const Standard_Boolean Closed = Standard_False, const Standard_Boolean BegInf = Standard_False, const Standard_Boolean EndInf = Standard_False);
 
@@ -257,7 +257,7 @@ None
 
 Description
 -----------
-Reset the numshapeiterator on sub-shapes of <ashape>.
+Reset the NumShapeIterator on sub-shapes of <aShape>.
 ") Init;
 		void Init(const Sweep_NumShape & aShape);
 
@@ -270,7 +270,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current sub-shape.
+Returns True if there is a current sub-shape.
 ") More;
 		Standard_Boolean More();
 
@@ -341,7 +341,7 @@ None
 
 Description
 -----------
-Create a new numshapetool with <ashape>. the tool must prepare an indexation for all the subshapes of this shape.
+Create a new NumShapeTool with <aShape>. The Tool must prepare an indexation for all the subshapes of this shape.
 ") Sweep_NumShapeTool;
 		 Sweep_NumShapeTool(const Sweep_NumShape & aShape);
 
@@ -367,7 +367,7 @@ bool
 
 Description
 -----------
-Returns true if there is a first vertex in the shape.
+Returns true if there is a First Vertex in the Shape.
 ") HasFirstVertex;
 		Standard_Boolean HasFirstVertex();
 
@@ -380,7 +380,7 @@ bool
 
 Description
 -----------
-Returns true if there is a last vertex in the shape.
+Returns true if there is a Last Vertex in the Shape.
 ") HasLastVertex;
 		Standard_Boolean HasLastVertex();
 
@@ -398,7 +398,7 @@ int
 
 Description
 -----------
-Returns the index of <ashape>.
+Returns the index of <aShape>.
 ") Index;
 		Standard_Integer Index(const Sweep_NumShape & aShape);
 
@@ -442,7 +442,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the orientation of <ashape>.
+Returns the orientation of <aShape>.
 ") Orientation;
 		TopAbs_Orientation Orientation(const Sweep_NumShape & aShape);
 
@@ -460,7 +460,7 @@ Sweep_NumShape
 
 Description
 -----------
-Returns the shape at index anindex.
+Returns the Shape at index anIndex.
 ") Shape;
 		Sweep_NumShape Shape(const Standard_Integer anIndex);
 
@@ -478,7 +478,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type of <ashape>.
+Returns the type of <aShape>.
 ") Type;
 		TopAbs_ShapeEnum Type(const Sweep_NumShape & aShape);
 

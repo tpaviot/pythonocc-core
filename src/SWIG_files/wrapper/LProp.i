@@ -254,7 +254,7 @@ int
 
 Description
 -----------
-Returns the number of points. the points are stored to increasing parameter.
+Returns the number of points. The Points are stored to increasing parameter.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -272,7 +272,7 @@ float
 
 Description
 -----------
-Returns the parameter of the nth point. raises if n not in the range [1,nbpoints()].
+Returns the parameter of the Nth point. raises if N not in the range [1,NbPoints()].
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer N);
 
@@ -290,7 +290,7 @@ LProp_CIType
 
 Description
 -----------
-Returns - mincur if the nth parameter corresponds to a minimum of the radius of curvature. - maxcur if the nth parameter corresponds to a maximum of the radius of curvature. - inflection if the parameter corresponds to a point of inflection. raises if n not in the range [1,nbpoints()].
+Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of curvature. - MaxCur if the Nth parameter corresponds to a maximum of the radius of curvature. - Inflection if the parameter corresponds to a point of inflection. raises if N not in the range [1,NbPoints()].
 ") Type;
 		LProp_CIType Type(const Standard_Integer N);
 

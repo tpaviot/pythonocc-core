@@ -406,7 +406,7 @@ None
 
 Description
 -----------
-Returns a annotationfillarea.
+Returns a AnnotationFillArea.
 ") StepVisual_AnnotationFillArea;
 		 StepVisual_AnnotationFillArea();
 
@@ -435,7 +435,7 @@ None
 
 Description
 -----------
-Returns a annotationplaneelement select type.
+Returns a AnnotationPlaneElement select type.
 ") StepVisual_AnnotationPlaneElement;
 		 StepVisual_AnnotationPlaneElement();
 
@@ -453,7 +453,7 @@ int
 
 Description
 -----------
-Recognizes a idattributeselect kind entity that is: 1 -> draughtingcallout 2 -> styleditem 0 else.
+Recognizes a IdAttributeSelect Kind Entity that is: 1 -> DraughtingCallout 2 -> StyledItem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -466,7 +466,7 @@ opencascade::handle<StepVisual_DraughtingCallout>
 
 Description
 -----------
-Returns value as a draughtingcallout (null if another type).
+returns Value as a DraughtingCallout (Null if another type).
 ") DraughtingCallout;
 		opencascade::handle<StepVisual_DraughtingCallout> DraughtingCallout();
 
@@ -479,7 +479,7 @@ opencascade::handle<StepVisual_StyledItem>
 
 Description
 -----------
-Returns value as a styleditem (null if another type).
+returns Value as a StyledItem (Null if another type).
 ") StyledItem;
 		opencascade::handle<StepVisual_StyledItem> StyledItem();
 
@@ -506,7 +506,7 @@ None
 
 Description
 -----------
-Returns a annotationtext.
+Returns a AnnotationText.
 ") StepVisual_AnnotationText;
 		 StepVisual_AnnotationText();
 
@@ -535,7 +535,7 @@ None
 
 Description
 -----------
-Returns a areainset.
+Returns a AreaInSet.
 ") StepVisual_AreaInSet;
 		 StepVisual_AreaInSet();
 
@@ -645,7 +645,7 @@ None
 
 Description
 -----------
-Returns a areaorview selecttype.
+Returns a AreaOrView SelectType.
 ") StepVisual_AreaOrView;
 		 StepVisual_AreaOrView();
 
@@ -663,7 +663,7 @@ int
 
 Description
 -----------
-Recognizes a areaorview kind entity that is: 1 -> presentationarea 2 -> presentationview 0 else.
+Recognizes a AreaOrView Kind Entity that is: 1 -> PresentationArea 2 -> PresentationView 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -676,7 +676,7 @@ opencascade::handle<StepVisual_PresentationArea>
 
 Description
 -----------
-Returns value as a presentationarea (null if another type).
+returns Value as a PresentationArea (Null if another type).
 ") PresentationArea;
 		opencascade::handle<StepVisual_PresentationArea> PresentationArea();
 
@@ -689,7 +689,7 @@ opencascade::handle<StepVisual_PresentationView>
 
 Description
 -----------
-Returns value as a presentationview (null if another type).
+returns Value as a PresentationView (Null if another type).
 ") PresentationView;
 		opencascade::handle<StepVisual_PresentationView> PresentationView();
 
@@ -805,7 +805,7 @@ None
 
 Description
 -----------
-Returns a cameraimage.
+Returns a CameraImage.
 ") StepVisual_CameraImage;
 		 StepVisual_CameraImage();
 
@@ -834,7 +834,7 @@ None
 
 Description
 -----------
-Returns a cameramodel.
+Returns a CameraModel.
 ") StepVisual_CameraModel;
 		 StepVisual_CameraModel();
 
@@ -863,7 +863,7 @@ None
 
 Description
 -----------
-Returns a cameramodeld3multiclippinginterectionselect select type.
+Returns a CameraModelD3MultiClippingInterectionSelect select type.
 ") StepVisual_CameraModelD3MultiClippingInterectionSelect;
 		 StepVisual_CameraModelD3MultiClippingInterectionSelect();
 
@@ -876,7 +876,7 @@ opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion>
 
 Description
 -----------
-Returns value as a cameramodeld3multiclippingunion (null if another type).
+returns Value as a CameraModelD3MultiClippingUnion (Null if another type).
 ") CameraModelD3MultiClippingUnion;
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> CameraModelD3MultiClippingUnion();
 
@@ -894,7 +894,7 @@ int
 
 Description
 -----------
-Recognizes a idattributeselect kind entity that is: 1 -> plane 2 -> cameramodeld3multiclippingunion 0 else.
+Recognizes a IdAttributeSelect Kind Entity that is: 1 -> Plane 2 -> CameraModelD3MultiClippingUnion 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -907,7 +907,7 @@ opencascade::handle<StepGeom_Plane>
 
 Description
 -----------
-Returns value as a plane (null if another type).
+returns Value as a Plane (Null if another type).
 ") Plane;
 		opencascade::handle<StepGeom_Plane> Plane();
 
@@ -934,7 +934,7 @@ None
 
 Description
 -----------
-Returns a stepvisual_cameramodeld3multiclippingintersection.
+Returns a StepVisual_CameraModelD3MultiClippingIntersection.
 ") StepVisual_CameraModelD3MultiClippingIntersection;
 		 StepVisual_CameraModelD3MultiClippingIntersection();
 
@@ -1013,7 +1013,7 @@ None
 
 Description
 -----------
-Returns a stepvisual_cameramodeld3multiclippingunion.
+Returns a StepVisual_CameraModelD3MultiClippingUnion.
 ") StepVisual_CameraModelD3MultiClippingUnion;
 		 StepVisual_CameraModelD3MultiClippingUnion();
 
@@ -1092,7 +1092,7 @@ None
 
 Description
 -----------
-Returns a cameramodeld3multiclippingunionselect select type.
+Returns a CameraModelD3MultiClippingUnionSelect select type.
 ") StepVisual_CameraModelD3MultiClippingUnionSelect;
 		 StepVisual_CameraModelD3MultiClippingUnionSelect();
 
@@ -1105,7 +1105,7 @@ opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection>
 
 Description
 -----------
-Returns value as a cameramodeld3multiclippingintersection (null if another type).
+returns Value as a CameraModelD3MultiClippingIntersection (Null if another type).
 ") CameraModelD3MultiClippingIntersection;
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> CameraModelD3MultiClippingIntersection();
 
@@ -1123,7 +1123,7 @@ int
 
 Description
 -----------
-Recognizes a idattributeselect kind entity that is: 1 -> plane 2 -> cameramodeld3multiclippingintersection 0 else.
+Recognizes a IdAttributeSelect Kind Entity that is: 1 -> Plane 2 -> CameraModelD3MultiClippingIntersection 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1136,7 +1136,7 @@ opencascade::handle<StepGeom_Plane>
 
 Description
 -----------
-Returns value as a plane (null if another type).
+returns Value as a Plane (Null if another type).
 ") Plane;
 		opencascade::handle<StepGeom_Plane> Plane();
 
@@ -1163,7 +1163,7 @@ None
 
 Description
 -----------
-Returns a camerausage.
+Returns a CameraUsage.
 ") StepVisual_CameraUsage;
 		 StepVisual_CameraUsage();
 
@@ -1192,7 +1192,7 @@ None
 
 Description
 -----------
-Returns a colour.
+Returns a Colour.
 ") StepVisual_Colour;
 		 StepVisual_Colour();
 
@@ -1221,7 +1221,7 @@ None
 
 Description
 -----------
-Returns a compositetext.
+Returns a CompositeText.
 ") StepVisual_CompositeText;
 		 StepVisual_CompositeText();
 
@@ -1331,7 +1331,7 @@ None
 
 Description
 -----------
-Returns a curvestyle.
+Returns a CurveStyle.
 ") StepVisual_CurveStyle;
 		 StepVisual_CurveStyle();
 
@@ -1505,7 +1505,7 @@ None
 
 Description
 -----------
-Returns a curvestylefont.
+Returns a CurveStyleFont.
 ") StepVisual_CurveStyleFont;
 		 StepVisual_CurveStyleFont();
 
@@ -1646,7 +1646,7 @@ None
 
 Description
 -----------
-Returns a curvestylefontpattern.
+Returns a CurveStyleFontPattern.
 ") StepVisual_CurveStyleFontPattern;
 		 StepVisual_CurveStyleFontPattern();
 
@@ -1756,7 +1756,7 @@ None
 
 Description
 -----------
-Returns a curvestylefontselect selecttype.
+Returns a CurveStyleFontSelect SelectType.
 ") StepVisual_CurveStyleFontSelect;
 		 StepVisual_CurveStyleFontSelect();
 
@@ -1774,7 +1774,7 @@ int
 
 Description
 -----------
-Recognizes a curvestylefontselect kind entity that is: 1 -> curvestylefont 2 -> predefinedcurvefont 3 -> externallydefinedcurvefont 0 else.
+Recognizes a CurveStyleFontSelect Kind Entity that is: 1 -> CurveStyleFont 2 -> PreDefinedCurveFont 3 -> ExternallyDefinedCurveFont 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1787,7 +1787,7 @@ opencascade::handle<StepVisual_CurveStyleFont>
 
 Description
 -----------
-Returns value as a curvestylefont (null if another type).
+returns Value as a CurveStyleFont (Null if another type).
 ") CurveStyleFont;
 		opencascade::handle<StepVisual_CurveStyleFont> CurveStyleFont();
 
@@ -1800,7 +1800,7 @@ opencascade::handle<StepVisual_ExternallyDefinedCurveFont>
 
 Description
 -----------
-Returns value as a externallydefinedcurvefont (null if another type).
+returns Value as a ExternallyDefinedCurveFont (Null if another type).
 ") ExternallyDefinedCurveFont;
 		opencascade::handle<StepVisual_ExternallyDefinedCurveFont> ExternallyDefinedCurveFont();
 
@@ -1813,7 +1813,7 @@ opencascade::handle<StepVisual_PreDefinedCurveFont>
 
 Description
 -----------
-Returns value as a predefinedcurvefont (null if another type).
+returns Value as a PreDefinedCurveFont (Null if another type).
 ") PreDefinedCurveFont;
 		opencascade::handle<StepVisual_PreDefinedCurveFont> PreDefinedCurveFont();
 
@@ -1960,7 +1960,7 @@ None
 
 Description
 -----------
-Returns a draughtingcallout.
+Returns a DraughtingCallout.
 ") StepVisual_DraughtingCallout;
 		 StepVisual_DraughtingCallout();
 
@@ -1973,7 +1973,7 @@ opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement>
 
 Description
 -----------
-Returns field contents.
+Returns field Contents.
 ") Contents;
 		opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> Contents();
 
@@ -1991,7 +1991,7 @@ StepVisual_DraughtingCalloutElement
 
 Description
 -----------
-Returns contents with the given number.
+Returns Contents with the given number.
 ") ContentsValue;
 		StepVisual_DraughtingCalloutElement ContentsValue(const Standard_Integer theNum);
 
@@ -2023,7 +2023,7 @@ int
 
 Description
 -----------
-Returns number of contents.
+Returns number of Contents.
 ") NbContents;
 		Standard_Integer NbContents();
 
@@ -2041,7 +2041,7 @@ None
 
 Description
 -----------
-Set field contents.
+Set field Contents.
 ") SetContents;
 		void SetContents(const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
 
@@ -2060,7 +2060,7 @@ None
 
 Description
 -----------
-Sets contents with given number.
+Sets Contents with given number.
 ") SetContentsValue;
 		void SetContentsValue(const Standard_Integer theNum, const StepVisual_DraughtingCalloutElement & theItem);
 
@@ -2089,7 +2089,7 @@ None
 
 Description
 -----------
-Returns a draughtingcalloutelement select type.
+Returns a DraughtingCalloutElement select type.
 ") StepVisual_DraughtingCalloutElement;
 		 StepVisual_DraughtingCalloutElement();
 
@@ -2102,7 +2102,7 @@ opencascade::handle<StepVisual_AnnotationCurveOccurrence>
 
 Description
 -----------
-Returns value as a annotationcurveoccurrence (null if another type).
+returns Value as a AnnotationCurveOccurrence (Null if another type).
 ") AnnotationCurveOccurrence;
 		opencascade::handle<StepVisual_AnnotationCurveOccurrence> AnnotationCurveOccurrence();
 
@@ -2115,7 +2115,7 @@ opencascade::handle<StepVisual_AnnotationFillAreaOccurrence>
 
 Description
 -----------
-Returns value as a annotationfillareaoccurrence.
+returns Value as a AnnotationFillAreaOccurrence.
 ") AnnotationFillAreaOccurrence;
 		opencascade::handle<StepVisual_AnnotationFillAreaOccurrence> AnnotationFillAreaOccurrence();
 
@@ -2128,7 +2128,7 @@ opencascade::handle<StepVisual_AnnotationTextOccurrence>
 
 Description
 -----------
-Returns value as a annotationtextoccurrence.
+returns Value as a AnnotationTextOccurrence.
 ") AnnotationTextOccurrence;
 		opencascade::handle<StepVisual_AnnotationTextOccurrence> AnnotationTextOccurrence();
 
@@ -2146,7 +2146,7 @@ int
 
 Description
 -----------
-Recognizes a idattributeselect kind entity that is: 1 -> annotationcurveoccurrence 2 -> annotationtextoccurrence 3 -> tessellatedannotationoccurrence 4 -> annotationfillareaoccurrence 0 else.
+Recognizes a IdAttributeSelect Kind Entity that is: 1 -> AnnotationCurveOccurrence 2 -> AnnotationTextOccurrence 3 -> TessellatedAnnotationOccurrence 4 -> AnnotationFillAreaOccurrence 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2159,7 +2159,7 @@ opencascade::handle<StepVisual_TessellatedAnnotationOccurrence>
 
 Description
 -----------
-Returns value as a tessellatedannotationoccurrence.
+returns Value as a TessellatedAnnotationOccurrence.
 ") TessellatedAnnotationOccurrence;
 		opencascade::handle<StepVisual_TessellatedAnnotationOccurrence> TessellatedAnnotationOccurrence();
 
@@ -2233,7 +2233,7 @@ int
 
 Description
 -----------
-Recognizes a kind of edgeorcurve select type -- 1 -> curve -- 2 -> edge.
+Recognizes a kind of EdgeOrCurve select type -- 1 -> Curve -- 2 -> Edge.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2246,7 +2246,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns value as curve (or null if another type).
+Returns Value as Curve (or Null if another type).
 ") Curve;
 		opencascade::handle<StepGeom_Curve> Curve();
 
@@ -2259,7 +2259,7 @@ opencascade::handle<StepShape_Edge>
 
 Description
 -----------
-Returns value as edge (or null if another type).
+Returns Value as Edge (or Null if another type).
 ") Edge;
 		opencascade::handle<StepShape_Edge> Edge();
 
@@ -2362,7 +2362,7 @@ int
 
 Description
 -----------
-Recognizes a kind of faceorsurface select type -- 1 -> face -- 2 -> surface.
+Recognizes a kind of FaceOrSurface select type -- 1 -> Face -- 2 -> Surface.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2375,7 +2375,7 @@ opencascade::handle<StepShape_Face>
 
 Description
 -----------
-Returns value as face (or null if another type).
+Returns Value as Face (or Null if another type).
 ") Face;
 		opencascade::handle<StepShape_Face> Face();
 
@@ -2388,7 +2388,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns value as surface (or null if another type).
+Returns Value as Surface (or Null if another type).
 ") Surface;
 		opencascade::handle<StepGeom_Surface> Surface();
 
@@ -2415,7 +2415,7 @@ None
 
 Description
 -----------
-Returns a fillareastyle.
+Returns a FillAreaStyle.
 ") StepVisual_FillAreaStyle;
 		 StepVisual_FillAreaStyle();
 
@@ -2556,7 +2556,7 @@ None
 
 Description
 -----------
-Returns a fillareastylecolour.
+Returns a FillAreaStyleColour.
 ") StepVisual_FillAreaStyleColour;
 		 StepVisual_FillAreaStyleColour();
 
@@ -2666,7 +2666,7 @@ None
 
 Description
 -----------
-Returns a fillstyleselect selecttype.
+Returns a FillStyleSelect SelectType.
 ") StepVisual_FillStyleSelect;
 		 StepVisual_FillStyleSelect();
 
@@ -2684,7 +2684,7 @@ int
 
 Description
 -----------
-Recognizes a fillstyleselect kind entity that is: 1 -> fillareastylecolour 2 -> externallydefinedtilestyle 3 -> fillareastyletiles 4 -> externallydefinedhatchstyle 5 -> fillareastylehatching 0 else.
+Recognizes a FillStyleSelect Kind Entity that is: 1 -> FillAreaStyleColour 2 -> ExternallyDefinedTileStyle 3 -> FillAreaStyleTiles 4 -> ExternallyDefinedHatchStyle 5 -> FillAreaStyleHatching 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2697,7 +2697,7 @@ opencascade::handle<StepVisual_FillAreaStyleColour>
 
 Description
 -----------
-Returns value as a fillareastylecolour (null if another type).
+returns Value as a FillAreaStyleColour (Null if another type).
 ") FillAreaStyleColour;
 		opencascade::handle<StepVisual_FillAreaStyleColour> FillAreaStyleColour();
 
@@ -2724,7 +2724,7 @@ None
 
 Description
 -----------
-Returns a fontselect selecttype.
+Returns a FontSelect SelectType.
 ") StepVisual_FontSelect;
 		 StepVisual_FontSelect();
 
@@ -2742,7 +2742,7 @@ int
 
 Description
 -----------
-Recognizes a fontselect kind entity that is: 1 -> predefinedtextfont 2 -> externallydefinedtextfont 0 else.
+Recognizes a FontSelect Kind Entity that is: 1 -> PreDefinedTextFont 2 -> ExternallyDefinedTextFont 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2755,7 +2755,7 @@ opencascade::handle<StepVisual_ExternallyDefinedTextFont>
 
 Description
 -----------
-Returns value as a externallydefinedtextfont (null if another type).
+returns Value as a ExternallyDefinedTextFont (Null if another type).
 ") ExternallyDefinedTextFont;
 		opencascade::handle<StepVisual_ExternallyDefinedTextFont> ExternallyDefinedTextFont();
 
@@ -2768,7 +2768,7 @@ opencascade::handle<StepVisual_PreDefinedTextFont>
 
 Description
 -----------
-Returns value as a predefinedtextfont (null if another type).
+returns Value as a PreDefinedTextFont (Null if another type).
 ") PreDefinedTextFont;
 		opencascade::handle<StepVisual_PreDefinedTextFont> PreDefinedTextFont();
 
@@ -2795,7 +2795,7 @@ None
 
 Description
 -----------
-Returns a invisibility.
+Returns a Invisibility.
 ") StepVisual_Invisibility;
 		 StepVisual_Invisibility();
 
@@ -2904,7 +2904,7 @@ None
 
 Description
 -----------
-Returns a invisibilitycontext selecttype.
+Returns a InvisibilityContext SelectType.
 ") StepVisual_InvisibilityContext;
 		 StepVisual_InvisibilityContext();
 
@@ -2922,7 +2922,7 @@ int
 
 Description
 -----------
-Recognizes a invisibilitycontext kind entity that is: 1 -> presentationrepresentation 2 -> presentationset 2 -> draughtingmodel 0 else.
+Recognizes a InvisibilityContext Kind Entity that is: 1 -> PresentationRepresentation 2 -> PresentationSet 2 -> DraughtingModel 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2935,7 +2935,7 @@ opencascade::handle<StepVisual_DraughtingModel>
 
 Description
 -----------
-Returns value as a presentationset (null if another type).
+returns Value as a PresentationSet (Null if another type).
 ") DraughtingModel;
 		opencascade::handle<StepVisual_DraughtingModel> DraughtingModel();
 
@@ -2948,7 +2948,7 @@ opencascade::handle<StepVisual_PresentationRepresentation>
 
 Description
 -----------
-Returns value as a presentationrepresentation (null if another type).
+returns Value as a PresentationRepresentation (Null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
@@ -2961,7 +2961,7 @@ opencascade::handle<StepVisual_PresentationSet>
 
 Description
 -----------
-Returns value as a presentationset (null if another type).
+returns Value as a PresentationSet (Null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
@@ -2988,7 +2988,7 @@ None
 
 Description
 -----------
-Returns a invisibleitem selecttype.
+Returns a InvisibleItem SelectType.
 ") StepVisual_InvisibleItem;
 		 StepVisual_InvisibleItem();
 
@@ -3006,7 +3006,7 @@ int
 
 Description
 -----------
-Recognizes a invisibleitem kind entity that is: 1 -> styleditem 2 -> presentationlayerassignment 3 -> presentationrepresentation 0 else.
+Recognizes a InvisibleItem Kind Entity that is: 1 -> StyledItem 2 -> PresentationLayerAssignment 3 -> PresentationRepresentation 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3019,7 +3019,7 @@ opencascade::handle<StepVisual_PresentationLayerAssignment>
 
 Description
 -----------
-Returns value as a presentationlayerassignment (null if another type).
+returns Value as a PresentationLayerAssignment (Null if another type).
 ") PresentationLayerAssignment;
 		opencascade::handle<StepVisual_PresentationLayerAssignment> PresentationLayerAssignment();
 
@@ -3032,7 +3032,7 @@ opencascade::handle<StepVisual_PresentationRepresentation>
 
 Description
 -----------
-Returns value as a presentationrepresentation (null if another type).
+returns Value as a PresentationRepresentation (Null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
@@ -3045,7 +3045,7 @@ opencascade::handle<StepVisual_StyledItem>
 
 Description
 -----------
-Returns value as a styleditem (null if another type).
+returns Value as a StyledItem (Null if another type).
 ") StyledItem;
 		opencascade::handle<StepVisual_StyledItem> StyledItem();
 
@@ -3072,7 +3072,7 @@ None
 
 Description
 -----------
-Returns a layereditem selecttype.
+Returns a LayeredItem SelectType.
 ") StepVisual_LayeredItem;
 		 StepVisual_LayeredItem();
 
@@ -3090,7 +3090,7 @@ int
 
 Description
 -----------
-Recognizes a layereditem kind entity that is: 1 -> presentationrepresentation 2 -> representationitem 0 else.
+Recognizes a LayeredItem Kind Entity that is: 1 -> PresentationRepresentation 2 -> RepresentationItem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3103,7 +3103,7 @@ opencascade::handle<StepVisual_PresentationRepresentation>
 
 Description
 -----------
-Returns value as a presentationrepresentation (null if another type).
+returns Value as a PresentationRepresentation (Null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
@@ -3116,7 +3116,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns value as a representationitem (null if another type).
+returns Value as a RepresentationItem (Null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -3279,7 +3279,7 @@ None
 
 Description
 -----------
-Returns a markerselect selecttype.
+Returns a MarkerSelect SelectType.
 ") StepVisual_MarkerSelect;
 		 StepVisual_MarkerSelect();
 
@@ -3297,7 +3297,7 @@ int
 
 Description
 -----------
-Returns 1 for a selectmember enum, named marker_type.
+Returns 1 for a SelectMember enum, named MARKER_TYPE.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & sm);
 
@@ -3315,7 +3315,7 @@ int
 
 Description
 -----------
-Recognizes a markerselect kind entity that is: 0 else.
+Recognizes a MarkerSelect Kind Entity that is: 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3328,7 +3328,7 @@ opencascade::handle<StepVisual_MarkerMember>
 
 Description
 -----------
-Gives access to the markermember in order to get/set its value.
+Gives access to the MarkerMember in order to get/set its value.
 ") MarkerMember;
 		opencascade::handle<StepVisual_MarkerMember> MarkerMember();
 
@@ -3341,7 +3341,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new markermember.
+Returns a new MarkerMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -3535,7 +3535,7 @@ int
 
 Description
 -----------
-Recognizes a kind of pathorcompositecurve select type -- 1 -> compositecurve -- 2 -> path.
+Recognizes a kind of PathOrCompositeCurve select type -- 1 -> CompositeCurve -- 2 -> Path.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3548,7 +3548,7 @@ opencascade::handle<StepGeom_CompositeCurve>
 
 Description
 -----------
-Returns value as compositecurve (or null if another type).
+Returns Value as CompositeCurve (or Null if another type).
 ") CompositeCurve;
 		opencascade::handle<StepGeom_CompositeCurve> CompositeCurve();
 
@@ -3561,7 +3561,7 @@ opencascade::handle<StepShape_Path>
 
 Description
 -----------
-Returns value as path (or null if another type).
+Returns Value as Path (or Null if another type).
 ") Path;
 		opencascade::handle<StepShape_Path> Path();
 
@@ -3588,7 +3588,7 @@ None
 
 Description
 -----------
-Returns a planarextent.
+Returns a PlanarExtent.
 ") StepVisual_PlanarExtent;
 		 StepVisual_PlanarExtent();
 
@@ -3699,7 +3699,7 @@ None
 
 Description
 -----------
-Returns a pointstyle.
+Returns a PointStyle.
 ") StepVisual_PointStyle;
 		 StepVisual_PointStyle();
 
@@ -3873,7 +3873,7 @@ None
 
 Description
 -----------
-Returns a predefineditem.
+Returns a PreDefinedItem.
 ") StepVisual_PreDefinedItem;
 		 StepVisual_PreDefinedItem();
 
@@ -3951,7 +3951,7 @@ None
 
 Description
 -----------
-Returns a presentationlayerassignment.
+Returns a PresentationLayerAssignment.
 ") StepVisual_PresentationLayerAssignment;
 		 StepVisual_PresentationLayerAssignment();
 
@@ -4234,7 +4234,7 @@ None
 
 Description
 -----------
-Returns a presentationrepresentation.
+Returns a PresentationRepresentation.
 ") StepVisual_PresentationRepresentation;
 		 StepVisual_PresentationRepresentation();
 
@@ -4263,7 +4263,7 @@ None
 
 Description
 -----------
-Returns a presentationrepresentationselect selecttype.
+Returns a PresentationRepresentationSelect SelectType.
 ") StepVisual_PresentationRepresentationSelect;
 		 StepVisual_PresentationRepresentationSelect();
 
@@ -4281,7 +4281,7 @@ int
 
 Description
 -----------
-Recognizes a presentationrepresentationselect kind entity that is: 1 -> presentationrepresentation 2 -> presentationset 0 else.
+Recognizes a PresentationRepresentationSelect Kind Entity that is: 1 -> PresentationRepresentation 2 -> PresentationSet 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4294,7 +4294,7 @@ opencascade::handle<StepVisual_PresentationRepresentation>
 
 Description
 -----------
-Returns value as a presentationrepresentation (null if another type).
+returns Value as a PresentationRepresentation (Null if another type).
 ") PresentationRepresentation;
 		opencascade::handle<StepVisual_PresentationRepresentation> PresentationRepresentation();
 
@@ -4307,7 +4307,7 @@ opencascade::handle<StepVisual_PresentationSet>
 
 Description
 -----------
-Returns value as a presentationset (null if another type).
+returns Value as a PresentationSet (Null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
@@ -4334,7 +4334,7 @@ None
 
 Description
 -----------
-Returns a presentationset.
+Returns a PresentationSet.
 ") StepVisual_PresentationSet;
 		 StepVisual_PresentationSet();
 
@@ -4363,7 +4363,7 @@ None
 
 Description
 -----------
-Returns a presentationsize.
+Returns a PresentationSize.
 ") StepVisual_PresentationSize;
 		 StepVisual_PresentationSize();
 
@@ -4473,7 +4473,7 @@ None
 
 Description
 -----------
-Returns a presentationsizeassignmentselect selecttype.
+Returns a PresentationSizeAssignmentSelect SelectType.
 ") StepVisual_PresentationSizeAssignmentSelect;
 		 StepVisual_PresentationSizeAssignmentSelect();
 
@@ -4486,7 +4486,7 @@ opencascade::handle<StepVisual_AreaInSet>
 
 Description
 -----------
-Returns value as a areainset (null if another type).
+returns Value as a AreaInSet (Null if another type).
 ") AreaInSet;
 		opencascade::handle<StepVisual_AreaInSet> AreaInSet();
 
@@ -4504,7 +4504,7 @@ int
 
 Description
 -----------
-Recognizes a presentationsizeassignmentselect kind entity that is: 1 -> presentationview 2 -> presentationarea 3 -> areainset 0 else.
+Recognizes a PresentationSizeAssignmentSelect Kind Entity that is: 1 -> PresentationView 2 -> PresentationArea 3 -> AreaInSet 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4517,7 +4517,7 @@ opencascade::handle<StepVisual_PresentationArea>
 
 Description
 -----------
-Returns value as a presentationarea (null if another type).
+returns Value as a PresentationArea (Null if another type).
 ") PresentationArea;
 		opencascade::handle<StepVisual_PresentationArea> PresentationArea();
 
@@ -4530,7 +4530,7 @@ opencascade::handle<StepVisual_PresentationView>
 
 Description
 -----------
-Returns value as a presentationview (null if another type).
+returns Value as a PresentationView (Null if another type).
 ") PresentationView;
 		opencascade::handle<StepVisual_PresentationView> PresentationView();
 
@@ -4557,7 +4557,7 @@ None
 
 Description
 -----------
-Returns a presentationstyleassignment.
+Returns a PresentationStyleAssignment.
 ") StepVisual_PresentationStyleAssignment;
 		 StepVisual_PresentationStyleAssignment();
 
@@ -4666,7 +4666,7 @@ None
 
 Description
 -----------
-Returns a presentationstyleselect selecttype.
+Returns a PresentationStyleSelect SelectType.
 ") StepVisual_PresentationStyleSelect;
 		 StepVisual_PresentationStyleSelect();
 
@@ -4684,7 +4684,7 @@ int
 
 Description
 -----------
-Recognizes a presentationstyleselect kind entity that is: 1 -> pointstyle 2 -> curvestyle 3 -> surfacestyleusage 4 -> symbolstyle 5 -> fillareastyle 6 -> textstyle 7 -> nullstyle 0 else.
+Recognizes a PresentationStyleSelect Kind Entity that is: 1 -> PointStyle 2 -> CurveStyle 3 -> SurfaceStyleUsage 4 -> SymbolStyle 5 -> FillAreaStyle 6 -> TextStyle 7 -> NullStyle 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4697,7 +4697,7 @@ opencascade::handle<StepVisual_CurveStyle>
 
 Description
 -----------
-Returns value as a curvestyle (null if another type).
+returns Value as a CurveStyle (Null if another type).
 ") CurveStyle;
 		opencascade::handle<StepVisual_CurveStyle> CurveStyle();
 
@@ -4710,7 +4710,7 @@ opencascade::handle<StepVisual_NullStyleMember>
 
 Description
 -----------
-Returns value as a nullstylemember (null if another type).
+returns Value as a NullStyleMember (Null if another type).
 ") NullStyle;
 		opencascade::handle<StepVisual_NullStyleMember> NullStyle();
 
@@ -4723,7 +4723,7 @@ opencascade::handle<StepVisual_PointStyle>
 
 Description
 -----------
-Returns value as a pointstyle (null if another type).
+returns Value as a PointStyle (Null if another type).
 ") PointStyle;
 		opencascade::handle<StepVisual_PointStyle> PointStyle();
 
@@ -4736,7 +4736,7 @@ opencascade::handle<StepVisual_SurfaceStyleUsage>
 
 Description
 -----------
-Returns value as a surfacestyleusage (null if another type).
+returns Value as a SurfaceStyleUsage (Null if another type).
 ") SurfaceStyleUsage;
 		opencascade::handle<StepVisual_SurfaceStyleUsage> SurfaceStyleUsage();
 
@@ -4907,7 +4907,7 @@ int
 
 Description
 -----------
-Recognizes a kind of renderingpropertiesselect select type -- 1 -> surfacestylereflectanceambient -- 2 -> surfacestyletransparent.
+Recognizes a kind of RenderingPropertiesSelect select type -- 1 -> SurfaceStyleReflectanceAmbient -- 2 -> SurfaceStyleTransparent.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4920,7 +4920,7 @@ opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient>
 
 Description
 -----------
-Returns value as surfacestylereflectanceambient (or null if another type).
+Returns Value as SurfaceStyleReflectanceAmbient (or Null if another type).
 ") SurfaceStyleReflectanceAmbient;
 		opencascade::handle<StepVisual_SurfaceStyleReflectanceAmbient> SurfaceStyleReflectanceAmbient();
 
@@ -4933,7 +4933,7 @@ opencascade::handle<StepVisual_SurfaceStyleTransparent>
 
 Description
 -----------
-Returns value as surfacestyletransparent (or null if another type).
+Returns Value as SurfaceStyleTransparent (or Null if another type).
 ") SurfaceStyleTransparent;
 		opencascade::handle<StepVisual_SurfaceStyleTransparent> SurfaceStyleTransparent();
 
@@ -4960,7 +4960,7 @@ None
 
 Description
 -----------
-Returns a stylecontextselect selecttype.
+Returns a StyleContextSelect SelectType.
 ") StepVisual_StyleContextSelect;
 		 StepVisual_StyleContextSelect();
 
@@ -4978,7 +4978,7 @@ int
 
 Description
 -----------
-Recognizes a stylecontextselect kind entity that is: 1 -> representation 2 -> representationitem 3 -> presentationset 0 else.
+Recognizes a StyleContextSelect Kind Entity that is: 1 -> Representation 2 -> RepresentationItem 3 -> PresentationSet 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4991,7 +4991,7 @@ opencascade::handle<StepVisual_PresentationSet>
 
 Description
 -----------
-Returns value as a presentationset (null if another type).
+returns Value as a PresentationSet (Null if another type).
 ") PresentationSet;
 		opencascade::handle<StepVisual_PresentationSet> PresentationSet();
 
@@ -5004,7 +5004,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
@@ -5017,7 +5017,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns value as a representationitem (null if another type).
+returns Value as a RepresentationItem (Null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -5044,7 +5044,7 @@ None
 
 Description
 -----------
-Returns a styleditem.
+Returns a StyledItem.
 ") StepVisual_StyledItem;
 		 StepVisual_StyledItem();
 
@@ -5217,7 +5217,7 @@ None
 
 Description
 -----------
-Returns a styleditemtarget select type.
+Returns a StyledItemTarget select type.
 ") StepVisual_StyledItemTarget;
 		 StepVisual_StyledItemTarget();
 
@@ -5235,7 +5235,7 @@ int
 
 Description
 -----------
-Recognizes a styleditemtarget kind entity that is: 1 -> geometricrepresentationitem 2 -> mappeditem 3 -> representation 4 -> topologicalrepresentationitem 0 else.
+Recognizes a StyledItemTarget Kind Entity that is: 1 -> GeometricRepresentationItem 2 -> MappedItem 3 -> Representation 4 -> TopologicalRepresentationItem 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5248,7 +5248,7 @@ opencascade::handle<StepGeom_GeometricRepresentationItem>
 
 Description
 -----------
-Returns value as a geometricrepresentationitem (null if another type).
+returns Value as a GeometricRepresentationItem (Null if another type).
 ") GeometricRepresentationItem;
 		opencascade::handle<StepGeom_GeometricRepresentationItem> GeometricRepresentationItem();
 
@@ -5261,7 +5261,7 @@ opencascade::handle<StepRepr_MappedItem>
 
 Description
 -----------
-Returns value as a mappeditem (null if another type).
+returns Value as a MappedItem (Null if another type).
 ") MappedItem;
 		opencascade::handle<StepRepr_MappedItem> MappedItem();
 
@@ -5274,7 +5274,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
@@ -5287,7 +5287,7 @@ opencascade::handle<StepShape_TopologicalRepresentationItem>
 
 Description
 -----------
-Returns value as a topologicalrepresentationitem (null if another type).
+returns Value as a TopologicalRepresentationItem (Null if another type).
 ") TopologicalRepresentationItem;
 		opencascade::handle<StepShape_TopologicalRepresentationItem> TopologicalRepresentationItem();
 
@@ -5314,7 +5314,7 @@ None
 
 Description
 -----------
-Returns a surfacesidestyle.
+Returns a SurfaceSideStyle.
 ") StepVisual_SurfaceSideStyle;
 		 StepVisual_SurfaceSideStyle();
 
@@ -5455,7 +5455,7 @@ None
 
 Description
 -----------
-Returns a surfacestyleboundary.
+Returns a SurfaceStyleBoundary.
 ") StepVisual_SurfaceStyleBoundary;
 		 StepVisual_SurfaceStyleBoundary();
 
@@ -5533,7 +5533,7 @@ None
 
 Description
 -----------
-Returns a surfacestylecontrolgrid.
+Returns a SurfaceStyleControlGrid.
 ") StepVisual_SurfaceStyleControlGrid;
 		 StepVisual_SurfaceStyleControlGrid();
 
@@ -5611,7 +5611,7 @@ None
 
 Description
 -----------
-Returns a surfacestyleelementselect selecttype.
+Returns a SurfaceStyleElementSelect SelectType.
 ") StepVisual_SurfaceStyleElementSelect;
 		 StepVisual_SurfaceStyleElementSelect();
 
@@ -5629,7 +5629,7 @@ int
 
 Description
 -----------
-Recognizes a surfacestyleelementselect kind entity that is: 1 -> surfacestylefillarea 2 -> surfacestyleboundary 3 -> surfacestyleparameterline 4 -> surfacestylesilhouette 5 -> surfacestylesegmentationcurve 6 -> surfacestylecontrolgrid 7 -> surfacestylerendering 0 else.
+Recognizes a SurfaceStyleElementSelect Kind Entity that is: 1 -> SurfaceStyleFillArea 2 -> SurfaceStyleBoundary 3 -> SurfaceStyleParameterLine 4 -> SurfaceStyleSilhouette 5 -> SurfaceStyleSegmentationCurve 6 -> SurfaceStyleControlGrid 7 -> SurfaceStyleRendering 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5642,7 +5642,7 @@ opencascade::handle<StepVisual_SurfaceStyleBoundary>
 
 Description
 -----------
-Returns value as a surfacestyleboundary (null if another type).
+returns Value as a SurfaceStyleBoundary (Null if another type).
 ") SurfaceStyleBoundary;
 		opencascade::handle<StepVisual_SurfaceStyleBoundary> SurfaceStyleBoundary();
 
@@ -5655,7 +5655,7 @@ opencascade::handle<StepVisual_SurfaceStyleFillArea>
 
 Description
 -----------
-Returns value as a surfacestylefillarea (null if another type).
+returns Value as a SurfaceStyleFillArea (Null if another type).
 ") SurfaceStyleFillArea;
 		opencascade::handle<StepVisual_SurfaceStyleFillArea> SurfaceStyleFillArea();
 
@@ -5668,7 +5668,7 @@ opencascade::handle<StepVisual_SurfaceStyleParameterLine>
 
 Description
 -----------
-Returns value as a surfacestyleparameterline (null if another type).
+returns Value as a SurfaceStyleParameterLine (Null if another type).
 ") SurfaceStyleParameterLine;
 		opencascade::handle<StepVisual_SurfaceStyleParameterLine> SurfaceStyleParameterLine();
 
@@ -5681,7 +5681,7 @@ opencascade::handle<StepVisual_SurfaceStyleRendering>
 
 Description
 -----------
-Returns value as a surfacestylerendering (null if another type).
+returns Value as a SurfaceStyleRendering (Null if another type).
 ") SurfaceStyleRendering;
 		opencascade::handle<StepVisual_SurfaceStyleRendering> SurfaceStyleRendering();
 
@@ -5708,7 +5708,7 @@ None
 
 Description
 -----------
-Returns a surfacestylefillarea.
+Returns a SurfaceStyleFillArea.
 ") StepVisual_SurfaceStyleFillArea;
 		 StepVisual_SurfaceStyleFillArea();
 
@@ -5786,7 +5786,7 @@ None
 
 Description
 -----------
-Returns a surfacestyleparameterline.
+Returns a SurfaceStyleParameterLine.
 ") StepVisual_SurfaceStyleParameterLine;
 		 StepVisual_SurfaceStyleParameterLine();
 
@@ -5927,7 +5927,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_SurfaceStyleReflectanceAmbient;
 		 StepVisual_SurfaceStyleReflectanceAmbient();
 
@@ -5940,7 +5940,7 @@ float
 
 Description
 -----------
-Returns field ambientreflectance.
+Returns field AmbientReflectance.
 ") AmbientReflectance;
 		Standard_Real AmbientReflectance();
 
@@ -5976,7 +5976,7 @@ None
 
 Description
 -----------
-Sets field ambientreflectance.
+Sets field AmbientReflectance.
 ") SetAmbientReflectance;
 		void SetAmbientReflectance(const Standard_Real theAmbientReflectance);
 
@@ -6005,7 +6005,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_SurfaceStyleRendering;
 		 StepVisual_SurfaceStyleRendering();
 
@@ -6037,7 +6037,7 @@ StepVisual_ShadingSurfaceMethod
 
 Description
 -----------
-Returns field renderingmethod.
+Returns field RenderingMethod.
 ") RenderingMethod;
 		StepVisual_ShadingSurfaceMethod RenderingMethod();
 
@@ -6055,7 +6055,7 @@ None
 
 Description
 -----------
-Sets field renderingmethod.
+Sets field RenderingMethod.
 ") SetRenderingMethod;
 		void SetRenderingMethod(const StepVisual_ShadingSurfaceMethod theRenderingMethod);
 
@@ -6073,7 +6073,7 @@ None
 
 Description
 -----------
-Sets field surfacecolour.
+Sets field SurfaceColour.
 ") SetSurfaceColour;
 		void SetSurfaceColour(const opencascade::handle<StepVisual_Colour> & theSurfaceColour);
 
@@ -6086,7 +6086,7 @@ opencascade::handle<StepVisual_Colour>
 
 Description
 -----------
-Returns field surfacecolour.
+Returns field SurfaceColour.
 ") SurfaceColour;
 		opencascade::handle<StepVisual_Colour> SurfaceColour();
 
@@ -6115,7 +6115,7 @@ None
 
 Description
 -----------
-Returns a surfacestylesegmentationcurve.
+Returns a SurfaceStyleSegmentationCurve.
 ") StepVisual_SurfaceStyleSegmentationCurve;
 		 StepVisual_SurfaceStyleSegmentationCurve();
 
@@ -6193,7 +6193,7 @@ None
 
 Description
 -----------
-Returns a surfacestylesilhouette.
+Returns a SurfaceStyleSilhouette.
 ") StepVisual_SurfaceStyleSilhouette;
 		 StepVisual_SurfaceStyleSilhouette();
 
@@ -6271,7 +6271,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_SurfaceStyleTransparent;
 		 StepVisual_SurfaceStyleTransparent();
 
@@ -6307,7 +6307,7 @@ None
 
 Description
 -----------
-Sets field transparency.
+Sets field Transparency.
 ") SetTransparency;
 		void SetTransparency(const Standard_Real theTransparency);
 
@@ -6320,7 +6320,7 @@ float
 
 Description
 -----------
-Returns field transparency.
+Returns field Transparency.
 ") Transparency;
 		Standard_Real Transparency();
 
@@ -6349,7 +6349,7 @@ None
 
 Description
 -----------
-Returns a surfacestyleusage.
+Returns a SurfaceStyleUsage.
 ") StepVisual_SurfaceStyleUsage;
 		 StepVisual_SurfaceStyleUsage();
 
@@ -6459,7 +6459,7 @@ None
 
 Description
 -----------
-Returns a template.
+Returns a Template.
 ") StepVisual_Template;
 		 StepVisual_Template();
 
@@ -6488,7 +6488,7 @@ None
 
 Description
 -----------
-Returns a templateinstance.
+Returns a TemplateInstance.
 ") StepVisual_TemplateInstance;
 		 StepVisual_TemplateInstance();
 
@@ -6535,7 +6535,7 @@ int
 
 Description
 -----------
-Recognizes a kind of tessellatededgeorvertex select type -- 1 -> tessellatededge -- 2 -> tessellatedvertex.
+Recognizes a kind of TessellatedEdgeOrVertex select type -- 1 -> TessellatedEdge -- 2 -> TessellatedVertex.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6548,7 +6548,7 @@ opencascade::handle<StepVisual_TessellatedEdge>
 
 Description
 -----------
-Returns value as tessellatededge (or null if another type).
+Returns Value as TessellatedEdge (or Null if another type).
 ") TessellatedEdge;
 		opencascade::handle<StepVisual_TessellatedEdge> TessellatedEdge();
 
@@ -6561,7 +6561,7 @@ opencascade::handle<StepVisual_TessellatedVertex>
 
 Description
 -----------
-Returns value as tessellatedvertex (or null if another type).
+Returns Value as TessellatedVertex (or Null if another type).
 ") TessellatedVertex;
 		opencascade::handle<StepVisual_TessellatedVertex> TessellatedVertex();
 
@@ -6588,7 +6588,7 @@ None
 
 Description
 -----------
-Returns a draughtingcalloutelement select type.
+Returns a DraughtingCalloutElement select type.
 ") StepVisual_TessellatedItem;
 		 StepVisual_TessellatedItem();
 
@@ -6617,7 +6617,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedShapeRepresentation;
 		 StepVisual_TessellatedShapeRepresentation();
 
@@ -6646,7 +6646,7 @@ None
 
 Description
 -----------
-Returns a textliteral.
+Returns a TextLiteral.
 ") StepVisual_TextLiteral;
 		 StepVisual_TextLiteral();
 
@@ -6853,7 +6853,7 @@ None
 
 Description
 -----------
-Returns a textorcharacter selecttype.
+Returns a TextOrCharacter SelectType.
 ") StepVisual_TextOrCharacter;
 		 StepVisual_TextOrCharacter();
 
@@ -6866,7 +6866,7 @@ opencascade::handle<StepVisual_AnnotationText>
 
 Description
 -----------
-Returns value as a annotationtext (null if another type).
+returns Value as a AnnotationText (Null if another type).
 ") AnnotationText;
 		opencascade::handle<StepVisual_AnnotationText> AnnotationText();
 
@@ -6884,7 +6884,7 @@ int
 
 Description
 -----------
-Recognizes a textorcharacter kind entity that is: 1 -> annotationtext 2 -> compositetext 3 -> textliteral 0 else.
+Recognizes a TextOrCharacter Kind Entity that is: 1 -> AnnotationText 2 -> CompositeText 3 -> TextLiteral 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6897,7 +6897,7 @@ opencascade::handle<StepVisual_CompositeText>
 
 Description
 -----------
-Returns value as a compositetext (null if another type).
+returns Value as a CompositeText (Null if another type).
 ") CompositeText;
 		opencascade::handle<StepVisual_CompositeText> CompositeText();
 
@@ -6910,7 +6910,7 @@ opencascade::handle<StepVisual_TextLiteral>
 
 Description
 -----------
-Returns value as a textliteral (null if another type).
+returns Value as a TextLiteral (Null if another type).
 ") TextLiteral;
 		opencascade::handle<StepVisual_TextLiteral> TextLiteral();
 
@@ -6937,7 +6937,7 @@ None
 
 Description
 -----------
-Returns a textstyle.
+Returns a TextStyle.
 ") StepVisual_TextStyle;
 		 StepVisual_TextStyle();
 
@@ -7047,7 +7047,7 @@ None
 
 Description
 -----------
-Returns a textstylefordefinedfont.
+Returns a TextStyleForDefinedFont.
 ") StepVisual_TextStyleForDefinedFont;
 		 StepVisual_TextStyleForDefinedFont();
 
@@ -7125,7 +7125,7 @@ None
 
 Description
 -----------
-Returns a viewvolume.
+Returns a ViewVolume.
 ") StepVisual_ViewVolume;
 		 StepVisual_ViewVolume();
 
@@ -7459,7 +7459,7 @@ None
 
 Description
 -----------
-Returns a annotationoccurrence.
+Returns a AnnotationOccurrence.
 ") StepVisual_AnnotationOccurrence;
 		 StepVisual_AnnotationOccurrence();
 
@@ -7488,7 +7488,7 @@ None
 
 Description
 -----------
-Returns a backgroundcolour.
+Returns a BackgroundColour.
 ") StepVisual_BackgroundColour;
 		 StepVisual_BackgroundColour();
 
@@ -7624,7 +7624,7 @@ None
 
 Description
 -----------
-Returns a cameramodeld2.
+Returns a CameraModelD2.
 ") StepVisual_CameraModelD2;
 		 StepVisual_CameraModelD2();
 
@@ -7735,7 +7735,7 @@ None
 
 Description
 -----------
-Returns a cameramodeld3.
+Returns a CameraModelD3.
 ") StepVisual_CameraModelD3;
 		 StepVisual_CameraModelD3();
 
@@ -7875,7 +7875,7 @@ None
 
 Description
 -----------
-Returns a colourspecification.
+Returns a ColourSpecification.
 ") StepVisual_ColourSpecification;
 		 StepVisual_ColourSpecification();
 
@@ -7953,7 +7953,7 @@ None
 
 Description
 -----------
-Returns a compositetextwithextent.
+Returns a CompositeTextWithExtent.
 ") StepVisual_CompositeTextWithExtent;
 		 StepVisual_CompositeTextWithExtent();
 
@@ -8033,7 +8033,7 @@ None
 
 Description
 -----------
-Returns a contextdependentinvisibility.
+Returns a ContextDependentInvisibility.
 ") StepVisual_ContextDependentInvisibility;
 		 StepVisual_ContextDependentInvisibility();
 
@@ -8173,7 +8173,7 @@ None
 
 Description
 -----------
-Returns a mechanicaldesigngeometricpresentationrepresentation.
+Returns a MechanicalDesignGeometricPresentationRepresentation.
 ") StepVisual_MechanicalDesignGeometricPresentationRepresentation;
 		 StepVisual_MechanicalDesignGeometricPresentationRepresentation();
 
@@ -8202,7 +8202,7 @@ None
 
 Description
 -----------
-Returns a overridingstyleditem.
+Returns a OverRidingStyledItem.
 ") StepVisual_OverRidingStyledItem;
 		 StepVisual_OverRidingStyledItem();
 
@@ -8283,7 +8283,7 @@ None
 
 Description
 -----------
-Returns a planarbox.
+Returns a PlanarBox.
 ") StepVisual_PlanarBox;
 		 StepVisual_PlanarBox();
 
@@ -8364,7 +8364,7 @@ None
 
 Description
 -----------
-Returns a predefinedcolour.
+Returns a PreDefinedColour.
 ") StepVisual_PreDefinedColour;
 		 StepVisual_PreDefinedColour();
 
@@ -8377,7 +8377,7 @@ opencascade::handle<StepVisual_PreDefinedItem>
 
 Description
 -----------
-Return a pre_defined_item part.
+return a pre_defined_item part.
 ") GetPreDefinedItem;
 		const opencascade::handle<StepVisual_PreDefinedItem> & GetPreDefinedItem();
 
@@ -8395,7 +8395,7 @@ None
 
 Description
 -----------
-Set a pre_defined_item part.
+set a pre_defined_item part.
 ") SetPreDefinedItem;
 		void SetPreDefinedItem(const opencascade::handle<StepVisual_PreDefinedItem> & item);
 
@@ -8424,7 +8424,7 @@ None
 
 Description
 -----------
-Returns a predefinedcurvefont.
+Returns a PreDefinedCurveFont.
 ") StepVisual_PreDefinedCurveFont;
 		 StepVisual_PreDefinedCurveFont();
 
@@ -8453,7 +8453,7 @@ None
 
 Description
 -----------
-Returns a predefinedtextfont.
+Returns a PreDefinedTextFont.
 ") StepVisual_PreDefinedTextFont;
 		 StepVisual_PreDefinedTextFont();
 
@@ -8482,7 +8482,7 @@ None
 
 Description
 -----------
-Returns a presentationarea.
+Returns a PresentationArea.
 ") StepVisual_PresentationArea;
 		 StepVisual_PresentationArea();
 
@@ -8511,7 +8511,7 @@ None
 
 Description
 -----------
-Returns a presentationstylebycontext.
+Returns a PresentationStyleByContext.
 ") StepVisual_PresentationStyleByContext;
 		 StepVisual_PresentationStyleByContext();
 
@@ -8590,7 +8590,7 @@ None
 
 Description
 -----------
-Returns a presentationview.
+Returns a PresentationView.
 ") StepVisual_PresentationView;
 		 StepVisual_PresentationView();
 
@@ -8698,7 +8698,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_SurfaceStyleRenderingWithProperties;
 		 StepVisual_SurfaceStyleRenderingWithProperties();
 
@@ -8731,7 +8731,7 @@ opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect>
 
 Description
 -----------
-Returns field properties.
+Returns field Properties.
 ") Properties;
 		opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> Properties();
 
@@ -8749,7 +8749,7 @@ None
 
 Description
 -----------
-Sets field properties.
+Sets field Properties.
 ") SetProperties;
 		void SetProperties(const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
 
@@ -8778,7 +8778,7 @@ None
 
 Description
 -----------
-Returns a tesselatedannotationoccurence.
+Returns a TesselatedAnnotationOccurence.
 ") StepVisual_TessellatedAnnotationOccurrence;
 		 StepVisual_TessellatedAnnotationOccurrence();
 
@@ -8807,7 +8807,7 @@ None
 
 Description
 -----------
-Returns a draughtingcalloutelement select type.
+Returns a DraughtingCalloutElement select type.
 ") StepVisual_TessellatedCurveSet;
 		 StepVisual_TessellatedCurveSet();
 
@@ -8882,7 +8882,7 @@ None
 
 Description
 -----------
-Returns a draughtingcalloutelement select type.
+Returns a DraughtingCalloutElement select type.
 ") StepVisual_TessellatedGeometricSet;
 		 StepVisual_TessellatedGeometricSet();
 
@@ -8943,7 +8943,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedPointSet;
 		 StepVisual_TessellatedPointSet();
 
@@ -8956,7 +8956,7 @@ opencascade::handle<StepVisual_CoordinatesList>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
@@ -8989,7 +8989,7 @@ int
 
 Description
 -----------
-Returns number of pointlist.
+Returns number of PointList.
 ") NbPointList;
 		Standard_Integer NbPointList();
 
@@ -9002,7 +9002,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field pointlist.
+Returns field PointList.
 ") PointList;
 		opencascade::handle<TColStd_HArray1OfInteger> PointList();
 
@@ -9020,7 +9020,7 @@ int
 
 Description
 -----------
-Returns value of pointlist by its num.
+Returns value of PointList by its num.
 ") PointListValue;
 		Standard_Integer PointListValue(const Standard_Integer theNum);
 
@@ -9038,7 +9038,7 @@ None
 
 Description
 -----------
-Sets field coordinates.
+Sets field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
@@ -9056,7 +9056,7 @@ None
 
 Description
 -----------
-Sets field pointlist.
+Sets field PointList.
 ") SetPointList;
 		void SetPointList(const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
 
@@ -9085,7 +9085,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedShapeRepresentationWithAccuracyParameters;
 		 StepVisual_TessellatedShapeRepresentationWithAccuracyParameters();
 
@@ -9119,7 +9119,7 @@ int
 
 Description
 -----------
-Returns number of tessellationaccuracyparameters.
+Returns number of TessellationAccuracyParameters.
 ") NbTessellationAccuracyParameters;
 		Standard_Integer NbTessellationAccuracyParameters();
 
@@ -9137,7 +9137,7 @@ None
 
 Description
 -----------
-Sets field tessellationaccuracyparameters.
+Sets field TessellationAccuracyParameters.
 ") SetTessellationAccuracyParameters;
 		void SetTessellationAccuracyParameters(const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
 
@@ -9150,7 +9150,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns field tessellationaccuracyparameters.
+Returns field TessellationAccuracyParameters.
 ") TessellationAccuracyParameters;
 		opencascade::handle<TColStd_HArray1OfReal> TessellationAccuracyParameters();
 
@@ -9168,7 +9168,7 @@ float
 
 Description
 -----------
-Returns value of tessellationaccuracyparameters by its num.
+Returns value of TessellationAccuracyParameters by its num.
 ") TessellationAccuracyParametersValue;
 		const Standard_Real & TessellationAccuracyParametersValue(const Standard_Integer theNum);
 
@@ -9197,7 +9197,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedShell;
 		 StepVisual_TessellatedShell();
 
@@ -9210,7 +9210,7 @@ bool
 
 Description
 -----------
-Returns true if optional field topologicallink is defined.
+Returns True if optional field TopologicalLink is defined.
 ") HasTopologicalLink;
 		Standard_Boolean HasTopologicalLink();
 
@@ -9244,7 +9244,7 @@ opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
 
@@ -9262,7 +9262,7 @@ opencascade::handle<StepVisual_TessellatedStructuredItem>
 
 Description
 -----------
-Returns value of items by its num.
+Returns value of Items by its num.
 ") ItemsValue;
 		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
 
@@ -9275,7 +9275,7 @@ int
 
 Description
 -----------
-Returns number of items.
+Returns number of Items.
 ") NbItems;
 		Standard_Integer NbItems();
 
@@ -9293,7 +9293,7 @@ None
 
 Description
 -----------
-Sets field items.
+Sets field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
 
@@ -9311,7 +9311,7 @@ None
 
 Description
 -----------
-Sets field topologicallink.
+Sets field TopologicalLink.
 ") SetTopologicalLink;
 		void SetTopologicalLink(const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
 
@@ -9324,7 +9324,7 @@ opencascade::handle<StepShape_ConnectedFaceSet>
 
 Description
 -----------
-Returns field topologicallink.
+Returns field TopologicalLink.
 ") TopologicalLink;
 		opencascade::handle<StepShape_ConnectedFaceSet> TopologicalLink();
 
@@ -9353,7 +9353,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedSolid;
 		 StepVisual_TessellatedSolid();
 
@@ -9366,7 +9366,7 @@ opencascade::handle<StepShape_ManifoldSolidBrep>
 
 Description
 -----------
-Returns field geometriclink.
+Returns field GeometricLink.
 ") GeometricLink;
 		opencascade::handle<StepShape_ManifoldSolidBrep> GeometricLink();
 
@@ -9379,7 +9379,7 @@ bool
 
 Description
 -----------
-Returns true if optional field geometriclink is defined.
+Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
@@ -9413,7 +9413,7 @@ opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
 
@@ -9431,7 +9431,7 @@ opencascade::handle<StepVisual_TessellatedStructuredItem>
 
 Description
 -----------
-Returns value of items by its num.
+Returns value of Items by its num.
 ") ItemsValue;
 		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
 
@@ -9444,7 +9444,7 @@ int
 
 Description
 -----------
-Returns number of items.
+Returns number of Items.
 ") NbItems;
 		Standard_Integer NbItems();
 
@@ -9462,7 +9462,7 @@ None
 
 Description
 -----------
-Sets field geometriclink.
+Sets field GeometricLink.
 ") SetGeometricLink;
 		void SetGeometricLink(const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
 
@@ -9480,7 +9480,7 @@ None
 
 Description
 -----------
-Sets field items.
+Sets field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
 
@@ -9509,7 +9509,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedStructuredItem;
 		 StepVisual_TessellatedStructuredItem();
 
@@ -9538,7 +9538,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedSurfaceSet;
 		 StepVisual_TessellatedSurfaceSet();
 
@@ -9551,7 +9551,7 @@ opencascade::handle<StepVisual_CoordinatesList>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
@@ -9585,7 +9585,7 @@ int
 
 Description
 -----------
-Returns number of normals.
+Returns number of Normals.
 ") NbNormals;
 		Standard_Integer NbNormals();
 
@@ -9598,7 +9598,7 @@ opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
-Returns field normals.
+Returns field Normals.
 ") Normals;
 		opencascade::handle<TColStd_HArray2OfReal> Normals();
 
@@ -9611,7 +9611,7 @@ int
 
 Description
 -----------
-Returns field pnmax.
+Returns field Pnmax.
 ") Pnmax;
 		Standard_Integer Pnmax();
 
@@ -9629,7 +9629,7 @@ None
 
 Description
 -----------
-Sets field coordinates.
+Sets field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
@@ -9647,7 +9647,7 @@ None
 
 Description
 -----------
-Sets field normals.
+Sets field Normals.
 ") SetNormals;
 		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
 
@@ -9665,7 +9665,7 @@ None
 
 Description
 -----------
-Sets field pnmax.
+Sets field Pnmax.
 ") SetPnmax;
 		void SetPnmax(const Standard_Integer thePnmax);
 
@@ -9694,7 +9694,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedWire;
 		 StepVisual_TessellatedWire();
 
@@ -9707,7 +9707,7 @@ StepVisual_PathOrCompositeCurve
 
 Description
 -----------
-Returns field geometricmodellink.
+Returns field GeometricModelLink.
 ") GeometricModelLink;
 		StepVisual_PathOrCompositeCurve GeometricModelLink();
 
@@ -9720,7 +9720,7 @@ bool
 
 Description
 -----------
-Returns true if optional field geometricmodellink is defined.
+Returns True if optional field GeometricModelLink is defined.
 ") HasGeometricModelLink;
 		Standard_Boolean HasGeometricModelLink();
 
@@ -9754,7 +9754,7 @@ opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> Items();
 
@@ -9772,7 +9772,7 @@ StepVisual_TessellatedEdgeOrVertex
 
 Description
 -----------
-Returns value of items by its num.
+Returns value of Items by its num.
 ") ItemsValue;
 		const StepVisual_TessellatedEdgeOrVertex & ItemsValue(const Standard_Integer theNum);
 
@@ -9785,7 +9785,7 @@ int
 
 Description
 -----------
-Returns number of items.
+Returns number of Items.
 ") NbItems;
 		Standard_Integer NbItems();
 
@@ -9803,7 +9803,7 @@ None
 
 Description
 -----------
-Sets field geometricmodellink.
+Sets field GeometricModelLink.
 ") SetGeometricModelLink;
 		void SetGeometricModelLink(const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
 
@@ -9821,7 +9821,7 @@ None
 
 Description
 -----------
-Sets field items.
+Sets field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems);
 
@@ -9850,7 +9850,7 @@ None
 
 Description
 -----------
-Returns a textstylewithboxcharacteristics.
+Returns a TextStyleWithBoxCharacteristics.
 ") StepVisual_TextStyleWithBoxCharacteristics;
 		 StepVisual_TextStyleWithBoxCharacteristics();
 
@@ -9961,7 +9961,7 @@ None
 
 Description
 -----------
-Returns a annotationcurveoccurrence.
+Returns a AnnotationCurveOccurrence.
 ") StepVisual_AnnotationCurveOccurrence;
 		 StepVisual_AnnotationCurveOccurrence();
 
@@ -9990,7 +9990,7 @@ None
 
 Description
 -----------
-Returns a annotationfillareaoccurrence.
+Returns a AnnotationFillAreaOccurrence.
 ") StepVisual_AnnotationFillAreaOccurrence;
 		 StepVisual_AnnotationFillAreaOccurrence();
 
@@ -10071,7 +10071,7 @@ None
 
 Description
 -----------
-Returns a annotationplane.
+Returns a AnnotationPlane.
 ") StepVisual_AnnotationPlane;
 		 StepVisual_AnnotationPlane();
 
@@ -10084,7 +10084,7 @@ opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement>
 
 Description
 -----------
-Returns field elements.
+Returns field Elements.
 ") Elements;
 		opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> Elements();
 
@@ -10102,7 +10102,7 @@ StepVisual_AnnotationPlaneElement
 
 Description
 -----------
-Returns elements with the given number.
+Returns Elements with the given number.
 ") ElementsValue;
 		StepVisual_AnnotationPlaneElement ElementsValue(const Standard_Integer theNum);
 
@@ -10136,7 +10136,7 @@ int
 
 Description
 -----------
-Returns number of elements.
+Returns number of Elements.
 ") NbElements;
 		Standard_Integer NbElements();
 
@@ -10154,7 +10154,7 @@ None
 
 Description
 -----------
-Set field elements.
+Set field Elements.
 ") SetElements;
 		void SetElements(const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
 
@@ -10173,7 +10173,7 @@ None
 
 Description
 -----------
-Sets elements with given number.
+Sets Elements with given number.
 ") SetElementsValue;
 		void SetElementsValue(const Standard_Integer theNum, const StepVisual_AnnotationPlaneElement & theItem);
 
@@ -10202,7 +10202,7 @@ None
 
 Description
 -----------
-Returns a annotationtextoccurrence.
+Returns a AnnotationTextOccurrence.
 ") StepVisual_AnnotationTextOccurrence;
 		 StepVisual_AnnotationTextOccurrence();
 
@@ -10231,7 +10231,7 @@ None
 
 Description
 -----------
-Returns a cameramodeld3multiclipping.
+Returns a CameraModelD3MultiClipping.
 ") StepVisual_CameraModelD3MultiClipping;
 		 StepVisual_CameraModelD3MultiClipping();
 
@@ -10312,7 +10312,7 @@ None
 
 Description
 -----------
-Returns a colourrgb.
+Returns a ColourRgb.
 ") StepVisual_ColourRgb;
 		 StepVisual_ColourRgb();
 
@@ -10455,7 +10455,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_ComplexTriangulatedSurfaceSet;
 		 StepVisual_ComplexTriangulatedSurfaceSet();
 
@@ -10492,7 +10492,7 @@ int
 
 Description
 -----------
-Returns number of pnindex.
+Returns number of Pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
@@ -10505,7 +10505,7 @@ int
 
 Description
 -----------
-Returns number of trianglefans.
+Returns number of TriangleFans.
 ") NbTriangleFans;
 		Standard_Integer NbTriangleFans();
 
@@ -10518,7 +10518,7 @@ int
 
 Description
 -----------
-Returns number of trianglestrips.
+Returns number of TriangleStrips.
 ") NbTriangleStrips;
 		Standard_Integer NbTriangleStrips();
 
@@ -10531,7 +10531,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field pnindex.
+Returns field Pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
@@ -10549,7 +10549,7 @@ int
 
 Description
 -----------
-Returns value of pnindex by its num.
+Returns value of Pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
@@ -10567,7 +10567,7 @@ None
 
 Description
 -----------
-Sets field pnindex.
+Sets field Pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
@@ -10585,7 +10585,7 @@ None
 
 Description
 -----------
-Sets field trianglefans.
+Sets field TriangleFans.
 ") SetTriangleFans;
 		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
@@ -10603,7 +10603,7 @@ None
 
 Description
 -----------
-Sets field trianglestrips.
+Sets field TriangleStrips.
 ") SetTriangleStrips;
 		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
 
@@ -10616,7 +10616,7 @@ opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
-Returns field trianglefans.
+Returns field TriangleFans.
 ") TriangleFans;
 		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
 
@@ -10629,7 +10629,7 @@ opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
-Returns field trianglestrips.
+Returns field TriangleStrips.
 ") TriangleStrips;
 		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
 
@@ -10658,7 +10658,7 @@ None
 
 Description
 -----------
-Returns a contextdependentoverridingstyleditem.
+Returns a ContextDependentOverRidingStyledItem.
 ") StepVisual_ContextDependentOverRidingStyledItem;
 		 StepVisual_ContextDependentOverRidingStyledItem();
 
@@ -10771,7 +10771,7 @@ None
 
 Description
 -----------
-Returns a draughtingannotationoccurrence.
+Returns a DraughtingAnnotationOccurrence.
 ") StepVisual_DraughtingAnnotationOccurrence;
 		 StepVisual_DraughtingAnnotationOccurrence();
 
@@ -10800,7 +10800,7 @@ None
 
 Description
 -----------
-Returns a draughtingpredefinedcolour.
+Returns a DraughtingPreDefinedColour.
 ") StepVisual_DraughtingPreDefinedColour;
 		 StepVisual_DraughtingPreDefinedColour();
 
@@ -10829,7 +10829,7 @@ None
 
 Description
 -----------
-Returns a draughtingpredefinedcurvefont.
+Returns a DraughtingPreDefinedCurveFont.
 ") StepVisual_DraughtingPreDefinedCurveFont;
 		 StepVisual_DraughtingPreDefinedCurveFont();
 
@@ -10858,7 +10858,7 @@ None
 
 Description
 -----------
-Returns a mechanicaldesigngeometricpresentationarea.
+Returns a MechanicalDesignGeometricPresentationArea.
 ") StepVisual_MechanicalDesignGeometricPresentationArea;
 		 StepVisual_MechanicalDesignGeometricPresentationArea();
 
@@ -10879,7 +10879,7 @@ Returns a mechanicaldesigngeometricpresentationarea.
 class StepVisual_RepositionedTessellatedGeometricSet : public StepVisual_TessellatedGeometricSet {
 	public:
 		/****** StepVisual_RepositionedTessellatedGeometricSet::StepVisual_RepositionedTessellatedGeometricSet ******/
-		/****** md5 signature: 5e75598f572ae9847c8040be8e46f489 ******/
+		/****** md5 signature: 4dadf8237649c53a97237d8aad1e7be2 ******/
 		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedGeometricSet;
 		%feature("autodoc", "Return
 -------
@@ -10967,7 +10967,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedEdge;
 		 StepVisual_TessellatedEdge();
 
@@ -10980,7 +10980,7 @@ opencascade::handle<StepVisual_CoordinatesList>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
@@ -10993,7 +10993,7 @@ StepVisual_EdgeOrCurve
 
 Description
 -----------
-Returns field geometriclink.
+Returns field GeometricLink.
 ") GeometricLink;
 		StepVisual_EdgeOrCurve GeometricLink();
 
@@ -11006,7 +11006,7 @@ bool
 
 Description
 -----------
-Returns true if optional field geometriclink is defined.
+Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
@@ -11041,7 +11041,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field linestrip.
+Returns field LineStrip.
 ") LineStrip;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStrip();
 
@@ -11059,7 +11059,7 @@ int
 
 Description
 -----------
-Returns value of linestrip by its num.
+Returns value of LineStrip by its num.
 ") LineStripValue;
 		Standard_Integer LineStripValue(const Standard_Integer theNum);
 
@@ -11072,7 +11072,7 @@ int
 
 Description
 -----------
-Returns number of linestrip.
+Returns number of LineStrip.
 ") NbLineStrip;
 		Standard_Integer NbLineStrip();
 
@@ -11090,7 +11090,7 @@ None
 
 Description
 -----------
-Sets field coordinates.
+Sets field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
@@ -11108,7 +11108,7 @@ None
 
 Description
 -----------
-Sets field geometriclink.
+Sets field GeometricLink.
 ") SetGeometricLink;
 		void SetGeometricLink(const StepVisual_EdgeOrCurve & theGeometricLink);
 
@@ -11126,7 +11126,7 @@ None
 
 Description
 -----------
-Sets field linestrip.
+Sets field LineStrip.
 ") SetLineStrip;
 		void SetLineStrip(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
 
@@ -11155,7 +11155,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedFace;
 		 StepVisual_TessellatedFace();
 
@@ -11168,7 +11168,7 @@ opencascade::handle<StepVisual_CoordinatesList>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
@@ -11181,7 +11181,7 @@ StepVisual_FaceOrSurface
 
 Description
 -----------
-Returns field geometriclink.
+Returns field GeometricLink.
 ") GeometricLink;
 		StepVisual_FaceOrSurface GeometricLink();
 
@@ -11194,7 +11194,7 @@ bool
 
 Description
 -----------
-Returns true if optional field geometriclink is defined.
+Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
 		Standard_Boolean HasGeometricLink();
 
@@ -11230,7 +11230,7 @@ int
 
 Description
 -----------
-Returns number of normals.
+Returns number of Normals.
 ") NbNormals;
 		Standard_Integer NbNormals();
 
@@ -11243,7 +11243,7 @@ opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
-Returns field normals.
+Returns field Normals.
 ") Normals;
 		opencascade::handle<TColStd_HArray2OfReal> Normals();
 
@@ -11256,7 +11256,7 @@ int
 
 Description
 -----------
-Returns field pnmax.
+Returns field Pnmax.
 ") Pnmax;
 		Standard_Integer Pnmax();
 
@@ -11274,7 +11274,7 @@ None
 
 Description
 -----------
-Sets field coordinates.
+Sets field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
@@ -11292,7 +11292,7 @@ None
 
 Description
 -----------
-Sets field geometriclink.
+Sets field GeometricLink.
 ") SetGeometricLink;
 		void SetGeometricLink(const StepVisual_FaceOrSurface & theGeometricLink);
 
@@ -11310,7 +11310,7 @@ None
 
 Description
 -----------
-Sets field normals.
+Sets field Normals.
 ") SetNormals;
 		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
 
@@ -11328,7 +11328,7 @@ None
 
 Description
 -----------
-Sets field pnmax.
+Sets field Pnmax.
 ") SetPnmax;
 		void SetPnmax(const Standard_Integer thePnmax);
 
@@ -11357,7 +11357,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedVertex;
 		 StepVisual_TessellatedVertex();
 
@@ -11370,7 +11370,7 @@ opencascade::handle<StepVisual_CoordinatesList>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
@@ -11383,7 +11383,7 @@ bool
 
 Description
 -----------
-Returns true if optional field topologicallink is defined.
+Returns True if optional field TopologicalLink is defined.
 ") HasTopologicalLink;
 		Standard_Boolean HasTopologicalLink();
 
@@ -11418,7 +11418,7 @@ int
 
 Description
 -----------
-Returns field pointindex.
+Returns field PointIndex.
 ") PointIndex;
 		Standard_Integer PointIndex();
 
@@ -11436,7 +11436,7 @@ None
 
 Description
 -----------
-Sets field coordinates.
+Sets field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
@@ -11454,7 +11454,7 @@ None
 
 Description
 -----------
-Sets field pointindex.
+Sets field PointIndex.
 ") SetPointIndex;
 		void SetPointIndex(const Standard_Integer thePointIndex);
 
@@ -11472,7 +11472,7 @@ None
 
 Description
 -----------
-Sets field topologicallink.
+Sets field TopologicalLink.
 ") SetTopologicalLink;
 		void SetTopologicalLink(const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink);
 
@@ -11485,7 +11485,7 @@ opencascade::handle<StepShape_VertexPoint>
 
 Description
 -----------
-Returns field topologicallink.
+Returns field TopologicalLink.
 ") TopologicalLink;
 		opencascade::handle<StepShape_VertexPoint> TopologicalLink();
 
@@ -11514,7 +11514,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TriangulatedSurfaceSet;
 		 StepVisual_TriangulatedSurfaceSet();
 
@@ -11550,7 +11550,7 @@ int
 
 Description
 -----------
-Returns number of pnindex.
+Returns number of Pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
@@ -11563,7 +11563,7 @@ int
 
 Description
 -----------
-Returns number of triangles.
+Returns number of Triangles.
 ") NbTriangles;
 		Standard_Integer NbTriangles();
 
@@ -11576,7 +11576,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field pnindex.
+Returns field Pnindex.
 ") Pnindex;
 		const opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
@@ -11594,7 +11594,7 @@ int
 
 Description
 -----------
-Returns value of pnindex by its num.
+Returns value of Pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
@@ -11612,7 +11612,7 @@ None
 
 Description
 -----------
-Sets field pnindex.
+Sets field Pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
@@ -11630,7 +11630,7 @@ None
 
 Description
 -----------
-Sets field triangles.
+Sets field Triangles.
 ") SetTriangles;
 		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
 
@@ -11643,7 +11643,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 
 Description
 -----------
-Returns field triangles.
+Returns field Triangles.
 ") Triangles;
 		const opencascade::handle<TColStd_HArray2OfInteger> Triangles();
 
@@ -11699,7 +11699,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_ComplexTriangulatedFace;
 		 StepVisual_ComplexTriangulatedFace();
 
@@ -11738,7 +11738,7 @@ int
 
 Description
 -----------
-Returns number of pnindex.
+Returns number of Pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
@@ -11751,7 +11751,7 @@ int
 
 Description
 -----------
-Returns number of trianglefans.
+Returns number of TriangleFans.
 ") NbTriangleFans;
 		Standard_Integer NbTriangleFans();
 
@@ -11764,7 +11764,7 @@ int
 
 Description
 -----------
-Returns number of trianglestrips.
+Returns number of TriangleStrips.
 ") NbTriangleStrips;
 		Standard_Integer NbTriangleStrips();
 
@@ -11777,7 +11777,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field pnindex.
+Returns field Pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
@@ -11795,7 +11795,7 @@ int
 
 Description
 -----------
-Returns value of pnindex by its num.
+Returns value of Pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
@@ -11813,7 +11813,7 @@ None
 
 Description
 -----------
-Sets field pnindex.
+Sets field Pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
@@ -11831,7 +11831,7 @@ None
 
 Description
 -----------
-Sets field trianglefans.
+Sets field TriangleFans.
 ") SetTriangleFans;
 		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
@@ -11849,7 +11849,7 @@ None
 
 Description
 -----------
-Sets field trianglestrips.
+Sets field TriangleStrips.
 ") SetTriangleStrips;
 		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
 
@@ -11862,7 +11862,7 @@ opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
-Returns field trianglefans.
+Returns field TriangleFans.
 ") TriangleFans;
 		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
 
@@ -11875,7 +11875,7 @@ opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
-Returns field trianglestrips.
+Returns field TriangleStrips.
 ") TriangleStrips;
 		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
 
@@ -11904,7 +11904,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_CubicBezierTessellatedEdge;
 		 StepVisual_CubicBezierTessellatedEdge();
 
@@ -11933,7 +11933,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_CubicBezierTriangulatedFace;
 		 StepVisual_CubicBezierTriangulatedFace();
 
@@ -11946,7 +11946,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 
 Description
 -----------
-Returns field ctriangles.
+Returns field Ctriangles.
 ") Ctriangles;
 		opencascade::handle<TColStd_HArray2OfInteger> Ctriangles();
 
@@ -11983,7 +11983,7 @@ int
 
 Description
 -----------
-Returns number of ctriangles.
+Returns number of Ctriangles.
 ") NbCtriangles;
 		Standard_Integer NbCtriangles();
 
@@ -12001,7 +12001,7 @@ None
 
 Description
 -----------
-Sets field ctriangles.
+Sets field Ctriangles.
 ") SetCtriangles;
 		void SetCtriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
 
@@ -12030,7 +12030,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepVisual_TessellatedConnectingEdge;
 		 StepVisual_TessellatedConnectingEdge();
 
@@ -12043,7 +12043,7 @@ opencascade::handle<StepVisual_TessellatedFace>
 
 Description
 -----------
-Returns field face1.
+Returns field Face1.
 ") Face1;
 		opencascade::handle<StepVisual_TessellatedFace> Face1();
 
@@ -12056,7 +12056,7 @@ opencascade::handle<StepVisual_TessellatedFace>
 
 Description
 -----------
-Returns field face2.
+Returns field Face2.
 ") Face2;
 		opencascade::handle<StepVisual_TessellatedFace> Face2();
 
@@ -12096,7 +12096,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field linestripface1.
+Returns field LineStripFace1.
 ") LineStripFace1;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace1();
 
@@ -12114,7 +12114,7 @@ int
 
 Description
 -----------
-Returns value of linestripface1 by its num.
+Returns value of LineStripFace1 by its num.
 ") LineStripFace1Value;
 		Standard_Integer LineStripFace1Value(const Standard_Integer theNum);
 
@@ -12127,7 +12127,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field linestripface2.
+Returns field LineStripFace2.
 ") LineStripFace2;
 		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace2();
 
@@ -12145,7 +12145,7 @@ int
 
 Description
 -----------
-Returns value of linestripface2 by its num.
+Returns value of LineStripFace2 by its num.
 ") LineStripFace2Value;
 		Standard_Integer LineStripFace2Value(const Standard_Integer theNum);
 
@@ -12158,7 +12158,7 @@ int
 
 Description
 -----------
-Returns number of linestripface1.
+Returns number of LineStripFace1.
 ") NbLineStripFace1;
 		Standard_Integer NbLineStripFace1();
 
@@ -12171,7 +12171,7 @@ int
 
 Description
 -----------
-Returns number of linestripface2.
+Returns number of LineStripFace2.
 ") NbLineStripFace2;
 		Standard_Integer NbLineStripFace2();
 
@@ -12189,7 +12189,7 @@ None
 
 Description
 -----------
-Sets field face1.
+Sets field Face1.
 ") SetFace1;
 		void SetFace1(const opencascade::handle<StepVisual_TessellatedFace> & theFace1);
 
@@ -12207,7 +12207,7 @@ None
 
 Description
 -----------
-Sets field face2.
+Sets field Face2.
 ") SetFace2;
 		void SetFace2(const opencascade::handle<StepVisual_TessellatedFace> & theFace2);
 
@@ -12225,7 +12225,7 @@ None
 
 Description
 -----------
-Sets field linestripface1.
+Sets field LineStripFace1.
 ") SetLineStripFace1;
 		void SetLineStripFace1(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1);
 
@@ -12243,7 +12243,7 @@ None
 
 Description
 -----------
-Sets field linestripface2.
+Sets field LineStripFace2.
 ") SetLineStripFace2;
 		void SetLineStripFace2(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
 
@@ -12261,7 +12261,7 @@ None
 
 Description
 -----------
-Sets field smooth.
+Sets field Smooth.
 ") SetSmooth;
 		void SetSmooth(const StepData_Logical theSmooth);
 
@@ -12274,7 +12274,7 @@ StepData_Logical
 
 Description
 -----------
-Returns field smooth.
+Returns field Smooth.
 ") Smooth;
 		StepData_Logical Smooth();
 
@@ -12341,7 +12341,7 @@ int
 
 Description
 -----------
-Returns number of pnindex.
+Returns number of Pnindex.
 ") NbPnindex;
 		Standard_Integer NbPnindex();
 
@@ -12354,7 +12354,7 @@ int
 
 Description
 -----------
-Returns number of triangles.
+Returns number of Triangles.
 ") NbTriangles;
 		Standard_Integer NbTriangles();
 
@@ -12367,7 +12367,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns field pnindex.
+Returns field Pnindex.
 ") Pnindex;
 		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
 
@@ -12385,7 +12385,7 @@ int
 
 Description
 -----------
-Returns value of pnindex by its num.
+Returns value of Pnindex by its num.
 ") PnindexValue;
 		Standard_Integer PnindexValue(const Standard_Integer theNum);
 
@@ -12403,7 +12403,7 @@ None
 
 Description
 -----------
-Sets field pnindex.
+Sets field Pnindex.
 ") SetPnindex;
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
@@ -12421,7 +12421,7 @@ None
 
 Description
 -----------
-Sets field triangles.
+Sets field Triangles.
 ") SetTriangles;
 		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
 
@@ -12434,7 +12434,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 
 Description
 -----------
-Returns field triangles.
+Returns field Triangles.
 ") Triangles;
 		opencascade::handle<TColStd_HArray2OfInteger> Triangles();
 

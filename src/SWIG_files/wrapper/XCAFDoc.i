@@ -187,7 +187,7 @@ Standard_GUID
 
 Description
 -----------
-Class for containing graphnodes. returns guid for uattribute identifying assembly.
+class for containing GraphNodes. Returns GUID for UAttribute identifying assembly.
 ") AssemblyGUID;
 		static const Standard_GUID & AssemblyGUID();
 
@@ -205,7 +205,9 @@ TCollection_AsciiString
 
 Description
 -----------
-Prints attribute information into a string. @param theatt an xde attribute return the generated info value.
+Prints attribute information into a string. 
+Parameter theAtt an XDE attribute 
+Return: the generated info value.
 ") AttributeInfo;
 		static TCollection_AsciiString AttributeInfo(const opencascade::handle<TDF_Attribute> & theAtt);
 
@@ -236,7 +238,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of colors.
+Return GUIDs for TreeNode representing specified types of colors.
 ") ColorRefGUID;
 		static const Standard_GUID & ColorRefGUID(const XCAFDoc_ColorType type);
 
@@ -249,7 +251,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of datum.
+Return GUIDs for TreeNode representing specified types of datum.
 ") DatumRefGUID;
 		static const Standard_GUID & DatumRefGUID();
 
@@ -262,7 +264,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing connections datum-toler.
+Return GUIDs for TreeNode representing connections Datum-Toler.
 ") DatumTolRefGUID;
 		static const Standard_GUID & DatumTolRefGUID();
 
@@ -275,7 +277,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of dgt.
+Return GUIDs for TreeNode representing specified types of DGT.
 ") DimTolRefGUID;
 		static const Standard_GUID & DimTolRefGUID();
 
@@ -288,7 +290,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of dimension.
+Return GUIDs for TreeNode representing specified types of Dimension.
 ") DimensionRefFirstGUID;
 		static const Standard_GUID & DimensionRefFirstGUID();
 
@@ -301,7 +303,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of dimension.
+Return GUIDs for TreeNode representing specified types of Dimension.
 ") DimensionRefSecondGUID;
 		static const Standard_GUID & DimensionRefSecondGUID();
 
@@ -314,7 +316,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid for uattribute identifying external reference on no-step file.
+Returns GUID for UAttribute identifying external reference on no-step file.
 ") ExternRefGUID;
 		static const Standard_GUID & ExternRefGUID();
 
@@ -327,7 +329,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of geomtolerance.
+Return GUIDs for TreeNode representing specified types of GeomTolerance.
 ") GeomToleranceRefGUID;
 		static const Standard_GUID & GeomToleranceRefGUID();
 
@@ -366,7 +368,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid for uattribute identifying lock flag.
+Returns GUID for UAttribute identifying lock flag.
 ") LockGUID;
 		static const Standard_GUID & LockGUID();
 
@@ -392,7 +394,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for representing notes.
+Return GUIDs for representing notes.
 ") NoteRefGUID;
 		static const Standard_GUID & NoteRefGUID();
 
@@ -405,7 +407,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid for uattribute identifying specified higher usage occurrence.
+Returns GUID for UAttribute identifying specified higher usage occurrence.
 ") SHUORefGUID;
 		static const Standard_GUID & SHUORefGUID();
 
@@ -418,7 +420,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid for treenode representing assembly link.
+Returns GUID for TreeNode representing assembly link.
 ") ShapeRefGUID;
 		static const Standard_GUID & ShapeRefGUID();
 
@@ -444,7 +446,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of view.
+Return GUIDs for TreeNode representing specified types of View.
 ") ViewRefGDTGUID;
 		static const Standard_GUID & ViewRefGDTGUID();
 
@@ -457,7 +459,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of view.
+Return GUIDs for TreeNode representing specified types of View.
 ") ViewRefGUID;
 		static const Standard_GUID & ViewRefGUID();
 
@@ -470,7 +472,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for graphnode representing specified types of view.
+Return GUIDs for GraphNode representing specified types of View.
 ") ViewRefNoteGUID;
 		static const Standard_GUID & ViewRefNoteGUID();
 
@@ -483,7 +485,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of view.
+Return GUIDs for TreeNode representing specified types of View.
 ") ViewRefPlaneGUID;
 		static const Standard_GUID & ViewRefPlaneGUID();
 
@@ -496,7 +498,7 @@ Standard_GUID
 
 Description
 -----------
-Return guids for treenode representing specified types of view.
+Return GUIDs for TreeNode representing specified types of View.
 ") ViewRefShapeGUID;
 		static const Standard_GUID & ViewRefShapeGUID();
 
@@ -509,7 +511,7 @@ Standard_GUID
 
 Description
 -----------
-Return guid for treenode representing visualization material.
+Return GUID for TreeNode representing Visualization Material.
 ") VisMaterialRefGUID;
 		static const Standard_GUID & VisMaterialRefGUID();
 
@@ -536,7 +538,7 @@ None
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") XCAFDoc_Area;
 		 XCAFDoc_Area();
 
@@ -668,7 +670,7 @@ opencascade::handle<XCAFDoc_Area>
 
 Description
 -----------
-Find, or create, an area attribute and set its value.
+Find, or create, an Area attribute and set its value.
 ") Set;
 		static opencascade::handle<XCAFDoc_Area> Set(const TDF_Label & label, const Standard_Real area);
 
@@ -735,7 +737,7 @@ None
 
 Description
 -----------
-\brief constructs graph from xcaf document. construction of a formal graph will be done immediately. \param [in] thedoc - document to iterate.
+\brief Constructs graph from XCAF document. Construction of a formal graph will be done immediately. \param[in] theDoc - document to iterate.
 ") XCAFDoc_AssemblyGraph;
 		 XCAFDoc_AssemblyGraph(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -753,7 +755,7 @@ None
 
 Description
 -----------
-\brief constructs graph from xcaf label. construction of a formal graph will be done immediately. the specified label is used as a starting position. \param [in] thedoc - document to iterate. \param [in] thelabel - starting position.
+\brief Constructs graph from XCAF label. Construction of a formal graph will be done immediately. The specified label is used as a starting position. \param[in] theDoc - document to iterate. \param[in] theLabel - starting position.
 ") XCAFDoc_AssemblyGraph;
 		 XCAFDoc_AssemblyGraph(const TDF_Label & theLabel);
 
@@ -771,7 +773,7 @@ TColStd_PackedMapOfInteger
 
 Description
 -----------
-\brief returns ids of child nodes for the given node. \param [in] thenode - one-based node id. eturn set of child ids.
+\brief Returns IDs of child nodes for the given node. \param[in] theNode - one-based node ID. eturn set of child IDs.
 ") GetChildren;
 		const TColStd_PackedMapOfInteger & GetChildren(const Standard_Integer theNode);
 
@@ -784,7 +786,7 @@ AdjacencyMap
 
 Description
 -----------
-\brief returns the collection of graph links in the form of adjacency matrix. eturn graph links.
+\brief Returns the collection of graph links in the form of adjacency matrix. eturn graph links.
 ") GetLinks;
 		const AdjacencyMap & GetLinks();
 
@@ -802,7 +804,7 @@ TDF_Label
 
 Description
 -----------
-\brief returns object id by node id. \param [in] thenode - one-based node id. eturn persistent id.
+\brief returns object ID by node ID. \param[in] theNode - one-based node ID. eturn persistent ID.
 ") GetNode;
 		const TDF_Label & GetNode(const Standard_Integer theNode);
 
@@ -820,7 +822,7 @@ XCAFDoc_AssemblyGraph::NodeType
 
 Description
 -----------
-\brief returns the node type from ef nodetype enum. \param [in] thenode - one-based node id. eturn node type. \sa nodetype.
+\brief Returns the node type from ef NodeType enum. \param[in] theNode - one-based node ID. eturn node type. \sa NodeType.
 ") GetNodeType;
 		XCAFDoc_AssemblyGraph::NodeType GetNodeType(const Standard_Integer theNode);
 
@@ -833,7 +835,7 @@ TDF_LabelIndexedMap
 
 Description
 -----------
-\brief returns the unordered set of graph nodes. eturn graph nodes.
+\brief Returns the unordered set of graph nodes. eturn graph nodes.
 ") GetNodes;
 		const TDF_LabelIndexedMap & GetNodes();
 
@@ -846,7 +848,7 @@ TColStd_PackedMapOfInteger
 
 Description
 -----------
-\brief returns ids of the root nodes. eturn ids of the root nodes.
+\brief Returns IDs of the root nodes. eturn IDs of the root nodes.
 ") GetRoots;
 		const TColStd_PackedMapOfInteger & GetRoots();
 
@@ -859,7 +861,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Eturn document shape tool.
+eturn Document shape tool.
 ") GetShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & GetShapeTool();
 
@@ -877,7 +879,7 @@ bool
 
 Description
 -----------
-\brief checks whether direct children exist for the given node. \param [in] thenode - one-based node id. eturn true/false.
+\brief Checks whether direct children exist for the given node. \param[in] theNode - one-based node ID. eturn true/false.
 ") HasChildren;
 		Standard_Boolean HasChildren(const Standard_Integer theNode);
 
@@ -896,7 +898,7 @@ bool
 
 Description
 -----------
-\brief checks whether the assembly graph contains (n1, n2) directed link. \param [in] thenode1 - one-based id of the first node. \param [in] thenode2 - one-based id of the second node. eturn true/false.
+\brief Checks whether the assembly graph contains (n1, n2) directed link. \param[in] theNode1 - one-based ID of the first node. \param[in] theNode2 - one-based ID of the second node. eturn true/false.
 ") IsDirectLink;
 		Standard_Boolean IsDirectLink(const Standard_Integer theNode1, const Standard_Integer theNode2);
 
@@ -909,7 +911,7 @@ int
 
 Description
 -----------
-\brief returns the number of graph links. eturn number of graph links.
+\brief Returns the number of graph links. eturn number of graph links.
 ") NbLinks;
 		Standard_Integer NbLinks();
 
@@ -922,7 +924,7 @@ int
 
 Description
 -----------
-\brief returns the number of graph nodes. eturn number of graph nodes.
+\brief Returns the number of graph nodes. eturn number of graph nodes.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
@@ -940,7 +942,7 @@ int
 
 Description
 -----------
-Returns quantity of part usage occurrences. \param [in] thenode - one-based part id. eturn usage occurrence quantity.
+Returns quantity of part usage occurrences. \param[in] theNode - one-based part ID. eturn usage occurrence quantity.
 ") NbOccurrences;
 		Standard_Integer NbOccurrences(const Standard_Integer theNode);
 
@@ -969,7 +971,7 @@ None
 
 Description
 -----------
-Constructs an empty item id.
+Constructs an empty item ID.
 ") XCAFDoc_AssemblyItemId;
 		 XCAFDoc_AssemblyItemId();
 
@@ -987,7 +989,7 @@ None
 
 Description
 -----------
-Constructs an item id from a list of strings, where every string is a label entry. \param [in] thepath - list of label entries.
+Constructs an item ID from a list of strings, where every string is a label entry. \param[in] thePath - list of label entries.
 ") XCAFDoc_AssemblyItemId;
 		 XCAFDoc_AssemblyItemId(const TColStd_ListOfAsciiString & thePath);
 
@@ -1005,7 +1007,7 @@ None
 
 Description
 -----------
-Constructs an item id from a formatted path, where label entries are separated by '/' symbol. \param [in] thestring - formatted full path.
+Constructs an item ID from a formatted path, where label entries are separated by '/' symbol. \param[in] theString - formatted full path.
 ") XCAFDoc_AssemblyItemId;
 		 XCAFDoc_AssemblyItemId(TCollection_AsciiString theString);
 
@@ -1057,7 +1059,7 @@ None
 
 Description
 -----------
-Initializes the item id from a list of strings, where every string is a label entry. \param [in] thepath - list of label entries.
+Initializes the item ID from a list of strings, where every string is a label entry. \param[in] thePath - list of label entries.
 ") Init;
 		void Init(const TColStd_ListOfAsciiString & thePath);
 
@@ -1075,7 +1077,7 @@ None
 
 Description
 -----------
-Initializes the item id from a formatted path, where label entries are separated by '/' symbol. \param [in] thestring - formatted full path.
+Initializes the item ID from a formatted path, where label entries are separated by '/' symbol. \param[in] theString - formatted full path.
 ") Init;
 		void Init(TCollection_AsciiString theString);
 
@@ -1093,7 +1095,7 @@ bool
 
 Description
 -----------
-Checks if this item is a child of the given item. \param [in] theother - potentially ancestor item. eturn true if the item is a child of theother item, otherwise - false.
+Checks if this item is a child of the given item. \param[in] theOther - potentially ancestor item. eturn true if the item is a child of theOther item, otherwise - false.
 ") IsChild;
 		Standard_Boolean IsChild(const XCAFDoc_AssemblyItemId & theOther);
 
@@ -1111,7 +1113,7 @@ bool
 
 Description
 -----------
-Checks if this item is a direct child of the given item. \param [in] theother - potentially parent item. eturn true if the item is a direct child of theother item, otherwise - false.
+Checks if this item is a direct child of the given item. \param[in] theOther - potentially parent item. eturn true if the item is a direct child of theOther item, otherwise - false.
 ") IsDirectChild;
 		Standard_Boolean IsDirectChild(const XCAFDoc_AssemblyItemId & theOther);
 
@@ -1129,7 +1131,7 @@ bool
 
 Description
 -----------
-Checks for item ids equality. \param [in] theother - the item id to check equality with. eturn true if this id is equal to theother, otherwise - false.
+Checks for item IDs equality. \param[in] theOther - the item ID to check equality with. eturn true if this ID is equal to theOther, otherwise - false.
 ") IsEqual;
 		Standard_Boolean IsEqual(const XCAFDoc_AssemblyItemId & theOther);
 
@@ -1291,7 +1293,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the assembly item's attribute that the reference points to. if the reference doesn't point to an attribute, returns an empty guid.
+Returns the assembly item's attribute that the reference points to. If the reference doesn't point to an attribute, returns an empty GUID.
 ") GetGUID;
 		Standard_GUID GetGUID();
 
@@ -1317,7 +1319,7 @@ XCAFDoc_AssemblyItemId
 
 Description
 -----------
-Returns the assembly item id that the reference points to.
+Returns the assembly item ID that the reference points to.
 ") GetItem;
 		const XCAFDoc_AssemblyItemId & GetItem();
 
@@ -1330,7 +1332,7 @@ int
 
 Description
 -----------
-Returns the assembly item's subshape that the reference points to. if the reference doesn't point to a subshape, returns 0.
+Returns the assembly item's subshape that the reference points to. If the reference doesn't point to a subshape, returns 0.
 ") GetSubshapeIndex;
 		Standard_Integer GetSubshapeIndex();
 
@@ -1382,7 +1384,7 @@ bool
 
 Description
 -----------
-Checks if the reference points to a really existing item in xde document.
+Checks if the reference points to a really existing item in XDE document.
 ") IsOrphan;
 		Standard_Boolean IsOrphan();
 
@@ -1464,7 +1466,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Create (if not exist) a reference to an assembly item. \param [in] thelabel - label to add the attribute. \param [in] theitemid - assembly item id. eturn a handle to the attribute instance.
+Create (if not exist) a reference to an assembly item. \param[in] theLabel - label to add the attribute. \param[in] theItemId - assembly item ID. eturn A handle to the attribute instance.
 ") Set;
 		static opencascade::handle<XCAFDoc_AssemblyItemRef> Set(const TDF_Label & theLabel, const XCAFDoc_AssemblyItemId & theItemId);
 
@@ -1484,7 +1486,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Create (if not exist) a reference to an assembly item's label attribute. \param [in] thelabel - label to add the attribute. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's label attribute id. eturn a handle to the attribute instance.
+Create (if not exist) a reference to an assembly item's label attribute. \param[in] theLabel - label to add the attribute. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's label attribute ID. eturn A handle to the attribute instance.
 ") Set;
 		static opencascade::handle<XCAFDoc_AssemblyItemRef> Set(const TDF_Label & theLabel, const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID);
 
@@ -1504,7 +1506,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Create (if not exist) a reference to an assembly item's subshape. \param [in] thelabel - label to add the attribute. \param [in] theitemid - assembly item id. \param [in] theshapeindex - assembly item's subshape index. eturn a handle to the attribute instance.
+Create (if not exist) a reference to an assembly item's subshape. \param[in] theLabel - label to add the attribute. \param[in] theItemId - assembly item ID. \param[in] theShapeIndex - assembly item's subshape index. eturn A handle to the attribute instance.
 ") Set;
 		static opencascade::handle<XCAFDoc_AssemblyItemRef> Set(const TDF_Label & theLabel, const XCAFDoc_AssemblyItemId & theItemId, const Standard_Integer theShapeIndex);
 
@@ -1522,7 +1524,7 @@ None
 
 Description
 -----------
-Sets the assembly item's label attribute that the reference points to. the base assembly item will not change.
+Sets the assembly item's label attribute that the reference points to. The base assembly item will not change.
 ") SetGUID;
 		void SetGUID(const Standard_GUID & theAttrGUID);
 
@@ -1540,7 +1542,7 @@ None
 
 Description
 -----------
-Sets the assembly item id that the reference points to. extra reference data (if any) will be cleared.
+Sets the assembly item ID that the reference points to. Extra reference data (if any) will be cleared.
 ") SetItem;
 		void SetItem(const XCAFDoc_AssemblyItemId & theItemId);
 
@@ -1558,7 +1560,7 @@ None
 
 Description
 -----------
-Sets the assembly item id from a list of label entries that the reference points to. extra reference data (if any) will be cleared.
+Sets the assembly item ID from a list of label entries that the reference points to. Extra reference data (if any) will be cleared.
 ") SetItem;
 		void SetItem(const TColStd_ListOfAsciiString & thePath);
 
@@ -1576,7 +1578,7 @@ None
 
 Description
 -----------
-Sets the assembly item id from a formatted path that the reference points to. extra reference data (if any) will be cleared.
+Sets the assembly item ID from a formatted path that the reference points to. Extra reference data (if any) will be cleared.
 ") SetItem;
 		void SetItem(TCollection_AsciiString theString);
 
@@ -1594,7 +1596,7 @@ None
 
 Description
 -----------
-Sets the assembly item's subshape that the reference points to. the base assembly item will not change.
+Sets the assembly item's subshape that the reference points to. The base assembly item will not change.
 ") SetSubshapeIndex;
 		void SetSubshapeIndex(Standard_Integer theShapeIndex);
 
@@ -1630,7 +1632,7 @@ None
 
 Description
 -----------
-Constructs iterator starting from assembly roots. \param [in] thedoc - document to iterate. \param [in, opt] thelevel - max level of hierarchy to reach (int_max is for no limit).
+Constructs iterator starting from assembly roots. \param[in] theDoc - document to iterate. \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
 ") XCAFDoc_AssemblyIterator;
 		 XCAFDoc_AssemblyIterator(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Integer theLevel = INT_MAX);
 
@@ -1650,7 +1652,7 @@ None
 
 Description
 -----------
-Constructs iterator starting from the specified position in the assembly tree. \param [in] thedoc - document to iterate. \param [in] theroot - assembly item to start iterating from. \param [in, opt] thelevel - max level of hierarchy to reach (int_max is for no limit).
+Constructs iterator starting from the specified position in the assembly tree. \param[in] theDoc - document to iterate. \param[in] theRoot - assembly item to start iterating from. \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
 ") XCAFDoc_AssemblyIterator;
 		 XCAFDoc_AssemblyIterator(const opencascade::handle<TDocStd_Document> & theDoc, const XCAFDoc_AssemblyItemId & theRoot, const Standard_Integer theLevel = INT_MAX);
 
@@ -1663,7 +1665,7 @@ XCAFDoc_AssemblyItemId
 
 Description
 -----------
-Eturn current item.
+eturn current item.
 ") Current;
 		XCAFDoc_AssemblyItemId Current();
 
@@ -1676,7 +1678,7 @@ bool
 
 Description
 -----------
-Eturn true if there is still something to iterate, false -- otherwise.
+eturn true if there is still something to iterate, false -- otherwise.
 ") More;
 		Standard_Boolean More();
 
@@ -1730,7 +1732,7 @@ None
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") XCAFDoc_Centroid;
 		 XCAFDoc_Centroid();
 
@@ -1895,7 +1897,7 @@ opencascade::handle<XCAFDoc_Centroid>
 
 Description
 -----------
-Find, or create, a location attribute and set it's value the location attribute is returned. location methods ===============.
+Find, or create, a Location attribute and set it's value the Location attribute is returned. Location methods ===============.
 ") Set;
 		static opencascade::handle<XCAFDoc_Centroid> Set(const TDF_Label & label, const gp_Pnt & pnt);
 
@@ -1962,7 +1964,7 @@ TDF_Label
 
 Description
 -----------
-Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
+Adds a clipping plane definition to a ClippingPlane table and returns its label (returns existing label if the same clipping plane is already defined).
 ") AddClippingPlane;
 		TDF_Label AddClippingPlane(const gp_Pln & thePlane, TCollection_ExtendedString theName, const Standard_Boolean theCapping);
 
@@ -1982,7 +1984,7 @@ TDF_Label
 
 Description
 -----------
-Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
+Adds a clipping plane definition to a ClippingPlane table and returns its label (returns existing label if the same clipping plane is already defined).
 ") AddClippingPlane;
 		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Boolean theCapping);
 
@@ -2001,7 +2003,7 @@ TDF_Label
 
 Description
 -----------
-Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
+Adds a clipping plane definition to a ClippingPlane table and returns its label (returns existing label if the same clipping plane is already defined).
 ") AddClippingPlane;
 		TDF_Label AddClippingPlane(const gp_Pln & thePlane, TCollection_ExtendedString theName);
 
@@ -2020,7 +2022,7 @@ TDF_Label
 
 Description
 -----------
-Adds a clipping plane definition to a clippingplane table and returns its label (returns existing label if the same clipping plane is already defined).
+Adds a clipping plane definition to a ClippingPlane table and returns its label (returns existing label if the same clipping plane is already defined).
 ") AddClippingPlane;
 		TDF_Label AddClippingPlane(const gp_Pln & thePlane, const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -2033,7 +2035,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which clippingplanes are stored.
+returns the label under which ClippingPlanes are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -2051,7 +2053,7 @@ bool
 
 Description
 -----------
-Get capping value for given clipping plane label return capping value.
+Get capping value for given clipping plane label Return capping value.
 ") GetCapping;
 		Standard_Boolean GetCapping(const TDF_Label & theClippingPlaneL);
 
@@ -2069,7 +2071,7 @@ theCapping: bool
 
 Description
 -----------
-Get capping value for given clipping plane label return true if label is valid abd capping is exist.
+Get capping value for given clipping plane label Return true if Label is valid abd capping is exist.
 ") GetCapping;
 		Standard_Boolean GetCapping(const TDF_Label & theClippingPlaneL, Standard_Boolean &OutValue);
 
@@ -2089,7 +2091,7 @@ theCapping: bool
 
 Description
 -----------
-Returns clippingplane defined by label lab returns false if the label is not in clippingplane table or does not define a clippingplane.
+Returns ClippingPlane defined by label lab Returns False if the label is not in ClippingPlane table or does not define a ClippingPlane.
 ") GetClippingPlane;
 		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, TCollection_ExtendedString & theName, Standard_Boolean &OutValue);
 
@@ -2109,7 +2111,7 @@ theCapping: bool
 
 Description
 -----------
-Returns clippingplane defined by label lab returns false if the label is not in clippingplane table or does not define a clippingplane.
+Returns ClippingPlane defined by label lab Returns False if the label is not in ClippingPlane table or does not define a ClippingPlane.
 ") GetClippingPlane;
 		Standard_Boolean GetClippingPlane(const TDF_Label & theLabel, gp_Pln & thePlane, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Boolean &OutValue);
 
@@ -2127,7 +2129,7 @@ None
 
 Description
 -----------
-Returns a sequence of clipping planes currently stored in the clippingplane table.
+Returns a sequence of clipping planes currently stored in the ClippingPlane table.
 ") GetClippingPlanes;
 		void GetClippingPlanes(TDF_LabelSequence & Labels);
 
@@ -2171,7 +2173,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a clippingplane table and is a clippingplane definition.
+Returns True if label belongs to a ClippingPlane table and is a ClippingPlane definition.
 ") IsClippingPlane;
 		Standard_Boolean IsClippingPlane(const TDF_Label & theLabel);
 
@@ -2189,7 +2191,7 @@ bool
 
 Description
 -----------
-Removes clipping plane from the clippingplane table return false and do nothing if clipping plane is referenced in at least one view.
+Removes clipping plane from the ClippingPlane table Return false and do nothing if clipping plane is referenced in at least one View.
 ") RemoveClippingPlane;
 		Standard_Boolean RemoveClippingPlane(const TDF_Label & theLabel);
 
@@ -2207,7 +2209,7 @@ opencascade::handle<XCAFDoc_ClippingPlaneTool>
 
 Description
 -----------
-Creates (if not exist) clippingplanetool.
+Creates (if not exist) ClippingPlaneTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_ClippingPlaneTool> Set(const TDF_Label & theLabel);
 
@@ -2522,7 +2524,7 @@ opencascade::handle<XCAFDoc_Color>
 
 Description
 -----------
-Find, or create, a color attribute and set it's value the color attribute is returned.
+Find, or create, a Color attribute and set it's value the Color attribute is returned.
 ") Set;
 		static opencascade::handle<XCAFDoc_Color> Set(const TDF_Label & label, const Standard_Real R, const Standard_Real G, const Standard_Real B, const Standard_Real alpha = 1.0);
 
@@ -2675,7 +2677,7 @@ bool
 
 Description
 -----------
-Returns current auto-naming mode; true by default. if true then for added colors the tdatastd_name attribute will be automatically added. this setting is global.
+Returns current auto-naming mode; True by default. If True then for added colors the TDataStd_Name attribute will be automatically added. This setting is global.
 ") AutoNaming;
 		static Standard_Boolean AutoNaming();
 
@@ -2688,7 +2690,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which colors are stored.
+returns the label under which colors are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -2728,7 +2730,7 @@ bool
 
 Description
 -----------
-Finds a color definition in a colortable and returns its label if found returns false if color is not found in colortable.
+Finds a color definition in a colortable and returns its label if found Returns False if color is not found in colortable.
 ") FindColor;
 		Standard_Boolean FindColor(const Quantity_Color & col, TDF_Label & lab);
 
@@ -2747,7 +2749,7 @@ bool
 
 Description
 -----------
-Finds a color definition in a colortable and returns its label if found returns false if color is not found in colortable.
+Finds a color definition in a colortable and returns its label if found Returns False if color is not found in colortable.
 ") FindColor;
 		Standard_Boolean FindColor(const Quantity_ColorRGBA & col, TDF_Label & lab);
 
@@ -2765,7 +2767,7 @@ TDF_Label
 
 Description
 -----------
-Finds a color definition in a colortable and returns its label if found (or null label else).
+Finds a color definition in a colortable and returns its label if found (or Null label else).
 ") FindColor;
 		TDF_Label FindColor(const Quantity_Color & col);
 
@@ -2783,7 +2785,7 @@ TDF_Label
 
 Description
 -----------
-Finds a color definition in a colortable and returns its label if found (or null label else).
+Finds a color definition in a colortable and returns its label if found (or Null label else).
 ") FindColor;
 		TDF_Label FindColor(const Quantity_ColorRGBA & col);
 
@@ -2802,7 +2804,7 @@ bool
 
 Description
 -----------
-Returns color defined by label lab returns false if the label is not in colortable or does not define a color.
+Returns color defined by label lab Returns False if the label is not in colortable or does not define a color.
 ") GetColor;
 		static Standard_Boolean GetColor(const TDF_Label & lab, Quantity_Color & col);
 
@@ -2821,7 +2823,7 @@ bool
 
 Description
 -----------
-Returns color defined by label lab returns false if the label is not in colortable or does not define a color.
+Returns color defined by label lab Returns False if the label is not in colortable or does not define a color.
 ") GetColor;
 		static Standard_Boolean GetColor(const TDF_Label & lab, Quantity_ColorRGBA & col);
 
@@ -2841,7 +2843,7 @@ bool
 
 Description
 -----------
-Returns label with color assigned to <l> as <type> returns false if no such color is assigned.
+Returns label with color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, TDF_Label & colorL);
 
@@ -2861,7 +2863,7 @@ bool
 
 Description
 -----------
-Returns color assigned to <l> as <type> returns false if no such color is assigned.
+Returns color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_Color & color);
 
@@ -2881,7 +2883,7 @@ bool
 
 Description
 -----------
-Returns color assigned to <l> as <type> returns false if no such color is assigned.
+Returns color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		static Standard_Boolean GetColor(const TDF_Label & L, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
 
@@ -2901,7 +2903,7 @@ bool
 
 Description
 -----------
-Returns label with color assigned to <l> as <type> returns false if no such color is assigned.
+Returns label with color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		Standard_Boolean GetColor(const TopoDS_Shape & S, const XCAFDoc_ColorType type, TDF_Label & colorL);
 
@@ -2921,7 +2923,7 @@ bool
 
 Description
 -----------
-Returns color assigned to <l> as <type> returns false if no such color is assigned.
+Returns color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		Standard_Boolean GetColor(const TopoDS_Shape & S, const XCAFDoc_ColorType type, Quantity_Color & color);
 
@@ -2941,7 +2943,7 @@ bool
 
 Description
 -----------
-Returns color assigned to <l> as <type> returns false if no such color is assigned.
+Returns color assigned to <L> as <type> Returns False if no such color is assigned.
 ") GetColor;
 		Standard_Boolean GetColor(const TopoDS_Shape & S, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
 
@@ -2992,7 +2994,7 @@ bool
 
 Description
 -----------
-Gets the color of component that styled with shuo structure returns false if no sush component or color type.
+Gets the color of component that styled with SHUO structure Returns False if no sush component or color type.
 ") GetInstanceColor;
 		Standard_Boolean GetInstanceColor(const TopoDS_Shape & theShape, const XCAFDoc_ColorType type, Quantity_Color & color);
 
@@ -3012,7 +3014,7 @@ bool
 
 Description
 -----------
-Gets the color of component that styled with shuo structure returns false if no sush component or color type.
+Gets the color of component that styled with SHUO structure Returns False if no sush component or color type.
 ") GetInstanceColor;
 		Standard_Boolean GetInstanceColor(const TopoDS_Shape & theShape, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
 
@@ -3043,7 +3045,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a colortable and is a color definition.
+Returns True if label belongs to a colortable and is a color definition.
 ") IsColor;
 		Standard_Boolean IsColor(const TDF_Label & lab);
 
@@ -3061,7 +3063,7 @@ bool
 
 Description
 -----------
-Return true if object color defined by its layer, false if not.
+Return True if object color defined by its Layer, False if not.
 ") IsColorByLayer;
 		Standard_Boolean IsColorByLayer(const TDF_Label & L);
 
@@ -3079,7 +3081,7 @@ bool
 
 Description
 -----------
-Gets the visibility status of component that styled with shuo structure returns false if no sush component.
+Gets the visibility status of component that styled with SHUO structure Returns False if no sush component.
 ") IsInstanceVisible;
 		Standard_Boolean IsInstanceVisible(const TopoDS_Shape & theShape);
 
@@ -3098,7 +3100,7 @@ bool
 
 Description
 -----------
-Returns true if label <l> has a color assignment of the type <type>.
+Returns True if label <L> has a color assignment of the type <type>.
 ") IsSet;
 		Standard_Boolean IsSet(const TDF_Label & L, const XCAFDoc_ColorType type);
 
@@ -3117,7 +3119,7 @@ bool
 
 Description
 -----------
-Returns true if label <l> has a color assignment of the type <type>.
+Returns True if label <L> has a color assignment of the type <type>.
 ") IsSet;
 		Standard_Boolean IsSet(const TopoDS_Shape & S, const XCAFDoc_ColorType type);
 
@@ -3135,7 +3137,7 @@ bool
 
 Description
 -----------
-Return true if object on this label is visible, false if invisible.
+Return True if object on this label is visible, False if invisible.
 ") IsVisible;
 		static Standard_Boolean IsVisible(const TDF_Label & L);
 
@@ -3166,7 +3168,7 @@ bool
 
 Description
 -----------
-Reverses order in chains of treenodes (from last to first) under each color label since we became to use function ::prepend() instead of ::append() in method setcolor() for acceleration.
+Reverses order in chains of TreeNodes (from Last to First) under each Color Label since we became to use function ::Prepend() instead of ::Append() in method SetColor() for acceleration.
 ") ReverseChainsOfTreeNodes;
 		Standard_Boolean ReverseChainsOfTreeNodes();
 
@@ -3184,7 +3186,7 @@ opencascade::handle<XCAFDoc_ColorTool>
 
 Description
 -----------
-Creates (if not exist) colortool.
+Creates (if not exist) ColorTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_ColorTool> Set(const TDF_Label & L);
 
@@ -3202,7 +3204,7 @@ None
 
 Description
 -----------
-See also autonaming().
+See also AutoNaming().
 ") SetAutoNaming;
 		static void SetAutoNaming(Standard_Boolean theIsAutoNaming);
 
@@ -3222,7 +3224,7 @@ None
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color defined by <colorl>. color of shape is defined following way in dependance with type of color. if type of color is xcafdoc_colorgen - then this color defines default color for surfaces and curves. if for shape color with types xcafdoc_colorsurf or xcafdoc_colorcurv is specified then such color overrides generic color.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL>. Color of shape is defined following way in dependance with type of color. If type of color is XCAFDoc_ColorGen - then this color defines default color for surfaces and curves. If for shape color with types XCAFDoc_ColorSurf or XCAFDoc_ColorCurv is specified then such color overrides generic color.
 ") SetColor;
 		void SetColor(const TDF_Label & L, const TDF_Label & colorL, const XCAFDoc_ColorType type);
 
@@ -3242,7 +3244,7 @@ None
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color <color> in the colortable adds a color as necessary.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary.
 ") SetColor;
 		void SetColor(const TDF_Label & L, const Quantity_Color & Color, const XCAFDoc_ColorType type);
 
@@ -3262,7 +3264,7 @@ None
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color <color> in the colortable adds a color as necessary.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary.
 ") SetColor;
 		void SetColor(const TDF_Label & L, const Quantity_ColorRGBA & Color, const XCAFDoc_ColorType type);
 
@@ -3282,7 +3284,7 @@ bool
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color defined by <colorl> returns false if cannot find a label for shape s.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color defined by <colorL> Returns False if cannot find a label for shape S.
 ") SetColor;
 		Standard_Boolean SetColor(const TopoDS_Shape & S, const TDF_Label & colorL, const XCAFDoc_ColorType type);
 
@@ -3302,7 +3304,7 @@ bool
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color <color> in the colortable adds a color as necessary returns false if cannot find a label for shape s.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary Returns False if cannot find a label for shape S.
 ") SetColor;
 		Standard_Boolean SetColor(const TopoDS_Shape & S, const Quantity_Color & Color, const XCAFDoc_ColorType type);
 
@@ -3322,7 +3324,7 @@ bool
 
 Description
 -----------
-Sets a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color <color> in the colortable adds a color as necessary returns false if cannot find a label for shape s.
+Sets a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color <Color> in the colortable Adds a color as necessary Returns False if cannot find a label for shape S.
 ") SetColor;
 		Standard_Boolean SetColor(const TopoDS_Shape & S, const Quantity_ColorRGBA & Color, const XCAFDoc_ColorType type);
 
@@ -3341,7 +3343,7 @@ None
 
 Description
 -----------
-Set the color defined by layer flag on label. do nothing if there no any object. set uattribute with corresponding guid.
+Set the Color defined by Layer flag on label. Do nothing if there no any object. Set UAttribute with corresponding GUID.
 ") SetColorByLayer;
 		void SetColorByLayer(const TDF_Label & shapeLabel, const Standard_Boolean isColorByLayer = Standard_False);
 
@@ -3362,7 +3364,7 @@ bool
 
 Description
 -----------
-Sets the color of component that styled with shuo structure returns false if no sush component found note: create shuo structeure if it is necessary and if <iscreateshuo>.
+Sets the color of component that styled with SHUO structure Returns False if no sush component found NOTE: create SHUO structeure if it is necessary and if <isCreateSHUO>.
 ") SetInstanceColor;
 		Standard_Boolean SetInstanceColor(const TopoDS_Shape & theShape, const XCAFDoc_ColorType type, const Quantity_Color & color, const Standard_Boolean isCreateSHUO = Standard_True);
 
@@ -3383,7 +3385,7 @@ bool
 
 Description
 -----------
-Sets the color of component that styled with shuo structure returns false if no sush component found note: create shuo structeure if it is necessary and if <iscreateshuo>.
+Sets the color of component that styled with SHUO structure Returns False if no sush component found NOTE: create SHUO structeure if it is necessary and if <isCreateSHUO>.
 ") SetInstanceColor;
 		Standard_Boolean SetInstanceColor(const TopoDS_Shape & theShape, const XCAFDoc_ColorType type, const Quantity_ColorRGBA & color, const Standard_Boolean isCreateSHUO = Standard_True);
 
@@ -3402,7 +3404,7 @@ None
 
 Description
 -----------
-Set the visibility of object on label. do nothing if there no any object. set uattribute with corresponding guid.
+Set the visibility of object on label. Do nothing if there no any object. Set UAttribute with corresponding GUID.
 ") SetVisibility;
 		void SetVisibility(const TDF_Label & shapeLabel, const Standard_Boolean isvisible = Standard_True);
 
@@ -3415,7 +3417,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Returns internal xcafdoc_shapetool tool.
+Returns internal XCAFDoc_ShapeTool tool.
 ") ShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
 
@@ -3434,7 +3436,7 @@ None
 
 Description
 -----------
-Removes a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color.
+Removes a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color.
 ") UnSetColor;
 		void UnSetColor(const TDF_Label & L, const XCAFDoc_ColorType type);
 
@@ -3453,7 +3455,7 @@ bool
 
 Description
 -----------
-Removes a link with guid defined by <type> (see xcafdoc::colorrefguid()) from label <l> to color returns true if such link existed.
+Removes a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from label <L> to color Returns True if such link existed.
 ") UnSetColor;
 		Standard_Boolean UnSetColor(const TopoDS_Shape & S, const XCAFDoc_ColorType type);
 
@@ -3708,7 +3710,7 @@ None
 
 Description
 -----------
-Updates parent's label and its sub-labels with data taken from thedatumobject. old data associated with the label will be lost.
+Updates parent's label and its sub-labels with data taken from theDatumObject. Old data associated with the label will be lost.
 ") SetObject;
 		void SetObject(const opencascade::handle<XCAFDimTolObjects_DatumObject> & theDatumObject);
 
@@ -3978,7 +3980,7 @@ TDF_Label
 
 Description
 -----------
-Adds a datum definition to the gd&t table and returns its label.
+Adds a datum definition to the GD&T table and returns its label.
 ") AddDatum;
 		TDF_Label AddDatum(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<TCollection_HAsciiString> & theIdentification);
 
@@ -3991,7 +3993,7 @@ TDF_Label
 
 Description
 -----------
-Adds a datum definition to the gd&t table and returns its label.
+Adds a datum definition to the GD&T table and returns its label.
 ") AddDatum;
 		TDF_Label AddDatum();
 
@@ -4012,7 +4014,7 @@ TDF_Label
 
 Description
 -----------
-Adds a dimension tolerance definition with the specified kind, value, name and description to the gd&t table and returns its label.
+Adds a dimension tolerance definition with the specified kind, value, name and description to the GD&T table and returns its label.
 ") AddDimTol;
 		TDF_Label AddDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -4025,7 +4027,7 @@ TDF_Label
 
 Description
 -----------
-Adds a dimension definition to the gd&t table and returns its label.
+Adds a dimension definition to the GD&T table and returns its label.
 ") AddDimension;
 		TDF_Label AddDimension();
 
@@ -4038,7 +4040,7 @@ TDF_Label
 
 Description
 -----------
-Adds a geomtolerance definition to the gd&t table and returns its label.
+Adds a GeomTolerance definition to the GD&T table and returns its label.
 ") AddGeomTolerance;
 		TDF_Label AddGeomTolerance();
 
@@ -4051,7 +4053,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which gd&t table is stored.
+Returns the label under which GD&T table is stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -4115,7 +4117,7 @@ bool
 
 Description
 -----------
-Finds a dimension tolerance definition in the gd&t table satisfying the specified kind, values, name and description and returns its label if found. returns false if dimension tolerance is not found in dgttable.
+Finds a dimension tolerance definition in the GD&T table satisfying the specified kind, values, name and description and returns its label if found. Returns False if dimension tolerance is not found in DGTtable.
 ") FindDimTol;
 		Standard_Boolean FindDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, TDF_Label & lab);
 
@@ -4136,7 +4138,7 @@ TDF_Label
 
 Description
 -----------
-Finds a dimension tolerance in the gd&t table satisfying the specified kind, values, name and description and returns its label if found (or null label else).
+Finds a dimension tolerance in the GD&T table satisfying the specified kind, values, name and description and returns its label if found (or Null label else).
 ") FindDimTol;
 		TDF_Label FindDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -4156,7 +4158,7 @@ theIdentification: TCollection_HAsciiString
 
 Description
 -----------
-Returns datum assigned to thedatuml label. returns false if no such datum is assigned.
+Returns datum assigned to theDatumL label. Returns False if no such datum is assigned.
 ") GetDatum;
 		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -4174,7 +4176,7 @@ None
 
 Description
 -----------
-Returns a sequence of datums currently stored in the gd&t table.
+Returns a sequence of Datums currently stored in the GD&T table.
 ") GetDatumLabels;
 		void GetDatumLabels(TDF_LabelSequence & Labels);
 
@@ -4193,7 +4195,7 @@ bool
 
 Description
 -----------
-Returns all datum labels defined for thedimtoll label.
+Returns all Datum labels defined for theDimTolL label.
 ") GetDatumOfTolerLabels;
 		static Standard_Boolean GetDatumOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
@@ -4212,7 +4214,7 @@ bool
 
 Description
 -----------
-Returns all datum labels with xcafdimtolobjects_datumobject defined for label thedimtoll.
+Returns all Datum labels with XCAFDimTolObjects_DatumObject defined for label theDimTolL.
 ") GetDatumWithObjectOfTolerLabels;
 		static Standard_Boolean GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
@@ -4233,7 +4235,7 @@ theDescription: TCollection_HAsciiString
 
 Description
 -----------
-Returns dimension tolerance assigned to thedimtoll label. returns false if no such dimension tolerance is assigned.
+Returns dimension tolerance assigned to theDimTolL label. Returns False if no such dimension tolerance is assigned.
 ") GetDimTol;
 		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -4251,7 +4253,7 @@ None
 
 Description
 -----------
-Returns a sequence of d&gts currently stored in the gd&t table.
+Returns a sequence of D&GTs currently stored in the GD&T table.
 ") GetDimTolLabels;
 		void GetDimTolLabels(TDF_LabelSequence & Labels);
 
@@ -4269,7 +4271,7 @@ None
 
 Description
 -----------
-Returns a sequence of dimension labels currently stored in the gd&t table.
+Returns a sequence of Dimension labels currently stored in the GD&T table.
 ") GetDimensionLabels;
 		void GetDimensionLabels(TDF_LabelSequence & theLabels);
 
@@ -4287,7 +4289,7 @@ None
 
 Description
 -----------
-Fill the map gdt label -> shape presentation .
+fill the map GDT label -> shape presentation.
 ") GetGDTPresentations;
 		void GetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape> & theGDTLabelToShape);
 
@@ -4305,7 +4307,7 @@ None
 
 Description
 -----------
-Returns a sequence of tolerance labels currently stored in the gd&t table.
+Returns a sequence of Tolerance labels currently stored in the GD&T table.
 ") GetGeomToleranceLabels;
 		void GetGeomToleranceLabels(TDF_LabelSequence & theLabels);
 
@@ -4318,7 +4320,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the standard gd&t tool guid.
+Returns the standard GD&T tool GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4337,7 +4339,7 @@ bool
 
 Description
 -----------
-Returns datum label defined for theshapel label.
+Returns Datum label defined for theShapeL label.
 ") GetRefDatumLabel;
 		Standard_Boolean GetRefDatumLabel(const TDF_Label & theShapeL, TDF_LabelSequence & theDatum);
 
@@ -4356,7 +4358,7 @@ bool
 
 Description
 -----------
-Returns all dimension labels defined for theshapel.
+Returns all Dimension labels defined for theShapeL.
 ") GetRefDimensionLabels;
 		Standard_Boolean GetRefDimensionLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimensions);
 
@@ -4375,7 +4377,7 @@ bool
 
 Description
 -----------
-Returns all geomtolerance labels defined for theshapel.
+Returns all GeomTolerance labels defined for theShapeL.
 ") GetRefGeomToleranceLabels;
 		Standard_Boolean GetRefGeomToleranceLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimTols);
 
@@ -4395,7 +4397,7 @@ bool
 
 Description
 -----------
-Gets all shape labels referred by thel label of the gd&t table. returns false if there are no shape labels added to the sequences.
+Gets all shape labels referred by theL label of the GD&T table. Returns False if there are no shape labels added to the sequences.
 ") GetRefShapeLabel;
 		static Standard_Boolean GetRefShapeLabel(const TDF_Label & theL, TDF_LabelSequence & theShapeLFirst, TDF_LabelSequence & theShapeLSecond);
 
@@ -4414,7 +4416,7 @@ bool
 
 Description
 -----------
-Returns all geomtoleranses labels defined for thedatuml label.
+Returns all GeomToleranses labels defined for theDatumL label.
 ") GetTolerOfDatumLabels;
 		Standard_Boolean GetTolerOfDatumLabels(const TDF_Label & theDatumL, TDF_LabelSequence & theTols);
 
@@ -4445,7 +4447,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to the gd&t table and is a datum definition.
+Returns True if label belongs to the GD&T table and is a Datum definition.
 ") IsDatum;
 		Standard_Boolean IsDatum(const TDF_Label & lab);
 
@@ -4463,7 +4465,7 @@ bool
 
 Description
 -----------
-Returns true if thelab belongs to the gd&t table and is a dmension tolerance.
+Returns True if theLab belongs to the GD&T table and is a dmension tolerance.
 ") IsDimTol;
 		Standard_Boolean IsDimTol(const TDF_Label & theLab);
 
@@ -4481,7 +4483,7 @@ bool
 
 Description
 -----------
-Returns true if the label belongs to a gd&t table and is a dimension definition.
+Returns True if the label belongs to a GD&T table and is a Dimension definition.
 ") IsDimension;
 		Standard_Boolean IsDimension(const TDF_Label & theLab);
 
@@ -4499,7 +4501,7 @@ bool
 
 Description
 -----------
-Returns true if the label belongs to the gd&t table and is a dimension tolerance.
+Returns True if the label belongs to the GD&T table and is a dimension tolerance.
 ") IsGeomTolerance;
 		Standard_Boolean IsGeomTolerance(const TDF_Label & theLab);
 
@@ -4517,7 +4519,7 @@ bool
 
 Description
 -----------
-Returns true if the given gdt is marked as locked.
+Returns true if the given GDT is marked as locked.
 ") IsLocked;
 		Standard_Boolean IsLocked(const TDF_Label & theViewL);
 
@@ -4535,7 +4537,7 @@ None
 
 Description
 -----------
-Mark the given gdt as locked.
+Mark the given GDT as locked.
 ") Lock;
 		void Lock(const TDF_Label & theViewL);
 
@@ -4553,7 +4555,7 @@ opencascade::handle<XCAFDoc_DimTolTool>
 
 Description
 -----------
-Creates (if not exist) dimtoltool attribute.
+Creates (if not exist) DimTolTool attribute.
 ") Set;
 		static opencascade::handle<XCAFDoc_DimTolTool> Set(const TDF_Label & L);
 
@@ -4594,7 +4596,7 @@ None
 
 Description
 -----------
-Sets a datum to thel label and binds it with thetolerl label. a datum with the specified name, description and identification is created if it isn't found in the gd&t table.
+Sets a datum to theL label and binds it with theTolerL label. A datum with the specified name, description and identification is created if it isn't found in the GD&T table.
 ") SetDatum;
 		void SetDatum(const TDF_Label & theL, const TDF_Label & theTolerL, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<TCollection_HAsciiString> & theIdentification);
 
@@ -4613,7 +4615,7 @@ None
 
 Description
 -----------
-Sets a datum from thedatuml label to thetoletl label.
+Sets a datum from theDatumL label to theToletL label.
 ") SetDatumToGeomTol;
 		void SetDatumToGeomTol(const TDF_Label & theDatumL, const TDF_Label & theTolerL);
 
@@ -4632,7 +4634,7 @@ None
 
 Description
 -----------
-Sets existing dimension tolerance to thel label.
+Sets existing dimension tolerance to theL label.
 ") SetDimTol;
 		void SetDimTol(const TDF_Label & theL, const TDF_Label & theDimTolL);
 
@@ -4654,7 +4656,7 @@ TDF_Label
 
 Description
 -----------
-Creates a dimension tolerance and sets it to thel label.
+Creates a dimension tolerance and sets it to theL label.
 ") SetDimTol;
 		TDF_Label SetDimTol(const TDF_Label & theL, const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -4731,7 +4733,7 @@ None
 
 Description
 -----------
-Set shape presentation for gdt labels according to given map (thegdtlabeltoprs) thegdtlabeltoprsname map is an additional argument, can be used to set presentation names. if label is not in the thegdtlabeltoprsname map, the presentation name will be empty.
+Set shape presentation for GDT labels according to given map (theGDTLabelToPrs) theGDTLabelToPrsName map is an additional argument, can be used to set presentation names. If label is not in the theGDTLabelToPrsName map, the presentation name will be empty.
 ") SetGDTPresentations;
 		void SetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape> & theGDTLabelToPrs);
 
@@ -4750,7 +4752,7 @@ None
 
 Description
 -----------
-Sets a geometry tolerance from thegeomtoll to thel label. checks if thegeomtoll is a geometry tolerance definition first.
+Sets a geometry tolerance from theGeomTolL to theL label. Checks if theGeomTolL is a geometry tolerance definition first.
 ") SetGeomTolerance;
 		void SetGeomTolerance(const TDF_Label & theL, const TDF_Label & theGeomTolL);
 
@@ -4769,7 +4771,7 @@ None
 
 Description
 -----------
-Sets a geometry tolerance from thegeomtoll to sequence of labels thel. checks if thegeomtoll is a geometry tolerance definition first.
+Sets a geometry tolerance from theGeomTolL to sequence of labels theL. Checks if theGeomTolL is a geometry tolerance definition first.
 ") SetGeomTolerance;
 		void SetGeomTolerance(const TDF_LabelSequence & theL, const TDF_Label & theGeomTolL);
 
@@ -4782,7 +4784,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Returns internal xcafdoc_shapetool tool.
+Returns internal XCAFDoc_ShapeTool tool.
 ") ShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
 
@@ -4800,7 +4802,7 @@ None
 
 Description
 -----------
-Unlock the given gdt.
+Unlock the given GDT.
 ") Unlock;
 		void Unlock(const TDF_Label & theViewL);
 
@@ -4925,7 +4927,7 @@ None
 
 Description
 -----------
-Updates parent's label and its sub-labels with data taken from thedimensionobject. old data associated with the label will be lost.
+Updates parent's label and its sub-labels with data taken from theDimensionObject. Old data associated with the label will be lost.
 ") SetObject;
 		void SetObject(const opencascade::handle<XCAFDimTolObjects_DimensionObject> & theDimensionObject);
 
@@ -4990,7 +4992,7 @@ bool
 
 Description
 -----------
-Checks for the clippingplanetool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the ClippingPlaneTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckClippingPlaneTool;
 		static Standard_Boolean CheckClippingPlaneTool(const TDF_Label & theAcces);
 
@@ -5008,7 +5010,7 @@ bool
 
 Description
 -----------
-Checks for the colortool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the ColorTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckColorTool;
 		static Standard_Boolean CheckColorTool(const TDF_Label & theAcces);
 
@@ -5026,7 +5028,7 @@ bool
 
 Description
 -----------
-Checks for the dimtoltool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the DimTolTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckDimTolTool;
 		static Standard_Boolean CheckDimTolTool(const TDF_Label & theAcces);
 
@@ -5044,7 +5046,7 @@ bool
 
 Description
 -----------
-Checks for the layertool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the LayerTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckLayerTool;
 		static Standard_Boolean CheckLayerTool(const TDF_Label & theAcces);
 
@@ -5062,7 +5064,7 @@ bool
 
 Description
 -----------
-Checks for the materialtool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the MaterialTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckMaterialTool;
 		static Standard_Boolean CheckMaterialTool(const TDF_Label & theAcces);
 
@@ -5080,7 +5082,7 @@ bool
 
 Description
 -----------
-Checks for the notestool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the NotesTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckNotesTool;
 		static Standard_Boolean CheckNotesTool(const TDF_Label & theAcces);
 
@@ -5098,7 +5100,7 @@ bool
 
 Description
 -----------
-Checks for the shapetool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the ShapeTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckShapeTool;
 		static Standard_Boolean CheckShapeTool(const TDF_Label & theAcces);
 
@@ -5116,7 +5118,7 @@ bool
 
 Description
 -----------
-Checks for the viewtool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the ViewTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckViewTool;
 		static Standard_Boolean CheckViewTool(const TDF_Label & theAcces);
 
@@ -5134,7 +5136,7 @@ bool
 
 Description
 -----------
-Checks for the vismaterialtool attribute on the label's document returns true if tool exists, else if it has not been created.
+Checks for the VisMaterialTool attribute on the label's document Returns True if Tool exists, ELSE if it has not been created.
 ") CheckVisMaterialTool;
 		static Standard_Boolean CheckVisMaterialTool(const TDF_Label & theAcces);
 
@@ -5152,7 +5154,7 @@ opencascade::handle<XCAFDoc_ClippingPlaneTool>
 
 Description
 -----------
-Creates (if it does not exist) clippingplanetool attribute on clippingplaneslabel().
+Creates (if it does not exist) ClippingPlaneTool attribute on ClippingPlanesLabel().
 ") ClippingPlaneTool;
 		static opencascade::handle<XCAFDoc_ClippingPlaneTool> ClippingPlaneTool(const TDF_Label & acces);
 
@@ -5170,7 +5172,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 8.
+Returns sub-label of DocLabel() with tag 8.
 ") ClippingPlanesLabel;
 		static TDF_Label ClippingPlanesLabel(const TDF_Label & acces);
 
@@ -5188,7 +5190,7 @@ opencascade::handle<XCAFDoc_ColorTool>
 
 Description
 -----------
-Creates (if it does not exist) colortool attribute on colorslabel().
+Creates (if it does not exist) ColorTool attribute on ColorsLabel().
 ") ColorTool;
 		static opencascade::handle<XCAFDoc_ColorTool> ColorTool(const TDF_Label & acces);
 
@@ -5206,7 +5208,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 2.
+Returns sub-label of DocLabel() with tag 2.
 ") ColorsLabel;
 		static TDF_Label ColorsLabel(const TDF_Label & acces);
 
@@ -5224,7 +5226,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 4.
+Returns sub-label of DocLabel() with tag 4.
 ") DGTsLabel;
 		static TDF_Label DGTsLabel(const TDF_Label & acces);
 
@@ -5242,7 +5244,7 @@ opencascade::handle<XCAFDoc_DimTolTool>
 
 Description
 -----------
-Creates (if it does not exist) dimtoltool attribute on dgtslabel().
+Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
 ") DimTolTool;
 		static opencascade::handle<XCAFDoc_DimTolTool> DimTolTool(const TDF_Label & acces);
 
@@ -5260,7 +5262,7 @@ TDF_Label
 
 Description
 -----------
-Returns label where the documenttool attribute is or 0.1 if documenttool is not yet set.
+Returns label where the DocumentTool attribute is or 0.1 if DocumentTool is not yet set.
 ") DocLabel;
 		static TDF_Label DocLabel(const TDF_Label & acces);
 
@@ -5336,7 +5338,7 @@ None
 
 Description
 -----------
-To be called when reading this attribute from file.
+to be called when reading this attribute from file.
 ") Init;
 		void Init();
 
@@ -5372,7 +5374,7 @@ opencascade::handle<XCAFDoc_LayerTool>
 
 Description
 -----------
-Creates (if it does not exist) layertool attribute on layerslabel().
+Creates (if it does not exist) LayerTool attribute on LayersLabel().
 ") LayerTool;
 		static opencascade::handle<XCAFDoc_LayerTool> LayerTool(const TDF_Label & acces);
 
@@ -5390,7 +5392,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 3.
+Returns sub-label of DocLabel() with tag 3.
 ") LayersLabel;
 		static TDF_Label LayersLabel(const TDF_Label & acces);
 
@@ -5408,7 +5410,7 @@ opencascade::handle<XCAFDoc_MaterialTool>
 
 Description
 -----------
-Creates (if it does not exist) dimtoltool attribute on dgtslabel().
+Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
 ") MaterialTool;
 		static opencascade::handle<XCAFDoc_MaterialTool> MaterialTool(const TDF_Label & acces);
 
@@ -5426,7 +5428,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 5.
+Returns sub-label of DocLabel() with tag 5.
 ") MaterialsLabel;
 		static TDF_Label MaterialsLabel(const TDF_Label & acces);
 
@@ -5444,7 +5446,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 9.
+Returns sub-label of DocLabel() with tag 9.
 ") NotesLabel;
 		static TDF_Label NotesLabel(const TDF_Label & acces);
 
@@ -5462,7 +5464,7 @@ opencascade::handle<XCAFDoc_NotesTool>
 
 Description
 -----------
-Creates (if it does not exist) notestool attribute on noteslabel().
+Creates (if it does not exist) NotesTool attribute on NotesLabel().
 ") NotesTool;
 		static opencascade::handle<XCAFDoc_NotesTool> NotesTool(const TDF_Label & acces);
 
@@ -5481,7 +5483,7 @@ opencascade::handle<XCAFDoc_DocumentTool>
 
 Description
 -----------
-Create (if not exist) documenttool attribute on 0.1 label if <isacces> is true, else on <l> label. this label will be returned by doclabel(); if the attribute is already set it won't be reset on <l> even if <isacces> is false. colortool and shapetool attributes are also set by this method.
+Create (if not exist) DocumentTool attribute on 0.1 label if <IsAcces> is true, else on <L> label. This label will be returned by DocLabel(); If the attribute is already set it won't be reset on <L> even if <IsAcces> is false. ColorTool and ShapeTool attributes are also set by this method.
 ") Set;
 		static opencascade::handle<XCAFDoc_DocumentTool> Set(const TDF_Label & L, const Standard_Boolean IsAcces = Standard_True);
 
@@ -5520,7 +5522,8 @@ None
 
 Description
 -----------
-Sets value of current internal unit to the document @param theunitvalue must be represented in the base unit type.
+Sets value of current internal unit to the document 
+Parameter theUnitValue must be represented in the base unit type.
 ") SetLengthUnit;
 		static void SetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit);
 
@@ -5538,7 +5541,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Creates (if it does not exist) shapetool attribute on shapeslabel().
+Creates (if it does not exist) ShapeTool attribute on ShapesLabel().
 ") ShapeTool;
 		static opencascade::handle<XCAFDoc_ShapeTool> ShapeTool(const TDF_Label & acces);
 
@@ -5556,7 +5559,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 1.
+Returns sub-label of DocLabel() with tag 1.
 ") ShapesLabel;
 		static TDF_Label ShapesLabel(const TDF_Label & acces);
 
@@ -5574,7 +5577,7 @@ opencascade::handle<XCAFDoc_ViewTool>
 
 Description
 -----------
-Creates (if it does not exist) viewtool attribute on viewslabel().
+Creates (if it does not exist) ViewTool attribute on ViewsLabel().
 ") ViewTool;
 		static opencascade::handle<XCAFDoc_ViewTool> ViewTool(const TDF_Label & acces);
 
@@ -5592,7 +5595,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 7.
+Returns sub-label of DocLabel() with tag 7.
 ") ViewsLabel;
 		static TDF_Label ViewsLabel(const TDF_Label & acces);
 
@@ -5610,7 +5613,7 @@ TDF_Label
 
 Description
 -----------
-Returns sub-label of doclabel() with tag 10.
+Returns sub-label of DocLabel() with tag 10.
 ") VisMaterialLabel;
 		static TDF_Label VisMaterialLabel(const TDF_Label & theLabel);
 
@@ -5628,7 +5631,7 @@ opencascade::handle<XCAFDoc_VisMaterialTool>
 
 Description
 -----------
-Creates (if it does not exist) xcafdoc_vismaterialtool attribute on vismateriallabel(). should not be confused with materialtool() defining physical/manufacturing materials.
+Creates (if it does not exist) XCAFDoc_VisMaterialTool attribute on VisMaterialLabel(). Should not be confused with MaterialTool() defining physical/manufacturing materials.
 ") VisMaterialTool;
 		static opencascade::handle<XCAFDoc_VisMaterialTool> VisMaterialTool(const TDF_Label & theLabel);
 
@@ -5669,7 +5672,15 @@ None
 
 Description
 -----------
-Copies metadata contains from the source label to the destination label. protected against creating a new label for non-existent tools @param[in] thesrclabel original label to copy from @param[in] thedstlabel destination shape label to set attributes @param[in] thevismatmap relating map of the original vismaterial and created. can be null for the same document @param[in] thetocopycolor copying visible value and shape color (handled all color type) @param[in] thetocopylayer copying layer @param[in] thetocopymaterial copying material @param[in] thetocopyvismaterial copying visual material @param[in] thetocopyattributes copying of other node attributes, for example, a shape's property.
+Copies metadata contains from the source label to the destination label. Protected against creating a new label for non-existent tools 
+Input parameter: theSrcLabel original label to copy from 
+Input parameter: theDstLabel destination shape label to set attributes 
+Input parameter: theVisMatMap relating map of the original VisMaterial and created. Can be NULL for the same document 
+Input parameter: theToCopyColor copying visible value and shape color (handled all color type) 
+Input parameter: theToCopyLayer copying layer 
+Input parameter: theToCopyMaterial copying material 
+Input parameter: theToCopyVisMaterial copying visual material 
+Input parameter: theToCopyAttributes copying of other node attributes, for example, a shape's property.
 ") CloneMetaData;
 		static void CloneMetaData(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial> > * theVisMatMap, const Standard_Boolean theToCopyColor = Standard_True, const Standard_Boolean theToCopyLayer = Standard_True, const Standard_Boolean theToCopyMaterial = Standard_True, const Standard_Boolean theToCopyVisMaterial = Standard_True, const Standard_Boolean theToCopyAttributes = Standard_True);
 
@@ -5690,7 +5701,11 @@ TDF_Label
 
 Description
 -----------
-Copies shapes label with keeping of shape structure (recursively) @param[in] thesrclabel original label to copy from @param[in] thesrcshapetool shape tool to get @param[in] thedstshapetool shape tool to set @param[out] themap relating map of the original shapes label and labels created from them return result shape label.
+Copies shapes label with keeping of shape structure (recursively) 
+Input parameter: theSrcLabel original label to copy from 
+Input parameter: theSrcShapeTool shape tool to get 
+Input parameter: theDstShapeTool shape tool to set @param[out] theMap relating map of the original shapes label and labels created from them 
+Return: result shape label.
 ") CloneShapeLabel;
 		static TDF_Label CloneShapeLabel(const TDF_Label & theSrcLabel, const opencascade::handle<XCAFDoc_ShapeTool> & theSrcShapeTool, const opencascade::handle<XCAFDoc_ShapeTool> & theDstShapeTool, TDF_LabelDataMap & theMap);
 
@@ -5710,7 +5725,11 @@ bool
 
 Description
 -----------
-Converts shape (compound/compsolid/shell/wire) to assembly. @param[in] thedoc input document @param[in] theshape input shape label @param[in] therecursively recursively expand a compound subshape return true if shape successfully expanded.
+Converts shape (compound/compsolid/shell/wire) to assembly. 
+Input parameter: theDoc input document 
+Input parameter: theShape input shape label 
+Input parameter: theRecursively recursively expand a compound subshape 
+Return: True if shape successfully expanded.
 ") Expand;
 		static Standard_Boolean Expand(const TDF_Label & theDoc, const TDF_Label & theShape, const Standard_Boolean theRecursively = Standard_True);
 
@@ -5729,7 +5748,10 @@ bool
 
 Description
 -----------
-Converts all compounds shapes in the document to assembly @param[in] thedoc input document @param[in] therecursively recursively expand a compound subshape return true if shape successfully expanded.
+Converts all compounds shapes in the document to assembly 
+Input parameter: theDoc input document 
+Input parameter: theRecursively recursively expand a compound subshape 
+Return: True if shape successfully expanded.
 ") Expand;
 		static Standard_Boolean Expand(const TDF_Label & theDoc, const Standard_Boolean theRecursively = Standard_True);
 
@@ -5749,7 +5771,11 @@ bool
 
 Description
 -----------
-Clones all labels to a new position, keeping the structure with all the attributes @param[in] thesrclabels original labels to copy from @param[in] thedstlabel label to set result as a component of or a main document's label to simply set new shape @param[in] theisnovismat get a vismaterial attributes as is or convert to color return true if shape successfully extracted.
+Clones all labels to a new position, keeping the structure with all the attributes 
+Input parameter: theSrcLabels original labels to copy from 
+Input parameter: theDstLabel label to set result as a component of or a main document's label to simply set new shape 
+Input parameter: theIsNoVisMat get a VisMaterial attributes as is or convert to color 
+Return: True if shape successfully extracted.
 ") Extract;
 		static Standard_Boolean Extract(const TDF_LabelSequence & theSrcLabels, const TDF_Label & theDstLabel, const Standard_Boolean theIsNoVisMat = Standard_False);
 
@@ -5769,9 +5795,75 @@ bool
 
 Description
 -----------
-Clones the label to a new position, keeping the structure with all the attributes @param[in] thesrclabel original label to copy from @param[in] thedstlabel label to set result as a component of or a main document's label to simply set new shape @param[in] theisnovismat get a vismaterial attributes as is or convert to color return true if shape successfully extracted.
+Clones the label to a new position, keeping the structure with all the attributes 
+Input parameter: theSrcLabel original label to copy from 
+Input parameter: theDstLabel label to set result as a component of or a main document's label to simply set new shape 
+Input parameter: theIsNoVisMat get a VisMaterial attributes as is or convert to color 
+Return: True if shape successfully extracted.
 ") Extract;
 		static Standard_Boolean Extract(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, const Standard_Boolean theIsNoVisMat = Standard_False);
+
+		/****** XCAFDoc_Editor::FilterShapeTree ******/
+		/****** md5 signature: 8e12fcc39feabea93d7a5e9366250bfe ******/
+		%feature("compactdefaultargs") FilterShapeTree;
+		%feature("autodoc", "
+Parameters
+----------
+theShapeTool: XCAFDoc_ShapeTool
+theLabelsToKeep: TDF_LabelMap
+
+Return
+-------
+bool
+
+Description
+-----------
+Filters original shape tree with keeping structure. The result will include the full label hierarchy lower then input labels. Any higher hierarchy labels will be filtered to keep only necessary labels. All not related shape labels with input will be cleared (all attributes will be removed). //! The result impact directly into original document and existed shape labels. Attributes related to removed shape can became invalide. For example, GDT with relation on removed shape label(s) and without attachment point(s) became invalid for visualization. //! 
+Input parameter: theShapeTool shape tool to extract from 
+Input parameter: theLabelsToKeep labels to keep 
+Return: true if the tree was filtered successfully.
+") FilterShapeTree;
+		static bool FilterShapeTree(const opencascade::handle<XCAFDoc_ShapeTool> & theShapeTool, const TDF_LabelMap & theLabelsToKeep);
+
+		/****** XCAFDoc_Editor::GetChildShapeLabels ******/
+		/****** md5 signature: 81933189727532e64bf0d30200535406 ******/
+		%feature("compactdefaultargs") GetChildShapeLabels;
+		%feature("autodoc", "
+Parameters
+----------
+theLabel: TDF_Label
+theRelatedLabels: TDF_LabelMap
+
+Return
+-------
+None
+
+Description
+-----------
+Gets shape labels that has up relation with the input label. 
+Input parameter: theLabel input label @param[out] theRelatedLabels output labels.
+") GetChildShapeLabels;
+		static void GetChildShapeLabels(const TDF_Label & theLabel, TDF_LabelMap & theRelatedLabels);
+
+		/****** XCAFDoc_Editor::GetParentShapeLabels ******/
+		/****** md5 signature: 5558e8ee6ddc339e61eb38d80d7a24c7 ******/
+		%feature("compactdefaultargs") GetParentShapeLabels;
+		%feature("autodoc", "
+Parameters
+----------
+theLabel: TDF_Label
+theRelatedLabels: TDF_LabelMap
+
+Return
+-------
+None
+
+Description
+-----------
+Gets shape labels that has down relation with the input label. 
+Input parameter: theLabel input label @param[out] theRelatedLabels output labels.
+") GetParentShapeLabels;
+		static void GetParentShapeLabels(const TDF_Label & theLabel, TDF_LabelMap & theRelatedLabels);
 
 		/****** XCAFDoc_Editor::RescaleGeometry ******/
 		/****** md5 signature: 6d7b362a664687f8478cc030b7cf7497 ******/
@@ -5789,7 +5881,11 @@ bool
 
 Description
 -----------
-Applies geometrical scaling to the following assembly components: - part geometry - sub-assembly/part occurrence location - part's centroid, area and volume attributes - pmis (warnings and errors are reported if it is impossible to make changes) normally, should start from a root sub-assembly, but if theforceifnotroot true scaling will be applied forcibly. if thelabel corresponds to the shape tool scaling is applied to the whole assembly. @param[in] thelabel starting label @param[in] thescalefactor scale factor, should be positive @param[in] theforceifnotroot allows scaling of a non root assembly if true,  otherwise - returns false return true in case of success, otherwise - false.
+Applies geometrical scaling to the following assembly components: - part geometry - sub-assembly/part occurrence location - part's centroid, area and volume attributes - PMIs (warnings and errors are reported if it is impossible to make changes) Normally, should start from a root sub-assembly, but if theForceIfNotRoot true scaling will be applied forcibly. If theLabel corresponds to the shape tool scaling is applied to the whole assembly. 
+Input parameter: theLabel starting label 
+Input parameter: theScaleFactor scale factor, should be positive 
+Input parameter: theForceIfNotRoot allows scaling of a non root assembly if true,  otherwise - returns false 
+Return: true in case of success, otherwise - false.
 ") RescaleGeometry;
 		static Standard_Boolean RescaleGeometry(const TDF_Label & theLabel, const Standard_Real theScaleFactor, const Standard_Boolean theForceIfNotRoot = Standard_False);
 
@@ -5850,7 +5946,7 @@ int
 
 Description
 -----------
-Return index of <ch>, or zero if there is no such graphnode.
+Return index of <Ch>, or zero if there is no such Graphnode.
 ") ChildIndex;
 		Standard_Integer ChildIndex(const opencascade::handle<XCAFDoc_GraphNode> & Ch);
 
@@ -5906,7 +6002,7 @@ int
 
 Description
 -----------
-Return index of <f>, or zero if there is no such graphnode.
+Return index of <F>, or zero if there is no such Graphnode.
 ") FatherIndex;
 		Standard_Integer FatherIndex(const opencascade::handle<XCAFDoc_GraphNode> & F);
 
@@ -5925,7 +6021,7 @@ bool
 
 Description
 -----------
-Class methods working on the node =================================== shortcut to search a graph node attribute with default graphid. returns true if found.
+class methods working on the node =================================== Shortcut to search a Graph node attribute with default GraphID. Returns true if found.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & L, opencascade::handle<XCAFDoc_GraphNode> & G);
 
@@ -5943,7 +6039,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 
 Description
 -----------
-Return graphnode by index from graphnodesequence.
+Return GraphNode by index from GraphNodeSequence.
 ") GetChild;
 		opencascade::handle<XCAFDoc_GraphNode> GetChild(const Standard_Integer Chindex);
 
@@ -5956,7 +6052,7 @@ Standard_GUID
 
 Description
 -----------
-Returns a default graph id. this id is used by the <set> method without explicit tree id. instance methods: ================.
+returns a default Graph ID. this ID is used by the <Set> method without explicit tree ID. Instance methods: ================.
 ") GetDefaultGraphID;
 		static const Standard_GUID & GetDefaultGraphID();
 
@@ -5974,7 +6070,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 
 Description
 -----------
-Return graphnode by index from graphnodesequence.
+Return GraphNode by index from GraphNodeSequence.
 ") GetFather;
 		opencascade::handle<XCAFDoc_GraphNode> GetFather(const Standard_Integer Findex);
 
@@ -5987,7 +6083,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the graph id (default or explicit one depending on the set method used).
+Returns the Graph ID (default or explicit one depending on the Set method used).
 ") ID;
 		const Standard_GUID & ID();
 
@@ -6005,7 +6101,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is child of <f>.
+returns True if <self> is child of <F>.
 ") IsChild;
 		Standard_Boolean IsChild(const opencascade::handle<XCAFDoc_GraphNode> & F);
 
@@ -6023,7 +6119,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is father of <ch>.
+returns True if <self> is father of <Ch>.
 ") IsFather;
 		Standard_Boolean IsFather(const opencascade::handle<XCAFDoc_GraphNode> & Ch);
 
@@ -6036,7 +6132,7 @@ int
 
 Description
 -----------
-Return number of childrens graphnodes. implementation of attribute methods: ===================================.
+return Number of Childrens GraphNodes. Implementation of Attribute methods: ===================================.
 ") NbChildren;
 		Standard_Integer NbChildren();
 
@@ -6049,7 +6145,7 @@ int
 
 Description
 -----------
-Return number of fathers graphnodes.
+return Number of Fathers GraphNodes.
 ") NbFathers;
 		Standard_Integer NbFathers();
 
@@ -6135,7 +6231,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 
 Description
 -----------
-Finds or creates a graphnode attribute on the label <l> with the default graph id, returned by the method <getdefaultgraphid>. returns the created/found graphnode attribute.
+Finds or Creates a GraphNode attribute on the label <L> with the default Graph ID, returned by the method <GetDefaultGraphID>. Returns the created/found GraphNode attribute.
 ") Set;
 		static opencascade::handle<XCAFDoc_GraphNode> Set(const TDF_Label & L);
 
@@ -6154,7 +6250,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 
 Description
 -----------
-Finds or creates a graphnode attribute on the label <l>, with an explicit tree id. <explicitgraphid> is the id returned by <tdf_attribute::id> method. returns the found/created graphnode attribute.
+Finds or Creates a GraphNode attribute on the label <L>, with an explicit tree ID. <ExplicitGraphID> is the ID returned by <TDF_Attribute::ID> method. Returns the found/created GraphNode attribute.
 ") Set;
 		static opencascade::handle<XCAFDoc_GraphNode> Set(const TDF_Label & L, const Standard_GUID & ExplicitGraphID);
 
@@ -6172,7 +6268,7 @@ int
 
 Description
 -----------
-Set graphnode <ch> as child of me and returns index of <ch> in sequence that containing children graphnodes. return index of <ch> from graphnodesequnece.
+Set GraphNode <Ch> as child of me and returns index of <Ch> in Sequence that containing Children GraphNodes. return index of <Ch> from GraphNodeSequnece.
 ") SetChild;
 		Standard_Integer SetChild(const opencascade::handle<XCAFDoc_GraphNode> & Ch);
 
@@ -6190,7 +6286,7 @@ int
 
 Description
 -----------
-Set graphnode <f> as father of me and returns index of <f> in sequence that containing fathers graphnodes. return index of <f> from graphnodesequnece.
+Set GraphNode <F> as father of me and returns index of <F> in Sequence that containing Fathers GraphNodes. return index of <F> from GraphNodeSequnece.
 ") SetFather;
 		Standard_Integer SetFather(const opencascade::handle<XCAFDoc_GraphNode> & F);
 
@@ -6226,7 +6322,7 @@ None
 
 Description
 -----------
-Remove <ch> from graphnodesequence. and remove link between father and child.
+Remove <Ch> from GraphNodeSequence. and remove link between father and child.
 ") UnSetChild;
 		void UnSetChild(const opencascade::handle<XCAFDoc_GraphNode> & Ch);
 
@@ -6244,7 +6340,7 @@ None
 
 Description
 -----------
-Remove child graphnode by index from children graphnodesequence. and remove link between father and child.
+Remove Child GraphNode by index from Children GraphNodeSequence. and remove link between father and child.
 ") UnSetChild;
 		void UnSetChild(const Standard_Integer Chindex);
 
@@ -6262,7 +6358,7 @@ None
 
 Description
 -----------
-Remove <f> from fathers graphnodesequence. and remove link between father and child.
+Remove <F> from Fathers GraphNodeSequence. and remove link between father and child.
 ") UnSetFather;
 		void UnSetFather(const opencascade::handle<XCAFDoc_GraphNode> & F);
 
@@ -6280,7 +6376,7 @@ None
 
 Description
 -----------
-Remove father graphnode by index from fathers graphnodesequence. and remove link between father and child.
+Remove Father GraphNode by index from Fathers GraphNodeSequence. and remove link between father and child.
 ") UnSetFather;
 		void UnSetFather(const Standard_Integer Findex);
 
@@ -6327,7 +6423,7 @@ TDF_Label
 
 Description
 -----------
-Adds a layer definition to a layertable and returns its label (returns existing label if the same layer is already defined).
+Adds a Layer definition to a Layertable and returns its label (returns existing label if the same Layer is already defined).
 ") AddLayer;
 		TDF_Label AddLayer(TCollection_ExtendedString theLayer);
 
@@ -6346,7 +6442,7 @@ TDF_Label
 
 Description
 -----------
-Adds a layer definition to a layertable and returns its label returns existing label (if it is already defined) of visible or invisible layer, according to <thetofindvisible> parameter.
+Adds a Layer definition to a Layertable and returns its label Returns existing label (if it is already defined) of visible or invisible layer, according to <theToFindVisible> parameter.
 ") AddLayer;
 		TDF_Label AddLayer(TCollection_ExtendedString theLayer, const Standard_Boolean theToFindVisible);
 
@@ -6359,7 +6455,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which layers are stored.
+returns the label under which Layers are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -6399,7 +6495,7 @@ bool
 
 Description
 -----------
-Finds a layer definition in a layertable and returns its label if found returns false if layer is not found in layertable.
+Finds a Layer definition in a Layertable and returns its label if found Returns False if Layer is not found in Layertable.
 ") FindLayer;
 		Standard_Boolean FindLayer(TCollection_ExtendedString aLayer, TDF_Label & lab);
 
@@ -6419,7 +6515,7 @@ TDF_Label
 
 Description
 -----------
-Finds a layer definition in a layertable by name returns first founded label with the same name if <thetofindwithproperty> is false if <thetofindwithproperty> is true returns first label that contains or not contains visible attr, according to the <thetofindvisible> parameter.
+Finds a Layer definition in a Layertable by name Returns first founded label with the same name if <theToFindWithProperty> is false If <theToFindWithProperty> is true returns first label that contains or not contains visible attr, according to the <theToFindVisible> parameter.
 ") FindLayer;
 		TDF_Label FindLayer(TCollection_ExtendedString aLayer, const Standard_Boolean theToFindWithProperty = Standard_False, const Standard_Boolean theToFindVisible = Standard_True);
 
@@ -6451,7 +6547,7 @@ bool
 
 Description
 -----------
-Returns layer defined by label lab returns false if the label is not in layertable or does not define a layer.
+Returns Layer defined by label lab Returns False if the label is not in Layertable or does not define a Layer.
 ") GetLayer;
 		Standard_Boolean GetLayer(const TDF_Label & lab, TCollection_ExtendedString & aLayer);
 
@@ -6469,7 +6565,7 @@ None
 
 Description
 -----------
-Returns a sequence of layers currently stored in the layertable.
+Returns a sequence of Layers currently stored in the Layertable.
 ") GetLayerLabels;
 		void GetLayerLabels(TDF_LabelSequence & Labels);
 
@@ -6488,7 +6584,7 @@ bool
 
 Description
 -----------
-Return sequence of strings <alayers> that associated with label <l>.
+Return sequence of strings <aLayerS> that associated with label <L>.
 ") GetLayers;
 		Standard_Boolean GetLayers(const TDF_Label & L, opencascade::handle<TColStd_HSequenceOfExtendedString> & aLayerS);
 
@@ -6507,7 +6603,7 @@ bool
 
 Description
 -----------
-Return sequence of labels <alayersl> that associated with label <l>.
+Return sequence of labels <aLayerSL> that associated with label <L>.
 ") GetLayers;
 		Standard_Boolean GetLayers(const TDF_Label & L, TDF_LabelSequence & aLayerLS);
 
@@ -6525,7 +6621,7 @@ opencascade::handle<TColStd_HSequenceOfExtendedString>
 
 Description
 -----------
-Return sequence of strings that associated with label <l>.
+Return sequence of strings that associated with label <L>.
 ") GetLayers;
 		opencascade::handle<TColStd_HSequenceOfExtendedString> GetLayers(const TDF_Label & L);
 
@@ -6544,7 +6640,7 @@ bool
 
 Description
 -----------
-Return sequence of strings <alayers> that associated with shape <sh>.
+Return sequence of strings <aLayerS> that associated with shape <Sh>.
 ") GetLayers;
 		Standard_Boolean GetLayers(const TopoDS_Shape & Sh, opencascade::handle<TColStd_HSequenceOfExtendedString> & aLayerS);
 
@@ -6563,7 +6659,7 @@ bool
 
 Description
 -----------
-Return sequence of labels <alayerls> that associated with shape <sh>.
+Return sequence of labels <aLayerLS> that associated with shape <Sh>.
 ") GetLayers;
 		Standard_Boolean GetLayers(const TopoDS_Shape & Sh, TDF_LabelSequence & aLayerLS);
 
@@ -6581,7 +6677,7 @@ opencascade::handle<TColStd_HSequenceOfExtendedString>
 
 Description
 -----------
-Return sequence of strings that associated with shape <sh>.
+Return sequence of strings that associated with shape <Sh>.
 ") GetLayers;
 		opencascade::handle<TColStd_HSequenceOfExtendedString> GetLayers(const TopoDS_Shape & Sh);
 
@@ -6600,7 +6696,7 @@ None
 
 Description
 -----------
-Return sequanese of shape labels that assigned with layers to <shlabels>.
+Return sequanese of shape labels that assigned with layers to <ShLabels>.
 ") GetShapesOfLayer;
 		static void GetShapesOfLayer(const TDF_Label & theLayerL, TDF_LabelSequence & theShLabels);
 
@@ -6631,7 +6727,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a layertable and is a layer definition.
+Returns True if label belongs to a Layertable and is a Layer definition.
 ") IsLayer;
 		Standard_Boolean IsLayer(const TDF_Label & lab);
 
@@ -6650,7 +6746,7 @@ bool
 
 Description
 -----------
-Returns true if label <l> has a layer associated with the <alayer>.
+Returns True if label <L> has a Layer associated with the <aLayer>.
 ") IsSet;
 		Standard_Boolean IsSet(const TDF_Label & L, TCollection_ExtendedString aLayer);
 
@@ -6669,7 +6765,7 @@ bool
 
 Description
 -----------
-Returns true if label <l> has a layer associated with the <alayerl> label.
+Returns True if label <L> has a Layer associated with the <aLayerL> label.
 ") IsSet;
 		Standard_Boolean IsSet(const TDF_Label & L, const TDF_Label & aLayerL);
 
@@ -6688,7 +6784,7 @@ bool
 
 Description
 -----------
-Returns true if shape <sh> has a layer associated with the <alayer>.
+Returns True if shape <Sh> has a Layer associated with the <aLayer>.
 ") IsSet;
 		Standard_Boolean IsSet(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer);
 
@@ -6707,7 +6803,7 @@ bool
 
 Description
 -----------
-Returns true if shape <sh> has a layer associated with the <alayerl>.
+Returns True if shape <Sh> has a Layer associated with the <aLayerL>.
 ") IsSet;
 		Standard_Boolean IsSet(const TopoDS_Shape & Sh, const TDF_Label & aLayerL);
 
@@ -6725,7 +6821,7 @@ bool
 
 Description
 -----------
-Return true if layer is visible, false if invisible.
+Return True if layer is visible, False if invisible.
 ") IsVisible;
 		Standard_Boolean IsVisible(const TDF_Label & layerL);
 
@@ -6743,7 +6839,7 @@ None
 
 Description
 -----------
-Removes layer from the layertable.
+Removes Layer from the Layertable.
 ") RemoveLayer;
 		void RemoveLayer(const TDF_Label & lab);
 
@@ -6761,7 +6857,7 @@ opencascade::handle<XCAFDoc_LayerTool>
 
 Description
 -----------
-Creates (if not exist) layertool.
+Creates (if not exist) LayerTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_LayerTool> Set(const TDF_Label & L);
 
@@ -6781,7 +6877,7 @@ None
 
 Description
 -----------
-Sets a link from label <l> to layer defined by <layerl> optional parameter <shapeinonelayer> show could shape be in number of layers or only in one.
+Sets a link from label <L> to Layer defined by <LayerL> optional parameter <shapeInOneLayer> show could shape be in number of layers or only in one.
 ") SetLayer;
 		void SetLayer(const TDF_Label & L, const TDF_Label & LayerL, const Standard_Boolean shapeInOneLayer = Standard_False);
 
@@ -6801,7 +6897,7 @@ None
 
 Description
 -----------
-Sets a link from label <l> to layer <alayer> in the layertable adds a layer as necessary optional parameter <shapeinonelayer> show could shape be in number of layers or only in one.
+Sets a link from label <L> to Layer <aLayer> in the Layertable Adds a Layer as necessary optional parameter <shapeInOneLayer> show could shape be in number of layers or only in one.
 ") SetLayer;
 		void SetLayer(const TDF_Label & L, TCollection_ExtendedString aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
 
@@ -6821,7 +6917,7 @@ bool
 
 Description
 -----------
-Sets a link from label that containing shape <sh> with layer that situated at label <layerl>. optional parameter <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh> or label <layerl>.
+Sets a link from label that containing shape <Sh> with layer that situated at label <LayerL>. optional parameter <shapeInOneLayer> show could shape be in number of layers or only in one. return False if no such shape <Sh> or label <LayerL>.
 ") SetLayer;
 		Standard_Boolean SetLayer(const TopoDS_Shape & Sh, const TDF_Label & LayerL, const Standard_Boolean shapeInOneLayer = Standard_False);
 
@@ -6841,7 +6937,7 @@ bool
 
 Description
 -----------
-Sets a link from label that containing shape <sh> with layer <alayer>. add <alayer> to layertable if nessesery. optional parameter <shapeinonelayer> show could shape be in number of layers or only in one. return false if no such shape <sh>.
+Sets a link from label that containing shape <Sh> with layer <aLayer>. Add <aLayer> to LayerTable if nessesery. optional parameter <shapeInOneLayer> show could shape be in number of layers or only in one. return False if no such shape <Sh>.
 ") SetLayer;
 		Standard_Boolean SetLayer(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer, const Standard_Boolean shapeInOneLayer = Standard_False);
 
@@ -6860,7 +6956,7 @@ None
 
 Description
 -----------
-Set the visibility of layer. if layer is invisible when on it's layer will set uattribute with corresponding guid.
+Set the visibility of layer. If layer is invisible when on it's layer will set UAttribute with corresponding GUID.
 ") SetVisibility;
 		void SetVisibility(const TDF_Label & layerL, const Standard_Boolean isvisible = Standard_True);
 
@@ -6873,7 +6969,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Returns internal xcafdoc_shapetool tool.
+Returns internal XCAFDoc_ShapeTool tool.
 ") ShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
 
@@ -6891,7 +6987,7 @@ None
 
 Description
 -----------
-Removes a link from label <l> to all layers.
+Removes a link from label <L> to all layers.
 ") UnSetLayers;
 		void UnSetLayers(const TDF_Label & L);
 
@@ -6909,7 +7005,7 @@ bool
 
 Description
 -----------
-Remove link between shape <sh> and all layers at layertable. return false if no such shape <sh> in xcaf document.
+Remove link between shape <Sh> and all Layers at LayerTable. return False if no such shape <Sh> in XCAF Document.
 ") UnSetLayers;
 		Standard_Boolean UnSetLayers(const TopoDS_Shape & Sh);
 
@@ -6928,7 +7024,7 @@ bool
 
 Description
 -----------
-Remove link from label <l> and layer <alayer>. returns false if no such layer.
+Remove link from label <L> and Layer <aLayer>. returns False if no such layer.
 ") UnSetOneLayer;
 		Standard_Boolean UnSetOneLayer(const TDF_Label & L, TCollection_ExtendedString aLayer);
 
@@ -6947,7 +7043,7 @@ bool
 
 Description
 -----------
-Remove link from label <l> and layer <alayerl>. returns false if <alayerl> is not a layer label.
+Remove link from label <L> and Layer <aLayerL>. returns False if <aLayerL> is not a layer label.
 ") UnSetOneLayer;
 		Standard_Boolean UnSetOneLayer(const TDF_Label & L, const TDF_Label & aLayerL);
 
@@ -6966,7 +7062,7 @@ bool
 
 Description
 -----------
-Remove link between shape <sh> and layer <alayer>. returns false if no such layer <alayer> or shape <sh>.
+Remove link between shape <Sh> and layer <aLayer>. returns False if no such layer <aLayer> or shape <Sh>.
 ") UnSetOneLayer;
 		Standard_Boolean UnSetOneLayer(const TopoDS_Shape & Sh, TCollection_ExtendedString aLayer);
 
@@ -6985,7 +7081,7 @@ bool
 
 Description
 -----------
-Remove link between shape <sh> and layer <alayerl>. returns false if no such layer <alayerl> or shape <sh>.
+Remove link between shape <Sh> and layer <aLayerL>. returns False if no such layer <aLayerL> or shape <Sh>.
 ") UnSetOneLayer;
 		Standard_Boolean UnSetOneLayer(const TopoDS_Shape & Sh, const TDF_Label & aLayerL);
 
@@ -7065,7 +7161,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid of the attribute.
+Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -7174,7 +7270,9 @@ opencascade::handle<XCAFDoc_LengthUnit>
 
 Description
 -----------
-Finds or creates a lengthunit attribute @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+Finds or creates a LengthUnit attribute 
+Parameter theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile 
+Parameter theUnitValue - length scale factor to meter The LengthUnit attribute is returned.
 ") Set;
 		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
@@ -7193,7 +7291,8 @@ opencascade::handle<XCAFDoc_LengthUnit>
 
 Description
 -----------
-Finds or creates a lengthunit attribute @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+Finds or creates a LengthUnit attribute 
+Parameter theUnitValue - length scale factor to meter The LengthUnit attribute is returned.
 ") Set;
 		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_Real theUnitValue);
 
@@ -7214,7 +7313,9 @@ opencascade::handle<XCAFDoc_LengthUnit>
 
 Description
 -----------
-Finds, or creates, a lengthunit attribute with explicit user defined guid @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter the lengthunit attribute is returned.
+Finds, or creates, a LengthUnit attribute with explicit user defined GUID 
+Parameter theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile 
+Parameter theUnitValue - length scale factor to meter The LengthUnit attribute is returned.
 ") Set;
 		static opencascade::handle<XCAFDoc_LengthUnit> Set(const TDF_Label & theLabel, const Standard_GUID & theGUID, TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
@@ -7233,7 +7334,9 @@ None
 
 Description
 -----------
-Creates a lengthunit attribute @param theunitname - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile @param theunitvalue - length scale factor to meter.
+Creates a LengthUnit attribute 
+Parameter theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile 
+Parameter theUnitValue - length scale factor to meter.
 ") Set;
 		void Set(TCollection_AsciiString theUnitName, const Standard_Real theUnitValue);
 
@@ -7262,7 +7365,7 @@ None
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") XCAFDoc_Location;
 		 XCAFDoc_Location();
 
@@ -7296,7 +7399,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns true if there is a reference on the same label.
+Returns True if there is a reference on the same label.
 ") Get;
 		const TopLoc_Location & Get();
 
@@ -7391,7 +7494,7 @@ opencascade::handle<XCAFDoc_Location>
 
 Description
 -----------
-Find, or create, a location attribute and set it's value the location attribute is returned. location methods ===============.
+Find, or create, a Location attribute and set it's value the Location attribute is returned. Location methods ===============.
 ") Set;
 		static opencascade::handle<XCAFDoc_Location> Set(const TDF_Label & label, const TopLoc_Location & Loc);
 
@@ -7696,7 +7799,7 @@ TDF_Label
 
 Description
 -----------
-Adds a material definition to a table and returns its label.
+Adds a Material definition to a table and returns its label.
 ") AddMaterial;
 		TDF_Label AddMaterial(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const Standard_Real aDensity, const opencascade::handle<TCollection_HAsciiString> & aDensName, const opencascade::handle<TCollection_HAsciiString> & aDensValType);
 
@@ -7709,7 +7812,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which colors are stored.
+returns the label under which colors are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -7783,7 +7886,7 @@ aDensValType: TCollection_HAsciiString
 
 Description
 -----------
-Returns material assigned to <matl> returns false if no such material is assigned.
+Returns Material assigned to <MatL> Returns False if no such Material is assigned.
 ") GetMaterial;
 		static Standard_Boolean GetMaterial(const TDF_Label & MatL, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -7832,7 +7935,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a material table and is a material definition.
+Returns True if label belongs to a material table and is a Material definition.
 ") IsMaterial;
 		Standard_Boolean IsMaterial(const TDF_Label & lab);
 
@@ -7850,7 +7953,7 @@ opencascade::handle<XCAFDoc_MaterialTool>
 
 Description
 -----------
-Creates (if not exist) materialtool.
+Creates (if not exist) MaterialTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_MaterialTool> Set(const TDF_Label & L);
 
@@ -7869,7 +7972,7 @@ None
 
 Description
 -----------
-Sets a link with guid.
+Sets a link with GUID.
 ") SetMaterial;
 		void SetMaterial(const TDF_Label & L, const TDF_Label & MatL);
 
@@ -7892,7 +7995,7 @@ None
 
 Description
 -----------
-Sets a link with guid adds a material as necessary.
+Sets a link with GUID Adds a Material as necessary.
 ") SetMaterial;
 		void SetMaterial(const TDF_Label & L, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const Standard_Real aDensity, const opencascade::handle<TCollection_HAsciiString> & aDensName, const opencascade::handle<TCollection_HAsciiString> & aDensValType);
 
@@ -7905,7 +8008,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Returns internal xcafdoc_shapetool tool.
+Returns internal XCAFDoc_ShapeTool tool.
 ") ShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
 
@@ -8078,7 +8181,7 @@ None
 
 Description
 -----------
-Sets the user name and the timestamp of the note. \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. eturn a handle to the attribute instance.
+Sets the user name and the timestamp of the note. \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. eturn A handle to the attribute instance.
 ") Set;
 		void Set(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp);
 
@@ -8170,7 +8273,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. eturn a handle to the assembly reference attribute.
+Adds the given note to the assembly item. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. eturn a handle to the assembly reference attribute.
 ") AddNote;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNote(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId);
 
@@ -8189,7 +8292,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the labeled item. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. eturn a handle to the assembly reference attribute.
+Adds the given note to the labeled item. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. eturn a handle to the assembly reference attribute.
 ") AddNote;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNote(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel);
 
@@ -8209,7 +8312,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the assembly item's attribute. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's attribute guid. eturn a handle to the assembly reference attribute.
+Adds the given note to the assembly item's attribute. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. eturn a handle to the assembly reference attribute.
 ") AddNoteToAttr;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNoteToAttr(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID);
 
@@ -8229,7 +8332,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the labeled item's attribute. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. \param [in] theguid - assembly item's attribute guid. eturn a handle to the assembly reference attribute.
+Adds the given note to the labeled item's attribute. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. \param[in] theGUID - assembly item's attribute GUID. eturn a handle to the assembly reference attribute.
 ") AddNoteToAttr;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNoteToAttr(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, const Standard_GUID & theGUID);
 
@@ -8249,7 +8352,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the assembly item's subshape. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] thesubshapeindex - assembly item's subshape index. eturn a handle to the assembly reference attribute.
+Adds the given note to the assembly item's subshape. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. eturn a handle to the assembly reference attribute.
 ") AddNoteToSubshape;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNoteToSubshape(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId, Standard_Integer theSubshapeIndex);
 
@@ -8269,7 +8372,7 @@ opencascade::handle<XCAFDoc_AssemblyItemRef>
 
 Description
 -----------
-Adds the given note to the labeled item's subshape. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. \param [in] thesubshapeindex - assembly item's subshape index. eturn a handle to the assembly reference attribute.
+Adds the given note to the labeled item's subshape. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. \param[in] theSubshapeIndex - assembly item's subshape index. eturn a handle to the assembly reference attribute.
 ") AddNoteToSubshape;
 		opencascade::handle<XCAFDoc_AssemblyItemRef> AddNoteToSubshape(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, Standard_Integer theSubshapeIndex);
 
@@ -8289,7 +8392,7 @@ opencascade::handle<XCAFDoc_Note>
 
 Description
 -----------
-Create a new 'balloon' note. creates a new label under the notes hive and attaches ef xcafdoc_noteballoon attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thecomment - textual comment. eturn a handle to the base note attribute.
+Create a new 'balloon' note. Creates a new label under the notes hive and attaches ef XCAFDoc_NoteBalloon attribute (derived ftom ef XCAFDoc_Note). \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. \param[in] theComment - textual comment. eturn a handle to the base note attribute.
 ") CreateBalloon;
 		opencascade::handle<XCAFDoc_Note> CreateBalloon(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
@@ -8311,7 +8414,7 @@ opencascade::handle<XCAFDoc_Note>
 
 Description
 -----------
-Create a new note with data loaded from a binary file. creates a new label under the notes hive and attaches ef xcafdoc_notecomment attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file. eturn a handle to the base note attribute.
+Create a new note with data loaded from a binary file. Creates a new label under the notes hive and attaches ef XCAFDoc_NoteComment attribute (derived ftom ef XCAFDoc_Note). \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. \param[in] theTitle - file title. \param[in] theMIMEtype - MIME type of the file. \param[in] theFile - input binary file. eturn a handle to the base note attribute.
 ") CreateBinData;
 		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
@@ -8333,7 +8436,7 @@ opencascade::handle<XCAFDoc_Note>
 
 Description
 -----------
-Create a new note with data loaded from a byte data array. creates a new label under the notes hive and attaches ef xcafdoc_notecomment attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thetitle - data title. \param [in] themimetype - mime type of the file. \param [in] thedata - byte data array. eturn a handle to the base note attribute.
+Create a new note with data loaded from a byte data array. Creates a new label under the notes hive and attaches ef XCAFDoc_NoteComment attribute (derived ftom ef XCAFDoc_Note). \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of the file. \param[in] theData - byte data array. eturn a handle to the base note attribute.
 ") CreateBinData;
 		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
@@ -8353,7 +8456,7 @@ opencascade::handle<XCAFDoc_Note>
 
 Description
 -----------
-Create a new comment note. creates a new label under the notes hive and attaches ef xcafdoc_notecomment attribute (derived ftom ef xcafdoc_note). \param [in] theusername - the user associated with the note. \param [in] thetimestamp - timestamp of the note. \param [in] thecomment - textual comment. eturn a handle to the base note attribute.
+Create a new comment note. Creates a new label under the notes hive and attaches ef XCAFDoc_NoteComment attribute (derived ftom ef XCAFDoc_Note). \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. \param[in] theComment - textual comment. eturn a handle to the base note attribute.
 ") CreateComment;
 		opencascade::handle<XCAFDoc_Note> CreateComment(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
@@ -8366,7 +8469,7 @@ int
 
 Description
 -----------
-Deletes all notes. clears all annotations. eturn number of deleted notes.
+Deletes all notes. Clears all annotations. eturn number of deleted notes.
 ") DeleteAllNotes;
 		Standard_Integer DeleteAllNotes();
 
@@ -8384,7 +8487,7 @@ bool
 
 Description
 -----------
-Deletes the given note. removes all links with items annotated by the note. \param [in] thenotelabel - note label. eturn true if the note is deleted, otherwise - false.
+Deletes the given note. Removes all links with items annotated by the note. \param[in] theNoteLabel - note label. eturn true if the note is deleted, otherwise - false.
 ") DeleteNote;
 		Standard_Boolean DeleteNote(const TDF_Label & theNoteLabel);
 
@@ -8402,7 +8505,7 @@ int
 
 Description
 -----------
-Deletes the given notes. removes all links with items annotated by the notes. \param [in] thenotelabels - note label sequence. eturn number of deleted notes.
+Deletes the given notes. Removes all links with items annotated by the notes. \param[in] theNoteLabels - note label sequence. eturn number of deleted notes.
 ") DeleteNotes;
 		Standard_Integer DeleteNotes(TDF_LabelSequence & theNoteLabels);
 
@@ -8450,7 +8553,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given assembly item id in the annotated items hive. \param [in] theitemid - assembly item id. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given assembly item ID in the annotated items hive. \param[in] theItemId - assembly item ID. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItem;
 		TDF_Label FindAnnotatedItem(const XCAFDoc_AssemblyItemId & theItemId);
 
@@ -8468,7 +8571,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given labeled item in the annotated items hive. \param [in] theitemlabel - item label. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given labeled item in the annotated items hive. \param[in] theItemLabel - item label. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItem;
 		TDF_Label FindAnnotatedItem(const TDF_Label & theItemLabel);
 
@@ -8487,7 +8590,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given assembly item's attribute in the annotated items hive. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's attribute guid. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given assembly item's attribute in the annotated items hive. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItemAttr;
 		TDF_Label FindAnnotatedItemAttr(const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID);
 
@@ -8506,7 +8609,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given labeled item's attribute in the annotated items hive. \param [in] theitemlabel - item label. \param [in] theguid - item's attribute guid. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given labeled item's attribute in the annotated items hive. \param[in] theItemLabel - item label. \param[in] theGUID - item's attribute GUID. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItemAttr;
 		TDF_Label FindAnnotatedItemAttr(const TDF_Label & theItemLabel, const Standard_GUID & theGUID);
 
@@ -8525,7 +8628,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given assembly item's subshape in the annotated items hive. \param [in] theitemid - assembly item id. \param [in] thesubshapeindex - assembly item's subshape index. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given assembly item's subshape in the annotated items hive. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItemSubshape;
 		TDF_Label FindAnnotatedItemSubshape(const XCAFDoc_AssemblyItemId & theItemId, Standard_Integer theSubshapeIndex);
 
@@ -8544,7 +8647,7 @@ TDF_Label
 
 Description
 -----------
-Finds a label of the given labeled item's subshape in the annotated items hive. \param [in] theitemlabel - item label. \param [in] thesubshapeindex - labeled item's subshape index. eturn annotated item label if it is found, otherwise - null label.
+Finds a label of the given labeled item's subshape in the annotated items hive. \param[in] theItemLabel - item label. \param[in] theSubshapeIndex - labeled item's subshape index. eturn annotated item label if it is found, otherwise - null label.
 ") FindAnnotatedItemSubshape;
 		TDF_Label FindAnnotatedItemSubshape(const TDF_Label & theItemLabel, Standard_Integer theSubshapeIndex);
 
@@ -8562,7 +8665,7 @@ None
 
 Description
 -----------
-Returns all labels from the annotated items hive. the label sequence isn't cleared beforehand. \param [out] thenotelabels - sequence of labels.
+Returns all labels from the annotated items hive. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetAnnotatedItems;
 		void GetAnnotatedItems(TDF_LabelSequence & theLabels);
 
@@ -8595,7 +8698,7 @@ int
 
 Description
 -----------
-Gets all note labels of the assembly item's attribute. notes linked to the item itself or to item's subshapes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's attribute guid. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+Gets all note labels of the assembly item's attribute. Notes linked to the item itself or to item's subshapes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetAttrNotes;
 		Standard_Integer GetAttrNotes(const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID, TDF_LabelSequence & theNoteLabels);
 
@@ -8615,7 +8718,7 @@ int
 
 Description
 -----------
-Gets all note labels of the labeled item's attribute. notes linked to the item itself or to item's subshapes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemlabel - item label. \param [in] theguid - item's attribute guid. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+Gets all note labels of the labeled item's attribute. Notes linked to the item itself or to item's subshapes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemLabel - item label. \param[in] theGUID - item's attribute GUID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetAttrNotes;
 		Standard_Integer GetAttrNotes(const TDF_Label & theItemLabel, const Standard_GUID & theGUID, TDF_LabelSequence & theNoteLabels);
 
@@ -8628,7 +8731,7 @@ Standard_GUID
 
 Description
 -----------
-Returns default attribute guid.
+Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -8646,7 +8749,7 @@ None
 
 Description
 -----------
-Returns all labels from the notes hive. the label sequence isn't cleared beforehand. \param [out] thenotelabels - sequence of labels.
+Returns all labels from the notes hive. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetNotes;
 		void GetNotes(TDF_LabelSequence & theNoteLabels);
 
@@ -8665,7 +8768,7 @@ int
 
 Description
 -----------
-Gets all note labels of the assembly item. notes linked to item's subshapes or attributes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemid - assembly item id. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+Gets all note labels of the assembly item. Notes linked to item's subshapes or attributes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetNotes;
 		Standard_Integer GetNotes(const XCAFDoc_AssemblyItemId & theItemId, TDF_LabelSequence & theNoteLabels);
 
@@ -8684,7 +8787,7 @@ int
 
 Description
 -----------
-Gets all note labels of the labeled item. notes linked to item's attributes aren't taken into account. the label sequence isn't cleared beforehand. \param [in] theitemlabel - item label. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+Gets all note labels of the labeled item. Notes linked to item's attributes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemLabel - item label. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetNotes;
 		Standard_Integer GetNotes(const TDF_Label & theItemLabel, TDF_LabelSequence & theNoteLabels);
 
@@ -8715,7 +8818,7 @@ None
 
 Description
 -----------
-Returns note labels that aren't linked to annotated items. the label sequence isn't cleared beforehand. \param [out] thenotelabels - sequence of labels.
+Returns note labels that aren't linked to annotated items. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetOrphanNotes;
 		void GetOrphanNotes(TDF_LabelSequence & theNoteLabels);
 
@@ -8735,7 +8838,7 @@ int
 
 Description
 -----------
-Gets all note labels of the annotated item. notes linked to the item itself or to item's attributes taken into account. the label sequence isn't cleared beforehand. \param [in] theitemid - assembly item id. \param [in] thesubshapeindex - assembly item's subshape index. \param [out] thenotelabels - sequence of labels. eturn number of added labels.
+Gets all note labels of the annotated item. Notes linked to the item itself or to item's attributes taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetSubshapeNotes;
 		Standard_Integer GetSubshapeNotes(const XCAFDoc_AssemblyItemId & theItemId, Standard_Integer theSubshapeIndex, TDF_LabelSequence & theNoteLabels);
 
@@ -8766,7 +8869,7 @@ bool
 
 Description
 -----------
-Checks if the given assembly item is annotated. \param [in] theitemid - assembly item id. eturn true if the item is annotated, otherwise - false.
+Checks if the given assembly item is annotated. \param[in] theItemId - assembly item ID. eturn true if the item is annotated, otherwise - false.
 ") IsAnnotatedItem;
 		Standard_Boolean IsAnnotatedItem(const XCAFDoc_AssemblyItemId & theItemId);
 
@@ -8784,7 +8887,7 @@ bool
 
 Description
 -----------
-Checks if the given labeled item is annotated. \param [in] theitemlabel - item label. eturn true if the item is annotated, otherwise - false.
+Checks if the given labeled item is annotated. \param[in] theItemLabel - item label. eturn true if the item is annotated, otherwise - false.
 ") IsAnnotatedItem;
 		Standard_Boolean IsAnnotatedItem(const TDF_Label & theItemLabel);
 
@@ -8843,7 +8946,7 @@ bool
 
 Description
 -----------
-Removes all notes from the assembly item's attribute. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's attribute guid. \param [in] thedeliforphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
+Removes all notes from the assembly item's attribute. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. \param[in] theDelIfOrphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
 ") RemoveAllAttrNotes;
 		Standard_Boolean RemoveAllAttrNotes(const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8863,7 +8966,7 @@ bool
 
 Description
 -----------
-Removes all notes from the labeled item's attribute. \param [in] theitemlabel - item label. \param [in] theguid - labeled item's attribute guid. \param [in] thedeliforphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
+Removes all notes from the labeled item's attribute. \param[in] theItemLabel - item label. \param[in] theGUID - labeled item's attribute GUID. \param[in] theDelIfOrphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
 ") RemoveAllAttrNotes;
 		Standard_Boolean RemoveAllAttrNotes(const TDF_Label & theItemLabel, const Standard_GUID & theGUID, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8882,7 +8985,7 @@ bool
 
 Description
 -----------
-Removes all notes from the assembly item. \param [in] theitemid - assembly item id. \param [in] thedeliforphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
+Removes all notes from the assembly item. \param[in] theItemId - assembly item ID. \param[in] theDelIfOrphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
 ") RemoveAllNotes;
 		Standard_Boolean RemoveAllNotes(const XCAFDoc_AssemblyItemId & theItemId, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8901,7 +9004,7 @@ bool
 
 Description
 -----------
-Removes all notes from the labeled item. \param [in] theitemlabel - item label. \param [in] thedeliforphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
+Removes all notes from the labeled item. \param[in] theItemLabel - item label. \param[in] theDelIfOrphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
 ") RemoveAllNotes;
 		Standard_Boolean RemoveAllNotes(const TDF_Label & theItemLabel, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8921,7 +9024,7 @@ bool
 
 Description
 -----------
-Removes all notes from the assembly item's subshape. \param [in] theitemid - assembly item id. \param [in] thesubshapeindex - assembly item's subshape index. \param [in] thedeliforphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
+Removes all notes from the assembly item's subshape. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. \param[in] theDelIfOrphan - deletes removed notes from the notes  hive if there are no more annotated items  linked with the notes. eturn true if the notes are removed, otherwise - false.
 ") RemoveAllSubshapeNotes;
 		Standard_Boolean RemoveAllSubshapeNotes(const XCAFDoc_AssemblyItemId & theItemId, Standard_Integer theSubshapeIndex, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8942,7 +9045,7 @@ bool
 
 Description
 -----------
-Removes a note from the assembly item's attribute. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] theguid - assembly item's attribute guid. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly item's  attribute linked with the note. eturn true if the note is removed, otherwise - false.
+Removes a note from the assembly item's attribute. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more assembly item's  attribute linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveAttrNote;
 		Standard_Boolean RemoveAttrNote(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8963,7 +9066,7 @@ bool
 
 Description
 -----------
-Removes a note from the labeled item's attribute. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. \param [in] theguid - labeled item's attribute guid. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly item's  attribute linked with the note. eturn true if the note is removed, otherwise - false.
+Removes a note from the labeled item's attribute. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. \param[in] theGUID - labeled item's attribute GUID. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more assembly item's  attribute linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveAttrNote;
 		Standard_Boolean RemoveAttrNote(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, const Standard_GUID & theGUID, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -8983,7 +9086,7 @@ bool
 
 Description
 -----------
-Removes the given note from the assembly item. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly items  linked with the note. eturn true if the note is removed, otherwise - false.
+Removes the given note from the assembly item. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more assembly items  linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveNote;
 		Standard_Boolean RemoveNote(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -9003,7 +9106,7 @@ bool
 
 Description
 -----------
-Removes the given note from the labeled item. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more labeled items  linked with the note. eturn true if the note is removed, otherwise - false.
+Removes the given note from the labeled item. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more labeled items  linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveNote;
 		Standard_Boolean RemoveNote(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -9024,7 +9127,7 @@ bool
 
 Description
 -----------
-Removes the given note from the assembly item's subshape. \param [in] thenotelabel - note label. \param [in] theitemid - assembly item id. \param [in] thesubshapeindex - assembly item's subshape index. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly item's  subshape linked with the note. eturn true if the note is removed, otherwise - false.
+Removes the given note from the assembly item's subshape. \param[in] theNoteLabel - note label. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more assembly item's  subshape linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveSubshapeNote;
 		Standard_Boolean RemoveSubshapeNote(const TDF_Label & theNoteLabel, const XCAFDoc_AssemblyItemId & theItemId, Standard_Integer theSubshapeIndex, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -9045,7 +9148,7 @@ bool
 
 Description
 -----------
-Removes the given note from the labeled item's subshape. \param [in] thenotelabel - note label. \param [in] theitemlabel - item label. \param [in] thesubshapeindex - labeled item's subshape index. \param [in] thedeliforphan - deletes the note from the notes hive  if there are no more assembly item's  subshape linked with the note. eturn true if the note is removed, otherwise - false.
+Removes the given note from the labeled item's subshape. \param[in] theNoteLabel - note label. \param[in] theItemLabel - item label. \param[in] theSubshapeIndex - labeled item's subshape index. \param[in] theDelIfOrphan - deletes the note from the notes hive  if there are no more assembly item's  subshape linked with the note. eturn true if the note is removed, otherwise - false.
 ") RemoveSubshapeNote;
 		Standard_Boolean RemoveSubshapeNote(const TDF_Label & theNoteLabel, const TDF_Label & theItemLabel, Standard_Integer theSubshapeIndex, Standard_Boolean theDelIfOrphan = Standard_False);
 
@@ -9063,7 +9166,7 @@ opencascade::handle<XCAFDoc_NotesTool>
 
 Description
 -----------
-Create (if not exist) a notes tool from xcafdoc on thelabel.
+Create (if not exist) a notes tool from XCAFDoc on theLabel.
 ") Set;
 		static opencascade::handle<XCAFDoc_NotesTool> Set(const TDF_Label & theLabel);
 
@@ -9170,7 +9273,7 @@ bool
 
 Description
 -----------
-Checks whether shape <sub> is subshape of shape stored on label shapel.
+Checks whether shape <sub> is subshape of shape stored on label shapeL.
 ") IsSubShape;
 		Standard_Boolean IsSubShape(const TopoDS_Shape & sub);
 
@@ -9238,7 +9341,7 @@ opencascade::handle<XCAFDoc_ShapeMapTool>
 
 Description
 -----------
-Create (if not exist) shapetool from xcafdoc on <l>.
+Create (if not exist) ShapeTool from XCAFDoc on <L>.
 ") Set;
 		static opencascade::handle<XCAFDoc_ShapeMapTool> Set(const TDF_Label & L);
 
@@ -9256,7 +9359,7 @@ None
 
 Description
 -----------
-Sets representation (topods_shape) for top-level shape.
+Sets representation (TopoDS_Shape) for top-level shape.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & S);
 
@@ -9285,7 +9388,7 @@ None
 
 Description
 -----------
-Creates an empty tool creates a tool to work with a document <doc> attaches to label xcafdoc::labelshapes().
+Creates an empty tool Creates a tool to work with a document <Doc> Attaches to label XCAFDoc::LabelShapes().
 ") XCAFDoc_ShapeTool;
 		 XCAFDoc_ShapeTool();
 
@@ -9305,7 +9408,7 @@ TDF_Label
 
 Description
 -----------
-Adds a component given by its label and location to the assembly note: assembly must be isassembly() or issimpleshape().
+Adds a component given by its label and location to the assembly Note: assembly must be IsAssembly() or IsSimpleShape().
 ") AddComponent;
 		TDF_Label AddComponent(const TDF_Label & assembly, const TDF_Label & comp, const TopLoc_Location & Loc);
 
@@ -9325,7 +9428,7 @@ TDF_Label
 
 Description
 -----------
-Adds a shape (located) as a component to the assembly if necessary, creates an additional top-level shape for component and return the label of component. if expand is true and component is compound, it will be created as assembly also note: assembly must be isassembly() or issimpleshape().
+Adds a shape (located) as a component to the assembly If necessary, creates an additional top-level shape for component and return the Label of component. If expand is True and component is Compound, it will be created as assembly also Note: assembly must be IsAssembly() or IsSimpleShape().
 ") AddComponent;
 		TDF_Label AddComponent(const TDF_Label & assembly, const TopoDS_Shape & comp, const Standard_Boolean expand = Standard_False);
 
@@ -9345,7 +9448,7 @@ TDF_Label
 
 Description
 -----------
-Adds a new top-level (creates and returns a new label) if makeassembly is true, treats topabs_compound shapes as assemblies (creates assembly structure). note: <makeprepare> replace components without location in assembly by located components to avoid some problems. if autonaming() is true then automatically attaches names.
+Adds a new top-level (creates and returns a new label) If makeAssembly is True, treats TopAbs_COMPOUND shapes as assemblies (creates assembly structure). NOTE: <makePrepare> replace components without location in assembly by located components to avoid some problems. If AutoNaming() is True then automatically attaches names.
 ") AddShape;
 		TDF_Label AddShape(const TopoDS_Shape & S, const Standard_Boolean makeAssembly = Standard_True, const Standard_Boolean makePrepare = Standard_True);
 
@@ -9364,7 +9467,7 @@ TDF_Label
 
 Description
 -----------
-Adds a label for subshape <sub> of shape stored on label shapel returns null label if it is not subshape.
+Adds a label for subshape <sub> of shape stored on label shapeL Returns Null label if it is not subshape.
 ") AddSubShape;
 		TDF_Label AddSubShape(const TDF_Label & shapeL, const TopoDS_Shape & sub);
 
@@ -9384,7 +9487,7 @@ bool
 
 Description
 -----------
-Adds (of finds already existed) a label for subshape <sub> of shape stored on label shapel. label addedsubshapel returns added (found) label or empty in case of wrong subshape. returns true, if new shape was added, false in case of already existed subshape/wrong subshape.
+Adds (of finds already existed) a label for subshape <sub> of shape stored on label shapeL. Label addedSubShapeL returns added (found) label or empty in case of wrong subshape. Returns True, if new shape was added, False in case of already existed subshape/wrong subshape.
 ") AddSubShape;
 		Standard_Boolean AddSubShape(const TDF_Label & shapeL, const TopoDS_Shape & sub, TDF_Label & addedSubShapeL);
 
@@ -9397,7 +9500,7 @@ bool
 
 Description
 -----------
-Returns current auto-naming mode. see setautonaming() for description.
+Returns current auto-naming mode. See SetAutoNaming() for description.
 ") AutoNaming;
 		static Standard_Boolean AutoNaming();
 
@@ -9410,7 +9513,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which shapes are stored.
+returns the label under which shapes are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -9428,7 +9531,7 @@ None
 
 Description
 -----------
-Recursive.
+recursive.
 ") ComputeShapes;
 		void ComputeShapes(const TDF_Label & L);
 
@@ -9517,7 +9620,7 @@ theDumpLog: Standard_OStream
 
 Description
 -----------
-Print to std::ostream <thedumplog> type of shape found on <l> label and the entry of <l>, with <level> tabs before. if <deep>, print also tshape and location addresses.
+Print to std::ostream <theDumpLog> type of shape found on <L> label and the entry of <L>, with <level> tabs before. If <deep>, print also TShape and Location addresses.
 ") DumpShape;
 		static void DumpShape(std::ostream &OutValue, const TDF_Label & L, const Standard_Integer level = 0, const Standard_Boolean deep = Standard_False);
 
@@ -9535,7 +9638,7 @@ bool
 
 Description
 -----------
-Convert shape (compound/compsolid/shell/wire) to assembly.
+Convert Shape (compound/compsolid/shell/wire) to assembly.
 ") Expand;
 		Standard_Boolean Expand(const TDF_Label & Shape);
 
@@ -9554,7 +9657,7 @@ bool
 
 Description
 -----------
-Search the path of labels in the document, that corresponds the component from any assembly try to search the sequence of labels with location that produce this shape as component of any assembly note: clear sequence of labels before filling.
+Search the path of labels in the document, that corresponds the component from any assembly Try to search the sequence of labels with location that produce this shape as component of any assembly NOTE: Clear sequence of labels before filling.
 ") FindComponent;
 		Standard_Boolean FindComponent(const TopoDS_Shape & theShape, TDF_LabelSequence & Labels);
 
@@ -9572,7 +9675,7 @@ TDF_Label
 
 Description
 -----------
-Performs a search among top-level shapes to find the shape containing <sub> as subshape checks only simple shapes, and returns the first found label (which should be the only one for valid model).
+Performs a search among top-level shapes to find the shape containing <sub> as subshape Checks only simple shapes, and returns the first found label (which should be the only one for valid model).
 ") FindMainShape;
 		TDF_Label FindMainShape(const TopoDS_Shape & sub);
 
@@ -9609,7 +9712,7 @@ bool
 
 Description
 -----------
-Searches the shuo by labels of components from upper_usage component to next_usage returns null attribute if no shuo found.
+Searches the SHUO by labels of components from upper_usage component to next_usage Returns null attribute if no SHUO found.
 ") FindSHUO;
 		static Standard_Boolean FindSHUO(const TDF_LabelSequence & Labels, opencascade::handle<XCAFDoc_GraphNode> & theSHUOAttr);
 
@@ -9629,7 +9732,7 @@ bool
 
 Description
 -----------
-Returns the label corresponding to shape s (searches among top-level shapes, not including subcomponents of assemblies and subshapes) if findinstance is false (default), search for the input shape without location if findinstance is true, searches for the input shape as is. return true if <s> is found.
+Returns the label corresponding to shape S (searches among top-level shapes, not including subcomponents of assemblies and subshapes) If findInstance is False (default), search for the input shape without location If findInstance is True, searches for the input shape as is. Return True if <S> is found.
 ") FindShape;
 		Standard_Boolean FindShape(const TopoDS_Shape & S, TDF_Label & L, const Standard_Boolean findInstance = Standard_False);
 
@@ -9648,7 +9751,7 @@ TDF_Label
 
 Description
 -----------
-Does the same as previous method returns null label if not found.
+Does the same as previous method Returns Null label if not found.
 ") FindShape;
 		TDF_Label FindShape(const TopoDS_Shape & S, const Standard_Boolean findInstance = Standard_False);
 
@@ -9668,7 +9771,7 @@ bool
 
 Description
 -----------
-Finds a label for subshape <sub> of shape stored on label shapel returns null label if it is not found.
+Finds a label for subshape <sub> of shape stored on label shapeL Returns Null label if it is not found.
 ") FindSubShape;
 		Standard_Boolean FindSubShape(const TDF_Label & shapeL, const TopoDS_Shape & sub, TDF_Label & L);
 
@@ -9687,7 +9790,7 @@ bool
 
 Description
 -----------
-Returns founded shuo graphnodes of indicated component returns false in other case.
+Returns founded SHUO GraphNodes of indicated component Returns false in other case.
 ") GetAllComponentSHUO;
 		static Standard_Boolean GetAllComponentSHUO(const TDF_Label & CompLabel, TDF_AttributeSequence & SHUOAttrs);
 
@@ -9706,7 +9809,7 @@ bool
 
 Description
 -----------
-Searching for component shapes that styled by shuo returns empty sequence of shape if no any shape is found.
+Searching for component shapes that styled by shuo Returns empty sequence of shape if no any shape is found.
 ") GetAllSHUOInstances;
 		Standard_Boolean GetAllSHUOInstances(const opencascade::handle<XCAFDoc_GraphNode> & theSHUO, TopTools_SequenceOfShape & theSHUOShapeSeq);
 
@@ -9726,7 +9829,7 @@ bool
 
 Description
 -----------
-Returns list of components of assembly returns false if label is not assembly.
+Returns list of components of assembly Returns False if label is not assembly.
 ") GetComponents;
 		static Standard_Boolean GetComponents(const TDF_Label & L, TDF_LabelSequence & Labels, const Standard_Boolean getsubchilds = Standard_False);
 
@@ -9813,7 +9916,10 @@ opencascade::handle<TDataStd_NamedData>
 
 Description
 -----------
-Method to get nameddata attribute assigned to the given shape label. @param thelabel [in] the shape label @param thetocreate [in] create and assign attribute if it doesn't exist return handle to the nameddata attribute or null if there is none.
+Method to get NamedData attribute assigned to the given shape label. 
+Input parameter: theLabel the shape Label 
+Input parameter: theToCreate create and assign attribute if it doesn't exist 
+Return: Handle to the NamedData attribute or Null if there is none.
 ") GetNamedProperties;
 		opencascade::handle<TDataStd_NamedData> GetNamedProperties(const TDF_Label & theLabel, const Standard_Boolean theToCreate = Standard_False);
 
@@ -9832,7 +9938,10 @@ opencascade::handle<TDataStd_NamedData>
 
 Description
 -----------
-Method to get nameddata attribute assigned to a label of the given shape. @param theshape [in] input shape @param thetocreate [in] create and assign attribute if it doesn't exist return handle to the nameddata attribute or null if there is none.
+Method to get NamedData attribute assigned to a label of the given shape. 
+Input parameter: theShape input shape 
+Input parameter: theToCreate create and assign attribute if it doesn't exist 
+Return: Handle to the NamedData attribute or Null if there is none.
 ") GetNamedProperties;
 		opencascade::handle<TDataStd_NamedData> GetNamedProperties(const TopoDS_Shape & theShape, const Standard_Boolean theToCreate = Standard_False);
 
@@ -9850,7 +9959,9 @@ TopoDS_Shape
 
 Description
 -----------
-Gets shape from a sequence of shape's labels @param[in] thelabels a sequence of labels to get shapes from return original shape in case of one label and a compound of shapes in case of more.
+Gets shape from a sequence of shape's labels 
+Input parameter: theLabels a sequence of labels to get shapes from 
+Return: original shape in case of one label and a compound of shapes in case of more.
 ") GetOneShape;
 		static TopoDS_Shape GetOneShape(const TDF_LabelSequence & theLabels);
 
@@ -9863,7 +9974,8 @@ TopoDS_Shape
 
 Description
 -----------
-Gets shape from a sequence of all top-level shapes which are free return original shape in case of one label and a compound of shapes in case of more.
+Gets shape from a sequence of all top-level shapes which are free 
+Return: original shape in case of one label and a compound of shapes in case of more.
 ") GetOneShape;
 		TopoDS_Shape GetOneShape();
 
@@ -9882,7 +9994,7 @@ bool
 
 Description
 -----------
-Returns label which corresponds to a shape referred by l returns false if label is not reference.
+Returns label which corresponds to a shape referred by L Returns False if label is not reference.
 ") GetReferredShape;
 		static Standard_Boolean GetReferredShape(const TDF_Label & L, TDF_Label & Label);
 
@@ -9901,7 +10013,7 @@ bool
 
 Description
 -----------
-Returns founded shuo graphnode attribute <ashuoattr> returns false in other case.
+Returns founded SHUO GraphNode attribute <aSHUOAttr> Returns false in other case.
 ") GetSHUO;
 		static Standard_Boolean GetSHUO(const TDF_Label & SHUOLabel, opencascade::handle<XCAFDoc_GraphNode> & aSHUOAttr);
 
@@ -9919,7 +10031,7 @@ TopoDS_Shape
 
 Description
 -----------
-Search for the component shape that styled by shuo returns null shape if no any shape is found.
+Search for the component shape that styled by shuo Returns null shape if no any shape is found.
 ") GetSHUOInstance;
 		TopoDS_Shape GetSHUOInstance(const opencascade::handle<XCAFDoc_GraphNode> & theSHUO);
 
@@ -9938,7 +10050,7 @@ bool
 
 Description
 -----------
-Returns the sequence of labels of shuo attributes, which is next_usage for this upper_usage shuo attribute (that indicated by label) note: returns next_usages only on one level (not recurse) note: do not clear the sequence before filling.
+Returns the sequence of labels of SHUO attributes, which is next_usage for this upper_usage SHUO attribute (that indicated by label) NOTE: returns next_usages only on one level (not recurse) NOTE: do not clear the sequence before filling.
 ") GetSHUONextUsage;
 		static Standard_Boolean GetSHUONextUsage(const TDF_Label & UpperUsageL, TDF_LabelSequence & Labels);
 
@@ -9957,7 +10069,7 @@ bool
 
 Description
 -----------
-Returns the sequence of labels of shuo attributes, which is upper_usage for this next_usage shuo attribute (that indicated by label) note: returns upper_usages only on one level (not recurse) note: do not clear the sequence before filling.
+Returns the sequence of labels of SHUO attributes, which is upper_usage for this next_usage SHUO attribute (that indicated by label) NOTE: returns upper_usages only on one level (not recurse) NOTE: do not clear the sequence before filling.
 ") GetSHUOUpperUsage;
 		static Standard_Boolean GetSHUOUpperUsage(const TDF_Label & NextUsageL, TDF_LabelSequence & Labels);
 
@@ -9976,7 +10088,7 @@ bool
 
 Description
 -----------
-To get topods_shape from shape's label for component, returns new shape with correct location returns false if label does not contain shape.
+To get TopoDS_Shape from shape's label For component, returns new shape with correct location Returns False if label does not contain shape.
 ") GetShape;
 		static Standard_Boolean GetShape(const TDF_Label & L, TopoDS_Shape & S);
 
@@ -9994,7 +10106,7 @@ TopoDS_Shape
 
 Description
 -----------
-To get topods_shape from shape's label for component, returns new shape with correct location returns null shape if label does not contain shape.
+To get TopoDS_Shape from shape's label For component, returns new shape with correct location Returns Null shape if label does not contain shape.
 ") GetShape;
 		static TopoDS_Shape GetShape(const TDF_Label & L);
 
@@ -10031,7 +10143,7 @@ bool
 
 Description
 -----------
-Returns list of labels identifying subshapes of the given shape returns false if no subshapes are placed on that label.
+Returns list of labels identifying subshapes of the given shape Returns False if no subshapes are placed on that label.
 ") GetSubShapes;
 		static Standard_Boolean GetSubShapes(const TDF_Label & L, TDF_LabelSequence & Labels);
 
@@ -10051,7 +10163,7 @@ int
 
 Description
 -----------
-Returns list of labels which refer shape l as component returns number of users (0 if shape is free).
+Returns list of labels which refer shape L as component Returns number of users (0 if shape is free).
 ") GetUsers;
 		static Standard_Integer GetUsers(const TDF_Label & L, TDF_LabelSequence & Labels, const Standard_Boolean getsubchilds = Standard_False);
 
@@ -10077,7 +10189,7 @@ None
 
 Description
 -----------
-Set hascomponents into false.
+set hasComponents into false.
 ") Init;
 		void Init();
 
@@ -10095,7 +10207,7 @@ bool
 
 Description
 -----------
-Returns true if the label is a label of assembly, i.e. contains sublabels which are assembly components this is relevant only if isshape() is true.
+Returns True if the label is a label of assembly, i.e. contains sublabels which are assembly components This is relevant only if IsShape() is True.
 ") IsAssembly;
 		static Standard_Boolean IsAssembly(const TDF_Label & L);
 
@@ -10113,7 +10225,7 @@ bool
 
 Description
 -----------
-Return true if <l> is reference serving as component of assembly.
+Return true if <L> is reference serving as component of assembly.
 ") IsComponent;
 		static Standard_Boolean IsComponent(const TDF_Label & L);
 
@@ -10131,7 +10243,7 @@ bool
 
 Description
 -----------
-Returns true if the label is a label of compound, i.e. contains some sublabels this is relevant only if isshape() is true.
+Returns True if the label is a label of compound, i.e. contains some sublabels This is relevant only if IsShape() is True.
 ") IsCompound;
 		static Standard_Boolean IsCompound(const TDF_Label & L);
 
@@ -10149,7 +10261,7 @@ bool
 
 Description
 -----------
-Returns true if the label is a label of external references, i.e. there are some reference on the no-step files, which are described in document only their names.
+Returns True if the label is a label of external references, i.e. there are some reference on the no-step files, which are described in document only their names.
 ") IsExternRef;
 		static Standard_Boolean IsExternRef(const TDF_Label & L);
 
@@ -10167,7 +10279,7 @@ bool
 
 Description
 -----------
-Returns true if the label is not used by any assembly, i.e. contains sublabels which are assembly components this is relevant only if isshape() is true (there is no father treenode on this <l>).
+Returns True if the label is not used by any assembly, i.e. contains sublabels which are assembly components This is relevant only if IsShape() is True (There is no Father TreeNode on this <L>).
 ") IsFree;
 		static Standard_Boolean IsFree(const TDF_Label & L);
 
@@ -10185,7 +10297,7 @@ bool
 
 Description
 -----------
-Return true if <l> is a located instance of other shape i.e. reference.
+Return true if <L> is a located instance of other shape i.e. reference.
 ") IsReference;
 		static Standard_Boolean IsReference(const TDF_Label & L);
 
@@ -10203,7 +10315,7 @@ bool
 
 Description
 -----------
-Returns true if the label represents a shape (simple shape, assembly or reference).
+Returns True if the label represents a shape (simple shape, assembly or reference).
 ") IsShape;
 		static Standard_Boolean IsShape(const TDF_Label & L);
 
@@ -10221,7 +10333,7 @@ bool
 
 Description
 -----------
-Returns true if the label is a label of simple shape.
+Returns True if the label is a label of simple shape.
 ") IsSimpleShape;
 		static Standard_Boolean IsSimpleShape(const TDF_Label & L);
 
@@ -10239,7 +10351,7 @@ bool
 
 Description
 -----------
-Return true if <l> is subshape of the top-level shape.
+Return true if <L> is subshape of the top-level shape.
 ") IsSubShape;
 		static Standard_Boolean IsSubShape(const TDF_Label & L);
 
@@ -10258,7 +10370,7 @@ bool
 
 Description
 -----------
-Checks whether shape <sub> is subshape of shape stored on label shapel.
+Checks whether shape <sub> is subshape of shape stored on label shapeL.
 ") IsSubShape;
 		Standard_Boolean IsSubShape(const TDF_Label & shapeL, const TopoDS_Shape & sub);
 
@@ -10276,7 +10388,7 @@ bool
 
 Description
 -----------
-Returns true if the label is a label of top-level shape, as opposed to component of assembly or subshape.
+Returns True if the label is a label of top-level shape, as opposed to component of assembly or subshape.
 ") IsTopLevel;
 		Standard_Boolean IsTopLevel(const TDF_Label & L);
 
@@ -10295,7 +10407,7 @@ int
 
 Description
 -----------
-Returns number of assembles components.
+Returns number of Assembles components.
 ") NbComponents;
 		static Standard_Integer NbComponents(const TDF_Label & L, const Standard_Boolean getsubchilds = Standard_False);
 
@@ -10308,7 +10420,7 @@ TDF_Label
 
 Description
 -----------
-Creates new (empty) top-level shape. initially it holds empty topods_compound.
+Creates new (empty) top-level shape. Initially it holds empty TopoDS_Compound.
 ") NewShape;
 		TDF_Label NewShape();
 
@@ -10344,7 +10456,7 @@ bool
 
 Description
 -----------
-Remove shuo from component sublabel, remove all dependencies on other shuo. returns false if cannot remove shuo dependencies. note: remove any styles that associated with this shuo.
+Remove SHUO from component sublabel, remove all dependencies on other SHUO. Returns False if cannot remove SHUO dependencies. NOTE: remove any styles that associated with this SHUO.
 ") RemoveSHUO;
 		Standard_Boolean RemoveSHUO(const TDF_Label & SHUOLabel);
 
@@ -10363,7 +10475,7 @@ bool
 
 Description
 -----------
-Removes shape (whole label and all its sublabels) if removecompletely is true, removes complete shape if removecompletely is false, removes instance(location) only returns false (and does nothing) if shape is not free or is not top-level shape.
+Removes shape (whole label and all its sublabels) If removeCompletely is true, removes complete shape If removeCompletely is false, removes instance(location) only Returns False (and does nothing) if shape is not free or is not top-level shape.
 ") RemoveShape;
 		Standard_Boolean RemoveShape(const TDF_Label & L, const Standard_Boolean removeCompletely = Standard_True);
 
@@ -10385,7 +10497,7 @@ bool
 
 Description
 -----------
-General tool to find a (sub) shape in the document * if findinstance is true, and s has a non-null location, first tries to find the shape among the top-level shapes with this location * if not found, and findcomponent is true, tries to find the shape among the components of assemblies * if not found, tries to find the shape without location among top-level shapes * if not found and findsubshape is true, tries to find a shape as a subshape of top-level simple shapes returns false if nothing is found.
+General tool to find a (sub) shape in the document * If findInstance is True, and S has a non-null location, first tries to find the shape among the top-level shapes with this location * If not found, and findComponent is True, tries to find the shape among the components of assemblies * If not found, tries to find the shape without location among top-level shapes * If not found and findSubshape is True, tries to find a shape as a subshape of top-level simple shapes Returns False if nothing is found.
 ") Search;
 		Standard_Boolean Search(const TopoDS_Shape & S, TDF_Label & L, const Standard_Boolean findInstance = Standard_True, const Standard_Boolean findComponent = Standard_True, const Standard_Boolean findSubshape = Standard_True);
 
@@ -10424,7 +10536,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Create (if not exist) shapetool from xcafdoc on <l>.
+Create (if not exist) ShapeTool from XCAFDoc on <L>.
 ") Set;
 		static opencascade::handle<XCAFDoc_ShapeTool> Set(const TDF_Label & L);
 
@@ -10442,7 +10554,7 @@ None
 
 Description
 -----------
-Sets auto-naming mode to <v>. if true then for added shapes, links, assemblies and shuo's, the tdatastd_name attribute is automatically added. for shapes it contains a shape type (e.g. 'solid', 'shell', etc); for links it has a form '=>[0:1:1:2]' (where a tag is a label containing a shape without a location); for assemblies it is 'assembly', and 'shuo' for shuo's. this setting is global; it cannot be made a member function as it is used by static methods as well. by default, auto-naming is enabled. see also autonaming().
+Sets auto-naming mode to <V>. If True then for added shapes, links, assemblies and SHUO's, the TDataStd_Name attribute is automatically added. For shapes it contains a shape type (e.g. 'SOLID', 'SHELL', etc); for links it has a form '=>[0:1:1:2]' (where a tag is a label containing a shape without a location); for assemblies it is 'ASSEMBLY', and 'SHUO' for SHUO's. This setting is global; it cannot be made a member function as it is used by static methods as well. By default, auto-naming is enabled. See also AutoNaming().
 ") SetAutoNaming;
 		static void SetAutoNaming(const Standard_Boolean V);
 
@@ -10497,7 +10609,7 @@ opencascade::handle<XCAFDoc_GraphNode>
 
 Description
 -----------
-Search for the component shape by labelks path and set shuo structure for founded label structure returns null attribute if no component in any assembly found.
+Search for the component shape by labelks path and set SHUO structure for founded label structure Returns null attribute if no component in any assembly found.
 ") SetInstanceSHUO;
 		opencascade::handle<XCAFDoc_GraphNode> SetInstanceSHUO(const TopoDS_Shape & theShape);
 
@@ -10517,7 +10629,10 @@ bool
 
 Description
 -----------
-Sets location to the shape label if label is reference -> changes location attribute if label is free shape -> creates reference with location to it @param[in] theshapelabel the shape label to change location @param[in] theloc location to set @param[out] thereflabel the reference label with new location return true if new location was set.
+Sets location to the shape label If label is reference -> changes location attribute If label is free shape -> creates reference with location to it 
+Input parameter: theShapeLabel the shape label to change location 
+Input parameter: theLoc location to set @param[out] theRefLabel the reference label with new location 
+Return: True if new location was set.
 ") SetLocation;
 		Standard_Boolean SetLocation(const TDF_Label & theShapeLabel, const TopLoc_Location & theLoc, TDF_Label & theRefLabel);
 
@@ -10536,7 +10651,7 @@ bool
 
 Description
 -----------
-Sets the shuo structure between upper_usage and next_usage create multy-level (if number of labels > 2) shuo from first to last initialise out <mainshuoattr> by main upper_usage shuo attribute. returns false if some of labels in not component label.
+Sets the SHUO structure between upper_usage and next_usage create multy-level (if number of labels > 2) SHUO from first to last Initialise out <MainSHUOAttr> by main upper_usage SHUO attribute. Returns False if some of labels in not component label.
 ") SetSHUO;
 		Standard_Boolean SetSHUO(const TDF_LabelSequence & Labels, opencascade::handle<XCAFDoc_GraphNode> & MainSHUOAttr);
 
@@ -10555,7 +10670,7 @@ None
 
 Description
 -----------
-Sets representation (topods_shape) for top-level shape.
+Sets representation (TopoDS_Shape) for top-level shape.
 ") SetShape;
 		void SetShape(const TDF_Label & L, const TopoDS_Shape & S);
 
@@ -10672,7 +10787,7 @@ None
 
 Description
 -----------
-Updates parent's label and its sub-labels with data taken from theviewobject. old data associated with the label will be lost.
+Updates parent's label and its sub-labels with data taken from theViewObject. Old data associated with the label will be lost.
 ") SetObject;
 		void SetObject(const opencascade::handle<XCAFView_Object> & theViewObject);
 
@@ -10714,7 +10829,7 @@ TDF_Label
 
 Description
 -----------
-Adds a view definition to a view table and returns its label.
+Adds a view definition to a View table and returns its label.
 ") AddView;
 		TDF_Label AddView();
 
@@ -10727,7 +10842,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which views are stored.
+Returns the label under which Views are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -10759,7 +10874,7 @@ bool
 
 Description
 -----------
-Returns annotation labels defined for label theviewl returns false if the theviewl is not in view table.
+Returns Annotation labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefAnnotationLabel;
 		Standard_Boolean GetRefAnnotationLabel(const TDF_Label & theViewL, TDF_LabelSequence & theAnnotationLabels);
 
@@ -10778,7 +10893,7 @@ bool
 
 Description
 -----------
-Returns clippingplane labels defined for label theviewl returns false if the theviewl is not in view table.
+Returns ClippingPlane labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefClippingPlaneLabel;
 		Standard_Boolean GetRefClippingPlaneLabel(const TDF_Label & theViewL, TDF_LabelSequence & theClippingPlaneLabels);
 
@@ -10797,7 +10912,7 @@ bool
 
 Description
 -----------
-Returns gdt labels defined for label theviewl returns false if the theviewl is not in view table.
+Returns GDT labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefGDTLabel;
 		Standard_Boolean GetRefGDTLabel(const TDF_Label & theViewL, TDF_LabelSequence & theGDTLabels);
 
@@ -10816,7 +10931,7 @@ bool
 
 Description
 -----------
-Returns notes labels defined for label theviewl returns false if the theviewl is not in view table.
+Returns Notes labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefNoteLabel;
 		Standard_Boolean GetRefNoteLabel(const TDF_Label & theViewL, TDF_LabelSequence & theNoteLabels);
 
@@ -10835,7 +10950,7 @@ bool
 
 Description
 -----------
-Returns shape labels defined for label theviewl returns false if the theviewl is not in view table.
+Returns shape labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefShapeLabel;
 		Standard_Boolean GetRefShapeLabel(const TDF_Label & theViewL, TDF_LabelSequence & theShapeLabels);
 
@@ -10853,7 +10968,7 @@ None
 
 Description
 -----------
-Returns a sequence of view labels currently stored in the view table.
+Returns a sequence of View labels currently stored in the View table.
 ") GetViewLabels;
 		void GetViewLabels(TDF_LabelSequence & theLabels);
 
@@ -10872,7 +10987,7 @@ bool
 
 Description
 -----------
-Returns all view labels defined for label annotationl.
+Returns all View labels defined for label AnnotationL.
 ") GetViewLabelsForAnnotation;
 		Standard_Boolean GetViewLabelsForAnnotation(const TDF_Label & theAnnotationL, TDF_LabelSequence & theViews);
 
@@ -10891,7 +11006,7 @@ bool
 
 Description
 -----------
-Returns all view labels defined for label clippingplanel.
+Returns all View labels defined for label ClippingPlaneL.
 ") GetViewLabelsForClippingPlane;
 		Standard_Boolean GetViewLabelsForClippingPlane(const TDF_Label & theClippingPlaneL, TDF_LabelSequence & theViews);
 
@@ -10910,7 +11025,7 @@ bool
 
 Description
 -----------
-Returns all view labels defined for label gdtl.
+Returns all View labels defined for label GDTL.
 ") GetViewLabelsForGDT;
 		Standard_Boolean GetViewLabelsForGDT(const TDF_Label & theGDTL, TDF_LabelSequence & theViews);
 
@@ -10929,7 +11044,7 @@ bool
 
 Description
 -----------
-Returns all view labels defined for label notel.
+Returns all View labels defined for label NoteL.
 ") GetViewLabelsForNote;
 		Standard_Boolean GetViewLabelsForNote(const TDF_Label & theNoteL, TDF_LabelSequence & theViews);
 
@@ -10948,7 +11063,7 @@ bool
 
 Description
 -----------
-Returns all view labels defined for label shapel.
+Returns all View labels defined for label ShapeL.
 ") GetViewLabelsForShape;
 		Standard_Boolean GetViewLabelsForShape(const TDF_Label & theShapeL, TDF_LabelSequence & theViews);
 
@@ -10979,7 +11094,7 @@ bool
 
 Description
 -----------
-Returns true if the given view is marked as locked.
+Returns true if the given View is marked as locked.
 ") IsLocked;
 		Standard_Boolean IsLocked(const TDF_Label & theViewL);
 
@@ -10997,7 +11112,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a view table and is a view definition.
+Returns True if label belongs to a View table and is a View definition.
 ") IsView;
 		Standard_Boolean IsView(const TDF_Label & theLabel);
 
@@ -11015,7 +11130,7 @@ None
 
 Description
 -----------
-Mark the given view as locked.
+Mark the given View as locked.
 ") Lock;
 		void Lock(const TDF_Label & theViewL);
 
@@ -11033,7 +11148,7 @@ None
 
 Description
 -----------
-Remove view.
+Remove View.
 ") RemoveView;
 		void RemoveView(const TDF_Label & theViewL);
 
@@ -11051,7 +11166,7 @@ opencascade::handle<XCAFDoc_ViewTool>
 
 Description
 -----------
-Creates (if not exist) viewtool.
+Creates (if not exist) ViewTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_ViewTool> Set(const TDF_Label & L);
 
@@ -11070,7 +11185,7 @@ None
 
 Description
 -----------
-Set clipping planes to given view.
+Set Clipping planes to given View.
 ") SetClippingPlanes;
 		void SetClippingPlanes(const TDF_LabelSequence & theClippingPlaneLabels, const TDF_Label & theViewL);
 
@@ -11093,7 +11208,7 @@ None
 
 Description
 -----------
-Sets a link with guid.
+Sets a link with GUID.
 ") SetView;
 		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_LabelSequence & theClippingPlanes, const TDF_LabelSequence & theNotes, const TDF_LabelSequence & theAnnotations, const TDF_Label & theViewL);
 
@@ -11114,7 +11229,7 @@ None
 
 Description
 -----------
-Sets a link with guid.
+Sets a link with GUID.
 ") SetView;
 		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_LabelSequence & theClippingPlanes, const TDF_Label & theViewL);
 
@@ -11134,7 +11249,7 @@ None
 
 Description
 -----------
-Sets a link with guid.
+Sets a link with GUID.
 ") SetView;
 		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_Label & theViewL);
 
@@ -11152,7 +11267,7 @@ None
 
 Description
 -----------
-Unlock the given view.
+Unlock the given View.
 ") Unlock;
 		void Unlock(const TDF_Label & theViewL);
 
@@ -11207,7 +11322,7 @@ Graphic3d_AlphaMode
 
 Description
 -----------
-Return alpha mode; graphic3d_alphamode_blendauto by default.
+Return alpha mode; Graphic3d_AlphaMode_BlendAuto by default.
 ") AlphaMode;
 		Graphic3d_AlphaMode AlphaMode();
 
@@ -11233,7 +11348,8 @@ XCAFDoc_VisMaterialCommon
 
 Description
 -----------
-Return common material. note that default constructor creates an empty material (@sa xcafdoc_vismaterialcommon::isdefined).
+Return common material. Note that default constructor creates an empty material (
+See also: XCAFDoc_VisMaterialCommon::IsDefined).
 ") CommonMaterial;
 		const XCAFDoc_VisMaterialCommon & CommonMaterial();
 
@@ -11246,7 +11362,7 @@ XCAFDoc_VisMaterialCommon
 
 Description
 -----------
-Return common material or convert pbr into common material.
+Return Common material or convert PBR into Common material.
 ") ConvertToCommonMaterial;
 		XCAFDoc_VisMaterialCommon ConvertToCommonMaterial();
 
@@ -11259,7 +11375,7 @@ XCAFDoc_VisMaterialPBR
 
 Description
 -----------
-Return pbr material or convert common into pbr material.
+Return PBR material or convert Common into PBR material.
 ") ConvertToPbrMaterial;
 		XCAFDoc_VisMaterialPBR ConvertToPbrMaterial();
 
@@ -11293,7 +11409,7 @@ Graphic3d_TypeOfBackfacingModel
 
 Description
 -----------
-Returns if the material is double or single sided; graphic3d_typeofbackfacingmodel_auto by default.
+Returns if the material is double or single sided; Graphic3d_TypeOfBackfacingModel_Auto by default.
 ") FaceCulling;
 		Graphic3d_TypeOfBackfacingModel FaceCulling();
 
@@ -11342,7 +11458,7 @@ Standard_GUID
 
 Description
 -----------
-Return attribute guid.
+Return attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -11355,7 +11471,7 @@ bool
 
 Description
 -----------
-Return true if common material is defined; false by default.
+Return True if common material is defined; False by default.
 ") HasCommonMaterial;
 		Standard_Boolean HasCommonMaterial();
 
@@ -11368,7 +11484,7 @@ bool
 
 Description
 -----------
-Return true if metal-roughness pbr material is defined; false by default.
+Return True if metal-roughness PBR material is defined; False by default.
 ") HasPbrMaterial;
 		Standard_Boolean HasPbrMaterial();
 
@@ -11381,7 +11497,7 @@ Standard_GUID
 
 Description
 -----------
-Return guid of this attribute type.
+Return GUID of this attribute type.
 ") ID;
 		virtual const Standard_GUID & ID();
 
@@ -11407,7 +11523,7 @@ bool
 
 Description
 -----------
-Return true if material definition is empty.
+Return True if material definition is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
@@ -11425,7 +11541,7 @@ bool
 
 Description
 -----------
-Compare two materials. performs deep comparison by actual values - e.g. can be useful for merging materials.
+Compare two materials. Performs deep comparison by actual values - e.g. can be useful for merging materials.
 ") IsEqual;
 		Standard_Boolean IsEqual(const opencascade::handle<XCAFDoc_VisMaterial> & theOther);
 
@@ -11457,7 +11573,9 @@ None
 
 Description
 -----------
-Paste this attribute into another one. @param theinto [in/out] target attribute to copy this into @param thereltable [in] relocation table.
+Paste this attribute into another one. 
+Parameter theInto [in/out] target attribute to copy this into 
+Input parameter: theRelTable relocation table.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRelTable);
 
@@ -11470,7 +11588,8 @@ XCAFDoc_VisMaterialPBR
 
 Description
 -----------
-Return metal-roughness pbr material. note that default constructor creates an empty material (@sa xcafdoc_vismaterialpbr::isdefined).
+Return metal-roughness PBR material. Note that default constructor creates an empty material (
+See also: XCAFDoc_VisMaterialPBR::IsDefined).
 ") PbrMaterial;
 		const XCAFDoc_VisMaterialPBR & PbrMaterial();
 
@@ -11501,7 +11620,8 @@ None
 
 Description
 -----------
-Restore attribute from specified state. @param thewith [in] attribute state to restore (copy into this).
+Restore attribute from specified state. 
+Input parameter: theWith attribute state to restore (copy into this).
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -11592,7 +11712,7 @@ None
 
 Description
 -----------
-Setup metal-roughness pbr material.
+Setup metal-roughness PBR material.
 ") SetPbrMaterial;
 		void SetPbrMaterial(const XCAFDoc_VisMaterialPBR & theMaterial);
 
@@ -11636,7 +11756,7 @@ None
 
 Description
 -----------
-Setup undefined metal-roughness pbr material.
+Setup undefined metal-roughness PBR material.
 ") UnsetPbrMaterial;
 		void UnsetPbrMaterial();
 
@@ -11656,14 +11776,6 @@ Setup undefined metal-roughness pbr material.
 **********************************/
 class XCAFDoc_VisMaterialCommon {
 	public:
-		opencascade::handle<Image_Texture > DiffuseTexture;
-		Quantity_Color AmbientColor;
-		Quantity_Color DiffuseColor;
-		Quantity_Color SpecularColor;
-		Quantity_Color EmissiveColor;
-		float Shininess;
-		float Transparency;
-		bool IsDefined;
 		/****** XCAFDoc_VisMaterialCommon::XCAFDoc_VisMaterialCommon ******/
 		/****** md5 signature: 902673da58471421f95b5ccf0bdee6a3 ******/
 		%feature("compactdefaultargs") XCAFDoc_VisMaterialCommon;
@@ -11730,17 +11842,6 @@ Compare two materials.
 *******************************/
 class XCAFDoc_VisMaterialPBR {
 	public:
-		opencascade::handle<Image_Texture > BaseColorTexture;
-		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
-		opencascade::handle<Image_Texture > EmissiveTexture;
-		opencascade::handle<Image_Texture > OcclusionTexture;
-		opencascade::handle<Image_Texture > NormalTexture;
-		Quantity_ColorRGBA BaseColor;
-		Graphic3d_Vec3 EmissiveFactor;
-		float Metallic;
-		float Roughness;
-		float RefractionIndex;
-		bool IsDefined;
 		/****** XCAFDoc_VisMaterialPBR::XCAFDoc_VisMaterialPBR ******/
 		/****** md5 signature: 11ea295424c444b06892c19d880417c9 ******/
 		%feature("compactdefaultargs") XCAFDoc_VisMaterialPBR;
@@ -11835,7 +11936,7 @@ TDF_Label
 
 Description
 -----------
-Adds material definition to a material table and returns its label.
+Adds Material definition to a Material Table and returns its Label.
 ") AddMaterial;
 		TDF_Label AddMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMat, TCollection_AsciiString theName);
 
@@ -11853,7 +11954,7 @@ TDF_Label
 
 Description
 -----------
-Adds material definition to a material table and returns its label.
+Adds Material definition to a Material Table and returns its Label.
 ") AddMaterial;
 		TDF_Label AddMaterial(TCollection_AsciiString theName);
 
@@ -11866,7 +11967,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label under which colors are stored.
+returns the label under which colors are stored.
 ") BaseLabel;
 		TDF_Label BaseLabel();
 
@@ -11897,7 +11998,7 @@ opencascade::handle<XCAFDoc_VisMaterial>
 
 Description
 -----------
-Returns material defined by specified label, or null if the label is not in material table.
+Returns Material defined by specified Label, or NULL if the label is not in Material Table.
 ") GetMaterial;
 		static opencascade::handle<XCAFDoc_VisMaterial> GetMaterial(const TDF_Label & theMatLabel);
 
@@ -11915,7 +12016,7 @@ None
 
 Description
 -----------
-Returns a sequence of materials currently stored in the material table.
+Returns a sequence of Materials currently stored in the Material Table.
 ") GetMaterials;
 		void GetMaterials(TDF_LabelSequence & Labels);
 
@@ -11934,7 +12035,9 @@ bool
 
 Description
 -----------
-Returns label with material assigned to shape label. @param theshapelabel [in] shape label @param themateriallabel [out] material label return false if no material is assigned.
+Returns label with material assigned to shape label. 
+Input parameter: theShapeLabel shape label @param[out] theMaterialLabel material label 
+Return: False if no material is assigned.
 ") GetShapeMaterial;
 		static Standard_Boolean GetShapeMaterial(const TDF_Label & theShapeLabel, TDF_Label & theMaterialLabel);
 
@@ -11971,7 +12074,9 @@ bool
 
 Description
 -----------
-Returns label with material assigned to shape. @param theshape [in] shape @param themateriallabel [out] material label return false if no material is assigned.
+Returns label with material assigned to shape. 
+Input parameter: theShape shape @param[out] theMaterialLabel material label 
+Return: False if no material is assigned.
 ") GetShapeMaterial;
 		Standard_Boolean GetShapeMaterial(const TopoDS_Shape & theShape, TDF_Label & theMaterialLabel);
 
@@ -11989,7 +12094,7 @@ opencascade::handle<XCAFDoc_VisMaterial>
 
 Description
 -----------
-Returns material assigned to shape or null if not assigned.
+Returns material assigned to shape or NULL if not assigned.
 ") GetShapeMaterial;
 		opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TopoDS_Shape & theShape);
 
@@ -12002,7 +12107,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid of this attribute type.
+Returns GUID of this attribute type.
 ") ID;
 		virtual const Standard_GUID & ID();
 
@@ -12020,7 +12125,7 @@ bool
 
 Description
 -----------
-Returns true if label belongs to a material table.
+Returns True if Label belongs to a Material Table.
 ") IsMaterial;
 		Standard_Boolean IsMaterial(const TDF_Label & theLabel);
 
@@ -12038,7 +12143,7 @@ bool
 
 Description
 -----------
-Returns true if label has a material assignment.
+Returns True if label has a material assignment.
 ") IsSetShapeMaterial;
 		Standard_Boolean IsSetShapeMaterial(const TDF_Label & theLabel);
 
@@ -12056,7 +12161,7 @@ bool
 
 Description
 -----------
-Returns true if shape has a material assignment.
+Returns True if shape has a material assignment.
 ") IsSetShapeMaterial;
 		Standard_Boolean IsSetShapeMaterial(const TopoDS_Shape & theShape);
 
@@ -12106,7 +12211,7 @@ None
 
 Description
 -----------
-Removes material from the material table.
+Removes Material from the Material Table.
 ") RemoveMaterial;
 		void RemoveMaterial(const TDF_Label & theLabel);
 
@@ -12142,7 +12247,7 @@ opencascade::handle<XCAFDoc_VisMaterialTool>
 
 Description
 -----------
-Creates (if not exist) colortool.
+Creates (if not exist) ColorTool.
 ") Set;
 		static opencascade::handle<XCAFDoc_VisMaterialTool> Set(const TDF_Label & L);
 
@@ -12180,7 +12285,10 @@ bool
 
 Description
 -----------
-Sets a link with guid xcafdoc::vismaterialrefguid() from shape label to material label. @param theshape [in] shape @param themateriallabel [in] material label return false if cannot find a label for shape.
+Sets a link with GUID XCAFDoc::VisMaterialRefGUID() from shape label to material label. 
+Input parameter: theShape shape 
+Input parameter: theMaterialLabel material label 
+Return: False if cannot find a label for shape.
 ") SetShapeMaterial;
 		Standard_Boolean SetShapeMaterial(const TopoDS_Shape & theShape, const TDF_Label & theMaterialLabel);
 
@@ -12193,7 +12301,7 @@ opencascade::handle<XCAFDoc_ShapeTool>
 
 Description
 -----------
-Returns internal xcafdoc_shapetool tool.
+Returns internal XCAFDoc_ShapeTool tool.
 ") ShapeTool;
 		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
 
@@ -12211,7 +12319,7 @@ None
 
 Description
 -----------
-Removes a link with guid xcafdoc::vismaterialrefguid() from shape label to material.
+Removes a link with GUID XCAFDoc::VisMaterialRefGUID() from shape label to material.
 ") UnSetShapeMaterial;
 		void UnSetShapeMaterial(const TDF_Label & theShapeLabel);
 
@@ -12229,7 +12337,8 @@ bool
 
 Description
 -----------
-Removes a link with guid xcafdoc::vismaterialrefguid() from shape label to material. return true if such link existed.
+Removes a link with GUID XCAFDoc::VisMaterialRefGUID() from shape label to material. 
+Return: True if such link existed.
 ") UnSetShapeMaterial;
 		Standard_Boolean UnSetShapeMaterial(const TopoDS_Shape & theShape);
 
@@ -12258,7 +12367,7 @@ None
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") XCAFDoc_Volume;
 		 XCAFDoc_Volume();
 
@@ -12390,7 +12499,7 @@ opencascade::handle<XCAFDoc_Volume>
 
 Description
 -----------
-Find, or create, an volume attribute and set its value.
+Find, or create, an Volume attribute and set its value.
 ") Set;
 		static opencascade::handle<XCAFDoc_Volume> Set(const TDF_Label & label, const Standard_Real vol);
 
@@ -12483,7 +12592,7 @@ Standard_GUID
 
 Description
 -----------
-Returns default attribute guid.
+Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -12509,7 +12618,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns data mime type.
+Returns data MIME type.
 ") MIMEtype;
 		const TCollection_AsciiString & MIMEtype();
 
@@ -12582,7 +12691,7 @@ opencascade::handle<XCAFDoc_NoteBinData>
 
 Description
 -----------
-Create (if not exist) a binary note with data loaded from a binary file. \param [in] thelabel - label to add the attribute. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file. eturn a handle to the attribute instance.
+Create (if not exist) a binary note with data loaded from a binary file. \param[in] theLabel - label to add the attribute. \param[in] theUserName - the name of the user, who created the note. \param[in] theTimeStamp - creation timestamp of the note. \param[in] theTitle - file title. \param[in] theMIMEtype - MIME type of the file. \param[in] theFile - input binary file. eturn A handle to the attribute instance.
 ") Set;
 		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
@@ -12605,7 +12714,7 @@ opencascade::handle<XCAFDoc_NoteBinData>
 
 Description
 -----------
-Create (if not exist) a binary note byte data array. \param [in] thelabel - label to add the attribute. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thetitle - data title. \param [in] themimetype - mime type of data. \param [in] thedata - byte data array. eturn a handle to the attribute instance.
+Create (if not exist) a binary note byte data array. \param[in] theLabel - label to add the attribute. \param[in] theUserName - the name of the user, who created the note. \param[in] theTimeStamp - creation timestamp of the note. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of data. \param[in] theData - byte data array. eturn A handle to the attribute instance.
 ") Set;
 		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
@@ -12625,7 +12734,7 @@ bool
 
 Description
 -----------
-Sets title, mime type and data from a binary file. \param [in] thetitle - file title. \param [in] themimetype - mime type of the file. \param [in] thefile - input binary file.
+Sets title, MIME type and data from a binary file. \param[in] theTitle - file title. \param[in] theMIMEtype - MIME type of the file. \param[in] theFile - input binary file.
 ") Set;
 		Standard_Boolean Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, OSD_File & theFile);
 
@@ -12645,7 +12754,7 @@ None
 
 Description
 -----------
-Sets title, mime type and data from a byte array. \param [in] thetitle - data title. \param [in] themimetype - mime type of data. \param [in] thedata - byte data array.
+Sets title, MIME type and data from a byte array. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of data. \param[in] theData - byte data array.
 ") Set;
 		void Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
@@ -12761,7 +12870,7 @@ Standard_GUID
 
 Description
 -----------
-Returns default attribute guid.
+Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -12845,7 +12954,7 @@ opencascade::handle<XCAFDoc_NoteComment>
 
 Description
 -----------
-Create (if not exist) a comment note on the given label. \param [in] thelabel - note label. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thecomment - comment text.
+Create (if not exist) a comment note on the given label. \param[in] theLabel - note label. \param[in] theUserName - the name of the user, who created the note. \param[in] theTimeStamp - creation timestamp of the note. \param[in] theComment - comment text.
 ") Set;
 		static opencascade::handle<XCAFDoc_NoteComment> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
@@ -12923,7 +13032,7 @@ Standard_GUID
 
 Description
 -----------
-Returns default attribute guid.
+Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -12957,7 +13066,7 @@ opencascade::handle<XCAFDoc_NoteBalloon>
 
 Description
 -----------
-Create (if not exist) a comment note on the given label. \param [in] thelabel - note label. \param [in] theusername - the name of the user, who created the note. \param [in] thetimestamp - creation timestamp of the note. \param [in] thecomment - comment text.
+Create (if not exist) a comment note on the given label. \param[in] theLabel - note label. \param[in] theUserName - the name of the user, who created the note. \param[in] theTimeStamp - creation timestamp of the note. \param[in] theComment - comment text.
 ") Set;
 		static opencascade::handle<XCAFDoc_NoteBalloon> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theComment);
 
@@ -13412,6 +13521,18 @@ def XCAFDoc_Editor_Extract(*args):
 @deprecated
 def XCAFDoc_Editor_Extract(*args):
 	return XCAFDoc_Editor.Extract(*args)
+
+@deprecated
+def XCAFDoc_Editor_FilterShapeTree(*args):
+	return XCAFDoc_Editor.FilterShapeTree(*args)
+
+@deprecated
+def XCAFDoc_Editor_GetChildShapeLabels(*args):
+	return XCAFDoc_Editor.GetChildShapeLabels(*args)
+
+@deprecated
+def XCAFDoc_Editor_GetParentShapeLabels(*args):
+	return XCAFDoc_Editor.GetParentShapeLabels(*args)
 
 @deprecated
 def XCAFDoc_Editor_RescaleGeometry(*args):

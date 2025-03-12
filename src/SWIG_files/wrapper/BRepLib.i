@@ -222,7 +222,7 @@ theNewTol: float
 
 Description
 -----------
-Calculates the bounding sphere around the set of vertexes from the thelv list. returns the center (thenewcenter) and the radius (thenewtol) of this sphere. this can be used to construct the new vertex which covers the given set of other vertices.
+Calculates the bounding sphere around the set of vertexes from the theLV list. Returns the center (theNewCenter) and the radius (theNewTol) of this sphere. This can be used to construct the new vertex which covers the given set of other vertices.
 ") BoundingVertex;
 		static void BoundingVertex(const NCollection_List<TopoDS_Shape> & theLV, gp_Pnt & theNewCenter, Standard_Real &OutValue);
 
@@ -244,7 +244,7 @@ bool
 
 Description
 -----------
-Computes the 3d curve for the edge <e> if it does not exist. returns true if the curve was computed or existed. returns false if there is no planar pcurve or the computation failed. <maxsegment> >= 30 in approximation.
+Computes the 3d curve for the edge <E> if it does not exist. Returns True if the curve was computed or existed. Returns False if there is no planar pcurve or the computation failed. <MaxSegment> >= 30 in approximation.
 ") BuildCurve3d;
 		static Standard_Boolean BuildCurve3d(const TopoDS_Edge & E, const Standard_Real Tolerance = 1.0e-5, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 0);
 
@@ -266,7 +266,7 @@ bool
 
 Description
 -----------
-Computes the 3d curves for all the edges of <s> return false if one of the computation failed. <maxsegment> >= 30 in approximation.
+Computes the 3d curves for all the edges of <S> return False if one of the computation failed. <MaxSegment> >= 30 in approximation.
 ") BuildCurves3d;
 		static Standard_Boolean BuildCurves3d(const TopoDS_Shape & S, const Standard_Real Tolerance, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 0);
 
@@ -284,7 +284,7 @@ bool
 
 Description
 -----------
-Computes the 3d curves for all the edges of <s> return false if one of the computation failed.
+Computes the 3d curves for all the edges of <S> return False if one of the computation failed.
 ") BuildCurves3d;
 		static Standard_Boolean BuildCurves3d(const TopoDS_Shape & S);
 
@@ -323,7 +323,7 @@ bToUpdate: bool
 
 Description
 -----------
-Builds pcurve of edge on face if the surface is plane, but does not update the edge. the output are the pcurve and the flag telling that pcurve was built.
+Builds pcurve of edge on face if the surface is plane, but does not update the edge. The output are the pcurve and the flag telling that pcurve was built.
 ") BuildPCurveForEdgeOnPlane;
 		static void BuildPCurveForEdgeOnPlane(const TopoDS_Edge & theE, const TopoDS_Face & theF, opencascade::handle<Geom2d_Curve> & aC2D, Standard_Boolean &OutValue);
 
@@ -342,7 +342,7 @@ bool
 
 Description
 -----------
-Checks if the edge is same range ignoring the same range flag of the edge confusion argument is to compare real numbers idenpendently of any model space tolerance.
+checks if the Edge is same range IGNORING the same range flag of the edge Confusion argument is to compare real numbers idenpendently of any model space tolerance.
 ") CheckSameRange;
 		static Standard_Boolean CheckSameRange(const TopoDS_Edge & E, const Standard_Real Confusion = 1.0e-12);
 
@@ -382,7 +382,7 @@ None
 
 Description
 -----------
-Encodes the regularity of edges on a shape. warning: <tolang> is an angular tolerance, expressed in rad. warning: if the edges's regularity are coded before, nothing is done.
+Encodes the Regularity of edges on a Shape. Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 ") EncodeRegularity;
 		static void EncodeRegularity(const TopoDS_Shape & S, const Standard_Real TolAng = 1.0e-10);
 
@@ -402,7 +402,7 @@ None
 
 Description
 -----------
-Encodes the regularity of edges in list <le> on the shape <s> warning: <tolang> is an angular tolerance, expressed in rad. warning: if the edges's regularity are coded before, nothing is done.
+Encodes the Regularity of edges in list <LE> on the shape <S> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 ") EncodeRegularity;
 		static void EncodeRegularity(const TopoDS_Shape & S, const TopTools_ListOfShape & LE, const Standard_Real TolAng = 1.0e-10);
 
@@ -423,7 +423,7 @@ None
 
 Description
 -----------
-Encodes the regularity between <f1> and <f2> by <e> warning: <tolang> is an angular tolerance, expressed in rad. warning: if the edge's regularity is coded before, nothing is done.
+Encodes the Regularity between <F1> and <F2> by <E> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edge's regularity is coded before, nothing is done.
 ") EncodeRegularity;
 		static void EncodeRegularity(TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Real TolAng = 1.0e-10);
 
@@ -443,7 +443,7 @@ bool
 
 Description
 -----------
-Corrects the normals in poly_triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. returns true if any correction is done.
+Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.
 ") EnsureNormalConsistency;
 		static Standard_Boolean EnsureNormalConsistency(const TopoDS_Shape & S, const Standard_Real theAngTol = 0.001, const Standard_Boolean ForceComputeNormals = Standard_False);
 
@@ -467,7 +467,14 @@ None
 
 Description
 -----------
-Enlarges the face on the given value. @param thef [in] the face to extend @param theextval [in] the extension value @param theextumin [in] defines whether to extend the face in umin direction @param theextumax [in] defines whether to extend the face in umax direction @param theextvmin [in] defines whether to extend the face in vmin direction @param theextvmax [in] defines whether to extend the face in vmax direction @param thefextended [in] the extended face.
+Enlarges the face on the given value. 
+Input parameter: theF The face to extend 
+Input parameter: theExtVal The extension value 
+Input parameter: theExtUMin Defines whether to extend the face in UMin direction 
+Input parameter: theExtUMax Defines whether to extend the face in UMax direction 
+Input parameter: theExtVMin Defines whether to extend the face in VMin direction 
+Input parameter: theExtVMax Defines whether to extend the face in VMax direction 
+Input parameter: theFExtended The extended face.
 ") ExtendFace;
 		static void ExtendFace(const TopoDS_Face & theF, const Standard_Real theExtVal, const Standard_Boolean theExtUMin, const Standard_Boolean theExtUMax, const Standard_Boolean theExtVMin, const Standard_Boolean theExtVMax, TopoDS_Face & theFExtended);
 
@@ -493,7 +500,7 @@ theLast: float
 
 Description
 -----------
-For an edge defined by 3d curve and tolerance and vertices defined by points, parameters on curve and tolerances, finds a range of curve between vertices not covered by vertices tolerances. returns false if there is no such range. otherwise, sets thefirst and thelast as its bounds.
+For an edge defined by 3d curve and tolerance and vertices defined by points, parameters on curve and tolerances, finds a range of curve between vertices not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 ") FindValidRange;
 		static Standard_Boolean FindValidRange(const Adaptor3d_Curve & theCurve, const Standard_Real theTolE, const Standard_Real theParV1, const gp_Pnt & thePntV1, const Standard_Real theTolV1, const Standard_Real theParV2, const gp_Pnt & thePntV2, const Standard_Real theTolV2, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -512,7 +519,7 @@ theLast: float
 
 Description
 -----------
-Finds a range of 3d curve of the edge not covered by vertices tolerances. returns false if there is no such range. otherwise, sets thefirst and thelast as its bounds.
+Finds a range of 3d curve of the edge not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 ") FindValidRange;
 		static Standard_Boolean FindValidRange(const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -530,7 +537,7 @@ bool
 
 Description
 -----------
-Orients the solid forward and the shell with the orientation to have matter in the solid. returns false if the solid is unorientable (open or incoherent).
+Orients the solid forward and the shell with the orientation to have matter in the solid. Returns False if the solid is unOrientable (open or incoherent).
 ") OrientClosedSolid;
 		static Standard_Boolean OrientClosedSolid(TopoDS_Solid & solid);
 
@@ -548,7 +555,7 @@ None
 
 Description
 -----------
-Sets the current plane to p.
+Sets the current plane to P.
 ") Plane;
 		static void Plane(const opencascade::handle<Geom_Plane> & P);
 
@@ -579,7 +586,7 @@ None
 
 Description
 -----------
-Computes the max distance between edge and its 2d representation on the face. sets the default precision. the current precision is returned.
+Computes the max distance between edge and its 2d representation on the face. Sets the default precision. The current Precision is returned.
 ") Precision;
 		static void Precision(const Standard_Real P);
 
@@ -611,7 +618,7 @@ None
 
 Description
 -----------
-Sorts in lf the faces of s on the reverse complexity of their surfaces (other,torus,sphere,cone,cylinder,plane).
+Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane).
 ") ReverseSortFaces;
 		static void ReverseSortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
 
@@ -630,7 +637,7 @@ None
 
 Description
 -----------
-Computes new 2d curve(s) for the edge <theedge> to have the same parameter as the 3d curve. the algorithm is not done if the flag sameparameter was true on the edge.
+Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge.
 ") SameParameter;
 		static void SameParameter(const TopoDS_Edge & theEdge, const Standard_Real Tolerance = 1.0e-5);
 
@@ -650,7 +657,7 @@ theNewTol: float
 
 Description
 -----------
-Computes new 2d curve(s) for the edge <theedge> to have the same parameter as the 3d curve. the algorithm is not done if the flag sameparameter was true on the edge. thenewtol is a new tolerance of vertices of the input edge (not applied inside the algorithm, but pre-computed). if isuseoldedge is true then the input edge will be modified, otherwise the new copy of input edge will be created. returns the new edge as a result, can be ignored if isuseoldedge is true.
+Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge. theNewTol is a new tolerance of vertices of the input edge (not applied inside the algorithm, but pre-computed). If IsUseOldEdge is true then the input edge will be modified, otherwise the new copy of input edge will be created. Returns the new edge as a result, can be ignored if IsUseOldEdge is true.
 ") SameParameter;
 		static TopoDS_Edge SameParameter(const TopoDS_Edge & theEdge, const Standard_Real theTolerance, Standard_Real &OutValue, const Standard_Boolean IsUseOldEdge);
 
@@ -670,7 +677,7 @@ None
 
 Description
 -----------
-Computes new 2d curve(s) for all the edges of <s> to have the same parameter as the 3d curve. the algorithm is not done if the flag sameparameter was true on an edge.
+Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge.
 ") SameParameter;
 		static void SameParameter(const TopoDS_Shape & S, const Standard_Real Tolerance = 1.0e-5, const Standard_Boolean forced = Standard_False);
 
@@ -691,7 +698,7 @@ None
 
 Description
 -----------
-Computes new 2d curve(s) for all the edges of <s> to have the same parameter as the 3d curve. the algorithm is not done if the flag sameparameter was true on an edge. thereshaper is used to record the modifications of input shape <s> to prevent any modifications on the shape itself. thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
+Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge. theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 ") SameParameter;
 		static void SameParameter(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const Standard_Real Tolerance = 1.0e-5, const Standard_Boolean forced = Standard_False);
 
@@ -710,7 +717,7 @@ None
 
 Description
 -----------
-Will make all the curve representation have the same range domain for the parameters. this will ignore the same range flag value to proceed. if there is a 3d curve there it will the range of that curve. if not the first curve representation encountered in the list will give its range to the all the other curves.
+will make all the curve representation have the same range domain for the parameters. This will IGNORE the same range flag value to proceed. If there is a 3D curve there it will the range of that curve. If not the first curve representation encountered in the list will give its range to the all the other curves.
 ") SameRange;
 		static void SameRange(const TopoDS_Edge & E, const Standard_Real Tolerance = 1.0e-5);
 
@@ -729,7 +736,7 @@ None
 
 Description
 -----------
-Sorts in lf the faces of s on the complexity of their surfaces (plane,cylinder,cone,sphere,torus,other).
+Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other).
 ") SortFaces;
 		static void SortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
 
@@ -747,7 +754,7 @@ None
 
 Description
 -----------
-Updates value of deflection in poly_triangulation of faces by the maximum deviation measured on existing triangulation.
+Updates value of deflection in Poly_Triangulation of faces by the maximum deviation measured on existing triangulation.
 ") UpdateDeflection;
 		static void UpdateDeflection(const TopoDS_Shape & S);
 
@@ -767,7 +774,7 @@ bool
 
 Description
 -----------
-Checks if the edge has a tolerance smaller than -- -- -- -- maxtolerancetocheck if so it will compute the radius of -- the cylindrical pipe surface that mintolerancerequest is the minimum tolerance before it is useful to start testing. usually it should be around 10e-5 contains all -- the curve representation of the edge returns true if the edge tolerance had to be updated.
+Checks if the edge has a Tolerance smaller than -- -- -- -- MaxToleranceToCheck if so it will compute the radius of -- the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is useful to start testing. Usually it should be around 10e-5 contains all -- the curve representation of the edge returns True if the Edge tolerance had to be updated.
 ") UpdateEdgeTol;
 		static Standard_Boolean UpdateEdgeTol(const TopoDS_Edge & E, const Standard_Real MinToleranceRequest, const Standard_Real MaxToleranceToCheck);
 
@@ -787,7 +794,7 @@ bool
 
 Description
 -----------
--- checks all the edges of the shape whose -- -- -- tolerance is smaller than maxtolerancetocheck -- returns true if at least one edge was updated -- mintolerancerequest is the minimum tolerance before -- it -- is useful to start testing. usually it should be around -- 10e-5-- //! warning :the method is very slow as it checks all. use only in interfaces or processing assimilate batch.
+-- Checks all the edges of the shape whose -- -- -- Tolerance is smaller than MaxToleranceToCheck -- Returns True if at least one edge was updated -- MinToleranceRequest is the minimum tolerance before -- it -- is useful to start testing. Usually it should be around -- 10e-5-- //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch.
 ") UpdateEdgeTolerance;
 		static Standard_Boolean UpdateEdgeTolerance(const TopoDS_Shape & S, const Standard_Real MinToleranceRequest, const Standard_Real MaxToleranceToCheck);
 
@@ -805,7 +812,7 @@ None
 
 Description
 -----------
-Checks tolerances of edges (including inner points) and vertices of a shape and updates them to satisfy 'sameparameter' condition.
+Checks tolerances of edges (including inner points) and vertices of a shape and updates them to satisfy 'SameParameter' condition.
 ") UpdateInnerTolerances;
 		static void UpdateInnerTolerances(const TopoDS_Shape & S);
 
@@ -824,7 +831,7 @@ None
 
 Description
 -----------
-Replaces tolerance of face edge vertex by the tolerance max of their connected handling shapes. it is not necessary to use this call after sameparameter. (called in).
+Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in).
 ") UpdateTolerances;
 		static void UpdateTolerances(const TopoDS_Shape & S, const Standard_Boolean verifyFaceTolerance = Standard_False);
 
@@ -844,7 +851,7 @@ None
 
 Description
 -----------
-Replaces tolerance of face edge vertex by the tolerance max of their connected handling shapes. it is not necessary to use this call after sameparameter. (called in) thereshaper is used to record the modifications of input shape <s> to prevent any modifications on the shape itself. thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
+Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in) theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 ") UpdateTolerances;
 		static void UpdateTolerances(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const Standard_Boolean verifyFaceTolerance = Standard_False);
 
@@ -907,7 +914,7 @@ int
 
 Description
 -----------
-Returns error status the possible values are: 0 - ok; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
+Returns error status The possible values are: 0 - OK; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
 ") ErrorStatus;
 		Standard_Integer ErrorStatus();
 
@@ -991,7 +998,7 @@ None
 
 Description
 -----------
-Performs the calculation if myisparallel == standard_true then computation will be performed in parallel.
+Performs the calculation If myIsParallel == Standard_True then computation will be performed in parallel.
 ") Perform;
 		void Perform();
 
@@ -1037,7 +1044,7 @@ None
 
 Description
 -----------
-Raises notdone if done is false.
+Raises NotDone if done is false.
 ") Check;
 		void Check();
 
@@ -1098,7 +1105,7 @@ None
 
 Description
 -----------
-Computes the surface from the edges of <s> with the given tolerance. if <onlyplane> is true, the computed surface will be a plane. if it is not possible to find a plane, the flag notdone will be set. if <onlyclosed> is true, then s should be a wire and the existing surface, on which wire s is not closed in 2d, will be ignored.
+Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S should be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 ") BRepLib_FindSurface;
 		 BRepLib_FindSurface(const TopoDS_Shape & S, const Standard_Real Tol = -1, const Standard_Boolean OnlyPlane = Standard_False, const Standard_Boolean OnlyClosed = Standard_False);
 
@@ -1145,7 +1152,7 @@ None
 
 Description
 -----------
-Computes the surface from the edges of <s> with the given tolerance. if <onlyplane> is true, the computed surface will be a plane. if it is not possible to find a plane, the flag notdone will be set. if <onlyclosed> is true, then s should be a wire and the existing surface, on which wire s is not closed in 2d, will be ignored.
+Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S should be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 ") Init;
 		void Init(const TopoDS_Shape & S, const Standard_Real Tol = -1, const Standard_Boolean OnlyPlane = Standard_False, const Standard_Boolean OnlyClosed = Standard_False);
 
@@ -1248,7 +1255,7 @@ None
 
 Description
 -----------
-Set edges to avoid being fused.
+set edges to avoid being fused.
 ") AvoidEdges;
 		void AvoidEdges(const TopTools_IndexedMapOfShape & theMapEdg);
 
@@ -1266,7 +1273,7 @@ None
 
 Description
 -----------
-Returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
+returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 ") Edges;
 		void Edges(TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
@@ -1284,7 +1291,7 @@ None
 
 Description
 -----------
-Returns the map of modified faces.
+returns the map of modified faces.
 ") Faces;
 		void Faces(TopTools_DataMapOfShapeShape & theMapFac);
 
@@ -1297,7 +1304,7 @@ int
 
 Description
 -----------
-Returns the number of vertices candidate to be removed.
+returns the number of vertices candidate to be removed.
 ") NbVertices;
 		Standard_Integer NbVertices();
 
@@ -1310,7 +1317,7 @@ None
 
 Description
 -----------
-Using map of list of connex edges, fuse each list to one edge and then update myshape.
+Using map of list of connex edges, fuse each list to one edge and then update myShape.
 ") Perform;
 		void Perform();
 
@@ -1328,7 +1335,7 @@ None
 
 Description
 -----------
-Returns all the fused edges. each integer entry in the map corresponds to the integer in the datamapofintegerlistofshape we get in method edges. that is to say, to the list of edges in themaplstedg(i) corresponds the resulting edge themapedge(i).
+returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i).
 ") ResultEdges;
 		void ResultEdges(TopTools_DataMapOfIntegerShape & theMapEdg);
 
@@ -1346,7 +1353,7 @@ None
 
 Description
 -----------
-Set mode to enable concatenation g1 bspline edges in one end modified by ifv 19.04.07.
+set mode to enable concatenation G1 BSpline edges in one End Modified by IFV 19.04.07.
 ") SetConcatBSpl;
 		void SetConcatBSpl(const Standard_Boolean theConcatBSpl = Standard_True);
 
@@ -1359,7 +1366,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns myshape modified with the list of internal edges removed from it.
+returns myShape modified with the list of internal edges removed from it.
 ") Shape;
 		TopoDS_Shape Shape();
 
@@ -1392,7 +1399,7 @@ bool
 
 Description
 -----------
-Computes points with specified density for initial shape. if parameter density is equal to 0 then density will be computed automatically by criterion: - 10 points per minimal unreduced face area. //! note: this function should not be called from concurrent threads without external lock.
+Computes points with specified density for initial shape. If parameter Density is equal to 0 then density will be computed automatically by criterion: - 10 points per minimal unreduced face area. //! Note: this function should not be called from concurrent threads without external lock.
 ") GeneratePointsByDensity;
 		Standard_Boolean GeneratePointsByDensity(const Standard_Real theDensity = 0.0);
 
@@ -1467,7 +1474,7 @@ None
 
 Description
 -----------
-Sets value of the distance to define deflection of points from shape along normal to shape. negative values of thedist parameter are ignored.
+Sets value of the distance to define deflection of points from shape along normal to shape. Negative values of theDist parameter are ignored.
 ") SetDistance;
 		void SetDistance(const Standard_Real theDist);
 
@@ -1562,7 +1569,9 @@ None
 
 Description
 -----------
-Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param[in] theface the face @param[in] thetris the definition of a face triangulation.
+Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface. Does nothing if triangulation already defines normals. 
+Input parameter: theFace the face 
+Input parameter: theTris the definition of a face triangulation.
 ") ComputeNormals;
 		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris);
 
@@ -1582,7 +1591,9 @@ None
 
 Description
 -----------
-Computes nodal normals for poly_triangulation structure using uv coordinates and surface. does nothing if triangulation already defines normals. @param[in] theface the face @param[in] thetris the definition of a face triangulation @param[in,out] thepolyconnect optional, initialized tool for exploring triangulation.
+Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface. Does nothing if triangulation already defines normals. 
+Input parameter: theFace the face 
+Input parameter: theTris the definition of a face triangulation @param[in,out] thePolyConnect optional, initialized tool for exploring triangulation.
 ") ComputeNormals;
 		static void ComputeNormals(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTris, Poly_Connect & thePolyConnect);
 
@@ -1634,7 +1645,7 @@ bool
 
 Description
 -----------
-Returns true if computed distance is less than <thetolerancetocheck>.
+Returns true if computed distance is less than <theToleranceToCheck>.
 ") CheckTolerance;
 		Standard_Boolean CheckTolerance(Standard_Real theToleranceToCheck);
 
@@ -1699,7 +1710,7 @@ None
 
 Description
 -----------
-Computes the max distance for the 3d curve <myreferencecurve> and curve on surface <myothercurve>. if the setexitiftoleranceexceeded() function was called before <mycalculateddistance> contains first greater than setexitiftoleranceexceeded() parameter value. in case using exact method always computes real max distance.
+Computes the max distance for the 3d curve <myReferenceCurve> and curve on surface <myOtherCurve>. If the SetExitIfToleranceExceeded() function was called before <myCalculatedDistance> contains first greater than SetExitIfToleranceExceeded() parameter value. In case using exact method always computes real max distance.
 ") Process;
 		void Process();
 
@@ -1735,7 +1746,7 @@ None
 
 Description
 -----------
-Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
+Sets method to calculate distance: Calculating in finite number of points (if theIsExact is false, faster, but possible not correct result) or exact calculating by using BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly). Exact method is used only when edge is SameParameter. Default method is calculating in finite number of points.
 ") SetExactMethod;
 		void SetExactMethod(Standard_Boolean theIsExact);
 
@@ -1770,7 +1781,7 @@ theToleranceToUpdate: float
 
 Description
 -----------
-Increase <thetolerancetoupdate> if max distance is greater than <thetolerancetoupdate>.
+Increase <theToleranceToUpdate> if max distance is greater than <theToleranceToUpdate>.
 ") UpdateTolerance;
 		void UpdateTolerance(Standard_Real &OutValue);
 
@@ -1802,7 +1813,7 @@ None
 
 Description
 -----------
-This is called by shape(). it does nothing but may be redefined.
+This is called by Shape(). It does nothing but may be redefined.
 ") Build;
 		void Build();
 
@@ -1820,7 +1831,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of generated faces.
+returns the list of generated Faces.
 ") DescendantFaces;
 		virtual const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
 
@@ -1838,7 +1849,7 @@ BRepLib_ShapeModification
 
 Description
 -----------
-Returns the status of the face after the shape creation.
+returns the status of the Face after the shape creation.
 ") FaceStatus;
 		virtual BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
 
@@ -1856,7 +1867,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the created faces from the edge <e>.
+returns a list of the created faces from the edge <E>.
 ") FacesFromEdges;
 		virtual const TopTools_ListOfShape & FacesFromEdges(const TopoDS_Edge & E);
 
@@ -1874,7 +1885,7 @@ bool
 
 Description
 -----------
-Returns true if the face generates new topology.
+Returns True if the Face generates new topology.
 ") HasDescendants;
 		virtual Standard_Boolean HasDescendants(const TopoDS_Face & F);
 
@@ -1887,7 +1898,7 @@ int
 
 Description
 -----------
-Returns the number of surfaces after the shape creation.
+returns the number of surfaces after the shape creation.
 ") NbSurfaces;
 		virtual Standard_Integer NbSurfaces();
 
@@ -1905,7 +1916,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Return the faces created for surface i.
+Return the faces created for surface I.
 ") NewFaces;
 		virtual const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
 
@@ -2649,7 +2660,7 @@ BRepLib_EdgeError
 
 Description
 -----------
-Returns the error description when notdone.
+Returns the error description when NotDone.
 ") Error;
 		BRepLib_EdgeError Error();
 
@@ -2912,7 +2923,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first vertex of the edge. may be null.
+Returns the first vertex of the edge. May be Null.
 ") Vertex1;
 		const TopoDS_Vertex Vertex1();
 
@@ -2925,7 +2936,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the second vertex of the edge. may be null.
+Returns the second vertex of the edge. May be Null.
 ") Vertex2;
 		const TopoDS_Vertex Vertex2();
 
@@ -3515,7 +3526,7 @@ BRepLib_EdgeError
 
 Description
 -----------
-Returns the error description when notdone.
+Returns the error description when NotDone.
 ") Error;
 		BRepLib_EdgeError Error();
 
@@ -3650,7 +3661,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first vertex of the edge. may be null.
+Returns the first vertex of the edge. May be Null.
 ") Vertex1;
 		const TopoDS_Vertex Vertex1();
 
@@ -3663,7 +3674,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the second vertex of the edge. may be null.
+Returns the second vertex of the edge. May be Null.
 ") Vertex2;
 		const TopoDS_Vertex Vertex2();
 
@@ -3708,7 +3719,7 @@ None
 
 Description
 -----------
-Load a face. useful to add wires.
+Load a face. Useful to add wires.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const TopoDS_Face & F);
 
@@ -3817,7 +3828,7 @@ None
 
 Description
 -----------
-Make a face from a surface. accepts tolerance value (toldegen) for resolution of degenerated edges.
+Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real TolDegen);
 
@@ -3950,7 +3961,7 @@ None
 
 Description
 -----------
-Make a face from a surface. accepts min & max parameters to construct the face's bounds. also accepts tolerance value (toldegen) for resolution of degenerated edges.
+Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
 
@@ -3969,7 +3980,7 @@ None
 
 Description
 -----------
-Find a surface from the wire and make a face. if <onlyplane> is true, the computed surface will be a plane. if it is not possible to find a plane, the flag notdone will be set.
+Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const TopoDS_Wire & W, const Standard_Boolean OnlyPlane = Standard_False);
 
@@ -4089,7 +4100,7 @@ None
 
 Description
 -----------
-Make a face from a surface and a wire.
+Make a face from a Surface and a wire.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
 
@@ -4108,7 +4119,7 @@ None
 
 Description
 -----------
-Adds the wire <w> in the face <f>.
+Adds the wire <W> in the face <F>.
 ") BRepLib_MakeFace;
 		 BRepLib_MakeFace(const TopoDS_Face & F, const TopoDS_Wire & W);
 
@@ -4126,7 +4137,7 @@ None
 
 Description
 -----------
-Adds the wire <w> in the current face.
+Adds the wire <W> in the current face.
 ") Add;
 		void Add(const TopoDS_Wire & W);
 
@@ -4190,7 +4201,7 @@ None
 
 Description
 -----------
-Creates the face from the surface. if bound is true a wire is made from the natural bounds. accepts tolerance value (toldegen) for resolution of degenerated edges.
+Creates the face from the surface. If Bound is True a wire is made from the natural bounds. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean Bound, const Standard_Real TolDegen);
 
@@ -4213,7 +4224,7 @@ None
 
 Description
 -----------
-Creates the face from the surface and the min-max values. accepts tolerance value (toldegen) for resolution of degenerated edges.
+Creates the face from the surface and the min-max values. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
 
@@ -4232,7 +4243,7 @@ theActTol: float
 
 Description
 -----------
-Checks the specified curve is degenerated according to specified tolerance. returns <theacttol> less than <themaxtol>, which shows actual tolerance to decide the curve is degenerated. warning: for internal use of breplib_makeface and breplib_makeshell.
+Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
 ") IsDegenerated;
 		static Standard_Boolean IsDegenerated(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theMaxTol, Standard_Real &OutValue);
 
@@ -4259,7 +4270,7 @@ None
 
 Description
 -----------
-Creates an empty makepolygon.
+Creates an empty MakePolygon.
 ") BRepLib_MakePolygon;
 		 BRepLib_MakePolygon();
 
@@ -4432,7 +4443,7 @@ bool
 
 Description
 -----------
-Returns true if the last vertex or point was successfully added.
+Returns True if the last vertex or point was successfully added.
 ") Added;
 		Standard_Boolean Added();
 
@@ -4615,7 +4626,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the new shell.
+Returns the new Shell.
 ") Shell;
 		const TopoDS_Shell Shell();
 
@@ -4660,7 +4671,7 @@ None
 
 Description
 -----------
-Make a solid from a compsolid.
+Make a solid from a CompSolid.
 ") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid(const TopoDS_CompSolid & S);
 
@@ -4735,7 +4746,7 @@ None
 
 Description
 -----------
-Make a solid from a solid. useful for adding later.
+Make a solid from a solid. Useful for adding later.
 ") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid(const TopoDS_Solid & So);
 
@@ -4790,7 +4801,7 @@ BRepLib_ShapeModification
 
 Description
 -----------
-Returns the status of the face after the shape creation.
+returns the status of the Face after the shape creation.
 ") FaceStatus;
 		virtual BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
 
@@ -4803,7 +4814,7 @@ TopoDS_Solid
 
 Description
 -----------
-Returns the new solid.
+Returns the new Solid.
 ") Solid;
 		const TopoDS_Solid Solid();
 
@@ -4876,7 +4887,7 @@ None
 
 Description
 -----------
-Notdone makewire.
+NotDone MakeWire.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire();
 
@@ -4894,7 +4905,7 @@ None
 
 Description
 -----------
-Make a wire from an edge.
+Make a Wire from an edge.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire(const TopoDS_Edge & E);
 
@@ -4913,7 +4924,7 @@ None
 
 Description
 -----------
-Make a wire from two edges.
+Make a Wire from two edges.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
@@ -4933,7 +4944,7 @@ None
 
 Description
 -----------
-Make a wire from three edges.
+Make a Wire from three edges.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Edge & E3);
 
@@ -4954,7 +4965,7 @@ None
 
 Description
 -----------
-Make a wire from four edges.
+Make a Wire from four edges.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Edge & E3, const TopoDS_Edge & E4);
 
@@ -4972,7 +4983,7 @@ None
 
 Description
 -----------
-Make a wire from a wire. useful for adding later.
+Make a Wire from a Wire. Useful for adding later.
 ") BRepLib_MakeWire;
 		 BRepLib_MakeWire(const TopoDS_Wire & W);
 
@@ -5009,7 +5020,7 @@ None
 
 Description
 -----------
-Add the edge <e> to the current wire.
+Add the edge <E> to the current wire.
 ") Add;
 		void Add(const TopoDS_Edge & E);
 
@@ -5027,7 +5038,7 @@ None
 
 Description
 -----------
-Add the edges of <w> to the current wire.
+Add the edges of <W> to the current wire.
 ") Add;
 		void Add(const TopoDS_Wire & W);
 
@@ -5045,7 +5056,7 @@ None
 
 Description
 -----------
-Add the edges of <l> to the current wire. the edges are not to be consecutive. but they are to be all connected geometrically or topologically.
+Add the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically.
 ") Add;
 		void Add(const TopTools_ListOfShape & L);
 

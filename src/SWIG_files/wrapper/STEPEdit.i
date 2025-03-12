@@ -106,7 +106,7 @@ opencascade::handle<StepData_StepModel>
 
 Description
 -----------
-Returns a new empty stepmodel fit for step i.e. with its header determined from protocol.
+Returns a new empty StepModel fit for STEP i.e. with its header determined from Protocol.
 ") NewModel;
 		static opencascade::handle<StepData_StepModel> NewModel();
 
@@ -119,7 +119,7 @@ opencascade::handle<IFSelect_SelectSignature>
 
 Description
 -----------
-Creates a selection for placed items, i.e. mappeditem or contextdependentshaperepresentation, which itself refers to a representationrelationship with possible subtypes (shape... and/or ...withtransformation) by default in the whole stepmodel.
+Creates a Selection for Placed Items, i.e. MappedItem or ContextDependentShapeRepresentation, which itself refers to a RepresentationRelationship with possible subtypes (Shape... and/or ...WithTransformation) By default in the whole StepModel.
 ") NewSelectPlacedItem;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectPlacedItem();
 
@@ -132,7 +132,7 @@ opencascade::handle<IFSelect_SelectSignature>
 
 Description
 -----------
-Creates a selection for shapedefinitionrepresentation by default searches among root entities.
+Creates a Selection for ShapeDefinitionRepresentation By default searches among root entities.
 ") NewSelectSDR;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectSDR();
 
@@ -145,7 +145,7 @@ opencascade::handle<IFSelect_SelectSignature>
 
 Description
 -----------
-Creates a selection for shaperepresentation and its sub-types, plus contextdependentshaperepresentation (which is not a sub-type of shaperepresentation) by default in the whole stepmodel.
+Creates a Selection for ShapeRepresentation and its sub-types, plus ContextDependentShapeRepresentation (which is not a sub-type of ShapeRepresentation) By default in the whole StepModel.
 ") NewSelectShapeRepr;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectShapeRepr();
 
@@ -158,7 +158,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a protocol fit for step (creates the first time).
+Returns a Protocol fit for STEP (creates the first time).
 ") Protocol;
 		static opencascade::handle<Interface_Protocol> Protocol();
 
@@ -171,7 +171,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns a signtype fit for step (creates the first time).
+Returns a SignType fit for STEP (creates the first time).
 ") SignType;
 		static opencascade::handle<IFSelect_Signature> SignType();
 

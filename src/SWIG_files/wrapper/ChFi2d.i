@@ -196,7 +196,7 @@ None
 
 Description
 -----------
-An empty constructor. use the method init() to initialize the class.
+An empty constructor. Use the method Init() to initialize the class.
 ") ChFi2d_AnaFilletAlgo;
 		 ChFi2d_AnaFilletAlgo();
 
@@ -215,7 +215,7 @@ None
 
 Description
 -----------
-A constructor. it expects a wire consisting of two edges of type (any combination of): - segment - arc of circle.
+A constructor. It expects a wire consisting of two edges of type (any combination of): - segment - arc of circle.
 ") ChFi2d_AnaFilletAlgo;
 		 ChFi2d_AnaFilletAlgo(const TopoDS_Wire & theWire, const gp_Pln & thePlane);
 
@@ -235,7 +235,7 @@ None
 
 Description
 -----------
-A constructor. it expects two edges having a common point of type: - segment - arc of circle.
+A constructor. It expects two edges having a common point of type: - segment - arc of circle.
 ") ChFi2d_AnaFilletAlgo;
 		 ChFi2d_AnaFilletAlgo(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, const gp_Pln & thePlane);
 
@@ -356,7 +356,7 @@ None
 
 Description
 -----------
-The face <f> can be build on a closed or an open wire.
+The face <F> can be build on a closed or an open wire.
 ") ChFi2d_Builder;
 		 ChFi2d_Builder(const TopoDS_Face & F);
 
@@ -377,7 +377,7 @@ TopoDS_Edge
 
 Description
 -----------
-Add a chamfer on the wire between the two edges connected <e1> and <e2>. <addchamfer> returns the chamfer edge. this edge has sense only if the status <status> is <isdone>.
+Add a chamfer on the wire between the two edges connected <E1> and <E2>. <AddChamfer> returns the chamfer edge. This edge has sense only if the status <status> is <IsDone>.
 ") AddChamfer;
 		TopoDS_Edge AddChamfer(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real D1, const Standard_Real D2);
 
@@ -398,7 +398,7 @@ TopoDS_Edge
 
 Description
 -----------
-Add a chamfer on the wire between the two edges connected to the vertex <v>. the chamfer will make an angle <ang> with the edge <e>, and one of its extremities will be on <e> at distance <d>. the returned edge has sense only if the status <status> is <isdone>. warning: the value of <ang> must be expressed in radian.
+Add a chamfer on the wire between the two edges connected to the vertex <V>. The chamfer will make an angle <Ang> with the edge <E>, and one of its extremities will be on <E> at distance <D>. The returned edge has sense only if the status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
 ") AddChamfer;
 		TopoDS_Edge AddChamfer(const TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real D, const Standard_Real Ang);
 
@@ -417,7 +417,7 @@ TopoDS_Edge
 
 Description
 -----------
-Add a fillet of radius <radius> on the wire between the two edges connected to the vertex <v>. <addfillet> returns the fillet edge. the returned edge has sense only if the status <status> is <isdone>.
+Add a fillet of radius <Radius> on the wire between the two edges connected to the vertex <V>. <AddFillet> returns the fillet edge. The returned edge has sense only if the status <status> is <IsDone>.
 ") AddFillet;
 		TopoDS_Edge AddFillet(const TopoDS_Vertex & V, const Standard_Real Radius);
 
@@ -435,7 +435,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the parent edge of <e> warning: if <e>is a basis edge, the returned edge would be equal to <e>.
+Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge would be equal to <E>.
 ") BasisEdge;
 		const TopoDS_Edge BasisEdge(const TopoDS_Edge & E);
 
@@ -448,7 +448,7 @@ TopTools_SequenceOfShape
 
 Description
 -----------
-Returns the list of new edges.
+returns the list of new edges.
 ") ChamferEdges;
 		const TopTools_SequenceOfShape & ChamferEdges();
 
@@ -466,7 +466,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the modified edge if <e> has descendant or <e> in the other case.
+returns the modified edge if <E> has descendant or <E> in the other case.
 ") DescendantEdge;
 		const TopoDS_Edge DescendantEdge(const TopoDS_Edge & E);
 
@@ -479,7 +479,7 @@ TopTools_SequenceOfShape
 
 Description
 -----------
-Returns the list of new edges.
+returns the list of new edges.
 ") FilletEdges;
 		const TopTools_SequenceOfShape & FilletEdges();
 
@@ -574,7 +574,7 @@ TopoDS_Edge
 
 Description
 -----------
-Modify the chamfer <chamfer> and returns the new chamfer edge. this edge as sense only if the status <status> is <isdone>.
+modify the chamfer <Chamfer> and returns the new chamfer edge. This edge as sense only if the status <status> is <IsDone>.
 ") ModifyChamfer;
 		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real D1, const Standard_Real D2);
 
@@ -595,7 +595,7 @@ TopoDS_Edge
 
 Description
 -----------
-Modify the chamfer <chamfer> and returns the new chamfer edge. this edge as sense only if the status <status> is <isdone>. warning: the value of <ang> must be expressed in radian.
+modify the chamfer <Chamfer> and returns the new chamfer edge. This edge as sense only if the status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
 ") ModifyChamfer;
 		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E, const Standard_Real D, const Standard_Real Ang);
 
@@ -614,7 +614,7 @@ TopoDS_Edge
 
 Description
 -----------
-Modify the fillet radius and return the new fillet edge. this edge has sense only if the status <status> is <isdone>.
+modify the fillet radius and return the new fillet edge. this edge has sense only if the status <status> is <IsDone>.
 ") ModifyFillet;
 		TopoDS_Edge ModifyFillet(const TopoDS_Edge & Fillet, const Standard_Real Radius);
 
@@ -658,7 +658,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Removes the chamfer <chamfer> and returns the vertex connecting the two adjacent edges to this chamfer.
+removes the chamfer <Chamfer> and returns the vertex connecting the two adjacent edges to this chamfer.
 ") RemoveChamfer;
 		TopoDS_Vertex RemoveChamfer(const TopoDS_Edge & Chamfer);
 
@@ -676,7 +676,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Removes the fillet <fillet> and returns the vertex connecting the two adjacent edges to this fillet.
+removes the fillet <Fillet> and returns the vertex connecting the two adjacent edges to this fillet.
 ") RemoveFillet;
 		TopoDS_Vertex RemoveFillet(const TopoDS_Edge & Fillet);
 
@@ -689,7 +689,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the modified face.
+returns the modified face.
 ") Result;
 		TopoDS_Face Result();
 
@@ -816,7 +816,7 @@ bool
 
 Description
 -----------
-Constructs a chamfer edge. returns true if the edge is constructed.
+Constructs a chamfer edge. Returns true if the edge is constructed.
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -864,7 +864,7 @@ None
 
 Description
 -----------
-An empty constructor of the fillet algorithm. call a method init() to initialize the algorithm before calling of a perform() method.
+An empty constructor of the fillet algorithm. Call a method Init() to initialize the algorithm before calling of a Perform() method.
 ") ChFi2d_FilletAPI;
 		 ChFi2d_FilletAPI();
 
@@ -960,7 +960,7 @@ int
 
 Description
 -----------
-Returns number of possible solutions. <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
+Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") NbResults;
 		Standard_Integer NbResults(const gp_Pnt & thePoint);
 
@@ -978,7 +978,7 @@ bool
 
 Description
 -----------
-Constructs a fillet edge. returns true if at least one result was found.
+Constructs a fillet edge. Returns true if at least one result was found.
 ") Perform;
 		Standard_Boolean Perform(const Standard_Real theRadius);
 
@@ -999,7 +999,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thepoint> if isolution == -1 <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
+Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thePoint> if iSolution == -1 <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") Result;
 		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const Standard_Integer iSolution = -1);
 
@@ -1026,7 +1026,7 @@ None
 
 Description
 -----------
-An empty constructor of the fillet algorithm. call a method init() to initialize the algorithm before calling of a perform() method.
+An empty constructor of the fillet algorithm. Call a method Init() to initialize the algorithm before calling of a Perform() method.
 ") ChFi2d_FilletAlgo;
 		 ChFi2d_FilletAlgo();
 
@@ -1122,7 +1122,7 @@ int
 
 Description
 -----------
-Returns number of possible solutions. <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
+Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") NbResults;
 		Standard_Integer NbResults(const gp_Pnt & thePoint);
 
@@ -1140,7 +1140,7 @@ bool
 
 Description
 -----------
-Constructs a fillet edge. returns true, if at least one result was found.
+Constructs a fillet edge. Returns true, if at least one result was found.
 ") Perform;
 		Standard_Boolean Perform(const Standard_Real theRadius);
 
@@ -1161,7 +1161,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thepoint> if isolution == -1. <thepoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). put the intersecting (or common) point of the edges.
+Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thePoint> if iSolution == -1. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") Result;
 		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const Standard_Integer iSolution = -1);
 

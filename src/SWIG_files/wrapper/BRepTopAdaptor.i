@@ -203,7 +203,7 @@ TopAbs_State
 
 Description
 -----------
-Test a point with +- an offset (tol) and returns on if some points are out an some are in (caution: internal use . see the code for more details).
+Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details).
 ") TestOnRestriction;
 		TopAbs_State TestOnRestriction(const gp_Pnt2d & Puv, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
 
@@ -634,7 +634,7 @@ bool
 
 Description
 -----------
-Answers if arcs and vertices may have 3d representations, so that we could use tol3d and pnt methods.
+answers if arcs and vertices may have 3d representations, so that we could use Tol3d and Pnt methods.
 ") Has3d;
 		virtual Standard_Boolean Has3d();
 
@@ -729,7 +729,7 @@ bool
 
 Description
 -----------
-See the code for specifications).
+see the code for specifications).
 ") IsThePointOn;
 		virtual Standard_Boolean IsThePointOn(const gp_Pnt2d & P2d, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
 
@@ -768,7 +768,7 @@ int
 
 Description
 -----------
-Compute the sample-points for the intersections algorithms.
+compute the sample-points for the intersections algorithms.
 ") NbSamples;
 		virtual Standard_Integer NbSamples();
 
@@ -781,7 +781,7 @@ int
 
 Description
 -----------
-Compute the sample-points for the intersections algorithms.
+compute the sample-points for the intersections algorithms.
 ") NbSamplesU;
 		virtual Standard_Integer NbSamplesU();
 
@@ -794,7 +794,7 @@ int
 
 Description
 -----------
-Compute the sample-points for the intersections algorithms.
+compute the sample-points for the intersections algorithms.
 ") NbSamplesV;
 		virtual Standard_Integer NbSamplesV();
 
@@ -838,7 +838,7 @@ TopAbs_Orientation
 
 Description
 -----------
-If the function returns the orientation of the arc. if the orientation is forward or reversed, the arc is a 'real' limit of the surface. if the orientation is internal or external, the arc is considered as an arc on the surface.
+If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 ") Orientation;
 		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -856,7 +856,7 @@ TopAbs_Orientation
 
 Description
 -----------
-If the function returns the orientation of the arc. if the orientation is forward or reversed, the arc is a 'real' limit of the surface. if the orientation is internal or external, the arc is considered as an arc on the surface.
+If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 ") Orientation;
 		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor3d_HVertex> & C);
 
@@ -874,7 +874,7 @@ gp_Pnt
 
 Description
 -----------
-Returns 3d point of the vertex v.
+returns 3d point of the vertex V.
 ") Pnt;
 		virtual gp_Pnt Pnt(const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -912,7 +912,7 @@ float
 
 Description
 -----------
-Returns 3d tolerance of the arc c.
+returns 3d tolerance of the arc C.
 ") Tol3d;
 		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -930,7 +930,7 @@ float
 
 Description
 -----------
-Returns 3d tolerance of the vertex v.
+returns 3d tolerance of the vertex V.
 ") Tol3d;
 		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
 

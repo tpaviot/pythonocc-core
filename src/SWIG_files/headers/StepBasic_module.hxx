@@ -93,6 +93,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepBasic_ExternalSource.hxx>
 #include<StepBasic_ExternallyDefinedItem.hxx>
 #include<StepBasic_GeneralProperty.hxx>
+#include<StepBasic_GeneralPropertyAssociation.hxx>
+#include<StepBasic_GeneralPropertyRelationship.hxx>
 #include<StepBasic_Group.hxx>
 #include<StepBasic_GroupAssignment.hxx>
 #include<StepBasic_GroupRelationship.hxx>

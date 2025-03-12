@@ -163,7 +163,7 @@ gp_Vec
 
 Description
 -----------
--- computes the derivative of order nu in the -- direction u and nv in the direction v of the not -- normalized normal vector at the point p(u,v) the array dersurf contain the derivative (i,j) of the surface for i=0,nu+1 ; j=0,nv+1.
+-- Computes the derivative of order Nu in the -- direction U and Nv in the direction V of the not -- normalized normal vector at the point P(U,V) The array DerSurf contain the derivative (i,j) of the surface for i=0,Nu+1 ; j=0,Nv+1.
 ") DNNUV;
 		static gp_Vec DNNUV(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerSurf);
 
@@ -184,7 +184,7 @@ gp_Vec
 
 Description
 -----------
-Computes the derivatives of order nu in the direction nu and nv in the direction nv of the not normalized vector n(u,v) = ds1/du * ds2/dv (cases where we use an osculating surface) dersurf1 are the derivatives of s1.
+Computes the derivatives of order Nu in the direction Nu and Nv in the direction Nv of the not normalized vector N(u,v) = dS1/du * dS2/dv (cases where we use an osculating surface) DerSurf1 are the derivatives of S1.
 ") DNNUV;
 		static gp_Vec DNNUV(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerSurf1, const TColgp_Array2OfVec & DerSurf2);
 
@@ -206,7 +206,7 @@ gp_Vec
 
 Description
 -----------
--- computes the derivative of order nu in the -- direction u and nv in the direction v of the normalized normal vector at the point p(u,v) array dernuv contain the derivative (i+iduref,j+idvref) of d1u ^ d1v for i=0,nu ; j=0,nv iduref and idvref correspond to a derivative of d1u ^ d1v which can be used to compute the normalized normal vector. in the regular cases , iduref=idvref=0.
+-- Computes the derivative of order Nu in the -- direction U and Nv in the direction V of the normalized normal vector at the point P(U,V) array DerNUV contain the derivative (i+Iduref,j+Idvref) of D1U ^ D1V for i=0,Nu ; j=0,Nv Iduref and Idvref correspond to a derivative of D1U ^ D1V which can be used to compute the normalized normal vector. In the regular cases , Iduref=Idvref=0.
 ") DNNormal;
 		static gp_Vec DNNormal(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerNUV, const Standard_Integer Iduref = 0, const Standard_Integer Idvref = 0);
 
@@ -227,7 +227,7 @@ theStatus: CSLib_DerivativeStatus
 
 Description
 -----------
-The following functions computes the normal to a surface inherits functionwithderivative from math //! computes the normal direction of a surface as the cross product between d1u and d1v. if d1u has null length or d1v has null length or d1u and d1v are parallel the normal is undefined. to check that d1u and d1v are colinear the sinus of the angle between d1u and d1v is computed and compared with sintol. the normal is computed if thestatus == done else the thestatus gives the reason why the computation has failed.
+The following functions computes the normal to a surface inherits FunctionWithDerivative from math //! Computes the normal direction of a surface as the cross product between D1U and D1V. If D1U has null length or D1V has null length or D1U and D1V are parallel the normal is undefined. To check that D1U and D1V are colinear the sinus of the angle between D1U and D1V is computed and compared with SinTol. The normal is computed if theStatus == Done else the theStatus gives the reason why the computation has failed.
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real SinTol, CSLib_DerivativeStatus &OutValue, gp_Dir & Normal);
 
@@ -252,7 +252,7 @@ theStatus: CSLib_NormalStatus
 
 Description
 -----------
-If there is a singularity on the surface the previous method cannot compute the local normal. this method computes an approached normal direction of a surface. it does a limited development and needs the second derivatives on the surface as input data. it computes the normal as follow: n(u, v) = d1u ^ d1v n(u0+du,v0+dv) = n0 + dn/du(u0,v0) * du + dn/dv(u0,v0) * dv + eps with eps->0 so we can have the equivalence n ~ dn/du + dn/dv. dnu = ||dn/du|| and dnv = ||dn/dv|| //! . if dnu isnull (dnu <= resolution from gp) the answer done = true the normal direction is given by dn/dv . if dnv isnull (dnv <= resolution from gp) the answer done = true the normal direction is given by dn/du . if the two directions dn/du and dn/dv are parallel done = true the normal direction is given either by dn/du or dn/dv. to check that the two directions are colinear the sinus of the angle between these directions is computed and compared with sintol. . if dnu/dnv or dnv/dnu is lower or equal than real epsilon done = false, the normal is undefined . if dnu isnull and dnv is null done = false, there is an indetermination and we should do a limited development at order 2 (it means that we cannot omit eps). . if dnu is not null and dnv is not null done = false, there are an infinity of normals at the considered point on the surface.
+If there is a singularity on the surface the previous method cannot compute the local normal. This method computes an approached normal direction of a surface. It does a limited development and needs the second derivatives on the surface as input data. It computes the normal as follow: N(u, v) = D1U ^ D1V N(u0+du,v0+dv) = N0 + DN/du(u0,v0) * du + DN/dv(u0,v0) * dv + Eps with Eps->0 so we can have the equivalence N ~ dN/du + dN/dv. DNu = ||DN/du|| and DNv = ||DN/dv|| //! . if DNu IsNull (DNu <= Resolution from gp) the answer Done = True the normal direction is given by DN/dv . if DNv IsNull (DNv <= Resolution from gp) the answer Done = True the normal direction is given by DN/du . if the two directions DN/du and DN/dv are parallel Done = True the normal direction is given either by DN/du or DN/dv. To check that the two directions are colinear the sinus of the angle between these directions is computed and compared with SinTol. . if DNu/DNv or DNv/DNu is lower or equal than Real Epsilon Done = False, the normal is undefined . if DNu IsNull and DNv is Null Done = False, there is an indetermination and we should do a limited development at order 2 (it means that we cannot omit Eps). . if DNu Is not Null and DNv Is not Null Done = False, there are an infinity of normals at the considered point on the surface.
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const gp_Vec & D2U, const gp_Vec & D2V, const gp_Vec & D2UV, const Standard_Real SinTol, Standard_Boolean &OutValue, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
@@ -273,7 +273,7 @@ theStatus: CSLib_NormalStatus
 
 Description
 -----------
-Computes the normal direction of a surface as the cross product between d1u and d1v.
+Computes the normal direction of a surface as the cross product between D1U and D1V.
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real MagTol, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
@@ -302,7 +302,7 @@ OrderV: int
 
 Description
 -----------
-Find the first order k0 of deriviative of nuv where: foreach order < k0 all the derivatives of nuv are null all the derivatives of nuv corresponding to the order k0 are collinear and have the same sens. in this case, normal at u,v is unique.
+find the first order k0 of deriviative of NUV where: foreach order < k0 all the derivatives of NUV are null all the derivatives of NUV corresponding to the order k0 are collinear and have the same sens. In this case, normal at U,V is unique.
 ") Normal;
 		static void Normal(const Standard_Integer MaxOrder, const TColgp_Array2OfVec & DerNUV, const Standard_Real MagTol, const Standard_Real U, const Standard_Real V, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax, CSLib_NormalStatus &OutValue, gp_Dir & Normal, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -340,7 +340,7 @@ None
 
 Description
 -----------
-Constructs the 2d-polygon. thepnts2d is the set of the vertices (closed polygon will always be created inside of this constructor; consequently, there is no point in repeating first and last point in thepnts2d). thetolu and thetolv are tolerances. theumin, thevmin, theumax, thevmax are uv-bounds of the polygon.
+Constructs the 2D-polygon. thePnts2d is the set of the vertices (closed polygon will always be created inside of this constructor; consequently, there is no point in repeating first and last point in thePnts2d). theTolu and theTolv are tolerances. theUmin, theVmin, theUmax, theVmax are UV-bounds of the polygon.
 ") CSLib_Class2d;
 		 CSLib_Class2d(const TColgp_Array1OfPnt2d & thePnts2d, const Standard_Real theTolU, const Standard_Real theTolV, const Standard_Real theUMin, const Standard_Real theVMin, const Standard_Real theUMax, const Standard_Real theVMax);
 
@@ -364,7 +364,7 @@ None
 
 Description
 -----------
-Constructs the 2d-polygon. thepnts2d is the set of the vertices (closed polygon will always be created inside of this constructor; consequently, there is no point in repeating first and last point in thepnts2d). thetolu and thetolv are tolerances. theumin, thevmin, theumax, thevmax are uv-bounds of the polygon.
+Constructs the 2D-polygon. thePnts2d is the set of the vertices (closed polygon will always be created inside of this constructor; consequently, there is no point in repeating first and last point in thePnts2d). theTolu and theTolv are tolerances. theUmin, theVmin, theUmax, theVmax are UV-bounds of the polygon.
 ") CSLib_Class2d;
 		 CSLib_Class2d(const TColgp_SequenceOfPnt2d & thePnts2d, const Standard_Real theTolU, const Standard_Real theTolV, const Standard_Real theUMin, const Standard_Real theVMin, const Standard_Real theUMax, const Standard_Real theVMax);
 
@@ -490,7 +490,7 @@ D: float
 
 Description
 -----------
-Computes the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -508,7 +508,7 @@ F: float
 
 Description
 -----------
-Computes the value <f>of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -527,7 +527,7 @@ D: float
 
 Description
 -----------
-Computes the value <f> and the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
