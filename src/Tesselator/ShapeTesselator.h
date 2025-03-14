@@ -56,10 +56,10 @@ class ShapeTesselator
       Standard_Integer tot_invalid_triangle_count=0;
       std::vector<aface*> facelist;
       std::vector<aedge*> edgelist;
-      Standard_Real myDeviation;
+      Standard_Real myDeviation=0;
       TopoDS_Shape myShape;
-      Standard_Real aXmin, aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
-      Standard_Real aBndBoxSz;
+      Standard_Real aXmin=0, aYmin=0 ,aZmin=0 ,aXmax=0,aYmax=0,aZmax=0;
+      Standard_Real aBndBoxSz=0;
 
       void ComputeDefaultDeviation();
       void ComputeEdges();
