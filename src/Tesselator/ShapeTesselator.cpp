@@ -91,6 +91,12 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
     TopExp_Explorer ExpFace;
     // clean shape to remove any previous tringulation
     BRepTools::Clean(myShape);
+
+    if (myDeviation == 0){
+       printf("There is no shape to tesselate\n");
+       return;
+    };
+
     //Triangulate
     BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
 
@@ -184,10 +190,15 @@ void ShapeTesselator::ComputeDefaultDeviation()
 {
     // This method automatically computes precision from the bounding box of the shape
     Bnd_Box aBox;
-    Standard_Real aXmin,aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
+    BRepBndLib::Add(myShape, aBox);
+
+    if (aBox.IsVoid()) { // there is no shape
+        myDeviation = 0;
+        return;
+    }
 
     //calculate the bounding box
-    BRepBndLib::Add(myShape, aBox);
+    Standard_Real aXmin,aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
     aBox.Get(aXmin, aYmin, aZmin, aXmax, aYmax, aZmax);
 
     Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
