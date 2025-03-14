@@ -104,7 +104,6 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
         Handle(Poly_Triangulation) myT = BRep_Tool::Triangulation(myFace, aLocation);
 
         if (myT.IsNull()) {
-            invalidFaceTriCount++;
             continue;
         }
 
@@ -703,7 +702,6 @@ void ShapeTesselator::JoinPrimitives()
     myface->tri_indexes = nullptr;
 
     delete myface;
-    myface = nullptr;
 
     ++anIterator;
   }
