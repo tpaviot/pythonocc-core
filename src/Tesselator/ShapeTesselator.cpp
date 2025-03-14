@@ -417,7 +417,7 @@ std::string ShapeTesselator::ExportShapeToX3DTriangleSet()
   return str_ifs.str();
 }
 
-void ShapeTesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
+void ShapeTesselator::ExportShapeToX3D(const char * filename, int diffR, int diffG, int diffB)
 {
   EnsureMeshIsComputed();
     std::ofstream X3Dfile;
