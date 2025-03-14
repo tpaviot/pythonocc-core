@@ -42,9 +42,9 @@
 //---------------------------------------------------------------------------
 ShapeTesselator::ShapeTesselator(TopoDS_Shape aShape):
   myShape(aShape),
-  locVertexcoord(NULL),
-  locNormalcoord(NULL),
-  locTriIndices(NULL),
+  locVertexcoord(nullptr),
+  locNormalcoord(nullptr),
+  locTriIndices(nullptr),
   computed(false)
 {
     ComputeDefaultDeviation();
@@ -71,7 +71,7 @@ ShapeTesselator::~ShapeTesselator()
       if (edge) {
         delete[] edge->vertex_coord;
         delete edge;
-        *edgeit = NULL;
+        *edgeit = nullptr;
       }
     }
     edgelist.clear();
@@ -204,7 +204,7 @@ void ShapeTesselator::ComputeEdges()
     if (*it) {
       delete[] (*it)->vertex_coord;
       delete *it;
-      *it = NULL;
+      *it = nullptr;
     }
   }
   edgelist.clear();
@@ -694,16 +694,16 @@ void ShapeTesselator::JoinPrimitives()
     advance = obP;
 
     delete [] myface->vertex_coord;
-    myface->vertex_coord = NULL;
+    myface->vertex_coord = nullptr;
 
     delete [] myface->normal_coord;
-    myface->normal_coord = NULL;
+    myface->normal_coord = nullptr;
 
     delete [] myface->tri_indexes;
-    myface->tri_indexes = NULL;
+    myface->tri_indexes = nullptr;
 
     delete myface;
-    myface = NULL;
+    myface = nullptr;
 
     ++anIterator;
   }
