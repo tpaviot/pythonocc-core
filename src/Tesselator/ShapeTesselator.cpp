@@ -38,10 +38,11 @@
 #include <BRep_Tool.hxx>
 #include <TopoDS_Face.hxx>
 #include <Precision.hxx>
+#include <utility>
 
 //---------------------------------------------------------------------------
-ShapeTesselator::ShapeTesselator(TopoDS_Shape aShape):
-  myShape(aShape),
+ShapeTesselator::ShapeTesselator(TopoDS_Shape  aShape):
+  myShape(std::move(aShape)),
   locVertexcoord(nullptr),
   locNormalcoord(nullptr),
   locTriIndices(nullptr),
