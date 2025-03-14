@@ -61,21 +61,15 @@ void ShapeTesselator::Compute(bool compute_edges, float mesh_quality, bool paral
 
 ShapeTesselator::~ShapeTesselator()
 {
-    if (locVertexcoord)
-      delete [] locVertexcoord;
 
-    if (locNormalcoord)
-      delete [] locNormalcoord;
-
-    if (locTriIndices)
-      delete [] locTriIndices;
+    delete [] locVertexcoord;
+    delete [] locNormalcoord;
+    delete [] locTriIndices;
 
     for (std::vector<aedge*>::iterator edgeit = edgelist.begin(); edgeit != edgelist.end(); ++edgeit) {
       aedge* edge = *edgeit;
       if (edge) {
-        if (edge->vertex_coord)
-          delete[] edge->vertex_coord;
-
+        delete[] edge->vertex_coord;
         delete edge;
         *edgeit = NULL;
       }
@@ -208,9 +202,7 @@ void ShapeTesselator::ComputeEdges()
   std::vector<aedge*>::iterator it;
   for (it = edgelist.begin(); it != edgelist.end(); ++it) {
     if (*it) {
-      if ((*it)->vertex_coord)
-        delete[] (*it)->vertex_coord;
-
+      delete[] (*it)->vertex_coord;
       delete *it;
       *it = NULL;
     }
