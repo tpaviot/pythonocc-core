@@ -124,6 +124,7 @@ typedef typename BVH ::VectorType<T , 2>::Type BVH_VecNt;
 		/****** BVH_AxisSelector<T,2>::MainAxis ******/
 		/****** md5 signature: 3eeb73485373349ee6e5770c410c7405 ******/
 		%feature("compactdefaultargs") MainAxis;
+		%rename BVH::MainAxis bvh_MainAxis;
 		%feature("autodoc", "
 Parameters
 ----------

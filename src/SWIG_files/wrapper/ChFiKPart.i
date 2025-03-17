@@ -50,9 +50,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfikpart.html"
 #include<Adaptor3d_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
-#include<Geom_module.hxx>
-#include<Geom2d_module.hxx>
-#include<GeomAdaptor_module.hxx>
 #include<TopTools_module.hxx>
 #include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
@@ -73,6 +70,9 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfikpart.html"
 #include<Geom2dAdaptor_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -86,9 +86,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfikpart.html"
 %import Adaptor3d.i
 %import TopAbs.i
 %import gp.i
-%import Geom.i
-%import Geom2d.i
-%import GeomAdaptor.i
 
 %pythoncode {
 from enum import IntEnum

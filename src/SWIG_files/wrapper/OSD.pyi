@@ -3,7 +3,6 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.TCollection import *
 
 # the following typedef cannot be wrapped as is
 OSD_IOStreamBuffer = NewType("OSD_IOStreamBuffer", Any)

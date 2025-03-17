@@ -55,11 +55,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwgltf.html"
 #include<Poly_module.hxx>
 #include<XCAFDoc_module.hxx>
 #include<Image_module.hxx>
-#include<TopTools_module.hxx>
-#include<TopoDS_module.hxx>
-#include<TDataStd_module.hxx>
-#include<TopLoc_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -118,11 +113,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwgltf.html"
 %import Poly.i
 %import XCAFDoc.i
 %import Image.i
-%import TopTools.i
-%import TopoDS.i
-%import TDataStd.i
-%import TopLoc.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum

@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intimp.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -52,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intimp.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import gp.i
 
 %pythoncode {
 from enum import IntEnum

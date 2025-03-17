@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -52,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TCollection.i
 
 %pythoncode {
 from enum import IntEnum

@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topods.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+using namespace TopoDS;
 %};
 %import Standard.i
 %import NCollection.i
@@ -74,8 +75,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TopoDS_AlertAttribute)
-%wrap_handle(TopoDS_AlertWithShape)
 %wrap_handle(TopoDS_HShape)
 %wrap_handle(TopoDS_TShape)
 %wrap_handle(TopoDS_TCompSolid)
@@ -174,8 +173,6 @@ Push shape information into messenger.
 };
 
 
-%make_alias(TopoDS_AlertAttribute)
-
 %extend TopoDS_AlertAttribute {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -269,8 +266,6 @@ Returns false.
 
 };
 
-
-%make_alias(TopoDS_AlertWithShape)
 
 %extend TopoDS_AlertWithShape {
 	%pythoncode {
@@ -2356,3 +2351,323 @@ def TopoDS_AlertAttribute_Send(*args):
 	return TopoDS_AlertAttribute.Send(*args)
 
 }
+		/****** ::CompSolid ******/
+		/****** md5 signature: 4a2655da6406b040e0a2c2e3c4f739e1 ******/
+		%feature("compactdefaultargs") CompSolid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_CompSolid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, CompSolid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") CompSolid;
+		const TopoDS_CompSolid CompSolid(const TopoDS_Shape & theShape);
+
+		/****** ::CompSolid ******/
+		/****** md5 signature: cef945e4e37ec1eaf35f7e3a1a4dfe3a ******/
+		%feature("compactdefaultargs") CompSolid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_CompSolid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, CompSolid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") CompSolid;
+		TopoDS_CompSolid CompSolid(TopoDS_Shape & theShape);
+
+		/****** ::Compound ******/
+		/****** md5 signature: fcd75bfe2b9ab2a8a8b2434cfa35fa5b ******/
+		%feature("compactdefaultargs") Compound;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Compound
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Compound. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Compound;
+		const TopoDS_Compound Compound(const TopoDS_Shape & theShape);
+
+		/****** ::Compound ******/
+		/****** md5 signature: 332fa7b089ddda979e1fd524ea4999da ******/
+		%feature("compactdefaultargs") Compound;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Compound
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Compound. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Compound;
+		TopoDS_Compound Compound(TopoDS_Shape & theShape);
+
+		/****** ::Edge ******/
+		/****** md5 signature: d3bac77647c74c4270b0027bc4118f38 ******/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Edge
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Edge. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Edge;
+		const TopoDS_Edge Edge(const TopoDS_Shape & theShape);
+
+		/****** ::Edge ******/
+		/****** md5 signature: 7cc0008961d0a25367ce2c4038b001b7 ******/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Edge
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Edge. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Edge;
+		TopoDS_Edge Edge(TopoDS_Shape & theShape);
+
+		/****** ::Face ******/
+		/****** md5 signature: b45c85443c02976f8c3324fea8274a65 ******/
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Face
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Face. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Face;
+		const TopoDS_Face Face(const TopoDS_Shape & theShape);
+
+		/****** ::Face ******/
+		/****** md5 signature: c6a564aca516c8652b36c1b5431e5853 ******/
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Face
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Face. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Face;
+		TopoDS_Face Face(TopoDS_Shape & theShape);
+
+		/****** ::Shell ******/
+		/****** md5 signature: e113eac68d8e755dd92eb3924a442012 ******/
+		%feature("compactdefaultargs") Shell;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Shell
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Shell. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Shell;
+		const TopoDS_Shell Shell(const TopoDS_Shape & theShape);
+
+		/****** ::Shell ******/
+		/****** md5 signature: 8a95a058dc5a10ea52ab9cbbc7a8435c ******/
+		%feature("compactdefaultargs") Shell;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Shell
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Shell. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Shell;
+		TopoDS_Shell Shell(TopoDS_Shape & theShape);
+
+		/****** ::Solid ******/
+		/****** md5 signature: 6063d53d8a5d5e48091efc9fd1d43e95 ******/
+		%feature("compactdefaultargs") Solid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Solid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Solid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Solid;
+		const TopoDS_Solid Solid(const TopoDS_Shape & theShape);
+
+		/****** ::Solid ******/
+		/****** md5 signature: 3c7fb3c5be37c881b0bc00c8729d4da8 ******/
+		%feature("compactdefaultargs") Solid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Solid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Solid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Solid;
+		TopoDS_Solid Solid(TopoDS_Shape & theShape);
+
+		/****** ::Vertex ******/
+		/****** md5 signature: 85bab54dcf0547cdc22d5d5fc38847d4 ******/
+		%feature("compactdefaultargs") Vertex;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Vertex
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Vertex. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Vertex;
+		const TopoDS_Vertex Vertex(const TopoDS_Shape & theShape);
+
+		/****** ::Vertex ******/
+		/****** md5 signature: 711f96bcc02e81e73bb9e58c5da60724 ******/
+		%feature("compactdefaultargs") Vertex;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Vertex
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Vertex. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Vertex;
+		TopoDS_Vertex Vertex(TopoDS_Shape & theShape);
+
+		/****** ::Wire ******/
+		/****** md5 signature: 7ba0e407343c7bcef409bfc75cd9bed9 ******/
+		%feature("compactdefaultargs") Wire;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Wire
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Wire. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Wire;
+		const TopoDS_Wire Wire(const TopoDS_Shape & theShape);
+
+		/****** ::Wire ******/
+		/****** md5 signature: 3e9a9a7f5c3a616933fee92569082d85 ******/
+		%feature("compactdefaultargs") Wire;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Wire
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Wire. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Wire;
+		TopoDS_Wire Wire(TopoDS_Shape & theShape);
+
