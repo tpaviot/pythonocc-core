@@ -56,9 +56,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topopebreptool.ht
 #include<gp_module.hxx>
 #include<TopExp_module.hxx>
 #include<BRepAdaptor_module.hxx>
-#include<TCollection_module.hxx>
-#include<GeomAbs_module.hxx>
-#include<Extrema_module.hxx>
 #include<Geom_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Bnd_module.hxx>
@@ -93,9 +90,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topopebreptool.ht
 %import gp.i
 %import TopExp.i
 %import BRepAdaptor.i
-%import TCollection.i
-%import GeomAbs.i
-%import Extrema.i
 
 %pythoncode {
 from enum import IntEnum

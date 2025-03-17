@@ -54,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwobj.html"
 #include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Graphic3d_module.hxx>
-#include<gp_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -107,7 +106,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwobj.html"
 %import TColStd.i
 %import TopoDS.i
 %import Graphic3d.i
-%import gp.i
 
 %pythoncode {
 from enum import IntEnum

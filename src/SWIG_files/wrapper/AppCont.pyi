@@ -4,7 +4,6 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.AppParCurves import *
-from OCC.Core.math import *
 
 
 class AppCont_Function:

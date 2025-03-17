@@ -14,11 +14,6 @@ from OCC.Core.Quantity import *
 from OCC.Core.Poly import *
 from OCC.Core.XCAFDoc import *
 from OCC.Core.Image import *
-from OCC.Core.TopTools import *
-from OCC.Core.TopoDS import *
-from OCC.Core.TDataStd import *
-from OCC.Core.TopLoc import *
-from OCC.Core.Graphic3d import *
 
 # the following typedef cannot be wrapped as is
 RWGltf_JsonValue = NewType("RWGltf_JsonValue", Any)

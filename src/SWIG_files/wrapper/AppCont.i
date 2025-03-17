@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appcont.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<AppParCurves_module.hxx>
-#include<math_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -55,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appcont.html"
 %import Standard.i
 %import NCollection.i
 %import AppParCurves.i
-%import math.i
 
 %pythoncode {
 from enum import IntEnum

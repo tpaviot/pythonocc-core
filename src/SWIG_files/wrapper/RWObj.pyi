@@ -13,7 +13,6 @@ from OCC.Core.TDF import *
 from OCC.Core.TColStd import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Graphic3d import *
-from OCC.Core.gp import *
 
 
 class RWObj_SubMeshReason(IntEnum):
