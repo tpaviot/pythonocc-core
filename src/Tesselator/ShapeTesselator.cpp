@@ -205,11 +205,9 @@ void ShapeTesselator::ComputeDefaultDeviation()
     }
 
     //calculate the bounding box
-    Standard_Real aXmin,aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
     aBox.Get(aXmin, aYmin, aZmin, aXmax, aYmax, aZmax);
 
-    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
-    myDeviation = adeviation;
+    myDeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2;
 }
 
 void ShapeTesselator::ComputeEdges()
