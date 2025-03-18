@@ -438,7 +438,7 @@ void ShapeTesselator::ExportShapeToX3D(const char * filename, int diffR, int dif
     X3Dfile << "<!DOCTYPE X3D PUBLIC 'ISO//Web3D//DTD X3D 3.1//EN' 'https://www.web3d.org/specifications/x3d-3.1.dtd'>";
     X3Dfile << "<X3D>";
     X3Dfile << "<Head>";
-    X3Dfile << "<meta name='generator' content='pythonOCC, https://www.pythonocc.org'/>";
+    X3Dfile << "<meta name='generator' content='pythonOCC, https://github.com/tpaviot/pythonocc-core'/>";
     X3Dfile << "</Head>";
     X3Dfile << "<Scene><Transform scale='1 1 1'><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.7' ";
     X3Dfile << "specularColor='0.2 0.2 0.2'></Material></Appearance>";
