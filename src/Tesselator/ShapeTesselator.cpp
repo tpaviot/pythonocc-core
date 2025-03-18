@@ -42,12 +42,12 @@
 #include <utility>
 
 //---------------------------------------------------------------------------
-ShapeTesselator::ShapeTesselator(TopoDS_Shape  aShape):
+ShapeTesselator::ShapeTesselator(TopoDS_Shape& aShape):
   computed(false),
   locVertexcoord(nullptr),
   locNormalcoord(nullptr),
   locTriIndices(nullptr),
-  myShape(std::move(aShape))
+  myShape(aShape)
 {
     ComputeDefaultDeviation();
 }
