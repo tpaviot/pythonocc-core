@@ -85,6 +85,10 @@ void ShapeTesselator::SetDeviation(Standard_Real aDeviation)
     myDeviation = aDeviation;   
 }
 
+Standard_Real ShapeTesselator::GetDeviation() const
+{
+  return myDeviation;
+}
 
 //---------------------------------------------------------------------------
 void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)

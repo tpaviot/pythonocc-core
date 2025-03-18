@@ -76,6 +76,7 @@ class ShapeTesselator
       void GetNormal(int inorm, float& x, float& y, float& z);
       void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
       void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
+      Standard_Real GetDeviation() const;
       Standard_Real* VerticesList();
       Standard_Real* NormalsList();
       std::string ExportShapeToThreejsJSONString(char *shape_function_name);
