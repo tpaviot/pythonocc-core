@@ -43,11 +43,11 @@
 
 //---------------------------------------------------------------------------
 ShapeTesselator::ShapeTesselator(TopoDS_Shape  aShape):
-  myShape(std::move(aShape)),
+  computed(false),
   locVertexcoord(nullptr),
   locNormalcoord(nullptr),
   locTriIndices(nullptr),
-  computed(false)
+  myShape(std::move(aShape))
 {
     ComputeDefaultDeviation();
 }
