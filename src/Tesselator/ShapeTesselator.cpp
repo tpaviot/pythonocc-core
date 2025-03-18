@@ -279,18 +279,18 @@ void ShapeTesselator::ComputeEdges()
         Handle(Poly_Triangulation) aPolyTria = BRep_Tool::Triangulation(aFace, aLoc);
         if (!aLoc.IsIdentity()) myTransf = aLoc.Transformation();
         // this holds the indices of the edge's triangulation to the actual points
-        Handle(Poly_PolygonOnTriangulation) aPoly = BRep_Tool::PolygonOnTriangulation(anEdge, aPolyTria, aLoc);
-        if (aPoly.IsNull()) continue; // polygon does not exist
+        Handle(Poly_PolygonOnTriangulation) aPoly2 = BRep_Tool::PolygonOnTriangulation(anEdge, aPolyTria, aLoc);
+        if (aPoly2.IsNull()) continue; // polygon does not exist
 
         // getting size and create the array
-        nbNodesInFace = aPoly->NbNodes();
+        nbNodesInFace = aPoly2->NbNodes();
         theEdge->number_of_coords = nbNodesInFace;
         theEdge->vertex_coord = new Standard_Real[nbNodesInFace * 3 * sizeof(Standard_Real)];
 
-        const TColStd_Array1OfInteger& indices = aPoly->Nodes();
+        const TColStd_Array1OfInteger& indices = aPoly2->Nodes();
 
         // go through the index array
-        for (Standard_Integer i=1;i <= aPoly->NbNodes();i++) {
+        for (Standard_Integer i=1;i <= aPoly2->NbNodes();i++) {
             gp_Pnt V = aPolyTria->Node(indices(i)).Transformed(myTransf).XYZ();
             int idx = (i - 1) * 3;
             theEdge->vertex_coord[idx] = V.X();
