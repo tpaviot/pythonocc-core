@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <stdexcept>
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
@@ -92,14 +93,16 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
     // clean shape to remove any previous tringulation
     BRepTools::Clean(myShape);
 
-    if (myDeviation == 0){
-       printf("There is no shape to tesselate\n");
-       return;
+    if (myDeviation <= 0){
+       throw std::invalid_argument("The deviation must be greater than 0");
+    };
+
+    if (mesh_quality <= 0){
+        throw std::invalid_argument("The mesh quality must be greater than 0");
     };
 
     //Triangulate
     BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
-
 
     for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
         Standard_Integer validFaceTriCount = 0;
