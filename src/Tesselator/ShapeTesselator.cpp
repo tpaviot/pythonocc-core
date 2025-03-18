@@ -94,7 +94,7 @@ Standard_Real ShapeTesselator::GetDeviation() const
 void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer ExpFace;
-    // clean shape to remove any previous tringulation
+    // clean shape to remove any previous triangulation
     BRepTools::Clean(myShape);
 
     if (myDeviation <= 0){
@@ -257,7 +257,7 @@ void ShapeTesselator::ComputeEdges()
     aedge* theEdge = new aedge;
     Standard_Integer nbNodesInFace;
 
-    // edge triangulation successfull
+    // edge triangulation successful
     if (!aPoly.IsNull ()) {
         if (!aLoc.IsIdentity()) myTransf = aLoc.Transformation();
         nbNodesInFace = aPoly->NbNodes();
@@ -312,7 +312,7 @@ void ShapeTesselator::EnsureMeshIsComputed()
     printf("The mesh is not computed. Currently computing with default parameters ...");
     Compute(true, 1.0, false);
     printf("done\n");
-    printf("Call explicitely the Compute method to set the parameters value.\n");
+    printf("Call explicitly the Compute method to set the parameters value.\n");
   }
 }
 
