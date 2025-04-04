@@ -56,17 +56,17 @@ class ShapeTesselator
       Standard_Integer tot_invalid_triangle_count=0;
       std::vector<aface*> facelist;
       std::vector<aedge*> edgelist;
-      Standard_Real myDeviation;
+      Standard_Real myDeviation=0;
       TopoDS_Shape myShape;
-      Standard_Real aXmin, aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
-      Standard_Real aBndBoxSz;
+      Standard_Real aXmin=0, aYmin=0 ,aZmin=0 ,aXmax=0,aYmax=0,aZmax=0;
+      Standard_Real aBndBoxSz=0;
 
       void ComputeDefaultDeviation();
       void ComputeEdges();
       void EnsureMeshIsComputed();
 
   public:
-      ShapeTesselator(TopoDS_Shape aShape);
+      explicit ShapeTesselator(TopoDS_Shape& aShape);
       ~ShapeTesselator();
       void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
       void Tesselate(bool compute_edges, float mesh_quality, bool parallel);
@@ -76,11 +76,12 @@ class ShapeTesselator
       void GetNormal(int inorm, float& x, float& y, float& z);
       void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
       void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
+      Standard_Real GetDeviation() const;
       Standard_Real* VerticesList();
       Standard_Real* NormalsList();
       std::string ExportShapeToThreejsJSONString(char *shape_function_name);
       std::string ExportShapeToX3DTriangleSet();
-      void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
+      void ExportShapeToX3D(const char *filename, int diffR=1, int diffG=0, int diffB=0);
       Standard_Integer ObjGetTriangleCount();
       Standard_Integer ObjGetInvalidTriangleCount();
       Standard_Integer ObjGetVertexCount();

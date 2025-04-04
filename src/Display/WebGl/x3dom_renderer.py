@@ -295,6 +295,10 @@ class X3DExporter:
 
     def compute(self):
         shape_tesselator = ShapeTesselator(self._shape)
+
+        if shape_tesselator.GetDeviation() <= 0:
+            raise ValueError("The deviation is <= 0.")
+
         shape_tesselator.Compute(
             compute_edges=self._export_edges,
             mesh_quality=self._mesh_quality,

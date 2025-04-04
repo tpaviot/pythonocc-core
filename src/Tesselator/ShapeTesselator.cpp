@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <stdexcept>
 //---------------------------------------------------------------------------
 #include <TopExp_Explorer.hxx>
 #include <Bnd_Box.hxx>
@@ -38,14 +39,15 @@
 #include <BRep_Tool.hxx>
 #include <TopoDS_Face.hxx>
 #include <Precision.hxx>
+#include <utility>
 
 //---------------------------------------------------------------------------
-ShapeTesselator::ShapeTesselator(TopoDS_Shape aShape):
-  myShape(aShape),
-  locVertexcoord(NULL),
-  locNormalcoord(NULL),
-  locTriIndices(NULL),
-  computed(false)
+ShapeTesselator::ShapeTesselator(TopoDS_Shape& aShape):
+  computed(false),
+  locVertexcoord(nullptr),
+  locNormalcoord(nullptr),
+  locTriIndices(nullptr),
+  myShape(aShape)
 {
     ComputeDefaultDeviation();
 }
@@ -61,23 +63,17 @@ void ShapeTesselator::Compute(bool compute_edges, float mesh_quality, bool paral
 
 ShapeTesselator::~ShapeTesselator()
 {
-    if (locVertexcoord)
-      delete [] locVertexcoord;
 
-    if (locNormalcoord)
-      delete [] locNormalcoord;
-
-    if (locTriIndices)
-      delete [] locTriIndices;
+    delete [] locVertexcoord;
+    delete [] locNormalcoord;
+    delete [] locTriIndices;
 
     for (std::vector<aedge*>::iterator edgeit = edgelist.begin(); edgeit != edgelist.end(); ++edgeit) {
       aedge* edge = *edgeit;
       if (edge) {
-        if (edge->vertex_coord)
-          delete[] edge->vertex_coord;
-
+        delete[] edge->vertex_coord;
         delete edge;
-        *edgeit = NULL;
+        *edgeit = nullptr;
       }
     }
     edgelist.clear();
@@ -89,16 +85,28 @@ void ShapeTesselator::SetDeviation(Standard_Real aDeviation)
     myDeviation = aDeviation;   
 }
 
+Standard_Real ShapeTesselator::GetDeviation() const
+{
+  return myDeviation;
+}
 
 //---------------------------------------------------------------------------
 void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool parallel)
 {
     TopExp_Explorer ExpFace;
-    // clean shape to remove any previous tringulation
+    // clean shape to remove any previous triangulation
     BRepTools::Clean(myShape);
+
+    if (myDeviation <= 0){
+       throw std::invalid_argument("The deviation must be greater than 0");
+    };
+
+    if (mesh_quality <= 0){
+        throw std::invalid_argument("The mesh quality must be greater than 0");
+    };
+
     //Triangulate
     BRepMesh_IncrementalMesh(myShape, myDeviation*mesh_quality, false, 0.5*mesh_quality, parallel);
-
 
     for (ExpFace.Init(myShape, TopAbs_FACE); ExpFace.More(); ExpFace.Next()) {
         Standard_Integer validFaceTriCount = 0;
@@ -110,7 +118,6 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
         Handle(Poly_Triangulation) myT = BRep_Tool::Triangulation(myFace, aLocation);
 
         if (myT.IsNull()) {
-            invalidFaceTriCount++;
             continue;
         }
 
@@ -190,14 +197,17 @@ void ShapeTesselator::ComputeDefaultDeviation()
 {
     // This method automatically computes precision from the bounding box of the shape
     Bnd_Box aBox;
-    Standard_Real aXmin,aYmin ,aZmin ,aXmax ,aYmax ,aZmax;
+    BRepBndLib::Add(myShape, aBox);
+
+    if (aBox.IsVoid()) { // there is no shape
+        myDeviation = 0;
+        return;
+    }
 
     //calculate the bounding box
-    BRepBndLib::Add(myShape, aBox);
     aBox.Get(aXmin, aYmin, aZmin, aXmax, aYmax, aZmax);
 
-    Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
-    myDeviation = adeviation;
+    myDeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2;
 }
 
 void ShapeTesselator::ComputeEdges()
@@ -208,11 +218,9 @@ void ShapeTesselator::ComputeEdges()
   std::vector<aedge*>::iterator it;
   for (it = edgelist.begin(); it != edgelist.end(); ++it) {
     if (*it) {
-      if ((*it)->vertex_coord)
-        delete[] (*it)->vertex_coord;
-
+      delete[] (*it)->vertex_coord;
       delete *it;
-      *it = NULL;
+      *it = nullptr;
     }
   }
   edgelist.clear();
@@ -247,7 +255,7 @@ void ShapeTesselator::ComputeEdges()
     aedge* theEdge = new aedge;
     Standard_Integer nbNodesInFace;
 
-    // edge triangulation successfull
+    // edge triangulation successful
     if (!aPoly.IsNull ()) {
         if (!aLoc.IsIdentity()) myTransf = aLoc.Transformation();
         nbNodesInFace = aPoly->NbNodes();
@@ -271,18 +279,18 @@ void ShapeTesselator::ComputeEdges()
         Handle(Poly_Triangulation) aPolyTria = BRep_Tool::Triangulation(aFace, aLoc);
         if (!aLoc.IsIdentity()) myTransf = aLoc.Transformation();
         // this holds the indices of the edge's triangulation to the actual points
-        Handle(Poly_PolygonOnTriangulation) aPoly = BRep_Tool::PolygonOnTriangulation(anEdge, aPolyTria, aLoc);
-        if (aPoly.IsNull()) continue; // polygon does not exist
+        Handle(Poly_PolygonOnTriangulation) aPoly2 = BRep_Tool::PolygonOnTriangulation(anEdge, aPolyTria, aLoc);
+        if (aPoly2.IsNull()) continue; // polygon does not exist
 
         // getting size and create the array
-        nbNodesInFace = aPoly->NbNodes();
+        nbNodesInFace = aPoly2->NbNodes();
         theEdge->number_of_coords = nbNodesInFace;
         theEdge->vertex_coord = new Standard_Real[nbNodesInFace * 3 * sizeof(Standard_Real)];
 
-        const TColStd_Array1OfInteger& indices = aPoly->Nodes();
+        const TColStd_Array1OfInteger& indices = aPoly2->Nodes();
 
         // go through the index array
-        for (Standard_Integer i=1;i <= aPoly->NbNodes();i++) {
+        for (Standard_Integer i=1;i <= aPoly2->NbNodes();i++) {
             gp_Pnt V = aPolyTria->Node(indices(i)).Transformed(myTransf).XYZ();
             int idx = (i - 1) * 3;
             theEdge->vertex_coord[idx] = V.X();
@@ -302,7 +310,7 @@ void ShapeTesselator::EnsureMeshIsComputed()
     printf("The mesh is not computed. Currently computing with default parameters ...");
     Compute(true, 1.0, false);
     printf("done\n");
-    printf("Call explicitely the Compute method to set the parameters value.\n");
+    printf("Call explicitly the Compute method to set the parameters value.\n");
   }
 }
 
@@ -425,17 +433,17 @@ std::string ShapeTesselator::ExportShapeToX3DTriangleSet()
   return str_ifs.str();
 }
 
-void ShapeTesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
+void ShapeTesselator::ExportShapeToX3D(const char * filename, int diffR, int diffG, int diffB)
 {
   EnsureMeshIsComputed();
     std::ofstream X3Dfile;
     X3Dfile.open (filename);
     // write header
     X3Dfile << "<?xml version='1.0' encoding='UTF-8'?>" ;
-    X3Dfile << "<!DOCTYPE X3D PUBLIC 'ISO//Web3D//DTD X3D 3.1//EN' 'http://www.web3d.org/specifications/x3d-3.1.dtd'>";
+    X3Dfile << "<!DOCTYPE X3D PUBLIC 'ISO//Web3D//DTD X3D 3.1//EN' 'https://www.web3d.org/specifications/x3d-3.1.dtd'>";
     X3Dfile << "<X3D>";
     X3Dfile << "<Head>";
-    X3Dfile << "<meta name='generator' content='pythonOCC, http://www.pythonocc.org'/>";
+    X3Dfile << "<meta name='generator' content='pythonOCC, https://github.com/tpaviot/pythonocc-core'/>";
     X3Dfile << "</Head>";
     X3Dfile << "<Scene><Transform scale='1 1 1'><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.7' ";
     X3Dfile << "specularColor='0.2 0.2 0.2'></Material></Appearance>";
@@ -702,16 +710,15 @@ void ShapeTesselator::JoinPrimitives()
     advance = obP;
 
     delete [] myface->vertex_coord;
-    myface->vertex_coord = NULL;
+    myface->vertex_coord = nullptr;
 
     delete [] myface->normal_coord;
-    myface->normal_coord = NULL;
+    myface->normal_coord = nullptr;
 
     delete [] myface->tri_indexes;
-    myface->tri_indexes = NULL;
+    myface->tri_indexes = nullptr;
 
     delete myface;
-    myface = NULL;
 
     ++anIterator;
   }
