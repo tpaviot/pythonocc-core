@@ -8,42 +8,24 @@ operating system : Linux 64bit 6.8.0-52-generic
 
 occt version targeted : 7.9.0
 
-date : 2025-03-16 08:25:55.713645
+date : 2025-03-17 03:21:19.666424
 ############################
 
-[INFO ]  ## Processing module TopoDS
-[INFO ]  Class: TopoDS_AlertAttribute
-[INFO ]  Class: TopoDS_AlertWithShape
-[INFO ]  Class: TopoDS_Builder
-[INFO ]  Class: TopoDS_HShape
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: TopoDS_Iterator
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: TopoDS_Shape
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: TopoDS_TShape
-[INFO ]      Class TopoDS_TShape is abstract, using %nodefaultctor.
-[INFO ]  Class: TopoDS_CompSolid
-[INFO ]  Class: TopoDS_Compound
-[INFO ]  Class: TopoDS_Edge
-[INFO ]  Class: TopoDS_Face
-[INFO ]  Class: TopoDS_Shell
-[INFO ]  Class: TopoDS_Solid
-[INFO ]  Class: TopoDS_TCompSolid
-[INFO ]  Class: TopoDS_TCompound
-[INFO ]  Class: TopoDS_TEdge
-[INFO ]  Class: TopoDS_TFace
-[INFO ]  Class: TopoDS_TShell
-[INFO ]  Class: TopoDS_TSolid
-[INFO ]  Class: TopoDS_TVertex
-[INFO ]  Class: TopoDS_TWire
-[INFO ]  Class: TopoDS_Vertex
-[INFO ]  Class: TopoDS_Wire
-[INFO ]      operand << cannot be wrapped
+[INFO ]  ## Processing module ExprIntrp
+[INFO ]  Skip typedef ExprIntrp_SequenceOfNamedFunction because ends with 'Function'
+[INFO ]  Skip typedef ExprIntrp_StackOfGeneralFunction because ends with 'Function'
+[INFO ]  Skip typedef ExprIntrp_ListIteratorOfStackOfGeneralFunction because ends with 'Function'
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]  Class: ExprIntrp
+[INFO ]  Class: ExprIntrp_Analysis
+[INFO ]  Class: ExprIntrp_GenFct
+[INFO ]  Class: ExprIntrp_GenRel
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 0.05s
+SWIG interface file generation completed in 0.03s
 #################################################
 
-[INFO ]  Number of classes: 23
-[INFO ]  Number of methods: 135
+[INFO ]  Number of classes: 4
+[INFO ]  Number of methods: 35

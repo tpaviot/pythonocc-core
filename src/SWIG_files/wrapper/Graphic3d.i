@@ -1665,14 +1665,12 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %wrap_handle(Graphic3d_AspectLine3d)
 %wrap_handle(Graphic3d_AspectMarker3d)
 %wrap_handle(Graphic3d_AspectText3d)
-%wrap_handle(Graphic3d_AttribBuffer)
 %wrap_handle(Graphic3d_CView)
 %wrap_handle(Graphic3d_MediaTextureSet)
 %wrap_handle(Graphic3d_TextureEnv)
 %wrap_handle(Graphic3d_TextureMap)
 %wrap_handle(Graphic3d_TransformPersScaledAbove)
 %wrap_handle(Graphic3d_CubeMap)
-%wrap_handle(Graphic3d_MutableIndexBuffer)
 %wrap_handle(Graphic3d_Texture1D)
 %wrap_handle(Graphic3d_Texture2D)
 %wrap_handle(Graphic3d_Texture3D)
@@ -5004,6 +5002,8 @@ No available documentation.
 ****************************/
 class Graphic3d_Attribute {
 	public:
+		Graphic3d_TypeOfAttribute Id;
+		Graphic3d_TypeOfData DataType;
 		/****** Graphic3d_Attribute::Stride ******/
 		/****** md5 signature: a77b679b88eb698b5f0f9ecff72ba9ba ******/
 		%feature("compactdefaultargs") Stride;
@@ -5049,6 +5049,14 @@ Return: size of attribute of specified data type.
 ***********************/
 class Graphic3d_BSDF {
 	public:
+		Graphic3d_Vec4 Kc;
+		Graphic3d_Vec3 Kd;
+		Graphic3d_Vec4 Ks;
+		Graphic3d_Vec3 Kt;
+		Graphic3d_Vec3 Le;
+		Graphic3d_Vec4 Absorption;
+		Graphic3d_Fresnel FresnelCoat;
+		Graphic3d_Fresnel FresnelBase;
 		/****** Graphic3d_BSDF::Graphic3d_BSDF ******/
 		/****** md5 signature: ef3e719f8cae4402739eaa9a4c4dfb45 ******/
 		%feature("compactdefaultargs") Graphic3d_BSDF;
@@ -5221,6 +5229,10 @@ def __eq__(self, right):
 ******************************/
 class Graphic3d_BoundBuffer : public NCollection_Buffer {
 	public:
+		Graphic3d_Vec4 * Colors;
+		int * Bounds;
+		int NbBounds;
+		int NbMaxBounds;
 		/****** Graphic3d_BoundBuffer::Graphic3d_BoundBuffer ******/
 		/****** md5 signature: bc430c6678816ed8a40cb9c1495ede84 ******/
 		%feature("compactdefaultargs") Graphic3d_BoundBuffer;
@@ -5298,6 +5310,8 @@ Allocates new empty array.
 ******************************/
 class Graphic3d_BufferRange {
 	public:
+		int Start;
+		int Length;
 		/****** Graphic3d_BufferRange::Graphic3d_BufferRange ******/
 		/****** md5 signature: 94437812d48eee6ddb30061db0a9b246 ******/
 		%feature("compactdefaultargs") Graphic3d_BufferRange;
@@ -6276,6 +6290,15 @@ class Graphic3d_CStructure : public Standard_Transient {
 	public:
 		class SubclassStructIterator {};
 		class SubclassGroupIterator {};
+		opencascade::handle<Graphic3d_ViewAffinity > ViewAffinity;
+		unsigned IsInfinite;
+		unsigned stick;
+		unsigned highlight;
+		unsigned visible;
+		unsigned HLRValidation;
+		unsigned IsForHighlight;
+		unsigned IsMutable;
+		unsigned Is2dText;
 		/****** Graphic3d_CStructure::BndBoxClipCheck ******/
 		/****** md5 signature: ba16999388552eb20836b46e7cf59d0f ******/
 		%feature("compactdefaultargs") BndBoxClipCheck;
@@ -8454,6 +8477,10 @@ Return: the distance of the plane from the Eye.
 *****************************/
 class Graphic3d_CameraTile {
 	public:
+		Graphic3d_Vec2i TotalSize;
+		Graphic3d_Vec2i TileSize;
+		Graphic3d_Vec2i Offset;
+		bool IsTopDown;
 		/****** Graphic3d_CameraTile::Graphic3d_CameraTile ******/
 		/****** md5 signature: a7ff85bc9b9a5b07dcd347f9ff8a974a ******/
 		%feature("compactdefaultargs") Graphic3d_CameraTile;
@@ -14299,6 +14326,9 @@ def __eq__(self, right):
 ********************************/
 class Graphic3d_PolygonOffset {
 	public:
+		Aspect_PolygonOffsetMode Mode;
+		float Factor;
+		float Units;
 		/****** Graphic3d_PolygonOffset::Graphic3d_PolygonOffset ******/
 		/****** md5 signature: d32d266ad893dbdf6f93b0afae8a9bb9 ******/
 		%feature("compactdefaultargs") Graphic3d_PolygonOffset;
@@ -14711,6 +14741,67 @@ FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 };
 /* end python proxy for enums */
 
+		Graphic3d_RenderingMode Method;
+		Graphic3d_TypeOfShadingModel ShadingModel;
+		Graphic3d_RenderTransparentMethod TransparencyMethod;
+		unsigned int Resolution;
+		Font_Hinting FontHinting;
+		float LineFeather;
+		int PbrEnvPow2Size;
+		int PbrEnvSpecMapNbLevels;
+		int PbrEnvBakingDiffNbSamples;
+		int PbrEnvBakingSpecNbSamples;
+		float PbrEnvBakingProbability;
+		float OitDepthFactor;
+		int NbOitDepthPeelingLayers;
+		int NbMsaaSamples;
+		float RenderResolutionScale;
+		int ShadowMapResolution;
+		float ShadowMapBias;
+		bool ToEnableDepthPrepass;
+		bool ToEnableAlphaToCoverage;
+		bool IsGlobalIlluminationEnabled;
+		int SamplesPerPixel;
+		int RaytracingDepth;
+		bool IsShadowEnabled;
+		bool IsReflectionEnabled;
+		bool IsAntialiasingEnabled;
+		bool IsTransparentShadowEnabled;
+		bool UseEnvironmentMapBackground;
+		bool ToIgnoreNormalMapInRayTracing;
+		bool CoherentPathTracingMode;
+		bool AdaptiveScreenSampling;
+		bool AdaptiveScreenSamplingAtomic;
+		bool ShowSamplingTiles;
+		bool TwoSidedBsdfModels;
+		float RadianceClampingValue;
+		bool RebuildRayTracingShaders;
+		int RayTracingTileSize;
+		int NbRayTracingTiles;
+		float CameraApertureRadius;
+		float CameraFocalPlaneDist;
+		FrustumCulling FrustumCullingState;
+		Graphic3d_ToneMappingMethod ToneMappingMethod;
+		float Exposure;
+		float WhitePoint;
+		Graphic3d_StereoMode StereoMode;
+		float HmdFov2d;
+		Anaglyph AnaglyphFilter;
+		Graphic3d_Mat4 AnaglyphLeft;
+		Graphic3d_Mat4 AnaglyphRight;
+		bool ToReverseStereo;
+		bool ToSmoothInterlacing;
+		bool ToMirrorComposer;
+		opencascade::handle<Graphic3d_TransformPers > StatsPosition;
+		opencascade::handle<Graphic3d_TransformPers > ChartPosition;
+		Graphic3d_Vec2i ChartSize;
+		opencascade::handle<Graphic3d_AspectText3d > StatsTextAspect;
+		float StatsUpdateInterval;
+		int StatsTextHeight;
+		int StatsNbFrames;
+		float StatsMaxChartTime;
+		PerfCounters CollectedStats;
+		bool ToShowStats;
 		/****** Graphic3d_RenderingParams::Graphic3d_RenderingParams ******/
 		/****** md5 signature: 604df3cf93dfd3384e91a3c3f46c32b4 ******/
 		%feature("compactdefaultargs") Graphic3d_RenderingParams;
@@ -19449,6 +19540,7 @@ Returns unique identifier of value type.
 *************************/
 class Graphic3d_Vertex {
 	public:
+		float xyz[3];
 		/****** Graphic3d_Vertex::Graphic3d_Vertex ******/
 		/****** md5 signature: 103e205f0886b0005b0cbeab1659769a ******/
 		%feature("compactdefaultargs") Graphic3d_Vertex;
@@ -22114,8 +22206,6 @@ Invalidate specified sub-range of data (as byte offsets).
 
 };
 
-
-%make_alias(Graphic3d_AttribBuffer)
 
 %extend Graphic3d_AttribBuffer {
 	%pythoncode {
@@ -25146,8 +25236,6 @@ Invalidate specified sub-range of data (as byte offsets).
 
 };
 
-
-%make_alias(Graphic3d_MutableIndexBuffer)
 
 %extend Graphic3d_MutableIndexBuffer {
 	%pythoncode {
