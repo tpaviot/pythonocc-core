@@ -70,8 +70,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(ExprIntrp_Generator)
-%wrap_handle(ExprIntrp_GenExp)
 %wrap_handle(ExprIntrp_GenFct)
 %wrap_handle(ExprIntrp_GenRel)
 /* end handles declaration */
@@ -442,192 +440,9 @@ No available documentation.
 /****************************
 * class ExprIntrp_Generator *
 ****************************/
-%nodefaultctor ExprIntrp_Generator;
-class ExprIntrp_Generator : public Standard_Transient {
-	public:
-		/****** ExprIntrp_Generator::GetFunction ******/
-		/****** md5 signature: 11698abf447e25022cce69121967dd1b ******/
-		%feature("compactdefaultargs") GetFunction;
-		%feature("autodoc", "
-Parameters
-----------
-name: str
-
-Return
--------
-opencascade::handle<Expr_NamedFunction>
-
-Description
------------
-Returns NamedFunction with name <name> already interpreted if it exists. Returns a null handle if not.
-") GetFunction;
-		opencascade::handle<Expr_NamedFunction> GetFunction(TCollection_AsciiString name);
-
-		/****** ExprIntrp_Generator::GetFunctions ******/
-		/****** md5 signature: ea7b11f8c2ec952b91fcef512794779f ******/
-		%feature("compactdefaultargs") GetFunctions;
-		%feature("autodoc", "Return
--------
-ExprIntrp_SequenceOfNamedFunction
-
-Description
------------
-No available documentation.
-") GetFunctions;
-		const ExprIntrp_SequenceOfNamedFunction & GetFunctions();
-
-		/****** ExprIntrp_Generator::GetNamed ******/
-		/****** md5 signature: d4af2a91b9f29c78bc170c193b08b541 ******/
-		%feature("compactdefaultargs") GetNamed;
-		%feature("autodoc", "Return
--------
-ExprIntrp_SequenceOfNamedExpression
-
-Description
------------
-No available documentation.
-") GetNamed;
-		const ExprIntrp_SequenceOfNamedExpression & GetNamed();
-
-		/****** ExprIntrp_Generator::GetNamed ******/
-		/****** md5 signature: f135368bc026ec37dda3220c9c49de62 ******/
-		%feature("compactdefaultargs") GetNamed;
-		%feature("autodoc", "
-Parameters
-----------
-name: str
-
-Return
--------
-opencascade::handle<Expr_NamedExpression>
-
-Description
------------
-Returns NamedExpression with name <name> already interpreted if it exists. Returns a null handle if not.
-") GetNamed;
-		opencascade::handle<Expr_NamedExpression> GetNamed(TCollection_AsciiString name);
-
-		/****** ExprIntrp_Generator::Use ******/
-		/****** md5 signature: bad91b0967a130b4629c7d0c7a8e578e ******/
-		%feature("compactdefaultargs") Use;
-		%feature("autodoc", "
-Parameters
-----------
-func: Expr_NamedFunction
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Use;
-		void Use(const opencascade::handle<Expr_NamedFunction> & func);
-
-		/****** ExprIntrp_Generator::Use ******/
-		/****** md5 signature: 828b264ad92f447ca21b884ec71153dc ******/
-		%feature("compactdefaultargs") Use;
-		%feature("autodoc", "
-Parameters
-----------
-named: Expr_NamedExpression
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Use;
-		void Use(const opencascade::handle<Expr_NamedExpression> & named);
-
-};
-
-
-%make_alias(ExprIntrp_Generator)
-
-%extend ExprIntrp_Generator {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************
 * class ExprIntrp_GenExp *
 *************************/
-%nodefaultctor ExprIntrp_GenExp;
-class ExprIntrp_GenExp : public ExprIntrp_Generator {
-	public:
-		/****** ExprIntrp_GenExp::Create ******/
-		/****** md5 signature: 4e4134de3b1b6f47befbbbc717889d24 ******/
-		%feature("compactdefaultargs") Create;
-		%feature("autodoc", "Return
--------
-opencascade::handle<ExprIntrp_GenExp>
-
-Description
------------
-No available documentation.
-") Create;
-		static opencascade::handle<ExprIntrp_GenExp> Create();
-
-		/****** ExprIntrp_GenExp::Expression ******/
-		/****** md5 signature: 5ca63dd06176a0c3c49989c229b9fbf6 ******/
-		%feature("compactdefaultargs") Expression;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Expr_GeneralExpression>
-
-Description
------------
-Returns expression generated. Raises an exception if IsDone answers false.
-") Expression;
-		opencascade::handle<Expr_GeneralExpression> Expression();
-
-		/****** ExprIntrp_GenExp::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns false if any syntax error has occurred during process.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** ExprIntrp_GenExp::Process ******/
-		/****** md5 signature: 2b36655805fcdcb65bd9dff1fce15e9f ******/
-		%feature("compactdefaultargs") Process;
-		%feature("autodoc", "
-Parameters
-----------
-str: str
-
-Return
--------
-None
-
-Description
------------
-Processes given string.
-") Process;
-		void Process(TCollection_AsciiString str);
-
-};
-
-
-%make_alias(ExprIntrp_GenExp)
-
-%extend ExprIntrp_GenExp {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************
 * class ExprIntrp_GenFct *
 *************************/
@@ -763,6 +578,18 @@ Returns relation generated. Raises an exception if IsDone answers false.
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class ExprIntrp_Generator:
+	pass
+
+@classnotwrapped
+class ExprIntrp_GenExp:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
@@ -771,10 +598,6 @@ Returns relation generated. Raises an exception if IsDone answers false.
 }
 /* deprecated methods */
 %pythoncode {
-@deprecated
-def ExprIntrp_GenExp_Create(*args):
-	return ExprIntrp_GenExp.Create(*args)
-
 @deprecated
 def ExprIntrp_GenFct_Create(*args):
 	return ExprIntrp_GenFct.Create(*args)

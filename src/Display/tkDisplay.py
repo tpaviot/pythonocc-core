@@ -62,8 +62,8 @@ class tkViewer3d(tk.Frame):
             zoom_factor = 0.5
         # Windows
         if event.delta < 0:  # zoom out
-            zoom_factor = 1/1.2
-        elif event.delta > 0: # zoom in
+            zoom_factor = 1 / 1.2
+        elif event.delta > 0:  # zoom in
             zoom_factor = 1.2
         self._display.ZoomFactor(zoom_factor)
 

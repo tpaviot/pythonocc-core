@@ -42,7 +42,14 @@ from OCC.Core.TopTools import (
     TopTools_IndexedDataMapOfShapeListOfShape,
 )
 from OCC.Core.TopoDS import (
-    topods,
+    Wire,
+    Vertex,
+    Edge,
+    Face,
+    Shell,
+    Solid,
+    Compound,
+    CompSolid,
     TopoDS_Wire,
     TopoDS_Vertex,
     TopoDS_Edge,
@@ -95,7 +102,7 @@ class WireExplorer:
     def _loop_topo(self, edges: Optional[bool] = True) -> Iterator[Any]:
         if self.done:
             self._reinitialize()
-        topology_type = topods.Edge if edges else topods.Vertex
+        topology_type = Edge if edges else Vertex
         seq = []
 
         while self.wire_explorer.More():
@@ -158,14 +165,14 @@ class TopologyExplorer:
         # the topology_factory dicts maps topology types and functions that can
         # create this topology
         self.topology_factory = {
-            TopAbs_VERTEX: topods.Vertex,
-            TopAbs_EDGE: topods.Edge,
-            TopAbs_FACE: topods.Face,
-            TopAbs_WIRE: topods.Wire,
-            TopAbs_SHELL: topods.Shell,
-            TopAbs_SOLID: topods.Solid,
-            TopAbs_COMPOUND: topods.Compound,
-            TopAbs_COMPSOLID: topods.CompSolid,
+            TopAbs_VERTEX: Vertex,
+            TopAbs_EDGE: Edge,
+            TopAbs_FACE: Face,
+            TopAbs_WIRE: Wire,
+            TopAbs_SHELL: Shell,
+            TopAbs_SOLID: Solid,
+            TopAbs_COMPOUND: Compound,
+            TopAbs_COMPSOLID: CompSolid,
         }
 
     def _loop_topo(
@@ -504,7 +511,7 @@ def dump_topology_to_string(
     brt = BRep_Tool()
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
-        pnt = brt.Pnt(topods.Vertex(shape))
+        pnt = brt.Pnt(Vertex(shape))
         print(".." * level + f"<Vertex {hash(shape)}: {pnt.X()} {pnt.Y()} {pnt.Z()}>\n")
     else:
         print(".." * level, end="")
@@ -522,14 +529,14 @@ def dump_topology_to_string(
 
 
 def discretize_wire(
-    a_topods_wire: TopoDS_Wire, deflection: Optional[int] = 0.5
+    a_wire: TopoDS_Wire, deflection: Optional[int] = 0.5
 ) -> List[gp_Pnt]:
     """Returns a set of points"""
-    if not is_wire(a_topods_wire):
+    if not is_wire(a_wire):
         raise AssertionError(
             "You must provide a TopoDS_Wire to the discretize_wire function."
         )
-    wire_explorer = WireExplorer(a_topods_wire)
+    wire_explorer = WireExplorer(a_wire)
     wire_pnts = []
     # loop over ordered edges
     for edg in wire_explorer.ordered_edges():
@@ -539,23 +546,23 @@ def discretize_wire(
 
 
 def discretize_edge(
-    a_topods_edge: TopoDS_Edge, deflection=0.2, algorithm="QuasiUniformDeflection"
+    a_edge: TopoDS_Edge, deflection=0.2, algorithm="QuasiUniformDeflection"
 ):
     """Take a TopoDS_Edge and returns a list of points
     The more deflection is small, the more the discretization is precise,
     i.e. the more points you get in the returned points
     algorithm: to choose in ["UniformAbscissa", "QuasiUniformDeflection"]
     """
-    if not is_edge(a_topods_edge):
+    if not is_edge(a_edge):
         raise AssertionError(
             "You must provide a TopoDS_Edge to the discretize_edge function."
         )
-    if a_topods_edge.IsNull():
+    if a_edge.IsNull():
         print(
             "Warning : TopoDS_Edge is null. discretize_edge will return an empty list of points."
         )
         return []
-    curve_adaptator = BRepAdaptor_Curve(a_topods_edge)
+    curve_adaptator = BRepAdaptor_Curve(a_edge)
     first = curve_adaptator.FirstParameter()
     last = curve_adaptator.LastParameter()
 
@@ -579,7 +586,7 @@ def discretize_edge(
         p = curve_adaptator.Value(discretizer.Parameter(i))
         points.append(p.Coord())
 
-    if a_topods_edge.Orientation() == TopAbs_Orientation.TopAbs_REVERSED:
+    if a_edge.Orientation() == TopAbs_Orientation.TopAbs_REVERSED:
         points.reverse()
 
     return points
@@ -588,55 +595,55 @@ def discretize_edge(
 #
 # TopoDS_Shape type utils
 #
-def is_vertex(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_vertex(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_VERTEX
+    return shape.ShapeType() == TopAbs_VERTEX
 
 
-def is_solid(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_solid(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_SOLID
+    return shape.ShapeType() == TopAbs_SOLID
 
 
-def is_edge(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_edge(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_EDGE
+    return shape.ShapeType() == TopAbs_EDGE
 
 
-def is_face(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_face(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_FACE
+    return shape.ShapeType() == TopAbs_FACE
 
 
-def is_shell(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_shell(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_SHELL
+    return shape.ShapeType() == TopAbs_SHELL
 
 
-def is_wire(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_wire(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_WIRE
+    return shape.ShapeType() == TopAbs_WIRE
 
 
-def is_compound(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_compound(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_COMPOUND
+    return shape.ShapeType() == TopAbs_COMPOUND
 
 
-def is_compsolid(topods_shape: TopoDS_Shape) -> bool:
-    if not hasattr(topods_shape, "ShapeType"):
+def is_compsolid(shape: TopoDS_Shape) -> bool:
+    if not hasattr(shape, "ShapeType"):
         return False
-    return topods_shape.ShapeType() == TopAbs_COMPSOLID
+    return shape.ShapeType() == TopAbs_COMPSOLID
 
 
-def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
+def get_type_as_string(shape: TopoDS_Shape) -> str:
     """just get the type string, remove TopAbs_ and lowercas all ending letters"""
     types = {
         TopAbs_VERTEX: "Vertex",
@@ -647,11 +654,11 @@ def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
         TopAbs_COMPOUND: "Compound",
         TopAbs_COMPSOLID: "CompSolid",
     }
-    return types[topods_shape.ShapeType()]
+    return types[shape.ShapeType()]
 
 
 def get_sorted_hlr_edges(
-    topods_shape: TopoDS_Shape,
+    shape: TopoDS_Shape,
     position: Optional[gp_Pnt] = None,
     direction: Optional[gp_Dir] = None,
     export_hidden_edges: Optional[bool] = True,
@@ -667,7 +674,7 @@ def get_sorted_hlr_edges(
         raise TypeError("position must be a gp_Dir")
 
     hlr = HLRBRep_Algo()
-    hlr.Add(topods_shape)
+    hlr.Add(shape)
 
     projector = HLRAlgo_Projector(gp_Ax2(position, direction))
 
