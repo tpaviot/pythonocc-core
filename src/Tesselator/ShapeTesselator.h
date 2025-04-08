@@ -66,7 +66,7 @@ class ShapeTesselator
       void EnsureMeshIsComputed();
 
   public:
-      explicit ShapeTesselator(TopoDS_Shape& aShape);
+      explicit ShapeTesselator(const TopoDS_Shape& aShape);
       ~ShapeTesselator();
       void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
       void Tesselate(bool compute_edges, float mesh_quality, bool parallel);
