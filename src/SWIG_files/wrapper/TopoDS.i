@@ -92,7 +92,40 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 /* end typedefs declaration */
+%pythoncode {
+class topods:
+	@staticmethod
+	def Edge(*args, **kwargs):
+		return Edge(*args, **kwargs)
 
+	@staticmethod
+	def Vertex(*args, **kwargs):
+		return Vertex(*args, **kwargs)
+
+	@staticmethod
+	def Face(*args, **kwargs):
+		return Face(*args, **kwargs)
+
+	@staticmethod
+	def Wire(*args, **kwargs):
+		return Wire(*args, **kwargs)
+
+	@staticmethod
+	def Shell(*args, **kwargs):
+		return Shell(*args, **kwargs)
+
+	@staticmethod
+	def Solid(*args, **kwargs):
+		return Solid(*args, **kwargs)
+
+	@staticmethod
+	def CompSolid(*args, **kwargs):
+		return CompSolid(*args, **kwargs)
+
+	@staticmethod
+	def Compound(*args, **kwargs):
+		return Compound(*args, **kwargs)
+};
 /******************************
 * class TopoDS_AlertAttribute *
 ******************************/
