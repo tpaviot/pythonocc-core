@@ -47,7 +47,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepbasic.html"
 #include<TCollection_module.hxx>
 #include<StepData_module.hxx>
 #include<TColStd_module.hxx>
-#include<StepRepr_module.hxx>
 #include<Interface_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TCollection_module.hxx>
@@ -66,7 +65,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepbasic.html"
 %import TCollection.i
 %import StepData.i
 %import TColStd.i
-%import StepRepr.i
 %import Interface.i
 
 %pythoncode {
@@ -299,7 +297,6 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_ExternalSource)
 %wrap_handle(StepBasic_ExternallyDefinedItem)
 %wrap_handle(StepBasic_GeneralProperty)
-%wrap_handle(StepBasic_GeneralPropertyAssociation)
 %wrap_handle(StepBasic_GeneralPropertyRelationship)
 %wrap_handle(StepBasic_Group)
 %wrap_handle(StepBasic_GroupAssignment)
@@ -6488,177 +6485,6 @@ Set field Name.
 /*********************************************
 * class StepBasic_GeneralPropertyAssociation *
 *********************************************/
-class StepBasic_GeneralPropertyAssociation : public Standard_Transient {
-	public:
-		/****** StepBasic_GeneralPropertyAssociation::StepBasic_GeneralPropertyAssociation ******/
-		/****** md5 signature: d92f9ce9a71752f932dfdb6ae43467b3 ******/
-		%feature("compactdefaultargs") StepBasic_GeneralPropertyAssociation;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Empty constructor.
-") StepBasic_GeneralPropertyAssociation;
-		 StepBasic_GeneralPropertyAssociation();
-
-		/****** StepBasic_GeneralPropertyAssociation::Description ******/
-		/****** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ******/
-		%feature("compactdefaultargs") Description;
-		%feature("autodoc", "Return
--------
-opencascade::handle<TCollection_HAsciiString>
-
-Description
------------
-Returns field Description.
-") Description;
-		opencascade::handle<TCollection_HAsciiString> Description();
-
-		/****** StepBasic_GeneralPropertyAssociation::GeneralProperty ******/
-		/****** md5 signature: 644fc2281dcbe4ea457975f6595935d0 ******/
-		%feature("compactdefaultargs") GeneralProperty;
-		%feature("autodoc", "Return
--------
-opencascade::handle<StepBasic_GeneralProperty>
-
-Description
------------
-Returns field GeneralProperty.
-") GeneralProperty;
-		opencascade::handle<StepBasic_GeneralProperty> GeneralProperty();
-
-		/****** StepBasic_GeneralPropertyAssociation::Init ******/
-		/****** md5 signature: aac707e1c729ad5d01c97d875d4a5127 ******/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "
-Parameters
-----------
-aName: TCollection_HAsciiString
-aDescription: TCollection_HAsciiString
-aGeneralProperty: StepBasic_GeneralProperty
-aPropertyDefinition: StepRepr_PropertyDefinition
-
-Return
--------
-None
-
-Description
------------
-Initialize all fields (own and inherited).
-") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_GeneralProperty> & aGeneralProperty, const opencascade::handle<StepRepr_PropertyDefinition> & aPropertyDefinition);
-
-		/****** StepBasic_GeneralPropertyAssociation::Name ******/
-		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
-		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Return
--------
-opencascade::handle<TCollection_HAsciiString>
-
-Description
------------
-Returns field Name.
-") Name;
-		opencascade::handle<TCollection_HAsciiString> Name();
-
-		/****** StepBasic_GeneralPropertyAssociation::PropertyDefinition ******/
-		/****** md5 signature: 4b7b4910929a0e1832918f8266d39349 ******/
-		%feature("compactdefaultargs") PropertyDefinition;
-		%feature("autodoc", "Return
--------
-opencascade::handle<StepRepr_PropertyDefinition>
-
-Description
------------
-Returns field PropertyDefinition.
-") PropertyDefinition;
-		opencascade::handle<StepRepr_PropertyDefinition> PropertyDefinition();
-
-		/****** StepBasic_GeneralPropertyAssociation::SetDescription ******/
-		/****** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ******/
-		%feature("compactdefaultargs") SetDescription;
-		%feature("autodoc", "
-Parameters
-----------
-Description: TCollection_HAsciiString
-
-Return
--------
-None
-
-Description
------------
-Set field Description.
-") SetDescription;
-		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
-
-		/****** StepBasic_GeneralPropertyAssociation::SetGeneralProperty ******/
-		/****** md5 signature: c717be43fca41e8f95ceb826eb9c6f8e ******/
-		%feature("compactdefaultargs") SetGeneralProperty;
-		%feature("autodoc", "
-Parameters
-----------
-GeneralProperty: StepBasic_GeneralProperty
-
-Return
--------
-None
-
-Description
------------
-Set field GeneralProperty.
-") SetGeneralProperty;
-		void SetGeneralProperty(const opencascade::handle<StepBasic_GeneralProperty> & GeneralProperty);
-
-		/****** StepBasic_GeneralPropertyAssociation::SetName ******/
-		/****** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ******/
-		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "
-Parameters
-----------
-Name: TCollection_HAsciiString
-
-Return
--------
-None
-
-Description
------------
-Set field Name.
-") SetName;
-		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
-
-		/****** StepBasic_GeneralPropertyAssociation::SetPropertyDefinition ******/
-		/****** md5 signature: 2a184e5fd944a00733d8bb4e20c8aa04 ******/
-		%feature("compactdefaultargs") SetPropertyDefinition;
-		%feature("autodoc", "
-Parameters
-----------
-PropertyDefinition: StepRepr_PropertyDefinition
-
-Return
--------
-None
-
-Description
------------
-Set field PropertyDefinition.
-") SetPropertyDefinition;
-		void SetPropertyDefinition(const opencascade::handle<StepRepr_PropertyDefinition> & PropertyDefinition);
-
-};
-
-
-%make_alias(StepBasic_GeneralPropertyAssociation)
-
-%extend StepBasic_GeneralPropertyAssociation {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /**********************************************
 * class StepBasic_GeneralPropertyRelationship *
 **********************************************/
@@ -16059,6 +15885,18 @@ No available documentation.
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class StepBasic_GeneralPropertyAssociation:
+	pass
+
+@classnotwrapped
+class StepRepr_MakeFromUsageOption:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 
 class StepBasic_HArray1OfApproval : public StepBasic_Array1OfApproval, public Standard_Transient {
