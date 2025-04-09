@@ -52,13 +52,7 @@ from OCC.Core.BRepLib import breplib
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.GeomAbs import GeomAbs_Plane
 from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
-from OCC.Core.TopoDS import (
-    Wire,
-    Edge,
-    Face,
-    TopoDS_Compound,
-    TopoDS_Face,
-)
+from OCC.Core.TopoDS import topods, TopoDS_Compound, TopoDS_Face
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE
 from OCC.Core.TopTools import TopTools_ListOfShape
@@ -118,7 +112,7 @@ aBRespTrsf = BRepBuilderAPI_Transform(aWire.Wire(), aTrsf)
 aMirroredShape = aBRespTrsf.Shape()
 
 # A wire instead of a generic shape now
-aMirroredWire = Wire(aMirroredShape)
+aMirroredWire = topods.Wire(aMirroredShape)
 
 # Combine the two constituent wires
 mkWire = BRepBuilderAPI_MakeWire()
@@ -138,7 +132,7 @@ mkFillet = BRepFilletAPI_MakeFillet(myBody_step1.Shape())
 anEdgeExplorer = TopExp_Explorer(myBody_step1.Shape(), TopAbs_EDGE)
 
 while anEdgeExplorer.More():
-    anEdge = Edge(anEdgeExplorer.Current())
+    anEdge = topods.Edge(anEdgeExplorer.Current())
     mkFillet.Add(thickness / 12.0, anEdge)
 
     anEdgeExplorer.Next()
@@ -161,7 +155,7 @@ zMax = -1.0
 # We have to work our way through all the faces to find the highest Z face so we can remove it for the shell
 aFaceExplorer = TopExp_Explorer(myBody_step2.Shape(), TopAbs_FACE)
 while aFaceExplorer.More():
-    aFace = Face(aFaceExplorer.Current())
+    aFace = topods.Face(aFaceExplorer.Current())
     if face_is_plane(aFace):
         aPlane = geom_plane_from_face(aFace)
 
