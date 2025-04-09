@@ -122,7 +122,10 @@ def read_step_file(
         raise AssertionError("No shape to transfer.")
 
     if nb_shapes == 1:
-        return step_reader.Shape(1)
+        if as_compound:
+            return step_reader.Shape(1)
+
+        return [step_reader.Shape(1)]
 
     shapes = []
     for i in range(1, nb_shapes + 1):
