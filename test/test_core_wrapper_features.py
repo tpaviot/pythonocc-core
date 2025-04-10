@@ -48,7 +48,7 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_Sewing,
 )
-from OCC.Core.BRepTools import BRepTools_ShapeSet
+from OCC.Core.BRepTools import BRepTools_ShapeSet, breptools
 from OCC.Core.gp import (
     gp_Pnt,
     gp_Vec,
@@ -1218,3 +1218,18 @@ def test_breptools_shape_set_extensions():
         brep_string_content = f.read()
     new_shape_set = BRepTools_ShapeSet()
     new_shape_set.ReadFromString(brep_string_content)
+
+
+def test_topods_readfromstring_extension():
+    box = BRepPrimAPI_MakeBox(100, 100, 100).Shape()
+    string = breptools.WriteToString(box)
+
+    # create a new shape each time
+    for i in range(10):
+        box1 = breptools.ReadFromString(string)
+
+    # same, but fill in the shape
+    topods_shape = TopoDS_Shape()
+    # create a new shape each time
+    for i in range(10):
+        breptools.ReadFromString(string, topods_shape)

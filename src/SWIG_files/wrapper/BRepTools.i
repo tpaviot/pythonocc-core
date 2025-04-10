@@ -984,15 +984,24 @@ Parameter theProgress the range of progress indicator to fill in.
                         BRepTools::Write(shape, s);
                         return s.str();}
                     };
-                    %feature("autodoc", "Deserializes TopoDS_Shape from string") ReadFromString;
+                    %feature("autodoc", "Deserializes TopoDS_Shape from string. Create and return a new TopoDS_Shape each time the method is called.") ReadFromString;
                     %extend{
                         static TopoDS_Shape ReadFromString(const std::string & src) {
-                        std::stringstream s(src);
-                        TopoDS_Shape shape;
-                        BRep_Builder b;
-                        BRepTools::Read(shape, s, b);
-                        return shape;}
+                            std::istringstream s(std::move(src));
+                            TopoDS_Shape shape;
+                            BRep_Builder b;
+                            BRepTools::Read(shape, s, b);
+                            return shape;
+                        }
                     };
+                    %feature("autodoc", "Deserializes TopoDS_Shape from string. Take a TopoDS_Shape instance by reference to prevent memory increase.") ReadFromString;
+                    %extend{
+                        static void ReadFromString(const std::string & src, TopoDS_Shape& shape) {
+						    std::istringstream s(std::move(src));
+						    BRep_Builder b;
+						    BRepTools::Read(shape, s, b);
+						}
+                    };     
             };
 
 
