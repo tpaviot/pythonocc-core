@@ -247,8 +247,8 @@ def read_step_file_with_names_colors(filename: str):
             # print("    all ass locs   :", locs)
 
             loc = TopLoc_Location()
-            for l in locs:
-                loc = loc.Multiplied(l)
+            for location in locs:
+                loc = loc.Multiplied(location)
 
             c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
             color_set = False
@@ -708,13 +708,10 @@ def read_gltf_file(
     verbose: bool = False,
     load_all_scenes: bool = False,
 ):
-    shapes_to_return = []
-
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
     gltf_reader = RWGltf_CafReader()
-    # gltf_reader.SetSystemLengthUnit (aScaleFactorM);
     gltf_reader.SetSystemCoordinateSystem(RWMesh_CoordinateSystem_posYfwd_posZup)
     gltf_reader.SetParallel(is_parallel)
     gltf_reader.SetDoublePrecision(is_double_precision)
