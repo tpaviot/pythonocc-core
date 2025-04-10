@@ -731,7 +731,7 @@ def read_gltf_file(
     return [gltf_reader.SingleShape()]
 
 
-def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str):
+def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
     """ocaf based ply exporter"""
     # create a document
     doc = TDocStd_Document("pythonocc-doc-gltf-export")
@@ -750,7 +750,7 @@ def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str):
         TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
     )
 
-    rwgltf_writer = RWGltf_CafWriter(gltf_filename, True)
+    rwgltf_writer = RWGltf_CafWriter(gltf_filename, binary)
 
     status = rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange())
 
