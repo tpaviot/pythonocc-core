@@ -239,7 +239,7 @@ void ShapeTesselator::ComputeEdges()
     const TopTools_ListOfShape& faceList = edgeMap.FindFromIndex(iEdge);
 
     if (faceList.Extent() == 0) {
-      printf("Skipped free edge during shape tesselation/edges computation.\n");
+      //printf("Skipped free edge during shape tesselation/edges computation.\n");
       continue;
     }
 
