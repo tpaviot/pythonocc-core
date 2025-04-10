@@ -42,7 +42,7 @@ pythonOCC 7.9.0 requires the following components:
 | Python | ≥ 3.9 | Runtime environment |
 | OpenCascade | 7.9.0 | Core CAD functionality |
 | SWIG | 4.2.1 | Interface generation |
-| CMake | ≥ 3.1 | Build system |
+| CMake | ≥ 3.20 | Build system |
 
 ## Build Process (Linux)
 
@@ -72,12 +72,12 @@ sudo apt-get install -y \
 
 ### 2. Building SWIG (Linux)
 
-SWIG 4.2.1 is required but not available in Ubuntu's default repositories. Build it from source:
+SWIG 4.2.1 or higher is required but not available in Ubuntu's default repositories. Build it from source:
 
 ```bash
-wget http://prdownloads.sourceforge.net/swig/swig-4.2.1.tar.gz
-tar -zxvf swig-4.2.1.tar.gz
-cd swig-4.2.1
+wget http://prdownloads.sourceforge.net/swig/swig-4.3.0.tar.gz
+tar -zxvf swig-4.3.0.tar.gz
+cd swig-4.3.0
 ./configure
 make -j$(nproc)
 sudo make install
@@ -88,8 +88,8 @@ sudo make install
 Download and extract OpenCascade 7.9.0:
 
 ```bash
-wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
-tar -xvzf V7_8_1.tar.gz
+wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_9_0.tar.gz
+tar -xvzf V7_9_0.tar.gz
 cd OCCT-7.9.0
 mkdir cmake-build
 cd cmake-build
@@ -98,7 +98,7 @@ cd cmake-build
 Configure and build OpenCascade:
 
 ```bash
-cmake -DINSTALL_DIR=/opt/occt781 \
+cmake -DINSTALL_DIR=/opt/occt790 \
       -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
       ..
 
@@ -109,7 +109,7 @@ sudo make install
 Add OpenCascade libraries to the system:
 
 ```bash
-sudo bash -c 'echo "/opt/occt781/lib" >> /etc/ld.so.conf.d/occt.conf'
+sudo bash -c 'echo "/opt/occt790/lib" >> /etc/ld.so.conf.d/occt.conf'
 sudo ldconfig
 ```
 
@@ -126,8 +126,8 @@ mkdir cmake-build && cd cmake-build
 PYTHONOCC_INSTALL_DIRECTORY=${PYTHONOCC_INSTALL_DIRECTORY:-/usr/local}
 
 cmake \
-    -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
-    -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
+    -DOCCT_INCLUDE_DIR=/opt/occt790/include/opencascade \
+    -DOCCT_LIBRARY_DIR=/opt/occt790/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
     ..
@@ -138,7 +138,7 @@ make -j$(nproc) && sudo make install
 Add OpenCascade libraries to your environment:
 
 ```bash
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt781/lib' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt790/lib' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -159,10 +159,10 @@ Before starting the build process, ensure your system meets these requirements:
 |-----------|---------|---------------|
 | Visual Studio | 2019 or 2022 Community | [Download](https://visualstudio.microsoft.com/downloads/) |
 | Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
-| CMake | ≥ 3.1 | [Download](https://cmake.org/download/) |
+| CMake | ≥ 3.20 | [Download](https://cmake.org/download/) |
 | Git | Latest | [Download](https://git-scm.com/download/win) |
 | RapidJSON | Latest | [Download](https://github.com/Tencent/rapidjson.git) |
-| SWIG | 4.2.1 | [Download](http://www.swig.org/download.html) |
+| SWIG | ≥ 4.2.1 | [Download](http://www.swig.org/download.html) |
 | OpenCascade | 7.9.0 | [Download](https://dev.opencascade.org/download) |
 
 ## Build Process (Windows)
@@ -190,7 +190,7 @@ Before starting the build process, ensure your system meets these requirements:
    - Use OpenSSL library
 
 5. Install SWIG:
-   - Download SWIG 4.2.1 for Windows
+   - Download SWIG 4.3.0 for Windows
    - Extract to C:\swigwin
    - Add C:\swigwin to the system PATH
 
