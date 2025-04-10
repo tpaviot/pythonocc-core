@@ -147,18 +147,17 @@ Parameters
 S1: BRepAdaptor_Surface
 S2: BRepAdaptor_Surface
 E: TopoDS_Edge
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
 
 Return
 -------
-int
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 
 Description
 -----------
 Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.
 ") ConcaveSide;
-		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation & Or1, TopAbs_Orientation & Or2);
+		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue);
 
 		/****** ChFi3d::DefineConnectType ******/
 		/****** md5 signature: cff62fae1d6d67c4fc161f59e5544eaa ******/
@@ -209,21 +208,20 @@ Returns true if theEdge between theFace1 and theFace2 is tangent.
 		%feature("autodoc", "
 Parameters
 ----------
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
 OrSave1: TopAbs_Orientation
 OrSave2: TopAbs_Orientation
 ChoixSauv: int
 
 Return
 -------
-int
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 
 Description
 -----------
 Same as ConcaveSide, but the orientations are logically deduced from the result of the call of ConcaveSide on the first pair of faces of the fillet or chamnfer.
 ") NextSide;
-		static Standard_Integer NextSide(TopAbs_Orientation & Or1, TopAbs_Orientation & Or2, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
+		static Standard_Integer NextSide(TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
 
 		/****** ChFi3d::NextSide ******/
 		/****** md5 signature: cdb55087e2f58002d8dd06337ade33f1 ******/
@@ -231,19 +229,18 @@ Same as ConcaveSide, but the orientations are logically deduced from the result 
 		%feature("autodoc", "
 Parameters
 ----------
-Or: TopAbs_Orientation
 OrSave: TopAbs_Orientation
 OrFace: TopAbs_Orientation
 
 Return
 -------
-None
+Or: TopAbs_Orientation
 
 Description
 -----------
 Same as the other NextSide, but the calculation is done on an edge only.
 ") NextSide;
-		static void NextSide(TopAbs_Orientation & Or, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
+		static void NextSide(TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
 
 		/****** ChFi3d::SameSide ******/
 		/****** md5 signature: cb26ae9b069d0a97c5fa9e8f947264b7 ******/

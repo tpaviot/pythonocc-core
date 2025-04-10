@@ -1665,12 +1665,14 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %wrap_handle(Graphic3d_AspectLine3d)
 %wrap_handle(Graphic3d_AspectMarker3d)
 %wrap_handle(Graphic3d_AspectText3d)
+%wrap_handle(Graphic3d_AttribBuffer)
 %wrap_handle(Graphic3d_CView)
 %wrap_handle(Graphic3d_MediaTextureSet)
 %wrap_handle(Graphic3d_TextureEnv)
 %wrap_handle(Graphic3d_TextureMap)
 %wrap_handle(Graphic3d_TransformPersScaledAbove)
 %wrap_handle(Graphic3d_CubeMap)
+%wrap_handle(Graphic3d_MutableIndexBuffer)
 %wrap_handle(Graphic3d_Texture1D)
 %wrap_handle(Graphic3d_Texture2D)
 %wrap_handle(Graphic3d_Texture3D)
@@ -22207,6 +22209,8 @@ Invalidate specified sub-range of data (as byte offsets).
 };
 
 
+%make_alias(Graphic3d_AttribBuffer)
+
 %extend Graphic3d_AttribBuffer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -25236,6 +25240,8 @@ Invalidate specified sub-range of data (as byte offsets).
 
 };
 
+
+%make_alias(Graphic3d_MutableIndexBuffer)
 
 %extend Graphic3d_MutableIndexBuffer {
 	%pythoncode {

@@ -973,36 +973,37 @@ Parameter theProgress the range of progress indicator to fill in.
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
-                    %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
-                    %extend{
-                        static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
-                        std::stringstream s;
-                        if(full_precision) {
-                            s.precision(17);
-                            s.setf(std::ios::scientific);
-                        }
-                        BRepTools::Write(shape, s);
-                        return s.str();}
-                    };
-                    %feature("autodoc", "Deserializes TopoDS_Shape from string. Create and return a new TopoDS_Shape each time the method is called.") ReadFromString;
-                    %extend{
-                        static TopoDS_Shape ReadFromString(const std::string & src) {
-                            std::istringstream s(std::move(src));
-                            TopoDS_Shape shape;
-                            BRep_Builder b;
-                            BRepTools::Read(shape, s, b);
-                            return shape;
-                        }
-                    };
-                    %feature("autodoc", "Deserializes TopoDS_Shape from string. Take a TopoDS_Shape instance by reference to prevent memory increase.") ReadFromString;
-                    %extend{
-                        static void ReadFromString(const std::string & src, TopoDS_Shape& shape) {
-						    std::istringstream s(std::move(src));
-						    BRep_Builder b;
-						    BRepTools::Read(shape, s, b);
-						}
-                    };     
-            };
+%feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
+%extend{
+    static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
+    std::stringstream s;
+    if(full_precision) {
+        s.precision(17);
+        s.setf(std::ios::scientific);
+    }
+    BRepTools::Write(shape, s);
+    return s.str();}
+};
+%feature("autodoc", "Deserializes TopoDS_Shape from string. Create and return a new TopoDS_Shape each time the method is called.") ReadFromString;
+%extend{
+    static TopoDS_Shape ReadFromString(const std::string & src) {
+        std::istringstream s(std::move(src));
+        TopoDS_Shape shape;
+        BRep_Builder b;
+        BRepTools::Read(shape, s, b);
+        return shape;
+    }
+};
+%feature("autodoc", "Deserializes TopoDS_Shape from string. Take a TopoDS_Shape instance by reference to prevent memory increase.") ReadFromString;
+%extend{
+    static void ReadFromString(const std::string & src, TopoDS_Shape& shape) {
+        std::istringstream s(std::move(src));
+        BRep_Builder b;
+        BRepTools::Read(shape, s, b);
+    }
+};
+
+};
 
 
 %extend BRepTools {
@@ -2602,27 +2603,37 @@ Writes the triangulation on the stream <OS> in a format that can be read back by
 		void WriteTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
-                    %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
-                    %extend{
-                        static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
-                        std::stringstream s;
-                        if(full_precision) {
-                            s.precision(17);
-                            s.setf(std::ios::scientific);
-                        }
-                        BRepTools::Write(shape, s);
-                        return s.str();}
-                    };
-                    %feature("autodoc", "Deserializes TopoDS_Shape from string") ReadFromString;
-                    %extend{
-                        static TopoDS_Shape ReadFromString(const std::string & src) {
-                        std::stringstream s(src);
-                        TopoDS_Shape shape;
-                        BRep_Builder b;
-                        BRepTools::Read(shape, s, b);
-                        return shape;}
-                    };
-            };
+%feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
+%extend{
+    static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
+    std::stringstream s;
+    if(full_precision) {
+        s.precision(17);
+        s.setf(std::ios::scientific);
+    }
+    BRepTools::Write(shape, s);
+    return s.str();}
+};
+%feature("autodoc", "Deserializes TopoDS_Shape from string. Create and return a new TopoDS_Shape each time the method is called.") ReadFromString;
+%extend{
+    static TopoDS_Shape ReadFromString(const std::string & src) {
+        std::istringstream s(std::move(src));
+        TopoDS_Shape shape;
+        BRep_Builder b;
+        BRepTools::Read(shape, s, b);
+        return shape;
+    }
+};
+%feature("autodoc", "Deserializes TopoDS_Shape from string. Take a TopoDS_Shape instance by reference to prevent memory increase.") ReadFromString;
+%extend{
+    static void ReadFromString(const std::string & src, TopoDS_Shape& shape) {
+        std::istringstream s(std::move(src));
+        BRep_Builder b;
+        BRepTools::Read(shape, s, b);
+    }
+};
+
+};
 
 
 %extend BRepTools_ShapeSet {

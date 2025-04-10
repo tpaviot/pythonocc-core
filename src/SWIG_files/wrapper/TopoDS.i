@@ -75,6 +75,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TopoDS_AlertAttribute)
+%wrap_handle(TopoDS_AlertWithShape)
 %wrap_handle(TopoDS_HShape)
 %wrap_handle(TopoDS_TShape)
 %wrap_handle(TopoDS_TCompSolid)
@@ -92,40 +94,7 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 /* end typedefs declaration */
-%pythoncode {
-class topods:
-	@staticmethod
-	def Edge(*args, **kwargs):
-		return Edge(*args, **kwargs)
 
-	@staticmethod
-	def Vertex(*args, **kwargs):
-		return Vertex(*args, **kwargs)
-
-	@staticmethod
-	def Face(*args, **kwargs):
-		return Face(*args, **kwargs)
-
-	@staticmethod
-	def Wire(*args, **kwargs):
-		return Wire(*args, **kwargs)
-
-	@staticmethod
-	def Shell(*args, **kwargs):
-		return Shell(*args, **kwargs)
-
-	@staticmethod
-	def Solid(*args, **kwargs):
-		return Solid(*args, **kwargs)
-
-	@staticmethod
-	def CompSolid(*args, **kwargs):
-		return CompSolid(*args, **kwargs)
-
-	@staticmethod
-	def Compound(*args, **kwargs):
-		return Compound(*args, **kwargs)
-};
 /******************************
 * class TopoDS_AlertAttribute *
 ******************************/
@@ -205,6 +174,8 @@ Push shape information into messenger.
 
 };
 
+
+%make_alias(TopoDS_AlertAttribute)
 
 %extend TopoDS_AlertAttribute {
 	%pythoncode {
@@ -299,6 +270,8 @@ Returns false.
 
 };
 
+
+%make_alias(TopoDS_AlertWithShape)
 
 %extend TopoDS_AlertWithShape {
 	%pythoncode {
@@ -2703,4 +2676,40 @@ Parameter theShape the shape to be cast
 Return: the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
 ") Wire;
 		TopoDS_Wire Wire(TopoDS_Shape & theShape);
+
+
+%pythoncode {
+class topods:
+    @staticmethod
+    def Edge(*args, **kwargs):
+        return Edge(*args, **kwargs)
+
+    @staticmethod
+    def Vertex(*args, **kwargs):
+        return Vertex(*args, **kwargs)
+
+    @staticmethod
+    def Face(*args, **kwargs):
+        return Face(*args, **kwargs)
+
+    @staticmethod
+    def Wire(*args, **kwargs):
+        return Wire(*args, **kwargs)
+
+    @staticmethod
+    def Shell(*args, **kwargs):
+        return Shell(*args, **kwargs)
+
+    @staticmethod
+    def Solid(*args, **kwargs):
+        return Solid(*args, **kwargs)
+
+    @staticmethod
+    def CompSolid(*args, **kwargs):
+        return CompSolid(*args, **kwargs)
+
+    @staticmethod
+    def Compound(*args, **kwargs):
+        return Compound(*args, **kwargs)
+};
 

@@ -782,6 +782,25 @@ Loads a file and returns the read status Zero for a Model which compies with the
 ") ReadFile;
 		virtual IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
+		/****** STEPControl_Reader::ReadFile ******/
+		/****** md5 signature: 653d10ed20f94341a4bff4dc0daf4326 ******/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "
+Parameters
+----------
+filename: str
+theParams: DESTEP_Parameters
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file and returns the read status Zero for a Model which compies with the Controller.
+") ReadFile;
+		IFSelect_ReturnStatus ReadFile(Standard_CString filename, const DESTEP_Parameters & theParams);
+
 		/****** STEPControl_Reader::ReadStream ******/
 		/****** md5 signature: 468612e1b7574162a37279817cf6848c ******/
 		%feature("compactdefaultargs") ReadStream;
@@ -799,7 +818,7 @@ Description
 -----------
 Loads a file from stream and returns the read status.
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
+		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
 		/****** STEPControl_Reader::SetSystemLengthUnit ******/
 		/****** md5 signature: 510dfa5f705479dabe69cd18ff63f186 ******/
