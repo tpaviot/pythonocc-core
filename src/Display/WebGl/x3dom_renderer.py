@@ -144,7 +144,7 @@ BODY_TEMPLATE = Template(
         current_mat = mat;
         console.log(mat);
         selected_target_color = mat.diffuseColor;
-        mat.diffuseColor = "1, 0.65, 0";
+        mat.diffuseColor = "1. 0.65 0.";
         //console.log(the_shape.getElementsByTagName("Appearance"));//.getAttribute('diffuseColor'));
     }
     function onDocumentKeyPress(event) {
@@ -153,9 +153,11 @@ BODY_TEMPLATE = Template(
          if (current_selected_shape) {
            if (current_selected_shape.render == "true") {
               current_selected_shape.render = "false";
+              console.log("hide ", current_selected_shape);
            }
            else {
               current_selected_shape.render = "true";
+              console.log("show ", current_selected_shape)
            }
          }
       }
@@ -328,7 +330,7 @@ class X3DExporter:
             # set Material or shader
             #
             if self._vs is None and self._fs is None:
-                x3dfile_str += "<Material id='color' diffuseColor="
+                x3dfile_str += f"<Material id='material_{shape_id}' diffuseColor="
                 x3dfile_str += f"'{self._color[0]} {self._color[1]} {self._color[2]}' "
                 x3dfile_str += f"shininess='{self._shininess}' "
                 x3dfile_str += f"specularColor='{self._specular_color[0]} {self._specular_color[1]} {self._specular_color[2]}' "
