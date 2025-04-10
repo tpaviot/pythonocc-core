@@ -169,7 +169,7 @@ MAIN_JS_TEMPLATE = Template(
 import * as THREE from 'three';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-var camera, scene, renderer, object, stats, container, shape_material;
+var camera, scene, renderer, object, container, shape_material;
 var controls;
 var directionalLight;
 var axisHelper, gridHelper;
@@ -251,7 +251,6 @@ function animate() {
     requestAnimationFrame(animate);
     controls.update();
     render();
-    stats.update();
 }
 
 function update_lights() {
@@ -518,7 +517,7 @@ class ThreejsRenderer:
                     f"specular:{color_to_hex(specular_color)},",
                     "shininess:%g," % shininess,
                     "side: THREE.DoubleSide,",
-                    "flatShading:false",
+                    "flatShading:false,",
                 )
             )
             if transparency > 0.0:
