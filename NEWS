@@ -1,3 +1,28 @@
+Version 7.9.0 - April 2025
+==========================
+
+This release requires opencascade-7.9.0
+
+* wrapper: upgrade to OpenCASCADE 7.9.0
+
+* wrapper: add ReadFromString method prototype for memory increase protection
+
+* display: fix x3dom renderer material id
+
+* display: fix threejs renderer, json formatting
+
+* data exchange: add binary/ascii option to gltf export
+
+* data echange: fix return type when as_compound = False and there is a single shape
+
+* wrapper: add SetDeviation and GetDeviation methods to ShapeTesselator class
+
+* tesselator: fix constructor and return types
+
+* tesselator: fix 'Standard_ConstructionError' when a shape has no geometry
+
+* tesselator: tesselator: multiple coding improvements using Clang-Tidy recommendations
+
 Version 7.8.1.1 - December 2024
 ===============================
 
