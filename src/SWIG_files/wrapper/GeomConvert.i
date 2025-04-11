@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMCONVERTDOCSTRING
 "GeomConvert module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomconvert.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomconvert.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMCONVERTDOCSTRING) GeomConvert
 
@@ -134,7 +134,7 @@ None
 
 Description
 -----------
-This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns an array of bspline c1. tolerance is a geometrical tolerance.
+This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real tolerance);
 
@@ -155,7 +155,7 @@ None
 
 Description
 -----------
-This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns an array of bspline c1. tolerance is a geometrical tolerance: it allows for the maximum deformation the angular tolerance is in radians and measures the angle of the tangents on the left and on the right to decide if the curve is c1 or not at a given point.
+This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance: it allows for the maximum deformation The Angular tolerance is in radians and measures the angle of the tangents on the left and on the right to decide if the curve is C1 or not at a given point.
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real tolerance);
 
@@ -175,7 +175,7 @@ None
 
 Description
 -----------
-This method reduces as far as it is possible the multiplicities of the knots of the bspline bs.(keeping the geometry). it returns a new bspline which could still be c0. tolerance is a geometrical tolerance. the angular toleranceis in radians and measures the angle of the tangents on the left and on the right to decide if the curve is g1 or not at a given point.
+This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns a new BSpline which could still be C0. tolerance is a geometrical tolerance. The Angular toleranceis in radians and measures the angle of the tangents on the left and on the right to decide if the curve is G1 or not at a given point.
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real tolerance, const Standard_Real AngularTolerance = 1.0e-7);
 
@@ -197,7 +197,7 @@ ClosedFlag: bool
 
 Description
 -----------
-This method concatenates c1 the arrayofcurves as far as it is possible. arrayofcurves[0..n-1] arrayoftoler contains the biggest tolerance of the two points shared by two consecutives curves. its dimension: [0..n-2] closedflag indicates if the arrayofcurves is closed. in this case closedtolerance contains the biggest tolerance of the two points which are at the closure. otherwise its value is 0.0 closedflag becomes false on the output if it is impossible to build closed curve.
+This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
 		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
@@ -220,7 +220,7 @@ ClosedFlag: bool
 
 Description
 -----------
-This method concatenates c1 the arrayofcurves as far as it is possible. arrayofcurves[0..n-1] arrayoftoler contains the biggest tolerance of the two points shared by two consecutives curves. its dimension: [0..n-2] closedflag indicates if the arrayofcurves is closed. in this case closedtolerance contains the biggest tolerance of the two points which are at the closure. otherwise its value is 0.0 closedflag becomes false on the output if it is impossible to build closed curve.
+This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
 		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance, const Standard_Real AngularTolerance);
 
@@ -241,7 +241,7 @@ ClosedFlag: bool
 
 Description
 -----------
-This method concatenates g1 the arrayofcurves as far as it is possible. arrayofcurves[0..n-1] arrayoftoler contains the biggest tolerance of the two points shared by two consecutives curves. its dimension: [0..n-2] closedflag indicates if the arrayofcurves is closed. in this case closedtolerance contains the biggest tolerance of the two points which are at the closure. otherwise its value is 0.0 closedflag becomes false on the output if it is impossible to build closed curve.
+This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatG1;
 		static void ConcatG1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
@@ -260,7 +260,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-This function converts a non infinite curve from geom into a b-spline curve. c must be an ellipse or a circle or a trimmed conic or a trimmed line or a bezier curve or a trimmed bezier curve or a bspline curve or a trimmed bspline curve or an offsetcurve. the returned b-spline is not periodic except if c is a circle or an ellipse. if the parameterisation is quasiangular than the returned curve is not periodic in case a periodic geom_circle or geom_ellipse. for tgtthetaover2_1 and tgtthetaover2_2 the method raises an exception in case of a periodic geom_circle or a geom_ellipse parameterisationtype applies only if the curve is a circle or an ellipse: tgtthetaover2, -- tgtthetaover2_1, -- tgtthetaover2_2, -- tgtthetaover2_3, -- tgtthetaover2_4, //! purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with tgtthetaover2 the routine will compute the number of spans using the rule num_spans = [ (ulast - ufirst) / 1.2 ] + 1 with tgtthetaover2_n, n spans will be forced: an error will be raized if (ulast - ufirst) >= pi and n = 1, ulast - ufirst >= 2 pi and n = 2 //! quasiangular, here t is a rational function that approximates theta ----> tan(theta/2). nevetheless the composing with above function yields exact functions whose square sum up to 1 rationalc1 ; t is replaced by a polynomial function of u so as to grant c1 contiuity across knots. exceptions standard_domainerror: - if the curve c is infinite, or - if c is a (complete) circle or ellipse, and parameterisation is equal to convert_tgtthetaover2_1 or convert_tgtthetaover2_2. standard_constructionerror: - if c is a (complete) circle or ellipse, and if parameterisation is not equal to convert_tgtthetaover2, convert_rationalc1, convert_quasiangular (the curve is converted in these three cases) or to convert_tgtthetaover2_1 or convert_tgtthetaover2_2 (another exception is raised in these two cases). - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_1 and if u2 - u1 > 0.9999 * pi, where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if c is a trimmed circle or ellipse, if parameterisation is equal to convert_tgtthetaover2_2 and u2 - u1 > 1.9999 * pi where u1 and u2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
+This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an OffsetCurve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. If the Parameterisation is QuasiAngular than the returned curve is NOT periodic in case a periodic Geom_Circle or Geom_Ellipse. For TgtThetaOver2_1 and TgtThetaOver2_2 the method raises an exception in case of a periodic Geom_Circle or a Geom_Ellipse ParameterisationType applies only if the curve is a Circle or an ellipse: TgtThetaOver2, -- TgtThetaOver2_1, -- TgtThetaOver2_2, -- TgtThetaOver2_3, -- TgtThetaOver2_4, //! Purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) >= PI and N = 1, ULast - UFirst >= 2 PI and N = 2 //! QuasiAngular, here t is a rational function that approximates theta ----> tan(theta/2). Nevetheless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError: - if the curve C is infinite, or - if C is a (complete) circle or ellipse, and Parameterisation is equal to Convert_TgtThetaOver2_1 or Convert_TgtThetaOver2_2. Standard_ConstructionError: - if C is a (complete) circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2, Convert_RationalC1, Convert_QuasiAngular (the curve is converted in these three cases) or to Convert_TgtThetaOver2_1 or Convert_TgtThetaOver2_2 (another exception is raised in these two cases). - if C is a trimmed circle or ellipse, if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 > 0.9999 * Pi, where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse, if Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 > 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
 ") CurveToBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> CurveToBSplineCurve(const opencascade::handle<Geom_Curve> & C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -281,7 +281,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Convert a curve from geom by an approximation method //! this method computes the arc of b-spline curve between the two knots fromk1 and tok2. if c is periodic the arc has the same orientation as c if sameorientation = standard_true. if c is not periodic sameorientation is not used for the computation and c is oriented from the knot fromk1 to the knot tok2. we just keep the local definition of c between the knots fromk1 and tok2. the returned b-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of c. the indexes of the knots fromk1 and tok2 doesn't include the repetition of multiple knots in their definition. raised if fromk1 = tok2 raised if fromk1 or tok2 are out of the bounds [firstuknotindex, lastuknotindex].
+Convert a curve from Geom by an approximation method //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. Raised if FromK1 = ToK2 Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex].
 ") SplitBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & C, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean SameOrientation = Standard_True);
 
@@ -303,7 +303,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-This function computes the segment of b-spline curve between the parametric values fromu1, tou2. if c is periodic the arc has the same orientation as c if sameorientation = true. if c is not periodic sameorientation is not used for the computation and c is oriented fromu1 tou2. if u1 and u2 and two parametric values we consider that u1 = u2 if abs (u1 - u2) <= parametrictolerance and parametrictolerance must be greater or equal to resolution from package gp. //! raised if fromu1 or tou2 are out of the parametric bounds of the curve (the tolerance criterion is parametrictolerance). raised if abs (fromu1 - tou2) <= parametrictolerance raised if parametrictolerance < resolution from gp.
+This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance Raised if ParametricTolerance < Resolution from gp.
 ") SplitBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & C, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True);
 
@@ -327,7 +327,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Computes the b-spline surface patche between the knots values fromuk1, touk2, fromvk1, tovk2. if s is periodic in one direction the patche has the same orientation as s in this direction if the flag is true in this direction (sameuorientation, samevorientation). if s is not periodic sameuorientation and samevorientation are not used for the computation and s is oriented fromuk1 touk2 and fromvk1 tovk2. raised if fromuk1 = touk2 or fromvk1 = tovk2 fromuk1 or touk2 are out of the bounds [firstuknotindex, lastuknotindex] fromvk1 or tovk2 are out of the bounds [firstvknotindex, lastvknotindex].
+Computes the B-spline surface patche between the knots values FromUK1, ToUK2, FromVK1, ToVK2. If S is periodic in one direction the patche has the same orientation as S in this direction if the flag is true in this direction (SameUOrientation, SameVOrientation). If S is not periodic SameUOrientation and SameVOrientation are not used for the computation and S is oriented FromUK1 ToUK2 and FromVK1 ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2 FromUK1 or ToUK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] FromVK1 or ToVK2 are out of the bounds [FirstVKnotIndex, LastVKnotIndex].
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, const Standard_Boolean SameUOrientation = Standard_True, const Standard_Boolean SameVOrientation = Standard_True);
 
@@ -349,7 +349,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-This method splits a b-spline surface patche between the knots values fromk1, tok2 in one direction. if usplit = true then the splitting direction is the u parametric direction else it is the v parametric direction. if s is periodic in the considered direction the patche has the same orientation as s in this direction if sameorientation is true if s is not periodic in this direction sameorientation is not used for the computation and s is oriented fromk1 tok2. raised if fromk1 = tok2 or if fromk1 or tok2 are out of the bounds [firstuknotindex, lastuknotindex] in the considered parametric direction.
+This method splits a B-spline surface patche between the knots values FromK1, ToK2 in one direction. If USplit = True then the splitting direction is the U parametric direction else it is the V parametric direction. If S is periodic in the considered direction the patche has the same orientation as S in this direction if SameOrientation is True If S is not periodic in this direction SameOrientation is not used for the computation and S is oriented FromK1 ToK2. Raised if FromK1 = ToK2 or if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] in the considered parametric direction.
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean USplit, const Standard_Boolean SameOrientation = Standard_True);
 
@@ -374,7 +374,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-This method computes the b-spline surface patche between the parametric values fromu1, tou2, fromv1, tov2. if s is periodic in one direction the patche has the same orientation as s in this direction if the flag is true in this direction (sameuorientation, samevorientation). if s is not periodic sameuorientation and samevorientation are not used for the computation and s is oriented fromu1 tou2 and fromv1 tov2. if u1 and u2 and two parametric values we consider that u1 = u2 if abs (u1 - u2) <= parametrictolerance and parametrictolerance must be greater or equal to resolution from package gp. //! raised if fromu1 or tou2 or fromv1 or tou2 are out of the parametric bounds of the surface (the tolerance criterion is parametrictolerance). raised if abs (fromu1 - tou2) <= parametrictolerance or abs (fromv1 - tov2) <= parametrictolerance. raised if parametrictolerance < resolution.
+This method computes the B-spline surface patche between the parametric values FromU1, ToU2, FromV1, ToV2. If S is periodic in one direction the patche has the same orientation as S in this direction if the flag is True in this direction (SameUOrientation, SameVOrientation). If S is not periodic SameUOrientation and SameVOrientation are not used for the computation and S is oriented FromU1 ToU2 and FromV1 ToV2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 or FromV1 or ToU2 are out of the parametric bounds of the surface (the tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance or Abs (FromV1 - ToV2) <= ParametricTolerance. Raised if ParametricTolerance < Resolution.
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real FromV1, const Standard_Real ToV2, const Standard_Real ParametricTolerance, const Standard_Boolean SameUOrientation = Standard_True, const Standard_Boolean SameVOrientation = Standard_True);
 
@@ -397,7 +397,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-This method splits the b-spline surface s in one direction between the parametric values fromparam1, toparam2. if usplit = true then the splitting direction is the u parametric direction else it is the v parametric direction. if s is periodic in the considered direction the patche has the same orientation as s in this direction if sameorientation is true. if s is not periodic in the considered direction sameorientation is not used for the computation and s is oriented fromparam1 toparam2. if u1 and u2 and two parametric values we consider that u1 = u2 if abs (u1 - u2) <= parametrictolerance and parametrictolerance must be greater or equal to resolution from package gp. //! raises if fromparam1 or toparam2 are out of the parametric bounds of the surface in the considered direction. raises if abs (fromparam1 - toparam2) <= parametrictolerance.
+This method splits the B-spline surface S in one direction between the parametric values FromParam1, ToParam2. If USplit = True then the Splitting direction is the U parametric direction else it is the V parametric direction. If S is periodic in the considered direction the patche has the same orientation as S in this direction if SameOrientation is true. If S is not periodic in the considered direction SameOrientation is not used for the computation and S is oriented FromParam1 ToParam2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raises if FromParam1 or ToParam2 are out of the parametric bounds of the surface in the considered direction. Raises if Abs (FromParam1 - ToParam2) <= ParametricTolerance.
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real FromParam1, const Standard_Real ToParam2, const Standard_Boolean USplit, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True);
 
@@ -415,7 +415,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-This algorithm converts a non infinite surface from geom into a b-spline surface. s must be a trimmed plane or a trimmed cylinder or a trimmed cone or a trimmed sphere or a trimmed torus or a sphere or a torus or a bezier surface of a trimmed bezier surface or a trimmed swept surface with a corresponding basis curve which can be turned into a b-spline curve (see the method curvetobsplinecurve). raises domainerror if the type of the surface is not previously defined.
+This algorithm converts a non infinite surface from Geom into a B-spline surface. S must be a trimmed plane or a trimmed cylinder or a trimmed cone or a trimmed sphere or a trimmed torus or a sphere or a torus or a Bezier surface of a trimmed Bezier surface or a trimmed swept surface with a corresponding basis curve which can be turned into a B-spline curve (see the method CurveToBSplineCurve). Raises DomainError if the type of the surface is not previously defined.
 ") SurfaceToBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SurfaceToBSplineSurface(const opencascade::handle<Geom_Surface> & S);
 
@@ -451,7 +451,7 @@ None
 
 Description
 -----------
-Constructs a curve approximation framework defined by - - the conic curve, - the tolerance value tol3d, - the degree of continuity order, - the maximum number of segments maxsegments allowed in the resulting bspline curve, and - the highest degree maxdeg which the polynomial defining the bspline curve may have.
+Constructs a curve approximation framework defined by - - the conic Curve, - the tolerance value Tol3d, - the degree of continuity Order, - the maximum number of segments MaxSegments allowed in the resulting BSpline curve, and - the highest degree MaxDeg which the polynomial defining the BSpline curve may have.
 ") GeomConvert_ApproxCurve;
 		 GeomConvert_ApproxCurve(const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
@@ -473,7 +473,7 @@ None
 
 Description
 -----------
-Constructs a curve approximation framework defined by - - the curve, - the tolerance value tol3d, - the degree of continuity order, - the maximum number of segments maxsegments allowed in the resulting bspline curve, and - the highest degree maxdeg which the polynomial defining the bspline curve may have.
+Constructs a curve approximation framework defined by - - the Curve, - the tolerance value Tol3d, - the degree of continuity Order, - the maximum number of segments MaxSegments allowed in the resulting BSpline curve, and - the highest degree MaxDeg which the polynomial defining the BSpline curve may have.
 ") GeomConvert_ApproxCurve;
 		 GeomConvert_ApproxCurve(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
@@ -486,7 +486,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns the bspline curve resulting from the approximation algorithm.
+Returns the BSpline curve resulting from the approximation algorithm.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve();
 
@@ -516,7 +516,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the approximation did come out with a result that is not necessarely within the required tolerance.
+Returns Standard_True if the approximation did come out with a result that is not NECESSARELY within the required tolerance.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -529,7 +529,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the approximation has been done within required tolerance.
+returns Standard_True if the approximation has been done within required tolerance.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -542,7 +542,7 @@ float
 
 Description
 -----------
-Returns the greatest distance between a point on the source conic and the bspline curve resulting from the approximation. (>0 when an approximation has been done, 0 if no approximation).
+Returns the greatest distance between a point on the source conic and the BSpline curve resulting from the approximation. (>0 when an approximation has been done, 0 if no approximation).
 ") MaxError;
 		Standard_Real MaxError();
 
@@ -581,7 +581,7 @@ None
 
 Description
 -----------
-Constructs a surface approximation framework defined by - the conic surf - the tolerance value tol3d - the degree of continuity ucontinuity, vcontinuity in the directions of the u and v parameters - the highest degree maxdegu, maxdegv which the polynomial defining the bspline curve may have in the directions of the u and v parameters - the maximum number of segments maxsegments allowed in the resulting bspline curve - the index of precision preciscode.
+Constructs a surface approximation framework defined by - the conic Surf - the tolerance value Tol3d - the degree of continuity UContinuity, VContinuity in the directions of the U and V parameters - the highest degree MaxDegU, MaxDegV which the polynomial defining the BSpline curve may have in the directions of the U and V parameters - the maximum number of segments MaxSegments allowed in the resulting BSpline curve - the index of precision PrecisCode.
 ") GeomConvert_ApproxSurface;
 		 GeomConvert_ApproxSurface(const opencascade::handle<Geom_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
@@ -606,7 +606,7 @@ None
 
 Description
 -----------
-Constructs a surface approximation framework defined by - the surf - the tolerance value tol3d - the degree of continuity ucontinuity, vcontinuity in the directions of the u and v parameters - the highest degree maxdegu, maxdegv which the polynomial defining the bspline curve may have in the directions of the u and v parameters - the maximum number of segments maxsegments allowed in the resulting bspline curve - the index of precision preciscode.
+Constructs a surface approximation framework defined by - the Surf - the tolerance value Tol3d - the degree of continuity UContinuity, VContinuity in the directions of the U and V parameters - the highest degree MaxDegU, MaxDegV which the polynomial defining the BSpline curve may have in the directions of the U and V parameters - the maximum number of segments MaxSegments allowed in the resulting BSpline curve - the index of precision PrecisCode.
 ") GeomConvert_ApproxSurface;
 		 GeomConvert_ApproxSurface(const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
@@ -636,7 +636,7 @@ bool
 
 Description
 -----------
-Returns true if the approximation did come out with a result that is not necessarily within the required tolerance or a result that is not recognized with the wished continuities.
+Returns true if the approximation did come out with a result that is not NECESSARILY within the required tolerance or a result that is not recognized with the wished continuities.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -649,7 +649,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the approximation has be done.
+Returns Standard_True if the approximation has be done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -662,7 +662,7 @@ float
 
 Description
 -----------
-Returns the greatest distance between a point on the source conic surface and the bspline surface resulting from the approximation (>0 when an approximation has been done, 0 if no approximation ).
+Returns the greatest distance between a point on the source conic surface and the BSpline surface resulting from the approximation (>0 when an approximation has been done, 0 if no approximation ).
 ") MaxError;
 		Standard_Real MaxError();
 
@@ -675,7 +675,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the bspline surface resulting from the approximation algorithm.
+Returns the BSpline surface resulting from the approximation algorithm.
 ") Surface;
 		opencascade::handle<Geom_BSplineSurface> Surface();
 
@@ -708,7 +708,7 @@ None
 
 Description
 -----------
-Determines points at which the bspline curve basiscurve should be split in order to obtain arcs with a degree of continuity equal to continuityrange. these points are knot values of basiscurve. they are identified by indices in the knots table of basiscurve. use the available interrogation functions to access computed values, followed by the global function splitbsplinecurve (provided by the package geomconvert) to split the curve. exceptions standard_rangeerror if continuityrange is less than zero.
+Determines points at which the BSpline curve BasisCurve should be split in order to obtain arcs with a degree of continuity equal to ContinuityRange. These points are knot values of BasisCurve. They are identified by indices in the knots table of BasisCurve. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineCurve (provided by the package GeomConvert) to split the curve. Exceptions Standard_RangeError if ContinuityRange is less than zero.
 ") GeomConvert_BSplineCurveKnotSplitting;
 		 GeomConvert_BSplineCurveKnotSplitting(const opencascade::handle<Geom_BSplineCurve> & BasisCurve, const Standard_Integer ContinuityRange);
 
@@ -721,7 +721,7 @@ int
 
 Description
 -----------
-Returns the number of points at which the analyzed bspline curve should be split, in order to obtain arcs with the continuity required by this framework. all these points correspond to knot values. note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.
+Returns the number of points at which the analyzed BSpline curve should be split, in order to obtain arcs with the continuity required by this framework. All these points correspond to knot values. Note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.
 ") NbSplits;
 		Standard_Integer NbSplits();
 
@@ -739,7 +739,7 @@ int
 
 Description
 -----------
-Returns the split knot of index index to the split knots table computed in this framework. the returned value is an index in the knots table of the bspline curve analyzed by this algorithm. notes: - if index is equal to 1, the corresponding knot gives the first point of the curve. - if index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. exceptions standard_rangeerror if index is less than 1 or greater than the number of split knots computed in this framework.
+Returns the split knot of index Index to the split knots table computed in this framework. The returned value is an index in the knots table of the BSpline curve analyzed by this algorithm. Notes: - If Index is equal to 1, the corresponding knot gives the first point of the curve. - If Index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. Exceptions Standard_RangeError if Index is less than 1 or greater than the number of split knots computed in this framework.
 ") SplitValue;
 		Standard_Integer SplitValue(const Standard_Integer Index);
 
@@ -757,7 +757,7 @@ None
 
 Description
 -----------
-Loads the splitvalues table with the split knots values computed in this framework. each value in the table is an index in the knots table of the bspline curve analyzed by this algorithm. the values in splitvalues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. use two consecutive values from the table as arguments of the global function splitbsplinecurve (provided by the package geomconvert) to split the curve. exceptions standard_dimensionerror if the array splitvalues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function nbsplits).
+Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analyzed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package GeomConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).
 ") Splitting;
 		void Splitting(TColStd_Array1OfInteger & SplitValues);
 
@@ -789,7 +789,7 @@ None
 
 Description
 -----------
-Computes all the data needed to convert the bspline curve basiscurve into a series of adjacent bezier arcs.
+Computes all the data needed to convert the BSpline curve BasisCurve into a series of adjacent Bezier arcs.
 ") GeomConvert_BSplineCurveToBezierCurve;
 		 GeomConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom_BSplineCurve> & BasisCurve);
 
@@ -810,7 +810,7 @@ None
 
 Description
 -----------
-Computes all the data needed to convert the portion of the bspline curve basiscurve limited by the two parameter values u1 and u2 into a series of adjacent bezier arcs. the result consists of a series of basiscurve arcs limited by points corresponding to knot values of the curve. use the available interrogation functions to ascertain the number of computed bezier arcs, and then to construct each individual bezier curve (or all bezier curves). note: parametrictolerance is not used. raises domainerror if u1 or u2 are out of the parametric bounds of the basis curve [firstparameter, lastparameter]. the tolerance criterion is parametrictolerance. raised if abs (u2 - u1) <= parametrictolerance.
+Computes all the data needed to convert the portion of the BSpline curve BasisCurve limited by the two parameter values U1 and U2 into a series of adjacent Bezier arcs. The result consists of a series of BasisCurve arcs limited by points corresponding to knot values of the curve. Use the available interrogation functions to ascertain the number of computed Bezier arcs, and then to construct each individual Bezier curve (or all Bezier curves). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 are out of the parametric bounds of the basis curve [FirstParameter, LastParameter]. The Tolerance criterion is ParametricTolerance. Raised if Abs (U2 - U1) <= ParametricTolerance.
 ") GeomConvert_BSplineCurveToBezierCurve;
 		 GeomConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom_BSplineCurve> & BasisCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real ParametricTolerance);
 
@@ -828,7 +828,7 @@ opencascade::handle<Geom_BezierCurve>
 
 Description
 -----------
-Constructs and returns the bezier curve of index index to the table of adjacent bezier arcs computed by this algorithm. this bezier curve has the same orientation as the bspline curve analyzed in this framework. exceptions standard_outofrange if index is less than 1 or greater than the number of adjacent bezier arcs computed by this algorithm.
+Constructs and returns the Bezier curve of index Index to the table of adjacent Bezier arcs computed by this algorithm. This Bezier curve has the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_OutOfRange if Index is less than 1 or greater than the number of adjacent Bezier arcs computed by this algorithm.
 ") Arc;
 		opencascade::handle<Geom_BezierCurve> Arc(const Standard_Integer Index);
 
@@ -846,7 +846,7 @@ None
 
 Description
 -----------
-Constructs all the bezier curves whose data is computed by this algorithm and loads these curves into the curves table. the bezier curves have the same orientation as the bspline curve analyzed in this framework. exceptions standard_dimensionerror if the curves array was not created with the following bounds: - 1 , and - the number of adjacent bezier arcs computed by this algorithm (as given by the function nbarcs).
+Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 ") Arcs;
 		void Arcs(TColGeom_Array1OfBezierCurve & Curves);
 
@@ -864,7 +864,7 @@ None
 
 Description
 -----------
-This methode returns the bspline's knots associated to the converted arcs raised if the length of curves is not equal to nbarcs + 1.
+This methode returns the bspline's knots associated to the converted arcs Raised if the length of Curves is not equal to NbArcs + 1.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -877,7 +877,7 @@ int
 
 Description
 -----------
-Returns the number of beziercurve arcs. if at the creation time you have decomposed the basis curve between the parametric values ufirst, ulast the number of beziercurve arcs depends on the number of knots included inside the interval [ufirst, ulast]. if you have decomposed the whole basis b-spline curve the number of beziercurve arcs nbarcs is equal to the number of knots less one.
+Returns the number of BezierCurve arcs. If at the creation time you have decomposed the basis curve between the parametric values UFirst, ULast the number of BezierCurve arcs depends on the number of knots included inside the interval [UFirst, ULast]. If you have decomposed the whole basis B-spline curve the number of BezierCurve arcs NbArcs is equal to the number of knots less one.
 ") NbArcs;
 		Standard_Integer NbArcs();
 
@@ -911,7 +911,7 @@ None
 
 Description
 -----------
-Determines the u- and v-isoparametric curves along which the bspline surface basissurface should be split in order to obtain patches with a degree of continuity equal to ucontinuityrange in the u parametric direction, and to vcontinuityrange in the v parametric direction. these isoparametric curves are defined by parameters, which are basissurface knot values in the u or v parametric direction. they are identified by indices in the basissurface knots table in the corresponding parametric direction. use the available interrogation functions to access computed values, followed by the global function splitbsplinesurface (provided by the package geomconvert) to split the surface. exceptions standard_rangeerror if ucontinuityrange or vcontinuityrange is less than zero.
+Determines the u- and v-isoparametric curves along which the BSpline surface BasisSurface should be split in order to obtain patches with a degree of continuity equal to UContinuityRange in the u parametric direction, and to VContinuityRange in the v parametric direction. These isoparametric curves are defined by parameters, which are BasisSurface knot values in the u or v parametric direction. They are identified by indices in the BasisSurface knots table in the corresponding parametric direction. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineSurface (provided by the package GeomConvert) to split the surface. Exceptions Standard_RangeError if UContinuityRange or VContinuityRange is less than zero.
 ") GeomConvert_BSplineSurfaceKnotSplitting;
 		 GeomConvert_BSplineSurfaceKnotSplitting(const opencascade::handle<Geom_BSplineSurface> & BasisSurface, const Standard_Integer UContinuityRange, const Standard_Integer VContinuityRange);
 
@@ -924,7 +924,7 @@ int
 
 Description
 -----------
-Returns the number of u-isoparametric curves along which the analysed bspline surface should be split in order to obtain patches with the continuity required by this framework. the parameters which define these curves are knot values in the corresponding parametric direction. note that the four curves which bound the surface are counted among these splitting curves.
+Returns the number of u-isoparametric curves along which the analysed BSpline surface should be split in order to obtain patches with the continuity required by this framework. The parameters which define these curves are knot values in the corresponding parametric direction. Note that the four curves which bound the surface are counted among these splitting curves.
 ") NbUSplits;
 		Standard_Integer NbUSplits();
 
@@ -937,7 +937,7 @@ int
 
 Description
 -----------
-Returns the number of v-isoparametric curves along which the analysed bspline surface should be split in order to obtain patches with the continuity required by this framework. the parameters which define these curves are knot values in the corresponding parametric direction. note that the four curves which bound the surface are counted among these splitting curves.
+Returns the number of v-isoparametric curves along which the analysed BSpline surface should be split in order to obtain patches with the continuity required by this framework. The parameters which define these curves are knot values in the corresponding parametric direction. Note that the four curves which bound the surface are counted among these splitting curves.
 ") NbVSplits;
 		Standard_Integer NbVSplits();
 
@@ -956,7 +956,7 @@ None
 
 Description
 -----------
-Loads the usplit and vsplit tables with the split knots values computed in this framework. each value in these tables is an index in the knots table corresponding to the u or v parametric direction of the bspline surface analysed by this algorithm. the usplit and vsplit values are given in ascending order and comprise the indices of the knots which give the first and last isoparametric curves of the surface in the corresponding parametric direction. use two consecutive values from the usplit table and two consecutive values from the vsplit table as arguments of the global function splitbsplinesurface (provided by the package geomconvert) to split the surface. exceptions standard_dimensionerror if: - the array usplit was not created with the following bounds: - 1 , and - the number of split knots in the u parametric direction computed in this framework (as given by the function nbusplits); or - the array vsplit was not created with the following bounds: - 1 , and - the number of split knots in the v parametric direction computed in this framework (as given by the function nbvsplits).
+Loads the USplit and VSplit tables with the split knots values computed in this framework. Each value in these tables is an index in the knots table corresponding to the u or v parametric direction of the BSpline surface analysed by this algorithm. The USplit and VSplit values are given in ascending order and comprise the indices of the knots which give the first and last isoparametric curves of the surface in the corresponding parametric direction. Use two consecutive values from the USplit table and two consecutive values from the VSplit table as arguments of the global function SplitBSplineSurface (provided by the package GeomConvert) to split the surface. Exceptions Standard_DimensionError if: - the array USplit was not created with the following bounds: - 1 , and - the number of split knots in the u parametric direction computed in this framework (as given by the function NbUSplits); or - the array VSplit was not created with the following bounds: - 1 , and - the number of split knots in the v parametric direction computed in this framework (as given by the function NbVSplits).
 ") Splitting;
 		void Splitting(TColStd_Array1OfInteger & USplit, TColStd_Array1OfInteger & VSplit);
 
@@ -974,7 +974,7 @@ int
 
 Description
 -----------
-Returns the split knot of index uindex to the split knots table for the u parametric direction computed in this framework. the returned value is an index in the knots table relative to the u parametric direction of the bspline surface analysed by this algorithm. note: if uindex is equal to 1, or to the number of split knots for the u parametric direction computed in this framework, the corresponding knot gives the parameter of one of the bounding curves of the surface. exceptions standard_rangeerror if uindex is less than 1 or greater than the number of split knots for the u parametric direction computed in this framework.
+Returns the split knot of index UIndex to the split knots table for the u parametric direction computed in this framework. The returned value is an index in the knots table relative to the u parametric direction of the BSpline surface analysed by this algorithm. Note: If UIndex is equal to 1, or to the number of split knots for the u parametric direction computed in this framework, the corresponding knot gives the parameter of one of the bounding curves of the surface. Exceptions Standard_RangeError if UIndex is less than 1 or greater than the number of split knots for the u parametric direction computed in this framework.
 ") USplitValue;
 		Standard_Integer USplitValue(const Standard_Integer UIndex);
 
@@ -992,7 +992,7 @@ int
 
 Description
 -----------
-Returns the split knot of index vindex to the split knots table for the v parametric direction computed in this framework. the returned value is an index in the knots table relative to the v parametric direction of the bspline surface analysed by this algorithm. note: if uindex is equal to 1, or to the number of split knots for the v parametric direction computed in this framework, the corresponding knot gives the parameter of one of the bounding curves of the surface. exceptions standard_rangeerror if vindex is less than 1 or greater than the number of split knots for the v parametric direction computed in this framework.
+Returns the split knot of index VIndex to the split knots table for the v parametric direction computed in this framework. The returned value is an index in the knots table relative to the v parametric direction of the BSpline surface analysed by this algorithm. Note: If UIndex is equal to 1, or to the number of split knots for the v parametric direction computed in this framework, the corresponding knot gives the parameter of one of the bounding curves of the surface. Exceptions Standard_RangeError if VIndex is less than 1 or greater than the number of split knots for the v parametric direction computed in this framework.
 ") VSplitValue;
 		Standard_Integer VSplitValue(const Standard_Integer VIndex);
 
@@ -1024,7 +1024,7 @@ None
 
 Description
 -----------
-Computes all the data needed to convert - the bspline surface basissurface into a series of adjacent bezier surfaces. the result consists of a grid of basissurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. a row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. a column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. use the available interrogation functions to ascertain the number of computed bezier patches, and then to construct each individual bezier surface (or all bezier surfaces). note: parametrictolerance is not used.
+Computes all the data needed to convert - the BSpline surface BasisSurface into a series of adjacent Bezier surfaces. The result consists of a grid of BasisSurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. A row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. A column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. Use the available interrogation functions to ascertain the number of computed Bezier patches, and then to construct each individual Bezier surface (or all Bezier surfaces). Note: ParametricTolerance is not used.
 ") GeomConvert_BSplineSurfaceToBezierSurface;
 		 GeomConvert_BSplineSurfaceToBezierSurface(const opencascade::handle<Geom_BSplineSurface> & BasisSurface);
 
@@ -1047,7 +1047,7 @@ None
 
 Description
 -----------
-Computes all the data needed to convert the patch of the bspline surface basissurface limited by the two parameter values u1 and u2 in the u parametric direction, and by the two parameter values v1 and v2 in the v parametric direction, into a series of adjacent bezier surfaces. the result consists of a grid of basissurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. a row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. a column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. use the available interrogation functions to ascertain the number of computed bezier patches, and then to construct each individual bezier surface (or all bezier surfaces). note: parametrictolerance is not used. raises domainerror if u1 or u2 or v1 or v2 are out of the parametric bounds of the basis surface [firstuknotindex, lastuknotindex] , [firstvknotindex, lastvknotindex] the tolerance criterion is parametrictolerance. raised if u2 - u1 <= parametrictolerance or v2 - v1 <= parametrictolerance.
+Computes all the data needed to convert the patch of the BSpline surface BasisSurface limited by the two parameter values U1 and U2 in the u parametric direction, and by the two parameter values V1 and V2 in the v parametric direction, into a series of adjacent Bezier surfaces. The result consists of a grid of BasisSurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. A row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. A column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. Use the available interrogation functions to ascertain the number of computed Bezier patches, and then to construct each individual Bezier surface (or all Bezier surfaces). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 or V1 or V2 are out of the parametric bounds of the basis surface [FirstUKnotIndex, LastUKnotIndex] , [FirstVKnotIndex, LastVKnotIndex] The tolerance criterion is ParametricTolerance. Raised if U2 - U1 <= ParametricTolerance or V2 - V1 <= ParametricTolerance.
 ") GeomConvert_BSplineSurfaceToBezierSurface;
 		 GeomConvert_BSplineSurfaceToBezierSurface(const opencascade::handle<Geom_BSplineSurface> & BasisSurface, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real ParametricTolerance);
 
@@ -1060,7 +1060,7 @@ int
 
 Description
 -----------
-Returns the number of bezier surfaces in the u direction. if at the creation time you have decomposed the basis surface between the parametric values ufirst, ulast the number of bezier surfaces in the u direction depends on the number of knots included inside the interval [ufirst, ulast]. if you have decomposed the whole basis b-spline surface the number of bezier surfaces nbupatches is equal to the number of uknots less one.
+Returns the number of Bezier surfaces in the U direction. If at the creation time you have decomposed the basis Surface between the parametric values UFirst, ULast the number of Bezier surfaces in the U direction depends on the number of knots included inside the interval [UFirst, ULast]. If you have decomposed the whole basis B-spline surface the number of Bezier surfaces NbUPatches is equal to the number of UKnots less one.
 ") NbUPatches;
 		Standard_Integer NbUPatches();
 
@@ -1073,7 +1073,7 @@ int
 
 Description
 -----------
-Returns the number of bezier surfaces in the v direction. if at the creation time you have decomposed the basis surface between the parametric values vfirst, vlast the number of bezier surfaces in the v direction depends on the number of knots included inside the interval [vfirst, vlast]. if you have decomposed the whole basis b-spline surface the number of bezier surfaces nbvpatches is equal to the number of vknots less one.
+Returns the number of Bezier surfaces in the V direction. If at the creation time you have decomposed the basis surface between the parametric values VFirst, VLast the number of Bezier surfaces in the V direction depends on the number of knots included inside the interval [VFirst, VLast]. If you have decomposed the whole basis B-spline surface the number of Bezier surfaces NbVPatches is equal to the number of VKnots less one.
 ") NbVPatches;
 		Standard_Integer NbVPatches();
 
@@ -1092,7 +1092,7 @@ opencascade::handle<Geom_BezierSurface>
 
 Description
 -----------
-Constructs and returns the bezier surface of indices (uindex, vindex) to the patch grid computed on the bspline surface analyzed by this algorithm. this bezier surface has the same orientation as the bspline surface analyzed in this framework. uindex is an index common to a row in the patch grid. a row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. vindex is an index common to a column in the patch grid. a column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. exceptions standard_outofrange if: - uindex is less than 1 or greater than the number of rows in the patch grid computed on the bspline surface analyzed by this algorithm (as returned by the function nbupatches); or if - vindex is less than 1 or greater than the number of columns in the patch grid computed on the bspline surface analyzed by this algorithm (as returned by the function nbvpatches).
+Constructs and returns the Bezier surface of indices (UIndex, VIndex) to the patch grid computed on the BSpline surface analyzed by this algorithm. This Bezier surface has the same orientation as the BSpline surface analyzed in this framework. UIndex is an index common to a row in the patch grid. A row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. VIndex is an index common to a column in the patch grid. A column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. Exceptions Standard_OutOfRange if: - UIndex is less than 1 or greater than the number of rows in the patch grid computed on the BSpline surface analyzed by this algorithm (as returned by the function NbUPatches); or if - VIndex is less than 1 or greater than the number of columns in the patch grid computed on the BSpline surface analyzed by this algorithm (as returned by the function NbVPatches).
 ") Patch;
 		opencascade::handle<Geom_BezierSurface> Patch(const Standard_Integer UIndex, const Standard_Integer VIndex);
 
@@ -1110,7 +1110,7 @@ None
 
 Description
 -----------
-Constructs all the bezier surfaces whose data is computed by this algorithm, and loads them into the surfaces table. these bezier surfaces have the same orientation as the bspline surface analyzed in this framework. the surfaces array is organised in the same way as the patch grid computed on the bspline surface analyzed by this algorithm. a row in the array corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. a column in the array corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. exceptions standard_dimensionerror if the surfaces array was not created with the following bounds: - 1, and the number of adjacent patch series in the u parametric direction of the patch grid computed on the bspline surface, analyzed by this algorithm (as given by the function nbupatches) as row bounds, - 1, and the number of adjacent patch series in the v parametric direction of the patch grid computed on the bspline surface, analyzed by this algorithm (as given by the function nbvpatches) as column bounds.
+Constructs all the Bezier surfaces whose data is computed by this algorithm, and loads them into the Surfaces table. These Bezier surfaces have the same orientation as the BSpline surface analyzed in this framework. The Surfaces array is organised in the same way as the patch grid computed on the BSpline surface analyzed by this algorithm. A row in the array corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. A column in the array corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. Exceptions Standard_DimensionError if the Surfaces array was not created with the following bounds: - 1, and the number of adjacent patch series in the u parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbUPatches) as row bounds, - 1, and the number of adjacent patch series in the v parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbVPatches) as column bounds.
 ") Patches;
 		void Patches(TColGeom_Array2OfBezierSurface & Surfaces);
 
@@ -1128,7 +1128,7 @@ None
 
 Description
 -----------
-This methode returns the bspline's u-knots associated to the converted patches raised if the length of curves is not equal to nbupatches + 1.
+This methode returns the bspline's u-knots associated to the converted Patches Raised if the length of Curves is not equal to NbUPatches + 1.
 ") UKnots;
 		void UKnots(TColStd_Array1OfReal & TKnots);
 
@@ -1146,7 +1146,7 @@ None
 
 Description
 -----------
-This methode returns the bspline's v-knots associated to the converted patches raised if the length of curves is not equal to nbvpatches + 1.
+This methode returns the bspline's v-knots associated to the converted Patches Raised if the length of Curves is not equal to NbVPatches + 1.
 ") VKnots;
 		void VKnots(TColStd_Array1OfReal & TKnots);
 
@@ -1178,7 +1178,7 @@ None
 
 Description
 -----------
-Computes all the data needed to build a 'c0' continuous bspline surface equivalent to the grid of adjacent non-rational bezier surfaces beziers. each surface in the beziers grid becomes a natural patch, limited by knots values, on the bspline surface whose data is computed. surfaces in the grid must satisfy the following conditions: - coincident bounding curves between two consecutive surfaces in a row of the beziers grid must be u-isoparametric bounding curves of these two surfaces. - coincident bounding curves between two consecutive surfaces in a column of the beziers grid must be v-isoparametric bounding curves of these two surfaces. the bspline surface whose data is computed has the following characteristics: - its degree in the u (respectively v) parametric direction is equal to that of the bezier surface which has the highest degree in the u (respectively v) parametric direction in the beziers grid. - it is a 'piecewise bezier' in both u and v parametric directions, i.e.: - the knots are regularly spaced in each parametric direction (i.e. the difference between two consecutive knots is a constant), and - all the multiplicities of the surface knots in a given parametric direction are equal to degree, which is the degree of the bspline surface in this parametric direction, except for the first and last knots for which the multiplicity is equal to degree + 1. - coincident bounding curves between two consecutive columns of bezier surfaces in the beziers grid become u-isoparametric curves, corresponding to knots values of the bspline surface. - coincident bounding curves between two consecutive rows of bezier surfaces in the beziers grid become v-isoparametric curves corresponding to knots values of the bspline surface. use the available consultation functions to access the computed data. this data may be used to construct the bspline surface. warning the surfaces in the beziers grid must be adjacent, i.e. two consecutive bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. in addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the beziers grid. care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. exceptions standard_notimplemented if one of the bezier surfaces of the beziers grid is rational.
+Computes all the data needed to build a 'C0' continuous BSpline surface equivalent to the grid of adjacent non-rational Bezier surfaces Beziers. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - It is a 'Piecewise Bezier' in both u and v parametric directions, i.e.: - the knots are regularly spaced in each parametric direction (i.e. the difference between two consecutive knots is a constant), and - all the multiplicities of the surface knots in a given parametric direction are equal to Degree, which is the degree of the BSpline surface in this parametric direction, except for the first and last knots for which the multiplicity is equal to Degree + 1. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves, corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_NotImplemented if one of the Bezier surfaces of the Beziers grid is rational.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers);
 
@@ -1198,7 +1198,7 @@ None
 
 Description
 -----------
-Build an ci uniform (rational) bspline surface the highest continuity ci is imposed, like the maximal deformation is lower than <tolerance>. warning: the continuity c0 is imposed without any check.
+Build an Ci uniform (Rational) BSpline surface The highest Continuity Ci is imposed, like the maximal deformation is lower than <Tolerance>. Warning: The Continuity C0 is imposed without any check.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const Standard_Real Tolerance, const Standard_Boolean RemoveKnots = Standard_True);
 
@@ -1221,7 +1221,7 @@ None
 
 Description
 -----------
-Computes all the data needed to construct a bspline surface equivalent to the adjacent non-rational bezier surfaces beziers grid. each surface in the beziers grid becomes a natural patch, limited by knots values, on the bspline surface whose data is computed. surfaces in the grid must satisfy the following conditions: - coincident bounding curves between two consecutive surfaces in a row of the beziers grid must be u-isoparametric bounding curves of these two surfaces. - coincident bounding curves between two consecutive surfaces in a column of the beziers grid must be v-isoparametric bounding curves of these two surfaces. the bspline surface whose data is computed has the following characteristics: - its degree in the u (respectively v) parametric direction is equal to that of the bezier surface which has the highest degree in the u (respectively v) parametric direction in the beziers grid. - coincident bounding curves between two consecutive columns of bezier surfaces in the beziers grid become u-isoparametric curves corresponding to knots values of the bspline surface. - coincident bounding curves between two consecutive rows of bezier surfaces in the beziers grid become v-isoparametric curves corresponding to knots values of the bspline surface. knots values of the bspline surface are given in the two tables: - uknots for the u parametric direction (which corresponds to the order of bezier surface columns in the beziers grid), and - vknots for the v parametric direction (which corresponds to the order of bezier surface rows in the beziers grid). the dimensions of uknots (respectively vknots) must be equal to the number of columns (respectively, rows) of the beziers grid, plus 1 . ucontinuity and vcontinuity, which are both defaulted to geomabs_c0, specify the required continuity on the bspline surface. if the required degree of continuity is greater than 0 in a given parametric direction, a deformation is applied locally on the initial surface (as defined by the beziers grid) to satisfy this condition. this local deformation is not applied however, if it is greater than tolerance (defaulted to 1.0 e-7). in such cases, the continuity condition is not satisfied, and the function isdone will return false. a small tolerance value prevents any modification of the surface and a large tolerance value 'smoothes' the surface. use the available consultation functions to access the computed data. this data may be used to construct the bspline surface. warning the surfaces in the beziers grid must be adjacent, i.e. two consecutive bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. in addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the beziers grid. care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. exceptions standard_dimensionmismatch: - if the number of knots in the uknots table (i.e. the length of the uknots array) is not equal to the number of columns of bezier surfaces in the beziers grid plus 1, or - if the number of knots in the vknots table (i.e. the length of the vknots array) is not equal to the number of rows of bezier surfaces in the beziers grid, plus 1. standard_constructionerror: - if ucontinuity and vcontinuity are not equal to one of the following values: geomabs_c0, geomabs_c1, geomabs_c2 and geomabs_c3; or - if the number of columns in the beziers grid is greater than 1, and the required degree of continuity in the u parametric direction is greater than that of the bezier surface with the highest degree in the u parametric direction (in the beziers grid), minus 1; or - if the number of rows in the beziers grid is greater than 1, and the required degree of continuity in the v parametric direction is greater than that of the bezier surface with the highest degree in the v parametric direction (in the beziers grid), minus 1 . standard_notimplemented if one of the bezier surfaces in the beziers grid is rational.
+Computes all the data needed to construct a BSpline surface equivalent to the adjacent non-rational Bezier surfaces Beziers grid. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Knots values of the BSpline surface are given in the two tables: - UKnots for the u parametric direction (which corresponds to the order of Bezier surface columns in the Beziers grid), and - VKnots for the v parametric direction (which corresponds to the order of Bezier surface rows in the Beziers grid). The dimensions of UKnots (respectively VKnots) must be equal to the number of columns (respectively, rows) of the Beziers grid, plus 1 . UContinuity and VContinuity, which are both defaulted to GeomAbs_C0, specify the required continuity on the BSpline surface. If the required degree of continuity is greater than 0 in a given parametric direction, a deformation is applied locally on the initial surface (as defined by the Beziers grid) to satisfy this condition. This local deformation is not applied however, if it is greater than Tolerance (defaulted to 1.0 e-7). In such cases, the continuity condition is not satisfied, and the function IsDone will return false. A small tolerance value prevents any modification of the surface and a large tolerance value 'smoothes' the surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_DimensionMismatch: - if the number of knots in the UKnots table (i.e. the length of the UKnots array) is not equal to the number of columns of Bezier surfaces in the Beziers grid plus 1, or - if the number of knots in the VKnots table (i.e. the length of the VKnots array) is not equal to the number of rows of Bezier surfaces in the Beziers grid, plus 1. Standard_ConstructionError: - if UContinuity and VContinuity are not equal to one of the following values: GeomAbs_C0, GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or - if the number of columns in the Beziers grid is greater than 1, and the required degree of continuity in the u parametric direction is greater than that of the Bezier surface with the highest degree in the u parametric direction (in the Beziers grid), minus 1; or - if the number of rows in the Beziers grid is greater than 1, and the required degree of continuity in the v parametric direction is greater than that of the Bezier surface with the highest degree in the v parametric direction (in the Beziers grid), minus 1 . Standard_NotImplemented if one of the Bezier surfaces in the Beziers grid is rational.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const GeomAbs_Shape UContinuity = GeomAbs_C0, const GeomAbs_Shape VContinuity = GeomAbs_C0, const Standard_Real Tolerance = 1.0e-4);
 
@@ -1234,7 +1234,7 @@ bool
 
 Description
 -----------
-Returns true if the conversion was successful. unless an exception was raised at the time of construction, the conversion of the bezier surface grid assigned to this algorithm is always carried out. isdone returns false if the constraints defined at the time of construction cannot be respected. this occurs when there is an incompatibility between a required degree of continuity on the bspline surface, and the maximum tolerance accepted for local deformations of the surface. in such a case the computed data does not satisfy all the initial constraints.
+Returns true if the conversion was successful. Unless an exception was raised at the time of construction, the conversion of the Bezier surface grid assigned to this algorithm is always carried out. IsDone returns false if the constraints defined at the time of construction cannot be respected. This occurs when there is an incompatibility between a required degree of continuity on the BSpline surface, and the maximum tolerance accepted for local deformations of the surface. In such a case the computed data does not satisfy all the initial constraints.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1247,7 +1247,7 @@ int
 
 Description
 -----------
-Returns the number of knots in the u direction of the bspline surface whose data is computed in this framework.
+Returns the number of knots in the U direction of the BSpline surface whose data is computed in this framework.
 ") NbUKnots;
 		Standard_Integer NbUKnots();
 
@@ -1260,7 +1260,7 @@ int
 
 Description
 -----------
-Returns number of poles in the u direction of the bspline surface whose data is computed in this framework.
+Returns number of poles in the U direction of the BSpline surface whose data is computed in this framework.
 ") NbUPoles;
 		Standard_Integer NbUPoles();
 
@@ -1273,7 +1273,7 @@ int
 
 Description
 -----------
-Returns the number of knots in the v direction of the bspline surface whose data is computed in this framework.
+Returns the number of knots in the V direction of the BSpline surface whose data is computed in this framework.
 ") NbVKnots;
 		Standard_Integer NbVKnots();
 
@@ -1286,7 +1286,7 @@ int
 
 Description
 -----------
-Returns the number of poles in the v direction of the bspline surface whose data is computed in this framework.
+Returns the number of poles in the V direction of the BSpline surface whose data is computed in this framework.
 ") NbVPoles;
 		Standard_Integer NbVPoles();
 
@@ -1299,7 +1299,7 @@ opencascade::handle<TColgp_HArray2OfPnt>
 
 Description
 -----------
-Returns the table of poles of the bspline surface whose data is computed in this framework.
+Returns the table of poles of the BSpline surface whose data is computed in this framework.
 ") Poles;
 		const opencascade::handle<TColgp_HArray2OfPnt> & Poles();
 
@@ -1312,7 +1312,7 @@ int
 
 Description
 -----------
-Returns the degree for the u parametric direction of the bspline surface whose data is computed in this framework.
+Returns the degree for the u parametric direction of the BSpline surface whose data is computed in this framework.
 ") UDegree;
 		Standard_Integer UDegree();
 
@@ -1325,7 +1325,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the knots table for the u parametric direction of the bspline surface whose data is computed in this framework.
+Returns the knots table for the u parametric direction of the BSpline surface whose data is computed in this framework.
 ") UKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & UKnots();
 
@@ -1338,7 +1338,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns the multiplicities table for the u parametric direction of the knots of the bspline surface whose data is computed in this framework.
+Returns the multiplicities table for the u parametric direction of the knots of the BSpline surface whose data is computed in this framework.
 ") UMultiplicities;
 		const opencascade::handle<TColStd_HArray1OfInteger> & UMultiplicities();
 
@@ -1351,7 +1351,7 @@ int
 
 Description
 -----------
-Returns the degree for the v parametric direction of the bspline surface whose data is computed in this framework.
+Returns the degree for the v parametric direction of the BSpline surface whose data is computed in this framework.
 ") VDegree;
 		Standard_Integer VDegree();
 
@@ -1364,7 +1364,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the knots table for the v parametric direction of the bspline surface whose data is computed in this framework.
+Returns the knots table for the v parametric direction of the BSpline surface whose data is computed in this framework.
 ") VKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & VKnots();
 
@@ -1377,7 +1377,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
--- returns the multiplicities table for the v parametric direction of the knots of the bspline surface whose data is computed in this framework.
+-- Returns the multiplicities table for the v parametric direction of the knots of the BSpline surface whose data is computed in this framework.
 ") VMultiplicities;
 		const opencascade::handle<TColStd_HArray1OfInteger> & VMultiplicities();
 
@@ -1409,7 +1409,7 @@ None
 
 Description
 -----------
-Initialize the algorithme - parameterisation is used to convert.
+Initialize the algorithme - Parameterisation is used to convert.
 ") GeomConvert_CompCurveToBSplineCurve;
 		 GeomConvert_CompCurveToBSplineCurve(const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1428,7 +1428,7 @@ None
 
 Description
 -----------
-Initialize the algorithme with one curve - parameterisation is used to convert.
+Initialize the algorithme with one curve - Parameterisation is used to convert.
 ") GeomConvert_CompCurveToBSplineCurve;
 		 GeomConvert_CompCurveToBSplineCurve(const opencascade::handle<Geom_BoundedCurve> & BasisCurve, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1450,7 +1450,7 @@ bool
 
 Description
 -----------
-Append a curve in the bspline return false if the curve is not g0 with the bsplinecurve. tolerance is used to check continuity and decrease multiplicity at the common knot until minm if minm = 0, the common knot can be removed //! withratio defines whether the resulting curve should have a uniform parameterization. setting withratio to standard_false may greatly decrease the speed of algorithms like cpnts_abscissapoint::advperform when applied to the resulting curve.
+Append a curve in the BSpline Return False if the curve is not G0 with the BSplineCurve. Tolerance is used to check continuity and decrease Multiplicity at the common Knot until MinM if MinM = 0, the common Knot can be removed //! WithRatio defines whether the resulting curve should have a uniform parameterization. Setting WithRatio to Standard_False may greatly decrease the speed of algorithms like CPnts_AbscissaPoint::AdvPerform when applied to the resulting curve.
 ") Add;
 		Standard_Boolean Add(const opencascade::handle<Geom_BoundedCurve> & NewCurve, const Standard_Real Tolerance, const Standard_Boolean After = Standard_False, const Standard_Boolean WithRatio = Standard_True, const Standard_Integer MinM = 0);
 
@@ -1535,7 +1535,7 @@ Deviation: float
 
 Description
 -----------
-Tries to convert the given curve to circle with given tolerance. returns null curve if conversion is not possible.
+Tries to convert the given curve to circle with given tolerance. Returns NULL curve if conversion is not possible.
 ") ComputeCircle;
 		static opencascade::handle<Geom_Curve> ComputeCircle(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1583,7 +1583,7 @@ Deviation: float
 
 Description
 -----------
-Tries to convert the given curve to ellipse with given tolerance. returns null curve if conversion is not possible.
+Tries to convert the given curve to ellipse with given tolerance. Returns NULL curve if conversion is not possible.
 ") ComputeEllipse;
 		static opencascade::handle<Geom_Curve> ComputeEllipse(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1606,7 +1606,7 @@ Deviation: float
 
 Description
 -----------
-Tries to convert the given curve to line with given tolerance. returns null curve if conversion is not possible.
+Tries to convert the given curve to line with given tolerance. Returns NULL curve if conversion is not possible.
 ") ComputeLine;
 		static opencascade::handle<Geom_Line> ComputeLine(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1628,7 +1628,7 @@ newL: float
 
 Description
 -----------
-Converts me to analytical if possible with given tolerance. the new first and last parameters are returned to newf, newl.
+Converts me to analytical if possible with given tolerance. The new first and last parameters are returned to newF, newL.
 ") ConvertToAnalytical;
 		Standard_Boolean ConvertToAnalytical(const Standard_Real theTol, opencascade::handle<Geom_Curve> & theResultCurve, const Standard_Real F, const Standard_Real L, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1641,7 +1641,7 @@ float
 
 Description
 -----------
-Returns maximal deviation of converted surface from the original one computed by last call to converttoanalytical.
+Returns maximal deviation of converted surface from the original one computed by last call to ConvertToAnalytical.
 ") Gap;
 		Standard_Real Gap();
 
@@ -1662,7 +1662,7 @@ bool
 
 Description
 -----------
-Creates circle on points. returns true if ok.
+Creates circle on points. Returns true if OK.
 ") GetCircle;
 		static Standard_Boolean GetCircle(gp_Circ & Circ, const gp_Pnt & P0, const gp_Pnt & P1, const gp_Pnt & P2);
 
@@ -1675,7 +1675,7 @@ GeomConvert_ConvType
 
 Description
 -----------
-Returns conversion type .
+Returns conversion type.
 ") GetConvType;
 		GeomConvert_ConvType GetConvType();
 
@@ -1695,7 +1695,7 @@ cl: float
 
 Description
 -----------
-Creates line on two points. resulting parameters returned.
+Creates line on two points. Resulting parameters returned.
 ") GetLine;
 		static gp_Lin GetLine(const gp_Pnt & P1, const gp_Pnt & P2, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1708,7 +1708,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns target curve type .
+Returns target curve type.
 ") GetTarget;
 		GeomAbs_CurveType GetTarget();
 
@@ -1763,7 +1763,7 @@ None
 
 Description
 -----------
-Sets type of convertion.
+Sets type of conversion.
 ") SetConvType;
 		void SetConvType(const GeomConvert_ConvType theConvType);
 
@@ -2240,7 +2240,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Tries to convert the surface to an analytic form returns the result in case of failure, returns a null handle //!.
+Tries to convert the Surface to an Analytic form Returns the result In case of failure, returns a Null Handle //!.
 ") ConvertToAnalytical;
 		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real InitialToler);
 
@@ -2275,7 +2275,7 @@ float
 
 Description
 -----------
-Returns maximal deviation of converted surface from the original one computed by last call to converttoanalytical.
+Returns maximal deviation of converted surface from the original one computed by last call to ConvertToAnalytical.
 ") Gap;
 		Standard_Real Gap();
 
@@ -2420,7 +2420,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Return 2d curve as 'mirror' for given.
+return 2d curve as 'mirror' for given.
 ") MirrorPCurve;
 		static opencascade::handle<Geom2d_Curve> MirrorPCurve(const opencascade::handle<Geom2d_Curve> & theCurve);
 
@@ -2441,7 +2441,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Convert 2d curve for change angle unit from radian to degree .
+Convert 2d curve for change angle unit from radian to degree.
 ") RadianToDegree;
 		static opencascade::handle<Geom2d_Curve> RadianToDegree(const opencascade::handle<Geom2d_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theLengthFactor, const Standard_Real theFactorRadianDegree);
 

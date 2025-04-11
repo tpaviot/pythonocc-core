@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCLASS3DDOCSTRING
 "BRepClass3d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepclass3d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass3d.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCLASS3DDOCSTRING) BRepClass3d
 
@@ -125,7 +125,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the outer most shell of <s>. returns a null shell if <s> has no outer shell. if <s> has only one shell, then it will return, without checking orientation.
+Returns the outer most shell of <S>. Returns a Null shell if <S> has no outer shell. If <S> has only one shell, then it will return, without checking orientation.
 ") OuterShell;
 		static TopoDS_Shell OuterShell(const TopoDS_Solid & S);
 
@@ -212,7 +212,7 @@ None
 
 Description
 -----------
-Perform the intersection between the segment l(0) ... l(prm) and the shape <sh>. //! only the point with the smallest parameter on the line is returned. //! the tolerance <tol> is used to determine if the first point of the segment is near the face. in that case, the parameter of the intersection point on the line can be a negative value (greater than -tol).
+Perform the intersection between the segment L(0) ... L(Prm) and the Shape <Sh>. //! Only the point with the smallest parameter on the line is returned. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol).
 ") Perform;
 		void Perform(const gp_Lin & L, const Standard_Real Prm, const Standard_Real Tol, const TopoDS_Face & F);
 
@@ -238,7 +238,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
+Returns the state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boundary of the face).
 ") State;
 		TopAbs_State State();
 
@@ -264,7 +264,7 @@ float
 
 Description
 -----------
-Returns the u parameter of the intersection point on the surface.
+Returns the U parameter of the intersection point on the surface.
 ") UParameter;
 		Standard_Real UParameter();
 
@@ -277,7 +277,7 @@ float
 
 Description
 -----------
-Returns the v parameter of the intersection point on the surface.
+Returns the V parameter of the intersection point on the surface.
 ") VParameter;
 		Standard_Real VParameter();
 
@@ -337,7 +337,7 @@ None
 
 Description
 -----------
-Constructor to classify the point p with the tolerance tol on the solid s.
+Constructor to classify the point P with the tolerance Tol on the solid S.
 ") BRepClass3d_SClassifier;
 		 BRepClass3d_SClassifier(BRepClass3d_SolidExplorer & S, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -350,7 +350,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face used to determine the classification. when the state is on, this is the face containing the point. //! when rejected() returns true, face() has no signification.
+Returns the face used to determine the classification. When the state is ON, this is the face containing the point. //! When Rejected() returns True, Face() has no signification.
 ") Face;
 		TopoDS_Face Face();
 
@@ -363,7 +363,7 @@ bool
 
 Description
 -----------
-Returns true when the point is a point of a face.
+Returns True when the point is a point of a face.
 ") IsOnAFace;
 		Standard_Boolean IsOnAFace();
 
@@ -383,7 +383,7 @@ None
 
 Description
 -----------
-Classify the point p with the tolerance tol on the solid s.
+Classify the point P with the tolerance Tol on the solid S.
 ") Perform;
 		void Perform(BRepClass3d_SolidExplorer & S, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -402,7 +402,7 @@ None
 
 Description
 -----------
-Classify an infinite point with the tolerance tol on the solid s.
+Classify an infinite point with the tolerance Tol on the solid S.
 ") PerformInfinitePoint;
 		void PerformInfinitePoint(BRepClass3d_SolidExplorer & S, const Standard_Real Tol);
 
@@ -415,7 +415,7 @@ bool
 
 Description
 -----------
-Returns true if the classification has been computed by rejection. the state is then out.
+Returns True if the classification has been computed by rejection. The State is then OUT.
 ") Rejected;
 		Standard_Boolean Rejected();
 
@@ -565,7 +565,7 @@ Param: float
 
 Description
 -----------
-Compute a point p in the face f. param is a real in ]0,1[ and is used to initialise the algorithm. for different values , different points are returned.
+compute a point P in the face F. Param is a Real in ]0,1[ and is used to initialise the algorithm. For different values , different points are returned.
 ") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -719,7 +719,7 @@ BRepClass3d_BndBoxTree
 
 Description
 -----------
-Return ub-tree instance which is used for edge / vertex checks.
+Return UB-tree instance which is used for edge / vertex checks.
 ") GetTree;
 		const BRepClass3d_BndBoxTree & GetTree();
 
@@ -794,7 +794,7 @@ bool
 
 Description
 -----------
-Returns true if current face in current shell.
+Returns True if current face in current shell.
 ") MoreFace;
 		Standard_Boolean MoreFace();
 
@@ -807,7 +807,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current shell.
+Returns True if there is a current shell.
 ") MoreShell;
 		Standard_Boolean MoreShell();
 
@@ -820,7 +820,7 @@ None
 
 Description
 -----------
-Sets the explorer to the next face of the current shell.
+Sets the explorer to the next Face of the current shell.
 ") NextFace;
 		void NextFace();
 
@@ -852,7 +852,7 @@ Par: float
 
 Description
 -----------
-Returns in <l>, <par> a segment having at least one intersection with the shape boundary to compute intersections. //! the first call to this method returns a line which point to a point of the first face of the shape. the second call provide a line to the second face and so on.
+Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections. //! The First Call to this method returns a line which point to a point of the first face of the shape. The Second Call provide a line to the second face and so on.
 ") OtherSegment;
 		Standard_Integer OtherSegment(const gp_Pnt & P, gp_Lin & L, Standard_Real &OutValue);
 
@@ -930,7 +930,7 @@ Index: int
 
 Description
 -----------
-<index> gives point index to search from and returns point index of succeseful search.
+<Index> gives point index to search from and returns point index of succeseful search.
 ") PointInTheFace;
 		Standard_Boolean PointInTheFace(const TopoDS_Face & F, gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, const opencascade::handle<BRepAdaptor_Surface> & surf, const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & theVecD1U, gp_Vec & theVecD1V);
 
@@ -948,7 +948,7 @@ bool
 
 Description
 -----------
-Should return true if p outside of bounding vol. of the shape.
+Should return True if P outside of bounding vol. of the shape.
 ") Reject;
 		virtual Standard_Boolean Reject(const gp_Pnt & P);
 
@@ -966,7 +966,7 @@ bool
 
 Description
 -----------
-Returns true if the face is rejected.
+returns True if the face is rejected.
 ") RejectFace;
 		virtual Standard_Boolean RejectFace(const gp_Lin & L);
 
@@ -984,7 +984,7 @@ bool
 
 Description
 -----------
-Returns true if the shell is rejected.
+Returns True if the Shell is rejected.
 ") RejectShell;
 		virtual Standard_Boolean RejectShell(const gp_Lin & L);
 
@@ -1003,7 +1003,7 @@ Par: float
 
 Description
 -----------
-Returns in <l>, <par> a segment having at least one intersection with the shape boundary to compute intersections.
+Returns in <L>, <Par> a segment having at least one intersection with the shape boundary to compute intersections.
 ") Segment;
 		Standard_Integer Segment(const gp_Pnt & P, gp_Lin & L, Standard_Real &OutValue);
 
@@ -1049,12 +1049,12 @@ None
 
 Description
 -----------
-Updates the classification process with the face <f> from the boundary.
+Updates the classification process with the face <F> from the boundary.
 ") Compare;
 		void Compare(const TopoDS_Face & F, const TopAbs_Orientation Or);
 
 		/****** BRepClass3d_SolidPassiveClassifier::HasIntersection ******/
-		/****** md5 signature: 94c3b976d93201cedbd7868f3cc308ec ******/
+		/****** md5 signature: 55f070fe51c559b5db20d742c7f46730 ******/
 		%feature("compactdefaultargs") HasIntersection;
 		%feature("autodoc", "Return
 -------
@@ -1062,12 +1062,12 @@ bool
 
 Description
 -----------
-Returns true if an intersection is computed.
+Returns True if an intersection is computed.
 ") HasIntersection;
 		Standard_Boolean HasIntersection();
 
 		/****** BRepClass3d_SolidPassiveClassifier::Intersector ******/
-		/****** md5 signature: 89ae7485d04a83ad1143250d9364ad9b ******/
+		/****** md5 signature: b339e86a1f3b2bdef697aa467bca345d ******/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "Return
 -------
@@ -1080,7 +1080,7 @@ Returns the intersecting algorithm.
 		BRepClass3d_Intersector3d & Intersector();
 
 		/****** BRepClass3d_SolidPassiveClassifier::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -1108,12 +1108,12 @@ None
 
 Description
 -----------
-Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the intersections.
+Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the intersections.
 ") Reset;
 		void Reset(const gp_Lin & L, const Standard_Real P, const Standard_Real Tol);
 
 		/****** BRepClass3d_SolidPassiveClassifier::State ******/
-		/****** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ******/
+		/****** md5 signature: f060e49862ba79cdeda588bb3f787fae ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -1154,7 +1154,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier();
 
@@ -1172,7 +1172,7 @@ None
 
 Description
 -----------
-Constructor from a shape.
+Constructor from a Shape.
 ") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier(const TopoDS_Shape & S);
 
@@ -1192,7 +1192,7 @@ None
 
 Description
 -----------
-Constructor to classify the point p with the tolerance tol on the solid s.
+Constructor to classify the point P with the tolerance Tol on the solid S.
 ") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier(const TopoDS_Shape & S, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -1242,7 +1242,7 @@ None
 
 Description
 -----------
-Classify the point p with the tolerance tol on the solid s.
+Classify the point P with the tolerance Tol on the solid S.
 ") Perform;
 		void Perform(const gp_Pnt & P, const Standard_Real Tol);
 
@@ -1260,7 +1260,7 @@ None
 
 Description
 -----------
-Classify an infinite point with the tolerance tol on the solid s. useful for compute the orientation of a solid.
+Classify an infinite point with the tolerance Tol on the solid S. Useful for compute the orientation of a solid.
 ") PerformInfinitePoint;
 		void PerformInfinitePoint(const Standard_Real Tol);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define OSDDOCSTRING
 "OSD module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_osd.html"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 
@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -52,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TCollection.i
 
 %pythoncode {
 from enum import IntEnum
@@ -349,7 +347,6 @@ OSD_WEnvironmentIterator = OSD_WhoAmI.OSD_WEnvironmentIterator
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
 typedef OSD_StreamBuffer<std::iostream> OSD_IOStreamBuffer;
 typedef OSD_StreamBuffer<std::istream> OSD_IStreamBuffer;
 typedef OSD_StreamBuffer<std::ostream> OSD_OStreamBuffer;

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINOBJMGTDOCSTRING
 "BinObjMgt module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_binobjmgt.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binobjmgt.html"
 %enddef
 %module (package="OCC.Core", docstring=BINOBJMGTDOCSTRING) BinObjMgt
 
@@ -117,7 +117,7 @@ None
 
 Description
 -----------
-Frees the allocated memory; this object can be reused after call to init.
+Frees the allocated memory; This object can be reused after call to Init.
 ") Destroy;
 		void Destroy();
 
@@ -189,7 +189,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of unsigned chars, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of unsigned chars, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetByteArray;
 		const BinObjMgt_Persistent & GetByteArray(const BinObjMgt_PByte theArray, const Standard_Integer theLength);
 
@@ -208,7 +208,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of char, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of char, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetCharArray;
 		const BinObjMgt_Persistent & GetCharArray(const BinObjMgt_PChar theArray, const Standard_Integer theLength);
 
@@ -245,7 +245,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of extcharacter, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of ExtCharacter, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetExtCharArray;
 		const BinObjMgt_Persistent & GetExtCharArray(const BinObjMgt_PExtChar theArray, const Standard_Integer theLength);
 
@@ -331,7 +331,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of int, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of int, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetIntArray;
 		const BinObjMgt_Persistent & GetIntArray(const BinObjMgt_PInteger theArray, const Standard_Integer theLength);
 
@@ -416,7 +416,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of double, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of double, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetRealArray;
 		const BinObjMgt_Persistent & GetRealArray(const BinObjMgt_PReal theArray, const Standard_Integer theLength);
 
@@ -452,7 +452,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Get c array of float, thelength is the number of elements; thearray must point to a space enough to place thelength elements.
+Get C array of float, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetShortRealArray;
 		const BinObjMgt_Persistent & GetShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
 
@@ -465,7 +465,7 @@ int
 
 Description
 -----------
-Returns the id of the object.
+Returns the Id of the object.
 ") Id;
 		Standard_Integer Id();
 
@@ -504,7 +504,7 @@ bool
 
 Description
 -----------
-Indicates an error after get methods or setposition.
+Indicates an error after Get methods or SetPosition.
 ") IsError;
 		Standard_Boolean IsError();
 
@@ -517,7 +517,7 @@ bool
 
 Description
 -----------
-Indicates a good state after get methods or setposition.
+Indicates a good state after Get methods or SetPosition.
 ") IsOK;
 		Standard_Boolean IsOK();
 
@@ -616,7 +616,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of unsigned chars, thelength is the number of elements.
+Put C array of unsigned chars, theLength is the number of elements.
 ") PutByteArray;
 		BinObjMgt_Persistent & PutByteArray(const BinObjMgt_PByte theArray, const Standard_Integer theLength);
 
@@ -653,7 +653,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of char, thelength is the number of elements.
+Put C array of char, theLength is the number of elements.
 ") PutCharArray;
 		BinObjMgt_Persistent & PutCharArray(const BinObjMgt_PChar theArray, const Standard_Integer theLength);
 
@@ -690,7 +690,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of extcharacter, thelength is the number of elements.
+Put C array of ExtCharacter, theLength is the number of elements.
 ") PutExtCharArray;
 		BinObjMgt_Persistent & PutExtCharArray(const BinObjMgt_PExtChar theArray, const Standard_Integer theLength);
 
@@ -763,7 +763,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of int, thelength is the number of elements.
+Put C array of int, theLength is the number of elements.
 ") PutIntArray;
 		BinObjMgt_Persistent & PutIntArray(const BinObjMgt_PInteger theArray, const Standard_Integer theLength);
 
@@ -836,7 +836,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of double, thelength is the number of elements.
+Put C array of double, theLength is the number of elements.
 ") PutRealArray;
 		BinObjMgt_Persistent & PutRealArray(const BinObjMgt_PReal theArray, const Standard_Integer theLength);
 
@@ -873,7 +873,7 @@ BinObjMgt_Persistent
 
 Description
 -----------
-Put c array of float, thelength is the number of elements.
+Put C array of float, theLength is the number of elements.
 ") PutShortRealArray;
 		BinObjMgt_Persistent & PutShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
 
@@ -891,7 +891,7 @@ Standard_IStream
 
 Description
 -----------
-Retrieves <self> from the stream. inline standard_istream& operator>> (standard_istream&, binobjmgt_persistent&) is also available.
+Retrieves <self> from the stream. inline Standard_IStream& operator>> (Standard_IStream&, BinObjMgt_Persistent&) is also available.
 ") Read;
 		Standard_IStream & Read(std::istream & theIS);
 
@@ -927,7 +927,7 @@ None
 
 Description
 -----------
-Sets the id of the object.
+Sets the Id of the object.
 ") SetId;
 		void SetId(const Standard_Integer theId);
 
@@ -962,7 +962,7 @@ bool
 
 Description
 -----------
-Sets the current position for get/put. resets an error state depending on the validity of thepos. returns the new state (value of isok()).
+Sets the current position for get/put. Resets an error state depending on the validity of thePos. Returns the new state (value of IsOK()).
 ") SetPosition;
 		Standard_Boolean SetPosition(const Standard_Integer thePos);
 
@@ -980,7 +980,7 @@ None
 
 Description
 -----------
-Sets the id of the type of the object.
+Sets the Id of the type of the object.
 ") SetTypeId;
 		void SetTypeId(const Standard_Integer theId);
 
@@ -1006,7 +1006,7 @@ None
 
 Description
 -----------
-Truncates the buffer by current position, i.e. updates mysize.
+Truncates the buffer by current position, i.e. updates mySize.
 ") Truncate;
 		void Truncate();
 
@@ -1019,7 +1019,7 @@ int
 
 Description
 -----------
-Returns the id of the type of the object.
+Returns the Id of the type of the object.
 ") TypeId;
 		Standard_Integer TypeId();
 
@@ -1037,7 +1037,7 @@ theOS: Standard_OStream
 
 Description
 -----------
-Stores <self> to the stream. inline standard_ostream& operator<< (standard_ostream&, binobjmgt_persistent&) is also available. if thedirectstream is true, after this data the direct stream data is stored.
+Stores <self> to the stream. inline Standard_OStream& operator<< (Standard_OStream&, BinObjMgt_Persistent&) is also available. If theDirectStream is true, after this data the direct stream data is stored.
 ") Write;
 		Standard_OStream & Write(std::ostream &OutValue, const Standard_Boolean theDirectStream = Standard_False);
 
@@ -1103,7 +1103,8 @@ None
 
 Description
 -----------
-Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
+Sets the storage header data. //! 
+Parameter theHeaderData header data of the file that is begin read.
 ") SetHeaderData;
 		void SetHeaderData(const opencascade::handle<Storage_HeaderData> & theHeaderData);
 

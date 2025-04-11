@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINDRIVERSDOCSTRING
 "BinDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bindrivers.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bindrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINDRIVERSDOCSTRING) BinDrivers
 
@@ -140,7 +140,7 @@ None
 
 Description
 -----------
-Defines format 'binocaf' and registers its read and write drivers in the specified application.
+Defines format 'BinOcaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
@@ -235,7 +235,7 @@ None
 
 Description
 -----------
-Clears the namedshape driver.
+Clears the NamedShape driver.
 ") Clear;
 		virtual void Clear();
 
@@ -335,7 +335,7 @@ None
 
 Description
 -----------
-Clears the namedshape driver.
+Clears the NamedShape driver.
 ") Clear;
 		virtual void Clear();
 
@@ -438,7 +438,7 @@ theOS: Standard_OStream
 
 Description
 -----------
-Implements the procedure of writing a shape section to file.
+implements the procedure of writing a shape section to file.
 ") WriteShapeSection;
 		virtual void WriteShapeSection(BinLDrivers_DocumentSection & theDocSection, std::ostream &OutValue, const TDocStd_FormatVersion theDocVer, const Message_ProgressRange & theRange = Message_ProgressRange());
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDATASTDDOCSTRING
 "TDataStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tdatastd.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdatastd.html"
 %enddef
 %module (package="OCC.Core", docstring=TDATASTDDOCSTRING) TDataStd
 
@@ -195,7 +195,7 @@ None
 
 Description
 -----------
-Appends to <anidlist> the list of the attributes ids of this package. caution: <anidlist> is not cleared before use.
+Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -213,7 +213,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of the real dimension <dim> as a string on the stream <s> and returns <s>.
+Prints the name of the real dimension <DIM> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TDataStd_RealEnum DIM, std::ostream &OutValue);
 
@@ -304,7 +304,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid of the attribute.
+class methods ============= Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -399,7 +399,7 @@ opencascade::handle<TDataStd_AsciiString>
 
 Description
 -----------
-Finds, or creates an asciistring attribute and sets the string. the asciistring attribute is returned. asciistring methods ===================.
+Finds, or creates an AsciiString attribute and sets the string. the AsciiString attribute is returned. AsciiString methods ===================.
 ") Set;
 		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, TCollection_AsciiString string);
 
@@ -419,7 +419,7 @@ opencascade::handle<TDataStd_AsciiString>
 
 Description
 -----------
-Finds, or creates, an asciistring attribute with explicit user defined <guid> and sets <string>. the name attribute is returned. .
+Finds, or creates, an AsciiString attribute with explicit user defined <guid> and sets <string>. The Name attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_AsciiString> Set(const TDF_Label & label, const Standard_GUID & guid, TCollection_AsciiString string);
 
@@ -455,7 +455,7 @@ None
 
 Description
 -----------
-Sets the explicit user defined guid to the attribute.
+Sets the explicit user defined GUID to the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & guid);
 
@@ -468,7 +468,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -548,7 +548,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns an id for array.
+Static methods ============== Returns an ID for array.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -728,7 +728,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -741,7 +741,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -778,7 +778,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer index, const Standard_Boolean value);
 
@@ -809,7 +809,7 @@ bool
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+Return the value of the <Index>th element of the array.
 ") Value;
 		Standard_Boolean Value(const Standard_Integer Index);
 
@@ -946,7 +946,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the list of booleans attribute.
+Static methods ============== Returns the ID of the list of booleans attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -978,7 +978,7 @@ bool
 
 Description
 -----------
-Inserts the <value> after the <index> position. the indices start with 1 .. extent().
+Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
 		Standard_Boolean InsertAfter(const Standard_Integer index, const Standard_Boolean after_value);
 
@@ -997,7 +997,7 @@ bool
 
 Description
 -----------
-Inserts the <value> before the <index> position. the indices start with 1 .. extent().
+Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
 		Standard_Boolean InsertBefore(const Standard_Integer index, const Standard_Boolean before_value);
 
@@ -1036,7 +1036,7 @@ TDataStd_ListOfByte
 
 Description
 -----------
-1 - means true, 0 - means false.
+1 - means True, 0 - means False.
 ") List;
 		const TDataStd_ListOfByte & List();
 
@@ -1177,7 +1177,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -1190,7 +1190,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -1238,7 +1238,7 @@ None
 
 Description
 -----------
-Sets the inner array <myvalue> of the attribute to <newarray>. if value of <newarray> differs from <myvalue>, backup performed and myvalue refers to new instance of harray1ofinteger that holds <newarray> values. if <ischeckitems> equal true each item of <newarray> will be checked with each item of <myvalue> for coincidence (to avoid backup).
+Sets the inner array <myValue> of the attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values. If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
 		void ChangeArray(const opencascade::handle<TColStd_HArray1OfByte> & newArray, const Standard_Boolean isCheckItems = Standard_True);
 
@@ -1256,7 +1256,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute>.
+Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -1320,7 +1320,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns an id for array.
+Static methods ============== Returns an ID for array.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1462,7 +1462,7 @@ opencascade::handle<TDataStd_ByteArray>
 
 Description
 -----------
-Finds or creates an attribute with the array on the specified label. if <isdelta> == false, defaultdeltaonmodification is used. if <isdelta> == true, deltaonmodification of the current attribute is used. if attribute is already set, all input parameters are refused and the found attribute is returned.
+Finds or creates an attribute with the array on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_ByteArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -1502,7 +1502,7 @@ None
 
 Description
 -----------
-For internal use only!.
+for internal use only!.
 ") SetDelta;
 		void SetDelta(const Standard_Boolean isDelta);
 
@@ -1520,7 +1520,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -1533,7 +1533,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -1552,7 +1552,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer index, const Standard_Byte value);
 
@@ -1583,7 +1583,7 @@ Standard_Byte
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+Return the value of the <Index>th element of the array.
 ") Value;
 		Standard_Byte Value(const Standard_Integer Index);
 
@@ -1631,7 +1631,7 @@ None
 
 Description
 -----------
-Iterates on the childstepren of the given step. if <alllevels> option is set to true, it explores not only the first, but all the sub step levels.
+Iterates on the ChildStepren of the given Step. If <allLevels> option is set to true, it explores not only the first, but all the sub Step levels.
 ") TDataStd_ChildNodeIterator;
 		 TDataStd_ChildNodeIterator(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const Standard_Boolean allLevels = Standard_False);
 
@@ -1650,7 +1650,7 @@ None
 
 Description
 -----------
-Initializes the iteration on the children step of the given step. if <alllevels> option is set to true, it explores not only the first, but all the sub step levels.
+Initializes the iteration on the Children Step of the given Step. If <allLevels> option is set to true, it explores not only the first, but all the sub Step levels.
 ") Initialize;
 		void Initialize(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const Standard_Boolean allLevels = Standard_False);
 
@@ -1663,7 +1663,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -1676,7 +1676,7 @@ None
 
 Description
 -----------
-Move to the next item.
+Move to the next Item.
 ") Next;
 		void Next();
 
@@ -1689,7 +1689,7 @@ None
 
 Description
 -----------
-Move to the next brother. if there is none, go up etc. this method is interesting only with 'alllevels' behavior, because it avoids to explore the current step childstepren.
+Move to the next Brother. If there is none, go up etc. This method is interesting only with 'allLevels' behavior, because it avoids to explore the current Step ChildStepren.
 ") NextBrother;
 		void NextBrother();
 
@@ -1702,7 +1702,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Returns the current item; a null step if there is no one.
+Returns the current item; a null Step if there is no one.
 ") Value;
 		const opencascade::handle<TDataStd_TreeNode> & Value();
 
@@ -1785,7 +1785,7 @@ TDF_Label
 
 Description
 -----------
-Returns current of <acces> framework. raise if (!has).
+returns current of <acces> Framework. raise if (!Has).
 ") Get;
 		static TDF_Label Get(const TDF_Label & acces);
 
@@ -1798,7 +1798,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1829,7 +1829,7 @@ bool
 
 Description
 -----------
-Returns true if a current label is managed in <acces> framework. class methods =============.
+returns True if a current label is managed in <acces> Framework. class methods =============.
 ") Has;
 		static Standard_Boolean Has(const TDF_Label & acces);
 
@@ -1910,7 +1910,7 @@ None
 
 Description
 -----------
-Set <l> as current of <l> framework.
+Set <L> as current of <L> Framework.
 ") Set;
 		static void Set(const TDF_Label & L);
 
@@ -1962,7 +1962,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TDataStd_DeltaOnModificationOfByteArray;
 		 TDataStd_DeltaOnModificationOfByteArray(const opencascade::handle<TDataStd_ByteArray> & Arr);
 
@@ -2009,7 +2009,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TDataStd_DeltaOnModificationOfExtStringArray;
 		 TDataStd_DeltaOnModificationOfExtStringArray(const opencascade::handle<TDataStd_ExtStringArray> & Arr);
 
@@ -2056,7 +2056,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TDataStd_DeltaOnModificationOfIntArray;
 		 TDataStd_DeltaOnModificationOfIntArray(const opencascade::handle<TDataStd_IntegerArray> & Arr);
 
@@ -2103,7 +2103,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TDataStd_DeltaOnModificationOfIntPackedMap;
 		 TDataStd_DeltaOnModificationOfIntPackedMap(const opencascade::handle<TDataStd_IntPackedMap> & Arr);
 
@@ -2150,7 +2150,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TDataStd_DeltaOnModificationOfRealArray;
 		 TDataStd_DeltaOnModificationOfRealArray(const opencascade::handle<TDataStd_RealArray> & Arr);
 
@@ -2256,7 +2256,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2295,7 +2295,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Build and return the expression name.
+build and return the expression name.
 ") Name;
 		TCollection_ExtendedString Name();
 
@@ -2363,7 +2363,7 @@ opencascade::handle<TDataStd_Expression>
 
 Description
 -----------
-Find, or create, an expression attribute. expressionmethods ============.
+Find, or create, an Expression attribute. Expressionmethods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Expression> Set(const TDF_Label & label);
 
@@ -2423,7 +2423,7 @@ opencascade::handle<TColStd_HArray1OfExtendedString>
 
 Description
 -----------
-Return the inner array of the extstringarray attribute.
+Return the inner array of the ExtStringArray attribute.
 ") Array;
 		const opencascade::handle<TColStd_HArray1OfExtendedString> & Array();
 
@@ -2442,7 +2442,7 @@ None
 
 Description
 -----------
-Sets the inner array <myvalue> of the extstringarray attribute to <newarray>. if value of <newarray> differs from <myvalue>, backup performed and myvalue refers to new instance of harray1ofextendedstring that holds <newarray> values if <ischeckitems> equal true each item of <newarray> will be checked with each item of <myvalue> for coincidence (to avoid backup).
+Sets the inner array <myValue> of the ExtStringArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfExtendedString that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
 		void ChangeArray(const opencascade::handle<TColStd_HArray1OfExtendedString> & newArray, const Standard_Boolean isCheckItems = Standard_True);
 
@@ -2460,7 +2460,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute>.
+Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -2524,7 +2524,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for the attribute.
+class methods ============= Returns the GUID for the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2653,7 +2653,7 @@ opencascade::handle<TDataStd_ExtStringArray>
 
 Description
 -----------
-Finds, or creates, an extstringarray attribute with <lower> and <upper> bounds on the specified label. if <isdelta> == false, defaultdeltaonmodification is used. if <isdelta> == true, deltaonmodification of the current attribute is used. if attribute is already set, all input parameters are refused and the found attribute is returned.
+Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -2675,7 +2675,7 @@ opencascade::handle<TDataStd_ExtStringArray>
 
 Description
 -----------
-Finds, or creates, an extstringarray attribute with explicit user defined <guid>. the extstringarray attribute is returned.
+Finds, or creates, an ExtStringArray attribute with explicit user defined <guid>. The ExtStringArray attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -2693,7 +2693,7 @@ None
 
 Description
 -----------
-For internal use only!.
+for internal use only!.
 ") SetDelta;
 		void SetDelta(const Standard_Boolean isDelta);
 
@@ -2711,7 +2711,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -2724,7 +2724,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -2743,7 +2743,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, TCollection_ExtendedString Value);
 
@@ -2774,7 +2774,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the value of the <index>th element of the array.
+Returns the value of the <Index>th element of the array.
 ") Value;
 		const TCollection_ExtendedString & Value(const Standard_Integer Index);
 
@@ -2911,7 +2911,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the list of strings attribute.
+Static methods ============== Returns the ID of the list of strings attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2962,7 +2962,7 @@ bool
 
 Description
 -----------
-Inserts the <value> after the <index> position. the indices start with 1 .. extent().
+Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
 		Standard_Boolean InsertAfter(const Standard_Integer index, TCollection_ExtendedString after_value);
 
@@ -3000,7 +3000,7 @@ bool
 
 Description
 -----------
-Inserts the <value> before the <index> position. the indices start with 1 .. extent().
+Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
 		Standard_Boolean InsertBefore(const Standard_Integer index, TCollection_ExtendedString before_value);
 
@@ -3198,7 +3198,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -3211,7 +3211,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -3817,7 +3817,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute>.
+Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -3907,7 +3907,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid of the attribute.
+class methods ============= Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4033,7 +4033,7 @@ opencascade::handle<TDataStd_IntPackedMap>
 
 Description
 -----------
-Finds or creates an integer map attribute on the given label. if <isdelta> == false, defaultdeltaonmodification is used. if <isdelta> == true, deltaonmodification of the current attribute is used. if attribute is already set, input parameter <isdelta> is refused and the found attribute returned. attribute methods ===================.
+Finds or creates an integer map attribute on the given label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, input parameter <isDelta> is refused and the found attribute returned. Attribute methods ===================.
 ") Set;
 		static opencascade::handle<TDataStd_IntPackedMap> Set(const TDF_Label & label, const Standard_Boolean isDelta = Standard_False);
 
@@ -4051,7 +4051,7 @@ None
 
 Description
 -----------
-For internal use only!.
+for internal use only!.
 ") SetDelta;
 		void SetDelta(const Standard_Boolean isDelta);
 
@@ -4144,7 +4144,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for integers.
+class methods ============= Returns the GUID for integers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4170,7 +4170,7 @@ bool
 
 Description
 -----------
-Returns true if there is a reference on the same label.
+Returns True if there is a reference on the same label.
 ") IsCaptured;
 		Standard_Boolean IsCaptured();
 
@@ -4239,7 +4239,7 @@ opencascade::handle<TDataStd_Integer>
 
 Description
 -----------
-Finds, or creates, an integer attribute and sets <value> the integer attribute is returned.
+Finds, or creates, an Integer attribute and sets <value> the Integer attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const Standard_Integer value);
 
@@ -4259,7 +4259,7 @@ opencascade::handle<TDataStd_Integer>
 
 Description
 -----------
-Finds, or creates, an integer attribute with explicit user defined <guid> and sets <value>. the integer attribute is returned. .
+Finds, or creates, an Integer attribute with explicit user defined <guid> and sets <value>. The Integer attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const Standard_GUID & guid, const Standard_Integer value);
 
@@ -4295,7 +4295,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & guid);
 
@@ -4308,7 +4308,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -4350,7 +4350,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Return the inner array of the integerarray attribute.
+Return the inner array of the IntegerArray attribute.
 ") Array;
 		const opencascade::handle<TColStd_HArray1OfInteger> & Array();
 
@@ -4369,7 +4369,7 @@ None
 
 Description
 -----------
-Sets the inner array <myvalue> of the integerarray attribute to <newarray>. if value of <newarray> differs from <myvalue>, backup performed and myvalue refers to new instance of harray1ofinteger that holds <newarray> values if <ischeckitems> equal true each item of <newarray> will be checked with each item of <myvalue> for coincidence (to avoid backup).
+Sets the inner array <myValue> of the IntegerArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
 		void ChangeArray(const opencascade::handle<TColStd_HArray1OfInteger> & newArray, const Standard_Boolean isCheckItems = Standard_True);
 
@@ -4387,7 +4387,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute>.
+Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -4451,7 +4451,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for arrays of integers.
+class methods ============= Returns the GUID for arrays of integers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4541,7 +4541,7 @@ None
 
 Description
 -----------
-Note. uses inside changearray() method.
+Note. Uses inside ChangeArray() method.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
@@ -4580,7 +4580,7 @@ opencascade::handle<TDataStd_IntegerArray>
 
 Description
 -----------
-Finds or creates on the <label> an integer array attribute with the specified <lower> and <upper> boundaries. if <isdelta> == false, defaultdeltaonmodification is used. if <isdelta> == true, deltaonmodification of the current attribute is used. if attribute is already set, all input parameters are refused and the found attribute is returned.
+Finds or creates on the <label> an integer array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -4602,7 +4602,7 @@ opencascade::handle<TDataStd_IntegerArray>
 
 Description
 -----------
-Finds, or creates, an integerarray attribute with explicit user defined <guid>. the integerarray attribute is returned.
+Finds, or creates, an IntegerArray attribute with explicit user defined <guid>. The IntegerArray attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -4620,7 +4620,7 @@ None
 
 Description
 -----------
-For internal use only!.
+for internal use only!.
 ") SetDelta;
 		void SetDelta(const Standard_Boolean isDelta);
 
@@ -4638,7 +4638,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -4651,7 +4651,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -4670,7 +4670,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const Standard_Integer Value);
 
@@ -4701,7 +4701,7 @@ int
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+Return the value of the <Index>th element of the array.
 ") Value;
 		Standard_Integer Value(const Standard_Integer Index);
 
@@ -4838,7 +4838,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the list of integer attribute.
+Static methods ============== Returns the ID of the list of integer attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4889,7 +4889,7 @@ bool
 
 Description
 -----------
-Inserts the <value> after the <index> position. the indices start with 1 .. extent().
+Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfterByIndex;
 		Standard_Boolean InsertAfterByIndex(const Standard_Integer index, const Standard_Integer after_value);
 
@@ -4927,7 +4927,7 @@ bool
 
 Description
 -----------
-Inserts the <value> before the <index> position. the indices start with 1 .. extent().
+Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBeforeByIndex;
 		Standard_Boolean InsertBeforeByIndex(const Standard_Integer index, const Standard_Integer before_value);
 
@@ -5125,7 +5125,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -5138,7 +5138,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -5185,7 +5185,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <thearraysofintegers>.
+Replace the container content by new content of the <theArraysOfIntegers>.
 ") ChangeArraysOfIntegers;
 		void ChangeArraysOfIntegers(const TDataStd_DataMapOfStringHArray1OfInteger & theArraysOfIntegers);
 
@@ -5203,7 +5203,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <thearraysofreals>.
+Replace the container content by new content of the <theArraysOfReals>.
 ") ChangeArraysOfReals;
 		void ChangeArraysOfReals(const TDataStd_DataMapOfStringHArray1OfReal & theArraysOfReals);
 
@@ -5221,7 +5221,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <thebytes>.
+Replace the container content by new content of the <theBytes>.
 ") ChangeBytes;
 		void ChangeBytes(const TDataStd_DataMapOfStringByte & theBytes);
 
@@ -5239,7 +5239,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <theintegers>.
+Replace the container content by new content of the <theIntegers>.
 ") ChangeIntegers;
 		void ChangeIntegers(const TColStd_DataMapOfStringInteger & theIntegers);
 
@@ -5257,7 +5257,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <thereals>.
+Replace the container content by new content of the <theReals>.
 ") ChangeReals;
 		void ChangeReals(const TDataStd_DataMapOfStringReal & theReals);
 
@@ -5275,7 +5275,7 @@ None
 
 Description
 -----------
-Replace the container content by new content of the <thestrings>.
+Replace the container content by new content of the <theStrings>.
 ") ChangeStrings;
 		void ChangeStrings(const TDataStd_DataMapOfStringString & theStrings);
 
@@ -5344,7 +5344,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns the named array of integer values. it returns a null handle if there is no such a named array of integers (use hasarrayofintegers()).
+Returns the named array of integer values. It returns a NULL Handle if there is no such a named array of integers (use HasArrayOfIntegers()).
 ") GetArrayOfIntegers;
 		const opencascade::handle<TColStd_HArray1OfInteger> & GetArrayOfIntegers(TCollection_ExtendedString theName);
 
@@ -5362,7 +5362,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the named array of real values. it returns a null handle if there is no such a named array of reals (use hasarrayofreals()).
+Returns the named array of real values. It returns a NULL Handle if there is no such a named array of reals (use HasArrayOfReals()).
 ") GetArrayOfReals;
 		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(TCollection_ExtendedString theName);
 
@@ -5406,7 +5406,7 @@ Standard_Byte
 
 Description
 -----------
-Returns the named byte. it returns 0 if there is no such a named byte (use hasbyte()).
+Returns the named byte. It returns 0 if there is no such a named byte (use HasByte()).
 ") GetByte;
 		Standard_Byte GetByte(TCollection_ExtendedString theName);
 
@@ -5432,7 +5432,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the named data attribute.
+Returns the ID of the named data attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -5450,7 +5450,7 @@ int
 
 Description
 -----------
-Returns the integer value specified by the name. it returns 0 if internal map doesn't contain the specified integer (use hasinteger() to check before).
+Returns the integer value specified by the Name. It returns 0 if internal map doesn't contain the specified integer (use HasInteger() to check before).
 ") GetInteger;
 		Standard_Integer GetInteger(TCollection_ExtendedString theName);
 
@@ -5481,7 +5481,7 @@ float
 
 Description
 -----------
-Returns the named real. it returns 0.0 if there is no such a named real (use hasreal()).
+Returns the named real. It returns 0.0 if there is no such a named real (use HasReal()).
 ") GetReal;
 		Standard_Real GetReal(TCollection_ExtendedString theName);
 
@@ -5512,7 +5512,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the named string. it returns an empty string if there is no such a named string (use hasstring()).
+Returns the named string. It returns an empty string if there is no such a named string (use HasString()).
 ") GetString;
 		const TCollection_ExtendedString & GetString(TCollection_ExtendedString theName);
 
@@ -5631,7 +5631,7 @@ bool
 
 Description
 -----------
-Returns true if some data is not loaded from deferred storage and can be loaded using loaddeferreddata(). //! late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. this feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return false here. //! late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and undo/redo mechanism will not work until deferred data being loaded. //! usage scenarios: - application displays model in read-only way. late-load elements are loaded temporarily on demand and immediately unloaded. thenameddata->loaddeferreddata (true); tcollection_asciistring avalue = thenameddata->getstring (thekey); thenameddata->unloaddeferreddata(); - application saves the model into another format. all late-load elements should be loaded (at least temporary during operation). - application modifies the model. late-load element should be loaded with removed link to deferred storage, so that undo()/redo() will work as expected since loading. thenameddata->loaddeferreddata (false); thenameddata->setstring (thekey, thenewvalue);.
+Returns True if some data is not loaded from deferred storage and can be loaded using LoadDeferredData(). //! Late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. This feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return False here. //! Late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and Undo/Redo mechanism will not work until deferred data being loaded. //! Usage scenarios: - Application displays model in read-only way. Late-load elements are loaded temporarily on demand and immediately unloaded. theNamedData->LoadDeferredData (true); TCollection_AsciiString aValue = theNamedData->GetString (theKey); theNamedData->UnloadDeferredData(); - Application saves the model into another format. All late-load elements should be loaded (at least temporary during operation). - Application modifies the model. Late-load element should be loaded with removed link to deferred storage, so that Undo()/Redo() will work as expected since loading. theNamedData->LoadDeferredData (false); theNamedData->SetString (theKey, theNewValue);.
 ") HasDeferredData;
 		virtual Standard_Boolean HasDeferredData();
 
@@ -5649,7 +5649,7 @@ bool
 
 Description
 -----------
-Returns true if the attribute contains specified by name integer value.
+Returns true if the attribute contains specified by Name integer value.
 ") HasInteger;
 		Standard_Boolean HasInteger(TCollection_ExtendedString theName);
 
@@ -5680,7 +5680,7 @@ bool
 
 Description
 -----------
-Returns true if the attribute contains a real specified by name.
+Returns true if the attribute contains a real specified by Name.
 ") HasReal;
 		Standard_Boolean HasReal(TCollection_ExtendedString theName);
 
@@ -5755,7 +5755,9 @@ bool
 
 Description
 -----------
-Load data from deferred storage, without calling backup(). as result, the content of the object will be overridden by data from deferred storage (which is normally read-only). @param thetokeepdeferred [in] when true, the link to deferred storage will be preserved  so that it will be possible calling unloaddeferreddata() afterwards for releasing memory return false if deferred storage is unavailable or deferred data has been already loaded.
+Load data from deferred storage, without calling Backup(). As result, the content of the object will be overridden by data from deferred storage (which is normally read-only). 
+Input parameter: theToKeepDeferred when True, the link to deferred storage will be preserved  so that it will be possible calling UnloadDeferredData()  afterwards for releasing memory 
+Return: False if deferred storage is unavailable or deferred data has been already loaded.
 ") LoadDeferredData;
 		virtual Standard_Boolean LoadDeferredData(Standard_Boolean theToKeepDeferred = false);
 
@@ -5842,7 +5844,9 @@ None
 
 Description
 -----------
-Defines a named array of integer values. @param thename [in] key @param thearrayofintegers [in] new value, overrides existing (passed array will be copied by value!).
+Defines a named array of integer values. 
+Input parameter: theName key 
+Input parameter: theArrayOfIntegers new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfIntegers;
 		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
@@ -5861,7 +5865,9 @@ None
 
 Description
 -----------
-Defines a named array of real values. @param[in] thename key @param[in] thearrayofreals new value, overrides existing (passed array will be copied by value!).
+Defines a named array of real values. 
+Input parameter: theName key 
+Input parameter: theArrayOfReals new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfReals;
 		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
@@ -5880,7 +5886,7 @@ None
 
 Description
 -----------
-Defines a named byte. if the byte already exists, it changes its value to <thebyte>.
+Defines a named byte. If the byte already exists, it changes its value to <theByte>.
 ") SetByte;
 		void SetByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
 
@@ -5899,7 +5905,7 @@ None
 
 Description
 -----------
-Defines a named integer. if the integer already exists, it changes its value to <theinteger>.
+Defines a named integer. If the integer already exists, it changes its value to <theInteger>.
 ") SetInteger;
 		void SetInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
 
@@ -5918,7 +5924,7 @@ None
 
 Description
 -----------
-Defines a named real. if the real already exists, it changes its value to <thereal>.
+Defines a named real. If the real already exists, it changes its value to <theReal>.
 ") SetReal;
 		void SetReal(TCollection_ExtendedString theName, const Standard_Real theReal);
 
@@ -5937,7 +5943,7 @@ None
 
 Description
 -----------
-Defines a named string. if the string already exists, it changes its value to <thestring>.
+Defines a named string. If the string already exists, it changes its value to <theString>.
 ") SetString;
 		void SetString(TCollection_ExtendedString theName, TCollection_ExtendedString theString);
 
@@ -5950,7 +5956,8 @@ bool
 
 Description
 -----------
-Releases data if object has connected deferred storage, without calling backup(). warning! this operation does not unload modifications to deferred storage (normally it is read-only), so that modifications will be discarded (if any). return false if object has no deferred data.
+Releases data if object has connected deferred storage, without calling Backup(). WARNING! This operation does not unload modifications to deferred storage (normally it is read-only), so that modifications will be discarded (if any). 
+Return: False if object has no deferred data.
 ") UnloadDeferredData;
 		virtual Standard_Boolean UnloadDeferredData();
 
@@ -5963,7 +5970,7 @@ None
 
 Description
 -----------
-Clear data without calling backup().
+Clear data without calling Backup().
 ") clear;
 		void clear();
 
@@ -5982,7 +5989,7 @@ None
 
 Description
 -----------
-Defines a named array of integer values (without calling backup).
+Defines a named array of integer values (without calling Backup).
 ") setArrayOfIntegers;
 		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
@@ -6001,7 +6008,7 @@ None
 
 Description
 -----------
-Defines a named array of real values (without calling backup).
+Defines a named array of real values (without calling Backup).
 ") setArrayOfReals;
 		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
@@ -6020,7 +6027,7 @@ None
 
 Description
 -----------
-Defines a named byte (without calling backup).
+Defines a named byte (without calling Backup).
 ") setByte;
 		void setByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
 
@@ -6039,7 +6046,7 @@ None
 
 Description
 -----------
-Defines a named integer (without calling backup).
+Defines a named integer (without calling Backup).
 ") setInteger;
 		void setInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
 
@@ -6058,7 +6065,7 @@ None
 
 Description
 -----------
-Defines a named real (without calling backup).
+Defines a named real (without calling Backup).
 ") setReal;
 		void setReal(TCollection_ExtendedString theName, const Standard_Real theReal);
 
@@ -6077,7 +6084,7 @@ None
 
 Description
 -----------
-Defines a named string (without calling backup).
+Defines a named string (without calling Backup).
 ") setString;
 		void setString(TCollection_ExtendedString theName, TCollection_ExtendedString theString);
 
@@ -6170,7 +6177,7 @@ TDataStd_RealEnum
 
 Description
 -----------
-Obsolete method that will be removed in next versions. this field is not supported in the persistence mechanism.
+Obsolete method that will be removed in next versions. This field is not supported in the persistence mechanism.
 ") GetDimension;
 		TDataStd_RealEnum GetDimension();
 
@@ -6183,7 +6190,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the default guid for real numbers.
+class methods ============= Returns the default GUID for real numbers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -6209,7 +6216,7 @@ bool
 
 Description
 -----------
-Returns true if there is a reference on the same label.
+Returns True if there is a reference on the same label.
 ") IsCaptured;
 		Standard_Boolean IsCaptured();
 
@@ -6278,7 +6285,7 @@ opencascade::handle<TDataStd_Real>
 
 Description
 -----------
-Finds, or creates, a real attribute with default guid and sets <value>. the real attribute is returned. the real dimension is scalar by default. use setdimension to overwrite. real methods ============.
+Finds, or creates, a Real attribute with default GUID and sets <value>. The Real attribute is returned. The Real dimension is Scalar by default. Use SetDimension to overwrite. Real methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const Standard_Real value);
 
@@ -6298,7 +6305,7 @@ opencascade::handle<TDataStd_Real>
 
 Description
 -----------
-Finds, or creates, a real attribute with explicit guid and sets <value>. the real attribute is returned. real methods ============.
+Finds, or creates, a Real attribute with explicit GUID and sets <value>. The Real attribute is returned. Real methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const Standard_GUID & guid, const Standard_Real value);
 
@@ -6316,7 +6323,7 @@ None
 
 Description
 -----------
-Sets the real number v.
+Sets the real number V.
 ") Set;
 		void Set(const Standard_Real V);
 
@@ -6334,7 +6341,7 @@ None
 
 Description
 -----------
-Obsolete method that will be removed in next versions. this field is not supported in the persistence mechanism.
+Obsolete method that will be removed in next versions. This field is not supported in the persistence mechanism.
 ") SetDimension;
 		void SetDimension(const TDataStd_RealEnum DIM);
 
@@ -6352,7 +6359,7 @@ None
 
 Description
 -----------
-Sets the explicit guid for the attribute.
+Sets the explicit GUID for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & guid);
 
@@ -6365,7 +6372,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -6426,7 +6433,7 @@ None
 
 Description
 -----------
-Sets the inner array <myvalue> of the realarray attribute to <newarray>. if value of <newarray> differs from <myvalue>, backup performed and myvalue refers to new instance of harray1ofreal that holds <newarray> values if <ischeckitems> equal true each item of <newarray> will be checked with each item of <myvalue> for coincidence (to avoid backup).
+Sets the inner array <myValue> of the RealArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfReal that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
 		void ChangeArray(const opencascade::handle<TColStd_HArray1OfReal> & newArray, const Standard_Boolean isCheckItems = Standard_True);
 
@@ -6444,7 +6451,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute>.
+Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -6508,7 +6515,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for arrays of reals.
+class methods ============= Returns the GUID for arrays of reals.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -6598,7 +6605,7 @@ None
 
 Description
 -----------
-Note. uses inside changearray() method.
+Note. Uses inside ChangeArray() method.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
@@ -6637,7 +6644,7 @@ opencascade::handle<TDataStd_RealArray>
 
 Description
 -----------
-Finds or creates on the <label> a real array attribute with the specified <lower> and <upper> boundaries. if <isdelta> == false, defaultdeltaonmodification is used. if <isdelta> == true, deltaonmodification of the current attribute is used. if attribute is already set, input parameter <isdelta> is refused and the found attribute returned.
+Finds or creates on the <label> a real array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, input parameter <isDelta> is refused and the found attribute returned.
 ") Set;
 		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -6659,7 +6666,7 @@ opencascade::handle<TDataStd_RealArray>
 
 Description
 -----------
-Finds, or creates, an realarray attribute with explicit user defined <guid>. the realarray attribute is returned.
+Finds, or creates, an RealArray attribute with explicit user defined <guid>. The RealArray attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
 
@@ -6677,7 +6684,7 @@ None
 
 Description
 -----------
-For internal use only!.
+for internal use only!.
 ") SetDelta;
 		void SetDelta(const Standard_Boolean isDelta);
 
@@ -6695,7 +6702,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -6708,7 +6715,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -6727,7 +6734,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const Standard_Real Value);
 
@@ -6758,7 +6765,7 @@ float
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+Return the value of the <Index>th element of the array.
 ") Value;
 		Standard_Real Value(const Standard_Integer Index);
 
@@ -6895,7 +6902,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the list of doubles attribute.
+Static methods ============== Returns the ID of the list of doubles attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -6946,7 +6953,7 @@ bool
 
 Description
 -----------
-Inserts the <value> after the <index> position. the indices start with 1 .. extent().
+Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfterByIndex;
 		Standard_Boolean InsertAfterByIndex(const Standard_Integer index, const Standard_Real after_value);
 
@@ -6984,7 +6991,7 @@ bool
 
 Description
 -----------
-Inserts the <value> before the <index> position. the indices start with 1 .. extent().
+Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBeforeByIndex;
 		Standard_Boolean InsertBeforeByIndex(const Standard_Integer index, const Standard_Real before_value);
 
@@ -7182,7 +7189,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -7195,7 +7202,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -7275,7 +7282,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the array of references (labels) attribute.
+Static methods ============== Returns the ID of the array of references (labels) attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -7473,7 +7480,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -7486,7 +7493,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -7524,7 +7531,7 @@ None
 
 Description
 -----------
-Sets the <index>th element of the array to <value> outofrange exception is raised if <index> doesn't respect lower and upper bounds of the internal array.
+Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
 		void SetValue(const Standard_Integer index, const TDF_Label & value);
 
@@ -7555,7 +7562,7 @@ TDF_Label
 
 Description
 -----------
-Returns the value of the <index>th element of the array.
+Returns the value of the <Index>th element of the array.
 ") Value;
 		TDF_Label Value(const Standard_Integer Index);
 
@@ -7692,7 +7699,7 @@ Standard_GUID
 
 Description
 -----------
-Static methods ============== returns the id of the list of references (labels) attribute.
+Static methods ============== Returns the ID of the list of references (labels) attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -7743,7 +7750,7 @@ bool
 
 Description
 -----------
-Inserts the label after the <index> position. the indices start with 1 .. extent().
+Inserts the label after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
 		Standard_Boolean InsertAfter(const Standard_Integer index, const TDF_Label & after_value);
 
@@ -7781,7 +7788,7 @@ bool
 
 Description
 -----------
-Inserts the label before the <index> position. the indices start with 1 .. extent().
+Inserts the label before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
 		Standard_Boolean InsertBefore(const Standard_Integer index, const TDF_Label & before_value);
 
@@ -7997,7 +8004,7 @@ None
 
 Description
 -----------
-Sets the explicit guid (user defined) for the attribute.
+Sets the explicit GUID (user defined) for the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & theGuid);
 
@@ -8010,7 +8017,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -8052,7 +8059,7 @@ None
 
 Description
 -----------
-Connect the treenode to its father child list.
+Connect the TreeNode to its father child list.
 ") AfterAddition;
 		virtual void AfterAddition();
 
@@ -8065,7 +8072,7 @@ None
 
 Description
 -----------
-Reconnect the treenode to its father child list.
+Reconnect the TreeNode to its father child list.
 ") AfterResume;
 		virtual void AfterResume();
 
@@ -8084,7 +8091,7 @@ bool
 
 Description
 -----------
-Reconnect the treenode, if necessary. implementation of attribute methods: ===================================.
+Reconnect the TreeNode, if necessary. Implementation of Attribute methods: ===================================.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -8102,7 +8109,7 @@ bool
 
 Description
 -----------
-Insert the treenode <child> as last child of <self>. if the insertion is successful <self> becomes the father of <child>.
+Insert the TreeNode <Child> as last child of <self>. If the insertion is successful <self> becomes the Father of <Child>.
 ") Append;
 		Standard_Boolean Append(const opencascade::handle<TDataStd_TreeNode> & Child);
 
@@ -8115,7 +8122,7 @@ None
 
 Description
 -----------
-Disconnect the treenode from its father child list.
+Disconnect the TreeNode from its Father child list.
 ") BeforeForget;
 		virtual void BeforeForget();
 
@@ -8134,7 +8141,7 @@ bool
 
 Description
 -----------
-Disconnect the treenode, if necessary.
+Disconnect the TreeNode, if necessary.
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -8147,7 +8154,7 @@ int
 
 Description
 -----------
-Returns the depth of this tree node in the overall tree node structure. in other words, the number of father tree nodes of this one is returned.
+Returns the depth of this tree node in the overall tree node structure. In other words, the number of father tree nodes of this one is returned.
 ") Depth;
 		Standard_Integer Depth();
 
@@ -8198,7 +8205,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Returns the father treenode of <self>. null if root.
+Returns the father TreeNode of <self>. Null if root.
 ") Father;
 		opencascade::handle<TDataStd_TreeNode> Father();
 
@@ -8217,7 +8224,7 @@ bool
 
 Description
 -----------
-Class methods working on the node =================================== returns true if the tree node t is found on the label l. otherwise, false is returned.
+class methods working on the node =================================== Returns true if the tree node T is found on the label L. Otherwise, false is returned.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & L, opencascade::handle<TDataStd_TreeNode> & T);
 
@@ -8256,7 +8263,7 @@ Standard_GUID
 
 Description
 -----------
-Returns a default tree id. this id is used by the <set> method without explicit tree id. instance methods: ================.
+returns a default tree ID. this ID is used by the <Set> method without explicit tree ID. Instance methods: ================.
 ") GetDefaultTreeID;
 		static const Standard_GUID & GetDefaultTreeID();
 
@@ -8334,7 +8341,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the tree id (default or explicit one depending on the set method used).
+Returns the tree ID (default or explicit one depending on the Set method used).
 ") ID;
 		const Standard_GUID & ID();
 
@@ -8352,7 +8359,7 @@ bool
 
 Description
 -----------
-Inserts the treenode <node> after <self>. if insertion is successful <self> and <node> belongs to the same father.
+Inserts the TreeNode <Node> after <self>. If insertion is successful <self> and <Node> belongs to the same Father.
 ") InsertAfter;
 		Standard_Boolean InsertAfter(const opencascade::handle<TDataStd_TreeNode> & Node);
 
@@ -8370,7 +8377,7 @@ bool
 
 Description
 -----------
-Inserts the treenode <node> before <self>. if insertion is successful <self> and <node> belongs to the same father.
+Inserts the TreeNode <Node> before <self>. If insertion is successful <self> and <Node> belongs to the same Father.
 ") InsertBefore;
 		Standard_Boolean InsertBefore(const opencascade::handle<TDataStd_TreeNode> & Node);
 
@@ -8388,7 +8395,7 @@ bool
 
 Description
 -----------
-Returns true if this tree node attribute is an ascendant of of. in other words, if it is a father or the father of a father of of.
+Returns true if this tree node attribute is an ascendant of of. In other words, if it is a father or the father of a father of of.
 ") IsAscendant;
 		Standard_Boolean IsAscendant(const opencascade::handle<TDataStd_TreeNode> & of);
 
@@ -8424,7 +8431,7 @@ bool
 
 Description
 -----------
-Returns true if this tree node attribute is a descendant of of. in other words, if it is a child or the child of a child of of.
+Returns true if this tree node attribute is a descendant of of. In other words, if it is a child or the child of a child of of.
 ") IsDescendant;
 		Standard_Boolean IsDescendant(const opencascade::handle<TDataStd_TreeNode> & of);
 
@@ -8486,7 +8493,7 @@ int
 
 Description
 -----------
-Returns the number of child nodes. if <alllevels> is true, the method counts children of all levels (children of children ...).
+Returns the number of child nodes. If <allLevels> is true, the method counts children of all levels (children of children ...).
 ") NbChildren;
 		Standard_Integer NbChildren(const Standard_Boolean allLevels = Standard_False);
 
@@ -8512,7 +8519,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Returns the next tree node in this tree node attribute. warning this tree node is null if it is the last one in this tree node attribute.returns the next treenode of <self>. null if last.
+Returns the next tree node in this tree node attribute. Warning This tree node is null if it is the last one in this tree node attribute.Returns the next TreeNode of <self>. Null if last.
 ") Next;
 		opencascade::handle<TDataStd_TreeNode> Next();
 
@@ -8549,7 +8556,7 @@ bool
 
 Description
 -----------
-Insert the the treenode <child> as first child of <self>. if the insertion is successful <self> becomes the father of <child>.
+Insert the the TreeNode <Child> as first child of <self>. If the insertion is successful <self> becomes the Father of <Child>.
 ") Prepend;
 		Standard_Boolean Prepend(const opencascade::handle<TDataStd_TreeNode> & Child);
 
@@ -8562,7 +8569,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Returns the previous tree node of this tree node attribute. warning this tree node is null if it is the first one in this tree node attribute.
+Returns the previous tree node of this tree node attribute. Warning This tree node is null if it is the first one in this tree node attribute.
 ") Previous;
 		opencascade::handle<TDataStd_TreeNode> Previous();
 
@@ -8593,7 +8600,7 @@ bool
 
 Description
 -----------
-Removes this tree node attribute from its father node. the result is that this attribute becomes a root node.
+Removes this tree node attribute from its father node. The result is that this attribute becomes a root node.
 ") Remove;
 		Standard_Boolean Remove();
 
@@ -8642,7 +8649,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Finds or creates a treenode attribute on the label <l> with the default tree id, returned by the method <getdefaulttreeid>. returns the created/found treenode attribute.
+Finds or Creates a TreeNode attribute on the label <L> with the default tree ID, returned by the method <GetDefaultTreeID>. Returns the created/found TreeNode attribute.
 ") Set;
 		static opencascade::handle<TDataStd_TreeNode> Set(const TDF_Label & L);
 
@@ -8661,7 +8668,7 @@ opencascade::handle<TDataStd_TreeNode>
 
 Description
 -----------
-Finds or creates a treenode attribute on the label <l>, with an explicit tree id. <explicittreeid> is the id returned by <tdf_attribute::id> method. returns the found/created treenode attribute.
+Finds or Creates a TreeNode attribute on the label <L>, with an explicit tree ID. <ExplicitTreeID> is the ID returned by <TDF_Attribute::ID> method. Returns the found/created TreeNode attribute.
 ") Set;
 		static opencascade::handle<TDataStd_TreeNode> Set(const TDF_Label & L, const Standard_GUID & ExplicitTreeID);
 
@@ -8715,7 +8722,7 @@ None
 
 Description
 -----------
-Treenode callback: ==================.
+TreeNode callback: ==================.
 ") SetLast;
 		void SetLast(const opencascade::handle<TDataStd_TreeNode> & F);
 
@@ -8936,7 +8943,7 @@ opencascade::handle<TDataStd_UAttribute>
 
 Description
 -----------
-Api class methods ============= find, or create, a uattribute attribute with <localid> as local guid. the uattribute attribute is returned. uattribute methods ============.
+api class methods ============= Find, or create, a UAttribute attribute with <LocalID> as Local GUID. The UAttribute attribute is returned. UAttribute methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_UAttribute> Set(const TDF_Label & label, const Standard_GUID & LocalID);
 
@@ -8996,7 +9003,7 @@ opencascade::handle<TDataStd_Expression>
 
 Description
 -----------
-Create(if doesn't exist) and returns the assigned expression attribute. fill it after.
+create(if doesn't exist) and returns the assigned expression attribute. fill it after.
 ") Assign;
 		opencascade::handle<TDataStd_Expression> Assign();
 
@@ -9014,7 +9021,7 @@ None
 
 Description
 -----------
-If <status> is true, this variable will not be modified by the solver.
+if <status> is True, this variable will not be modified by the solver.
 ") Constant;
 		void Constant(const Standard_Boolean status);
 
@@ -9027,7 +9034,7 @@ None
 
 Description
 -----------
-If <self> is assigned delete the associated expression attribute.
+if <self> is assigned delete the associated expression attribute.
 ") Desassign;
 		void Desassign();
 
@@ -9078,7 +9085,7 @@ opencascade::handle<TDataStd_Expression>
 
 Description
 -----------
-If <self> is assigned, returns associated expression attribute.
+if <self> is assigned, returns associated Expression attribute.
 ") Expression;
 		opencascade::handle<TDataStd_Expression> Expression();
 
@@ -9091,7 +9098,7 @@ float
 
 Description
 -----------
-Returns value stored in associated real attribute.
+returns value stored in associated Real attribute.
 ") Get;
 		Standard_Real Get();
 
@@ -9104,7 +9111,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -9130,7 +9137,7 @@ bool
 
 Description
 -----------
-Returns true if an expression attribute is associated. create(if doesn't exist), set and returns the assigned expression attribute.
+returns True if an Expression attribute is associated. create(if doesn't exist), set and returns the assigned expression attribute.
 ") IsAssigned;
 		Standard_Boolean IsAssigned();
 
@@ -9143,7 +9150,7 @@ bool
 
 Description
 -----------
-Shortcut for <real()->iscaptured()>.
+shortcut for <Real()->IsCaptured()>.
 ") IsCaptured;
 		Standard_Boolean IsCaptured();
 
@@ -9169,7 +9176,7 @@ bool
 
 Description
 -----------
-Returns true if a real attribute is associated.
+returns True if a Real attribute is associated.
 ") IsValued;
 		Standard_Boolean IsValued();
 
@@ -9187,7 +9194,7 @@ None
 
 Description
 -----------
-Set or change the name of the variable, in myunknown and my associated name attribute.
+set or change the name of the variable, in myUnknown and my associated Name attribute.
 ") Name;
 		void Name(TCollection_ExtendedString string);
 
@@ -9200,7 +9207,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns string stored in the associated name attribute.
+returns string stored in the associated Name attribute.
 ") Name;
 		const TCollection_ExtendedString & Name();
 
@@ -9245,7 +9252,7 @@ opencascade::handle<TDataStd_Real>
 
 Description
 -----------
-Returns associated real attribute.
+returns associated Real attribute.
 ") Real;
 		opencascade::handle<TDataStd_Real> Real();
 
@@ -9263,7 +9270,7 @@ None
 
 Description
 -----------
-To export reference to the associated name attribute.
+to export reference to the associated Name attribute.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
 
@@ -9299,7 +9306,7 @@ opencascade::handle<TDataStd_Variable>
 
 Description
 -----------
-Find, or create, a variable attribute. real methods ============.
+Find, or create, a Variable attribute. Real methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Variable> Set(const TDF_Label & label);
 
@@ -9317,7 +9324,7 @@ None
 
 Description
 -----------
-Retrieve or create the associated real attribute and set the value <value>.
+retrieve or create the associated real attribute and set the value <value>.
 ") Set;
 		void Set(const Standard_Real value);
 
@@ -9336,7 +9343,7 @@ None
 
 Description
 -----------
-Obsolete method that will be removed in next versions. the dimension argument is not supported in the persistence mechanism.
+Obsolete method that will be removed in next versions. The dimension argument is not supported in the persistence mechanism.
 ") Set;
 		void Set(const Standard_Real value, const TDataStd_RealEnum dimension);
 
@@ -9367,7 +9374,7 @@ TCollection_AsciiString
 
 Description
 -----------
-To read/write fields ===================.
+to read/write fields ===================.
 ") Unit;
 		const TCollection_AsciiString & Unit();
 
@@ -9426,7 +9433,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for comments.
+class methods ============= Returns the GUID for comments.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -9444,7 +9451,7 @@ opencascade::handle<TDataStd_Comment>
 
 Description
 -----------
-Find, or create a comment attribute. the comment attribute is returned.
+Find, or create a Comment attribute. the Comment attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label);
 
@@ -9463,7 +9470,7 @@ opencascade::handle<TDataStd_Comment>
 
 Description
 -----------
-Finds, or creates a comment attribute and sets the string. the comment attribute is returned. comment methods ============.
+Finds, or creates a Comment attribute and sets the string. the Comment attribute is returned. Comment methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
@@ -9499,7 +9506,7 @@ None
 
 Description
 -----------
-Sets the explicit user defined guid to the attribute.
+Sets the explicit user defined GUID to the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & guid);
 
@@ -9512,7 +9519,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -9595,7 +9602,7 @@ bool
 
 Description
 -----------
-Class methods ============= searches for a directory attribute on the label current, or on one of the father labels of current. if a directory attribute is found, true is returned, and the attribute found is set as d.
+class methods ============= Searches for a directory attribute on the label current, or on one of the father labels of current. If a directory attribute is found, true is returned, and the attribute found is set as D.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_Directory> & D);
 
@@ -9657,7 +9664,7 @@ opencascade::handle<TDataStd_Directory>
 
 Description
 -----------
-Creates an empty directory attribute, located at <label>. raises if <label> has attribute.
+Creates an empty Directory attribute, located at <label>. Raises if <label> has attribute.
 ") New;
 		static opencascade::handle<TDataStd_Directory> New(const TDF_Label & label);
 
@@ -9716,7 +9723,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods working on the name itself ======================================== returns the guid for name attributes.
+class methods working on the name itself ======================================== Returns the GUID for name attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -9735,7 +9742,7 @@ opencascade::handle<TDataStd_Name>
 
 Description
 -----------
-Creates (if does not exist) and sets the name in the name attribute. from any label <l> search in father labels (l is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== search in the whole tdf_data the name attribute which fit with <fullpath>. returns true if found. search under <currentlabel> a label which fit with <name>. returns true if found. shortcut which avoids building a listofextendedstrin. search in the whole tdf_data the label which fit with name returns true if found. tools methods to translate path <-> pathlist =========================================== move to draw for draw test we may provide this tool method which convert a path in a sequence of string to call after the findlabel methods. example: if it's given 'assembly:part_1:sketch_5' it will return in <pathlist> the list of 3 strings: 'assembly','part_1','sketch_5'. move to draw from <pathlist> build the string path name methods ============.
+Creates (if does not exist) and sets the name in the name attribute. from any label <L> search in father labels (L is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== Search in the whole TDF_Data the Name attribute which fit with <fullPath>. Returns True if found. Search under <currentLabel> a label which fit with <name>. Returns True if found. Shortcut which avoids building a ListOfExtendedStrin. Search in the whole TDF_Data the label which fit with name Returns True if found. tools methods to translate path <-> pathlist =========================================== move to draw For Draw test we may provide this tool method which convert a path in a sequence of string to call after the FindLabel methods. Example: if it's given 'Assembly:Part_1:Sketch_5' it will return in <pathlist> the list of 3 strings: 'Assembly','Part_1','Sketch_5'. move to draw from <pathlist> build the string path Name methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
@@ -9755,7 +9762,7 @@ opencascade::handle<TDataStd_Name>
 
 Description
 -----------
-Finds, or creates, a name attribute with explicit user defined <guid> and sets <string>. the name attribute is returned. .
+Finds, or creates, a Name attribute with explicit user defined <guid> and sets <string>. The Name attribute is returned.
 ") Set;
 		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, TCollection_ExtendedString string);
 
@@ -9773,7 +9780,7 @@ None
 
 Description
 -----------
-Sets <s> as name. raises if <s> is not a valid name.
+Sets <S> as name. Raises if <S> is not a valid name.
 ") Set;
 		void Set(TCollection_ExtendedString S);
 
@@ -9791,7 +9798,7 @@ None
 
 Description
 -----------
-Sets the explicit user defined guid to the attribute.
+Sets the explicit user defined GUID to the attribute.
 ") SetID;
 		void SetID(const Standard_GUID & guid);
 
@@ -9804,7 +9811,7 @@ None
 
 Description
 -----------
-Sets default guid for the attribute.
+Sets default GUID for the attribute.
 ") SetID;
 		void SetID();
 
@@ -9852,7 +9859,7 @@ opencascade::handle<TDataStd_Real>
 
 Description
 -----------
-Tool to create an integer attribute from <value>, insert it in a new son label of <self>. the real attribute is returned.
+Tool to Create an Integer attribute from <value>, Insert it in a new son label of <self>. The Real attribute is returned.
 ") Append;
 		opencascade::handle<TDataStd_Real> Append(const Standard_Real value, const Standard_Boolean isExported = Standard_False);
 
@@ -9871,7 +9878,7 @@ opencascade::handle<TDataStd_Integer>
 
 Description
 -----------
-Tool to create an real attribute from <value>, insert it in a new son label of <self>. the integer attribute is returned.
+Tool to Create an Real attribute from <value>, Insert it in a new son label of <self>. The Integer attribute is returned.
 ") Append;
 		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
 
@@ -9907,7 +9914,7 @@ bool
 
 Description
 -----------
-Class methods ============= try to retrieve a notebook attribute at <current> label or in fathers label of <current>. returns true if found and set <n>.
+class methods ============= try to retrieve a NoteBook attribute at <current> label or in fathers label of <current>. Returns True if found and set <N>.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_NoteBook> & N);
 
@@ -9920,7 +9927,7 @@ Standard_GUID
 
 Description
 -----------
-Notebook methods ===============.
+NoteBook methods ===============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -9951,7 +9958,7 @@ opencascade::handle<TDataStd_NoteBook>
 
 Description
 -----------
-Create an enpty notebook attribute, located at <label>. raises if <label> has attribute.
+Create an enpty NoteBook attribute, located at <label>. Raises if <label> has attribute.
 ") New;
 		static opencascade::handle<TDataStd_NoteBook> New(const TDF_Label & label);
 
@@ -10031,7 +10038,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -10075,7 +10082,7 @@ opencascade::handle<TDataStd_Relation>
 
 Description
 -----------
-Find, or create, an relation attribute. real methods ============.
+Find, or create, an Relation attribute. Real methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Relation> Set(const TDF_Label & label);
 
@@ -10183,7 +10190,7 @@ opencascade::handle<TDataStd_Tick>
 
 Description
 -----------
-Find, or create, a tick attribute. tick methods ============.
+Find, or create, a Tick attribute. Tick methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Tick> Set(const TDF_Label & label);
 

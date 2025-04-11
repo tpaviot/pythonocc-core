@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define VRMLDATADOCSTRING
 "VrmlData module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_vrmldata.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmldata.html"
 %enddef
 %module (package="OCC.Core", docstring=VRMLDATADOCSTRING) VrmlData
 
@@ -208,7 +208,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> * this method nullifies the argument node if its member myscene differs * from that one of the current instance. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> * This method nullifies the argument node if its member myScene differs * from that one of the current instance. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
 
@@ -221,7 +221,7 @@ int
 
 Description
 -----------
-No available documentation.
+/** * Define the common Indent in spaces, for writing all nodes. */.
 ") GlobalIndent;
 		static Standard_Integer GlobalIndent();
 
@@ -234,7 +234,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, then it would not be written. */.
+/** * Returns True if the node is default, then it would not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -247,7 +247,7 @@ char *
 
 Description
 -----------
-/** * query the name */.
+/** * Query the name */.
 ") Name;
 		const char * Name();
 
@@ -301,7 +301,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -319,7 +319,7 @@ theResult: bool
 
 Description
 -----------
-/** * read one boolean value (true or false). */.
+/** * Read one boolean value (True or False). */.
 ") ReadBoolean;
 		static VrmlData_ErrorStatus ReadBoolean(VrmlData_InBuffer & theBuffer, Standard_Boolean &OutValue);
 
@@ -338,7 +338,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read one integer value. */.
+/** * Read one integer value. */.
 ") ReadInteger;
 		static VrmlData_ErrorStatus ReadInteger(VrmlData_InBuffer & theBuffer, long & theResult);
 
@@ -357,7 +357,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read one quoted string, the quotes are removed. */.
+/** * Read one quoted string, the quotes are removed. */.
 ") ReadMultiString;
 		static VrmlData_ErrorStatus ReadMultiString(VrmlData_InBuffer & theBuffer, NCollection_List<TCollection_AsciiString> & theRes);
 
@@ -377,7 +377,10 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read a complete node definition from vrml stream * @param thebuffer * buffer receiving the input data. * @param thenode * <tt>[out]</tt> node restored from the buffer data * @param type * node type to be checked. if it is null(default) no type checking is done. * otherwise the created node is matched and an error is returned if * no match detected. */.
+/** * Read a complete node definition from VRML stream * 
+Parameter theBuffer * Buffer receiving the input data. * 
+Parameter theNode * <tt>[out]</tt> Node restored from the buffer data * 
+Parameter Type * Node type to be checked. If it is NULL(default) no type checking is done. * Otherwise the created node is matched and an error is returned if * no match detected. */.
 ") ReadNode;
 		VrmlData_ErrorStatus ReadNode(VrmlData_InBuffer & theBuffer, opencascade::handle<VrmlData_Node> & theNode, const opencascade::handle<Standard_Type> & Type = NULL);
 
@@ -396,7 +399,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read one quoted string, the quotes are removed. */.
+/** * Read one quoted string, the quotes are removed. */.
 ") ReadString;
 		static VrmlData_ErrorStatus ReadString(VrmlData_InBuffer & theBuffer, TCollection_AsciiString & theRes);
 
@@ -409,7 +412,7 @@ VrmlData_Scene
 
 Description
 -----------
-/** * query the scene that contains this node */.
+/** * Query the Scene that contains this Node */.
 ") Scene;
 		const VrmlData_Scene & Scene();
 
@@ -427,7 +430,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -440,7 +443,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the closing brace in the end of a node output. */.
+/** * Write the closing brace in the end of a node output. */.
 ") WriteClosing;
 		VrmlData_ErrorStatus WriteClosing();
 
@@ -475,7 +478,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") VrmlData_Scene;
 		 VrmlData_Scene(const opencascade::handle<NCollection_IncAllocator > & = 0L);
 
@@ -494,7 +497,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * add a node. if then belongs to another scene, it is cloned. * <p>vrmldata_worldinfo cannot be added, in this case the method * returns a null handle. */.
+/** * Add a Node. If theN belongs to another Scene, it is cloned. * <p>VrmlData_WorldInfo cannot be added, in this case the method * returns a NULL handle. */.
 ") AddNode;
 		const opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theN, const Standard_Boolean isTopLevel = Standard_True);
 
@@ -507,7 +510,7 @@ opencascade::handle<NCollection_IncAllocator>
 
 Description
 -----------
-/** * allocator used by all nodes contained in the scene. */.
+/** * Allocator used by all nodes contained in the Scene. */.
 ") Allocator;
 		const opencascade::handle<NCollection_IncAllocator> & Allocator();
 
@@ -524,7 +527,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-/** * diagnostic dump of the contents */.
+/** * Diagnostic dump of the contents */.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -543,7 +546,9 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * find a node by its name. * @param thename * name of the node to find. * @param thetype * type to match. if this value is null, the first found node with the * given name is returned. if thetype is given, only the node that has * that type is returned. */.
+/** * Find a node by its name. * 
+Parameter theName * Name of the node to find. * 
+Parameter theType * Type to match. If this value is NULL, the first found node with the * given name is returned. If theType is given, only the node that has * that type is returned. */.
 ") FindNode;
 		opencascade::handle<VrmlData_Node> FindNode(const char * theName, const opencascade::handle<Standard_Type> & theType = 0L);
 
@@ -562,7 +567,9 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * find a node by its name. * @param thename * name of the node to search for. * @param thelocation * location of the found node with respect to the whole vrml shape. */.
+/** * Find a node by its name. * 
+Parameter theName * Name of the node to search for. * 
+Parameter theLocation * Location of the found node with respect to the whole VRML shape. */.
 ") FindNode;
 		opencascade::handle<VrmlData_Node> FindNode(const char * theName, gp_Trsf & theLocation);
 
@@ -575,7 +582,7 @@ Iterator
 
 Description
 -----------
-/** * iterator of nodes */.
+/** * Iterator of Nodes */.
 ") GetIterator;
 		Iterator GetIterator();
 
@@ -588,7 +595,7 @@ int
 
 Description
 -----------
-/** * query the line where the error occurred (if the status is not ok) */.
+/** * Query the line where the error occurred (if the status is not OK) */.
 ") GetLineError;
 		Standard_Integer GetLineError();
 
@@ -606,7 +613,9 @@ TopoDS_Shape
 
 Description
 -----------
-/** * convert the scene to a shape, with the information on materials defined * for each sub-shape. this method should be used instead of topods_shape * explicit conversion operator when you need to retrieve the material * aspect for each face or edge in the returned topological object. * @param m * data map that binds an appearance instance to each created tface or * tedge if the appearance node is defined in vrml scene for that geometry. * return * topods_shape (compound) holding all the scene, similar to the result of * explicit topods_shape conversion operator. */.
+/** * Convert the scene to a Shape, with the information on materials defined * for each sub-shape. This method should be used instead of TopoDS_Shape * explicit conversion operator when you need to retrieve the material * aspect for each face or edge in the returned topological object. * 
+Parameter M * Data Map that binds an Appearance instance to each created TFace or * TEdge if the Appearance node is defined in VRML scene for that geometry. * 
+Return: * TopoDS_Shape (Compound) holding all the scene, similar to the result of * explicit TopoDS_Shape conversion operator. */.
 ") GetShape;
 		TopoDS_Shape GetShape(VrmlData_DataMapOfShapeAppearance & M);
 
@@ -619,7 +628,7 @@ bool
 
 Description
 -----------
-/** * query if the current write operation is dummy, i.e., for the purpose of * collecting information before the real write is commenced. */.
+/** * Query if the current write operation is dummy, i.e., for the purpose of * collecting information before the real write is commenced. */.
 ") IsDummyWrite;
 		Standard_Boolean IsDummyWrite();
 
@@ -632,7 +641,7 @@ VrmlData_MapOfNode::Iterator
 
 Description
 -----------
-/** * get the iterator of named nodes. */.
+/** * Get the iterator of named nodes. */.
 ") NamedNodesIterator;
 		VrmlData_MapOfNode::Iterator NamedNodesIterator();
 
@@ -652,7 +661,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-No available documentation.
+/** * Read an array of integer indices, for IndexedfaceSet and IndexedLineSet. */.
 ") ReadArrIndex;
 		VrmlData_ErrorStatus ReadArrIndex(VrmlData_InBuffer & theBuffer, const Standard_Integer * * & theArr, Standard_Size & theNBl);
 
@@ -670,7 +679,10 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read a vrml line. empty lines and comments are skipped. * the processing starts here from thebuffer.lineptr; if there is at least * one non-empty character (neither space nor comment), this line is used * without reading the next one. * @param theline * buffer receiving the input line * @param theinput * input stream * @param thelen * length of the input buffer (maximal line length) */.
+/** * Read a VRML line. Empty lines and comments are skipped. * The processing starts here from theBuffer.LinePtr; if there is at least * one non-empty character (neither space nor comment), this line is used * without reading the next one. * 
+Parameter theLine * Buffer receiving the input line * 
+Parameter theInput * Input stream * 
+Parameter theLen * Length of the input buffer (maximal line length) */.
 ") ReadLine;
 		static VrmlData_ErrorStatus ReadLine(VrmlData_InBuffer & theBuffer);
 
@@ -690,7 +702,7 @@ theResult: float
 
 Description
 -----------
-/** * read one real value. */.
+/** * Read one real value. */.
 ") ReadReal;
 		VrmlData_ErrorStatus ReadReal(VrmlData_InBuffer & theBuffer, Standard_Real &OutValue, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
@@ -709,7 +721,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read a singel word from the input stream, delimited by whitespace. */.
+/** * Read a single word from the input stream, delimited by whitespace. */.
 ") ReadWord;
 		static VrmlData_ErrorStatus ReadWord(VrmlData_InBuffer & theBuffer, TCollection_AsciiString & theStr);
 
@@ -730,7 +742,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read one doublet of real values. */.
+/** * Read one doublet of real values. */.
 ") ReadXY;
 		VrmlData_ErrorStatus ReadXY(VrmlData_InBuffer & theBuffer, gp_XY & theXYZ, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
@@ -751,7 +763,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read one triplet of real values. */.
+/** * Read one triplet of real values. */.
 ") ReadXYZ;
 		VrmlData_ErrorStatus ReadXYZ(VrmlData_InBuffer & theBuffer, gp_XYZ & theXYZ, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
@@ -769,7 +781,8 @@ None
 
 Description
 -----------
-/** * store the indentation for vrml output. * @param nspc * number of spaces to insert at every indentation level */.
+/** * Store the indentation for VRML output. * 
+Parameter nSpc * number of spaces to insert at every indentation level */.
 ") SetIndent;
 		void SetIndent(const Standard_Integer nSpc);
 
@@ -787,7 +800,7 @@ None
 
 Description
 -----------
-/** * set the scale factor that would be further used in methods * readreal, readxyz and readxy. all coordinates, distances and sized are * multiplied by this factor during reading the data. */.
+/** * Set the scale factor that would be further used in methods * ReadReal, ReadXYZ and ReadXY. All coordinates, distances and sized are * multiplied by this factor during reading the data. */.
 ") SetLinearScale;
 		void SetLinearScale(const Standard_Real theScale);
 
@@ -805,7 +818,7 @@ None
 
 Description
 -----------
-/** * add the given directory path to the list of vrml file search directories. * this method forms the list of directories ordered according to the * sequence of this method calls. when an inline node is found, the urls * in that node are matched with these directories. * the last (implicit) search directory is the current process directory * ('.'). it takes effect if the list is empty or if there is no match with * exisiting directories. */.
+/** * Add the given directory path to the list of VRML file search directories. * This method forms the list of directories ordered according to the * sequence of this method calls. When an Inline node is found, the URLs * in that node are matched with these directories. * The last (implicit) search directory is the current process directory * ('.'). It takes effect if the list is empty or if there is no match with * existing directories. */.
 ") SetVrmlDir;
 		void SetVrmlDir(const TCollection_ExtendedString &);
 
@@ -818,7 +831,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * query the status of the previous operation. * normally it should be equal to vrmldata_statusok (no error). */.
+/** * Query the status of the previous operation. * Normally it should be equal to VrmlData_StatusOK (no error). */.
 ") Status;
 		VrmlData_ErrorStatus Status();
 
@@ -831,7 +844,7 @@ NCollection_List<TCollection_ExtendedString >::Iterator
 
 Description
 -----------
-/** * returns the directory iterator, to check the presence of requested vrml * file in each iterated directory. */.
+/** * Returns the directory iterator, to check the presence of requested VRML * file in each iterated directory. */.
 ") VrmlDirIterator;
 		NCollection_List<TCollection_ExtendedString >::Iterator VrmlDirIterator();
 
@@ -844,7 +857,7 @@ opencascade::handle<VrmlData_WorldInfo>
 
 Description
 -----------
-/** * query the worldinfo member. */.
+/** * Query the WorldInfo member. */.
 ") WorldInfo;
 		const opencascade::handle<VrmlData_WorldInfo> & WorldInfo();
 
@@ -864,7 +877,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write an array of integer indices, for indexedfaceset and indexedlineset. */.
+/** * Write an array of integer indices, for IndexedFaceSet and IndexedLineSet. */.
 ") WriteArrIndex;
 		VrmlData_ErrorStatus WriteArrIndex(const char * thePrefix, const Standard_Integer * * theArr, const Standard_Size theNbBl);
 
@@ -884,7 +897,11 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write a string to the output stream respecting the indentation. the string * can be defined as two substrings that will be separated by a space. * each of the substrings can be null, then it is ignored. if both * are null, then a single newline is output (without indent). * @param theline0 * the first part of string to output * @param theline1 * the second part of string to output * @param theindent * - 0 value ignored. * - negative decreases the current indent and then outputs. * - positive outputs and then increases the current indent. * return * error status of the stream, or a special error if myoutput == null. */.
+/** * Write a string to the output stream respecting the indentation. The string * can be defined as two substrings that will be separated by a space. * Each of the substrings can be NULL, then it is ignored. If both * are NULL, then a single newline is output (without indent). * 
+Parameter theLine0 * The first part of string to output * 
+Parameter theLine1 * The second part of string to output * 
+Parameter theIndent * - 0 value ignored. * - negative decreases the current indent and then outputs. * - positive outputs and then increases the current indent. * 
+Return: * Error status of the stream, or a special error if myOutput == NULL. */.
 ") WriteLine;
 		VrmlData_ErrorStatus WriteLine(const char * theLine0, const char * theLine1 = 0L, const Standard_Integer theIndent = 0);
 
@@ -903,7 +920,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the given node to output stream 'myoutput'. */.
+/** * Write the given node to output stream 'myOutput'. */.
 ") WriteNode;
 		VrmlData_ErrorStatus WriteNode(const char * thePrefix, const opencascade::handle<VrmlData_Node > &);
 
@@ -923,7 +940,10 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write a triplet of real values on a separate line. * @param thexyz * the value to be output. * @param isscale * if true, then each component is divided by mylinearscale. * @param thepostfix * optional string that is added before the end of the line. */.
+/** * Write a triplet of real values on a separate line. * 
+Parameter theXYZ * The value to be output. * 
+Parameter isScale * If True, then each component is divided by myLinearScale. * 
+Parameter thePostfix * Optional string that is added before the end of the line. */.
 ") WriteXYZ;
 		VrmlData_ErrorStatus WriteXYZ(const gp_XYZ & theXYZ, const Standard_Boolean isScale, const char * thePostfix = 0L);
 
@@ -957,7 +977,9 @@ None
 
 Description
 -----------
-/** * constructor. * @param thescene * scene receiving all vrml data. * @param thescale * scale factor, considering that vrml standard specifies coordinates in * meters. so if your data are in mm, you should provide thescale=0.001 */.
+/** * Constructor. * 
+Parameter theScene * Scene receiving all Vrml data. * 
+Parameter theScale * Scale factor, considering that VRML standard specifies coordinates in * meters. So if your data are in mm, you should provide theScale=0.001 */.
 ") VrmlData_ShapeConvert;
 		 VrmlData_ShapeConvert(VrmlData_Scene & theScene, const Standard_Real theScale = 1);
 
@@ -976,7 +998,7 @@ None
 
 Description
 -----------
-/** * add one shape to the internal list, may be called several times with * different shapes. */.
+/** * Add one shape to the internal list, may be called several times with * different shapes. */.
 ") AddShape;
 		void AddShape(const TopoDS_Shape & theShape, const char * theName = 0L);
 
@@ -997,7 +1019,11 @@ None
 
 Description
 -----------
-/** * convert all accumulated shapes and store them in myscene. * the internal data structures are cleared in the end of conversion. * @param theextractfaces * if true, converter extracst faces from the shapes. * @param theextractedges * if true, converter extracts edges from the shapes. * @param thedeflection * deflection for tessellation of geometrical lines/surfaces. existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param thedeflangle * angular deflection for tessellation of geometrical lines. */.
+/** * Convert all accumulated shapes and store them in myScene. * The internal data structures are cleared in the end of conversion. * 
+Parameter theExtractFaces * If True, converter extracst faces from the shapes. * 
+Parameter theExtractEdges * If True, converter extracts edges from the shapes. * 
+Parameter theDeflection * Deflection for tessellation of geometrical lines/surfaces. Existing mesh * is used if its deflection is smaller than the one given by this * parameter. * 
+Parameter theDeflAngle * Angular deflection for tessellation of geometrical lines. */.
 ") Convert;
 		void Convert(const Standard_Boolean theExtractFaces, const Standard_Boolean theExtractEdges, const Standard_Real theDeflection = 0.01, const Standard_Real theDeflAngle = 20*M_PI/180);
 
@@ -1015,7 +1041,7 @@ None
 
 Description
 -----------
-/** * add all shapes start from given document with colors and names to the internal structure */.
+/** * Add all shapes start from given document with colors and names to the internal structure */.
 ") ConvertDocument;
 		void ConvertDocument(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -1048,7 +1074,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Appearance;
 		 VrmlData_Appearance();
 
@@ -1067,7 +1093,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Appearance;
 		 VrmlData_Appearance(const VrmlData_Scene & theScene, const char * theName);
 
@@ -1085,7 +1111,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
 
@@ -1098,7 +1124,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, so that it should not be written. */.
+/** * Returns True if the node is default, so that it should not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -1111,7 +1137,7 @@ opencascade::handle<VrmlData_Material>
 
 Description
 -----------
-/** * query the material */.
+/** * Query the Material */.
 ") Material;
 		const opencascade::handle<VrmlData_Material> & Material();
 
@@ -1129,7 +1155,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -1147,7 +1173,7 @@ None
 
 Description
 -----------
-/** * set the material */.
+/** * Set the Material */.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<VrmlData_Material> & theMat);
 
@@ -1165,7 +1191,7 @@ None
 
 Description
 -----------
-/** * set the texture */.
+/** * Set the Texture */.
 ") SetTexture;
 		void SetTexture(const opencascade::handle<VrmlData_Texture> & theTexture);
 
@@ -1183,7 +1209,7 @@ None
 
 Description
 -----------
-/** * set the texture transform */.
+/** * Set the Texture Transform */.
 ") SetTextureTransform;
 		void SetTextureTransform(const opencascade::handle<VrmlData_TextureTransform> & theTT);
 
@@ -1196,7 +1222,7 @@ opencascade::handle<VrmlData_Texture>
 
 Description
 -----------
-/** * query the texture */.
+/** * Query the Texture */.
 ") Texture;
 		const opencascade::handle<VrmlData_Texture> & Texture();
 
@@ -1209,7 +1235,7 @@ opencascade::handle<VrmlData_TextureTransform>
 
 Description
 -----------
-/** * query the texturetransform */.
+/** * Query the TextureTransform */.
 ") TextureTransform;
 		const opencascade::handle<VrmlData_TextureTransform> & TextureTransform();
 
@@ -1227,7 +1253,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node from input stream. */.
+/** * Write the Node from input stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -1260,7 +1286,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
+/** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -1295,7 +1321,9 @@ None
 
 Description
 -----------
-/** * empty constructor. * @param istransform * true if the group of type transform is defined * @param thealloc * allocator used for the list of children */.
+/** * Empty constructor. * 
+Parameter isTransform * True if the group of type Transform is defined * 
+Parameter theAlloc * Allocator used for the list of children */.
 ") VrmlData_Group;
 		 VrmlData_Group(const Standard_Boolean isTransform = Standard_False);
 
@@ -1315,7 +1343,10 @@ None
 
 Description
 -----------
-/** * constructor. * @param thename * name of the group node * @param istransform * true if the group of type transform is defined * @param thealloc * allocator used for the list of children */.
+/** * Constructor. * 
+Parameter theName * Name of the Group node * 
+Parameter isTransform * True if the group of type Transform is defined * 
+Parameter theAlloc * Allocator used for the list of children */.
 ") VrmlData_Group;
 		 VrmlData_Group(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isTransform = Standard_False);
 
@@ -1333,7 +1364,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * add one node to the group. */.
+/** * Add one node to the Group. */.
 ") AddNode;
 		opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theNode);
 
@@ -1346,7 +1377,7 @@ Bnd_B3f
 
 Description
 -----------
-/** * query the bounding box. */.
+/** * Query the bounding box. */.
 ") Box;
 		const Bnd_B3f & Box();
 
@@ -1364,7 +1395,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -1383,7 +1414,9 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * find a node by its name, inside this group * @param thename * name of the node to search for. * @param thelocation * location of the found node with respect to this group. */.
+/** * Find a node by its name, inside this Group * 
+Parameter theName * Name of the node to search for. * 
+Parameter theLocation * Location of the found node with respect to this Group. */.
 ") FindNode;
 		opencascade::handle<VrmlData_Node> FindNode(const char * theName, gp_Trsf & theLocation);
 
@@ -1396,7 +1429,7 @@ gp_Trsf
 
 Description
 -----------
-No available documentation.
+/** * Query the transform value. * For group without transformation this always returns Identity */.
 ") GetTransform;
 		const gp_Trsf GetTransform();
 
@@ -1409,7 +1442,7 @@ bool
 
 Description
 -----------
-/** * query if the node is transform type. */.
+/** * Query if the node is Transform type. */.
 ") IsTransform;
 		Standard_Boolean IsTransform();
 
@@ -1422,7 +1455,7 @@ Iterator
 
 Description
 -----------
-/** * create iterator on nodes belonging to the group. */.
+/** * Create iterator on nodes belonging to the Group. */.
 ") NodeIterator;
 		Iterator NodeIterator();
 
@@ -1440,7 +1473,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -1458,7 +1491,8 @@ bool
 
 Description
 -----------
-/** * remove one node from the group. * return * true if the node was located and removed, false if none removed. */.
+/** * Remove one node from the Group. * 
+Return: * True if the node was located and removed, False if none removed. */.
 ") RemoveNode;
 		Standard_Boolean RemoveNode(const opencascade::handle<VrmlData_Node> & theNode);
 
@@ -1476,7 +1510,7 @@ None
 
 Description
 -----------
-/** * set the bounding box. */.
+/** * Set the bounding box. */.
 ") SetBox;
 		void SetBox(const Bnd_B3f & theBox);
 
@@ -1494,7 +1528,7 @@ bool
 
 Description
 -----------
-/** * set the transformation. returns true if the group is transform type, * otherwise do nothing and return false. */.
+/** * Set the transformation. Returns True if the group is Transform type, * otherwise do nothing and return False. */.
 ") SetTransform;
 		Standard_Boolean SetTransform(const gp_Trsf & theTrsf);
 
@@ -1513,7 +1547,7 @@ None
 
 Description
 -----------
-/** * get the shape representing the group geometry. */.
+/** * Get the shape representing the group geometry. */.
 ") Shape;
 		void Shape(TopoDS_Shape & theShape, VrmlData_DataMapOfShapeAppearance * pMapApp);
 
@@ -1531,7 +1565,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -1560,7 +1594,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Material;
 		 VrmlData_Material();
 
@@ -1582,7 +1616,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Material;
 		 VrmlData_Material(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theAmbientIntensity = -1, const Standard_Real theShininess = -1, const Standard_Real theTransparency = -1);
 
@@ -1595,7 +1629,7 @@ Quantity_Color
 
 Description
 -----------
-/** * query the ambient color */.
+/** * Query the Ambient color */.
 ") AmbientColor;
 		const Quantity_Color & AmbientColor();
 
@@ -1608,7 +1642,7 @@ float
 
 Description
 -----------
-/** * query the ambient intensity value */.
+/** * Query the Ambient Intensity value */.
 ") AmbientIntensity;
 		Standard_Real AmbientIntensity();
 
@@ -1626,7 +1660,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -1639,7 +1673,7 @@ Quantity_Color
 
 Description
 -----------
-/** * query the diffuse color */.
+/** * Query the Diffuse color */.
 ") DiffuseColor;
 		const Quantity_Color & DiffuseColor();
 
@@ -1652,7 +1686,7 @@ Quantity_Color
 
 Description
 -----------
-/** * query the emissive color */.
+/** * Query the Emissive color */.
 ") EmissiveColor;
 		const Quantity_Color & EmissiveColor();
 
@@ -1665,7 +1699,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, so that it should not be written. */.
+/** * Returns True if the node is default, so that it should not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -1683,7 +1717,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -1701,7 +1735,7 @@ None
 
 Description
 -----------
-/** * query the ambient color */.
+/** * Query the Ambient color */.
 ") SetAmbientColor;
 		void SetAmbientColor(const Quantity_Color & theColor);
 
@@ -1719,7 +1753,7 @@ None
 
 Description
 -----------
-/** * set the ambient intensity value */.
+/** * Set the Ambient Intensity value */.
 ") SetAmbientIntensity;
 		void SetAmbientIntensity(const Standard_Real theAmbientIntensity);
 
@@ -1737,7 +1771,7 @@ None
 
 Description
 -----------
-/** * query the diffuse color */.
+/** * Query the Diffuse color */.
 ") SetDiffuseColor;
 		void SetDiffuseColor(const Quantity_Color & theColor);
 
@@ -1755,7 +1789,7 @@ None
 
 Description
 -----------
-/** * query the emissive color */.
+/** * Query the Emissive color */.
 ") SetEmissiveColor;
 		void SetEmissiveColor(const Quantity_Color & theColor);
 
@@ -1773,7 +1807,7 @@ None
 
 Description
 -----------
-/** * set the shininess value */.
+/** * Set the Shininess value */.
 ") SetShininess;
 		void SetShininess(const Standard_Real theShininess);
 
@@ -1791,7 +1825,7 @@ None
 
 Description
 -----------
-/** * query the specular color */.
+/** * Query the Specular color */.
 ") SetSpecularColor;
 		void SetSpecularColor(const Quantity_Color & theColor);
 
@@ -1809,7 +1843,7 @@ None
 
 Description
 -----------
-/** * set the transparency value */.
+/** * Set the Transparency value */.
 ") SetTransparency;
 		void SetTransparency(const Standard_Real theTransparency);
 
@@ -1822,7 +1856,7 @@ float
 
 Description
 -----------
-/** * query the shininess value */.
+/** * Query the Shininess value */.
 ") Shininess;
 		Standard_Real Shininess();
 
@@ -1835,7 +1869,7 @@ Quantity_Color
 
 Description
 -----------
-/** * query the specular color */.
+/** * Query the Specular color */.
 ") SpecularColor;
 		const Quantity_Color & SpecularColor();
 
@@ -1848,7 +1882,7 @@ float
 
 Description
 -----------
-/** * query the transparency value */.
+/** * Query the Transparency value */.
 ") Transparency;
 		Standard_Real Transparency();
 
@@ -1866,7 +1900,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to the scene output. */.
+/** * Write the Node to the Scene output. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -1895,7 +1929,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_ShapeNode;
 		 VrmlData_ShapeNode();
 
@@ -1914,7 +1948,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_ShapeNode;
 		 VrmlData_ShapeNode(const VrmlData_Scene & theScene, const char * theName);
 
@@ -1927,7 +1961,7 @@ opencascade::handle<VrmlData_Appearance>
 
 Description
 -----------
-/** * query the appearance. */.
+/** * Query the Appearance. */.
 ") Appearance;
 		const opencascade::handle<VrmlData_Appearance> & Appearance();
 
@@ -1945,7 +1979,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -1958,7 +1992,7 @@ opencascade::handle<VrmlData_Geometry>
 
 Description
 -----------
-/** * query the geometry. */.
+/** * Query the Geometry. */.
 ") Geometry;
 		const opencascade::handle<VrmlData_Geometry> & Geometry();
 
@@ -1971,7 +2005,7 @@ bool
 
 Description
 -----------
-/** * check if the shape node is writeable. */.
+/** * Check if the Shape Node is writeable. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -1989,7 +2023,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2007,7 +2041,7 @@ None
 
 Description
 -----------
-/** * set the appearance */.
+/** * Set the Appearance */.
 ") SetAppearance;
 		void SetAppearance(const opencascade::handle<VrmlData_Appearance> & theAppear);
 
@@ -2025,7 +2059,7 @@ None
 
 Description
 -----------
-/** * set the geometry */.
+/** * Set the Geometry */.
 ") SetGeometry;
 		void SetGeometry(const opencascade::handle<VrmlData_Geometry> & theGeometry);
 
@@ -2043,7 +2077,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -2075,7 +2109,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_TextureCoordinate;
 		 VrmlData_TextureCoordinate();
 
@@ -2096,7 +2130,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_TextureCoordinate;
 		 VrmlData_TextureCoordinate(const VrmlData_Scene & theScene, const char * theName, const size_t nPoints = 0, const gp_XY * arrPoints = 0L);
 
@@ -2114,7 +2148,8 @@ bool
 
 Description
 -----------
-No available documentation.
+/** * Create a data array and assign the field myArray. * 
+Return: * True if allocation was successful. */.
 ") AllocateValues;
 		Standard_Boolean AllocateValues(const Standard_Size theLength);
 
@@ -2132,7 +2167,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -2145,7 +2180,7 @@ size_t
 
 Description
 -----------
-/** * query the number of points */.
+/** * Query the number of points */.
 ") Length;
 		size_t Length();
 
@@ -2158,7 +2193,7 @@ gp_XY *
 
 Description
 -----------
-/** * query the points */.
+/** * Query the points */.
 ") Points;
 		const gp_XY * Points();
 
@@ -2176,7 +2211,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2195,7 +2230,7 @@ None
 
 Description
 -----------
-/** * set the points array */.
+/** * Set the points array */.
 ") SetPoints;
 		void SetPoints(const size_t nPoints, const gp_XY * arrPoints);
 
@@ -2227,7 +2262,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty Constructor. */.
 ") VrmlData_UnknownNode;
 		 VrmlData_UnknownNode();
 
@@ -2247,7 +2282,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") VrmlData_UnknownNode;
 		 VrmlData_UnknownNode(const VrmlData_Scene & theScene, const char * theName = 0L, const char * theTitle = 0L);
 
@@ -2260,7 +2295,7 @@ TCollection_AsciiString
 
 Description
 -----------
-/** * query the title of the unknown node. */.
+/** * Query the title of the unknown node. */.
 ") GetTitle;
 		const TCollection_AsciiString & GetTitle();
 
@@ -2273,7 +2308,7 @@ bool
 
 Description
 -----------
-/** * check if the node is non-writeable -- always returns true. */.
+/** * Check if the Node is non-writeable -- always returns true. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -2291,7 +2326,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the unknown node, till the last closing brace of it. */.
+/** * Read the unknown node, till the last closing brace of it. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2320,7 +2355,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty Constructor. */.
 ") VrmlData_WorldInfo;
 		 VrmlData_WorldInfo();
 
@@ -2340,7 +2375,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") VrmlData_WorldInfo;
 		 VrmlData_WorldInfo(const VrmlData_Scene & theScene, const char * theName = 0L, const char * theTitle = 0L);
 
@@ -2358,7 +2393,7 @@ None
 
 Description
 -----------
-/** * add a string to the list of info strings. */.
+/** * Add a string to the list of info strings. */.
 ") AddInfo;
 		void AddInfo(const char * theString);
 
@@ -2376,7 +2411,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -2389,7 +2424,7 @@ NCollection_List< char * >::Iterator
 
 Description
 -----------
-/** * return the iterator of info strings. */.
+/** * Return the iterator of Info strings. */.
 ") InfoIterator;
 		NCollection_List<const char * >::Iterator InfoIterator();
 
@@ -2402,7 +2437,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, then it would not be written. */.
+/** * Returns True if the node is default, then it would not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -2420,7 +2455,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2438,7 +2473,7 @@ None
 
 Description
 -----------
-/** * set or modify the title. */.
+/** * Set or modify the title. */.
 ") SetTitle;
 		void SetTitle(const char * theString);
 
@@ -2451,7 +2486,7 @@ char *
 
 Description
 -----------
-/** * query the title string. */.
+/** * Query the title string. */.
 ") Title;
 		const char * Title();
 
@@ -2469,7 +2504,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to the scene output. */.
+/** * Write the Node to the Scene output. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -2498,7 +2533,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Box;
 		 VrmlData_Box();
 
@@ -2520,7 +2555,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Box;
 		 VrmlData_Box(const VrmlData_Scene & theScene, const char * theName, const Standard_Real sizeX = 2, const Standard_Real sizeY = 2, const Standard_Real sizeZ = 2);
 
@@ -2538,7 +2573,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -2556,7 +2591,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2574,7 +2609,7 @@ None
 
 Description
 -----------
-/** * set the box size */.
+/** * Set the Box Size */.
 ") SetSize;
 		void SetSize(const gp_XYZ & theSize);
 
@@ -2587,7 +2622,7 @@ gp_XYZ
 
 Description
 -----------
-/** * query the box size */.
+/** * Query the Box size */.
 ") Size;
 		const gp_XYZ Size();
 
@@ -2600,7 +2635,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
+/** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -2618,7 +2653,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -2647,7 +2682,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") VrmlData_Color;
 		 VrmlData_Color();
 
@@ -2668,7 +2703,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") VrmlData_Color;
 		 VrmlData_Color(const VrmlData_Scene & theScene, const char * theName, const size_t nColors = 0, const gp_XYZ * arrColors = 0L);
 
@@ -2686,7 +2721,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -2704,7 +2739,9 @@ Quantity_Color
 
 Description
 -----------
-/** * query one color * @param i * index in the array of colors [0 .. n-1] * return * the color value for the index. if index irrelevant, returns (0., 0., 0.) */.
+/** * Query one color * 
+Parameter i * index in the array of colors [0 .. N-1] * 
+Return: * the color value for the index. If index irrelevant, returns (0., 0., 0.) */.
 ") Color;
 		const Quantity_Color Color(const Standard_Integer i);
 
@@ -2722,7 +2759,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2741,7 +2778,7 @@ None
 
 Description
 -----------
-/** * set the array data */.
+/** * Set the array data */.
 ") SetColors;
 		void SetColors(const size_t nColors, const gp_XYZ * arrColors);
 
@@ -2759,7 +2796,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to the scene output. */.
+/** * Write the Node to the Scene output. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -2788,7 +2825,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Cone;
 		 VrmlData_Cone();
 
@@ -2809,7 +2846,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Cone;
 		 VrmlData_Cone(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theBottomRadius = 1, const Standard_Real theHeight = 2);
 
@@ -2822,7 +2859,7 @@ float
 
 Description
 -----------
-/** * query the bottom radius */.
+/** * Query the Bottom Radius */.
 ") BottomRadius;
 		Standard_Real BottomRadius();
 
@@ -2840,7 +2877,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -2853,7 +2890,7 @@ bool
 
 Description
 -----------
-/** * query if the bottom circle is included */.
+/** * Query if the bottom circle is included */.
 ") HasBottom;
 		Standard_Boolean HasBottom();
 
@@ -2866,7 +2903,7 @@ bool
 
 Description
 -----------
-/** * query if the side surface is included */.
+/** * Query if the side surface is included */.
 ") HasSide;
 		Standard_Boolean HasSide();
 
@@ -2879,7 +2916,7 @@ float
 
 Description
 -----------
-/** * query the height */.
+/** * Query the Height */.
 ") Height;
 		Standard_Real Height();
 
@@ -2897,7 +2934,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -2915,7 +2952,7 @@ None
 
 Description
 -----------
-/** * set the bottom radius */.
+/** * Set the Bottom Radius */.
 ") SetBottomRadius;
 		void SetBottomRadius(const Standard_Real theRadius);
 
@@ -2934,7 +2971,7 @@ None
 
 Description
 -----------
-/** * set which faces are included */.
+/** * Set which faces are included */.
 ") SetFaces;
 		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide);
 
@@ -2952,7 +2989,7 @@ None
 
 Description
 -----------
-/** * set the height */.
+/** * Set the Height */.
 ") SetHeight;
 		void SetHeight(const Standard_Real theHeight);
 
@@ -2965,7 +3002,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
+/** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -2983,7 +3020,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3012,7 +3049,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty Constructor */.
 ") VrmlData_Coordinate;
 		 VrmlData_Coordinate();
 
@@ -3033,7 +3070,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Coordinate;
 		 VrmlData_Coordinate(const VrmlData_Scene & theScene, const char * theName, const size_t nPoints = 0, const gp_XYZ * arrPoints = 0L);
 
@@ -3051,7 +3088,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3069,7 +3106,9 @@ gp_XYZ
 
 Description
 -----------
-/** * query one point * @param i * index in the array of points [0 .. n-1] * return * the coordinate for the index. if index irrelevant, returns (0., 0., 0.) */.
+/** * Query one point * 
+Parameter i * index in the array of points [0 .. N-1] * 
+Return: * the coordinate for the index. If index irrelevant, returns (0., 0., 0.) */.
 ") Coordinate;
 		const gp_XYZ Coordinate(const Standard_Integer i);
 
@@ -3087,7 +3126,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -3105,7 +3144,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to the scene output. */.
+/** * Write the Node to the Scene output. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3134,7 +3173,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Cylinder;
 		 VrmlData_Cylinder();
 
@@ -3155,7 +3194,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Cylinder;
 		 VrmlData_Cylinder(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theRadius = 1, const Standard_Real theHeight = 2);
 
@@ -3173,7 +3212,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3186,7 +3225,7 @@ bool
 
 Description
 -----------
-/** * query if the bottom circle is included */.
+/** * Query if the bottom circle is included */.
 ") HasBottom;
 		Standard_Boolean HasBottom();
 
@@ -3199,7 +3238,7 @@ bool
 
 Description
 -----------
-/** * query if the side surface is included */.
+/** * Query if the side surface is included */.
 ") HasSide;
 		Standard_Boolean HasSide();
 
@@ -3212,7 +3251,7 @@ bool
 
 Description
 -----------
-/** * query if the top surface is included */.
+/** * Query if the top surface is included */.
 ") HasTop;
 		Standard_Boolean HasTop();
 
@@ -3225,7 +3264,7 @@ float
 
 Description
 -----------
-/** * query the height */.
+/** * Query the Height */.
 ") Height;
 		Standard_Real Height();
 
@@ -3238,7 +3277,7 @@ float
 
 Description
 -----------
-/** * query the radius */.
+/** * Query the Radius */.
 ") Radius;
 		Standard_Real Radius();
 
@@ -3256,7 +3295,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -3276,7 +3315,7 @@ None
 
 Description
 -----------
-/** * set which faces are included */.
+/** * Set which faces are included */.
 ") SetFaces;
 		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide, const Standard_Boolean hasTop);
 
@@ -3294,7 +3333,7 @@ None
 
 Description
 -----------
-/** * set the height */.
+/** * Set the Height */.
 ") SetHeight;
 		void SetHeight(const Standard_Real theHeight);
 
@@ -3312,7 +3351,7 @@ None
 
 Description
 -----------
-/** * set the radius */.
+/** * Set the Radius */.
 ") SetRadius;
 		void SetRadius(const Standard_Real theRadius);
 
@@ -3325,7 +3364,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
+/** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -3343,7 +3382,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3375,7 +3414,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_ImageTexture;
 		 VrmlData_ImageTexture();
 
@@ -3397,7 +3436,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_ImageTexture;
 		 VrmlData_ImageTexture(const VrmlData_Scene & theScene, const char * theName, const char * theURL = 0L, const Standard_Boolean theRepS = Standard_False, const Standard_Boolean theRepT = Standard_False);
 
@@ -3415,7 +3454,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3433,7 +3472,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -3446,7 +3485,7 @@ NCollection_List<TCollection_AsciiString>
 
 Description
 -----------
-/** * query the associated url. */.
+/** * Query the associated URL. */.
 ") URL;
 		const NCollection_List<TCollection_AsciiString> & URL();
 
@@ -3464,7 +3503,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3493,7 +3532,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") VrmlData_IndexedLineSet;
 		 VrmlData_IndexedLineSet();
 
@@ -3513,7 +3552,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") VrmlData_IndexedLineSet;
 		 VrmlData_IndexedLineSet(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isColorPerVertex = Standard_True);
 
@@ -3531,7 +3570,9 @@ size_t
 
 Description
 -----------
-/** * query the array of color indice * @param arrcolorind * <tt>[out]</tt> array of colorindex as it is described in vrml2.0 spec * return * number of integers in the array arrcolorind. */.
+/** * Query the array of color indice * 
+Parameter arrColorInd * <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec * 
+Return: * Number of integers in the array arrColorInd. */.
 ") ArrayColorInd;
 		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
@@ -3549,7 +3590,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3562,7 +3603,7 @@ opencascade::handle<VrmlData_Color>
 
 Description
 -----------
-/** * query the colors. */.
+/** * Query the Colors. */.
 ") Colors;
 		const opencascade::handle<VrmlData_Color> & Colors();
 
@@ -3575,7 +3616,7 @@ opencascade::handle<VrmlData_Coordinate>
 
 Description
 -----------
-/** * query the coordinates. */.
+/** * Query the Coordinates. */.
 ") Coordinates;
 		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
@@ -3594,7 +3635,10 @@ Quantity_Color
 
 Description
 -----------
-/** * query a color for one node in the given element. the color is * interpreted according to fields mycolors, myarrcolorind, * mycolorpervertex, as defined in vrml 2.0. * @param iface * rank of the polygon [0 .. n-1] * @param ivertex * rank of the vertex in the polygon [0 .. m-1]. this parameter is ignored * if (mycolorpervertex == false) * return * color value (rgb); if the color is indefinite then returns (0., 0., 0.) */.
+/** * Query a color for one node in the given element. The color is * interpreted according to fields myColors, myArrColorInd, * myColorPerVertex, as defined in VRML 2.0. * 
+Parameter iFace * rank of the polygon [0 .. N-1] * 
+Parameter iVertex * rank of the vertex in the polygon [0 .. M-1]. This parameter is ignored * if (myColorPerVertex == False) * 
+Return: * Color value (RGB); if the color is indefinite then returns (0., 0., 0.) */.
 ") GetColor;
 		Quantity_Color GetColor(const Standard_Integer iFace, const Standard_Integer iVertex);
 
@@ -3607,7 +3651,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, so that it should not be written. */.
+/** * Returns True if the node is default, so that it should not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -3626,7 +3670,10 @@ int
 
 Description
 -----------
-/** * query one polygon. * @param ipolygon * rank of the polygon [0 .. n-1] * @param outindice * <tt>[out]</tt> array of vertex indice * return * number of vertice in the polygon - the dimension of outindice array */.
+/** * Query one polygon. * 
+Parameter iPolygon * rank of the polygon [0 .. N-1] * 
+Parameter outIndice * <tt>[out]</tt> array of vertex indice * 
+Return: * number of vertice in the polygon - the dimension of outIndice array */.
 ") Polygon;
 		Standard_Integer Polygon(const Standard_Integer iPolygon, const Standard_Integer * & outIndice);
 
@@ -3644,7 +3691,7 @@ size_t
 
 Description
 -----------
-/** * query the array of polygons */.
+/** * Query the array of polygons */.
 ") Polygons;
 		size_t Polygons(const Standard_Integer * * & arrPolygons);
 
@@ -3662,7 +3709,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -3681,7 +3728,7 @@ None
 
 Description
 -----------
-/** * set the colors array of indice */.
+/** * Set the colors array of indice */.
 ") SetColorInd;
 		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
@@ -3699,7 +3746,7 @@ None
 
 Description
 -----------
-/** * set the boolean value 'colorpervertex' */.
+/** * Set the boolean value 'colorPerVertex' */.
 ") SetColorPerVertex;
 		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
@@ -3717,7 +3764,7 @@ None
 
 Description
 -----------
-/** * set the color node */.
+/** * Set the Color node */.
 ") SetColors;
 		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
@@ -3735,7 +3782,7 @@ None
 
 Description
 -----------
-/** * set the nodes */.
+/** * Set the nodes */.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
@@ -3754,7 +3801,7 @@ None
 
 Description
 -----------
-/** * set the polygons */.
+/** * Set the polygons */.
 ") SetPolygons;
 		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
@@ -3767,7 +3814,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
+/** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -3785,7 +3832,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3814,7 +3861,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Normal;
 		 VrmlData_Normal();
 
@@ -3835,7 +3882,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Normal;
 		 VrmlData_Normal(const VrmlData_Scene & theScene, const char * theName, const size_t nVec = 0, const gp_XYZ * arrVec = 0L);
 
@@ -3853,7 +3900,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3871,7 +3918,9 @@ gp_XYZ
 
 Description
 -----------
-/** * query one normal * @param i * index in the array of normals [0 .. n-1] * return * the normal value for the index. if index irrelevant, returns (0., 0., 0.) */.
+/** * Query one normal * 
+Parameter i * index in the array of normals [0 .. N-1] * 
+Return: * the normal value for the index. If index irrelevant, returns (0., 0., 0.) */.
 ") Normal;
 		const gp_XYZ Normal(const Standard_Integer i);
 
@@ -3889,7 +3938,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -3907,7 +3956,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to the scene output. */.
+/** * Write the Node to the Scene output. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -3936,7 +3985,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_Sphere;
 		 VrmlData_Sphere();
 
@@ -3956,7 +4005,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_Sphere;
 		 VrmlData_Sphere(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theRadius = 1);
 
@@ -3974,7 +4023,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -3987,7 +4036,7 @@ float
 
 Description
 -----------
-/** * query the sphere radius */.
+/** * Query the sphere radius */.
 ") Radius;
 		Standard_Real Radius();
 
@@ -4005,7 +4054,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * fill the node internal data from the given input stream. */.
+/** * Fill the Node internal data from the given input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -4023,7 +4072,7 @@ None
 
 Description
 -----------
-/** * set the spere radius */.
+/** * Set the sphere radius */.
 ") SetRadius;
 		void SetRadius(const Standard_Real theRadius);
 
@@ -4036,7 +4085,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
+/** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -4054,7 +4103,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
@@ -4083,7 +4132,7 @@ None
 
 Description
 -----------
-/** * empty constructor */.
+/** * Empty constructor */.
 ") VrmlData_IndexedFaceSet;
 		 VrmlData_IndexedFaceSet();
 
@@ -4106,7 +4155,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") VrmlData_IndexedFaceSet;
 		 VrmlData_IndexedFaceSet(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isCCW = Standard_True, const Standard_Boolean isSolid = Standard_True, const Standard_Boolean isConvex = Standard_True, const Standard_Real theCreaseAngle = 0);
 
@@ -4124,7 +4173,9 @@ size_t
 
 Description
 -----------
-/** * query the array of color indice * @param arrcolorind * <tt>[out]</tt> array of colorindex as it is described in vrml2.0 spec * return * number of integers in the array arrcolorind. */.
+/** * Query the array of color indice * 
+Parameter arrColorInd * <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec * 
+Return: * Number of integers in the array arrColorInd. */.
 ") ArrayColorInd;
 		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
@@ -4142,7 +4193,9 @@ size_t
 
 Description
 -----------
-/** * query the array of normal indice * @param arrnormalind * <tt>[out]</tt> array of normalindex as it is described in vrml2.0 spec * return * number of integers in the array arrnormalind. */.
+/** * Query the array of normal indice * 
+Parameter arrNormalInd * <tt>[out]</tt> array of normalIndex as it is described in VRML2.0 spec * 
+Return: * Number of integers in the array arrNormalInd. */.
 ") ArrayNormalInd;
 		size_t ArrayNormalInd(const Standard_Integer * * & arrNormalInd);
 
@@ -4160,7 +4213,9 @@ size_t
 
 Description
 -----------
-/** * query the array of texture coordinate indice * @param arrtexturecoordind * <tt>[out]</tt> array of texcoordindex as it is described in vrml2.0 spec * return * number of integers in the array texcoordindex. */.
+/** * Query the array of texture coordinate indice * 
+Parameter arrTextureCoordInd * <tt>[out]</tt> array of texCoordIndex as it is described in VRML2.0 spec * 
+Return: * Number of integers in the array texCoordIndex. */.
 ") ArrayTextureCoordInd;
 		size_t ArrayTextureCoordInd(const Standard_Integer * * & arrTextureCoordInd);
 
@@ -4178,7 +4233,7 @@ opencascade::handle<VrmlData_Node>
 
 Description
 -----------
-/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+/** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */.
 ") Clone;
 		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
@@ -4191,7 +4246,7 @@ opencascade::handle<VrmlData_Color>
 
 Description
 -----------
-/** * query the colors. */.
+/** * Query the Colors. */.
 ") Colors;
 		const opencascade::handle<VrmlData_Color> & Colors();
 
@@ -4204,7 +4259,7 @@ opencascade::handle<VrmlData_Coordinate>
 
 Description
 -----------
-/** * query the coordinates. */.
+/** * Query the Coordinates. */.
 ") Coordinates;
 		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
@@ -4223,7 +4278,10 @@ Quantity_Color
 
 Description
 -----------
-/** * query a color for one node in the given element. the color is * interpreted according to fields mycolors, myarrcolorind, * mycolorpervertex, as defined in vrml 2.0. * @param iface * rank of the polygon [0 .. n-1] * @param ivertex * rank of the vertex in the polygon [0 .. m-1]. this parameter is ignored * if (mycolorpervertex == false) * return * color value (rgb); if the color is indefinite then returns (0., 0., 0.) */.
+/** * Query a color for one node in the given element. The color is * interpreted according to fields myColors, myArrColorInd, * myColorPerVertex, as defined in VRML 2.0. * 
+Parameter iFace * rank of the polygon [0 .. N-1] * 
+Parameter iVertex * rank of the vertex in the polygon [0 .. M-1]. This parameter is ignored * if (myColorPerVertex == False) * 
+Return: * Color value (RGB); if the color is indefinite then returns (0., 0., 0.) */.
 ") GetColor;
 		Quantity_Color GetColor(const Standard_Integer iFace, const Standard_Integer iVertex);
 
@@ -4242,7 +4300,10 @@ int
 
 Description
 -----------
-/** * query normals indice for one face. this method should be called after * checking myarrnormalind != null, otherwise exception will be thrown. * @param iface * rank of the face [0 .. n-1] * @param outindice * <tt>[out]</tt> array of normals indice * return * number of indice in the array - the dimension of outindice array */.
+/** * Query normals indice for one face. This method should be called after * checking myArrNormalInd != NULL, otherwise exception will be thrown. * 
+Parameter iFace * rank of the face [0 .. N-1] * 
+Parameter outIndice * <tt>[out]</tt> array of normals indice * 
+Return: * number of indice in the array - the dimension of outIndice array */.
 ") IndiceNormals;
 		Standard_Integer IndiceNormals(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
@@ -4255,7 +4316,7 @@ bool
 
 Description
 -----------
-/** * returns true if the node is default, so that it should not be written. */.
+/** * Returns True if the node is default, so that it should not be written. */.
 ") IsDefault;
 		virtual Standard_Boolean IsDefault();
 
@@ -4268,7 +4329,7 @@ opencascade::handle<VrmlData_Normal>
 
 Description
 -----------
-/** * query the normals. */.
+/** * Query the Normals. */.
 ") Normals;
 		const opencascade::handle<VrmlData_Normal> & Normals();
 
@@ -4287,7 +4348,10 @@ int
 
 Description
 -----------
-/** * query one polygon. * @param iface * rank of the polygon [0 .. n-1] * @param outindice * <tt>[out]</tt> array of vertex indice * return * number of vertice in the polygon - the dimension of outindice array */.
+/** * Query one polygon. * 
+Parameter iFace * rank of the polygon [0 .. N-1] * 
+Parameter outIndice * <tt>[out]</tt> array of vertex indice * 
+Return: * number of vertice in the polygon - the dimension of outIndice array */.
 ") Polygon;
 		Standard_Integer Polygon(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
@@ -4305,7 +4369,7 @@ size_t
 
 Description
 -----------
-/** * query the array of polygons */.
+/** * Query the array of polygons */.
 ") Polygons;
 		size_t Polygons(const Standard_Integer * * & arrPolygons);
 
@@ -4323,7 +4387,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * read the node from input stream. */.
+/** * Read the Node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
@@ -4342,7 +4406,7 @@ None
 
 Description
 -----------
-/** * set the colors array of indice */.
+/** * Set the colors array of indice */.
 ") SetColorInd;
 		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
@@ -4360,7 +4424,7 @@ None
 
 Description
 -----------
-/** * set the boolean value 'colorpervertex' */.
+/** * Set the boolean value 'colorPerVertex' */.
 ") SetColorPerVertex;
 		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
@@ -4378,7 +4442,7 @@ None
 
 Description
 -----------
-/** * set the color node */.
+/** * Set the Color node */.
 ") SetColors;
 		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
@@ -4396,7 +4460,7 @@ None
 
 Description
 -----------
-/** * set the nodes */.
+/** * Set the nodes */.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
@@ -4415,7 +4479,7 @@ None
 
 Description
 -----------
-/** * set the normals array of indice */.
+/** * Set the normals array of indice */.
 ") SetNormalInd;
 		void SetNormalInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
@@ -4433,7 +4497,7 @@ None
 
 Description
 -----------
-/** * set the boolean value 'normalpervertex' */.
+/** * Set the boolean value 'normalPerVertex' */.
 ") SetNormalPerVertex;
 		void SetNormalPerVertex(const Standard_Boolean isNormalPerVertex);
 
@@ -4451,7 +4515,7 @@ None
 
 Description
 -----------
-/** * set the normals node */.
+/** * Set the normals node */.
 ") SetNormals;
 		void SetNormals(const opencascade::handle<VrmlData_Normal> & theNormals);
 
@@ -4470,7 +4534,7 @@ None
 
 Description
 -----------
-/** * set the polygons */.
+/** * Set the polygons */.
 ") SetPolygons;
 		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
@@ -4489,7 +4553,7 @@ None
 
 Description
 -----------
-/** * set the texcoordiante array of indice */.
+/** * Set the TexCoordiante array of indice */.
 ") SetTextureCoordInd;
 		void SetTextureCoordInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
@@ -4507,7 +4571,7 @@ None
 
 Description
 -----------
-/** * set the texture coordinate node */.
+/** * Set the Texture Coordinate node */.
 ") SetTextureCoords;
 		void SetTextureCoords(const opencascade::handle<VrmlData_TextureCoordinate> & tc);
 
@@ -4520,7 +4584,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
+/** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */.
 ") TShape;
 		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
@@ -4533,7 +4597,7 @@ opencascade::handle<VrmlData_TextureCoordinate>
 
 Description
 -----------
-/** * query the texture coordinates. */.
+/** * Query the Texture Coordinates. */.
 ") TextureCoords;
 		const opencascade::handle<VrmlData_TextureCoordinate> & TextureCoords();
 
@@ -4551,7 +4615,7 @@ VrmlData_ErrorStatus
 
 Description
 -----------
-/** * write the node to output stream. */.
+/** * Write the Node to output stream. */.
 ") Write;
 		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 

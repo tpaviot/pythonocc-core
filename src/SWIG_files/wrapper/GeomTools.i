@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMTOOLSDOCSTRING
 "GeomTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomtools.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomtools.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMTOOLSDOCSTRING) GeomTools
 
@@ -103,7 +103,7 @@ OS: Standard_OStream
 
 Description
 -----------
-A set of curves from geom2d. dumps the surface on the stream.
+A set of Curves from Geom2d. Dumps the surface on the stream.
 ") Dump;
 		static void Dump(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue);
 
@@ -121,7 +121,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the curve on the stream.
+Dumps the Curve on the stream.
 ") Dump;
 		static void Dump(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue);
 
@@ -139,7 +139,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the curve on the stream.
+Dumps the Curve on the stream.
 ") Dump;
 		static void Dump(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue);
 
@@ -157,7 +157,7 @@ theValue: float
 
 Description
 -----------
-Reads the standard_real value from the stream. zero is read in case of error.
+Reads the Standard_Real value from the stream. Zero is read in case of error.
 ") GetReal;
 		static void GetReal(std::istream & IS, Standard_Real &OutValue);
 
@@ -208,7 +208,7 @@ None
 
 Description
 -----------
-Reads the curve from the stream.
+Reads the Curve from the stream.
 ") Read;
 		static void Read(opencascade::handle<Geom_Curve> & C, std::istream & IS);
 
@@ -227,7 +227,7 @@ None
 
 Description
 -----------
-Reads the curve from the stream.
+Reads the Curve from the stream.
 ") Read;
 		static void Read(opencascade::handle<Geom2d_Curve> & C, std::istream & IS);
 
@@ -281,7 +281,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the curve on the stream.
+Writes the Curve on the stream.
 ") Write;
 		static void Write(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue);
 
@@ -299,7 +299,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the curve on the stream.
+Writes the Curve on the stream.
 ") Write;
 		static void Write(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue);
 
@@ -326,7 +326,7 @@ None
 
 Description
 -----------
-Returns an empty set of curves.
+Returns an empty set of Curves.
 ") GeomTools_Curve2dSet;
 		 GeomTools_Curve2dSet();
 
@@ -344,7 +344,7 @@ int
 
 Description
 -----------
-Incorporate a new curve in the set and returns its index.
+Incorporate a new Curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -375,7 +375,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer I);
 
@@ -392,7 +392,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the content of me on the stream <os>.
+Dumps the content of me on the stream <OS>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -410,7 +410,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -429,7 +429,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the curve on the stream, if compact is true use the compact format that can be read back.
+Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 ") PrintCurve2d;
 		static void PrintCurve2d(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
 
@@ -448,7 +448,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -466,7 +466,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Reads the curve from the stream. the curve is assumed to have been written with the print method (compact = true).
+Reads the curve from the stream. The curve is assumed to have been written with the Print method (compact = True).
 ") ReadCurve2d;
 		static opencascade::handle<Geom2d_Curve> ReadCurve2d(std::istream & IS);
 
@@ -484,7 +484,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -511,7 +511,7 @@ None
 
 Description
 -----------
-Returns an empty set of curves.
+Returns an empty set of Curves.
 ") GeomTools_CurveSet;
 		 GeomTools_CurveSet();
 
@@ -529,7 +529,7 @@ int
 
 Description
 -----------
-Incorporate a new curve in the set and returns its index.
+Incorporate a new Curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
 
@@ -560,7 +560,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve(const Standard_Integer I);
 
@@ -577,7 +577,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the content of me on the stream <os>.
+Dumps the content of me on the stream <OS>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -595,7 +595,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
 
@@ -614,7 +614,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the curve on the stream, if compact is true use the compact format that can be read back.
+Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 ") PrintCurve;
 		static void PrintCurve(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
 
@@ -633,7 +633,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -651,7 +651,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Reads the curve from the stream. the curve is assumed to have been written with the print method (compact = true).
+Reads the curve from the stream. The curve is assumed to have been written with the Print method (compact = True).
 ") ReadCurve;
 		static opencascade::handle<Geom_Curve> ReadCurve(std::istream & IS);
 
@@ -669,7 +669,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -696,7 +696,7 @@ None
 
 Description
 -----------
-Returns an empty set of surfaces.
+Returns an empty set of Surfaces.
 ") GeomTools_SurfaceSet;
 		 GeomTools_SurfaceSet();
 
@@ -714,7 +714,7 @@ int
 
 Description
 -----------
-Incorporate a new surface in the set and returns its index.
+Incorporate a new Surface in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
 
@@ -744,7 +744,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the content of me on the stream <os>.
+Dumps the content of me on the stream <OS>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -762,7 +762,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
 
@@ -781,7 +781,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the surface on the stream, if compact is true use the compact format that can be read back.
+Dumps the surface on the stream, if compact is True use the compact format that can be read back.
 ") PrintSurface;
 		static void PrintSurface(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
 
@@ -800,7 +800,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -818,7 +818,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Reads the surface from the stream. the surface is assumed to have been written with the print method (compact = true).
+Reads the surface from the stream. The surface is assumed to have been written with the Print method (compact = True).
 ") ReadSurface;
 		static opencascade::handle<Geom_Surface> ReadSurface(std::istream & IS);
 
@@ -836,7 +836,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the surface of index <i>.
+Returns the Surface of index <I>.
 ") Surface;
 		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
 
@@ -854,7 +854,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 

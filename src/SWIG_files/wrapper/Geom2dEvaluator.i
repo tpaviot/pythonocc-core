@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DEVALUATORDOCSTRING
 "Geom2dEvaluator module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2devaluator.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2devaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DEVALUATORDOCSTRING) Geom2dEvaluator
 
@@ -106,7 +106,7 @@ None
 
 Description
 -----------
-Recalculate d1 values of base curve into d0 value of offset curve.
+Recalculate D1 values of base curve into D0 value of offset curve.
 ") CalculateD0;
 		static void CalculateD0(gp_Pnt2d & theValue, const gp_Vec2d & theD1, const Standard_Real theOffset);
 
@@ -127,7 +127,7 @@ None
 
 Description
 -----------
-Recalculate d2 values of base curve into d1 values of offset curve.
+Recalculate D2 values of base curve into D1 values of offset curve.
 ") CalculateD1;
 		static void CalculateD1(gp_Pnt2d & theValue, gp_Vec2d & theD1, const gp_Vec2d & theD2, const Standard_Real theOffset);
 
@@ -150,7 +150,7 @@ None
 
 Description
 -----------
-Recalculate d3 values of base curve into d2 values of offset curve.
+Recalculate D3 values of base curve into D2 values of offset curve.
 ") CalculateD2;
 		static void CalculateD2(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, const gp_Vec2d & theD3, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
 
@@ -174,7 +174,7 @@ None
 
 Description
 -----------
-Recalculate d3 values of base curve into d3 values of offset curve.
+Recalculate D3 values of base curve into D3 values of offset curve.
 ") CalculateD3;
 		static void CalculateD3(gp_Pnt2d & theValue, gp_Vec2d & theD1, gp_Vec2d & theD2, gp_Vec2d & theD3, const gp_Vec2d & theD4, const Standard_Boolean theIsDirChange, const Standard_Real theOffset);
 
@@ -272,7 +272,7 @@ None
 
 Description
 -----------
-Value of 2d curve.
+Value of 2D curve.
 ") D0;
 		virtual void D0(const Standard_Real theU, gp_Pnt2d & theValue);
 
@@ -354,7 +354,7 @@ gp_Vec2d
 
 Description
 -----------
-Calculates n-th derivatives of curve, where n = thederu. raises if n < 1.
+Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1.
 ") DN;
 		virtual gp_Vec2d DN(const Standard_Real theU, const Standard_Integer theDerU);
 
@@ -522,7 +522,7 @@ gp_Vec2d
 
 Description
 -----------
-Calculates n-th derivatives of curve, where n = thederiv. raises if n < 1.
+Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1.
 ") DN;
 		gp_Vec2d DN(const Standard_Real theU, const Standard_Integer theDeriv);
 

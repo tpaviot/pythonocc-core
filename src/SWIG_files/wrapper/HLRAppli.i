@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRAPPLIDOCSTRING
 "HLRAppli module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_hlrappli.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrappli.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRAPPLIDOCSTRING) HLRAppli
 
@@ -134,7 +134,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
+returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
 ") GetCompoundOf3dEdges;
 		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
@@ -147,7 +147,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting compound of reflect lines represented by edges in 3d.
+returns resulting compound of reflect lines represented by edges in 3d.
 ") GetResult;
 		TopoDS_Shape GetResult();
 

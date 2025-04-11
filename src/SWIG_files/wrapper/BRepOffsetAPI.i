@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPOFFSETAPIDOCSTRING
 "BRepOffsetAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepoffsetapi.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETAPIDOCSTRING) BRepOffsetAPI
 
@@ -176,7 +176,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm to perform taper-adding transformations on faces of a shape. use the init function to define the shape to be tapered.
+Constructs an empty algorithm to perform taper-adding transformations on faces of a shape. Use the Init function to define the shape to be tapered.
 ") BRepOffsetAPI_DraftAngle;
 		 BRepOffsetAPI_DraftAngle();
 
@@ -194,7 +194,7 @@ None
 
 Description
 -----------
-Initializes an algorithm to perform taper-adding transformations on faces of the shape s. s will be referred to as the initial shape of the algorithm.
+Initializes an algorithm to perform taper-adding transformations on faces of the shape S. S will be referred to as the initial shape of the algorithm.
 ") BRepOffsetAPI_DraftAngle;
 		 BRepOffsetAPI_DraftAngle(const TopoDS_Shape & S);
 
@@ -216,7 +216,7 @@ None
 
 Description
 -----------
-Adds the face f, the direction direction, the angle angle, the plane neutralplane, and the flag flag to the framework created at construction time, and with this data, defines the taper-adding transformation. f is a face, which belongs to the initial shape of this algorithm or to the shape loaded by the function init. only planar, cylindrical or conical faces can be tapered: - if the face f is planar, it is tapered by inclining it through the angle angle about the line of intersection between the plane neutralplane and f. direction indicates the side of neutralplane from which matter is removed if angle is positive or added if angle is negative. - if f is cylindrical or conical, it is transformed in the same way on a single face, resulting in a conical face if f is cylindrical, and a conical or cylindrical face if it is already conical. the taper-adding transformation is propagated from the face f along the series of planar, cylindrical or conical faces containing f, which are tangential to one another. use the function adddone to check if this taper-adding transformation is successful. warning nothing is done if: - the face f does not belong to the initial shape of this algorithm, or - the face f is not planar, cylindrical or conical. exceptions - standard_nullobject if the initial shape is not defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the init function. - standard_constructionerror if the previous call to add has failed. the function adddone ought to have been used to check for this, and the function remove to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape.
+Adds the face F, the direction Direction, the angle Angle, the plane NeutralPlane, and the flag Flag to the framework created at construction time, and with this data, defines the taper-adding transformation. F is a face, which belongs to the initial shape of this algorithm or to the shape loaded by the function Init. Only planar, cylindrical or conical faces can be tapered: - If the face F is planar, it is tapered by inclining it through the angle Angle about the line of intersection between the plane NeutralPlane and F. Direction indicates the side of NeutralPlane from which matter is removed if Angle is positive or added if Angle is negative. - If F is cylindrical or conical, it is transformed in the same way on a single face, resulting in a conical face if F is cylindrical, and a conical or cylindrical face if it is already conical. The taper-adding transformation is propagated from the face F along the series of planar, cylindrical or conical faces containing F, which are tangential to one another. Use the function AddDone to check if this taper-adding transformation is successful. Warning Nothing is done if: - the face F does not belong to the initial shape of this algorithm, or - the face F is not planar, cylindrical or conical. Exceptions - Standard_NullObject if the initial shape is not defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the Init function. - Standard_ConstructionError if the previous call to Add has failed. The function AddDone ought to have been used to check for this, and the function Remove to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape.
 ") Add;
 		void Add(const TopoDS_Face & F, const gp_Dir & Direction, const Standard_Real Angle, const gp_Pln & NeutralPlane, const Standard_Boolean Flag = Standard_True);
 
@@ -229,7 +229,7 @@ bool
 
 Description
 -----------
-Returns true if the previous taper-adding transformation performed by this algorithm in the last call to add, was successful. if adddone returns false: - the function problematicshape returns the face on which the error occurred, - the function remove has to be used to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape. exceptions standard_nullobject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the .init function.
+Returns true if the previous taper-adding transformation performed by this algorithm in the last call to Add, was successful. If AddDone returns false: - the function ProblematicShape returns the face on which the error occurred, - the function Remove has to be used to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape. Exceptions Standard_NullObject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the .Init function.
 ") AddDone;
 		Standard_Boolean AddDone();
 
@@ -247,7 +247,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -260,7 +260,7 @@ None
 
 Description
 -----------
-Cancels the results of all taper-adding transformations performed by this algorithm on the initial shape. these results will have been defined by successive calls to the function add.
+Cancels the results of all taper-adding transformations performed by this algorithm on the initial shape. These results will have been defined by successive calls to the function Add.
 ") Clear;
 		void Clear();
 
@@ -278,7 +278,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns all the faces which have been added together with the face <f>.
+Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
 		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
 
@@ -309,7 +309,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -327,7 +327,7 @@ None
 
 Description
 -----------
-Initializes, or reinitializes this taper-adding algorithm with the shape s. s will be referred to as the initial shape of this algorithm.
+Initializes, or reinitializes this taper-adding algorithm with the shape S. S will be referred to as the initial shape of this algorithm.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -345,7 +345,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -376,7 +376,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>. s can correspond to the entire initial shape or to its subshape. raises exceptions standard_nosuchobject if s is not the initial shape or a subshape of the initial shape to which the transformation has been applied. .
+Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Raises exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied.
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -389,7 +389,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape on which an error occurred after an unsuccessful call to add or when isdone returns false. exceptions standard_nullobject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the init function.
+Returns the shape on which an error occurred after an unsuccessful call to Add or when IsDone returns false. Exceptions Standard_NullObject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the Init function.
 ") ProblematicShape;
 		const TopoDS_Shape ProblematicShape();
 
@@ -407,7 +407,7 @@ None
 
 Description
 -----------
-Cancels the taper-adding transformation previously performed by this algorithm on the face f and the series of tangential faces which contain f, and retrieves the shape before the last taper-adding transformation. warning you will have to use this function if the previous call to add fails. use the function adddone to check it. exceptions - standard_nullobject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the init function. - standard_nosuchobject if f has not been added or has already been removed.
+Cancels the taper-adding transformation previously performed by this algorithm on the face F and the series of tangential faces which contain F, and retrieves the shape before the last taper-adding transformation. Warning You will have to use this function if the previous call to Add fails. Use the function AddDone to check it. Exceptions - Standard_NullObject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the Init function. - Standard_NoSuchObject if F has not been added or has already been removed.
 ") Remove;
 		void Remove(const TopoDS_Face & F);
 
@@ -420,7 +420,7 @@ Draft_ErrorStatus
 
 Description
 -----------
-Returns an error status when an error has occurred (face, edge or vertex recomputation problem). otherwise returns draft_noerror. the method may be called if adddone returns standard_false, or when isdone returns standard_false.
+Returns an error status when an error has occurred (Face, Edge or Vertex recomputation problem). Otherwise returns Draft_NoError. The method may be called if AddDone returns Standard_False, or when IsDone returns Standard_False.
 ") Status;
 		Draft_ErrorStatus Status();
 
@@ -453,7 +453,7 @@ None
 
 Description
 -----------
-Initializes an algorithm for identifying contiguous edges on shapes with tolerance as the tolerance of contiguity (defaulted to 1.0e-6). this tolerance value is used to determine whether two edges or sections of edges are coincident. use the function add to define the shapes to be checked. set option to false. this argument (defaulted to true) will serve in subsequent software releases for performing an analysis of degenerated shapes.
+Initializes an algorithm for identifying contiguous edges on shapes with tolerance as the tolerance of contiguity (defaulted to 1.0e-6). This tolerance value is used to determine whether two edges or sections of edges are coincident. Use the function Add to define the shapes to be checked. Set option to false. This argument (defaulted to true) will serve in subsequent software releases for performing an analysis of degenerated shapes.
 ") BRepOffsetAPI_FindContigousEdges;
 		 BRepOffsetAPI_FindContigousEdges(const Standard_Real tolerance = 1.0e-06, const Standard_Boolean option = Standard_True);
 
@@ -471,7 +471,7 @@ None
 
 Description
 -----------
-Adds the shape shape to the list of shapes to be checked by this algorithm. once all the shapes to be checked have been added, use the function perform to find the contiguous edges and the function contigousedge to return these edges.
+Adds the shape shape to the list of shapes to be checked by this algorithm. Once all the shapes to be checked have been added, use the function Perform to find the contiguous edges and the function ContigousEdge to return these edges.
 ") Add;
 		void Add(const TopoDS_Shape & shape);
 
@@ -489,7 +489,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the contiguous edge of index index found by the function perform on the shapes added to this algorithm. exceptions standard_outofrange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function perform on the shapes added to this algorithm.
+Returns the contiguous edge of index index found by the function Perform on the shapes added to this algorithm. Exceptions Standard_OutOfRange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") ContigousEdge;
 		const TopoDS_Edge ContigousEdge(const Standard_Integer index);
 
@@ -507,7 +507,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of edges coincident with the contiguous edge of index index found by the function perform. there are as many edges in the list as there are faces adjacent to this contiguous edge. exceptions standard_outofrange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function perform on the shapes added to this algorithm.
+Returns a list of edges coincident with the contiguous edge of index index found by the function Perform. There are as many edges in the list as there are faces adjacent to this contiguous edge. Exceptions Standard_OutOfRange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") ContigousEdgeCouple;
 		const TopTools_ListOfShape & ContigousEdgeCouple(const Standard_Integer index);
 
@@ -557,7 +557,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for identifying contiguous edges on shapes using the tolerance of contiguity tolerance. this tolerance value is used to determine whether two edges or sections of edges are coincident. use the function add to define the shapes to be checked. sets <option> to false.
+Initializes this algorithm for identifying contiguous edges on shapes using the tolerance of contiguity tolerance. This tolerance value is used to determine whether two edges or sections of edges are coincident. Use the function Add to define the shapes to be checked. Sets <option> to false.
 ") Init;
 		void Init(const Standard_Real tolerance, const Standard_Boolean option);
 
@@ -593,7 +593,7 @@ bool
 
 Description
 -----------
-Returns true if the copy of the initial shape shape was modified by the function perform (i.e. if one or more of its edges was broken down into contiguous and non-contiguous sections). warning returns false if shape is not one of the initial shapes added to this algorithm.
+Returns true if the copy of the initial shape shape was modified by the function Perform (i.e. if one or more of its edges was broken down into contiguous and non-contiguous sections). Warning Returns false if shape is not one of the initial shapes added to this algorithm.
 ") IsModified;
 		Standard_Boolean IsModified(const TopoDS_Shape & shape);
 
@@ -611,7 +611,7 @@ TopoDS_Shape
 
 Description
 -----------
-Gives a modifieded shape raises nosuchobject if shape has not been modified.
+Gives a modifieded shape Raises NoSuchObject if shape has not been modified.
 ") Modified;
 		const TopoDS_Shape Modified(const TopoDS_Shape & shape);
 
@@ -624,7 +624,7 @@ int
 
 Description
 -----------
-Returns the number of contiguous edges found by the function perform on the shapes added to this algorithm.
+Returns the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") NbContigousEdges;
 		Standard_Integer NbContigousEdges();
 
@@ -650,7 +650,7 @@ None
 
 Description
 -----------
-Finds coincident parts of edges of two or more shapes added to this algorithm and breaks down these edges into contiguous and non-contiguous sections on copies of the initial shapes. the function contigousedge returns contiguous edges. the function modified can be used to return modified copies of the initial shapes where one or more edges were broken down into contiguous and non-contiguous sections. warning this function must be used once all the shapes to be checked have been added. it is not possible to add further shapes subsequently and then to repeat the call to perform.
+Finds coincident parts of edges of two or more shapes added to this algorithm and breaks down these edges into contiguous and non-contiguous sections on copies of the initial shapes. The function ContigousEdge returns contiguous edges. The function Modified can be used to return modified copies of the initial shapes where one or more edges were broken down into contiguous and non-contiguous sections. Warning This function must be used once all the shapes to be checked have been added. It is not possible to add further shapes subsequently and then to repeat the call to Perform.
 ") Perform;
 		void Perform();
 
@@ -668,7 +668,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge on the initial shape, of which the modified copy contains the edge section. section is coincident with a contiguous edge found by the function perform. use the function contigousedgecouple to obtain a valid section. this information is useful for verification purposes, since it provides a means of determining the surface to which the contiguous edge belongs. exceptions standard_nosuchobject if section is not coincident with a contiguous edge. use the function contigousedgecouple to obtain a valid section.
+Returns the edge on the initial shape, of which the modified copy contains the edge section. section is coincident with a contiguous edge found by the function Perform. Use the function ContigousEdgeCouple to obtain a valid section. This information is useful for verification purposes, since it provides a means of determining the surface to which the contiguous edge belongs. Exceptions Standard_NoSuchObject if section is not coincident with a contiguous edge. Use the function ContigousEdgeCouple to obtain a valid section.
 ") SectionToBoundary;
 		const TopoDS_Edge SectionToBoundary(const TopoDS_Edge & section);
 
@@ -706,7 +706,7 @@ None
 
 Description
 -----------
-Constructs the draft surface object defined by the shape shape, the direction dir, and the angle angle. shape must be a topods_wire, topo_ds_face or topods_shell with free boundaries. exceptions standard_notdone if shape is not a topods_wire, topo_ds_face or topods_shell with free boundaries.
+Constructs the draft surface object defined by the shape Shape, the direction Dir, and the angle Angle. Shape must be a TopoDS_Wire, Topo_DS_Face or TopoDS_Shell with free boundaries. Exceptions Standard_NotDone if Shape is not a TopoDS_Wire, Topo_DS_Face or TopoDS_Shell with free boundaries.
 ") BRepOffsetAPI_MakeDraft;
 		 BRepOffsetAPI_MakeDraft(const TopoDS_Shape & Shape, const gp_Dir & Dir, const Standard_Real Angle);
 
@@ -724,7 +724,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -742,7 +742,7 @@ None
 
 Description
 -----------
-Performs the draft using the length lengthmax as the maximum length for the corner edge between two draft faces.
+Performs the draft using the length LengthMax as the maximum length for the corner edge between two draft faces.
 ") Perform;
 		void Perform(const Standard_Real LengthMax);
 
@@ -761,7 +761,7 @@ None
 
 Description
 -----------
-Performs the draft up to the surface surface. if keepinsidesurface is true, the part of surface inside the draft is kept in the result.
+Performs the draft up to the surface Surface. If KeepInsideSurface is true, the part of Surface inside the draft is kept in the result.
 ") Perform;
 		void Perform(const opencascade::handle<Geom_Surface> & Surface, const Standard_Boolean KeepInsideSurface = Standard_True);
 
@@ -780,7 +780,7 @@ None
 
 Description
 -----------
-Performs the draft up to the shape stopshape. if keepoutside is true, the part of stopshape which is outside the draft is kept in the result.
+Performs the draft up to the shape StopShape. If KeepOutSide is true, the part of StopShape which is outside the Draft is kept in the result.
 ") Perform;
 		void Perform(const TopoDS_Shape & StopShape, const Standard_Boolean KeepOutSide = Standard_True);
 
@@ -798,7 +798,7 @@ None
 
 Description
 -----------
-Sets the direction of the draft for this object. if isinternal is true, the draft is internal to the argument shape used in the constructor.
+Sets the direction of the draft for this object. If IsInternal is true, the draft is internal to the argument Shape used in the constructor.
 ") SetDraft;
 		void SetDraft(const Standard_Boolean IsInternal = Standard_False);
 
@@ -818,7 +818,7 @@ None
 
 Description
 -----------
-Sets the options of this draft tool. if a transition has to be performed, it can be defined by the mode style as rightcorner or roundcorner, rightcorner being a corner defined by a sharp angle, and roundcorner being a rounded corner. anglemin is an angular tolerance used to detect whether a transition has to be performed or not. anglemax sets the maximum value within which a rightcorner transition can be performed. anglemin and anglemax are expressed in radians.
+Sets the options of this draft tool. If a transition has to be performed, it can be defined by the mode Style as RightCorner or RoundCorner, RightCorner being a corner defined by a sharp angle, and RoundCorner being a rounded corner. AngleMin is an angular tolerance used to detect whether a transition has to be performed or not. AngleMax sets the maximum value within which a RightCorner transition can be performed. AngleMin and AngleMax are expressed in radians.
 ") SetOptions;
 		void SetOptions(const BRepBuilderAPI_TransitionMode Style = BRepBuilderAPI_RightCorner, const Standard_Real AngleMin = 0.01, const Standard_Real AngleMax = 3.0);
 
@@ -884,7 +884,7 @@ None
 
 Description
 -----------
-Constructs an evolved shape by sweeping the profile (theprofile) along the spine (thespine). thespine can be shape only of type wire or face. see description to this class for detailed information.
+Constructs an evolved shape by sweeping the profile (theProfile) along the spine (theSpine). theSpine can be shape only of type wire or face. See description to this class for detailed information.
 ") BRepOffsetAPI_MakeEvolved;
 		 BRepOffsetAPI_MakeEvolved(const TopoDS_Shape & theSpine, const TopoDS_Wire & theProfile, const GeomAbs_JoinType theJoinType = GeomAbs_Arc, const Standard_Boolean theIsAxeProf = Standard_True, const Standard_Boolean theIsSolid = Standard_False, const Standard_Boolean theIsProfOnSpine = Standard_False, const Standard_Real theTol = 0.0000001, const Standard_Boolean theIsVolume = Standard_False, const Standard_Boolean theRunInParallel = Standard_False);
 
@@ -897,7 +897,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the face bottom if <solid> is true in the constructor.
+Return the face Bottom if <Solid> is True in the constructor.
 ") Bottom;
 		const TopoDS_Shape Bottom();
 
@@ -915,7 +915,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -947,7 +947,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes created from a subshape <spineshape> of the spine and a subshape <profshape> on the profile.
+Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
 
@@ -960,7 +960,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the face top if <solid> is true in the constructor.
+Return the face Top if <Solid> is True in the constructor.
 ") Top;
 		const TopoDS_Shape Top();
 
@@ -1001,7 +1001,7 @@ None
 
 Description
 -----------
-Constructs a wire filling object defined by - the energy minimizing criterion degree - the number of points on the curve nbpntsoncur - the number of iterations nbiter - the boolean anisotropie - the 2d tolerance tol2d - the 3d tolerance tol3d - the angular tolerance tolang - the tolerance for curvature tolcur - the highest polynomial degree maxdeg - the greatest number of segments maxseg. if the boolean anistropie is true, the algorithm's performance is better in cases where the ratio of the length u and the length v indicate a great difference between the two. in other words, when the surface is, for example, extremely long.
+Constructs a wire filling object defined by - the energy minimizing criterion Degree - the number of points on the curve NbPntsOnCur - the number of iterations NbIter - the Boolean Anisotropie - the 2D tolerance Tol2d - the 3D tolerance Tol3d - the angular tolerance TolAng - the tolerance for curvature TolCur - the highest polynomial degree MaxDeg - the greatest number of segments MaxSeg. If the Boolean Anistropie is true, the algorithm's performance is better in cases where the ratio of the length U and the length V indicate a great difference between the two. In other words, when the surface is, for example, extremely long.
 ") BRepOffsetAPI_MakeFilling;
 		 BRepOffsetAPI_MakeFilling(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9);
 
@@ -1021,7 +1021,7 @@ int
 
 Description
 -----------
-Adds a new constraint which also defines an edge of the wire of the face order: order of the constraint: geomabs_c0: the surface has to pass by 3d representation of the edge geomabs_g1: the surface has to pass by 3d representation of the edge and to respect tangency with the first face of the edge geomabs_g2: the surface has to pass by 3d representation of the edge and to respect tangency and curvature with the first face of the edge. raises constructionerror if the edge has no representation on a face and order is geomabs_g1 or geomabs_g2.
+Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the first face of the edge GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the first face of the edge. Raises ConstructionError if the edge has no representation on a face and Order is GeomAbs_G1 or GeomAbs_G2.
 ") Add;
 		Standard_Integer Add(const TopoDS_Edge & Constr, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
 
@@ -1042,7 +1042,7 @@ int
 
 Description
 -----------
-Adds a new constraint which also defines an edge of the wire of the face order: order of the constraint: geomabs_c0: the surface has to pass by 3d representation of the edge geomabs_g1: the surface has to pass by 3d representation of the edge and to respect tangency with the given face geomabs_g2: the surface has to pass by 3d representation of the edge and to respect tangency and curvature with the given face. raises constructionerror if the edge has no 2d representation on the given face.
+Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the given face GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the given face. Raises ConstructionError if the edge has no 2d representation on the given face.
 ") Add;
 		Standard_Integer Add(const TopoDS_Edge & Constr, const TopoDS_Face & Support, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
 
@@ -1061,7 +1061,7 @@ int
 
 Description
 -----------
-Adds a free constraint on a face. the corresponding edge has to be automatically recomputed. it is always a bound.
+Adds a free constraint on a face. The corresponding edge has to be automatically recomputed. It is always a bound.
 ") Add;
 		Standard_Integer Add(const TopoDS_Face & Support, const GeomAbs_Shape Order);
 
@@ -1131,7 +1131,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the result and the constraints. this is set at construction time.
+Returns the maximum distance between the result and the constraints. This is set at construction time.
 ") G0Error;
 		Standard_Real G0Error();
 
@@ -1149,7 +1149,7 @@ float
 
 Description
 -----------
-Returns the maximum distance attained between the result and the constraint index. this is set at construction time.
+Returns the maximum distance attained between the result and the constraint Index. This is set at construction time.
 ") G0Error;
 		Standard_Real G0Error(const Standard_Integer Index);
 
@@ -1162,7 +1162,7 @@ float
 
 Description
 -----------
-Returns the maximum angle between the result and the constraints. this is set at construction time.
+Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G1Error;
 		Standard_Real G1Error();
 
@@ -1180,7 +1180,7 @@ float
 
 Description
 -----------
-Returns the maximum angle between the result and the constraints. this is set at construction time.
+Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G1Error;
 		Standard_Real G1Error(const Standard_Integer Index);
 
@@ -1193,7 +1193,7 @@ float
 
 Description
 -----------
-Returns the maximum angle between the result and the constraints. this is set at construction time.
+Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G2Error;
 		Standard_Real G2Error();
 
@@ -1211,7 +1211,7 @@ float
 
 Description
 -----------
-Returns the greatest difference in curvature found between the result and the constraint index.
+Returns the greatest difference in curvature found between the result and the constraint Index.
 ") G2Error;
 		Standard_Real G2Error(const Standard_Integer Index);
 
@@ -1229,7 +1229,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1260,7 +1260,7 @@ None
 
 Description
 -----------
-Loads the initial surface surf to begin the construction of the surface. this optional function is useful if the surface resulting from construction for the algorithm is likely to be complex. the support surface of the face under construction is computed by a deformation of surf which satisfies the given constraints. the set of bounding edges defines the wire of the face. if no initial surface is given, the algorithm computes it automatically. if the set of edges is not connected (free constraint), missing edges are automatically computed. important: the initial surface must have orthogonal local coordinates, i.e. partial derivatives ds/du and ds/dv must be orthogonal at each point of surface. if this condition breaks, distortions of resulting surface are possible.
+Loads the initial surface Surf to begin the construction of the surface. This optional function is useful if the surface resulting from construction for the algorithm is likely to be complex. The support surface of the face under construction is computed by a deformation of Surf which satisfies the given constraints. The set of bounding edges defines the wire of the face. If no initial surface is given, the algorithm computes it automatically. If the set of edges is not connected (Free constraint), missing edges are automatically computed. Important: the initial surface must have orthogonal local coordinates, i.e. partial derivatives dS/du and dS/dv must be orthogonal at each point of surface. If this condition breaks, distortions of resulting surface are possible.
 ") LoadInitSurface;
 		void LoadInitSurface(const TopoDS_Face & Surf);
 
@@ -1279,7 +1279,7 @@ None
 
 Description
 -----------
-Sets the parameters used to approximate the filling surface. these include: - maxdeg - the highest degree which the polynomial defining the filling surface can have - maxsegments - the greatest number of segments which the filling surface can have.
+Sets the parameters used to approximate the filling surface. These include: - MaxDeg - the highest degree which the polynomial defining the filling surface can have - MaxSegments - the greatest number of segments which the filling surface can have.
 ") SetApproxParam;
 		void SetApproxParam(const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9);
 
@@ -1300,7 +1300,7 @@ None
 
 Description
 -----------
-Sets the values of tolerances used to control the constraint. tol2d: tol3d: it is the maximum distance allowed between the support surface and the constraints tolang: it is the maximum angle allowed between the normal of the surface and the constraints tolcurv: it is the maximum difference of curvature allowed between the surface and the constraint.
+Sets the values of Tolerances used to control the constraint. Tol2d: Tol3d: it is the maximum distance allowed between the support surface and the constraints TolAng: it is the maximum angle allowed between the normal of the surface and the constraints TolCurv: it is the maximum difference of curvature allowed between the surface and the constraint.
 ") SetConstrParam;
 		void SetConstrParam(const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
@@ -1321,7 +1321,7 @@ None
 
 Description
 -----------
-Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommended value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
+Sets the parameters used for resolution. The default values of these parameters have been chosen for a good ratio quality/performance. Degree: it is the order of energy criterion to minimize for computing the deformation of the surface. The default value is 3 The recommended value is i+2 where i is the maximum order of the constraints. NbPtsOnCur: it is the average number of points for discretisation of the edges. NbIter: it is the maximum number of iterations of the process. For each iteration the number of discretisation points is increased. Anisotropie:.
 ") SetResolParam;
 		void SetResolParam(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False);
 
@@ -1368,7 +1368,7 @@ None
 
 Description
 -----------
-Constructs an algorithm for creating an algorithm to build parallels to the spine spine.
+Constructs an algorithm for creating an algorithm to build parallels to the spine Spine.
 ") BRepOffsetAPI_MakeOffset;
 		 BRepOffsetAPI_MakeOffset(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
@@ -1406,7 +1406,7 @@ None
 
 Description
 -----------
-Initializes the algorithm to construct parallels to the wire spine.
+Initializes the algorithm to construct parallels to the wire Spine.
 ") AddWire;
 		void AddWire(const TopoDS_Wire & Spine);
 
@@ -1424,7 +1424,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1443,7 +1443,7 @@ TopoDS_Face
 
 Description
 -----------
-Converts each wire of the face into contour consisting only of arcs and segments. new 3d curves are built too.
+Converts each wire of the face into contour consisting only of arcs and segments. New 3D curves are built too.
 ") ConvertFace;
 		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
 
@@ -1461,7 +1461,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the created shapes from the shape <s>.
+returns a list of the created shapes from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1481,7 +1481,7 @@ None
 
 Description
 -----------
-Initializes the algorithm to construct parallels to the spine spine. join defines the type of parallel generated by the salient vertices of the spine. the default type is geomabs_arc where the vertices generate sections of a circle. if join type is geomabs_intersection, the edges that intersect in a salient vertex generate the edges prolonged until intersection.
+Initializes the algorithm to construct parallels to the spine Spine. Join defines the type of parallel generated by the salient vertices of the spine. The default type is GeomAbs_Arc where the vertices generate sections of a circle. If join type is GeomAbs_Intersection, the edges that intersect in a salient vertex generate the edges prolonged until intersection.
 ") Init;
 		void Init(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
@@ -1500,7 +1500,7 @@ None
 
 Description
 -----------
-Initialize the evaluation of offsetting.
+Initialize the evaluation of Offsetting.
 ") Init;
 		void Init(const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
@@ -1519,7 +1519,7 @@ None
 
 Description
 -----------
-Computes a parallel to the spine at distance offset and at an altitude alt from the plane of the spine in relation to the normal to the spine. exceptions: stdfail_notdone if the offset is not built.
+Computes a parallel to the spine at distance Offset and at an altitude Alt from the plane of the spine in relation to the normal to the spine. Exceptions: StdFail_NotDone if the offset is not built.
 ") Perform;
 		void Perform(const Standard_Real Offset, const Standard_Real Alt = 0.0);
 
@@ -1537,7 +1537,7 @@ None
 
 Description
 -----------
-Set approximation flag for convertion input contours into ones consisting of 2d circular arcs and 2d linear segments only.
+Set approximation flag for conversion input contours into ones consisting of 2D circular arcs and 2D linear segments only.
 ") SetApprox;
 		void SetApprox(const Standard_Boolean ToApprox);
 
@@ -1600,7 +1600,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1644,7 +1644,7 @@ BRepOffset_MakeOffset
 
 Description
 -----------
-Returns instance of the unrelying intersection / arc algorithm.
+Returns instance of the underlying intersection / arc algorithm.
 ") MakeOffset;
 		virtual const BRepOffset_MakeOffset & MakeOffset();
 
@@ -1662,7 +1662,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes Modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -1688,7 +1688,7 @@ None
 
 Description
 -----------
-Constructs a shape parallel to the shape s, where - s may be a face, a shell, a solid or a compound of these shape kinds; - offset is the offset value. the offset shape is constructed: - outside s, if offset is positive, - inside s, if offset is negative; - tol defines the coincidence tolerance criterion for generated shapes; - mode defines the construction type of parallels applied to the free edges of shape s; currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value brepoffset_skin; - intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if intersection is true, the intersection is calculated by taking all generated parallels into account; this computation method is more general as it avoids some self-intersections generated in the offset shape from features of small dimensions on shape s, however this method has not been completely implemented and therefore is not recommended for use; - selfinter tells the algorithm whether a computation to eliminate self-intersections must be applied to the resulting shape; however, as this functionality is not yet implemented, it is recommended to use the default value (false); - join defines how to fill the holes that may appear between parallels to the two adjacent faces. it may take values geomabs_arc or geomabs_intersection: - if join is equal to geomabs_arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if join is equal to geomabs_intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. removeintedges flag defines whether to remove the internal edges from the result or not. warnings 1. all the faces of the shape s should be based on the surfaces with continuity at least c1. 2. the offset value should be sufficiently small to avoid self-intersections in resulting shape. otherwise these self-intersections may appear inside an offset face if its initial surface is not plane or sphere or cylinder, also some non-adjacent offset faces may intersect each other. also, some offset surfaces may 'turn inside out'. 3. the algorithm may fail if the shape s contains vertices where more than 3 edges converge. 4. since 3d-offset algorithm involves intersection of surfaces, it is under limitations of surface intersection algorithm. 5. a result cannot be generated if the underlying geometry of s is bspline with continuity c0. exceptions geom_undefinedderivative if the underlying geometry of s is bspline with continuity c0.
+Constructs a shape parallel to the shape S, where - S may be a face, a shell, a solid or a compound of these shape kinds; - Offset is the offset value. The offset shape is constructed: - outside S, if Offset is positive, - inside S, if Offset is negative; - Tol defines the coincidence tolerance criterion for generated shapes; - Mode defines the construction type of parallels applied to the free edges of shape S; currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value BRepOffset_Skin; - Intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if Intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if Intersection is true, the intersection is calculated by taking all generated parallels into account; this computation method is more general as it avoids some self-intersections generated in the offset shape from features of small dimensions on shape S, however this method has not been completely implemented and therefore is not recommended for use; - SelfInter tells the algorithm whether a computation to eliminate self-intersections must be applied to the resulting shape; however, as this functionality is not yet implemented, it is recommended to use the default value (false); - Join defines how to fill the holes that may appear between parallels to the two adjacent faces. It may take values GeomAbs_Arc or GeomAbs_Intersection: - if Join is equal to GeomAbs_Arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if Join is equal to GeomAbs_Intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. RemoveIntEdges flag defines whether to remove the INTERNAL edges from the result or not. Warnings 1. All the faces of the shape S should be based on the surfaces with continuity at least C1. 2. The offset value should be sufficiently small to avoid self-intersections in resulting shape. Otherwise these self-intersections may appear inside an offset face if its initial surface is not plane or sphere or cylinder, also some non-adjacent offset faces may intersect each other. Also, some offset surfaces may 'turn inside out'. 3. The algorithm may fail if the shape S contains vertices where more than 3 edges converge. 4. Since 3d-offset algorithm involves intersection of surfaces, it is under limitations of surface intersection algorithm. 5. A result cannot be generated if the underlying geometry of S is BSpline with continuity C0. Exceptions Geom_UndefinedDerivative if the underlying geometry of S is BSpline with continuity C0.
 ") PerformByJoin;
 		void PerformByJoin(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1740,7 +1740,7 @@ None
 
 Description
 -----------
-Constructs a pipe by sweeping the shape profile along the wire spine.the angle made by the spine with the profile is maintained along the length of the pipe. warning spine must be g1 continuous; that is, on the connection vertex of two edges of the wire, the tangent vectors on the left and on the right must have the same direction, though not necessarily the same magnitude. exceptions standard_domainerror if the profile is a solid or a composite solid.
+Constructs a pipe by sweeping the shape Profile along the wire Spine.The angle made by the spine with the profile is maintained along the length of the pipe. Warning Spine must be G1 continuous; that is, on the connection vertex of two edges of the wire, the tangent vectors on the left and on the right must have the same direction, though not necessarily the same magnitude. Exceptions Standard_DomainError if the profile is a solid or a composite solid.
 ") BRepOffsetAPI_MakePipe;
 		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile);
 
@@ -1761,7 +1761,7 @@ None
 
 Description
 -----------
-The same as previous but with setting of mode of sweep and the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0.
+the same as previous but with setting of mode of sweep and the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") BRepOffsetAPI_MakePipe;
 		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile, const GeomFill_Trihedron aMode, const Standard_Boolean ForceApproxC1 = Standard_False);
 
@@ -1779,7 +1779,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1805,7 +1805,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the prism.
+Returns the TopoDS Shape of the bottom of the prism.
 ") FirstShape;
 		TopoDS_Shape FirstShape();
 
@@ -1855,7 +1855,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the prism.
+Returns the TopoDS Shape of the top of the prism.
 ") LastShape;
 		TopoDS_Shape LastShape();
 
@@ -1900,7 +1900,7 @@ None
 
 Description
 -----------
-Constructs the shell-generating framework defined by the wire spine. sets an sweep's mode if no mode are set, the mode use in makepipe is used.
+Constructs the shell-generating framework defined by the wire Spine. Sets an sweep's mode If no mode are set, the mode use in MakePipe is used.
 ") BRepOffsetAPI_MakePipeShell;
 		 BRepOffsetAPI_MakePipeShell(const TopoDS_Wire & Spine);
 
@@ -1920,7 +1920,7 @@ None
 
 Description
 -----------
-Adds the section profile to this framework. first and last sections may be punctual, so the shape profile may be both wire and vertex. correspondent point on spine is computed automatically. if withcontact is true, the section is translated to be in contact with the spine. if withcorrection is true, the section is rotated to be orthogonal to the spine?s tangent in the correspondent point. this option has no sense if the section is punctual (profile is of type topods_vertex).
+Adds the section Profile to this framework. First and last sections may be punctual, so the shape Profile may be both wire and vertex. Correspondent point on spine is computed automatically. If WithContact is true, the section is translated to be in contact with the spine. If WithCorrection is true, the section is rotated to be orthogonal to the spine?s tangent in the correspondent point. This option has no sense if the section is punctual (Profile is of type TopoDS_Vertex).
 ") Add;
 		void Add(const TopoDS_Shape & Profile, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -1941,7 +1941,7 @@ None
 
 Description
 -----------
-Adds the section profile to this framework. correspondent point on the spine is given by location. warning: to be effective, it is not recommended to combine methods add and setlaw.
+Adds the section Profile to this framework. Correspondent point on the spine is given by Location. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") Add;
 		void Add(const TopoDS_Shape & Profile, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -1959,7 +1959,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1977,7 +1977,7 @@ None
 
 Description
 -----------
-Removes the section profile from this framework.
+Removes the section Profile from this framework.
 ") Delete;
 		void Delete(const TopoDS_Shape & Profile);
 
@@ -2003,7 +2003,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the sweep.
+Returns the TopoDS Shape of the bottom of the sweep.
 ") FirstShape;
 		virtual TopoDS_Shape FirstShape();
 
@@ -2021,7 +2021,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of new shapes generated from the shape s by the shell-generating algorithm. this function is redefined from brepoffsetapi_makeshape::generated. s can be an edge or a vertex of a given profile (see methods add).
+Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepOffsetAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods Add).
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -2034,7 +2034,7 @@ BRepBuilderAPI_PipeError
 
 Description
 -----------
-Get a status, when simulate or build failed. it can be brepbuilderapi_pipedone, brepbuilderapi_pipenotdone, brepbuilderapi_planenotintersectguide, brepbuilderapi_impossiblecontact.
+Get a status, when Simulate or Build failed. It can be BRepBuilderAPI_PipeDone, BRepBuilderAPI_PipeNotDone, BRepBuilderAPI_PlaneNotIntersectGuide, BRepBuilderAPI_ImpossibleContact.
 ") GetStatus;
 		BRepBuilderAPI_PipeError GetStatus();
 
@@ -2047,7 +2047,7 @@ bool
 
 Description
 -----------
-Returns true if this tool object is ready to build the shape, i.e. has a definition for the wire section profile.
+Returns true if this tool object is ready to build the shape, i.e. has a definition for the wire section Profile.
 ") IsReady;
 		Standard_Boolean IsReady();
 
@@ -2060,7 +2060,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the sweep.
+Returns the TopoDS Shape of the top of the sweep.
 ") LastShape;
 		virtual TopoDS_Shape LastShape();
 
@@ -2073,7 +2073,7 @@ bool
 
 Description
 -----------
-Transforms the sweeping shell in solid. if a propfile is not closed returns false.
+Transforms the sweeping Shell in Solid. If a propfile is not closed returns False.
 ") MakeSolid;
 		Standard_Boolean MakeSolid();
 
@@ -2104,7 +2104,7 @@ None
 
 Description
 -----------
-Sets a discrete trihedron to perform the sweeping.
+Sets a Discrete trihedron to perform the sweeping.
 ") SetDiscreteMode;
 		void SetDiscreteMode();
 
@@ -2122,7 +2122,7 @@ None
 
 Description
 -----------
-Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0.
+Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") SetForceApproxC1;
 		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
 
@@ -2143,7 +2143,7 @@ None
 
 Description
 -----------
-Sets the evolution law defined by the wire profile with its position (location, withcontact, withcorrection are the same options as in methods add) and a homotetic law defined by the function l. warning: to be effective, it is not recommended to combine methods add and setlaw.
+Sets the evolution law defined by the wire Profile with its position (Location, WithContact, WithCorrection are the same options as in methods Add) and a homotetic law defined by the function L. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") SetLaw;
 		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -2165,7 +2165,7 @@ None
 
 Description
 -----------
-Sets the evolution law defined by the wire profile with its position (location, withcontact, withcorrection are the same options as in methods add) and a homotetic law defined by the function l. warning: to be effective, it is not recommended to combine methods add and setlaw.
+Sets the evolution law defined by the wire Profile with its position (Location, WithContact, WithCorrection are the same options as in methods Add) and a homotetic law defined by the function L. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") SetLaw;
 		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -2183,7 +2183,7 @@ None
 
 Description
 -----------
-Define the maximum v degree of resulting surface.
+Define the maximum V degree of resulting surface.
 ") SetMaxDegree;
 		void SetMaxDegree(const Standard_Integer NewMaxDegree);
 
@@ -2201,7 +2201,7 @@ None
 
 Description
 -----------
-Define the maximum number of spans in v-direction on resulting surface.
+Define the maximum number of spans in V-direction on resulting surface.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer NewMaxSegments);
 
@@ -2219,7 +2219,7 @@ None
 
 Description
 -----------
-Sets a frenet or a correctedfrenet trihedron to perform the sweeping if isfrenet is false, a corrected frenet trihedron is used.
+Sets a Frenet or a CorrectedFrenet trihedron to perform the sweeping If IsFrenet is false, a corrected Frenet trihedron is used.
 ") SetMode;
 		void SetMode(const Standard_Boolean IsFrenet = Standard_False);
 
@@ -2255,7 +2255,7 @@ None
 
 Description
 -----------
-Sets a fixed binormal direction to perform the -- sweeping. angular relations between the section(s) and <binormal> will be constant.
+Sets a fixed BiNormal direction to perform the -- sweeping. Angular relations between the section(s) and <BiNormal> will be constant.
 ") SetMode;
 		void SetMode(const gp_Dir & BiNormal);
 
@@ -2273,7 +2273,7 @@ bool
 
 Description
 -----------
-Sets support to the spine to define the binormal of the trihedron, like the normal to the surfaces. warning: to be effective, each edge of the <spine> must have a representation on one face of<spinesupport>.
+Sets support to the spine to define the BiNormal of the trihedron, like the normal to the surfaces. Warning: To be effective, Each edge of the <spine> must have a representation on one face of<SpineSupport>.
 ") SetMode;
 		Standard_Boolean SetMode(const TopoDS_Shape & SpineSupport);
 
@@ -2293,7 +2293,7 @@ None
 
 Description
 -----------
-Sets an auxiliary spine to define the normal for each point of the spine p, an point q is evalued on <auxiliaryspine> if <curvilinearequivalence> q split <auxiliaryspine> with the same length ratio than p split <spline>. else the plan define by p and the tangent to the <spine> intersect <auxiliaryspine> in q. if <keepcontact> equals brepfill_nocontact: the normal is defined by the vector pq. if <keepcontact> equals brepfill_contact: the normal is defined to achieve that the sweeped section is in contact to the auxiliaryspine. the width of section is constant all along the path. in other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. however, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. if <keepcontact> equals brepfill_contactonborder: the auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. give section to sweep. possibilities are: - give one or sevral section - give one profile and an homotetic law. - automatic compute of correspondence between spine, and section on the sweeped shape - correspondence between spine, and section on the sweeped shape defined by a vertex of the spine.
+Sets an auxiliary spine to define the Normal For each Point of the Spine P, an Point Q is evalued on <AuxiliarySpine> If <CurvilinearEquivalence> Q split <AuxiliarySpine> with the same length ratio than P split <Spline>. Else the plan define by P and the tangent to the <Spine> intersect <AuxiliarySpine> in Q. If <KeepContact> equals BRepFill_NoContact: The Normal is defined by the vector PQ. If <KeepContact> equals BRepFill_Contact: The Normal is defined to achieve that the sweeped section is in contact to the auxiliarySpine. The width of section is constant all along the path. In other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. However, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. Give section to sweep. Possibilities are: - Give one or several section - Give one profile and an homotetic law. - Automatic compute of correspondence between spine, and section on the sweeped shape - correspondence between spine, and section on the sweeped shape defined by a vertex of the spine.
 ") SetMode;
 		void SetMode(const TopoDS_Wire & AuxiliarySpine, const Standard_Boolean CurvilinearEquivalence, const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact);
 
@@ -2313,7 +2313,7 @@ None
 
 Description
 -----------
-Sets the following tolerance values - 3d tolerance tol3d - boundary tolerance boundtol - angular tolerance tolangular.
+Sets the following tolerance values - 3D tolerance Tol3d - boundary tolerance BoundTol - angular tolerance TolAngular.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Tol3d = 1.0e-4, const Standard_Real BoundTol = 1.0e-4, const Standard_Real TolAngular = 1.0e-2);
 
@@ -2331,7 +2331,7 @@ None
 
 Description
 -----------
-Sets the transition mode to manage discontinuities on the swept shape caused by fractures on the spine. the transition mode can be brepbuilderapi_transformed (default value), brepbuilderapi_rightcorner, brepbuilderapi_roundcorner: -  repbuilderapi_transformed: discontinuities are treated by modification of the sweeping mode. the pipe is 'transformed' at the fractures of the spine. this mode assumes building a self-intersected shell. -  brepbuilderapi_rightcorner: discontinuities are treated like right corner. two pieces of the pipe corresponding to two adjacent segments of the spine are extended and intersected at a fracture of the spine. -  brepbuilderapi_roundcorner: discontinuities are treated like round corner. the corner is treated as rotation of the profile around an axis which passes through the point of the spine's fracture. this axis is based on cross product of directions tangent to the adjacent segments of the spine at their common point. warnings the mode brepbuilderapi_rightcorner provides a valid result if intersection of two pieces of the pipe (corresponding to two adjacent segments of the spine) in the neighborhood of the spine?s fracture is connected and planar. this condition can be violated if the spine is non-linear in some neighborhood of the fracture or if the profile was set with a scaling law. the last mode, brepbuilderapi_roundcorner, will assuredly provide a good result only if a profile was set with option withcorrection = true, i.e. it is strictly orthogonal to the spine.
+Sets the transition mode to manage discontinuities on the swept shape caused by fractures on the spine. The transition mode can be BRepBuilderAPI_Transformed (default value), BRepBuilderAPI_RightCorner, BRepBuilderAPI_RoundCorner: -  RepBuilderAPI_Transformed: discontinuities are treated by modification of the sweeping mode. The pipe is 'transformed' at the fractures of the spine. This mode assumes building a self-intersected shell. -  BRepBuilderAPI_RightCorner: discontinuities are treated like right corner. Two pieces of the pipe corresponding to two adjacent segments of the spine are extended and intersected at a fracture of the spine. -  BRepBuilderAPI_RoundCorner: discontinuities are treated like round corner. The corner is treated as rotation of the profile around an axis which passes through the point of the spine's fracture. This axis is based on cross product of directions tangent to the adjacent segments of the spine at their common point. Warnings The mode BRepBuilderAPI_RightCorner provides a valid result if intersection of two pieces of the pipe (corresponding to two adjacent segments of the spine) in the neighborhood of the spine?s fracture is connected and planar. This condition can be violated if the spine is non-linear in some neighborhood of the fracture or if the profile was set with a scaling law. The last mode, BRepBuilderAPI_RoundCorner, will assuredly provide a good result only if a profile was set with option WithCorrection = True, i.e. it is strictly orthogonal to the spine.
 ") SetTransitionMode;
 		void SetTransitionMode(const BRepBuilderAPI_TransitionMode Mode = BRepBuilderAPI_Transformed);
 
@@ -2350,7 +2350,7 @@ None
 
 Description
 -----------
-Simulates the resulting shape by calculating its cross-sections. the spine is divided by this cross-sections into (numberofsection - 1) equal parts, the number of cross-sections is numberofsection. the cross-sections are wires and they are returned in the list result. this gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. raises notdone if <self> it is not ready.
+Simulates the resulting shape by calculating its cross-sections. The spine is divided by this cross-sections into (NumberOfSection - 1) equal parts, the number of cross-sections is NumberOfSection. The cross-sections are wires and they are returned in the list Result. This gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. Raises NotDone if <self> it is not Ready.
 ") Simulate;
 		void Simulate(const Standard_Integer NumberOfSection, TopTools_ListOfShape & Result);
 
@@ -2397,7 +2397,7 @@ None
 
 Description
 -----------
-General constructor. startshape and endshape may be a wire or a face.
+General constructor. StartShape and EndShape may be a wire or a face.
 ") BRepOffsetAPI_MiddlePath;
 		 BRepOffsetAPI_MiddlePath(const TopoDS_Shape & aShape, const TopoDS_Shape & StartShape, const TopoDS_Shape & EndShape);
 
@@ -2460,7 +2460,7 @@ None
 
 Description
 -----------
-Constructs a framework to define projection onto the basis shape s according to the normal from each point to be projected from the shape added to this framework by add. default parameters of the algorithm: tol3d = 1.e-04, tol2d =sqr(tol3d) , internalcontinuity = geomabs_c2, maxdegree = 14, maxseg = 16.
+Constructs a framework to define projection onto the basis shape S according to the normal from each point to be projected from the shape added to this framework by Add. Default parameters of the algorithm: Tol3D = 1.e-04, Tol2D =sqr(tol3d) , InternalContinuity = GeomAbs_C2, MaxDegree = 14, MaxSeg = 16.
 ") BRepOffsetAPI_NormalProjection;
 		 BRepOffsetAPI_NormalProjection(const TopoDS_Shape & S);
 
@@ -2478,7 +2478,7 @@ None
 
 Description
 -----------
-Adds the shape toproj to the framework for calculation of the projection by compute3d. toproj is an edge or a wire and will be projected onto the basis shape. exceptions standard_constructionerror if toproj is not added.
+Adds the shape ToProj to the framework for calculation of the projection by Compute3d. ToProj is an edge or a wire and will be projected onto the basis shape. Exceptions Standard_ConstructionError if ToProj is not added.
 ") Add;
 		void Add(const TopoDS_Shape & ToProj);
 
@@ -2496,7 +2496,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the initial edge corresponding to the edge e resulting from the computation of the projection. exceptions stdfail_notdone if no edge was found. standard_nosuchobject if an edge corresponding to e has already been found.
+Returns the initial edge corresponding to the edge E resulting from the computation of the projection. Exceptions StdFail_NotDone if no edge was found. Standard_NoSuchObject if an edge corresponding to E has already been found.
 ") Ancestor;
 		const TopoDS_Shape Ancestor(const TopoDS_Edge & E);
 
@@ -2514,7 +2514,7 @@ None
 
 Description
 -----------
-Builds the result of the projection as a compound of wires. tries to build oriented wires.
+Builds the result of the projection as a compound of wires. Tries to build oriented wires.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -2532,7 +2532,7 @@ bool
 
 Description
 -----------
-Build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
+build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
 ") BuildWire;
 		Standard_Boolean BuildWire(TopTools_ListOfShape & Liste);
 
@@ -2550,7 +2550,7 @@ None
 
 Description
 -----------
-Returns true if a 3d curve is computed. if not, false is returned and an initial 3d curve is kept to build the resulting edges.
+Returns true if a 3D curve is computed. If not, false is returned and an initial 3D curve is kept to build the resulting edges.
 ") Compute3d;
 		void Compute3d(const Standard_Boolean With3d = Standard_True);
 
@@ -2568,7 +2568,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the initial face corresponding to the projected edge e. exceptions stdfail_notdone if no face was found. standard_nosuchobject if a face corresponding to e has already been found.
+Returns the initial face corresponding to the projected edge E. Exceptions StdFail_NotDone if no face was found. Standard_NoSuchObject if a face corresponding to E has already been found.
 ") Couple;
 		const TopoDS_Shape Couple(const TopoDS_Edge & E);
 
@@ -2586,7 +2586,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -2604,7 +2604,7 @@ None
 
 Description
 -----------
-Initializes the empty constructor framework with the shape s.
+Initializes the empty constructor framework with the shape S.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -2617,7 +2617,7 @@ bool
 
 Description
 -----------
-Returns true if the object was correctly built by the shape construction algorithm. if at the construction time of the shape, the algorithm cannot be completed, or the original data is corrupted, isdone returns false and therefore protects the use of functions to access the result of the construction (typically the shape function).
+Returns true if the object was correctly built by the shape construction algorithm. If at the construction time of the shape, the algorithm cannot be completed, or the original data is corrupted, IsDone returns false and therefore protects the use of functions to access the result of the construction (typically the Shape function).
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2630,7 +2630,7 @@ TopoDS_Shape
 
 Description
 -----------
-Performs the projection. the construction of the result is performed by build. exceptions stdfail_notdone if the projection was not performed.
+Performs the projection. The construction of the result is performed by Build. Exceptions StdFail_NotDone if the projection was not performed.
 ") Projection;
 		const TopoDS_Shape Projection();
 
@@ -2666,7 +2666,7 @@ None
 
 Description
 -----------
-Sets the maximum distance between target shape and shape to project. if this condition is not satisfied then corresponding part of solution is discarded. if maxdist < 0 then this method does not affect the algorithm.
+Sets the maximum distance between target shape and shape to project. If this condition is not satisfied then corresponding part of solution is discarded. if MaxDist < 0 then this method does not affect the algorithm.
 ") SetMaxDistance;
 		void SetMaxDistance(const Standard_Real MaxDist);
 
@@ -2688,7 +2688,7 @@ None
 
 Description
 -----------
-Sets the parameters used for computation tol3 is the required tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
+Sets the parameters used for computation Tol3 is the required tolerance between the 3d projected curve and its 2d representation InternalContinuity is the order of constraints used for approximation MaxDeg and MaxSeg are the maximum degree and the maximum number of segment for BSpline resulting of an approximation.
 ") SetParams;
 		void SetParams(const Standard_Real Tol3D, const Standard_Real Tol2D, const GeomAbs_Shape InternalContinuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSeg);
 
@@ -2722,7 +2722,7 @@ None
 
 Description
 -----------
-Initializes an algorithm for building a shell or a solid passing through a set of sections, where: - issolid is set to true if the construction algorithm is required to build a solid or to false if it is required to build a shell (the default value), - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. use addwire and addvertex to define the successive sections of the shell or solid to be built.
+Initializes an algorithm for building a shell or a solid passing through a set of sections, where: - isSolid is set to true if the construction algorithm is required to build a solid or to false if it is required to build a shell (the default value), - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. Use AddWire and AddVertex to define the successive sections of the shell or solid to be built.
 ") BRepOffsetAPI_ThruSections;
 		 BRepOffsetAPI_ThruSections(const Standard_Boolean isSolid = Standard_False, const Standard_Boolean ruled = Standard_False, const Standard_Real pres3d = 1.0e-06);
 
@@ -2740,7 +2740,7 @@ None
 
 Description
 -----------
-Adds the vertex vertex (punctual section) to the set of sections through which the shell or solid is built. a vertex may be added to the set of sections only as first or last section. at least one wire must be added to the set of sections by the method addwire. use the build function to construct the shape.
+Adds the vertex Vertex (punctual section) to the set of sections through which the shell or solid is built. A vertex may be added to the set of sections only as first or last section. At least one wire must be added to the set of sections by the method AddWire. Use the Build function to construct the shape.
 ") AddVertex;
 		void AddVertex(const TopoDS_Vertex & aVertex);
 
@@ -2758,7 +2758,7 @@ None
 
 Description
 -----------
-Adds the wire wire to the set of sections through which the shell or solid is built. use the build function to construct the shape.
+Adds the wire wire to the set of sections through which the shell or solid is built. Use the Build function to construct the shape.
 ") AddWire;
 		void AddWire(const TopoDS_Wire & wire);
 
@@ -2807,7 +2807,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -2826,7 +2826,7 @@ W3: float
 
 Description
 -----------
-Returns the weights associed to the criterium used in the optimization.
+returns the Weights associed to the criterium used in the optimization.
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2839,7 +2839,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the loft if solid.
+Returns the TopoDS Shape of the bottom of the loft if solid.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
@@ -2857,7 +2857,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of new shapes generated from the shape s by the shell-generating algorithm. this function is redefined from brepbuilderapi_makeshape::generated. s can be an edge or a vertex of a given profile (see methods addwire and addvertex).
+Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepBuilderAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -2875,7 +2875,7 @@ TopoDS_Shape
 
 Description
 -----------
-If ruled returns the face generated by each edge except the last wire if smoothed returns the face generated by each edge of the first wire.
+if Ruled Returns the Face generated by each edge except the last wire if smoothed Returns the Face generated by each edge of the first wire.
 ") GeneratedFace;
 		TopoDS_Shape GeneratedFace(const TopoDS_Shape & Edge);
 
@@ -2908,7 +2908,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for building a shell or a solid passing through a set of sections, where: - issolid is set to true if this construction algorithm is required to build a solid or to false if it is required to build a shell. false is the default value; - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. use addwire and addvertex to define the successive sections of the shell or solid to be built.
+Initializes this algorithm for building a shell or a solid passing through a set of sections, where: - isSolid is set to true if this construction algorithm is required to build a solid or to false if it is required to build a shell. false is the default value; - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. Use AddWire and AddVertex to define the successive sections of the shell or solid to be built.
 ") Init;
 		void Init(const Standard_Boolean isSolid = Standard_False, const Standard_Boolean ruled = Standard_False, const Standard_Real pres3d = 1.0e-06);
 
@@ -2934,7 +2934,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the loft if solid.
+Returns the TopoDS Shape of the top of the loft if solid.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
@@ -2947,7 +2947,7 @@ int
 
 Description
 -----------
-Returns the maximal u degree of result surface.
+returns the maximal U degree of result surface.
 ") MaxDegree;
 		Standard_Integer MaxDegree();
 
@@ -2960,7 +2960,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Returns the type of parametrization used in the approximation.
+returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
@@ -2978,7 +2978,7 @@ None
 
 Description
 -----------
-Define the continuity used in the approximation.
+Define the Continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
@@ -2998,7 +2998,7 @@ None
 
 Description
 -----------
-Define the weights associed to the criterium used in the optimization. //! if wi <= 0.
+define the Weights associed to the criterium used in the optimization. //! if Wi <= 0.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
@@ -3016,7 +3016,7 @@ None
 
 Description
 -----------
-Define the maximal u degree of result surface.
+Define the maximal U degree of result surface.
 ") SetMaxDegree;
 		void SetMaxDegree(const Standard_Integer MaxDeg);
 
@@ -3034,7 +3034,7 @@ None
 
 Description
 -----------
-Sets the mutable input state. if true then the input profile can be modified inside the thrusection operation. default value is true.
+Sets the mutable input state. If true then the input profile can be modified inside the thrusection operation. Default value is true.
 ") SetMutableInput;
 		void SetMutableInput(const Standard_Boolean theIsMutableInput);
 
@@ -3168,7 +3168,7 @@ None
 
 Description
 -----------
-Constructs a hollowed solid from the solid s by removing the set of faces closingfaces from s, where: offset defines the thickness of the walls. its sign indicates which side of the surface of the solid the hollowed shape is built on; - tol defines the tolerance criterion for coincidence in generated shapes; - mode defines the construction type of parallels applied to free edges of shape s. currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value brepoffset_skin; intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if intersection is true, the intersection is calculated by taking account of all parallels generated; this computation method is more general as it avoids self-intersections generated in the offset shape from features of small dimensions on shape s, however this method has not been completely implemented and therefore is not recommended for use; - selfinter tells the algorithm whether a computation to eliminate self-intersections needs to be applied to the resulting shape. however, as this functionality is not yet implemented, you should use the default value (false); - join defines how to fill the holes that may appear between parallels to the two adjacent faces. it may take values geomabs_arc or geomabs_intersection: - if join is equal to geomabs_arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if join is equal to geomabs_intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. removeintedges flag defines whether to remove the internal edges from the result or not. warnings since the algorithm of makethicksolid is based on makeoffsetshape algorithm, the warnings are the same as for makeoffsetshape.
+Constructs a hollowed solid from the solid S by removing the set of faces ClosingFaces from S, where: Offset defines the thickness of the walls. Its sign indicates which side of the surface of the solid the hollowed shape is built on; - Tol defines the tolerance criterion for coincidence in generated shapes; - Mode defines the construction type of parallels applied to free edges of shape S. Currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value BRepOffset_Skin; Intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if Intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if Intersection is true, the intersection is calculated by taking account of all parallels generated; this computation method is more general as it avoids self-intersections generated in the offset shape from features of small dimensions on shape S, however this method has not been completely implemented and therefore is not recommended for use; - SelfInter tells the algorithm whether a computation to eliminate self-intersections needs to be applied to the resulting shape. However, as this functionality is not yet implemented, you should use the default value (false); - Join defines how to fill the holes that may appear between parallels to the two adjacent faces. It may take values GeomAbs_Arc or GeomAbs_Intersection: - if Join is equal to GeomAbs_Arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if Join is equal to GeomAbs_Intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. RemoveIntEdges flag defines whether to remove the INTERNAL edges from the result or not. Warnings Since the algorithm of MakeThickSolid is based on MakeOffsetShape algorithm, the warnings are the same as for MakeOffsetShape.
 ") MakeThickSolidByJoin;
 		void MakeThickSolidByJoin(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -3187,7 +3187,7 @@ None
 
 Description
 -----------
-Constructs solid using simple algorithm. according to its nature it is not possible to set list of the closing faces. this algorithm does not support faces removing. it is caused by fact that intersections are not computed during offset creation. non-closed shell or face is expected as input.
+Constructs solid using simple algorithm. According to its nature it is not possible to set list of the closing faces. This algorithm does not support faces removing. It is caused by fact that intersections are not computed during offset creation. Non-closed shell or face is expected as input.
 ") MakeThickSolidBySimple;
 		void MakeThickSolidBySimple(const TopoDS_Shape & theS, const Standard_Real theOffsetValue);
 
@@ -3205,7 +3205,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 

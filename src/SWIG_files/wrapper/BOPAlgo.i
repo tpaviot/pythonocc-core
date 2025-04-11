@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPALGODOCSTRING
 "BOPAlgo module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bopalgo.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopalgo.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPALGODOCSTRING) BOPAlgo
 
@@ -222,7 +222,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") BOPAlgo_CheckResult;
 		 BOPAlgo_CheckResult();
 
@@ -240,7 +240,7 @@ None
 
 Description
 -----------
-Adds faulty sub-shapes from object to a list.
+adds faulty sub-shapes from object to a list.
 ") AddFaultyShape1;
 		void AddFaultyShape1(const TopoDS_Shape & TheShape);
 
@@ -258,7 +258,7 @@ None
 
 Description
 -----------
-Adds faulty sub-shapes from tool to a list.
+adds faulty sub-shapes from tool to a list.
 ") AddFaultyShape2;
 		void AddFaultyShape2(const TopoDS_Shape & TheShape);
 
@@ -271,7 +271,7 @@ BOPAlgo_CheckStatus
 
 Description
 -----------
-Gets status of faulty.
+gets status of faulty.
 ") GetCheckStatus;
 		BOPAlgo_CheckStatus GetCheckStatus();
 
@@ -284,7 +284,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns list of faulty shapes for object.
+returns list of faulty shapes for object.
 ") GetFaultyShapes1;
 		const TopTools_ListOfShape & GetFaultyShapes1();
 
@@ -297,7 +297,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns list of faulty shapes for tool.
+returns list of faulty shapes for tool.
 ") GetFaultyShapes2;
 		const TopTools_ListOfShape & GetFaultyShapes2();
 
@@ -362,7 +362,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns ancestor shape (object) for faulties.
+returns ancestor shape (object) for faulties.
 ") GetShape1;
 		const TopoDS_Shape GetShape1();
 
@@ -375,7 +375,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns ancestor shape (tool) for faulties.
+returns ancestor shape (tool) for faulties.
 ") GetShape2;
 		const TopoDS_Shape GetShape2();
 
@@ -393,7 +393,7 @@ None
 
 Description
 -----------
-Set status of faulty.
+set status of faulty.
 ") SetCheckStatus;
 		void SetCheckStatus(const BOPAlgo_CheckStatus TheStatus);
 
@@ -483,7 +483,7 @@ None
 
 Description
 -----------
-Sets ancestor shape (object) for faulty sub-shapes.
+sets ancestor shape (object) for faulty sub-shapes.
 ") SetShape1;
 		void SetShape1(const TopoDS_Shape & TheShape);
 
@@ -501,7 +501,7 @@ None
 
 Description
 -----------
-Sets ancestor shape (tool) for faulty sub-shapes.
+sets ancestor shape (tool) for faulty sub-shapes.
 ") SetShape2;
 		void SetShape2(const TopoDS_Shape & TheShape);
 
@@ -608,7 +608,7 @@ None
 
 Description
 -----------
-Clears all warnings and errors, and any data cached by the algorithm. user defined options are not cleared.
+Clears all warnings and errors, and any data cached by the algorithm. User defined options are not cleared.
 ") Clear;
 		virtual void Clear();
 
@@ -823,7 +823,7 @@ None
 
 Description
 -----------
-Set the flag of parallel processing if <theflag> is true the parallel processing is switched on if <theflag> is false the parallel processing is switched off.
+Set the flag of parallel processing if <theFlag> is true the parallel processing is switched on if <theFlag> is false the parallel processing is switched off.
 ") SetRunParallel;
 		void SetRunParallel(const Standard_Boolean theFlag);
 
@@ -841,7 +841,7 @@ None
 
 Description
 -----------
-Enables/disables the usage of obb.
+Enables/Disables the usage of OBB.
 ") SetUseOBB;
 		void SetUseOBB(const Standard_Boolean theUseOBB);
 
@@ -854,7 +854,7 @@ bool
 
 Description
 -----------
-Returns the flag defining usage of obb.
+Returns the flag defining usage of OBB.
 ") UseOBB;
 		Standard_Boolean UseOBB();
 
@@ -936,7 +936,7 @@ None
 
 Description
 -----------
-Assign the value thestep to theoperation.
+Assign the value theStep to theOperation.
 ") SetStep;
 		void SetStep(const Standard_Integer theOperation, const Standard_Real theStep);
 
@@ -1014,7 +1014,7 @@ None
 
 Description
 -----------
-Sets the approximation flag.
+Sets the Approximation flag.
 ") Approximation;
 		void Approximation(const Standard_Boolean theApprox);
 
@@ -1027,7 +1027,7 @@ bool
 
 Description
 -----------
-Returns the approximation flag.
+Returns the Approximation flag.
 ") Approximation;
 		Standard_Boolean Approximation();
 
@@ -1045,7 +1045,7 @@ None
 
 Description
 -----------
-Sets the pcurveons1 flag.
+Sets the PCurveOnS1 flag.
 ") PCurveOnS1;
 		void PCurveOnS1(const Standard_Boolean thePCurveOnS1);
 
@@ -1058,7 +1058,7 @@ bool
 
 Description
 -----------
-Returns the pcurveons1 flag.
+Returns the PCurveOnS1 flag.
 ") PCurveOnS1;
 		Standard_Boolean PCurveOnS1();
 
@@ -1076,7 +1076,7 @@ None
 
 Description
 -----------
-Sets the pcurveons2 flag.
+Sets the PCurveOnS2 flag.
 ") PCurveOnS2;
 		void PCurveOnS2(const Standard_Boolean thePCurveOnS2);
 
@@ -1089,7 +1089,7 @@ bool
 
 Description
 -----------
-Returns the pcurveons2 flag.
+Returns the PCurveOnS2 flag.
 ") PCurveOnS2;
 		Standard_Boolean PCurveOnS2();
 
@@ -1128,7 +1128,7 @@ None
 
 Description
 -----------
-Classifies the faces <thefaces> relatively solids <thesolids>. the in faces for solids are stored into output data map <theinparts>. //! the map <thesolidsif> contains internal faces of the solids, to avoid their additional classification. //! firstly, it checks the intersection of bounding boxes of the shapes. if the box is not stored in the <theshapeboxmap> map, it builds the box. if the bounding boxes of solid and face are interfering the classification is performed. //! it is assumed that all faces and solids are already intersected and do not have any geometrically coinciding parts without topological sharing of these parts.
+Classifies the faces <theFaces> relatively solids <theSolids>. The IN faces for solids are stored into output data map <theInParts>. //! The map <theSolidsIF> contains INTERNAL faces of the solids, to avoid their additional classification. //! Firstly, it checks the intersection of bounding boxes of the shapes. If the Box is not stored in the <theShapeBoxMap> map, it builds the box. If the bounding boxes of solid and face are interfering the classification is performed. //! It is assumed that all faces and solids are already intersected and do not have any geometrically coinciding parts without topological sharing of these parts.
 ") ClassifyFaces;
 		static void ClassifyFaces(const TopTools_ListOfShape & theFaces, const TopTools_ListOfShape & theSolids, const Standard_Boolean theRunParallel, opencascade::handle<IntTools_Context> & theContext, TopTools_IndexedDataMapOfShapeListOfShape & theInParts, const TopTools_DataMapOfShapeBox & theShapeBoxMap = TopTools_DataMapOfShapeBox(), const TopTools_DataMapOfShapeListOfShape & theSolidsIF = TopTools_DataMapOfShapeListOfShape(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1169,7 +1169,7 @@ int
 
 Description
 -----------
-Creates planar wires from the given edges. the input edges are expected to be planar. and for the performance sake the method does not check if the edges are really planar. thus, the result wires will also be not planar if the input edges are not planar. the edges may be not shared, but the resulting wires will be sharing the coinciding parts and intersecting parts. the output wires may be non-manifold and contain free and multi-connected vertices. parameters: <theedges> - input edges; <thewires> - output wires; <theshared> - boolean flag which defines whether the input edges are already shared or have to be intersected; <theangtol> - the angular tolerance which will be used for distinguishing the planes in which the edges are located. default value is 1.e-8 which is used for intersection of planes in inttools_faceface. method returns the following error statuses: 0 - in case of success (at least one wire has been built); 1 - in case there are no edges in the given shape; 2 - sharing of the edges has failed.
+Creates planar wires from the given edges. The input edges are expected to be planar. And for the performance sake the method does not check if the edges are really planar. Thus, the result wires will also be not planar if the input edges are not planar. The edges may be not shared, but the resulting wires will be sharing the coinciding parts and intersecting parts. The output wires may be non-manifold and contain free and multi-connected vertices. Parameters: <theEdges> - input edges; <theWires> - output wires; <theShared> - boolean flag which defines whether the input edges are already shared or have to be intersected; <theAngTol> - the angular tolerance which will be used for distinguishing the planes in which the edges are located. Default value is 1.e-8 which is used for intersection of planes in IntTools_FaceFace. Method returns the following error statuses: 0 - in case of success (at least one wire has been built); 1 - in case there are no edges in the given shape; 2 - sharing of the edges has failed.
 ") EdgesToWires;
 		static Standard_Integer EdgesToWires(const TopoDS_Shape & theEdges, TopoDS_Shape & theWires, const Standard_Boolean theShared = Standard_False, const Standard_Real theAngTol = 1e-8);
 
@@ -1190,7 +1190,11 @@ None
 
 Description
 -----------
-Classifies the given parts relatively the given solids and fills the solids with the parts classified as internal. //! @param thesolids - the solids to put internals to @param theparts - the parts to classify relatively solids @param theimages - possible images of the parts that has to be classified @param thecontext - cached geometrical tools to speed-up classifications.
+Classifies the given parts relatively the given solids and fills the solids with the parts classified as INTERNAL. //! 
+Parameter theSolids - The solids to put internals to 
+Parameter theParts - The parts to classify relatively solids 
+Parameter theImages - Possible images of the parts that has to be classified 
+Parameter theContext - cached geometrical tools to speed-up classifications.
 ") FillInternals;
 		static void FillInternals(const TopTools_ListOfShape & theSolids, const TopTools_ListOfShape & theParts, const TopTools_DataMapOfShapeListOfShape & theImages, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1231,7 +1235,7 @@ None
 
 Description
 -----------
-Create common blocks from the groups of pave blocks of <themblocks> connection map.
+Create Common Blocks from the groups of pave blocks of <theMBlocks> connection map.
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & theDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1252,7 +1256,7 @@ None
 
 Description
 -----------
-Create common blocks on faces using the pb->faces connection map <themblocks>.
+Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1274,7 +1278,12 @@ bool
 
 Description
 -----------
-Computes the transformation needed to move the objects to the given point to increase the quality of computations. returns true if the objects are located far from the given point (relatively given criteria), false otherwise. @param thebox1 the aabb of the first object @param thebox2 the aabb of the second object @param thetrsf the computed transformation @param thepoint the point to compute transformation to @param thecriteria the criteria to check whether thranformation is required.
+Computes the transformation needed to move the objects to the given point to increase the quality of computations. Returns true if the objects are located far from the given point (relatively given criteria), false otherwise. 
+Parameter theBox1 the AABB of the first object 
+Parameter theBox2 the AABB of the second object 
+Parameter theTrsf the computed transformation 
+Parameter thePoint the Point to compute transformation to 
+Parameter theCriteria the Criteria to check whether thranformation is required.
 ") TrsfToPoint;
 		static Standard_Boolean TrsfToPoint(const Bnd_Box & theBox1, const Bnd_Box & theBox2, gp_Trsf & theTrsf, const gp_Pnt & thePoint = gp_Pnt(0.0,0.0,0.0), const Standard_Real theCriteria = 1e+5);
 
@@ -1294,7 +1303,7 @@ bool
 
 Description
 -----------
-Creates planar faces from given planar wires. the method does not check if the wires are really planar. the input wires may be non-manifold but should be shared. the wires located in the same planes and included into other wires will create holes in the faces built from outer wires. the tolerance values of the input shapes may be modified during the operation due to projection of the edges on the planes for creation of 2d curves. parameters: <thewires> - the given wires; <thefaces> - the output faces; <theangtol> - the angular tolerance for distinguishing the planes in which the wires are located. default value is 1.e-8 which is used for intersection of planes in inttools_faceface. method returns true in case of success, i.e. at least one face has been built.
+Creates planar faces from given planar wires. The method does not check if the wires are really planar. The input wires may be non-manifold but should be shared. The wires located in the same planes and included into other wires will create holes in the faces built from outer wires. The tolerance values of the input shapes may be modified during the operation due to projection of the edges on the planes for creation of 2D curves. Parameters: <theWires> - the given wires; <theFaces> - the output faces; <theAngTol> - the angular tolerance for distinguishing the planes in which the wires are located. Default value is 1.e-8 which is used for intersection of planes in IntTools_FaceFace. Method returns True in case of success, i.e. at least one face has been built.
 ") WiresToFaces;
 		static Standard_Boolean WiresToFaces(const TopoDS_Shape & theWires, TopoDS_Shape & theFaces, const Standard_Real theAngTol = 1e-8);
 
@@ -1491,7 +1500,7 @@ None
 
 Description
 -----------
-The main method to implement the operation providing the range allows to enable progress indicator user break functionalities.
+The main method to implement the operation Providing the range allows to enable Progress indicator User break functionalities.
 ") Perform;
 		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1536,7 +1545,8 @@ None
 
 Description
 -----------
-Adds the shape to the arguments. @param thes [in] one of the argument shapes.
+Adds the shape to the arguments. 
+Input parameter: theS One of the argument shapes.
 ") AddArgument;
 		void AddArgument(const TopoDS_Shape & theS);
 
@@ -1593,7 +1603,8 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the given shape. @param thes [in] the shape for which the modified shapes are necessary.
+Returns the list of shapes modified from the given shape. 
+Input parameter: theS The shape for which the modified shapes are necessary.
 ") GetModified;
 		const TopTools_ListOfShape & GetModified(const TopoDS_Shape & theS);
 
@@ -1611,7 +1622,8 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of original shapes from which the current shape has been created. @param thes [in] the shape for which the origins are necessary.
+Returns the list of original shapes from which the current shape has been created. 
+Input parameter: theS The shape for which the origins are necessary.
 ") GetOrigins;
 		const TopTools_ListOfShape & GetOrigins(const TopoDS_Shape & theS);
 
@@ -1642,7 +1654,8 @@ None
 
 Description
 -----------
-Makes the connected shape periodic. repeated calls of this method overwrite the previous calls working with the basis connected shape. @param theparams [in] periodic options.
+Makes the connected shape periodic. Repeated calls of this method overwrite the previous calls working with the basis connected shape. 
+Input parameter: theParams Periodic options.
 ") MakePeriodic;
 		void MakePeriodic(const BOPAlgo_MakePeriodic::PeriodicityParams & theParams);
 
@@ -1660,7 +1673,8 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the original shapes which images contain the the given shape with reversed orientation. @param thes [in] the shape for which the materials are necessary.
+Returns the original shapes which images contain the the given shape with REVERSED orientation. 
+Input parameter: theS The shape for which the materials are necessary.
 ") MaterialsOnNegativeSide;
 		const TopTools_ListOfShape & MaterialsOnNegativeSide(const TopoDS_Shape & theS);
 
@@ -1678,7 +1692,8 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the original shapes which images contain the the given shape with forward orientation. @param thes [in] the shape for which the materials are necessary.
+Returns the original shapes which images contain the the given shape with FORWARD orientation. 
+Input parameter: theS The shape for which the materials are necessary.
 ") MaterialsOnPositiveSide;
 		const TopTools_ListOfShape & MaterialsOnPositiveSide(const TopoDS_Shape & theS);
 
@@ -1736,7 +1751,9 @@ None
 
 Description
 -----------
-Performs repetition of the periodic shape in specified direction required number of times. @param thedirectionid [in] the direction's id (0 for x, 1 for y, 2 for z); @param thetimes [in] requested number of repetitions (sign of the value defines  the side of the repetition direction (positive or negative)).
+Performs repetition of the periodic shape in specified direction required number of times. 
+Input parameter: theDirectionID The direction's ID (0 for X, 1 for Y, 2 for Z); 
+Input parameter: theTimes Requested number of repetitions (sign of the value defines  the side of the repetition direction (positive or negative)).
 ") RepeatShape;
 		void RepeatShape(const Standard_Integer theDirectionID, const Standard_Integer theTimes);
 
@@ -1754,7 +1771,8 @@ None
 
 Description
 -----------
-Sets the shape for making them connected. @param theargs [in] the arguments for the operation.
+Sets the shape for making them connected. 
+Input parameter: theArgs The arguments for the operation.
 ") SetArguments;
 		void SetArguments(const TopTools_ListOfShape & theArgs);
 
@@ -1821,7 +1839,7 @@ None
 
 Description
 -----------
-Clears all performed repetitions. the next repetition will be performed on the base shape.
+Clears all performed repetitions. The next repetition will be performed on the base shape.
 ") ClearRepetitions;
 		void ClearRepetitions();
 
@@ -1839,7 +1857,8 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the identical shapes for the given shape located on the opposite periodic side. returns empty list in case the shape has no twin. //! @param thes [in] shape to get the twins for.
+Returns the identical shapes for the given shape located on the opposite periodic side. Returns empty list in case the shape has no twin. //! 
+Input parameter: theS Shape to get the twins for.
 ") GetTwins;
 		const TopTools_ListOfShape & GetTwins(const TopoDS_Shape & theS);
 
@@ -1852,7 +1871,7 @@ opencascade::handle<BRepTools_History>
 
 Description
 -----------
-Returns the history of the algorithm.
+Returns the History of the algorithm.
 ") History;
 		const opencascade::handle<BRepTools_History> & History();
 
@@ -1870,7 +1889,8 @@ bool
 
 Description
 -----------
-Returns whether the input shape was trimmed in the specified direction. @param thedirectionid [in] the direction's id.
+Returns whether the input shape was trimmed in the specified direction. 
+Input parameter: theDirectionID The direction's ID.
 ") IsInputTrimmed;
 		Standard_Boolean IsInputTrimmed(const Standard_Integer theDirectionID);
 
@@ -1883,7 +1903,7 @@ bool
 
 Description
 -----------
-Returns whether the input shape was already trimmed for x period.
+Returns whether the input shape was already trimmed for X period.
 ") IsInputXTrimmed;
 		Standard_Boolean IsInputXTrimmed();
 
@@ -1896,7 +1916,7 @@ bool
 
 Description
 -----------
-Returns whether the input shape was already trimmed for y period.
+Returns whether the input shape was already trimmed for Y period.
 ") IsInputYTrimmed;
 		Standard_Boolean IsInputYTrimmed();
 
@@ -1909,7 +1929,7 @@ bool
 
 Description
 -----------
-Returns whether the input shape was already trimmed for z period.
+Returns whether the input shape was already trimmed for Z period.
 ") IsInputZTrimmed;
 		Standard_Boolean IsInputZTrimmed();
 
@@ -1927,7 +1947,8 @@ bool
 
 Description
 -----------
-Returns the info about periodicity of the shape in specified direction. @param thedirectionid [in] the direction's id.
+Returns the info about Periodicity of the shape in specified direction. 
+Input parameter: theDirectionID The direction's ID.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic(const Standard_Integer theDirectionID);
 
@@ -1940,7 +1961,7 @@ bool
 
 Description
 -----------
-Returns the info about periodicity of the shape in x direction.
+Returns the info about periodicity of the shape in X direction.
 ") IsXPeriodic;
 		Standard_Boolean IsXPeriodic();
 
@@ -1953,7 +1974,7 @@ bool
 
 Description
 -----------
-Returns the info about periodicity of the shape in y direction.
+Returns the info about periodicity of the shape in Y direction.
 ") IsYPeriodic;
 		Standard_Boolean IsYPeriodic();
 
@@ -1966,7 +1987,7 @@ bool
 
 Description
 -----------
-Returns the info about periodicity of the shape in z direction.
+Returns the info about periodicity of the shape in Z direction.
 ") IsZPeriodic;
 		Standard_Boolean IsZPeriodic();
 
@@ -1986,7 +2007,10 @@ None
 
 Description
 -----------
-Sets the flag to make the shape periodic in specified direction: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! @param thedirectionid [in] the direction's id; @param theisperiodic [in] flag defining periodicity in given direction; @param theperiod [in] required period in given direction.
+Sets the flag to make the shape periodic in specified direction: - 0 - X direction; - 1 - Y direction; - 2 - Z direction. //! 
+Input parameter: theDirectionID The direction's ID; 
+Input parameter: theIsPeriodic Flag defining periodicity in given direction; 
+Input parameter: thePeriod Required period in given direction.
 ") MakePeriodic;
 		void MakePeriodic(const Standard_Integer theDirectionID, const Standard_Boolean theIsPeriodic, const Standard_Real thePeriod = 0.0);
 
@@ -2005,7 +2029,9 @@ None
 
 Description
 -----------
-Sets the flag to make the shape periodic in x direction. @param theisperiodic [in] flag defining periodicity in x direction; @param theperiod [in] required period in x direction.
+Sets the flag to make the shape periodic in X direction. 
+Input parameter: theIsPeriodic Flag defining periodicity in X direction; 
+Input parameter: thePeriod Required period in X direction.
 ") MakeXPeriodic;
 		void MakeXPeriodic(const Standard_Boolean theIsPeriodic, const Standard_Real thePeriod = 0.0);
 
@@ -2024,7 +2050,9 @@ None
 
 Description
 -----------
-Sets the flag to make the shape periodic in y direction. @param theisperiodic [in] flag defining periodicity in y direction; @param theperiod [in] required period in y direction.
+Sets the flag to make the shape periodic in Y direction. 
+Input parameter: theIsPeriodic Flag defining periodicity in Y direction; 
+Input parameter: thePeriod Required period in Y direction.
 ") MakeYPeriodic;
 		void MakeYPeriodic(const Standard_Boolean theIsPeriodic, const Standard_Real thePeriod = 0.0);
 
@@ -2043,7 +2071,9 @@ None
 
 Description
 -----------
-Sets the flag to make the shape periodic in z direction. @param theisperiodic [in] flag defining periodicity in z direction; @param theperiod [in] required period in z direction.
+Sets the flag to make the shape periodic in Z direction. 
+Input parameter: theIsPeriodic Flag defining periodicity in Z direction; 
+Input parameter: thePeriod Required period in Z direction.
 ") MakeZPeriodic;
 		void MakeZPeriodic(const Standard_Boolean theIsPeriodic, const Standard_Real thePeriod = 0.0);
 
@@ -2074,7 +2104,8 @@ float
 
 Description
 -----------
-Returns the period of the shape in specified direction. @param thedirectionid [in] the direction's id.
+Returns the Period of the shape in specified direction. 
+Input parameter: theDirectionID The direction's ID.
 ") Period;
 		Standard_Real Period(const Standard_Integer theDirectionID);
 
@@ -2092,7 +2123,8 @@ float
 
 Description
 -----------
-Returns the first periodic parameter in the specified direction. @param thedirectionid [in] the direction's id.
+Returns the first periodic parameter in the specified direction. 
+Input parameter: theDirectionID The direction's ID.
 ") PeriodFirst;
 		Standard_Real PeriodFirst(const Standard_Integer theDirectionID);
 
@@ -2124,7 +2156,9 @@ TopoDS_Shape
 
 Description
 -----------
-Performs repetition of the shape in specified direction required number of times. negative value of times means that the repetition should be perform in negative direction. makes the repeated shape a base for following repetitions. //! @param thedirectionid [in] the direction's id; @param thetimes [in] requested number of repetitions.
+Performs repetition of the shape in specified direction required number of times. Negative value of times means that the repetition should be perform in negative direction. Makes the repeated shape a base for following repetitions. //! 
+Input parameter: theDirectionID The direction's ID; 
+Input parameter: theTimes Requested number of repetitions.
 ") RepeatShape;
 		const TopoDS_Shape RepeatShape(const Standard_Integer theDirectionID, const Standard_Integer theTimes);
 
@@ -2155,7 +2189,8 @@ None
 
 Description
 -----------
-Sets the periodicity parameters. @param theparams [in] periodicity parameters.
+Sets the periodicity parameters. 
+Input parameter: theParams Periodicity parameters.
 ") SetPeriodicityParameters;
 		void SetPeriodicityParameters(PeriodicityParams theParams);
 
@@ -2173,7 +2208,8 @@ None
 
 Description
 -----------
-Sets the shape to make it periodic. @param theshape [in] the shape to make periodic.
+Sets the shape to make it periodic. 
+Input parameter: theShape The shape to make periodic.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theShape);
 
@@ -2193,7 +2229,10 @@ None
 
 Description
 -----------
-Defines whether the input shape is already trimmed in specified direction to fit the period in this direction. direction is defined by an id: - 0 - x direction; - 1 - y direction; - 2 - z direction. //! if the shape is not trimmed it is required to set the first parameter of the period in that direction. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param thedirectionid [in] the direction's id; @param theistrimmed [in] the flag defining trimming of the shape in given direction; @param thefirst [in] the first periodic parameter in the given direction.
+Defines whether the input shape is already trimmed in specified direction to fit the period in this direction. Direction is defined by an ID: - 0 - X direction; - 1 - Y direction; - 2 - Z direction. //! If the shape is not trimmed it is required to set the first parameter of the period in that direction. The algorithm will make the shape fit into the period. //! Before calling this method, the shape has to be set to be periodic in this direction. //! 
+Input parameter: theDirectionID The direction's ID; 
+Input parameter: theIsTrimmed The flag defining trimming of the shape in given direction; 
+Input parameter: theFirst The first periodic parameter in the given direction.
 ") SetTrimmed;
 		void SetTrimmed(const Standard_Integer theDirectionID, const Standard_Boolean theIsTrimmed, const Standard_Real theFirst = 0.0);
 
@@ -2212,7 +2251,9 @@ None
 
 Description
 -----------
-Defines whether the input shape is already trimmed in x direction to fit the x period. if the shape is not trimmed it is required to set the first parameter for the x period. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param theistrimmed [in] flag defining whether the shape is already trimmed  in x direction to fit the x period; @param thefirst [in] the first x periodic parameter.
+Defines whether the input shape is already trimmed in X direction to fit the X period. If the shape is not trimmed it is required to set the first parameter for the X period. The algorithm will make the shape fit into the period. //! Before calling this method, the shape has to be set to be periodic in this direction. //! 
+Input parameter: theIsTrimmed Flag defining whether the shape is already trimmed  in X direction to fit the X period; 
+Input parameter: theFirst The first X periodic parameter.
 ") SetXTrimmed;
 		void SetXTrimmed(const Standard_Boolean theIsTrimmed, const Standard_Boolean theFirst = 0.0);
 
@@ -2231,7 +2272,9 @@ None
 
 Description
 -----------
-Defines whether the input shape is already trimmed in y direction to fit the y period. if the shape is not trimmed it is required to set the first parameter for the y period. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param theistrimmed [in] flag defining whether the shape is already trimmed  in y direction to fit the y period; @param thefirst [in] the first y periodic parameter.
+Defines whether the input shape is already trimmed in Y direction to fit the Y period. If the shape is not trimmed it is required to set the first parameter for the Y period. The algorithm will make the shape fit into the period. //! Before calling this method, the shape has to be set to be periodic in this direction. //! 
+Input parameter: theIsTrimmed Flag defining whether the shape is already trimmed  in Y direction to fit the Y period; 
+Input parameter: theFirst The first Y periodic parameter.
 ") SetYTrimmed;
 		void SetYTrimmed(const Standard_Boolean theIsTrimmed, const Standard_Boolean theFirst = 0.0);
 
@@ -2250,7 +2293,9 @@ None
 
 Description
 -----------
-Defines whether the input shape is already trimmed in z direction to fit the z period. if the shape is not trimmed it is required to set the first parameter for the z period. the algorithm will make the shape fit into the period. //! before calling this method, the shape has to be set to be periodic in this direction. //! @param theistrimmed [in] flag defining whether the shape is already trimmed  in z direction to fit the z period; @param thefirst [in] the first z periodic parameter.
+Defines whether the input shape is already trimmed in Z direction to fit the Z period. If the shape is not trimmed it is required to set the first parameter for the Z period. The algorithm will make the shape fit into the period. //! Before calling this method, the shape has to be set to be periodic in this direction. //! 
+Input parameter: theIsTrimmed Flag defining whether the shape is already trimmed  in Z direction to fit the Z period; 
+Input parameter: theFirst The first Z periodic parameter.
 ") SetZTrimmed;
 		void SetZTrimmed(const Standard_Boolean theIsTrimmed, const Standard_Boolean theFirst = 0.0);
 
@@ -2281,7 +2326,7 @@ int
 
 Description
 -----------
-Converts the integer to id of periodic direction.
+Converts the integer to ID of periodic direction.
 ") ToDirectionID;
 		static Standard_Integer ToDirectionID(const Standard_Integer theDirectionID);
 
@@ -2294,7 +2339,7 @@ float
 
 Description
 -----------
-Returns the xperiod of the shape.
+Returns the XPeriod of the shape.
 ") XPeriod;
 		Standard_Real XPeriod();
 
@@ -2307,7 +2352,7 @@ float
 
 Description
 -----------
-Returns the first parameter for the x period.
+Returns the first parameter for the X period.
 ") XPeriodFirst;
 		Standard_Real XPeriodFirst();
 
@@ -2325,7 +2370,8 @@ TopoDS_Shape
 
 Description
 -----------
-Repeats the shape in x direction specified number of times. negative value of times means that the repetition should be perform in negative x direction. makes the repeated shape a base for following repetitions. //! @param thetimes [in] requested number of repetitions.
+Repeats the shape in X direction specified number of times. Negative value of times means that the repetition should be perform in negative X direction. Makes the repeated shape a base for following repetitions. //! 
+Input parameter: theTimes Requested number of repetitions.
 ") XRepeat;
 		const TopoDS_Shape XRepeat(const Standard_Integer theTimes);
 
@@ -2338,7 +2384,7 @@ float
 
 Description
 -----------
-Returns the yperiod of the shape.
+Returns the YPeriod of the shape.
 ") YPeriod;
 		Standard_Real YPeriod();
 
@@ -2351,7 +2397,7 @@ float
 
 Description
 -----------
-Returns the first parameter for the y period.
+Returns the first parameter for the Y period.
 ") YPeriodFirst;
 		Standard_Real YPeriodFirst();
 
@@ -2369,7 +2415,8 @@ TopoDS_Shape
 
 Description
 -----------
-Repeats the shape in y direction specified number of times. negative value of times means that the repetition should be perform in negative y direction. makes the repeated shape a base for following repetitions. //! @param thetimes [in] requested number of repetitions.
+Repeats the shape in Y direction specified number of times. Negative value of times means that the repetition should be perform in negative Y direction. Makes the repeated shape a base for following repetitions. //! 
+Input parameter: theTimes Requested number of repetitions.
 ") YRepeat;
 		const TopoDS_Shape YRepeat(const Standard_Integer theTimes);
 
@@ -2382,7 +2429,7 @@ float
 
 Description
 -----------
-Returns the zperiod of the shape.
+Returns the ZPeriod of the shape.
 ") ZPeriod;
 		Standard_Real ZPeriod();
 
@@ -2395,7 +2442,7 @@ float
 
 Description
 -----------
-Returns the first parameter for the z period.
+Returns the first parameter for the Z period.
 ") ZPeriodFirst;
 		Standard_Real ZPeriodFirst();
 
@@ -2413,7 +2460,8 @@ TopoDS_Shape
 
 Description
 -----------
-Repeats the shape in z direction specified number of times. negative value of times means that the repetition should be perform in negative z direction. makes the repeated shape a base for following repetitions. //! @param thetimes [in] requested number of repetitions.
+Repeats the shape in Z direction specified number of times. Negative value of times means that the repetition should be perform in negative Z direction. Makes the repeated shape a base for following repetitions. //! 
+Input parameter: theTimes Requested number of repetitions.
 ") ZRepeat;
 		const TopoDS_Shape ZRepeat(const Standard_Integer theTimes);
 
@@ -2440,7 +2488,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") BOPAlgo_ArgumentAnalyzer;
 		 BOPAlgo_ArgumentAnalyzer();
 
@@ -2492,7 +2540,7 @@ BOPAlgo_ListOfCheckResult
 
 Description
 -----------
-Returns a result of test.
+returns a result of test.
 ") GetCheckResult;
 		const BOPAlgo_ListOfCheckResult & GetCheckResult();
 
@@ -2505,7 +2553,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns object shape;.
+returns object shape;.
 ") GetShape1;
 		const TopoDS_Shape GetShape1();
 
@@ -2518,7 +2566,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns tool shape.
+returns tool shape.
 ") GetShape2;
 		const TopoDS_Shape GetShape2();
 
@@ -2531,7 +2579,7 @@ bool
 
 Description
 -----------
-Result of test.
+result of test.
 ") HasFaulty;
 		Standard_Boolean HasFaulty();
 
@@ -2570,7 +2618,7 @@ BOPAlgo_Operation
 
 Description
 -----------
-Returns ref.
+returns ref.
 ") OperationType;
 		BOPAlgo_Operation  OperationType();
 
@@ -2588,7 +2636,7 @@ None
 
 Description
 -----------
-Performs analysis.
+performs analysis.
 ") Perform;
 		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -2632,7 +2680,7 @@ None
 
 Description
 -----------
-Sets object shape.
+sets object shape.
 ") SetShape1;
 		void SetShape1(const TopoDS_Shape & TheShape);
 
@@ -2650,7 +2698,7 @@ None
 
 Description
 -----------
-Sets tool shape.
+sets tool shape.
 ") SetShape2;
 		void SetShape2(const TopoDS_Shape & TheShape);
 
@@ -2731,7 +2779,7 @@ bool
 
 Description
 -----------
-Returns the avoidinternalshapes flag.
+Returns the AvoidInternalShapes flag.
 ") IsAvoidInternalShapes;
 		Standard_Boolean IsAvoidInternalShapes();
 
@@ -2762,7 +2810,7 @@ None
 
 Description
 -----------
-Defines the preventing of addition of internal parts into result. the default value is false, i.e. the internal parts are added into result.
+Defines the preventing of addition of internal parts into result. The default value is False, i.e. the internal parts are added into result.
 ") SetAvoidInternalShapes;
 		void SetAvoidInternalShapes(const Standard_Boolean theAvoidInternal);
 
@@ -2844,7 +2892,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape thes.
+Returns the list of shapes Generated from the shape theS.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
@@ -2909,7 +2957,7 @@ opencascade::handle<BRepTools_History>
 
 Description
 -----------
-History tool.
+History Tool.
 ") History;
 		opencascade::handle<BRepTools_History> History();
 
@@ -2927,7 +2975,7 @@ bool
 
 Description
 -----------
-Returns true if the shape thes has been deleted. in this case the shape will have no modified elements, but can have generated elements.
+Returns true if the shape theS has been deleted. In this case the shape will have no Modified elements, but can have Generated elements.
 ") IsDeleted;
 		Standard_Boolean IsDeleted(const TopoDS_Shape & theS);
 
@@ -2945,7 +2993,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape thes.
+Returns the list of shapes Modified from the shape theS.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
@@ -3155,7 +3203,7 @@ bool
 
 Description
 -----------
-Returns the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
 ") NonDestructive;
 		Standard_Boolean NonDestructive();
 
@@ -3258,7 +3306,7 @@ None
 
 Description
 -----------
-Sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
 ") SetNonDestructive;
 		void SetNonDestructive(const Standard_Boolean theFlag);
 
@@ -3307,7 +3355,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") BOPAlgo_ShellSplitter;
 		 BOPAlgo_ShellSplitter();
 
@@ -3325,7 +3373,7 @@ None
 
 Description
 -----------
-Constructor.
+constructor.
 ") BOPAlgo_ShellSplitter;
 		 BOPAlgo_ShellSplitter(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -3343,7 +3391,7 @@ None
 
 Description
 -----------
-Adds a face <thes> to process.
+adds a face <theS> to process.
 ") AddStartElement;
 		void AddStartElement(const TopoDS_Shape & theS);
 
@@ -3361,7 +3409,7 @@ None
 
 Description
 -----------
-Performs the algorithm.
+performs the algorithm.
 ") Perform;
 		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -3374,7 +3422,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the loops.
+returns the loops.
 ") Shells;
 		const TopTools_ListOfShape & Shells();
 
@@ -3405,7 +3453,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Return the faces to process.
+return the faces to process.
 ") StartElements;
 		const TopTools_ListOfShape & StartElements();
 
@@ -3669,7 +3717,12 @@ None
 
 Description
 -----------
-Builds the result shape according to the given states for the objects and tools. these states can be unambiguously converted into the boolean operation type. thus, it performs the boolean operation on the given groups of shapes. //! the result is built basing on the result of builder operation (gf or any other). the only condition for the builder is that the splits of faces should be created and classified relatively solids. //! the method uses classification approach for choosing the faces which will participate in building the result shape: - all faces from each group having the given state for the opposite group will be taken into result. //! such approach shows better results (in comparison with bopalgo_buildersolid approach) when working with open solids. however, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! history is not created for the solids in this method. //! to avoid pollution of the report of builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. but, if the new report is not given, the builder report will be used. so, even if builder passed without any errors, but some error has been stored into its report in this method, for the following calls the builder report must be cleared. //! the method may set the following errors: - bopalgo_alertbuilderfailed - building operation has not been performed yet or failed; - bopalgo_alertbopnotset - invalid bop type is given (common/fuse/cut/cut21 are supported); - bopalgo_alerttoofewarguments - arguments are not given; - bopalgo_alertunknownshape - the shape is unknown for the operation. //! parameters: @param theobjects - the group of objects for bop; @param theobjstate - state for objects faces to pass into result; @param thetools - the group of tools for bop; @param thetoolsstate - state for tools faces to pass into result; @param thereport - the alternative report to avoid pollution of the main one.
+Builds the result shape according to the given states for the objects and tools. These states can be unambiguously converted into the Boolean operation type. Thus, it performs the Boolean operation on the given groups of shapes. //! The result is built basing on the result of Builder operation (GF or any other). The only condition for the Builder is that the splits of faces should be created and classified relatively solids. //! The method uses classification approach for choosing the faces which will participate in building the result shape: - All faces from each group having the given state for the opposite group will be taken into result. //! Such approach shows better results (in comparison with BOPAlgo_BuilderSolid approach) when working with open solids. However, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! History is not created for the solids in this method. //! To avoid pollution of the report of Builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. But, if the new report is not given, the Builder report will be used. So, even if Builder passed without any errors, but some error has been stored into its report in this method, for the following calls the Builder report must be cleared. //! The method may set the following errors: - BOPAlgo_AlertBuilderFailed - Building operation has not been performed yet or failed; - BOPAlgo_AlertBOPNotSet - invalid BOP type is given (COMMON/FUSE/CUT/CUT21 are supported); - BOPAlgo_AlertTooFewArguments - arguments are not given; - BOPAlgo_AlertUnknownShape - the shape is unknown for the operation. //! Parameters: 
+Parameter theObjects - The group of Objects for BOP; 
+Parameter theObjState - State for objects faces to pass into result; 
+Parameter theTools - The group of Tools for BOP; 
+Parameter theToolsState - State for tools faces to pass into result; 
+Parameter theReport - The alternative report to avoid pollution of the main one.
 ") BuildBOP;
 		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
 
@@ -3691,7 +3744,12 @@ None
 
 Description
 -----------
-Builds the result of boolean operation of given type basing on the result of builder operation (gf or any other). //! the method converts the given type of operation into the states for the objects and tools required for their face to pass into result and performs the call to the same method, but with states instead of operation type. //! the conversion looks as follows: - common is built from the faces of objects located in any of the tools and vice versa. - fuse is built from the faces out of all given shapes; - cut is built from the faces of the objects out of the tools and faces of the tools located in solids of the objects. //! @param theobjects - the group of objects for bop; @param thetools - the group of tools for bop; @param theoperation - the bop type; @param therange - the parameter to progressindicator @param thereport - the alternative report to avoid pollution of the global one.
+Builds the result of Boolean operation of given type basing on the result of Builder operation (GF or any other). //! The method converts the given type of operation into the states for the objects and tools required for their face to pass into result and performs the call to the same method, but with states instead of operation type. //! The conversion looks as follows: - COMMON is built from the faces of objects located IN any of the tools and vice versa. - FUSE is built from the faces OUT of all given shapes; - CUT is built from the faces of the objects OUT of the tools and faces of the tools located IN solids of the objects. //! 
+Parameter theObjects - The group of Objects for BOP; 
+Parameter theTools - The group of Tools for BOP; 
+Parameter theOperation - The BOP type; 
+Parameter theRange - The parameter to progressIndicator 
+Parameter theReport - The alternative report to avoid pollution of the global one.
 ") BuildBOP;
 		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = NULL);
 
@@ -3730,7 +3788,7 @@ opencascade::handle<IntTools_Context>
 
 Description
 -----------
-Returns the context, tool for cashing heavy algorithms.
+Returns the Context, tool for cashing heavy algorithms.
 ") Context;
 		opencascade::handle<IntTools_Context> Context();
 
@@ -3769,7 +3827,7 @@ bool
 
 Description
 -----------
-Returns the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
 ") NonDestructive;
 		Standard_Boolean NonDestructive();
 
@@ -3795,7 +3853,7 @@ BOPDS_PDS
 
 Description
 -----------
-Returns the data structure, holder of intersection information.
+Returns the Data Structure, holder of intersection information.
 ") PDS;
 		BOPDS_PDS PDS();
 
@@ -3808,7 +3866,7 @@ BOPAlgo_PPaveFiller
 
 Description
 -----------
-Returns the pavefiller, algorithm for sub-shapes intersection.
+Returns the PaveFiller, algorithm for sub-shapes intersection.
 ") PPaveFiller;
 		BOPAlgo_PPaveFiller PPaveFiller();
 
@@ -3826,7 +3884,7 @@ None
 
 Description
 -----------
-Performs the operation. the intersection will be performed also.
+Performs the operation. The intersection will be performed also.
 ") Perform;
 		virtual void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -3845,7 +3903,7 @@ None
 
 Description
 -----------
-Performs the operation with the prepared filler. the intersection will not be performed in this case.
+Performs the operation with the prepared filler. The intersection will not be performed in this case.
 ") PerformWithFiller;
 		virtual void PerformWithFiller(const BOPAlgo_PaveFiller & theFiller, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -3881,7 +3939,7 @@ None
 
 Description
 -----------
-Enables/disables the check of the input solids for inverted status.
+Enables/Disables the check of the input solids for inverted status.
 ") SetCheckInverted;
 		void SetCheckInverted(const Standard_Boolean theCheck);
 
@@ -3917,7 +3975,7 @@ None
 
 Description
 -----------
-Sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated. this flag is taken into account if internal pavefiller is used only. in the case of calling performwithfiller the corresponding flag of that pavefiller is in force.
+Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated. This flag is taken into account if internal PaveFiller is used only. In the case of calling PerformWithFiller the corresponding flag of that PaveFiller is in force.
 ") SetNonDestructive;
 		void SetNonDestructive(const Standard_Boolean theFlag);
 
@@ -3930,7 +3988,7 @@ TopTools_DataMapOfShapeShape
 
 Description
 -----------
-Returns the map of same domain (sd) shapes - coinciding shapes from different arguments.
+Returns the map of Same Domain (SD) shapes - coinciding shapes from different arguments.
 ") ShapesSD;
 		const TopTools_DataMapOfShapeShape & ShapesSD();
 
@@ -4095,7 +4153,7 @@ TopTools_DataMapOfShapeBox
 
 Description
 -----------
-For classification purposes the algorithm builds the bounding boxes for all created solids. this method returns the data map of solid - box pairs.
+For classification purposes the algorithm builds the bounding boxes for all created solids. This method returns the data map of solid - box pairs.
 ") GetBoxesMap;
 		const TopTools_DataMapOfShapeBox & GetBoxesMap();
 
@@ -4176,7 +4234,7 @@ None
 
 Description
 -----------
-Sets the level of checking shape on self-interference. it defines which interferences will be checked: 0 - only v/v; 1 - v/v and v/e; 2 - v/v, v/e and e/e; 3 - v/v, v/e, e/e and v/f; 4 - v/v, v/e, e/e, v/f and e/f; 5 - v/v, v/e, e/e, v/f, e/f and f/f; 6 - v/v, v/e, e/e, v/f, e/f, f/f and v/s; 7 - v/v, v/e, e/e, v/f, e/f, f/f, v/s and e/s; 8 - v/v, v/e, e/e, v/f, e/f, f/f, v/s, e/s and f/s; 9 - v/v, v/e, e/e, v/f, e/f, f/f, v/s, e/s, f/s and s/s - all interferences (default value).
+Sets the level of checking shape on self-interference. It defines which interferences will be checked: 0 - only V/V; 1 - V/V and V/E; 2 - V/V, V/E and E/E; 3 - V/V, V/E, E/E and V/F; 4 - V/V, V/E, E/E, V/F and E/F; 5 - V/V, V/E, E/E, V/F, E/F and F/F; 6 - V/V, V/E, E/E, V/F, E/F, F/F and V/S; 7 - V/V, V/E, E/E, V/F, E/F, F/F, V/S and E/S; 8 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S and F/S; 9 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S, F/S and S/S - all interferences (Default value).
 ") SetLevelOfCheck;
 		void SetLevelOfCheck(const Standard_Integer theLevel);
 
@@ -4221,7 +4279,8 @@ None
 
 Description
 -----------
-Adds the face to remove from the input shape. @param theface [in] the shape to extract the faces for removal.
+Adds the face to remove from the input shape. 
+Input parameter: theFace The shape to extract the faces for removal.
 ") AddFaceToRemove;
 		void AddFaceToRemove(const TopoDS_Shape & theFace);
 
@@ -4239,7 +4298,8 @@ None
 
 Description
 -----------
-Adds the faces to remove from the input shape. @param thefaces [in] the list of shapes to extract the faces for removal.
+Adds the faces to remove from the input shape. 
+Input parameter: theFaces The list of shapes to extract the faces for removal.
 ") AddFacesToRemove;
 		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
@@ -4314,7 +4374,8 @@ None
 
 Description
 -----------
-Sets the shape for processing. @param theshape [in] the shape to remove the faces from.  it should either be the solid, compsolid or compound of solids.
+Sets the shape for processing. 
+Input parameter: theShape The shape to remove the faces from.  It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theShape);
 
@@ -4378,7 +4439,7 @@ None
 
 Description
 -----------
-Add all split parts to result. <thematerial> defines the removal of internal boundaries; <theupdate> parameter defines whether to remove boundaries now or not.
+Add all split parts to result. <theMaterial> defines the removal of internal boundaries; <theUpdate> parameter defines whether to remove boundaries now or not.
 ") AddAllToResult;
 		void AddAllToResult(const Standard_Integer theMaterial = 0, const Standard_Boolean theUpdate = Standard_False);
 
@@ -4399,7 +4460,7 @@ None
 
 Description
 -----------
-Adding the parts to result. the parts are defined by two lists of shapes: <thelstotake> defines the arguments which parts should be taken into result; <thelstoavoid> defines the arguments which parts should not be taken into result; to be taken into result the part must be in for all shapes from the list <thelstotake> and must be out of all shapes from the list <thelstoavoid>. to remove internal boundaries between any cells in the result <thematerial> variable should be used. the boundaries between cells with the same material will be removed. default value is 0. thus, to remove any boundary the value of this variable should not be equal to 0. <theupdate> parameter defines whether to remove boundaries now or not.
+Adding the parts to result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be taken into result; <theLSToAvoid> defines the arguments which parts should not be taken into result; To be taken into result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>. //! To remove internal boundaries between any cells in the result <theMaterial> variable should be used. The boundaries between cells with the same material will be removed. Default value is 0. Thus, to remove any boundary the value of this variable should not be equal to 0. <theUpdate> parameter defines whether to remove boundaries now or not.
 ") AddToResult;
 		void AddToResult(const TopTools_ListOfShape & theLSToTake, const TopTools_ListOfShape & theLSToAvoid, const Standard_Integer theMaterial = 0, const Standard_Boolean theUpdate = Standard_False);
 
@@ -4412,7 +4473,7 @@ None
 
 Description
 -----------
-Redefined method clear - clears the contents.
+Redefined method Clear - clears the contents.
 ") Clear;
 		virtual void Clear();
 
@@ -4438,7 +4499,7 @@ None
 
 Description
 -----------
-Makes the containers of proper type from the parts added to result.
+Makes the Containers of proper type from the parts added to result.
 ") MakeContainers;
 		void MakeContainers();
 
@@ -4470,7 +4531,7 @@ None
 
 Description
 -----------
-Removing the parts from result. the parts are defined by two lists of shapes: <thelstotake> defines the arguments which parts should be removed from result; <thelstoavoid> defines the arguments which parts should not be removed from result. to be removed from the result the part must be in for all shapes from the list <thelstotake> and must be out of all shapes from the list <thelstoavoid>.
+Removing the parts from result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be removed from result; <theLSToAvoid> defines the arguments which parts should not be removed from result. To be removed from the result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.
 ") RemoveFromResult;
 		void RemoveFromResult(const TopTools_ListOfShape & theLSToTake, const TopTools_ListOfShape & theLSToAvoid);
 
@@ -4483,7 +4544,7 @@ None
 
 Description
 -----------
-Removes internal boundaries between cells with the same material. if the result contains the cells with same material but of different dimension the removal of internal boundaries between these cells will not be performed. in case of some errors during the removal the method will set the appropriate warning status - use getreport() to access them.
+Removes internal boundaries between cells with the same material. If the result contains the cells with same material but of different dimension the removal of internal boundaries between these cells will not be performed. In case of some errors during the removal the method will set the appropriate warning status - use GetReport() to access them.
 ") RemoveInternalBoundaries;
 		void RemoveInternalBoundaries();
 
@@ -4541,7 +4602,7 @@ TopoDS_Solid
 
 Description
 -----------
-Returns the solid box <mysbox>.
+Returns the solid box <mySBox>.
 ") Box;
 		const TopoDS_Solid Box();
 
@@ -4567,7 +4628,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the processed faces <myfaces>.
+Returns the processed faces <myFaces>.
 ") Faces;
 		const TopTools_ListOfShape & Faces();
 
@@ -4580,7 +4641,7 @@ bool
 
 Description
 -----------
-Returns the avoidinternalshapes flag.
+Returns the AvoidInternalShapes flag.
 ") IsAvoidInternalShapes;
 		Standard_Boolean IsAvoidInternalShapes();
 
@@ -4593,7 +4654,7 @@ bool
 
 Description
 -----------
-Returns the flag <myintersect>.
+Returns the flag <myIntersect>.
 ") IsIntersect;
 		Standard_Boolean IsIntersect();
 
@@ -4629,7 +4690,7 @@ None
 
 Description
 -----------
-Defines the preventing of addition of internal for solid parts into the result. by default the internal parts are added into result.
+Defines the preventing of addition of internal for solid parts into the result. By default the internal parts are added into result.
 ") SetAvoidInternalShapes;
 		void SetAvoidInternalShapes(const Standard_Boolean theAvoidInternal);
 
@@ -4647,7 +4708,7 @@ None
 
 Description
 -----------
-Sets the flag myintersect: if <bintersect> is true the shapes from <myarguments> will be intersected. if <bintersect> is false no intersection will be done.
+Sets the flag myIntersect: if <bIntersect> is True the shapes from <myArguments> will be intersected. if <bIntersect> is False no intersection will be done.
 ") SetIntersect;
 		void SetIntersect(const Standard_Boolean bIntersect);
 
@@ -4755,7 +4816,7 @@ None
 
 Description
 -----------
-Adds tool argument of the operation.
+Adds Tool argument of the operation.
 ") AddTool;
 		virtual void AddTool(const TopoDS_Shape & theShape);
 
@@ -4786,7 +4847,7 @@ None
 
 Description
 -----------
-Adds the tool arguments of the operation.
+Adds the Tool arguments of the operation.
 ") SetTools;
 		virtual void SetTools(const TopTools_ListOfShape & theShapes);
 
@@ -4799,7 +4860,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the tool arguments of the operation.
+Returns the Tool arguments of the operation.
 ") Tools;
 		const TopTools_ListOfShape & Tools();
 

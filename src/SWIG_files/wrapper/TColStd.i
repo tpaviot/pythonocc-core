@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLSTDDOCSTRING
 "TColStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tcolstd.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tcolstd.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLSTDDOCSTRING) TColStd
 
@@ -588,7 +588,8 @@ bool
 
 Description
 -----------
-/** * apply to this map the symmetric difference (aka exclusive disjunction, boolean xor) operation with another (given) map. * the result contains the values that are contained only in this or the operand map, but not in both. * this algorithm is similar to method difference(). * return true if contents of this map is changed */.
+/** * Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation * with another (given) Map. The result contains the values that are contained only in this or the * operand map, but not in both. This algorithm is similar to method Difference(). * 
+Return: True if contents of this map is changed */.
 ") Differ;
 		Standard_Boolean Differ(const TColStd_PackedMapOfInteger &);
 
@@ -607,7 +608,7 @@ None
 
 Description
 -----------
-/** * sets this map to be the result of symmetric difference (aka exclusive disjunction, boolean xor) operation between two given maps. * the new map contains the values that are contained only in the first or the second operand maps but not in both. * all previous contents of this map is cleared. * this map (result of the boolean operation) can also be used as one of operands. */.
+/** * Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR) * operation between two given Maps. The new Map contains the values that are contained only in * the first or the second operand maps but not in both. All previous contents of this Map is * cleared. This map (result of the boolean operation) can also be used as one of operands. */.
 ") Difference;
 		void Difference(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
@@ -633,7 +634,7 @@ int
 
 Description
 -----------
-/** * query the maximal contained key value. */.
+/** * Query the maximal contained key value. */.
 ") GetMaximalMapped;
 		Standard_Integer GetMaximalMapped();
 
@@ -646,7 +647,7 @@ int
 
 Description
 -----------
-/** * query the minimal contained key value. */.
+/** * Query the minimal contained key value. */.
 ") GetMinimalMapped;
 		Standard_Integer GetMinimalMapped();
 
@@ -664,7 +665,7 @@ bool
 
 Description
 -----------
-/** * returns true if this map has common items with the given one. */.
+/** * Returns True if this map has common items with the given one. */.
 ") HasIntersection;
 		Standard_Boolean HasIntersection(const TColStd_PackedMapOfInteger &);
 
@@ -682,7 +683,8 @@ bool
 
 Description
 -----------
-/** * apply to this map the intersection operation (aka multiplication, common, boolean and) with another (given) map. * the result contains only the values that are contained in both this and the given maps. * this algorithm is similar to method intersection(). * return true if content of this map is changed */.
+/** * Apply to this Map the intersection operation (aka multiplication, common, boolean AND) with * another (given) Map. The result contains only the values that are contained in both this and * the given maps. This algorithm is similar to method Intersection(). * 
+Return: True if content of this map is changed */.
 ") Intersect;
 		Standard_Boolean Intersect(const TColStd_PackedMapOfInteger &);
 
@@ -701,7 +703,7 @@ None
 
 Description
 -----------
-/** * sets this map to be the result of intersection (aka multiplication, common, boolean and) operation between two given maps. * the new map contains only the values that are contained in both map operands. * all previous contents of this map is cleared. this same map (result of the boolean operation) can also be used as one of operands. * the order of operands makes no difference; the method minimizes internally the number of iterations using the smallest map for the loop. */.
+/** * Sets this Map to be the result of intersection (aka multiplication, common, boolean AND) * operation between two given Maps. The new Map contains only the values that are contained in * both map operands. All previous contents of this Map is cleared. This same map (result of the * boolean operation) can also be used as one of operands. The order of operands makes no * difference; the method minimizes internally the number of iterations using the smallest map for * the loop. */.
 ") Intersection;
 		void Intersection(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
@@ -714,7 +716,7 @@ bool
 
 Description
 -----------
-Returns true if map is empty.
+Returns True if map is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -732,7 +734,7 @@ bool
 
 Description
 -----------
-/** * returns true if this map is equal to the given one, i.e. they contain the * same sets of elements */.
+/** * Returns True if this map is equal to the given one, i.e. they contain the * same sets of elements */.
 ") IsEqual;
 		Standard_Boolean IsEqual(const TColStd_PackedMapOfInteger &);
 
@@ -750,7 +752,7 @@ bool
 
 Description
 -----------
-/** * returns true if this map is subset of the given one, i.e. all elements * contained in this map is contained also in the operand map. * if this map is empty that this method returns true for any operand map. */.
+/** * Returns True if this map is subset of the given one, i.e. all elements * contained in this map is contained also in the operand map. * if this map is empty that this method returns true for any operand map. */.
 ") IsSubset;
 		Standard_Boolean IsSubset(const TColStd_PackedMapOfInteger &);
 
@@ -816,7 +818,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints useful statistics about the map. it can be used to test the quality of the hashcoding.
+Prints useful statistics about the map. It can be used to test the quality of the hashcoding.
 ") Statistics;
 		void Statistics(std::ostream &OutValue);
 
@@ -834,7 +836,8 @@ bool
 
 Description
 -----------
-/** * apply to this map the subtraction (aka set-theoretic difference, relative complement, exclude, cut, boolean not) operation with another (given) map. * the result contains only the values that were previously contained in this map and not contained in this map. * this algorithm is similar to method subtract() with two operands. * return true if contents of this map is changed */.
+/** * Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude, * cut, boolean NOT) operation with another (given) Map. The result contains only the values that * were previously contained in this map and not contained in this map. This algorithm is similar * to method Subtract() with two operands. * 
+Return: True if contents of this map is changed */.
 ") Subtract;
 		Standard_Boolean Subtract(const TColStd_PackedMapOfInteger &);
 
@@ -853,7 +856,7 @@ None
 
 Description
 -----------
-/** * sets this map to be the result of subtraction * (aka set-theoretic difference, relative complement, exclude, cut, boolean not) operation between two given maps. * the new map contains only the values that are contained in the first map operands and not contained in the second one. * all previous contents of this map is cleared. * this map (result of the boolean operation) can also be used as the first operand. */.
+/** * Sets this Map to be the result of subtraction * (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation * between two given Maps. The new Map contains only the values that are contained in the first * map operands and not contained in the second one. All previous contents of this Map is cleared. * This map (result of the boolean operation) can also be used as the first operand. */.
 ") Subtraction;
 		void Subtraction(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
@@ -872,7 +875,7 @@ None
 
 Description
 -----------
-/** * sets this map to be the result of union (aka addition, fuse, merge, boolean or) operation between two given maps. * the new map contains the values that are contained either in the first map or in the second map or in both. * all previous contents of this map is cleared. this map (result of the boolean operation) can also be passed as one of operands. */.
+/** * Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation * between two given Maps. The new Map contains the values that are contained either in the first * map or in the second map or in both. All previous contents of this Map is cleared. This map * (result of the boolean operation) can also be passed as one of operands. */.
 ") Union;
 		void Union(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
@@ -890,7 +893,8 @@ bool
 
 Description
 -----------
-/** * apply to this map the boolean operation union (aka addition, fuse, merge, boolean or) with another (given) map. * the result contains the values that were previously contained in this map or contained in the given (operand) map. * this algorithm is similar to method union(). * return true if content of this map is changed */.
+/** * Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with * another (given) Map. The result contains the values that were previously contained in this map * or contained in the given (operand) map. This algorithm is similar to method Union(). * 
+Return: True if content of this map is changed */.
 ") Unite;
 		Standard_Boolean Unite(const TColStd_PackedMapOfInteger &);
 

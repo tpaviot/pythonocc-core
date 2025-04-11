@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPSHAPEDOCSTRING
 "StepShape module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepshape.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepshape.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPSHAPEDOCSTRING) StepShape
 
@@ -280,7 +280,7 @@ None
 
 Description
 -----------
-Returns a block.
+Returns a Block.
 ") StepShape_Block;
 		 StepShape_Block();
 
@@ -455,7 +455,7 @@ None
 
 Description
 -----------
-Returns a booleanoperand selecttype.
+Returns a BooleanOperand SelectType.
 ") StepShape_BooleanOperand;
 		 StepShape_BooleanOperand();
 
@@ -468,7 +468,7 @@ opencascade::handle<StepShape_BooleanResult>
 
 Description
 -----------
-Returns value as a booleanresult (null if another type).
+returns Value as a BooleanResult (Null if another type).
 ") BooleanResult;
 		opencascade::handle<StepShape_BooleanResult> BooleanResult();
 
@@ -481,7 +481,7 @@ StepShape_CsgPrimitive
 
 Description
 -----------
-Returns value as a csgprimitive (null if another type) csgprimitive is another select type.
+returns Value as a CsgPrimitive (Null if another type) CsgPrimitive is another Select Type.
 ") CsgPrimitive;
 		StepShape_CsgPrimitive CsgPrimitive();
 
@@ -494,7 +494,7 @@ opencascade::handle<StepShape_HalfSpaceSolid>
 
 Description
 -----------
-Returns value as a halfspacesolid (null if another type).
+returns Value as a HalfSpaceSolid (Null if another type).
 ") HalfSpaceSolid;
 		opencascade::handle<StepShape_HalfSpaceSolid> HalfSpaceSolid();
 
@@ -597,7 +597,7 @@ opencascade::handle<StepShape_SolidModel>
 
 Description
 -----------
-Returns value as a solidmodel (null if another type).
+returns Value as a SolidModel (Null if another type).
 ") SolidModel;
 		opencascade::handle<StepShape_SolidModel> SolidModel();
 
@@ -637,7 +637,7 @@ None
 
 Description
 -----------
-Returns a booleanresult.
+Returns a BooleanResult.
 ") StepShape_BooleanResult;
 		 StepShape_BooleanResult();
 
@@ -780,7 +780,7 @@ None
 
 Description
 -----------
-Returns a boxdomain.
+Returns a BoxDomain.
 ") StepShape_BoxDomain;
 		 StepShape_BoxDomain();
 
@@ -1093,7 +1093,7 @@ None
 
 Description
 -----------
-Returns a csgprimitive selecttype.
+Returns a CsgPrimitive SelectType.
 ") StepShape_CsgPrimitive;
 		 StepShape_CsgPrimitive();
 
@@ -1106,7 +1106,7 @@ opencascade::handle<StepShape_Block>
 
 Description
 -----------
-Returns value as a block (null if another type).
+returns Value as a Block (Null if another type).
 ") Block;
 		opencascade::handle<StepShape_Block> Block();
 
@@ -1124,7 +1124,7 @@ int
 
 Description
 -----------
-Recognizes a csgprimitive kind entity that is: 1 -> sphere 2 -> block 3 -> rightangularwedge 4 -> torus 5 -> rightcircularcone 6 -> rightcircularcylinder 0 else.
+Recognizes a CsgPrimitive Kind Entity that is: 1 -> Sphere 2 -> Block 3 -> RightAngularWedge 4 -> Torus 5 -> RightCircularCone 6 -> RightCircularCylinder 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1137,7 +1137,7 @@ opencascade::handle<StepShape_RightAngularWedge>
 
 Description
 -----------
-Returns value as a rightangularwedge (null if another type).
+returns Value as a RightAngularWedge (Null if another type).
 ") RightAngularWedge;
 		opencascade::handle<StepShape_RightAngularWedge> RightAngularWedge();
 
@@ -1150,7 +1150,7 @@ opencascade::handle<StepShape_RightCircularCone>
 
 Description
 -----------
-Returns value as a rightcircularcone (null if another type).
+returns Value as a RightCircularCone (Null if another type).
 ") RightCircularCone;
 		opencascade::handle<StepShape_RightCircularCone> RightCircularCone();
 
@@ -1163,7 +1163,7 @@ opencascade::handle<StepShape_RightCircularCylinder>
 
 Description
 -----------
-Returns value as a rightcircularcylinder (null if another type).
+returns Value as a RightCircularCylinder (Null if another type).
 ") RightCircularCylinder;
 		opencascade::handle<StepShape_RightCircularCylinder> RightCircularCylinder();
 
@@ -1176,7 +1176,7 @@ opencascade::handle<StepShape_Sphere>
 
 Description
 -----------
-Returns value as a sphere (null if another type).
+returns Value as a Sphere (Null if another type).
 ") Sphere;
 		opencascade::handle<StepShape_Sphere> Sphere();
 
@@ -1189,7 +1189,7 @@ opencascade::handle<StepShape_Torus>
 
 Description
 -----------
-Returns value as a torus (null if another type).
+returns Value as a Torus (Null if another type).
 ") Torus;
 		opencascade::handle<StepShape_Torus> Torus();
 
@@ -1216,7 +1216,7 @@ None
 
 Description
 -----------
-Returns a csgselect selecttype.
+Returns a CsgSelect SelectType.
 ") StepShape_CsgSelect;
 		 StepShape_CsgSelect();
 
@@ -1229,7 +1229,7 @@ opencascade::handle<StepShape_BooleanResult>
 
 Description
 -----------
-Returns value as a booleanresult (null if another type).
+returns Value as a BooleanResult (Null if another type).
 ") BooleanResult;
 		opencascade::handle<StepShape_BooleanResult> BooleanResult();
 
@@ -1242,7 +1242,7 @@ StepShape_CsgPrimitive
 
 Description
 -----------
-Returns value as a csgprimitive (null if another type).
+returns Value as a CsgPrimitive (Null if another type).
 ") CsgPrimitive;
 		StepShape_CsgPrimitive CsgPrimitive();
 
@@ -1383,7 +1383,7 @@ int
 
 Description
 -----------
-Recognizes a kind of dimensionalcharacteristic select type 1 -> dimensionallocation from stepshape 2 -> dimensionalsize from stepshape 0 else.
+Recognizes a kind of DimensionalCharacteristic select type 1 -> DimensionalLocation from StepShape 2 -> DimensionalSize from StepShape 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1396,7 +1396,7 @@ opencascade::handle<StepShape_DimensionalLocation>
 
 Description
 -----------
-Returns value as dimensionallocation (or null if another type).
+Returns Value as DimensionalLocation (or Null if another type).
 ") DimensionalLocation;
 		opencascade::handle<StepShape_DimensionalLocation> DimensionalLocation();
 
@@ -1409,7 +1409,7 @@ opencascade::handle<StepShape_DimensionalSize>
 
 Description
 -----------
-Returns value as dimensionalsize (or null if another type).
+Returns Value as DimensionalSize (or Null if another type).
 ") DimensionalSize;
 		opencascade::handle<StepShape_DimensionalSize> DimensionalSize();
 
@@ -1449,7 +1449,7 @@ StepShape_DimensionalCharacteristic
 
 Description
 -----------
-Returns field dimension.
+Returns field Dimension.
 ") Dimension;
 		StepShape_DimensionalCharacteristic Dimension();
 
@@ -1481,7 +1481,7 @@ opencascade::handle<StepShape_ShapeDimensionRepresentation>
 
 Description
 -----------
-Returns field representation.
+Returns field Representation.
 ") Representation;
 		opencascade::handle<StepShape_ShapeDimensionRepresentation> Representation();
 
@@ -1499,7 +1499,7 @@ None
 
 Description
 -----------
-Set field dimension.
+Set field Dimension.
 ") SetDimension;
 		void SetDimension(const StepShape_DimensionalCharacteristic & Dimension);
 
@@ -1517,7 +1517,7 @@ None
 
 Description
 -----------
-Set field representation.
+Set field Representation.
 ") SetRepresentation;
 		void SetRepresentation(const opencascade::handle<StepShape_ShapeDimensionRepresentation> & Representation);
 
@@ -1588,7 +1588,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns field appliesto.
+Returns field AppliesTo.
 ") AppliesTo;
 		opencascade::handle<StepRepr_ShapeAspect> AppliesTo();
 
@@ -1620,7 +1620,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -1638,7 +1638,7 @@ None
 
 Description
 -----------
-Set field appliesto.
+Set field AppliesTo.
 ") SetAppliesTo;
 		void SetAppliesTo(const opencascade::handle<StepRepr_ShapeAspect> & AppliesTo);
 
@@ -1656,7 +1656,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -1698,7 +1698,7 @@ opencascade::handle<StepShape_HArray1OfConnectedEdgeSet>
 
 Description
 -----------
-Returns field ebwmboundary.
+Returns field EbwmBoundary.
 ") EbwmBoundary;
 		opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> EbwmBoundary();
 
@@ -1735,7 +1735,7 @@ None
 
 Description
 -----------
-Set field ebwmboundary.
+Set field EbwmBoundary.
 ") SetEbwmBoundary;
 		void SetEbwmBoundary(const opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> & EbwmBoundary);
 
@@ -1777,7 +1777,7 @@ opencascade::handle<StepShape_HArray1OfConnectedFaceSet>
 
 Description
 -----------
-Returns field fbsmfaces.
+Returns field FbsmFaces.
 ") FbsmFaces;
 		opencascade::handle<StepShape_HArray1OfConnectedFaceSet> FbsmFaces();
 
@@ -1814,7 +1814,7 @@ None
 
 Description
 -----------
-Set field fbsmfaces.
+Set field FbsmFaces.
 ") SetFbsmFaces;
 		void SetFbsmFaces(const opencascade::handle<StepShape_HArray1OfConnectedFaceSet> & FbsmFaces);
 
@@ -1843,7 +1843,7 @@ None
 
 Description
 -----------
-Returns a geometricset.
+Returns a GeometricSet.
 ") StepShape_GeometricSet;
 		 StepShape_GeometricSet();
 
@@ -1953,7 +1953,7 @@ None
 
 Description
 -----------
-Returns a geometricsetselect selecttype.
+Returns a GeometricSetSelect SelectType.
 ") StepShape_GeometricSetSelect;
 		 StepShape_GeometricSetSelect();
 
@@ -1971,7 +1971,7 @@ int
 
 Description
 -----------
-Recognizes a geometricsetselect kind entity that is: 1 -> point 2 -> curve 3 -> surface 0 else.
+Recognizes a GeometricSetSelect Kind Entity that is: 1 -> Point 2 -> Curve 3 -> Surface 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1984,7 +1984,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns value as a curve (null if another type).
+returns Value as a Curve (Null if another type).
 ") Curve;
 		opencascade::handle<StepGeom_Curve> Curve();
 
@@ -1997,7 +1997,7 @@ opencascade::handle<StepGeom_Point>
 
 Description
 -----------
-Returns value as a point (null if another type).
+returns Value as a Point (Null if another type).
 ") Point;
 		opencascade::handle<StepGeom_Point> Point();
 
@@ -2010,7 +2010,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns value as a surface (null if another type).
+returns Value as a Surface (Null if another type).
 ") Surface;
 		opencascade::handle<StepGeom_Surface> Surface();
 
@@ -2037,7 +2037,7 @@ None
 
 Description
 -----------
-Returns a halfspacesolid.
+Returns a HalfSpaceSolid.
 ") StepShape_HalfSpaceSolid;
 		 StepShape_HalfSpaceSolid();
 
@@ -3025,7 +3025,7 @@ None
 
 Description
 -----------
-Returns a reversibletopologyitem selecttype.
+Returns a ReversibleTopologyItem SelectType.
 ") StepShape_ReversibleTopologyItem;
 		 StepShape_ReversibleTopologyItem();
 
@@ -3043,7 +3043,7 @@ int
 
 Description
 -----------
-Recognizes a reversibletopologyitem kind entity that is: 1 -> edge 2 -> path 3 -> face 4 -> facebound 5 -> closedshell 6 -> openshell 0 else.
+Recognizes a ReversibleTopologyItem Kind Entity that is: 1 -> Edge 2 -> Path 3 -> Face 4 -> FaceBound 5 -> ClosedShell 6 -> OpenShell 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3056,7 +3056,7 @@ opencascade::handle<StepShape_ClosedShell>
 
 Description
 -----------
-Returns value as a closedshell (null if another type).
+returns Value as a ClosedShell (Null if another type).
 ") ClosedShell;
 		opencascade::handle<StepShape_ClosedShell> ClosedShell();
 
@@ -3069,7 +3069,7 @@ opencascade::handle<StepShape_Edge>
 
 Description
 -----------
-Returns value as a edge (null if another type).
+returns Value as a Edge (Null if another type).
 ") Edge;
 		opencascade::handle<StepShape_Edge> Edge();
 
@@ -3082,7 +3082,7 @@ opencascade::handle<StepShape_Face>
 
 Description
 -----------
-Returns value as a face (null if another type).
+returns Value as a Face (Null if another type).
 ") Face;
 		opencascade::handle<StepShape_Face> Face();
 
@@ -3095,7 +3095,7 @@ opencascade::handle<StepShape_FaceBound>
 
 Description
 -----------
-Returns value as a facebound (null if another type).
+returns Value as a FaceBound (Null if another type).
 ") FaceBound;
 		opencascade::handle<StepShape_FaceBound> FaceBound();
 
@@ -3108,7 +3108,7 @@ opencascade::handle<StepShape_OpenShell>
 
 Description
 -----------
-Returns value as a openshell (null if another type).
+returns Value as a OpenShell (Null if another type).
 ") OpenShell;
 		opencascade::handle<StepShape_OpenShell> OpenShell();
 
@@ -3121,7 +3121,7 @@ opencascade::handle<StepShape_Path>
 
 Description
 -----------
-Returns value as a path (null if another type).
+returns Value as a Path (Null if another type).
 ") Path;
 		opencascade::handle<StepShape_Path> Path();
 
@@ -3148,7 +3148,7 @@ None
 
 Description
 -----------
-Returns a rightangularwedge.
+Returns a RightAngularWedge.
 ") StepShape_RightAngularWedge;
 		 StepShape_RightAngularWedge();
 
@@ -3355,7 +3355,7 @@ None
 
 Description
 -----------
-Returns a rightcircularcone.
+Returns a RightCircularCone.
 ") StepShape_RightCircularCone;
 		 StepShape_RightCircularCone();
 
@@ -3530,7 +3530,7 @@ None
 
 Description
 -----------
-Returns a rightcircularcylinder.
+Returns a RightCircularCylinder.
 ") StepShape_RightCircularCylinder;
 		 StepShape_RightCircularCylinder();
 
@@ -3702,7 +3702,7 @@ None
 
 Description
 -----------
-Returns a shapedimensionrepresentationitem select type.
+Returns a ShapeDimensionRepresentationItem select type.
 ") StepShape_ShapeDimensionRepresentationItem;
 		 StepShape_ShapeDimensionRepresentationItem();
 
@@ -3720,7 +3720,7 @@ int
 
 Description
 -----------
-Recognizes a shapedimensionrepresentationitem kind entity that is: 1 -> compoundrepresentationitem 2 -> descriptiverepresentationitem 3 -> measurerepresentationitem 4 -> placement 0 else.
+Recognizes a ShapeDimensionRepresentationItem Kind Entity that is: 1 -> CompoundRepresentationItem 2 -> DescriptiveRepresentationItem 3 -> MeasureRepresentationItem 4 -> Placement 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3733,7 +3733,7 @@ opencascade::handle<StepRepr_CompoundRepresentationItem>
 
 Description
 -----------
-Returns value as a compoundrepresentationitem (null if another type).
+returns Value as a CompoundRepresentationItem (Null if another type).
 ") CompoundRepresentationItem;
 		opencascade::handle<StepRepr_CompoundRepresentationItem> CompoundRepresentationItem();
 
@@ -3746,7 +3746,7 @@ opencascade::handle<StepRepr_DescriptiveRepresentationItem>
 
 Description
 -----------
-Returns value as a descriptiverepresentationitem (null if another type).
+returns Value as a DescriptiveRepresentationItem (Null if another type).
 ") DescriptiveRepresentationItem;
 		opencascade::handle<StepRepr_DescriptiveRepresentationItem> DescriptiveRepresentationItem();
 
@@ -3759,7 +3759,7 @@ opencascade::handle<StepRepr_MeasureRepresentationItem>
 
 Description
 -----------
-Returns value as a measurerepresentationitem (null if another type).
+returns Value as a MeasureRepresentationItem (Null if another type).
 ") MeasureRepresentationItem;
 		opencascade::handle<StepRepr_MeasureRepresentationItem> MeasureRepresentationItem();
 
@@ -3772,7 +3772,7 @@ opencascade::handle<StepGeom_Placement>
 
 Description
 -----------
-Returns value as a placement (null if another type).
+returns Value as a Placement (Null if another type).
 ") Placement;
 		opencascade::handle<StepGeom_Placement> Placement();
 
@@ -3799,7 +3799,7 @@ None
 
 Description
 -----------
-Returns a shaperepresentation.
+Returns a ShapeRepresentation.
 ") StepShape_ShapeRepresentation;
 		 StepShape_ShapeRepresentation();
 
@@ -3828,7 +3828,7 @@ None
 
 Description
 -----------
-Returns a shell selecttype.
+Returns a Shell SelectType.
 ") StepShape_Shell;
 		 StepShape_Shell();
 
@@ -3846,7 +3846,7 @@ int
 
 Description
 -----------
-Recognizes a shell kind entity that is: 1 -> openshell 2 -> closedshell 0 else.
+Recognizes a Shell Kind Entity that is: 1 -> OpenShell 2 -> ClosedShell 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3859,7 +3859,7 @@ opencascade::handle<StepShape_ClosedShell>
 
 Description
 -----------
-Returns value as a closedshell (null if another type).
+returns Value as a ClosedShell (Null if another type).
 ") ClosedShell;
 		opencascade::handle<StepShape_ClosedShell> ClosedShell();
 
@@ -3872,7 +3872,7 @@ opencascade::handle<StepShape_OpenShell>
 
 Description
 -----------
-Returns value as a openshell (null if another type).
+returns Value as a OpenShell (Null if another type).
 ") OpenShell;
 		opencascade::handle<StepShape_OpenShell> OpenShell();
 
@@ -3899,7 +3899,7 @@ None
 
 Description
 -----------
-Returns a shellbasedsurfacemodel.
+Returns a ShellBasedSurfaceModel.
 ") StepShape_ShellBasedSurfaceModel;
 		 StepShape_ShellBasedSurfaceModel();
 
@@ -4009,7 +4009,7 @@ None
 
 Description
 -----------
-Returns a solidmodel.
+Returns a SolidModel.
 ") StepShape_SolidModel;
 		 StepShape_SolidModel();
 
@@ -4038,7 +4038,7 @@ None
 
 Description
 -----------
-Returns a sphere.
+Returns a Sphere.
 ") StepShape_Sphere;
 		 StepShape_Sphere();
 
@@ -4149,7 +4149,7 @@ None
 
 Description
 -----------
-Returns a surfacemodel selecttype.
+Returns a SurfaceModel SelectType.
 ") StepShape_SurfaceModel;
 		 StepShape_SurfaceModel();
 
@@ -4167,7 +4167,7 @@ int
 
 Description
 -----------
-Recognizes a surfacemodel kind entity that is: 1 -> shellbasedsurfacemodel 2 -> facebasedsurfacemodel 0 else.
+Recognizes a SurfaceModel Kind Entity that is: 1 -> ShellBasedSurfaceModel 2 -> FaceBasedSurfaceModel 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4180,7 +4180,7 @@ opencascade::handle<StepShape_ShellBasedSurfaceModel>
 
 Description
 -----------
-Returns value as a shellbasedsurfacemodel (null if another type).
+returns Value as a ShellBasedSurfaceModel (Null if another type).
 ") ShellBasedSurfaceModel;
 		opencascade::handle<StepShape_ShellBasedSurfaceModel> ShellBasedSurfaceModel();
 
@@ -4225,7 +4225,7 @@ int
 
 Description
 -----------
-Recognizes a kind of valuequalifier select type: 1 -> tolerancevalue from stepshape 2 -> limitsandfits from stepshape.
+Recognizes a kind of ValueQualifier Select Type: 1 -> ToleranceValue from StepShape 2 -> LimitsAndFits from StepShape.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4238,7 +4238,7 @@ opencascade::handle<StepShape_LimitsAndFits>
 
 Description
 -----------
-Returns value as limitsandfits.
+Returns Value as LimitsAndFits.
 ") LimitsAndFits;
 		opencascade::handle<StepShape_LimitsAndFits> LimitsAndFits();
 
@@ -4251,7 +4251,7 @@ opencascade::handle<StepShape_ToleranceValue>
 
 Description
 -----------
-Returns value as tolerancevalue.
+Returns Value as ToleranceValue.
 ") ToleranceValue;
 		opencascade::handle<StepShape_ToleranceValue> ToleranceValue();
 
@@ -4388,7 +4388,7 @@ None
 
 Description
 -----------
-Returns a topologicalrepresentationitem.
+Returns a TopologicalRepresentationItem.
 ") StepShape_TopologicalRepresentationItem;
 		 StepShape_TopologicalRepresentationItem();
 
@@ -4417,7 +4417,7 @@ None
 
 Description
 -----------
-Returns a torus.
+Returns a Torus.
 ") StepShape_Torus;
 		 StepShape_Torus();
 
@@ -4651,7 +4651,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field formattype.
+Returns field FormatType.
 ") FormatType;
 		opencascade::handle<TCollection_HAsciiString> FormatType();
 
@@ -4687,7 +4687,7 @@ None
 
 Description
 -----------
-Set field formattype.
+Set field FormatType.
 ") SetFormatType;
 		void SetFormatType(const opencascade::handle<TCollection_HAsciiString> & theFormatType);
 
@@ -4734,7 +4734,7 @@ int
 
 Description
 -----------
-Recognizes a kind of valuequalifier select type: 1 -> precisionqualifier from stepshape 2 -> typequalifier from stepshape 3 -> unceraintyqualifier .. not yet implemented 4 -> valueformattypequalifier.
+Recognizes a kind of ValueQualifier Select Type: 1 -> PrecisionQualifier from StepShape 2 -> TypeQualifier from StepShape 3 -> UnceraintyQualifier .. not yet implemented 4 -> ValueFormatTypeQualifier.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4747,7 +4747,7 @@ opencascade::handle<StepShape_PrecisionQualifier>
 
 Description
 -----------
-Returns value as precisionqualifier.
+Returns Value as PrecisionQualifier.
 ") PrecisionQualifier;
 		opencascade::handle<StepShape_PrecisionQualifier> PrecisionQualifier();
 
@@ -4760,7 +4760,7 @@ opencascade::handle<StepShape_TypeQualifier>
 
 Description
 -----------
-Returns value as typequalifier.
+Returns Value as TypeQualifier.
 ") TypeQualifier;
 		opencascade::handle<StepShape_TypeQualifier> TypeQualifier();
 
@@ -4773,7 +4773,7 @@ opencascade::handle<StepShape_ValueFormatTypeQualifier>
 
 Description
 -----------
-Returns value as valueformattypequalifier.
+Returns Value as ValueFormatTypeQualifier.
 ") ValueFormatTypeQualifier;
 		opencascade::handle<StepShape_ValueFormatTypeQualifier> ValueFormatTypeQualifier();
 
@@ -4800,7 +4800,7 @@ None
 
 Description
 -----------
-Returns a advancedbrepshaperepresentation.
+Returns a AdvancedBrepShapeRepresentation.
 ") StepShape_AdvancedBrepShapeRepresentation;
 		 StepShape_AdvancedBrepShapeRepresentation();
 
@@ -4842,7 +4842,7 @@ StepShape_AngleRelator
 
 Description
 -----------
-Returns field angleselection.
+Returns field AngleSelection.
 ") AngleSelection;
 		StepShape_AngleRelator AngleSelection();
 
@@ -4883,7 +4883,7 @@ None
 
 Description
 -----------
-Set field angleselection.
+Set field AngleSelection.
 ") SetAngleSelection;
 		void SetAngleSelection(const StepShape_AngleRelator AngleSelection);
 
@@ -4925,7 +4925,7 @@ StepShape_AngleRelator
 
 Description
 -----------
-Returns field angleselection.
+Returns field AngleSelection.
 ") AngleSelection;
 		StepShape_AngleRelator AngleSelection();
 
@@ -4963,7 +4963,7 @@ None
 
 Description
 -----------
-Set field angleselection.
+Set field AngleSelection.
 ") SetAngleSelection;
 		void SetAngleSelection(const StepShape_AngleRelator AngleSelection);
 
@@ -4992,7 +4992,7 @@ None
 
 Description
 -----------
-Returns a boxedhalfspace.
+Returns a BoxedHalfSpace.
 ") StepShape_BoxedHalfSpace;
 		 StepShape_BoxedHalfSpace();
 
@@ -5115,7 +5115,7 @@ opencascade::handle<StepShape_HArray1OfEdge>
 
 Description
 -----------
-Returns field cesedges.
+Returns field CesEdges.
 ") CesEdges;
 		opencascade::handle<StepShape_HArray1OfEdge> CesEdges();
 
@@ -5152,7 +5152,7 @@ None
 
 Description
 -----------
-Set field cesedges.
+Set field CesEdges.
 ") SetCesEdges;
 		void SetCesEdges(const opencascade::handle<StepShape_HArray1OfEdge> & CesEdges);
 
@@ -5181,7 +5181,7 @@ None
 
 Description
 -----------
-Returns a connectedfaceset.
+Returns a ConnectedFaceSet.
 ") StepShape_ConnectedFaceSet;
 		 StepShape_ConnectedFaceSet();
 
@@ -5291,7 +5291,7 @@ None
 
 Description
 -----------
-Returns a csgshaperepresentation.
+Returns a CsgShapeRepresentation.
 ") StepShape_CsgShapeRepresentation;
 		 StepShape_CsgShapeRepresentation();
 
@@ -5320,7 +5320,7 @@ None
 
 Description
 -----------
-Returns a csgsolid.
+Returns a CsgSolid.
 ") StepShape_CsgSolid;
 		 StepShape_CsgSolid();
 
@@ -5435,7 +5435,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns field path.
+Returns field Path.
 ") Path;
 		opencascade::handle<StepRepr_ShapeAspect> Path();
 
@@ -5453,7 +5453,7 @@ None
 
 Description
 -----------
-Set field path.
+Set field Path.
 ") SetPath;
 		void SetPath(const opencascade::handle<StepRepr_ShapeAspect> & Path);
 
@@ -5515,7 +5515,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns field path.
+Returns field Path.
 ") Path;
 		opencascade::handle<StepRepr_ShapeAspect> Path();
 
@@ -5533,7 +5533,7 @@ None
 
 Description
 -----------
-Set field path.
+Set field Path.
 ") SetPath;
 		void SetPath(const opencascade::handle<StepRepr_ShapeAspect> & Path);
 
@@ -5591,7 +5591,7 @@ None
 
 Description
 -----------
-Returns a edge.
+Returns a Edge.
 ") StepShape_Edge;
 		 StepShape_Edge();
 
@@ -5731,7 +5731,7 @@ None
 
 Description
 -----------
-Returns a face.
+Returns a Face.
 ") StepShape_Face;
 		 StepShape_Face();
 
@@ -5841,7 +5841,7 @@ None
 
 Description
 -----------
-Returns a facebound.
+Returns a FaceBound.
 ") StepShape_FaceBound;
 		 StepShape_FaceBound();
 
@@ -5952,7 +5952,7 @@ None
 
 Description
 -----------
-Returns a facetedbrepshaperepresentation.
+Returns a FacetedBrepShapeRepresentation.
 ") StepShape_FacetedBrepShapeRepresentation;
 		 StepShape_FacetedBrepShapeRepresentation();
 
@@ -5981,7 +5981,7 @@ None
 
 Description
 -----------
-Returns a geometriccurveset.
+Returns a GeometricCurveSet.
 ") StepShape_GeometricCurveSet;
 		 StepShape_GeometricCurveSet();
 
@@ -6010,7 +6010,7 @@ None
 
 Description
 -----------
-Returns a geometricallyboundedsurfaceshaperepresentation.
+Returns a GeometricallyBoundedSurfaceShapeRepresentation.
 ") StepShape_GeometricallyBoundedSurfaceShapeRepresentation;
 		 StepShape_GeometricallyBoundedSurfaceShapeRepresentation();
 
@@ -6039,7 +6039,7 @@ None
 
 Description
 -----------
-Returns a geometricallyboundedwireframeshaperepresentation.
+Returns a GeometricallyBoundedWireframeShapeRepresentation.
 ") StepShape_GeometricallyBoundedWireframeShapeRepresentation;
 		 StepShape_GeometricallyBoundedWireframeShapeRepresentation();
 
@@ -6068,7 +6068,7 @@ None
 
 Description
 -----------
-Returns a loop.
+Returns a Loop.
 ") StepShape_Loop;
 		 StepShape_Loop();
 
@@ -6097,7 +6097,7 @@ None
 
 Description
 -----------
-Returns a loopandpath.
+Returns a LoopAndPath.
 ") StepShape_LoopAndPath;
 		 StepShape_LoopAndPath();
 
@@ -6289,7 +6289,7 @@ None
 
 Description
 -----------
-Returns a manifoldsolidbrep.
+Returns a ManifoldSolidBrep.
 ") StepShape_ManifoldSolidBrep;
 		 StepShape_ManifoldSolidBrep();
 
@@ -6387,7 +6387,7 @@ None
 
 Description
 -----------
-Returns a manifoldsurfaceshaperepresentation.
+Returns a ManifoldSurfaceShapeRepresentation.
 ") StepShape_ManifoldSurfaceShapeRepresentation;
 		 StepShape_ManifoldSurfaceShapeRepresentation();
 
@@ -6445,7 +6445,7 @@ None
 
 Description
 -----------
-Returns a path.
+Returns a Path.
 ") StepShape_Path;
 		 StepShape_Path();
 
@@ -6604,7 +6604,7 @@ None
 
 Description
 -----------
-Initialize all fields ap214.
+Initialize all fields AP214.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
@@ -6624,7 +6624,7 @@ None
 
 Description
 -----------
-Initialize all fields ap242.
+Initialize all fields AP242.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
@@ -6713,7 +6713,7 @@ None
 
 Description
 -----------
-Returns a solidreplica.
+Returns a SolidReplica.
 ") StepShape_SolidReplica;
 		 StepShape_SolidReplica();
 
@@ -6824,7 +6824,7 @@ None
 
 Description
 -----------
-Returns a sweptareasolid.
+Returns a SweptAreaSolid.
 ") StepShape_SweptAreaSolid;
 		 StepShape_SweptAreaSolid();
 
@@ -6903,7 +6903,7 @@ None
 
 Description
 -----------
-Returns a sweptfacesolid.
+Returns a SweptFaceSolid.
 ") StepShape_SweptFaceSolid;
 		 StepShape_SweptFaceSolid();
 
@@ -6982,7 +6982,7 @@ None
 
 Description
 -----------
-Returns a transitionalshaperepresentation.
+Returns a TransitionalShapeRepresentation.
 ") StepShape_TransitionalShapeRepresentation;
 		 StepShape_TransitionalShapeRepresentation();
 
@@ -7011,7 +7011,7 @@ None
 
 Description
 -----------
-Returns a vertex.
+Returns a Vertex.
 ") StepShape_Vertex;
 		 StepShape_Vertex();
 
@@ -7040,7 +7040,7 @@ None
 
 Description
 -----------
-Returns a brepwithvoids.
+Returns a BrepWithVoids.
 ") StepShape_BrepWithVoids;
 		 StepShape_BrepWithVoids();
 
@@ -7151,7 +7151,7 @@ None
 
 Description
 -----------
-Returns a closedshell.
+Returns a ClosedShell.
 ") StepShape_ClosedShell;
 		 StepShape_ClosedShell();
 
@@ -7213,7 +7213,7 @@ opencascade::handle<StepShape_ConnectedFaceSet>
 
 Description
 -----------
-Returns field parentfaceset.
+Returns field ParentFaceSet.
 ") ParentFaceSet;
 		opencascade::handle<StepShape_ConnectedFaceSet> ParentFaceSet();
 
@@ -7231,7 +7231,7 @@ None
 
 Description
 -----------
-Set field parentfaceset.
+Set field ParentFaceSet.
 ") SetParentFaceSet;
 		void SetParentFaceSet(const opencascade::handle<StepShape_ConnectedFaceSet> & ParentFaceSet);
 
@@ -7260,7 +7260,7 @@ None
 
 Description
 -----------
-Returns a edgecurve.
+Returns a EdgeCurve.
 ") StepShape_EdgeCurve;
 		 StepShape_EdgeCurve();
 
@@ -7373,7 +7373,7 @@ None
 
 Description
 -----------
-Returns a edgeloop.
+Returns a EdgeLoop.
 ") StepShape_EdgeLoop;
 		 StepShape_EdgeLoop();
 
@@ -7483,7 +7483,7 @@ None
 
 Description
 -----------
-Returns a extrudedareasolid.
+Returns a ExtrudedAreaSolid.
 ") StepShape_ExtrudedAreaSolid;
 		 StepShape_ExtrudedAreaSolid();
 
@@ -7595,7 +7595,7 @@ None
 
 Description
 -----------
-Returns a extrudedfacesolid.
+Returns a ExtrudedFaceSolid.
 ") StepShape_ExtrudedFaceSolid;
 		 StepShape_ExtrudedFaceSolid();
 
@@ -7707,7 +7707,7 @@ None
 
 Description
 -----------
-Returns a faceouterbound.
+Returns a FaceOuterBound.
 ") StepShape_FaceOuterBound;
 		 StepShape_FaceOuterBound();
 
@@ -7736,7 +7736,7 @@ None
 
 Description
 -----------
-Returns a facesurface.
+Returns a FaceSurface.
 ") StepShape_FaceSurface;
 		 StepShape_FaceSurface();
 
@@ -7848,7 +7848,7 @@ None
 
 Description
 -----------
-Returns a facetedbrep.
+Returns a FacetedBrep.
 ") StepShape_FacetedBrep;
 		 StepShape_FacetedBrep();
 
@@ -7877,7 +7877,7 @@ None
 
 Description
 -----------
-Returns a facetedbrepandbrepwithvoids.
+Returns a FacetedBrepAndBrepWithVoids.
 ") StepShape_FacetedBrepAndBrepWithVoids;
 		 StepShape_FacetedBrepAndBrepWithVoids();
 
@@ -8071,7 +8071,7 @@ None
 
 Description
 -----------
-Returns a openshell.
+Returns a OpenShell.
 ") StepShape_OpenShell;
 		 StepShape_OpenShell();
 
@@ -8100,7 +8100,7 @@ None
 
 Description
 -----------
-Returns a orientededge.
+Returns a OrientedEdge.
 ") StepShape_OrientedEdge;
 		 StepShape_OrientedEdge();
 
@@ -8273,7 +8273,7 @@ None
 
 Description
 -----------
-Returns a orientedface.
+Returns a OrientedFace.
 ") StepShape_OrientedFace;
 		 StepShape_OrientedFace();
 
@@ -8446,7 +8446,7 @@ None
 
 Description
 -----------
-Returns a orientedpath.
+Returns a OrientedPath.
 ") StepShape_OrientedPath;
 		 StepShape_OrientedPath();
 
@@ -8619,7 +8619,7 @@ None
 
 Description
 -----------
-Returns a polyloop.
+Returns a PolyLoop.
 ") StepShape_PolyLoop;
 		 StepShape_PolyLoop();
 
@@ -8729,7 +8729,7 @@ None
 
 Description
 -----------
-Returns a revolvedareasolid.
+Returns a RevolvedAreaSolid.
 ") StepShape_RevolvedAreaSolid;
 		 StepShape_RevolvedAreaSolid();
 
@@ -8841,7 +8841,7 @@ None
 
 Description
 -----------
-Returns a revolvedfacesolid.
+Returns a RevolvedFaceSolid.
 ") StepShape_RevolvedFaceSolid;
 		 StepShape_RevolvedFaceSolid();
 
@@ -9006,7 +9006,7 @@ opencascade::handle<StepShape_Edge>
 
 Description
 -----------
-Returns field parentedge.
+Returns field ParentEdge.
 ") ParentEdge;
 		opencascade::handle<StepShape_Edge> ParentEdge();
 
@@ -9024,7 +9024,7 @@ None
 
 Description
 -----------
-Set field parentedge.
+Set field ParentEdge.
 ") SetParentEdge;
 		void SetParentEdge(const opencascade::handle<StepShape_Edge> & ParentEdge);
 
@@ -9086,7 +9086,7 @@ opencascade::handle<StepShape_Face>
 
 Description
 -----------
-Returns field parentface.
+Returns field ParentFace.
 ") ParentFace;
 		opencascade::handle<StepShape_Face> ParentFace();
 
@@ -9104,7 +9104,7 @@ None
 
 Description
 -----------
-Set field parentface.
+Set field ParentFace.
 ") SetParentFace;
 		void SetParentFace(const opencascade::handle<StepShape_Face> & ParentFace);
 
@@ -9133,7 +9133,7 @@ None
 
 Description
 -----------
-Returns a vertexloop.
+Returns a VertexLoop.
 ") StepShape_VertexLoop;
 		 StepShape_VertexLoop();
 
@@ -9212,7 +9212,7 @@ None
 
 Description
 -----------
-Returns a vertexpoint.
+Returns a VertexPoint.
 ") StepShape_VertexPoint;
 		 StepShape_VertexPoint();
 
@@ -9291,7 +9291,7 @@ None
 
 Description
 -----------
-Returns a advancedface.
+Returns a AdvancedFace.
 ") StepShape_AdvancedFace;
 		 StepShape_AdvancedFace();
 
@@ -9320,7 +9320,7 @@ None
 
 Description
 -----------
-Returns a orientedclosedshell.
+Returns a OrientedClosedShell.
 ") StepShape_OrientedClosedShell;
 		 StepShape_OrientedClosedShell();
 
@@ -9493,7 +9493,7 @@ None
 
 Description
 -----------
-Returns a orientedopenshell.
+Returns a OrientedOpenShell.
 ") StepShape_OrientedOpenShell;
 		 StepShape_OrientedOpenShell();
 
@@ -9700,7 +9700,7 @@ opencascade::handle<StepGeom_Pcurve>
 
 Description
 -----------
-Returns field pcurvereference.
+Returns field PcurveReference.
 ") PcurveReference;
 		opencascade::handle<StepGeom_Pcurve> PcurveReference();
 
@@ -9718,7 +9718,7 @@ None
 
 Description
 -----------
-Set field pcurvereference.
+Set field PcurveReference.
 ") SetPcurveReference;
 		void SetPcurveReference(const opencascade::handle<StepGeom_Pcurve> & PcurveReference);
 

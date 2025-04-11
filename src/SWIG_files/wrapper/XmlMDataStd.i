@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMDATASTDDOCSTRING
 "XmlMDataStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlmdatastd.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlmdatastd.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDATASTDDOCSTRING) XmlMDataStd
 
@@ -126,7 +126,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <adrivertable>.
+Adds the attribute drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & anMsgDrv);
 
@@ -191,7 +191,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
@@ -211,7 +211,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, XmlObjMgt_Persistent & Target, XmlObjMgt_SRelocationTable & RelocTable);
 
@@ -1000,7 +1000,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
@@ -1020,7 +1020,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, XmlObjMgt_Persistent & Target, XmlObjMgt_SRelocationTable & RelocTable);
 

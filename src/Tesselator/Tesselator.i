@@ -55,6 +55,7 @@ class ShapeTesselator {
         void GetNormal(int inorm, float& x, float& y, float& z);
         void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
         void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
+        void SetDeviation(double aDeviation);
         double GetDeviation();
         double* VerticesList();
         double* NormalsList();

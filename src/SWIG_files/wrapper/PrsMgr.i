@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRSMGRDOCSTRING
 "PrsMgr module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_prsmgr.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 %enddef
 %module (package="OCC.Core", docstring=PRSMGRDOCSTRING) PrsMgr
 
@@ -209,7 +209,7 @@ bool
 
 Description
 -----------
-Returns true if the class of objects accepts specified display mode index. the interactive context can have a default mode of representation for the set of interactive objects. this mode may not be accepted by a given class of objects. consequently, this virtual method allowing us to get information about the class in question must be implemented. at least one display mode index should be accepted by this method. although subclass can leave default implementation, it is highly desired defining exact list of supported modes instead, which is usually an enumeration for one object or objects class sharing similar list of display modes.
+Returns true if the class of objects accepts specified display mode index. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by a given class of objects. Consequently, this virtual method allowing us to get information about the class in question must be implemented. At least one display mode index should be accepted by this method. Although subclass can leave default implementation, it is highly desired defining exact list of supported modes instead, which is usually an enumeration for one object or objects class sharing similar list of display modes.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -227,7 +227,7 @@ None
 
 Description
 -----------
-Makes theobject child of current object in scene hierarchy.
+Makes theObject child of current object in scene hierarchy.
 ") AddChild;
 		virtual void AddChild(const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -245,7 +245,7 @@ None
 
 Description
 -----------
-Makes theobject child of current object in scene hierarchy with keeping the current global transformation so the object keeps the same position/orientation in the global cs.
+Makes theObject child of current object in scene hierarchy with keeping the current global transformation So the object keeps the same position/orientation in the global CS.
 ") AddChildWithCurrentTransformation;
 		void AddChildWithCurrentTransformation(const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -263,7 +263,8 @@ None
 
 Description
 -----------
-Adds clip plane for graphical clipping for all display mode presentations. the composition of clip planes truncates the rendering space to convex volume. please be aware that number of supported clip plane is limited. the planes which exceed the limit are ignored. besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes. @param theplane [in] the clip plane to be appended to map of clip planes.
+Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes. 
+Input parameter: thePlane the clip plane to be appended to map of clip planes.
 ") AddClipPlane;
 		virtual void AddClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -294,7 +295,7 @@ None
 
 Description
 -----------
-Returns bounding box of object correspondingly to its current display mode. this method requires presentation to be already computed, since it relies on bounding box of presentation structures, which are supposed to be same/close amongst different display modes of this object.
+Returns bounding box of object correspondingly to its current display mode. This method requires presentation to be already computed, since it relies on bounding box of presentation structures, which are supposed to be same/close amongst different display modes of this object.
 ") BoundingBox;
 		virtual void BoundingBox(Bnd_Box & theBndBox);
 
@@ -320,7 +321,8 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 
 Description
 -----------
-Get clip planes. return set of previously added clip planes for all display mode presentations.
+Get clip planes. 
+Return: set of previously added clip planes for all display mode presentations.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
@@ -338,7 +340,7 @@ None
 
 Description
 -----------
-Returns the color setting of the interactive object.
+Returns the color setting of the Interactive Object.
 ") Color;
 		virtual void Color(Quantity_Color & theColor);
 
@@ -390,7 +392,8 @@ int
 
 Description
 -----------
-Returns the display mode setting of the interactive object. the range of supported display mode indexes should be specified within object definition and filtered by accepdisplaymode(). @sa acceptdisplaymode().
+Returns the display mode setting of the Interactive Object. The range of supported display mode indexes should be specified within object definition and filtered by AccepDisplayMode(). 
+See also: AcceptDisplayMode().
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
@@ -403,7 +406,7 @@ PrsMgr_DisplayStatus
 
 Description
 -----------
-Return presentation display status; prsmgr_displaystatus_none by default.
+Return presentation display status; PrsMgr_DisplayStatus_None by default.
 ") DisplayStatus;
 		PrsMgr_DisplayStatus DisplayStatus();
 
@@ -437,7 +440,8 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localdynamic and prs3d_typeofhighlight_dynamic defined within ais_interactivecontext::highlightstyle(). @sa ais_interactivecontext::highlightstyle().
+Returns the hilight attributes settings. When not NULL, overrides both Prs3d_TypeOfHighlight_LocalDynamic and Prs3d_TypeOfHighlight_Dynamic defined within AIS_InteractiveContext::HighlightStyle(). 
+See also: AIS_InteractiveContext::HighlightStyle().
 ") DynamicHilightAttributes;
 		const opencascade::handle<Prs3d_Drawer> & DynamicHilightAttributes();
 
@@ -450,7 +454,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object has color.
+Returns true if the Interactive Object has color.
 ") HasColor;
 		Standard_Boolean HasColor();
 
@@ -463,7 +467,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object has display mode setting overriding global setting (within interactive context).
+Returns true if the Interactive Object has display mode setting overriding global setting (within Interactive Context).
 ") HasDisplayMode;
 		Standard_Boolean HasDisplayMode();
 
@@ -476,7 +480,8 @@ bool
 
 Description
 -----------
-Returns true if the interactive object is in highlight mode. @sa hilightattributes().
+Returns true if the Interactive Object is in highlight mode. 
+See also: HilightAttributes().
 ") HasHilightMode;
 		Standard_Boolean HasHilightMode();
 
@@ -489,7 +494,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object has a setting for material.
+Returns true if the Interactive Object has a setting for material.
 ") HasMaterial;
 		Standard_Boolean HasMaterial();
 
@@ -515,7 +520,7 @@ bool
 
 Description
 -----------
-Returns standard_true if <mydrawer> has non-null shading aspect.
+Returns Standard_True if <myDrawer> has non-null shading aspect.
 ") HasPolygonOffsets;
 		virtual Standard_Boolean HasPolygonOffsets();
 
@@ -541,7 +546,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object has width.
+Returns true if the Interactive Object has width.
 ") HasWidth;
 		Standard_Boolean HasWidth();
 
@@ -554,7 +559,8 @@ opencascade::handle<Prs3d_Drawer>
 
 Description
 -----------
-Returns the hilight attributes settings. when not null, overrides both prs3d_typeofhighlight_localselected and prs3d_typeofhighlight_selected defined within ais_interactivecontext::highlightstyle(). @sa ais_interactivecontext::highlightstyle().
+Returns the hilight attributes settings. When not NULL, overrides both Prs3d_TypeOfHighlight_LocalSelected and Prs3d_TypeOfHighlight_Selected defined within AIS_InteractiveContext::HighlightStyle(). 
+See also: AIS_InteractiveContext::HighlightStyle().
 ") HilightAttributes;
 		const opencascade::handle<Prs3d_Drawer> & HilightAttributes();
 
@@ -567,7 +573,8 @@ int
 
 Description
 -----------
-Returns highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead. @sa hilightattributes().
+Returns highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead. 
+See also: HilightAttributes().
 ") HilightMode;
 		Standard_Integer HilightMode();
 
@@ -593,7 +600,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive object is infinite; false by default. this flag affects various operations operating on bounding box of graphic presentations of this object. for instance, infinite objects are not taken in account for view fitall. this does not necessarily means that object is actually infinite, auxiliary objects might be also marked with this flag to achieve desired behavior.
+Returns true if the interactive object is infinite; False by default. This flag affects various operations operating on bounding box of graphic presentations of this object. For instance, infinite objects are not taken in account for View FitAll. This does not necessarily means that object is actually infinite, auxiliary objects might be also marked with this flag to achieve desired behavior.
 ") IsInfinite;
 		Standard_Boolean IsInfinite();
 
@@ -606,7 +613,7 @@ bool
 
 Description
 -----------
-Returns true if object has mutable nature (content or location are be changed regularly). mutable object will be managed in different way than static onces (another optimizations).
+Returns true if object has mutable nature (content or location are be changed regularly). Mutable object will be managed in different way than static onces (another optimizations).
 ") IsMutable;
 		Standard_Boolean IsMutable();
 
@@ -632,7 +639,7 @@ gp_Trsf
 
 Description
 -----------
-Return the local transformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Return the local transformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") LocalTransformation;
 		const gp_Trsf LocalTransformation();
 
@@ -645,7 +652,7 @@ opencascade::handle<TopLoc_Datum3D>
 
 Description
 -----------
-Return the local transformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Return the local transformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") LocalTransformationGeom;
 		const opencascade::handle<TopLoc_Datum3D> & LocalTransformationGeom();
 
@@ -690,7 +697,7 @@ aUnits: float
 
 Description
 -----------
-Retrieves current polygon offsets settings from <mydrawer>.
+Retrieves current polygon offsets settings from <myDrawer>.
 ") PolygonOffsets;
 		virtual void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
@@ -707,6 +714,25 @@ Return presentations.
 ") Presentations;
 		PrsMgr_Presentations & Presentations();
 
+		/****** PrsMgr_PresentableObject::RecomputeTransformation ******/
+		/****** md5 signature: 82ed18839859745368af73d0950cafa4 ******/
+		%feature("compactdefaultargs") RecomputeTransformation;
+		%feature("autodoc", "
+Parameters
+----------
+theProjector: Graphic3d_Camera
+
+Return
+-------
+None
+
+Description
+-----------
+Calculates object presentation for specific camera position. Each of the views in the viewer and every modification such as rotation, for example, entails recalculation. 
+Parameter theProjector [in] view orientation.
+") RecomputeTransformation;
+		virtual void RecomputeTransformation(const opencascade::handle<Graphic3d_Camera> & theProjector);
+
 		/****** PrsMgr_PresentableObject::RemoveChild ******/
 		/****** md5 signature: e02c6f54c604ff7afdb06fab9281f205 ******/
 		%feature("compactdefaultargs") RemoveChild;
@@ -721,7 +747,7 @@ None
 
 Description
 -----------
-Removes theobject from children of current object in scene hierarchy.
+Removes theObject from children of current object in scene hierarchy.
 ") RemoveChild;
 		virtual void RemoveChild(const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -739,7 +765,7 @@ None
 
 Description
 -----------
-Removes theobject from children of current object in scene hierarchy with keeping the current global transformation. so the object keeps the same position/orientation in the global cs.
+Removes theObject from children of current object in scene hierarchy with keeping the current global transformation. So the object keeps the same position/orientation in the global CS.
 ") RemoveChildWithRestoreTransformation;
 		void RemoveChildWithRestoreTransformation(const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -757,7 +783,8 @@ None
 
 Description
 -----------
-Removes previously added clip plane. @param theplane [in] the clip plane to be removed from map of clip planes.
+Removes previously added clip plane. 
+Input parameter: thePlane the clip plane to be removed from map of clip planes.
 ") RemoveClipPlane;
 		virtual void RemoveClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -770,7 +797,7 @@ None
 
 Description
 -----------
-Resets local transformation to identity.
+resets local transformation to identity.
 ") ResetTransformation;
 		virtual void ResetTransformation();
 
@@ -788,7 +815,7 @@ None
 
 Description
 -----------
-Initializes the drawing tool thedrawer.
+Initializes the drawing tool theDrawer.
 ") SetAttributes;
 		virtual void SetAttributes(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -806,7 +833,7 @@ None
 
 Description
 -----------
-Set clip planes for graphical clipping for all display mode presentations. the composition of clip planes truncates the rendering space to convex volume. please be aware that number of supported clip plane is limited. the planes which exceed the limit are ignored. besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes.
+Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes.
 ") SetClipPlanes;
 		virtual void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
@@ -824,7 +851,7 @@ None
 
 Description
 -----------
-Only the interactive object knowns which drawer attribute is affected by the color, if any (ex: for a wire,it's the wireaspect field of the drawer, but for a vertex, only the point aspect field is affected by the color). warning: do not forget to set the corresponding fields here (hasowncolor and mydrawer->setcolor()).
+Only the interactive object knowns which Drawer attribute is affected by the color, if any (ex: for a wire,it's the wireaspect field of the drawer, but for a vertex, only the point aspect field is affected by the color). WARNING: Do not forget to set the corresponding fields here (hasOwnColor and myDrawer->SetColor()).
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
@@ -842,7 +869,7 @@ None
 
 Description
 -----------
-Change the current facing model apply on polygons for setcolor(), settransparency(), setmaterial() methods default facing model is aspect_tofm_two_side. this mean that attributes is applying both on the front and back face.
+change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
 ") SetCurrentFacingModel;
 		void SetCurrentFacingModel(const Aspect_TypeOfFacingModel theModel = Aspect_TOFM_BOTH_SIDE);
 
@@ -860,7 +887,8 @@ None
 
 Description
 -----------
-Sets the display mode for the interactive object. an object can have its own temporary display mode, which is different from that proposed by the interactive context. @sa acceptdisplaymode().
+Sets the display mode for the interactive object. An object can have its own temporary display mode, which is different from that proposed by the interactive context. 
+See also: AcceptDisplayMode().
 ") SetDisplayMode;
 		void SetDisplayMode(const Standard_Integer theMode);
 
@@ -896,7 +924,7 @@ None
 
 Description
 -----------
-Initializes the hilight drawing tool thedrawer.
+Initializes the hilight drawing tool theDrawer.
 ") SetHilightAttributes;
 		virtual void SetHilightAttributes(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -914,7 +942,8 @@ None
 
 Description
 -----------
-Sets highlight display mode. this is obsolete method for backward compatibility - use ::hilightattributes() and ::dynamichilightattributes() instead. @sa hilightattributes().
+Sets highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead. 
+See also: HilightAttributes().
 ") SetHilightMode;
 		void SetHilightMode(const Standard_Integer theMode);
 
@@ -968,7 +997,7 @@ None
 
 Description
 -----------
-Sets local transformation to thetransformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Sets local transformation to theTransformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") SetLocalTransformation;
 		void SetLocalTransformation(const gp_Trsf & theTrsf);
 
@@ -986,7 +1015,7 @@ None
 
 Description
 -----------
-Sets local transformation to thetransformation. note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Sets local transformation to theTransformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") SetLocalTransformation;
 		void SetLocalTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
@@ -1004,7 +1033,7 @@ None
 
 Description
 -----------
-Sets the material amat defining this display attribute for the interactive object. material aspect determines shading aspect, color and transparency of visible entities.
+Sets the material aMat defining this display attribute for the interactive object. Material aspect determines shading aspect, color and transparency of visible entities.
 ") SetMaterial;
 		virtual void SetMaterial(const Graphic3d_MaterialAspect & aName);
 
@@ -1022,7 +1051,7 @@ None
 
 Description
 -----------
-Sets if the object has mutable nature (content or location will be changed regularly). this method should be called before object displaying to take effect.
+Sets if the object has mutable nature (content or location will be changed regularly). This method should be called before object displaying to take effect.
 ") SetMutable;
 		virtual void SetMutable(const Standard_Boolean theIsMutable);
 
@@ -1042,7 +1071,8 @@ None
 
 Description
 -----------
-Sets up polygon offsets for this object. @sa graphic3d_aspects::setpolygonoffsets().
+Sets up polygon offsets for this object. 
+See also: Graphic3d_Aspects::SetPolygonOffsets().
 ") SetPolygonOffsets;
 		virtual void SetPolygonOffsets(const Standard_Integer aMode, const Standard_ShortReal aFactor = 1.0, const Standard_ShortReal aUnits = 0.0);
 
@@ -1078,7 +1108,8 @@ None
 
 Description
 -----------
-Flags presentation to be updated; updatepresentations() will recompute these presentations. @param themode presentation (display mode) to invalidate, or -1 to invalidate them all.
+Flags presentation to be updated; UpdatePresentations() will recompute these presentations. 
+Parameter theMode presentation (display mode) to invalidate, or -1 to invalidate them all.
 ") SetToUpdate;
 		void SetToUpdate(Standard_Integer theMode);
 
@@ -1091,7 +1122,7 @@ None
 
 Description
 -----------
-Flags all the presentations to be updated.
+flags all the Presentations to be Updated.
 ") SetToUpdate;
 		void SetToUpdate();
 
@@ -1109,7 +1140,8 @@ None
 
 Description
 -----------
-Sets up transform persistence defining a special local coordinate system where this object should be located. note that management of transform persistence object is more expensive than of the normal one, because it requires its position being recomputed basing on camera position within each draw call / traverse. @sa graphic3d_transformpers class description.
+Sets up Transform Persistence defining a special Local Coordinate system where this object should be located. Note that management of Transform Persistence object is more expensive than of the normal one, because it requires its position being recomputed basing on camera position within each draw call / traverse. 
+See also: Graphic3d_TransformPers class description.
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -1127,7 +1159,7 @@ None
 
 Description
 -----------
-Attributes a setting avalue for transparency. the transparency value should be between 0.0 and 1.0. at 0.0 an object will be totally opaque, and at 1.0, fully transparent. warning at a value of 1.0, there may be nothing visible.
+Attributes a setting aValue for transparency. The transparency value should be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent. Warning At a value of 1.0, there may be nothing visible.
 ") SetTransparency;
 		virtual void SetTransparency(const Standard_Real aValue = 0.6);
 
@@ -1163,7 +1195,7 @@ None
 
 Description
 -----------
-Allows you to provide the setting avalue for width. only the interactive object knows which drawer attribute is affected by the width setting.
+Allows you to provide the setting aValue for width. Only the Interactive Object knows which Drawer attribute is affected by the width setting.
 ") SetWidth;
 		virtual void SetWidth(const Standard_Real theWidth);
 
@@ -1181,7 +1213,7 @@ None
 
 Description
 -----------
-Set z layer id and update all presentations of the presentable object. the layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+Set Z layer ID and update all presentations of the presentable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayerId);
 
@@ -1194,7 +1226,7 @@ None
 
 Description
 -----------
-Synchronize presentation aspects after their modification. //! this method should be called after modifying primitive aspect properties (material, texture, shader) so that modifications will take effect on already computed presentation groups (thus avoiding re-displaying the object).
+Synchronize presentation aspects after their modification. //! This method should be called after modifying primitive aspect properties (material, texture, shader) so that modifications will take effect on already computed presentation groups (thus avoiding re-displaying the object).
 ") SynchronizeAspects;
 		void SynchronizeAspects();
 
@@ -1212,7 +1244,8 @@ bool
 
 Description
 -----------
-Returns true if any active presentation has invalidation flag. @param thetoincludehidden when true, also checks hidden presentations.
+Returns True if any active presentation has invalidation flag. 
+Parameter theToIncludeHidden when True, also checks hidden presentations.
 ") ToBeUpdated;
 		Standard_Boolean ToBeUpdated(Standard_Boolean theToIncludeHidden = Standard_False);
 
@@ -1230,7 +1263,7 @@ None
 
 Description
 -----------
-Gives the list of modes which are flagged 'to be updated'.
+gives the list of modes which are flagged 'to be updated'.
 ") ToBeUpdated;
 		void ToBeUpdated(TColStd_ListOfInteger & ListOfMode);
 
@@ -1243,7 +1276,7 @@ bool
 
 Description
 -----------
-Get value of the flag 'propagate visual state' it means that the display/erase/color visual state is propagated automatically to all children; by default, the flag is true .
+Get value of the flag 'propagate visual state' It means that the display/erase/color visual state is propagated automatically to all children; by default, the flag is true.
 ") ToPropagateVisualState;
 		Standard_Boolean ToPropagateVisualState();
 
@@ -1256,7 +1289,8 @@ opencascade::handle<Graphic3d_TransformPers>
 
 Description
 -----------
-Returns transformation persistence defining a special local coordinate system where this presentable object is located or null handle if not defined. position of the object having transformation persistence is mutable and depends on camera position. the same applies to a bounding box of the object. @sa graphic3d_transformpers class description.
+Returns Transformation Persistence defining a special Local Coordinate system where this presentable object is located or NULL handle if not defined. Position of the object having Transformation Persistence is mutable and depends on camera position. The same applies to a bounding box of the object. 
+See also: Graphic3d_TransformPers class description.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
@@ -1269,7 +1303,7 @@ gp_Trsf
 
 Description
 -----------
-Return the transformation taking into account transformation of parent object(s). note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Return the transformation taking into account transformation of parent object(s). Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") Transformation;
 		const gp_Trsf Transformation();
 
@@ -1282,7 +1316,7 @@ opencascade::handle<TopLoc_Datum3D>
 
 Description
 -----------
-Return the transformation taking into account transformation of parent object(s). note that the local transformation of the object having transformation persistence is applied within local coordinate system defined by this persistence.
+Return the transformation taking into account transformation of parent object(s). Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 ") TransformationGeom;
 		const opencascade::handle<TopLoc_Datum3D> & TransformationGeom();
 
@@ -1295,7 +1329,7 @@ float
 
 Description
 -----------
-Returns the transparency setting. this will be between 0.0 and 1.0. at 0.0 an object will be totally opaque, and at 1.0, fully transparent.
+Returns the transparency setting. This will be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
 ") Transparency;
 		virtual Standard_Real Transparency();
 
@@ -1308,7 +1342,7 @@ PrsMgr_TypeOfPresentation3d
 
 Description
 -----------
-Returns information on whether the object accepts display in hlr mode or not.
+Returns information on whether the object accepts display in HLR mode or not.
 ") TypeOfPresentation3d;
 		PrsMgr_TypeOfPresentation3d TypeOfPresentation3d();
 
@@ -1321,7 +1355,7 @@ None
 
 Description
 -----------
-Clears settings provided by the drawing tool adrawer.
+Clears settings provided by the drawing tool aDrawer.
 ") UnsetAttributes;
 		virtual void UnsetAttributes();
 
@@ -1334,7 +1368,7 @@ None
 
 Description
 -----------
-Removes color settings. only the interactive object knows which drawer attribute is affected by the color setting. for a wire, for example, wire aspect is the attribute affected. for a vertex, however, only point aspect is affected by the color setting.
+Removes color settings. Only the Interactive Object knows which Drawer attribute is affected by the color setting. For a wire, for example, wire aspect is the attribute affected. For a vertex, however, only point aspect is affected by the color setting.
 ") UnsetColor;
 		virtual void UnsetColor();
 
@@ -1360,7 +1394,7 @@ None
 
 Description
 -----------
-Clears settings provided by the hilight drawing tool thedrawer.
+Clears settings provided by the hilight drawing tool theDrawer.
 ") UnsetHilightAttributes;
 		virtual void UnsetHilightAttributes();
 
@@ -1373,7 +1407,8 @@ None
 
 Description
 -----------
-Unsets highlight display mode. @sa hilightattributes().
+Unsets highlight display mode. 
+See also: HilightAttributes().
 ") UnsetHilightMode;
 		void UnsetHilightMode();
 
@@ -1399,7 +1434,7 @@ None
 
 Description
 -----------
-Removes the transparency setting. the object is opaque by default.
+Removes the transparency setting. The object is opaque by default.
 ") UnsetTransparency;
 		virtual void UnsetTransparency();
 
@@ -1451,7 +1486,7 @@ float
 
 Description
 -----------
-Returns the width setting of the interactive object.
+Returns the width setting of the Interactive Object.
 ") Width;
 		Standard_Real Width();
 
@@ -1464,7 +1499,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Get id of z layer for main presentation.
+Get ID of Z layer for main presentation.
 ") ZLayer;
 		Graphic3d_ZLayerId ZLayer();
 
@@ -1499,7 +1534,7 @@ None
 
 Description
 -----------
-Removes the whole content of the presentation. does not remove the other connected presentations.
+removes the whole content of the presentation. Does not remove the other connected presentations.
 ") Clear;
 		virtual void Clear(const Standard_Boolean theWithDestruction = Standard_True);
 
@@ -1590,7 +1625,7 @@ bool
 
 Description
 -----------
-Return true if structure has been displayed and in no hidden state.
+Return True if structure has been displayed and in no hidden state.
 ") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed();
 
@@ -1642,7 +1677,7 @@ opencascade::handle<PrsMgr_PresentationManager>
 
 Description
 -----------
-Returns the presentationmanager in which the presentation has been created.
+returns the PresentationManager in which the presentation has been created.
 ") PresentationManager;
 		const opencascade::handle<PrsMgr_PresentationManager> & PresentationManager();
 
@@ -1707,7 +1742,7 @@ None
 
 Description
 -----------
-Creates a framework to manage displays and graphic entities with the 3d view thestructuremanager.
+Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
 ") PrsMgr_PresentationManager;
 		 PrsMgr_PresentationManager(const opencascade::handle<Graphic3d_StructureManager> & theStructureManager);
 
@@ -1725,7 +1760,7 @@ None
 
 Description
 -----------
-Stores theprs in the transient list of presentations to be displayed in immediate mode. will be taken in account in endimmediatedraw method.
+Stores thePrs in the transient list of presentations to be displayed in immediate mode. Will be taken in account in EndImmediateDraw method.
 ") AddToImmediateList;
 		void AddToImmediateList(const opencascade::handle<Prs3d_Presentation> & thePrs);
 
@@ -1738,7 +1773,7 @@ None
 
 Description
 -----------
-Resets the transient list of presentations previously displayed in immediate mode and begins accumulation of new list by following addtoimmediatelist()/color()/highlight() calls.
+Resets the transient list of presentations previously displayed in immediate mode and begins accumulation of new list by following AddToImmediateList()/Color()/Highlight() calls.
 ") BeginImmediateDraw;
 		void BeginImmediateDraw();
 
@@ -1757,7 +1792,7 @@ None
 
 Description
 -----------
-Clears the presentation of the presentable object theprsobject in this framework with the display mode themode.
+Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 ") Clear;
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -1792,7 +1827,7 @@ None
 
 Description
 -----------
-Highlights the graphic object theprsobject in the color thecolor. theprsobject has the display mode themode; this has the default value of 0, that is, the wireframe display mode.
+Highlights the graphic object thePrsObject in the color theColor. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 ") Color;
 		void Color(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL, int theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
 
@@ -1832,7 +1867,7 @@ None
 
 Description
 -----------
-Displays the presentation of the object in the given presentation manager with the given mode. the mode should be enumerated by the object which inherits presentableobject.
+Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 ") Display;
 		void Display(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -1851,7 +1886,7 @@ Graphic3d_DisplayPriority
 
 Description
 -----------
-Returns the display priority of the presentable object theprsobject in this framework with the display mode themode.
+Returns the display priority of the presentable object thePrsObject in this framework with the display mode theMode.
 ") DisplayPriority;
 		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode);
 
@@ -1869,7 +1904,7 @@ None
 
 Description
 -----------
-Allows rapid drawing of the each view in theviewer by avoiding an update of the whole background.
+Allows rapid drawing of the each view in theViewer by avoiding an update of the whole background.
 ") EndImmediateDraw;
 		void EndImmediateDraw(const opencascade::handle<V3d_Viewer> & theViewer);
 
@@ -1888,7 +1923,7 @@ None
 
 Description
 -----------
-Erases the presentation of the object in the given presentation manager with the given mode. if @themode is -1, then erases all presentations of the object.
+erases the presentation of the object in the given Presentation manager with the given mode. If @theMode is -1, then erases all presentations of the object.
 ") Erase;
 		void Erase(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -1906,7 +1941,7 @@ Graphic3d_ZLayerId
 
 Description
 -----------
-Get z layer id assigned to all presentations of the object. method returns -1 value if object has no presentations and is impossible to get layer index.
+Get Z layer ID assigned to all presentations of the object. Method returns -1 value if object has no presentations and is impossible to get layer index.
 ") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 
@@ -1925,7 +1960,7 @@ bool
 
 Description
 -----------
-Returns true if there is a presentation of the presentable object theprsobject in this framework, theprsobject having the display mode themode.
+Returns true if there is a presentation of the presentable object thePrsObject in this framework, thePrsObject having the display mode theMode.
 ") HasPresentation;
 		Standard_Boolean HasPresentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -1963,7 +1998,7 @@ bool
 
 Description
 -----------
-Returns true if the presentation of the presentable object theprsobject in this framework with the display mode themode is highlighted.
+Returns true if the presentation of the presentable object thePrsObject in this framework with the display mode theMode is highlighted.
 ") IsHighlighted;
 		Standard_Boolean IsHighlighted(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -1976,7 +2011,7 @@ bool
 
 Description
 -----------
-Returns true if presentation manager is accumulating transient list of presentations to be displayed in immediate mode.
+Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode.
 ") IsImmediateModeOn;
 		Standard_Boolean IsImmediateModeOn();
 
@@ -1997,7 +2032,7 @@ opencascade::handle<PrsMgr_Presentation>
 
 Description
 -----------
-Returns the presentation presentation of the presentable object theprsobject in this framework. when thetocreate is true - automatically creates presentation for specified mode when not exist. optional argument theselobj specifies parent decomposed object to inherit its view affinity.
+Returns the presentation Presentation of the presentable object thePrsObject in this framework. When theToCreate is true - automatically creates presentation for specified mode when not exist. Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
 ") Presentation;
 		opencascade::handle<PrsMgr_Presentation> Presentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0, const Standard_Boolean theToCreate = Standard_False, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
 
@@ -2035,7 +2070,7 @@ None
 
 Description
 -----------
-Sets the display priority thenewprior of the presentable object theprsobject in this framework with the display mode themode.
+Sets the display priority theNewPrior of the presentable object thePrsObject in this framework with the display mode theMode.
 ") SetDisplayPriority;
 		void SetDisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode, const Graphic3d_DisplayPriority theNewPrior);
 
@@ -2074,7 +2109,7 @@ None
 
 Description
 -----------
-Set z layer id for all presentations of the object.
+Set Z layer ID for all presentations of the object.
 ") SetZLayer;
 		void SetZLayer(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, int theLayerId);
 
@@ -2107,7 +2142,7 @@ None
 
 Description
 -----------
-Sets the transformation thetransformation for the presentable object theprsobject. theprsobject has the display mode themode; this has the default value of 0, that is, the wireframe display mode.
+Sets the transformation theTransformation for the presentable object thePrsObject. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 ") Transform;
 		void Transform(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<TopLoc_Datum3D> & theTransformation, const Standard_Integer theMode = 0);
 
@@ -2144,7 +2179,7 @@ None
 
 Description
 -----------
-Updates the presentation of the presentable object theprsobject in this framework with the display mode themode.
+Updates the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 ") Update;
 		void Update(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
 
@@ -2165,7 +2200,10 @@ None
 
 Description
 -----------
-Allows to apply location transformation to shadow highlight presentation immediately. @param theobj defines the base object, it local transformation will be applied to corresponding highlight structure @param themode defines display mode of the base object @param theselobj defines the object produced after decomposition of the base object for local selection.
+Allows to apply location transformation to shadow highlight presentation immediately. 
+Parameter theObj defines the base object, it local transformation will be applied to corresponding highlight structure 
+Parameter theMode defines display mode of the base object 
+Parameter theSelObj defines the object produced after decomposition of the base object for local selection.
 ") UpdateHighlightTrsf;
 		void UpdateHighlightTrsf(const opencascade::handle<V3d_Viewer> & theViewer, const opencascade::handle<PrsMgr_PresentableObject> & theObj, const Standard_Integer theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
 

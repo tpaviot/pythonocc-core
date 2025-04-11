@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTERFACEDOCSTRING
 "Interface module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_interface.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_interface.html"
 %enddef
 %module (package="OCC.Core", docstring=INTERFACEDOCSTRING) Interface
 
@@ -211,7 +211,6 @@ Array1ExtendIter(opencascade::handle<TCollection_HAsciiString>)
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * Interface_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
 typedef NCollection_Array1<Interface_FileParameter> Interface_Array1OfFileParameter;
 typedef NCollection_Array1<opencascade::handle<TCollection_HAsciiString>> Interface_Array1OfHAsciiString;
 typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
@@ -235,7 +234,7 @@ None
 
 Description
 -----------
-Creates a empty bitmap.
+Creates a empty BitMap.
 ") Interface_BitMap;
 		 Interface_BitMap();
 
@@ -254,7 +253,7 @@ None
 
 Description
 -----------
-Creates a bitmap for <nbitems> items one flag is defined, n0 0 <resflags> prepares allocation for <resflags> more flags flags values start at false.
+Creates a BitMap for <nbitems> items One flag is defined, n0 0 <resflags> prepares allocation for <resflags> more flags Flags values start at false.
 ") Interface_BitMap;
 		 Interface_BitMap(const Standard_Integer nbitems, const Standard_Integer resflags = 0);
 
@@ -273,7 +272,7 @@ None
 
 Description
 -----------
-Creates a bitmap from another one if <copied> is true, copies data else, data are not copied, only the header object is.
+Creates a BitMap from another one if <copied> is True, copies data else, data are not copied, only the header object is.
 ") Interface_BitMap;
 		 Interface_BitMap(const Interface_BitMap & other, const Standard_Boolean copied = Standard_False);
 
@@ -291,7 +290,7 @@ int
 
 Description
 -----------
-Adds a flag, a name can be attached to it returns its flag number makes required reservation.
+Adds a flag, a name can be attached to it Returns its flag number Makes required reservation.
 ") AddFlag;
 		Standard_Integer AddFlag(Standard_CString name = "");
 
@@ -309,7 +308,7 @@ int
 
 Description
 -----------
-Adds several flags (<more>) with no name returns the number of last added flag.
+Adds several flags (<more>) with no name Returns the number of last added flag.
 ") AddSomeFlags;
 		Standard_Integer AddSomeFlags(const Standard_Integer more);
 
@@ -328,7 +327,7 @@ bool
 
 Description
 -----------
-Returns the former value for a flag and sets it to false (before: value returned; after: false).
+Returns the former value for a flag and sets it to False (before: value returned; after: False).
 ") CFalse;
 		Standard_Boolean CFalse(const Standard_Integer item, const Standard_Integer flag = 0);
 
@@ -347,7 +346,7 @@ bool
 
 Description
 -----------
-Returns the former value for a flag and sets it to true (before: value returned; after: true).
+Returns the former value for a flag and sets it to True (before: value returned; after: True).
 ") CTrue;
 		Standard_Boolean CTrue(const Standard_Integer item, const Standard_Integer flag = 0);
 
@@ -415,7 +414,7 @@ None
 
 Description
 -----------
-Initialises all the values of flag number <flag> to a given value <val>.
+Initialises all the values of Flag Number <flag> to a given value <val>.
 ") Init;
 		void Init(const Standard_Boolean val, const Standard_Integer flag = 0);
 
@@ -434,7 +433,7 @@ None
 
 Description
 -----------
-Initialize empty bit by <nbitems> items one flag is defined, n0 0 <resflags> prepares allocation for <resflags> more flags flags values start at false.
+Initialize empty bit by <nbitems> items One flag is defined, n0 0 <resflags> prepares allocation for <resflags> more flags Flags values start at false.
 ") Initialize;
 		void Initialize(const Standard_Integer nbitems, const Standard_Integer resflags = 0);
 
@@ -453,7 +452,7 @@ None
 
 Description
 -----------
-Initialize a bitmap from another one.
+Initialize a BitMap from another one.
 ") Initialize;
 		void Initialize(const Interface_BitMap & other, const Standard_Boolean copied = Standard_False);
 
@@ -497,7 +496,7 @@ bool
 
 Description
 -----------
-Removes a flag given its number. returns true if done, false if num is out of range.
+Removes a flag given its number. Returns True if done, false if num is out of range.
 ") RemoveFlag;
 		Standard_Boolean RemoveFlag(const Standard_Integer num);
 
@@ -534,7 +533,7 @@ None
 
 Description
 -----------
-Sets a flag to false.
+Sets a flag to False.
 ") SetFalse;
 		void SetFalse(const Standard_Integer item, const Standard_Integer flag = 0);
 
@@ -553,7 +552,7 @@ bool
 
 Description
 -----------
-Sets a name for a flag, given its number name can be empty (to erase the name of a flag) returns true if done, false if: num is out of range, or name non-empty already set to another flag.
+Sets a name for a flag, given its number name can be empty (to erase the name of a flag) Returns True if done, false if: num is out of range, or name non-empty already set to another flag.
 ") SetFlagName;
 		Standard_Boolean SetFlagName(const Standard_Integer num, Standard_CString name);
 
@@ -571,7 +570,7 @@ None
 
 Description
 -----------
-Sets for a new count of items, which can be either less or greater than the former one for new items, their flags start at false.
+Sets for a new count of items, which can be either less or greater than the former one For new items, their flags start at false.
 ") SetLength;
 		void SetLength(const Standard_Integer nbitems);
 
@@ -590,7 +589,7 @@ None
 
 Description
 -----------
-Sets a flag to true.
+Sets a flag to True.
 ") SetTrue;
 		void SetTrue(const Standard_Integer item, const Standard_Integer flag = 0);
 
@@ -656,7 +655,7 @@ None
 
 Description
 -----------
-Creates a category, with no protocol yet.
+Creates a Category, with no protocol yet.
 ") Interface_Category;
 		 Interface_Category();
 
@@ -674,7 +673,7 @@ None
 
 Description
 -----------
-Creates a category with a given protocol.
+Creates a Category with a given protocol.
 ") Interface_Category;
 		 Interface_Category(const opencascade::handle<Interface_Protocol> & theProtocol);
 
@@ -692,7 +691,7 @@ None
 
 Description
 -----------
-Creates a category with a given gtool.
+Creates a Category with a given GTool.
 ") Interface_Category;
 		 Interface_Category(const opencascade::handle<Interface_GTool> & theGTool);
 
@@ -710,7 +709,7 @@ int
 
 Description
 -----------
-Records a new category defined by its names, produces a number new if not yet recorded.
+Records a new Category defined by its names, produces a number New if not yet recorded.
 ") AddCategory;
 		static Standard_Integer AddCategory(Standard_CString theName);
 
@@ -729,7 +728,7 @@ int
 
 Description
 -----------
-Determines the category number for an entity in its context, by using general service categorynumber.
+Determines the Category Number for an entity in its context, by using general service CategoryNumber.
 ") CatNum;
 		Standard_Integer CatNum(const opencascade::handle<Standard_Transient> & theEnt, const Interface_ShareTool & theShares);
 
@@ -742,7 +741,7 @@ None
 
 Description
 -----------
-Clears the recorded list of category numbers for a model.
+Clears the recorded list of category numbers for a Model.
 ") ClearNums;
 		void ClearNums();
 
@@ -761,7 +760,7 @@ None
 
 Description
 -----------
-Computes the category number for each entity and records it, in an array (ent.number -> category number) hence, it can be queried by the method num. the model itself is not recorded, this method is intended to be used in a wider context (which detains also a graph, etc).
+Computes the Category Number for each entity and records it, in an array (ent.number -> category number) Hence, it can be queried by the method Num. The Model itself is not recorded, this method is intended to be used in a wider context (which detains also a Graph, etc).
 ") Compute;
 		void Compute(const opencascade::handle<Interface_InterfaceModel> & theModel, const Interface_ShareTool & theShares);
 
@@ -823,7 +822,7 @@ int
 
 Description
 -----------
-Returns the category number recorded for an entity number returns 0 if out of range.
+Returns the category number recorded for an entity number Returns 0 if out of range.
 ") Num;
 		Standard_Integer Num(const Standard_Integer theNumEnt);
 
@@ -859,7 +858,7 @@ None
 
 Description
 -----------
-Sets/changes protocol.
+Sets/Changes Protocol.
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & theProtocol);
 
@@ -886,7 +885,7 @@ None
 
 Description
 -----------
-Allows definition of a sequence. used also for global check of an interfacemodel (which stores global messages for file).
+Allows definition of a Sequence. Used also for Global Check of an InterfaceModel (which stores global messages for file).
 ") Interface_Check;
 		 Interface_Check();
 
@@ -904,7 +903,7 @@ None
 
 Description
 -----------
-Defines a check on an entity.
+Defines a Check on an Entity.
 ") Interface_Check;
 		 Interface_Check(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -922,7 +921,7 @@ None
 
 Description
 -----------
-Records a new fail message.
+Records a new Fail message.
 ") AddFail;
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & amess);
 
@@ -941,7 +940,7 @@ None
 
 Description
 -----------
-Records a new fail message under two forms: final,original.
+Records a new Fail message under two forms: final,original.
 ") AddFail;
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & amess, const opencascade::handle<TCollection_HAsciiString> & orig);
 
@@ -960,7 +959,7 @@ None
 
 Description
 -----------
-Records a new fail message given as 'error text' directly if <orig> is given, a distinct original form is recorded else (d), the original form equates <amess>.
+Records a new Fail message given as 'error text' directly If <orig> is given, a distinct original form is recorded else (D), the original form equates <amess>.
 ") AddFail;
 		void AddFail(Standard_CString amess, Standard_CString orig = "");
 
@@ -978,7 +977,7 @@ None
 
 Description
 -----------
-Records a new fail from the definition of a msg (original+value).
+Records a new Fail from the definition of a Msg (Original+Value).
 ") AddFail;
 		void AddFail(const Message_Msg & amsg);
 
@@ -996,7 +995,7 @@ None
 
 Description
 -----------
-Records a new warning message.
+Records a new Warning message.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<TCollection_HAsciiString> & amess);
 
@@ -1015,7 +1014,7 @@ None
 
 Description
 -----------
-Records a new warning message under two forms: final,original.
+Records a new Warning message under two forms: final,original.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<TCollection_HAsciiString> & amess, const opencascade::handle<TCollection_HAsciiString> & orig);
 
@@ -1034,7 +1033,7 @@ None
 
 Description
 -----------
-Records a warning message given as 'warning message' directly if <orig> is given, a distinct original form is recorded else (d), the original form equates <amess>.
+Records a Warning message given as 'warning message' directly If <orig> is given, a distinct original form is recorded else (D), the original form equates <amess>.
 ") AddWarning;
 		void AddWarning(Standard_CString amess, Standard_CString orig = "");
 
@@ -1052,7 +1051,7 @@ None
 
 Description
 -----------
-Records a new warning from the definition of a msg (original+value).
+Records a new Warning from the definition of a Msg (Original+Value).
 ") AddWarning;
 		void AddWarning(const Message_Msg & amsg);
 
@@ -1071,7 +1070,7 @@ str
 
 Description
 -----------
-Same as above, but returns a cstring (to be printed ...) final form by default, original form if <final> is false.
+Same as above, but returns a CString (to be printed ...) Final form by default, Original form if <final> is False.
 ") CFail;
 		Standard_CString CFail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1090,7 +1089,7 @@ str
 
 Description
 -----------
-Same as above, but returns a cstring (to be printed ...) final form by default, original form if <final> is false.
+Same as above, but returns a CString (to be printed ...) Final form by default, Original form if <final> is False.
 ") CInfoMsg;
 		Standard_CString CInfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1109,7 +1108,7 @@ str
 
 Description
 -----------
-Same as above, but returns a cstring (to be printed ...) final form by default, original form if <final> is false.
+Same as above, but returns a CString (to be printed ...) Final form by default, Original form if <final> is False.
 ") CWarning;
 		Standard_CString CWarning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1122,7 +1121,7 @@ None
 
 Description
 -----------
-Clears a check, in order to receive information from transfer (messages and entity).
+Clears a check, in order to receive information from transfer (Messages and Entity).
 ") Clear;
 		void Clear();
 
@@ -1135,7 +1134,7 @@ None
 
 Description
 -----------
-Clears the fail messages (for instance to keep only warnings).
+Clears the Fail Messages (for instance to keep only Warnings).
 ") ClearFails;
 		void ClearFails();
 
@@ -1148,7 +1147,7 @@ None
 
 Description
 -----------
-Clears the info messages.
+Clears the Info Messages.
 ") ClearInfoMsgs;
 		void ClearInfoMsgs();
 
@@ -1161,7 +1160,7 @@ None
 
 Description
 -----------
-Clears the warning messages (for instance to keep only fails).
+Clears the Warning Messages (for instance to keep only Fails).
 ") ClearWarnings;
 		void ClearWarnings();
 
@@ -1179,7 +1178,7 @@ bool
 
 Description
 -----------
-Tells if check status complies with a given one (i.e. also status for query).
+Tells if Check Status complies with a given one (i.e. also status for query).
 ") Complies;
 		Standard_Boolean Complies(const Interface_CheckStatus status);
 
@@ -1199,7 +1198,7 @@ bool
 
 Description
 -----------
-Tells if a message is brought by a check, as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages for <status>: for checkwarning and checkfail, considers only resp. warning or check messages. for checkany, considers all other values are ignored (answer will be false).
+Tells if a message is brought by a Check, as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages For <status>: for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (answer will be false).
 ") Complies;
 		Standard_Boolean Complies(const opencascade::handle<TCollection_HAsciiString> & mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
@@ -1212,7 +1211,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the entity on which the check has been defined.
+Returns the entity on which the Check has been defined.
 ") Entity;
 		const opencascade::handle<Standard_Transient> & Entity();
 
@@ -1231,7 +1230,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns fail message as a string final form by default, original form if <final> is false.
+Returns Fail Message as a String Final form by default, Original form if <final> is False.
 ") Fail;
 		const opencascade::handle<TCollection_HAsciiString> & Fail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1249,7 +1248,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of fails, for a frontal-engine logic final forms by default, original forms if <final> is false can be empty.
+Returns the list of Fails, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") Fails;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> Fails(const Standard_Boolean final = Standard_True);
 
@@ -1268,7 +1267,7 @@ None
 
 Description
 -----------
-Copies messages converted into warning messages if failsonly is true, only fails are taken, and converted else, warnings are taken too. does not regard entity used to keep fail messages as warning, after a recovery.
+Copies messages converted into Warning messages If failsonly is true, only Fails are taken, and converted else, Warnings are taken too. Does not regard Entity Used to keep Fail messages as Warning, after a recovery.
 ") GetAsWarning;
 		void GetAsWarning(const opencascade::handle<Interface_Check> & other, const Standard_Boolean failsonly);
 
@@ -1286,7 +1285,7 @@ None
 
 Description
 -----------
-Same as setentity (old form kept for compatibility) warning: does nothing if entity field is not yet clear.
+same as SetEntity (old form kept for compatibility) Warning: Does nothing if Entity field is not yet clear.
 ") GetEntity;
 		void GetEntity(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -1304,7 +1303,7 @@ None
 
 Description
 -----------
-Copies messages stored in another check, cumulating does not regard other's entity. used to cumulate messages.
+Copies messages stored in another Check, cumulating Does not regard other's Entity. Used to cumulate messages.
 ") GetMessages;
 		void GetMessages(const opencascade::handle<Interface_Check> & other);
 
@@ -1317,7 +1316,7 @@ bool
 
 Description
 -----------
-Returns true if a check is devoted to an entity; else, it is global (for interfacemodel's storing of global error messages).
+Returns True if a Check is devoted to an entity; else, it is global (for InterfaceModel's storing of global error messages).
 ") HasEntity;
 		Standard_Boolean HasEntity();
 
@@ -1330,7 +1329,7 @@ bool
 
 Description
 -----------
-Returns true if check brings at least one fail message.
+Returns True if Check brings at least one Fail Message.
 ") HasFailed;
 		Standard_Boolean HasFailed();
 
@@ -1343,7 +1342,7 @@ bool
 
 Description
 -----------
-Returns true if check brings at least one warning message.
+Returns True if Check brings at least one Warning Message.
 ") HasWarnings;
 		Standard_Boolean HasWarnings();
 
@@ -1362,7 +1361,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns information message as a string.
+Returns information message as a String.
 ") InfoMsg;
 		const opencascade::handle<TCollection_HAsciiString> & InfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1380,7 +1379,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of info msg, for a frontal-engine logic final forms by default, original forms if <final> is false can be empty.
+Returns the list of Info Msg, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") InfoMsgs;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> InfoMsgs(const Standard_Boolean final = Standard_True);
 
@@ -1399,7 +1398,7 @@ bool
 
 Description
 -----------
-Mends messages, according <pref> and <num> according to <num>, works on the whole list of fails if = 0(d) or only one fail message, given its rank if <pref> is empty, converts fail(s) to warning(s) else, does the conversion but prefixes the new warning(s) but <pref> followed by a semi-column some reserved values of <pref> are: 'fm': standard prefix 'mended' (can be translated) 'cf': clears fail(s) 'cw': clears warning(s): here, <num> refers to warning list 'ca': clears all messages: here, <num> is ignored.
+Mends messages, according <pref> and <num> According to <num>, works on the whole list of Fails if = 0(D) or only one Fail message, given its rank If <pref> is empty, converts Fail(s) to Warning(s) Else, does the conversion but prefixes the new Warning(s) but <pref> followed by a semi-column Some reserved values of <pref> are: 'FM': standard prefix 'Mended' (can be translated) 'CF': clears Fail(s) 'CW': clears Warning(s): here, <num> refers to Warning list 'CA': clears all messages: here, <num> is ignored.
 ") Mend;
 		Standard_Boolean Mend(Standard_CString pref, const Standard_Integer num = 0);
 
@@ -1412,7 +1411,7 @@ int
 
 Description
 -----------
-Returns count of recorded fails.
+Returns count of recorded Fails.
 ") NbFails;
 		Standard_Integer NbFails();
 
@@ -1438,7 +1437,7 @@ int
 
 Description
 -----------
-Returns count of recorded warning messages.
+Returns count of recorded Warning messages.
 ") NbWarnings;
 		Standard_Integer NbWarnings();
 
@@ -1457,7 +1456,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the messages of the check to an messenger <level> = 1: only fails <level> = 2: fails and warnings <level> = 3: all (fails, warnings, info msg) <final>: if positive (d) prints final values of messages if negative, prints originals if null, prints both forms.
+Prints the messages of the check to an Messenger <level> = 1: only fails <level> = 2: fails and warnings <level> = 3: all (fails, warnings, info msg) <final>: if positive (D) prints final values of messages if negative, prints originals if null, prints both forms.
 ") Print;
 		void Print(std::ostream &OutValue, const Standard_Integer level, const Standard_Integer final = 1);
 
@@ -1477,7 +1476,7 @@ bool
 
 Description
 -----------
-Removes the messages which comply with <mess>, as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages for <status>: for checkwarning and checkfail, considers only resp. warning or check messages. for checkany, considers all other values are ignored (nothing is done) returns true if at least one message has been removed, false else.
+Removes the messages which comply with <mess>, as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages For <status>: for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (nothing is done) Returns True if at least one message has been removed, False else.
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<TCollection_HAsciiString> & mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
@@ -1495,7 +1494,7 @@ None
 
 Description
 -----------
-New name for addfail (msg).
+New name for AddFail (Msg).
 ") SendFail;
 		void SendFail(const Message_Msg & amsg);
 
@@ -1513,7 +1512,7 @@ None
 
 Description
 -----------
-Records an information message this does not change the status of the check.
+Records an information message This does not change the status of the Check.
 ") SendMsg;
 		void SendMsg(const Message_Msg & amsg);
 
@@ -1531,7 +1530,7 @@ None
 
 Description
 -----------
-New name for addwarning.
+New name for AddWarning.
 ") SendWarning;
 		void SendWarning(const Message_Msg & amsg);
 
@@ -1549,7 +1548,7 @@ None
 
 Description
 -----------
-Receives an entity result of a transfer.
+Receives an entity result of a Transfer.
 ") SetEntity;
 		void SetEntity(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -1562,7 +1561,7 @@ Interface_CheckStatus
 
 Description
 -----------
-Returns the check status: ok, warning or fail.
+Returns the Check Status: OK, Warning or Fail.
 ") Status;
 		Interface_CheckStatus Status();
 
@@ -1581,7 +1580,7 @@ None
 
 Description
 -----------
-Prints the messages of the check to the default trace file by default, according to the default standard level else, according level (see method print).
+Prints the messages of the check to the default trace file By default, according to the default standard level Else, according level (see method Print).
 ") Trace;
 		void Trace(const Standard_Integer level = -1, const Standard_Integer final = 1);
 
@@ -1600,7 +1599,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns warning message as a string final form by default, original form if <final> is false.
+Returns Warning message as a String Final form by default, Original form if <final> is False.
 ") Warning;
 		const opencascade::handle<TCollection_HAsciiString> & Warning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
@@ -1618,7 +1617,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of warnings, for a frontal-engine logic final forms by default, original forms if <final> is false can be empty.
+Returns the list of Warnings, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") Warnings;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> Warnings(const Standard_Boolean final = Standard_True);
 
@@ -1647,7 +1646,7 @@ None
 
 Description
 -----------
-Creates an empty checkiterator.
+Creates an empty CheckIterator.
 ") Interface_CheckIterator;
 		 Interface_CheckIterator();
 
@@ -1665,7 +1664,7 @@ None
 
 Description
 -----------
-Creates a checkiterator with a name (displayed by print as a title).
+Creates a CheckIterator with a name (displayed by Print as a title).
 ") Interface_CheckIterator;
 		 Interface_CheckIterator(Standard_CString name);
 
@@ -1684,7 +1683,7 @@ None
 
 Description
 -----------
-Adds a check to the list to be iterated this check is accompanied by entity number in the model (0 for global check or entity unknown in the model), if 0 and model is recorded in <self>, it is computed.
+Adds a Check to the list to be iterated This Check is Accompanied by Entity Number in the Model (0 for Global Check or Entity unknown in the Model), if 0 and Model is recorded in <self>, it is computed.
 ") Add;
 		void Add(const opencascade::handle<Interface_Check> & ach, const Standard_Integer num = 0);
 
@@ -1702,7 +1701,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check bound to an entity number (0: global) in order to be consulted or completed on the spot i.e. returns the check if is already exists, or adds it then returns the new empty check.
+Returns the Check bound to an Entity Number (0: Global) in order to be consulted or completed on the spot I.e. returns the Check if is already exists, or adds it then returns the new empty Check.
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck(const Standard_Integer num);
 
@@ -1720,7 +1719,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check bound to an entity, in order to be consulted or completed on the spot i.e. returns the check if is already exists, or adds it then returns the new empty check.
+Returns the Check bound to an Entity, in order to be consulted or completed on the spot I.e. returns the Check if is already exists, or adds it then returns the new empty Check.
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1738,7 +1737,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check which was attached to an entity given its number in the model. <num>=0 is for the global check. if no check was recorded for this number, returns an empty check. remark: works apart from the iteration methods (no interference).
+Returns the Check which was attached to an Entity given its Number in the Model. <num>=0 is for the Global Check. If no Check was recorded for this Number, returns an empty Check. Remark: Works apart from the iteration methods (no interference).
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const Standard_Integer num);
 
@@ -1756,7 +1755,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check attached to an entity if no check was recorded for this entity, returns an empty check. remark: works apart from the iteration methods (no interference).
+Returns the Check attached to an Entity If no Check was recorded for this Entity, returns an empty Check. Remark: Works apart from the iteration methods (no interference).
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1775,7 +1774,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities concerned by a check only fails if <failsonly> is true, else all non-empty checks if <global> is true, adds the model for a global check else, global check is ignored.
+Returns the list of entities concerned by a Check Only fails if <failsonly> is True, else all non-empty checks If <global> is true, adds the model for a global check Else, global check is ignored.
 ") Checkeds;
 		opencascade::handle<TColStd_HSequenceOfTransient> Checkeds(const Standard_Boolean failsonly, const Standard_Boolean global);
 
@@ -1806,7 +1805,7 @@ bool
 
 Description
 -----------
-Tells if this check list complies with a given status: ok (i.e. empty), warning (at least one warning, but no fail), fail (at least one), message (not ok), nofail, any.
+Tells if this check list complies with a given status: OK (i.e. empty), Warning (at least one Warning, but no Fail), Fail (at least one), Message (not OK), NoFail, Any.
 ") Complies;
 		Standard_Boolean Complies(const Interface_CheckStatus status);
 
@@ -1837,7 +1836,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns a checkiterator which contains the checks which comply with a given status each check is added completely (no split warning/fail).
+Returns a CheckIterator which contains the checks which comply with a given status Each check is added completely (no split Warning/Fail).
 ") Extract;
 		Interface_CheckIterator Extract(const Interface_CheckStatus status);
 
@@ -1857,7 +1856,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns a checkiterator which contains the check which comply with a message, plus some conditions as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages for <status>: for checkwarning and checkfail, considers only resp. warning or check messages. for checkany, considers all other values are ignored (answer will be false) each check which complies is entirely taken.
+Returns a CheckIterator which contains the check which comply with a message, plus some conditions as follows: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages For <status>: for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (answer will be false) Each Check which complies is entirely taken.
 ") Extract;
 		Interface_CheckIterator Extract(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
@@ -1875,7 +1874,7 @@ bool
 
 Description
 -----------
-Returns true if: no fail has been recorded if <failsonly> is true, no check at all if <failsonly> is false.
+Returns True if: no Fail has been recorded if <failsonly> is True, no Check at all if <failsonly> is False.
 ") IsEmpty;
 		Standard_Boolean IsEmpty(const Standard_Boolean failsonly);
 
@@ -1893,7 +1892,7 @@ None
 
 Description
 -----------
-Merges another checkiterator into <self>, i.e. adds each of its checks. content of <other> remains unchanged. takes also the model but not the name.
+Merges another CheckIterator into <self>, i.e. adds each of its Checks. Content of <other> remains unchanged. Takes also the Model but not the Name.
 ") Merge;
 		void Merge(Interface_CheckIterator & other);
 
@@ -1919,7 +1918,7 @@ bool
 
 Description
 -----------
-Returns true if there are more checks to get.
+Returns True if there are more Checks to get.
 ") More;
 		Standard_Boolean More();
 
@@ -1945,7 +1944,7 @@ None
 
 Description
 -----------
-Sets iteration to next item.
+Sets Iteration to next Item.
 ") Next;
 		void Next();
 
@@ -1958,7 +1957,7 @@ int
 
 Description
 -----------
-Returns number of entity for the check currently iterated or 0 for globalcheck.
+Returns Number of Entity for the Check currently iterated or 0 for GlobalCheck.
 ") Number;
 		Standard_Integer Number();
 
@@ -1977,7 +1976,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the list of checks with their attached numbers if <failsonly> is true, prints only fail messages if <failsonly> is false, prints all messages if <final> = 0 (d), prints also original messages if different if <final> < 0, prints only original messages if <final> > 0, prints only final messages it uses the recorded model if it is defined remark: works apart from the iteration methods (no interference).
+Prints the list of Checks with their attached Numbers If <failsonly> is True, prints only Fail messages If <failsonly> is False, prints all messages If <final> = 0 (D), prints also original messages if different If <final> < 0, prints only original messages If <final> > 0, prints only final messages It uses the recorded Model if it is defined Remark: Works apart from the iteration methods (no interference).
 ") Print;
 		void Print(std::ostream &OutValue, const Standard_Boolean failsonly, const Standard_Integer final = 0);
 
@@ -1997,7 +1996,7 @@ S: Standard_OStream
 
 Description
 -----------
-Works as print without a model, but for entities which have no attached number (number not positive), tries to compute this number from <model> and displays 'original' or 'computed'.
+Works as Print without a model, but for entities which have no attached number (Number not positive), tries to compute this Number from <model> and displays 'original' or 'computed'.
 ") Print;
 		void Print(std::ostream &OutValue, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean failsonly, const Standard_Integer final = 0);
 
@@ -2017,7 +2016,7 @@ bool
 
 Description
 -----------
-Removes the messages of all checks, under these conditions: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages for <status>: for checkwarning and checkfail, considers only resp. warning or check messages. for checkany, considers all other values are ignored (nothing is done) returns true if at least one message has been removed, false else.
+Removes the messages of all Checks, under these conditions: <incl> = 0: <mess> exactly matches one of the messages <incl> < 0: <mess> is contained by one of the messages <incl> > 0: <mess> contains one of the messages For <status>: for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (nothing is done) Returns True if at least one message has been removed, False else.
 ") Remove;
 		Standard_Boolean Remove(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
@@ -2035,7 +2034,7 @@ None
 
 Description
 -----------
-Defines a model, used to locate entities (not required, if it is absent, entities are simply less documented).
+Defines a Model, used to locate entities (not required, if it is absent, entities are simply less documented).
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2053,7 +2052,7 @@ None
 
 Description
 -----------
-Sets / changes the name.
+Sets / Changes the name.
 ") SetName;
 		void SetName(Standard_CString name);
 
@@ -2066,7 +2065,7 @@ None
 
 Description
 -----------
-Starts iteration. thus, it is possible to restart it remark: an iteration may be done with a const iterator while its content is modified (through a pointer), this allows to give it as a const argument to a function.
+Starts Iteration. Thus, it is possible to restart it Remark: an iteration may be done with a const Iterator While its content is modified (through a pointer), this allows to give it as a const argument to a function.
 ") Start;
 		void Start();
 
@@ -2079,7 +2078,7 @@ Interface_CheckStatus
 
 Description
 -----------
-Returns worst status among: ok, warning, fail.
+Returns worst status among: OK, Warning, Fail.
 ") Status;
 		Interface_CheckStatus Status();
 
@@ -2092,7 +2091,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns check currently iterated it brings all other information (status, messages, ...) the number of the entity in the model is given by number below.
+Returns Check currently Iterated It brings all other information (status, messages, ...) The Number of the Entity in the Model is given by Number below.
 ") Value;
 		const opencascade::handle<Interface_Check> & Value();
 
@@ -2125,7 +2124,7 @@ None
 
 Description
 -----------
-Creates a checktool, by calling the general service library and modules, selected through a protocol, to work on a model moreover, protocol recognizes unknown entities.
+Creates a CheckTool, by calling the General Service Library and Modules, selected through a Protocol, to work on a Model Moreover, Protocol recognizes Unknown Entities.
 ") Interface_CheckTool;
 		 Interface_CheckTool(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2143,7 +2142,7 @@ None
 
 Description
 -----------
-Creates a checktool, by calling the general service library and modules, selected through a protocol, to work on a model protocol and so on are taken from the model (its gtool).
+Creates a CheckTool, by calling the General Service Library and Modules, selected through a Protocol, to work on a Model Protocol and so on are taken from the Model (its GTool).
 ") Interface_CheckTool;
 		 Interface_CheckTool(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2161,7 +2160,7 @@ None
 
 Description
 -----------
-Creates a checktool from a graph. the graph contains a model which designates a protocol: they are used to create sharetool.
+Creates a CheckTool from a Graph. The Graph contains a Model which designates a Protocol: they are used to create ShareTool.
 ") Interface_CheckTool;
 		 Interface_CheckTool(const Interface_Graph & graph);
 
@@ -2192,7 +2191,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns list of errors detected at analyse time (syntactic) (note that globalcheck is not in this list).
+Returns list of errors detected at Analyse time (syntactic) (note that GlobalCheck is not in this list).
 ") AnalyseCheckList;
 		Interface_CheckIterator AnalyseCheckList();
 
@@ -2210,7 +2209,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check associated to an entity identified by its number in a model.
+Returns the Check associated to an Entity identified by its Number in a Model.
 ") Check;
 		opencascade::handle<Interface_Check> Check(const Standard_Integer num);
 
@@ -2223,7 +2222,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns list of all errors detected note that presence of unknown entities is not an error cumulates: globalcheck if error + analysechecklist + verifychecklist.
+Returns list of all Errors detected Note that presence of Unknown Entities is not an error Cumulates: GlobalCheck if error + AnalyseCheckList + VerifyCheckList.
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
@@ -2241,7 +2240,7 @@ None
 
 Description
 -----------
-Checks if any error has been detected (checklist not empty) returns normally if none, raises exception if some exists. it reuses the last computations from other checking methods, unless the argument <reset> is given true.
+Checks if any Error has been detected (CheckList not empty) Returns normally if none, raises exception if some exists. It reuses the last computations from other checking methods, unless the argument <reset> is given True.
 ") CheckSuccess;
 		void CheckSuccess(const Standard_Boolean reset = Standard_False);
 
@@ -2254,7 +2253,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns list of all 'remarkable' information, which include: - globalcheck, if not empty - error checks, for all errors (verify + analyse) - also corrected entities - and unknown entities: for those, each unknown entity is associated to an empty check (it is neither an error nor a correction, but a remarkable information).
+Returns list of all 'remarkable' information, which include: - GlobalCheck, if not empty - Error Checks, for all Errors (Verify + Analyse) - also Corrected Entities - and Unknown Entities: for those, each Unknown Entity is associated to an empty Check (it is neither an Error nor a Correction, but a remarkable information).
 ") CompleteCheckList;
 		Interface_CheckIterator CompleteCheckList();
 
@@ -2274,7 +2273,7 @@ None
 
 Description
 -----------
-Fills as required a check with the error and warning messages produced by checking a given entity. for an erroneous or corrected entity: check build at analyse time; else, check computed for entity (verify integrity), can use a graph as required to control context.
+Fills as required a Check with the Error and Warning messages produced by Checking a given Entity. For an Erroneous or Corrected Entity: Check build at Analyse time; else, Check computed for Entity (Verify integrity), can use a Graph as required to control context.
 ") FillCheck;
 		void FillCheck(const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & sh, opencascade::handle<Interface_Check> & ach);
 
@@ -2292,7 +2291,7 @@ S: Standard_OStream
 
 Description
 -----------
-Utility method which prints the content of a check.
+Utility method which Prints the content of a Check.
 ") Print;
 		void Print(const opencascade::handle<Interface_Check> & ach, std::ostream &OutValue);
 
@@ -2310,7 +2309,7 @@ S: Standard_OStream
 
 Description
 -----------
-Simply lists all the checks and the content (messages) and the entity, if there is, of each check (if all checks are ok, nothing is printed).
+Simply Lists all the Checks and the Content (messages) and the Entity, if there is, of each Check (if all Checks are OK, nothing is Printed).
 ") Print;
 		void Print(const Interface_CheckIterator & list, std::ostream &OutValue);
 
@@ -2323,7 +2322,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns list of unknown entities note that error and erroneous entities are not considered as unknown.
+Returns list of Unknown Entities Note that Error and Erroneous Entities are not considered as Unknown.
 ") UnknownEntities;
 		Interface_EntityIterator UnknownEntities();
 
@@ -2336,7 +2335,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns list of integrity constraints errors (semantic) (note that globalcheck is not in this list).
+Returns list of integrity constraints errors (semantic) (note that GlobalCheck is not in this list).
 ") VerifyCheckList;
 		Interface_CheckIterator VerifyCheckList();
 
@@ -2349,7 +2348,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns list of corrections (includes globalcheck if corrected).
+Returns list of Corrections (includes GlobalCheck if corrected).
 ") WarningCheckList;
 		Interface_CheckIterator WarningCheckList();
 
@@ -2383,7 +2382,7 @@ None
 
 Description
 -----------
-Bind a result to a starting entity identified by its number.
+Bind a Result to a Starting Entity identified by its Number.
 ") Bind;
 		virtual void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
@@ -2396,7 +2395,7 @@ None
 
 Description
 -----------
-Clears list of copy results. gets ready to begin another copy process.
+Clears List of Copy Results. Gets Ready to begin another Copy Process.
 ") Clear;
 		virtual void Clear();
 
@@ -2415,7 +2414,7 @@ bool
 
 Description
 -----------
-Searches for the result bound to a startingf entity identified by its number. if found, returns true and fills <res> else, returns false and nullifies <res>.
+Searches for the Result bound to a Startingf Entity identified by its Number. If Found, returns True and fills <res> Else, returns False and nullifies <res>.
 ") Search;
 		virtual Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
@@ -2450,7 +2449,7 @@ None
 
 Description
 -----------
-Creates a copytool adapted to work from a model. works with a general service library, given as an argument.
+Creates a CopyTool adapted to work from a Model. Works with a General Service Library, given as an argument.
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
@@ -2469,7 +2468,7 @@ None
 
 Description
 -----------
-Same as above, but library is defined through a protocol.
+Same as above, but Library is defined through a Protocol.
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2487,7 +2486,7 @@ None
 
 Description
 -----------
-Same as above, but works with the active protocol.
+Same as above, but works with the Active Protocol.
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2506,7 +2505,7 @@ None
 
 Description
 -----------
-Defines a result for the transfer of a starting object. used by method transferred (which performs a normal copy), but can also be called to enforce a result: in the latter case, the enforced result must be compatible with the other transfers which are performed.
+Defines a Result for the Transfer of a Starting object. Used by method Transferred (which performs a normal Copy), but can also be called to enforce a result: in the latter case, the enforced result must be compatible with the other Transfers which are performed.
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
@@ -2519,7 +2518,7 @@ None
 
 Description
 -----------
-Clears transfer list. gets ready to begin another transfer.
+Clears Transfer List. Gets Ready to begin another Transfer.
 ") Clear;
 		virtual void Clear();
 
@@ -2532,7 +2531,7 @@ None
 
 Description
 -----------
-Clears lastflags only. this allows to know what entities are copied after its call (see method lastcopiedafter). it can be used when copies are done by increments, which must be distinghished. clearlastflags is also called by clear.
+Clears LastFlags only. This allows to know what Entities are copied after its call (see method LastCopiedAfter). It can be used when copies are done by increments, which must be distinguished. ClearLastFlags is also called by Clear.
 ") ClearLastFlags;
 		void ClearLastFlags();
 
@@ -2550,7 +2549,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the complete list of copied entities if <withreports> is given true, the entities which were reported in the starting model are replaced in the list by the copied reportentities.
+Returns the complete list of copied Entities If <withreports> is given True, the entities which were reported in the Starting Model are replaced in the list by the copied ReportEntities.
 ") CompleteResult;
 		Interface_EntityIterator CompleteResult(const Standard_Boolean withreports = Standard_False);
 
@@ -2563,7 +2562,7 @@ opencascade::handle<Interface_CopyControl>
 
 Description
 -----------
-Returns the object used for control.
+Returns the object used for Control.
 ") Control;
 		opencascade::handle<Interface_CopyControl> Control();
 
@@ -2584,7 +2583,7 @@ bool
 
 Description
 -----------
-Creates the counterpart of an entity (by shallowcopy), binds it, then copies the content of the former entity to the other one (same type), by call to the general service library it may command the copy of referenced entities then, its returns true. //! if <mapped> is true, the map is used to store the result else, the result is simply produced: it can be used to copy internal sub-parts of entities, which are not intended to be shared (strings, arrays, etc...) if <errstat> is true, this means that the entity is recorded in the model as erroneous: in this case, the general service for deep copy is not called (this could be dangerous): hence the counter-part is produced but empty, it can be referenced. //! this method does nothing and returns false if the protocol does not recognize <ent>. it basically makes a deep copy without changing the types. it can be redefined for special uses.
+Creates the CounterPart of an Entity (by ShallowCopy), Binds it, then Copies the content of the former Entity to the other one (same Type), by call to the General Service Library It may command the Copy of Referenced Entities Then, its returns True. //! If <mapped> is True, the Map is used to store the Result Else, the Result is simply produced: it can be used to Copy internal sub-parts of Entities, which are not intended to be shared (Strings, Arrays, etc...) If <errstat> is True, this means that the Entity is recorded in the Model as Erroneous: in this case, the General Service for Deep Copy is not called (this could be dangerous): hence the Counter-Part is produced but empty, it can be referenced. //! This method does nothing and returns False if the Protocol does not recognize <ent>. It basically makes a Deep Copy without changing the Types. It can be redefined for special uses.
 ") Copy;
 		virtual Standard_Boolean Copy(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, const Standard_Boolean mapped, const Standard_Boolean errstat);
 
@@ -2602,7 +2601,7 @@ None
 
 Description
 -----------
-Fills a model with the result of the transfer (transferlist) commands copy of header too, and calls renewimpliedrefs.
+Fills a Model with the result of the transfer (TransferList) Commands copy of Header too, and calls RenewImpliedRefs.
 ") FillModel;
 		void FillModel(const opencascade::handle<Interface_InterfaceModel> & bmodel);
 
@@ -2622,7 +2621,7 @@ int
 
 Description
 -----------
-Returns an copied entity and its result which were operated after last call to clearlastflags. it returns the first 'last copied entity' which number follows <numfrom>, zero if none. it is used in a loop as follow: integer num = 0; while ( (num = copytool.lastcopiedafter(num,ent,res)) ) { .. process starting <ent> and its result <res> }.
+Returns an copied Entity and its Result which were operated after last call to ClearLastFlags. It returns the first 'Last Copied Entity' which Number follows <numfrom>, Zero if none. It is used in a loop as follow: Integer num = 0; while ( (num = CopyTool.LastCopiedAfter(num,ent,res)) ) { .. Process Starting <ent> and its Result <res> }.
 ") LastCopiedAfter;
 		Standard_Integer LastCopiedAfter(const Standard_Integer numfrom, opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
@@ -2635,7 +2634,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model on which the copytool works.
+Returns the Model on which the CopyTool works.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -2648,7 +2647,7 @@ None
 
 Description
 -----------
-Renews the implied references. these references do not involve copying of referenced entities. for such a reference, if the entity which defines it and the referenced entity are both copied, then this reference is renewed. else it is deleted in the copied entities. remark: this concerns only some specific references, such as 'back pointers'.
+Renews the Implied References. These References do not involve Copying of referenced Entities. For such a Reference, if the Entity which defines it AND the referenced Entity are both copied, then this Reference is renewed. Else it is deleted in the copied Entities. Remark: this concerns only some specific references, such as 'back pointers'.
 ") RenewImpliedRefs;
 		void RenewImpliedRefs();
 
@@ -2666,7 +2665,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of root copied entities (those which were asked for copy by the user of copytool, not by copying another entity).
+Returns the list of Root copied Entities (those which were asked for copy by the user of CopyTool, not by copying another Entity).
 ") RootResult;
 		Interface_EntityIterator RootResult(const Standard_Boolean withreports = Standard_False);
 
@@ -2685,7 +2684,7 @@ bool
 
 Description
 -----------
-Search for the result of a starting object (i.e. an entity) returns true if a result is bound (and fills 'result') returns false if no result is bound.
+Search for the result of a Starting Object (i.e. an Entity) Returns True if a Result is Bound (and fills 'result') Returns False if no result is Bound.
 ") Search;
 		Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
@@ -2703,7 +2702,7 @@ None
 
 Description
 -----------
-Changes the map of result for another one. this allows to work with a more sophisticated mapping control than the standard one which is copymap (e.g. transferprocess from transfer).
+Changes the Map of Result for another one. This allows to work with a more sophisticated Mapping Control than the Standard one which is CopyMap (e.g. TransferProcess from Transfer).
 ") SetControl;
 		void SetControl(const opencascade::handle<Interface_CopyControl> & othermap);
 
@@ -2721,7 +2720,7 @@ None
 
 Description
 -----------
-Transfers one entity and records result into the transfer list calls method transferred.
+Transfers one Entity and records result into the Transfer List Calls method Transferred.
 ") TransferEntity;
 		void TransferEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2739,7 +2738,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Transfers one entity, if not yet bound to a result remark: for an entity which is reported in the starting model, the reportentity will also be copied with its content if it has one (at least shallowcopy; complete copy if the protocol recognizes the content: see method copy).
+Transfers one Entity, if not yet bound to a result Remark: For an Entity which is reported in the Starting Model, the ReportEntity will also be copied with its Content if it has one (at least ShallowCopy; Complete Copy if the Protocol recognizes the Content: see method Copy).
 ") Transferred;
 		opencascade::handle<Standard_Transient> Transferred(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2766,7 +2765,7 @@ None
 
 Description
 -----------
-Creates an empty, non-chained, entitycluster.
+Creates an empty, non-chained, EntityCluster.
 ") Interface_EntityCluster;
 		 Interface_EntityCluster();
 
@@ -2784,7 +2783,7 @@ None
 
 Description
 -----------
-Creates a non-chained entitycluster, filled with one entity.
+Creates a non-chained EntityCluster, filled with one Entity.
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2802,7 +2801,7 @@ None
 
 Description
 -----------
-Creates an empty entitycluster, chained with another one (that is, put before this other one in the list).
+Creates an empty EntityCluster, chained with another one (that is, put BEFORE this other one in the list).
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Interface_EntityCluster> & ec);
 
@@ -2821,7 +2820,7 @@ None
 
 Description
 -----------
-Creates an entitycluster, filled with a first entity, and chained to another entitycluster (before it, as above).
+Creates an EntityCluster, filled with a first Entity, and chained to another EntityCluster (BEFORE it, as above).
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Standard_Transient> & ant, const opencascade::handle<Interface_EntityCluster> & ec);
 
@@ -2839,7 +2838,7 @@ None
 
 Description
 -----------
-Appends an entity to the cluster. if it is not full, adds the entity directly inside itself. else, transmits to its next and creates it if it does not yet exist.
+Appends an Entity to the Cluster. If it is not full, adds the entity directly inside itself. Else, transmits to its Next and Creates it if it does not yet exist.
 ") Append;
 		void Append(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2857,7 +2856,7 @@ None
 
 Description
 -----------
-Fills an iterator with designated entities (includes next).
+Fills an Iterator with designated Entities (includes Next).
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
@@ -2870,7 +2869,7 @@ int
 
 Description
 -----------
-Returns total count of entities (including next).
+Returns total count of Entities (including Next).
 ") NbEntities;
 		Standard_Integer NbEntities();
 
@@ -2888,7 +2887,7 @@ bool
 
 Description
 -----------
-Removes an entity from the cluster. if it is not found, calls its next one to do so. returns true if it becomes itself empty, false else (thus, a cluster which becomes empty is deleted from the list).
+Removes an Entity from the Cluster. If it is not found, calls its Next one to do so. Returns True if it becomes itself empty, False else (thus, a Cluster which becomes empty is deleted from the list).
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2906,7 +2905,7 @@ bool
 
 Description
 -----------
-Removes an entity from the cluster, given its rank. if <num> is greater than nblocal, calls its next with (num - nblocal), returns true if it becomes itself empty, false else.
+Removes an Entity from the Cluster, given its rank. If <num> is greater than NbLocal, calls its Next with (num - NbLocal), Returns True if it becomes itself empty, False else.
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer num);
 
@@ -2925,7 +2924,7 @@ None
 
 Description
 -----------
-Changes an entity given its rank.
+Changes an Entity given its rank.
 ") SetValue;
 		void SetValue(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
@@ -2943,7 +2942,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the entity identified by its rank in the list (including next).
+Returns the Entity identified by its rank in the list (including Next).
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value(const Standard_Integer num);
 
@@ -2972,7 +2971,7 @@ None
 
 Description
 -----------
-Defines an empty iterator (see addlist & additem).
+Defines an empty iterator (see AddList & AddItem).
 ") Interface_EntityIterator;
 		 Interface_EntityIterator();
 
@@ -3039,7 +3038,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the content of the iterator, accessed through a handle to be used by a frontal-engine logic returns an empty sequence if the iterator is empty calls start if not yet done.
+Returns the content of the Iterator, accessed through a Handle to be used by a frontal-engine logic Returns an empty Sequence if the Iterator is empty Calls Start if not yet done.
 ") Content;
 		opencascade::handle<TColStd_HSequenceOfTransient> Content();
 
@@ -3070,7 +3069,7 @@ None
 
 Description
 -----------
-Same as additem (kept for compatibility).
+same as AddItem (kept for compatibility).
 ") GetOneItem;
 		void GetOneItem(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -3083,7 +3082,7 @@ bool
 
 Description
 -----------
-Says if there are other entities (vertices) to iterate the first time, calls start.
+Says if there are other entities (vertices) to iterate the first time, calls Start.
 ") More;
 		Standard_Boolean More();
 
@@ -3096,7 +3095,7 @@ int
 
 Description
 -----------
-Returns count of entities which will be iterated on calls start if not yet done.
+Returns count of entities which will be iterated on Calls Start if not yet done.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
@@ -3146,7 +3145,7 @@ None
 
 Description
 -----------
-Selects entities with are kind of a given type, keep only them (is keep is true) or reject only them (if keep is false).
+Selects entities with are Kind of a given type, keep only them (is keep is True) or reject only them (if keep is False).
 ") SelectType;
 		void SelectType(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
@@ -3190,7 +3189,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the current entity iterated, to be used by interface tools.
+Returns the current Entity iterated, to be used by Interface tools.
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value();
 
@@ -3217,7 +3216,7 @@ None
 
 Description
 -----------
-Creates a list as being empty.
+Creates a List as being empty.
 ") Interface_EntityList;
 		 Interface_EntityList();
 
@@ -3235,7 +3234,7 @@ None
 
 Description
 -----------
-Adds an entity to the list, that is, with no regard about the order (faster than append if count becomes greater than 10).
+Adds an Entity to the list, that is, with NO REGARD about the order (faster than Append if count becomes greater than 10).
 ") Add;
 		void Add(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3253,7 +3252,7 @@ None
 
 Description
 -----------
-Appends an entity, that is to the end of the list (keeps order, but works slowerly than add, see below).
+Appends an Entity, that is to the END of the list (keeps order, but works slowerly than Add, see below).
 ") Append;
 		void Append(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3266,7 +3265,7 @@ None
 
 Description
 -----------
-Clears the list.
+Clears the List.
 ") Clear;
 		void Clear();
 
@@ -3284,7 +3283,7 @@ None
 
 Description
 -----------
-Fills an iterator with the content of the list (normal way to consult a list which has been filled with add).
+fills an Iterator with the content of the list (normal way to consult a list which has been filled with Add).
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
@@ -3297,7 +3296,7 @@ bool
 
 Description
 -----------
-Returns true if the list is empty.
+Returns True if the list is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -3310,7 +3309,7 @@ int
 
 Description
 -----------
-Returns count of recorded entities.
+Returns count of recorded Entities.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
@@ -3328,7 +3327,7 @@ int
 
 Description
 -----------
-Returns count of entities of a given type (0: none).
+Returns count of Entities of a given Type (0: none).
 ") NbTypedEntities;
 		Standard_Integer NbTypedEntities(const opencascade::handle<Standard_Type> & atype);
 
@@ -3346,7 +3345,7 @@ None
 
 Description
 -----------
-Removes an entity from the list, if it is there.
+Removes an Entity from the list, if it is there.
 ") Remove;
 		void Remove(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3364,7 +3363,7 @@ None
 
 Description
 -----------
-Removes an entity from the list, given its rank.
+Removes an Entity from the list, given its rank.
 ") Remove;
 		void Remove(const Standard_Integer num);
 
@@ -3383,7 +3382,7 @@ None
 
 Description
 -----------
-Returns an item given its number. beware about the way the list was filled (see above, add and append).
+Returns an Item given its number. Beware about the way the list was filled (see above, Add and Append).
 ") SetValue;
 		void SetValue(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
@@ -3402,7 +3401,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the entity which is of a given type. if num = 0 (d), there must be one and only one if num > 0, returns the num-th entity of this type.
+Returns the Entity which is of a given type. If num = 0 (D), there must be ONE AND ONLY ONE If num > 0, returns the num-th entity of this type.
 ") TypedEntity;
 		opencascade::handle<Standard_Transient> TypedEntity(const opencascade::handle<Standard_Type> & atype, const Standard_Integer num = 0);
 
@@ -3420,7 +3419,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an item given its number. beware about the way the list was filled (see above, add and append).
+Returns an Item given its number. Beware about the way the list was filled (see above, Add and Append).
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value(const Standard_Integer num);
 
@@ -3460,7 +3459,7 @@ str
 
 Description
 -----------
-Same as above, but as a cstring (for immediate exploitation) was c++: return const.
+Same as above, but as a CString (for immediate exploitation) was C++: return const.
 ") CValue;
 		Standard_CString CValue();
 
@@ -3473,7 +3472,7 @@ None
 
 Description
 -----------
-Clears stored data: frees memory taken for the string value.
+Clears stored data: frees memory taken for the String Value.
 ") Clear;
 		void Clear();
 
@@ -3486,7 +3485,7 @@ None
 
 Description
 -----------
-Destructor. does nothing because memory is managed by paramset.
+Destructor. Does nothing because Memory is managed by ParamSet.
 ") Destroy;
 		void Destroy();
 
@@ -3499,7 +3498,7 @@ int
 
 Description
 -----------
-Returns value set by setentitynumber.
+Returns value set by SetEntityNumber.
 ") EntityNumber;
 		Standard_Integer EntityNumber();
 
@@ -3518,7 +3517,7 @@ None
 
 Description
 -----------
-Fills fields (with entity number set to zero).
+Fills fields (with Entity Number set to zero).
 ") Init;
 		void Init(TCollection_AsciiString val, const Interface_ParamType typ);
 
@@ -3537,7 +3536,7 @@ None
 
 Description
 -----------
-Same as above, but builds the value from a cstring.
+Same as above, but builds the Value from a CString.
 ") Init;
 		void Init(Standard_CString val, const Interface_ParamType typ);
 
@@ -3568,7 +3567,7 @@ None
 
 Description
 -----------
-Allows to set a reference to an entity in a numbered list.
+Allows to set a reference to an Entity in a numbered list.
 ") SetEntityNumber;
 		void SetEntityNumber(const Standard_Integer num);
 
@@ -3604,7 +3603,7 @@ None
 
 Description
 -----------
-Adds a parameter to record no 'num' and fills its fields (entitynumber is optional) warning: <aval> is assumed to be memory-managed elsewhere: it is not copied. this gives a best speed: strings remain stored in pages of characters.
+Adds a parameter to record no 'num' and fills its fields (EntityNumber is optional) Warning: <aval> is assumed to be memory-managed elsewhere: it is NOT copied. This gives a best speed: strings remain stored in pages of characters.
 ") AddParam;
 		void AddParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
@@ -3625,7 +3624,7 @@ None
 
 Description
 -----------
-Same as above, but gets a asciistring from tcollection remark that the content of the asciistring is locally copied (because its content is most often lost after using).
+Same as above, but gets a AsciiString from TCollection Remark that the content of the AsciiString is locally copied (because its content is most often lost after using).
 ") AddParam;
 		void AddParam(const Standard_Integer num, TCollection_AsciiString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
@@ -3644,7 +3643,7 @@ None
 
 Description
 -----------
-Same as above, but gets a complete fileparameter warning: content of <fp> is not copied: its original address and space in memory are assumed to be managed elsewhere (see paramset).
+Same as above, but gets a complete FileParameter Warning: Content of <FP> is NOT copied: its original address and space in memory are assumed to be managed elsewhere (see ParamSet).
 ") AddParam;
 		void AddParam(const Standard_Integer num, const Interface_FileParameter & FP);
 
@@ -3681,7 +3680,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the entity bound to a record, set by setentities.
+Returns the entity bound to a record, set by SetEntities.
 ") BoundEntity;
 		const opencascade::handle<Standard_Transient> & BoundEntity(const Standard_Integer num);
 
@@ -3749,7 +3748,7 @@ int
 
 Description
 -----------
-Determines the record number defining an entity following a given record number. specific to each sub-class of filereaderdata. returning zero means no record found.
+Determines the record number defining an Entity following a given record number. Specific to each sub-class of FileReaderData. Returning zero means no record found.
 ") FindNextRecord;
 		virtual Standard_Integer FindNextRecord(const Standard_Integer num);
 
@@ -3767,7 +3766,7 @@ None
 
 Description
 -----------
-Attaches an empty paramlist to a record.
+attaches an empty ParamList to a Record.
 ") InitParams;
 		void InitParams(const Standard_Integer num);
 
@@ -3780,7 +3779,7 @@ bool
 
 Description
 -----------
-Returns true if the status 'error load' has been set (to true or false).
+Returns True if the status 'Error Load' has been set (to True or False).
 ") IsErrorLoad;
 		Standard_Boolean IsErrorLoad();
 
@@ -3799,7 +3798,7 @@ bool
 
 Description
 -----------
-Returns true if parameter 'nump' of record 'num' is defined (it is not if its type is paramvoid).
+Returns True if parameter 'nump' of record 'num' is defined (it is not if its type is ParamVoid).
 ") IsParamDefined;
 		Standard_Boolean IsParamDefined(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3812,7 +3811,7 @@ int
 
 Description
 -----------
-Returns the count of entities. depending of each norm, records can be entities or subparts (sublist in step, subgroup in set ...). nbentities counts only entities, not subs used for memory reservation in interfacemodel default implementation uses findnextrecord can be redefined into a more performant way.
+Returns the count of entities. Depending of each norm, records can be Entities or SubParts (SubList in STEP, SubGroup in SET ...). NbEntities counts only Entities, not Subs Used for memory reservation in InterfaceModel Default implementation uses FindNextRecord Can be redefined into a more performant way.
 ") NbEntities;
 		virtual Standard_Integer NbEntities();
 
@@ -3830,7 +3829,7 @@ int
 
 Description
 -----------
-Returns count of parameters attached to record 'num' if <num> = 0, returns the total recorded count of parameters.
+Returns count of parameters attached to record 'num' If <num> = 0, returns the total recorded count of parameters.
 ") NbParams;
 		Standard_Integer NbParams(const Standard_Integer num);
 
@@ -3843,7 +3842,7 @@ int
 
 Description
 -----------
-Returns the count of registered records that is, value given for initialization (can be redefined).
+Returns the count of registered records That is, value given for Initialization (can be redefined).
 ") NbRecords;
 		virtual Standard_Integer NbRecords();
 
@@ -3862,7 +3861,7 @@ Interface_FileParameter
 
 Description
 -----------
-Returns parameter 'nump' of record 'num', as a complete fileparameter.
+Returns parameter 'nump' of record 'num', as a complete FileParameter.
 ") Param;
 		const Interface_FileParameter & Param(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3881,7 +3880,7 @@ str
 
 Description
 -----------
-Same as above, but as a cstring was c++: return const.
+Same as above, but as a CString was C++: return const.
 ") ParamCValue;
 		Standard_CString ParamCValue(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3900,7 +3899,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the stepentity referenced by a parameter error if none.
+Returns the StepEntity referenced by a parameter Error if none.
 ") ParamEntity;
 		const opencascade::handle<Standard_Transient> & ParamEntity(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3918,7 +3917,7 @@ int
 
 Description
 -----------
-Returns the absolute rank of the beginning of a record (its list is from paramfirstrank+1 to paramfirstrank+nbparams).
+Returns the absolute rank of the beginning of a record (its list is from ParamFirstRank+1 to ParamFirstRank+NbParams).
 ") ParamFirstRank;
 		Standard_Integer ParamFirstRank(const Standard_Integer num);
 
@@ -3937,7 +3936,7 @@ int
 
 Description
 -----------
-Returns record number of an entity referenced by a parameter of type ident; 0 if no entitynumber has been determined note that it is used to reference entities but also sublists (sublists are not objects, but internal descriptions).
+Returns record number of an entity referenced by a parameter of type Ident; 0 if no EntityNumber has been determined Note that it is used to reference Entities but also Sublists (sublists are not objects, but internal descriptions).
 ") ParamNumber;
 		Standard_Integer ParamNumber(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3956,7 +3955,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns type of parameter 'nump' of record 'num' returns literal value of parameter 'nump' of record 'num' was c++: return const &.
+Returns type of parameter 'nump' of record 'num' Returns literal value of parameter 'nump' of record 'num' was C++: return const &.
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num, const Standard_Integer nump);
 
@@ -3974,7 +3973,7 @@ opencascade::handle<Interface_ParamList>
 
 Description
 -----------
-Returns the complete paramlist of a record (read only) num = 0 to return the whole param list for the file.
+Returns the complete ParamList of a record (read only) num = 0 to return the whole param list for the file.
 ") Params;
 		opencascade::handle<Interface_ParamList> Params(const Standard_Integer num);
 
@@ -3987,7 +3986,7 @@ bool
 
 Description
 -----------
-Returns the former value of status 'error load' then resets it used to read the status then ensure it is reset.
+Returns the former value of status 'Error Load' then resets it Used to read the status then ensure it is reset.
 ") ResetErrorLoad;
 		Standard_Boolean ResetErrorLoad();
 
@@ -4005,7 +4004,7 @@ None
 
 Description
 -----------
-Sets the status 'error load' on, to overside check fails <val> true: declares unloaded <val> false: declares loaded if not called before loading (see filereadertool), check fails give the status iserrorload says if seterrorload has been called by user reseterrorload resets it (called by filereadertool) this allows to specify that the currently loaded entity remains unloaded (because of syntactic fail).
+Sets the status 'Error Load' on, to overside check fails <val> True: declares unloaded <val> False: declares loaded If not called before loading (see FileReaderTool), check fails give the status IsErrorLoad says if SetErrorLoad has been called by user ResetErrorLoad resets it (called by FileReaderTool) This allows to specify that the currently loaded entity remains unloaded (because of syntactic fail).
 ") SetErrorLoad;
 		void SetErrorLoad(const Standard_Boolean val);
 
@@ -4062,7 +4061,7 @@ bool
 
 Description
 -----------
-Fills an entity, given record no; specific to each interface, called by analysefile from interfacemodel (which manages its calling arguments) to work, each interface can define a method in its proper transient class, like this (given as an example): analyserecord (me: mutable; fr: in out filereadertool; num: integer; acheck: in out check) returns boolean; and call it from analyserecord //! returned value: true if the entity could be loaded, false else (in case of syntactic fail).
+Fills an Entity, given record no; specific to each Interface, called by AnalyseFile from InterfaceModel (which manages its calling arguments) To work, each Interface can define a method in its proper Transient class, like this (given as an example): AnalyseRecord (me: mutable; FR: in out FileReaderTool; num: Integer; acheck: in out Check) returns Boolean; and call it from AnalyseRecord //! Returned Value: True if the entity could be loaded, False else (in case of syntactic fail).
 ") AnalyseRecord;
 		virtual Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
@@ -4080,7 +4079,7 @@ None
 
 Description
 -----------
-Fills model's header; each interface defines for its model its own file header; this method fills it from filereadertool.+ it is called by analysefile from interfacemodel.
+Fills model's header; each Interface defines for its Model its own file header; this method fills it from FileReaderTool.+ It is called by AnalyseFile from InterfaceModel.
 ") BeginRead;
 		virtual void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -4106,7 +4105,7 @@ opencascade::handle<Interface_FileReaderData>
 
 Description
 -----------
-Returns the filereaderdata which is used to work.
+Returns the FileReaderData which is used to work.
 ") Data;
 		opencascade::handle<Interface_FileReaderData> Data();
 
@@ -4137,7 +4136,7 @@ bool
 
 Description
 -----------
-Returns errorhandle flag.
+Returns ErrorHandle flag.
 ") ErrorHandle;
 		Standard_Boolean ErrorHandle();
 
@@ -4155,7 +4154,7 @@ None
 
 Description
 -----------
-Reads and fills entities from the filereaderdata set by setdata to an interfacemodel. it enchains required operations, the specific ones correspond to deferred methods (below) to be defined for each norm. it manages also error recovery and trace. remark: it calls setmodel. it can raise any error which can occur during a load operation, unless error handling is set. this method can also be redefined if judged necessary.
+Reads and fills Entities from the FileReaderData set by SetData to an InterfaceModel. It enchains required operations, the specific ones correspond to deferred methods (below) to be defined for each Norm. It manages also error recovery and trace. Remark: it calls SetModel. It Can raise any error which can occur during a load operation, unless Error Handling is set. This method can also be redefined if judged necessary.
 ") LoadModel;
 		void LoadModel(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -4173,7 +4172,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Reads, fills and returns one entity read from a record of the filereaderdata. this method manages also case of fail or warning, by producing a reportentyty plus , for a fail, a literal content (as an unknownentity). performs also trace.
+Reads, Fills and Returns one Entity read from a Record of the FileReaderData. This Method manages also case of Fail or Warning, by producing a ReportEntyty plus , for a Fail, a literal Content (as an UnknownEntity). Performs also Trace.
 ") LoadedEntity;
 		opencascade::handle<Standard_Transient> LoadedEntity(const Standard_Integer num);
 
@@ -4186,7 +4185,7 @@ opencascade::handle<Message_Messenger>
 
 Description
 -----------
-Returns messenger used for outputting messages. the returned object is guaranteed to be non-null; default is message::messenger().
+Returns Messenger used for outputting messages. The returned object is guaranteed to be non-null; default is Message::Messenger().
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
@@ -4199,7 +4198,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the stored model.
+Returns the stored Model.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -4212,7 +4211,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Creates an empty model of the norm. uses protocol to do it.
+Creates an empty Model of the norm. Uses Protocol to do it.
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -4225,7 +4224,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol given at creation time.
+Returns the Protocol given at creation time.
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
@@ -4245,7 +4244,7 @@ bool
 
 Description
 -----------
-Recognizes a record, given its number. specific to each interface; called by setentities. it can call the basic method recognizebylib. returns false if recognition has failed, true else. <ach> has not to be filled if simply recognition has failed: it must record true error messages: recognizebylib can generate error messages if newread is called //! note that it works thru a recognizer (method evaluate) which has to be memorized before starting.
+Recognizes a record, given its number. Specific to each Interface; called by SetEntities. It can call the basic method RecognizeByLib. Returns False if recognition has failed, True else. <ach> has not to be filled if simply Recognition has failed: it must record true error messages: RecognizeByLib can generate error messages if NewRead is called //! Note that it works thru a Recognizer (method Evaluate) which has to be memorized before starting.
 ") Recognize;
 		virtual Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
@@ -4267,7 +4266,7 @@ bool
 
 Description
 -----------
-Recognizes a record with the help of libraries. can be used to implement the method recognize. <rlib> is used to find protocol and casenumber to apply <glib> performs the creation (by service newvoid, or newread if newvoid gave no result) <ach> is a check, which is transmitted to newread if it is called, gives a result but which is false <ent> is the result returns false if recognition has failed, true else.
+Recognizes a record with the help of Libraries. Can be used to implement the method Recognize. <rlib> is used to find Protocol and CaseNumber to apply <glib> performs the creation (by service NewVoid, or NewRead if NewVoid gave no result) <ach> is a check, which is transmitted to NewRead if it is called, gives a result but which is false <ent> is the result Returns False if recognition has failed, True else.
 ") RecognizeByLib;
 		Standard_Boolean RecognizeByLib(const Standard_Integer num, Interface_GeneralLib & glib, Interface_ReaderLib & rlib, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
@@ -4286,7 +4285,7 @@ None
 
 Description
 -----------
-Sets data to a filereaderdata. works with a protocol.
+Sets Data to a FileReaderData. Works with a Protocol.
 ") SetData;
 		void SetData(const opencascade::handle<Interface_FileReaderData> & reader, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -4299,7 +4298,7 @@ None
 
 Description
 -----------
-Fills records with empty entities; once done, each entity can ask the filereadertool for any entity referenced through an identifier. calls recognize which is specific to each specific type of filereadertool.
+Fills records with empty entities; once done, each entity can ask the FileReaderTool for any entity referenced through an identifier. Calls Recognize which is specific to each specific type of FileReaderTool.
 ") SetEntities;
 		void SetEntities();
 
@@ -4317,7 +4316,7 @@ None
 
 Description
 -----------
-Allows controlling whether exception raisings are handled if err is false, they are not (hence, dbx can take control) if err is true, they are, and they are traced (by putting on messenger entity's number and file record num) default given at model's creation time is true.
+Allows controlling whether exception raisings are handled If err is False, they are not (hence, dbx can take control) If err is True, they are, and they are traced (by putting on messenger Entity's Number and file record num) Default given at Model's creation time is True.
 ") SetErrorHandle;
 		void SetErrorHandle(const Standard_Boolean err);
 
@@ -4335,7 +4334,7 @@ None
 
 Description
 -----------
-Sets messenger used for outputting messages.
+Sets Messenger used for outputting messages.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
@@ -4353,7 +4352,7 @@ None
 
 Description
 -----------
-Stores a model. used when the model has been loaded.
+Stores a Model. Used when the Model has been loaded.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -4371,7 +4370,7 @@ None
 
 Description
 -----------
-Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages default is 1: errors traced.
+Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages Default is 1: Errors traced.
 ") SetTraceLevel;
 		void SetTraceLevel(const Standard_Integer tracelev);
 
@@ -4397,7 +4396,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Provides an unknown entity, specific to the interface called by setentities when recognize has failed (unknown alone) or by loadmodel when an entity has caused a fail on reading (to keep at least its literal description) uses protocol to do it.
+Provides an unknown entity, specific to the Interface called by SetEntities when Recognize has failed (Unknown alone) or by LoadModel when an Entity has caused a Fail on reading (to keep at least its literal description) Uses Protocol to do it.
 ") UnknownEntity;
 		opencascade::handle<Standard_Transient> UnknownEntity();
 
@@ -4429,7 +4428,7 @@ None
 
 Description
 -----------
-Creates a floatwriter ready to work, with default options - - zero suppress option is set - main format is set to '%e' - secondary format is set to '%f' for values between 0.1 and 1000. in absolute values if <chars> is given (and positive), it will produce options to produce this count of characters: '%<chars>f','%<chars>%e'.
+Creates a FloatWriter ready to work, with default options - - zero suppress option is set - main format is set to '%E' - secondary format is set to '%f' for values between 0.1 and 1000. in absolute values If <chars> is given (and positive), it will produce options to produce this count of characters: '%<chars>f','%<chars>%E'.
 ") Interface_FloatWriter;
 		 Interface_FloatWriter(const Standard_Integer chars = 0);
 
@@ -4453,7 +4452,7 @@ int
 
 Description
 -----------
-This class method converts a real value to a string, given options given as arguments. it can be called independently. warning: even if declared in, content of <text> will be modified.
+This class method converts a Real Value to a string, given options given as arguments. It can be called independently. Warning: even if declared in, content of <text> will be modified.
 ") Convert;
 		static Standard_Integer Convert(const Standard_Real val, Standard_CString text, const Standard_Boolean zerosup, const Standard_Real Range1, const Standard_Real Range2, Standard_CString mainform, Standard_CString rangeform);
 
@@ -4466,7 +4465,7 @@ str
 
 Description
 -----------
-Returns the format for range, if set meaningful only if <range> from options is true was c++: return const.
+Returns the format for range, if set Meaningful only if <range> from Options is True was C++: return const.
 ") FormatForRange;
 		Standard_CString FormatForRange();
 
@@ -4479,7 +4478,7 @@ str
 
 Description
 -----------
-Returns the main format was c++: return const.
+Returns the main format was C++: return const.
 ") MainFormat;
 		Standard_CString MainFormat();
 
@@ -4499,7 +4498,7 @@ R2: float
 
 Description
 -----------
-Returns active options: <zerosup> is the option zerosuppress, <range> is true if a range is set, false else r1,r2 give the range (if it is set).
+Returns active options: <zerosup> is the option ZeroSuppress, <range> is True if a range is set, False else R1,R2 give the range (if it is set).
 ") Options;
 		void Options(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4517,7 +4516,7 @@ None
 
 Description
 -----------
-Sets again options to the defaults given by create.
+Sets again options to the defaults given by Create.
 ") SetDefaults;
 		void SetDefaults(const Standard_Integer chars = 0);
 
@@ -4536,7 +4535,7 @@ None
 
 Description
 -----------
-Sets a specific format for sending reals (main format) (default from creation is '%e') if <reset> is given true (default), this call clears effects of former calls to setformatforrange and setzerosuppress.
+Sets a specific Format for Sending Reals (main format) (Default from Creation is '%E') If <reset> is given True (default), this call clears effects of former calls to SetFormatForRange and SetZeroSuppress.
 ") SetFormat;
 		void SetFormat(Standard_CString form, const Standard_Boolean reset = Standard_True);
 
@@ -4556,7 +4555,7 @@ None
 
 Description
 -----------
-Sets a secondary format for real, to be applied between r1 and r2 (in absolute values). a call to setrealform cancels this secondary form if <reset> is true. (default from creation is '%f' between 0.1 and 1000.) warning: if the condition (0. <= r1 < r2) is not fulfilled, this secondary form is canceled.
+Sets a secondary Format for Real, to be applied between R1 and R2 (in absolute values). A Call to SetRealForm cancels this secondary form if <reset> is True. (Default from Creation is '%f' between 0.1 and 1000.) Warning: if the condition (0. <= R1 < R2) is not fulfilled, this secondary form is canceled.
 ") SetFormatForRange;
 		void SetFormatForRange(Standard_CString form, const Standard_Real R1, const Standard_Real R2);
 
@@ -4574,7 +4573,7 @@ None
 
 Description
 -----------
-Sets sending real parameters to suppress trailing zeros and null exponent ('e+00'), if <mode> is given true, resets this mode if <mode> is false (in addition to real forms) a call to setrealfrom resets this mode to false ig <reset> is given true (default from creation is true).
+Sets Sending Real Parameters to suppress trailing Zeros and Null Exponent ('E+00'), if <mode> is given True, Resets this mode if <mode> is False (in addition to Real Forms) A call to SetRealFrom resets this mode to False ig <reset> is given True (Default from Creation is True).
 ") SetZeroSuppress;
 		void SetZeroSuppress(const Standard_Boolean mode);
 
@@ -4593,7 +4592,7 @@ int
 
 Description
 -----------
-Writes a real value <val> to a string <text> by using the options. returns the useful length of produced string. it calls the class method convert. warning: <text> is assumed to be wide enough (20-30 is correct) and, even if declared in, its content will be modified.
+Writes a Real value <val> to a string <text> by using the options. Returns the useful Length of produced string. It calls the class method Convert. Warning: <text> is assumed to be wide enough (20-30 is correct) And, even if declared in, its content will be modified.
 ") Write;
 		Standard_Integer Write(const Standard_Real val, Standard_CString text);
 
@@ -4620,7 +4619,7 @@ None
 
 Description
 -----------
-Creates an empty, not set, gtool.
+Creates an empty, not set, GTool.
 ") Interface_GTool;
 		 Interface_GTool();
 
@@ -4639,7 +4638,7 @@ None
 
 Description
 -----------
-Creates a gtool from a protocol optional starting count of entities.
+Creates a GTool from a Protocol Optional starting count of entities.
 ") Interface_GTool;
 		 Interface_GTool(const opencascade::handle<Interface_Protocol> & proto, const Standard_Integer nbent = 0);
 
@@ -4652,7 +4651,7 @@ None
 
 Description
 -----------
-Clears the maps which record, for each already recorded entity its module and case number.
+Clears the maps which record, for each already recorded entity its Module and Case Number.
 ") ClearEntities;
 		void ClearEntities();
 
@@ -4665,7 +4664,7 @@ Interface_GeneralLib
 
 Description
 -----------
-Returns the generallib itself.
+Returns the GeneralLib itself.
 ") Lib;
 		Interface_GeneralLib & Lib();
 
@@ -4678,7 +4677,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol. warning: it can be null.
+Returns the Protocol. Warning: it can be Null.
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
@@ -4697,7 +4696,7 @@ None
 
 Description
 -----------
-Reservates maps for a count of entities <enforce> false: minimum count <enforce> true: clears former reservations does not clear the maps.
+Reservates maps for a count of entities <enforce> False: minimum count <enforce> True: clears former reservations Does not clear the maps.
 ") Reservate;
 		void Reservate(const Standard_Integer nb, const Standard_Boolean enforce = Standard_False);
 
@@ -4717,7 +4716,7 @@ CN: int
 
 Description
 -----------
-Selects for an entity, its module and case number it is optimised: once done for each entity, the result is mapped and the generallib is not longer queried <enforce> true overpasses this optimisation.
+Selects for an entity, its Module and Case Number It is optimised: once done for each entity, the result is mapped and the GeneralLib is not longer queried <enforce> True overpasses this optimisation.
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Interface_GeneralModule> & gmod, Standard_Integer &OutValue, const Standard_Boolean enforce = Standard_False);
 
@@ -4736,7 +4735,7 @@ None
 
 Description
 -----------
-Sets a new protocol if <enforce> is false and the new protocol equates the old one then nothing is done.
+Sets a new Protocol if <enforce> is False and the new Protocol equates the old one then nothing is done.
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & proto, const Standard_Boolean enforce = Standard_False);
 
@@ -4754,7 +4753,7 @@ None
 
 Description
 -----------
-Sets a new signtype.
+Sets a new SignType.
 ") SetSignType;
 		void SetSignType(const opencascade::handle<Interface_SignType> & sign);
 
@@ -4767,7 +4766,7 @@ str
 
 Description
 -----------
-Returns the name of the signtype, or 'class name'.
+Returns the Name of the SignType, or 'Class Name'.
 ") SignName;
 		Standard_CString SignName();
 
@@ -4780,7 +4779,7 @@ opencascade::handle<Interface_SignType>
 
 Description
 -----------
-Returns the signtype. can be null.
+Returns the SignType. Can be null.
 ") SignType;
 		opencascade::handle<Interface_SignType> SignType();
 
@@ -4799,7 +4798,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object in a model it calls signtype to do that if signtype is not defined, return classname of <ent>.
+Returns the Signature for a Transient Object in a Model It calls SignType to do that If SignType is not defined, return ClassName of <ent>.
 ") SignValue;
 		Standard_CString SignValue(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -4833,7 +4832,7 @@ None
 
 Description
 -----------
-Creates a library which complies with a protocol, that is: same class (criterium isinstance) this creation gets the modules from the global set, those which are bound to the given protocol and its resources.
+Creates a Library which complies with a Protocol, that is: Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources.
 ") Interface_GeneralLib;
 		 Interface_GeneralLib(const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -4846,7 +4845,7 @@ None
 
 Description
 -----------
-Creates an empty library: it will later by filled by method addprotocol.
+Creates an empty Library: it will later by filled by method AddProtocol.
 ") Interface_GeneralLib;
 		 Interface_GeneralLib();
 
@@ -4864,7 +4863,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) to the library, given the class of a protocol. takes resources into account. (if <aprotocol> is not of type theprotocol, it is not added).
+Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added).
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -4877,7 +4876,7 @@ None
 
 Description
 -----------
-Clears the list of modules of a library (can be used to redefine the order of modules before action: clear then refill the library by calls to addprotocol).
+Clears the list of Modules of a library (can be used to redefine the order of Modules before action: Clear then refill the Library by calls to AddProtocol).
 ") Clear;
 		void Clear();
 
@@ -4890,7 +4889,7 @@ opencascade::handle<Interface_GeneralModule>
 
 Description
 -----------
-Returns the current module in the iteration.
+Returns the current Module in the Iteration.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
@@ -4903,7 +4902,7 @@ bool
 
 Description
 -----------
-Returns true if there are more modules to iterate on.
+Returns True if there are more Modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
@@ -4916,7 +4915,7 @@ None
 
 Description
 -----------
-Iterates by getting the next module in the list if there is none, the exception will be raised by value.
+Iterates by getting the next Module in the list If there is none, the exception will be raised by Value.
 ") Next;
 		void Next();
 
@@ -4929,7 +4928,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the current protocol in the iteration.
+Returns the current Protocol in the Iteration.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -4948,7 +4947,7 @@ CN: int
 
 Description
 -----------
-Selects a module from the library, given an object. returns true if select has succeeded, false else. also returns (as arguments) the selected module and the case number determined by the associated protocol. if select has failed, <module> is null handle and cn is zero. (select can work on any criterium, such as object dynamictype).
+Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<Interface_GeneralModule> & module, Standard_Integer &OutValue);
 
@@ -4961,7 +4960,7 @@ None
 
 Description
 -----------
-Sets a library to be defined with the complete global list (all the couples protocol/modules recorded in it).
+Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it).
 ") SetComplete;
 		void SetComplete();
 
@@ -4980,7 +4979,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) into the global definition set for this class of library.
+Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_GeneralModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -4993,7 +4992,7 @@ None
 
 Description
 -----------
-Starts iteration on the modules (sets it on the first one).
+Starts Iteration on the Modules (sets it on the first one).
 ") Start;
 		void Start();
 
@@ -5027,7 +5026,7 @@ bool
 
 Description
 -----------
-Specific answer to the question 'is copy properly implemented' remark that it should be in phase with the implementation of newvoid+copycase/newcopycase default returns always false, can be redefined.
+Specific answer to the question 'is Copy properly implemented' Remark that it should be in phase with the implementation of NewVoid+CopyCase/NewCopyCase Default returns always False, can be redefined.
 ") CanCopy;
 		virtual Standard_Boolean CanCopy(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent);
 
@@ -5047,7 +5046,7 @@ int
 
 Description
 -----------
-Returns a category number which characterizes an entity category numbers are managed by the class category <shares> can be used to evaluate this number in the context default returns 0 which means 'unspecified'.
+Returns a category number which characterizes an entity Category Numbers are managed by the class Category <shares> can be used to evaluate this number in the context Default returns 0 which means 'unspecified'.
 ") CategoryNumber;
 		virtual Standard_Integer CategoryNumber(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
@@ -5068,7 +5067,7 @@ None
 
 Description
 -----------
-Specific checking of an entity <ent> can check context queried through a sharetool, as required.
+Specific Checking of an Entity <ent> Can check context queried through a ShareTool, as required.
 ") CheckCase;
 		virtual void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -5089,7 +5088,7 @@ None
 
 Description
 -----------
-Specific copy ('deep') from <entfrom> to <entto> (same type) by using a copytool which provides its working map. use method transferred from copytool to work.
+Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from CopyTool to work.
 ") CopyCase;
 		virtual void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -5110,7 +5109,7 @@ bool
 
 Description
 -----------
-Dispatches an entity returns true if it works by copy, false if it just duplicates the starting handle //! dispatching means producing a new entity, image of the starting one, in order to be put into a new model, this model being itself the result of a dispatch from an original model //! according to the cases, dispatch can either * just return <entto> as equating <entfrom> -> the new model designates the starting entity: it is lighter, but the dispatched entity being shared might not be modified for dispatch * copy <entfrom> to <entto> by calling newvoid+copycase (two steps) or newcopiedcase (1) -> the dispatched entity is a copy, hence it can be modified //! the provided default just duplicates the handle without copying, then returns false. can be redefined.
+Dispatches an entity Returns True if it works by copy, False if it just duplicates the starting Handle //! Dispatching means producing a new entity, image of the starting one, in order to be put into a new Model, this Model being itself the result of a dispatch from an original Model //! According to the cases, dispatch can either * just return <entto> as equating <entfrom> -> the new model designates the starting entity: it is lighter, but the dispatched entity being shared might not be modified for dispatch * copy <entfrom> to <entto> by calling NewVoid+CopyCase (two steps) or NewCopiedCase (1) -> the dispatched entity is a COPY, hence it can be modified //! The provided default just duplicates the handle without copying, then returns False. Can be redefined.
 ") Dispatch;
 		virtual Standard_Boolean Dispatch(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -5131,7 +5130,7 @@ None
 
 Description
 -----------
-Specific filling of the list of entities shared by an entity <ent>, according a case number <cn> (formerly computed by casenum), considered in the context of a model <model> default calls fillsharedcase (i.e., ignores the model) can be redefined to use the model for working.
+Specific filling of the list of Entities shared by an Entity <ent>, according a Case Number <CN> (formerly computed by CaseNum), considered in the context of a Model <model> Default calls FillSharedCase (i.e., ignores the model) Can be redefined to use the model for working.
 ") FillShared;
 		virtual void FillShared(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -5151,7 +5150,7 @@ None
 
 Description
 -----------
-Specific filling of the list of entities shared by an entity <ent>, according a case number <cn> (formerly computed by casenum). can use the internal utility method share, below.
+Specific filling of the list of Entities shared by an Entity <ent>, according a Case Number <CN> (formerly computed by CaseNum). Can use the internal utility method Share, below.
 ") FillSharedCase;
 		virtual void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -5172,7 +5171,7 @@ None
 
 Description
 -----------
-List the implied references of <ent> considered in the context of a model <model>: i.e. the entities which are referenced while not considered as shared (not copied if <ent> is, references not renewed by copycase but by impliedcase, only if referenced entities have been copied too) fillshared + listimplied give the complete list of references default calls listimpliedcase (i.e. ignores the model) can be redefined to use the model for working.
+List the Implied References of <ent> considered in the context of a Model <model>: i.e. the Entities which are Referenced while not considered as Shared (not copied if <ent> is, references not renewed by CopyCase but by ImpliedCase, only if referenced Entities have been Copied too) FillShared + ListImplied give the complete list of References Default calls ListImpliedCase (i.e. ignores the model) Can be redefined to use the model for working.
 ") ListImplied;
 		virtual void ListImplied(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -5192,7 +5191,7 @@ None
 
 Description
 -----------
-List the implied references of <ent> (see above) are referenced while not considered as shared (not copied if <ent> is, references not renewed by copycase but by impliedcase, only if referenced entities have been copied too) fillsharedcase + listimpliedcase give the complete list of referenced entities the provided default method does nothing (implied references are specific of a little amount of entity classes).
+List the Implied References of <ent> (see above) are Referenced while not considered as Shared (not copied if <ent> is, references not renewed by CopyCase but by ImpliedCase, only if referenced Entities have been Copied too) FillSharedCase + ListImpliedCase give the complete list of Referenced Entities The provided default method does nothing (Implied References are specific of a little amount of Entity Classes).
 ") ListImpliedCase;
 		virtual void ListImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -5212,7 +5211,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Determines if an entity brings a name (or widerly, if a name can be attached to it, through the sharetool by default, returns a null handle (no name can be produced) can be redefined //! warning: while this string may be edited on the spot, if it is a read field, the returned value must be copied before.
+Determines if an entity brings a Name (or widerly, if a Name can be attached to it, through the ShareTool By default, returns a Null Handle (no name can be produced) Can be redefined //! Warning: While this string may be edited on the spot, if it is a read field, the returned value must be copied before.
 ") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
@@ -5233,7 +5232,7 @@ bool
 
 Description
 -----------
-Specific operator (create+copy) defaulted to do nothing. it can be redefined: when it is not possible to work in two steps (newvoid then copycase). this can occur when there is no default constructor: hence the result <entto> must be created with an effective definition. remark: if newcopiedcase is defined, copycase has nothing to do returns true if it has produced something, false else.
+Specific operator (create+copy) defaulted to do nothing. It can be redefined: When it is not possible to work in two steps (NewVoid then CopyCase). This can occur when there is no default constructor: hence the result <entto> must be created with an effective definition. Remark: if NewCopiedCase is defined, CopyCase has nothing to do Returns True if it has produced something, false else.
 ") NewCopiedCase;
 		virtual Standard_Boolean NewCopiedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -5252,7 +5251,7 @@ bool
 
 Description
 -----------
-Creates a new void entity <entto> according to a case number this entity remains to be filled, by reading from a file or by copying from another entity of same type (see copycase).
+Creates a new void entity <entto> according to a Case Number This entity remains to be filled, by reading from a file or by copying from another entity of same type (see CopyCase).
 ") NewVoid;
 		virtual Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
 
@@ -5273,7 +5272,7 @@ None
 
 Description
 -----------
-Specific copying of implied references a default is provided which does nothing (must current case !) already copied references (by copyfrom) must remain unchanged use method search from copytool to work.
+Specific Copying of Implied References A Default is provided which does nothing (must current case !) Already copied references (by CopyFrom) must remain unchanged Use method Search from CopyTool to work.
 ") RenewImpliedCase;
 		virtual void RenewImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, const Interface_CopyTool & TC);
 
@@ -5292,7 +5291,7 @@ None
 
 Description
 -----------
-Adds an entity to a shared list (uses getoneitem on <iter>).
+Adds an Entity to a Shared List (uses GetOneItem on <iter>).
 ") Share;
 		void Share(Interface_EntityIterator & iter, const opencascade::handle<Standard_Transient> & shared);
 
@@ -5312,7 +5311,7 @@ None
 
 Description
 -----------
-Prepares an entity to be deleted. what does it mean: basically, any class of entity may define its own destructor by default, it does nothing but calling destructors on fields with the memory manager, it is useless to call destructor, it is done automatically when the handle is nullified(cleared) but this is ineffective in looping structures (whatever these are 'implied' references or not). //! thus: if no loop may appear in definitions, a class which inherits from tshared is correctly managed by automatic way but if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes the default does nothing, to be redefined if a loop can occur (implied generally requires whendelete, but other cases can occur) //! warning: <dispatched> tells if the entity to be deleted has been produced by dispatch or not. hence whendelete must be in coherence with dispatch dispatch can either copy or not. if it copies the entity, this one should be deleted if it doesn't (i.e. duplicates the handle) nothing to do //! if <dispatch> is false, normal deletion is to be performed.
+Prepares an entity to be deleted. What does it mean: Basically, any class of entity may define its own destructor By default, it does nothing but calling destructors on fields With the Memory Manager, it is useless to call destructor, it is done automatically when the Handle is nullified(cleared) BUT this is ineffective in looping structures (whatever these are 'Implied' references or not). //! THUS: if no loop may appear in definitions, a class which inherits from TShared is correctly managed by automatic way BUT if there can be loops (or simply back pointers), they must be broken, for instance by clearing fields of one of the nodes The default does nothing, to be redefined if a loop can occur (Implied generally requires WhenDelete, but other cases can occur) //! Warning: <dispatched> tells if the entity to be deleted has been produced by Dispatch or not. Hence WhenDelete must be in coherence with Dispatch Dispatch can either copy or not. If it copies the entity, this one should be deleted If it doesn't (i.e. duplicates the handle) nothing to do //! If <dispatch> is False, normal deletion is to be performed.
 ") WhenDeleteCase;
 		virtual void WhenDeleteCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean dispatched);
 
@@ -5341,7 +5340,7 @@ None
 
 Description
 -----------
-Creates an empty globalnode, with no next.
+Creates an empty GlobalNode, with no Next.
 ") Interface_GlobalNodeOfGeneralLib;
 		 Interface_GlobalNodeOfGeneralLib();
 
@@ -5360,7 +5359,7 @@ None
 
 Description
 -----------
-Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
+Adds a Module bound with a Protocol to the list: does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondence.
 ") Add;
 		void Add(const opencascade::handle<Interface_GeneralModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -5373,7 +5372,7 @@ opencascade::handle<Interface_GeneralModule>
 
 Description
 -----------
-Returns the module stored in a given globalnode.
+Returns the Module stored in a given GlobalNode.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
@@ -5386,7 +5385,7 @@ opencascade::handle<Interface_GlobalNodeOfGeneralLib>
 
 Description
 -----------
-Returns the next globalnode. if none is defined, returned value is a null handle.
+Returns the Next GlobalNode. If none is defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<Interface_GlobalNodeOfGeneralLib> & Next();
 
@@ -5399,7 +5398,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the attached protocol stored in a given globalnode.
+Returns the attached Protocol stored in a given GlobalNode.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -5428,7 +5427,7 @@ None
 
 Description
 -----------
-Creates an empty globalnode, with no next.
+Creates an empty GlobalNode, with no Next.
 ") Interface_GlobalNodeOfReaderLib;
 		 Interface_GlobalNodeOfReaderLib();
 
@@ -5447,7 +5446,7 @@ None
 
 Description
 -----------
-Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
+Adds a Module bound with a Protocol to the list: does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondence.
 ") Add;
 		void Add(const opencascade::handle<Interface_ReaderModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -5460,7 +5459,7 @@ opencascade::handle<Interface_ReaderModule>
 
 Description
 -----------
-Returns the module stored in a given globalnode.
+Returns the Module stored in a given GlobalNode.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
@@ -5473,7 +5472,7 @@ opencascade::handle<Interface_GlobalNodeOfReaderLib>
 
 Description
 -----------
-Returns the next globalnode. if none is defined, returned value is a null handle.
+Returns the Next GlobalNode. If none is defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<Interface_GlobalNodeOfReaderLib> & Next();
 
@@ -5486,7 +5485,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the attached protocol stored in a given globalnode.
+Returns the attached Protocol stored in a given GlobalNode.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -5522,7 +5521,7 @@ None
 
 Description
 -----------
-Creates an empty graph, ready to receive entities from amodel note that this way of creation allows <self> to verify that entities to work with are contained in <amodel> basic shared and sharing lists are obtained from a general services library, given directly as an argument.
+Creates an empty graph, ready to receive Entities from amodel Note that this way of Creation allows <self> to verify that Entities to work with are contained in <amodel> Basic Shared and Sharing lists are obtained from a General Services Library, given directly as an argument.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib, const Standard_Boolean theModeStats = Standard_True);
 
@@ -5542,7 +5541,7 @@ None
 
 Description
 -----------
-Same as above, but the library is defined through a protocol.
+Same as above, but the Library is defined through a Protocol.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean theModeStats = Standard_True);
 
@@ -5562,7 +5561,7 @@ None
 
 Description
 -----------
-Same as above, but the library is defined through a protocol.
+Same as above, but the Library is defined through a Protocol.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool, const Standard_Boolean theModeStats = Standard_True);
 
@@ -5581,7 +5580,7 @@ None
 
 Description
 -----------
-Same a above but works with the protocol recorded in the model.
+Same a above but works with the Protocol recorded in the Model.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Standard_Boolean theModeStats = Standard_True);
 
@@ -5600,7 +5599,7 @@ None
 
 Description
 -----------
-Creates a graph from another one, getting all its data remark that status are copied from <agraph>, but the other lists (sharing/shared) are copied only if <copied> = true.
+Creates a Graph from another one, getting all its data Remark that status are copied from <agraph>, but the other lists (sharing/shared) are copied only if <copied> = True.
 ") Interface_Graph;
 		 Interface_Graph(const Interface_Graph & agraph, const Standard_Boolean copied = Standard_False);
 
@@ -5613,7 +5612,7 @@ Interface_BitMap
 
 Description
 -----------
-Returns the bit map in order to read or edit flag values.
+Returns the Bit Map in order to read or edit flag values.
 ") BitMap;
 		const Interface_BitMap & BitMap();
 
@@ -5626,7 +5625,7 @@ Interface_BitMap
 
 Description
 -----------
-Returns the bit map in order to edit it (add new flags).
+Returns the Bit Map in order to edit it (add new flags).
 ") CBitMap;
 		Interface_BitMap & CBitMap();
 
@@ -5663,7 +5662,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns mapped entity given its no (if it is present).
+Returns mapped Entity given its no (if it is present).
 ") Entity;
 		const opencascade::handle<Standard_Transient> & Entity(const Standard_Integer num);
 
@@ -5681,7 +5680,7 @@ int
 
 Description
 -----------
-Returns the number of the entity in the map, computed at creation time (entities loaded from the model) returns 0 if <ent> not contained by model used to create <self> (that is, <ent> is unknown from <self>).
+Returns the Number of the entity in the Map, computed at creation time (Entities loaded from the Model) Returns 0 if <ent> not contained by Model used to create <self> (that is, <ent> is unknown from <self>).
 ") EntityNumber;
 		Standard_Integer EntityNumber(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5701,7 +5700,7 @@ None
 
 Description
 -----------
-Gets an entity, plus its shared ones (at every level) if 'shared' is true. new items are set to status 'newstat' items already present in graph remain unchanged of course, redefinitions of shared lists are taken into account if there are some.
+Gets an Entity, plus its shared ones (at every level) if 'shared' is True. New items are set to status 'newstat' Items already present in graph remain unchanged Of course, redefinitions of Shared lists are taken into account if there are some.
 ") GetFromEntity;
 		void GetFromEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean shared, const Standard_Integer newstat = 0);
 
@@ -5723,7 +5722,7 @@ None
 
 Description
 -----------
-Gets an entity, plus its shared ones (at every level) if 'shared' is true. new items are set to status 'newstat'. items already present in graph are processed as follows: - if they already have status 'newstat', they remain unchanged - if they have another status, this one is modified: if cumul is true, to former status + overlapstat (cumul) if cumul is false, to overlapstat (enforce).
+Gets an Entity, plus its shared ones (at every level) if 'shared' is True. New items are set to status 'newstat'. Items already present in graph are processed as follows: - if they already have status 'newstat', they remain unchanged - if they have another status, this one is modified: if cumul is True, to former status + overlapstat (cumul) if cumul is False, to overlapstat (enforce).
 ") GetFromEntity;
 		void GetFromEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean shared, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul);
 
@@ -5760,7 +5759,7 @@ None
 
 Description
 -----------
-Gets items from another graph which have a specific status.
+Gets items from another graph which have a specific Status.
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph, const Standard_Integer stat);
 
@@ -5779,7 +5778,7 @@ None
 
 Description
 -----------
-Gets entities given by an entityiterator. entities which were not yet present in the graph are mapped with status 'newstat' entities already present remain unchanged.
+Gets Entities given by an EntityIterator. Entities which were not yet present in the graph are mapped with status 'newstat' Entities already present remain unchanged.
 ") GetFromIter;
 		void GetFromIter(const Interface_EntityIterator & iter, const Standard_Integer newstat);
 
@@ -5800,7 +5799,7 @@ None
 
 Description
 -----------
-Gets entities given by an entityiterator and distinguishes those already present in the graph: - new entities added to the graph with status 'newstst' - entities already present with status = 'newstat' remain unchanged - entities already present with status different form 'newstat' have their status modified: if cumul is true, to former status + overlapstat (cumul) if cumul is false, to overlapstat (enforce) (note: works as getentity, shared = false, for each entity).
+Gets Entities given by an EntityIterator and distinguishes those already present in the Graph: - new entities added to the Graph with status 'newstst' - entities already present with status = 'newstat' remain unchanged - entities already present with status different form 'newstat' have their status modified: if cumul is True, to former status + overlapstat (cumul) if cumul is False, to overlapstat (enforce) (Note: works as GetEntity, shared = False, for each entity).
 ") GetFromIter;
 		void GetFromIter(const Interface_EntityIterator & iter, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul);
 
@@ -5813,7 +5812,7 @@ None
 
 Description
 -----------
-Loads graph with all entities contained in the model.
+Loads Graph with all Entities contained in the Model.
 ") GetFromModel;
 		void GetFromModel();
 
@@ -5831,7 +5830,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the sequence of entities shared by an entity.
+Returns the sequence of Entities Shared by an Entity.
 ") GetShareds;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetShareds(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5849,7 +5848,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the sequence of entities sharings by an entity.
+Returns the sequence of Entities Sharings by an Entity.
 ") GetSharings;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetSharings(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5867,7 +5866,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> or the list of entities shared by <ent> (not redefined) contains items unknown from this graph remark: apart from the status hasshareerror, these items are ignored.
+Returns True if <ent> or the list of entities shared by <ent> (not redefined) contains items unknown from this Graph Remark: apart from the status HasShareError, these items are ignored.
 ") HasShareErrors;
 		Standard_Boolean HasShareErrors(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5885,7 +5884,7 @@ bool
 
 Description
 -----------
-Returns true if an entity is noted as present in the graph (see methods get... which determine this status) returns false if <num> is out of range too.
+Returns True if an Entity is noted as present in the graph (See methods Get... which determine this status) Returns False if <num> is out of range too.
 ") IsPresent;
 		Standard_Boolean IsPresent(const Standard_Integer num);
 
@@ -5903,7 +5902,7 @@ bool
 
 Description
 -----------
-Same as above but directly on an entity <ent>: if it is not contained in the model, returns false. else calls ispresent(num) with <num> given by entitynumber.
+Same as above but directly on an Entity <ent>: if it is not contained in the Model, returns False. Else calls IsPresent(num) with <num> given by EntityNumber.
 ") IsPresent;
 		Standard_Boolean IsPresent(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5929,7 +5928,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model with which this graph was created.
+Returns the Model with which this Graph was created.
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
@@ -5947,7 +5946,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Determines the name attached to an entity, by using the general service name in generalmodule returns a null handle if no name could be computed or if the entity is not in the model.
+Determines the name attached to an entity, by using the general service Name in GeneralModule Returns a null handle if no name could be computed or if the entity is not in the model.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5978,7 +5977,7 @@ None
 
 Description
 -----------
-Clears entity and sets status to 0, for a numero.
+Clears Entity and sets Status to 0, for a numero.
 ") RemoveItem;
 		void RemoveItem(const Standard_Integer num);
 
@@ -6009,7 +6008,7 @@ None
 
 Description
 -----------
-Erases data, making graph ready to rebegin from void (also resets shared lists redefinitions).
+Erases data, making graph ready to rebegin from void (also resets Shared lists redefinitions).
 ") Reset;
 		void Reset();
 
@@ -6022,7 +6021,7 @@ None
 
 Description
 -----------
-Erases status (values and flags of presence), making graph ready to rebegin from void. does not concerns shared lists.
+Erases Status (Values and Flags of Presence), making graph ready to rebegin from void. Does not concerns Shared lists.
 ") ResetStatus;
 		void ResetStatus();
 
@@ -6035,7 +6034,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the entities which are not shared (their sharing list is empty) in the model.
+Returns the Entities which are not Shared (their Sharing List is empty) in the Model.
 ") RootEntities;
 		Interface_EntityIterator RootEntities();
 
@@ -6054,7 +6053,7 @@ None
 
 Description
 -----------
-Modifies status associated to a numero.
+Modifies Status associated to a numero.
 ") SetStatus;
 		void SetStatus(const Standard_Integer num, const Standard_Integer stat);
 
@@ -6072,7 +6071,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities shared by an entity, as recorded by the graph. that is, by default basic shared list, else it can be redefined by methods setshare, setnoshare ... see below.
+Returns the list of Entities Shared by an Entity, as recorded by the Graph. That is, by default Basic Shared List, else it can be redefined by methods SetShare, SetNoShare ... see below.
 ") Shareds;
 		Interface_EntityIterator Shareds(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6085,7 +6084,7 @@ opencascade::handle<TColStd_HArray1OfListOfInteger>
 
 Description
 -----------
-Returns the table of sharing lists. used to create another graph from <self>.
+Returns the Table of Sharing lists. Used to Create another Graph from <self>.
 ") SharingTable;
 		const opencascade::handle<TColStd_HArray1OfListOfInteger> & SharingTable();
 
@@ -6103,7 +6102,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities which share an entity, computed from the basic or redefined shared lists.
+Returns the list of Entities which Share an Entity, computed from the Basic or Redefined Shared Lists.
 ") Sharings;
 		Interface_EntityIterator Sharings(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6116,7 +6115,7 @@ int
 
 Description
 -----------
-Returns size (max nb of entities, i.e. model's nb of entities).
+Returns size (max nb of entities, i.e. Model's nb of entities).
 ") Size;
 		Standard_Integer Size();
 
@@ -6134,7 +6133,7 @@ int
 
 Description
 -----------
-Returns status associated to a numero (only to read it).
+Returns Status associated to a numero (only to read it).
 ") Status;
 		Standard_Integer Status(const Standard_Integer num);
 
@@ -6153,7 +6152,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of sharings entities, at any level, which are kind of a given type. a sharing entity kind of this type ends the exploration of its branch.
+Returns the list of sharings entities, AT ANY LEVEL, which are kind of a given type. A sharing entity kind of this type ends the exploration of its branch.
 ") TypedSharings;
 		Interface_EntityIterator TypedSharings(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & type);
 
@@ -6185,7 +6184,7 @@ None
 
 Description
 -----------
-Creates an hgraph directly from a graph. remark that the starting graph is duplicated.
+Creates an HGraph directly from a Graph. Remark that the starting Graph is duplicated.
 ") Interface_HGraph;
 		 Interface_HGraph(const Interface_Graph & agraph);
 
@@ -6205,7 +6204,7 @@ None
 
 Description
 -----------
-Creates an hgraph with a graph created from <amodel> and <lib>.
+Creates an HGraph with a Graph created from <amodel> and <lib>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib, const Standard_Boolean theModeStats = Standard_True);
 
@@ -6225,7 +6224,7 @@ None
 
 Description
 -----------
-Creates an hgraph with a graph itself created from <amodel> and <protocol>.
+Creates an HGraph with a graph itself created from <amodel> and <protocol>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean theModeStats = Standard_True);
 
@@ -6245,7 +6244,7 @@ None
 
 Description
 -----------
-Creates an hgraph with a graph itself created from <amodel> and <protocol>.
+Creates an HGraph with a graph itself created from <amodel> and <protocol>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool, const Standard_Boolean theModeStats = Standard_True);
 
@@ -6264,7 +6263,7 @@ None
 
 Description
 -----------
-Same a above, but works with the gtool in the model.
+Same a above, but works with the GTool in the model.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Standard_Boolean theModeStats = Standard_True);
 
@@ -6277,7 +6276,7 @@ Interface_Graph
 
 Description
 -----------
-Same as above, but for read-write operations then, the graph will be modified in the hgraph itself.
+Same as above, but for Read-Write Operations Then, The Graph will be modified in the HGraph itself.
 ") CGraph;
 		Interface_Graph & CGraph();
 
@@ -6290,7 +6289,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the graph contained in <self>, for read only operations remark that it is returns as 'const &' getting it in a new variable instead of a reference would be a pity, because all the graph's content would be duplicated.
+Returns the Graph contained in <self>, for Read Only Operations Remark that it is returns as 'const &' Getting it in a new variable instead of a reference would be a pity, because all the graph's content would be duplicated.
 ") Graph;
 		const Interface_Graph & Graph();
 
@@ -6319,7 +6318,7 @@ None
 
 Description
 -----------
-Creates empty intlist.
+Creates empty IntList.
 ") Interface_IntList;
 		 Interface_IntList();
 
@@ -6337,7 +6336,7 @@ None
 
 Description
 -----------
-Creates an intlist for <nbe> entities.
+Creates an IntList for <nbe> entities.
 ") Interface_IntList;
 		 Interface_IntList(const Standard_Integer nbe);
 
@@ -6356,7 +6355,7 @@ None
 
 Description
 -----------
-Creates an intlist from another one. if <copied> is true, copies data else, data are not copied, only the header object is.
+Creates an IntList from another one. if <copied> is True, copies data else, data are not copied, only the header object is.
 ") Interface_IntList;
 		 Interface_IntList(const Interface_IntList & other, const Standard_Boolean copied);
 
@@ -6374,7 +6373,7 @@ None
 
 Description
 -----------
-Adds a reference (as an integer value, an entity number) to the current entity number. zero is ignored.
+Adds a reference (as an integer value, an entity number) to the current entity number. Zero is ignored.
 ") Add;
 		void Add(const Standard_Integer ref);
 
@@ -6392,7 +6391,7 @@ None
 
 Description
 -----------
-Resizes lists to exact sizes. for list of refs, a positive margin can be added.
+Resizes lists to exact sizes. For list of refs, a positive margin can be added.
 ") AdjustSize;
 		void AdjustSize(const Standard_Integer margin = 0);
 
@@ -6423,7 +6422,7 @@ None
 
 Description
 -----------
-Initialize intlist by number of entities.
+Initialize IntList by number of entities.
 ") Initialize;
 		void Initialize(const Standard_Integer nbe);
 
@@ -6460,7 +6459,7 @@ bool
 
 Description
 -----------
-Returns true if the list for a number (default is taken as current) is 'redefined' (useful for empty list).
+Returns True if the list for a number (default is taken as current) is 'redefined' (useful for empty list).
 ") IsRedefined;
 		Standard_Boolean IsRedefined(const Standard_Integer num = 0);
 
@@ -6492,7 +6491,7 @@ Interface_IntList
 
 Description
 -----------
-Returns an intlist, identical to <self> but set to a specified entity number by default, not copied (in order to be read) specified <copied> to produce another list and edit it.
+Returns an IntList, identical to <self> but set to a specified entity Number By default, not copied (in order to be read) Specified <copied> to produce another list and edit it.
 ") List;
 		Interface_IntList List(const Standard_Integer number, const Standard_Boolean copied = Standard_False);
 
@@ -6505,7 +6504,7 @@ int
 
 Description
 -----------
-Returns count of entities to be aknowledged.
+Returns count of entities to be acknowledged.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
@@ -6536,7 +6535,7 @@ bool
 
 Description
 -----------
-Removes an item in the list for current number, given its rank returns true if done, false else.
+Removes an item in the list for current number, given its rank Returns True if done, False else.
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer num);
 
@@ -6554,7 +6553,7 @@ None
 
 Description
 -----------
-Makes a reservation for <count> references to be later attached to the current entity. if required, it increases the size of array used to store refs. remark that if count is less than two, it does nothing (because immediate storing).
+Makes a reservation for <count> references to be later attached to the current entity. If required, it increases the size of array used to store refs. Remark that if count is less than two, it does nothing (because immediate storing).
 ") Reservate;
 		void Reservate(const Standard_Integer count);
 
@@ -6608,7 +6607,7 @@ None
 
 Description
 -----------
-Sets current entity list to be redefined or not this is used in a graph for redefinition list: it can be disable (no redefinition, i.e. list is cleared), or enabled (starts as empty). the original list has not to be 'redefined'.
+Sets current entity list to be redefined or not This is used in a Graph for redefinition list: it can be disable (no redefinition, i.e. list is cleared), or enabled (starts as empty). The original list has not to be 'redefined'.
 ") SetRedefined;
 		void SetRedefined(const Standard_Boolean mode);
 
@@ -6714,7 +6713,7 @@ None
 
 Description
 -----------
-Internal method for adding an entity. used by file reading (defined by each interface) and transfer tools. it adds the entity required to be added, not its refs: see addwithrefs. if <anentity> is a reportentity, it is added to the list of reports, its concerned entity (erroneous or corrected, else unknown) is added to the list of entities. that is, the reportentity must be created before adding.
+Internal method for adding an Entity. Used by file reading (defined by each Interface) and Transfer tools. It adds the entity required to be added, not its refs: see AddWithRefs. If <anentity> is a ReportEntity, it is added to the list of Reports, its Concerned Entity (Erroneous or Corrected, else Unknown) is added to the list of Entities. That is, the ReportEntity must be created before Adding.
 ") AddEntity;
 		virtual void AddEntity(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -6733,7 +6732,7 @@ bool
 
 Description
 -----------
-Adds a reportentity as such. returns false if the concerned entity is not recorded in the model else, adds it into, either the main report list or the list for semantic checks, then returns true.
+Adds a ReportEntity as such. Returns False if the concerned entity is not recorded in the Model Else, adds it into, either the main report list or the list for semantic checks, then returns True.
 ") AddReportEntity;
 		Standard_Boolean AddReportEntity(const opencascade::handle<Interface_ReportEntity> & rep, const Standard_Boolean semantic = Standard_False);
 
@@ -6754,7 +6753,7 @@ None
 
 Description
 -----------
-Adds to the model, an entity with all its references, as they are defined by general services fillshared and listimplied. process is recursive (any sub-levels) if <level> = 0 (default) else, adds sub-entities until the required sub-level. especially, if <level> = 1, adds immediate subs and that's all //! if <listall> is false (default), an entity (<anentity> itself or one of its subs at any level) which is already recorded in the model is not analysed, only the newly added ones are. if <listall> is true, all items are analysed (this allows to ensure the consistency of an adding made by steps).
+Adds to the Model, an Entity with all its References, as they are defined by General Services FillShared and ListImplied. Process is recursive (any sub-levels) if <level> = 0 (Default) Else, adds sub-entities until the required sub-level. Especially, if <level> = 1, adds immediate subs and that's all //! If <listall> is False (Default), an entity (<anentity> itself or one of its subs at any level) which is already recorded in the Model is not analysed, only the newly added ones are. If <listall> is True, all items are analysed (this allows to ensure the consistency of an adding made by steps).
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const opencascade::handle<Interface_Protocol> & proto, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
@@ -6774,7 +6773,7 @@ None
 
 Description
 -----------
-Same as above, but works with the protocol of the model.
+Same as above, but works with the Protocol of the Model.
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
@@ -6795,7 +6794,7 @@ None
 
 Description
 -----------
-Same as above, but works with an already created generallib.
+Same as above, but works with an already created GeneralLib.
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const Interface_GeneralLib & lib, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
@@ -6833,7 +6832,7 @@ None
 
 Description
 -----------
-Changes the numbers of some entities: <oldnum> is moved to <newnum>, same for <count> entities. thus: 1,2 ... newnum-1 newnum ... oldnum .. oldnum+count oldnum+count+1 .. gives 1,2 ... newnum-1 oldnum .. oldnum+count newnum ... oldnum+count+1 (can be seen as a circular permutation).
+Changes the Numbers of some Entities: <oldnum> is moved to <newnum>, same for <count> entities. Thus: 1,2 ... newnum-1 newnum ... oldnum .. oldnum+count oldnum+count+1 .. gives 1,2 ... newnum-1 oldnum .. oldnum+count newnum ... oldnum+count+1 (can be seen as a circular permutation).
 ") ChangeOrder;
 		void ChangeOrder(const Standard_Integer oldnum, const Standard_Integer newnum, const Standard_Integer count = 1);
 
@@ -6852,7 +6851,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check attached to an entity, designated by its number. 0 for global check <semantic> true: recorded semantic check <semantic> false: recorded syntactic check (see reportentity) if no check is recorded for <num>, returns an empty check.
+Returns the check attached to an entity, designated by its Number. 0 for global check <semantic> True: recorded semantic check <semantic> False: recorded syntactic check (see ReportEntity) If no check is recorded for <num>, returns an empty Check.
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const Standard_Integer num, const Standard_Boolean syntactic);
 
@@ -6870,7 +6869,7 @@ str
 
 Description
 -----------
-From a cdl type name, returns the class part (package dropped) warning: buffered, to be immediately copied or printed.
+From a CDL Type Name, returns the Class part (package dropped) WARNING: buffered, to be immediately copied or printed.
 ") ClassName;
 		static Standard_CString ClassName(Standard_CString typnam);
 
@@ -6883,7 +6882,7 @@ None
 
 Description
 -----------
-Erases contained data; used when a model is copied to others: the new copied ones begin from clear clear calls specific method clearheader (see below).
+Erases contained data; used when a Model is copied to others: the new copied ones begin from clear Clear calls specific method ClearHeader (see below).
 ") Clear;
 		virtual void Clear();
 
@@ -6896,7 +6895,7 @@ None
 
 Description
 -----------
-Clears the entities; uses the general service whendelete, in addition to the standard memory manager; can be redefined.
+Clears the entities; uses the general service WhenDelete, in addition to the standard Memory Manager; can be redefined.
 ") ClearEntities;
 		virtual void ClearEntities();
 
@@ -6909,7 +6908,7 @@ None
 
 Description
 -----------
-Clears model's header: specific to each norm.
+Clears Model's header: specific to each norm.
 ") ClearHeader;
 		virtual void ClearHeader();
 
@@ -6940,7 +6939,7 @@ bool
 
 Description
 -----------
-Removes the reportentity attached to entity <num>. returns true if done, false if no reportentity was attached to <num>. warning: the caller must assume that this clearing is meaningful.
+Removes the ReportEntity attached to Entity <num>. Returns True if done, False if no ReportEntity was attached to <num>. Warning: the caller must assume that this clearing is meaningful.
 ") ClearReportEntity;
 		Standard_Boolean ClearReportEntity(const Standard_Integer num);
 
@@ -6958,7 +6957,7 @@ bool
 
 Description
 -----------
-Returns true if a model contains an entity (for a reportentity, looks for the reportentity itself and its concerned entity).
+Returns True if a Model contains an Entity (for a ReportEntity, looks for the ReportEntity itself AND its Concerned Entity).
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -6971,7 +6970,7 @@ None
 
 Description
 -----------
-Clears the list of entities (service whendelete).
+Clears the list of entities (service WhenDelete).
 ") Destroy;
 		void Destroy();
 
@@ -7002,7 +7001,7 @@ S: Standard_OStream
 
 Description
 -----------
-Dumps header in a short, easy to read, form, onto a stream <level> allows to print more or less parts of the header, if necessary. 0 for basic print.
+Dumps Header in a short, easy to read, form, onto a Stream <level> allows to print more or less parts of the header, if necessary. 0 for basic print.
 ") DumpHeader;
 		virtual void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
 
@@ -7015,7 +7014,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of all entities, as an iterator on entities (the entities themselves, not the reports).
+Returns the list of all Entities, as an Iterator on Entities (the Entities themselves, not the Reports).
 ") Entities;
 		Interface_EntityIterator Entities();
 
@@ -7033,7 +7032,7 @@ Interface_DataState
 
 Description
 -----------
-Returns the state of an entity, given its number.
+Returns the State of an entity, given its number.
 ") EntityState;
 		Interface_DataState EntityState(const Standard_Integer num);
 
@@ -7051,7 +7050,7 @@ None
 
 Description
 -----------
-Allows an entityiterator to get a list of entities.
+Allows an EntityIterator to get a list of Entities.
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
@@ -7070,7 +7069,7 @@ None
 
 Description
 -----------
-Fills the list of semantic checks. this list is computed (by checktool). hence, it can be stored in the model for later queries <clear> true (d): new list replaces <clear> false: new list is cumulated.
+Fills the list of semantic checks. This list is computed (by CheckTool). Hence, it can be stored in the model for later queries <clear> True (D): new list replaces <clear> False: new list is cumulated.
 ") FillSemanticChecks;
 		void FillSemanticChecks(const Interface_CheckIterator & checks, const Standard_Boolean clear = Standard_True);
 
@@ -7083,7 +7082,7 @@ opencascade::handle<Interface_GTool>
 
 Description
 -----------
-Returns the gtool, set by setprotocol or by setgtool.
+Returns the GTool, set by SetProtocol or by SetGTool.
 ") GTool;
 		opencascade::handle<Interface_GTool> GTool();
 
@@ -7101,7 +7100,7 @@ None
 
 Description
 -----------
-Gets header (data specific of a defined interface) from another interfacemodel; called from transfercopy.
+Gets header (data specific of a defined Interface) from another InterfaceModel; called from TransferCopy.
 ") GetFromAnother;
 		virtual void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -7119,7 +7118,7 @@ None
 
 Description
 -----------
-Gets contents from an entityiterator, prepared by a transfer tool (e.g transfercopy). starts from clear.
+Gets contents from an EntityIterator, prepared by a Transfer tool (e.g TransferCopy). Starts from clear.
 ") GetFromTransfer;
 		void GetFromTransfer(const Interface_EntityIterator & aniter);
 
@@ -7137,7 +7136,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the globalcheck, which memorizes messages global to the file (not specific to an entity), especially header.
+Returns the GlobalCheck, which memorizes messages global to the file (not specific to an Entity), especially Header.
 ") GlobalCheck;
 		const opencascade::handle<Interface_Check> & GlobalCheck(const Standard_Boolean syntactic = Standard_True);
 
@@ -7150,7 +7149,7 @@ bool
 
 Description
 -----------
-Returns true if semantic checks have been filled.
+Returns True if semantic checks have been filled.
 ") HasSemanticChecks;
 		Standard_Boolean HasSemanticChecks();
 
@@ -7186,7 +7185,7 @@ bool
 
 Description
 -----------
-Returns true if <num> identifies an error entity: in this case, a reportentity brings fail messages and possibly an 'undefined' content, see isredefinedentity.
+Returns True if <num> identifies an Error Entity: in this case, a ReportEntity brings Fail Messages and possibly an 'undefined' Content, see IsRedefinedEntity.
 ") IsErrorEntity;
 		Standard_Boolean IsErrorEntity(const Standard_Integer num);
 
@@ -7204,7 +7203,7 @@ bool
 
 Description
 -----------
-Returns true if <num> identifies an entity which content is redefined through a reportentity (i.e. with literal data only) this happens when an entity is syntactically erroneous in the way that its basic content remains empty. for more details (such as content itself), see reportentity.
+Returns True if <num> identifies an Entity which content is redefined through a ReportEntity (i.e. with literal data only) This happens when an entity is syntactically erroneous in the way that its basic content remains empty. For more details (such as content itself), see ReportEntity.
 ") IsRedefinedContent;
 		Standard_Boolean IsRedefinedContent(const Standard_Integer num);
 
@@ -7223,7 +7222,7 @@ bool
 
 Description
 -----------
-Returns true if <num> identifies a reportentity in the model hence, reportentity can be called. //! by default, queries main report, if <semantic> is true, it queries report for semantic check //! remember that a report entity can be defined for an unknown entity, or a corrected or erroneous (at read time) entity. the reportentity is defined before call to method addentity.
+Returns True if <num> identifies a ReportEntity in the Model Hence, ReportEntity can be called. //! By default, queries main report, if <semantic> is True, it queries report for semantic check //! Remember that a Report Entity can be defined for an Unknown Entity, or a Corrected or Erroneous (at read time) Entity. The ReportEntity is defined before call to method AddEntity.
 ") IsReportEntity;
 		Standard_Boolean IsReportEntity(const Standard_Integer num, const Standard_Boolean semantic = Standard_False);
 
@@ -7241,7 +7240,7 @@ bool
 
 Description
 -----------
-Returns true if <num> identifies an unknown entity: in this case, a reportentity with no check messages designates it.
+Returns True if <num> identifies an Unknown Entity: in this case, a ReportEntity with no Check Messages designates it.
 ") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity(const Standard_Integer num);
 
@@ -7267,7 +7266,7 @@ int
 
 Description
 -----------
-Returns count of contained entities.
+Returns count of contained Entities.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
@@ -7285,7 +7284,7 @@ int
 
 Description
 -----------
-Returns the count of distinct types under which an entity may be processed. defined by the protocol, which gives default as 1 (dynamic type).
+Returns the count of DISTINCT types under which an entity may be processed. Defined by the Protocol, which gives default as 1 (dynamic Type).
 ") NbTypes;
 		Standard_Integer NbTypes(const opencascade::handle<Standard_Transient> & ent);
 
@@ -7298,7 +7297,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns a new empty model, same type as <self> (whatever its type); called to copy parts a model into other ones, then followed by a call to getfromanother (header) then filling with specified entities, themselves copied.
+Returns a New Empty Model, same type as <self> (whatever its Type); called to Copy parts a Model into other ones, then followed by a call to GetFromAnother (Header) then filling with specified Entities, themselves copied.
 ") NewEmptyModel;
 		virtual opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
@@ -7318,7 +7317,7 @@ int
 
 Description
 -----------
-Searches a label which matches with one entity. begins from <lastnum>+1 (default:1) and scans the entities until <nbentities>. for the first which matches <label>, this method returns its number. returns 0 if nothing found can be called recursively (labels are not specified as unique) <exact>: if true (default), exact match is required else, checks the end of entity label //! this method is virtual, hence it can be redefined for a more efficient search (if exact is true).
+Searches a label which matches with one entity. Begins from <lastnum>+1 (default:1) and scans the entities until <NbEntities>. For the first which matches <label>, this method returns its Number. Returns 0 if nothing found Can be called recursively (labels are not specified as unique) <exact>: if True (default), exact match is required else, checks the END of entity label //! This method is virtual, hence it can be redefined for a more efficient search (if exact is true).
 ") NextNumberForLabel;
 		virtual Standard_Integer NextNumberForLabel(Standard_CString label, const Standard_Integer lastnum = 0, const Standard_Boolean exact = Standard_True);
 
@@ -7336,7 +7335,7 @@ int
 
 Description
 -----------
-Returns the number of an entity in the model if it contains it. else returns 0. for a reportentity, looks at concerned entity. returns the directory entry number of an entity in the model if it contains it. else returns 0. for a reportentity, looks at concerned entity.
+Returns the Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity. Returns the Directory entry Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity.
 ") Number;
 		Standard_Integer Number(const opencascade::handle<Standard_Transient> & anentity);
 
@@ -7355,7 +7354,7 @@ s: Standard_OStream
 
 Description
 -----------
-Prints identification of a given entity in <self>, in order to be printed in a list or phrase <mode> < 0: prints only its number <mode> = 1: just calls printlabel <mode> = 0 (d): prints its number plus '/' plus printlabel if <ent> == <self>, simply prints 'global' if <ent> is unknown, prints '/its type'.
+Prints identification of a given entity in <self>, in order to be printed in a list or phrase <mode> < 0: prints only its number <mode> = 1: just calls PrintLabel <mode> = 0 (D): prints its number plus '/' plus PrintLabel If <ent> == <self>, simply prints 'Global' If <ent> is unknown, prints '/its type'.
 ") Print;
 		void Print(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue, const Standard_Integer mode = 0);
 
@@ -7373,7 +7372,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to each norm, for a given entity. must only print label itself, in order to be included in a phrase. can call the result of stringlabel, but not obliged.
+Prints label specific to each norm, for a given entity. Must only print label itself, in order to be included in a phrase. Can call the result of StringLabel, but not obliged.
 ") PrintLabel;
 		virtual void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
@@ -7391,7 +7390,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to each norm in log format, for a given entity. by default, just calls printlabel, can be redefined.
+Prints label specific to each norm in log format, for a given entity. By default, just calls PrintLabel, can be redefined.
 ") PrintToLog;
 		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
@@ -7404,7 +7403,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol which has been set by setprotocol, or addwithrefs with protocol.
+Returns the Protocol which has been set by SetProtocol, or AddWithRefs with Protocol.
 ") Protocol;
 		virtual opencascade::handle<Interface_Protocol> Protocol();
 
@@ -7417,7 +7416,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of reportentities which redefine data (generally, if concerned entity is 'error', a literal content is added to it: this is a 'redefined entity'.
+Returns the list of ReportEntities which redefine data (generally, if concerned entity is 'Error', a literal content is added to it: this is a 'redefined entity'.
 ") Redefineds;
 		Interface_EntityIterator Redefineds();
 
@@ -7436,7 +7435,7 @@ None
 
 Description
 -----------
-Replace entity with number=nument on other entity - 'anent'.
+Replace Entity with Number=nument on other entity - 'anent'.
 ") ReplaceEntity;
 		void ReplaceEntity(const Standard_Integer nument, const opencascade::handle<Standard_Transient> & anent);
 
@@ -7455,7 +7454,7 @@ opencascade::handle<Interface_ReportEntity>
 
 Description
 -----------
-Returns a reportentity identified by its number in the model, or a null handle if <num> does not identify a reportentity. //! by default, queries main report, if <semantic> is true, it queries report for semantic check.
+Returns a ReportEntity identified by its number in the Model, or a Null Handle If <num> does not identify a ReportEntity. //! By default, queries main report, if <semantic> is True, it queries report for semantic check.
 ") ReportEntity;
 		opencascade::handle<Interface_ReportEntity> ReportEntity(const Standard_Integer num, const Standard_Boolean semantic = Standard_False);
 
@@ -7473,7 +7472,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of all reportentities, i.e. data about entities read with error or warning information (each item has to be casted to report entity then it can be queried for concerned entity, content, check ...) by default, returns the main reports, is <semantic> is true it returns the list for semantic checks.
+Returns the list of all ReportEntities, i.e. data about Entities read with Error or Warning information (each item has to be casted to Report Entity then it can be queried for Concerned Entity, Content, Check ...) By default, returns the main reports, is <semantic> is True it returns the list for semantic checks.
 ") Reports;
 		Interface_EntityIterator Reports(const Standard_Boolean semantic = Standard_False);
 
@@ -7491,7 +7490,7 @@ None
 
 Description
 -----------
-Does a reservation for the list of entities (for optimized storage management). if it is not called, storage management can be less efficient. <nbent> is the expected count of entities to store.
+Does a reservation for the List of Entities (for optimized storage management). If it is not called, storage management can be less efficient. <nbent> is the expected count of Entities to store.
 ") Reservate;
 		virtual void Reservate(const Standard_Integer nbent);
 
@@ -7509,7 +7508,7 @@ None
 
 Description
 -----------
-Reverses the numbers of the entities, between <after> and the total count of entities. thus, the entities: 1,2 ... after, after+1 ... nb-1, nb become numbered as: 1,2 ... after, nb, nb-1 ... after+1 by default (after = 0) the whole list of entities is reversed.
+Reverses the Numbers of the Entities, between <after> and the total count of Entities. Thus, the entities: 1,2 ... after, after+1 ... nb-1, nb become numbered as: 1,2 ... after, nb, nb-1 ... after+1 By default (after = 0) the whole list of Entities is reversed.
 ") ReverseOrders;
 		void ReverseOrders(const Standard_Integer after = 0);
 
@@ -7528,7 +7527,7 @@ bool
 
 Description
 -----------
-Records a category number for an entity number returns true when done, false if <num> is out of range.
+Records a category number for an entity number Returns True when done, False if <num> is out of range.
 ") SetCategoryNumber;
 		Standard_Boolean SetCategoryNumber(const Standard_Integer num, const Standard_Integer val);
 
@@ -7546,7 +7545,7 @@ None
 
 Description
 -----------
-Sets a gtool for this model, which already defines a protocol.
+Sets a GTool for this model, which already defines a Protocol.
 ") SetGTool;
 		void SetGTool(const opencascade::handle<Interface_GTool> & gtool);
 
@@ -7564,7 +7563,7 @@ None
 
 Description
 -----------
-Allows to modify globalcheck, after getting then completing it remark: it is syntactic check. semantics, see fillchecks.
+Allows to modify GlobalCheck, after getting then completing it Remark: it is SYNTACTIC check. Semantics, see FillChecks.
 ") SetGlobalCheck;
 		void SetGlobalCheck(const opencascade::handle<Interface_Check> & ach);
 
@@ -7582,7 +7581,7 @@ None
 
 Description
 -----------
-Sets a protocol for this model it is also set by a call to addwithrefs with protocol it is used for: dumpheader (as required), clearentities ...
+Sets a Protocol for this Model It is also set by a call to AddWithRefs with Protocol It is used for: DumpHeader (as required), ClearEntities ...
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & proto);
 
@@ -7601,7 +7600,7 @@ bool
 
 Description
 -----------
-Sets or replaces a reportentity for the entity <num>. returns true if report is replaced, false if it has been replaced warning: the caller must assume that this setting is meaningful.
+Sets or Replaces a ReportEntity for the Entity <num>. Returns True if Report is replaced, False if it has been replaced Warning: the caller must assume that this setting is meaningful.
 ") SetReportEntity;
 		Standard_Boolean SetReportEntity(const Standard_Integer num, const opencascade::handle<Interface_ReportEntity> & rep);
 
@@ -7620,7 +7619,7 @@ bool
 
 Description
 -----------
-Records a new template model with a name. if the name was already recorded, the corresponding template is replaced by the new one. then, warning: test hastemplate to avoid surprises.
+Records a new template model with a name. If the name was already recorded, the corresponding template is replaced by the new one. Then, WARNING: test HasTemplate to avoid surprises.
 ") SetTemplate;
 		static Standard_Boolean SetTemplate(Standard_CString name, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7638,7 +7637,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a string with the label attached to a given entity. warning: while this string may be edited on the spot, if it is a read field, the returned value must be copied before.
+Returns a string with the label attached to a given entity. Warning: While this string may be edited on the spot, if it is a read field, the returned value must be copied before.
 ") StringLabel;
 		virtual opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
@@ -7656,7 +7655,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the template model attached to a name, or a null handle.
+Returns the template model attached to a name, or a Null Handle.
 ") Template;
 		static opencascade::handle<Interface_InterfaceModel> Template(Standard_CString name);
 
@@ -7675,7 +7674,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns a type, given its rank: defined by the protocol (by default, the first one).
+Returns a type, given its rank: defined by the Protocol (by default, the first one).
 ") Type;
 		opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer num = 1);
 
@@ -7694,7 +7693,7 @@ str
 
 Description
 -----------
-Returns the type name of an entity, from the list of types (one or more ...) <complete> true (d) gives the complete type, else packages are removed warning: buffered, to be immediately copied or printed.
+Returns the type name of an entity, from the list of types (one or more ...) <complete> True (D) gives the complete type, else packages are removed WARNING: buffered, to be immediately copied or printed.
 ") TypeName;
 		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
 
@@ -7712,7 +7711,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an entity identified by its number in the model each sub-class of interfacemodel can define its own method entity to return its specific class of entity (e.g. for vda, vdamodel returns a vdaentity), working by calling value remark: for a reported entity, (erroneous, corrected, unknown), this method returns this reported entity. see reportentity for other questions.
+Returns an Entity identified by its number in the Model Each sub-class of InterfaceModel can define its own method Entity to return its specific class of Entity (e.g. for VDA, VDAModel returns a VDAEntity), working by calling Value Remark: For a Reported Entity, (Erroneous, Corrected, Unknown), this method returns this Reported Entity. See ReportEntity for other questions.
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value(const Standard_Integer num);
 
@@ -7730,7 +7729,7 @@ None
 
 Description
 -----------
-Minimum semantic global check on data in model (header) can only check basic data. see also globalcheck from protocol for a check which takes the graph into account default does nothing, can be redefined.
+Minimum Semantic Global Check on data in model (header) Can only check basic Data. See also GlobalCheck from Protocol for a check which takes the Graph into account Default does nothing, can be redefined.
 ") VerifyCheck;
 		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
@@ -7764,7 +7763,7 @@ None
 
 Description
 -----------
-Creates a linebuffer with an absolute maximum size (default value is only to satisfy compiler requirement).
+Creates a LineBuffer with an absolute maximum size (Default value is only to satisfy compiler requirement).
 ") Interface_LineBuffer;
 		 Interface_LineBuffer(const Standard_Integer size = 10);
 
@@ -7782,7 +7781,7 @@ None
 
 Description
 -----------
-Adds a text as a cstring. its length is evaluated from the text (by c function strlen).
+Adds a text as a CString. Its Length is evaluated from the text (by C function strlen).
 ") Add;
 		void Add(Standard_CString text);
 
@@ -7801,7 +7800,7 @@ None
 
 Description
 -----------
-Adds a text as a cstring. its length is given as <lntext>.
+Adds a text as a CString. Its length is given as <lntext>.
 ") Add;
 		void Add(Standard_CString text, const Standard_Integer lntext);
 
@@ -7819,7 +7818,7 @@ None
 
 Description
 -----------
-Adds a text as a asciistring from tcollection.
+Adds a text as a AsciiString from TCollection.
 ") Add;
 		void Add(TCollection_AsciiString text);
 
@@ -7837,7 +7836,7 @@ None
 
 Description
 -----------
-Adds a text made of only one character.
+Adds a text made of only ONE Character.
 ") Add;
 		void Add(const Standard_Character text);
 
@@ -7855,7 +7854,7 @@ bool
 
 Description
 -----------
-Returns true if there is room enough to add <more> characters else, it is required to dump the buffer before refilling it <more> is recorded to manage setkeep status.
+Returns True if there is room enough to add <more> characters Else, it is required to Dump the Buffer before refilling it <more> is recorded to manage SetKeep status.
 ") CanGet;
 		Standard_Boolean CanGet(const Standard_Integer more);
 
@@ -7868,7 +7867,7 @@ None
 
 Description
 -----------
-Clears completely the linebuffer.
+Clears completely the LineBuffer.
 ") Clear;
 		void Clear();
 
@@ -7881,7 +7880,7 @@ str
 
 Description
 -----------
-Returns the content of the linebuffer.
+Returns the Content of the LineBuffer.
 ") Content;
 		Standard_CString Content();
 
@@ -7894,7 +7893,7 @@ None
 
 Description
 -----------
-Inhibits effect of setinitial until the next move (i.e. keep) then prepare will not insert initial blanks, but further ones will. this allows to cancel initial blanks on an internal split a call to setinitial has no effect on this until move.
+Inhibits effect of SetInitial until the next Move (i.e. Keep) Then Prepare will not insert initial blanks, but further ones will. This allows to cancel initial blanks on an internal Split A call to SetInitial has no effect on this until Move.
 ") FreezeInitial;
 		void FreezeInitial();
 
@@ -7907,7 +7906,7 @@ int
 
 Description
 -----------
-Returns the length of the linebuffer.
+Returns the Length of the LineBuffer.
 ") Length;
 		Standard_Integer Length();
 
@@ -7925,7 +7924,7 @@ None
 
 Description
 -----------
-Fills a asciistring <str> with the content of the line buffer, then clears the linebuffer.
+Fills a AsciiString <str> with the Content of the Line Buffer, then Clears the LineBuffer.
 ") Move;
 		void Move(TCollection_AsciiString & str);
 
@@ -7943,7 +7942,7 @@ None
 
 Description
 -----------
-Same as above, but <str> is known through a handle.
+Same as above, but <str> is known through a Handle.
 ") Move;
 		void Move(const opencascade::handle<TCollection_HAsciiString> & str);
 
@@ -7956,7 +7955,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Same as above, but generates the hasciistring.
+Same as above, but generates the HAsciiString.
 ") Moved;
 		opencascade::handle<TCollection_HAsciiString> Moved();
 
@@ -7974,7 +7973,7 @@ None
 
 Description
 -----------
-Sets an initial reservation for blank characters (this reservation is counted in the size of the current line).
+Sets an Initial reservation for Blank characters (this reservation is counted in the size of the current Line).
 ") SetInitial;
 		void SetInitial(const Standard_Integer initial);
 
@@ -7987,7 +7986,7 @@ None
 
 Description
 -----------
-Sets a keep status at current length. it means that at next move, the new line will begin by characters between keep + 1 and current length.
+Sets a Keep Status at current Length. It means that at next Move, the new line will begin by characters between Keep + 1 and current Length.
 ") SetKeep;
 		void SetKeep();
 
@@ -8005,7 +8004,7 @@ None
 
 Description
 -----------
-Changes maximum allowed size of buffer. if <max> is zero, maximum size is set to the initial size.
+Changes Maximum allowed size of Buffer. If <max> is Zero, Maximum size is set to the initial size.
 ") SetMax;
 		void SetMax(const Standard_Integer max);
 
@@ -8037,7 +8036,7 @@ None
 
 Description
 -----------
-A msg is created to write a 'functional code' in conjunction with operator () attached to value then, to have a translated message, write in c++: //! interface_msg('...mykey...') which returns a cstring see also some help which follow.
+A MSG is created to write a 'functional code' in conjunction with operator () attached to Value Then, to have a translated message, write in C++: //! Interface_MSG('...mykey...') which returns a CString See also some help which follow.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key);
 
@@ -8056,7 +8055,7 @@ None
 
 Description
 -----------
-Translates a message which contains one integer variable it is just a help which avoid the following: char mess[100]; sprintf(mess,interface_msg('code'),ival); then addfail(mess); replaced by addfail (interface_msg('code',ival)); //! the basic message is intended to be in c-sprintf format, with one %d form in it.
+Translates a message which contains one integer variable It is just a help which avoid the following: char mess[100]; sprintf(mess,Interface_MSG('code'),ival); then AddFail(mess); replaced by AddFail (Interface_MSG('code',ival)); //! The basic message is intended to be in C-sprintf format, with one %d form in it.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer i1);
 
@@ -8076,7 +8075,7 @@ None
 
 Description
 -----------
-Translates a message which contains two integer variables as for one integer, it is just a writing help //! the basic message is intended to be in c-sprintf format with two %d forms in it.
+Translates a message which contains two integer variables As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with two %d forms in it.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer i1, const Standard_Integer i2);
 
@@ -8096,7 +8095,7 @@ None
 
 Description
 -----------
-Translates a message which contains one real variable <intervals> if set, commands the variable to be rounded to an interval (see below, method intervals) as for one integer, it is just a writing help //! the basic message is intended to be in c-sprintf format with one %f form (or equivalent: %e etc) in it.
+Translates a message which contains one real variable <intervals> if set, commands the variable to be rounded to an interval (see below, method Intervals) As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with one %f form (or equivalent: %e etc) in it.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Real r1, const Standard_Integer intervals = -1);
 
@@ -8115,7 +8114,7 @@ None
 
 Description
 -----------
-Translates a message which contains one string variable as for one integer, it is just a writing help //! the basic message is intended to be in c-sprintf format with one %s form in it.
+Translates a message which contains one string variable As for one integer, it is just a writing help //! The basic message is intended to be in C-sprintf format with one %s form in it.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, Standard_CString str);
 
@@ -8135,7 +8134,7 @@ None
 
 Description
 -----------
-Translates a message which contains one integer and one string variables as for one integer, it is just a writing help used for instance to say 'param n0.<ival> i.e. <str> is not..' //! the basic message is intended to be in c-sprintf format with one %d then one %s forms in it.
+Translates a message which contains one integer and one string variables As for one integer, it is just a writing help Used for instance to say 'Param n0.<ival> i.e. <str> is not..' //! The basic message is intended to be in C-sprintf format with one %d then one %s forms in it.
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer ival, Standard_CString str);
 
@@ -8154,7 +8153,7 @@ str
 
 Description
 -----------
-Returns a blank string, of length between 0 and <max>, to fill the printing of a numeric value <val>, i.e.: if val < 10 , max-1 blanks if val between 10 and 99, max-2 blanks ... etc...
+Returns a blank string, of length between 0 and <max>, to fill the printing of a numeric value <val>, i.e.: If val < 10 , max-1 blanks If val between 10 and 99, max-2 blanks ... etc...
 ") Blanks;
 		static Standard_CString Blanks(const Standard_Integer val, const Standard_Integer max);
 
@@ -8173,7 +8172,7 @@ str
 
 Description
 -----------
-Returns a blank string, to complete a given string <val> up to <max> characters: if strlen(val) is 0, max blanks if strlen(val) is 5, max-5 blanks etc...
+Returns a blank string, to complete a given string <val> up to <max> characters: If strlen(val) is 0, max blanks If strlen(val) is 5, max-5 blanks etc...
 ") Blanks;
 		static Standard_CString Blanks(Standard_CString val, const Standard_Integer max);
 
@@ -8223,7 +8222,7 @@ None
 
 Description
 -----------
-Optimised destructor (applies for additional forms of create).
+Optimised destructor (applies for additional forms of Create).
 ") Destroy;
 		void Destroy();
 
@@ -8243,7 +8242,7 @@ float
 
 Description
 -----------
-Returns an 'intervalled' value from a starting real <val>: i.e. a value which is rounded on an interval limit interval limits are defined to be in a coarsely 'geometric' progression (two successive intervals are inside a limit ratio) //! <order> gives the count of desired intervals in a range <1-10> <upper> false, returns the first lower interval (d) <upper> true, returns the first upper interval values of intervals according <order>: 0,1: 1 10 100 ... 2: 1 3 10 30 100 ... 3(d): 1 2 5 10 20 50 100 ... 4: 1 2 3 6 10 20 30 60 100 ... 6: 1 1.5 2 3 5 7 10 15 20 ... 10: 1 1.2 1.5 2 2.5 3 4 5 6 8 10 12 15 20 25 ...
+Returns an 'intervalled' value from a starting real <val>: i.e. a value which is rounded on an interval limit Interval limits are defined to be in a coarsely 'geometric' progression (two successive intervals are inside a limit ratio) //! <order> gives the count of desired intervals in a range <1-10> <upper> False, returns the first lower interval (D) <upper> True, returns the first upper interval Values of Intervals according <order>: 0,1: 1 10 100 ... 2: 1 3 10 30 100 ... 3(D): 1 2 5 10 20 50 100 ... 4: 1 2 3 6 10 20 30 60 100 ... 6: 1 1.5 2 3 5 7 10 15 20 ... 10: 1 1.2 1.5 2 2.5 3 4 5 6 8 10 12 15 20 25 ...
 ") Intervalled;
 		static Standard_Real Intervalled(const Standard_Real val, const Standard_Integer order = 3, const Standard_Boolean upper = Standard_False);
 
@@ -8261,7 +8260,7 @@ bool
 
 Description
 -----------
-Returns true if a given message is surely a key (according to the form adopted for keys) (before activating messages, answer is false).
+Returns True if a given message is surely a key (according to the form adopted for keys) (before activating messages, answer is false).
 ") IsKey;
 		static Standard_Boolean IsKey(Standard_CString mess);
 
@@ -8284,7 +8283,7 @@ ss: int
 
 Description
 -----------
-Decodes a date to numeric integer values returns true if ok, false if text does not fit with required format. incomplete forms are allowed (for instance, for only yyyy-mm-dd, hour is zero).
+Decodes a date to numeric integer values Returns True if OK, False if text does not fit with required format. Incomplete forms are allowed (for instance, for only YYYY-MM-DD, hour is zero).
 ") NDate;
 		static Standard_Boolean NDate(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -8304,7 +8303,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints a string on an output stream, as follows: accompanied with blanks, to give up to <max> charis at all, justified according just: -1 (d): left 0: center 1: right maximum 76 characters.
+Prints a String on an Output Stream, as follows: Accompanied with blanks, to give up to <max> charis at all, justified according just: -1 (D): left 0: center 1: right Maximum 76 characters.
 ") Print;
 		static void Print(std::ostream &OutValue, Standard_CString val, const Standard_Integer max, const Standard_Integer just = -1);
 
@@ -8376,7 +8375,7 @@ None
 
 Description
 -----------
-Fills the dictionary with a couple (key-item) if a key is already recorded, it is possible to: - keep the last definition, and activate the trace system.
+Fills the dictionary with a couple (key-item) If a key is already recorded, it is possible to: - keep the last definition, and activate the trace system.
 ") Record;
 		static void Record(Standard_CString key, Standard_CString item);
 
@@ -8395,7 +8394,7 @@ None
 
 Description
 -----------
-Sets the main modes for msg: - if <running> is true, translation works normally - if <running> is false, translated item equate keys - if <raising> is true, errors (from record or translate) cause msg to raise an exception - if <raising> is false, msg runs without exception, then see also trace modes above.
+Sets the main modes for MSG: - if <running> is True, translation works normally - if <running> is False, translated item equate keys - if <raising> is True, errors (from Record or Translate) cause MSG to raise an exception - if <raising> is False, MSG runs without exception, then see also Trace Modes above.
 ") SetMode;
 		static void SetMode(const Standard_Boolean running, const Standard_Boolean raising);
 
@@ -8414,7 +8413,7 @@ None
 
 Description
 -----------
-Sets the trace system to work when activated, as follow: - if <toprint> is true, print immediately on standard output - if <torecord> is true, record it for further print.
+Sets the trace system to work when activated, as follow: - if <toprint> is True, print immediately on standard output - if <torecord> is True, record it for further print.
 ") SetTrace;
 		static void SetTrace(const Standard_Boolean toprint, const Standard_Boolean torecord);
 
@@ -8439,7 +8438,7 @@ None
 
 Description
 -----------
-Codes a date as a text, from its numeric value (-> seconds): yyyy-mm-dd:hh-mn-ss fixed format, completed by leading zeros another format can be provided, as follows: c:%d ... c like format, preceded by c: s:... format to call system (not yet implemented).
+Codes a date as a text, from its numeric value (-> seconds): YYYY-MM-DD:HH-MN-SS fixed format, completed by leading zeros Another format can be provided, as follows: C:%d ... C like format, preceded by C: S:... format to call system (not yet implemented).
 ") TDate;
 		static void TDate(Standard_CString text, const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, Standard_CString format = "");
 
@@ -8457,7 +8456,7 @@ str
 
 Description
 -----------
-Returns the item recorded for a key. returns the key itself if: - it is not recorded (then, the trace system is activated) - msg has been required to be hung on.
+Returns the item recorded for a key. Returns the key itself if: - it is not recorded (then, the trace system is activated) - MSG has been required to be hung on.
 ") Translated;
 		static Standard_CString Translated(Standard_CString key);
 
@@ -8470,7 +8469,7 @@ str
 
 Description
 -----------
-Returns the translated message, in a functional form with operator () was c++: return const.
+Returns the translated message, in a functional form with operator () was C++: return const.
 ") Value;
 		Standard_CString Value();
 
@@ -8488,7 +8487,7 @@ S: Standard_OStream
 
 Description
 -----------
-Writes the list of messages recorded to be translated, to a stream. writes all the list (default) or only keys which begin by <rootkey>. returns the count of written messages.
+Writes the list of messages recorded to be translated, to a stream. Writes all the list (Default) or only keys which begin by <rootkey>. Returns the count of written messages.
 ") Write;
 		static Standard_Integer Write(std::ostream &OutValue, Standard_CString rootkey = "");
 
@@ -8515,7 +8514,7 @@ None
 
 Description
 -----------
-Creates an empty node, with no next.
+Creates an empty Node, with no Next.
 ") Interface_NodeOfGeneralLib;
 		 Interface_NodeOfGeneralLib();
 
@@ -8533,7 +8532,7 @@ None
 
 Description
 -----------
-Adds a couple (module,protocol), that is, stores it into itself if not yet done, else creates a next node to do it.
+Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it.
 ") AddNode;
 		void AddNode(const opencascade::handle<Interface_GlobalNodeOfGeneralLib> & anode);
 
@@ -8546,7 +8545,7 @@ opencascade::handle<Interface_GeneralModule>
 
 Description
 -----------
-Returns the module designated by a precise node.
+Returns the Module designated by a precise Node.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
@@ -8559,7 +8558,7 @@ opencascade::handle<Interface_NodeOfGeneralLib>
 
 Description
 -----------
-Returns the next node. if none was defined, returned value is a null handle.
+Returns the Next Node. If none was defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<Interface_NodeOfGeneralLib> & Next();
 
@@ -8572,7 +8571,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol designated by a precise node.
+Returns the Protocol designated by a precise Node.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -8601,7 +8600,7 @@ None
 
 Description
 -----------
-Creates an empty node, with no next.
+Creates an empty Node, with no Next.
 ") Interface_NodeOfReaderLib;
 		 Interface_NodeOfReaderLib();
 
@@ -8619,7 +8618,7 @@ None
 
 Description
 -----------
-Adds a couple (module,protocol), that is, stores it into itself if not yet done, else creates a next node to do it.
+Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it.
 ") AddNode;
 		void AddNode(const opencascade::handle<Interface_GlobalNodeOfReaderLib> & anode);
 
@@ -8632,7 +8631,7 @@ opencascade::handle<Interface_ReaderModule>
 
 Description
 -----------
-Returns the module designated by a precise node.
+Returns the Module designated by a precise Node.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
@@ -8645,7 +8644,7 @@ opencascade::handle<Interface_NodeOfReaderLib>
 
 Description
 -----------
-Returns the next node. if none was defined, returned value is a null handle.
+Returns the Next Node. If none was defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<Interface_NodeOfReaderLib> & Next();
 
@@ -8658,7 +8657,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol designated by a precise node.
+Returns the Protocol designated by a precise Node.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -8692,7 +8691,7 @@ None
 
 Description
 -----------
-Creates an vector with size of memory block equal to theincrement.
+Creates an vector with size of memory block equal to theIncrement.
 ") Interface_ParamList;
 		 Interface_ParamList(const Standard_Integer theIncrement = 256);
 
@@ -8710,7 +8709,7 @@ Interface_FileParameter
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+return the value of the <Index>th element of the array.
 ") ChangeValue;
 		Interface_FileParameter & ChangeValue(const Standard_Integer Index);
 
@@ -8749,7 +8748,7 @@ int
 
 Description
 -----------
-Returns the lower bound. warning.
+Returns the lower bound. Warning.
 ") Lower;
 		Standard_Integer Lower();
 
@@ -8768,7 +8767,7 @@ None
 
 Description
 -----------
-Assigns the value <value> to the <index>-th item of this array.
+Assigns the value <Value> to the <Index>-th item of this array.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const Interface_FileParameter & Value);
 
@@ -8781,7 +8780,7 @@ int
 
 Description
 -----------
-Returns the upper bound. warning.
+Returns the upper bound. Warning.
 ") Upper;
 		Standard_Integer Upper();
 
@@ -8799,7 +8798,7 @@ Interface_FileParameter
 
 Description
 -----------
-Return the value of the <index>th element of the array.
+Return the value of the <Index>th element of the array.
 ") Value;
 		const Interface_FileParameter & Value(const Standard_Integer Index);
 
@@ -8834,7 +8833,7 @@ None
 
 Description
 -----------
-Creates an empty paramset, beginning at number 'nst' and of initial reservation 'nres': the 'nres' first parameters which follow 'ndeb' (included) will be put in an array (a paramlist). the remainders are set in next(s) paramset(s).
+Creates an empty ParamSet, beginning at number 'nst' and of initial reservation 'nres': the 'nres' first parameters which follow 'ndeb' (included) will be put in an Array (a ParamList). The remainders are set in Next(s) ParamSet(s).
 ") Interface_ParamSet;
 		 Interface_ParamSet(const Standard_Integer nres, const Standard_Integer nst = 1);
 
@@ -8855,7 +8854,7 @@ int
 
 Description
 -----------
-Adds a parameter defined as its value (cstring and length) and type. optional entitynumber (for filereaderdata) can be given allows a better memory management than appending a complete fileparameter if <lnval> < 0, <val> is assumed to be managed elsewhere: its address is stored as such. else, <val> is copied in a locally (quickly) managed page of characters returns new count of recorded parameters.
+Adds a parameter defined as its Value (CString and length) and Type. Optional EntityNumber (for FileReaderData) can be given Allows a better memory management than Appending a complete FileParameter If <lnval> < 0, <val> is assumed to be managed elsewhere: its address is stored as such. Else, <val> is copied in a locally (quickly) managed Page of Characters Returns new count of recorded Parameters.
 ") Append;
 		Standard_Integer Append(Standard_CString val, const Standard_Integer lnval, const Interface_ParamType typ, const Standard_Integer nument);
 
@@ -8873,7 +8872,7 @@ int
 
 Description
 -----------
-Adds a parameter at the end of the paramset (transparent about reservation and 'next') returns new count of recorded parameters.
+Adds a parameter at the end of the ParamSet (transparent about reservation and 'Next') Returns new count of recorded Parameters.
 ") Append;
 		Standard_Integer Append(const Interface_FileParameter & FP);
 
@@ -8954,7 +8953,7 @@ opencascade::handle<Interface_ParamList>
 
 Description
 -----------
-Builds and returns the sub-list corresponding to parameters, from 'num' included, with count 'nb' if <num> and <nb> are zero, returns the whole list.
+Builds and returns the sub-list corresponding to parameters, from 'num' included, with count 'nb' If <num> and <nb> are zero, returns the whole list.
 ") Params;
 		opencascade::handle<Interface_ParamList> Params(const Standard_Integer num, const Standard_Integer nb);
 
@@ -9003,7 +9002,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the active protocol, if defined (else, returns a null handle, which means 'no defined active protocol').
+Returns the Active Protocol, if defined (else, returns a Null Handle, which means 'no defined active protocol').
 ") Active;
 		static opencascade::handle<Interface_Protocol> Active();
 
@@ -9021,7 +9020,7 @@ int
 
 Description
 -----------
-Returns a unique positive casenumber for each recognized object. by default, recognition is based on type(1) by default, calls the following one which is deferred.
+Returns a unique positive CaseNumber for each Recognized Object. By default, recognition is based on Type(1) By default, calls the following one which is deferred.
 ") CaseNumber;
 		virtual Standard_Integer CaseNumber(const opencascade::handle<Standard_Transient> & obj);
 
@@ -9034,7 +9033,7 @@ None
 
 Description
 -----------
-Erases the active protocol (hence it becomes undefined).
+Erases the Active Protocol (hence it becomes undefined).
 ") ClearActive;
 		static void ClearActive();
 
@@ -9053,7 +9052,7 @@ bool
 
 Description
 -----------
-Evaluates a global check for a model (with its graph) returns true when done, false if data in model do not apply //! very specific of each norm, i.e. of each protocol: the uppest level protocol assumes it, it can call globalcheck of its resources only if it is necessary //! default does nothing, can be redefined.
+Evaluates a Global Check for a model (with its Graph) Returns True when done, False if data in model do not apply //! Very specific of each norm, i.e. of each protocol: the uppest level Protocol assumes it, it can call GlobalCheck of its resources only if it is necessary //! Default does nothing, can be redefined.
 ") GlobalCheck;
 		virtual Standard_Boolean GlobalCheck(const Interface_Graph & G, opencascade::handle<Interface_Check> & ach);
 
@@ -9071,7 +9070,7 @@ bool
 
 Description
 -----------
-Returns true if type of <obj> is that defined from cdl this is the default but it may change according implementation.
+Returns True if type of <obj> is that defined from CDL This is the default but it may change according implementation.
 ") IsDynamicType;
 		virtual Standard_Boolean IsDynamicType(const opencascade::handle<Standard_Transient> & obj);
 
@@ -9089,7 +9088,7 @@ bool
 
 Description
 -----------
-Returns true if <model> is a model of the considered norm.
+Returns True if <model> is a Model of the considered Norm.
 ") IsSuitableModel;
 		virtual Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -9107,7 +9106,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is an unknown entity for the norm, i.e. same type as them created by method unknownentity (for an entity out of the norm, answer can be unpredicable).
+Returns True if <ent> is an Unknown Entity for the Norm, i.e. same Type as them created by method UnknownEntity (for an Entity out of the Norm, answer can be unpredicable).
 ") IsUnknownEntity;
 		virtual Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -9120,7 +9119,7 @@ int
 
 Description
 -----------
-Returns count of protocol used as resources (level one).
+Returns count of Protocol used as Resources (level one).
 ") NbResources;
 		virtual Standard_Integer NbResources();
 
@@ -9138,7 +9137,7 @@ int
 
 Description
 -----------
-Returns the count of distinct types under which an entity may be processed. each one is candidate to be recognized by typenumber, <obj> is then processed according it by default, returns 1 (the dynamictype).
+Returns the count of DISTINCT types under which an entity may be processed. Each one is candidate to be recognized by TypeNumber, <obj> is then processed according it By default, returns 1 (the DynamicType).
 ") NbTypes;
 		virtual Standard_Integer NbTypes(const opencascade::handle<Standard_Transient> & obj);
 
@@ -9151,7 +9150,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Creates an empty model of the considered norm.
+Creates an empty Model of the considered Norm.
 ") NewModel;
 		virtual opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -9169,7 +9168,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given its rank (between 1 and nbresources).
+Returns a Resource, given its rank (between 1 and NbResources).
 ") Resource;
 		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
@@ -9187,7 +9186,7 @@ None
 
 Description
 -----------
-Sets a given protocol to be the active one (for the users of active, see just above). applies to every sub-type of protocol.
+Sets a given Protocol to be the Active one (for the users of Active, see just above). Applies to every sub-type of Protocol.
 ") SetActive;
 		static void SetActive(const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -9206,7 +9205,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns a type under which <obj> can be recognized and processed, according its rank in its definition list (see nbtypes). by default, returns dynamictype.
+Returns a type under which <obj> can be recognized and processed, according its rank in its definition list (see NbTypes). By default, returns DynamicType.
 ") Type;
 		opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & obj, const Standard_Integer nt = 1);
 
@@ -9224,7 +9223,7 @@ int
 
 Description
 -----------
-Returns a unique positive casenumber for each recognized type, returns zero for '<type> not recognized'.
+Returns a unique positive CaseNumber for each Recognized Type, Returns Zero for '<type> not recognized'.
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
@@ -9237,7 +9236,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Creates a new unknown entity for the considered norm.
+Creates a new Unknown Entity for the considered Norm.
 ") UnknownEntity;
 		virtual opencascade::handle<Standard_Transient> UnknownEntity();
 
@@ -9271,7 +9270,7 @@ None
 
 Description
 -----------
-Creates a library which complies with a protocol, that is: same class (criterium isinstance) this creation gets the modules from the global set, those which are bound to the given protocol and its resources.
+Creates a Library which complies with a Protocol, that is: Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources.
 ") Interface_ReaderLib;
 		 Interface_ReaderLib(const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -9284,7 +9283,7 @@ None
 
 Description
 -----------
-Creates an empty library: it will later by filled by method addprotocol.
+Creates an empty Library: it will later by filled by method AddProtocol.
 ") Interface_ReaderLib;
 		 Interface_ReaderLib();
 
@@ -9302,7 +9301,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) to the library, given the class of a protocol. takes resources into account. (if <aprotocol> is not of type theprotocol, it is not added).
+Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added).
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -9315,7 +9314,7 @@ None
 
 Description
 -----------
-Clears the list of modules of a library (can be used to redefine the order of modules before action: clear then refill the library by calls to addprotocol).
+Clears the list of Modules of a library (can be used to redefine the order of Modules before action: Clear then refill the Library by calls to AddProtocol).
 ") Clear;
 		void Clear();
 
@@ -9328,7 +9327,7 @@ opencascade::handle<Interface_ReaderModule>
 
 Description
 -----------
-Returns the current module in the iteration.
+Returns the current Module in the Iteration.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
@@ -9341,7 +9340,7 @@ bool
 
 Description
 -----------
-Returns true if there are more modules to iterate on.
+Returns True if there are more Modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
@@ -9354,7 +9353,7 @@ None
 
 Description
 -----------
-Iterates by getting the next module in the list if there is none, the exception will be raised by value.
+Iterates by getting the next Module in the list If there is none, the exception will be raised by Value.
 ") Next;
 		void Next();
 
@@ -9367,7 +9366,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the current protocol in the iteration.
+Returns the current Protocol in the Iteration.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -9386,7 +9385,7 @@ CN: int
 
 Description
 -----------
-Selects a module from the library, given an object. returns true if select has succeeded, false else. also returns (as arguments) the selected module and the case number determined by the associated protocol. if select has failed, <module> is null handle and cn is zero. (select can work on any criterium, such as object dynamictype).
+Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<Interface_ReaderModule> & module, Standard_Integer &OutValue);
 
@@ -9399,7 +9398,7 @@ None
 
 Description
 -----------
-Sets a library to be defined with the complete global list (all the couples protocol/modules recorded in it).
+Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it).
 ") SetComplete;
 		void SetComplete();
 
@@ -9418,7 +9417,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) into the global definition set for this class of library.
+Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_ReaderModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -9431,7 +9430,7 @@ None
 
 Description
 -----------
-Starts iteration on the modules (sets it on the first one).
+Starts Iteration on the Modules (sets it on the first one).
 ") Start;
 		void Start();
 
@@ -9465,7 +9464,7 @@ int
 
 Description
 -----------
-Translates the type of record <num> in <data> to a positive case number. if recognition fails, must return 0.
+Translates the type of record <num> in <data> to a positive Case Number. If Recognition fails, must return 0.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
 
@@ -9487,7 +9486,7 @@ bool
 
 Description
 -----------
-Specific operator (create+read) defaulted to do nothing. it can be redefined when it is not possible to work in two steps (newvoid then read). this occurs when no default constructor is defined: hence the result <ent> must be created with an effective definition from the reader. remark: if newread is defined, copy has nothing to do. //! returns true if it has produced something, false else. if nothing was produced, <ach> should be filled: it will be treated as 'unrecognized case' by reader tool.
+Specific operator (create+read) defaulted to do nothing. It can be redefined when it is not possible to work in two steps (NewVoid then Read). This occurs when no default constructor is defined: hence the result <ent> must be created with an effective definition from the reader. Remark: if NewRead is defined, Copy has nothing to do. //! Returns True if it has produced something, false else. If nothing was produced, <ach> should be filled: it will be treated as 'Unrecognized case' by reader tool.
 ") NewRead;
 		virtual Standard_Boolean NewRead(const Standard_Integer casenum, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
@@ -9509,7 +9508,7 @@ None
 
 Description
 -----------
-Performs the effective loading from <data>, record <num>, to the entity <ent> formerly created in case of error or warning, fills <ach> with messages remark that the case number comes from translating a record.
+Performs the effective loading from <data>, record <num>, to the Entity <ent> formerly created In case of Error or Warning, fills <ach> with messages Remark that the Case Number comes from translating a record.
 ") Read;
 		virtual void Read(const Standard_Integer casenum, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
@@ -9543,7 +9542,7 @@ None
 
 Description
 -----------
-Creates a reportentity for an unknown entity: check is empty, and concerned equates content (i.e. the unknown entity).
+Creates a ReportEntity for an Unknown Entity: Check is empty, and Concerned equates Content (i.e. the Unknown Entity).
 ") Interface_ReportEntity;
 		 Interface_ReportEntity(const opencascade::handle<Standard_Transient> & unknown);
 
@@ -9562,7 +9561,7 @@ None
 
 Description
 -----------
-Creates a reportentity with its features: - <acheck> is the check to be memorised - <concerned> is the entity to which the check is bound later, a content can be set: it is required for an error.
+Creates a ReportEntity with its features: - <acheck> is the Check to be memorised - <concerned> is the Entity to which the Check is bound Later, a Content can be set: it is required for an Error.
 ") Interface_ReportEntity;
 		 Interface_ReportEntity(const opencascade::handle<Interface_Check> & acheck, const opencascade::handle<Standard_Transient> & concerned);
 
@@ -9575,7 +9574,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the stored check in order to change it.
+Returns the stored Check in order to change it.
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck();
 
@@ -9588,7 +9587,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the stored check.
+Returns the stored Check.
 ") Check;
 		const opencascade::handle<Interface_Check> & Check();
 
@@ -9601,7 +9600,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the stored concerned entity. it equates the content in the case of an unknown entity.
+Returns the stored Concerned Entity. It equates the Content in the case of an Unknown Entity.
 ") Concerned;
 		opencascade::handle<Standard_Transient> Concerned();
 
@@ -9614,7 +9613,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the stored content, or a null handle remark that it must be an 'unknown entity' suitable for the norm of the containing model.
+Returns the stored Content, or a Null Handle Remark that it must be an 'Unknown Entity' suitable for the norm of the containing Model.
 ") Content;
 		opencascade::handle<Standard_Transient> Content();
 
@@ -9627,7 +9626,7 @@ bool
 
 Description
 -----------
-Returns true if a content is stored (it can equate concerned).
+Returns True if a Content is stored (it can equate Concerned).
 ") HasContent;
 		Standard_Boolean HasContent();
 
@@ -9640,7 +9639,7 @@ bool
 
 Description
 -----------
-Returns true if a content is stored and differs from concerned (i.e. redefines content): used when concerned could not be loaded.
+Returns True if a Content is stored AND differs from Concerned (i.e. redefines content): used when Concerned could not be loaded.
 ") HasNewContent;
 		Standard_Boolean HasNewContent();
 
@@ -9653,7 +9652,7 @@ bool
 
 Description
 -----------
-Returns true for an error entity, i.e. if the check brings at least one fail message.
+Returns True for an Error Entity, i.e. if the Check brings at least one Fail message.
 ") IsError;
 		Standard_Boolean IsError();
 
@@ -9666,7 +9665,7 @@ bool
 
 Description
 -----------
-Returns true for an unknown entity, i,e. if the check is empty and concerned equates content.
+Returns True for an Unknown Entity, i,e. if the Check is empty and Concerned equates Content.
 ") IsUnknown;
 		Standard_Boolean IsUnknown();
 
@@ -9684,7 +9683,7 @@ None
 
 Description
 -----------
-Sets a content: it brings non interpreted data which belong to the concerned entity. it can be empty then loaded later. remark that for an unknown entity, content is set by create.
+Sets a Content: it brings non interpreted data which belong to the Concerned Entity. It can be empty then loaded later. Remark that for an Unknown Entity, Content is set by Create.
 ") SetContent;
 		void SetContent(const opencascade::handle<Standard_Transient> & content);
 
@@ -9718,7 +9717,7 @@ None
 
 Description
 -----------
-Creates a stat form. at start, one default phase is defined, with one default step. then, it suffises to start with a count of items (and cycles if several) then record items, to have a queryable report.
+Creates a STAT form. At start, one default phase is defined, with one default step. Then, it suffises to start with a count of items (and cycles if several) then record items, to have a queryable report.
 ") Interface_STAT;
 		 Interface_STAT(Standard_CString title = "");
 
@@ -9736,7 +9735,7 @@ None
 
 Description
 -----------
-Used when starting.
+used when starting.
 ") Interface_STAT;
 		 Interface_STAT(const Interface_STAT & other);
 
@@ -9755,7 +9754,7 @@ None
 
 Description
 -----------
-Adds a new phase to the description. the first one after create replaces the default unique one.
+Adds a new phase to the description. The first one after Create replaces the default unique one.
 ") AddPhase;
 		void AddPhase(const Standard_Real weight, Standard_CString name = "");
 
@@ -9773,7 +9772,7 @@ None
 
 Description
 -----------
-Adds a new step for the last added phase, the default unique one if no addphase has already been added warning: addstep before the first addphase are cancelled.
+Adds a new step for the last added phase, the default unique one if no AddPhase has already been added Warning: AddStep before the first AddPhase are cancelled.
 ") AddStep;
 		void AddStep(const Standard_Real weight = 1);
 
@@ -9846,7 +9845,7 @@ None
 
 Description
 -----------
-Commands to resume the preceding cycle and start a new one, with a count of items ignored if count of cycles is already passed then, first step is started (or default one) nextitem can be called for the first step, or nextstep to pass to the next one.
+Commands to resume the preceding cycle and start a new one, with a count of items Ignored if count of cycles is already passed Then, first step is started (or default one) NextItem can be called for the first step, or NextStep to pass to the next one.
 ") NextCycle;
 		static void NextCycle(const Standard_Integer items);
 
@@ -9864,7 +9863,7 @@ None
 
 Description
 -----------
-Commands to add an item in the current step of the current cycle of the current phase by default, one item per call, can be overpassed ignored if count of items of this cycle is already passed.
+Commands to add an item in the current step of the current cycle of the current phase By default, one item per call, can be overpassed Ignored if count of items of this cycle is already passed.
 ") NextItem;
 		static void NextItem(const Standard_Integer nbitems = 1);
 
@@ -9883,7 +9882,7 @@ None
 
 Description
 -----------
-Commands to resume the preceding phase and start a new one <items> and <cycles> as for start, but for this new phase ignored if count of phases is already passed if <cycles> is more than one, the first cycle must then be started by nextcycle (nextstep/nextitem are ignored). if it is one, nextitem/nextstep can then be called.
+Commands to resume the preceding phase and start a new one <items> and <cycles> as for Start, but for this new phase Ignored if count of phases is already passed If <cycles> is more than one, the first Cycle must then be started by NextCycle (NextStep/NextItem are ignored). If it is one, NextItem/NextStep can then be called.
 ") NextPhase;
 		static void NextPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
@@ -9896,7 +9895,7 @@ None
 
 Description
 -----------
-Commands to resume the preceding step of the cycle ignored if count of steps is already passed nextitem can be called for this step, nextstep passes to next.
+Commands to resume the preceding step of the cycle Ignored if count of steps is already passed NextItem can be called for this step, NextStep passes to next.
 ") NextStep;
 		static void NextStep();
 
@@ -9914,7 +9913,7 @@ int
 
 Description
 -----------
-Returns the advancement as a percentage: <phase> true: inside the current phase <phase> false (d): relative to the whole process.
+Returns the advancement as a percentage: <phase> True: inside the current phase <phase> False (D): relative to the whole process.
 ") Percent;
 		static Standard_Integer Percent(const Standard_Boolean phase = Standard_False);
 
@@ -9954,7 +9953,7 @@ None
 
 Description
 -----------
-Changes the parameters of the phase to start to be used before first counting (i.e. just after nextphase) can be used by an operator which has to reajust counts on run.
+Changes the parameters of the phase to start To be used before first counting (i.e. just after NextPhase) Can be used by an operator which has to reajust counts on run.
 ") SetPhase;
 		static void SetPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
@@ -9973,7 +9972,7 @@ None
 
 Description
 -----------
-Starts a stat on its first phase (or its default one) <items> gives the total count of items, <cycles> the count of cycles if <cycles> is more than one, the first cycle must then be started by nextcycle (nextstep/nextitem are ignored). if it is one, nextitem/nextstep can then be called.
+Starts a STAT on its first phase (or its default one) <items> gives the total count of items, <cycles> the count of cycles If <cycles> is more than one, the first Cycle must then be started by NextCycle (NextStep/NextItem are ignored). If it is one, NextItem/NextStep can then be called.
 ") Start;
 		void Start(const Standard_Integer items, const Standard_Integer cycles = 1);
 
@@ -9992,7 +9991,7 @@ None
 
 Description
 -----------
-Starts a default stat, with no phase, no step, ready to just count items. <items> gives the total count of items hence, nextitem is available to directly count.
+Starts a default STAT, with no phase, no step, ready to just count items. <items> gives the total count of items Hence, NextItem is available to directly count.
 ") StartCount;
 		static void StartCount(const Standard_Integer items, Standard_CString title = "");
 
@@ -10010,7 +10009,7 @@ float
 
 Description
 -----------
-Returns weight of a step, related to the cumul given for the phase. <num> is given by <n0step> + i, i between 1 and <nbsteps> (default gives n0step < 0 then weight is one).
+Returns weight of a Step, related to the cumul given for the phase. <num> is given by <n0step> + i, i between 1 and <nbsteps> (default gives n0step < 0 then weight is one).
 ") Step;
 		Standard_Real Step(const Standard_Integer num);
 
@@ -10028,7 +10027,7 @@ str
 
 Description
 -----------
-Returns an identification of the stat: <phase> true (d): the name of the current phase <phase> false: the title of the current stat.
+Returns an identification of the STAT: <phase> True (D): the name of the current phase <phase> False: the title of the current STAT.
 ") Where;
 		static Standard_CString Where(const Standard_Boolean phase = Standard_True);
 
@@ -10061,7 +10060,7 @@ None
 
 Description
 -----------
-Creates a shareflags from a model and builds required data (flags) by calling the general service library given as argument <lib>.
+Creates a ShareFlags from a Model and builds required data (flags) by calling the General Service Library given as argument <lib>.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
@@ -10080,7 +10079,7 @@ None
 
 Description
 -----------
-Same as above, but generallib is detained by a gtool.
+Same as above, but GeneralLib is detained by a GTool.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool);
 
@@ -10099,7 +10098,7 @@ None
 
 Description
 -----------
-Same as above, but generallib is defined through a protocol.
+Same as above, but GeneralLib is defined through a Protocol.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -10117,7 +10116,7 @@ None
 
 Description
 -----------
-Same as above, but works with the gtool of the model.
+Same as above, but works with the GTool of the Model.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -10135,7 +10134,7 @@ None
 
 Description
 -----------
-Creates a shareflags by querying information from a graph (remark that graph also has a method isshared).
+Creates a ShareFlags by querying information from a Graph (remark that Graph also has a method IsShared).
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const Interface_Graph & agraph);
 
@@ -10153,7 +10152,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is shared by one or more other entity(ies) of the model.
+Returns True if <ent> is Shared by one or more other Entity(ies) of the Model.
 ") IsShared;
 		Standard_Boolean IsShared(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10166,7 +10165,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model used for the evaluation.
+Returns the Model used for the evaluation.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -10197,7 +10196,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a root entity according its rank in the list of roots by default, it returns the first one.
+Returns a root entity according its rank in the list of roots By default, it returns the first one.
 ") Root;
 		opencascade::handle<Standard_Transient> Root(const Standard_Integer num = 1);
 
@@ -10210,7 +10209,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the entities which are not shared (see their flags).
+Returns the Entities which are not Shared (see their flags).
 ") RootEntities;
 		Interface_EntityIterator RootEntities();
 
@@ -10243,7 +10242,7 @@ None
 
 Description
 -----------
-Creates a sharetool from a model and builds all required data, by calling the general service library and modules (generallib given as an argument).
+Creates a ShareTool from a Model and builds all required data, by calling the General Service Library and Modules (GeneralLib given as an argument).
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
@@ -10262,7 +10261,7 @@ None
 
 Description
 -----------
-Same a above, but generallib is detained by a gtool.
+Same a above, but GeneralLib is detained by a GTool.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool);
 
@@ -10281,7 +10280,7 @@ None
 
 Description
 -----------
-Same a above, but generallib is defined through a protocol protocol is used to build the working library.
+Same a above, but GeneralLib is defined through a Protocol Protocol is used to build the working library.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -10299,7 +10298,7 @@ None
 
 Description
 -----------
-Same as above, but works with the gtool of the model.
+Same as above, but works with the GTool of the Model.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -10317,7 +10316,7 @@ None
 
 Description
 -----------
-Creates a sharetool from an already defined graph remark that the data of the graph are copied.
+Creates a ShareTool from an already defined Graph Remark that the data of the Graph are copied.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const Interface_Graph & agraph);
 
@@ -10335,7 +10334,7 @@ None
 
 Description
 -----------
-Completes the graph by adding implied references. hence, they are considered as sharing references in all the other queries.
+Completes the Graph by Adding Implied References. Hence, they are considered as Sharing References in all the other queries.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_HGraph> & ahgraph);
 
@@ -10354,7 +10353,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the complete list of entities shared by <ent> at any level, including <ent> itself if <ent> is the model, considers the concatenation of allshared for each root if <rootlast> is true (d), the list starts with lower level entities and ends by the root. else, the root is first and the lower level entities are at end.
+Returns the complete list of entities shared by <ent> at any level, including <ent> itself If <ent> is the Model, considers the concatenation of AllShared for each root If <rootlast> is True (D), the list starts with lower level entities and ends by the root. Else, the root is first and the lower level entities are at end.
 ") All;
 		Interface_EntityIterator All(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean rootlast = Standard_True);
 
@@ -10367,7 +10366,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the data used by the sharetool to work can then be used directly (read only).
+Returns the data used by the ShareTool to work Can then be used directly (read only).
 ") Graph;
 		const Interface_Graph & Graph();
 
@@ -10385,7 +10384,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is shared by other entities in the model.
+Returns True if <ent> is Shared by other Entities in the Model.
 ") IsShared;
 		Standard_Boolean IsShared(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10398,7 +10397,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model used for creation (directly or for graph).
+Returns the Model used for Creation (directly or for Graph).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -10417,7 +10416,7 @@ int
 
 Description
 -----------
-Returns the count of sharing entities of an entity, which are kind of a given type.
+Returns the count of Sharing Entities of an Entity, which are Kind of a given Type.
 ") NbTypedSharings;
 		Standard_Integer NbTypedSharings(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & atype);
 
@@ -10435,7 +10434,7 @@ S: Standard_OStream
 
 Description
 -----------
-Utility method which prints the content of an iterator (by their numbers).
+Utility method which Prints the content of an iterator (by their Numbers).
 ") Print;
 		void Print(const Interface_EntityIterator & iter, std::ostream &OutValue);
 
@@ -10448,7 +10447,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the entities which are not shared (their sharing list is empty) in the model.
+Returns the Entities which are not Shared (their Sharing List is empty) in the Model.
 ") RootEntities;
 		Interface_EntityIterator RootEntities();
 
@@ -10466,7 +10465,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities shared by a given entity <ent>.
+Returns the List of Entities Shared by a given Entity <ent>.
 ") Shareds;
 		Interface_EntityIterator Shareds(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10484,7 +10483,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities sharing a given entity <ent>.
+Returns the List of Entities Sharing a given Entity <ent>.
 ") Sharings;
 		Interface_EntityIterator Sharings(const opencascade::handle<Standard_Transient> & ent);
 
@@ -10503,7 +10502,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the sharing entity of an entity, which is kind of a given type. allows to access a sharing entity of a given type when there is one and only one (current case).
+Returns the Sharing Entity of an Entity, which is Kind of a given Type. Allows to access a Sharing Entity of a given type when there is one and only one (current case).
 ") TypedSharing;
 		opencascade::handle<Standard_Transient> TypedSharing(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & atype);
 
@@ -10543,7 +10542,7 @@ str
 
 Description
 -----------
-Returns 'entity label'.
+Returns 'Entity Label'.
 ") Name;
 		Standard_CString Name();
 
@@ -10562,7 +10561,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Considers context as an interfacemodel and returns the label computed by it.
+Considers context as an InterfaceModel and returns the Label computed by it.
 ") Text;
 		TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
@@ -10597,7 +10596,7 @@ str
 
 Description
 -----------
-From a cdl type name, returns the class part (package dropped) warning: buffered, to be immediately copied or printed.
+From a CDL Type Name, returns the Class part (package dropped) WARNING: buffered, to be immediately copied or printed.
 ") ClassName;
 		static Standard_CString ClassName(Standard_CString typnam);
 
@@ -10616,7 +10615,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns an identification of the signature (a word), given at initialization time specialised to consider context as an interfacemodel.
+Returns an identification of the Signature (a word), given at initialization time Specialised to consider context as an InterfaceModel.
 ") Text;
 		TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
@@ -10635,7 +10634,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object. it is specific of each sub-class of signature. for a null handle, it should provide '' it can work with the model which contains the entity.
+Returns the Signature for a Transient object. It is specific of each sub-class of Signature. For a Null Handle, it should provide '' It can work with the model which contains the entity.
 ") Value;
 		virtual Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -10671,7 +10670,7 @@ None
 
 Description
 -----------
-Creates a typedvalue, with a name //! type gives the type of the parameter, default is free text also available: integer, real, enum, entity (i.e. object) more precise specifications, titles, can be given to the typedvalue once created //! init gives an initial value. if it is not given, the typedvalue begins as 'not set', its value is empty.
+Creates a TypedValue, with a name //! type gives the type of the parameter, default is free text Also available: Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the TypedValue once created //! init gives an initial value. If it is not given, the TypedValue begins as 'not set', its value is empty.
 ") Interface_TypedValue;
 		 Interface_TypedValue(Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
@@ -10689,7 +10688,7 @@ MoniTool_ValueType
 
 Description
 -----------
-Correspondence paramtype from interface to valuetype from monitool.
+Correspondence ParamType from Interface to ValueType from MoniTool.
 ") ParamTypeToValueType;
 		static MoniTool_ValueType ParamTypeToValueType(const Interface_ParamType typ);
 
@@ -10702,7 +10701,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns the type i.e. calls valuetype then makes correspondence between paramtype from interface (which remains for compatibility reasons) and valuetype from monitool.
+Returns the type I.E. calls ValueType then makes correspondence between ParamType from Interface (which remains for compatibility reasons) and ValueType from MoniTool.
 ") Type;
 		Interface_ParamType Type();
 
@@ -10720,7 +10719,7 @@ Interface_ParamType
 
 Description
 -----------
-Correspondence paramtype from interface to valuetype from monitool.
+Correspondence ParamType from Interface to ValueType from MoniTool.
 ") ValueTypeToParamType;
 		static Interface_ParamType ValueTypeToParamType(const MoniTool_ValueType typ);
 
@@ -10749,7 +10748,7 @@ None
 
 Description
 -----------
-Defines an empty undefinedcontent.
+Defines an empty UndefinedContent.
 ") Interface_UndefinedContent;
 		 Interface_UndefinedContent();
 
@@ -10768,7 +10767,7 @@ None
 
 Description
 -----------
-Adds a parameter which references an entity.
+Adds a Parameter which references an Entity.
 ") AddEntity;
 		void AddEntity(const Interface_ParamType ptype, const opencascade::handle<Standard_Transient> & ent);
 
@@ -10787,7 +10786,7 @@ None
 
 Description
 -----------
-Adds a literal parameter to the list.
+Adds a literal Parameter to the list.
 ") AddLiteral;
 		void AddLiteral(const Interface_ParamType ptype, const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -10800,7 +10799,7 @@ Interface_EntityList
 
 Description
 -----------
-Returns globally the list of param entities. note that it can be used as shared entity list for the undefinedentity.
+Returns globally the list of param entities. Note that it can be used as shared entity list for the UndefinedEntity.
 ") EntityList;
 		Interface_EntityList EntityList();
 
@@ -10819,7 +10818,7 @@ None
 
 Description
 -----------
-Copies contents of undefined entities; deigned to be called by getfromanother method from undefined entity of each interface (the basic operation is the same regardless the norm).
+Copies contents of undefined entities; deigned to be called by GetFromAnother method from Undefined entity of each Interface (the basic operation is the same regardless the norm).
 ") GetFromAnother;
 		void GetFromAnother(const opencascade::handle<Interface_UndefinedContent> & other, Interface_CopyTool & TC);
 
@@ -10837,7 +10836,7 @@ bool
 
 Description
 -----------
-Returns true if a parameter is recorded as an entity error if num is not between 1 and nbparams.
+Returns True if a Parameter is recorded as an entity Error if num is not between 1 and NbParams.
 ") IsParamEntity;
 		Standard_Boolean IsParamEntity(const Standard_Integer num);
 
@@ -10850,7 +10849,7 @@ int
 
 Description
 -----------
-Gives count of literal parameters.
+Gives count of Literal Parameters.
 ") NbLiterals;
 		Standard_Integer NbLiterals();
 
@@ -10883,7 +10882,7 @@ val: TCollection_HAsciiString
 
 Description
 -----------
-Returns data of a parameter: its type, and the entity if it designates en entity ('ent') or its literal value else ('str') returned value (boolean): true if it is an entity, false else.
+Returns data of a Parameter: its type, and the entity if it designates en entity ('ent') or its literal value else ('str') Returned value (Boolean): True if it is an Entity, False else.
 ") ParamData;
 		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -10901,7 +10900,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns entity corresponding to a param, given its rank.
+Returns Entity corresponding to a Param, given its rank.
 ") ParamEntity;
 		opencascade::handle<Standard_Transient> ParamEntity(const Standard_Integer num);
 
@@ -10919,7 +10918,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns the paramtype of a param, given its rank error if num is not between 1 and nbparams.
+Returns the ParamType of a Param, given its rank Error if num is not between 1 and NbParams.
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num);
 
@@ -10937,7 +10936,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns literal value of a parameter, given its rank.
+Returns literal value of a Parameter, given its rank.
 ") ParamValue;
 		opencascade::handle<TCollection_HAsciiString> ParamValue(const Standard_Integer num);
 
@@ -10955,7 +10954,7 @@ None
 
 Description
 -----------
-Removes a parameter given its rank.
+Removes a Parameter given its rank.
 ") RemoveParam;
 		void RemoveParam(const Standard_Integer num);
 
@@ -10994,7 +10993,7 @@ None
 
 Description
 -----------
-Sets a new value for the parameter <num>, to reference an entity. to simply change the entity, see the variant below.
+Sets a new value for the Parameter <num>, to reference an Entity. To simply change the Entity, see the variant below.
 ") SetEntity;
 		void SetEntity(const Standard_Integer num, const Interface_ParamType ptype, const opencascade::handle<Standard_Transient> & ent);
 
@@ -11013,7 +11012,7 @@ None
 
 Description
 -----------
-Changes the entity referenced by the parameter <num> (with same paramtype).
+Changes the Entity referenced by the Parameter <num> (with same ParamType).
 ") SetEntity;
 		void SetEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
@@ -11033,7 +11032,7 @@ None
 
 Description
 -----------
-Sets a new value for the parameter <num>, to a literal value (if it referenced formerly an entity, this entity is removed).
+Sets a new value for the Parameter <num>, to a literal value (if it referenced formerly an Entity, this Entity is removed).
 ") SetLiteral;
 		void SetLiteral(const Standard_Integer num, const Interface_ParamType ptype, const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -11067,7 +11066,7 @@ None
 
 Description
 -----------
-Creates a copymap adapted to work from a model.
+Creates a CopyMap adapted to work from a Model.
 ") Interface_CopyMap;
 		 Interface_CopyMap(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -11086,7 +11085,7 @@ None
 
 Description
 -----------
-Binds a starting entity identified by its number <num> in the starting model, to a result of transfer <res>.
+Binds a Starting Entity identified by its Number <num> in the Starting Model, to a Result of Transfer <res>.
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
@@ -11099,7 +11098,7 @@ None
 
 Description
 -----------
-Clears transfer list. gets ready to begin another transfer.
+Clears Transfer List. Gets Ready to begin another Transfer.
 ") Clear;
 		void Clear();
 
@@ -11112,7 +11111,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the interfacemodel used at creation time.
+Returns the InterfaceModel used at Creation time.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -11131,7 +11130,7 @@ bool
 
 Description
 -----------
-Search for the result of a starting object (i.e. an entity, identified by its number <num> in the starting model) returns true if a result is bound (and fills <res>) returns false if no result is bound (and nullifies <res>).
+Search for the result of a Starting Object (i.e. an Entity, identified by its Number <num> in the Starting Model) Returns True if a Result is Bound (and fills <res>) Returns False if no result is Bound (and nullifies <res>).
 ") Search;
 		Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
@@ -11160,7 +11159,7 @@ None
 
 Description
 -----------
-Creates an empty graphcontent, ready to be filled.
+Creates an empty GraphContent, ready to be filled.
 ") Interface_GraphContent;
 		 Interface_GraphContent();
 
@@ -11178,7 +11177,7 @@ None
 
 Description
 -----------
-Creates with all entities designated by a graph.
+Creates with all entities designated by a Graph.
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph);
 
@@ -11197,7 +11196,7 @@ None
 
 Description
 -----------
-Creates with entities having specific status value in a graph.
+Creates with entities having specific Status value in a Graph.
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph, const Standard_Integer stat);
 
@@ -11216,7 +11215,7 @@ None
 
 Description
 -----------
-Creates an iterator with shared entities of an entity (equivalente to entityiterator but with a graph).
+Creates an Iterator with Shared entities of an entity (equivalente to EntityIterator but with a Graph).
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph, const opencascade::handle<Standard_Transient> & ent);
 
@@ -11229,7 +11228,7 @@ None
 
 Description
 -----------
-Does the evaluation before starting the iteration itself (in out).
+Does the Evaluation before starting the iteration itself (in out).
 ") Begin;
 		void Begin();
 
@@ -11242,7 +11241,7 @@ None
 
 Description
 -----------
-Evaluates list of entities to be iterated. called by start default is set to doing nothing: intended to be redefined by each sub-class.
+Evaluates list of Entities to be iterated. Called by Start Default is set to doing nothing: intended to be redefined by each sub-class.
 ") Evaluate;
 		virtual void Evaluate();
 
@@ -11260,7 +11259,7 @@ None
 
 Description
 -----------
-Gets all entities designated by a graph (once created), adds them to those already recorded.
+Gets all Entities designated by a Graph (once created), adds them to those already recorded.
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph);
 
@@ -11279,7 +11278,7 @@ None
 
 Description
 -----------
-Gets entities from a graph which have a specific status value (one created), adds them to those already recorded.
+Gets entities from a graph which have a specific Status value (one created), adds them to those already recorded.
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph, const Standard_Integer stat);
 
@@ -11292,7 +11291,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns result under the exact form of an entityiterator: can be used when entityiterator itself is required (as a returned value for instance), without way for a sub-class.
+Returns Result under the exact form of an EntityIterator: Can be used when EntityIterator itself is required (as a returned value for instance), without way for a sub-class.
 ") Result;
 		Interface_EntityIterator Result();
 
@@ -11327,7 +11326,7 @@ None
 
 Description
 -----------
-Creates and records a static, with a family and a name family can report to a name of resource or to a system or internal definition. the name must be unique. //! type gives the type of the parameter, default is free text also available: integer, real, enum, entity (i.e. object) more precise specifications, titles, can be given to the static once created //! init gives an initial value. if it is not given, the static begin as 'not set', its value is empty.
+Creates and records a Static, with a family and a name family can report to a name of resource or to a system or internal definition. The name must be unique. //! type gives the type of the parameter, default is free text Also available: Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the Static once created //! init gives an initial value. If it is not given, the Static begin as 'not set', its value is empty.
 ") Interface_Static;
 		 Interface_Static(Standard_CString family, Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
@@ -11347,7 +11346,7 @@ None
 
 Description
 -----------
-Creates a new static with same definition as another one (value is copied, except for entity: it remains null).
+Creates a new Static with same definition as another one (value is copied, except for Entity: it remains null).
 ") Interface_Static;
 		 Interface_Static(Standard_CString family, Standard_CString name, const opencascade::handle<Interface_Static> & other);
 
@@ -11366,7 +11365,7 @@ str
 
 Description
 -----------
-Returns a part of the definition of a static, as a cstring the part is designated by its name, as a cstring if the required value is not a string, it is converted to a cstring then returned if <name> is not present, or <part> not defined for <name>, this function returns an empty string //! allowed parts for cdef: family: the family type: the type ('integer','real','text','enum') label: the label satis: satisfy function name if any rmin: minimum real value rmax: maximum real value imin: minimum integer value imax: maximum integer value enum nn (nn: value of an integer): enum value for nn unit: unit definition for a real.
+Returns a part of the definition of a Static, as a CString The part is designated by its name, as a CString If the required value is not a string, it is converted to a CString then returned If <name> is not present, or <part> not defined for <name>, this function returns an empty string //! Allowed parts for CDef: family: the family type: the type ('integer','real','text','enum') label: the label satis: satisfy function name if any rmin: minimum real value rmax: maximum real value imin: minimum integer value imax: maximum integer value enum nn (nn: value of an integer): enum value for nn unit: unit definition for a real.
 ") CDef;
 		static Standard_CString CDef(Standard_CString name, Standard_CString part);
 
@@ -11384,7 +11383,7 @@ str
 
 Description
 -----------
-Returns the value of the parameter identified by the string name. if the specified parameter does not exist, an empty string is returned. example interface_static::cval('write.step.schema'); which could return: 'ap214'.
+Returns the value of the parameter identified by the string name. If the specified parameter does not exist, an empty string is returned. Example Interface_Static::CVal('write.step.schema'); which could return: 'AP214'.
 ") CVal;
 		static Standard_CString CVal(Standard_CString name);
 
@@ -11397,7 +11396,7 @@ str
 
 Description
 -----------
-Returns the family. it can be: a resource name for applis, an internal name between: $e (environment variables), $l (other, purely local).
+Returns the family. It can be: a resource name for applis, an internal name between: $e (environment variables), $l (other, purely local).
 ") Family;
 		Standard_CString Family();
 
@@ -11434,7 +11433,7 @@ int
 
 Description
 -----------
-Returns a part of the definition of a static, as an integer the part is designated by its name, as a cstring if the required value is not a string, returns zero for a boolean, 0 for false, 1 for true if <name> is not present, or <part> not defined for <name>, this function returns zero //! allowed parts for idef: imin, imax: minimum or maximum integer value estart: starting number for enum ecount: count of enum values (starting from estart) ematch: exact match status eval val: case determined from a string.
+Returns a part of the definition of a Static, as an Integer The part is designated by its name, as a CString If the required value is not a string, returns zero For a Boolean, 0 for false, 1 for true If <name> is not present, or <part> not defined for <name>, this function returns zero //! Allowed parts for IDef: imin, imax: minimum or maximum integer value estart: starting number for enum ecount: count of enum values (starting from estart) ematch: exact match status eval val: case determined from a string.
 ") IDef;
 		static Standard_Integer IDef(Standard_CString name, Standard_CString part);
 
@@ -11452,7 +11451,7 @@ int
 
 Description
 -----------
-Returns the integer value of the translation parameter identified by the string name. returns the value 0 if the parameter does not exist. example interface_static::ival('write.step.schema'); which could return: 3.
+Returns the integer value of the translation parameter identified by the string name. Returns the value 0 if the parameter does not exist. Example Interface_Static::IVal('write.step.schema'); which could return: 3.
 ") IVal;
 		static Standard_Integer IVal(Standard_CString name);
 
@@ -11473,7 +11472,7 @@ bool
 
 Description
 -----------
-Declares a new static (by calling its constructor) if this name is already taken, does nothing and returns false else, creates it and returns true for additional definitions, get the static then edit it.
+Declares a new Static (by calling its constructor) If this name is already taken, does nothing and returns False Else, creates it and returns True For additional definitions, get the Static then edit it.
 ") Init;
 		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Interface_ParamType type, Standard_CString init = "");
 
@@ -11494,7 +11493,7 @@ bool
 
 Description
 -----------
-As init with paramtype, but type is given as a character this allows a simpler call types: 'i' integer, 'r' real, 't' text, 'e' enum, 'o' object '=' for same definition as, <init> gives the initial static returns false if <type> does not match this list.
+As Init with ParamType, but type is given as a character This allows a simpler call Types: 'i' Integer, 'r' Real, 't' Text, 'e' Enum, 'o' Object '=' for same definition as, <init> gives the initial Static Returns False if <type> does not match this list.
 ") Init;
 		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Standard_Character type, Standard_CString init = "");
 
@@ -11512,7 +11511,7 @@ bool
 
 Description
 -----------
-Returns true if a static named <name> is present, false else.
+Returns True if a Static named <name> is present, False else.
 ") IsPresent;
 		static Standard_Boolean IsPresent(Standard_CString name);
 
@@ -11531,7 +11530,7 @@ bool
 
 Description
 -----------
-Returns true if <name> is present and set <proper> true (d): considers this item only <proper> false: if not set and attached to a wild-card, considers this wild-card.
+Returns True if <name> is present AND set <proper> True (D): considers this item only <proper> False: if not set and attached to a wild-card, considers this wild-card.
 ") IsSet;
 		static Standard_Boolean IsSet(Standard_CString name, const Standard_Boolean proper = Standard_True);
 
@@ -11549,7 +11548,7 @@ bool
 
 Description
 -----------
-Returns the status 'uptodate' from a static returns false if <name> is not present.
+Returns the status 'uptodate' from a Static Returns False if <name> is not present.
 ") IsUpdated;
 		static Standard_Boolean IsUpdated(Standard_CString name);
 
@@ -11568,7 +11567,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns a list of names of statics: <mode> = 0 (d): criter is for family <mode> = 1: criter is regexp on names, takes final items (ignore wild cards) <mode> = 2: idem but take only wilded, not final items <mode> = 3: idem, take all items matching criter idem + 100: takes only non-updated items idem + 200: takes only updated items criter empty (d): returns all names else returns names which match the given criter remark: families beginning by '$' are not listed by criter '' they are listed only by criter '$' //! this allows for instance to set new values after having loaded or reloaded a resource, then to update them as required.
+Returns a list of names of statics: <mode> = 0 (D): criter is for family <mode> = 1: criter is regexp on names, takes final items (ignore wild cards) <mode> = 2: idem but take only wilded, not final items <mode> = 3: idem, take all items matching criter idem + 100: takes only non-updated items idem + 200: takes only updated items criter empty (D): returns all names else returns names which match the given criter Remark: families beginning by '$' are not listed by criter '' they are listed only by criter '$' //! This allows for instance to set new values after having loaded or reloaded a resource, then to update them as required.
 ") Items;
 		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, Standard_CString criter = "");
 
@@ -11585,7 +11584,7 @@ S: Standard_OStream
 
 Description
 -----------
-Writes the properties of a parameter in the diagnostic file. these include: - name - family, - wildcard (if it has one) - current status (empty string if it was updated or if it is the original one) - value.
+Writes the properties of a parameter in the diagnostic file. These include: - Name - Family, - Wildcard (if it has one) - Current status (empty string if it was updated or if it is the original one) - Value.
 ") PrintStatic;
 		void PrintStatic(std::ostream &OutValue);
 
@@ -11603,7 +11602,7 @@ float
 
 Description
 -----------
-Returns the value of a static translation parameter identified by the string name. returns the value 0.0 if the parameter does not exist.
+Returns the value of a static translation parameter identified by the string name. Returns the value 0.0 if the parameter does not exist.
 ") RVal;
 		static Standard_Real RVal(Standard_CString name);
 
@@ -11622,7 +11621,7 @@ bool
 
 Description
 -----------
-Modifies the value of the parameter identified by name. the modification is specified by the string val. false is returned if the parameter does not exist. example interface_static::setcval ('write.step.schema','ap203') this syntax specifies a switch from the default step 214 mode to step 203 mode.
+Modifies the value of the parameter identified by name. The modification is specified by the string val. false is returned if the parameter does not exist. Example Interface_Static::SetCVal ('write.step.schema','AP203') This syntax specifies a switch from the default STEP 214 mode to STEP 203 mode.
 ") SetCVal;
 		static Standard_Boolean SetCVal(Standard_CString name, Standard_CString val);
 
@@ -11641,7 +11640,7 @@ bool
 
 Description
 -----------
-Modifies the value of the parameter identified by name. the modification is specified by the integer value val. false is returned if the parameter does not exist. example interface_static::setival ('write.step.schema', 3) this syntax specifies a switch from the default step 214 mode to step 203 mode.s.
+Modifies the value of the parameter identified by name. The modification is specified by the integer value val. false is returned if the parameter does not exist. Example Interface_Static::SetIVal ('write.step.schema', 3) This syntax specifies a switch from the default STEP 214 mode to STEP 203 mode.S.
 ") SetIVal;
 		static Standard_Boolean SetIVal(Standard_CString name, const Standard_Integer val);
 
@@ -11660,7 +11659,7 @@ bool
 
 Description
 -----------
-Modifies the value of a translation parameter. false is returned if the parameter does not exist. the modification is specified by the real number value val.
+Modifies the value of a translation parameter. false is returned if the parameter does not exist. The modification is specified by the real number value val.
 ") SetRVal;
 		static Standard_Boolean SetRVal(Standard_CString name, const Standard_Real val);
 
@@ -11673,7 +11672,7 @@ None
 
 Description
 -----------
-Records a static has 'uptodate', i.e. its value has been taken into account by a reinitialisation procedure this flag is reset at each successful setvalue.
+Records a Static has 'uptodate', i.e. its value has been taken into account by a reinitialisation procedure This flag is reset at each successful SetValue.
 ") SetUptodate;
 		void SetUptodate();
 
@@ -11722,7 +11721,7 @@ opencascade::handle<Interface_Static>
 
 Description
 -----------
-Returns a static from its name. null handle if not present.
+Returns a Static from its name. Null Handle if not present.
 ") Static;
 		static opencascade::handle<Interface_Static> Static(Standard_CString name);
 
@@ -11740,7 +11739,7 @@ bool
 
 Description
 -----------
-Sets a static to be 'uptodate' returns false if <name> is not present this status can be used by a reinitialisation procedure to rerun if a value has been changed.
+Sets a Static to be 'uptodate' Returns False if <name> is not present This status can be used by a reinitialisation procedure to rerun if a value has been changed.
 ") Update;
 		static Standard_Boolean Update(Standard_CString name);
 

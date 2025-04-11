@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APIHEADERSECTIONDOCSTRING
 "APIHeaderSection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_apiheadersection.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_apiheadersection.html"
 %enddef
 %module (package="OCC.Core", docstring=APIHEADERSECTIONDOCSTRING) APIHeaderSection
 
@@ -227,7 +227,7 @@ None
 
 Description
 -----------
-Prepares a new makeheader from scratch.
+Prepares a new MakeHeader from scratch.
 ") APIHeaderSection_MakeHeader;
 		 APIHeaderSection_MakeHeader(const Standard_Integer shapetype = 0);
 
@@ -245,7 +245,7 @@ None
 
 Description
 -----------
-Prepares a makeheader from the content of a stepmodel see isdone to know if the header is well defined.
+Prepares a MakeHeader from the content of a StepModel See IsDone to know if the Header is well defined.
 ") APIHeaderSection_MakeHeader;
 		 APIHeaderSection_MakeHeader(const opencascade::handle<StepData_StepModel> & model);
 
@@ -281,7 +281,7 @@ None
 
 Description
 -----------
-Creates an empty header for a new step model and allows the header fields to be completed.
+Creates an empty header for a new STEP model and allows the header fields to be completed.
 ") Apply;
 		void Apply(const opencascade::handle<StepData_StepModel> & model);
 
@@ -369,7 +369,7 @@ opencascade::handle<HeaderSection_FileDescription>
 
 Description
 -----------
-Returns the file_description entity. returns an empty entity if the file_description entity is not initialized.
+Returns the file_description entity. Returns an empty entity if the file_description entity is not initialized.
 ") FdValue;
 		opencascade::handle<HeaderSection_FileDescription> FdValue();
 
@@ -382,7 +382,7 @@ opencascade::handle<HeaderSection_FileName>
 
 Description
 -----------
-Returns the file_name entity. returns an empty entity if the file_name entity is not initialized.
+Returns the file_name entity. Returns an empty entity if the file_name entity is not initialized.
 ") FnValue;
 		opencascade::handle<HeaderSection_FileName> FnValue();
 
@@ -395,7 +395,7 @@ opencascade::handle<HeaderSection_FileSchema>
 
 Description
 -----------
-Returns the file_schema entity. returns an empty entity if the file_schema entity is not initialized.
+Returns the file_schema entity. Returns an empty entity if the file_schema entity is not initialized.
 ") FsValue;
 		opencascade::handle<HeaderSection_FileSchema> FsValue();
 
@@ -408,7 +408,7 @@ bool
 
 Description
 -----------
-Checks whether there is a file_description entity. returns true if there is one.
+Checks whether there is a file_description entity. Returns True if there is one.
 ") HasFd;
 		Standard_Boolean HasFd();
 
@@ -421,7 +421,7 @@ bool
 
 Description
 -----------
-Checks whether there is a file_name entity. returns true if there is one.
+Checks whether there is a file_name entity. Returns True if there is one.
 ") HasFn;
 		Standard_Boolean HasFn();
 
@@ -434,7 +434,7 @@ bool
 
 Description
 -----------
-Checks whether there is a file_schema entity. returns true if there is one.
+Checks whether there is a file_schema entity. Returns True if there is one.
 ") HasFs;
 		Standard_Boolean HasFs();
 
@@ -465,7 +465,7 @@ None
 
 Description
 -----------
-Cancels the former definition and gives a filename to be used when a model has no well defined header.
+Cancels the former definition and gives a FileName To be used when a Model has no well defined Header.
 ") Init;
 		void Init(Standard_CString nameval);
 
@@ -478,7 +478,7 @@ bool
 
 Description
 -----------
-Returns true if all data have been defined (see also hasfn, hasfs, hasfd).
+Returns True if all data have been defined (see also HasFn, HasFs, HasFd).
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -517,7 +517,7 @@ int
 
 Description
 -----------
-Returns the number of values for the file_description entity in the step file header.
+Returns the number of values for the file_description entity in the STEP file header.
 ") NbDescription;
 		Standard_Integer NbDescription();
 
@@ -561,7 +561,7 @@ opencascade::handle<StepData_StepModel>
 
 Description
 -----------
-Builds a header, creates a new stepmodel, then applies the header to the stepmodel the schema name is taken from the protocol (if it inherits from stepdata, else it is left in blanks).
+Builds a Header, creates a new StepModel, then applies the Header to the StepModel The Schema Name is taken from the Protocol (if it inherits from StepData, else it is left in blanks).
 ") NewModel;
 		opencascade::handle<StepData_StepModel> NewModel(const opencascade::handle<Interface_Protocol> & protocol);
 

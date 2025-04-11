@@ -15,7 +15,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-""" A very simple webserver. """
+"""A very simple webserver."""
 
 import os
 import socket

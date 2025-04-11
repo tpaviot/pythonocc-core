@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEANALYSISDOCSTRING
 "ShapeAnalysis module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeanalysis.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeanalysis.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEANALYSISDOCSTRING) ShapeAnalysis
 
@@ -148,7 +148,7 @@ float
 
 Description
 -----------
-Returns a shift required to move point <val> to the range [toval-period/2,toval+period/2]. this shift will be the divisible by period. intended for adjusting parameters on periodic surfaces.
+Returns a shift required to move point <Val> to the range [ToVal-Period/2,ToVal+Period/2]. This shift will be the divisible by Period. Intended for adjusting parameters on periodic surfaces.
 ") AdjustByPeriod;
 		static Standard_Real AdjustByPeriod(const Standard_Real Val, const Standard_Real ToVal, const Standard_Real Period);
 
@@ -168,7 +168,7 @@ float
 
 Description
 -----------
-Returns a shift required to move point <val> to the range [valmin,valmax]. this shift will be the divisible by period with period = valmax - valmin. intended for adjusting parameters on periodic surfaces.
+Returns a shift required to move point <Val> to the range [ValMin,ValMax]. This shift will be the divisible by Period with Period = ValMax - ValMin. Intended for adjusting parameters on periodic surfaces.
 ") AdjustToPeriod;
 		static Standard_Real AdjustToPeriod(const Standard_Real Val, const Standard_Real ValMin, const Standard_Real ValMax);
 
@@ -206,7 +206,7 @@ None
 
 Description
 -----------
-Finds the start and end vertices of the shape shape can be of the following type: vertex: v1 and v2 are the same and equal to <shape>, edge: v1 is start and v2 is end vertex (see shapeanalysis_edge methods firstvertex and lastvertex), wire: v1 is start vertex of the first edge, v2 is end vertex of the last edge (also see shapeanalysis_edge). if wire contains no edges v1 and v2 are nullified if none of the above v1 and v2 are nullified.
+Finds the start and end vertices of the shape Shape can be of the following type: vertex: V1 and V2 are the same and equal to <shape>, edge: V1 is start and V2 is end vertex (see ShapeAnalysis_Edge methods FirstVertex and LastVertex), wire: V1 is start vertex of the first edge, V2 is end vertex of the last edge (also see ShapeAnalysis_Edge). If wire contains no edges V1 and V2 are nullified If none of the above V1 and V2 are nullified.
 ") FindBounds;
 		static void FindBounds(const TopoDS_Shape & shape, TopoDS_Vertex & V1, TopoDS_Vertex & V2);
 
@@ -227,7 +227,7 @@ Vmax: float
 
 Description
 -----------
-Computes exact uv bounds of all wires on the face.
+Computes exact UV bounds of all wires on the face.
 ") GetFaceUVBounds;
 		static void GetFaceUVBounds(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -245,7 +245,7 @@ bool
 
 Description
 -----------
-Returns true if <f> has outer bound.
+Returns True if <F> has outer bound.
 ") IsOuterBound;
 		static Standard_Boolean IsOuterBound(const TopoDS_Face & face);
 
@@ -263,7 +263,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns positively oriented wire in the face. if there is no such wire - returns the last wire of the face.
+Returns positively oriented wire in the face. If there is no such wire - returns the last wire of the face.
 ") OuterWire;
 		static TopoDS_Wire OuterWire(const TopoDS_Face & theFace);
 
@@ -327,7 +327,7 @@ None
 
 Description
 -----------
-Constructor with shape initialisation.
+constructor with shape initialisation.
 ") ShapeAnalysis_CanonicalRecognition;
 		 ShapeAnalysis_CanonicalRecognition(const TopoDS_Shape & theShape);
 
@@ -379,7 +379,7 @@ int
 
 Description
 -----------
-Returns status of operation. current meaning of possible values of status: -1 - algorithm is not initalazed by shape 0 - no errors 1 - error during any operation (usually - because of wrong input data) any operation (calling any methods like isplane(...), ...) can be performed when current staue is equal 0. if after any operation status != 0, it is necessary to set it 0 by method clearstatus() before calling other operation.
+Returns status of operation. Current meaning of possible values of status: -1 - algorithm is not initalazed by shape 0 - no errors 1 - error during any operation (usually - because of wrong input data) Any operation (calling any methods like IsPlane(...), ...) can be performed when current staue is equal 0. If after any operation status != 0, it is necessary to set it 0 by method ClearStatus() before calling other operation.
 ") GetStatus;
 		Standard_Integer GetStatus();
 
@@ -398,7 +398,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined curve can be represent by circle with tolerance thetol and sets in thecirc the result circle. .
+Returns true if the underlined curve can be represent by circle with tolerance theTol and sets in theCirc the result circle.
 ") IsCircle;
 		Standard_Boolean IsCircle(const Standard_Real theTol, gp_Circ & theCirc);
 
@@ -417,7 +417,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined surface can be represent by conical one with tolerance thetol and sets in thecone the result conical surface. .
+Returns true if the underlined surface can be represent by conical one with tolerance theTol and sets in theCone the result conical surface.
 ") IsCone;
 		Standard_Boolean IsCone(const Standard_Real theTol, gp_Cone & theCone);
 
@@ -436,7 +436,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined surface can be represent by cylindrical one with tolerance thetol and sets in thecyl the result cylinrical surface. .
+Returns true if the underlined surface can be represent by cylindrical one with tolerance theTol and sets in theCyl the result cylinrical surface.
 ") IsCylinder;
 		Standard_Boolean IsCylinder(const Standard_Real theTol, gp_Cylinder & theCyl);
 
@@ -455,7 +455,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined curve can be represent by ellipse with tolerance thetol and sets in thecirc the result ellipse. .
+Returns true if the underlined curve can be represent by ellipse with tolerance theTol and sets in theCirc the result ellipse.
 ") IsEllipse;
 		Standard_Boolean IsEllipse(const Standard_Real theTol, gp_Elips & theElips);
 
@@ -474,7 +474,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined curve can be represent by line with tolerance thetol and sets in thelin the result line. .
+Returns true if the underlined curve can be represent by line with tolerance theTol and sets in theLin the result line.
 ") IsLine;
 		Standard_Boolean IsLine(const Standard_Real theTol, gp_Lin & theLin);
 
@@ -493,7 +493,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined surface can be represent by plane with tolerance thetol and sets in thepln the result plane. .
+Returns true if the underlined surface can be represent by plane with tolerance theTol and sets in thePln the result plane.
 ") IsPlane;
 		Standard_Boolean IsPlane(const Standard_Real theTol, gp_Pln & thePln);
 
@@ -512,7 +512,7 @@ bool
 
 Description
 -----------
-Returns true if the underlined surface can be represent by spherical one with tolerance thetol and sets in thesphere the result spherical surface. .
+Returns true if the underlined surface can be represent by spherical one with tolerance theTol and sets in theSphere the result spherical surface.
 ") IsSphere;
 		Standard_Boolean IsSphere(const Standard_Real theTol, gp_Sphere & theSphere);
 
@@ -557,7 +557,7 @@ None
 
 Description
 -----------
-Creates an empty tool checks a shape i.e. each of its faces, records checks as diagnostics in the <infos> //! if <infos> has not been set before, no check is done //! for faces which are in a shell, topological data are recorded to allow recovering connectivities after fixing or removing the small faces or parts of faces enchains various checks on a face inshell: to compute more information, relevant to topology.
+Creates an empty tool Checks a Shape i.e. each of its faces, records checks as diagnostics in the <infos> //! If <infos> has not been set before, no check is done //! For faces which are in a Shell, topological data are recorded to allow recovering connectivities after fixing or removing the small faces or parts of faces Enchains various checks on a face inshell: to compute more information, relevant to topology.
 ") ShapeAnalysis_CheckSmallFace;
 		 ShapeAnalysis_CheckSmallFace();
 
@@ -576,7 +576,7 @@ sence: int
 
 Description
 -----------
-Checks if a face has a pin, which can be edited no singularity: no pin, returns 0 if there is a pin, checked topics, with returned value: - 0: nothing to do more - 1: 'smooth', i.e. not a really sharp pin -> diagnostic 'smoothpin' - 2: stretched pin, i.e. is possible to relimit the face by another vertex, so that this vertex still gives a pin -> diagnostic 'stretchedpin' with location of vertex (pnt).
+Checks if a Face has a pin, which can be edited No singularity: no pin, returns 0 If there is a pin, checked topics, with returned value: - 0: nothing to do more - 1: 'smooth', i.e. not a really sharp pin -> diagnostic 'SmoothPin' - 2: stretched pin, i.e. is possible to relimit the face by another vertex, so that this vertex still gives a pin -> diagnostic 'StretchedPin' with location of vertex (Pnt).
 ") CheckPin;
 		Standard_Boolean CheckPin(const TopoDS_Face & F, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -639,7 +639,7 @@ bool
 
 Description
 -----------
-Checks if a face is a single strip, i.e. brings two great edges which are confused on their whole length, possible other edges are small or null length //! returns 0 if not a strip support, 1 strip in u, 2 strip in v records diagnostic in info if it is a single strip.
+Checks if a Face is a single strip, i.e. brings two great edges which are confused on their whole length, possible other edges are small or null length //! Returns 0 if not a strip support, 1 strip in U, 2 strip in V Records diagnostic in info if it is a single strip.
 ") CheckSingleStrip;
 		Standard_Boolean CheckSingleStrip(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol = -1.0);
 
@@ -660,7 +660,7 @@ int
 
 Description
 -----------
-Checks if a face brings vertices which split it, either confused with non adjacent vertices, or confused with their projection on non adjacent edges returns the count of found splitting vertices each vertex then brings a diagnostic 'splittingvertex', with data: 'face' for the face, 'edge' for the split edge.
+Checks if a Face brings vertices which split it, either confused with non adjacent vertices, or confused with their projection on non adjacent edges Returns the count of found splitting vertices Each vertex then brings a diagnostic 'SplittingVertex', with data: 'Face' for the face, 'Edge' for the split edge.
 ") CheckSplittingVertices;
 		Standard_Integer CheckSplittingVertices(const TopoDS_Face & F, TopTools_DataMapOfShapeListOfShape & MapEdges, ShapeAnalysis_DataMapOfShapeListOfReal & MapParam, TopoDS_Compound & theAllVert);
 
@@ -679,7 +679,7 @@ bool
 
 Description
 -----------
-Acts as isspotface, but records in <infos> a diagnostic 'spotface' with the pnt as value (data 'location').
+Acts as IsSpotFace, but records in <infos> a diagnostic 'SpotFace' with the Pnt as value (data 'Location').
 ") CheckSpotFace;
 		Standard_Boolean CheckSpotFace(const TopoDS_Face & F, const Standard_Real tol = -1.0);
 
@@ -699,7 +699,7 @@ dmax: float
 
 Description
 -----------
-Checks if two edges define a strip, i.e. distance maxi below tolerance, given or some of those of e1 and e2.
+Checks if two edges define a strip, i.e. distance maxi below tolerance, given or some of those of E1 and E2.
 ") CheckStripEdges;
 		Standard_Boolean CheckStripEdges(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real tol, Standard_Real &OutValue);
 
@@ -720,7 +720,7 @@ bool
 
 Description
 -----------
-Checks if a face is as a strip returns 0 if not or non determined, 1 if in u, 2 if in v by default, considers the tolerance zone of its edges a given value <tol> may be given to check a strip of max this width //! if a face is determined as a strip, it is delinited by two lists of edges. these lists are recorded in diagnostic diagnostic 'stripface' brings data 'direction' (u or v), 'list1' , 'list2' (if they could be computed).
+Checks if a Face is as a Strip Returns 0 if not or non determined, 1 if in U, 2 if in V By default, considers the tolerance zone of its edges A given value <tol> may be given to check a strip of max this width //! If a Face is determined as a Strip, it is delinited by two lists of edges. These lists are recorded in diagnostic Diagnostic 'StripFace' brings data 'Direction' (U or V), 'List1' , 'List2' (if they could be computed).
 ") CheckStripFace;
 		Standard_Boolean CheckStripFace(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol = -1.0);
 
@@ -739,7 +739,7 @@ paramv: float
 
 Description
 -----------
-Checks if a face is twisted (apart from checking pin, i.e. it does not give information on pin, only 'it is twisted').
+Checks if a Face is twisted (apart from checking Pin, i.e. it does not give information on pin, only 'it is twisted').
 ") CheckTwisted;
 		Standard_Boolean CheckTwisted(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -760,7 +760,7 @@ dmax: float
 
 Description
 -----------
-Searches for two and only two edges up tolerance returns true if ok, false if not 2 edges if true, returns the two edges and their maximum distance.
+Searches for two and only two edges up tolerance Returns True if OK, false if not 2 edges If True, returns the two edges and their maximum distance.
 ") FindStripEdges;
 		Standard_Boolean FindStripEdges(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol, Standard_Real &OutValue);
 
@@ -780,7 +780,7 @@ spotol: float
 
 Description
 -----------
-Checks if a face is as a spot returns 0 if not, 1 if yes, 2 if yes and all vertices are the same by default, considers the tolerance zone of its vertices a given value <tol> may be given to check a spot of this size if a face is a spot, its location is returned in <spot>, and <spotol> returns an equivalent tolerance, which is computed as half of max dimension of min-max box of the face.
+Checks if a Face is as a Spot Returns 0 if not, 1 if yes, 2 if yes and all vertices are the same By default, considers the tolerance zone of its vertices A given value <tol> may be given to check a spot of this size If a Face is a Spot, its location is returned in <spot>, and <spotol> returns an equivalent tolerance, which is computed as half of max dimension of min-max box of the face.
 ") IsSpotFace;
 		Standard_Integer IsSpotFace(const TopoDS_Face & F, gp_Pnt & spot, Standard_Real &OutValue, const Standard_Real tol = -1.0);
 
@@ -799,7 +799,7 @@ bool
 
 Description
 -----------
-Checks if a face lies on a surface which is a strip so the face is a strip. but a face may be a strip elsewhere .. //! a given value <tol> may be given to check max width by default, considers the tolerance zone of its edges returns 0 if not a strip support, 1 strip in u, 2 strip in v.
+Checks if a Face lies on a Surface which is a strip So the Face is a strip. But a Face may be a strip elsewhere .. //! A given value <tol> may be given to check max width By default, considers the tolerance zone of its edges Returns 0 if not a strip support, 1 strip in U, 2 strip in V.
 ") IsStripSupport;
 		Standard_Boolean IsStripSupport(const TopoDS_Face & F, const Standard_Real tol = -1.0);
 
@@ -817,7 +817,7 @@ None
 
 Description
 -----------
-Sets a fixed tolerance to check small face by default, local tolerance zone is considered sets a fixed maxtolerance to check small face sets a fixed tolerance to check small face by default, local tolerance zone is considered unset fixed tolerance, comes back to local tolerance zones unset fixed tolerance, comes back to local tolerance zones.
+Sets a fixed Tolerance to check small face By default, local tolerance zone is considered Sets a fixed MaxTolerance to check small face Sets a fixed Tolerance to check small face By default, local tolerance zone is considered Unset fixed tolerance, comes back to local tolerance zones Unset fixed tolerance, comes back to local tolerance zones.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real tol);
 
@@ -835,7 +835,7 @@ bool
 
 Description
 -----------
-Returns the status of last call to perform() shapeextend_ok: face was ok, nothing done shapeextend_done1: some wires are fixed shapeextend_done2: orientation of wires fixed shapeextend_done3: missing seam added shapeextend_done4: small area wire removed shapeextend_done5: natural bounds added shapeextend_fail1: some fails during fixing wires shapeextend_fail2: cannot fix orientation of wires shapeextend_fail3: cannot add missing seam shapeextend_fail4: cannot remove small area wire.
+Returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -1011,7 +1011,7 @@ None
 
 Description
 -----------
-Computes a boundary box on segment of curve c2d from first to last. this is done by taking npoints points from the curve and, if exact is true, by searching for exact extrema. all these points are added to box.
+Computes a boundary box on segment of curve C2d from First to Last. This is done by taking NPoints points from the curve and, if Exact is True, by searching for exact extrema. All these points are added to Box.
 ") FillBndBox;
 		void FillBndBox(const opencascade::handle<Geom2d_Curve> & C2d, const Standard_Real First, const Standard_Real Last, const Standard_Integer NPoints, const Standard_Boolean Exact, Bnd_Box2d & Box);
 
@@ -1032,7 +1032,7 @@ bool
 
 Description
 -----------
-Returns sample points which will serve as linearisation of the2d curve in range (first, last) the distribution of sample points is consystent with what is used by breptopadaptor_fclass2d.
+Returns sample points which will serve as linearisation of the2d curve in range (first, last) The distribution of sample points is consystent with what is used by BRepTopAdaptor_FClass2d.
 ") GetSamplePoints;
 		static Standard_Boolean GetSamplePoints(const opencascade::handle<Geom2d_Curve> & curve, const Standard_Real first, const Standard_Real last, TColgp_SequenceOfPnt2d & seq);
 
@@ -1072,7 +1072,7 @@ bool
 
 Description
 -----------
-Tells if the curve is closed with given precision. if <preci> < 0 then precision::confusion is used.
+Tells if the Curve is closed with given precision. If <preci> < 0 then Precision::Confusion is used.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const opencascade::handle<Geom_Curve> & curve, const Standard_Real preci = -1);
 
@@ -1090,7 +1090,7 @@ bool
 
 Description
 -----------
-This method was implemented as fix for changes in trimmed curve behaviour. for the moment trimmed curve returns false anyway. so it is necessary to adapt all data exchange tools for this behaviour. current implementation takes into account that curve may be offset.
+This method was implemented as fix for changes in trimmed curve behaviour. For the moment trimmed curve returns false anyway. So it is necessary to adapt all Data exchange tools for this behaviour. Current implementation takes into account that curve may be offset.
 ") IsPeriodic;
 		static Standard_Boolean IsPeriodic(const opencascade::handle<Geom_Curve> & curve);
 
@@ -1108,7 +1108,7 @@ bool
 
 Description
 -----------
-The same as for curve3d.
+The same as for Curve3d.
 ") IsPeriodic;
 		static Standard_Boolean IsPeriodic(const opencascade::handle<Geom2d_Curve> & curve);
 
@@ -1128,7 +1128,7 @@ bool
 
 Description
 -----------
-Checks if points are planar with given preci. if normal has not zero modulus, checks with given normal.
+Checks if points are planar with given preci. If Normal has not zero modulus, checks with given normal.
 ") IsPlanar;
 		static Standard_Boolean IsPlanar(const TColgp_Array1OfPnt & pnts, gp_XYZ & Normal, const Standard_Real preci = 0);
 
@@ -1148,7 +1148,7 @@ bool
 
 Description
 -----------
-Checks if curve is planar with given preci. if normal has not zero modulus, checks with given normal.
+Checks if curve is planar with given preci. If Normal has not zero modulus, checks with given normal.
 ") IsPlanar;
 		static Standard_Boolean IsPlanar(const opencascade::handle<Geom_Curve> & curve, gp_XYZ & Normal, const Standard_Real preci = 0);
 
@@ -1173,7 +1173,7 @@ param: float
 
 Description
 -----------
-Projects a point on a curve using newton method. <paramprev> is taken as the first approximation of solution. if newton algorithm fails the method project() is used. if adjusttoends is true, point will be adjusted to the end of the curve if distance is less than <preci>.
+Projects a Point on a Curve using Newton method. <paramPrev> is taken as the first approximation of solution. If Newton algorithm fails the method Project() is used. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci>.
 ") NextProject;
 		Standard_Real NextProject(const Standard_Real paramPrev, const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True);
 
@@ -1195,7 +1195,7 @@ param: float
 
 Description
 -----------
-Projects a point on a curve using newton method. <paramprev> is taken as the first approximation of solution. if newton algorithm fails the method project() is used.
+Projects a Point on a Curve using Newton method. <paramPrev> is taken as the first approximation of solution. If Newton algorithm fails the method Project() is used.
 ") NextProject;
 		Standard_Real NextProject(const Standard_Real paramPrev, const Adaptor3d_Curve & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue);
 
@@ -1217,7 +1217,7 @@ param: float
 
 Description
 -----------
-Projects a point on a curve. computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). the number of iterations is limited. if adjusttoends is true, point will be adjusted to the end of the curve if distance is less than <preci> //! returned value is the distance between the given point and computed one.
+Projects a Point on a Curve. Computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). The number of iterations is limited. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci> //! Returned value is the distance between the given point and computed one.
 ") Project;
 		Standard_Real Project(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Boolean AdjustToEnds = Standard_True);
 
@@ -1239,7 +1239,7 @@ param: float
 
 Description
 -----------
-Projects a point on a curve. computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). the number of iterations is limited. //! returned value is the distance between the given point and computed one.
+Projects a Point on a Curve. Computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). The number of iterations is limited. //! Returned value is the distance between the given point and computed one.
 ") Project;
 		Standard_Real Project(const Adaptor3d_Curve & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Boolean AdjustToEnds = Standard_True);
 
@@ -1263,7 +1263,7 @@ param: float
 
 Description
 -----------
-Projects a point on a curve, but parameters are limited between <cf> and <cl>. the range [cf, cl] is extended with help of adaptor3d on the basis of 3d precision <preci>. if adjusttoends is true, point will be adjusted to the end of the curve if distance is less than <preci>.
+Projects a Point on a Curve, but parameters are limited between <cf> and <cl>. The range [cf, cl] is extended with help of Adaptor3d on the basis of 3d precision <preci>. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci>.
 ") Project;
 		Standard_Real Project(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True);
 
@@ -1303,7 +1303,7 @@ int
 
 Description
 -----------
-Defines which pcurve (c1 or c2) should be chosen for forward seam edge.
+Defines which pcurve (C1 or C2) should be chosen for FORWARD seam edge.
 ") SelectForwardSeam;
 		Standard_Integer SelectForwardSeam(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2);
 
@@ -1323,7 +1323,7 @@ Last: float
 
 Description
 -----------
-Validate parameters first and last for the given curve in order to make them valid for creation of edge. this includes: - limiting range [first,last] by range of curve - adjusting range [first,last] for periodic (or closed) curve if last < first returns true if parameters are ok or are successfully corrected, or false if parameters cannot be corrected. in the latter case, parameters are reset to range of curve.
+Validate parameters First and Last for the given curve in order to make them valid for creation of edge. This includes: - limiting range [First,Last] by range of curve - adjusting range [First,Last] for periodic (or closed) curve if Last < First Returns True if parameters are OK or are successfully corrected, or False if parameters cannot be corrected. In the latter case, parameters are reset to range of curve.
 ") ValidateRange;
 		Standard_Boolean ValidateRange(const opencascade::handle<Geom_Curve> & Crv, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real prec);
 
@@ -1350,7 +1350,7 @@ None
 
 Description
 -----------
-Empty constructor; initialises status to ok.
+Empty constructor; initialises Status to OK.
 ") ShapeAnalysis_Edge;
 		 ShapeAnalysis_Edge();
 
@@ -1393,7 +1393,7 @@ bool
 
 Description
 -----------
-Returns the ends of pcurve calls method pcurve with <orient> equal to true.
+Returns the ends of pcurve Calls method PCurve with <orient> equal to True.
 ") BoundUV;
 		Standard_Boolean BoundUV(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, gp_Pnt2d & first, gp_Pnt2d & last);
 
@@ -1452,7 +1452,7 @@ theTolOverlap: float
 
 Description
 -----------
-Checks the first edge is overlapped with second edge. if distance between two edges is less then thetoloverlap edges are overlapped. thedomaindis - length of part of edges on which edges are overlapped.
+Checks the first edge is overlapped with second edge. If distance between two edges is less then theTolOverlap edges are overlapped. theDomainDis - length of part of edges on which edges are overlapped.
 ") CheckOverlapping;
 		Standard_Boolean CheckOverlapping(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, Standard_Real &OutValue, const Standard_Real theDomainDist = 0.0);
 
@@ -1472,7 +1472,7 @@ bool
 
 Description
 -----------
-Checks possibility for pcurve thepc to have range [thefirst, thelast] (edge range) having respect to real first, last parameters of thepc .
+Checks possibility for pcurve thePC to have range [theFirst, theLast] (edge range) having respect to real first, last parameters of thePC.
 ") CheckPCurveRange;
 		Standard_Boolean CheckPCurveRange(const Standard_Real theFirst, const Standard_Real theLast, const opencascade::handle<Geom2d_Curve> & thePC);
 
@@ -1491,7 +1491,7 @@ maxdev: float
 
 Description
 -----------
-Checks the edge to be sameparameter. calculates the maximal deviation between 3d curve and each pcurve of the edge on <nbcontrol> equidistant points (the same algorithm as in brepcheck; default value is 23 as in brepcheck). this deviation is returned in <maxdev> parameter. if deviation is greater than tolerance of the edge (i.e. incorrect flag) returns false, else returns true.
+Checks the edge to be SameParameter. Calculates the maximal deviation between 3d curve and each pcurve of the edge on <NbControl> equidistant points (the same algorithm as in BRepCheck; default value is 23 as in BRepCheck). This deviation is returned in <maxdev> parameter. If deviation is greater than tolerance of the edge (i.e. incorrect flag) returns False, else returns True.
 ") CheckSameParameter;
 		Standard_Boolean CheckSameParameter(const TopoDS_Edge & edge, Standard_Real &OutValue, const Standard_Integer NbControl = 23);
 
@@ -1511,7 +1511,7 @@ theMaxdev: float
 
 Description
 -----------
-Checks the edge to be sameparameter. calculates the maximal deviation between 3d curve and each pcurve of the edge on <nbcontrol> equidistant points (the same algorithm as in brepcheck; default value is 23 as in brepcheck). this deviation is returned in <maxdev> parameter. if deviation is greater than tolerance of the edge (i.e. incorrect flag) returns false, else returns true.
+Checks the edge to be SameParameter. Calculates the maximal deviation between 3d curve and each pcurve of the edge on <NbControl> equidistant points (the same algorithm as in BRepCheck; default value is 23 as in BRepCheck). This deviation is returned in <maxdev> parameter. If deviation is greater than tolerance of the edge (i.e. incorrect flag) returns False, else returns True.
 ") CheckSameParameter;
 		Standard_Boolean CheckSameParameter(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, Standard_Real &OutValue, const Standard_Integer theNbControl = 23);
 
@@ -1570,7 +1570,7 @@ bool
 
 Description
 -----------
-Checks the start and/or end vertex of the edge for matching with 3d curve with the given precision. <vtx> = 1: start vertex only <vtx> = 2: end vertex only <vtx> = 0: both (default) if preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
+Checks the start and/or end vertex of the edge for matching with 3d curve with the given precision. <vtx> = 1: start vertex only <vtx> = 2: end vertex only <vtx> = 0: both (default) If preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
 ") CheckVerticesWithCurve3d;
 		Standard_Boolean CheckVerticesWithCurve3d(const TopoDS_Edge & edge, const Standard_Real preci = -1, const Standard_Integer vtx = 0);
 
@@ -1613,7 +1613,7 @@ bool
 
 Description
 -----------
-Checks the start and/or end vertex of the edge for matching with pcurve with the given precision. <vtx> = 1: start vertex <vtx> = 2: end vertex <vtx> = 0: both if preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
+Checks the start and/or end vertex of the edge for matching with pcurve with the given precision. <vtx> = 1: start vertex <vtx> = 2: end vertex <vtx> = 0: both If preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
 ") CheckVerticesWithPCurve;
 		Standard_Boolean CheckVerticesWithPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Real preci = -1, const Standard_Integer vtx = 0);
 
@@ -1634,7 +1634,7 @@ cl: float
 
 Description
 -----------
-Returns the 3d curve and bounding parameteres for the edge returns false if no 3d curve. if <orient> is true (default), takes orientation into account: if the edge is reversed, cf and cl are toggled.
+Returns the 3d curve and bounding parameters for the edge Returns False if no 3d curve. If <orient> is True (default), takes orientation into account: if the edge is reversed, cf and cl are toggled.
 ") Curve3d;
 		Standard_Boolean Curve3d(const TopoDS_Edge & edge, opencascade::handle<Geom_Curve> & C3d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean orient = Standard_True);
 
@@ -1699,7 +1699,7 @@ bool
 
 Description
 -----------
-Returns tangent of the edge pcurve at its start (if atend is false) or end (if true), regarding the orientation of edge. if edge is reversed, tangent is reversed before return. returns true if pcurve is available and tangent is computed and is not null, else false.
+Returns tangent of the edge pcurve at its start (if atEnd is False) or end (if True), regarding the orientation of edge. If edge is REVERSED, tangent is reversed before return. Returns True if pcurve is available and tangent is computed and is not null, else False.
 ") GetEndTangent2d;
 		Standard_Boolean GetEndTangent2d(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Boolean atEnd, gp_Pnt2d & pos, gp_Vec2d & tang, const Standard_Real dparam = 0.0);
 
@@ -1736,7 +1736,7 @@ bool
 
 Description
 -----------
-Tells if the edge has a pcurve on the face.
+Tells if the Edge has a pcurve on the face.
 ") HasPCurve;
 		Standard_Boolean HasPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
@@ -1774,7 +1774,7 @@ bool
 
 Description
 -----------
-Gives true if the edge has a 3d curve, this curve is closed, and the edge has the same vertex at start and end.
+Gives True if the edge has a 3d curve, this curve is closed, and the edge has the same vertex at start and end.
 ") IsClosed3d;
 		Standard_Boolean IsClosed3d(const TopoDS_Edge & edge);
 
@@ -1813,7 +1813,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has two pcurves on one surface.
+Returns True if the edge has two pcurves on one surface.
 ") IsSeam;
 		Standard_Boolean IsSeam(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
@@ -1876,7 +1876,7 @@ cl: float
 
 Description
 -----------
-Returns the pcurve and bounding parameteres for the edge lying on the surface. returns false if the edge has no pcurve on this surface. if <orient> is true (default), takes orientation into account: if the edge is reversed, cf and cl are toggled.
+Returns the pcurve and bounding parameters for the edge lying on the surface. Returns False if the edge has no pcurve on this surface. If <orient> is True (default), takes orientation into account: if the edge is reversed, cf and cl are toggled.
 ") PCurve;
 		Standard_Boolean PCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, opencascade::handle<Geom2d_Curve> & C2d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean orient = Standard_True);
 
@@ -1894,7 +1894,7 @@ bool
 
 Description
 -----------
-Returns the status (in the form of true/false) of last check.
+Returns the status (in the form of True/False) of last Check.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -1939,7 +1939,7 @@ None
 
 Description
 -----------
-Creates object with contour given in the form of topods_wire.
+Creates object with contour given in the form of TopoDS_Wire.
 ") ShapeAnalysis_FreeBoundData;
 		 ShapeAnalysis_FreeBoundData(const TopoDS_Wire & freebound);
 
@@ -1984,7 +1984,7 @@ None
 
 Description
 -----------
-Clears all properties of the contour. contour bound itself is not cleared.
+Clears all properties of the contour. Contour bound itself is not cleared.
 ") Clear;
 		void Clear();
 
@@ -2064,7 +2064,7 @@ float
 
 Description
 -----------
-Returns maximum width of notch specified as topods_wire on the contour.
+Returns maximum width of notch specified as TopoDS_Wire on the contour.
 ") NotchWidth;
 		Standard_Real NotchWidth(const TopoDS_Wire & notch);
 
@@ -2256,7 +2256,7 @@ None
 
 Description
 -----------
-Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. this constructor is to be used for forecasting free edges with help of sewing analyzer brepalgo_sewing which is called with tolerance <toler>. free edges are connected into wires only when their ends are at distance less than <toler>. if <splitclosed> is true extracts closed sub-wires out of built closed wires. if <splitopen> is true extracts closed sub-wires out of built open wires.
+Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds(const TopoDS_Shape & shape, const Standard_Real toler, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_True);
 
@@ -2277,7 +2277,7 @@ None
 
 Description
 -----------
-Builds actual free bounds of the <shape>. <shape> should be a compound of shells. this constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer shapeanalysis_shell. free edges are connected into wires only when they share the same vertex. if <splitclosed> is true extracts closed sub-wires out of built closed wires. if <splitopen> is true extracts closed sub-wires out of built open wires.
+Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_True, const Standard_Boolean checkinternaledges = Standard_False);
 
@@ -2297,7 +2297,7 @@ None
 
 Description
 -----------
-Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. if a compound is not empty wires are added into it.
+Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it.
 ") DispatchWires;
 		static void DispatchWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, TopoDS_Compound & closed, TopoDS_Compound & open);
 
@@ -2345,7 +2345,7 @@ None
 
 Description
 -----------
-Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. if <shared> is true extraction is performed only when edges share the same vertex. if <shared> is false connection is performed only when ends of the edges are at distance less than <toler>.
+Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>.
 ") SplitWires;
 		static void SplitWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & closed, opencascade::handle<TopTools_HSequenceOfShape> & open);
 
@@ -2415,7 +2415,7 @@ None
 
 Description
 -----------
-Creates the object and calls corresponding init. <shape> should be a compound of faces.
+Creates the object and calls corresponding Init. <shape> should be a compound of faces.
 ") ShapeAnalysis_FreeBoundsProperties;
 		 ShapeAnalysis_FreeBoundsProperties(const TopoDS_Shape & shape, const Standard_Real tolerance, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
@@ -2435,7 +2435,7 @@ None
 
 Description
 -----------
-Creates the object and calls corresponding init. <shape> should be a compound of shells.
+Creates the object and calls corresponding Init. <shape> should be a compound of shells.
 ") ShapeAnalysis_FreeBoundsProperties;
 		 ShapeAnalysis_FreeBoundsProperties(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
@@ -2628,7 +2628,7 @@ bool
 
 Description
 -----------
-Returns true if shape is loaded.
+Returns True if shape is loaded.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
@@ -2711,7 +2711,7 @@ bool
 
 Description
 -----------
-Builds and analyzes free bounds of the shape. first calls shapeanalysis_freebounds for building free bounds. then on each free bound computes its properties: - area of the contour, - perimeter of the contour, - ratio of average length to average width of the contour, - average width of contour, - notches on the contour and for each notch - maximum width of the notch.
+Builds and analyzes free bounds of the shape. First calls ShapeAnalysis_FreeBounds for building free bounds. Then on each free bound computes its properties: - area of the contour, - perimeter of the contour, - ratio of average length to average width of the contour, - average width of contour, - notches on the contour and for each notch - maximum width of the notch.
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -2770,7 +2770,7 @@ Dmax: float
 
 Description
 -----------
-Builds a plane out of a set of points in array returns in <dmax> the maximal distance between the produced plane and given points.
+Builds a plane out of a set of points in array Returns in <dmax> the maximal distance between the produced plane and given points.
 ") NearestPlane;
 		static Standard_Boolean NearestPlane(const TColgp_Array1OfPnt & Pnts, gp_Pln & aPln, Standard_Real &OutValue);
 
@@ -2791,7 +2791,7 @@ bool
 
 Description
 -----------
-Builds transformation object out of matrix. matrix must be 3 x 4. unit is used as multiplier.
+Builds transformation object out of matrix. Matrix must be 3 x 4. Unit is used as multiplier.
 ") PositionTrsf;
 		static Standard_Boolean PositionTrsf(const opencascade::handle<TColStd_HArray2OfReal> & coefs, gp_Trsf & trsf, const Standard_Real unit, const Standard_Real prec);
 
@@ -2818,7 +2818,7 @@ None
 
 Description
 -----------
-Initialize fields and call clearflags().
+Initialize fields and call ClearFlags().
 ") ShapeAnalysis_ShapeContents;
 		 ShapeAnalysis_ShapeContents();
 
@@ -3506,7 +3506,7 @@ None
 
 Description
 -----------
-Adds data on new shape to compute cumulated tolerance (prepares three computations: maximal, average, minimal).
+Adds data on new Shape to compute Cumulated Tolerance (prepares three computations: maximal, average, minimal).
 ") AddTolerance;
 		void AddTolerance(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
@@ -3545,7 +3545,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Determines which shapes have a tolerance within a given interval <type> is interpreted as in the method tolerance.
+Determines which shapes have a tolerance within a given interval <type> is interpreted as in the method Tolerance.
 ") InTolerance;
 		opencascade::handle<TopTools_HSequenceOfShape> InTolerance(const TopoDS_Shape & shape, const Standard_Real valmin, const Standard_Real valmax, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
@@ -3578,7 +3578,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Determines which shapes have a tolerance over the given value <type> is interpreted as in the method tolerance.
+Determines which shapes have a tolerance over the given value <type> is interpreted as in the method Tolerance.
 ") OverTolerance;
 		opencascade::handle<TopTools_HSequenceOfShape> OverTolerance(const TopoDS_Shape & shape, const Standard_Real value, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
@@ -3598,7 +3598,7 @@ float
 
 Description
 -----------
-Determines a tolerance from the ones stored in a shape remark: calls inittolerance and addtolerance, hence, can be used to start a series for cumulating tolerance <mode> = 0: returns the average value between sub-shapes, <mode> > 0: returns the maximal found, <mode> < 0: returns the minimal found. <type> defines what kinds of sub-shapes to consider: shape (default): all: vertex, edge, face, vertex: only vertices, edge: only edges, face: only faces, shell: combined shell + face, for each face (and containing shell), also checks edge and vertex.
+Determines a tolerance from the ones stored in a shape Remark: calls InitTolerance and AddTolerance, hence, can be used to start a series for cumulating tolerance <mode> = 0: returns the average value between sub-shapes, <mode> > 0: returns the maximal found, <mode> < 0: returns the minimal found. <type> defines what kinds of sub-shapes to consider: SHAPE (default): all: VERTEX, EDGE, FACE, VERTEX: only vertices, EDGE: only edges, FACE: only faces, SHELL: combined SHELL + FACE, for each face (and containing shell), also checks EDGE and VERTEX.
 ") Tolerance;
 		Standard_Real Tolerance(const TopoDS_Shape & shape, const Standard_Integer mode, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
@@ -3638,7 +3638,7 @@ TopoDS_Compound
 
 Description
 -----------
-Returns the list of bad edges as a compound it is empty (not null) if no edge are recorded as bad.
+Returns the list of bad edges as a Compound It is empty (not null) if no edge are recorded as bad.
 ") BadEdges;
 		TopoDS_Compound BadEdges();
 
@@ -3658,7 +3658,7 @@ bool
 
 Description
 -----------
-Checks if shells fulfill orientation condition, i.e. if each edge is, either present once (free edge) or twice (connected edge) but with different orientations (forward/reversed) edges which do not fulfill these conditions are bad //! if <alsofree> is true free edges are considered. free edges can be queried but are not bad.
+Checks if shells fulfill orientation condition, i.e. if each edge is, either present once (free edge) or twice (connected edge) but with different orientations (FORWARD/REVERSED) Edges which do not fulfill these conditions are bad //! If <alsofree> is True free edges are considered. Free edges can be queried but are not bad.
 ") CheckOrientedShells;
 		Standard_Boolean CheckOrientedShells(const TopoDS_Shape & shape, const Standard_Boolean alsofree = Standard_False, const Standard_Boolean checkinternaledges = Standard_False);
 
@@ -3684,7 +3684,7 @@ TopoDS_Compound
 
 Description
 -----------
-Returns the list of free (not connected) edges as a compound it is empty (not null) if no edge are recorded as free.
+Returns the list of free (not connected) edges as a Compound It is empty (not null) if no edge are recorded as free.
 ") FreeEdges;
 		TopoDS_Compound FreeEdges();
 
@@ -3777,7 +3777,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a loaded shape specified by its rank number. returns null shape if <num> is out of range.
+Returns a loaded shape specified by its rank number. Returns null shape if <num> is out of range.
 ") Loaded;
 		TopoDS_Shape Loaded(const Standard_Integer num);
 
@@ -3835,7 +3835,7 @@ opencascade::handle<GeomAdaptor_Surface>
 
 Description
 -----------
-Returns the adaptor. creates it if not yet done.
+Returns the Adaptor. Creates it if not yet done.
 ") Adaptor3d;
 		const opencascade::handle<GeomAdaptor_Surface> & Adaptor3d();
 
@@ -3855,7 +3855,7 @@ vlast: float
 
 Description
 -----------
-Returns the bounds of the surface (from bounds from surface, but buffered).
+Returns the bounds of the surface (from Bounds from Surface, but buffered).
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3891,7 +3891,7 @@ lastpar: float
 
 Description
 -----------
-Returns true if there is at least one surface iso-line which is considered as degenerated with <preci> and distance between p3d and corresponding singular point is less than <preci> (like isdegenerated). returns characteristics of the first found boundary matching those criteria.
+Returns True if there is at least one surface iso-line which is considered as degenerated with <preci> and distance between P3d and corresponding singular point is less than <preci> (like IsDegenerated). Returns characteristics of the first found boundary matching those criteria.
 ") DegeneratedValues;
 		Standard_Boolean DegeneratedValues(const gp_Pnt & P3d, const Standard_Real preci, gp_Pnt2d & firstP2d, gp_Pnt2d & lastP2d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean forward = Standard_True);
 
@@ -3904,7 +3904,7 @@ float
 
 Description
 -----------
-Returns 3d distance found by one of the following methods. isdegenerated, degeneratedvalues, projectdegenerated (distance between 3d point and found or last (if not found) singularity), isuclosed, isvclosed (minimum value of precision to consider the surface to be closed), valueofuv (distance between 3d point and found solution).
+Returns 3D distance found by one of the following methods. IsDegenerated, DegeneratedValues, ProjectDegenerated (distance between 3D point and found or last (if not found) singularity), IsUClosed, IsVClosed (minimum value of precision to consider the surface to be closed), ValueOfUV (distance between 3D point and found solution).
 ") Gap;
 		Standard_Real Gap();
 
@@ -3974,7 +3974,7 @@ bool
 
 Description
 -----------
-Returns true if the surface has singularities for the given precision (i.e. if there are surface singularities with sizes not greater than precision).
+Returns True if the surface has singularities for the given precision (i.e. if there are surface singularities with sizes not greater than precision).
 ") HasSingularities;
 		Standard_Boolean HasSingularities(const Standard_Real preci);
 
@@ -4010,7 +4010,7 @@ None
 
 Description
 -----------
-Reads all the data from another surface, without recomputing.
+Reads all the data from another Surface, without recomputing.
 ") Init;
 		void Init(const opencascade::handle<ShapeAnalysis_Surface> & other);
 
@@ -4029,7 +4029,7 @@ bool
 
 Description
 -----------
-Returns true if there is at least one surface boundary which is considered as degenerated with <preci> and distance between p3d and corresponding singular point is less than <preci>.
+Returns True if there is at least one surface boundary which is considered as degenerated with <preci> and distance between P3d and corresponding singular point is less than <preci>.
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated(const gp_Pnt & P3d, const Standard_Real preci);
 
@@ -4050,7 +4050,7 @@ bool
 
 Description
 -----------
-Returns true if straight pcurve going from point p2d1 to p2d2 is degenerate, i.e. lies in the singularity of the surface. note: it uses another method of detecting singularity than used by computesingularities() et al.! for that, maximums of distances between points p2d1, p2d2 and 0.5*(p2d1+p2d2) and between corresponding 3d points are computed. the pcurve (p2d1, p2d2) is considered as degenerate if: - max distance in 3d is less than <tol> - max distance in 2d is at least <ratio> times greater than the resolution computed from max distance in 3d (max3d < tol && max2d > ratio * resolution(max3d)) note: <ratio> should be >1 (e.g. 10).
+Returns True if straight pcurve going from point p2d1 to p2d2 is degenerate, i.e. lies in the singularity of the surface. NOTE: it uses another method of detecting singularity than used by ComputeSingularities() et al.! For that, maximums of distances between points p2d1, p2d2 and 0.5*(p2d1+p2d2) and between corresponding 3d points are computed. The pcurve (p2d1, p2d2) is considered as degenerate if: - max distance in 3d is less than <tol> - max distance in 2d is at least <ratio> times greater than the Resolution computed from max distance in 3d (max3d < tol && max2d > ratio * Resolution(max3d)) NOTE: <ratio> should be >1 (e.g. 10).
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated(const gp_Pnt2d & p2d1, const gp_Pnt2d & p2d2, const Standard_Real tol, const Standard_Real ratio);
 
@@ -4068,7 +4068,7 @@ bool
 
 Description
 -----------
-Tells if the surface is spatially closed in u with given precision. if <preci> < 0 then precision::confusion is used. if geom_surface says that the surface is u-closed, this method also says this. otherwise additional analysis is performed, comparing given precision with the following distances: - periodic b-splines are closed, - polinomial b-spline with boundary multiplicities degree+1 and bezier - maximum distance between poles, - rational b-spline or one with boundary multiplicities not degree+1 - maximum distance computed at knots and their middles, - surface of extrusion - distance between ends of basis curve, - other (rectangulartrimmed and offset) - maximum distance computed at 100 equi-distanted points.
+Tells if the Surface is spatially closed in U with given precision. If <preci> < 0 then Precision::Confusion is used. If Geom_Surface says that the surface is U-closed, this method also says this. Otherwise additional analysis is performed, comparing given precision with the following distances: - periodic B-Splines are closed, - polynomial B-Spline with boundary multiplicities degree+1 and Bezier - maximum distance between poles, - rational B-Spline or one with boundary multiplicities not degree+1 - maximum distance computed at knots and their middles, - surface of extrusion - distance between ends of basis curve, - other (RectangularTrimmed and Offset) - maximum distance computed at 100 equi-distanted points.
 ") IsUClosed;
 		Standard_Boolean IsUClosed(const Standard_Real preci = -1);
 
@@ -4086,7 +4086,7 @@ bool
 
 Description
 -----------
-Tells if the surface is spatially closed in v with given precision. if <preci> < 0 then precision::confusion is used. if geom_surface says that the surface is v-closed, this method also says this. otherwise additional analysis is performed, comparing given precision with the following distances: - periodic b-splines are closed, - polinomial b-spline with boundary multiplicities degree+1 and bezier - maximum distance between poles, - rational b-spline or one with boundary multiplicities not degree+1 - maximum distance computed at knots and their middles, - surface of revolution - distance between ends of basis curve, - other (rectangulartrimmed and offset) - maximum distance computed at 100 equi-distanted points.
+Tells if the Surface is spatially closed in V with given precision. If <preci> < 0 then Precision::Confusion is used. If Geom_Surface says that the surface is V-closed, this method also says this. Otherwise additional analysis is performed, comparing given precision with the following distances: - periodic B-Splines are closed, - polynomial B-Spline with boundary multiplicities degree+1 and Bezier - maximum distance between poles, - rational B-Spline or one with boundary multiplicities not degree+1 - maximum distance computed at knots and their middles, - surface of revolution - distance between ends of basis curve, - other (RectangularTrimmed and Offset) - maximum distance computed at 100 equi-distanted points.
 ") IsVClosed;
 		Standard_Boolean IsVClosed(const Standard_Real preci = -1);
 
@@ -4125,7 +4125,7 @@ gp_Pnt2d
 
 Description
 -----------
-Projects a point p3d on the surface. does the same thing as valueofuv but tries to optimize computations by taking into account previous point <p2dprev>: makes a step by uv and tries newton algorithm. if <maxpreci> >0. and distance between solution and p3d is greater than <maxpreci>, that solution is considered as bad, and valueofuv() is used. if not succeeded, calls valueofuv().
+Projects a point P3D on the surface. Does the same thing as ValueOfUV but tries to optimize computations by taking into account previous point <p2dPrev>: makes a step by UV and tries Newton algorithm. If <maxpreci> >0. and distance between solution and P3D is greater than <maxpreci>, that solution is considered as bad, and ValueOfUV() is used. If not succeeded, calls ValueOfUV().
 ") NextValueOfUV;
 		gp_Pnt2d NextValueOfUV(const gp_Pnt2d & p2dPrev, const gp_Pnt & P3D, const Standard_Real preci, const Standard_Real maxpreci = -1.0);
 
@@ -4146,7 +4146,7 @@ bool
 
 Description
 -----------
-Projects a point <p3d> on a singularity by computing one of the coordinates of preliminary computed <result>. //! finds the iso-line which is considered as degenerated with <preci> and a. distance between p3d and corresponding singular point is less than <preci> (like isdegenerated) or b. difference between already computed <result>'s coordinate and iso-coordinate of the boundary is less than 2d resolution (computed from <preci> by geom_adaptor). then sets not yet computed <result>'s coordinate taking it from <neighbour> and returns true.
+Projects a point <P3d> on a singularity by computing one of the coordinates of preliminary computed <result>. //! Finds the iso-line which is considered as degenerated with <preci> and a. distance between P3d and corresponding singular point is less than <preci> (like IsDegenerated) or b. difference between already computed <result>'s coordinate and iso-coordinate of the boundary is less than 2D resolution (computed from <preci> by Geom_Adaptor). Then sets not yet computed <result>'s coordinate taking it from <neighbour> and returns True.
 ") ProjectDegenerated;
 		Standard_Boolean ProjectDegenerated(const gp_Pnt & P3d, const Standard_Real preci, const gp_Pnt2d & neighbour, gp_Pnt2d & result);
 
@@ -4168,7 +4168,7 @@ bool
 
 Description
 -----------
-Checks points at the beginning (direct is true) or end (direct is false) of array <points> to lie in singularity of surface, and if yes, adjusts the indeterminate 2d coordinate of these points by nearest point which is not in singularity. returns true if some points were adjusted.
+Checks points at the beginning (direct is True) or end (direct is False) of array <points> to lie in singularity of surface, and if yes, adjusts the indeterminate 2d coordinate of these points by nearest point which is not in singularity. Returns True if some points were adjusted.
 ") ProjectDegenerated;
 		Standard_Boolean ProjectDegenerated(const Standard_Integer nbrPnt, const TColgp_SequenceOfPnt & points, TColgp_SequenceOfPnt2d & pnt2d, const Standard_Real preci, const Standard_Boolean direct);
 
@@ -4213,7 +4213,7 @@ uisodeg: bool
 
 Description
 -----------
-Returns the characteristics of the singularity specified by its rank number <num>. that means, that it is not necessary for <num> to be in the range [1, nbsingularities] but must be not greater than possible (see computesingularities). the returned characteristics are: preci: the smallest precision with which the iso-line is considered as degenerated, p3d: 3d point of singularity (middle point of the surface iso-line), firstp2d and lastp2d: first and last 2d points of the iso-line in parametrical surface, firstpar and lastpar: first and last parameters of the iso-line in parametrical surface, uisodeg: if the degenerated iso-line is u-iso (true) or v-iso (false). returns false if <num> is out of range, else returns true.
+Returns the characteristics of the singularity specified by its rank number <num>. That means, that it is not necessary for <num> to be in the range [1, NbSingularities] but must be not greater than possible (see ComputeSingularities). The returned characteristics are: preci: the smallest precision with which the iso-line is considered as degenerated, P3d: 3D point of singularity (middle point of the surface iso-line), firstP2d and lastP2d: first and last 2D points of the iso-line in parametrical surface, firstpar and lastpar: first and last parameters of the iso-line in parametrical surface, uisodeg: if the degenerated iso-line is U-iso (True) or V-iso (False). Returns False if <num> is out of range, else returns True.
 ") Singularity;
 		Standard_Boolean Singularity(const Standard_Integer num, Standard_Real &OutValue, gp_Pnt & P3d, gp_Pnt2d & firstP2d, gp_Pnt2d & lastP2d, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
@@ -4239,7 +4239,7 @@ opencascade::handle<GeomAdaptor_Surface>
 
 Description
 -----------
-Returns the adaptor (may be null if method adaptor() was not called).
+Returns the Adaptor (may be Null if method Adaptor() was not called).
 ") TrueAdaptor3d;
 		const opencascade::handle<GeomAdaptor_Surface> & TrueAdaptor3d();
 
@@ -4252,7 +4252,7 @@ float
 
 Description
 -----------
-Returns minimum value to consider the surface as u-closed.
+Returns minimum value to consider the surface as U-closed.
 ") UCloseVal;
 		Standard_Real UCloseVal();
 
@@ -4270,7 +4270,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns a u-iso. null if not possible or failed remark: bound isos are buffered.
+Returns a U-Iso. Null if not possible or failed Remark: bound isos are buffered.
 ") UIso;
 		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
 
@@ -4290,7 +4290,7 @@ V: float
 
 Description
 -----------
-Tries a refinement of an already computed couple (u,v) by using projecting 3d point on iso-lines: 1. boundaries of the surface, 2. iso-lines passing through (u,v) 3. iteratively received iso-lines passing through new u and new v (number of iterations is limited by 5 in each direction) returns the best resulting distance between p3d and value(u,v) in the case of success. else, returns a very great value.
+Tries a refinement of an already computed couple (U,V) by using projecting 3D point on iso-lines: 1. boundaries of the surface, 2. iso-lines passing through (U,V) 3. iteratively received iso-lines passing through new U and new V (number of iterations is limited by 5 in each direction) Returns the best resulting distance between P3D and Value(U,V) in the case of success. Else, returns a very great value.
 ") UVFromIso;
 		Standard_Real UVFromIso(const gp_Pnt & P3D, const Standard_Real preci, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4303,7 +4303,7 @@ float
 
 Description
 -----------
-Returns minimum value to consider the surface as v-closed.
+Returns minimum value to consider the surface as V-closed.
 ") VCloseVal;
 		Standard_Real VCloseVal();
 
@@ -4321,7 +4321,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns a v-iso. null if not possible or failed remark: bound isos are buffered.
+Returns a V-Iso. Null if not possible or failed Remark: bound isos are buffered.
 ") VIso;
 		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
 
@@ -4340,7 +4340,7 @@ gp_Pnt
 
 Description
 -----------
-Returns a 3d point specified by parameters in surface parametrical space.
+Returns a 3D point specified by parameters in surface parametrical space.
 ") Value;
 		gp_Pnt Value(const Standard_Real u, const Standard_Real v);
 
@@ -4377,7 +4377,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the parameters in the surface parametrical space of 3d point. the result is parameters of the point projected onto the surface. this method enhances functionality provided by the standard tool geomapi_projectpointonsurface by treatment of cases when the projected point is near to the surface boundaries and when this standard tool fails.
+Computes the parameters in the surface parametrical space of 3D point. The result is parameters of the point projected onto the surface. This method enhances functionality provided by the standard tool GeomAPI_ProjectPointOnSurface by treatment of cases when the projected point is near to the surface boundaries and when this standard tool fails.
 ") ValueOfUV;
 		gp_Pnt2d ValueOfUV(const gp_Pnt & P3D, const Standard_Real preci);
 
@@ -4406,7 +4406,7 @@ None
 
 Description
 -----------
-Creates empty tool with myshift = 0 and myscale = 1.
+Creates empty tool with myShift = 0 and myScale = 1.
 ") ShapeAnalysis_TransferParameters;
 		 ShapeAnalysis_TransferParameters();
 
@@ -4457,7 +4457,7 @@ bool
 
 Description
 -----------
-Returns true if 3d curve of edge and pcurve are samerange (in default implementation, if myscale == 1 and myshift == 0).
+Returns True if 3d curve of edge and pcurve are SameRange (in default implementation, if myScale == 1 and myShift == 0).
 ") IsSameRange;
 		virtual Standard_Boolean IsSameRange();
 
@@ -4476,7 +4476,7 @@ opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
-Transfers parameters given by sequence params from 3d curve to pcurve (if to2d is true) or back (if to2d is false).
+Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
 		virtual opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Params, const Standard_Boolean To2d);
 
@@ -4495,7 +4495,7 @@ float
 
 Description
 -----------
-Transfers parameter given by sequence params from 3d curve to pcurve (if to2d is true) or back (if to2d is false).
+Transfers parameter given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
 		virtual Standard_Real Perform(const Standard_Real Param, const Standard_Boolean To2d);
 
@@ -4534,7 +4534,7 @@ None
 
 Description
 -----------
-Recomputes range of curves from newedge. if is2d equals true parameters are recomputed by curve2d else by curve3d.
+Recomputes range of curves from NewEdge. If Is2d equals True parameters are recomputed by curve2d else by curve3d.
 ") TransferRange;
 		virtual void TransferRange(TopoDS_Edge & newEdge, const Standard_Real prevPar, const Standard_Real currPar, const Standard_Boolean To2d);
 
@@ -4583,7 +4583,7 @@ None
 
 Description
 -----------
-Creates object with standard topods_wire, face and precision.
+Creates object with standard TopoDS_Wire, face and precision.
 ") ShapeAnalysis_Wire;
 		 ShapeAnalysis_Wire(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real precision);
 
@@ -4603,7 +4603,7 @@ None
 
 Description
 -----------
-Creates the object with wiredata object, face and precision.
+Creates the object with WireData object, face and precision.
 ") ShapeAnalysis_Wire;
 		 ShapeAnalysis_Wire(const opencascade::handle<ShapeExtend_WireData> & sbwd, const TopoDS_Face & face, const Standard_Real precision);
 
@@ -4621,7 +4621,7 @@ bool
 
 Description
 -----------
-Checks if wire is closed, performs checkconnected, checkdegenerated and checklacking for the first and the last edges returns: true if at least one check returned true status: fail1 or done1: see checkconnected fail2 or done2: see checkdegenerated.
+Checks if wire is closed, performs CheckConnected, CheckDegenerated and CheckLacking for the first and the last edges Returns: True if at least one check returned True Status: FAIL1 or DONE1: see CheckConnected FAIL2 or DONE2: see CheckDegenerated.
 ") CheckClosed;
 		Standard_Boolean CheckClosed(const Standard_Real prec = 0.0);
 
@@ -4639,7 +4639,7 @@ bool
 
 Description
 -----------
-Calls to checkconnected for each edge returns: true if at least one pair of disconnected edges (not sharing the same vertex) was detected.
+Calls to CheckConnected for each edge Returns: True if at least one pair of disconnected edges (not sharing the same vertex) was detected.
 ") CheckConnected;
 		Standard_Boolean CheckConnected(const Standard_Real prec = 0.0);
 
@@ -4658,7 +4658,7 @@ bool
 
 Description
 -----------
-Checks connected edges (num-th and preceding). tests with starting preci from <sbwd> or with <prec> if it is greater. considers vertices. returns: false if edges are connected by the common vertex, else true status: ok: vertices (end of num-1 th edge and start on num-th one) are already the same done1: absolutely confused (gp::resolution) done2: confused at starting <preci> from <sbwd> done3: confused at <prec> but not <preci> fail1: not confused fail2: not confused but confused with <preci> if reverse num-th edge.
+Checks connected edges (num-th and preceding). Tests with starting preci from <SBWD> or with <prec> if it is greater. Considers Vertices. Returns: False if edges are connected by the common vertex, else True Status: OK: Vertices (end of num-1 th edge and start on num-th one) are already the same DONE1: Absolutely confused (gp::Resolution) DONE2: Confused at starting <preci> from <SBWD> DONE3: Confused at <prec> but not <preci> FAIL1: Not confused FAIL2: Not confused but confused with <preci> if reverse num-th edge.
 ") CheckConnected;
 		Standard_Boolean CheckConnected(const Standard_Integer num, const Standard_Real prec = 0.0);
 
@@ -4676,7 +4676,7 @@ bool
 
 Description
 -----------
-Checks gap between points on 3d curve and points on surface generated by pcurve of the num-th edge. the distance can be queried by mindistance3d. //! returns: true if status is done status: ok: gap is less than myprecision done: gap is greater than myprecision fail: no 3d curve(s) on the edge(s).
+Checks gap between points on 3D curve and points on surface generated by pcurve of the num-th edge. The distance can be queried by MinDistance3d. //! Returns: True if status is DONE Status: OK: Gap is less than myPrecision DONE: Gap is greater than myPrecision FAIL: No 3d curve(s) on the edge(s).
 ") CheckCurveGap;
 		Standard_Boolean CheckCurveGap(const Standard_Integer num = 0);
 
@@ -4702,7 +4702,7 @@ bool
 
 Description
 -----------
-Calls to checkdegenerated for each edge returns: true if at least one incorrect degenerated edge was detected.
+Calls to CheckDegenerated for each edge Returns: True if at least one incorrect degenerated edge was detected.
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated();
 
@@ -4722,7 +4722,7 @@ bool
 
 Description
 -----------
-Checks for degenerated edge between two adjacent ones. fills parameters dgnr1 and dgnr2 with points in parametric space that correspond to the singularity (either gap that needs to be filled by degenerated edge or that already filled) returns: false if no singularity or edge is already degenerated, otherwise true status: ok: no surface singularity, or edge is already degenerated done1: degenerated edge should be inserted (gap in 2d) done2: edge <num> should be made degenerated (recompute pcurve and set the flag) fail1: one of edges neighbouring to degenerated one has no pcurve fail2: edge marked as degenerated and has no pcurve but singularity is not detected.
+Checks for degenerated edge between two adjacent ones. Fills parameters dgnr1 and dgnr2 with points in parametric space that correspond to the singularity (either gap that needs to be filled by degenerated edge or that already filled) Returns: False if no singularity or edge is already degenerated, otherwise True Status: OK: No surface singularity, or edge is already degenerated DONE1: Degenerated edge should be inserted (gap in 2D) DONE2: Edge <num> should be made degenerated (recompute pcurve and set the flag) FAIL1: One of edges neighbouring to degenerated one has no pcurve FAIL2: Edge marked as degenerated and has no pcurve but singularity is not detected.
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated(const Standard_Integer num, gp_Pnt2d & dgnr1, gp_Pnt2d & dgnr2);
 
@@ -4740,7 +4740,7 @@ bool
 
 Description
 -----------
-Checks for degenerated edge between two adjacent ones. remark: calls previous function status: see the function above for details.
+Checks for degenerated edge between two adjacent ones. Remark: Calls previous function Status: See the function above for details.
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated(const Standard_Integer num);
 
@@ -4753,7 +4753,7 @@ bool
 
 Description
 -----------
-Checks edges geometry (consistency of 2d and 3d senses, adjasment of curves to the vertices, etc.). the order of the checks: call shapeanalysis_wire to check: shapeanalysis_edge::checkcurve3dwithpcurve (1), shapeanalysis_edge::checkvertceswithpcurve (2), shapeanalysis_edge::checkvertceswithcurve3d (3), checkseam   (4) additional: checkgap3d  (5), checkgap2d  (6), shapeanalysis_edge::checksameparameter (7) returns: true if at least one check returned true remark: the numbers in brackets show with what donei or faili the status can be queried.
+Checks edges geometry (consistency of 2d and 3d senses, adjasment of curves to the vertices, etc.). The order of the checks: Call ShapeAnalysis_Wire to check: ShapeAnalysis_Edge::CheckCurve3dWithPCurve (1), ShapeAnalysis_Edge::CheckVertcesWithPCurve (2), ShapeAnalysis_Edge::CheckVertcesWithCurve3d (3), CheckSeam   (4) Additional: CheckGap3d  (5), CheckGap2d  (6), ShapeAnalysis_Edge::CheckSameParameter (7) Returns: True if at least one check returned True Remark: The numbers in brackets show with what DONEi or FAILi the status can be queried.
 ") CheckEdgeCurves;
 		Standard_Boolean CheckEdgeCurves();
 
@@ -4771,7 +4771,7 @@ bool
 
 Description
 -----------
-Checks gap between edges in 2d (pcurves). checks the distance between ends of pcurves of the num-th and preceding edge. the distance can be queried by mindistance2d. //! returns: true if status is done status: ok: gap is less than parametric precision out of myprecision done: gap is greater than parametric precision out of myprecision fail: no pcurve(s) on the edge(s).
+Checks gap between edges in 2D (pcurves). Checks the distance between ends of pcurves of the num-th and preceding edge. The distance can be queried by MinDistance2d. //! Returns: True if status is DONE Status: OK: Gap is less than parametric precision out of myPrecision DONE: Gap is greater than parametric precision out of myPrecision FAIL: No pcurve(s) on the edge(s).
 ") CheckGap2d;
 		Standard_Boolean CheckGap2d(const Standard_Integer num = 0);
 
@@ -4789,7 +4789,7 @@ bool
 
 Description
 -----------
-Checks gap between edges in 3d (3d curves). checks the distance between ends of 3d curves of the num-th and preceding edge. the distance can be queried by mindistance3d. //! returns: true if status is done status: ok: gap is less than myprecision done: gap is greater than myprecision fail: no 3d curve(s) on the edge(s).
+Checks gap between edges in 3D (3d curves). Checks the distance between ends of 3d curves of the num-th and preceding edge. The distance can be queried by MinDistance3d. //! Returns: True if status is DONE Status: OK: Gap is less than myPrecision DONE: Gap is greater than myPrecision FAIL: No 3d curve(s) on the edge(s).
 ") CheckGap3d;
 		Standard_Boolean CheckGap3d(const Standard_Integer num = 0);
 
@@ -4836,7 +4836,7 @@ bool
 
 Description
 -----------
-Checks two adjacent edges for intersecting. intersection is reported only if intersection point is not enclosed by the common end vertex of the edges. returns: true if intersection is found. if returns true it also fills the sequences of intersection points, corresponding 3d points, and errors for them (half-distances between intersection points in 3d calculated from one and from another edge) status: fail1: no pcurve fail2: no vertices done1: self-intersection found.
+Checks two adjacent edges for intersecting. Intersection is reported only if intersection point is not enclosed by the common end vertex of the edges. Returns: True if intersection is found. If returns True it also fills the sequences of intersection points, corresponding 3d points, and errors for them (half-distances between intersection points in 3d calculated from one and from another edge) Status: FAIL1: No pcurve FAIL2: No vertices DONE1: Self-intersection found.
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
@@ -4854,7 +4854,7 @@ bool
 
 Description
 -----------
-Checks two adjacent edges for intersecting. remark: calls the previous method status: see the function above for details.
+Checks two adjacent edges for intersecting. Remark: Calls the previous method Status: See the function above for details.
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num);
 
@@ -4876,7 +4876,7 @@ bool
 
 Description
 -----------
-Checks i-th and j-th edges for intersecting. remark: see the previous method for details.
+Checks i-th and j-th edges for intersecting. Remark: See the previous method for details.
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num1, const Standard_Integer num2, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
@@ -4895,7 +4895,7 @@ bool
 
 Description
 -----------
-Checks i-th and j-th edges for intersecting. remark: calls previous method. status: see the function above for details.
+Checks i-th and j-th edges for intersecting. Remark: Calls previous method. Status: See the function above for details.
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num1, const Standard_Integer num2);
 
@@ -4908,7 +4908,7 @@ bool
 
 Description
 -----------
-Calls to checklacking for each edge returns: true if at least one lacking edge was detected.
+Calls to CheckLacking for each edge Returns: True if at least one lacking edge was detected.
 ") CheckLacking;
 		Standard_Boolean CheckLacking();
 
@@ -4929,7 +4929,7 @@ bool
 
 Description
 -----------
-Checks if there is a gap in 2d between edges, not comprised by the tolerance of their common vertex. if <tolerance> is greater than 0. and less than tolerance of the vertex, then this value is used for check. returns: true if not closed gap was detected p2d1 and p2d2 are the endpoint of <num-1>th edge and start of the <num>th edge in 2d. status: ok: no edge is lacking (3d and 2d connection) fail1: edges have no vertices (at least one of them) fail2: edges are neither connected by common vertex, nor have coincided vertices fail1: edges have no pcurves done1: the gap is detected which cannot be closed by the tolerance of the common vertex (or with value of <tolerance>) done2: is set (together with done1) if gap is detected and the vector (p2d2 - p2d1) goes in direction opposite to the pcurves of the edges (if angle is more than 0.9*pi).
+Checks if there is a gap in 2d between edges, not comprised by the tolerance of their common vertex. If <Tolerance> is greater than 0. and less than tolerance of the vertex, then this value is used for check. Returns: True if not closed gap was detected p2d1 and p2d2 are the endpoint of <num-1>th edge and start of the <num>th edge in 2d. Status: OK: No edge is lacking (3d and 2d connection) FAIL1: edges have no vertices (at least one of them) FAIL2: edges are neither connected by common vertex, nor have coincided vertices FAIL1: edges have no pcurves DONE1: the gap is detected which cannot be closed by the tolerance of the common vertex (or with value of <Tolerance>) DONE2: is set (together with DONE1) if gap is detected and the vector (p2d2 - p2d1) goes in direction opposite to the pcurves of the edges (if angle is more than 0.9*PI).
 ") CheckLacking;
 		Standard_Boolean CheckLacking(const Standard_Integer num, const Standard_Real Tolerance, gp_Pnt2d & p2d1, gp_Pnt2d & p2d2);
 
@@ -4948,7 +4948,7 @@ bool
 
 Description
 -----------
-Checks if there is a gap in 2d between edges and not comprised by vertex tolerance the value of sbwd.thepreci is used. returns: false if no edge should be inserted status: ok: no edge is lacking (3d and 2d connection) done1: the vertex tolerance should be increased only (2d gap is small) done2: edge can be inserted (3d and 2d gaps are large enough).
+Checks if there is a gap in 2D between edges and not comprised by vertex tolerance The value of SBWD.thepreci is used. Returns: False if no edge should be inserted Status: OK: No edge is lacking (3d and 2d connection) DONE1: The vertex tolerance should be increased only (2d gap is small) DONE2: Edge can be inserted (3d and 2d gaps are large enough).
 ") CheckLacking;
 		Standard_Boolean CheckLacking(const Standard_Integer num, const Standard_Real Tolerance = 0.0);
 
@@ -5008,7 +5008,7 @@ bool
 
 Description
 -----------
-Calls checkorder and returns false if wire is already ordered (tail-to-head), true otherwise flag <isclosed> defines if the wire is closed or not flag <mode3d> defines which mode is used (3d or 2d).
+Calls CheckOrder and returns False if wire is already ordered (tail-to-head), True otherwise Flag <isClosed> defines if the wire is closed or not Flag <mode3d> defines which mode is used (3d or 2d).
 ") CheckOrder;
 		Standard_Boolean CheckOrder(const Standard_Boolean isClosed = Standard_True, const Standard_Boolean mode3d = Standard_True);
 
@@ -5029,7 +5029,7 @@ bool
 
 Description
 -----------
-Analyzes the order of the edges in the wire, uses class wireorder for that purpose. flag <isclosed> defines if the wire is closed or not flag <themode3d> defines 3d or 2d mode. flag <themodeboth> defines miscible mode and the flag <themode3d> is ignored. returns false if wire is already ordered (tail-to-head), true otherwise. use returned wireorder object for deeper analysis. status: ok: the same edges orientation, the same edges sequence done1: the same edges orientation, not the same edges sequence done2: as done1 and gaps more than myprecision done3: not the same edges orientation (some need to be reversed) done4: as done3 and gaps more than myprecision fail: algorithm failed (could not detect order).
+Analyzes the order of the edges in the wire, uses class WireOrder for that purpose. Flag <isClosed> defines if the wire is closed or not Flag <theMode3D> defines 3D or 2d mode. Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored. Returns False if wire is already ordered (tail-to-head), True otherwise. Use returned WireOrder object for deeper analysis. Status: OK: the same edges orientation, the same edges sequence DONE1: the same edges orientation, not the same edges sequence DONE2: as DONE1 and gaps more than myPrecision DONE3: not the same edges orientation (some need to be reversed) DONE4: as DONE3 and gaps more than myPrecision FAIL: algorithm failed (could not detect order).
 ") CheckOrder;
 		Standard_Boolean CheckOrder(ShapeAnalysis_WireOrder & sawo, Standard_Boolean isClosed = Standard_True, Standard_Boolean theMode3D = Standard_True, Standard_Boolean theModeBoth = Standard_False);
 
@@ -5047,7 +5047,7 @@ bool
 
 Description
 -----------
-Checks if wire defines an outer bound on the face uses shapeanalysis::isouterbound for analysis if <apimake> is true uses brepapi_makewire to build the wire, if false (to be used only when edges share common vertices) uses brep_builder to build the wire.
+Checks if wire defines an outer bound on the face Uses ShapeAnalysis::IsOuterBound for analysis If <APIMake> is True uses BRepAPI_MakeWire to build the wire, if False (to be used only when edges share common vertices) uses BRep_Builder to build the wire.
 ") CheckOuterBound;
 		Standard_Boolean CheckOuterBound(const Standard_Boolean APIMake = Standard_True);
 
@@ -5068,7 +5068,7 @@ cl: float
 
 Description
 -----------
-Checks if a seam pcurves are correct oriented returns: false (status ok) if given edge is not a seam or if it is ok c1 - current pcurve for forward edge, c2 - current pcurve for reversed edge (if returns true they should be swapped for the seam), cf, cl - first and last parameters on curves status: ok: pcurves are correct or edge is not seam done: seam pcurves should be swapped.
+Checks if a seam pcurves are correct oriented Returns: False (status OK) if given edge is not a seam or if it is OK C1 - current pcurve for FORWARD edge, C2 - current pcurve for REVERSED edge (if returns True they should be swapped for the seam), cf, cl - first and last parameters on curves Status: OK: Pcurves are correct or edge is not seam DONE: Seam pcurves should be swapped.
 ") CheckSeam;
 		Standard_Boolean CheckSeam(const Standard_Integer num, opencascade::handle<Geom2d_Curve> & C1, opencascade::handle<Geom2d_Curve> & C2, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5086,7 +5086,7 @@ bool
 
 Description
 -----------
-Checks if a seam pcurves are correct oriented see previous functions for details.
+Checks if a seam pcurves are correct oriented See previous functions for details.
 ") CheckSeam;
 		Standard_Boolean CheckSeam(const Standard_Integer num);
 
@@ -5106,7 +5106,7 @@ bool
 
 Description
 -----------
-Checks if num-th edge is self-intersecting. self-intersection is reported only if intersection point lies outside of both end vertices of the edge. returns: true if edge is self-intersecting. if returns true it also fills the sequences of intersection points and corresponding 3d points (only that are not enclosed by a vertices) status: fail1: no pcurve fail2: no vertices done1: self-intersection found.
+Checks if num-th edge is self-intersecting. Self-intersection is reported only if intersection point lies outside of both end vertices of the edge. Returns: True if edge is self-intersecting. If returns True it also fills the sequences of intersection points and corresponding 3d points (only that are not enclosed by a vertices) Status: FAIL1: No pcurve FAIL2: No vertices DONE1: Self-intersection found.
 ") CheckSelfIntersectingEdge;
 		Standard_Boolean CheckSelfIntersectingEdge(const Standard_Integer num, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d);
 
@@ -5137,7 +5137,7 @@ bool
 
 Description
 -----------
-Checks self-intersection of the wire (considering pcurves) looks for self-intersecting edges and each pair of intersecting edges. warning: it does not check each edge with any other one (only each two adjacent edges) the order of the checks: checkselfintersectingedge, checkintersectingedges returns: true if at least one check returned true status: fail1 or done1 - see checkselfintersectingedge fail2 or done2 - see checkintersectingedges.
+Checks self-intersection of the wire (considering pcurves) Looks for self-intersecting edges and each pair of intersecting edges. Warning: It does not check each edge with any other one (only each two adjacent edges) The order of the checks: CheckSelfIntersectingEdge, CheckIntersectingEdges Returns: True if at least one check returned True Status: FAIL1 or DONE1 - see CheckSelfIntersectingEdge FAIL2 or DONE2 - see CheckIntersectingEdges.
 ") CheckSelfIntersection;
 		Standard_Boolean CheckSelfIntersection();
 
@@ -5156,7 +5156,7 @@ bool
 
 Description
 -----------
-Checks with what orientation <shape> (wire or edge) can be connected to the wire. tests distances with starting <preci> from <sbwd> (close confusion), but if given <prec> is greater, tests with <prec> (coarse confusion). the smallest found distance can be returned by mindistance3d //! returns: false if status is fail (see below) status: done1: if <shape> follows <sbwd>, direct sense (normal) done2: if <shape> follows <sbwd>, but if reversed done3: if <shape> precedes <sbwd>, direct sense done4: if <shape> precedes <sbwd>, but if reversed fail1: if <shape> is neither an edge nor a wire fail2: if <shape> cannot be connected to <sbwd> //! done5: to the tail of <sbwd> the <shape> is closer with direct sense done6: to the head of <sbwd> the <shape> is closer with direct sense //! remark: statuses done1 - done4, fail1 - fail2 are basic and describe the nearest connection of the <shape> to <sbwd>. statuses done5 and done6 are advanced and are to be used when analyzing with what sense (direct or reversed) the <shape> should be connected to <sbwd>: for tail of <sbwd> if done4 is true <shape> should be direct, otherwise reversed. for head of <sbwd> if done5 is true <shape> should be direct, otherwise reversed.
+Checks with what orientation <shape> (wire or edge) can be connected to the wire. Tests distances with starting <preci> from <SBWD> (close confusion), but if given <prec> is greater, tests with <prec> (coarse confusion). The smallest found distance can be returned by MinDistance3d //! Returns: False if status is FAIL (see below) Status: DONE1: If <shape> follows <SBWD>, direct sense (normal) DONE2: If <shape> follows <SBWD>, but if reversed DONE3: If <shape> precedes <SBWD>, direct sense DONE4: If <shape> precedes <SBWD>, but if reversed FAIL1: If <shape> is neither an edge nor a wire FAIL2: If <shape> cannot be connected to <SBWD> //! DONE5: To the tail of <SBWD> the <shape> is closer with direct sense DONE6: To the head of <SBWD> the <shape> is closer with direct sense //! Remark: Statuses DONE1 - DONE4, FAIL1 - FAIL2 are basic and describe the nearest connection of the <shape> to <SBWD>. Statuses DONE5 and DONE6 are advanced and are to be used when analyzing with what sense (direct or reversed) the <shape> should be connected to <SBWD>: For tail of <SBWD> if DONE4 is True <shape> should be direct, otherwise reversed. For head of <SBWD> if DONE5 is True <shape> should be direct, otherwise reversed.
 ") CheckShapeConnect;
 		Standard_Boolean CheckShapeConnect(const TopoDS_Shape & shape, const Standard_Real prec = 0.0);
 
@@ -5178,7 +5178,7 @@ headhead: float
 
 Description
 -----------
-The same as previous checkshapeconnect but is more advanced. it returns the distances between each end of <sbwd> and each end of <shape>. for example, <tailhead> stores distance between tail of <sbwd> and head of <shape> remark: first method checkshapeconnect calls this one.
+The same as previous CheckShapeConnect but is more advanced. It returns the distances between each end of <sbwd> and each end of <shape>. For example, <tailhead> stores distance between tail of <sbwd> and head of <shape> Remark: First method CheckShapeConnect calls this one.
 ") CheckShapeConnect;
 		Standard_Boolean CheckShapeConnect(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const TopoDS_Shape & shape, const Standard_Real prec = 0.0);
 
@@ -5196,7 +5196,7 @@ bool
 
 Description
 -----------
-Calls to checksmall for each edge returns: true if at least one small edge was detected.
+Calls to CheckSmall for each edge Returns: True if at least one small edge was detected.
 ") CheckSmall;
 		Standard_Boolean CheckSmall(const Standard_Real precsmall = 0.0);
 
@@ -5215,7 +5215,7 @@ bool
 
 Description
 -----------
-Checks if an edge has a length not greater than mypreci or precsmall (if it is smaller) returns: false if its length is greater than precision status: ok: edge is not small or degenerated done1: edge is small, vertices are the same done2: edge is small, vertices are not the same fail: no 3d curve and pcurve.
+Checks if an edge has a length not greater than myPreci or precsmall (if it is smaller) Returns: False if its length is greater than precision Status: OK: edge is not small or degenerated DONE1: edge is small, vertices are the same DONE2: edge is small, vertices are not the same FAIL: no 3d curve and pcurve.
 ") CheckSmall;
 		Standard_Boolean CheckSmall(const Standard_Integer num, const Standard_Real precsmall = 0.0);
 
@@ -5305,7 +5305,7 @@ None
 
 Description
 -----------
-Initializes the object with standard topods_wire, face and precision.
+Initializes the object with standard TopoDS_Wire, face and precision.
 ") Init;
 		void Init(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real precision);
 
@@ -5325,7 +5325,7 @@ None
 
 Description
 -----------
-Initializes the object with wiredata object, face and precision.
+Initializes the object with WireData object, face and precision.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_WireData> & sbwd, const TopoDS_Face & face, const Standard_Real precision);
 
@@ -5338,7 +5338,7 @@ bool
 
 Description
 -----------
-Returns true if wire is loaded and has number of edges >0.
+Returns True if wire is loaded and has number of edges >0.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
@@ -5351,7 +5351,7 @@ bool
 
 Description
 -----------
-Returns true if isloaded and underlying face is not null.
+Returns True if IsLoaded and underlying face is not null.
 ") IsReady;
 		Standard_Boolean IsReady();
 
@@ -5369,7 +5369,7 @@ bool
 
 Description
 -----------
-Querying the status of the last performed 'advanced' checking procedure.
+Querying the status of the LAST performed 'Advanced' checking procedure.
 ") LastCheckStatus;
 		Standard_Boolean LastCheckStatus(const ShapeExtend_Status Status);
 
@@ -5387,7 +5387,7 @@ None
 
 Description
 -----------
-Loads the object with standard topods_wire.
+Loads the object with standard TopoDS_Wire.
 ") Load;
 		void Load(const TopoDS_Wire & wire);
 
@@ -5405,7 +5405,7 @@ None
 
 Description
 -----------
-Loads the object with wiredata object.
+Loads the object with WireData object.
 ") Load;
 		void Load(const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
@@ -5418,7 +5418,7 @@ float
 
 Description
 -----------
-Returns the last maximal distance in 2d-uv computed by checkcontinuity2d.
+Returns the last maximal distance in 2D-UV computed by CheckContinuity2d.
 ") MaxDistance2d;
 		Standard_Real MaxDistance2d();
 
@@ -5431,7 +5431,7 @@ float
 
 Description
 -----------
-Returns the last maximal distance in 3d computed by checkorientation, checkconnected, checkcontinuity3d, checkvertex, checknewvertex, checksameparameter.
+Returns the last maximal distance in 3D computed by CheckOrientation, CheckConnected, CheckContinuity3d, CheckVertex, CheckNewVertex, CheckSameParameter.
 ") MaxDistance3d;
 		Standard_Real MaxDistance3d();
 
@@ -5444,7 +5444,7 @@ float
 
 Description
 -----------
-Returns the last lowest distance in 2d-uv computed by checkcontinuity2d.
+Returns the last lowest distance in 2D-UV computed by CheckContinuity2d.
 ") MinDistance2d;
 		Standard_Real MinDistance2d();
 
@@ -5457,7 +5457,7 @@ float
 
 Description
 -----------
-Returns the last lowest distance in 3d computed by checkorientation, checkconnected, checkcontinuity3d, checkvertex, checknewvertex.
+Returns the last lowest distance in 3D computed by CheckOrientation, CheckConnected, CheckContinuity3d, CheckVertex, CheckNewVertex.
 ") MinDistance3d;
 		Standard_Real MinDistance3d();
 
@@ -5483,7 +5483,7 @@ bool
 
 Description
 -----------
-Performs all the checks in the following order: checkorder, checksmall, checkconnected, checkedgecurves, checkdegenerated, checkselfintersection, checklacking, checkclosed returns: true if at least one method returned true; for deeper analysis use status...(status) methods.
+Performs all the checks in the following order: CheckOrder, CheckSmall, CheckConnected, CheckEdgeCurves, CheckDegenerated, CheckSelfIntersection, CheckLacking, CheckClosed Returns: True if at least one method returned True; For deeper analysis use Status...(status) methods.
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -5860,7 +5860,7 @@ None
 
 Description
 -----------
-Creates a wireorder. flag <themode3d> defines 3d or 2d mode. flag <themodeboth> defines miscible mode and the flag <themode3d> is ignored. warning: parameter <thetolerance> is not used in algorithm.
+Creates a WireOrder. Flag <theMode3D> defines 3D or 2d mode. Flag <theModeBoth> defines miscible mode and the flag <theMode3D> is ignored. Warning: Parameter <theTolerance> is not used in algorithm.
 ") ShapeAnalysis_WireOrder;
 		 ShapeAnalysis_WireOrder(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
@@ -5879,7 +5879,7 @@ None
 
 Description
 -----------
-Adds a couple of points 3d (start, end).
+Adds a couple of points 3D (start, end).
 ") Add;
 		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d);
 
@@ -5898,7 +5898,7 @@ None
 
 Description
 -----------
-Adds a couple of points 2d (start, end).
+Adds a couple of points 2D (start, end).
 ") Add;
 		void Add(const gp_XY & theStart2d, const gp_XY & theEnd2d);
 
@@ -5919,7 +5919,7 @@ None
 
 Description
 -----------
-Adds a couple of points 3d and 2d (start, end).
+Adds a couple of points 3D and 2D (start, end).
 ") Add;
 		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d, const gp_XY & theStart2d, const gp_XY & theEnd2d);
 
@@ -5938,7 +5938,7 @@ n2: int
 
 Description
 -----------
-Returns, for the chain n0 num, starting and ending numbers of edges. in the list of ordered edges (see ordered for originals).
+Returns, for the chain n0 num, starting and ending numbers of edges. In the list of ordered edges (see Ordered for originals).
 ") Chain;
 		void Chain(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -5970,7 +5970,7 @@ n2: int
 
 Description
 -----------
-Returns, for the couple n0 num, the two implied edges in the list of ordered edges.
+Returns, for the couple n0 num, the two implied edges In the list of ordered edges.
 ") Couple;
 		void Couple(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -5988,7 +5988,7 @@ float
 
 Description
 -----------
-Returns the gap between a couple and its preceding <num> is considered ordered if <num> = 0 (d), returns the greatest gap found.
+Returns the gap between a couple and its preceding <num> is considered ordered If <num> = 0 (D), returns the greatest gap found.
 ") Gap;
 		Standard_Real Gap(const Standard_Integer num = 0);
 
@@ -6001,7 +6001,7 @@ bool
 
 Description
 -----------
-Tells if perform has been done else, the following methods returns original values.
+Tells if Perform has been done Else, the following methods returns original values.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6071,7 +6071,7 @@ int
 
 Description
 -----------
-Returns the number of original edge which correspond to the newly ordered number <n> warning: the returned value is negative if edge should be reversed.
+Returns the number of original edge which correspond to the newly ordered number <n> Warning: the returned value is NEGATIVE if edge should be reversed.
 ") Ordered;
 		Standard_Integer Ordered(const Standard_Integer theIdx);
 
@@ -6089,7 +6089,7 @@ None
 
 Description
 -----------
-Computes the better order optimised if the couples were already in order the criterium is: two couples in order if distance between end-prec and start-cur is less then starting tolerance <tol> else, the smallest distance is reached warning: parameter <closed> not used.
+Computes the better order Optimised if the couples were already in order The criterium is: two couples in order if distance between end-prec and start-cur is less then starting tolerance <tol> Else, the smallest distance is reached Warning: Parameter <closed> not used.
 ") Perform;
 		void Perform(const Standard_Boolean closed = Standard_True);
 
@@ -6107,7 +6107,7 @@ None
 
 Description
 -----------
-Determines the chains inside which successive edges have a gap less than a given value. queried by nbchains and chain.
+Determines the chains inside which successive edges have a gap less than a given value. Queried by NbChains and Chain.
 ") SetChains;
 		void SetChains(const Standard_Real gap);
 
@@ -6125,7 +6125,7 @@ None
 
 Description
 -----------
-Determines the couples of edges for which end and start fit inside a given gap. queried by nbcouples and couple warning: function isn't implemented.
+Determines the couples of edges for which end and start fit inside a given gap. Queried by NbCouples and Couple Warning: function isn't implemented.
 ") SetCouples;
 		void SetCouples(const Standard_Real gap);
 
@@ -6145,7 +6145,7 @@ None
 
 Description
 -----------
-Sets new values. clears the edge list if the mode (<themode3d> or <themodeboth> ) changes. clears the connexion list. warning: parameter <thetolerance> is not used in algorithm.
+Sets new values. Clears the edge list if the mode (<theMode3D> or <theModeBoth> ) changes. Clears the connexion list. Warning: Parameter <theTolerance> is not used in algorithm.
 ") SetMode;
 		void SetMode(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
@@ -6191,7 +6191,7 @@ None
 
 Description
 -----------
-Returns the values of the couple <num>, as 2d values.
+Returns the values of the couple <num>, as 2D values.
 ") XY;
 		void XY(const Standard_Integer theIdx, gp_XY & theStart2D, gp_XY & theEnd2D);
 
@@ -6211,7 +6211,7 @@ None
 
 Description
 -----------
-Returns the values of the couple <num>, as 3d values.
+Returns the values of the couple <num>, as 3D values.
 ") XYZ;
 		void XYZ(const Standard_Integer theIdx, gp_XYZ & theStart3D, gp_XYZ & theEnd3D);
 
@@ -6271,7 +6271,7 @@ ufol: float
 
 Description
 -----------
-Returns the recorded status for a vertex with its recorded position and parameters on both edges these values are relevant regarding the status: status meaning position preceding following 0 same no no no 1 samecoord no no no 2 close no no no 3 end yes no yes 4 start yes yes no 5 inters yes yes yes -1 disjoined no no no.
+Returns the recorded status for a vertex With its recorded position and parameters on both edges These values are relevant regarding the status: Status Meaning Position Preceding Following 0 Same no no no 1 SameCoord no no no 2 Close no no no 3 End yes no yes 4 Start yes yes no 5 Inters yes yes yes -1 Disjoined no no no.
 ") Data;
 		Standard_Integer Data(const Standard_Integer num, gp_XYZ & pos, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6322,7 +6322,7 @@ bool
 
 Description
 -----------
-Returns true if analysis was performed, else returns false.
+Returns True if analysis was performed, else returns False.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6390,7 +6390,7 @@ int
 
 Description
 -----------
-For a given criter, returns the rank of the vertex which follows <num> and has the same status. 0 if no more acts as an iterator, starts on the first one criters are: 0: same vertex (status 0) 1: a solution exists (status >= 0) 2: same coords (i.e. same params) (status 0 1 2) 3: same coods but not same vertex (status 1 2) 4: redefined coords (status 3 4 5) -1: no solution (status -1).
+For a given criter, returns the rank of the vertex which follows <num> and has the same status. 0 if no more Acts as an iterator, starts on the first one Criters are: 0: same vertex (status 0) 1: a solution exists (status >= 0) 2: same coords (i.e. same params) (status 0 1 2) 3: same coods but not same vertex (status 1 2) 4: redefined coords (status 3 4 5) -1: no solution (status -1).
 ") NextCriter;
 		Standard_Integer NextCriter(const Standard_Integer crit, const Standard_Integer num = 0);
 
@@ -6409,7 +6409,7 @@ int
 
 Description
 -----------
-For a given status, returns the rank of the vertex which follows <num> and has the same status. 0 if no more acts as an iterator, starts on the first one.
+For a given status, returns the rank of the vertex which follows <num> and has the same status. 0 if no more Acts as an iterator, starts on the first one.
 ") NextStatus;
 		Standard_Integer NextStatus(const Standard_Integer stat, const Standard_Integer num = 0);
 
@@ -6458,7 +6458,7 @@ None
 
 Description
 -----------
-Records status 'close coords' (at the precision of <self>).
+Records status 'Close Coords' (at the Precision of <self>).
 ") SetClose;
 		void SetClose(const Standard_Integer num);
 
@@ -6496,7 +6496,7 @@ None
 
 Description
 -----------
-<num> is the end of preceding edge, and its projection on the following one lies on it at the precision of <self> <ufol> gives the parameter on the following edge.
+<num> is the End of preceding Edge, and its projection on the following one lies on it at the Precision of <self> <ufol> gives the parameter on the following edge.
 ") SetEnd;
 		void SetEnd(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real ufol);
 
@@ -6517,7 +6517,7 @@ None
 
 Description
 -----------
-<num> is the intersection of both edges <upre> is the parameter on preceding edge, <ufol> on following edge.
+<num> is the Intersection of both Edges <upre> is the parameter on preceding edge, <ufol> on following edge.
 ") SetInters;
 		void SetInters(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real upre, const Standard_Real ufol);
 
@@ -6535,7 +6535,7 @@ None
 
 Description
 -----------
-Sets the precision for work analysing: for each vertex, comparison between the end of the preceding edge and the start of the following edge each vertex rank corresponds to the end vertex of the edge of same rank, in the shapeextend_wiredata. i.e. for vertex <num>, edge <num> is the preceding one, <num+1> is the following one.
+Sets the precision for work Analysing: for each Vertex, comparison between the end of the preceding edge and the start of the following edge Each Vertex rank corresponds to the End Vertex of the Edge of same rank, in the ShapeExtend_WireData. I.E. for Vertex <num>, Edge <num> is the preceding one, <num+1> is the following one.
 ") SetPrecision;
 		void SetPrecision(const Standard_Real preci);
 
@@ -6553,7 +6553,7 @@ None
 
 Description
 -----------
-Records status 'same coords' (at the vertices tolerances).
+Records status 'Same Coords' (at the Vertices Tolerances).
 ") SetSameCoords;
 		void SetSameCoords(const Standard_Integer num);
 
@@ -6571,7 +6571,7 @@ None
 
 Description
 -----------
-Records status 'same vertex' (logically) on vertex <num>.
+Records status 'Same Vertex' (logically) on Vertex <num>.
 ") SetSameVertex;
 		void SetSameVertex(const Standard_Integer num);
 
@@ -6591,7 +6591,7 @@ None
 
 Description
 -----------
-<num> is the start of following edge, its projection on the preceding one lies on it at the precision of <self> <upre> gives the parameter on the preceding edge.
+<num> is the Start of following Edge, its projection on the preceding one lies on it at the Precision of <self> <upre> gives the parameter on the preceding edge.
 ") SetStart;
 		void SetStart(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real upre);
 
@@ -6609,7 +6609,7 @@ int
 
 Description
 -----------
-Returns the recorded status for a vertex more detail by method data.
+Returns the recorded status for a vertex More detail by method Data.
 ") Status;
 		Standard_Integer Status(const Standard_Integer num);
 
@@ -6727,7 +6727,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Make a copy of non-manifold vertex thevert (i.e. create new tvertex and replace pointrepresentations for this vertex from fromedge to toedge. other representations were copied).
+Make a copy of non-manifold vertex theVert (i.e. create new TVertex and replace PointRepresentations for this vertex from fromedge to toedge. Other representations were copied).
 ") CopyNMVertex;
 		static TopoDS_Vertex CopyNMVertex(const TopoDS_Vertex & theVert, const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge);
 
@@ -6747,7 +6747,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Make a copy of non-manifold vertex thevert (i.e. create new tvertex and replace pointrepresentations for this vertex from fromface to toface. other representations were copied).
+Make a copy of non-manifold vertex theVert (i.e. create new TVertex and replace PointRepresentations for this vertex from fromFace to toFace. Other representations were copied).
 ") CopyNMVertex;
 		static TopoDS_Vertex CopyNMVertex(const TopoDS_Vertex & theVert, const TopoDS_Face & toFace, const TopoDS_Face & fromFace);
 
@@ -6792,7 +6792,7 @@ bool
 
 Description
 -----------
-Returns false;.
+Returns False;.
 ") IsSameRange;
 		virtual Standard_Boolean IsSameRange();
 
@@ -6811,7 +6811,7 @@ opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
-Transfers parameters given by sequence params from 3d curve to pcurve (if to2d is true) or back (if to2d is false).
+Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
 		virtual opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Papams, const Standard_Boolean To2d);
 
@@ -6830,7 +6830,7 @@ float
 
 Description
 -----------
-Transfers parameter given by param from 3d curve to pcurve (if to2d is true) or back (if to2d is false).
+Transfers parameter given by Param from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
 		virtual Standard_Real Perform(const Standard_Real Param, const Standard_Boolean To2d);
 
@@ -6851,7 +6851,7 @@ None
 
 Description
 -----------
-Recomputes range of curves from newedge. if is2d equals true parameters are recomputed by curve2d else by curve3d.
+Recomputes range of curves from NewEdge. If Is2d equals True parameters are recomputed by curve2d else by curve3d.
 ") TransferRange;
 		virtual void TransferRange(TopoDS_Edge & newEdge, const Standard_Real prevPar, const Standard_Real currPar, const Standard_Boolean Is2d);
 

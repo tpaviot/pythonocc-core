@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMFUNCTIONDOCSTRING
 "XmlMFunction module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlmfunction.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlmfunction.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMFUNCTIONDOCSTRING) XmlMFunction
 
@@ -107,7 +107,7 @@ None
 
 Description
 -----------
-Adds the attribute storage drivers to <adrivertable>.
+Adds the attribute storage drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTCURVEDOCSTRING
 "IntCurve module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intcurve.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurve.html"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVEDOCSTRING) IntCurve
 
@@ -267,7 +267,7 @@ float
 
 Description
 -----------
-Computes the value of the signed distance between the point p and the implicit curve.
+Computes the value of the signed distance between the point P and the implicit curve.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt2d & P);
 
@@ -285,7 +285,7 @@ float
 
 Description
 -----------
-Returns the parameter u of the point on the implicit curve corresponding to the point p. the correspondence between p and the point p(u) on the implicit curve must be coherent with the way of determination of the signed distance.
+Returns the parameter U of the point on the implicit curve corresponding to the point P. The correspondence between P and the point P(U) on the implicit curve must be coherent with the way of determination of the signed distance.
 ") FindParameter;
 		Standard_Real FindParameter(const gp_Pnt2d & P);
 
@@ -303,7 +303,7 @@ gp_Vec2d
 
 Description
 -----------
-Computes the gradient of the signed distance between a point and the implicit curve, at the point p.
+Computes the Gradient of the Signed Distance between a point and the implicit curve, at the point P.
 ") GradDistance;
 		gp_Vec2d GradDistance(const gp_Pnt2d & P);
 
@@ -348,7 +348,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic();
 
@@ -394,7 +394,7 @@ None
 
 Description
 -----------
-Intersection between a line and a circle. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a line and a circle. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Lin2d & L, const IntRes2d_Domain & DL, const gp_Circ2d & C, const IntRes2d_Domain & DC, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -417,7 +417,7 @@ None
 
 Description
 -----------
-Intersection between a line and an ellipse. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between a line and an ellipse. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Lin2d & L, const IntRes2d_Domain & DL, const gp_Elips2d & E, const IntRes2d_Domain & DE, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -486,7 +486,7 @@ None
 
 Description
 -----------
-Intersection between 2 circles from gp. the exception constructionerror is raised if the method isclosed of one of the domain returns false.
+Intersection between 2 circles from gp. The exception ConstructionError is raised if the method IsClosed of one of the domain returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Circ2d & C1, const IntRes2d_Domain & D1, const gp_Circ2d & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -509,7 +509,7 @@ None
 
 Description
 -----------
-Intersection between a circle and an ellipse. the exception constructionerror is raised if the method isclosed of one the domain returns false.
+Intersection between a circle and an ellipse. The exception ConstructionError is raised if the method IsClosed of one the domain returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Elips2d & E, const IntRes2d_Domain & DE, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -532,7 +532,7 @@ None
 
 Description
 -----------
-Intersection between a circle and a parabola. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a circle and a parabola. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Parab2d & P, const IntRes2d_Domain & DP, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -555,7 +555,7 @@ None
 
 Description
 -----------
-Intersection between a circle and an hyperbola. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a circle and an hyperbola. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Hypr2d & H, const IntRes2d_Domain & DH, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -578,7 +578,7 @@ None
 
 Description
 -----------
-Intersection between 2 ellipses. the exception constructionerror is raised if the method isclosed of one of the domain returns false.
+Intersection between 2 ellipses. The exception ConstructionError is raised if the method IsClosed of one of the domain returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Elips2d & E1, const IntRes2d_Domain & D1, const gp_Elips2d & E2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -601,7 +601,7 @@ None
 
 Description
 -----------
-Intersection between an ellipse and a parabola. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between an ellipse and a parabola. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Elips2d & E, const IntRes2d_Domain & DE, const gp_Parab2d & P, const IntRes2d_Domain & DP, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -624,7 +624,7 @@ None
 
 Description
 -----------
-Intersection between an ellipse and an hyperbola. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between an ellipse and an hyperbola. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") IntCurve_IntConicConic;
 		 IntCurve_IntConicConic(const gp_Elips2d & E, const IntRes2d_Domain & DE, const gp_Hypr2d & H, const IntRes2d_Domain & DH, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -739,7 +739,7 @@ None
 
 Description
 -----------
-Intersection between a line and a circle. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a line and a circle. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") Perform;
 		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & DL, const gp_Circ2d & C, const IntRes2d_Domain & DC, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -762,7 +762,7 @@ None
 
 Description
 -----------
-Intersection between a line and an ellipse. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between a line and an ellipse. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") Perform;
 		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & DL, const gp_Elips2d & E, const IntRes2d_Domain & DE, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -831,7 +831,7 @@ None
 
 Description
 -----------
-Intersection between 2 circles from gp. the exception constructionerror is raised if the method isclosed of the domain of one of the circle returns false.
+Intersection between 2 circles from gp. The exception ConstructionError is raised if the method IsClosed of the domain of one of the circle returns False.
 ") Perform;
 		void Perform(const gp_Circ2d & C1, const IntRes2d_Domain & D1, const gp_Circ2d & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -854,7 +854,7 @@ None
 
 Description
 -----------
-Intersection between a circle and an ellipse. the exception constructionerror is raised if the method isclosed of one the domain returns false.
+Intersection between a circle and an ellipse. The exception ConstructionError is raised if the method IsClosed of one the domain returns False.
 ") Perform;
 		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Elips2d & E, const IntRes2d_Domain & DE, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -877,7 +877,7 @@ None
 
 Description
 -----------
-Intersection between a circle and a parabola. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a circle and a parabola. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") Perform;
 		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Parab2d & P, const IntRes2d_Domain & DP, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -900,7 +900,7 @@ None
 
 Description
 -----------
-Intersection between a circle and an hyperbola. the exception constructionerror is raised if the method isclosed of the domain of the circle returns false.
+Intersection between a circle and an hyperbola. The exception ConstructionError is raised if the method IsClosed of the domain of the circle returns False.
 ") Perform;
 		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & DC, const gp_Hypr2d & H, const IntRes2d_Domain & DH, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -923,7 +923,7 @@ None
 
 Description
 -----------
-Intersection between 2 ellipses. the exception constructionerror is raised if the method isclosed of one of the domain returns false.
+Intersection between 2 ellipses. The exception ConstructionError is raised if the method IsClosed of one of the domain returns False.
 ") Perform;
 		void Perform(const gp_Elips2d & E1, const IntRes2d_Domain & D1, const gp_Elips2d & E2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -946,7 +946,7 @@ None
 
 Description
 -----------
-Intersection between an ellipse and a parabola. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between an ellipse and a parabola. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") Perform;
 		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & DE, const gp_Parab2d & P, const IntRes2d_Domain & DP, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -969,7 +969,7 @@ None
 
 Description
 -----------
-Intersection between an ellipse and an hyperbola. the exception constructionerror is raised if the method isclosed of the domain of the ellipse returns false.
+Intersection between an ellipse and an hyperbola. The exception ConstructionError is raised if the method IsClosed of the domain of the ellipse returns False.
 ") Perform;
 		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & DE, const gp_Hypr2d & H, const IntRes2d_Domain & DH, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -1088,7 +1088,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") IntCurve_IntImpConicParConic;
 		 IntCurve_IntImpConicParConic(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const IntCurve_PConic & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -1183,7 +1183,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") Perform;
 		void Perform(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const IntCurve_PConic & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -1234,7 +1234,7 @@ D: float
 
 Description
 -----------
-Computes the derivative of the previous function at parameter param.
+Computes the derivative of the previous function at parameter Param.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -1252,7 +1252,7 @@ F: float
 
 Description
 -----------
-Computes the value of the signed distance between the implicit curve and the point at parameter param on the parametrised curve.
+Computes the value of the signed distance between the implicit curve and the point at parameter Param on the parametrised curve.
 ") Value;
 		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -1494,7 +1494,7 @@ None
 
 Description
 -----------
-Epsx is a internal tolerance used in math algorithms, usually about 1e-10 (see functionallroots for more details).
+EpsX is a internal tolerance used in math algorithms, usually about 1e-10 (See FunctionAllRoots for more details).
 ") SetEpsX;
 		void SetEpsX(const Standard_Real EpsDist);
 
@@ -1507,7 +1507,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-The conics are manipulated as objects which only depend on three parameters: axis and two real from standards. type curve is used to select the correct conic.
+The Conics are manipulated as objects which only depend on three parameters: Axis and two Real from Standards. Type Curve is used to select the correct Conic.
 ") TypeCurve;
 		GeomAbs_CurveType TypeCurve();
 
@@ -1673,7 +1673,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the right parameter has to be made on the natural parametric domain of the curve.
 ") FindParameter;
 		static Standard_Real FindParameter(const IntCurve_PConic & C, const gp_Pnt2d & Pnt, const Standard_Real Tol);
 
@@ -1695,7 +1695,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in which the parameter certainly lies. These parameters are given to implement a more efficient algorithm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 ") FindParameter;
 		static Standard_Real FindParameter(const IntCurve_PConic & C, const gp_Pnt2d & Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol);
 

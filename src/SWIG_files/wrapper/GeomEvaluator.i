@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMEVALUATORDOCSTRING
 "GeomEvaluator module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomevaluator.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomevaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMEVALUATORDOCSTRING) GeomEvaluator
 
@@ -113,7 +113,7 @@ None
 
 Description
 -----------
-Value of 3d curve.
+Value of 3D curve.
 ") D0;
 		virtual void D0(const Standard_Real theU, gp_Pnt & theValue);
 
@@ -195,7 +195,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of curve, where n = thederu. raises if n < 1.
+Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1.
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Integer theDerU);
 
@@ -342,7 +342,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises if n < 1 or thederu < 0 or thederv < 0.
+Calculates N-th derivatives of surface, where N = theDerU + theDerV. //! Raises if N < 1 or theDerU < 0 or theDerV < 0.
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
@@ -512,7 +512,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of curve, where n = thederiv. raises if n < 1.
+Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Integer theDeriv);
 
@@ -734,7 +734,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises if n < 1 or thederu < 0 or thederv < 0.
+Calculates N-th derivatives of surface, where N = theDerU + theDerV. //! Raises if N < 1 or theDerU < 0 or theDerV < 0.
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
@@ -936,7 +936,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises if n < 1 or thederu < 0 or thederv < 0.
+Calculates N-th derivatives of surface, where N = theDerU + theDerV. //! Raises if N < 1 or theDerU < 0 or theDerV < 0.
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
@@ -954,7 +954,7 @@ None
 
 Description
 -----------
-/changes the direction of extrusion.
+/Changes the direction of extrusion.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection);
 
@@ -1140,7 +1140,7 @@ gp_Vec
 
 Description
 -----------
-Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises if n < 1 or thederu < 0 or thederv < 0.
+Calculates N-th derivatives of surface, where N = theDerU + theDerV. //! Raises if N < 1 or theDerU < 0 or theDerV < 0.
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 

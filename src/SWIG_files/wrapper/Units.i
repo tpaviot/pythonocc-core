@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSDOCSTRING
 "Units module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_units.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_units.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSDOCSTRING) Units
 
@@ -158,7 +158,7 @@ opencascade::handle<Units_UnitsDictionary>
 
 Description
 -----------
-Returns a unique instance of the dictionary of units. if <amode> is true, then it forces the recomputation of the dictionary of units.
+Returns a unique instance of the dictionary of units. If <amode> is True, then it forces the recomputation of the dictionary of units.
 ") DictionaryOfUnits;
 		static opencascade::handle<Units_UnitsDictionary> DictionaryOfUnits(const Standard_Boolean amode = Standard_False);
 
@@ -176,7 +176,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Return the dimension associated to the type.
+return the dimension associated to the Type.
 ") Dimensions;
 		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aType);
 
@@ -194,7 +194,7 @@ str
 
 Description
 -----------
-Returns the first quantity string founded from the unit <aunit>.
+Returns the first quantity string founded from the unit <aUnit>.
 ") FirstQuantity;
 		static Standard_CString FirstQuantity(Standard_CString aunit);
 
@@ -264,7 +264,7 @@ opencascade::handle<Units_Lexicon>
 
 Description
 -----------
-Return a unique instance of lexiconformula.
+Return a unique instance of LexiconFormula.
 ") LexiconFormula;
 		static opencascade::handle<Units_Lexicon> LexiconFormula();
 
@@ -282,7 +282,7 @@ opencascade::handle<Units_Lexicon>
 
 Description
 -----------
-Returns a unique instance of the units_lexicon. if <amode> is true, it forces the recomputation of the dictionary of units, and by consequence the completion of the units_lexicon.
+Returns a unique instance of the Units_Lexicon. If <amode> is True, it forces the recomputation of the dictionary of units, and by consequence the completion of the Units_Lexicon.
 ") LexiconUnits;
 		static opencascade::handle<Units_Lexicon> LexiconUnits(const Standard_Boolean amode = Standard_True);
 
@@ -295,7 +295,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Returns always the same instance of dimensions.
+Returns always the same instance of Dimensions.
 ") NullDimensions;
 		static opencascade::handle<Units_Dimensions> NullDimensions();
 
@@ -410,7 +410,7 @@ None
 
 Description
 -----------
-Returns a dimensions object which represents the dimension of a physical quantity. each of the <amass>, <alength>, <atime>, <anelectriccurrent>, <athermodynamictemperature>, <anamountofsubstance>, <aluminousintensity>, <aplaneangle>, <asolidangle> are the powers for the 7 fundamental units of physical quantity and the 2 secondary fundamental units of physical quantity.
+Returns a Dimensions object which represents the dimension of a physical quantity. Each of the <amass>, <alength>, <atime>, <anelectriccurrent>, <athermodynamictemperature>, <anamountofsubstance>, <aluminousintensity>, <aplaneangle>, <asolidangle> are the powers for the 7 fundamental units of physical quantity and the 2 secondary fundamental units of physical quantity.
 ") Units_Dimensions;
 		 Units_Dimensions(const Standard_Real amass, const Standard_Real alength, const Standard_Real atime, const Standard_Real anelectriccurrent, const Standard_Real athermodynamictemperature, const Standard_Real anamountofsubstance, const Standard_Real aluminousintensity, const Standard_Real aplaneangle, const Standard_Real asolidangle);
 
@@ -571,7 +571,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Creates and returns a new dimensions object which is the result of the division of <self> by <adimensions>.
+Creates and returns a new Dimensions object which is the result of the division of <self> by <adimensions>.
 ") Divide;
 		opencascade::handle<Units_Dimensions> Divide(const opencascade::handle<Units_Dimensions> & adimensions);
 
@@ -695,7 +695,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Creates and returns a new dimensions object which is the result of the multiplication of <self> and <adimensions>.
+Creates and returns a new Dimensions object which is the result of the multiplication of <self> and <adimensions>.
 ") Multiply;
 		opencascade::handle<Units_Dimensions> Multiply(const opencascade::handle<Units_Dimensions> & adimensions);
 
@@ -726,7 +726,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Creates and returns a new dimensions object which is the result of the power of <self> and <anexponent>.
+Creates and returns a new Dimensions object which is the result of the power of <self> and <anexponent>.
 ") Power;
 		opencascade::handle<Units_Dimensions> Power(const Standard_Real anexponent);
 
@@ -825,7 +825,7 @@ None
 
 Description
 -----------
-Creates a new instance of the class, initialized with the unitssystem <aunitssystem>.
+Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem>.
 ") Units_Explorer;
 		 Units_Explorer(const opencascade::handle<Units_UnitsSystem> & aunitssystem);
 
@@ -843,7 +843,7 @@ None
 
 Description
 -----------
-Creates a new instance of the class, initialized with the unitsdictionary <aunitsdictionary>.
+Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary>.
 ") Units_Explorer;
 		 Units_Explorer(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary);
 
@@ -862,7 +862,7 @@ None
 
 Description
 -----------
-Creates a new instance of the class, initialized with the unitssystem <aunitssystem> and positioned at the quantity <aquantity>.
+Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 ") Units_Explorer;
 		 Units_Explorer(const opencascade::handle<Units_UnitsSystem> & aunitssystem, Standard_CString aquantity);
 
@@ -881,7 +881,7 @@ None
 
 Description
 -----------
-Creates a new instance of the class, initialized with the unitsdictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
+Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 ") Units_Explorer;
 		 Units_Explorer(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, Standard_CString aquantity);
 
@@ -899,7 +899,7 @@ None
 
 Description
 -----------
-Initializes the instance of the class with the unitssystem <aunitssystem>.
+Initializes the instance of the class with the UnitsSystem <aunitssystem>.
 ") Init;
 		void Init(const opencascade::handle<Units_UnitsSystem> & aunitssystem);
 
@@ -917,7 +917,7 @@ None
 
 Description
 -----------
-Initializes the instance of the class with the unitsdictionary <aunitsdictionary>.
+Initializes the instance of the class with the UnitsDictionary <aunitsdictionary>.
 ") Init;
 		void Init(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary);
 
@@ -936,7 +936,7 @@ None
 
 Description
 -----------
-Initializes the instance of the class with the unitssystem <aunitssystem> and positioned at the quantity <aquantity>.
+Initializes the instance of the class with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 ") Init;
 		void Init(const opencascade::handle<Units_UnitsSystem> & aunitssystem, Standard_CString aquantity);
 
@@ -955,7 +955,7 @@ None
 
 Description
 -----------
-Initializes the instance of the class with the unitsdictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
+Initializes the instance of the class with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 ") Init;
 		void Init(const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary, Standard_CString aquantity);
 
@@ -968,7 +968,7 @@ bool
 
 Description
 -----------
-If the units system to explore is a user system, returns true if the current unit is active, false otherwise. //! if the units system to explore is the units dictionary, returns true if the current unit is the s.i. unit.
+If the units system to explore is a user system, returns True if the current unit is active, False otherwise. //! If the units system to explore is the units dictionary, returns True if the current unit is the S.I. unit.
 ") IsActive;
 		Standard_Boolean IsActive();
 
@@ -981,7 +981,7 @@ bool
 
 Description
 -----------
-Returns true if there is another quantity to explore, false otherwise.
+Returns True if there is another Quantity to explore, False otherwise.
 ") MoreQuantity;
 		Standard_Boolean MoreQuantity();
 
@@ -994,7 +994,7 @@ bool
 
 Description
 -----------
-Returns true if there is another unit to explore, false otherwise.
+Returns True if there is another Unit to explore, False otherwise.
 ") MoreUnit;
 		Standard_Boolean MoreUnit();
 
@@ -1007,7 +1007,7 @@ None
 
 Description
 -----------
-Sets the next quantity current.
+Sets the next Quantity current.
 ") NextQuantity;
 		void NextQuantity();
 
@@ -1020,7 +1020,7 @@ None
 
 Description
 -----------
-Sets the next unit current.
+Sets the next Unit current.
 ") NextUnit;
 		void NextUnit();
 
@@ -1033,7 +1033,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of the current quantity.
+Returns the name of the current Quantity.
 ") Quantity;
 		TCollection_AsciiString Quantity();
 
@@ -1073,7 +1073,7 @@ None
 
 Description
 -----------
-Creates an empty instance of lexicon.
+Creates an empty instance of Lexicon.
 ") Units_Lexicon;
 		 Units_Lexicon();
 
@@ -1093,7 +1093,7 @@ None
 
 Description
 -----------
-Adds to the lexicon a new token with <aword>, <amean>, <avalue> as arguments. if there is already a token with the field <theword> equal to <aword>, the existing token is updated.
+Adds to the lexicon a new token with <aword>, <amean>, <avalue> as arguments. If there is already a token with the field <theword> equal to <aword>, the existing token is updated.
 ") AddToken;
 		void AddToken(Standard_CString aword, Standard_CString amean, const Standard_Real avalue);
 
@@ -1217,7 +1217,7 @@ Units_Measurement
 
 Description
 -----------
-Returns (if it is possible) a measurement which is the addition of <self> and <ameasurement>. the chosen returned unit is the unit of <self>.
+Returns (if it is possible) a measurement which is the addition of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 ") Add;
 		Units_Measurement Add(const Units_Measurement & ameasurement);
 
@@ -1297,7 +1297,7 @@ Units_Measurement
 
 Description
 -----------
-Returns a measurement object with the fractional value of the measurement contained in <self>.
+Returns a Measurement object with the fractional value of the measurement contained in <self>.
 ") Fractional;
 		Units_Measurement Fractional();
 
@@ -1323,7 +1323,7 @@ Units_Measurement
 
 Description
 -----------
-Returns a measurement object with the integer value of the measurement contained in <self>.
+Returns a Measurement object with the integer value of the measurement contained in <self>.
 ") Integer;
 		Units_Measurement Integer();
 
@@ -1408,7 +1408,7 @@ Units_Measurement
 
 Description
 -----------
-Returns (if it is possible) a measurement which is the subtraction of <self> and <ameasurement>. the chosen returned unit is the unit of <self>.
+Returns (if it is possible) a measurement which is the subtraction of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 ") Subtract;
 		Units_Measurement Subtract(const Units_Measurement & ameasurement);
 
@@ -1563,7 +1563,7 @@ None
 
 Description
 -----------
-Creates a new quantity object with <aname> which is the name of the physical quantity, <adimensions> which is the physical dimensions, and <aunitssequence> which describes all the units known for this quantity.
+Creates a new Quantity object with <aname> which is the name of the physical quantity, <adimensions> which is the physical dimensions, and <aunitssequence> which describes all the units known for this quantity.
 ") Units_Quantity;
 		 Units_Quantity(Standard_CString aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<Units_UnitsSequence> & aunitssequence);
 
@@ -1613,7 +1613,7 @@ bool
 
 Description
 -----------
-Returns true if the name of the quantity <self> is equal to <astring>, false otherwise.
+Returns True if the name of the Quantity <self> is equal to <astring>, False otherwise.
 ") IsEqual;
 		Standard_Boolean IsEqual(Standard_CString astring);
 
@@ -1626,7 +1626,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns in a asciistring from tcollection the name of the quantity.
+Returns in a AsciiString from TCollection the name of the quantity.
 ") Name;
 		TCollection_AsciiString Name();
 
@@ -1674,7 +1674,7 @@ None
 
 Description
 -----------
-Creates and returns a sentence, by analyzing the string <astring> with the lexicon <alexicon>.
+Creates and returns a Sentence, by analyzing the string <astring> with the lexicon <alexicon>.
 ") Units_Sentence;
 		 Units_Sentence(const opencascade::handle<Units_Lexicon> & alexicon, Standard_CString astring);
 
@@ -1713,7 +1713,7 @@ bool
 
 Description
 -----------
-Return true if number of created tokens > 0 (i.e creation of sentence is successful).
+Return True if number of created tokens > 0 (i.e creation of sentence is successful).
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1916,7 +1916,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Returns a token which is the addition of <self> and another token <atoken>. the addition is possible if and only if the dimensions are the same.
+Returns a token which is the addition of <self> and another token <atoken>. The addition is possible if and only if the dimensions are the same.
 ") Add;
 		opencascade::handle<Units_Token> Add(const opencascade::handle<Units_Token> & atoken);
 
@@ -1929,7 +1929,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Creates and returns a token, which is a shiftedtoken.
+Creates and returns a token, which is a ShiftedToken.
 ") Creates;
 		virtual opencascade::handle<Units_Token> Creates();
 
@@ -1996,7 +1996,7 @@ float
 
 Description
 -----------
-This virtual method is called by the measurement methods, to compute the measurement during a conversion.
+This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 ") Divided;
 		virtual Standard_Real Divided(const Standard_Real avalue);
 
@@ -2221,7 +2221,7 @@ float
 
 Description
 -----------
-This virtual method is called by the measurement methods, to compute the measurement during a conversion.
+This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 ") Multiplied;
 		virtual Standard_Real Multiplied(const Standard_Real avalue);
 
@@ -2257,7 +2257,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Returns a token which is <self> to the power of another token <atoken>. the computation is possible only if <atoken> is a dimensionless constant.
+Returns a token which is <self> to the power of another token <atoken>. The computation is possible only if <atoken> is a dimensionless constant.
 ") Power;
 		opencascade::handle<Units_Token> Power(const opencascade::handle<Units_Token> & atoken);
 
@@ -2293,7 +2293,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Returns a token which is the subtraction of <self> and another token <atoken>. the subtraction is possible if and only if the dimensions are the same.
+Returns a token which is the subtraction of <self> and another token <atoken>. The subtraction is possible if and only if the dimensions are the same.
 ") Subtract;
 		opencascade::handle<Units_Token> Subtract(const opencascade::handle<Units_Token> & atoken);
 
@@ -2311,7 +2311,7 @@ None
 
 Description
 -----------
-Updates the token <self> with the additional signification <amean> by concatenation of the two strings <themean> and <amean>. if the two significations are the same , an information message is written in the output device.
+Updates the token <self> with the additional signification <amean> by concatenation of the two strings <themean> and <amean>. If the two significations are the same , an information message is written in the output device.
 ") Update;
 		void Update(Standard_CString amean);
 
@@ -2410,7 +2410,7 @@ None
 
 Description
 -----------
-Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, and <avalue> is the value in relation to the international system of units.
+Creates and returns a unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, and <avalue> is the value in relation to the International System of Units.
 ") Units_Unit;
 		 Units_Unit(Standard_CString aname, Standard_CString asymbol, const Standard_Real avalue, const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -2484,7 +2484,7 @@ bool
 
 Description
 -----------
-Compares all the symbols linked within <self> with the name of <atoken>, and returns true if there is one symbol equal to the name, false otherwise.
+Compares all the symbols linked within <self> with the name of <atoken>, and returns True if there is one symbol equal to the name, False otherwise.
 ") IsEqual;
 		Standard_Boolean IsEqual(Standard_CString astring);
 
@@ -2528,7 +2528,7 @@ None
 
 Description
 -----------
-Sets the physical quantity <aquantity> to <self>.
+Sets the physical Quantity <aquantity> to <self>.
 ") Quantity;
 		void Quantity(const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -2572,7 +2572,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Starting with <self>, returns a new token object.
+Starting with <self>, returns a new Token object.
 ") Token;
 		virtual opencascade::handle<Units_Token> Token();
 
@@ -2585,7 +2585,7 @@ float
 
 Description
 -----------
-Returns the value in relation with the international system of units.
+Returns the value in relation with the International System of Units.
 ") Value;
 		Standard_Real Value();
 
@@ -2632,7 +2632,7 @@ None
 
 Description
 -----------
-Returns an empty instance of unitsdictionary.
+Returns an empty instance of UnitsDictionary.
 ") Units_UnitsDictionary;
 		 Units_UnitsDictionary();
 
@@ -2663,7 +2663,7 @@ None
 
 Description
 -----------
-Returns a unitsdictionary object which contains the sequence of all the units you want to consider, physical quantity by physical quantity.
+Returns a UnitsDictionary object which contains the sequence of all the units you want to consider, physical quantity by physical quantity.
 ") Creates;
 		void Creates();
 
@@ -2741,7 +2741,7 @@ None
 
 Description
 -----------
-Returns an instance of unitssystem initialized to the s.i. units system.
+Returns an instance of UnitsSystem initialized to the S.I. units system.
 ") Units_UnitsSystem;
 		 Units_UnitsSystem();
 
@@ -2760,7 +2760,7 @@ None
 
 Description
 -----------
-Returns an instance of unitssystem initialized to the s.i. units system upgraded by the base system units description file. attempts to find the four following files: $csf_`aname`defaults/.aname $csf_`aname`sitedefaults/.aname $csf_`aname`groupdefaults/.aname $csf_`aname`userdefaults/.aname see: resource_manager for the description of this file.
+Returns an instance of UnitsSystem initialized to the S.I. units system upgraded by the base system units description file. Attempts to find the four following files: $CSF_`aName`Defaults/.aName $CSF_`aName`SiteDefaults/.aName $CSF_`aName`GroupDefaults/.aName $CSF_`aName`UserDefaults/.aName See: Resource_Manager for the description of this file.
 ") Units_UnitsSystem;
 		 Units_UnitsSystem(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
 
@@ -2842,7 +2842,7 @@ float
 
 Description
 -----------
-Converts the real value <avalue> from the s.i. system of units to the user system of units. <aquantity> is the physical dimensions of the measurement.
+Converts the real value <avalue> from the S.I. system of units to the user system of units. <aquantity> is the physical dimensions of the measurement.
 ") ConvertSIValueToUserSystem;
 		Standard_Real ConvertSIValueToUserSystem(Standard_CString aquantity, const Standard_Real avalue);
 
@@ -2861,7 +2861,7 @@ float
 
 Description
 -----------
-Converts the real value <avalue> from the user system of units to the s.i. system of units. <aquantity> is the physical dimensions of the measurement.
+Converts the real value <avalue> from the user system of units to the S.I. system of units. <aquantity> is the physical dimensions of the measurement.
 ") ConvertUserSystemValueToSI;
 		Standard_Real ConvertUserSystemValueToSI(Standard_CString aquantity, const Standard_Real avalue);
 
@@ -2907,7 +2907,7 @@ bool
 
 Description
 -----------
-Returns true if no units has been defined in the system.
+Returns True if no units has been defined in the system.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -2992,7 +2992,7 @@ None
 
 Description
 -----------
-Creates and returns a mathsentence object. the string <astring> describes an algebraic formula in natural language.
+Creates and returns a MathSentence object. The string <astring> describes an algebraic formula in natural language.
 ") Units_MathSentence;
 		 Units_MathSentence(Standard_CString astring);
 
@@ -3041,7 +3041,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-Creates and returns a token, which is a shiftedtoken.
+Creates and returns a token, which is a ShiftedToken.
 ") Creates;
 		virtual opencascade::handle<Units_Token> Creates();
 
@@ -3059,7 +3059,7 @@ float
 
 Description
 -----------
-This virtual method is called by the measurement methods, to compute the measurement during a conversion.
+This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 ") Divided;
 		virtual Standard_Real Divided(const Standard_Real avalue);
 
@@ -3109,7 +3109,7 @@ float
 
 Description
 -----------
-This virtual method is called by the measurement methods, to compute the measurement during a conversion.
+This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 ") Multiplied;
 		virtual Standard_Real Multiplied(const Standard_Real avalue);
 
@@ -3147,7 +3147,7 @@ None
 
 Description
 -----------
-Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the international system of units, and <amove> is the gap in relation to another unit. //! for example celsius degree of temperature is an instance of shiftedunit with <avalue> equal to 1. and <amove> equal to 273.15.
+Creates and returns a shifted unit. <aname> is the name of the unit, <asymbol> is the usual abbreviation of the unit, <avalue> is the value in relation to the International System of Units, and <amove> is the gap in relation to another unit. //! For example Celsius degree of temperature is an instance of ShiftedUnit with <avalue> equal to 1. and <amove> equal to 273.15.
 ") Units_ShiftedUnit;
 		 Units_ShiftedUnit(Standard_CString aname, Standard_CString asymbol, const Standard_Real avalue, const Standard_Real amove, const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -3247,7 +3247,7 @@ opencascade::handle<Units_Token>
 
 Description
 -----------
-This redefined method returns a shiftedtoken object.
+This redefined method returns a ShiftedToken object.
 ") Token;
 		virtual opencascade::handle<Units_Token> Token();
 
@@ -3281,7 +3281,7 @@ None
 
 Description
 -----------
-Creates and returns a unitsentence. the string <astring> describes in natural language the unit or the composed unit to be analysed.
+Creates and returns a UnitSentence. The string <astring> describes in natural language the unit or the composed unit to be analysed.
 ") Units_UnitSentence;
 		 Units_UnitSentence(Standard_CString astring);
 
@@ -3300,7 +3300,7 @@ None
 
 Description
 -----------
-Creates and returns a unitsentence. the string <astring> describes in natural language the unit to be analysed. the sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
+Creates and returns a UnitSentence. The string <astring> describes in natural language the unit to be analysed. The sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
 ") Units_UnitSentence;
 		 Units_UnitSentence(Standard_CString astring, const opencascade::handle<Units_QuantitiesSequence> & aquantitiessequence);
 
@@ -3358,7 +3358,7 @@ None
 
 Description
 -----------
-Returns an empty instance of unitslexicon.
+Returns an empty instance of UnitsLexicon.
 ") Units_UnitsLexicon;
 		 Units_UnitsLexicon();
 

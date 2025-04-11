@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LOCOPEDOCSTRING
 "LocOpe module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_locope.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_locope.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
@@ -171,7 +171,7 @@ bool
 
 Description
 -----------
-Returns standard_true when the wire <w> is closed on the face <onf>.
+Returns Standard_True when the wire <W> is closed on the face <OnF>.
 ") Closed;
 		static Standard_Boolean Closed(const TopoDS_Wire & W, const TopoDS_Face & OnF);
 
@@ -190,7 +190,7 @@ bool
 
 Description
 -----------
-Returns standard_true when the edge <e> is closed on the face <onf>.
+Returns Standard_True when the edge <E> is closed on the face <OnF>.
 ") Closed;
 		static Standard_Boolean Closed(const TopoDS_Edge & E, const TopoDS_Face & OnF);
 
@@ -229,7 +229,7 @@ bool
 
 Description
 -----------
-Returns standard_true when the faces are tangent.
+Returns Standard_True when the faces are tangent.
 ") TgtFaces;
 		static Standard_Boolean TgtFaces(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
@@ -274,7 +274,7 @@ None
 
 Description
 -----------
-Builds shape(s) from the list <l>. uses only the faces of <l>.
+Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") LocOpe_BuildShape;
 		 LocOpe_BuildShape(const TopTools_ListOfShape & L);
 
@@ -292,7 +292,7 @@ None
 
 Description
 -----------
-Builds shape(s) from the list <l>. uses only the faces of <l>.
+Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") Perform;
 		void Perform(const TopTools_ListOfShape & L);
 
@@ -441,7 +441,7 @@ None
 
 Description
 -----------
-Creates and performs the intersection betwwen <ax1> and <s>.
+Creates and performs the intersection between <Ax1> and <S>.
 ") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector(const TopoDS_Shape & S);
 
@@ -472,7 +472,7 @@ None
 
 Description
 -----------
-Performs the intersection between <ax1 and <s>.
+Performs the intersection between <Ax1 and <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -485,7 +485,7 @@ bool
 
 Description
 -----------
-Returns <standard_true> if the intersection has been done.
+Returns <Standard_True> if the intersection has been done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -498,18 +498,18 @@ Parameters
 I: int
 From: float
 Tol: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-On the element of range <i>, searches the first intersection point located after the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+On the element of range <I>, searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeAfter ******/
 		/****** md5 signature: d56de202f543156481760d3d927eea66 ******/
@@ -520,18 +520,18 @@ Parameters
 I: int
 FromInd: int
 Tol: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-On the element of range <i>, searches the first intersection point located after the index <fromind> ( >= fromind + 1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeBefore ******/
 		/****** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ******/
@@ -542,18 +542,18 @@ Parameters
 I: int
 From: float
 Tol: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-On the element of range <i>, searches the first intersection point located before the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+On the element of range <I>, searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeBefore ******/
 		/****** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ******/
@@ -564,18 +564,18 @@ Parameters
 I: int
 FromInd: int
 Tol: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-On the element of range <i>, searches the first intersection point located before the index <fromind> ( <= fromind -1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). <tol> is used to determine if 2 parameters are equal. //! otherwise, returns <standard_false>.
+On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::NbPoints ******/
 		/****** md5 signature: 8d71e01fa7b21bd925ab1ef4bd70145e ******/
@@ -591,7 +591,7 @@ int
 
 Description
 -----------
-Returns the number of intersection point on the element of range <i>.
+Returns the number of intersection point on the element of range <I>.
 ") NbPoints;
 		Standard_Integer NbPoints(const Standard_Integer I);
 
@@ -664,7 +664,7 @@ LocOpe_PntFace
 
 Description
 -----------
-Returns the intersection point of range <index> on element of range <i>. the points are sorted in increasing order of parameter along the axis.
+Returns the intersection point of range <Index> on element of range <I>. The points are sorted in increasing order of parameter along the axis.
 ") Point;
 		const LocOpe_PntFace & Point(const Standard_Integer I, const Standard_Integer Index);
 
@@ -710,7 +710,7 @@ None
 
 Description
 -----------
-Creates and performs the intersection betwwen <ax1> and <s>.
+Creates and performs the intersection between <Ax1> and <S>.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector(const gp_Ax1 & Axis, const TopoDS_Shape & S);
 
@@ -729,7 +729,7 @@ None
 
 Description
 -----------
-Creates and performs yte intersection betwwen <c> and <s>.
+Creates and performs yte intersection between <C> and <S>.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector(const gp_Circ & C, const TopoDS_Shape & S);
 
@@ -748,7 +748,7 @@ None
 
 Description
 -----------
-Performs the intersection between <ax1 and <s>.
+Performs the intersection between <Ax1 and <S>.
 ") Init;
 		void Init(const gp_Ax1 & Axis, const TopoDS_Shape & S);
 
@@ -767,7 +767,7 @@ None
 
 Description
 -----------
-Performs the intersection between <ax1 and <s>.
+Performs the intersection between <Ax1 and <S>.
 ") Init;
 		void Init(const gp_Circ & C, const TopoDS_Shape & S);
 
@@ -780,7 +780,7 @@ bool
 
 Description
 -----------
-Returns <standard_true> if the intersection has been done.
+Returns <Standard_True> if the intersection has been done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -791,18 +791,18 @@ Returns <standard_true> if the intersection has been done.
 Parameters
 ----------
 From: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-Searches the first intersection point located after the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
+Searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeAfter ******/
 		/****** md5 signature: dc5b7987079415874eaa183c6149c405 ******/
@@ -811,18 +811,18 @@ Searches the first intersection point located after the parameter <from>, which 
 Parameters
 ----------
 FromInd: int
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-Searches the first intersection point located after the index <fromind> ( >= fromind + 1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point. (indfrom <= indto). //! otherwise, returns <standard_false>.
+Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
 		/****** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ******/
@@ -831,18 +831,18 @@ Searches the first intersection point located after the index <fromind> ( >= fro
 Parameters
 ----------
 From: float
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-Searches the first intersection point located before the parameter <from>, which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
+Searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
 		/****** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ******/
@@ -851,18 +851,18 @@ Searches the first intersection point located before the parameter <from>, which
 Parameters
 ----------
 FromInd: int
-Or: TopAbs_Orientation
 
 Return
 -------
+Or: TopAbs_Orientation
 IndFrom: int
 IndTo: int
 
 Description
 -----------
-Searches the first intersection point located before the index <fromind> ( <= fromind -1), which orientation is not topabs_external. if found, returns <standard_true>. <or> contains the orientation of the point, <indfrom> and <indto> represents the interval of index in the sequence of intersection point corresponding to the point (indfrom <= indto). //! otherwise, returns <standard_false>.
+Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::NbPoints ******/
 		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
@@ -891,7 +891,7 @@ LocOpe_PntFace
 
 Description
 -----------
-Returns the intersection point of range <index>. the points are sorted in increasing order of parameter along the axis.
+Returns the intersection point of range <Index>. The points are sorted in increasing order of parameter along the axis.
 ") Point;
 		const LocOpe_PntFace & Point(const Standard_Integer Index);
 
@@ -1353,7 +1353,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge created by the vertex <v>. if none, must return a null shape.
+Returns the edge created by the vertex <V>. If none, must return a null shape.
 ") Generated;
 		virtual TopoDS_Edge Generated(const TopoDS_Vertex & V);
 
@@ -1371,7 +1371,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face created by the edge <e>. if none, must return a null shape.
+Returns the face created by the edge <E>. If none, must return a null shape.
 ") Generated;
 		virtual TopoDS_Face Generated(const TopoDS_Edge & E);
 
@@ -1444,7 +1444,7 @@ None
 
 Description
 -----------
-Creates the algorithm on the shape <s>.
+Creates the algorithm on the shape <S>.
 ") LocOpe_Generator;
 		 LocOpe_Generator(const TopoDS_Shape & S);
 
@@ -1462,7 +1462,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the descendant face of <f>. <f> may belong to the original shape or to the 'generated' shape. the returned face may be a null shape (when <f> disappears).
+Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
 ") DescendantFace;
 		const TopTools_ListOfShape & DescendantFace(const TopoDS_Face & F);
 
@@ -1480,7 +1480,7 @@ None
 
 Description
 -----------
-Initializes the algorithm on the shape <s>.
+Initializes the algorithm on the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -2106,7 +2106,7 @@ None
 
 Description
 -----------
-Empty constructor. useful only for the list.
+Empty constructor. Useful only for the list.
 ") LocOpe_PntFace;
 		 LocOpe_PntFace();
 
@@ -2144,7 +2144,7 @@ Description
 -----------
 No available documentation.
 ") ChangeOrientation;
-		TopAbs_Orientation & ChangeOrientation();
+		TopAbs_Orientation  ChangeOrientation();
 
 		/****** LocOpe_PntFace::Face ******/
 		/****** md5 signature: 95406b8d0d556c0537e0768c48713f21 ******/
@@ -2464,7 +2464,7 @@ None
 
 Description
 -----------
-Creates the algorithm on the shape <s>.
+Creates the algorithm on the shape <S>.
 ") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts(const TopoDS_Shape & S);
 
@@ -2482,7 +2482,7 @@ None
 
 Description
 -----------
-Initializes the algorithm with the shape <s>.
+Initializes the algorithm with the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -2495,7 +2495,7 @@ bool
 
 Description
 -----------
-Returns <standard_true> if the modification has been successfully performed.
+Returns <Standard_True> if the modification has been successfully performed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2535,7 +2535,7 @@ None
 
 Description
 -----------
-Splits the face <f> of the former given shape with the wire <w>. the wire is assumed to lie on the face. puts a draft angle on both parts of the wire. <extractg>, <nplg>, <angleg> define the arguments for the left part of the wire. <extractd>, <npld>, <angled> define the arguments for the right part of the wire. the draft angle is measured with the direction <extract>. <npl> defines the neutral plane (points belonging to the neutral plane are not modified). <angle> is the value of the draft angle. if <modifyleft> is set to <standard_false>, no draft angle is applied to the left part of the wire. if <modifyright> is set to <standard_false>,no draft angle is applied to the right part of the wire.
+Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <Standard_False>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <Standard_False>,no draft angle is applied to the right part of the wire.
 ") Perform;
 		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extractg, const gp_Pln & NPlg, const Standard_Real Angleg, const gp_Dir & Extractd, const gp_Pln & NPld, const Standard_Real Angled, const Standard_Boolean ModifyLeft = Standard_True, const Standard_Boolean ModifyRight = Standard_True);
 
@@ -2557,7 +2557,7 @@ None
 
 Description
 -----------
-Splits the face <f> of the former given shape with the wire <w>. the wire is assumed to lie on the face. puts a draft angle on the left part of the wire. the draft angle is measured with the direction <extract>. <npl> defines the neutral plane (points belonging to the neutral plane are not modified). <angle> is the value of the draft angle.
+Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on the left part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle.
 ") Perform;
 		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extract, const gp_Pln & NPl, const Standard_Real Angle);
 
@@ -2633,7 +2633,7 @@ None
 
 Description
 -----------
-Creates the process with the shape <s>.
+Creates the process with the shape <S>.
 ") LocOpe_SplitShape;
 		 LocOpe_SplitShape(const TopoDS_Shape & S);
 
@@ -2653,7 +2653,7 @@ None
 
 Description
 -----------
-Adds the vertex <v> on the edge <e>, at parameter <p>.
+Adds the vertex <V> on the edge <E>, at parameter <P>.
 ") Add;
 		void Add(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E);
 
@@ -2672,7 +2672,7 @@ bool
 
 Description
 -----------
-Adds the wire <w> on the face <f>.
+Adds the wire <W> on the face <F>.
 ") Add;
 		Standard_Boolean Add(const TopoDS_Wire & W, const TopoDS_Face & F);
 
@@ -2691,7 +2691,7 @@ bool
 
 Description
 -----------
-Adds the list of wires <lwires> on the face <f>.
+Adds the list of wires <Lwires> on the face <F>.
 ") Add;
 		Standard_Boolean Add(const TopTools_ListOfShape & Lwires, const TopoDS_Face & F);
 
@@ -2709,7 +2709,7 @@ bool
 
 Description
 -----------
-Tests if it is possible to split the edge <e>.
+Tests if it is possible to split the edge <E>.
 ") CanSplit;
 		Standard_Boolean CanSplit(const TopoDS_Edge & E);
 
@@ -2727,7 +2727,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of descendant shapes of <s>.
+Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
@@ -2745,7 +2745,7 @@ None
 
 Description
 -----------
-Initializes the process on the shape <s>.
+Initializes the process on the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -2764,7 +2764,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the 'left' part defined by the wire <w> on the face <f>. the returned list of shape is in fact a list of faces. the face <f> is considered with its topological orientation in the original shape. <w> is considered with its orientation.
+Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 ") LeftOf;
 		const TopTools_ListOfShape & LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
 
@@ -2822,7 +2822,7 @@ None
 
 Description
 -----------
-Creates the algorithm on the shape <s>.
+Creates the algorithm on the shape <S>.
 ") LocOpe_Spliter;
 		 LocOpe_Spliter(const TopoDS_Shape & S);
 
@@ -2840,7 +2840,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of descendant shapes of <s>.
+Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
@@ -2871,7 +2871,7 @@ None
 
 Description
 -----------
-Initializes the algorithm on the shape <s>.
+Initializes the algorithm on the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -2897,7 +2897,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the faces of the 'left' part on the shape. (it is build from directleft, with the faces connected to this set, and so on...).
+Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
 ") Left;
 		const TopTools_ListOfShape & Left();
 
@@ -2991,7 +2991,7 @@ bool
 
 Description
 -----------
-Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge this method puts edge on the corresponding faces from initial shape.
+Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
 		Standard_Boolean Add(const TopTools_SequenceOfShape & theEdges);
 
@@ -3155,7 +3155,7 @@ bool
 
 Description
 -----------
-Tells is the face to be split by section or not.
+tells is the face to be split by section or not.
 ") IsFaceWithSection;
 		Standard_Boolean IsFaceWithSection(const TopoDS_Shape & aFace);
 
@@ -3199,7 +3199,7 @@ bool
 
 Description
 -----------
-If the current edge is projected on an edge, returns <standard_true> and sets the value of <e>. otherwise, returns <standard_false>.
+If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
 ") OnEdge;
 		Standard_Boolean OnEdge(TopoDS_Edge & E);
 
@@ -3218,7 +3218,7 @@ P: float
 
 Description
 -----------
-If the vertex <v> lies on an edge of the original shape, returns <standard_true> and sets the concerned edge in <e>, and the parameter on the edge in <p>. else returns <standard_false>.
+If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 ") OnEdge;
 		Standard_Boolean OnEdge(const TopoDS_Vertex & V, TopoDS_Edge & E, Standard_Real &OutValue);
 
@@ -3238,7 +3238,7 @@ P: float
 
 Description
 -----------
-If the vertex <v> lies on an edge of the original shape, returns <standard_true> and sets the concerned edge in <e>, and the parameter on the edge in <p>. else returns <standard_false>.
+If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 ") OnEdge;
 		Standard_Boolean OnEdge(const TopoDS_Vertex & V, const TopoDS_Edge & EdgeFrom, TopoDS_Edge & E, Standard_Real &OutValue);
 
@@ -3288,7 +3288,7 @@ None
 
 Description
 -----------
-Set the flag of check internal intersections default value is true (to check).
+Set the flag of check internal intersections default value is True (to check).
 ") SetCheckInterior;
 		void SetCheckInterior(const Standard_Boolean ToCheckInterior);
 
@@ -3353,7 +3353,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge created by the vertex <v>. if none, must return a null shape.
+Returns the edge created by the vertex <V>. If none, must return a null shape.
 ") Generated;
 		TopoDS_Edge Generated(const TopoDS_Vertex & V);
 
@@ -3371,7 +3371,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face created by the edge <e>. if none, must return a null shape.
+Returns the face created by the edge <E>. If none, must return a null shape.
 ") Generated;
 		TopoDS_Face Generated(const TopoDS_Edge & E);
 

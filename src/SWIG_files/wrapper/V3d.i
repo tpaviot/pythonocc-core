@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define V3DDOCSTRING
 "V3d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_v3d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 %enddef
 %module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 
@@ -353,7 +353,7 @@ None
 
 Description
 -----------
-Compute the graphic structure of arrow. x0,y0,z0: coordinate of the arrow. dx,dy,dz: direction of the arrow. alpha: angle of arrow. lng: length of arrow.
+Compute the graphic structure of arrow. X0,Y0,Z0: coordinate of the arrow. DX,DY,DZ: Direction of the arrow. Alpha: Angle of arrow. Lng: Length of arrow.
 ") ArrowOfRadius;
 		static void ArrowOfRadius(const opencascade::handle<Graphic3d_Group> & garrow, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real DX, const Standard_Real DY, const Standard_Real DZ, const Standard_Real Alpha, const Standard_Real Lng);
 
@@ -378,7 +378,7 @@ None
 
 Description
 -----------
-Compute the graphic structure of circle. x0,y0,z0: center of circle. vx,vy,vz: axis of circle. radius: radius of circle.
+Compute the graphic structure of circle. X0,Y0,Z0: Center of circle. VX,VY,VZ: Axis of circle. Radius: Radius of circle.
 ") CircleInPlane;
 		static void CircleInPlane(const opencascade::handle<Graphic3d_Group> & gcircle, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real VX, const Standard_Real VY, const Standard_Real VZ, const Standard_Real Radius);
 
@@ -433,7 +433,9 @@ V3d_TypeOfOrientation
 
 Description
 -----------
-Returns the orientation type from the given string identifier (using case-insensitive comparison). @param thetypestring string identifier return orientation type or v3d_typeoforientation if string identifier is invalid.
+Returns the orientation type from the given string identifier (using case-insensitive comparison). 
+Parameter theTypeString string identifier 
+Return: orientation type or V3d_TypeOfOrientation if string identifier is invalid.
 ") TypeOfOrientationFromString;
 		static V3d_TypeOfOrientation TypeOfOrientationFromString(Standard_CString theTypeString);
 
@@ -451,7 +453,10 @@ theType: V3d_TypeOfOrientation
 
 Description
 -----------
-Determines the shape type from the given string identifier (using case-insensitive comparison). @param thetypestring string identifier @param thetype detected shape type return true if string identifier is known.
+Determines the shape type from the given string identifier (using case-insensitive comparison). 
+Parameter theTypeString string identifier 
+Parameter theType detected shape type 
+Return: True if string identifier is known.
 ") TypeOfOrientationFromString;
 		static Standard_Boolean TypeOfOrientationFromString(Standard_CString theTypeString, V3d_TypeOfOrientation &OutValue);
 
@@ -469,7 +474,9 @@ str
 
 Description
 -----------
-Returns the string name for a given orientation type. @param thetype orientation type return string identifier from the list xpos, ypos, zpos and others.
+Returns the string name for a given orientation type. 
+Parameter theType orientation type 
+Return: string identifier from the list Xpos, Ypos, Zpos and others.
 ") TypeOfOrientationToString;
 		static Standard_CString TypeOfOrientationToString(V3d_TypeOfOrientation theType);
 
@@ -501,7 +508,7 @@ None
 
 Description
 -----------
-Constructs an ambient light source in the viewer. the default color of this light source is white.
+Constructs an ambient light source in the viewer. The default Color of this light source is WHITE.
 ") V3d_AmbientLight;
 		 V3d_AmbientLight(const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -671,36 +678,6 @@ No available documentation.
 /*****************************
 * class V3d_ImageDumpOptions *
 *****************************/
-class V3d_ImageDumpOptions {
-	public:
-		int Width;
-		int Height;
-		Graphic3d_BufferType BufferType;
-		V3d_StereoDumpOptions StereoOptions;
-		int TileSize;
-		bool ToAdjustAspect;
-		/****** V3d_ImageDumpOptions::V3d_ImageDumpOptions ******/
-		/****** md5 signature: 76f5aa893839bb4a2f4519e2b5549b24 ******/
-		%feature("compactdefaultargs") V3d_ImageDumpOptions;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Default constructor.
-") V3d_ImageDumpOptions;
-		 V3d_ImageDumpOptions();
-
-};
-
-
-%extend V3d_ImageDumpOptions {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /******************
 * class V3d_Plane *
 ******************/
@@ -736,7 +713,8 @@ opencascade::handle<Graphic3d_ClipPlane>
 
 Description
 -----------
-Use this method to pass clipping plane implementation for standard clipping workflow. return clipping plane implementation handle.
+Use this method to pass clipping plane implementation for standard clipping workflow. 
+Return: clipping plane implementation handle.
 ") ClipPlane;
 		const opencascade::handle<Graphic3d_ClipPlane> & ClipPlane();
 
@@ -781,7 +759,7 @@ bool
 
 Description
 -----------
-Returns true when the plane representation is displayed.
+Returns True when the plane representation is displayed.
 ") IsDisplayed;
 		Standard_Boolean IsDisplayed();
 
@@ -1040,7 +1018,9 @@ opencascade::handle<Prs3d_ShadingAspect>
 
 Description
 -----------
-Return shading aspect for specified axis. @param theaxis [in] axis index return shading aspect.
+Return shading aspect for specified axis. 
+Input parameter: theAxis axis index 
+Return: shading aspect.
 ") ArrowAspect;
 		const opencascade::handle<Prs3d_ShadingAspect> & ArrowAspect(V3d_TypeOfAxe theAxis);
 
@@ -1136,7 +1116,7 @@ bool
 
 Description
 -----------
-Return true if wireframe presentation is set; false by default.
+Return True if wireframe presentation is set; False by default.
 ") IsWireframe;
 		bool IsWireframe();
 
@@ -1154,7 +1134,9 @@ TCollection_AsciiString
 
 Description
 -----------
-Return axis text. @param theaxis [in] axis index return text of the label.
+Return axis text. 
+Input parameter: theAxis axis index 
+Return: text of the label.
 ") Label;
 		const TCollection_AsciiString & Label(V3d_TypeOfAxe theAxis);
 
@@ -1172,7 +1154,9 @@ opencascade::handle<Prs3d_TextAspect>
 
 Description
 -----------
-Return text aspect for specified axis. @param theaxis [in] axis index return text aspect.
+Return text aspect for specified axis. 
+Input parameter: theAxis axis index 
+Return: text aspect.
 ") LabelAspect;
 		const opencascade::handle<Prs3d_TextAspect> & LabelAspect(V3d_TypeOfAxe theAxis);
 
@@ -1534,7 +1518,8 @@ None
 
 Description
 -----------
-Adds clip plane to the view. the composition of clip planes truncates the rendering space to convex volume. number of supported clip planes can be consulted by planelimit method of associated graphic3d_graphicdriver. please be aware that the planes which exceed the limit are ignored during rendering. @param theplane [in] the clip plane to be added to view.
+Adds clip plane to the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Graphic3d_GraphicDriver. Please be aware that the planes which exceed the limit are ignored during rendering. 
+Input parameter: thePlane the clip plane to be added to view.
 ") AddClipPlane;
 		virtual void AddClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -1584,7 +1569,7 @@ None
 
 Description
 -----------
-If automatic z-range fitting is turned on, adjusts z-min and z-max projection volume planes with call to zfitall.
+If automatic z-range fitting is turned on, adjusts Z-min and Z-max projection volume planes with call to ZFitAll.
 ") AutoZFit;
 		void AutoZFit();
 
@@ -1597,7 +1582,7 @@ bool
 
 Description
 -----------
-Returns true if automatic z-fit mode is turned on.
+returns True if automatic z-fit mode is turned on.
 ") AutoZFitMode;
 		Standard_Boolean AutoZFitMode();
 
@@ -1610,7 +1595,7 @@ float
 
 Description
 -----------
-Returns scale factor parameter of automatic z-fit mode.
+returns scale factor parameter of automatic z-fit mode.
 ") AutoZFitScaleFactor;
 		Standard_Real AutoZFitScaleFactor();
 
@@ -1649,7 +1634,7 @@ None
 
 Description
 -----------
-Performs anisotropic scaling of <self> view along the given <axis>. the scale factor is calculated on a basis of the mouse pointer displacement <dx,dy>. the calculated scale factor is then passed to setaxialscale(sx, sy, sz) method.
+Performs anisotropic scaling of <self> view along the given <Axis>. The scale factor is calculated on a basis of the mouse pointer displacement <Dx,Dy>. The calculated scale factor is then passed to SetAxialScale(Sx, Sy, Sz) method.
 ") AxialScale;
 		void AxialScale(const Standard_Integer Dx, const Standard_Integer Dy, const V3d_TypeOfAxe Axis);
 
@@ -1662,7 +1647,7 @@ Graphic3d_TypeOfBackfacingModel
 
 Description
 -----------
-Returns current state of the back faces display; graphic3d_typeofbackfacingmodel_auto by default, which means that backface culling is defined by each presentation.
+Returns current state of the back faces display; Graphic3d_TypeOfBackfacingModel_Auto by default, which means that backface culling is defined by each presentation.
 ") BackFacingModel;
 		Graphic3d_TypeOfBackfacingModel BackFacingModel();
 
@@ -1682,7 +1667,7 @@ V3: float
 
 Description
 -----------
-Returns the background color values of the view depending of the color type.
+Returns the Background color values of the view depending of the color Type.
 ") BackgroundColor;
 		void BackgroundColor(const Quantity_TypeOfColor Type, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1695,7 +1680,7 @@ Quantity_Color
 
 Description
 -----------
-Returns the background color object of the view.
+Returns the Background color object of the view.
 ") BackgroundColor;
 		Quantity_Color BackgroundColor();
 
@@ -1721,7 +1706,8 @@ opencascade::handle<Graphic3d_Camera>
 
 Description
 -----------
-Returns camera object of the view. return: handle to camera object, or null if 3d view does not use the camera approach.
+Returns camera object of the view. 
+Return:: handle to camera object, or NULL if 3D view does not use the camera approach.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
@@ -1752,7 +1738,7 @@ None
 
 Description
 -----------
-Disables ibl from background cubemap; fills pbr specular probe and irradiance map with white color.
+Disables IBL from background cubemap; fills PBR specular probe and irradiance map with white color.
 ") ClearPBREnvironment;
 		void ClearPBREnvironment(Standard_Boolean theToUpdate = Standard_False);
 
@@ -1765,7 +1751,8 @@ opencascade::handle<Graphic3d_SequenceOfHClipPlane>
 
 Description
 -----------
-Get clip planes. return sequence clip planes that have been set for the view.
+Get clip planes. 
+Return: sequence clip planes that have been set for the view.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
@@ -1778,7 +1765,7 @@ bool
 
 Description
 -----------
-Returns the computed hlr mode state.
+Returns the computed HLR mode state.
 ") ComputedMode;
 		Standard_Boolean ComputedMode();
 
@@ -1796,7 +1783,7 @@ float
 
 Description
 -----------
-Converts the pixel value to a value in the projection plane.
+Converts the PIXEL value to a value in the projection plane.
 ") Convert;
 		Standard_Real Convert(const Standard_Integer Vp);
 
@@ -1816,7 +1803,7 @@ Yv: float
 
 Description
 -----------
-Converts the point pixel into a point projected in the reference frame of the projection plane.
+Converts the point PIXEL into a point projected in the reference frame of the projection plane.
 ") Convert;
 		void Convert(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1834,7 +1821,7 @@ int
 
 Description
 -----------
-Converts tha value of the projection plane into a pixel value.
+Converts tha value of the projection plane into a PIXEL value.
 ") Convert;
 		Standard_Integer Convert(const Standard_Real Vv);
 
@@ -1854,7 +1841,7 @@ Yp: int
 
 Description
 -----------
-Converts the point defined in the reference frame of the projection plane into a point pixel.
+Converts the point defined in the reference frame of the projection plane into a point PIXEL.
 ") Convert;
 		void Convert(const Standard_Real Xv, const Standard_Real Yv, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -1917,7 +1904,7 @@ Zg: float
 
 Description
 -----------
-Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. warning: when the grid is not active the result is identical to the above convert() method. how to use: 1) enable the grid echo display myviewer->setgridecho(standard_true); 2) when application receive a move event: 2.1) check if any object is detected if( myinteractivecontext->moveto(x,y) == ais_sod_nothing ) { 2.2) check if the grid is active if( myviewer->grid()->isactive() ) { 2.3) display the grid echo and gets the grid point myview->converttogrid(x,y,x,y,z); myview->viewer()->showgridecho (myview, graphic3d_vertex (x,y,z)); myview->redrawimmediate(); 2.4) else this is the standard case } else myview->convert(x,y,x,y,z);.
+Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. Warning: When the grid is not active the result is identical to the above Convert() method. How to use: 1) Enable the grid echo display myViewer->SetGridEcho(Standard_True); 2) When application receive a move event: 2.1) Check if any object is detected if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { 2.2) Check if the grid is active if( myViewer->Grid()->IsActive() ) { 2.3) Display the grid echo and gets the grid point myView->ConvertToGrid(x,y,X,Y,Z); myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z)); myView->RedrawImmediate(); 2.4) Else this is the standard case } else myView->Convert(x,y,X,Y,Z);.
 ") ConvertToGrid;
 		void ConvertToGrid(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1989,7 +1976,7 @@ float
 
 Description
 -----------
-Returns the distance between the eye and view point.
+Returns the Distance between the Eye and View Point.
 ") Depth;
 		Standard_Real Depth();
 
@@ -2008,7 +1995,7 @@ None
 
 Description
 -----------
-Adjusts the viewing volume so as not to clip the displayed objects by front and back and back clipping planes. also sets depth value automatically depending on the calculated z size and aspect parameter. note than the original xy size of the view is not modified .
+Adjusts the viewing volume so as not to clip the displayed objects by front and back and back clipping planes. Also sets depth value automatically depending on the calculated Z size and Aspect parameter. NOTE than the original XY size of the view is NOT modified .
 ") DepthFitAll;
 		void DepthFitAll(const Standard_Real Aspect = 0.01, const Standard_Real Margin = 0.01);
 
@@ -2027,7 +2014,9 @@ None
 
 Description
 -----------
-Fill in the dictionary with diagnostic info. should be called within rendering thread. //! this api should be used only for user output or for creating automated reports. the format of returned information (e.g. key-value layout) is not part of this api and can be changed at any time. thus application should not parse returned information to weed out specific parameters. @param thedict destination map for information @param theflags defines the information to be retrieved.
+Fill in the dictionary with diagnostic info. Should be called within rendering thread. //! This API should be used only for user output or for creating automated reports. The format of returned information (e.g. key-value layout) is NOT part of this API and can be changed at any time. Thus application should not parse returned information to weed out specific parameters. 
+Parameter theDict destination map for information 
+Parameter theFlags defines the information to be retrieved.
 ") DiagnosticInformation;
 		void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
 
@@ -2059,7 +2048,10 @@ bool
 
 Description
 -----------
-Dumps the full contents of the view into the image file. this is an alias for topixmap() with image_alienpixmap. @param thefile destination image file (image format is determined by file extension like .png, .bmp, .jpg) @param thebuffertype buffer to dump return false when the dump has failed.
+Dumps the full contents of the View into the image file. This is an alias for ToPixMap() with Image_AlienPixMap. 
+Parameter theFile destination image file (image format is determined by file extension like .png, .bmp, .jpg) 
+Parameter theBufferType buffer to dump 
+Return: False when the dump has failed.
 ") Dump;
 		Standard_Boolean Dump(Standard_CString theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
@@ -2118,7 +2110,9 @@ None
 
 Description
 -----------
-Adjust view parameters to fit the displayed scene, respecting height / width ratio. the z clipping range (depth range) is fitted if autozfit flag is true. throws program error exception if margin coefficient is < 0 or >= 1. updates the view. @param themargin [in] the margin coefficient for view borders. @param thetoupdate [in] flag to perform view update.
+Adjust view parameters to fit the displayed scene, respecting height / width ratio. The Z clipping range (depth range) is fitted if AutoZFit flag is True. Throws program error exception if margin coefficient is < 0 or >= 1. Updates the view. 
+Input parameter: theMargin the margin coefficient for view borders. 
+Input parameter: theToUpdate flag to perform view update.
 ") FitAll;
 		void FitAll(const Standard_Real theMargin = 0.01, const Standard_Boolean theToUpdate = Standard_True);
 
@@ -2138,7 +2132,10 @@ None
 
 Description
 -----------
-Adjust view parameters to fit the displayed scene, respecting height / width ratio according to the custom bounding box given. throws program error exception if margin coefficient is < 0 or >= 1. updates the view. @param thebox [in] the custom bounding box to fit. @param themargin [in] the margin coefficient for view borders. @param thetoupdate [in] flag to perform view update.
+Adjust view parameters to fit the displayed scene, respecting height / width ratio according to the custom bounding box given. Throws program error exception if margin coefficient is < 0 or >= 1. Updates the view. 
+Input parameter: theBox the custom bounding box to fit. 
+Input parameter: theMargin the margin coefficient for view borders. 
+Input parameter: theToUpdate flag to perform view update.
 ") FitAll;
 		void FitAll(const Bnd_Box & theBox, const Standard_Real theMargin = 0.01, const Standard_Boolean theToUpdate = Standard_True);
 
@@ -2159,7 +2156,7 @@ None
 
 Description
 -----------
-Centers the defined projection window so that it occupies the maximum space while respecting the initial height/width ratio. note than the original z size of the view is not modified .
+Centers the defined projection window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified .
 ") FitAll;
 		void FitAll(const Standard_Real theMinXv, const Standard_Real theMinYv, const Standard_Real theMaxXv, const Standard_Real theMaxYv);
 
@@ -2181,7 +2178,13 @@ bool
 
 Description
 -----------
-Transform camera eye, center and scale to fit in the passed bounding box specified in wcs. @param thecamera [in] the camera @param thebox [in] the bounding box @param themargin [in] the margin coefficient for view borders @param theresolution [in] the minimum size of projection of bounding box in xv or yv direction when it considered to be a thin plane or point (without a volume);  in this case only the center of camera is adjusted @param thetoenlargeifline [in] when true - in cases when the whole bounding box projected into thin line going along z-axis of screen,  the view plane is enlarged such thatwe see the whole line on rotation, otherwise only the center of camera is adjusted. return true if the fit all operation can be done.
+Transform camera eye, center and scale to fit in the passed bounding box specified in WCS. 
+Input parameter: theCamera the camera 
+Input parameter: theBox the bounding box 
+Input parameter: theMargin the margin coefficient for view borders 
+Input parameter: theResolution the minimum size of projection of bounding box in Xv or Yv direction when it considered to be a thin plane or point (without a volume);  in this case only the center of camera is adjusted 
+Input parameter: theToEnlargeIfLine when True - in cases when the whole bounding box projected into thin line going along Z-axis of screen,  the view plane is enlarged such thatwe see the whole line on  rotation, otherwise only the center of camera is adjusted. 
+Return: True if the fit all operation can be done.
 ") FitMinMax;
 		Standard_Boolean FitMinMax(const opencascade::handle<Graphic3d_Camera> & theCamera, const Bnd_Box & theBox, const Standard_Real theMargin, const Standard_Real theResolution = 0.0, const Standard_Boolean theToEnlargeIfLine = Standard_True);
 
@@ -2213,7 +2216,7 @@ float
 
 Description
 -----------
-Returns the view plane distance for perspective views.
+Returns the View Plane Distance for Perspective Views.
 ") Focale;
 		Standard_Real Focale();
 
@@ -2231,7 +2234,7 @@ None
 
 Description
 -----------
-Activates ibl from background cubemap.
+Activates IBL from background cubemap.
 ") GeneratePBREnvironment;
 		void GeneratePBREnvironment(Standard_Boolean theToUpdate = Standard_False);
 
@@ -2320,7 +2323,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the objects number and the gravity center of all viewable points in the view.
+Returns the Objects number and the gravity center of ALL viewable points in the view.
 ") GravityPoint;
 		gp_Pnt GravityPoint();
 
@@ -2333,7 +2336,7 @@ bool
 
 Description
 -----------
-Returns true if one light more can be activated in this view.
+Returns True if One light more can be activated in this View.
 ") IfMoreLights;
 		Standard_Boolean IfMoreLights();
 
@@ -2346,7 +2349,7 @@ bool
 
 Description
 -----------
-Returns true if myview is associated with a window .
+Returns True if MyView is associated with a window .
 ") IfWindow;
 		Standard_Boolean IfWindow();
 
@@ -2359,7 +2362,7 @@ None
 
 Description
 -----------
-Initializes an iteration on the active lights.
+No available documentation.
 ") InitActiveLights;
 		void InitActiveLights();
 
@@ -2403,7 +2406,7 @@ bool
 
 Description
 -----------
-Returns true when the light is active in this view.
+Returns True when the light is active in this view.
 ") IsActiveLight;
 		Standard_Boolean IsActiveLight(const opencascade::handle<V3d_Light> & theLight);
 
@@ -2416,7 +2419,7 @@ bool
 
 Description
 -----------
-Return flag value of objects culling mechanism.
+Return: flag value of objects culling mechanism.
 ") IsCullingEnabled;
 		Standard_Boolean IsCullingEnabled();
 
@@ -2429,7 +2432,7 @@ bool
 
 Description
 -----------
-Returns the status of the view regarding the displayed structures inside returns true is the view is empty.
+Returns the status of the view regarding the displayed structures inside Returns True is The View is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -2442,7 +2445,7 @@ bool
 
 Description
 -----------
-Returns true if ibl (image based lighting) from background cubemap is enabled.
+Returns True if IBL (Image Based Lighting) from background cubemap is enabled.
 ") IsImageBasedLighting;
 		Standard_Boolean IsImageBasedLighting();
 
@@ -2481,7 +2484,7 @@ bool
 
 Description
 -----------
-Return true if this is a subview of another view.
+Return True if this is a subview of another view.
 ") IsSubview;
 		bool IsSubview();
 
@@ -2494,7 +2497,7 @@ int
 
 Description
 -----------
-Returns the max number of light associated to the view.
+Returns the MAX number of light associated to the view.
 ") LightLimit;
 		Standard_Integer LightLimit();
 
@@ -2507,7 +2510,7 @@ bool
 
 Description
 -----------
-Returns true if there are more active light(s) to return.
+No available documentation.
 ") MoreActiveLights;
 		Standard_Boolean MoreActiveLights();
 
@@ -2528,7 +2531,7 @@ None
 
 Description
 -----------
-Movement of the eye parallel to the coordinate system of reference of the screen a distance relative to the initial position expressed by start = standard_true.
+Movement of the eye parallel to the coordinate system of reference of the screen a distance relative to the initial position expressed by Start = Standard_True.
 ") Move;
 		void Move(const Standard_Real Dx, const Standard_Real Dy, const Standard_Real Dz, const Standard_Boolean Start = Standard_True);
 
@@ -2548,7 +2551,7 @@ None
 
 Description
 -----------
-Movement of the eye parallel to one of the axes of the coordinate system of reference of the view a distance relative to the initial position expressed by start = standard_true.
+Movement of the eye parallel to one of the axes of the coordinate system of reference of the view a distance relative to the initial position expressed by Start = Standard_True.
 ") Move;
 		void Move(const V3d_TypeOfAxe Axe, const Standard_Real Length, const Standard_Boolean Start = Standard_True);
 
@@ -2567,7 +2570,7 @@ None
 
 Description
 -----------
-Movement of the eye parllel to the current axis a distance relative to the initial position expressed by start = standard_true.
+Movement of the eye parllel to the current axis a distance relative to the initial position expressed by Start = Standard_True.
 ") Move;
 		void Move(const Standard_Real Length, const Standard_Boolean Start = Standard_True);
 
@@ -2580,7 +2583,7 @@ None
 
 Description
 -----------
-Must be called when the window supporting the view changes size. if the view is not mapped on a window. warning: the view is centered and resized to preserve the height/width ratio of the window.
+Must be called when the window supporting the view changes size. if the view is not mapped on a window. Warning: The view is centered and resized to preserve the height/width ratio of the window.
 ") MustBeResized;
 		void MustBeResized();
 
@@ -2593,7 +2596,7 @@ None
 
 Description
 -----------
-Go to the next active light (if there is not, activelight will raise an exception).
+No available documentation.
 ") NextActiveLights;
 		void NextActiveLights();
 
@@ -2614,7 +2617,11 @@ None
 
 Description
 -----------
-Translates the center of the view along 'x' and 'y' axes of view projection. can be used to perform interactive panning operation. in that case the dxp, dxp parameters specify panning relative to the point where the operation is started. @param thedxp [in] the relative panning on 'x' axis of view projection, in pixels. @param thedyp [in] the relative panning on 'y' axis of view projection, in pixels. @param thezoomfactor [in] the zooming factor. @param thetostart [in] pass true when starting panning to remember view state prior to panning for relative arguments. passing 0 for relative panning parameter should return view panning to initial state. performs update of view.
+Translates the center of the view along 'x' and 'y' axes of view projection. Can be used to perform interactive panning operation. In that case the DXp, DXp parameters specify panning relative to the point where the operation is started. 
+Input parameter: theDXp the relative panning on 'x' axis of view projection, in pixels. 
+Input parameter: theDYp the relative panning on 'y' axis of view projection, in pixels. 
+Input parameter: theZoomFactor the zooming factor. 
+Input parameter: theToStart pass True when starting panning to remember view state prior to panning for relative arguments. Passing 0 for relative panning parameter should return view panning to initial state. Performs update of view.
 ") Pan;
 		void Pan(const Standard_Integer theDXp, const Standard_Integer theDYp, const Standard_Real theZoomFactor = 1, const Standard_Boolean theToStart = Standard_True);
 
@@ -2635,7 +2642,11 @@ None
 
 Description
 -----------
-Translates the center of the view along 'x' and 'y' axes of view projection. can be used to perform interactive panning operation. in that case the dxv, dxy parameters specify panning relative to the point where the operation is started. @param thedxv [in] the relative panning on 'x' axis of view projection, in view space coordinates. @param thedyv [in] the relative panning on 'y' axis of view projection, in view space coordinates. @param thezoomfactor [in] the zooming factor. @param thetostart [in] pass true when starting panning to remember view state prior to panning for relative arguments. if panning is started, passing {0, 0} for {thedxv, thedyv} will return view to initial state. performs update of view.
+Translates the center of the view along 'x' and 'y' axes of view projection. Can be used to perform interactive panning operation. In that case the DXv, DXy parameters specify panning relative to the point where the operation is started. 
+Input parameter: theDXv the relative panning on 'x' axis of view projection, in view space coordinates. 
+Input parameter: theDYv the relative panning on 'y' axis of view projection, in view space coordinates. 
+Input parameter: theZoomFactor the zooming factor. 
+Input parameter: theToStart pass True when starting panning to remember view state prior to panning for relative arguments. If panning is started, passing {0, 0} for {theDXv, theDYv} will return view to initial state. Performs update of view.
 ") Panning;
 		void Panning(const Standard_Real theDXv, const Standard_Real theDYv, const Standard_Real theZoomFactor = 1, const Standard_Boolean theToStart = Standard_True);
 
@@ -2648,7 +2659,7 @@ V3d_View *
 
 Description
 -----------
-Return parent view or null if this is not a subview.
+Return parent View or NULL if this is not a subview.
 ") ParentView;
 		V3d_View * ParentView();
 
@@ -2666,7 +2677,7 @@ opencascade::handle<V3d_View>
 
 Description
 -----------
-Pick subview from the given 2d point.
+Pick subview from the given 2D point.
 ") PickSubview;
 		opencascade::handle<V3d_View> PickSubview(const Graphic3d_Vec2i & thePnt);
 
@@ -2686,7 +2697,7 @@ None
 
 Description
 -----------
-Places the point of the view corresponding at the pixel position x,y at the center of the window and updates the view.
+places the point of the view corresponding at the pixel position x,y at the center of the window and updates the view.
 ") Place;
 		void Place(const Standard_Integer theXp, const Standard_Integer theYp, const Standard_Real theZoomFactor = 1);
 
@@ -2699,7 +2710,7 @@ int
 
 Description
 -----------
-Returns the max number of clipping planes associated to the view.
+Returns the MAX number of clipping planes associated to the view.
 ") PlaneLimit;
 		Standard_Integer PlaneLimit();
 
@@ -2742,7 +2753,7 @@ VZ: float
 
 Description
 -----------
-Returns the coordinate of the point (xpix,ypix) in the view (xp,yp,zp), and the projection vector of the view passing by the point (for perspectiveview).
+Returns the coordinate of the point (Xpix,Ypix) in the view (XP,YP,ZP), and the projection vector of the view passing by the point (for PerspectiveView).
 ") ProjReferenceAxe;
 		void ProjReferenceAxe(const Standard_Integer Xpix, const Standard_Integer Ypix, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2763,7 +2774,7 @@ theYp: float
 
 Description
 -----------
-Converts the point defined in the user space of the view to the projection plane at the depth relative to thez.
+Converts the point defined in the user space of the view to the projection plane at the depth relative to theZ.
 ") Project;
 		void Project(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2785,7 +2796,7 @@ theZp: float
 
 Description
 -----------
-Converts the point defined in the user space of the view to the projection plane at the depth relative to thez.
+Converts the point defined in the user space of the view to the projection plane at the depth relative to theZ.
 ") Project;
 		void Project(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2798,7 +2809,7 @@ None
 
 Description
 -----------
-Redisplays the view even if there has not been any modification. must be called if the view is shown. (ex: deiconification ) .
+Redisplays the view even if there has not been any modification. Must be called if the view is shown. (Ex: DeIconification ) .
 ") Redraw;
 		virtual void Redraw();
 
@@ -2842,7 +2853,8 @@ None
 
 Description
 -----------
-Removes clip plane from the view. @param theplane [in] the clip plane to be removed from view.
+Removes clip plane from the view. 
+Input parameter: thePlane the clip plane to be removed from view.
 ") RemoveClipPlane;
 		virtual void RemoveClipPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -2873,7 +2885,8 @@ Graphic3d_RenderingParams
 
 Description
 -----------
-Returns current rendering parameters and effect settings. by default it returns default parameters of current viewer. to define view-specific settings use method v3d_view::changerenderingparams(). @sa v3d_viewer::defaultrenderingparams().
+Returns current rendering parameters and effect settings. By default it returns default parameters of current viewer. To define view-specific settings use method V3d_View::ChangeRenderingParams(). 
+See also: V3d_Viewer::DefaultRenderingParams().
 ") RenderingParams;
 		const Graphic3d_RenderingParams & RenderingParams();
 
@@ -2904,7 +2917,7 @@ None
 
 Description
 -----------
-Resets the centering of the view. updates the view.
+Resets the centering of the view. Updates the view.
 ") ResetViewMapping;
 		void ResetViewMapping();
 
@@ -2917,7 +2930,7 @@ None
 
 Description
 -----------
-Resets the orientation of the view. updates the view.
+Resets the orientation of the view. Updates the view.
 ") ResetViewOrientation;
 		void ResetViewOrientation();
 
@@ -2938,7 +2951,7 @@ None
 
 Description
 -----------
-Rotates the eye about the coordinate system of reference of the screen for which the origin is the view point of the projection, with a relative angular value in radians with respect to the initial position expressed by start = standard_true warning! raises badvalue from v3d if the eye, the view point, or the high point are aligned or confused.
+Rotates the eye about the coordinate system of reference of the screen for which the origin is the view point of the projection, with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True Warning! raises BadValue from V3d If the eye, the view point, or the high point are aligned or confused.
 ") Rotate;
 		void Rotate(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Boolean Start = Standard_True);
 
@@ -2962,7 +2975,7 @@ None
 
 Description
 -----------
-Rotates the eye about the coordinate system of reference of the screen for which the origin is gravity point {x,y,z}, with a relative angular value in radians with respect to the initial position expressed by start = standard_true if the eye, the view point, or the high point are aligned or confused.
+Rotates the eye about the coordinate system of reference of the screen for which the origin is Gravity point {X,Y,Z}, with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True If the eye, the view point, or the high point are aligned or confused.
 ") Rotate;
 		void Rotate(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Boolean Start = Standard_True);
 
@@ -2985,7 +2998,7 @@ None
 
 Description
 -----------
-Rotates the eye about one of the coordinate axes of of the view for which the origin is the gravity point{x,y,z} with an relative angular value in radians with respect to the initial position expressed by start = standard_true.
+Rotates the eye about one of the coordinate axes of of the view for which the origin is the Gravity point{X,Y,Z} with an relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
 ") Rotate;
 		void Rotate(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Boolean Start = Standard_True);
 
@@ -3005,7 +3018,7 @@ None
 
 Description
 -----------
-Rotates the eye about one of the coordinate axes of of the view for which the origin is the view point of the projection with an relative angular value in radians with respect to the initial position expressed by start = standard_true.
+Rotates the eye about one of the coordinate axes of of the view for which the origin is the view point of the projection with an relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
 ") Rotate;
 		void Rotate(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
 
@@ -3024,7 +3037,7 @@ None
 
 Description
 -----------
-Rotates the eye around the current axis a relative angular value in radians with respect to the initial position expressed by start = standard_true.
+Rotates the eye around the current axis a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
 ") Rotate;
 		void Rotate(const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
 
@@ -3043,7 +3056,7 @@ None
 
 Description
 -----------
-Continues the rotation of the view with an angle computed from the last and new mouse position <x,y>.
+Continues the rotation of the view with an angle computed from the last and new mouse position <X,Y>.
 ") Rotation;
 		void Rotation(const Standard_Integer X, const Standard_Integer Y);
 
@@ -3056,7 +3069,7 @@ float
 
 Description
 -----------
-Returns the current value of the zoom expressed with respect to setviewmappingdefault().
+Returns the current value of the zoom expressed with respect to SetViewMappingDefault().
 ") Scale;
 		Standard_Real Scale();
 
@@ -3095,7 +3108,8 @@ None
 
 Description
 -----------
-Sets the automatic z-fit mode and its parameters. the auto z-fit has extra parameters which can controlled from application level to ensure that the size of viewing volume will be sufficiently large to cover the depth of unmanaged objects, for example, transformation persistent ones. @param thescalefactor [in] the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed.
+Sets the automatic z-fit mode and its parameters. The auto z-fit has extra parameters which can controlled from application level to ensure that the size of viewing volume will be sufficiently large to cover the depth of unmanaged objects, for example, transformation persistent ones. 
+Input parameter: theScaleFactor the scale factor for Z-range. The range between Z-min, Z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. Program error exception is thrown if negative or zero value is passed.
 ") SetAutoZFitMode;
 		void SetAutoZFitMode(const Standard_Boolean theIsOn, const Standard_Real theScaleFactor = 1.0);
 
@@ -3115,7 +3129,7 @@ None
 
 Description
 -----------
-Sets anisotropic (axial) scale factors <sx>, <sy>, <sz> for view <self>. anisotropic scaling operation is performed through multiplying the current view orientation matrix by a scaling matrix: || sx 0 0 0 || || 0 sy 0 0 || || 0 0 sz 0 || || 0 0 0 1 || updates the view.
+Sets anisotropic (axial) scale factors <Sx>, <Sy>, <Sz> for view <self>. Anisotropic scaling operation is performed through multiplying the current view orientation matrix by a scaling matrix: || Sx 0 0 0 || || 0 Sy 0 0 || || 0 0 Sz 0 || || 0 0 0 1 || Updates the view.
 ") SetAxialScale;
 		void SetAxialScale(const Standard_Real Sx, const Standard_Real Sy, const Standard_Real Sz);
 
@@ -3138,7 +3152,7 @@ None
 
 Description
 -----------
-Definition of an axis from its origin and its orientation . this will be the current axis for rotations and movements. warning! raises badvalue from v3d if the vector normal is null. .
+Definition of an axis from its origin and its orientation . This will be the current axis for rotations and movements. Warning! raises BadValue from V3d if the vector normal is NULL. .
 ") SetAxis;
 		void SetAxis(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real Vx, const Standard_Real Vy, const Standard_Real Vz);
 
@@ -3215,7 +3229,9 @@ None
 
 Description
 -----------
-Sets environment cubemap as background. @param thecubemap cubemap source to be set as background @param thetoupdatepbrenv defines whether ibl maps will be generated or not (see 'generatepbrenvironment').
+Sets environment cubemap as background. 
+Parameter theCubeMap cubemap source to be set as background 
+Parameter theToUpdatePBREnv defines whether IBL maps will be generated or not (see 'GeneratePBREnvironment').
 ") SetBackgroundCubeMap;
 		void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap, Standard_Boolean theToUpdatePBREnv = Standard_True, Standard_Boolean theToUpdate = Standard_False);
 
@@ -3274,7 +3290,9 @@ None
 
 Description
 -----------
-Sets skydome aspect @param theaspect cubemap generation parameters @param thetoupdatepbrenv defines whether ibl maps will be generated or not.
+Sets skydome aspect 
+Parameter theAspect cubemap generation parameters 
+Parameter theToUpdatePBREnv defines whether IBL maps will be generated or not.
 ") SetBackgroundSkydome;
 		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
@@ -3370,7 +3388,9 @@ None
 
 Description
 -----------
-Relocates center of screen to the point, determined by {xp, yp} pixel coordinates relative to the bottom-left corner of screen. to calculate pixel coordinates for any point from world coordinate space, it can be projected using 'project'. @param thexp [in] the x coordinate. @param theyp [in] the y coordinate.
+Relocates center of screen to the point, determined by {Xp, Yp} pixel coordinates relative to the bottom-left corner of screen. To calculate pixel coordinates for any point from world coordinate space, it can be projected using 'Project'. 
+Input parameter: theXp the x coordinate. 
+Input parameter: theYp the y coordinate.
 ") SetCenter;
 		void SetCenter(const Standard_Integer theXp, const Standard_Integer theYp);
 
@@ -3388,7 +3408,8 @@ None
 
 Description
 -----------
-Sets sequence of clip planes to the view. the planes that have been set before are removed from the view. the composition of clip planes truncates the rendering space to convex volume. number of supported clip planes can be consulted by inquireplanelimit method of graphic3d_graphicdriver. please be aware that the planes that exceed the limit are ignored during rendering. @param theplanes [in] the clip planes to set.
+Sets sequence of clip planes to the view. The planes that have been set before are removed from the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by InquirePlaneLimit method of Graphic3d_GraphicDriver. Please be aware that the planes that exceed the limit are ignored during rendering. 
+Input parameter: thePlanes the clip planes to set.
 ") SetClipPlanes;
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
@@ -3406,7 +3427,7 @@ None
 
 Description
 -----------
-Switches computed hlr mode in the view.
+Switches computed HLR mode in the view.
 ") SetComputedMode;
 		void SetComputedMode(const Standard_Boolean theMode);
 
@@ -3424,7 +3445,7 @@ None
 
 Description
 -----------
-Defines the depth of the eye from the view point without update the projection .
+Defines the Depth of the eye from the view point without update the projection .
 ") SetDepth;
 		void SetDepth(const Standard_Real Depth);
 
@@ -3462,7 +3483,7 @@ None
 
 Description
 -----------
-Change view plane distance for perspective views warning! raises typemismatch from standard if the view is not a perspective view.
+Change View Plane Distance for Perspective Views Warning! raises TypeMismatch from Standard if the view is not a perspective view.
 ") SetFocale;
 		void SetFocale(const Standard_Real Focale);
 
@@ -3475,7 +3496,7 @@ None
 
 Description
 -----------
-Modify the projection of the view perpendicularly to the privileged plane of the viewer.
+modify the Projection of the view perpendicularly to the privileged plane of the viewer.
 ") SetFront;
 		void SetFront();
 
@@ -3493,7 +3514,7 @@ None
 
 Description
 -----------
-Turn on/off automatic culling of objects outside frustum (on by default).
+Turn on/off automatic culling of objects outside frustum (ON by default).
 ") SetFrustumCulling;
 		void SetFrustumCulling(Standard_Boolean theMode);
 
@@ -3512,7 +3533,7 @@ None
 
 Description
 -----------
-Defines or updates the definition of the grid in <self>.
+Defines or Updates the definition of the grid in <self>.
 ") SetGrid;
 		void SetGrid(const gp_Ax3 & aPlane, const opencascade::handle<Aspect_Grid> & aGrid);
 
@@ -3530,7 +3551,7 @@ None
 
 Description
 -----------
-Defines or updates the activity of the grid in <self>.
+Defines or Updates the activity of the grid in <self>.
 ") SetGridActivity;
 		void SetGridActivity(const Standard_Boolean aFlag);
 
@@ -3549,7 +3570,9 @@ None
 
 Description
 -----------
-Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap @param[in] thetoupdate redraw the view.
+Enables or disables IBL (Image Based Lighting) from background cubemap. Has no effect if PBR is not used. 
+Input parameter: theToEnableIBL enable or disable IBL from background cubemap 
+Input parameter: theToUpdate redraw the view.
 ") SetImageBasedLighting;
 		void SetImageBasedLighting(Standard_Boolean theToEnableIBL, Standard_Boolean theToUpdate = Standard_False);
 
@@ -3567,7 +3590,7 @@ bool
 
 Description
 -----------
-Sets the immediate update mode and returns the previous one.
+sets the immediate update mode and returns the previous one.
 ") SetImmediateUpdate;
 		Standard_Boolean SetImmediateUpdate(const Standard_Boolean theImmediateUpdate);
 
@@ -3585,7 +3608,7 @@ None
 
 Description
 -----------
-Deactivate thelight in this view.
+Deactivate theLight in this view.
 ") SetLightOff;
 		void SetLightOff(const opencascade::handle<V3d_Light> & theLight);
 
@@ -3598,7 +3621,7 @@ None
 
 Description
 -----------
-Deactivate all the lights defined in this view.
+Deactivate all the Lights defined in this view.
 ") SetLightOff;
 		void SetLightOff();
 
@@ -3616,7 +3639,7 @@ None
 
 Description
 -----------
-Activates thelight in the view.
+Activates theLight in the view.
 ") SetLightOn;
 		void SetLightOn(const opencascade::handle<V3d_Light> & theLight);
 
@@ -3691,7 +3714,9 @@ None
 
 Description
 -----------
-Defines the orientation of the projection . @param theorientation camera direction @param theisyup flag indicating y-up (true) or z-up (false) convention.
+Defines the orientation of the projection . 
+Parameter theOrientation camera direction 
+Parameter theIsYup flag indicating Y-up (True) or Z-up (False) convention.
 ") SetProj;
 		void SetProj(const V3d_TypeOfOrientation theOrientation, const Standard_Boolean theIsYup = Standard_False);
 
@@ -3709,7 +3734,7 @@ None
 
 Description
 -----------
-Zooms the view by a factor relative to the value initialised by setviewmappingdefault(). updates the view.
+Zooms the view by a factor relative to the value initialised by SetViewMappingDefault(). Updates the view.
 ") SetScale;
 		void SetScale(const Standard_Real Coef);
 
@@ -3763,7 +3788,7 @@ None
 
 Description
 -----------
-Sets the environment texture to use. no environment texture by default.
+Sets the environment texture to use. No environment texture by default.
 ") SetTextureEnv;
 		void SetTextureEnv(const opencascade::handle<Graphic3d_TextureEnv> & theTexture);
 
@@ -3781,7 +3806,7 @@ None
 
 Description
 -----------
-Defines the angular position of the high point of the reference frame of the view with respect to the y screen axis with an absolute angular value in radians.
+Defines the angular position of the high point of the reference frame of the view with respect to the Y screen axis with an absolute angular value in RADIANS.
 ") SetTwist;
 		void SetTwist(const Standard_Real Angle);
 
@@ -3819,7 +3844,7 @@ None
 
 Description
 -----------
-Defines the orientation(so) of the high point.
+Defines the orientation(SO) of the high point.
 ") SetUp;
 		void SetUp(const V3d_TypeOfOrientation Orientation);
 
@@ -3832,7 +3857,7 @@ None
 
 Description
 -----------
-Saves the current view mapping. this will be the state returned from resetviewmapping.
+Saves the current view mapping. This will be the state returned from ResetViewmapping.
 ") SetViewMappingDefault;
 		void SetViewMappingDefault();
 
@@ -3845,7 +3870,7 @@ None
 
 Description
 -----------
-Saves the current state of the orientation of the view which will be the return state at resetvieworientation.
+Saves the current state of the orientation of the view which will be the return state at ResetViewOrientation.
 ") SetViewOrientationDefault;
 		void SetViewOrientationDefault();
 
@@ -3882,7 +3907,7 @@ None
 
 Description
 -----------
-Activates the view in the specified window if <acontext> is not null the graphic context is used to draw something in this view. otherwise an internal graphic context is created. warning: the view is centered and resized to preserve the height/width ratio of the window.
+Activates the view in the specified Window If <aContext> is not NULL the graphic context is used to draw something in this view. Otherwise an internal graphic context is created. Warning: The view is centered and resized to preserve the height/width ratio of the window.
 ") SetWindow;
 		void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = NULL);
 
@@ -3904,7 +3929,12 @@ None
 
 Description
 -----------
-Activates the view as subview of another view. @param[in] theparentview parent view to put subview into @param[in] thesize subview dimensions;  values >= 2 define size in pixels,  values <= 1.0 define size as a fraction of parent view @param[in] thecorner corner within parent view @param[in] theoffset offset from the corner;  values >= 1 define offset in pixels,  values < 1.0 define offset as a fraction of parent view @param[in] themargins subview margins in pixels //! example: to split parent view horizontally into 2 subview, define one subview with size=(0.5,1.0),offset=(0.0,0.0), and 2nd with size=(0.5,1.0),offset=(5.0,0.0);.
+Activates the view as subview of another view. 
+Input parameter: theParentView parent view to put subview into 
+Input parameter: theSize subview dimensions;  values >= 2 define size in pixels,  values <= 1.0 define size as a fraction of parent view 
+Input parameter: theCorner corner within parent view 
+Input parameter: theOffset offset from the corner;  values >= 1 define offset in pixels,  values < 1.0 define offset as a fraction of parent view 
+Input parameter: theMargins subview margins in pixels //! Example: to split parent view horizontally into 2 subview, define one subview with Size=(0.5,1.0),Offset=(0.0,0.0), and 2nd with Size=(0.5,1.0),Offset=(5.0,0.0);.
 ") SetWindow;
 		void SetWindow(const opencascade::handle<V3d_View> & theParentView, const Graphic3d_Vec2d & theSize, Aspect_TypeOfTriedronPosition theCorner = Aspect_TOTP_LEFT_UPPER, const Graphic3d_Vec2d & theOffset = Graphic3d_Vec2d(), const Graphic3d_Vec2i & theMargins = Graphic3d_Vec2i());
 
@@ -3922,7 +3952,7 @@ None
 
 Description
 -----------
-Defines the depth size of the view front plane will be set to size/2. back plane will be set to -size/2. any object located above the front plane or behind the back plane will be clipped . note than the xy size of the view is not modified .
+Defines the Depth size of the view Front Plane will be set to Size/2. Back Plane will be set to -Size/2. Any Object located Above the Front Plane or behind the Back Plane will be Clipped . NOTE than the XY Size of the View is NOT modified .
 ") SetZSize;
 		void SetZSize(const Standard_Real SetZSize);
 
@@ -3941,7 +3971,7 @@ None
 
 Description
 -----------
-Zooms the view by a factor relative to the initial value expressed by start = standard_true updates the view.
+Zooms the view by a factor relative to the initial value expressed by Start = Standard_True Updates the view.
 ") SetZoom;
 		void SetZoom(const Standard_Real Coef, const Standard_Boolean Start = Standard_True);
 
@@ -3954,7 +3984,7 @@ Graphic3d_TypeOfShadingModel
 
 Description
 -----------
-Returns the current shading model; graphic3d_typeofshadingmodel_phong by default.
+Returns the current shading model; Graphic3d_TypeOfShadingModel_Phong by default.
 ") ShadingModel;
 		Graphic3d_TypeOfShadingModel ShadingModel();
 
@@ -3992,7 +4022,7 @@ None
 
 Description
 -----------
-Begin the rotation of the view around the screen axis according to the mouse position <x,y>. warning: enable rotation around the z screen axis when <zrotationthreshold> factor is > 0 soon the distance from the start point and the center of the view is > (medium viewsize * <zrotationthreshold> ). generally a value of 0.4 is usable to rotate around xy screen axis inside the circular threshold area and to rotate around z screen axis outside this area.
+Begin the rotation of the view around the screen axis according to the mouse position <X,Y>. Warning: Enable rotation around the Z screen axis when <zRotationThreshold> factor is > 0 soon the distance from the start point and the center of the view is > (medium viewSize * <zRotationThreshold> ). Generally a value of 0.4 is usable to rotate around XY screen axis inside the circular threshold area and to rotate around Z screen axis outside this area.
 ") StartRotation;
 		void StartRotation(const Standard_Integer X, const Standard_Integer Y, const Standard_Real zRotationThreshold = 0.0);
 
@@ -4011,7 +4041,9 @@ None
 
 Description
 -----------
-Defines starting point for zoomatpoint view operation. @param thexp [in] the x mouse coordinate, in pixels. @param theyp [in] the y mouse coordinate, in pixels.
+Defines starting point for ZoomAtPoint view operation. 
+Input parameter: theXp the x mouse coordinate, in pixels. 
+Input parameter: theYp the y mouse coordinate, in pixels.
 ") StartZoomAtPoint;
 		void StartZoomAtPoint(const Standard_Integer theXp, const Standard_Integer theYp);
 
@@ -4087,12 +4119,12 @@ bool
 
 Description
 -----------
-Dumps the full contents of the view to a pixmap with specified parameters. internally this method calls redraw() with an offscreen render buffer of requested target size (thewidth x theheight), so that there is no need resizing a window control for making a dump of different size.
+Dumps the full contents of the view to a pixmap with specified parameters. Internally this method calls Redraw() with an offscreen render buffer of requested target size (theWidth x theHeight), so that there is no need resizing a window control for making a dump of different size.
 ") ToPixMap;
 		Standard_Boolean ToPixMap(Image_PixMap & theImage, const V3d_ImageDumpOptions & theParams);
 
 		/****** V3d_View::ToPixMap ******/
-		/****** md5 signature: d512e23c394006d2a24ec70403284595 ******/
+		/****** md5 signature: c9edd8e3ab67e0e714fb16602687f0cf ******/
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "
 Parameters
@@ -4102,7 +4134,10 @@ theWidth: int
 theHeight: int
 theBufferType: Graphic3d_BufferType (optional, default to Graphic3d_BT_RGB)
 theToAdjustAspect: bool (optional, default to Standard_True)
+theTargetZLayerId: int (optional, default to Graphic3d_ZLayerId_BotOSD)
+theIsSingleLayer: int (optional, default to Standard_False)
 theStereoOptions: V3d_StereoDumpOptions (optional, default to V3d_SDO_MONO)
+theLightName: str (optional, default to "")
 
 Return
 -------
@@ -4110,9 +4145,15 @@ bool
 
 Description
 -----------
-Dumps the full contents of the view to a pixmap. internally this method calls redraw() with an offscreen render buffer of requested target size (thewidth x theheight), so that there is no need resizing a window control for making a dump of different size. @param theimage target image, will be re-allocated to match thewidth x theheight @param thewidth target image width @param theheight target image height @param thebuffertype type of the view buffer to dump (color / depth) @param thetoadjustaspect when true, active view aspect ratio will be overridden by (thewidth / theheight) @param thestereooptions how to dump stereographic camera.
+Dumps the full contents of the view to a pixmap. Internally this method calls Redraw() with an offscreen render buffer of requested target size (theWidth x theHeight), so that there is no need resizing a window control for making a dump of different size. 
+Parameter theImage target image, will be re-allocated to match theWidth x theHeight 
+Parameter theWidth target image width 
+Parameter theHeight target image height 
+Parameter theBufferType type of the view buffer to dump (color / depth) 
+Parameter theToAdjustAspect when true, active view aspect ratio will be overridden by (theWidth / theHeight) 
+Parameter theStereoOptions how to dump stereographic camera.
 ") ToPixMap;
-		Standard_Boolean ToPixMap(Image_PixMap & theImage, const Standard_Integer theWidth, const Standard_Integer theHeight, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB, const Standard_Boolean theToAdjustAspect = Standard_True, const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO);
+		Standard_Boolean ToPixMap(Image_PixMap & theImage, const Standard_Integer theWidth, const Standard_Integer theHeight, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB, const Standard_Boolean theToAdjustAspect = Standard_True, int theTargetZLayerId = Graphic3d_ZLayerId_BotOSD, const Standard_Integer theIsSingleLayer = Standard_False, const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO, Standard_CString theLightName = "");
 
 		/****** V3d_View::Translate ******/
 		/****** md5 signature: 6d30e9ad6e04686ac1e7e71d61abb03a ******/
@@ -4131,7 +4172,7 @@ None
 
 Description
 -----------
-Movement of the ye and the view point parallel to the frame of reference of the screen a distance relative to the initial position expressed by start = standard_true.
+Movement of the ye and the view point parallel to the frame of reference of the screen a distance relative to the initial position expressed by Start = Standard_True.
 ") Translate;
 		void Translate(const Standard_Real Dx, const Standard_Real Dy, const Standard_Real Dz, const Standard_Boolean Start = Standard_True);
 
@@ -4151,7 +4192,7 @@ None
 
 Description
 -----------
-Movement of the eye and the view point parallel to one of the axes of the fame of reference of the view a distance relative to the initial position expressed by start = standard_true.
+Movement of the eye and the view point parallel to one of the axes of the fame of reference of the view a distance relative to the initial position expressed by Start = Standard_True.
 ") Translate;
 		void Translate(const V3d_TypeOfAxe Axe, const Standard_Real Length, const Standard_Boolean Start = Standard_True);
 
@@ -4170,7 +4211,7 @@ None
 
 Description
 -----------
-Movement of the eye and view point parallel to the current axis a distance relative to the initial position expressed by start = standard_true.
+Movement of the eye and view point parallel to the current axis a distance relative to the initial position expressed by Start = Standard_True.
 ") Translate;
 		void Translate(const Standard_Real Length, const Standard_Boolean Start = Standard_True);
 
@@ -4191,7 +4232,7 @@ None
 
 Description
 -----------
-Display of the triedron. initialize position, color and length of triedron axes. the scale is a percent of the window width.
+Display of the Triedron. Initialize position, color and length of Triedron axes. The scale is a percent of the window width.
 ") TriedronDisplay;
 		void TriedronDisplay(const Aspect_TypeOfTriedronPosition thePosition = Aspect_TOTP_CENTER, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Real theScale = 0.02, const V3d_TypeOfVisualization theMode = V3d_WIREFRAME);
 
@@ -4204,7 +4245,7 @@ None
 
 Description
 -----------
-Erases the triedron.
+Erases the Triedron.
 ") TriedronErase;
 		void TriedronErase();
 
@@ -4243,7 +4284,7 @@ None
 
 Description
 -----------
-Rotation of the view point around the frame of reference of the screen for which the origin is the eye of the projection with a relative angular value in radians with respect to the initial position expressed by start = standard_true.
+Rotation of the view point around the frame of reference of the screen for which the origin is the eye of the projection with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
 ") Turn;
 		void Turn(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Boolean Start = Standard_True);
 
@@ -4263,7 +4304,7 @@ None
 
 Description
 -----------
-Rotation of the view point around one of the axes of the frame of reference of the view for which the origin is the eye of the projection with an angular value in radians relative to the initial position expressed by start = standard_true.
+Rotation of the view point around one of the axes of the frame of reference of the view for which the origin is the eye of the projection with an angular value in RADIANS relative to the initial position expressed by Start = Standard_True.
 ") Turn;
 		void Turn(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
 
@@ -4282,7 +4323,7 @@ None
 
 Description
 -----------
-Rotation of the view point around the current axis an angular value in radians relative to the initial position expressed by start = standard_true.
+Rotation of the view point around the current axis an angular value in RADIANS relative to the initial position expressed by Start = Standard_True.
 ") Turn;
 		void Turn(const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
 
@@ -4295,7 +4336,7 @@ float
 
 Description
 -----------
-Returns in radians the orientation of the view around the visual axis measured from the y axis of the screen.
+Returns in RADIANS the orientation of the view around the visual axis measured from the Y axis of the screen.
 ") Twist;
 		Standard_Real Twist();
 
@@ -4308,7 +4349,7 @@ V3d_TypeOfView
 
 Description
 -----------
-Returns the type of the view.
+Returns the Type of the View.
 ") Type;
 		V3d_TypeOfView Type();
 
@@ -4340,7 +4381,7 @@ None
 
 Description
 -----------
-Deprecated, redraw() should be used instead.
+Deprecated, Redraw() should be used instead.
 ") Update;
 		void Update();
 
@@ -4366,7 +4407,7 @@ opencascade::handle<Graphic3d_CView>
 
 Description
 -----------
-Returns the associated graphic3d view.
+Returns the associated Graphic3d view.
 ") View;
 		const opencascade::handle<Graphic3d_CView> & View();
 
@@ -4405,7 +4446,7 @@ opencascade::handle<Aspect_Window>
 
 Description
 -----------
-Returns the aspect window associated with the view.
+Returns the Aspect Window associated with the view.
 ") Window;
 		const opencascade::handle<Aspect_Window> & Window();
 
@@ -4426,7 +4467,11 @@ None
 
 Description
 -----------
-Centers the defined pixel window so that it occupies the maximum space while respecting the initial height/width ratio. note than the original z size of the view is not modified. @param theminxp [in] pixel coordinates of minimal corner on x screen axis. @param theminyp [in] pixel coordinates of minimal corner on y screen axis. @param themaxxp [in] pixel coordinates of maximal corner on x screen axis. @param themaxyp [in] pixel coordinates of maximal corner on y screen axis.
+Centers the defined PIXEL window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified. 
+Input parameter: theMinXp pixel coordinates of minimal corner on x screen axis. 
+Input parameter: theMinYp pixel coordinates of minimal corner on y screen axis. 
+Input parameter: theMaxXp pixel coordinates of maximal corner on x screen axis. 
+Input parameter: theMaxYp pixel coordinates of maximal corner on y screen axis.
 ") WindowFit;
 		void WindowFit(const Standard_Integer theMinXp, const Standard_Integer theMinYp, const Standard_Integer theMaxXp, const Standard_Integer theMaxYp);
 
@@ -4447,7 +4492,7 @@ None
 
 Description
 -----------
-Idem than windowfit.
+idem than WindowFit.
 ") WindowFitAll;
 		void WindowFitAll(const Standard_Integer Xmin, const Standard_Integer Ymin, const Standard_Integer Xmax, const Standard_Integer Ymax);
 
@@ -4470,7 +4515,7 @@ None
 
 Description
 -----------
-Customization of the zbuffer triedron. xcolor,ycolor,zcolor - colors of axis sizeratio - ratio of decreasing of the trihedron size when its physical position comes out of the view axisdiametr - diameter relatively to axis length nbfacettes - number of facets of cylinders and cones.
+Customization of the ZBUFFER Triedron. XColor,YColor,ZColor - colors of axis SizeRatio - ratio of decreasing of the trihedron size when its physical position comes out of the view AxisDiametr - diameter relatively to axis length NbFacettes - number of facets of cylinders and cones.
 ") ZBufferTriedronSetup;
 		void ZBufferTriedronSetup(const Quantity_Color & theXColor = Quantity_NOC_RED, const Quantity_Color & theYColor = Quantity_NOC_GREEN, const Quantity_Color & theZColor = Quantity_NOC_BLUE1, const Standard_Real theSizeRatio = 0.8, const Standard_Real theAxisDiametr = 0.05, const Standard_Integer theNbFacettes = 12);
 
@@ -4488,7 +4533,7 @@ None
 
 Description
 -----------
-Change z-min and z-max planes of projection volume to match the displayed objects.
+Change Z-min and Z-max planes of projection volume to match the displayed objects.
 ") ZFitAll;
 		void ZFitAll(const Standard_Real theScaleFactor = 1.0);
 
@@ -4501,7 +4546,7 @@ float
 
 Description
 -----------
-Returns the depth of the view .
+Returns the Depth of the view .
 ") ZSize;
 		Standard_Real ZSize();
 
@@ -4522,7 +4567,11 @@ None
 
 Description
 -----------
-Zoom the view according to a zoom factor computed from the distance between the 2 mouse position. @param thexp1 [in] the x coordinate of first mouse position, in pixels. @param theyp1 [in] the y coordinate of first mouse position, in pixels. @param thexp2 [in] the x coordinate of second mouse position, in pixels. @param theyp2 [in] the y coordinate of second mouse position, in pixels.
+Zoom the view according to a zoom factor computed from the distance between the 2 mouse position. 
+Input parameter: theXp1 the x coordinate of first mouse position, in pixels. 
+Input parameter: theYp1 the y coordinate of first mouse position, in pixels. 
+Input parameter: theXp2 the x coordinate of second mouse position, in pixels. 
+Input parameter: theYp2 the y coordinate of second mouse position, in pixels.
 ") Zoom;
 		void Zoom(const Standard_Integer theXp1, const Standard_Integer theYp1, const Standard_Integer theXp2, const Standard_Integer theYp2);
 
@@ -4543,7 +4592,7 @@ None
 
 Description
 -----------
-Zooms the model at a pixel defined by the method startzoomatpoint().
+Zooms the model at a pixel defined by the method StartZoomAtPoint().
 ") ZoomAtPoint;
 		void ZoomAtPoint(const Standard_Integer theMouseStartX, const Standard_Integer theMouseStartY, const Standard_Integer theMouseEndX, const Standard_Integer theMouseEndY);
 
@@ -4581,7 +4630,7 @@ None
 
 Description
 -----------
-Create a viewer with the given graphic driver and with default parameters: - view orientation: v3d_xposynegzpos - view background: quantity_noc_gray30 - shading model: v3d_gouraud.
+Create a Viewer with the given graphic driver and with default parameters: - View orientation: V3d_XposYnegZpos - View background: Quantity_NOC_GRAY30 - Shading model: V3d_GOURAUD.
 ") V3d_Viewer;
 		 V3d_Viewer(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
@@ -4696,7 +4745,7 @@ None
 
 Description
 -----------
-Adds light in sequence of lights.
+Adds Light in Sequence Of Lights.
 ") AddLight;
 		void AddLight(const opencascade::handle<V3d_Light> & theLight);
 
@@ -4715,7 +4764,9 @@ bool
 
 Description
 -----------
-Add a new top-level z layer to all managed views and get its id as <thelayerid> value. the z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. custom layers will be inserted before graphic3d_zlayerid_top (e.g. between graphic3d_zlayerid_default and before graphic3d_zlayerid_top). @param thelayerid [out] id of created layer @param thesettings [in] new layer settings return false if the layer can not be created.
+Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Custom layers will be inserted before Graphic3d_ZLayerId_Top (e.g. between Graphic3d_ZLayerId_Default and before Graphic3d_ZLayerId_Top). @param[out] theLayerId id of created layer 
+Input parameter: theSettings new layer settings 
+Return: False if the layer can not be created.
 ") AddZLayer;
 		Standard_Boolean AddZLayer(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
 
@@ -4767,7 +4818,7 @@ bool
 
 Description
 -----------
-Returns true if the computed mode can be used.
+returns true if the computed mode can be used.
 ") ComputedMode;
 		Standard_Boolean ComputedMode();
 
@@ -4838,7 +4889,7 @@ bool
 
 Description
 -----------
-Returns true if by default the computed mode must be used.
+returns true if by default the computed mode must be used.
 ") DefaultComputedMode;
 		Standard_Boolean DefaultComputedMode();
 
@@ -4851,7 +4902,7 @@ Graphic3d_RenderingParams
 
 Description
 -----------
-Return default rendering parameters. by default these parameters are set in a new v3d_view.
+Return default Rendering Parameters. By default these parameters are set in a new V3d_View.
 ") DefaultRenderingParams;
 		const Graphic3d_RenderingParams & DefaultRenderingParams();
 
@@ -4864,7 +4915,7 @@ Graphic3d_TypeOfShadingModel
 
 Description
 -----------
-Returns the default type of shading; graphic3d_typeofshadingmodel_phong by default.
+Returns the default type of Shading; Graphic3d_TypeOfShadingModel_Phong by default.
 ") DefaultShadingModel;
 		Graphic3d_TypeOfShadingModel DefaultShadingModel();
 
@@ -4877,7 +4928,7 @@ V3d_TypeOfView
 
 Description
 -----------
-Returns the default type of view (orthographic or perspective projection) to be returned by createview() method.
+Returns the default type of View (orthographic or perspective projection) to be returned by CreateView() method.
 ") DefaultTypeOfView;
 		V3d_TypeOfView DefaultTypeOfView();
 
@@ -4890,7 +4941,7 @@ V3d_TypeOfOrientation
 
 Description
 -----------
-Returns the default projection.
+Returns the default Projection.
 ") DefaultViewProj;
 		V3d_TypeOfOrientation DefaultViewProj();
 
@@ -4916,7 +4967,7 @@ V3d_TypeOfVisualization
 
 Description
 -----------
-Returns the default type of visualization.
+Returns the default type of Visualization.
 ") DefaultVisualization;
 		V3d_TypeOfVisualization DefaultVisualization();
 
@@ -5012,7 +5063,7 @@ None
 
 Description
 -----------
-Delete light in sequence of lights.
+Delete Light in Sequence Of Lights.
 ") DelLight;
 		void DelLight(const opencascade::handle<V3d_Light> & theLight);
 
@@ -5044,7 +5095,7 @@ opencascade::handle<Graphic3d_GraphicDriver>
 
 Description
 -----------
-Return graphic driver instance.
+Return Graphic Driver instance.
 ") Driver;
 		const opencascade::handle<Graphic3d_GraphicDriver> & Driver();
 
@@ -5078,7 +5129,7 @@ None
 
 Description
 -----------
-Erase all objects in all the views.
+Erase all Objects in All the views.
 ") Erase;
 		void Erase();
 
@@ -5096,7 +5147,7 @@ None
 
 Description
 -----------
-Return all z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). the first layer id in sequence is the default layer that can't be removed.
+Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
 ") GetAllZLayers;
 		void GetAllZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
@@ -5172,7 +5223,7 @@ bool
 
 Description
 -----------
-Returns true when grid echo must be displayed at hit point.
+Returns True when grid echo must be displayed at hit point.
 ") GridEcho;
 		Standard_Boolean GridEcho();
 
@@ -5203,7 +5254,7 @@ None
 
 Description
 -----------
-Temporarly hide grid echo.
+Temporarily hide grid echo.
 ") HideGridEcho;
 		void HideGridEcho(const opencascade::handle<V3d_View> & theView);
 
@@ -5216,7 +5267,7 @@ bool
 
 Description
 -----------
-Returns true if one view more can be defined in this viewer.
+Returns True if One View more can be defined in this Viewer.
 ") IfMoreViews;
 		Standard_Boolean IfMoreViews();
 
@@ -5229,7 +5280,7 @@ None
 
 Description
 -----------
-Initializes an internal iteratator on the active lights.
+No available documentation.
 ") InitActiveLights;
 		void InitActiveLights();
 
@@ -5242,7 +5293,7 @@ None
 
 Description
 -----------
-Initializes an internal iterator on the active views.
+No available documentation.
 ") InitActiveViews;
 		void InitActiveViews();
 
@@ -5255,7 +5306,7 @@ None
 
 Description
 -----------
-Initializes an internal iterattor on the defined lights.
+No available documentation.
 ") InitDefinedLights;
 		void InitDefinedLights();
 
@@ -5268,7 +5319,7 @@ None
 
 Description
 -----------
-Initializes an internal iterator on the defined views.
+No available documentation.
 ") InitDefinedViews;
 		void InitDefinedViews();
 
@@ -5288,7 +5339,10 @@ bool
 
 Description
 -----------
-Add a new top-level z layer to all managed views and get its id as <thelayerid> value. the z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. layer rendering order is defined by its position in list (altered by thelayerafter) and isimmediate() flag (all layers with isimmediate() flag are drawn afterwards); @param thenewlayerid [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after return false if the layer can not be created.
+Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param[out] theNewLayerId id of created layer; layer id is arbitrary and does not depend on layer position in the list 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerBefore id of layer to append new layer after 
+Return: False if the layer can not be created.
 ") InsertLayerAfter;
 		Standard_Boolean InsertLayerAfter(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
@@ -5308,7 +5362,10 @@ bool
 
 Description
 -----------
-Add a new top-level z layer to all managed views and get its id as <thelayerid> value. the z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. layer rendering order is defined by its position in list (altered by thelayerafter) and isimmediate() flag (all layers with isimmediate() flag are drawn afterwards); @param thenewlayerid [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before return false if the layer can not be created.
+Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param[out] theNewLayerId id of created layer; layer id is arbitrary and does not depend on layer position in the list 
+Input parameter: theSettings new layer settings 
+Input parameter: theLayerAfter id of layer to append new layer before 
+Return: False if the layer can not be created.
 ") InsertLayerBefore;
 		Standard_Boolean InsertLayerBefore(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
@@ -5334,7 +5391,7 @@ bool
 
 Description
 -----------
-Returns standard_true if a grid is activated in <self>.
+Returns Standard_True if a grid is activated in <self>.
 ") IsActive;
 		Standard_Boolean IsActive();
 
@@ -5365,7 +5422,7 @@ bool
 
 Description
 -----------
-Returns standard_true if a grid is activated in <self>.
+Returns Standard_True if a grid is activated in <self>.
 ") IsGridActive;
 		Standard_Boolean IsGridActive();
 
@@ -5378,7 +5435,7 @@ bool
 
 Description
 -----------
-Returns true if there is only one active view.
+returns true if there is only one active view.
 ") LastActiveView;
 		Standard_Boolean LastActiveView();
 
@@ -5391,7 +5448,7 @@ bool
 
 Description
 -----------
-Returns true if there are more active light(s) to return.
+No available documentation.
 ") MoreActiveLights;
 		Standard_Boolean MoreActiveLights();
 
@@ -5404,7 +5461,7 @@ bool
 
 Description
 -----------
-Returns true if there are more active view(s) to return.
+No available documentation.
 ") MoreActiveViews;
 		Standard_Boolean MoreActiveViews();
 
@@ -5417,7 +5474,7 @@ bool
 
 Description
 -----------
-Returns true if there are more defined light(s) to return.
+No available documentation.
 ") MoreDefinedLights;
 		Standard_Boolean MoreDefinedLights();
 
@@ -5430,7 +5487,7 @@ bool
 
 Description
 -----------
-Returns true if there are more defined view(s) to return.
+No available documentation.
 ") MoreDefinedViews;
 		Standard_Boolean MoreDefinedViews();
 
@@ -5443,7 +5500,7 @@ None
 
 Description
 -----------
-Go to the next active light (if there is not, activelight() will raise an exception).
+No available documentation.
 ") NextActiveLights;
 		void NextActiveLights();
 
@@ -5456,7 +5513,7 @@ None
 
 Description
 -----------
-Go to the next active view (if there is not, activeview will raise an exception).
+No available documentation.
 ") NextActiveViews;
 		void NextActiveViews();
 
@@ -5469,7 +5526,7 @@ None
 
 Description
 -----------
-Go to the next defined light (if there is not, definedlight() will raise an exception).
+No available documentation.
 ") NextDefinedLights;
 		void NextDefinedLights();
 
@@ -5482,7 +5539,7 @@ None
 
 Description
 -----------
-Go to the next defined view (if there is not, definedview will raise an exception).
+No available documentation.
 ") NextDefinedViews;
 		void NextDefinedViews();
 
@@ -5548,7 +5605,7 @@ None
 
 Description
 -----------
-Redraws all the views of the viewer even if no modification has taken place. must be called if all the views of the viewer are exposed, as for example in a global deiconification.
+Redraws all the views of the Viewer even if no modification has taken place. Must be called if all the views of the Viewer are exposed, as for example in a global DeIconification.
 ") Redraw;
 		void Redraw();
 
@@ -5574,7 +5631,7 @@ None
 
 Description
 -----------
-Suppresses the viewer.
+Suppresses the Viewer.
 ") Remove;
 		void Remove();
 
@@ -5592,7 +5649,7 @@ bool
 
 Description
 -----------
-Remove z layer with id <thelayerid>. method returns standard_false if the layer can not be removed or doesn't exists. by default, there are always default bottom-level layer that can't be removed.
+Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
 ") RemoveZLayer;
 		Standard_Boolean RemoveZLayer(int theLayerId);
 
@@ -5611,7 +5668,7 @@ None
 
 Description
 -----------
-Sets the location and the size of the grid. <xsize> defines the width of the grid. <ysize> defines the height of the grid. <offset> defines the displacement along the plane normal.
+Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 ") SetCircularGridGraphicValues;
 		void SetCircularGridGraphicValues(const Standard_Real Radius, const Standard_Real OffSet);
 
@@ -5633,7 +5690,7 @@ None
 
 Description
 -----------
-Sets the definition of the circular grid. <xorigin>, <yorigin> defines the origin of the grid. <radiusstep> defines the interval between 2 circles. <divisionnumber> defines the section number of one half circle. <rotationangle> defines the rotation angle of the grid.
+Sets the definition of the circular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <RadiusStep> defines the interval between 2 circles. <DivisionNumber> defines the section number of one half circle. <RotationAngle> defines the rotation angle of the grid.
 ") SetCircularGridValues;
 		void SetCircularGridValues(const Standard_Real XOrigin, const Standard_Real YOrigin, const Standard_Real RadiusStep, const Standard_Integer DivisionNumber, const Standard_Real RotationAngle);
 
@@ -5720,7 +5777,7 @@ None
 
 Description
 -----------
-Defines default lights: positional-light 0.3 0. 0. directional-light v3d_xnegyposzpos directional-light v3d_xnegyneg ambient-light.
+Defines default lights: positional-light 0.3 0. 0. directional-light V3d_XnegYposZpos directional-light V3d_XnegYneg ambient-light.
 ") SetDefaultLights;
 		void SetDefaultLights();
 
@@ -5738,7 +5795,7 @@ None
 
 Description
 -----------
-Set default rendering parameters.
+Set default Rendering Parameters.
 ") SetDefaultRenderingParams;
 		void SetDefaultRenderingParams(const Graphic3d_RenderingParams & theParams);
 
@@ -5756,7 +5813,7 @@ None
 
 Description
 -----------
-Gives the default type of shading.
+Gives the default type of SHADING.
 ") SetDefaultShadingModel;
 		void SetDefaultShadingModel(const Graphic3d_TypeOfShadingModel theType);
 
@@ -5774,7 +5831,7 @@ None
 
 Description
 -----------
-Set the default type of view (orthographic or perspective projection) to be returned by createview() method.
+Set the default type of View (orthographic or perspective projection) to be returned by CreateView() method.
 ") SetDefaultTypeOfView;
 		void SetDefaultTypeOfView(const V3d_TypeOfView theType);
 
@@ -5846,7 +5903,7 @@ None
 
 Description
 -----------
-Show/don't show grid echo to the hit point. if true,the grid echo will be shown at converttogrid() time.
+Show/Don't show grid echo to the hit point. If True,the grid echo will be shown at ConvertToGrid() time.
 ") SetGridEcho;
 		void SetGridEcho(const Standard_Boolean showGrid = Standard_True);
 
@@ -5864,7 +5921,7 @@ None
 
 Description
 -----------
-Show grid echo <amarker> to the hit point. warning: when the grid echo marker is not set, a default marker is build with the attributes: marker type: aspect_tom_star marker color: quantity_noc_gray90 marker size: 3.0.
+Show grid echo <aMarker> to the hit point. Warning: When the grid echo marker is not set, a default marker is build with the attributes: marker type: Aspect_TOM_STAR marker color: Quantity_NOC_GRAY90 marker size: 3.0.
 ") SetGridEcho;
 		void SetGridEcho(const opencascade::handle<Graphic3d_AspectMarker3d> & aMarker);
 
@@ -5882,7 +5939,7 @@ None
 
 Description
 -----------
-Deactivates mylight in this viewer.
+Deactivates MyLight in this viewer.
 ") SetLightOff;
 		void SetLightOff(const opencascade::handle<V3d_Light> & theLight);
 
@@ -5895,7 +5952,7 @@ None
 
 Description
 -----------
-Deactivate all the lights defined in this viewer.
+Deactivate all the Lights defined in this viewer.
 ") SetLightOff;
 		void SetLightOff();
 
@@ -5913,7 +5970,7 @@ None
 
 Description
 -----------
-Activates mylight in the viewer.
+Activates MyLight in the viewer.
 ") SetLightOn;
 		void SetLightOn(const opencascade::handle<V3d_Light> & theLight);
 
@@ -5964,7 +6021,7 @@ None
 
 Description
 -----------
-Sets the location and the size of the grid. <xsize> defines the width of the grid. <ysize> defines the height of the grid. <offset> defines the displacement along the plane normal.
+Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 ") SetRectangularGridGraphicValues;
 		void SetRectangularGridGraphicValues(const Standard_Real XSize, const Standard_Real YSize, const Standard_Real OffSet);
 
@@ -5986,7 +6043,7 @@ None
 
 Description
 -----------
-Sets the definition of the rectangular grid. <xorigin>, <yorigin> defines the origin of the grid. <xstep> defines the interval between 2 vertical lines. <ystep> defines the interval between 2 horizontal lines. <rotationangle> defines the rotation angle of the grid.
+Sets the definition of the rectangular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <XStep> defines the interval between 2 vertical lines. <YStep> defines the interval between 2 horizontal lines. <RotationAngle> defines the rotation angle of the grid.
 ") SetRectangularGridValues;
 		void SetRectangularGridValues(const Standard_Real XOrigin, const Standard_Real YOrigin, const Standard_Real XStep, const Standard_Real YStep, const Standard_Real RotationAngle);
 
@@ -5999,7 +6056,7 @@ None
 
 Description
 -----------
-Deactivates all the views of a viewer attached to a window.
+Deactivates all the views of a Viewer attached to a window.
 ") SetViewOff;
 		void SetViewOff();
 
@@ -6017,7 +6074,7 @@ None
 
 Description
 -----------
-Deactivates a particular view in the viewer. must be call if the window attached to the view has been iconified .
+Deactivates a particular view in the Viewer. Must be call if the Window attached to the view has been Iconified .
 ") SetViewOff;
 		void SetViewOff(const opencascade::handle<V3d_View> & theView);
 
@@ -6048,7 +6105,7 @@ None
 
 Description
 -----------
-Activates a particular view in the viewer. must be call if the window attached to the view has been deiconified.
+Activates a particular view in the Viewer. Must be call if the Window attached to the view has been Deiconified.
 ") SetViewOn;
 		void SetViewOn(const opencascade::handle<V3d_View> & theView);
 
@@ -6067,7 +6124,7 @@ None
 
 Description
 -----------
-Sets the settings for a single z layer.
+Sets the settings for a single Z layer.
 ") SetZLayerSettings;
 		void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
 
@@ -6112,7 +6169,7 @@ None
 
 Description
 -----------
-Unhighlight all objects in all the views.
+UnHighlight all Objects in All the views.
 ") UnHighlight;
 		void UnHighlight();
 
@@ -6125,7 +6182,7 @@ None
 
 Description
 -----------
-Deprecated, redraw() should be used instead.
+Deprecated, Redraw() should be used instead.
 ") Update;
 		void Update();
 
@@ -6156,7 +6213,7 @@ Graphic3d_ZLayerSettings
 
 Description
 -----------
-Returns the settings of a single z layer.
+Returns the settings of a single Z layer.
 ") ZLayerSettings;
 		const Graphic3d_ZLayerSettings & ZLayerSettings(int theLayerId);
 
@@ -6305,7 +6362,7 @@ None
 
 Description
 -----------
-Creates a light source of the spot type in the viewer with default attenuation factors (1.0, 0.0), concentration factor 1.0 and spot angle 30 degrees.
+Creates a light source of the Spot type in the viewer with default attenuation factors (1.0, 0.0), concentration factor 1.0 and spot angle 30 degrees.
 ") V3d_SpotLight;
 		 V3d_SpotLight(const gp_Pnt & thePos, const V3d_TypeOfOrientation theDirection = V3d_XnegYnegZpos, const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -6325,7 +6382,7 @@ None
 
 Description
 -----------
-Creates a light source of the spot type in the viewer with default attenuation factors (1.0, 0.0), concentration factor 1.0 and spot angle 30 degrees.
+Creates a light source of the Spot type in the viewer with default attenuation factors (1.0, 0.0), concentration factor 1.0 and spot angle 30 degrees.
 ") V3d_SpotLight;
 		 V3d_SpotLight(const gp_Pnt & thePos, const gp_Dir & theDirection, const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -6358,6 +6415,14 @@ Defines the direction of the light source according to a predefined directional 
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class V3d_ImageDumpOptions:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

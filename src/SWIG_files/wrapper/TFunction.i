@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TFUNCTIONDOCSTRING
 "TFunction module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tfunction.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tfunction.html"
 %enddef
 %module (package="OCC.Core", docstring=TFUNCTIONDOCSTRING) TFunction
 
@@ -171,7 +171,7 @@ None
 
 Description
 -----------
-Initializes the label l for this function prior to its execution.
+Initializes the label L for this function prior to its execution.
 ") Init;
 		void Init(const TDF_Label & L);
 
@@ -202,7 +202,7 @@ bool
 
 Description
 -----------
-Analyzes the labels in the logbook log. returns true if attributes have been modified. if the function label itself has been modified, the function must be executed.
+Analyzes the labels in the logbook log. Returns true if attributes have been modified. If the function label itself has been modified, the function must be executed.
 ") MustExecute;
 		virtual Standard_Boolean MustExecute(const opencascade::handle<TFunction_Logbook> & log);
 
@@ -238,7 +238,7 @@ None
 
 Description
 -----------
-Validates labels of a function in <log>. this function is the one initialized in this function driver. warning in regeneration mode, the solver must call this method even if the function is not executed. execution of function =====================.
+Validates labels of a function in <log>. This function is the one initialized in this function driver. Warning In regeneration mode, the solver must call this method even if the function is not executed. execution of function =====================.
 ") Validate;
 		virtual void Validate(opencascade::handle<TFunction_Logbook> & log);
 
@@ -300,7 +300,7 @@ None
 
 Description
 -----------
-Removes all drivers. returns true if the driver has been removed successfully.
+Removes all drivers. Returns true if the driver has been removed successfully.
 ") Clear;
 		void Clear();
 
@@ -350,7 +350,7 @@ opencascade::handle<TFunction_DriverTable>
 
 Description
 -----------
-Returns the driver table. if a driver does not exist, creates it.
+Returns the driver table. If a driver does not exist, creates it.
 ") Get;
 		static opencascade::handle<TFunction_DriverTable> Get();
 
@@ -388,7 +388,7 @@ bool
 
 Description
 -----------
-Removes a driver with the given guid. returns true if the driver has been removed successfully.
+Removes a driver with the given GUID. Returns true if the driver has been removed successfully.
 ") RemoveDriver;
 		Standard_Boolean RemoveDriver(const Standard_GUID & guid, const Standard_Integer thread = 0);
 
@@ -481,7 +481,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for this function's driver.
+Returns the GUID for this function's driver.
 ") GetDriverGUID;
 		const Standard_GUID & GetDriverGUID();
 
@@ -494,7 +494,7 @@ int
 
 Description
 -----------
-Returns an index of failure if the execution of this function failed. if this integer value is 0, no failure has occurred. implementation of attribute methods: ===================================.
+Returns an index of failure if the execution of this function failed. If this integer value is 0, no failure has occurred. Implementation of Attribute methods: ===================================.
 ") GetFailure;
 		Standard_Integer GetFailure();
 
@@ -507,7 +507,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for functions. returns a function found on the label. instance methods: ================.
+Returns the GUID for functions. Returns a function found on the label. Instance methods: ================.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -606,7 +606,7 @@ opencascade::handle<TFunction_Function>
 
 Description
 -----------
-Static methods: ============== finds or creates a function attribute on the label <l>. returns the function attribute.
+Static methods: ============== Finds or Creates a function attribute on the label <L>. Returns the function attribute.
 ") Set;
 		static opencascade::handle<TFunction_Function> Set(const TDF_Label & L);
 
@@ -625,7 +625,7 @@ opencascade::handle<TFunction_Function>
 
 Description
 -----------
-Finds or creates a function attribute on the label <l>. sets a driver id to the function. returns the function attribute.
+Finds or Creates a function attribute on the label <L>. Sets a driver ID to the function. Returns the function attribute.
 ") Set;
 		static opencascade::handle<TFunction_Function> Set(const TDF_Label & L, const Standard_GUID & DriverID);
 
@@ -643,7 +643,7 @@ None
 
 Description
 -----------
-Sets the driver for this function as that identified by the guid guid.
+Sets the driver for this function as that identified by the GUID guid.
 ") SetDriverGUID;
 		void SetDriverGUID(const Standard_GUID & guid);
 
@@ -792,7 +792,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for graphnode attribute. instant methods =============== constructor (empty).
+Returns the GUID for GraphNode attribute. Instant methods =============== Constructor (empty).
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1028,7 +1028,7 @@ opencascade::handle<TFunction_GraphNode>
 
 Description
 -----------
-Static methods ============== finds or creates a graph node attribute at the label <l>. returns the attribute.
+Static methods ============== Finds or Creates a graph node attribute at the label <L>. Returns the attribute.
 ") Set;
 		static opencascade::handle<TFunction_GraphNode> Set(const TDF_Label & L);
 
@@ -1046,7 +1046,7 @@ None
 
 Description
 -----------
-Defines an execution status for a function. implementation of attribute methods ===================================.
+Defines an execution status for a function. Implementation of Attribute methods ===================================.
 ") SetStatus;
 		void SetStatus(const TFunction_ExecutionStatus status);
 
@@ -1093,7 +1093,7 @@ None
 
 Description
 -----------
-A constructor. initializes the interface by the label of function.
+A constructor. Initializes the interface by the label of function.
 ") TFunction_IFunction;
 		 TFunction_IFunction(const TDF_Label & L);
 
@@ -1129,7 +1129,7 @@ bool
 
 Description
 -----------
-Deletes a function attached to a label <l>. it deletes a tfunction_function attribute and a tfunction_graphnode. it deletes the functions from the scope of function of this document.
+Deletes a function attached to a label <L>. It deletes a TFunction_Function attribute and a TFunction_GraphNode. It deletes the functions from the scope of function of this document.
 ") DeleteFunction;
 		static Standard_Boolean DeleteFunction(const TDF_Label & L);
 
@@ -1186,7 +1186,7 @@ opencascade::handle<TFunction_Logbook>
 
 Description
 -----------
-Returns the logbook - keeper of modifications.
+Returns the Logbook - keeper of modifications.
 ") GetLogbook;
 		opencascade::handle<TFunction_Logbook> GetLogbook();
 
@@ -1285,7 +1285,7 @@ bool
 
 Description
 -----------
-Sets a new function attached to a label <l> with <id>. it creates a new tfunction_function attribute initialized by the <id>, a new tfunction_graphnode with an empty list of dependencies and the status equal to tfunction_es_wrongdefinition. it registers the function in the scope of functions for this document.
+Sets a new function attached to a label <L> with <ID>. It creates a new TFunction_Function attribute initialized by the <ID>, a new TFunction_GraphNode with an empty list of dependencies and the status equal to TFunction_ES_WrongDefinition. It registers the function in the scope of functions for this document.
 ") NewFunction;
 		static Standard_Boolean NewFunction(const TDF_Label & L, const Standard_GUID & ID);
 
@@ -1339,7 +1339,7 @@ bool
 
 Description
 -----------
-Updates dependencies for all functions of the scope. it returns false in case of an error. an empty constructor.
+Updates dependencies for all functions of the scope. It returns false in case of an error. An empty constructor.
 ") UpdateDependencies;
 		static Standard_Boolean UpdateDependencies(const TDF_Label & Access);
 
@@ -1397,7 +1397,7 @@ None
 
 Description
 -----------
-A constructor. initializes the iterator.
+A constructor. Initializes the iterator.
 ") TFunction_Iterator;
 		 TFunction_Iterator(const TDF_Label & Access);
 
@@ -1410,7 +1410,7 @@ TDF_LabelList
 
 Description
 -----------
-Returns the current list of functions. if the iterator uses the execution status, the returned list contains only the functions with 'not executed' status.
+Returns the current list of functions. If the iterator uses the execution status, the returned list contains only the functions with 'not executed' status.
 ") Current;
 		virtual const TDF_LabelList & Current();
 
@@ -1458,7 +1458,7 @@ TFunction_ExecutionStatus
 
 Description
 -----------
-A help-function aimed to help the user to check the status of retrurned function. it calls tfunction_graphnode::getstatus() inside.
+A help-function aimed to help the user to check the status of retrurned function. It calls TFunction_GraphNode::GetStatus() inside.
 ") GetStatus;
 		TFunction_ExecutionStatus GetStatus(const TDF_Label & func);
 
@@ -1489,7 +1489,7 @@ None
 
 Description
 -----------
-Initializes the iterator.
+Initializes the Iterator.
 ") Init;
 		virtual void Init(const TDF_Label & Access);
 
@@ -1534,7 +1534,7 @@ None
 
 Description
 -----------
-A help-function aimed to help the user to change the execution status of a function. it calls tfunction_graphnode::setstatus() inside.
+A help-function aimed to help the user to change the execution status of a function. It calls TFunction_GraphNode::SetStatus() inside.
 ") SetStatus;
 		void SetStatus(const TDF_Label & func, const TFunction_ExecutionStatus status);
 
@@ -1552,7 +1552,7 @@ None
 
 Description
 -----------
-Defines the mode of iteration - usage or not of the execution status. if the iterator takes into account the execution status, the method ::current() returns only 'not executed' functions while their status is not changed. if the iterator ignores the execution status, the method ::current() returns the functions following their dependencies and ignoring the execution status.
+Defines the mode of iteration - usage or not of the execution status. If the iterator takes into account the execution status, the method ::Current() returns only 'not executed' functions while their status is not changed. If the iterator ignores the execution status, the method ::Current() returns the functions following their dependencies and ignoring the execution status.
 ") SetUsageOfExecutionStatus;
 		void SetUsageOfExecutionStatus(const Standard_Boolean usage);
 
@@ -1640,7 +1640,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for logbook attribute.
+Returns the GUID for logbook attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1666,7 +1666,7 @@ TDF_LabelMap
 
 Description
 -----------
-Returns the map of touched labels in this logbook. a touched label is the one modified by the end user.
+Returns the map of touched labels in this logbook. A touched label is the one modified by the end user.
 ") GetTouched;
 		const TDF_LabelMap & GetTouched();
 
@@ -1710,7 +1710,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -1755,7 +1755,7 @@ bool
 
 Description
 -----------
-Returns true if the label l is touched or impacted. this method is called by <tfunction_functiondriver::mustexecute>. if <withchildren> is set to true, the method checks all the sublabels of <l> too.
+Returns True if the label L is touched or impacted. This method is called by <TFunction_FunctionDriver::MustExecute>. If <WithChildren> is set to true, the method checks all the sublabels of <L> too.
 ") IsModified;
 		Standard_Boolean IsModified(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
@@ -1823,7 +1823,7 @@ opencascade::handle<TFunction_Logbook>
 
 Description
 -----------
-Finds or creates a tfunction_logbook attribute at the root label accessed by <access>. returns the attribute.
+Finds or Creates a TFunction_Logbook attribute at the root label accessed by <Access>. Returns the attribute.
 ") Set;
 		static opencascade::handle<TFunction_Logbook> Set(const TDF_Label & Access);
 
@@ -1842,7 +1842,7 @@ None
 
 Description
 -----------
-Sets the label l as an impacted label in this logbook. this method is called by execution of the function driver.
+Sets the label L as an impacted label in this logbook. This method is called by execution of the function driver.
 ") SetImpacted;
 		void SetImpacted(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
@@ -1860,7 +1860,7 @@ None
 
 Description
 -----------
-Sets the label l as a touched label in this logbook. in other words, l is understood to have been modified by the end user.
+Sets the label L as a touched label in this logbook. In other words, L is understood to have been modified by the end user.
 ") SetTouched;
 		void SetTouched(const TDF_Label & L);
 
@@ -1879,7 +1879,7 @@ None
 
 Description
 -----------
-Sets the label l as a valid label in this logbook.
+Sets the label L as a valid label in this logbook.
 ") SetValid;
 		void SetValid(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
@@ -1957,7 +1957,7 @@ TFunction_DoubleMapOfIntegerLabel
 
 Description
 -----------
-Returns the scope of functions for modification. warning: don't use this method if you are not sure what you do!.
+Returns the scope of functions for modification. Warning: Don't use this method if You are not sure what You do!.
 ") ChangeFunctions;
 		TFunction_DoubleMapOfIntegerLabel & ChangeFunctions();
 
@@ -2005,7 +2005,7 @@ int
 
 Description
 -----------
-Returns an id of the function.
+Returns an ID of the function.
 ") GetFunction;
 		Standard_Integer GetFunction(const TDF_Label & L);
 
@@ -2023,7 +2023,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label of the function with this id.
+Returns the label of the function with this ID.
 ") GetFunction;
 		const TDF_Label & GetFunction(const Standard_Integer ID);
 
@@ -2049,7 +2049,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for scope attribute. instant methods =============== constructor (empty).
+Returns the GUID for Scope attribute. Instant methods =============== Constructor (empty).
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2062,7 +2062,7 @@ opencascade::handle<TFunction_Logbook>
 
 Description
 -----------
-Returns the logbook used in tfunction_driver methods. implementation of attribute methods ===================================.
+Returns the Logbook used in TFunction_Driver methods. Implementation of Attribute methods ===================================.
 ") GetLogbook;
 		opencascade::handle<TFunction_Logbook> GetLogbook();
 
@@ -2080,7 +2080,7 @@ bool
 
 Description
 -----------
-Returns true if the function exists with such an id.
+Returns true if the function exists with such an ID.
 ") HasFunction;
 		Standard_Boolean HasFunction(const Standard_Integer ID);
 
@@ -2228,7 +2228,7 @@ opencascade::handle<TFunction_Scope>
 
 Description
 -----------
-Static methods ============== finds or creates a tfunction_scope attribute at the root label accessed by <access>. returns the attribute.
+Static methods ============== Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>. Returns the attribute.
 ") Set;
 		static opencascade::handle<TFunction_Scope> Set(const TDF_Label & Access);
 

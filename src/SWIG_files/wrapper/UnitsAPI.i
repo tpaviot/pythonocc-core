@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSAPIDOCSTRING
 "UnitsAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_unitsapi.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_unitsapi.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSAPIDOCSTRING) UnitsAPI
 
@@ -111,7 +111,7 @@ float
 
 Description
 -----------
-Converts the local system units value to the local unit value. example: anyfromls(25.4,'in.') returns 1. if the localsystem is mdtv. note: aunit is also used to identify the type of physical quantity to convert.
+Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV. Note: aUnit is also used to identify the type of physical quantity to convert.
 ") AnyFromLS;
 		static Standard_Real AnyFromLS(const Standard_Real aData, Standard_CString aUnit);
 
@@ -130,7 +130,7 @@ float
 
 Description
 -----------
-Converts the si system units value to the local unit value. example: anyfromsi(0.0254,'in.') returns 0.001 note: aunit is also used to identify the type of physical quantity to convert.
+Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001 Note: aUnit is also used to identify the type of physical quantity to convert.
 ") AnyFromSI;
 		static Standard_Real AnyFromSI(const Standard_Real aData, Standard_CString aUnit);
 
@@ -150,7 +150,7 @@ float
 
 Description
 -----------
-Converts the local unit value to another local unit value. example: anytoany(0.0254,'in.','millimeter') returns 1. ;.
+Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','millimeter') returns 1. ;.
 ") AnyToAny;
 		static Standard_Real AnyToAny(const Standard_Real aData, Standard_CString aUnit1, Standard_CString aUnit2);
 
@@ -169,7 +169,7 @@ float
 
 Description
 -----------
-Converts the local unit value to the local system units value. example: anytols(1.,'in.') returns 25.4 if the localsystem is mdtv.
+Converts the local unit value to the local system units value. Example: AnyToLS(1.,'in.') returns 25.4 if the LocalSystem is MDTV.
 ") AnyToLS;
 		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit);
 
@@ -208,7 +208,7 @@ float
 
 Description
 -----------
-Converts the local unit value to the si system units value. example: anytosi(1.,'in.') returns 0.0254.
+Converts the local unit value to the SI system units value. Example: AnyToSI(1.,'in.') returns 0.0254.
 ") AnyToSI;
 		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit);
 
@@ -228,7 +228,7 @@ float
 
 Description
 -----------
-Converts the local unit value to the si system units value. and gives the associated dimension of the unit.
+Converts the local unit value to the SI system units value. and gives the associated dimension of the unit.
 ") AnyToSI;
 		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
@@ -247,7 +247,7 @@ bool
 
 Description
 -----------
-Checks the coherence between the quantity <aquantity> and the unit <aunits> in the current system and returns false when it's wrong.
+Checks the coherence between the quantity <aQuantity> and the unit <aUnits> in the current system and returns False when it's WRONG.
 ") Check;
 		static Standard_Boolean Check(Standard_CString aQuantity, Standard_CString aUnit);
 
@@ -267,7 +267,7 @@ float
 
 Description
 -----------
-Converts the adata value expressed in the unit aunit, into the current unit for the working environment, as defined for the physical quantity aquantity by the last call to the setcurrentunit function.
+Converts the aData value expressed in the unit aUnit, into the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function.
 ") CurrentFromAny;
 		static Standard_Real CurrentFromAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
@@ -286,7 +286,7 @@ float
 
 Description
 -----------
-Converts the local system units value to the current unit value. example: currentfromls(1000.,'length') returns 1. if current length unit is meter and localsystem is mdtv.
+Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and LocalSystem is MDTV.
 ") CurrentFromLS;
 		static Standard_Real CurrentFromLS(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -305,7 +305,7 @@ float
 
 Description
 -----------
-Converts the si system units value to the current unit value. example: currentfromsi(0.001,'length') returns 1 if current length unit is millimeter.
+Converts the SI system units value to the current unit value. Example: CurrentFromSI(0.001,'LENGTH') returns 1 if current length unit is millimeter.
 ") CurrentFromSI;
 		static Standard_Real CurrentFromSI(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -325,7 +325,7 @@ float
 
 Description
 -----------
-Converts the adata value expressed in the current unit for the working environment, as defined for the physical quantity aquantity by the last call to the setcurrentunit function, into the unit aunit.
+Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function, into the unit aUnit.
 ") CurrentToAny;
 		static Standard_Real CurrentToAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
@@ -344,7 +344,7 @@ float
 
 Description
 -----------
-Converts the current unit value to the local system units value. example: currenttols(1.,'length') returns 1000. if the current length unit is meter and localsystem is mdtv.
+Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.
 ") CurrentToLS;
 		static Standard_Real CurrentToLS(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -363,7 +363,7 @@ float
 
 Description
 -----------
-Converts the current unit value to the si system units value. example: currenttosi(1.,'length') returns 0.001 if current length unit is millimeter.
+Converts the current unit value to the SI system units value. Example: CurrentToSI(1.,'LENGTH') returns 0.001 if current length unit is millimeter.
 ") CurrentToSI;
 		static Standard_Real CurrentToSI(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -381,7 +381,7 @@ str
 
 Description
 -----------
-Returns the current unit dimension <aunit> from the unit quantity <aquantity>.
+Returns the current unit dimension <aUnit> from the unit quantity <aQuantity>.
 ") CurrentUnit;
 		static Standard_CString CurrentUnit(Standard_CString aQuantity);
 
@@ -529,7 +529,7 @@ opencascade::handle<Units_Dimensions>
 
 Description
 -----------
-Return the dimension associated to the quantity.
+return the dimension associated to the quantity.
 ") Dimensions;
 		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aQuantity);
 
@@ -548,7 +548,7 @@ float
 
 Description
 -----------
-Converts the local system units value to the si system unit value. example: lstosi(1.,'length') returns 0.001 if the local system length unit is millimeter.
+Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit is millimeter.
 ") LSToSI;
 		static Standard_Real LSToSI(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -593,7 +593,7 @@ float
 
 Description
 -----------
-Converts the si system unit value to the local system units value. example: sitols(1.,'length') returns 1000. if the local system length unit is millimeter.
+Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000. if the local system length unit is millimeter.
 ") SIToLS;
 		static Standard_Real SIToLS(const Standard_Real aData, Standard_CString aQuantity);
 
@@ -606,7 +606,7 @@ None
 
 Description
 -----------
-Saves the units in the file .currentunits of the directory pointed by the csf_currentunitsuserdefaults environment variable.
+saves the units in the file .CurrentUnits of the directory pointed by the CSF_CurrentUnitsUserDefaults environment variable.
 ") Save;
 		static void Save();
 
@@ -625,7 +625,7 @@ None
 
 Description
 -----------
-Sets the current unit dimension <aunit> to the unit quantity <aquantity>. example: setcurrentunit('length','millimeter').
+Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','millimeter').
 ") SetCurrentUnit;
 		static void SetCurrentUnit(Standard_CString aQuantity, Standard_CString aUnit);
 
@@ -643,7 +643,7 @@ None
 
 Description
 -----------
-Sets the local system units. example: setlocalsystem(unitsapi_mdtv).
+Sets the local system units. Example: SetLocalSystem(UnitsAPI_MDTV).
 ") SetLocalSystem;
 		static void SetLocalSystem(const UnitsAPI_SystemUnits aSystemUnit = UnitsAPI_SI);
 

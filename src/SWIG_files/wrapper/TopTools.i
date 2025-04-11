@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTOOLSDOCSTRING
 "TopTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_toptools.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_toptools.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTOOLSDOCSTRING) TopTools
 
@@ -244,7 +244,7 @@ None
 
 Description
 -----------
-This is to bypass an extraction bug. it will force the inclusion of standard_integer.hxx itself including standard_ostream.hxx at the correct position.
+This is to bypass an extraction bug. It will force the inclusion of Standard_Integer.hxx itself including Standard_OStream.hxx at the correct position.
 ") Dummy;
 		static void Dummy(const Standard_Integer I);
 
@@ -262,7 +262,7 @@ S: Standard_OStream
 
 Description
 -----------
-A set of shapes. can be dump, wrote or read. dumps the topological structure of <sh> on the stream <s>.
+A set of Shapes. Can be dump, wrote or read. Dumps the topological structure of <Sh> on the stream <S>.
 ") Dump;
 		static void Dump(const TopoDS_Shape & Sh, std::ostream &OutValue);
 
@@ -307,7 +307,7 @@ int
 
 Description
 -----------
-Incorporate a new location in the set and returns its index.
+Incorporate a new Location in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const TopLoc_Location & L);
 
@@ -337,7 +337,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the content of me on the stream <os>.
+Dumps the content of me on the stream <OS>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -355,7 +355,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const TopLoc_Location & L);
 
@@ -373,7 +373,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns the location of index <i>.
+Returns the location of index <I>.
 ") Location;
 		const TopLoc_Location & Location(const Standard_Integer I);
 
@@ -392,7 +392,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -410,7 +410,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -455,7 +455,7 @@ None
 
 Description
 -----------
-Creates and associates mutex with theshape.
+Creates and associates mutex with theShape.
 ") CreateMutexForShape;
 		void CreateMutexForShape(const TopoDS_Shape & theShape);
 
@@ -474,7 +474,7 @@ None
 
 Description
 -----------
-Creates and associates mutexes with each sub-shape of type thetype in theshape.
+Creates and associates mutexes with each sub-shape of type theType in theShape.
 ") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theType);
 
@@ -492,7 +492,7 @@ Standard_Mutex *
 
 Description
 -----------
-Returns pointer to mutex associated with theshape. in case when mutex not found returns null.
+Returns pointer to mutex associated with theShape. In case when mutex not found returns NULL.
 ") GetMutex;
 		Standard_Mutex * GetMutex(const TopoDS_Shape & theShape);
 
@@ -546,7 +546,7 @@ None
 
 Description
 -----------
-Builds an empty shapeset.
+Builds an empty ShapeSet.
 ") TopTools_ShapeSet;
 		 TopTools_ShapeSet();
 
@@ -564,7 +564,7 @@ int
 
 Description
 -----------
-Stores <s> and its sub-shape. returns the index of <s>. the method addgeometry is called on each sub-shape.
+Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 ") Add;
 		Standard_Integer Add(const TopoDS_Shape & S);
 
@@ -582,7 +582,7 @@ None
 
 Description
 -----------
-Stores the geometry of <s>.
+Stores the geometry of <S>.
 ") AddGeometry;
 		virtual void AddGeometry(const TopoDS_Shape & S);
 
@@ -601,7 +601,7 @@ None
 
 Description
 -----------
-Inserts the shape <s2> in the shape <s1>. this method must be redefined to use the correct builder.
+Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -633,7 +633,7 @@ None
 
 Description
 -----------
-This method is called after each new completed shape. <t> is the type. <s> is the shape. in this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
+This method is called after each new completed shape. <T> is the type. <S> is the shape. In this class it does nothing, but it gives the opportunity in derived classes to perform extra treatment on shapes.
 ") Check;
 		virtual void Check(const TopAbs_ShapeEnum T, TopoDS_Shape & S);
 
@@ -646,7 +646,7 @@ None
 
 Description
 -----------
-Clears the content of the set. this method can be redefined.
+Clears the content of the set. This method can be redefined.
 ") Clear;
 		virtual void Clear();
 
@@ -663,7 +663,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the content of me on the stream <os>. //! dumps the shapes from first to last. for each shape dump the type, the flags, the subshapes calls dumpgeometry(s) //! dumps the geometry calling dumpgeometry. //! dumps the locations.
+Dumps the content of me on the stream <OS>. //! Dumps the shapes from first to last. For each Shape Dump the type, the flags, the subshapes calls DumpGeometry(S) //! Dumps the geometry calling DumpGeometry. //! Dumps the locations.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -681,7 +681,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps on <os> the shape <s>. dumps the orientation, the index of the tshape and the index of the location.
+Dumps on <OS> the shape <S>. Dumps the orientation, the index of the TShape and the index of the Location.
 ") Dump;
 		void Dump(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -698,7 +698,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the number of objects in me on the stream <os>. (number of shapes of each type).
+Dumps the number of objects in me on the stream <OS>. (Number of shapes of each type).
 ") DumpExtent;
 		Standard_OStream & DumpExtent(std::ostream &OutValue);
 
@@ -716,7 +716,7 @@ None
 
 Description
 -----------
-Dumps the number of objects in me in the string s (number of shapes of each type).
+Dumps the number of objects in me in the string S (Number of shapes of each type).
 ") DumpExtent;
 		void DumpExtent(TCollection_AsciiString & S);
 
@@ -733,7 +733,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the geometry of me on the stream <os>.
+Dumps the geometry of me on the stream <OS>.
 ") DumpGeometry;
 		virtual void DumpGeometry(std::ostream &OutValue);
 
@@ -751,7 +751,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the geometry of <s> on the stream <os>.
+Dumps the geometry of <S> on the stream <OS>.
 ") DumpGeometry;
 		virtual void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -764,7 +764,7 @@ int
 
 Description
 -----------
-Returns the toptools_formatversion.
+Returns the TopTools_FormatVersion.
 ") FormatNb;
 		Standard_Integer FormatNb();
 
@@ -782,7 +782,7 @@ int
 
 Description
 -----------
-Returns the index of <s>.
+Returns the index of <S>.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
@@ -827,7 +827,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared. //! reads the locations. //! reads the geometry calling readgeometry. //! reads the shapes. for each shape reads the type. calls readgeometry(t,s). reads the flag, the subshapes.
+Reads the content of me from the stream <IS>. me is first cleared. //! Reads the locations. //! Reads the geometry calling ReadGeometry. //! Reads the shapes. For each shape Reads the type. calls ReadGeometry(T,S). Reads the flag, the subshapes.
 ") Read;
 		virtual void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -846,7 +846,7 @@ None
 
 Description
 -----------
-Reads from <is> a shape and returns it in s.
+Reads from <IS> a shape and returns it in S.
 ") Read;
 		void Read(TopoDS_Shape & S, std::istream & IS);
 
@@ -865,7 +865,7 @@ None
 
 Description
 -----------
-Reads the geometry of me from the stream <is>.
+Reads the geometry of me from the stream <IS>.
 ") ReadGeometry;
 		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -885,7 +885,7 @@ None
 
 Description
 -----------
-Reads the geometry of a shape of type <t> from the stream <is> and returns it in <s>.
+Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
 ") ReadGeometry;
 		virtual void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
@@ -903,7 +903,7 @@ None
 
 Description
 -----------
-Sets the toptools_formatversion.
+Sets the TopTools_FormatVersion.
 ") SetFormatNb;
 		void SetFormatNb(const Standard_Integer theFormatNb);
 
@@ -921,7 +921,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the sub-shape of index <i>.
+Returns the sub-shape of index <I>.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I);
 
@@ -939,7 +939,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read. //! writes the locations. //! writes the geometry calling writegeometry. //! dumps the shapes from last to first. for each shape: write the type. calls writegeometry(s). write the flags, the subshapes.
+Writes the content of me on the stream <OS> in a format that can be read back by Read. //! Writes the locations. //! Writes the geometry calling WriteGeometry. //! Dumps the shapes from last to first. For each shape: Write the type. calls WriteGeometry(S). Write the flags, the subshapes.
 ") Write;
 		virtual void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -957,7 +957,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes on <os> the shape <s>. writes the orientation, the index of the tshape and the index of the location.
+Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 ") Write;
 		void Write(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -975,7 +975,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the geometry of me on the stream <os> in a format that can be read back by read.
+Writes the geometry of me on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
 		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -993,7 +993,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the geometry of <s> on the stream <os> in a format that can be read back by read.
+Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
 		virtual void WriteGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DLPROPDOCSTRING
 "Geom2dLProp module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dlprop.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dlprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 
@@ -104,7 +104,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve <c> the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, 2 or 3). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
+Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const opencascade::handle<Geom2d_Curve> & C, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -125,7 +125,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u>. all the computations done will be related to <c> and <u>.
+Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u> and the curve is set with setcurve. the curve can have a empty constructor all the computations done will be related to <c> and <u> when the functions 'set' will be done.
+Same as previous constructor but here the parameter is set to the value <U> and the curve is set with SetCurve. the curve can have a empty constructor All the computations done will be related to <C> and <U> when the functions 'set' will be done.
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const Standard_Integer N, const Standard_Real Resolution);
 
@@ -162,7 +162,7 @@ None
 
 Description
 -----------
-Returns the centre of curvature <p>.
+Returns the centre of curvature <P>.
 ") CentreOfCurvature;
 		void CentreOfCurvature(gp_Pnt2d & P);
 
@@ -188,7 +188,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the first derivative. the derivative is computed if it has not been yet.
+Returns the first derivative. The derivative is computed if it has not been yet.
 ") D1;
 		const gp_Vec2d D1();
 
@@ -201,7 +201,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the second derivative. the derivative is computed if it has not been yet.
+Returns the second derivative. The derivative is computed if it has not been yet.
 ") D2;
 		const gp_Vec2d D2();
 
@@ -214,7 +214,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the third derivative. the derivative is computed if it has not been yet.
+Returns the third derivative. The derivative is computed if it has not been yet.
 ") D3;
 		const gp_Vec2d D3();
 
@@ -227,7 +227,7 @@ bool
 
 Description
 -----------
-Returns true if the tangent is defined. for example, the tangent is not defined if the three first derivatives are all null.
+Returns True if the tangent is defined. For example, the tangent is not defined if the three first derivatives are all null.
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined();
 
@@ -245,7 +245,7 @@ None
 
 Description
 -----------
-Returns the normal direction <n>.
+Returns the normal direction <N>.
 ") Normal;
 		void Normal(gp_Dir2d & N);
 
@@ -281,7 +281,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve for the parameter value <u>.
+Initializes the local properties of the curve for the parameter value <U>.
 ") SetParameter;
 		void SetParameter(const Standard_Real U);
 
@@ -299,7 +299,7 @@ None
 
 Description
 -----------
-Output the tangent direction <d>.
+output the tangent direction <D>.
 ") Tangent;
 		void Tangent(gp_Dir2d & D);
 
@@ -312,7 +312,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the point.
+Returns the Point.
 ") Value;
 		const gp_Pnt2d Value();
 
@@ -339,7 +339,7 @@ None
 
 Description
 -----------
-Initializes the framework. note: the curve on which the local properties are computed is defined using one of the following functions: perform, performcurext or performinf.
+Initializes the framework. Note: The curve on which the local properties are computed is defined using one of the following functions: Perform, PerformCurExt or PerformInf.
 ") Geom2dLProp_CurAndInf2d;
 		 Geom2dLProp_CurAndInf2d();
 
@@ -370,7 +370,7 @@ None
 
 Description
 -----------
-For the curve c, computes both the inflection points and the maximum and minimum curvatures.
+For the curve C, Computes both the inflection points and the maximum and minimum curvatures.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -388,7 +388,7 @@ None
 
 Description
 -----------
-For the curve c, computes the locals extremas of curvature.
+For the curve C, Computes the locals extremas of curvature.
 ") PerformCurExt;
 		void PerformCurExt(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -406,7 +406,7 @@ None
 
 Description
 -----------
-For the curve c, computes the inflections. after computation, the following functions can be used: - isdone to check if the computation was successful - nbpoints to obtain the number of computed particular points - parameter to obtain the parameter on the curve for each particular point - type to check if the point is an inflection point or an extremum of curvature of the curve c. warning these functions can be used to analyze a series of curves, however it is necessary to clear the table of results between each computation.
+For the curve C, Computes the inflections. After computation, the following functions can be used: - IsDone to check if the computation was successful - NbPoints to obtain the number of computed particular points - Parameter to obtain the parameter on the curve for each particular point - Type to check if the point is an inflection point or an extremum of curvature of the curve C. Warning These functions can be used to analyze a series of curves, however it is necessary to clear the table of results between each computation.
 ") PerformInf;
 		void PerformInf(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -438,7 +438,7 @@ int
 
 Description
 -----------
-Returns the order of continuity of the curve <c>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
+returns the order of continuity of the curve <C>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -459,7 +459,7 @@ None
 
 Description
 -----------
-Computes the point <p> and first derivative <v1> of parameter <u> on the curve <c>.
+Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 ") D1;
 		static void D1(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -481,7 +481,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1> and second derivative <v2> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 ") D2;
 		static void D2(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -504,7 +504,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1>, the second derivative <v2> and third derivative <v3> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 ") D3;
 		static void D3(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -522,7 +522,7 @@ float
 
 Description
 -----------
-Returns the first parameter bound of the curve.
+returns the first parameter bound of the curve.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -540,7 +540,7 @@ float
 
 Description
 -----------
-Returns the last parameter bound of the curve. firstparameter must be less than lastparameter.
+returns the last parameter bound of the curve. FirstParameter must be less than LastParameter.
 ") LastParameter;
 		static Standard_Real LastParameter(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -560,7 +560,7 @@ None
 
 Description
 -----------
-Computes the point <p> of parameter <u> on the curve <c>.
+Computes the point <P> of parameter <U> on the curve <C>.
 ") Value;
 		static void Value(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -611,7 +611,7 @@ D: float
 
 Description
 -----------
-Returns the derivative for the variable <x>.
+Returns the derivative for the variable <X>.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -629,7 +629,7 @@ bool
 
 Description
 -----------
-True if param corresponds to a minus of the radius of curvature.
+True if Param corresponds to a minus of the radius of curvature.
 ") IsMinKC;
 		Standard_Boolean IsMinKC(const Standard_Real Param);
 
@@ -647,7 +647,7 @@ F: float
 
 Description
 -----------
-Returns the value for the variable <x>.
+Returns the value for the variable <X>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -666,7 +666,7 @@ D: float
 
 Description
 -----------
-Returns the value of the function and the derivative for the variable <x>.
+Returns the value of the function and the derivative for the variable <X>.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -716,7 +716,7 @@ D: float
 
 Description
 -----------
-Returns the derivative for the variable <x>.
+Returns the derivative for the variable <X>.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -734,7 +734,7 @@ F: float
 
 Description
 -----------
-Returns the value for the variable <x>.
+Returns the value for the variable <X>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -753,7 +753,7 @@ D: float
 
 Description
 -----------
-Returns the value of the function and the derivative for the variable <x>.
+Returns the value of the function and the derivative for the variable <X>.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -833,7 +833,7 @@ None
 
 Description
 -----------
-Computes the locals extremas of curvature. in the interval of parameters [umin,umax].
+Computes the locals extremas of curvature. in the interval of parameters [UMin,UMax].
 ") PerformCurExt;
 		void PerformCurExt(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UMin, const Standard_Real UMax, LProp_CurAndInf & Result);
 
@@ -873,7 +873,7 @@ None
 
 Description
 -----------
-Computes the inflections in the interval of parameters [umin,umax].
+Computes the inflections in the interval of parameters [UMin,UMax].
 ") PerformInf;
 		void PerformInf(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UMin, const Standard_Real UMax, LProp_CurAndInf & Result);
 

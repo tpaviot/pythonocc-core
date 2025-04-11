@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ELCLIBDOCSTRING
 "ElCLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_elclib.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_elclib.html"
 %enddef
 %module (package="OCC.Core", docstring=ELCLIBDOCSTRING) ElCLib
 
@@ -99,7 +99,7 @@ U2: float
 
 Description
 -----------
-Adjust u1 and u2 in the parametric range ufirst ulast of a periodic curve, where ulast - ufirst is its period. to do this, this function: - sets u1 in the range [ ufirst, ulast ] by adding/removing the period to/from the value u1, then - sets u2 in the range [ u1, u1 + period ] by adding/removing the period to/from the value u2. precision is used to test the equalities.
+Adjust U1 and U2 in the parametric range UFirst Ulast of a periodic curve, where ULast - UFirst is its period. To do this, this function: - sets U1 in the range [ UFirst, ULast ] by adding/removing the period to/from the value U1, then - sets U2 in the range [ U1, U1 + period ] by adding/removing the period to/from the value U2. Precision is used to test the equalities.
 ") AdjustPeriodic;
 		static void AdjustPeriodic(const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real Precision, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -317,7 +317,7 @@ float
 
 Description
 -----------
-Pos is the axis of the circle parametrization in the local coordinate system of the circle x (u) = radius * cos (u) y (u) = radius * sin (u).
+Pos is the Axis of the Circle parametrization In the local coordinate system of the circle X (U) = Radius * Cos (U) Y (U) = Radius * Sin (U).
 ") CircleParameter;
 		static Standard_Real CircleParameter(const gp_Ax22d & Pos, const gp_Pnt2d & P);
 
@@ -378,7 +378,7 @@ None
 
 Description
 -----------
-For elementary curves (lines, circles and conics) from the gp package, computes: - the point p of parameter u, and - the first derivative vector v1 at this point. the results p and v1 are either: - a gp_pnt point and a gp_vec vector, for a curve in 3d space, or - a gp_pnt2d point and a gp_vec2d vector, for a curve in 2d space.
+For elementary curves (lines, circles and conics) from the gp package, computes: - the point P of parameter U, and - the first derivative vector V1 at this point. The results P and V1 are either: - a gp_Pnt point and a gp_Vec vector, for a curve in 3D space, or - a gp_Pnt2d point and a gp_Vec2d vector, for a curve in 2D space.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Lin & L, gp_Pnt & P, gp_Vec & V1);
 
@@ -589,7 +589,7 @@ None
 
 Description
 -----------
-For elementary curves (circles and conics) from the gp package, computes: - the point p of parameter u, and - the first and second derivative vectors v1 and v2 at this point. the results, p, v1 and v2, are either: - a gp_pnt point and two gp_vec vectors, for a curve in 3d space, or - a gp_pnt2d point and two gp_vec2d vectors, for a curve in 2d space.
+For elementary curves (circles and conics) from the gp package, computes: - the point P of parameter U, and - the first and second derivative vectors V1 and V2 at this point. The results, P, V1 and V2, are either: - a gp_Pnt point and two gp_Vec vectors, for a curve in 3D space, or - a gp_Pnt2d point and two gp_Vec2d vectors, for a curve in 2D space.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -766,7 +766,7 @@ None
 
 Description
 -----------
-For elementary curves (circles, ellipses and hyperbolae) from the gp package, computes: - the point p of parameter u, and - the first, second and third derivative vectors v1, v2 and v3 at this point. the results, p, v1, v2 and v3, are either: - a gp_pnt point and three gp_vec vectors, for a curve in 3d space, or - a gp_pnt2d point and three gp_vec2d vectors, for a curve in 2d space.
+For elementary curves (circles, ellipses and hyperbolae) from the gp package, computes: - the point P of parameter U, and - the first, second and third derivative vectors V1, V2 and V3 at this point. The results, P, V1, V2 and V3, are either: - a gp_Pnt point and three gp_Vec vectors, for a curve in 3D space, or - a gp_Pnt2d point and three gp_Vec2d vectors, for a curve in 2D space.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -881,7 +881,7 @@ None
 
 Description
 -----------
-In the following functions n is the order of derivation and should be greater than 0.
+In the following functions N is the order of derivation and should be greater than 0.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -901,7 +901,7 @@ gp_Vec
 
 Description
 -----------
-For elementary curves (lines, circles and conics) from the gp package, computes the vector corresponding to the nth derivative at the point of parameter u. the result is either: - a gp_vec vector for a curve in 3d space, or - a gp_vec2d vector for a curve in 2d space. in the following functions n is the order of derivation and should be greater than 0.
+For elementary curves (lines, circles and conics) from the gp package, computes the vector corresponding to the Nth derivative at the point of parameter U. The result is either: - a gp_Vec vector for a curve in 3D space, or - a gp_Vec2d vector for a curve in 2D space. In the following functions N is the order of derivation and should be greater than 0.
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Lin & L, const Standard_Integer N);
 
@@ -1311,7 +1311,7 @@ float
 
 Description
 -----------
-Pos is the axis of the ellipse parametrization in the local coordinate system of the ellipse x (u) = majorradius * cos (u) y (u) = minorradius * sin (u).
+Pos is the Axis of the Ellipse parametrization In the local coordinate system of the Ellipse X (U) = MajorRadius * Cos (U) Y (U) = MinorRadius * Sin (U).
 ") EllipseParameter;
 		static Standard_Real EllipseParameter(const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt2d & P);
 
@@ -1497,7 +1497,7 @@ None
 
 Description
 -----------
-In the following functions n is the order of derivation and should be greater than 0.
+In the following functions N is the order of derivation and should be greater than 0.
 ") HyperbolaD3;
 		static void HyperbolaD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1583,7 +1583,7 @@ float
 
 Description
 -----------
-Pos is the axis of the hyperbola parametrization in the local coordinate system of the hyperbola x (u) = majorradius * ch (u) y (u) = minorradius * sh (u).
+Pos is the Axis of the Hyperbola parametrization In the local coordinate system of the Hyperbola X (U) = MajorRadius * Ch (U) Y (U) = MinorRadius * Sh (U).
 ") HyperbolaParameter;
 		static Standard_Real HyperbolaParameter(const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt2d & P);
 
@@ -1645,7 +1645,7 @@ float
 
 Description
 -----------
-Return a value in the range <ufirst, ulast> by adding or removing the period <ulast - ufirst> to <u>. attention!!! it is expected but not checked that (ulast > ufirst).
+Return a value in the range <UFirst, ULast> by adding or removing the period <ULast - UFirst> to <U>. ATTENTION!!! It is expected but not checked that (ULast > UFirst).
 ") InPeriod;
 		static Standard_Real InPeriod(const Standard_Real U, const Standard_Real UFirst, const Standard_Real ULast);
 
@@ -1707,7 +1707,7 @@ gp_Vec
 
 Description
 -----------
-In the following functions n is the order of derivation and should be greater than 0.
+In the following functions N is the order of derivation and should be greater than 0.
 ") LineDN;
 		static gp_Vec LineDN(const Standard_Real U, const gp_Ax1 & Pos, const Standard_Integer N);
 
@@ -1765,7 +1765,7 @@ float
 
 Description
 -----------
-Parametrization p (u) = l.location() + u * l.direction().
+parametrization P (U) = L.Location() + U * L.Direction().
 ") LineParameter;
 		static Standard_Real LineParameter(const gp_Ax2d & Pos, const gp_Pnt2d & P);
 
@@ -1784,7 +1784,7 @@ gp_Pnt
 
 Description
 -----------
-Curve evaluation the following basis functions compute the derivatives on elementary curves defined by their geometric characteristics. these functions can be called without constructing a conic from package gp. they are called by the previous functions. example: a circle is defined by its position and its radius.
+Curve evaluation The following basis functions compute the derivatives on elementary curves defined by their geometric characteristics. These functions can be called without constructing a conic from package gp. They are called by the previous functions. Example: A circle is defined by its position and its radius.
 ") LineValue;
 		static gp_Pnt LineValue(const Standard_Real U, const gp_Ax1 & Pos);
 
@@ -1935,7 +1935,7 @@ gp_Vec2d
 
 Description
 -----------
-The following functions compute the parametric value corresponding to a given point on a elementary curve. the point should be on the curve.
+The following functions compute the parametric value corresponding to a given point on a elementary curve. The point should be on the curve.
 ") ParabolaDN;
 		static gp_Vec2d ParabolaDN(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, const Standard_Integer N);
 
@@ -1973,7 +1973,7 @@ float
 
 Description
 -----------
-Pos is the mirror axis of the parabola parametrization in the local coordinate system of the parabola y**2 = (2*p) * x where p is the distance between the focus and the directrix. the following functions build a 3d curve from a 2d curve at a given position defined with an ax2.
+Pos is the mirror axis of the parabola parametrization In the local coordinate system of the parabola Y**2 = (2*P) * X where P is the distance between the focus and the directrix. The following functions build a 3d curve from a 2d curve at a given position defined with an Ax2.
 ") ParabolaParameter;
 		static Standard_Real ParabolaParameter(const gp_Ax22d & Pos, const gp_Pnt2d & P);
 
@@ -2032,7 +2032,7 @@ float
 
 Description
 -----------
-Computes the parameter value of the point p on the given curve. note: in its local coordinate system, the parametric equation of the curve is given by the following: - for the line l: p(u) = po + u*vo where po is the origin and vo the unit vector of its positioning axis. - for the circle c: x(u) = radius*cos(u), y(u) = radius*sin(u) - for the ellipse e: x(u) = majorradius*cos(u). y(u) = minorradius*sin(u) - for the hyperbola h: x(u) = majorradius*ch(u), y(u) = minorradius*sh(u) - for the parabola prb: x(u) = u**2 / (2*p) y(u) = u where p is the distance between the focus and the directrix. warning the point p must be on the curve. these functions are not protected, however, and if point p is not on the curve, an exception may be raised.
+Computes the parameter value of the point P on the given curve. Note: In its local coordinate system, the parametric equation of the curve is given by the following: - for the line L: P(U) = Po + U*Vo where Po is the origin and Vo the unit vector of its positioning axis. - for the circle C: X(U) = Radius*Cos(U), Y(U) = Radius*Sin(U) - for the ellipse E: X(U) = MajorRadius*Cos(U). Y(U) = MinorRadius*Sin(U) - for the hyperbola H: X(U) = MajorRadius*Ch(U), Y(U) = MinorRadius*Sh(U) - for the parabola Prb: X(U) = U**2 / (2*p) Y(U) = U where p is the distance between the focus and the directrix. Warning The point P must be on the curve. These functions are not protected, however, and if point P is not on the curve, an exception may be raised.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Lin & L, const gp_Pnt & P);
 
@@ -2051,7 +2051,7 @@ float
 
 Description
 -----------
-Parametrization p (u) = l.location() + u * l.direction().
+parametrization P (U) = L.Location() + U * L.Direction().
 ") Parameter;
 		static Standard_Real Parameter(const gp_Lin2d & L, const gp_Pnt2d & P);
 
@@ -2089,7 +2089,7 @@ float
 
 Description
 -----------
-Parametrization in the local coordinate system of the circle x (u) = radius * cos (u) y (u) = radius * sin (u).
+parametrization In the local coordinate system of the circle X (U) = Radius * Cos (U) Y (U) = Radius * Sin (U).
 ") Parameter;
 		static Standard_Real Parameter(const gp_Circ2d & C, const gp_Pnt2d & P);
 
@@ -2127,7 +2127,7 @@ float
 
 Description
 -----------
-Parametrization in the local coordinate system of the ellipse x (u) = majorradius * cos (u) y (u) = minorradius * sin (u).
+parametrization In the local coordinate system of the Ellipse X (U) = MajorRadius * Cos (U) Y (U) = MinorRadius * Sin (U).
 ") Parameter;
 		static Standard_Real Parameter(const gp_Elips2d & E, const gp_Pnt2d & P);
 
@@ -2165,7 +2165,7 @@ float
 
 Description
 -----------
-Parametrization in the local coordinate system of the hyperbola x (u) = majorradius * ch (u) y (u) = minorradius * sh (u).
+parametrization In the local coordinate system of the Hyperbola X (U) = MajorRadius * Ch (U) Y (U) = MinorRadius * Sh (U).
 ") Parameter;
 		static Standard_Real Parameter(const gp_Hypr2d & H, const gp_Pnt2d & P);
 
@@ -2203,7 +2203,7 @@ float
 
 Description
 -----------
-Parametrization in the local coordinate system of the parabola y**2 = (2*p) * x where p is the distance between the focus and the directrix.
+parametrization In the local coordinate system of the parabola Y**2 = (2*P) * X where P is the distance between the focus and the directrix.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Parab2d & Prb, const gp_Pnt2d & P);
 
@@ -2393,7 +2393,7 @@ gp_Parab
 
 Description
 -----------
-These functions build a 3d geometric entity from a 2d geometric entity. the 'x axis' and the 'y axis' of the global coordinate system (i.e. 2d space) are lined up respectively with the 'x axis' and 'y axis' of the 3d coordinate system, pos.
+These functions build a 3D geometric entity from a 2D geometric entity. The 'X Axis' and the 'Y Axis' of the global coordinate system (i.e. 2D space) are lined up respectively with the 'X Axis' and 'Y Axis' of the 3D coordinate system, Pos.
 ") To3d;
 		static gp_Parab To3d(const gp_Ax2 & Pos, const gp_Parab2d & Prb);
 
@@ -2412,7 +2412,7 @@ gp_Pnt
 
 Description
 -----------
-For elementary curves (lines, circles and conics) from the gp package, computes the point of parameter u. the result is either: - a gp_pnt point for a curve in 3d space, or - a gp_pnt2d point for a curve in 2d space.
+For elementary curves (lines, circles and conics) from the gp package, computes the point of parameter U. The result is either: - a gp_Pnt point for a curve in 3D space, or - a gp_Pnt2d point for a curve in 2D space.
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Lin & L);
 

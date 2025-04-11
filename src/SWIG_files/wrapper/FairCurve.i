@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FAIRCURVEDOCSTRING
 "FairCurve module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_faircurve.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_faircurve.html"
 %enddef
 %module (package="OCC.Core", docstring=FAIRCURVEDOCSTRING) FairCurve
 
@@ -124,7 +124,7 @@ None
 
 Description
 -----------
-Constructor with the two points and the geometrical characteristics of the batten (elastic beam) height is the height of the deformation, and slope is the slope value, initialized at 0. the user can then supply the desired slope value by the method, setslope. other parameters are initialized as follow: - freesliding = false - constraintorder1 = 1 - constraintorder2 = 1 - angle1 = 0 - angle2 = 0 - slidingfactor = 1 exceptions negativevalue if height is less than or equal to 0. nullvalue if the distance between p1 and p2 is less than or equal to the tolerance value for distance in precision::confusion: p1.isequal(p2, precision::confusion()). the function gp_pnt2d::isequal tests to see if this is the case.
+Constructor with the two points and the geometrical characteristics of the batten (elastic beam) Height is the height of the deformation, and Slope is the slope value, initialized at 0. The user can then supply the desired slope value by the method, SetSlope. Other parameters are initialized as follow: - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - SlidingFactor = 1 Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 ") FairCurve_Batten;
 		 FairCurve_Batten(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real Height, const Standard_Real Slope = 0);
 
@@ -143,7 +143,7 @@ Code: FairCurve_AnalysisCode
 
 Description
 -----------
-Performs the algorithm, using the arguments code, nbiterations and tolerance and computes the curve with respect to the constraints. code will have one of the following values: - ok - notconverged - infinitesliding - nullheight the parameters tolerance and nbiterations control how precise the computation is, and how long it will take.
+Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints. Code will have one of the following values: - OK - NotConverged - InfiniteSliding - NullHeight The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.
 ") Compute;
 		virtual Standard_Boolean Compute(FairCurve_AnalysisCode &OutValue, const Standard_Integer NbIterations = 50, const Standard_Real Tolerance = 1.0e-3);
 
@@ -156,7 +156,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns the computed curve a 2d bspline.
+Returns the computed curve a 2d BSpline.
 ") Curve;
 		opencascade::handle<Geom2d_BSplineCurve> Curve();
 
@@ -173,7 +173,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. //! private methodes --------------------------------------.
+Prints on the stream o information on the current state of the object. //! Private methodes --------------------------------------.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -238,7 +238,7 @@ bool
 
 Description
 -----------
-Returns the initial free sliding value, false by default. free sliding is generally more aesthetically pleasing than constrained sliding. however, the computation can fail with values such as angles greater than pi/2. this is because the resulting batten length is theoretically infinite.
+Returns the initial free sliding value, false by default. Free sliding is generally more aesthetically pleasing than constrained sliding. However, the computation can fail with values such as angles greater than PI/2. This is because the resulting batten length is theoretically infinite.
 ") GetFreeSliding;
 		Standard_Boolean GetFreeSliding();
 
@@ -264,7 +264,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the established location of the point p1.
+Returns the established location of the point P1.
 ") GetP1;
 		const gp_Pnt2d GetP1();
 
@@ -277,7 +277,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the established location of the point p2.
+Returns the established location of the point P2.
 ") GetP2;
 		const gp_Pnt2d GetP2();
 
@@ -321,7 +321,7 @@ None
 
 Description
 -----------
-Allows you to change the angle angle1 at the first point, p1. the default setting is 0.
+Allows you to change the angle Angle1 at the first point, P1. The default setting is 0.
 ") SetAngle1;
 		void SetAngle1(const Standard_Real Angle1);
 
@@ -339,7 +339,7 @@ None
 
 Description
 -----------
-Allows you to change the angle angle2 at the second point, p2. the default setting is 0.
+Allows you to change the angle Angle2 at the second point, P2. The default setting is 0.
 ") SetAngle2;
 		void SetAngle2(const Standard_Real Angle2);
 
@@ -357,7 +357,7 @@ None
 
 Description
 -----------
-Allows you to change the order of the constraint on the first point. constraintorder has the default setting of 1. the following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. the third setting is only valid for faircurve_minimalvariation curves. these constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
+Allows you to change the order of the constraint on the first point. ConstraintOrder has the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
 ") SetConstraintOrder1;
 		void SetConstraintOrder1(const Standard_Integer ConstraintOrder);
 
@@ -375,7 +375,7 @@ None
 
 Description
 -----------
-Allows you to change the order of the constraint on the second point. constraintorder is initialized with the default setting of 1. the following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. the third setting is only valid for faircurve_minimalvariation curves. these constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
+Allows you to change the order of the constraint on the second point. ConstraintOrder is initialized with the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
 ") SetConstraintOrder2;
 		void SetConstraintOrder2(const Standard_Integer ConstraintOrder);
 
@@ -393,7 +393,7 @@ None
 
 Description
 -----------
-Freesliding is initialized with the default setting false. when freesliding is set to true and, as a result, sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.
+Freesliding is initialized with the default setting false. When Freesliding is set to true and, as a result, sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.
 ") SetFreeSliding;
 		void SetFreeSliding(const Standard_Boolean FreeSliding);
 
@@ -411,7 +411,7 @@ None
 
 Description
 -----------
-Allows you to change the height of the deformation. raises negativevalue; -- if height <= 0 if height <= 0.
+Allows you to change the height of the deformation. Raises NegativeValue; -- if Height <= 0 if Height <= 0.
 ") SetHeight;
 		void SetHeight(const Standard_Real Height);
 
@@ -429,7 +429,7 @@ None
 
 Description
 -----------
-Allows you to change the location of the point, p1, and in doing so, modify the curve. warning this method changes the angle as well as the point. exceptions nullvalue if the distance between p1 and p2 is less than or equal to the tolerance value for distance in precision::confusion: p1.isequal(p2, precision::confusion()). the function gp_pnt2d::isequal tests to see if this is the case.
+Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 ") SetP1;
 		void SetP1(const gp_Pnt2d & P1);
 
@@ -447,7 +447,7 @@ None
 
 Description
 -----------
-Allows you to change the location of the point, p1, and in doing so, modify the curve. warning this method changes the angle as well as the point. exceptions nullvalue if the distance between p1 and p2 is less than or equal to the tolerance value for distance in precision::confusion: p1.isequal(p2, precision::confusion()). the function gp_pnt2d::isequal tests to see if this is the case.
+Allows you to change the location of the point, P1, and in doing so, modify the curve. Warning This method changes the angle as well as the point. Exceptions NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 ") SetP2;
 		void SetP2(const gp_Pnt2d & P2);
 
@@ -465,7 +465,7 @@ None
 
 Description
 -----------
-Allows you to change the ratio slidingfactor. this compares the length of the batten and the reference length, which is, in turn, a function of the constraints. this modification has one of the following two effects: - if you increase the value, it inflates the batten - if you decrease the value, it flattens the batten. when sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten. when sliding is imposed, a value is required for the sliding factor. slidingfactor is initialized with the default setting of 1.
+Allows you to change the ratio SlidingFactor. This compares the length of the batten and the reference length, which is, in turn, a function of the constraints. This modification has one of the following two effects: - if you increase the value, it inflates the batten - if you decrease the value, it flattens the batten. When sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten. When sliding is imposed, a value is required for the sliding factor. SlidingFactor is initialized with the default setting of 1.
 ") SetSlidingFactor;
 		void SetSlidingFactor(const Standard_Real SlidingFactor);
 
@@ -483,7 +483,7 @@ None
 
 Description
 -----------
-Allows you to set the slope value, slope.
+Allows you to set the slope value, Slope.
 ") SetSlope;
 		void SetSlope(const Standard_Real Slope);
 
@@ -496,7 +496,7 @@ float
 
 Description
 -----------
-Computes the real number value for length sliding of reference for new constraints. if you want to give a specific length to a batten curve, use the following syntax: b.setslidingfactor(l / b.slidingofreference()) where b is the name of the batten curve object.
+Computes the real number value for length Sliding of Reference for new constraints. If you want to give a specific length to a batten curve, use the following syntax: b.SetSlidingFactor(L / b.SlidingOfReference()) where b is the name of the batten curve object.
 ") SlidingOfReference;
 		Standard_Real SlidingOfReference();
 
@@ -530,7 +530,7 @@ None
 
 Description
 -----------
-Constructor of linear batten with heigth: the heigth at the middle point slope: the geometric slope of the batten sliding: active length of the batten without extension.
+Constructor of linear batten with Heigth: the Heigth at the middle point Slope: the geometric slope of the batten Sliding: Active Length of the batten without extension.
 ") FairCurve_BattenLaw;
 		 FairCurve_BattenLaw(const Standard_Real Heigth, const Standard_Real Slope, const Standard_Real Sliding);
 
@@ -548,7 +548,7 @@ None
 
 Description
 -----------
-Change the value of heigth at the middle point.
+Change the value of Heigth at the middle point.
 ") SetHeigth;
 		void SetHeigth(const Standard_Real Heigth);
 
@@ -602,7 +602,7 @@ THeigth: float
 
 Description
 -----------
-Computes the value of the heigth for the parameter t on the neutral fibber.
+computes the value of the heigth for the parameter T on the neutral fibber.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real T, Standard_Real &OutValue);
 
@@ -630,7 +630,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -643,7 +643,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -695,7 +695,7 @@ bool
 
 Description
 -----------
-Computes the gradient <g> of the energys for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the gradient <G> of the energys for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Gradient;
 		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -708,7 +708,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the energy.
+returns the number of variables of the energy.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -721,7 +721,7 @@ opencascade::handle<TColgp_HArray1OfPnt2d>
 
 Description
 -----------
-Return the poles.
+return the poles.
 ") Poles;
 		const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles();
 
@@ -739,7 +739,7 @@ E: float
 
 Description
 -----------
-Computes the values of the energys e for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values of the Energys E for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -758,7 +758,7 @@ E: float
 
 Description
 -----------
-Computes the energy <e> and the gradient <g> of the energy for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the Energy <E> and the gradient <G> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -778,7 +778,7 @@ E: float
 
 Description
 -----------
-Computes the energy <e>, the gradient <g> and the hessian <h> of the energy for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the Energy <E>, the gradient <G> and the Hessian <H> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
 
@@ -796,7 +796,7 @@ bool
 
 Description
 -----------
-Compute the variables <x> which correspond with the field <mypoles>.
+compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
 		virtual Standard_Boolean Variable(math_Vector & X);
 
@@ -833,7 +833,7 @@ None
 
 Description
 -----------
-The tolerance required on the solution is given by tolerance. iteration are stopped if (!withsingularity) and h(f(xi)) is not definite positive (if the smaller eigenvalue of h < convexity) or isconverged() returns true for 2 successives iterations. warning: this constructor do not computation.
+The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation.
 ") FairCurve_Newton;
 		 FairCurve_Newton(const math_MultipleVarFunctionWithHessian & theFunction, const Standard_Real theSpatialTolerance = 1.0e-7, const Standard_Real theCriteriumTolerance = 1.0e-7, const Standard_Integer theNbIterations = 40, const Standard_Real theConvexity = 1.0e-6, const Standard_Boolean theWithSingularity = Standard_True);
 
@@ -846,7 +846,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check the convergence: || xi+1 - xi || < spatialtolerance/100 or || xi+1 - xi || < spatialtolerance and |f(xi+1) - f(xi)| < criteriumtolerance * |f(xi)| it can be redefined in a sub-class to implement a specific test.
+This method is called at the end of each iteration to check the convergence: || Xi+1 - Xi || < SpatialTolerance/100 Or || Xi+1 - Xi || < SpatialTolerance and |F(Xi+1) - F(Xi)| < CriteriumTolerance * |F(xi)| It can be redefined in a sub-class to implement a specific test.
 ") IsConverged;
 		virtual Standard_Boolean IsConverged();
 
@@ -902,7 +902,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -958,7 +958,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1015,7 +1015,7 @@ None
 
 Description
 -----------
-Change the length sliding.
+change the length sliding.
 ") SetLengthSliding;
 		void SetLengthSliding(const Standard_Real LengthSliding);
 
@@ -1034,7 +1034,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1075,7 +1075,7 @@ None
 
 Description
 -----------
-Angles corresspond to the ox axis.
+Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfBatten;
 		 FairCurve_EnergyOfBatten(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer ContrOrder1, const Standard_Integer ContrOrder2, const FairCurve_BattenLaw & Law, const Standard_Real LengthSliding, const Standard_Boolean FreeSliding = Standard_True, const Standard_Real Angle1 = 0, const Standard_Real Angle2 = 0);
 
@@ -1088,7 +1088,7 @@ float
 
 Description
 -----------
-Return the lengthsliding = p1p2 + sliding.
+return the lengthSliding = P1P2 + Sliding.
 ") LengthSliding;
 		Standard_Real LengthSliding();
 
@@ -1101,7 +1101,7 @@ FairCurve_AnalysisCode
 
 Description
 -----------
-Return the status.
+return the status.
 ") Status;
 		FairCurve_AnalysisCode Status();
 
@@ -1119,7 +1119,7 @@ bool
 
 Description
 -----------
-Compute the variables <x> which correspond with the field <mypoles>.
+compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
 		virtual Standard_Boolean Variable(math_Vector & X);
 
@@ -1163,7 +1163,7 @@ None
 
 Description
 -----------
-Angles corresspond to the ox axis.
+Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfMVC;
 		 FairCurve_EnergyOfMVC(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer ContrOrder1, const Standard_Integer ContrOrder2, const FairCurve_BattenLaw & Law, const Standard_Real PhysicalRatio, const Standard_Real LengthSliding, const Standard_Boolean FreeSliding = Standard_True, const Standard_Real Angle1 = 0, const Standard_Real Angle2 = 0, const Standard_Real Curvature1 = 0, const Standard_Real Curvature2 = 0);
 
@@ -1176,7 +1176,7 @@ float
 
 Description
 -----------
-Return the lengthsliding = p1p2 + sliding.
+return the lengthSliding = P1P2 + Sliding.
 ") LengthSliding;
 		Standard_Real LengthSliding();
 
@@ -1189,7 +1189,7 @@ FairCurve_AnalysisCode
 
 Description
 -----------
-Return the status.
+return the status.
 ") Status;
 		FairCurve_AnalysisCode Status();
 
@@ -1207,7 +1207,7 @@ bool
 
 Description
 -----------
-Compute the variables <x> which correspond with the field <mypoles>.
+compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
 		virtual Standard_Boolean Variable(math_Vector & X);
 
@@ -1243,7 +1243,7 @@ None
 
 Description
 -----------
-Constructs the two contact points p1 and p2 and the geometrical characteristics of the batten (elastic beam) these include the real number values for height of deformation height, slope value slope, and kind of energy physicalratio. the kinds of energy include: - jerk (0) - sagging (1). note that the default setting for physical ration is in faircurve_batten other parameters are initialized as follow: - freesliding = false - constraintorder1 = 1 - constraintorder2 = 1 - angle1 = 0 - angle2 = 0 - curvature1 = 0 - curvature2 = 0 - slidingfactor = 1 warning if physicalratio equals 1, you cannot impose constraints on curvature. exceptions negativevalue if height is less than or equal to 0. nullvalue if the distance between p1 and p2 is less than or equal to the tolerance value for distance in precision::confusion: p1.isequal(p2, precision::confusion()). the function gp_pnt2d::isequal tests to see if this is the case. definition of the geometricals constraints.
+Constructs the two contact points P1 and P2 and the geometrical characteristics of the batten (elastic beam) These include the real number values for height of deformation Height, slope value Slope, and kind of energy PhysicalRatio. The kinds of energy include: - Jerk (0) - Sagging (1). Note that the default setting for Physical Ration is in FairCurve_Batten Other parameters are initialized as follow: - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - Curvature1 = 0 - Curvature2 = 0 - SlidingFactor = 1 Warning If PhysicalRatio equals 1, you cannot impose constraints on curvature. Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case. Definition of the geometricals constraints.
 ") FairCurve_MinimalVariation;
 		 FairCurve_MinimalVariation(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real Heigth, const Standard_Real Slope = 0, const Standard_Real PhysicalRatio = 0);
 
@@ -1262,7 +1262,7 @@ ACode: FairCurve_AnalysisCode
 
 Description
 -----------
-Computes the curve with respect to the constraints, nbiterations and tolerance. the tolerance setting allows you to control the precision of computation, and the maximum number of iterations allows you to set a limit on computation time.
+Computes the curve with respect to the constraints, NbIterations and Tolerance. The tolerance setting allows you to control the precision of computation, and the maximum number of iterations allows you to set a limit on computation time.
 ") Compute;
 		virtual Standard_Boolean Compute(FairCurve_AnalysisCode &OutValue, const Standard_Integer NbIterations = 50, const Standard_Real Tolerance = 1.0e-3);
 
@@ -1279,7 +1279,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -1372,7 +1372,7 @@ None
 
 Description
 -----------
-Allows you to set the physical ratio ratio. the kinds of energy which you can specify include: 0 is only 'jerk' energy 1 is only 'sagging' energy like batten warning: if ratio is 1 it is impossible to impose curvature constraints. raises domainerror if ratio < 0 or ratio > 1.
+Allows you to set the physical ratio Ratio. The kinds of energy which you can specify include: 0 is only 'Jerk' Energy 1 is only 'Sagging' Energy like batten Warning: if Ratio is 1 it is impossible to impose curvature constraints. Raises DomainError if Ratio < 0 or Ratio > 1.
 ") SetPhysicalRatio;
 		void SetPhysicalRatio(const Standard_Real Ratio);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXDOCSTRING
 "Approx module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_approx.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approx.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXDOCSTRING) Approx
 
@@ -273,7 +273,7 @@ None
 
 Description
 -----------
-Approximation of a curve with respect of the required tolerance tol3d.
+Approximation of a curve with respect of the required tolerance Tol3D.
 ") Approx_Curve3d;
 		 Approx_Curve3d(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
@@ -316,7 +316,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the approximation did come out with a result that is not necessarely within the required tolerance.
+returns Standard_True if the approximation did come out with a result that is not NECESSARELY within the required tolerance.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -329,7 +329,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the approximation has been done within required tolerance.
+returns Standard_True if the approximation has been done within required tolerance.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -342,7 +342,7 @@ float
 
 Description
 -----------
-Returns the maximum error (>0 when an approximation has been done, 0 if no approximation).
+returns the Maximum Error (>0 when an approximation has been done, 0 if no approximation).
 ") MaxError;
 		Standard_Real MaxError();
 
@@ -383,7 +383,7 @@ None
 
 Description
 -----------
-This constructor calls perform method. this constructor is deprecated.
+This constructor calls perform method. This constructor is deprecated.
 ") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
 
@@ -405,7 +405,12 @@ None
 
 Description
 -----------
-This constructor does not call perform method. @param thec2d 2d curve to be approximated in 3d. @param thesurf surface where 2d curve is located. @param thefirst first parameter of resulting curve. @param thefirst last parameter of resulting curve. @param thetol computation tolerance.
+This constructor does not call perform method. 
+Parameter theC2D 2D Curve to be approximated in 3D. 
+Parameter theSurf Surface where 2D curve is located. 
+Parameter theFirst First parameter of resulting curve. 
+Parameter theFirst Last parameter of resulting curve. 
+Parameter theTol Computation tolerance.
 ") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
 
@@ -483,7 +488,7 @@ float
 
 Description
 -----------
-Returns the maximum errors relatively to the u component or the v component of the 2d curve.
+returns the maximum errors relatively to the U component or the V component of the 2d Curve.
 ") MaxError2dV;
 		Standard_Real MaxError2dV();
 
@@ -518,7 +523,12 @@ None
 
 Description
 -----------
-Constructs the 3d curve. input parameters are ignored when the input curve is u-isoline or v-isoline. @param themaxsegments maximal number of segments in the resulting spline. @param themaxdegree maximal degree of the result. @param thecontinuity resulting continuity. @param theonly3d determines building only 3d curve. @param theonly2d determines building only 2d curve.
+Constructs the 3d curve. Input parameters are ignored when the input curve is U-isoline or V-isoline. 
+Parameter theMaxSegments Maximal number of segments in the resulting spline. 
+Parameter theMaxDegree Maximal degree of the result. 
+Parameter theContinuity Resulting continuity. 
+Parameter theOnly3d Determines building only 3D curve. 
+Parameter theOnly2d Determines building only 2D curve.
 ") Perform;
 		void Perform(const Standard_Integer theMaxSegments, const Standard_Integer theMaxDegree, const GeomAbs_Shape theContinuity, const Standard_Boolean theOnly3d = Standard_False, const Standard_Boolean theOnly2d = Standard_False);
 
@@ -554,7 +564,7 @@ None
 
 Description
 -----------
-Case of a free 3d curve.
+case of a free 3D curve.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
@@ -577,7 +587,7 @@ None
 
 Description
 -----------
-Case of a curve on one surface.
+case of a curve on one surface.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
@@ -602,7 +612,7 @@ None
 
 Description
 -----------
-Case of a curve on two surfaces.
+case of a curve on two surfaces.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D1, const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & C2D2, const opencascade::handle<Adaptor3d_Surface> & Surf2, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
@@ -615,7 +625,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns the bsplinecurve representing the reparametrized 2d curve on the first surface (case of a curve on one or two surfaces).
+returns the BsplineCurve representing the reparametrized 2D curve on the first surface (case of a curve on one or two surfaces).
 ") Curve2d1;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d1();
 
@@ -628,7 +638,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns the bsplinecurve representing the reparametrized 2d curve on the second surface (case of a curve on two surfaces).
+returns the BsplineCurve representing the reparametrized 2D curve on the second surface (case of a curve on two surfaces).
 ") Curve2d2;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d2();
 
@@ -641,7 +651,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns the bspline curve corresponding to the reparametrized 3d curve.
+returns the Bspline curve corresponding to the reparametrized 3D curve.
 ") Curve3d;
 		opencascade::handle<Geom_BSplineCurve> Curve3d();
 
@@ -658,7 +668,7 @@ o: Standard_OStream
 
 Description
 -----------
-Print the maximum errors(s).
+print the maximum errors(s).
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -697,7 +707,7 @@ float
 
 Description
 -----------
-Returns the maximum error on the first reparametrized 2d curve.
+returns the maximum error on the first reparametrized 2D curve.
 ") MaxError2d1;
 		Standard_Real MaxError2d1();
 
@@ -710,7 +720,7 @@ float
 
 Description
 -----------
-Returns the maximum error on the second reparametrized 2d curve.
+returns the maximum error on the second reparametrized 2D curve.
 ") MaxError2d2;
 		Standard_Real MaxError2d2();
 
@@ -723,7 +733,7 @@ float
 
 Description
 -----------
-Returns the maximum error on the reparametrized 3d curve.
+returns the maximum error on the reparametrized 3D curve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -818,7 +828,7 @@ bool
 
 Description
 -----------
-If mycase != 1.
+if myCase != 1.
 ") EvalCase1;
 		Standard_Boolean EvalCase1(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
@@ -838,7 +848,7 @@ bool
 
 Description
 -----------
-If mycase != 2.
+if myCase != 2.
 ") EvalCase2;
 		Standard_Boolean EvalCase2(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
@@ -858,7 +868,7 @@ bool
 
 Description
 -----------
-If mycase != 3.
+if myCase != 3.
 ") EvalCase3;
 		Standard_Boolean EvalCase3(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
@@ -902,7 +912,7 @@ float
 
 Description
 -----------
-Returns original parameter corresponding s.
+returns original parameter corresponding S.
 ") GetSParameter;
 		Standard_Real GetSParameter(const Standard_Real U);
 
@@ -922,7 +932,7 @@ float
 
 Description
 -----------
-Returns original parameter corresponding s. if case == 1 computation is performed on myc2d1 and mysurf1, otherwise it is done on myc2d2 and mysurf2.
+returns original parameter corresponding S. if Case == 1 computation is performed on myC2D1 and mySurf1, otherwise it is done on myC2D2 and mySurf2.
 ") GetUParameter;
 		Standard_Real GetUParameter(Adaptor3d_Curve & C, const Standard_Real S, const Standard_Integer NumberOfCurve);
 
@@ -941,7 +951,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1005,7 +1015,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1023,7 +1033,7 @@ None
 
 Description
 -----------
----purpose update the tolerance to used.
+---Purpose Update the tolerance to used.
 ") SetTol;
 		void SetTol(const Standard_Real Tol);
 
@@ -1043,7 +1053,7 @@ None
 
 Description
 -----------
-If first < 0 or last > 1.
+if First < 0 or Last > 1.
 ") Trim;
 		void Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -1084,7 +1094,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 ") Approx_FitAndDivide;
 		 Approx_FitAndDivide(const AppCont_Function & Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
@@ -1127,7 +1137,7 @@ tol2d: float
 
 Description
 -----------
-Returns the tolerances 2d and 3d of the <index> multicurve.
+returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1140,7 +1150,7 @@ bool
 
 Description
 -----------
-Returns false if at a moment of the approximation, the status noapproximation has been sent by the user when more points were needed.
+returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
@@ -1153,7 +1163,7 @@ bool
 
 Description
 -----------
-Returns false if the status nopointsadded has been sent.
+returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
@@ -1166,7 +1176,7 @@ int
 
 Description
 -----------
-Returns the number of multicurve doing the approximation of the multiline.
+Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
@@ -1203,7 +1213,7 @@ None
 
 Description
 -----------
-Runs the algorithm after having initialized the fields.
+runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppCont_Function & Line);
 
@@ -1241,7 +1251,7 @@ None
 
 Description
 -----------
-Changes the degrees of the approximation.
+changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
@@ -1259,7 +1269,7 @@ None
 
 Description
 -----------
-Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. By default hang checking is used.
 ") SetHangChecking;
 		void SetHangChecking(const Standard_Boolean theHangChecking);
 
@@ -1277,7 +1287,7 @@ None
 
 Description
 -----------
-Set inverse order of degree selection: if theinvordr = true, current degree is chosen by inverse order - from maxdegree to mindegree. by default inverse order is used.
+Set inverse order of degree selection: if theInvOrdr = true, current degree is chosen by inverse order - from maxdegree to mindegree. By default inverse order is used.
 ") SetInvOrder;
 		void SetInvOrder(const Standard_Boolean theInvOrder);
 
@@ -1332,7 +1342,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the approximation multicurve of range <index>.
+returns the approximation MultiCurve of range <Index>.
 ") Value;
 		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
@@ -1371,7 +1381,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 ") Approx_FitAndDivide2d;
 		 Approx_FitAndDivide2d(const AppCont_Function & Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
@@ -1414,7 +1424,7 @@ tol2d: float
 
 Description
 -----------
-Returns the tolerances 2d and 3d of the <index> multicurve.
+returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1427,7 +1437,7 @@ bool
 
 Description
 -----------
-Returns false if at a moment of the approximation, the status noapproximation has been sent by the user when more points were needed.
+returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
@@ -1440,7 +1450,7 @@ bool
 
 Description
 -----------
-Returns false if the status nopointsadded has been sent.
+returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
@@ -1453,7 +1463,7 @@ int
 
 Description
 -----------
-Returns the number of multicurve doing the approximation of the multiline.
+Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
@@ -1490,7 +1500,7 @@ None
 
 Description
 -----------
-Runs the algorithm after having initialized the fields.
+runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppCont_Function & Line);
 
@@ -1528,7 +1538,7 @@ None
 
 Description
 -----------
-Changes the degrees of the approximation.
+changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
@@ -1546,7 +1556,7 @@ None
 
 Description
 -----------
-Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. By default hang checking is used.
 ") SetHangChecking;
 		void SetHangChecking(const Standard_Boolean theHangChecking);
 
@@ -1564,7 +1574,7 @@ None
 
 Description
 -----------
-Set inverse order of degree selection: if theinvordr = true, current degree is chosen by inverse order - from maxdegree to mindegree. by default inverse order is used.
+Set inverse order of degree selection: if theInvOrdr = true, current degree is chosen by inverse order - from maxdegree to mindegree. By default inverse order is used.
 ") SetInvOrder;
 		void SetInvOrder(const Standard_Boolean theInvOrder);
 
@@ -1619,7 +1629,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the approximation multicurve of range <index>.
+returns the approximation MultiCurve of range <Index>.
 ") Value;
 		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
@@ -1677,7 +1687,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Return the composite multicurves as a multibspcurve.
+return the composite MultiCurves as a MultiBSpCurve.
 ") ChangeValue;
 		AppParCurves_MultiBSpCurve ChangeValue();
 
@@ -1734,7 +1744,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Return the composite multicurves as a multibspcurve.
+return the composite MultiCurves as a MultiBSpCurve.
 ") Value;
 		AppParCurves_MultiBSpCurve Value();
 
@@ -1770,7 +1780,7 @@ None
 
 Description
 -----------
-Warning: the c3d and c2d must have the same parametric domain.
+Warning: the C3D and C2D must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Geom_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol);
 
@@ -1791,7 +1801,7 @@ None
 
 Description
 -----------
-Warning: the c3d and c2d must have the same parametric domain.
+Warning: the C3D and C2D must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
@@ -1812,7 +1822,7 @@ None
 
 Description
 -----------
-Warning: the c3d and c2d must have the same parametric domain.
+Warning: the C3D and C2D must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
@@ -1825,7 +1835,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the 2d curve that has the same parameter as the 3d curve once evaluated on the surface up to the specified tolerance.
+Returns the 2D curve that has the same parameter as the 3D curve once evaluated on the surface up to the specified tolerance.
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d();
 
@@ -1838,7 +1848,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Returns the 3d curve that has the same parameter as the 3d curve once evaluated on the surface up to the specified tolerance.
+Returns the 3D curve that has the same parameter as the 3D curve once evaluated on the surface up to the specified tolerance.
 ") Curve3d;
 		opencascade::handle<Adaptor3d_Curve> Curve3d();
 
@@ -1851,7 +1861,7 @@ opencascade::handle<Adaptor3d_CurveOnSurface>
 
 Description
 -----------
-Returns the 3d curve on surface that has the same parameter as the 3d curve up to the specified tolerance.
+Returns the 3D curve on surface that has the same parameter as the 3D curve up to the specified tolerance.
 ") CurveOnSurface;
 		opencascade::handle<Adaptor3d_CurveOnSurface> CurveOnSurface();
 
@@ -1864,7 +1874,7 @@ bool
 
 Description
 -----------
-//!@returns .false. if calculations failed, .true. if calculations succeed.
+//!@Returns .false. if calculations failed, .true. if calculations succeed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1890,7 +1900,7 @@ float
 
 Description
 -----------
-//!@returns tolerance (maximal distance) between 3d curve and curve on surface, generated by 2d curve and surface. .
+//!@Returns tolerance (maximal distance) between 3d curve and curve on surface, generated by 2d curve and surface.
 ") TolReached;
 		Standard_Real TolReached();
 
@@ -1940,7 +1950,7 @@ float
 
 Description
 -----------
-Returns the average error of the <index> 2d curve approximation.
+returns the average error of the <Index> 2d curve approximation.
 ") Average2dError;
 		Standard_Real Average2dError(const Standard_Integer Index);
 
@@ -1953,7 +1963,7 @@ float
 
 Description
 -----------
-Returns the average error in the surface approximation.
+returns the average error in the surface approximation.
 ") AverageErrorOnSurf;
 		Standard_Real AverageErrorOnSurf();
 
@@ -2067,7 +2077,7 @@ o: Standard_OStream
 
 Description
 -----------
-Display information on approximation.
+display information on approximation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -2088,7 +2098,7 @@ Result: float
 
 Description
 -----------
-The evaluatorfunction from advapprox;.
+The EvaluatorFunction from AdvApprox;.
 ") Eval;
 		Standard_Integer Eval(const Standard_Real Parameter, const Standard_Integer DerivativeRequest, const Standard_Real First, const Standard_Real Last, Standard_Real &OutValue);
 
@@ -2101,7 +2111,7 @@ bool
 
 Description
 -----------
-Returns if we have an result.
+returns if we have an result.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2119,7 +2129,7 @@ float
 
 Description
 -----------
-Returns the maximum error of the <index> 2d curve approximation.
+returns the maximum error of the <Index> 2d curve approximation.
 ") Max2dError;
 		Standard_Real Max2dError(const Standard_Integer Index);
 
@@ -2132,7 +2142,7 @@ float
 
 Description
 -----------
-Returns the maximum error in the surface approximation.
+returns the maximum error in the surface approximation.
 ") MaxErrorOnSurf;
 		Standard_Real MaxErrorOnSurf();
 
@@ -2171,7 +2181,7 @@ None
 
 Description
 -----------
-Perform the approximation [first, last]: approx_sweepapproximation.cdl tol3d: tolerance to surface approximation tol2d: tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular: tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface continuity: the continuity in v waiting on the surface degmax: the maximum degree in v required on the surface segmax: the maximum number of span in v required on the surface warning: the continuity ci can be obtained only if ft is ci.
+Perform the Approximation [First, Last]: Approx_SweepApproximation.cdl Tol3d: Tolerance to surface approximation Tol2d: Tolerance used to perform curve approximation Normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used. TolAngular: Tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface Continuity: The continuity in v waiting on the surface Degmax: The maximum degree in v required on the surface Segmax: The maximum number of span in v required on the surface Warning: The continuity ci can be obtained only if Ft is Ci.
 ") Perform;
 		void Perform(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const Standard_Real BoundTol, const Standard_Real Tol2d, const Standard_Real TolAngular, const GeomAbs_Shape Continuity = GeomAbs_C0, const Standard_Integer Degmax = 11, const Standard_Integer Segmax = 50);
 
@@ -2312,7 +2322,7 @@ float
 
 Description
 -----------
-Returns the maximum 3d error of the <index> 2d curve approximation on the surface.
+returns the maximum 3d error of the <Index> 2d curve approximation on the Surface.
 ") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf(const Standard_Integer Index);
 
@@ -2366,7 +2376,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -2389,7 +2399,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
@@ -2415,7 +2425,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param warning: it used only for c1 or c2 approximation.
+compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -2444,7 +2454,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param warning: it used only for c2 approximation.
+compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -2462,7 +2472,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -2483,7 +2493,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to satisfy. boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerance to reach in approximation to satisfy. BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -2502,7 +2512,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2515,7 +2525,7 @@ bool
 
 Description
 -----------
-Returns if the sections are rationnal or not.
+Returns if the sections are rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -2533,7 +2543,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -2546,7 +2556,7 @@ float
 
 Description
 -----------
-Returns the length of the greater section. thisinformation is useful to g1's control. warning: with an little value, approximation can be slower.
+Returns the length of the greater section. Thisinformation is useful to G1's control. Warning: With an little value, approximation can be slower.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -2564,7 +2574,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -2577,7 +2587,7 @@ int
 
 Description
 -----------
-Get the number of 2d curves to approximate.
+get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
@@ -2595,7 +2605,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2615,7 +2625,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> this information is usfull to find an good tolerance in 2d approximation.
+Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2634,7 +2644,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2653,7 +2663,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the fonction this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the fonction This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -2672,7 +2682,7 @@ None
 
 Description
 -----------
-Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2.
+Is useful, if (me) have to run numerical algorithm to perform D0, D1 or D2.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 

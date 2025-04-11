@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define NCOLLECTIONDOCSTRING
 "NCollection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_ncollection.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ncollection.html"
 %enddef
 %module (package="OCC.Core", docstring=NCOLLECTIONDOCSTRING) NCollection
 
@@ -123,7 +123,6 @@ CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge
 /* end templates declaration */
 
 /* typedefs */
-typedef void ( * NCollection_DelSeqNode ) ( NCollection_SeqNode *, opencascade::handle<NCollection_BaseAllocator>& theAl );
 typedef NCollection_Utf8String NCollection_String;
 typedef NCollection_UtfIterator<Standard_Utf16Char> NCollection_Utf16Iter;
 typedef NCollection_UtfString<Standard_Utf16Char> NCollection_Utf16String;

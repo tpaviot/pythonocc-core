@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGODOCSTRING
 "BRepAlgo module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepalgo.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgo.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGODOCSTRING) BRepAlgo
 
@@ -127,7 +127,7 @@ TopoDS_Wire
 
 Description
 -----------
-This method makes a wire whose edges are c1 from a wire whose edges could be g1. it removes a vertex between g1 edges. option can be g1 or c1.
+this method makes a wire whose edges are C1 from a Wire whose edges could be G1. It removes a vertex between G1 edges. Option can be G1 or C1.
 ") ConcatenateWire;
 		static TopoDS_Wire ConcatenateWire(const TopoDS_Wire & Wire, const GeomAbs_Shape Option, const Standard_Real AngularTolerance = 1.0e-4);
 
@@ -145,7 +145,7 @@ TopoDS_Edge
 
 Description
 -----------
-This method makes an edge from a wire. junction points between edges of wire may be sharp, resulting curve of the resulting edge may be c0.
+this method makes an edge from a wire. Junction points between edges of wire may be sharp, resulting curve of the resulting edge may be C0.
 ") ConcatenateWireC0;
 		static TopoDS_Edge ConcatenateWireC0(const TopoDS_Wire & Wire);
 
@@ -164,7 +164,7 @@ TopoDS_Face
 
 Description
 -----------
-Method of face conversion. the api corresponds to the method convertwire. this is a shortcut for calling convertwire() for each wire in theface.
+Method of face conversion. The API corresponds to the method ConvertWire. This is a shortcut for calling ConvertWire() for each wire in theFace.
 ") ConvertFace;
 		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
 
@@ -184,7 +184,10 @@ TopoDS_Wire
 
 Description
 -----------
-Method of wire conversion, calls brepalgo_approx internally. @param thewire input wire object. @param theangletolerance angle (in radians) defining the continuity of the wire: if two vectors differ by less than this angle, the result will be smooth (zero angle of tangent lines between curve elements). return the new topods_wire object consisting of edges each representing an arc of circle or a linear segment. the accuracy of conversion is defined as the maximal tolerance of edges in thewire.
+Method of wire conversion, calls BRepAlgo_Approx internally. 
+Parameter theWire Input Wire object. 
+Parameter theAngleTolerance Angle (in radians) defining the continuity of the wire: if two vectors differ by less than this angle, the result will be smooth (zero angle of tangent lines between curve elements). 
+Return: The new TopoDS_Wire object consisting of edges each representing an arc of circle or a linear segment. The accuracy of conversion is defined as the maximal tolerance of edges in theWire.
 ") ConvertWire;
 		static TopoDS_Wire ConvertWire(const TopoDS_Wire & theWire, const Standard_Real theAngleTolerance, const TopoDS_Face & theFace);
 
@@ -202,7 +205,7 @@ bool
 
 Description
 -----------
-Checks if the shape is 'correct'. if not, returns false, else returns true. this method differs from the previous one in the fact that no geometric controls (intersection of wires, pcurve validity) are performed.
+Checks if the shape is 'correct'. If not, returns False, else returns True. This method differs from the previous one in the fact that no geometric controls (intersection of wires, pcurve validity) are performed.
 ") IsTopologicallyValid;
 		static Standard_Boolean IsTopologicallyValid(const TopoDS_Shape & S);
 
@@ -220,7 +223,7 @@ bool
 
 Description
 -----------
-Checks if the shape is 'correct'. if not, returns <standard_false>, else returns <standard_true>.
+Checks if the shape is 'correct'. If not, returns <Standard_False>, else returns <Standard_True>.
 ") IsValid;
 		static Standard_Boolean IsValid(const TopoDS_Shape & S);
 
@@ -241,7 +244,7 @@ bool
 
 Description
 -----------
-Checks if the generated and modified faces from the shapes <arguments> in the shape <result> are 'correct'. the args may be empty, then all faces will be checked. if <closed> is true, only closed shape are valid. if <geomctrl> is false the geometry of new vertices and edges are not verified and the auto-intersection of new wires are not searched.
+Checks if the Generated and Modified Faces from the shapes <arguments> in the shape <result> are 'correct'. The args may be empty, then all faces will be checked. If <Closed> is True, only closed shape are valid. If <GeomCtrl> is False the geometry of new vertices and edges are not verified and the auto-intersection of new wires are not searched.
 ") IsValid;
 		static Standard_Boolean IsValid(const TopTools_ListOfShape & theArgs, const TopoDS_Shape & theResult, const Standard_Boolean closedSolid = Standard_False, const Standard_Boolean GeomCtrl = Standard_True);
 
@@ -268,7 +271,7 @@ None
 
 Description
 -----------
-Creates an empty asdes.
+Creates an empty AsDes.
 ") BRepAlgo_AsDes;
 		 BRepAlgo_AsDes();
 
@@ -287,7 +290,7 @@ None
 
 Description
 -----------
-Stores <ss> as a futur subshape of <s>.
+Stores <SS> as a futur subshape of <S>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const TopoDS_Shape & SS);
 
@@ -306,7 +309,7 @@ None
 
 Description
 -----------
-Stores <ss> as futurs subshapes of <s>.
+Stores <SS> as futurs SubShapes of <S>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const TopTools_ListOfShape & SS);
 
@@ -324,7 +327,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shape containing <s>.
+Returns the Shape containing <S>.
 ") Ascendant;
 		const TopTools_ListOfShape & Ascendant(const TopoDS_Shape & S);
 
@@ -342,7 +345,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns futur subhapes of <s>.
+Returns futur subhapes of <S>.
 ") ChangeDescendant;
 		TopTools_ListOfShape & ChangeDescendant(const TopoDS_Shape & S);
 
@@ -373,7 +376,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns futur subhapes of <s>.
+Returns futur subhapes of <S>.
 ") Descendant;
 		const TopTools_ListOfShape & Descendant(const TopoDS_Shape & S);
 
@@ -411,7 +414,7 @@ bool
 
 Description
 -----------
-Returns true if (s1> and <s2> has common descendants. stores in <lc> the commons descendants.
+Returns True if (S1> and <S2> has common Descendants. Stores in <LC> the Commons Descendants.
 ") HasCommonDescendant;
 		Standard_Boolean HasCommonDescendant(const TopoDS_Shape & S1, const TopoDS_Shape & S2, TopTools_ListOfShape & LC);
 
@@ -447,7 +450,7 @@ None
 
 Description
 -----------
-Remove thes from me.
+Remove theS from me.
 ") Remove;
 		void Remove(const TopoDS_Shape & theS);
 
@@ -466,7 +469,7 @@ None
 
 Description
 -----------
-Replace theolds by thenews. theolds disappear from this.
+Replace theOldS by theNewS. theOldS disappear from this.
 ") Replace;
 		void Replace(const TopoDS_Shape & theOldS, const TopoDS_Shape & theNewS);
 
@@ -513,7 +516,7 @@ None
 
 Description
 -----------
-Add the wire <w> to the set of wires. //! warning: the wires must be closed. //! the edges of <w> can be modified if they have not pcurves on the surface <s> of <f>. in this case if <proj> is false the first pcurve of the edge is positionned on <s>. if <proj> is true ,the pcurve on <s> is the projection of the curve 3d on <f>.
+Add the wire <W> to the set of wires. //! Warning: The Wires must be closed. //! The edges of <W> can be modified if they don't have pcurves on the surface <S> of <F>. In this case if <Proj> is false the first pcurve of the edge is positioned on <S>. if <Proj> is True, the Pcurve On <S> is the projection of the curve 3d on <F>.
 ") Add;
 		void Add(TopoDS_Wire & W);
 
@@ -526,7 +529,7 @@ None
 
 Description
 -----------
-Removes all the wires.
+Removes all the Wires.
 ") Clear;
 		void Clear();
 
@@ -559,7 +562,7 @@ None
 
 Description
 -----------
-The surface of <f> will be the surface of each new faces built. <proj> is used to update pcurves on edges if necessary. see add().
+the surface of <F> will be the surface of each new faces built. <Proj> is used to update pcurves on edges if necessary. See Add().
 ") Init;
 		void Init(const TopoDS_Face & F, const Standard_Boolean Proj = Standard_False, const Standard_Boolean ControlOrientation = Standard_False);
 
@@ -611,7 +614,7 @@ None
 
 Description
 -----------
-Evaluate all the faces limited by the set of wires.
+Evaluate all the faces limited by the set of Wires.
 ") Perform;
 		void Perform();
 
@@ -657,7 +660,7 @@ None
 
 Description
 -----------
-Add <news> to the image of <olds>.
+Add <NewS> to the image of <OldS>.
 ") Add;
 		void Add(const TopoDS_Shape & OldS, const TopoDS_Shape & NewS);
 
@@ -676,7 +679,7 @@ None
 
 Description
 -----------
-Add <news> to the image of <olds>.
+Add <NewS> to the image of <OldS>.
 ") Add;
 		void Add(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
@@ -695,7 +698,7 @@ None
 
 Description
 -----------
-Links <news> as image of <olds>.
+Links <NewS> as image of <OldS>.
 ") Bind;
 		void Bind(const TopoDS_Shape & OldS, const TopoDS_Shape & NewS);
 
@@ -714,7 +717,7 @@ None
 
 Description
 -----------
-Links <news> as image of <olds>.
+Links <NewS> as image of <OldS>.
 ") Bind;
 		void Bind(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
@@ -759,7 +762,7 @@ None
 
 Description
 -----------
-Deletes in the images the shape of type <shapetype> which are not in <s>. warning: compact() must be call before.
+Deletes in the images the shape of type <ShapeType> which are not in <S>. Warning: Compact() must be call before.
 ") Filter;
 		void Filter(const TopoDS_Shape & S, const TopAbs_ShapeEnum ShapeType);
 
@@ -795,7 +798,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the image of <s>. returns <s> in the list if hasimage(s) is false.
+Returns the Image of <S>. Returns <S> in the list if HasImage(S) is false.
 ") Image;
 		const TopTools_ListOfShape & Image(const TopoDS_Shape & S);
 
@@ -813,7 +816,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the generator of <s>.
+Returns the generator of <S>.
 ") ImageFrom;
 		const TopoDS_Shape ImageFrom(const TopoDS_Shape & S);
 
@@ -850,7 +853,7 @@ None
 
 Description
 -----------
-Stores in <l> the images of images of...images of <s>. <l> contains only <s> if hasimage(s) is false.
+Stores in <L> the images of images of...images of <S>. <L> contains only <S> if HasImage(S) is false.
 ") LastImage;
 		void LastImage(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
@@ -868,7 +871,7 @@ None
 
 Description
 -----------
-Remove <s> to set of images.
+Remove <S> to set of images.
 ") Remove;
 		void Remove(const TopoDS_Shape & S);
 
@@ -886,7 +889,7 @@ None
 
 Description
 -----------
-Removes the root <theroot> from the list of roots and up and down maps.
+Removes the root <theRoot> from the list of roots and up and down maps.
 ") RemoveRoot;
 		void RemoveRoot(const TopoDS_Shape & Root);
 
@@ -905,7 +908,7 @@ None
 
 Description
 -----------
-Replaces the <oldroot> with the <newroot>, so all images of the <oldroot> become the images of the <newroot>. the <oldroot> is removed.
+Replaces the <OldRoot> with the <NewRoot>, so all images of the <OldRoot> become the images of the <NewRoot>. The <OldRoot> is removed.
 ") ReplaceRoot;
 		void ReplaceRoot(const TopoDS_Shape & OldRoot, const TopoDS_Shape & NewRoot);
 
@@ -923,7 +926,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the upper generator of <s>.
+Returns the upper generator of <S>.
 ") Root;
 		const TopoDS_Shape Root(const TopoDS_Shape & S);
 
@@ -999,7 +1002,7 @@ None
 
 Description
 -----------
-Add <e> as const edge, e can be in the result.
+Add <E> as const edge, E can be in the result.
 ") AddConstEdge;
 		void AddConstEdge(const TopoDS_Edge & E);
 
@@ -1017,7 +1020,7 @@ None
 
 Description
 -----------
-Add <le> as a set of const edges.
+Add <LE> as a set of const edges.
 ") AddConstEdges;
 		void AddConstEdges(const TopTools_ListOfShape & LE);
 
@@ -1036,7 +1039,7 @@ None
 
 Description
 -----------
-Add e with <lv>. <e> will be copied and trim by vertices in <lv>.
+Add E with <LV>. <E> will be copied and trim by vertices in <LV>.
 ") AddEdge;
 		void AddEdge(TopoDS_Edge & E, const TopTools_ListOfShape & LV);
 
@@ -1056,7 +1059,7 @@ None
 
 Description
 -----------
-Cut the edge <e> in several edges <ne> on the vertices<vone>.
+Cut the edge <E> in several edges <NE> on the vertices<VonE>.
 ") CutEdge;
 		void CutEdge(const TopoDS_Edge & E, const TopTools_ListOfShape & VonE, TopTools_ListOfShape & NE);
 
@@ -1069,7 +1072,7 @@ float
 
 Description
 -----------
-Get maximal tolerance used for comparing distaces between vertices. .
+Get maximal tolerance used for comparing distances between vertices.
 ") GetTolConf;
 		Standard_Real GetTolConf();
 
@@ -1105,7 +1108,7 @@ None
 
 Description
 -----------
-Init with <f> the set of edges must have pcurves on <f>.
+Init with <F> the set of edges must have pcurves on <F>.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
@@ -1123,7 +1126,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of new edges built from an edge <e> it can be an empty list.
+Returns the list of new edges built from an edge <E> it can be an empty list.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const TopoDS_Edge & E);
 
@@ -1136,7 +1139,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of faces. warning: the method <wirestofaces> as to be called before. can be an empty list.
+Returns the list of faces. Warning: The method <WiresToFaces> as to be called before. can be an empty list.
 ") NewFaces;
 		const TopTools_ListOfShape & NewFaces();
 
@@ -1180,7 +1183,7 @@ None
 
 Description
 -----------
-Sets the image vertex - vertex.
+Sets the Image Vertex - Vertex.
 ") SetImageVV;
 		void SetImageVV(const BRepAlgo_Image & theImageVV);
 
@@ -1198,7 +1201,7 @@ None
 
 Description
 -----------
-Set maximal tolerance used for comparing distaces between vertices. .
+Set maximal tolerance used for comparing distances between vertices.
 ") SetTolConf;
 		void SetTolConf(const Standard_Real theTolConf);
 
@@ -1216,7 +1219,7 @@ None
 
 Description
 -----------
-Update ve map according to image vertex - vertex.
+Update VE map according to Image Vertex - Vertex.
 ") UpdateVEmap;
 		void UpdateVEmap(TopTools_IndexedDataMapOfShapeListOfShape & theVEmap);
 
@@ -1359,7 +1362,7 @@ bool
 
 Description
 -----------
-Build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
+build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
 ") BuildWire;
 		Standard_Boolean BuildWire(TopTools_ListOfShape & Liste);
 
@@ -1377,7 +1380,7 @@ None
 
 Description
 -----------
-If with3d = standard_false the 3dcurve is not computed the initial 3dcurve is kept to build the resulting edges.
+if With3d = Standard_False the 3dcurve is not computed the initial 3dcurve is kept to build the resulting edges.
 ") Compute3d;
 		void Compute3d(const Standard_Boolean With3d = Standard_True);
 
@@ -1413,7 +1416,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1475,7 +1478,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the result.
+returns the result.
 ") Projection;
 		const TopoDS_Shape Projection();
 
@@ -1524,7 +1527,7 @@ None
 
 Description
 -----------
-Sets the maximum distance between target shape and shape to project. if this condition is not satisfied then corresponding part of solution is discarded. if maxdist < 0 then this method does not affect the algorithm.
+Sets the maximum distance between target shape and shape to project. If this condition is not satisfied then corresponding part of solution is discarded. if MaxDist < 0 then this method does not affect the algorithm.
 ") SetMaxDistance;
 		void SetMaxDistance(const Standard_Real MaxDist);
 
@@ -1546,7 +1549,7 @@ None
 
 Description
 -----------
-Set the parameters used for computation tol3d is the required tolerance between the 3d projected curve and its 2d representation internalcontinuity is the order of constraints used for approximation. maxdeg and maxseg are the maximum degree and the maximum number of segment for bspline resulting of an approximation.
+Set the parameters used for computation Tol3d is the required tolerance between the 3d projected curve and its 2d representation InternalContinuity is the order of constraints used for approximation. MaxDeg and MaxSeg are the maximum degree and the maximum number of segment for BSpline resulting of an approximation.
 ") SetParams;
 		void SetParams(const Standard_Real Tol3D, const Standard_Real Tol2D, const GeomAbs_Shape InternalContinuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSeg);
 

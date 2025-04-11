@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MAT2DDOCSTRING
 "MAT2d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_mat2d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 %enddef
 %module (package="OCC.Core", docstring=MAT2DDOCSTRING) MAT2d
 
@@ -364,7 +364,7 @@ opencascade::handle<MAT2d_Connexion>
 
 Description
 -----------
-Returns the connexion on the item <index> in me.
+Returns the Connexion on the item <Index> in me.
 ") Connexion;
 		opencascade::handle<MAT2d_Connexion> Connexion(const Standard_Integer Index);
 
@@ -382,7 +382,7 @@ bool
 
 Description
 -----------
-Returns <true> is there is a connexion on the item <index> in <self>.
+Returns <True> is there is a connexion on the item <Index> in <self>.
 ") ConnexionOn;
 		Standard_Boolean ConnexionOn(const Standard_Integer Index);
 
@@ -400,7 +400,7 @@ int
 
 Description
 -----------
-Returns the number of items on the line <indexline>.
+Returns the number of items on the line <IndexLine>.
 ") LineLength;
 		Standard_Integer LineLength(const Standard_Integer IndexLine);
 
@@ -413,7 +413,7 @@ int
 
 Description
 -----------
-Returns the number of items .
+Returns the Number of Items .
 ") NumberOfItems;
 		Standard_Integer NumberOfItems();
 
@@ -453,7 +453,7 @@ TColStd_SequenceOfInteger
 
 Description
 -----------
-Returns the set of index of the items in <self>corresponding to the curve <indcurve> on the line <indline> from the initial figure.
+Returns the set of index of the items in <self>corresponding to the curve <IndCurve> on the line <IndLine> from the initial figure.
 ") RefToEqui;
 		const TColStd_SequenceOfInteger & RefToEqui(const Standard_Integer IndLine, const Standard_Integer IndCurve);
 
@@ -471,7 +471,7 @@ opencascade::handle<Geom2d_Geometry>
 
 Description
 -----------
-Returns the item at position <index> in <self>.
+Returns the item at position <Index> in <self>.
 ") Value;
 		opencascade::handle<Geom2d_Geometry> Value(const Standard_Integer Index);
 
@@ -589,7 +589,7 @@ int
 
 Description
 -----------
-Returns the index on the first line.
+Returns the Index on the first line.
 ") IndexFirstLine;
 		Standard_Integer IndexFirstLine();
 
@@ -620,7 +620,7 @@ int
 
 Description
 -----------
-Returns the index of the item on the first line.
+Returns the Index of the item on the first line.
 ") IndexItemOnFirst;
 		Standard_Integer IndexItemOnFirst();
 
@@ -651,7 +651,7 @@ int
 
 Description
 -----------
-Returns the index of the item on the second line.
+Returns the Index of the item on the second line.
 ") IndexItemOnSecond;
 		Standard_Integer IndexItemOnSecond();
 
@@ -682,7 +682,7 @@ int
 
 Description
 -----------
-Returns the index on the second line.
+Returns the Index on the Second line.
 ") IndexSecondLine;
 		Standard_Integer IndexSecondLine();
 
@@ -719,7 +719,7 @@ bool
 
 Description
 -----------
-Returns <true> if my firstpoint is on the same line than the firstpoint of <aconnexion> and my firstpoint is after the firstpoint of <aconnexion> on the line. <asense> = 1 if <aconnexion> is on the left of its firstline, else <asense> = -1.
+Returns <True> if my firstPoint is on the same line than the firstpoint of <aConnexion> and my firstpoint is after the firstpoint of <aConnexion> on the line. <aSense> = 1 if <aConnexion> is on the Left of its firstline, else <aSense> = -1.
 ") IsAfter;
 		Standard_Boolean IsAfter(const opencascade::handle<MAT2d_Connexion> & aConnexion, const Standard_Real aSense);
 
@@ -968,7 +968,7 @@ bool
 
 Description
 -----------
-Returns <true> if createmat has succeeded.
+Returns <True> if CreateMat has succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -981,7 +981,7 @@ bool
 
 Description
 -----------
-Return false if there is no more roots.
+Return False if there is no more roots.
 ") More;
 		Standard_Boolean More();
 
@@ -1020,7 +1020,7 @@ bool
 
 Description
 -----------
-Returns true if there are semi_infinite bisectors. so there is a tree for each semi_infinte bisector.
+Returns True if there are semi_infinite bisectors. So there is a tree for each semi_infinte bisector.
 ") SemiInfinite;
 		Standard_Boolean SemiInfinite();
 
@@ -1065,7 +1065,7 @@ MAT2d_SequenceOfConnexion
 
 Description
 -----------
-Returns the connexions which start on line designed by <index>.
+Returns the connexions which start on line designed by <Index>.
 ") ConnexionsFrom;
 		MAT2d_SequenceOfConnexion & ConnexionsFrom(const Standard_Integer Index);
 
@@ -1083,7 +1083,7 @@ opencascade::handle<MAT2d_Connexion>
 
 Description
 -----------
-Returns the connexion which ends on line designed by <index>.
+Returns the connexion which ends on line designed by <Index>.
 ") Father;
 		opencascade::handle<MAT2d_Connexion> Father(const Standard_Integer Index);
 
@@ -1101,7 +1101,7 @@ bool
 
 Description
 -----------
-Returns <true> if there is one connexion which starts on line designed by <index>.
+Returns <True> if there is one Connexion which starts on line designed by <Index>.
 ") IsConnexionsFrom;
 		Standard_Boolean IsConnexionsFrom(const Standard_Integer Index);
 
@@ -1119,7 +1119,7 @@ bool
 
 Description
 -----------
-Returns <true> if the line designed by <index> is the root.
+Returns <True> if the line designed by <Index> is the root.
 ") IsRoot;
 		Standard_Boolean IsRoot(const Standard_Integer Index);
 
@@ -1152,7 +1152,7 @@ None
 
 Description
 -----------
-Computes the path to link the lines in <figure>. the path starts on the line of index <indstart> <sense> = true if the circuit turns in the trigonometric sense.
+Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 ") Perform;
 		void Perform(const MAT2d_SequenceOfSequenceOfGeometry & Figure, const Standard_Integer IndStart, const Standard_Boolean Sense);
 
@@ -1165,7 +1165,7 @@ None
 
 Description
 -----------
-Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is a / | b e / | | c d f //! the path is a->b, b->c, c->b, b->d, d->b, b->a, a->e, e->f, f->e, e->a.
+Run on the set of connexions to compute the path. the path is an exploration of the tree which contains the connexions and their reverses. if the tree of connexions is A / | B E / | | C D F //! the path is A->B, B->C, C->B, B->D, D->B, B->A, A->E, E->F, F->E, E->A.
 ") RunOnConnexions;
 		void RunOnConnexions();
 
@@ -1192,7 +1192,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") MAT2d_Tool2d;
 		 MAT2d_Tool2d();
 
@@ -1229,7 +1229,7 @@ Bisector_Bisec
 
 Description
 -----------
-Returns the <bisec> of index <index> in <thegeombisectors>.
+Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 ") ChangeGeomBis;
 		Bisector_Bisec & ChangeGeomBis(const Standard_Integer Index);
 
@@ -1299,7 +1299,7 @@ None
 
 Description
 -----------
-Displays information about the bisector defined by <bisector>.
+displays information about the bisector defined by <bisector>.
 ") Dump;
 		void Dump(const Standard_Integer bisector, const Standard_Integer erease);
 
@@ -1317,7 +1317,7 @@ dist: float
 
 Description
 -----------
-Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the firstpoint to <anitem>. returns the index of this point in <thegeompnts>.
+Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
 ") FirstPoint;
 		Standard_Integer FirstPoint(const Standard_Integer anitem, Standard_Real &OutValue);
 
@@ -1335,7 +1335,7 @@ Bisector_Bisec
 
 Description
 -----------
-Returns the <bisec> of index <index> in <thegeombisectors>.
+Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 ") GeomBis;
 		const Bisector_Bisec & GeomBis(const Standard_Integer Index);
 
@@ -1353,7 +1353,7 @@ opencascade::handle<Geom2d_Geometry>
 
 Description
 -----------
-Returns the geometry of index <index> in <thegeomelts>.
+Returns the Geometry of index <Index> in <theGeomElts>.
 ") GeomElt;
 		opencascade::handle<Geom2d_Geometry> GeomElt(const Standard_Integer Index);
 
@@ -1371,7 +1371,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the point of index <index> in the <thegeompnts>.
+Returns the point of index <Index> in the <theGeomPnts>.
 ") GeomPnt;
 		const gp_Pnt2d GeomPnt(const Standard_Integer Index);
 
@@ -1389,7 +1389,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the vector of index <index> in the <thegeomvecs>.
+Returns the vector of index <Index> in the <theGeomVecs>.
 ") GeomVec;
 		const gp_Vec2d GeomVec(const Standard_Integer Index);
 
@@ -1407,7 +1407,7 @@ None
 
 Description
 -----------
-Inititems cuts the line in items. this items are the geometrics representations of the basicelts from mat.
+InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
 ") InitItems;
 		void InitItems(const opencascade::handle<MAT2d_Circuit> & aCircuit);
 
@@ -1426,7 +1426,7 @@ intpnt: int
 
 Description
 -----------
-Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . if this point exists, <intpnt> is its index in <thegeompnts> and return the distance of the point from the bisector else return <reallast>.
+Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . If this point exists, <intpnt> is its index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
 ") IntersectBisector;
 		Standard_Real IntersectBisector(const opencascade::handle<MAT_Bisector> & bisectorone, const opencascade::handle<MAT_Bisector> & bisectortwo, Standard_Integer &OutValue);
 
@@ -1439,7 +1439,7 @@ int
 
 Description
 -----------
-Returns the number of items .
+Returns the Number of Items .
 ") NumberOfItems;
 		Standard_Integer NumberOfItems();
 
@@ -1457,7 +1457,7 @@ None
 
 Description
 -----------
-<aside> defines the side of the computation of the map.
+<aSide> defines the side of the computation of the map.
 ") Sense;
 		void Sense(const MAT_Side aside);
 
@@ -1493,7 +1493,7 @@ int
 
 Description
 -----------
-Creates the tangent at the end of the bisector defined by <bisector>. returns the index of this vector in <thegeomvecs>.
+Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>.
 ") Tangent;
 		Standard_Integer Tangent(const Standard_Integer bisector);
 
@@ -1512,7 +1512,7 @@ int
 
 Description
 -----------
-Creates the reversed tangent at the origin of the item defined by <anitem>. returns the index of this vector in <thegeomvecs>.
+Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>.
 ") TangentAfter;
 		Standard_Integer TangentAfter(const Standard_Integer anitem, const Standard_Boolean IsOpenResult);
 
@@ -1531,7 +1531,7 @@ int
 
 Description
 -----------
-Creates the tangent at the end of the item defined by <anitem>. returns the index of this vector in <thegeomvecs>.
+Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>.
 ") TangentBefore;
 		Standard_Integer TangentBefore(const Standard_Integer anitem, const Standard_Boolean IsOpenResult);
 
@@ -1562,7 +1562,7 @@ bool
 
 Description
 -----------
-Trims the geometric bisector by the <firstparameter> of <abisector>. if the parameter is out of the bisector, return false. else return true.
+Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 ") TrimBisector;
 		Standard_Boolean TrimBisector(const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -1581,7 +1581,7 @@ bool
 
 Description
 -----------
-Trims the geometric bisector by the point of index <apoint> in <thegeompnts>. if the point is out of the bisector, return false. else return true.
+Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 ") TrimBisector;
 		Standard_Boolean TrimBisector(const opencascade::handle<MAT_Bisector> & abisector, const Standard_Integer apoint);
 

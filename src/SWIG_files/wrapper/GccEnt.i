@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCCENTDOCSTRING
 "GccEnt module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gccent.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gccent.html"
 %enddef
 %module (package="OCC.Core", docstring=GCCENTDOCSTRING) GccEnt
 
@@ -207,7 +207,9 @@ GccEnt_Position
 
 Description
 -----------
-Returns the position from the given string identifier (using case-insensitive comparison). @param thepositionstring string identifier return position or gccent_unqualified if string identifier is invalid.
+Returns the position from the given string identifier (using case-insensitive comparison). 
+Parameter thePositionString string identifier 
+Return: position or GccEnt_unqualified if string identifier is invalid.
 ") PositionFromString;
 		static GccEnt_Position PositionFromString(Standard_CString thePositionString);
 
@@ -225,7 +227,10 @@ thePosition: GccEnt_Position
 
 Description
 -----------
-Determines the position from the given string identifier (using case-insensitive comparison). @param thepositionstring string identifier @param theposition detected shape type return true if string identifier is known.
+Determines the position from the given string identifier (using case-insensitive comparison). 
+Parameter thePositionString string identifier 
+Parameter thePosition detected shape type 
+Return: True if string identifier is known.
 ") PositionFromString;
 		static Standard_Boolean PositionFromString(Standard_CString thePositionString, GccEnt_Position &OutValue);
 
@@ -243,7 +248,9 @@ str
 
 Description
 -----------
-Returns the string name for a given position. @param theposition position type return string identifier from the list unqualified enclosing enclosed outside noqualifier.
+Returns the string name for a given position. 
+Parameter thePosition position type 
+Return: string identifier from the list UNQUALIFIED ENCLOSING ENCLOSED OUTSIDE NOQUALIFIER.
 ") PositionToString;
 		static Standard_CString PositionToString(GccEnt_Position thePosition);
 
@@ -261,7 +268,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints the name of position type as a string on the stream.
+Prints the name of Position type as a String on the Stream.
 ") Print;
 		static Standard_OStream & Print(const GccEnt_Position thePosition, std::ostream &OutValue);
 
@@ -330,7 +337,7 @@ None
 
 Description
 -----------
-Constructs a qualified circle by assigning the qualifier qualifier to the circle qualified. qualifier may be: - gccent_enclosing if the solution computed by a construction algorithm using the qualified circle encloses the circle, or - gccent_enclosed if the solution is enclosed by the circle, or - gccent_outside if both the solution and the circle are external to one another, or - gccent_unqualified if all solutions apply.
+Constructs a qualified circle by assigning the qualifier Qualifier to the circle Qualified. Qualifier may be: - GccEnt_enclosing if the solution computed by a construction algorithm using the qualified circle encloses the circle, or - GccEnt_enclosed if the solution is enclosed by the circle, or - GccEnt_outside if both the solution and the circle are external to one another, or - GccEnt_unqualified if all solutions apply.
 ") GccEnt_QualifiedCirc;
 		 GccEnt_QualifiedCirc(const gp_Circ2d & Qualified, const GccEnt_Position Qualifier);
 
@@ -382,7 +389,7 @@ bool
 
 Description
 -----------
-Returns true if the circ2d is unqualified and false in the other cases.
+Returns true if the Circ2d is Unqualified and false in the other cases.
 ") IsUnqualified;
 		Standard_Boolean IsUnqualified();
 
@@ -395,7 +402,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns a 2d circle to which the qualifier is assigned.
+Returns a 2D circle to which the qualifier is assigned.
 ") Qualified;
 		gp_Circ2d Qualified();
 
@@ -408,7 +415,7 @@ GccEnt_Position
 
 Description
 -----------
-Returns - the qualifier of this qualified circle, if it is enclosing, enclosed or outside, or - gccent_noqualifier if it is unqualified.
+Returns - the qualifier of this qualified circle, if it is enclosing, enclosed or outside, or - GccEnt_noqualifier if it is unqualified.
 ") Qualifier;
 		GccEnt_Position Qualifier();
 
@@ -441,7 +448,7 @@ None
 
 Description
 -----------
-Constructs a qualified line by assigning the qualifier qualifier to the line qualified. qualifier may be: - gccent_enclosed if the solution is enclosed by the line, or - gccent_outside if both the solution and the line are external to one another, or - gccent_unqualified if all solutions apply. note: the interior of a line is defined as the left-hand side of the line in relation to its orientation.
+Constructs a qualified line by assigning the qualifier Qualifier to the line Qualified. Qualifier may be: - GccEnt_enclosed if the solution is enclosed by the line, or - GccEnt_outside if both the solution and the line are external to one another, or - GccEnt_unqualified if all solutions apply. Note: the interior of a line is defined as the left-hand side of the line in relation to its orientation.
 ") GccEnt_QualifiedLin;
 		 GccEnt_QualifiedLin(const gp_Lin2d & Qualified, const GccEnt_Position Qualifier);
 
@@ -454,7 +461,7 @@ bool
 
 Description
 -----------
-Returns true if the solution is enclosed in the lin2d and false in the other cases.
+Returns true if the solution is Enclosed in the Lin2d and false in the other cases.
 ") IsEnclosed;
 		Standard_Boolean IsEnclosed();
 
@@ -467,7 +474,7 @@ bool
 
 Description
 -----------
-Returns true if the solution is outside the lin2d and false in the other cases.
+Returns true if the solution is Outside the Lin2d and false in the other cases.
 ") IsOutside;
 		Standard_Boolean IsOutside();
 
@@ -493,7 +500,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns a 2d line to which the qualifier is assigned.
+Returns a 2D line to which the qualifier is assigned.
 ") Qualified;
 		gp_Lin2d Qualified();
 
@@ -506,7 +513,7 @@ GccEnt_Position
 
 Description
 -----------
-Returns the qualifier of this qualified line, if it is 'enclosed' or 'outside', or - gccent_noqualifier if it is unqualified.
+Returns the qualifier of this qualified line, if it is 'enclosed' or 'outside', or - GccEnt_noqualifier if it is unqualified.
 ") Qualifier;
 		GccEnt_Position Qualifier();
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPCNXDOCSTRING
 "TopCnx module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topcnx.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topcnx.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPCNXDOCSTRING) TopCnx
 
@@ -116,7 +116,7 @@ None
 
 Description
 -----------
-Add a curve element to the boundary. or is the orientation of the interference on the boundary curve. tr is the transition of the interference. btr is the boundary transition of the interference.
+Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
 ") AddInterference;
 		void AddInterference(const Standard_Real Tole, const gp_Dir & Tang, const gp_Dir & Norm, const Standard_Real Curv, const TopAbs_Orientation Or, const TopAbs_Orientation Tr, const TopAbs_Orientation BTr);
 
@@ -129,7 +129,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the current cumulated boundarytransition.
+Returns the current cumulated BoundaryTransition.
 ") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition();
 
@@ -167,7 +167,7 @@ None
 
 Description
 -----------
-Initialize the algorithm with a linear edge.
+Initialize the algorithm with a linear Edge.
 ") Reset;
 		void Reset(const gp_Dir & Tgt);
 

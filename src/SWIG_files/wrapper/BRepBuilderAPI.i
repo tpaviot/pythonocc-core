@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPBUILDERAPIDOCSTRING
 "BRepBuilderAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepbuilderapi.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepbuilderapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPBUILDERAPIDOCSTRING) BRepBuilderAPI
 
@@ -286,7 +286,7 @@ None
 
 Description
 -----------
-Sets the default precision. the current precision is returned.
+Sets the default precision. The current Precision is returned.
 ") Precision;
 		static void Precision(const Standard_Real P);
 
@@ -455,7 +455,7 @@ None
 
 Description
 -----------
-Raises notdone if done is false.
+Raises NotDone if done is false.
 ") Check;
 		void Check();
 
@@ -671,7 +671,7 @@ None
 
 Description
 -----------
-Initializes an empty algorithm. the function init is then used to define the shape.
+Initializes an empty algorithm. The function Init is then used to define the shape.
 ") BRepBuilderAPI_FindPlane;
 		 BRepBuilderAPI_FindPlane();
 
@@ -690,7 +690,7 @@ None
 
 Description
 -----------
-Constructs the plane containing the edges of the shape s. a plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. this tolerance value is equal to the larger of the following two values: - tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of s. use the function found to verify that a plane is built. the resulting plane is then retrieved using the function plane.
+Constructs the plane containing the edges of the shape S. A plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. This tolerance value is equal to the larger of the following two values: - Tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of S. Use the function Found to verify that a plane is built. The resulting plane is then retrieved using the function Plane.
 ") BRepBuilderAPI_FindPlane;
 		 BRepBuilderAPI_FindPlane(const TopoDS_Shape & S, const Standard_Real Tol = -1);
 
@@ -703,7 +703,7 @@ bool
 
 Description
 -----------
-Returns true if a plane containing the edges of the shape is found and built. use the function plane to consult the result.
+Returns true if a plane containing the edges of the shape is found and built. Use the function Plane to consult the result.
 ") Found;
 		Standard_Boolean Found();
 
@@ -722,7 +722,7 @@ None
 
 Description
 -----------
-Constructs the plane containing the edges of the shape s. a plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. this tolerance value is equal to the larger of the following two values: - tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of s. use the function found to verify that a plane is built. the resulting plane is then retrieved using the function plane.
+Constructs the plane containing the edges of the shape S. A plane is built only if all the edges are within a distance of less than or equal to tolerance from a planar surface. This tolerance value is equal to the larger of the following two values: - Tol, where the default value is negative, or - the largest of the tolerance values assigned to the individual edges of S. Use the function Found to verify that a plane is built. The resulting plane is then retrieved using the function Plane.
 ") Init;
 		void Init(const TopoDS_Shape & S, const Standard_Real Tol = -1);
 
@@ -735,7 +735,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Returns the plane containing the edges of the shape. warning use the function found to verify that the plane is built. if a plane is not found, plane returns a null handle.
+Returns the plane containing the edges of the shape. Warning Use the function Found to verify that the plane is built. If a plane is not found, Plane returns a null handle.
 ") Plane;
 		opencascade::handle<Geom_Plane> Plane();
 
@@ -874,7 +874,7 @@ None
 
 Description
 -----------
-Print the information.
+print the information.
 ") Dump;
 		void Dump();
 
@@ -887,7 +887,7 @@ bool
 
 Description
 -----------
-Returns mode for sewing faces by default - true.
+Returns mode for sewing faces By default - true.
 ") FaceMode;
 		Standard_Boolean FaceMode();
 
@@ -900,7 +900,7 @@ bool
 
 Description
 -----------
-Returns mode for sewing floating edges by default - false.
+Returns mode for sewing floating edges By default - false.
 ") FloatingEdgesMode;
 		Standard_Boolean FloatingEdgesMode();
 
@@ -931,7 +931,7 @@ opencascade::handle<BRepTools_ReShape>
 
 Description
 -----------
-Return context.
+return context.
 ") GetContext;
 		const opencascade::handle<BRepTools_ReShape> & GetContext();
 
@@ -953,7 +953,7 @@ None
 
 Description
 -----------
-Initialize the parameters if necessary.
+initialize the parameters if necessary.
 ") Init;
 		void Init(const Standard_Real tolerance = 1.0e-06, const Standard_Boolean option1 = Standard_True, const Standard_Boolean option2 = Standard_True, const Standard_Boolean option3 = Standard_True, const Standard_Boolean option4 = Standard_False);
 
@@ -1025,7 +1025,7 @@ bool
 
 Description
 -----------
-Indicates if a section is bound (before use sectiontoboundary).
+Indicates if a section is bound (before use SectionToBoundary).
 ") IsSectionBound;
 		Standard_Boolean IsSectionBound(const TopoDS_Edge & section);
 
@@ -1043,7 +1043,7 @@ None
 
 Description
 -----------
-Loades the context shape.
+Loads the context shape.
 ") Load;
 		void Load(const TopoDS_Shape & shape);
 
@@ -1214,7 +1214,7 @@ bool
 
 Description
 -----------
-Gets mode for non-manifold sewing. //! internal functions ---.
+Gets mode for non-manifold sewing. //! INTERNAL FUNCTIONS ---.
 ") NonManifoldMode;
 		Standard_Boolean NonManifoldMode();
 
@@ -1232,7 +1232,7 @@ None
 
 Description
 -----------
-Computing theprogress - progress indicator of algorithm.
+Computing theProgress - progress indicator of algorithm.
 ") Perform;
 		void Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1263,7 +1263,7 @@ TopoDS_Edge
 
 Description
 -----------
-Gives the original edge (free boundary) which becomes the the section. remember that sections constitute common edges. this imformation is important for control because with original edge we can find the surface to which the section is attached.
+Gives the original edge (free boundary) which becomes the the section. Remember that sections constitute common edges. This information is important for control because with original edge we can find the surface to which the section is attached.
 ") SectionToBoundary;
 		const TopoDS_Edge SectionToBoundary(const TopoDS_Edge & section);
 
@@ -1281,7 +1281,7 @@ None
 
 Description
 -----------
-Set context.
+set context.
 ") SetContext;
 		void SetContext(const opencascade::handle<BRepTools_ReShape> & theContext);
 
@@ -1299,7 +1299,7 @@ None
 
 Description
 -----------
-Sets mode for sewing faces by default - true.
+Sets mode for sewing faces By default - true.
 ") SetFaceMode;
 		void SetFaceMode(const Standard_Boolean theFaceMode);
 
@@ -1317,7 +1317,7 @@ None
 
 Description
 -----------
-Sets mode for sewing floating edges by default - false. returns mode for cutting floating edges by default - false. sets mode for cutting floating edges by default - false.
+Sets mode for sewing floating edges By default - false. Returns mode for cutting floating edges By default - false. Sets mode for cutting floating edges By default - false.
 ") SetFloatingEdgesMode;
 		void SetFloatingEdgesMode(const Standard_Boolean theFloatingEdgesMode);
 
@@ -1335,7 +1335,7 @@ None
 
 Description
 -----------
-Sets mode for accounting of local tolerances of edges and vertices during of merging in this case worktolerance = mytolerance + toledge1+ toledg2;.
+Sets mode for accounting of local tolerances of edges and vertices during of merging in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;.
 ") SetLocalTolerancesMode;
 		void SetLocalTolerancesMode(const Standard_Boolean theLocalTolerancesMode);
 
@@ -1630,7 +1630,8 @@ bool
 
 Description
 -----------
-Implementation of acceptance method this method is called when the bounding box intersect with the current. it stores the object - the index of box in the list of accepted objects. return true, because the object is accepted.
+Implementation of acceptance method This method is called when the bounding box intersect with the current. It stores the object - the index of box in the list of accepted objects. 
+Return: True, because the object is accepted.
 ") Accept;
 		Standard_Boolean Accept(const Standard_Integer & theObj);
 
@@ -1661,7 +1662,8 @@ bool
 
 Description
 -----------
-Implementation of rejection method return true if the bounding box does not intersect with the current .
+Implementation of rejection method 
+Return: True if the bounding box does not intersect with the current.
 ") Reject;
 		Standard_Boolean Reject(const Bnd_Box & theBox);
 
@@ -1725,7 +1727,7 @@ None
 
 Description
 -----------
-This is called by shape(). it does nothing but may be redefined.
+This is called by Shape(). It does nothing but may be redefined.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1743,7 +1745,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1761,7 +1763,7 @@ bool
 
 Description
 -----------
-Returns true if the shape s has been deleted.
+Returns true if the shape S has been deleted.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
 
@@ -1779,7 +1781,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -1792,7 +1794,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape built by the shape construction algorithm. raises exception stdfail_notdone if the shape was not built.
+Returns a shape built by the shape construction algorithm. Raises exception StdFail_NotDone if the shape was not built.
 ") Shape;
 		virtual const TopoDS_Shape Shape();
 
@@ -2497,7 +2499,7 @@ None
 
 Description
 -----------
-The general method to directly create an edge is to give - a 3d curve c as the support (geometric domain) of the edge, - two vertices v1 and v2 to limit the curve (definition of the restriction of the edge), and - two real values p1 and p2 which are the parameters for the vertices v1 and v2 on the curve. the curve may be defined as a 2d curve in the parametric space of a surface: a pcurve. the surface on which the edge is built is then kept at the level of the edge. the default tolerance will be associated with this edge. rules applied to the arguments: for the curve: - the curve must not be a 'null handle'. - if the curve is a trimmed curve the basis curve is used. for the vertices: - vertices may be null shapes. when v1 or v2 is null the edge is open in the corresponding direction and the parameter value p1 or p2 must be infinite (remember that precision::infinite() defines an infinite value). - the two vertices must be identical if they have the same 3d location. identical vertices are used in particular when the curve is closed. for the parameters: - the parameters must be in the parametric range of the curve (or the basis curve if the curve is trimmed). if this condition is not satisfied the edge is not built, and the error function will return brepapi_parameteroutofrange. - parameter values must not be equal. if this condition is not satisfied (i.e. if | p1 - p2 | ) the edge is not built, and the error function will return brepapi_linethroughidenticpoints. parameter values are expected to be given in increasing order: c->firstparameter() - if the parameter values are given in decreasing order the vertices are switched, i.e. the 'first vertex' is on the point of parameter p2 and the 'second vertex' is on the point of parameter p1. in such a case, to keep the original intent of the construction, the edge will be oriented 'reversed'. - on a periodic curve the parameter values p1 and p2 are adjusted by adding or subtracting the period to obtain p1 in the parametric range of the curve, and p2] such that [ p1 , where period is the period of the curve. - a parameter value may be infinite. the edge is open in the corresponding direction. however the corresponding vertex must be a null shape. if this condition is not satisfied the edge is not built, and the error function will return brepapi_pointwithinfiniteparameter. - the distance between the vertex and the point evaluated on the curve with the parameter, must be lower than the precision of the vertex. if this condition is not satisfied the edge is not built, and the error function will return brepapi_differentspointandparameter. other edge constructions - the parameter values can be omitted, they will be computed by projecting the vertices on the curve. note that projection is the only way to evaluate the parameter values of the vertices on the curve: vertices must be given on the curve, i.e. the distance from a vertex to the curve must be less than or equal to the precision of the vertex. if this condition is not satisfied the edge is not built, and the error function will return brepapi_pointprojectionfailed. - 3d points can be given in place of vertices. vertices will be created from the points (with the default topological precision precision::confusion()). note: - giving vertices is useful when creating a connected edge. - if the parameter values correspond to the extremities of a closed curve, points must be identical, or at least coincident. if this condition is not satisfied the edge is not built, and the error function will return brepapi_differentpointsonclosedcurve. - the vertices or points can be omitted if the parameter values are given. the points will be computed from the parameters on the curve. the vertices or points and the parameter values can be omitted. the first and last parameters of the curve will then be used. //! auxiliary methods.
+The general method to directly create an edge is to give - a 3D curve C as the support (geometric domain) of the edge, - two vertices V1 and V2 to limit the curve (definition of the restriction of the edge), and - two real values p1 and p2 which are the parameters for the vertices V1 and V2 on the curve. The curve may be defined as a 2d curve in the parametric space of a surface: a pcurve. The surface on which the edge is built is then kept at the level of the edge. The default tolerance will be associated with this edge. Rules applied to the arguments: For the curve: - The curve must not be a 'null handle'. - If the curve is a trimmed curve the basis curve is used. For the vertices: - Vertices may be null shapes. When V1 or V2 is null the edge is open in the corresponding direction and the parameter value p1 or p2 must be infinite (remember that Precision::Infinite() defines an infinite value). - The two vertices must be identical if they have the same 3D location. Identical vertices are used in particular when the curve is closed. For the parameters: - The parameters must be in the parametric range of the curve (or the basis curve if the curve is trimmed). If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_ParameterOutOfRange. - Parameter values must not be equal. If this condition is not satisfied (i.e. if | p1 - p2 | ) the edge is not built, and the Error function will return BRepAPI_LineThroughIdenticPoints. Parameter values are expected to be given in increasing order: C->FirstParameter() - If the parameter values are given in decreasing order the vertices are switched, i.e. the 'first vertex' is on the point of parameter p2 and the 'second vertex' is on the point of parameter p1. In such a case, to keep the original intent of the construction, the edge will be oriented 'reversed'. - On a periodic curve the parameter values p1 and p2 are adjusted by adding or subtracting the period to obtain p1 in the parametric range of the curve, and p2] such that [ p1 , where Period is the period of the curve. - A parameter value may be infinite. The edge is open in the corresponding direction. However the corresponding vertex must be a null shape. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointWithInfiniteParameter. - The distance between the vertex and the point evaluated on the curve with the parameter, must be lower than the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentsPointAndParameter. Other edge constructions - The parameter values can be omitted, they will be computed by projecting the vertices on the curve. Note that projection is the only way to evaluate the parameter values of the vertices on the curve: vertices must be given on the curve, i.e. the distance from a vertex to the curve must be less than or equal to the precision of the vertex. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_PointProjectionFailed. - 3D points can be given in place of vertices. Vertices will be created from the points (with the default topological precision Precision::Confusion()). Note: - Giving vertices is useful when creating a connected edge. - If the parameter values correspond to the extremities of a closed curve, points must be identical, or at least coincident. If this condition is not satisfied the edge is not built, and the Error function will return BRepAPI_DifferentPointsOnClosedCurve. - The vertices or points can be omitted if the parameter values are given. The points will be computed from the parameters on the curve. The vertices or points and the parameter values can be omitted. The first and last parameters of the curve will then be used. //! Auxiliary methods.
 ") BRepBuilderAPI_MakeEdge;
 		 BRepBuilderAPI_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
 
@@ -2510,7 +2512,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the constructed edge. exceptions stdfail_notdone if the edge is not built.
+Returns the constructed edge. Exceptions StdFail_NotDone if the edge is not built.
 ") Edge;
 		const TopoDS_Edge Edge();
 
@@ -2523,7 +2525,7 @@ BRepBuilderAPI_EdgeError
 
 Description
 -----------
-Returns the construction status - brepbuilderapi_edgedone if the edge is built, or - another value of the brepbuilderapi_edgeerror enumeration indicating the reason of construction failure.
+Returns the construction status - BRepBuilderAPI_EdgeDone if the edge is built, or - another value of the BRepBuilderAPI_EdgeError enumeration indicating the reason of construction failure.
 ") Error;
 		BRepBuilderAPI_EdgeError Error();
 
@@ -2773,7 +2775,7 @@ None
 
 Description
 -----------
-Defines or redefines the arguments for the construction of an edge. this function is currently used after the empty constructor brepapi_makeedge().
+Defines or redefines the arguments for the construction of an edge. This function is currently used after the empty constructor BRepAPI_MakeEdge().
 ") Init;
 		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
 
@@ -2799,7 +2801,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first vertex of the edge. may be null.
+Returns the first vertex of the edge. May be Null.
 ") Vertex1;
 		const TopoDS_Vertex Vertex1();
 
@@ -2812,7 +2814,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the second vertex of the edge. may be null. //! warning the returned vertex in each function corresponds respectively to - the lowest, or - the highest parameter on the curve along which the edge is built. it does not correspond to the first or second vertex given at the time of the construction, if the edge is oriented reversed. exceptions stdfail_notdone if the edge is not built.
+Returns the second vertex of the edge. May be Null. //! Warning The returned vertex in each function corresponds respectively to - the lowest, or - the highest parameter on the curve along which the edge is built. It does not correspond to the first or second vertex given at the time of the construction, if the edge is oriented reversed. Exceptions StdFail_NotDone if the edge is not built.
 ") Vertex2;
 		const TopoDS_Vertex Vertex2();
 
@@ -3402,7 +3404,7 @@ BRepBuilderAPI_EdgeError
 
 Description
 -----------
-Returns the error description when notdone.
+Returns the error description when NotDone.
 ") Error;
 		BRepBuilderAPI_EdgeError Error();
 
@@ -3550,7 +3552,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first vertex of the edge. may be null.
+Returns the first vertex of the edge. May be Null.
 ") Vertex1;
 		const TopoDS_Vertex Vertex1();
 
@@ -3563,7 +3565,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the second vertex of the edge. may be null.
+Returns the second vertex of the edge. May be Null.
 ") Vertex2;
 		const TopoDS_Vertex Vertex2();
 
@@ -3717,7 +3719,7 @@ None
 
 Description
 -----------
-Make a face from a surface. accepts tolerance value (toldegen) for resolution of degenerated edges.
+Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real TolDegen);
 
@@ -3850,7 +3852,7 @@ None
 
 Description
 -----------
-Make a face from a surface. accepts tolerance value (toldegen) for resolution of degenerated edges.
+Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
 
@@ -3869,7 +3871,7 @@ None
 
 Description
 -----------
-Find a surface from the wire and make a face. if <onlyplane> is true, the computed surface will be a plane. if it is not possible to find a plane, the flag notdone will be set.
+Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace(const TopoDS_Wire & W, const Standard_Boolean OnlyPlane = Standard_False);
 
@@ -3989,7 +3991,7 @@ None
 
 Description
 -----------
-Make a face from a surface and a wire. if the surface s is not plane, it must contain pcurves for all edges in w, otherwise the wrong shape will be created.
+Make a face from a Surface and a wire. If the surface S is not plane, it must contain pcurves for all edges in W, otherwise the wrong shape will be created.
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace(const opencascade::handle<Geom_Surface> & S, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
 
@@ -4008,7 +4010,7 @@ None
 
 Description
 -----------
-Adds the wire <w> in the face <f> a general method to create a face is to give - a surface s as the support (the geometric domain) of the face, - and a wire w to bound it. the bounds of the face can also be defined by four parameter values umin, umax, vmin, vmax which determine isoparametric limitations on the parametric space of the surface. in this way, a patch is defined. the parameter values are optional. if they are omitted, the natural bounds of the surface are used. a wire is automatically built using the defined bounds. up to four edges and four vertices are created with this wire (no edge is created when the corresponding parameter value is infinite). wires can then be added using the function add to define other restrictions on the face. these restrictions represent holes. more than one wire may be added by this way, provided that the wires do not cross each other and that they define only one area on the surface. (be careful, however, as this is not checked). forbidden addition of wires note that in this schema, the third case is valid if edges of the wire w are declared internal to the face. as a result, these edges are no longer bounds of the face. a default tolerance (precision::confusion()) is given to the face, this tolerance may be increased during construction of the face using various algorithms. rules applied to the arguments for the surface: - the surface must not be a 'null handle'. - if the surface is a trimmed surface, the basis surface is used. - for the wire: the wire is composed of connected edges, each edge having a parametric curve description in the parametric domain of the surface; in other words, as a pcurve. for the parameters: - the parameter values must be in the parametric range of the surface (or the basis surface, if the surface is trimmed). if this condition is not satisfied, the face is not built, and the error function will return brepbuilderapi_parametersoutofrange. - the bounding parameters p1 and p2 are adjusted on a periodic surface in a given parametric direction by adding or subtracting the period to obtain p1 in the parametric range of the surface and such p2, that p2 - p1 <= period, where period is the period of the surface in this parametric direction. - a parameter value may be infinite. there will be no edge and no vertex in the corresponding direction.
+Adds the wire <W> in the face <F> A general method to create a face is to give - a surface S as the support (the geometric domain) of the face, - and a wire W to bound it. The bounds of the face can also be defined by four parameter values umin, umax, vmin, vmax which determine isoparametric limitations on the parametric space of the surface. In this way, a patch is defined. The parameter values are optional. If they are omitted, the natural bounds of the surface are used. A wire is automatically built using the defined bounds. Up to four edges and four vertices are created with this wire (no edge is created when the corresponding parameter value is infinite). Wires can then be added using the function Add to define other restrictions on the face. These restrictions represent holes. More than one wire may be added by this way, provided that the wires do not cross each other and that they define only one area on the surface. (Be careful, however, as this is not checked). Forbidden addition of wires Note that in this schema, the third case is valid if edges of the wire W are declared internal to the face. As a result, these edges are no longer bounds of the face. A default tolerance (Precision::Confusion()) is given to the face, this tolerance may be increased during construction of the face using various algorithms. Rules applied to the arguments For the surface: - The surface must not be a 'null handle'. - If the surface is a trimmed surface, the basis surface is used. - For the wire: the wire is composed of connected edges, each edge having a parametric curve description in the parametric domain of the surface; in other words, as a pcurve. For the parameters: - The parameter values must be in the parametric range of the surface (or the basis surface, if the surface is trimmed). If this condition is not satisfied, the face is not built, and the Error function will return BRepBuilderAPI_ParametersOutOfRange. - The bounding parameters p1 and p2 are adjusted on a periodic surface in a given parametric direction by adding or subtracting the period to obtain p1 in the parametric range of the surface and such p2, that p2 - p1 <= Period, where Period is the period of the surface in this parametric direction. - A parameter value may be infinite. There will be no edge and no vertex in the corresponding direction.
 ") BRepBuilderAPI_MakeFace;
 		 BRepBuilderAPI_MakeFace(const TopoDS_Face & F, const TopoDS_Wire & W);
 
@@ -4026,7 +4028,7 @@ None
 
 Description
 -----------
-Adds the wire w to the constructed face as a hole. warning w must not cross the other bounds of the face, and all the bounds must define only one area on the surface. (be careful, however, as this is not checked.) example // a cylinder gp_cylinder c = ..; // a wire topods_wire w = ...; brepbuilderapi_makeface mf(c); mf.add(w); topods_face f = mf;.
+Adds the wire W to the constructed face as a hole. Warning W must not cross the other bounds of the face, and all the bounds must define only one area on the surface. (Be careful, however, as this is not checked.) Example // a cylinder gp_Cylinder C = ..; // a wire TopoDS_Wire W = ...; BRepBuilderAPI_MakeFace MF(C); MF.Add(W); TopoDS_Face F = MF;.
 ") Add;
 		void Add(const TopoDS_Wire & W);
 
@@ -4039,7 +4041,7 @@ BRepBuilderAPI_FaceError
 
 Description
 -----------
-Returns the construction status brepbuilderapi_facedone if the face is built, or - another value of the brepbuilderapi_faceerror enumeration indicating why the construction failed, in particular when the given parameters are outside the bounds of the surface.
+Returns the construction status BRepBuilderAPI_FaceDone if the face is built, or - another value of the BRepBuilderAPI_FaceError enumeration indicating why the construction failed, in particular when the given parameters are outside the bounds of the surface.
 ") Error;
 		BRepBuilderAPI_FaceError Error();
 
@@ -4052,7 +4054,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the constructed face. exceptions stdfail_notdone if no face is built.
+Returns the constructed face. Exceptions StdFail_NotDone if no face is built.
 ") Face;
 		const TopoDS_Face Face();
 
@@ -4070,7 +4072,7 @@ None
 
 Description
 -----------
-Initializes (or reinitializes) the construction of a face by creating a new object which is a copy of the face f, in order to add wires to it, using the function add. note: this complete copy of the geometry is only required if you want to work on the geometries of the two faces independently.
+Initializes (or reinitializes) the construction of a face by creating a new object which is a copy of the face F, in order to add wires to it, using the function Add. Note: this complete copy of the geometry is only required if you want to work on the geometries of the two faces independently.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
@@ -4090,7 +4092,7 @@ None
 
 Description
 -----------
-Initializes (or reinitializes) the construction of a face on the surface s. if bound is true, a wire is automatically created from the natural bounds of the surface s and added to the face in order to bound it. if bound is false, no wire is added. this option is used when real bounds are known. these will be added to the face after this initialization, using the function add. toldegen parameter is used for resolution of degenerated edges if calculation of natural bounds is turned on.
+Initializes (or reinitializes) the construction of a face on the surface S. If Bound is true, a wire is automatically created from the natural bounds of the surface S and added to the face in order to bound it. If Bound is false, no wire is added. This option is used when real bounds are known. These will be added to the face after this initialization, using the function Add. TolDegen parameter is used for resolution of degenerated edges if calculation of natural bounds is turned on.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean Bound, const Standard_Real TolDegen);
 
@@ -4113,7 +4115,7 @@ None
 
 Description
 -----------
-Initializes (or reinitializes) the construction of a face on the surface s, limited in the u parametric direction by the two parameter values umin and umax and in the v parametric direction by the two parameter values vmin and vmax. warning error returns: - brepbuilderapi_parametersoutofrange when the parameters given are outside the bounds of the surface or the basis surface of a trimmed surface. toldegen parameter is used for resolution of degenerated edges.
+Initializes (or reinitializes) the construction of a face on the surface S, limited in the u parametric direction by the two parameter values UMin and UMax and in the v parametric direction by the two parameter values VMin and VMax. Warning Error returns: - BRepBuilderAPI_ParametersOutOfRange when the parameters given are outside the bounds of the surface or the basis surface of a trimmed surface. TolDegen parameter is used for resolution of degenerated edges.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
 
@@ -4153,7 +4155,7 @@ None
 
 Description
 -----------
-Initializes an empty polygonal wire, to which points or vertices are added using the add function. as soon as the polygonal wire under construction contains vertices, it can be consulted using the wire function.
+Initializes an empty polygonal wire, to which points or vertices are added using the Add function. As soon as the polygonal wire under construction contains vertices, it can be consulted using the Wire function.
 ") BRepBuilderAPI_MakePolygon;
 		 BRepBuilderAPI_MakePolygon();
 
@@ -4215,7 +4217,7 @@ None
 
 Description
 -----------
-Constructs a polygonal wire from 2, 3 or 4 points. vertices are automatically created on the given points. the polygonal wire is closed if close is true; otherwise it is open. further vertices can be added using the add function. the polygonal wire under construction can be consulted at any time by using the wire function. example //an open polygon from four points topods_wire w = brepbuilderapi_makepolygon(p1,p2,p3,p4); warning: the process is equivalent to: - initializing an empty polygonal wire, - and adding the given points in sequence. consequently, be careful when using this function: if the sequence of points p1 - p2 - p1 is found among the arguments of the constructor, you will create a polygonal wire with two consecutive coincident edges.
+Constructs a polygonal wire from 2, 3 or 4 points. Vertices are automatically created on the given points. The polygonal wire is closed if Close is true; otherwise it is open. Further vertices can be added using the Add function. The polygonal wire under construction can be consulted at any time by using the Wire function. Example //an open polygon from four points TopoDS_Wire W = BRepBuilderAPI_MakePolygon(P1,P2,P3,P4); Warning: The process is equivalent to: - initializing an empty polygonal wire, - and adding the given points in sequence. Consequently, be careful when using this function: if the sequence of points p1 - p2 - p1 is found among the arguments of the constructor, you will create a polygonal wire with two consecutive coincident edges.
 ") BRepBuilderAPI_MakePolygon;
 		 BRepBuilderAPI_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & P4, const Standard_Boolean Close = Standard_False);
 
@@ -4277,7 +4279,7 @@ None
 
 Description
 -----------
-Constructs a polygonal wire from 2, 3 or 4 vertices. the polygonal wire is closed if close is true; otherwise it is open (default value). further vertices can be added using the add function. the polygonal wire under construction can be consulted at any time by using the wire function. example //a closed triangle from three vertices topods_wire w = brepbuilderapi_makepolygon(v1,v2,v3,standard_true); warning the process is equivalent to: - initializing an empty polygonal wire, - then adding the given points in sequence. so be careful, as when using this function, you could create a polygonal wire with two consecutive coincident edges if the sequence of vertices v1 - v2 - v1 is found among the constructor's arguments.
+Constructs a polygonal wire from 2, 3 or 4 vertices. The polygonal wire is closed if Close is true; otherwise it is open (default value). Further vertices can be added using the Add function. The polygonal wire under construction can be consulted at any time by using the Wire function. Example //a closed triangle from three vertices TopoDS_Wire W = BRepBuilderAPI_MakePolygon(V1,V2,V3,Standard_True); Warning The process is equivalent to: - initializing an empty polygonal wire, - then adding the given points in sequence. So be careful, as when using this function, you could create a polygonal wire with two consecutive coincident edges if the sequence of vertices v1 - v2 - v1 is found among the constructor's arguments.
 ") BRepBuilderAPI_MakePolygon;
 		 BRepBuilderAPI_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const TopoDS_Vertex & V3, const TopoDS_Vertex & V4, const Standard_Boolean Close = Standard_False);
 
@@ -4313,7 +4315,7 @@ None
 
 Description
 -----------
-Adds the point p or the vertex v at the end of the polygonal wire under construction. a vertex is automatically created on the point p. warning - when p or v is coincident to the previous vertex, no edge is built. the method added can be used to test for this. neither p nor v is checked to verify that it is coincident with another vertex than the last one, of the polygonal wire under construction. it is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the close function). consequently, be careful using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non manifold polygonal wire. - p or v is not checked to verify if it is coincident with another vertex but the last one, of the polygonal wire under construction. it is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the close function). consequently, be careful when using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non-manifold polygonal wire.
+Adds the point P or the vertex V at the end of the polygonal wire under construction. A vertex is automatically created on the point P. Warning - When P or V is coincident to the previous vertex, no edge is built. The method Added can be used to test for this. Neither P nor V is checked to verify that it is coincident with another vertex than the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non manifold polygonal wire. - P or V is not checked to verify if it is coincident with another vertex but the last one, of the polygonal wire under construction. It is also possible to add vertices on a closed polygon (built for example by using a constructor which declares the polygon closed, or after the use of the Close function). Consequently, be careful when using this function: you might create: - a polygonal wire with two consecutive coincident edges, or - a non-manifold polygonal wire.
 ") Add;
 		void Add(const TopoDS_Vertex & V);
 
@@ -4339,7 +4341,7 @@ None
 
 Description
 -----------
-Closes the polygonal wire under construction. note - this is equivalent to adding the first vertex to the polygonal wire under construction.
+Closes the polygonal wire under construction. Note - this is equivalent to adding the first vertex to the polygonal wire under construction.
 ") Close;
 		void Close();
 
@@ -4352,7 +4354,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge built between the last two points or vertices added to the constructed polygonal wire under construction. warning if there is only one vertex in the polygonal wire, the result is a null edge.
+Returns the edge built between the last two points or vertices added to the constructed polygonal wire under construction. Warning If there is only one vertex in the polygonal wire, the result is a null edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
@@ -4378,7 +4380,7 @@ bool
 
 Description
 -----------
-Returns true if this algorithm contains a valid polygonal wire (i.e. if there is at least one edge). isdone returns false if fewer than two vertices have been chained together by this construction algorithm.
+Returns true if this algorithm contains a valid polygonal wire (i.e. if there is at least one edge). IsDone returns false if fewer than two vertices have been chained together by this construction algorithm.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
@@ -4391,7 +4393,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first or the last vertex of the polygonal wire under construction. if the constructed polygonal wire is closed, the first and the last vertices are identical.
+Returns the first or the last vertex of the polygonal wire under construction. If the constructed polygonal wire is closed, the first and the last vertices are identical.
 ") LastVertex;
 		const TopoDS_Vertex LastVertex();
 
@@ -4404,7 +4406,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the constructed polygonal wire, or the already built part of the polygonal wire under construction. exceptions stdfail_notdone if the wire is not built, i.e. if fewer than two vertices have been chained together by this construction algorithm.
+Returns the constructed polygonal wire, or the already built part of the polygonal wire under construction. Exceptions StdFail_NotDone if the wire is not built, i.e. if fewer than two vertices have been chained together by this construction algorithm.
 ") Wire;
 		const TopoDS_Wire Wire();
 
@@ -4436,7 +4438,8 @@ None
 
 Description
 -----------
-Ctor. sets mesh to process. @param themesh [in] - mesh to construct shape for.
+Ctor. Sets mesh to process. 
+Input parameter: theMesh - Mesh to construct shape for.
 ") BRepBuilderAPI_MakeShapeOnMesh;
 		 BRepBuilderAPI_MakeShapeOnMesh(const opencascade::handle<Poly_Triangulation> & theMesh);
 
@@ -4481,7 +4484,7 @@ None
 
 Description
 -----------
-Constructs an empty shell framework. the init function is used to define the construction arguments. warning the function error will return brepbuilderapi_emptyshell if it is called before the function init.
+Constructs an empty shell framework. The Init function is used to define the construction arguments. Warning The function Error will return BRepBuilderAPI_EmptyShell if it is called before the function Init.
 ") BRepBuilderAPI_MakeShell;
 		 BRepBuilderAPI_MakeShell();
 
@@ -4500,7 +4503,7 @@ None
 
 Description
 -----------
-Constructs a shell from the surface s.
+Constructs a shell from the surface S.
 ") BRepBuilderAPI_MakeShell;
 		 BRepBuilderAPI_MakeShell(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean Segment = Standard_False);
 
@@ -4523,7 +4526,7 @@ None
 
 Description
 -----------
-Constructs a shell from the surface s, limited in the u parametric direction by the two parameter values umin and umax, and limited in the v parametric direction by the two parameter values vmin and vmax.
+Constructs a shell from the surface S, limited in the u parametric direction by the two parameter values UMin and UMax, and limited in the v parametric direction by the two parameter values VMin and VMax.
 ") BRepBuilderAPI_MakeShell;
 		 BRepBuilderAPI_MakeShell(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Boolean Segment = Standard_False);
 
@@ -4536,7 +4539,7 @@ BRepBuilderAPI_ShellError
 
 Description
 -----------
-Returns the construction status: - brepbuilderapi_shelldone if the shell is built, or - another value of the brepbuilderapi_shellerror enumeration indicating why the construction failed. this is frequently brepbuilderapi_shellparametersoutofrange indicating that the given parameters are outside the bounds of the surface.
+Returns the construction status: - BRepBuilderAPI_ShellDone if the shell is built, or - another value of the BRepBuilderAPI_ShellError enumeration indicating why the construction failed. This is frequently BRepBuilderAPI_ShellParametersOutOfRange indicating that the given parameters are outside the bounds of the surface.
 ") Error;
 		BRepBuilderAPI_ShellError Error();
 
@@ -4559,7 +4562,7 @@ None
 
 Description
 -----------
-Defines or redefines the arguments for the construction of a shell. the construction is initialized with the surface s, limited in the u parametric direction by the two parameter values umin and umax, and in the v parametric direction by the two parameter values vmin and vmax. warning the function error returns: - brepbuilderapi_shellparametersoutofrange when the given parameters are outside the bounds of the surface or the basis surface if s is trimmed.
+Defines or redefines the arguments for the construction of a shell. The construction is initialized with the surface S, limited in the u parametric direction by the two parameter values UMin and UMax, and in the v parametric direction by the two parameter values VMin and VMax. Warning The function Error returns: - BRepBuilderAPI_ShellParametersOutOfRange when the given parameters are outside the bounds of the surface or the basis surface if S is trimmed.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Boolean Segment = Standard_False);
 
@@ -4585,7 +4588,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the new shell.
+Returns the new Shell.
 ") Shell;
 		const TopoDS_Shell Shell();
 
@@ -4612,7 +4615,7 @@ None
 
 Description
 -----------
-Initializes the construction of a solid. an empty solid is considered to cover the whole space. the add function is used to define shells to bound it.
+Initializes the construction of a solid. An empty solid is considered to cover the whole space. The Add function is used to define shells to bound it.
 ") BRepBuilderAPI_MakeSolid;
 		 BRepBuilderAPI_MakeSolid();
 
@@ -4630,7 +4633,7 @@ None
 
 Description
 -----------
-Make a solid from a compsolid.
+Make a solid from a CompSolid.
 ") BRepBuilderAPI_MakeSolid;
 		 BRepBuilderAPI_MakeSolid(const TopoDS_CompSolid & S);
 
@@ -4687,7 +4690,7 @@ None
 
 Description
 -----------
-Make a solid from three shells. constructs a solid - covering the whole space, or - from shell s, or - from two shells s1 and s2, or - from three shells s1, s2 and s3, or warning no check is done to verify the conditions of coherence of the resulting solid. in particular, s1, s2 (and s3) must not intersect each other. besides, after all shells have been added using the add function, one of these shells should constitute the outside skin of the solid; it may be closed (a finite solid) or open (an infinite solid). other shells form hollows (cavities) in these previous ones. each must bound a closed volume.
+Make a solid from three shells. Constructs a solid - covering the whole space, or - from shell S, or - from two shells S1 and S2, or - from three shells S1, S2 and S3, or Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S1, S2 (and S3) must not intersect each other. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid; it may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
 ") BRepBuilderAPI_MakeSolid;
 		 BRepBuilderAPI_MakeSolid(const TopoDS_Shell & S1, const TopoDS_Shell & S2, const TopoDS_Shell & S3);
 
@@ -4724,7 +4727,7 @@ None
 
 Description
 -----------
-Add a shell to a solid. //! constructs a solid: - from the solid so, to which shells can be added, or - by adding the shell s to the solid so. warning no check is done to verify the conditions of coherence of the resulting solid. in particular s must not intersect the solid s0. besides, after all shells have been added using the add function, one of these shells should constitute the outside skin of the solid. it may be closed (a finite solid) or open (an infinite solid). other shells form hollows (cavities) in the previous ones. each must bound a closed volume.
+Add a shell to a solid. //! Constructs a solid: - from the solid So, to which shells can be added, or - by adding the shell S to the solid So. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular S must not intersect the solid S0. Besides, after all shells have been added using the Add function, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in the previous ones. Each must bound a closed volume.
 ") BRepBuilderAPI_MakeSolid;
 		 BRepBuilderAPI_MakeSolid(const TopoDS_Solid & So, const TopoDS_Shell & S);
 
@@ -4742,7 +4745,7 @@ None
 
 Description
 -----------
-Adds the shell to the current solid. warning no check is done to verify the conditions of coherence of the resulting solid. in particular, s must not intersect other shells of the solid under construction. besides, after all shells have been added, one of these shells should constitute the outside skin of the solid. it may be closed (a finite solid) or open (an infinite solid). other shells form hollows (cavities) in these previous ones. each must bound a closed volume.
+Adds the shell to the current solid. Warning No check is done to verify the conditions of coherence of the resulting solid. In particular, S must not intersect other shells of the solid under construction. Besides, after all shells have been added, one of these shells should constitute the outside skin of the solid. It may be closed (a finite solid) or open (an infinite solid). Other shells form hollows (cavities) in these previous ones. Each must bound a closed volume.
 ") Add;
 		void Add(const TopoDS_Shell & S);
 
@@ -4773,7 +4776,7 @@ bool
 
 Description
 -----------
-Returns true if the solid is built. for this class, a solid under construction is always valid. if no shell has been added, it could be a whole-space solid. however, no check was done to verify the conditions of coherence of the resulting solid.
+Returns true if the solid is built. For this class, a solid under construction is always valid. If no shell has been added, it could be a whole-space solid. However, no check was done to verify the conditions of coherence of the resulting solid.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
@@ -4786,7 +4789,7 @@ TopoDS_Solid
 
 Description
 -----------
-Returns the new solid.
+Returns the new Solid.
 ") Solid;
 		const TopoDS_Solid Solid();
 
@@ -4818,7 +4821,7 @@ None
 
 Description
 -----------
-Constructs a vertex from point p. example create a vertex from a 3d point. gp_pnt p(0,0,10); topods_vertex v = brepbuilderapi_makevertex(p);.
+Constructs a vertex from point P. Example create a vertex from a 3D point. gp_Pnt P(0,0,10); TopoDS_Vertex V = BRepBuilderAPI_MakeVertex(P);.
 ") BRepBuilderAPI_MakeVertex;
 		 BRepBuilderAPI_MakeVertex(const gp_Pnt & P);
 
@@ -4858,7 +4861,7 @@ None
 
 Description
 -----------
-Constructs an empty wire framework, to which edges are added using the add function. as soon as the wire contains one edge, it can return with the use of the function wire. warning the function error will return brepbuilderapi_emptywire if it is called before at least one edge is added to the wire under construction.
+Constructs an empty wire framework, to which edges are added using the Add function. As soon as the wire contains one edge, it can return with the use of the function Wire. Warning The function Error will return BRepBuilderAPI_EmptyWire if it is called before at least one edge is added to the wire under construction.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire();
 
@@ -4876,7 +4879,7 @@ None
 
 Description
 -----------
-Make a wire from an edge.
+Make a Wire from an edge.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire(const TopoDS_Edge & E);
 
@@ -4895,7 +4898,7 @@ None
 
 Description
 -----------
-Make a wire from two edges.
+Make a Wire from two edges.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
@@ -4915,7 +4918,7 @@ None
 
 Description
 -----------
-Make a wire from three edges.
+Make a Wire from three edges.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Edge & E3);
 
@@ -4936,7 +4939,7 @@ None
 
 Description
 -----------
-Make a wire from four edges. constructs a wire - from the topods_wire w composed of the edge e, or - from edge e, or - from two edges e1 and e2, or - from three edges e1, e2 and e3, or - from four edges e1, e2, e3 and e4. further edges can be added using the function add. given edges are added in a sequence. each of them must be connectable to the wire under construction, and so must satisfy the following condition (unless it is the first edge of the wire): one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). it could also be the same vertex. warning if an edge is not connectable to the wire under construction it is not added. the function error will return brepbuilderapi_disconnectedwire, the function isdone will return false and the function wire will raise an error, until a new connectable edge is added.
+Make a Wire from four edges. Constructs a wire - from the TopoDS_Wire W composed of the edge E, or - from edge E, or - from two edges E1 and E2, or - from three edges E1, E2 and E3, or - from four edges E1, E2, E3 and E4. Further edges can be added using the function Add. Given edges are added in a sequence. Each of them must be connectable to the wire under construction, and so must satisfy the following condition (unless it is the first edge of the wire): one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If an edge is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Edge & E3, const TopoDS_Edge & E4);
 
@@ -4954,7 +4957,7 @@ None
 
 Description
 -----------
-Make a wire from a wire. useful for adding later.
+Make a Wire from a Wire. useful for adding later.
 ") BRepBuilderAPI_MakeWire;
 		 BRepBuilderAPI_MakeWire(const TopoDS_Wire & W);
 
@@ -4991,7 +4994,7 @@ None
 
 Description
 -----------
-Adds the edge e to the wire under construction. e must be connectable to the wire under construction, and, unless it is the first edge of the wire, must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). it could also be the same vertex. warning if e is not connectable to the wire under construction it is not added. the function error will return brepbuilderapi_disconnectedwire, the function isdone will return false and the function wire will raise an error, until a new connectable edge is added.
+Adds the edge E to the wire under construction. E must be connectable to the wire under construction, and, unless it is the first edge of the wire, must satisfy the following condition: one of its vertices must be geometrically coincident with one of the vertices of the wire (provided that the highest tolerance factor is assigned to the two vertices). It could also be the same vertex. Warning If E is not connectable to the wire under construction it is not added. The function Error will return BRepBuilderAPI_DisconnectedWire, the function IsDone will return false and the function Wire will raise an error, until a new connectable edge is added.
 ") Add;
 		void Add(const TopoDS_Edge & E);
 
@@ -5009,7 +5012,7 @@ None
 
 Description
 -----------
-Add the edges of <w> to the current wire.
+Add the edges of <W> to the current wire.
 ") Add;
 		void Add(const TopoDS_Wire & W);
 
@@ -5027,7 +5030,7 @@ None
 
 Description
 -----------
-Adds the edges of <l> to the current wire. the edges are not to be consecutive. but they are to be all connected geometrically or topologically. if some of them are not connected the status give disconnectedwire but the 'maker' is done() and you can get the partial result. (ie connected to the first edgeof the list <l>).
+Adds the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically. If some of them are not connected the Status give DisconnectedWire but the 'Maker' is Done() and you can get the partial result. (ie connected to the first edgeof the list <L>).
 ") Add;
 		void Add(const TopTools_ListOfShape & L);
 
@@ -5040,7 +5043,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the last edge added to the wire under construction. warning - this edge can be different from the original one (the argument of the function add, for instance,) - a null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
+Returns the last edge added to the wire under construction. Warning - This edge can be different from the original one (the argument of the function Add, for instance,) - A null edge is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectable..
 ") Edge;
 		const TopoDS_Edge Edge();
 
@@ -5053,7 +5056,7 @@ BRepBuilderAPI_WireError
 
 Description
 -----------
-Returns the construction status - brepbuilderapi_wiredone if the wire is built, or - another value of the brepbuilderapi_wireerror enumeration indicating why the construction failed.
+Returns the construction status - BRepBuilderAPI_WireDone if the wire is built, or - another value of the BRepBuilderAPI_WireError enumeration indicating why the construction failed.
 ") Error;
 		BRepBuilderAPI_WireError Error();
 
@@ -5066,7 +5069,7 @@ bool
 
 Description
 -----------
-Returns true if this algorithm contains a valid wire. isdone returns false if: - there are no edges in the wire, or - the last edge which you tried to add was not connectable.
+Returns true if this algorithm contains a valid wire. IsDone returns false if: - there are no edges in the wire, or - the last edge which you tried to add was not connectable.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
@@ -5079,7 +5082,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the last vertex of the last edge added to the wire under construction. warning a null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectabler.
+Returns the last vertex of the last edge added to the wire under construction. Warning A null vertex is returned if there are no edges in the wire under construction, or if the last edge which you tried to add was not connectableR.
 ") Vertex;
 		const TopoDS_Vertex Vertex();
 
@@ -5092,7 +5095,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the constructed wire; or the part of the wire under construction already built. exceptions stdfail_notdone if a wire is not built.
+Returns the constructed wire; or the part of the wire under construction already built. Exceptions StdFail_NotDone if a wire is not built.
 ") Wire;
 		const TopoDS_Wire Wire();
 
@@ -5125,7 +5128,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -5143,7 +5146,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>. s can correspond to the entire initial shape or to its subshape. exceptions standard_nosuchobject if s is not the initial shape or a subshape of the initial shape to which the transformation has been applied. raises nosuchobject from standard if s is not the initial shape or a sub-shape of the initial shape.
+Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied. Raises NoSuchObject from Standard if S is not the initial shape or a sub-shape of the initial shape.
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -5170,7 +5173,7 @@ None
 
 Description
 -----------
-Constructs an empty copy framework. use the function perform to copy shapes.
+Constructs an empty copy framework. Use the function Perform to copy shapes.
 ") BRepBuilderAPI_Copy;
 		 BRepBuilderAPI_Copy();
 
@@ -5190,7 +5193,7 @@ None
 
 Description
 -----------
-Constructs a copy framework and copies the shape s. use the function shape to access the result. if copymesh is true, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). if copygeom is false, only topological objects will be copied, while geometry and triangulation will be shared with original shape. note: the constructed framework can be reused to copy other shapes: just specify them with the function perform.
+Constructs a copy framework and copies the shape S. Use the function Shape to access the result. If copyMesh is True, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). If copyGeom is False, only topological objects will be copied, while geometry and triangulation will be shared with original shape. Note: the constructed framework can be reused to copy other shapes: just specify them with the function Perform.
 ") BRepBuilderAPI_Copy;
 		 BRepBuilderAPI_Copy(const TopoDS_Shape & S, const Standard_Boolean copyGeom = Standard_True, const Standard_Boolean copyMesh = Standard_False);
 
@@ -5210,7 +5213,7 @@ None
 
 Description
 -----------
-Copies the shape s. use the function shape to access the result. if copymesh is true, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). if copygeom is false, only topological objects will be copied, while geometry and triangulation will be shared with original shape.
+Copies the shape S. Use the function Shape to access the result. If copyMesh is True, triangulation contained in original shape will be copied along with geometry (by default, triangulation gets lost). If copyGeom is False, only topological objects will be copied, while geometry and triangulation will be shared with original shape.
 ") Perform;
 		void Perform(const TopoDS_Shape & S, const Standard_Boolean copyGeom = Standard_True, const Standard_Boolean copyMesh = Standard_False);
 
@@ -5242,7 +5245,7 @@ None
 
 Description
 -----------
-Constructs a framework for applying the geometric transformation t to a shape. use the function perform to define the shape to transform.
+Constructs a framework for applying the geometric transformation T to a shape. Use the function Perform to define the shape to transform.
 ") BRepBuilderAPI_GTransform;
 		 BRepBuilderAPI_GTransform(const gp_GTrsf & T);
 
@@ -5262,7 +5265,7 @@ None
 
 Description
 -----------
-Constructs a framework for applying the geometric transformation t to a shape, and applies it to the shape s. - if the transformation t is direct and isometric (i.e. if the determinant of the vectorial part of t is equal to 1.), and if copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - in all other cases, the transformation is applied to a duplicate of s. use the function shape to access the result. note: the constructed framework can be reused to apply the same geometric transformation to other shapes: just specify them with the function perform.
+Constructs a framework for applying the geometric transformation T to a shape, and applies it to the shape S. - If the transformation T is direct and isometric (i.e. if the determinant of the vectorial part of T is equal to 1.), and if Copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of S. Use the function Shape to access the result. Note: the constructed framework can be reused to apply the same geometric transformation to other shapes: just specify them with the function Perform.
 ") BRepBuilderAPI_GTransform;
 		 BRepBuilderAPI_GTransform(const TopoDS_Shape & S, const gp_GTrsf & T, const Standard_Boolean Copy = Standard_False);
 
@@ -5280,7 +5283,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -5298,7 +5301,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>.
+Returns the modified shape corresponding to <S>.
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -5317,7 +5320,7 @@ None
 
 Description
 -----------
-Applies the geometric transformation defined at the time of construction of this framework to the shape s. - if the transformation t is direct and isometric (i.e. if the determinant of the vectorial part of t is equal to 1.), and if copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - in all other cases, the transformation is applied to a duplicate of s. use the function shape to access the result. note: this framework can be reused to apply the same geometric transformation to other shapes: just specify them by calling the function perform again.
+Applies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric (i.e. if the determinant of the vectorial part of T is equal to 1.), and if Copy equals false (default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of S. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes: just specify them by calling the function Perform again.
 ") Perform;
 		void Perform(const TopoDS_Shape & S, const Standard_Boolean Copy = Standard_False);
 
@@ -5344,7 +5347,7 @@ None
 
 Description
 -----------
-Constructs a framework for converting the geometry of a shape into nurbs geometry. use the function perform to define the shape to convert.
+Constructs a framework for converting the geometry of a shape into NURBS geometry. Use the function Perform to define the shape to convert.
 ") BRepBuilderAPI_NurbsConvert;
 		 BRepBuilderAPI_NurbsConvert();
 
@@ -5363,7 +5366,7 @@ None
 
 Description
 -----------
-Builds a new shape by converting the geometry of the shape s into nurbs geometry. specifically, all curves supporting edges of s are converted into bspline curves, and all surfaces supporting its faces are converted into bspline surfaces. use the function shape to access the new shape. note: the constructed framework can be reused to convert other shapes. you specify these with the function perform.
+Builds a new shape by converting the geometry of the shape S into NURBS geometry. Specifically, all curves supporting edges of S are converted into BSpline curves, and all surfaces supporting its faces are converted into BSpline surfaces. Use the function Shape to access the new shape. Note: the constructed framework can be reused to convert other shapes. You specify these with the function Perform.
 ") BRepBuilderAPI_NurbsConvert;
 		 BRepBuilderAPI_NurbsConvert(const TopoDS_Shape & S, const Standard_Boolean Copy = Standard_False);
 
@@ -5381,7 +5384,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -5399,7 +5402,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>. s can correspond to the entire initial shape or to its subshape. exceptions standard_nosuchobject if s is not the initial shape or a subshape of the initial shape to which the transformation has been applied. .
+Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied.
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -5418,7 +5421,7 @@ None
 
 Description
 -----------
-Builds a new shape by converting the geometry of the shape s into nurbs geometry. specifically, all curves supporting edges of s are converted into bspline curves, and all surfaces supporting its faces are converted into bspline surfaces. use the function shape to access the new shape. note: this framework can be reused to convert other shapes: you specify them by calling the function perform again.
+Builds a new shape by converting the geometry of the shape S into NURBS geometry. Specifically, all curves supporting edges of S are converted into BSpline curves, and all surfaces supporting its faces are converted into BSpline surfaces. Use the function Shape to access the new shape. Note: this framework can be reused to convert other shapes: you specify them by calling the function Perform again.
 ") Perform;
 		void Perform(const TopoDS_Shape & S, const Standard_Boolean Copy = Standard_False);
 
@@ -5450,7 +5453,7 @@ None
 
 Description
 -----------
-Constructs a framework for applying the geometric transformation t to a shape. use the function perform to define the shape to transform.
+Constructs a framework for applying the geometric transformation T to a shape. Use the function Perform to define the shape to transform.
 ") BRepBuilderAPI_Transform;
 		 BRepBuilderAPI_Transform(const gp_Trsf & T);
 
@@ -5471,7 +5474,7 @@ None
 
 Description
 -----------
-Creates a transformation from the gp_trsf <thetrsf>, and applies it to the shape <theshape>. if the transformation is direct and isometric (determinant = 1) and <thecopygeom> = standard_false, the resulting shape is <theshape> on which a new location has been set. otherwise, the transformation is applied on a duplication of <theshape>. if <thecopymesh> is true, the triangulation will be copied, and the copy will be assigned to the result shape.
+Creates a transformation from the gp_Trsf <theTrsf>, and applies it to the shape <theShape>. If the transformation is direct and isometric (determinant = 1) and <theCopyGeom> = Standard_False, the resulting shape is <theShape> on which a new location has been set. Otherwise, the transformation is applied on a duplication of <theShape>. If <theCopyMesh> is true, the triangulation will be copied, and the copy will be assigned to the result shape.
 ") BRepBuilderAPI_Transform;
 		 BRepBuilderAPI_Transform(const TopoDS_Shape & theShape, const gp_Trsf & theTrsf, const Standard_Boolean theCopyGeom = Standard_False, const Standard_Boolean theCopyMesh = Standard_False);
 
@@ -5489,7 +5492,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
@@ -5507,7 +5510,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>.
+Returns the modified shape corresponding to <S>.
 ") ModifiedShape;
 		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -5527,7 +5530,7 @@ None
 
 Description
 -----------
-Applies the geometric transformation defined at the time of construction of this framework to the shape s. - if the transformation t is direct and isometric, in other words, if the determinant of the vectorial part of t is equal to 1., and if thecopygeom equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - in all other cases, the transformation is applied to a duplicate of theshape. - if thecopymesh is true, the triangulation will be copied, and the copy will be assigned to the result shape. use the function shape to access the result. note: this framework can be reused to apply the same geometric transformation to other shapes. you only need to specify them by calling the function perform again.
+Applies the geometric transformation defined at the time of construction of this framework to the shape S. - If the transformation T is direct and isometric, in other words, if the determinant of the vectorial part of T is equal to 1., and if theCopyGeom equals false (the default value), the resulting shape is the same as the original but with a new location assigned to it. - In all other cases, the transformation is applied to a duplicate of theShape. - If theCopyMesh is true, the triangulation will be copied, and the copy will be assigned to the result shape. Use the function Shape to access the result. Note: this framework can be reused to apply the same geometric transformation to other shapes. You only need to specify them by calling the function Perform again.
 ") Perform;
 		void Perform(const TopoDS_Shape & theShape, const Standard_Boolean theCopyGeom = Standard_False, const Standard_Boolean theCopyMesh = Standard_False);
 

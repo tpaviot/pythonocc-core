@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMFILLDOCSTRING
 "GeomFill module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomfill.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomfill.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMFILLDOCSTRING) GeomFill
 
@@ -383,19 +383,19 @@ No available documentation.
 Parameters
 ----------
 MaxAng: float
-TypeConv: Convert_ParameterisationType
 
 Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
+TypeConv: Convert_ParameterisationType
 
 Description
 -----------
 No available documentation.
 ") GetShape;
-		static void GetShape(const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType & TypeConv);
+		static void GetShape(const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType &OutValue);
 
 		/****** GeomFill::GetTolerance ******/
 		/****** md5 signature: 41a668da380cd0191814e6697f67950d ******/
@@ -415,7 +415,7 @@ float
 
 Description
 -----------
-Used by the generical classes to determine tolerance for approximation.
+Used by the generical classes to determine Tolerance for approximation.
 ") GetTolerance;
 		static Standard_Real GetTolerance(const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real Radius, const Standard_Real AngularTol, const Standard_Real SpatialTol);
 
@@ -472,7 +472,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Builds a ruled surface between the two curves, curve1 and curve2.
+Builds a ruled surface between the two curves, Curve1 and Curve2.
 ") Surface;
 		static opencascade::handle<Geom_Surface> Surface(const opencascade::handle<Geom_Curve> & Curve1, const opencascade::handle<Geom_Curve> & Curve2);
 
@@ -535,7 +535,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -554,7 +554,7 @@ W3: float
 
 Description
 -----------
-Returns the weights (as percent) associed to the criterium used in the optimization.
+returns the Weights (as percent) associed to the criterium used in the optimization.
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -713,7 +713,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Returns the type of parametrization used in the approximation.
+returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
@@ -790,7 +790,7 @@ None
 
 Description
 -----------
-Define the continuity used in the approximation.
+Define the Continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
@@ -810,7 +810,7 @@ None
 
 Description
 -----------
-Define the weights associed to the criterium used in the optimization. //! if wi <= 0.
+define the Weights associed to the criterium used in the optimization. //! if Wi <= 0.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
@@ -1076,7 +1076,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -1095,7 +1095,7 @@ W3: float
 
 Description
 -----------
-Returns the weights (as percent) associed to the criterium used in the optimization.
+returns the Weights (as percent) associed to the criterium used in the optimization.
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1254,7 +1254,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Returns the type of parametrization used in the approximation.
+returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
@@ -1331,7 +1331,7 @@ None
 
 Description
 -----------
-Define the continuity used in the approximation.
+Define the Continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
@@ -1351,7 +1351,7 @@ None
 
 Description
 -----------
-Define the weights associed to the criterium used in the optimization. //! if wi <= 0.
+define the Weights associed to the criterium used in the optimization. //! if Wi <= 0.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
@@ -1581,7 +1581,7 @@ None
 
 Description
 -----------
-Constructs a default bspline surface framework.
+Constructs a default BSpline surface framework.
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves();
 
@@ -1644,7 +1644,7 @@ None
 
 Description
 -----------
-Constructs a framework for building a bspline surface from either - the four contiguous bspline curves, c1, c2, c3 and c4, or - the three contiguous bspline curves, c1, c2 and c3, or - the two contiguous bspline curves, c1 and c2. the type of filling style type to be used is one of: - geomfill_stretch - the style with the flattest patch - geomfill_coons - a rounded style of patch with less depth than that of curved - geomfill_curved - the style with the most rounded patch.constructs a framework for building a bspline surface common to the two bspline curves, c1 and c2. exceptions standard_constructionerror if the curves are not contiguous.
+Constructs a framework for building a BSpline surface from either - the four contiguous BSpline curves, C1, C2, C3 and C4, or - the three contiguous BSpline curves, C1, C2 and C3, or - the two contiguous BSpline curves, C1 and C2. The type of filling style Type to be used is one of: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch.Constructs a framework for building a BSpline surface common to the two BSpline curves, C1 and C2. Exceptions Standard_ConstructionError if the curves are not contiguous.
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const GeomFill_FillingStyle Type);
 
@@ -1666,7 +1666,7 @@ None
 
 Description
 -----------
-If the curves cannot be joined.
+if the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const opencascade::handle<Geom_BSplineCurve> & C4, const GeomFill_FillingStyle Type);
 
@@ -1687,7 +1687,7 @@ None
 
 Description
 -----------
-If the curves cannot be joined.
+if the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const GeomFill_FillingStyle Type);
 
@@ -1707,7 +1707,7 @@ None
 
 Description
 -----------
-Initializes or reinitializes this algorithm with two, three, or four curves - c1, c2, c3, and c4 - and type, one of the following filling styles: - geomfill_stretch - the style with the flattest patch - geomfill_coons - a rounded style of patch with less depth than that of curved - geomfill_curved - the style with the most rounded patch. exceptions standard_constructionerror if the curves are not contiguous.
+Initializes or reinitializes this algorithm with two, three, or four curves - C1, C2, C3, and C4 - and Type, one of the following filling styles: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch. Exceptions Standard_ConstructionError if the curves are not contiguous.
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const GeomFill_FillingStyle Type);
 
@@ -1720,7 +1720,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the bspline surface surface resulting from the computation performed by this algorithm.
+Returns the BSpline surface Surface resulting from the computation performed by this algorithm.
 ") Surface;
 		const opencascade::handle<Geom_BSplineSurface> & Surface();
 
@@ -1747,7 +1747,7 @@ None
 
 Description
 -----------
-Constructs an empty framework for building a bezier surface from contiguous bezier curves. you use the init function to define the boundaries of the surface.
+Constructs an empty framework for building a Bezier surface from contiguous Bezier curves. You use the Init function to define the boundaries of the surface.
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves();
 
@@ -1769,7 +1769,7 @@ None
 
 Description
 -----------
-Constructs a framework for building a bezier surface from the four contiguous bezier curves, c1, c2, c3 and c4 raises standard_constructionerror if the curves are not contiguous.
+Constructs a framework for building a Bezier surface from the four contiguous Bezier curves, C1, C2, C3 and C4 Raises Standard_ConstructionError if the curves are not contiguous.
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const opencascade::handle<Geom_BezierCurve> & C4, const GeomFill_FillingStyle Type);
 
@@ -1790,7 +1790,7 @@ None
 
 Description
 -----------
-Constructs a framework for building a bezier surface from the three contiguous bezier curves, c1, c2 and c3 raises standard_constructionerror if the curves are not contiguous.
+Constructs a framework for building a Bezier surface from the three contiguous Bezier curves, C1, C2 and C3 Raises Standard_ConstructionError if the curves are not contiguous.
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const GeomFill_FillingStyle Type);
 
@@ -1810,7 +1810,7 @@ None
 
 Description
 -----------
-Constructs a framework for building a bezier surface from the two contiguous bezier curves, c1 and c2 raises standard_constructionerror if the curves are not contiguous.
+Constructs a framework for building a Bezier surface from the two contiguous Bezier curves, C1 and C2 Raises Standard_ConstructionError if the curves are not contiguous.
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const GeomFill_FillingStyle Type);
 
@@ -1832,7 +1832,7 @@ None
 
 Description
 -----------
-If the curves cannot be joined.
+if the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const opencascade::handle<Geom_BezierCurve> & C4, const GeomFill_FillingStyle Type);
 
@@ -1853,7 +1853,7 @@ None
 
 Description
 -----------
-If the curves cannot be joined.
+if the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const GeomFill_FillingStyle Type);
 
@@ -1873,7 +1873,7 @@ None
 
 Description
 -----------
-Initializes or reinitializes this algorithm with two, three, or four curves - c1, c2, c3, and c4 - and type, one of the following filling styles: - geomfill_stretch - the style with the flattest patch - geomfill_coons - a rounded style of patch with less depth than that of curved - geomfill_curved - the style with the most rounded patch. exceptions standard_constructionerror if the curves are not contiguous.
+Initializes or reinitializes this algorithm with two, three, or four curves - C1, C2, C3, and C4 - and Type, one of the following filling styles: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch. Exceptions Standard_ConstructionError if the curves are not contiguous.
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const GeomFill_FillingStyle Type);
 
@@ -1886,7 +1886,7 @@ opencascade::handle<Geom_BezierSurface>
 
 Description
 -----------
-Returns the bezier surface resulting from the computation performed by this algorithm.
+Returns the Bezier surface resulting from the computation performed by this algorithm.
 ") Surface;
 		const opencascade::handle<Geom_BezierSurface> & Surface();
 
@@ -2164,7 +2164,7 @@ None
 
 Description
 -----------
-Create a blend with a constant radius with 2 guide-line. <fshape> sets the type of fillet surface. the -- default value is convert_tgtthetaover2 (classical -- nurbs -- representation of circles). chfi3d_quasiangular -- corresponds to a nurbs representation of circles -- which parameterisation matches the circle one. -- chfi3d_polynomial corresponds to a polynomial -- representation of circles.
+Create a Blend with a constant radius with 2 guide-line. <FShape> sets the type of fillet surface. The -- default value is Convert_TgtThetaOver2 (classical -- nurbs -- representation of circles). ChFi3d_QuasiAngular -- corresponds to a nurbs representation of circles -- which parameterisation matches the circle one. -- ChFi3d_Polynomial corresponds to a polynomial -- representation of circles.
 ") GeomFill_CircularBlendFunc;
 		 GeomFill_CircularBlendFunc(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius, const Standard_Boolean Polynomial = Standard_False);
 
@@ -2177,7 +2177,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -2200,7 +2200,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
@@ -2226,7 +2226,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param.
+compute the first derivative in v direction of the section for v = param.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -2255,7 +2255,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param.
+compute the second derivative in v direction of the section for v = param.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -2273,7 +2273,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation.
+Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -2294,7 +2294,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -2313,7 +2313,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2326,7 +2326,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal or not.
+Returns if the section is rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -2344,7 +2344,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -2357,7 +2357,7 @@ float
 
 Description
 -----------
-Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
+Returns the length of the maximum section. This information is useful to perform well conditioned rational approximation.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -2375,7 +2375,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -2388,7 +2388,7 @@ int
 
 Description
 -----------
-Get the number of 2d curves to approximate.
+get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
@@ -2406,7 +2406,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2425,7 +2425,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2444,7 +2444,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the fonction this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the fonction This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -2463,7 +2463,7 @@ None
 
 Description
 -----------
-Is usfull, if (me) have to be run numerical algorithme to perform d0, d1 or d2.
+Is usfull, if (me) have to be run numerical algorithme to perform D0, D1 or D2.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -2498,7 +2498,7 @@ None
 
 Description
 -----------
-Constructs an empty framework for filling a surface from boundaries. the boundaries of the surface will be defined, and the surface will be built by using the function init. the surface will respect the following constraints: - its degree will not be greater than maxdeg - the maximum number of segments maxseg which bspline surfaces can have.
+Constructs an empty framework for filling a surface from boundaries. The boundaries of the surface will be defined, and the surface will be built by using the function Init. The surface will respect the following constraints: - its degree will not be greater than MaxDeg - the maximum number of segments MaxSeg which BSpline surfaces can have.
 ") GeomFill_ConstrainedFilling;
 		 GeomFill_ConstrainedFilling(const Standard_Integer MaxDeg, const Standard_Integer MaxSeg);
 
@@ -2534,7 +2534,7 @@ None
 
 Description
 -----------
-Computes values and normals along the bound i and compare them to the approx result curves (bound and tgte field) , draw the normals and tangents.
+Computes values and normals along the bound I and compare them to the approx result curves (bound and tgte field) , draw the normals and tangents.
 ") CheckApprox;
 		void CheckApprox(const Standard_Integer I);
 
@@ -2552,7 +2552,7 @@ None
 
 Description
 -----------
-Computes the fields of tangents on 30 points along the bound i, these are not the constraint tangents but gives an idea of the coonsalgpatch regularity.
+Computes the fields of tangents on 30 points along the bound I, these are not the constraint tangents but gives an idea of the coonsAlgPatch regularity.
 ") CheckCoonsAlgPatch;
 		void CheckCoonsAlgPatch(const Standard_Integer I);
 
@@ -2570,7 +2570,7 @@ None
 
 Description
 -----------
-Computes values and normals along the bound i on both constraint surface and result surface, draw the normals, and computes the max distance between values and the max angle between normals.
+Computes values and normals along the bound I on both constraint surface and result surface, draw the normals, and computes the max distance between values and the max angle between normals.
 ") CheckResult;
 		void CheckResult(const Standard_Integer I);
 
@@ -2588,7 +2588,7 @@ None
 
 Description
 -----------
-Computes the fields of tangents and normals on 30 points along the bound i, draw them, and computes the max dot product that must be near than 0.
+Computes the fields of tangents and normals on 30 points along the bound I, draw them, and computes the max dot product that must be near than 0.
 ") CheckTgteField;
 		void CheckTgteField(const Standard_Integer I);
 
@@ -2607,7 +2607,7 @@ Result: float
 
 Description
 -----------
-Internal use for advmath approximation call.
+Internal use for Advmath approximation call.
 ") Eval;
 		Standard_Integer Eval(const Standard_Real W, const Standard_Integer Ord, Standard_Real &OutValue);
 
@@ -2650,7 +2650,7 @@ None
 
 Description
 -----------
-Constructs a bspline surface filled from the series of boundaries b1, b2, b3 and, if need be, b4, which serve: - as path constraints - and optionally, as tangency constraints if they are geomfill_boundwithsurf curves. the boundaries may be given in any order: they are classified and if necessary, reversed and reparameterized. the surface will also respect the following constraints: - its degree will not be greater than the maximum degree defined at the time of construction of this framework, and - the maximum number of segments maxseg which bspline surfaces can have.
+Constructs a BSpline surface filled from the series of boundaries B1, B2, B3 and, if need be, B4, which serve: - as path constraints - and optionally, as tangency constraints if they are GeomFill_BoundWithSurf curves. The boundaries may be given in any order: they are classified and if necessary, reversed and reparameterized. The surface will also respect the following constraints: - its degree will not be greater than the maximum degree defined at the time of construction of this framework, and - the maximum number of segments MaxSeg which BSpline surfaces can have.
 ") Init;
 		void Init(const opencascade::handle<GeomFill_Boundary> & B1, const opencascade::handle<GeomFill_Boundary> & B2, const opencascade::handle<GeomFill_Boundary> & B3, const opencascade::handle<GeomFill_Boundary> & B4, const Standard_Boolean NoCheck = Standard_False);
 
@@ -2663,7 +2663,7 @@ None
 
 Description
 -----------
-Computes the new poles of the surface using the new blending functions set by several calls to setdomain.
+Computes the new poles of the surface using the new blending functions set by several calls to SetDomain.
 ") ReBuild;
 		void ReBuild();
 
@@ -2682,7 +2682,7 @@ None
 
 Description
 -----------
-Allows to modify domain on witch the blending function associated to the constrained boundary b will propag the influence of the field of tangency. can be useful to reduce influence of boundaries on which the coons compatibility conditions are not respected. l is a relative value of the parametric range of b. default value for l is 1 (used in init). warning: must be called after init with a constrained boundary used in the call to init.
+Allows to modify domain on witch the blending function associated to the constrained boundary B will propag the influence of the field of tangency. Can be useful to reduce influence of boundaries on which the Coons compatibility conditions are not respected. l is a relative value of the parametric range of B. Default value for l is 1 (used in Init). Warning: Must be called after Init with a constrained boundary used in the call to Init.
 ") SetDomain;
 		void SetDomain(const Standard_Real l, const opencascade::handle<GeomFill_BoundWithSurf> & B);
 
@@ -2695,7 +2695,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the bspline surface after computation of the fill by this framework.
+Returns the BSpline surface after computation of the fill by this framework.
 ") Surface;
 		opencascade::handle<Geom_BSplineSurface> Surface();
 
@@ -2730,7 +2730,7 @@ None
 
 Description
 -----------
-Constructs the algorithmic patch. by default the constructed blending functions are linear. warning: no control is done on the bounds. b1/b3 and b2/b4 must be same range and well oriented.
+Constructs the algorithmic patch. By Default the constructed blending functions are linear. Warning: No control is done on the bounds. B1/B3 and B2/B4 must be same range and well oriented.
 ") GeomFill_CoonsAlgPatch;
 		 GeomFill_CoonsAlgPatch(const opencascade::handle<GeomFill_Boundary> & B1, const opencascade::handle<GeomFill_Boundary> & B2, const opencascade::handle<GeomFill_Boundary> & B3, const opencascade::handle<GeomFill_Boundary> & B4);
 
@@ -2785,7 +2785,7 @@ gp_Vec
 
 Description
 -----------
-Computes the d/du partial derivative on the algorithmic patch at parameters u and v.
+Computes the d/dU partial derivative on the algorithmic patch at parameters U and V.
 ") D1U;
 		gp_Vec D1U(const Standard_Real U, const Standard_Real V);
 
@@ -2804,7 +2804,7 @@ gp_Vec
 
 Description
 -----------
-Computes the d/dv partial derivative on the algorithmic patch at parameters u and v.
+Computes the d/dV partial derivative on the algorithmic patch at parameters U and V.
 ") D1V;
 		gp_Vec D1V(const Standard_Real U, const Standard_Real V);
 
@@ -2823,7 +2823,7 @@ gp_Vec
 
 Description
 -----------
-Computes the d2/dudv partial derivative on the algorithmic patch made with linear blending functions at parameter u and v.
+Computes the d2/dUdV partial derivative on the algorithmic patch made with linear blending functions at parameter U and V.
 ") DUV;
 		gp_Vec DUV(const Standard_Real U, const Standard_Real V);
 
@@ -2898,7 +2898,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the value on the algorithmic patch at parameters u and v.
+Computes the value on the algorithmic patch at parameters U and V.
 ") Value;
 		gp_Pnt Value(const Standard_Real U, const Standard_Real V);
 
@@ -3239,7 +3239,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the t2 derivatives for the parameter param .
+returns the values <F> of the T2 derivatives for the parameter Param .
 ") Deriv2T;
 		Standard_Boolean Deriv2T(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & d2N, const Standard_Real teta, math_Vector & F);
 
@@ -3258,7 +3258,7 @@ bool
 
 Description
 -----------
-Returns the values <t> of the x2 derivatives for the parameter param .
+returns the values <T> of the X2 derivatives for the parameter Param .
 ") Deriv2X;
 		Standard_Boolean Deriv2X(const math_Vector & X, GeomFill_Tensor & T);
 
@@ -3281,7 +3281,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the t derivatives for the parameter param .
+returns the values <F> of the T derivatives for the parameter Param .
 ") DerivT;
 		Standard_Boolean DerivT(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & dN, const Standard_Real teta, math_Vector & F);
 
@@ -3301,7 +3301,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the tx derivatives for the parameter param .
+returns the values <D> of the TX derivatives for the parameter Param .
 ") DerivTX;
 		Standard_Boolean DerivTX(const gp_Vec & dN, const Standard_Real teta, math_Matrix & D);
 
@@ -3320,7 +3320,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3333,7 +3333,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -3346,7 +3346,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -3365,7 +3365,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3385,7 +3385,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3440,7 +3440,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the t derivatives for the parameter param .
+returns the values <F> of the T derivatives for the parameter Param .
 ") DerivT;
 		Standard_Boolean DerivT(const math_Vector & X, const gp_XYZ & DCentre, const gp_XYZ & DDir, math_Vector & DFDT);
 
@@ -3459,7 +3459,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3472,7 +3472,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -3485,7 +3485,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -3525,7 +3525,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3545,7 +3545,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3679,7 +3679,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
@@ -3699,7 +3699,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param.
+compute the first derivative in v direction of the section for v = param.
 ") D1;
 		Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
@@ -3719,7 +3719,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param.
+compute the second derivative in v direction of the section for v = param.
 ") D2;
 		Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
@@ -3789,7 +3789,7 @@ bool
 
 Description
 -----------
-Compute location.
+compute Location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
@@ -3810,7 +3810,7 @@ bool
 
 Description
 -----------
-Compute location and 2d points.
+compute Location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
@@ -3834,7 +3834,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first derivatives. warning: it used only for c1 or c2 approximation.
+compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
@@ -3861,7 +3861,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first and seconde derivatives. warning: it used only for c2 approximation.
+compute location 2d points and associated first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
@@ -3874,7 +3874,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Give a status to the law returns pipeok (default implementation).
+Give a status to the Law Returns PipeOk (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
@@ -3893,7 +3893,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
@@ -3924,7 +3924,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3955,7 +3955,7 @@ float
 
 Description
 -----------
-Get the maximum norm of the matrix-location part. it is usful to find an good tolerance to approx m(t).
+Get the maximum Norm of the matrix-location part. It is usful to find an good Tolerance to approx M(t).
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
@@ -3968,7 +3968,7 @@ bool
 
 Description
 -----------
-Say if the first restriction is defined in this class. if it is true the first element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the first restriction is defined in this class. If it is true the first element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
@@ -3981,7 +3981,7 @@ bool
 
 Description
 -----------
-Say if the last restriction is defined in this class. if it is true the last element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the last restriction is defined in this class. If it is true the last element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
@@ -4000,7 +4000,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -4017,7 +4017,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is a rotation of location the default implementation is ' returns false '.
+Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
@@ -4034,7 +4034,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is an translation of location the default implementation is ' returns false '.
+Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
@@ -4047,7 +4047,7 @@ int
 
 Description
 -----------
-Get the number of 2d curves (restrictions + traces) to approximate.
+get the number of 2d curves (Restrictions + Traces) to approximate.
 ") Nb2dCurves;
 		Standard_Integer Nb2dCurves();
 
@@ -4065,7 +4065,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -4085,7 +4085,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> this information is usfull to find an good tolerance in 2d approximation.
+Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4121,7 +4121,7 @@ bool
 
 Description
 -----------
-Initialize curve of location law.
+initialize curve of location law.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -4140,7 +4140,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -4159,7 +4159,7 @@ None
 
 Description
 -----------
-Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+Is useful, if (me) have to run numerical algorithm to perform D0, D1 or D2 The default implementation make nothing.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -4177,7 +4177,7 @@ None
 
 Description
 -----------
-Set a transformation matrix like the law m(t) become mat * m(t).
+Set a transformation Matrix like the law M(t) become Mat * M(t).
 ") SetTrsf;
 		virtual void SetTrsf(const gp_Mat & Transfo);
 
@@ -4190,7 +4190,7 @@ int
 
 Description
 -----------
-Give the number of trace (curves 2d which are not restriction) returns 0 (default implementation).
+Give the number of trace (Curves 2d which are not restriction) Returns 0 (default implementation).
 ") TraceNumber;
 		virtual Standard_Integer TraceNumber();
 
@@ -4219,7 +4219,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm for building pipes. use the function init to initialize it.
+Constructs an empty algorithm for building pipes. Use the function Init to initialize it.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe();
 
@@ -4258,7 +4258,7 @@ None
 
 Description
 -----------
-Create a pipe with a constant section (<firstsection>) and a path (<path>) option can be - geomfill_iscorrectedfrenet - geomfill_isfrenet - geomfill_isconstant.
+Create a pipe with a constant section (<FirstSection>) and a path (<Path>) Option can be - GeomFill_IsCorrectedFrenet - GeomFill_IsFrenet - GeomFill_IsConstant.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet);
 
@@ -4278,7 +4278,7 @@ None
 
 Description
 -----------
-Create a pipe with a constant section (<firstsection>) and a path defined by <path> and <support>.
+Create a pipe with a constant section (<FirstSection>) and a path defined by <Path> and <Support>.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom2d_Curve> & Path, const opencascade::handle<Geom_Surface> & Support, const opencascade::handle<Geom_Curve> & FirstSect);
 
@@ -4298,7 +4298,7 @@ None
 
 Description
 -----------
-Create a pipe with a constant section (<firstsection>) and a path <path> and a fixed binormal direction <dir>.
+Create a pipe with a constant section (<FirstSection>) and a path <Path> and a fixed binormal direction <Dir>.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const gp_Dir & Dir);
 
@@ -4318,7 +4318,7 @@ None
 
 Description
 -----------
-Create a pipe with an evolving section the section evaluate from first to last section.
+Create a pipe with an evolving section The section evaluate from First to Last Section.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const opencascade::handle<Geom_Curve> & LastSect);
 
@@ -4337,7 +4337,7 @@ None
 
 Description
 -----------
-Create a pipe with n sections the section evaluate from first to last section.
+Create a pipe with N sections The section evaluate from First to Last Section.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
@@ -4401,7 +4401,7 @@ None
 
 Description
 -----------
-Create a pipe with a constant section and with 1 guide-line. use the function perform to build the surface. all standard specific cases are detected in order to construct, according to the respective geometric nature of path and the sections, a planar, cylindrical, conical, spherical or toroidal surface, a surface of linear extrusion or a surface of revolution. in the general case, the result is a bspline surface (nurbs) built by approximation of a series of sections where: - the number of sections n is chosen automatically by the algorithm according to the respective geometries of path and the sections. n is greater than or equal to 2; - n points pi (with i in the range [ 1,n ]) are defined at regular intervals along the curve path from its first point to its end point. at each point pi, a coordinate system ti is computed with pi as origin, and with the tangential and normal vectors to path defining two of its coordinate axes. in the case of a pipe with a constant circular section, the first section is a circle of radius radius centered on the origin of path and whose 'z axis' is aligned along the vector tangential to the origin of path. in the case of a pipe with a constant section, the first section is the curve firstsect. in these two cases, the ith section (for values of i greater than 1) is obtained by applying to a copy of this first section the geometric transformation which transforms coordinate system t1 into coordinate system ti. in the case of an evolving section, n-2 intermediate curves si are first computed (if n is greater than 2, and with i in the range [ 2,n-1 ]) whose geometry evolves regularly from the curve s1=firstsect to the curve sn=lastsect. the first section is firstsect, and the ith section (for values of i greater than 1) is obtained by applying to the curve si the geometric transformation which transforms coordinate system t1 into coordinate system ti.
+Create a pipe with a constant section and with 1 guide-line. Use the function Perform to build the surface. All standard specific cases are detected in order to construct, according to the respective geometric nature of Path and the sections, a planar, cylindrical, conical, spherical or toroidal surface, a surface of linear extrusion or a surface of revolution. In the general case, the result is a BSpline surface (NURBS) built by approximation of a series of sections where: - the number of sections N is chosen automatically by the algorithm according to the respective geometries of Path and the sections. N is greater than or equal to 2; - N points Pi (with i in the range [ 1,N ]) are defined at regular intervals along the curve Path from its first point to its end point. At each point Pi, a coordinate system Ti is computed with Pi as origin, and with the tangential and normal vectors to Path defining two of its coordinate axes. In the case of a pipe with a constant circular section, the first section is a circle of radius Radius centered on the origin of Path and whose 'Z Axis' is aligned along the vector tangential to the origin of Path. In the case of a pipe with a constant section, the first section is the curve FirstSect. In these two cases, the ith section (for values of i greater than 1) is obtained by applying to a copy of this first section the geometric transformation which transforms coordinate system T1 into coordinate system Ti. In the case of an evolving section, N-2 intermediate curves Si are first computed (if N is greater than 2, and with i in the range [ 2,N-1 ]) whose geometry evolves regularly from the curve S1=FirstSect to the curve SN=LastSect. The first section is FirstSect, and the ith section (for values of i greater than 1) is obtained by applying to the curve Si the geometric transformation which transforms coordinate system T1 into coordinate system Ti.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
@@ -4414,7 +4414,7 @@ float
 
 Description
 -----------
-Returns the approximation's error. if the surface is plane, cylinder ... this error can be 0.
+Returns the approximation's error. if the Surface is plane, cylinder ... this error can be 0.
 ") ErrorOnSurf;
 		Standard_Real ErrorOnSurf();
 
@@ -4427,7 +4427,7 @@ bool
 
 Description
 -----------
-The u parametric direction of the surface constructed by this algorithm usually corresponds to the evolution along the path and the v parametric direction corresponds to the evolution along the section(s). however, this rule is not respected when constructing certain specific geom surfaces (typically cylindrical surfaces, surfaces of revolution, etc.) for which the parameterization is inversed. the exchangeuv function checks for this, and returns true in all these specific cases. warning do not use this function before the surface is built.
+The u parametric direction of the surface constructed by this algorithm usually corresponds to the evolution along the path and the v parametric direction corresponds to the evolution along the section(s). However, this rule is not respected when constructing certain specific Geom surfaces (typically cylindrical surfaces, surfaces of revolution, etc.) for which the parameterization is inversed. The ExchangeUV function checks for this, and returns true in all these specific cases. Warning Do not use this function before the surface is built.
 ") ExchangeUV;
 		Standard_Boolean ExchangeUV();
 
@@ -4445,7 +4445,7 @@ None
 
 Description
 -----------
-Sets a flag to try to create as many planes, cylinder,... as possible. default value is <standard_false>.
+Sets a flag to try to create as many planes, cylinder,... as possible. Default value is <Standard_False>.
 ") GenerateParticularCase;
 		void GenerateParticularCase(const Standard_Boolean B);
 
@@ -4632,7 +4632,7 @@ None
 
 Description
 -----------
-Initializes this pipe algorithm to build the following surface: - a pipe with a constant circular section of radius radius along the path path, or - a pipe with constant section firstsect along the path path, or - a pipe where the section evolves from firstsect to lastsect along the path path. use the function perform to build the surface. note: a description of the resulting surface is given under constructors.
+Initializes this pipe algorithm to build the following surface: - a pipe with a constant circular section of radius Radius along the path Path, or - a pipe with constant section FirstSect along the path Path, or - a pipe where the section evolves from FirstSect to LastSect along the path Path. Use the function Perform to build the surface. Note: a description of the resulting surface is given under Constructors.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
@@ -4664,7 +4664,7 @@ None
 
 Description
 -----------
-Builds the pipe defined at the time of initialization of this algorithm. a description of the resulting surface is given under constructors. if withparameters (defaulted to false) is set to true, the approximation algorithm (used only in the general case of construction of a bspline surface) builds the surface with a u parameter corresponding to the one of the path. exceptions standard_constructionerror if a surface cannot be constructed from the data. warning: it is the old perform method, the next methode is recommended.
+Builds the pipe defined at the time of initialization of this algorithm. A description of the resulting surface is given under Constructors. If WithParameters (defaulted to false) is set to true, the approximation algorithm (used only in the general case of construction of a BSpline surface) builds the surface with a u parameter corresponding to the one of the path. Exceptions Standard_ConstructionError if a surface cannot be constructed from the data. Warning: It is the old Perform method, the next methode is recommended.
 ") Perform;
 		void Perform(const Standard_Boolean WithParameters = Standard_False, const Standard_Boolean myPolynomial = Standard_False);
 
@@ -4686,7 +4686,7 @@ None
 
 Description
 -----------
-Detects the particular cases. and compute the surface. if none particular case is detected we make an approximation with respect of the tolerance <tol>, the continuty <conti>, the maximum degree <maxdegree>, the maximum number of span <nbmaxsegment> and the spine parametrization. if we can't create a surface with the data.
+detects the particular cases. And compute the surface. if none particular case is detected we make an approximation with respect of the Tolerance <Tol>, the continuty <Conti>, the maximum degree <MaxDegree>, the maximum number of span <NbMaxSegment> and the spine parametrization. If we can't create a surface with the data.
 ") Perform;
 		void Perform(const Standard_Real Tol, const Standard_Boolean Polynomial, const GeomAbs_Shape Conti = GeomAbs_C1, const Standard_Integer MaxDegree = 11, const Standard_Integer NbMaxSegment = 30);
 
@@ -4699,7 +4699,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the surface built by this algorithm. warning do not use this function before the surface is built (in this case the function will return a null handle).
+Returns the surface built by this algorithm. Warning Do not use this function before the surface is built (in this case the function will return a null handle).
 ") Surface;
 		const opencascade::handle<Geom_Surface> & Surface();
 
@@ -4815,7 +4815,7 @@ D: float
 
 Description
 -----------
-Computes the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
 		virtual Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -4833,7 +4833,7 @@ F: float
 
 Description
 -----------
-Computes the value <f>of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -4852,7 +4852,7 @@ D: float
 
 Description
 -----------
-Computes the value <f> and the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4905,7 +4905,7 @@ bool
 
 Description
 -----------
-Say if <self> is initialized.
+say if <self> is Initialized.
 ") Initialized;
 		Standard_Boolean Initialized();
 
@@ -5094,7 +5094,7 @@ None
 
 Description
 -----------
-Raises if not yet perform raises if the lengths of <knots> and <mults> are not equal to nbknots().
+Raises if not yet perform Raises if the lengths of <Knots> and <Mults> are not equal to NbKnots().
 ") KnotsAndMults;
 		void KnotsAndMults(TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults);
 
@@ -5138,7 +5138,7 @@ None
 
 Description
 -----------
-Converts all curves to bsplinecurves. set them to the common profile. <ptol> is used to compare 2 knots.
+Converts all curves to BSplineCurves. Set them to the common profile. <PTol> is used to compare 2 knots.
 ") Perform;
 		virtual void Perform(const Standard_Real PTol);
 
@@ -5157,7 +5157,7 @@ None
 
 Description
 -----------
-Returns in <poles> the poles of the bsplinecurve from index <index> adjusting to the current profile. raises if not yet perform raises if <index> not in the range [1,nbcurves] if the length of <poles> is not equal to nbpoles().
+returns in <Poles> the poles of the BSplineCurve from index <Index> adjusting to the current profile. Raises if not yet perform Raises if <Index> not in the range [1,NbCurves] if the length of <Poles> is not equal to NbPoles().
 ") Poles;
 		void Poles(const Standard_Integer Index, TColgp_Array1OfPnt & Poles);
 
@@ -5176,7 +5176,7 @@ None
 
 Description
 -----------
-Returns in <weights> the weights of the bsplinecurve from index <index> adjusting to the current profile. raises if not yet perform raises if <index> not in the range [1,nbcurves] or if the length of <weights> is not equal to nbpoles().
+returns in <Weights> the weights of the BSplineCurve from index <Index> adjusting to the current profile. Raises if not yet perform Raises if <Index> not in the range [1,NbCurves] or if the length of <Weights> is not equal to NbPoles().
 ") Weights;
 		void Weights(const Standard_Integer Index, TColStd_Array1OfReal & Weights);
 
@@ -5229,7 +5229,7 @@ bool
 
 Description
 -----------
-Say if <self> is initialized.
+say if <self> is Initialized.
 ") Initialized;
 		Standard_Boolean Initialized();
 
@@ -5344,7 +5344,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Give if possible an bspline surface, like iso-v are the section. if it is not possible this methode have to get an null surface. it is the default implementation.
+give if possible an bspline Surface, like iso-v are the section. If it is not possible this methode have to get an Null Surface. It is the default implementation.
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
@@ -5357,7 +5357,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -5375,7 +5375,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return the circle section at parameter <param>, if <self> a isconicallaw.
+Return the circle section at parameter <Param>, if <self> a IsConicalLaw.
 ") CirclSection;
 		virtual opencascade::handle<Geom_Curve> CirclSection(const Standard_Real Param);
 
@@ -5388,7 +5388,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return a copy of the constant section, if me isconstant.
+Return a copy of the constant Section, if me IsConstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
@@ -5408,7 +5408,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
@@ -5430,7 +5430,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param warning: it used only for c1 or c2 approximation.
+compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -5454,7 +5454,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param warning: it used only for c2 approximation.
+compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -5472,7 +5472,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5508,7 +5508,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -5529,7 +5529,7 @@ None
 
 Description
 -----------
-Returns the tolerances associated at each poles to reach in approximation, to satisfy: boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -5548,7 +5548,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -5565,7 +5565,7 @@ Error: float
 
 Description
 -----------
-Returns true if all section are circle, with same plane,same center and linear radius evolution return false by default.
+Returns True if all section are circle, with same plane,same center and linear radius evolution Return False by Default.
 ") IsConicalLaw;
 		virtual Standard_Boolean IsConicalLaw(Standard_Real &OutValue);
 
@@ -5595,7 +5595,7 @@ bool
 
 Description
 -----------
-Returns if the sections are rationnal or not.
+Returns if the sections are rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -5639,7 +5639,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -5652,7 +5652,7 @@ float
 
 Description
 -----------
-Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
+Returns the length of the greater section. This information is useful to G1's control. Warning: With an little value, approximation can be slower.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -5670,7 +5670,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -5688,7 +5688,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -5707,7 +5707,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -5726,7 +5726,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -5745,7 +5745,7 @@ None
 
 Description
 -----------
-Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+Is useful, if (me) have to run numerical algorithm to perform D0, D1 or D2 The default implementation make nothing.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -5837,7 +5837,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Compute the section, in the coordinate system given by the location law. to have the normal to section equal to the location law normal. if <withtranslation> contact between <section> and <path> is forced.
+Compute the Section, in the coordinate system given by the Location Law. To have the Normal to section equal to the Location Law Normal. If <WithTranslation> contact between <Section> and <Path> is forced.
 ") ModifiedSection;
 		opencascade::handle<Geom_Curve> ModifiedSection(const Standard_Boolean WithTranslation);
 
@@ -5937,7 +5937,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Compute the section, in the coordinate system given by the location law. if <withtranslation> contact between <section> and <path> is forced.
+Compute the Section, in the coordinate system given by the Location Law. If <WithTranslation> contact between <Section> and <Path> is forced.
 ") Section;
 		opencascade::handle<Geom_Curve> Section(const Standard_Boolean WithTranslation);
 
@@ -5955,7 +5955,7 @@ None
 
 Description
 -----------
-To change the section law.
+To change the section Law.
 ") SetLocation;
 		void SetLocation(const opencascade::handle<GeomFill_LocationLaw> & L);
 
@@ -6025,7 +6025,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -6045,7 +6045,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -6066,7 +6066,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -6088,7 +6088,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c1.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C1.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -6107,7 +6107,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
@@ -6133,7 +6133,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -6152,7 +6152,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -6196,7 +6196,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -6227,7 +6227,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -6276,7 +6276,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
@@ -6333,7 +6333,7 @@ None
 
 Description
 -----------
-Build the sweeep surface approxstyle defines approximation strategy - geomfill_section: the composed function: location x section is directly approximated. - geomfill_location: the location law is approximated, and the sweepsurface is build algebric composition of approximated location law and section law this option is ok, if section.surface() methode is effective. continuity: the continuity in v waiting on the surface degmax: the maximum degree in v required on the surface segmax: the maximum number of span in v required on the surface //! raise if domain are infinite or profile not set.
+Build the Sweeep Surface ApproxStyle defines Approximation Strategy - GeomFill_Section: The composed Function: Location X Section is directly approximated. - GeomFill_Location: The location law is approximated, and the SweepSurface is build algebric composition of approximated location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity: The continuity in v waiting on the surface Degmax: The maximum degree in v required on the surface Segmax: The maximum number of span in v required on the surface //! raise If Domain are infinite or Profile not set.
 ") Build;
 		void Build(const opencascade::handle<GeomFill_SectionLaw> & Section, const GeomFill_ApproxStyle Methode = GeomFill_Location, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Integer Degmax = 10, const Standard_Integer Segmax = 30);
 
@@ -6352,7 +6352,7 @@ VError: float
 
 Description
 -----------
-Gets the approximation error.
+Gets the Approximation error.
 ") ErrorOnRestriction;
 		void ErrorOnRestriction(const Standard_Boolean IsFirst, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6365,7 +6365,7 @@ float
 
 Description
 -----------
-Gets the approximation error.
+Gets the Approximation error.
 ") ErrorOnSurface;
 		Standard_Real ErrorOnSurface();
 
@@ -6384,7 +6384,7 @@ VError: float
 
 Description
 -----------
-Gets the approximation error.
+Gets the Approximation error.
 ") ErrorOnTrace;
 		void ErrorOnTrace(const Standard_Integer IndexOfTrace, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6397,7 +6397,7 @@ bool
 
 Description
 -----------
-Returns true if sections are u-iso this can be produce in some cases when <withkpart> is true.
+returns true if sections are U-Iso This can be produce in some cases when <WithKpart> is True.
 ") ExchangeUV;
 		Standard_Boolean ExchangeUV();
 
@@ -6410,7 +6410,7 @@ bool
 
 Description
 -----------
-Tells if the surface is buildt.
+Tells if the Surface is Buildt.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6462,7 +6462,7 @@ None
 
 Description
 -----------
-Set parametric information [<first>, <last>] sets the parametric bound of the sweeping surface to build. <sectionfirst>, <sectionlast> gives corresponding bounds parameter on the section law of <first> and <last> //! v-iso on sweeping surface s(u,v) is defined by location(v) and section(w) where w = sectionfirst + (v - first) / (last-first) * (sectionlast - sectionfirst) //! by default w = v, and first and last are given by first and last parameter stored in locationlaw.
+Set parametric information [<First>, <Last>] Sets the parametric bound of the sweeping surface to build. <SectionFirst>, <SectionLast> gives corresponding bounds parameter on the section law of <First> and <Last> //! V-Iso on Sweeping Surface S(u,v) is defined by Location(v) and Section(w) where w = SectionFirst + (v - First) / (Last-First) * (SectionLast - SectionFirst) //! By default w = v, and First and Last are given by First and Last parameter stored in LocationLaw.
 ") SetDomain;
 		void SetDomain(const Standard_Real First, const Standard_Real Last, const Standard_Real SectionFirst, const Standard_Real SectionLast);
 
@@ -6480,7 +6480,7 @@ None
 
 Description
 -----------
-Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0.
+Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") SetForceApproxC1;
 		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
 
@@ -6501,7 +6501,7 @@ None
 
 Description
 -----------
-Set approximation tolerance tol3d: tolerance to surface approximation tol2d: tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution method define in <locationlaw> but if this tolerance is too large tol2d is used. tolangular: tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
+Set Approximation Tolerance Tol3d: Tolerance to surface approximation Tol2d: Tolerance used to perform curve approximation Normally the 2d curve are approximated with a tolerance given by the resolution method define in <LocationLaw> but if this tolerance is too large Tol2d is used. TolAngular: Tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Tol3d, const Standard_Real BoundTol = 1.0, const Standard_Real Tol2d = 1.0e-5, const Standard_Real TolAngular = 1.0);
 
@@ -6545,7 +6545,7 @@ bool
 
 Description
 -----------
-Returns true if parametrisation sens in u is inverse of parametrisation sens of section (or of path if exchangeuv).
+returns true if Parametrisation sens in U is inverse of parametrisation sens of section (or of path if ExchangeUV).
 ") UReversed;
 		Standard_Boolean UReversed();
 
@@ -6558,7 +6558,7 @@ bool
 
 Description
 -----------
-Returns true if parametrisation sens in v is inverse of parametrisation sens of path (or of section if exchangeuv).
+returns true if Parametrisation sens in V is inverse of parametrisation sens of path (or of section if ExchangeUV).
 ") VReversed;
 		Standard_Boolean VReversed();
 
@@ -6607,7 +6607,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -6630,7 +6630,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
@@ -6656,7 +6656,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param.
+compute the first derivative in v direction of the section for v = param.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -6685,7 +6685,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param.
+compute the second derivative in v direction of the section for v = param.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -6703,7 +6703,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles of all sections. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -6724,7 +6724,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -6743,7 +6743,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -6774,7 +6774,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -6787,7 +6787,7 @@ float
 
 Description
 -----------
-Returns the length of the maximum section. this information is useful to perform well conditioned rational approximation.
+Returns the length of the maximum section. This information is useful to perform well conditioned rational approximation.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -6805,7 +6805,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -6818,7 +6818,7 @@ int
 
 Description
 -----------
-Get the number of 2d curves to approximate.
+get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
@@ -6836,7 +6836,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -6856,7 +6856,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> this information is usfull to find an good tolerance in 2d approximation. warning: used only if nb2dcurve > 0.
+Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation. Warning: Used only if Nb2dCurve > 0.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6875,7 +6875,7 @@ Degree: int
 
 Description
 -----------
-Get the format of a section.
+get the format of a section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -6894,7 +6894,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -6913,7 +6913,7 @@ None
 
 Description
 -----------
-Is usfull, if (me) have to be run numerical algorithme to perform d0, d1 or d2.
+Is usfull, if (me) have to be run numerical algorithme to perform D0, D1 or D2.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -6983,7 +6983,7 @@ None
 
 Description
 -----------
-Initialize all the elements of a tensor to initialvalue.
+Initialize all the elements of a Tensor to InitialValue.
 ") Init;
 		void Init(const Standard_Real InitialValue);
 
@@ -7022,7 +7022,7 @@ float
 
 Description
 -----------
-Accesses (in read or write mode) the value of index <row>, <col> and <mat> of a tensor. an exception is raised if <row>, <col> or <mat> are not in the correct range.
+accesses (in read or write mode) the value of index <Row>, <Col> and <Mat> of a Tensor. An exception is raised if <Row>, <Col> or <Mat> are not in the correct range.
 ") Value;
 		const Standard_Real & Value(const Standard_Integer Row, const Standard_Integer Col, const Standard_Integer Mat);
 
@@ -7055,7 +7055,7 @@ gp_Vec
 
 Description
 -----------
-Computes the derivative of the field of tangency at parameter w.
+Computes the derivative of the field of tangency at parameter W.
 ") D1;
 		virtual gp_Vec D1(const Standard_Real W);
 
@@ -7075,7 +7075,7 @@ None
 
 Description
 -----------
-Computes the value and the derivative of the field of tangency at parameter w.
+Computes the value and the derivative of the field of tangency at parameter W.
 ") D1;
 		virtual void D1(const Standard_Real W, gp_Vec & V, gp_Vec & DV);
 
@@ -7124,7 +7124,7 @@ gp_Vec
 
 Description
 -----------
-Computes the value of the field of tangency at parameter w.
+Computes the value of the field of tangency at parameter W.
 ") Value;
 		virtual gp_Vec Value(const Standard_Real W);
 
@@ -7175,7 +7175,7 @@ bool
 
 Description
 -----------
-Compute triedrhon on curve at parameter <param>.
+compute Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -7199,7 +7199,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -7226,7 +7226,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -7239,7 +7239,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Give a status to the law returns pipeok (default implementation).
+Give a status to the Law Returns PipeOk (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
@@ -7259,7 +7259,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -7296,7 +7296,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -7309,7 +7309,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -7322,7 +7322,7 @@ bool
 
 Description
 -----------
-Say if the law is defined, only by the 3d geometry of the set curve return false by default.
+Say if the law is defined, only by the 3d Geometry of the set Curve Return False by Default.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -7340,7 +7340,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -7358,7 +7358,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true.
+initialize curve of trihedron law 
+Return: Standard_True.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -7377,7 +7378,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -7413,7 +7414,7 @@ None
 
 Description
 -----------
-Constructs a boundary object defined by the 3d curve curveonsurf. the surface to be filled along this boundary will be in the tolerance range defined by tol3d. what's more, at each point of curveonsurf, the angle between the normal to the surface to be filled along this boundary, and the normal to the surface on which curveonsurf lies, must not be greater than tolang. this object is to be used as a boundary for a geomfill_constrainedfilling framework. warning curveonsurf is an adapted curve, that is, an object which is an interface between: - the services provided by a curve lying on a surface from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in the following way: opencascade::handle<geom_surface> mysurface = ... ; opencascade::handle<geom2d_curve> myparamcurve = ... ; // where myparamcurve is a 2d curve in the parametric space of the surface mysurface opencascade::handle<geomadaptor_surface> surface = new geomadaptor_surface(mysurface); opencascade::handle<geom2dadaptor_curve> paramcurve = new geom2dadaptor_curve(myparamcurve); curveonsurf = adaptor3d_curveonsurface(paramcurve,surface); the boundary is then constructed with the curveonsurf object: standard_real tol = ... ; standard_real tolang = ... ; myboundary = geomfill_boundwithsurf ( curveonsurf, tol, tolang );.
+Constructs a boundary object defined by the 3d curve CurveOnSurf. The surface to be filled along this boundary will be in the tolerance range defined by Tol3d. What's more, at each point of CurveOnSurf, the angle between the normal to the surface to be filled along this boundary, and the normal to the surface on which CurveOnSurf lies, must not be greater than TolAng. This object is to be used as a boundary for a GeomFill_ConstrainedFilling framework. Warning CurveOnSurf is an adapted curve, that is, an object which is an interface between: - the services provided by a curve lying on a surface from the package Geom - and those required of the curve by the computation algorithm which uses it. The adapted curve is created in the following way: opencascade::handle<Geom_Surface> mySurface = ... ; opencascade::handle<Geom2d_Curve> myParamCurve = ... ; // where myParamCurve is a 2D curve in the parametric space of the surface mySurface opencascade::handle<GeomAdaptor_Surface> Surface = new GeomAdaptor_Surface(mySurface); opencascade::handle<Geom2dAdaptor_Curve> ParamCurve = new Geom2dAdaptor_Curve(myParamCurve); CurveOnSurf = Adaptor3d_CurveOnSurface(ParamCurve,Surface); The boundary is then constructed with the CurveOnSurf object: Standard_Real Tol = ... ; Standard_Real TolAng = ... ; myBoundary = GeomFill_BoundWithSurf ( CurveOnSurf, Tol, TolAng );.
 ") GeomFill_BoundWithSurf;
 		 GeomFill_BoundWithSurf(const Adaptor3d_CurveOnSurface & CurveOnSurf, const Standard_Real Tol3d, const Standard_Real Tolang);
 
@@ -7625,7 +7626,7 @@ bool
 
 Description
 -----------
-Computes triedrhon on curve at parameter <param>.
+Computes Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -7649,7 +7650,7 @@ bool
 
 Description
 -----------
-Computes triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+Computes Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -7676,7 +7677,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -7696,7 +7697,7 @@ None
 
 Description
 -----------
-Gets average value of tangent(t) and normal(t) it is usfull to make fast approximation of rational surfaces.
+Gets average value of Tangent(t) and Normal(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -7715,7 +7716,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -7728,7 +7729,7 @@ bool
 
 Description
 -----------
-Says if the law is constant.
+Says if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -7741,7 +7742,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -7759,7 +7760,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -7777,7 +7778,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true in case if execution end correctly.
+initialize curve of trihedron law 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -7977,7 +7979,7 @@ bool
 
 Description
 -----------
-Compute triedrhon on curve at parameter <param>.
+compute Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -8001,7 +8003,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -8028,7 +8030,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -8041,7 +8043,7 @@ GeomFill_Trihedron
 
 Description
 -----------
-Tries to define the best trihedron mode for the curve. it can be: - frenet - correctedfrenet - discretetrihedron warning: the correctedfrenet must be constructed with option forevaluation = true, the curve must be set by method setcurve.
+Tries to define the best trihedron mode for the curve. It can be: - Frenet - CorrectedFrenet - DiscreteTrihedron Warning: the CorrectedFrenet must be constructed with option ForEvaluation = True, the curve must be set by method SetCurve.
 ") EvaluateBestMode;
 		GeomFill_Trihedron EvaluateBestMode();
 
@@ -8061,7 +8063,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -8080,7 +8082,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -8093,7 +8095,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -8106,7 +8108,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -8124,7 +8126,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -8142,7 +8144,8 @@ bool
 
 Description
 -----------
-Initialize curve of frenet law return standard_true in case if execution end correctly.
+initialize curve of frenet law 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -8228,7 +8231,7 @@ bool
 
 Description
 -----------
-Compute location and 2d points.
+compute Location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
@@ -8249,7 +8252,7 @@ bool
 
 Description
 -----------
-Compute location and 2d points.
+compute Location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
@@ -8273,7 +8276,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first derivatives. warning: it used only for c1 or c2 approximation.
+compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
@@ -8300,7 +8303,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first and seconde derivatives. warning: it used only for c2 approximation.
+compute location 2d points and associated first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
@@ -8319,7 +8322,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
@@ -8350,7 +8353,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -8381,7 +8384,7 @@ float
 
 Description
 -----------
-Get the maximum norm of the matrix-location part. it is usful to find an good tolerance to approx m(t).
+Get the maximum Norm of the matrix-location part. It is usful to find an good Tolerance to approx M(t).
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
@@ -8400,7 +8403,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -8417,7 +8420,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is a rotation of location the default implementation is ' returns false '.
+Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
@@ -8434,7 +8437,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is an translation of location the default implementation is ' returns false '.
+Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
@@ -8452,7 +8455,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -8488,7 +8491,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true in case if execution end correctly.
+initialize curve of trihedron law 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -8507,7 +8511,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -8525,7 +8529,7 @@ None
 
 Description
 -----------
-Set a transformation matrix like the law m(t) become mat * m(t).
+Set a transformation Matrix like the law M(t) become Mat * M(t).
 ") SetTrsf;
 		virtual void SetTrsf(const gp_Mat & Transfo);
 
@@ -8787,7 +8791,7 @@ bool
 
 Description
 -----------
-Compute triedrhon on curve at parameter <param>.
+compute Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -8811,7 +8815,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -8838,7 +8842,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -8858,7 +8862,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -8877,7 +8881,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -8890,7 +8894,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -8903,7 +8907,7 @@ bool
 
 Description
 -----------
-Return false.
+Return False.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -8921,7 +8925,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -9115,7 +9119,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve at parameter <param>.
+compute Trihedron on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -9139,7 +9143,7 @@ bool
 
 Description
 -----------
-Compute trihedron and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation for the moment it returns null values for dtangent, dnormal and dbinormal.
+compute Trihedron and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation For the moment it returns null values for DTangent, DNormal and DBiNormal.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -9166,7 +9170,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation for the moment it returns null values for dtangent, dnormal dbinormal, d2tangent, d2normal, d2binormal.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation For the moment it returns null values for DTangent, DNormal DBiNormal, D2Tangent, D2Normal, D2BiNormal.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -9186,7 +9190,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is usful to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is usful to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -9218,7 +9222,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -9231,7 +9235,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -9244,7 +9248,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -9262,7 +9266,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -9280,7 +9284,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true in case if execution end correctly.
+initialize curve of trihedron law 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -9349,7 +9354,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -9373,7 +9378,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -9420,7 +9425,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is useful to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is useful to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -9439,7 +9444,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -9452,7 +9457,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -9465,7 +9470,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -9483,7 +9488,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -9536,7 +9541,7 @@ None
 
 Description
 -----------
-Make an sectionlaw with a curve and a real law.
+Make an SectionLaw with a Curve and a real Law.
 ") GeomFill_EvolvedSection;
 		 GeomFill_EvolvedSection(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Law_Function> & L);
 
@@ -9549,7 +9554,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Give if possible an bspline surface, like iso-v are the section. if it is not possible this methode have to get an null surface. is it the default implementation.
+give if possible an bspline Surface, like iso-v are the section. If it is not possible this methode have to get an Null Surface. Is it the default implementation.
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
@@ -9562,7 +9567,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -9575,7 +9580,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return the constant section if <self> isconstant.
+Return the constant Section if <self> IsConstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
@@ -9595,7 +9600,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
@@ -9617,7 +9622,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param warning: it used only for c1 or c2 approximation.
+compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -9641,7 +9646,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param warning: it used only for c2 approximation.
+compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -9659,7 +9664,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -9695,7 +9700,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -9716,7 +9721,7 @@ None
 
 Description
 -----------
-Returns the tolerances associated at each poles to reach in approximation, to satisfy: boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -9735,7 +9740,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -9752,7 +9757,7 @@ Error: float
 
 Description
 -----------
-Return true if the law isconstant.
+return True If the Law isConstant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
@@ -9765,7 +9770,7 @@ bool
 
 Description
 -----------
-Returns if the sections are rationnal or not.
+Returns if the sections are rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -9809,7 +9814,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -9822,7 +9827,7 @@ float
 
 Description
 -----------
-Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
+Returns the length of the greater section. This information is useful to G1's control. Warning: With an little value, approximation can be slower.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -9840,7 +9845,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -9858,7 +9863,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -9877,7 +9882,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -9896,7 +9901,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -9965,7 +9970,7 @@ bool
 
 Description
 -----------
-Compute triedrhon on curve at parameter <param>.
+compute Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -9989,7 +9994,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -10016,7 +10021,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -10036,7 +10041,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -10055,7 +10060,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -10068,7 +10073,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -10086,7 +10091,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -10149,7 +10154,7 @@ bool
 
 Description
 -----------
-Compute triedrhon on curve at parameter <param>.
+compute Triedrhon on curve at parameter <Param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
@@ -10173,7 +10178,7 @@ bool
 
 Description
 -----------
-Compute triedrhon and derivative trihedron on curve at parameter <param> warning: it used only for c1 or c2 approximation.
+compute Triedrhon and derivative Trihedron on curve at parameter <Param> Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
@@ -10200,7 +10205,7 @@ bool
 
 Description
 -----------
-Compute trihedron on curve first and seconde derivatives. warning: it used only for c2 approximation.
+compute Trihedron on curve first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
@@ -10220,7 +10225,7 @@ None
 
 Description
 -----------
-Get average value of tangent(t) and normal(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of Tangent(t) and Normal(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -10252,7 +10257,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -10265,7 +10270,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -10278,7 +10283,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -10296,7 +10301,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -10314,7 +10319,8 @@ bool
 
 Description
 -----------
-Initialize curve of frenet law return standard_true.
+initialize curve of frenet law 
+Return: Standard_True.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -10361,7 +10367,7 @@ None
 
 Description
 -----------
-Converts all curves to bsplinecurves. set them to the common profile. compute the surface (degv = 1). <ptol> is used to compare 2 knots.
+Converts all curves to BSplineCurves. Set them to the common profile. Compute the surface (degv = 1). <PTol> is used to compare 2 knots.
 ") Perform;
 		virtual void Perform(const Standard_Real PTol);
 
@@ -10440,7 +10446,7 @@ bool
 
 Description
 -----------
-Compute location.
+compute Location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
@@ -10461,7 +10467,7 @@ bool
 
 Description
 -----------
-Compute location and 2d points.
+compute Location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
@@ -10485,7 +10491,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first derivatives. warning: it used only for c1 or c2 approximation.
+compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
@@ -10512,7 +10518,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first and seconde derivatives. warning: it used only for c2 approximation.
+compute location 2d points and associated first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
@@ -10544,7 +10550,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
@@ -10575,7 +10581,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -10606,7 +10612,7 @@ float
 
 Description
 -----------
-Get the maximum norm of the matrix-location part. it is usful to find an good tolerance to approx m(t).
+Get the maximum Norm of the matrix-location part. It is usful to find an good Tolerance to approx M(t).
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
@@ -10619,7 +10625,7 @@ bool
 
 Description
 -----------
-Say if the first restriction is defined in this class. if it is true the first element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the first restriction is defined in this class. If it is true the first element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
@@ -10632,7 +10638,7 @@ bool
 
 Description
 -----------
-Say if the last restriction is defined in this class. if it is true the last element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the last restriction is defined in this class. If it is true the last element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
@@ -10651,7 +10657,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -10681,7 +10687,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is a rotation of location the default implementation is ' returns false '.
+Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
@@ -10698,7 +10704,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is an translation of location the default implementation is ' returns false '.
+Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
@@ -10716,7 +10722,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -10736,7 +10742,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> this information is usfull to find an good tolerance in 2d approximation. warning: used only if nb2dcurve > 0.
+Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation. Warning: Used only if Nb2dCurve > 0.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -10790,7 +10796,8 @@ bool
 
 Description
 -----------
-Calculation of poles on locking surfaces (the intersection between the generatrixand the surface at the cross - section points mynbpts) return standard_true in case if execution end correctly.
+calculation of poles on locking surfaces (the intersection between the generatrixand the surface at the cross - section points myNbPts) 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -10809,7 +10816,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -10858,7 +10865,7 @@ int
 
 Description
 -----------
-Give the number of trace (curves 2d which are not restriction) returns 1 (default implementation).
+Give the number of trace (Curves 2d which are not restriction) Returns 1 (default implementation).
 ") TraceNumber;
 		virtual Standard_Integer TraceNumber();
 
@@ -10943,7 +10950,7 @@ bool
 
 Description
 -----------
-Compute location.
+compute Location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
@@ -10964,7 +10971,7 @@ bool
 
 Description
 -----------
-Compute location and 2d points.
+compute Location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
@@ -10988,7 +10995,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first derivatives. warning: it used only for c1 or c2 approximation.
+compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
@@ -11015,7 +11022,7 @@ bool
 
 Description
 -----------
-Compute location 2d points and associated first and seconde derivatives. warning: it used only for c2 approximation.
+compute location 2d points and associated first and seconde derivatives. Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
@@ -11041,7 +11048,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Give a status to the law returns pipeok (default implementation).
+Give a status to the Law Returns PipeOk (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
@@ -11060,7 +11067,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
@@ -11091,7 +11098,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -11122,7 +11129,7 @@ float
 
 Description
 -----------
-Get the maximum norm of the matrix-location part. it is usful to find an good tolerance to approx m(t).
+Get the maximum Norm of the matrix-location part. It is usful to find an good Tolerance to approx M(t).
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
@@ -11148,7 +11155,7 @@ bool
 
 Description
 -----------
-Say if the first restriction is defined in this class. if it is true the first element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the first restriction is defined in this class. If it is true the first element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
@@ -11161,7 +11168,7 @@ bool
 
 Description
 -----------
-Say if the last restriction is defined in this class. if it is true the last element of poles array in d0,d1,d2... correspond to this restriction. returns standard_false (default implementation).
+Say if the last restriction is defined in this class. If it is true the last element of poles array in D0,D1,D2... Correspond to this restriction. Returns Standard_False (default implementation).
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
@@ -11180,7 +11187,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -11197,7 +11204,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is a rotation of location the default implementation is ' returns false '.
+Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
@@ -11214,7 +11221,7 @@ Error: float
 
 Description
 -----------
-Say if the location law, is an translation of location the default implementation is ' returns false '.
+Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
@@ -11232,7 +11239,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -11252,7 +11259,7 @@ TolV: float
 
 Description
 -----------
-Returns the resolutions in the sub-space 2d <index> this information is usfull to find an good tolerance in 2d approximation. warning: used only if nb2dcurve > 0.
+Returns the resolutions in the sub-space 2d <Index> This information is usfull to find an good tolerance in 2d approximation. Warning: Used only if Nb2dCurve > 0.
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -11323,7 +11330,8 @@ bool
 
 Description
 -----------
-Calculating poles on a surface (courbe guide / the surface of rotation in points mynbpts) return standard_true.
+calculating poles on a surface (courbe guide / the surface of rotation in points myNbPts) 
+Return: Standard_True.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -11342,7 +11350,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -11380,7 +11388,7 @@ None
 
 Description
 -----------
-Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the default implementation make nothing.
+Is useful, if (me) have to run numerical algorithm to perform D0, D1 or D2 The default implementation make nothing.
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
@@ -11411,7 +11419,7 @@ int
 
 Description
 -----------
-Give the number of trace (curves 2d which are not restriction) returns 1 (default implementation).
+Give the number of trace (Curves 2d which are not restriction) Returns 1 (default implementation).
 ") TraceNumber;
 		virtual Standard_Integer TraceNumber();
 
@@ -11445,7 +11453,7 @@ None
 
 Description
 -----------
-Make a sectionlaw with n curves.
+Make a SectionLaw with N Curves.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC);
 
@@ -11464,7 +11472,7 @@ None
 
 Description
 -----------
-Make a sectionlaw with n curves and n associated parameters.
+Make a SectionLaw with N Curves and N associated parameters.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP);
 
@@ -11487,7 +11495,7 @@ None
 
 Description
 -----------
-Make a sectionlaw with n curves and n associated parameters. uf and ul are the parametric bounds of the nsections vf and vl are the parametric bounds of the path.
+Make a SectionLaw with N Curves and N associated parameters. UF and UL are the parametric bounds of the NSections VF and VL are the parametric bounds of the path.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL);
 
@@ -11512,7 +11520,7 @@ None
 
 Description
 -----------
-Make a sectionlaw with n curves and n associated parameters. uf and ul are the parametric bounds of the nsections vf and vl are the parametric bounds of the path uf and ul are the parametric bounds of the nsections surf is a reference surface used by brepfill_nsections.
+Make a SectionLaw with N Curves and N associated parameters. UF and UL are the parametric bounds of the NSections VF and VL are the parametric bounds of the path UF and UL are the parametric bounds of the NSections Surf is a reference surface used by BRepFill_NSections.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const GeomFill_SequenceOfTrsf & Trsfs, const TColStd_SequenceOfReal & NP, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL, const opencascade::handle<Geom_BSplineSurface> & Surf);
 
@@ -11525,7 +11533,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Give if possible an bspline surface, like iso-v are the section. if it is not possible this methode have to get an null surface. is it the default implementation.
+give if possible an bspline Surface, like iso-v are the section. If it is not possible this methode have to get an Null Surface. Is it the default implementation.
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
@@ -11538,7 +11546,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -11556,7 +11564,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return the circle section at parameter <param>, if <self> a isconicallaw.
+Return the circle section at parameter <Param>, if <self> a IsConicalLaw.
 ") CirclSection;
 		virtual opencascade::handle<Geom_Curve> CirclSection(const Standard_Real Param);
 
@@ -11582,7 +11590,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return the constant section if <self> isconstant.
+Return the constant Section if <self> IsConstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
@@ -11602,7 +11610,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
@@ -11624,7 +11632,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param warning: it used only for c1 or c2 approximation.
+compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -11648,7 +11656,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param warning: it used only for c2 approximation.
+compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -11666,7 +11674,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -11702,7 +11710,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -11723,7 +11731,7 @@ None
 
 Description
 -----------
-Returns the tolerances associated at each poles to reach in approximation, to satisfy: boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -11742,7 +11750,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -11759,7 +11767,7 @@ Error: float
 
 Description
 -----------
-Returns true if all section are circle, with same plane,same center and linear radius evolution return false by default.
+Returns True if all section are circle, with same plane,same center and linear radius evolution Return False by Default.
 ") IsConicalLaw;
 		virtual Standard_Boolean IsConicalLaw(Standard_Real &OutValue);
 
@@ -11776,7 +11784,7 @@ Error: float
 
 Description
 -----------
-Return true if the law isconstant.
+return True If the Law isConstant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
@@ -11789,7 +11797,7 @@ bool
 
 Description
 -----------
-Returns if the sections are rationnal or not.
+Returns if the sections are rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -11833,7 +11841,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -11846,7 +11854,7 @@ float
 
 Description
 -----------
-Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
+Returns the length of the greater section. This information is useful to G1's control. Warning: With an little value, approximation can be slower.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -11864,7 +11872,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -11882,7 +11890,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -11901,7 +11909,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -11920,7 +11928,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -12041,7 +12049,7 @@ float
 
 Description
 -----------
-Returns the parameter of section<p>, to impose it for the approximation.
+Returns the parameter of Section<P>, to impose it for the approximation.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer P);
 
@@ -12065,7 +12073,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		Standard_Boolean Section(const Standard_Integer P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -12138,7 +12146,7 @@ None
 
 Description
 -----------
-Constructs the boundary object defined by the 3d curve. the surface to be built along this boundary will be in the tolerance range defined by tol3d. this object is to be used as a boundary for a geomfill_constrainedfilling framework. dummy is initialized but has no function in this class. warning curve is an adapted curve, that is, an object which is an interface between: - the services provided by a 3d curve from the package geom - and those required of the curve by the computation algorithm which uses it. the adapted curve is created in one of the following ways: - first sequence: opencascade::handle<geom_curve> mycurve = ... ; opencascade::handle<geomadaptor_curve> curve = new geomadaptor_curve(mycurve); - second sequence: // step 1 opencascade::handle<geom_curve> mycurve = ... ; geomadaptor_curve crv (mycurve); // step 2 opencascade::handle<geomadaptor_curve> curve = new geomadaptor_curve(crv); you use the second part of this sequence if you already have the adapted curve crv. the boundary is then constructed with the curve object: standard_real tol = ... ; standard_real dummy = 0. ; myboundary = geomfill_simplebound (curve,tol,dummy);.
+Constructs the boundary object defined by the 3d curve. The surface to be built along this boundary will be in the tolerance range defined by Tol3d. This object is to be used as a boundary for a GeomFill_ConstrainedFilling framework. Dummy is initialized but has no function in this class. Warning Curve is an adapted curve, that is, an object which is an interface between: - the services provided by a 3D curve from the package Geom - and those required of the curve by the computation algorithm which uses it. The adapted curve is created in one of the following ways: - First sequence: opencascade::handle<Geom_Curve> myCurve = ... ; opencascade::handle<GeomAdaptor_Curve> Curve = new GeomAdaptor_Curve(myCurve); - Second sequence: // Step 1 opencascade::handle<Geom_Curve> myCurve = ... ; GeomAdaptor_Curve Crv (myCurve); // Step 2 opencascade::handle<GeomAdaptor_Curve> Curve = new GeomAdaptor_Curve(Crv); You use the second part of this sequence if you already have the adapted curve Crv. The boundary is then constructed with the Curve object: Standard_Real Tol = ... ; Standard_Real dummy = 0. ; myBoundary = GeomFill_SimpleBound (Curve,Tol,dummy);.
 ") GeomFill_SimpleBound;
 		 GeomFill_SimpleBound(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const Standard_Real Tolang);
 
@@ -12403,7 +12411,7 @@ gp_Vec
 
 Description
 -----------
-Computes the derivative of the field of tangency at parameter w.
+Computes the derivative of the field of tangency at parameter W.
 ") D1;
 		gp_Vec D1(const Standard_Real W);
 
@@ -12423,7 +12431,7 @@ None
 
 Description
 -----------
-Computes the value and the derivative of the field of tangency at parameter w.
+Computes the value and the derivative of the field of tangency at parameter W.
 ") D1;
 		void D1(const Standard_Real W, gp_Vec & T, gp_Vec & DT);
 
@@ -12441,7 +12449,7 @@ gp_Vec
 
 Description
 -----------
-Computes the value of the field of tangency at parameter w.
+Computes the value of the field of tangency at parameter W.
 ") Value;
 		gp_Vec Value(const Standard_Real W);
 
@@ -12471,7 +12479,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the current point on guide found by d0, d1 or d2.
+Returns the current point on guide found by D0, D1 or D2.
 ") CurrentPointOnGuide;
 		gp_Pnt CurrentPointOnGuide();
 
@@ -12539,7 +12547,7 @@ None
 
 Description
 -----------
-Make an constant law with c. [first, last] define law definition domain.
+Make an constant Law with C. [First, Last] define law definition domain.
 ") GeomFill_UniformSection;
 		 GeomFill_UniformSection(const opencascade::handle<Geom_Curve> & C, const Standard_Real FirstParameter = 0.0, const Standard_Real LastParameter = 1.0);
 
@@ -12552,7 +12560,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Give if possible an bspline surface, like iso-v are the section. if it is not possible this methode have to get an null surface. is it the default implementation.
+give if possible an bspline Surface, like iso-v are the section. If it is not possible this methode have to get an Null Surface. Is it the default implementation.
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
@@ -12565,7 +12573,7 @@ gp_Pnt
 
 Description
 -----------
-Get the barycentre of surface. an very poor estimation is sufficient. this information is useful to perform well conditioned rational approximation. warning: used only if <self> isrational.
+Get the barycentre of Surface. An very poor estimation is sufficient. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
@@ -12578,7 +12586,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Return the constant section if <self> isconstant.
+Return the constant Section if <self> IsConstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
@@ -12598,7 +12606,7 @@ bool
 
 Description
 -----------
-Compute the section for v = param.
+compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
@@ -12620,7 +12628,7 @@ bool
 
 Description
 -----------
-Compute the first derivative in v direction of the section for v = param warning: it used only for c1 or c2 approximation.
+compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -12644,7 +12652,7 @@ bool
 
 Description
 -----------
-Compute the second derivative in v direction of the section for v = param warning: it used only for c2 approximation.
+compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -12662,7 +12670,7 @@ Last: float
 
 Description
 -----------
-Gets the bounds of the function parametric domain. warning: this domain it is not modified by the setvalue method.
+Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method.
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -12698,7 +12706,7 @@ None
 
 Description
 -----------
-Compute the minimal value of weight for each poles in all sections. this information is useful to control error in rational approximation. warning: used only if <self> isrational.
+Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
@@ -12719,7 +12727,7 @@ None
 
 Description
 -----------
-Returns the tolerances associated at each poles to reach in approximation, to satisfy: boundtol error at the boundary angletol tangent error at the boundary (in radian) surftol error inside the surface.
+Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
@@ -12738,7 +12746,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -12755,7 +12763,7 @@ Error: float
 
 Description
 -----------
-Return true.
+return True.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
@@ -12768,7 +12776,7 @@ bool
 
 Description
 -----------
-Returns if the sections are rationnal or not.
+Returns if the sections are rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -12812,7 +12820,7 @@ None
 
 Description
 -----------
-Get the knots of the section.
+get the Knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
@@ -12825,7 +12833,7 @@ float
 
 Description
 -----------
-Returns the length of the greater section. this information is useful to g1's control. warning: with an little value, approximation can be slower.
+Returns the length of the greater section. This information is useful to G1's control. Warning: With an little value, approximation can be slower.
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
@@ -12843,7 +12851,7 @@ None
 
 Description
 -----------
-Get the multplicities of the section.
+get the Multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
@@ -12861,7 +12869,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -12880,7 +12888,7 @@ Degree: int
 
 Description
 -----------
-Get the format of an section.
+get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -12899,7 +12907,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -13038,7 +13046,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -13070,7 +13078,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -13083,7 +13091,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -13096,7 +13104,7 @@ bool
 
 Description
 -----------
-Say if the law is defined, only by the 3d geometry of the set curve return false by default.
+Say if the law is defined, only by the 3d Geometry of the set Curve Return False by Default.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -13114,7 +13122,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -13151,7 +13159,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true.
+initialize curve of trihedron law 
+Return: Standard_True.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -13170,7 +13179,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
@@ -13302,7 +13311,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Give a status to the law returns pipeok (default implementation).
+Give a status to the Law Returns PipeOk (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
@@ -13322,7 +13331,7 @@ None
 
 Description
 -----------
-Get average value of m(t) and v(t) it is usfull to make fast approximation of rational surfaces.
+Get average value of M(t) and V(t) it is usfull to make fast approximation of rational surfaces.
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
@@ -13354,7 +13363,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -13367,7 +13376,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -13380,7 +13389,7 @@ bool
 
 Description
 -----------
-Say if the law is defined, only by the 3d geometry of the set curve return false by default.
+Say if the law is defined, only by the 3d Geometry of the set Curve Return False by Default.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
@@ -13398,7 +13407,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -13435,7 +13444,8 @@ bool
 
 Description
 -----------
-Initialize curve of trihedron law return standard_true in case if execution end correctly.
+initialize curve of trihedron law 
+Return: Standard_True in case if execution end correctly.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & thePath);
 
@@ -13454,7 +13464,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the function this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the function This determines the derivatives in these values if the function is not Cn.
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 

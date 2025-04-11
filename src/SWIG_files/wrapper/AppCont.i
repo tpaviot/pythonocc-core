@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPCONTDOCSTRING
 "AppCont module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appcont.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appcont.html"
 %enddef
 %module (package="OCC.Core", docstring=APPCONTDOCSTRING) AppCont
 
@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appcont.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<AppParCurves_module.hxx>
-#include<math_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -55,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appcont.html"
 %import Standard.i
 %import NCollection.i
 %import AppParCurves.i
-%import math.i
 
 %pythoncode {
 from enum import IntEnum
@@ -101,7 +99,7 @@ bool
 
 Description
 -----------
-Returns the derivative at parameter <theu>.
+Returns the derivative at parameter <theU>.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
 
@@ -127,7 +125,7 @@ int
 
 Description
 -----------
-Get number of 2d points returned by 'value' and 'd1' functions.
+Get number of 2d points returned by 'Value' and 'D1' functions.
 ") GetNbOf2dPoints;
 		Standard_Integer GetNbOf2dPoints();
 
@@ -140,7 +138,7 @@ int
 
 Description
 -----------
-Get number of 3d points returned by 'value' and 'd1' functions.
+Get number of 3d points returned by 'Value' and 'D1' functions.
 ") GetNbOf3dPoints;
 		Standard_Integer GetNbOf3dPoints();
 
@@ -158,7 +156,7 @@ theNbPnt2d: int
 
 Description
 -----------
-Get number of 3d and 2d points returned by 'value' and 'd1' functions.
+Get number of 3d and 2d points returned by 'Value' and 'D1' functions.
 ") GetNumberOfPoints;
 		void GetNumberOfPoints(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -190,7 +188,8 @@ thePeriod: float
 
 Description
 -----------
-Return information about peridicity in output paramateters space. @param thedimidx defines index in output parameters space. 1 <= thedimidx <= 3 * mynbpnt + 2 * mynbpnt2d.
+Return information about peridicity in output paramateters space. 
+Parameter theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 * myNbPnt2d.
 ") PeriodInformation;
 		virtual void PeriodInformation(const Standard_Integer, Standard_Boolean &OutValue, Standard_Real &OutValue);
 
@@ -210,7 +209,7 @@ bool
 
 Description
 -----------
-Returns the point at parameter <theu>.
+Returns the point at parameter <theU>.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
 

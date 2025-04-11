@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFAPPDOCSTRING
 "XCAFApp module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xcafapp.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafapp.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFAPPDOCSTRING) XCAFApp
 
@@ -122,7 +122,7 @@ opencascade::handle<XCAFApp_Application>
 
 Description
 -----------
-Initializes (for the first time) and returns the static object (xcafapp_application) this is the only valid method to get xcafapp_application object, and it should be called at least once before any actions with documents in order to init application.
+Initializes (for the first time) and returns the static object (XCAFApp_Application) This is the only valid method to get XCAFApp_Application object, and it should be called at least once before any actions with documents in order to init application.
 ") GetApplication;
 		static opencascade::handle<XCAFApp_Application> GetApplication();
 
@@ -140,7 +140,7 @@ None
 
 Description
 -----------
-Set xcafdoc_documenttool attribute.
+Set XCAFDoc_DocumentTool attribute.
 ") InitDocument;
 		virtual void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
 
@@ -153,7 +153,7 @@ str
 
 Description
 -----------
-Methods from tdocstd_application ================================.
+methods from TDocStd_Application ================================.
 ") ResourcesName;
 		virtual Standard_CString ResourcesName();
 

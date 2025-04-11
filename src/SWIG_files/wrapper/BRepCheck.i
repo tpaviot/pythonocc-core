@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCHECKDOCSTRING
 "BRepCheck module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepcheck.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepcheck.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCHECKDOCSTRING) BRepCheck
 
@@ -356,7 +356,7 @@ None
 
 Description
 -----------
-Constructs a shape validation object defined by the shape s. <s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex: brepcheck_invalidtolerancevalue nyi for an edge: brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerancevalue nyi for a face: brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerancevalue nyi for a wire: brepcheck_selfintersectingwire.
+Constructs a shape validation object defined by the shape S. <S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex: BRepCheck_InvalidToleranceValue NYI For an Edge: BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidToleranceValue NYI For a face: BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidToleranceValue NYI For a wire: BRepCheck_SelfIntersectingWire.
 ") BRepCheck_Analyzer;
 		 BRepCheck_Analyzer(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True, const Standard_Boolean theIsParallel = Standard_False, const Standard_Boolean theIsExact = Standard_False);
 
@@ -375,7 +375,7 @@ None
 
 Description
 -----------
-<s> is the shape to control. <geomcontrols> if false only topological informaions are checked. the geometricals controls are for a vertex: brepcheck_invalidtolerance nyi for an edge: brepcheck_invalidcurveonclosedsurface, brepcheck_invalidcurveonsurface, brepcheck_invalidsameparameterflag, brepcheck_invalidtolerance nyi for a face: brepcheck_unorientableshape, brepcheck_intersectingwires, brepcheck_invalidtolerance nyi for a wire: brepcheck_selfintersectingwire.
+<S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex: BRepCheck_InvalidTolerance NYI For an Edge: BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidTolerance NYI For a face: BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidTolerance NYI For a wire: BRepCheck_SelfIntersectingWire.
 ") Init;
 		void Init(const TopoDS_Shape & S, const Standard_Boolean GeomControls = Standard_True);
 
@@ -419,7 +419,7 @@ bool
 
 Description
 -----------
-<s> is a subshape of the original shape. returns <standard_true> if no default has been detected on <s> and any of its subshape.
+<S> is a subshape of the original shape. Returns <STandard_True> if no default has been detected on <S> and any of its subshape.
 ") IsValid;
 		Standard_Boolean IsValid(const TopoDS_Shape & S);
 
@@ -432,7 +432,7 @@ bool
 
 Description
 -----------
-Returns true if no defect is detected on the shape s or any of its subshapes. returns true if the shape s is valid. this function checks whether a given shape is valid by checking that: - the topology is correct - parameterization of edges in particular is correct. for the topology to be correct, the following conditions must be satisfied: - edges should have at least two vertices if they are not degenerate edges. the vertices should be within the range of the bounding edges at the tolerance specified in the vertex, - edges should share at least one face. the representation of the edges should be within the tolerance criterion assigned to them. - wires defining a face should not self-intersect and should be closed, - there should be one wire which contains all other wires inside a face, - wires should be correctly oriented with respect to each of the edges, - faces should be correctly oriented, in particular with respect to adjacent faces if these faces define a solid, - shells defining a solid should be closed. there should be one enclosing shell if the shape is a solid; to check parameterization of edge, there are 2 approaches depending on the edge?s contextual situation. - if the edge is either single, or it is in the context of a wire or a compound, its parameterization is defined by the parameterization of its 3d curve and is considered as valid. - if the edge is in the context of a face, it should have sameparameter and samerange flags set to standard_true. to check these flags, you should call the function brep_tool::sameparameter and brep_tool::samerange for an edge. if at least one of these flags is set to standard_false, the edge is considered as invalid without any additional check. if the edge is contained by a face, and it has sameparameter and samerange flags set to standard_true, isvalid checks whether representation of the edge on face, in context of which the edge is considered, has the same parameterization up to the tolerance value coded on the edge. for a given parameter t on the edge having c as a 3d curve and one pcurve p on a surface s (base surface of the reference face), this checks that |c(t) - s(p(t))| is less than or equal to tolerance, where tolerance is the tolerance value coded on the edge.
+Returns true if no defect is detected on the shape S or any of its subshapes. Returns true if the shape S is valid. This function checks whether a given shape is valid by checking that: - the topology is correct - parameterization of edges in particular is correct. For the topology to be correct, the following conditions must be satisfied: - edges should have at least two vertices if they are not degenerate edges. The vertices should be within the range of the bounding edges at the tolerance specified in the vertex, - edges should share at least one face. The representation of the edges should be within the tolerance criterion assigned to them. - wires defining a face should not self-intersect and should be closed, - there should be one wire which contains all other wires inside a face, - wires should be correctly oriented with respect to each of the edges, - faces should be correctly oriented, in particular with respect to adjacent faces if these faces define a solid, - shells defining a solid should be closed. There should be one enclosing shell if the shape is a solid; To check parameterization of edge, there are 2 approaches depending on the edge?s contextual situation. - if the edge is either single, or it is in the context of a wire or a compound, its parameterization is defined by the parameterization of its 3D curve and is considered as valid. - If the edge is in the context of a face, it should have SameParameter and SameRange flags set to Standard_True. To check these flags, you should call the function BRep_Tool::SameParameter and BRep_Tool::SameRange for an edge. If at least one of these flags is set to Standard_False, the edge is considered as invalid without any additional check. If the edge is contained by a face, and it has SameParameter and SameRange flags set to Standard_True, IsValid checks whether representation of the edge on face, in context of which the edge is considered, has the same parameterization up to the tolerance value coded on the edge. For a given parameter t on the edge having C as a 3D curve and one PCurve P on a surface S (base surface of the reference face), this checks that |C(t) - S(P(t))| is less than or equal to tolerance, where tolerance is the tolerance value coded on the edge.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -468,7 +468,7 @@ None
 
 Description
 -----------
-Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
+Sets method to calculate distance: Calculating in finite number of points (if theIsExact is false, faster, but possible not correct result) or exact calculating by using BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly). Exact method is used only when edge is SameParameter. Default method is calculating in finite number of points.
 ") SetExactMethod;
 		void SetExactMethod(const Standard_Boolean theIsExact);
 
@@ -804,7 +804,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks, if polygon on triangulation of heedge is out of 3d-curve of this edge.
+Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.
 ") CheckPolygonOnTriangulation;
 		BRepCheck_Status CheckPolygonOnTriangulation(const TopoDS_Edge & theEdge);
 
@@ -897,7 +897,7 @@ None
 
 Description
 -----------
-Sets method to calculate distance: calculating in finite number of points (if theisexact is false, faster, but possible not correct result) or exact calculating by using breplib_checkcurveonsurface class (if theisexact is true, slowly, but more correctly). exact method is used only when edge is sameparameter. default method is calculating in finite number of points.
+Sets method to calculate distance: Calculating in finite number of points (if theIsExact is false, faster, but possible not correct result) or exact calculating by using BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly). Exact method is used only when edge is SameParameter. Default method is calculating in finite number of points.
 ") SetExactMethod;
 		void SetExactMethod(Standard_Boolean theIsExact);
 
@@ -915,7 +915,7 @@ None
 
 Description
 -----------
-Sets status of edge;.
+Sets status of Edge;.
 ") SetStatus;
 		void SetStatus(const BRepCheck_Status theStatus);
 
@@ -1122,7 +1122,7 @@ None
 
 Description
 -----------
-Sets status of face;.
+Sets status of Face;.
 ") SetStatus;
 		void SetStatus(const BRepCheck_Status theStatus);
 
@@ -1200,7 +1200,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if the oriented faces of the shell give a closed shell. if the wire is closed, returns brepcheck_noerror.if <update> is set to standard_true, registers the status in the list.
+Checks if the oriented faces of the shell give a closed shell. If the wire is closed, returns BRepCheck_NoError.If <Update> is set to Standard_True, registers the status in the list.
 ") Closed;
 		BRepCheck_Status Closed(const Standard_Boolean Update = Standard_False);
 
@@ -1280,7 +1280,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if the oriented faces of the shell are correctly oriented. an internal call is made to the method closed. if <update> is set to standard_true, registers the status in the list.
+Checks if the oriented faces of the shell are correctly oriented. An internal call is made to the method Closed. If <Update> is set to Standard_True, registers the status in the list.
 ") Orientation;
 		BRepCheck_Status Orientation(const Standard_Boolean Update = Standard_False);
 
@@ -1327,7 +1327,7 @@ None
 
 Description
 -----------
-Constructor <thes> is the solid to check.
+Constructor <theS> is the solid to check.
 ") BRepCheck_Solid;
 		 BRepCheck_Solid(const TopoDS_Solid & theS);
 
@@ -1340,7 +1340,7 @@ None
 
 Description
 -----------
-See the parent class for more details.
+see the parent class for more details.
 ") Blind;
 		virtual void Blind();
 
@@ -1358,7 +1358,7 @@ None
 
 Description
 -----------
-Checks the solid in context of the shape <thecontextshape>.
+Checks the solid in context of the shape <theContextShape>.
 ") InContext;
 		virtual void InContext(const TopoDS_Shape & theContextShape);
 
@@ -1371,7 +1371,7 @@ None
 
 Description
 -----------
-Checks the solid per se. //! the scan area is: 1. shells that overlaps each other status: brepcheck_invalidimbricationofshells //! 2. detached parts of the solid (vertices, edges) that have non-internal orientation status: brepcheck_badorientationofsubshape //! 3. for closed, non-internal shells: 3.1 shells containing entities of the solid that are outside towards the shells status: brepcheck_subshapenotinshape //! 3.2 shells that encloses other shells (for non-holes) status: brepcheck_enclosedregion.
+Checks the solid per se. //! The scan area is: 1. Shells that overlaps each other Status: BRepCheck_InvalidImbricationOfShells //! 2. Detached parts of the solid (vertices, edges) that have non-internal orientation Status: BRepCheck_BadOrientationOfSubshape //! 3. For closed, non-internal shells: 3.1 Shells containing entities of the solid that are outside towards the shells Status: BRepCheck_SubshapeNotInShape //! 3.2 Shells that encloses other Shells (for non-holes) Status: BRepCheck_EnclosedRegion.
 ") Minimum;
 		virtual void Minimum();
 
@@ -1527,7 +1527,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if the oriented edges of the wire give a closed wire. if the wire is closed, returns brepcheck_noerror. warning: if the first and last edge are infinite, the wire will be considered as a closed one. if <update> is set to standard_true, registers the status in the list. may return (and registers): **brepcheck_notconnected, if wire is not topologically closed **brepcheck_redundantedge, if an edge is in wire more than 3 times or in case of 2 occurrences if not with forward and reversed orientation. **brepcheck_noerror.
+Checks if the oriented edges of the wire give a closed wire. If the wire is closed, returns BRepCheck_NoError. Warning: if the first and last edge are infinite, the wire will be considered as a closed one. If <Update> is set to Standard_True, registers the status in the list. May return (and registers): **BRepCheck_NotConnected, if wire is not topologically closed **BRepCheck_RedundantEdge, if an edge is in wire more than 3 times or in case of 2 occurrences if not with FORWARD and REVERSED orientation. **BRepCheck_NoError.
 ") Closed;
 		BRepCheck_Status Closed(const Standard_Boolean Update = Standard_False);
 
@@ -1546,7 +1546,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if edges of the wire give a wire closed in 2d space. returns brepcheck_noerror, or brepcheck_notclosed if <update> is set to standard_true, registers the status in the list.
+Checks if edges of the wire give a wire closed in 2d space. Returns BRepCheck_NoError, or BRepCheck_NotClosed If <Update> is set to Standard_True, registers the status in the list.
 ") Closed2d;
 		BRepCheck_Status Closed2d(const TopoDS_Face & F, const Standard_Boolean Update = Standard_False);
 
@@ -1559,7 +1559,7 @@ bool
 
 Description
 -----------
-Report selfintersect() check would be (is) done.
+report SelfIntersect() check would be (is) done.
 ") GeometricControls;
 		Standard_Boolean GeometricControls();
 
@@ -1577,7 +1577,7 @@ None
 
 Description
 -----------
-Set selfintersect() to be checked.
+set SelfIntersect() to be checked.
 ") GeometricControls;
 		void GeometricControls(const Standard_Boolean B);
 
@@ -1595,7 +1595,7 @@ None
 
 Description
 -----------
-If <contextshape> is a face, consequently checks selfintersect(), closed(), orientation() and closed2d until faulty is found.
+if <ContextShape> is a face, consequently checks SelfIntersect(), Closed(), Orientation() and Closed2d until faulty is found.
 ") InContext;
 		void InContext(const TopoDS_Shape & ContextShape);
 
@@ -1608,7 +1608,7 @@ None
 
 Description
 -----------
-Checks that the wire is not empty and 'connex'. called by constructor.
+checks that the wire is not empty and 'connex'. Called by constructor.
 ") Minimum;
 		void Minimum();
 
@@ -1627,7 +1627,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if the oriented edges of the wire are correctly oriented. an internal call is made to the method closed. if no face exists, call the method with a null face (topods_face()). if <update> is set to standard_true, registers the status in the list. may return (and registers): brepcheck_invaliddegeneratedflag, brepcheck_badorientationofsubshape, brepcheck_notclosed, brepcheck_noerror.
+Checks if the oriented edges of the wire are correctly oriented. An internal call is made to the method Closed. If no face exists, call the method with a null face (TopoDS_face()). If <Update> is set to Standard_True, registers the status in the list. May return (and registers): BRepCheck_InvalidDegeneratedFlag, BRepCheck_BadOrientationOfSubshape, BRepCheck_NotClosed, BRepCheck_NoError.
 ") Orientation;
 		BRepCheck_Status Orientation(const TopoDS_Face & F, const Standard_Boolean Update = Standard_False);
 
@@ -1648,7 +1648,7 @@ BRepCheck_Status
 
 Description
 -----------
-Checks if the wire intersect itself on the face <f>. <e1> and <e2> are the first intersecting edges found. <e2> may be a null edge when a self-intersecting edge is found.if <update> is set to standard_true, registers the status in the list. may return (and register): brepcheck_emptywire, brepcheck_selfintersectingwire, brepcheck_nocurveonsurface, brepcheck_noerror.
+Checks if the wire intersect itself on the face <F>. <E1> and <E2> are the first intersecting edges found. <E2> may be a null edge when a self-intersecting edge is found.If <Update> is set to Standard_True, registers the status in the list. May return (and register): BRepCheck_EmptyWire, BRepCheck_SelfIntersectingWire, BRepCheck_NoCurveOnSurface, BRepCheck_NoError.
 ") SelfIntersect;
 		BRepCheck_Status SelfIntersect(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Boolean Update = Standard_False);
 
@@ -1666,7 +1666,7 @@ None
 
 Description
 -----------
-Sets status of wire;.
+Sets status of Wire;.
 ") SetStatus;
 		void SetStatus(const BRepCheck_Status theStatus);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTPATCHDOCSTRING
 "IntPatch module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intpatch.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpatch.html"
 %enddef
 %module (package="OCC.Core", docstring=INTPATCHDOCSTRING) IntPatch
 
@@ -244,7 +244,7 @@ None
 
 Description
 -----------
-Converts aline to the set of walking-lines and adds them in thelines.
+Converts aline to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
 		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, IntPatch_SequenceOfLine & theLines);
 
@@ -265,7 +265,7 @@ None
 
 Description
 -----------
-Converts aline (limited by paraminf and paramsup) to the set of walking-lines and adds them in thelines.
+Converts aline (limited by paraminf and paramsup) to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
 		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, const Standard_Real paraminf, const Standard_Real paramsup, IntPatch_SequenceOfLine & theLines);
 
@@ -442,7 +442,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point, which has been computed while the last calling value() method.
+Returns the point, which has been computed while the last calling Value() method.
 ") LastComputedPoint;
 		const gp_Pnt LastComputedPoint();
 
@@ -624,7 +624,7 @@ None
 
 Description
 -----------
-S1 is the surface on which the intersection is searched. c is a curve on the surface s2.
+S1 is the surface on which the intersection is searched. C is a curve on the surface S2.
 ") IntPatch_CSFunction;
 		 IntPatch_CSFunction(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor2d_Curve2d> & C, const opencascade::handle<Adaptor3d_Surface> & S2);
 
@@ -797,7 +797,7 @@ None
 
 Description
 -----------
-Compute the solution point with the close point margincoef is the coefficient for extension of uv bounds. ex., ufirst -= margincoef*(ulast-ufirst).
+compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") IntPatch_CurvIntSurf;
 		 IntPatch_CurvIntSurf(const Standard_Real U, const Standard_Real V, const Standard_Real W, const IntPatch_CSFunction & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
 
@@ -816,7 +816,7 @@ None
 
 Description
 -----------
-Initialize the parameters to compute the solution.
+initialize the parameters to compute the solution.
 ") IntPatch_CurvIntSurf;
 		 IntPatch_CurvIntSurf(const IntPatch_CSFunction & F, const Standard_Real TolTangency);
 
@@ -829,7 +829,7 @@ IntPatch_CSFunction
 
 Description
 -----------
-Return the math function which is used to compute the intersection.
+return the math function which is used to compute the intersection.
 ") Function;
 		IntPatch_CSFunction & Function();
 
@@ -842,7 +842,7 @@ bool
 
 Description
 -----------
-Returns true if the creation completed without failure.
+Returns True if the creation completed without failure.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -913,7 +913,7 @@ None
 
 Description
 -----------
-Compute the solution it's possible to write to optimize: intimp_intcs inter(s1,c1,toltangency) math_functionsetroot rsnld(inter.function()) while ...{ u=... v=... w=... inter.perform(u,v,w,rsnld) } or intimp_intcs inter(toltangency) inter.setsurface(s); math_functionsetroot rsnld(inter.function()) while ...{ c=... inter.setcurve(c); u=... v=... w=... inter.perform(u,v,w,rsnld) }.
+compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
 		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
 
@@ -926,7 +926,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the intersection point the exception notdone is raised if isdone is false. the exception domainerror is raised if isempty is true.
+returns the intersection point The exception NotDone is raised if IsDone is false. The exception DomainError is raised if IsEmpty is true.
 ") Point;
 		const gp_Pnt Point();
 
@@ -1032,7 +1032,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -1053,7 +1053,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -1075,7 +1075,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1098,7 +1098,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -1118,7 +1118,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, const Standard_Integer N);
 
@@ -1172,7 +1172,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1210,7 +1210,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1301,7 +1301,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_Curve2d> & C, const GeomAbs_Shape S);
 
@@ -1376,7 +1376,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real R3d);
 
@@ -1395,7 +1395,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U);
 
@@ -1441,7 +1441,7 @@ Ulast: float
 
 Description
 -----------
-Returns the parametric limits on the arc c. these limits must be finite: they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
+Returns the parametric limits on the arc C. These limits must be finite: they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
 ") Bounds;
 		static void Bounds(const opencascade::handle<Adaptor2d_Curve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1459,7 +1459,7 @@ bool
 
 Description
 -----------
-Returns true if all the intersection point and edges are known on the arc. the intersection point are given as vertices. the intersection edges are given as intervals between two vertices.
+Returns True if all the intersection point and edges are known on the Arc. The intersection point are given as vertices. The intersection edges are given as intervals between two vertices.
 ") HasBeenSeen;
 		static Standard_Boolean HasBeenSeen(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1478,7 +1478,7 @@ IndFirst: int
 
 Description
 -----------
-Returns true when the segment of range index is not open at the left side. in that case, indfirst is the range in the list intersection points (see nbpoints) of the one which defines the left bound of the segment. otherwise, the method has to return false, and indfirst has no meaning.
+Returns True when the segment of range Index is not open at the left side. In that case, IndFirst is the range in the list intersection points (see NbPoints) of the one which defines the left bound of the segment. Otherwise, the method has to return False, and IndFirst has no meaning.
 ") HasFirstPoint;
 		static Standard_Boolean HasFirstPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
@@ -1497,7 +1497,7 @@ IndLast: int
 
 Description
 -----------
-Returns true when the segment of range index is not open at the right side. in that case, indlast is the range in the list intersection points (see nbpoints) of the one which defines the right bound of the segment. otherwise, the method has to return false, and indlast has no meaning.
+Returns True when the segment of range Index is not open at the right side. In that case, IndLast is the range in the list intersection points (see NbPoints) of the one which defines the right bound of the segment. Otherwise, the method has to return False, and IndLast has no meaning.
 ") HasLastPoint;
 		static Standard_Boolean HasLastPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
@@ -1515,7 +1515,7 @@ bool
 
 Description
 -----------
-Returns true when the whole restriction is solution of the intersection problem.
+Returns True when the whole restriction is solution of the intersection problem.
 ") IsAllSolution;
 		static Standard_Boolean IsAllSolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1534,7 +1534,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection point of range index corresponds with a vertex on the arc a.
+Returns True if the intersection point of range Index corresponds with a vertex on the arc A.
 ") IsVertex;
 		static Standard_Boolean IsVertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index);
 
@@ -1552,7 +1552,7 @@ int
 
 Description
 -----------
-Returns the number of intersection points on the arc a.
+Returns the number of intersection points on the arc A.
 ") NbPoints;
 		static Standard_Integer NbPoints(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1588,7 +1588,7 @@ int
 
 Description
 -----------
-Returns the number of points which is used to make a sample on the arc. this number is a function of the surface and the curveonsurface complexity.
+returns the number of points which is used to make a sample on the arc. this number is a function of the Surface and the CurveOnSurface complexity.
 ") NbSamplesOnArc;
 		static Standard_Integer NbSamplesOnArc(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
@@ -1646,7 +1646,7 @@ int
 
 Description
 -----------
-Returns the number of part of a solution of the of intersection problem.
+returns the number of part of A solution of the of intersection problem.
 ") NbSegments;
 		static Standard_Integer NbSegments(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1665,7 +1665,7 @@ float
 
 Description
 -----------
-Returns the parameter of the vertex v on the arc a.
+Returns the parameter of the vertex V on the arc A.
 ") Parameter;
 		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1685,7 +1685,7 @@ Paramproj: float
 
 Description
 -----------
-Projects the point p on the arc c. if the methods returns standard_true, the projection is successful, and paramproj is the parameter on the arc of the projected point, ptproj is the projected point. if the method returns standard_false, param proj and ptproj are not significant.
+Projects the point P on the arc C. If the methods returns Standard_True, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Ptproj is the projected Point. If the method returns Standard_False, Param proj and Ptproj are not significant.
 ") Project;
 		static Standard_Boolean Project(const opencascade::handle<Adaptor2d_Curve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
 
@@ -1796,7 +1796,7 @@ float
 
 Description
 -----------
-Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if abs(parameter(vertex) - parameter(otherpnt))<= tolerance, the points are 'merged'.
+Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if Abs(parameter(Vertex) - parameter(OtherPnt))<= Tolerance, the points are 'merged'.
 ") Tolerance;
 		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
@@ -1817,7 +1817,7 @@ U: float
 
 Description
 -----------
-Returns the value (pt), the tolerance (tol), and the parameter (u) on the arc a , of the intersection point of range index.
+Returns the value (Pt), the tolerance (Tol), and the parameter (U) on the arc A , of the intersection point of range Index.
 ") Value;
 		static void Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1837,7 +1837,7 @@ None
 
 Description
 -----------
-When isvertex returns true, this method returns the vertex on the arc a.
+When IsVertex returns True, this method returns the vertex on the arc A.
 ") Vertex;
 		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1910,7 +1910,7 @@ None
 
 Description
 -----------
-Flag theisreqtokeeprline has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. when intersection result returns intpatch_rline and another intpatch_line (not restriction) we (in case of theisreqtokeeprline==true) will always keep both lines even if they are coincided.
+Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
 ") IntPatch_ImpImpIntersection;
 		 IntPatch_ImpImpIntersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean theIsReqToKeepRLine = Standard_False);
 
@@ -1923,7 +1923,7 @@ bool
 
 Description
 -----------
-Returns true if the calculus was successful.
+Returns True if the calculus was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1954,7 +1954,7 @@ opencascade::handle<IntPatch_Line>
 
 Description
 -----------
-Returns the line of range index. an exception is raised if index<=0 or index>nbline.
+Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
 		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
 
@@ -1993,7 +1993,7 @@ bool
 
 Description
 -----------
-Returns true when the tangentfaces returns true and the normal vectors evaluated at a point on the first and the second surface are opposite. the exception domainerror is raised if tangentfaces returns false.
+Returns True when the TangentFaces returns True and the normal vectors evaluated at a point on the first and the second surface are opposite. The exception DomainError is raised if TangentFaces returns False.
 ") OppositeFaces;
 		Standard_Boolean OppositeFaces();
 
@@ -2017,7 +2017,7 @@ None
 
 Description
 -----------
-Flag theisreqtokeeprline has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. when intersection result returns intpatch_rline and another intpatch_line (not restriction) we (in case of theisreqtokeeprline==true) will always keep both lines even if they are coincided.
+Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean theIsReqToKeepRLine = Standard_False);
 
@@ -2035,7 +2035,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the point of range index. an exception is raised if index<=0 or index>nbpnt.
+Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
 		const IntPatch_Point & Point(const Standard_Integer Index);
 
@@ -2048,7 +2048,7 @@ bool
 
 Description
 -----------
-Returns true if the two patches are considered as entirely tangent, i.e every restriction arc of one patch is inside the geometric base of the other patch.
+Returns True if the two patches are considered as entirely tangent, i.e every restriction arc of one patch is inside the geometric base of the other patch.
 ") TangentFaces;
 		Standard_Boolean TangentFaces();
 
@@ -2148,7 +2148,7 @@ opencascade::handle<IntPatch_Line>
 
 Description
 -----------
-Returns the line of range index. an exception is raised if index<=0 or index>nbline.
+Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
 		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
 
@@ -2217,7 +2217,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the point of range index. an exception is raised if index<=0 or index>nbpnt.
+Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
 		const IntPatch_Point & Point(const Standard_Integer Index);
 
@@ -2236,7 +2236,7 @@ None
 
 Description
 -----------
-To search for solution from the given point.
+to search for solution from the given point.
 ") SetStartPoint;
 		void SetStartPoint(const Standard_Real U, const Standard_Real V);
 
@@ -2263,7 +2263,7 @@ None
 
 Description
 -----------
-Constructs an empty interference of polyhedron.
+Constructs an empty interference of Polyhedron.
 ") IntPatch_InterferencePolyhedron;
 		 IntPatch_InterferencePolyhedron();
 
@@ -2282,7 +2282,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the two polyhedra.
+Constructs and computes an interference between the two Polyhedra.
 ") IntPatch_InterferencePolyhedron;
 		 IntPatch_InterferencePolyhedron(const IntPatch_Polyhedron & Obje1, const IntPatch_Polyhedron & Obje2);
 
@@ -2300,7 +2300,7 @@ None
 
 Description
 -----------
-Constructs and computes the self interference of a polyhedron.
+Constructs and computes the self interference of a Polyhedron.
 ") IntPatch_InterferencePolyhedron;
 		 IntPatch_InterferencePolyhedron(const IntPatch_Polyhedron & Obje);
 
@@ -2319,7 +2319,7 @@ None
 
 Description
 -----------
-Computes the interference between the two polyhedra.
+Computes the interference between the two Polyhedra.
 ") Perform;
 		void Perform(const IntPatch_Polyhedron & Obje1, const IntPatch_Polyhedron & Obje2);
 
@@ -2337,7 +2337,7 @@ None
 
 Description
 -----------
-Computes the self interference of a polyhedron.
+Computes the self interference of a Polyhedron.
 ") Perform;
 		void Perform(const IntPatch_Polyhedron & Obje);
 
@@ -2428,7 +2428,7 @@ theDist: float
 
 Description
 -----------
-Checks if surface thes1 has degenerated boundary (ds/du or ds/dv = 0) and calculates minimal distance between corresponding singular points and surface thes2 if singular point exists the method returns 'true' and stores minimal distance in thedist.
+Checks if surface theS1 has degenerated boundary (dS/du or dS/dv = 0) and calculates minimal distance between corresponding singular points and surface theS2 If singular point exists the method returns 'true' and stores minimal distance in theDist.
 ") CheckSingularPoints;
 		static Standard_Boolean CheckSingularPoints(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, Standard_Real &OutValue);
 
@@ -2449,7 +2449,7 @@ float
 
 Description
 -----------
-Calculates recommended value for myuvmaxstep depending on surfaces and their domains.
+Calculates recommended value for myUVMaxStep depending on surfaces and their domains.
 ") DefineUVMaxStep;
 		static Standard_Real DefineUVMaxStep(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2);
 
@@ -2471,7 +2471,7 @@ None
 
 Description
 -----------
-Dump of each result line. mode for more accurate dumps.
+Dump of each result line. Mode for more accurate dumps.
 ") Dump;
 		void Dump(const Standard_Integer Mode, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2);
 
@@ -2484,7 +2484,7 @@ bool
 
 Description
 -----------
-Returns true if the calculus was successful.
+Returns True if the calculus was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2515,7 +2515,7 @@ opencascade::handle<IntPatch_Line>
 
 Description
 -----------
-Returns the line of range index. an exception is raised if index<=0 or index>nbline.
+Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
 		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
 
@@ -2554,7 +2554,7 @@ bool
 
 Description
 -----------
-Returns true when the tangentfaces returns true and the normal vectors evaluated at a point on the first and the second surface are opposite. the exception domainerror is raised if tangentfaces returns false.
+Returns True when the TangentFaces returns True and the normal vectors evaluated at a point on the first and the second surface are opposite. The exception DomainError is raised if TangentFaces returns False.
 ") OppositeFaces;
 		Standard_Boolean OppositeFaces();
 
@@ -2580,7 +2580,7 @@ None
 
 Description
 -----------
-Flag theisreqtokeeprline has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. when intersection result returns intpatch_rline and another intpatch_line (not restriction) we (in case of theisreqtokeeprline==true) will always keep both lines even if they are coincided. flag theisreqtopostwlproc has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. if theisreqtopostwlproc == false, then we will work with walking-line obtained after intersection algorithm directly (without any post-processing).
+Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided. Flag theIsReqToPostWLProc has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. If theIsReqToPostWLProc == False, then we will work with Walking-line obtained after intersection algorithm directly (without any post-processing).
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean isGeomInt = Standard_True, const Standard_Boolean theIsReqToKeepRLine = Standard_False, const Standard_Boolean theIsReqToPostWLProc = Standard_True);
 
@@ -2607,7 +2607,7 @@ None
 
 Description
 -----------
-If isgeomint == standard_false, then method param-param intersection will be used. flag theisreqtokeeprline has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. when intersection result returns intpatch_rline and another intpatch_line (not restriction) we (in case of theisreqtokeeprline==true) will always keep both lines even if they are coincided. flag theisreqtopostwlproc has been entered only for compatibility with topopebrep package. it shall be deleted after deleting topopebrep. if theisreqtopostwlproc == false, then we will work with walking-line obtained after intersection algorithm directly (without any post-processing). .
+If isGeomInt == Standard_False, then method Param-Param intersection will be used. Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided. Flag theIsReqToPostWLProc has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. If theIsReqToPostWLProc == False, then we will work with Walking-line obtained after intersection algorithm directly (without any post-processing).
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, IntSurf_ListOfPntOn2S & LOfPnts, const Standard_Boolean isGeomInt = Standard_True, const Standard_Boolean theIsReqToKeepRLine = Standard_False, const Standard_Boolean theIsReqToPostWLProc = Standard_True);
 
@@ -2673,7 +2673,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the point of range index. an exception is raised if index<=0 or index>nbpnt.
+Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
 		const IntPatch_Point & Point(const Standard_Integer Index);
 
@@ -2731,7 +2731,7 @@ None
 
 Description
 -----------
-Set the tolerances used by the algorithms: --- implicit - parametric --- parametric - parametric --- implicit - implicit //! tolarc is used to compute the intersections between the restrictions of a surface and a walking line. //! toltang is used to compute the points on a walking line, and in geometric algorithms. //! fleche is a parameter used in the walking algorithms to provide small curvatures on a line. //! uvmaxstep is a parameter used in the walking algorithms to compute the distance between to points in their respective parametric spaces.
+Set the tolerances used by the algorithms: --- Implicit - Parametric --- Parametric - Parametric --- Implicit - Implicit //! TolArc is used to compute the intersections between the restrictions of a surface and a walking line. //! TolTang is used to compute the points on a walking line, and in geometric algorithms. //! Fleche is a parameter used in the walking algorithms to provide small curvatures on a line. //! UVMaxStep is a parameter used in the walking algorithms to compute the distance between to points in their respective parametric spaces.
 ") SetTolerances;
 		void SetTolerances(const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real UVMaxStep, const Standard_Real Fleche);
 
@@ -2744,7 +2744,7 @@ bool
 
 Description
 -----------
-Returns true if the two patches are considered as entirely tangent, i-e every restriction arc of one patch is inside the geometric base of the other patch.
+Returns True if the two patches are considered as entirely tangent, i-e every restriction arc of one patch is inside the geometric base of the other patch.
 ") TangentFaces;
 		Standard_Boolean TangentFaces();
 
@@ -2772,7 +2772,7 @@ IntPatch_IType
 
 Description
 -----------
-Returns the type of geometry 3d (line, circle, parabola, hyperbola, ellipse, analytic, walking, restriction).
+Returns the type of geometry 3d (Line, Circle, Parabola, Hyperbola, Ellipse, Analytic, Walking, Restriction).
 ") ArcType;
 		IntPatch_IType ArcType();
 
@@ -2785,7 +2785,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is a line of tangency between the 2 patches.
+Returns True if the intersection is a line of tangency between the 2 patches.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
@@ -2798,7 +2798,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is a u isoparametric curve on the first patch.
+Returns True if the intersection is a U isoparametric curve on the first patch.
 ") IsUIsoOnS1;
 		Standard_Boolean IsUIsoOnS1();
 
@@ -2811,7 +2811,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is a u isoparametric curve on the second patch.
+Returns True if the intersection is a U isoparametric curve on the second patch.
 ") IsUIsoOnS2;
 		Standard_Boolean IsUIsoOnS2();
 
@@ -2824,7 +2824,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is a v isoparametric curve on the first patch.
+Returns True if the intersection is a V isoparametric curve on the first patch.
 ") IsVIsoOnS1;
 		Standard_Boolean IsVIsoOnS1();
 
@@ -2837,7 +2837,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is a v isoparametric curve on the second patch.
+Returns True if the intersection is a V isoparametric curve on the second patch.
 ") IsVIsoOnS2;
 		Standard_Boolean IsVIsoOnS2();
 
@@ -2858,7 +2858,7 @@ None
 
 Description
 -----------
-To set the values returned by isuisos1,.... the default values are false.
+To set the values returned by IsUIsoS1,.... The default values are False.
 ") SetValue;
 		void SetValue(const Standard_Boolean Uiso1, const Standard_Boolean Viso1, const Standard_Boolean Uiso2, const Standard_Boolean Viso2);
 
@@ -2871,7 +2871,7 @@ IntSurf_Situation
 
 Description
 -----------
-Returns the situation (inside/outside/unknown) of the first patch compared to the second one, when transitionons1 or transitionons2 returns touch. otherwise, an exception is raised.
+Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of the first patch compared to the second one, when TransitionOnS1 or TransitionOnS2 returns TOUCH. Otherwise, an exception is raised.
 ") SituationS1;
 		IntSurf_Situation SituationS1();
 
@@ -2884,7 +2884,7 @@ IntSurf_Situation
 
 Description
 -----------
-Returns the situation (inside/outside/unknown) of the second patch compared to the first one, when transitionons1 or transitionons2 returns touch. otherwise, an exception is raised.
+Returns the situation (INSIDE/OUTSIDE/UNKNOWN) of the second patch compared to the first one, when TransitionOnS1 or TransitionOnS2 returns TOUCH. Otherwise, an exception is raised.
 ") SituationS2;
 		IntSurf_Situation SituationS2();
 
@@ -2897,7 +2897,7 @@ IntSurf_TypeTrans
 
 Description
 -----------
-Returns the type of the transition of the line for the first surface. the transition is 'constant' along the line. the transition is in if the line is oriented in such a way that the system of vector (n1,n2,t) is right-handed, where n1 is the normal to the first surface at a point p, n2 is the normal to the second surface at a point p, t is the tangent to the intersection line at p. if the system of vector is left-handed, the transition is out. when n1 and n2 are colinear all along the intersection line, the transition will be - touch, if it is possible to use the 2nd derivatives to determine the position of one surafce compared to the other (see situation) - undecided otherwise. //! if one of the transition is touch or undecided, the other one has got the same value.
+Returns the type of the transition of the line for the first surface. The transition is 'constant' along the line. The transition is IN if the line is oriented in such a way that the system of vector (N1,N2,T) is right-handed, where N1 is the normal to the first surface at a point P, N2 is the normal to the second surface at a point P, T is the tangent to the intersection line at P. If the system of vector is left-handed, the transition is OUT. When N1 and N2 are colinear all along the intersection line, the transition will be - TOUCH, if it is possible to use the 2nd derivatives to determine the position of one surafce compared to the other (see Situation) - UNDECIDED otherwise. //! If one of the transition is TOUCH or UNDECIDED, the other one has got the same value.
 ") TransitionOnS1;
 		IntSurf_TypeTrans TransitionOnS1();
 
@@ -2910,7 +2910,7 @@ IntSurf_TypeTrans
 
 Description
 -----------
-Returns the type of the transition of the line for the second surface. the transition is 'constant' along the line.
+Returns the type of the transition of the line for the second surface. The transition is 'constant' along the line.
 ") TransitionOnS2;
 		IntSurf_TypeTrans TransitionOnS2();
 
@@ -3039,7 +3039,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns the arc of restriction containing the vertex. the exception domainerror is raised if isondoms1 returns false.
+Returns the arc of restriction containing the vertex. The exception DomainError is raised if IsOnDomS1 returns False.
 ") ArcOnS1;
 		const opencascade::handle<Adaptor2d_Curve2d> & ArcOnS1();
 
@@ -3052,7 +3052,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns the arc of restriction containing the vertex. the exception domainerror is raised if isondoms2 returns false.
+Returns the arc of restriction containing the vertex. The exception DomainError is raised if IsOnDomS2 returns False.
 ") ArcOnS2;
 		const opencascade::handle<Adaptor2d_Curve2d> & ArcOnS2();
 
@@ -3078,7 +3078,7 @@ bool
 
 Description
 -----------
-Returns true if the point belongs to several intersection lines.
+Returns True if the point belongs to several intersection lines.
 ") IsMultiple;
 		Standard_Boolean IsMultiple();
 
@@ -3091,7 +3091,7 @@ bool
 
 Description
 -----------
-Returns true if the point is on a boundary of the domain of the first patch.
+Returns True if the point is on a boundary of the domain of the first patch.
 ") IsOnDomS1;
 		Standard_Boolean IsOnDomS1();
 
@@ -3104,7 +3104,7 @@ bool
 
 Description
 -----------
-Returns true if the point is on a boundary of the domain of the second patch.
+Returns True if the point is on a boundary of the domain of the second patch.
 ") IsOnDomS2;
 		Standard_Boolean IsOnDomS2();
 
@@ -3117,7 +3117,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a tangency point between the surfaces. if the point is on one of the domain (isondoms1 returns true or isondoms2 returns true), an exception is raised.
+Returns True if the Point is a tangency point between the surfaces. If the Point is on one of the domain (IsOnDomS1 returns True or IsOnDomS2 returns True), an exception is raised.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
@@ -3130,7 +3130,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a vertex on the initial restriction facet of the first surface.
+Returns True if the point is a vertex on the initial restriction facet of the first surface.
 ") IsVertexOnS1;
 		Standard_Boolean IsVertexOnS1();
 
@@ -3143,7 +3143,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a vertex on the initial restriction facet of the first surface.
+Returns True if the point is a vertex on the initial restriction facet of the first surface.
 ") IsVertexOnS2;
 		Standard_Boolean IsVertexOnS2();
 
@@ -3156,7 +3156,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point on the arc returned by the method arcons2. the exception domainerror is raised if isondoms1 returns false.
+Returns the parameter of the point on the arc returned by the method ArcOnS2. The exception DomainError is raised if IsOnDomS1 returns False.
 ") ParameterOnArc1;
 		Standard_Real ParameterOnArc1();
 
@@ -3169,7 +3169,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point on the arc returned by the method arcons2. the exception domainerror is raised if isondoms2 returns false.
+Returns the parameter of the point on the arc returned by the method ArcOnS2. The exception DomainError is raised if IsOnDomS2 returns False.
 ") ParameterOnArc2;
 		Standard_Real ParameterOnArc2();
 
@@ -3182,7 +3182,7 @@ float
 
 Description
 -----------
-This method returns the parameter of the point on the intersection line. if the points does not belong to an intersection line, the value returned does not have any sens.
+This method returns the parameter of the point on the intersection line. If the points does not belong to an intersection line, the value returned does not have any sens.
 ") ParameterOnLine;
 		Standard_Real ParameterOnLine();
 
@@ -3251,7 +3251,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the pnton2s (geometric point and the parameters).
+Returns the PntOn2S (geometric Point and the parameters).
 ") PntOn2S;
 		const IntSurf_PntOn2S & PntOn2S();
 
@@ -3286,7 +3286,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is on one of the domain, when both surfaces are implicit ones. if onfirst is true, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
+Sets the values of a point which is on one of the domain, when both surfaces are implicit ones. If OnFirst is True, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
 ") SetArc;
 		void SetArc(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
@@ -3381,7 +3381,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is on no domain, when both surfaces are implicit ones. if tangent is true, the point is a point of tangency between the surfaces.
+Sets the values of a point which is on no domain, when both surfaces are implicit ones. If Tangent is True, the point is a point of tangency between the surfaces.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt, const Standard_Real Tol, const Standard_Boolean Tangent);
 
@@ -3436,7 +3436,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface. if onfirst is true, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
+Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface. If OnFirst is True, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
 ") SetVertex;
 		void SetVertex(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -3462,7 +3462,7 @@ IntSurf_Transition
 
 Description
 -----------
-Returns the transition of the point on the intersection line with the arc on s1. the exception domainerror is raised if isondoms1 returns false.
+Returns the transition of the point on the intersection line with the arc on S1. The exception DomainError is raised if IsOnDomS1 returns False.
 ") TransitionLineArc1;
 		const IntSurf_Transition & TransitionLineArc1();
 
@@ -3475,7 +3475,7 @@ IntSurf_Transition
 
 Description
 -----------
-Returns the transition of the point on the intersection line with the arc on s2. the exception domainerror is raised if isondoms2 returns false.
+Returns the transition of the point on the intersection line with the arc on S2. The exception DomainError is raised if IsOnDomS2 returns False.
 ") TransitionLineArc2;
 		const IntSurf_Transition & TransitionLineArc2();
 
@@ -3488,7 +3488,7 @@ IntSurf_Transition
 
 Description
 -----------
-Returns the transition between the intersection line returned by the method line and the arc on s1 returned by arcons1(). the exception domainerror is raised if isondoms1 returns false.
+Returns the transition between the intersection line returned by the method Line and the arc on S1 returned by ArcOnS1(). The exception DomainError is raised if IsOnDomS1 returns False.
 ") TransitionOnS1;
 		const IntSurf_Transition & TransitionOnS1();
 
@@ -3501,7 +3501,7 @@ IntSurf_Transition
 
 Description
 -----------
-Returns the transition between the intersection line returned by the method line and the arc on s2 returned by arcons2. the exception domainerror is raised if isondoms2 returns false.
+Returns the transition between the intersection line returned by the method Line and the arc on S2 returned by ArcOnS2. The exception DomainError is raised if IsOnDomS2 returns False.
 ") TransitionOnS2;
 		const IntSurf_Transition & TransitionOnS2();
 
@@ -3527,7 +3527,7 @@ opencascade::handle<Adaptor3d_HVertex>
 
 Description
 -----------
-Returns the information about the point when it is on the domain of the first patch, i-e when the function isvertexons1 returns true. otherwise, an exception is raised.
+Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertexOnS1 returns True. Otherwise, an exception is raised.
 ") VertexOnS1;
 		const opencascade::handle<Adaptor3d_HVertex> & VertexOnS1();
 
@@ -3540,7 +3540,7 @@ opencascade::handle<Adaptor3d_HVertex>
 
 Description
 -----------
-Returns the information about the point when it is on the domain of the second patch, i-e when the function isvertexons2 returns true. otherwise, an exception is raised.
+Returns the information about the point when it is on the domain of the second patch, i-e when the function IsVertexOnS2 returns True. Otherwise, an exception is raised.
 ") VertexOnS2;
 		const opencascade::handle<Adaptor3d_HVertex> & VertexOnS2();
 
@@ -3620,7 +3620,7 @@ int
 
 Description
 -----------
-Returns the number of segments in the polyline.
+Returns the number of Segments in the polyline.
 ") NbSegments;
 		virtual Standard_Integer NbSegments();
 
@@ -3658,7 +3658,7 @@ None
 
 Description
 -----------
-Returns the points of the segment <index> in the polygon.
+Returns the points of the segment <Index> in the Polygon.
 ") Segment;
 		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
@@ -3693,7 +3693,7 @@ Bnd_Box
 
 Description
 -----------
-Give the bounding box of the polyhedron.
+Give the bounding box of the Polyhedron.
 ") Bounding;
 		static const Bnd_Box & Bounding(const IntPatch_Polyhedron & thePolyh);
 
@@ -3711,7 +3711,7 @@ opencascade::handle<Bnd_HArray1OfBox>
 
 Description
 -----------
-Give the array of boxes. the box <n> corresponding to the triangle <n>.
+Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
 		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const IntPatch_Polyhedron & thePolyh);
 
@@ -3788,7 +3788,7 @@ OtherP: int
 
 Description
 -----------
-Gives the address tricon of the triangle connexe to the triangle of address triang by the edge pivot pedge and the third point of this connexe triangle. when we are on a free edge tricon==0 but the function return the value of the triangle in the other side of pivot on the free edge. used to turn around a vertex.
+Gives the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
 		static Standard_Integer TriConnex(const IntPatch_Polyhedron & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3809,7 +3809,7 @@ P3: int
 
 Description
 -----------
-Give the indices of the 3 points of the triangle of address index in the polyhedron.
+Give the indices of the 3 points of the triangle of address Index in the Polyhedron.
 ") Triangle;
 		static void Triangle(const IntPatch_Polyhedron & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3836,7 +3836,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntPatch_PrmPrmIntersection;
 		 IntPatch_PrmPrmIntersection();
 
@@ -3964,7 +3964,7 @@ opencascade::handle<IntPatch_Line>
 
 Description
 -----------
-Returns the line of range index. an exception is raised if index<=0 or index>nbline.
+Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
 		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
 
@@ -4013,7 +4013,7 @@ opencascade::handle<IntPatch_Line>
 
 Description
 -----------
-Computes about <nbpoints> intersection points on the line <indexline> between the points of index <lowpoint> and <highpoint>. //! all the points of the line of index <indexline> with an index between <lowpoint> and <highpoint> are in the returned line. new points are inserted between existing points if those points are not too closed. //! an exception is raised if index<=0 or index>nbline. or if isdone returns false.
+Computes about <NbPoints> Intersection Points on the Line <IndexLine> between the Points of Index <LowPoint> and <HighPoint>. //! All the points of the line of index <IndexLine> with an index between <LowPoint> and <HighPoint> are in the returned line. New Points are inserted between existing points if those points are not too closed. //! An exception is raised if Index<=0 or Index>NbLine. or if IsDone returns False.
 ") NewLine;
 		opencascade::handle<IntPatch_Line> NewLine(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const Standard_Integer IndexLine, const Standard_Integer LowPoint, const Standard_Integer HighPoint, const Standard_Integer NbPoints);
 
@@ -4040,7 +4040,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. associated polyhedrons <polyhedron1> and <polyhedron2> are given.
+Performs the intersection between <Caro1> and <Caro2>. Associated Polyhedrons <Polyhedron1> and <Polyhedron2> are given.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
 
@@ -4090,7 +4090,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. the method computes the polyhedron on each surface.
+Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment, const Standard_Boolean ClearFlag = Standard_True);
 
@@ -4116,7 +4116,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. the method computes the polyhedron on each surface.
+Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment, IntSurf_ListOfPntOn2S & ListOfPnts);
 
@@ -4145,7 +4145,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. the method computes the polyhedron on each surface.
+Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
 
@@ -4168,7 +4168,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. the method computes the polyhedron on each surface.
+Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
 
@@ -4194,7 +4194,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. //! the polyhedron which approximates <caro2>, <polyhedron2> is given. the other one is computed.
+Performs the intersection between <Caro1> and <Caro2>. //! The polyhedron which approximates <Caro2>, <Polyhedron2> is given. The other one is computed.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
 
@@ -4220,7 +4220,7 @@ None
 
 Description
 -----------
-Performs the intersection between <caro1> and <caro2>. //! the polyhedron which approximates <caro1>, <polyhedron1> is given. the other one is computed.
+Performs the intersection between <Caro1> and <Caro2>. //! The polyhedron which approximates <Caro1>, <Polyhedron1> is given. The other one is computed.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
 
@@ -4507,7 +4507,7 @@ bool
 
 Description
 -----------
-Adds the point defined as intersection of two isolines (u = 0 and v = 0) on theqsurf in theline. therefpt is used to correct adjusting parameters. if theisreversed is true then theqsurf correspond to the second (otherwise, the first) surface while forming intersection point intsurf_pnton2s.
+Adds the point defined as intersection of two isolines (U = 0 and V = 0) on theQSurf in theLine. theRefPt is used to correct adjusting parameters. If theIsReversed is True then theQSurf correspond to the second (otherwise, the first) surface while forming intersection point IntSurf_PntOn2S.
 ") AddCrossUVIsoPoint;
 		static Standard_Boolean AddCrossUVIsoPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Real theTol3d, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
 
@@ -4535,7 +4535,7 @@ bool
 
 Description
 -----------
-Adds the point lain strictly in the isoline u = 0 or v = 0 of theqsurf, in theline. therefpt is used to correct adjusting parameters. if theisreversed is true then theqsurf corresponds to the second (otherwise, the first) surface while forming intersection point intsurf_pnton2s. all math_vector-objects must be filled as follows: [1] - u-parameter of thepsurf; [2] - v-parameter of thepsurf; [3] - u- (if v-isoline is considered) or v-parameter (if u-isoline is considered) of theqsurf.
+Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf, in theLine. theRefPt is used to correct adjusting parameters. If theIsReversed is True then theQSurf corresponds to the second (otherwise, the first) surface while forming intersection point IntSurf_PntOn2S. All math_Vector-objects must be filled as follows: [1] - U-parameter of thePSurf; [2] - V-parameter of thePSurf; [3] - U- (if V-isoline is considered) or V-parameter (if U-isoline is considered) of theQSurf.
 ") AddPointOnUorVIso;
 		static Standard_Boolean AddPointOnUorVIso(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Boolean theIsU, const Standard_Real theIsoParameter, math_VectorBase<double > theToler, math_VectorBase<double > theInitPoint, math_VectorBase<double > theInfBound, math_VectorBase<double > theSupBound, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
 
@@ -4559,7 +4559,7 @@ bool
 
 Description
 -----------
-Computes the pole of sphere to add it in the intersection line. stores the result in theaddedpoint variable (does not add in the line). at that, cone and sphere (with singularity) must be set in theqsurf parameter. by default (if theisreversed == false), theqsurf is the first surface of the walking line. if it is not, theisreversed parameter must be set to true. theisreqrefcheck is true if and only if 3d-point of therefpt must be pole or apex for check (e.g. if it is vertex). theptiso is the reference point for obtaining isoline where must be placed the apex/pole. //! attention!!! thevertex must be initialized before calling the method .
+Computes the pole of sphere to add it in the intersection line. Stores the result in theAddedPoint variable (does not add in the line). At that, cone and sphere (with singularity) must be set in theQSurf parameter. By default (if theIsReversed == False), theQSurf is the first surface of the Walking line. If it is not, theIsReversed parameter must be set to True. theIsReqRefCheck is True if and only if 3D-point of theRefPt must be pole or apex for check (e.g. if it is vertex). thePtIso is the reference point for obtaining isoline where must be placed the Apex/Pole. //! ATTENTION!!! theVertex must be initialized before calling the method .
 ") AddSingularPole;
 		static Standard_Boolean AddSingularPole(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & thePtIso, IntPatch_Point & theVertex, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False, const Standard_Boolean theIsReqRefCheck = Standard_False);
 
@@ -4580,7 +4580,7 @@ None
 
 Description
 -----------
-Sets thenewpoint parameters in 2d-space the closest to therefpoint with help of adding/subtracting corresponding periods. thearrperiods must be filled as follows: {<u-period of 1st surface>, <v-period of 1st surface>, <u-period of 2nd surface>, <v-period of 2nd surface>}. if thevertex != 0 then its parameters will be filled as corresponding parameters of thenewpoint. //! attention!!! thenewpoint is not only output parameter. it is input/output one. i.e. thenewpoint is reference point together with therefpt.
+Sets theNewPoint parameters in 2D-space the closest to theRefPoint with help of adding/subtracting corresponding periods. theArrPeriods must be filled as follows: {<U-period of 1st surface>, <V-period of 1st surface>, <U-period of 2nd surface>, <V-period of 2nd surface>}. If theVertex != 0 then its parameters will be filled as corresponding parameters of theNewPoint. //! ATTENTION!!! theNewPoint is not only Output parameter. It is Input/Output one. I.e. theNewPoint is reference point together with theRefPt.
 ") AdjustPointAndVertex;
 		static void AdjustPointAndVertex(const IntSurf_PntOn2S & theRefPoint, const Standard_Real theArrPeriods[4], IntSurf_PntOn2S & theNewPoint, IntPatch_Point * const theVertex = 0);
 
@@ -4604,7 +4604,7 @@ bool
 
 Description
 -----------
-Special point has already been added in the line. now, we need in correct prolongation of the line or in start new line. this function returns new point. //! attention!!! thenewpoint is not only output parameter. it is input/output one. i.e. thenewpoint is reference point together with therefpt.
+Special point has already been added in the line. Now, we need in correct prolongation of the line or in start new line. This function returns new point. //! ATTENTION!!! theNewPoint is not only Output parameter. It is Input/Output one. I.e. theNewPoint is reference point together with theRefPt.
 ") ContinueAfterSpecialPoint;
 		static Standard_Boolean ContinueAfterSpecialPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const IntPatch_SpecPntType theSPType, const Standard_Real theTol2D, IntSurf_PntOn2S & theNewPoint, const Standard_Boolean theIsReversed = Standard_False);
 
@@ -4654,7 +4654,7 @@ None
 
 Description
 -----------
-Associer a l 'indice du point sur la ligne l'indice du point passant dans l'iterateur de depart.
+associer a l 'indice du point sur la ligne l'indice du point passant dans l'iterateur de depart.
 ") AddIndexPassing;
 		void AddIndexPassing(const Standard_Integer Index);
 
@@ -4788,7 +4788,7 @@ None
 
 Description
 -----------
-Cut the line at the point of rank index.
+Cut the line at the point of rank Index.
 ") Cut;
 		void Cut(const Standard_Integer Index);
 
@@ -4801,7 +4801,7 @@ IntSurf_PathPoint
 
 Description
 -----------
-Returns the first point of the line when it is a marching point. an exception is raised if hasfirstpoint returns false.
+Returns the first point of the line when it is a marching point. An exception is raised if HasFirstPoint returns False.
 ") FirstPoint;
 		const IntSurf_PathPoint & FirstPoint();
 
@@ -4814,7 +4814,7 @@ int
 
 Description
 -----------
-Returns the index of first point of the line when it is a marching point.this index is the index in the pointstartiterator. an exception is raised if hasfirstpoint returns false.
+Returns the Index of first point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasFirstPoint returns False.
 ") FirstPointIndex;
 		Standard_Integer FirstPointIndex();
 
@@ -4827,7 +4827,7 @@ bool
 
 Description
 -----------
-Returns true if the first point of the line is a marching point . when is hasfirstpoint==false ,the line begins on the natural bound of the surface.the line can be too long.
+Returns True if the first point of the line is a marching point . when is HasFirstPoint==False ,the line begins on the natural bound of the surface.the line can be too long.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -4840,7 +4840,7 @@ bool
 
 Description
 -----------
-Returns true if the end point of the line is a marching point (point from intws). when is hasfirstpoint==false ,the line ends on the natural bound of the surface.the line can be too long.
+Returns True if the end point of the line is a marching point (Point from IntWS). when is HasFirstPoint==False ,the line ends on the natural bound of the surface.the line can be too long.
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -4853,7 +4853,7 @@ bool
 
 Description
 -----------
-Returns true if the line is closed.
+Returns True if the line is closed.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
@@ -4892,7 +4892,7 @@ IntSurf_PathPoint
 
 Description
 -----------
-Returns the last point of the line when it is a marching point. an exception is raised if haslastpoint returns false.
+Returns the last point of the line when it is a marching point. An exception is raised if HasLastPoint returns False.
 ") LastPoint;
 		const IntSurf_PathPoint & LastPoint();
 
@@ -4905,7 +4905,7 @@ int
 
 Description
 -----------
-Returns the index of last point of the line when it is a marching point.this index is the index in the pointstartiterator. an exception is raised if haslastpoint returns false.
+Returns the index of last point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasLastPoint returns False.
 ") LastPointIndex;
 		Standard_Integer LastPointIndex();
 
@@ -4918,7 +4918,7 @@ opencascade::handle<IntSurf_LineOn2S>
 
 Description
 -----------
-Returns the lineon2s contained in the walking line.
+Returns the LineOn2S contained in the walking line.
 ") Line;
 		const opencascade::handle<IntSurf_LineOn2S> & Line();
 
@@ -4931,7 +4931,7 @@ int
 
 Description
 -----------
-Returns the number of points belonging to pnts1 which are passing point.
+returns the number of points belonging to Pnts1 which are passing point.
 ") NbPassingPoint;
 		Standard_Integer NbPassingPoint();
 
@@ -4944,7 +4944,7 @@ int
 
 Description
 -----------
-Returns the number of points of the line (including first point and end point: see haslastpoint and hasfirstpoint).
+Returns the number of points of the line (including first point and end point: see HasLastPoint and HasFirstPoint).
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -4963,7 +4963,7 @@ IndexPnts: int
 
 Description
 -----------
-Returns the index of the point belonging to the line which is associated to the passing point belonging to pnts1 an exception is raised if index > nbpassingpoint().
+returns the index of the point belonging to the line which is associated to the passing point belonging to Pnts1 an exception is raised if Index > NbPassingPoint().
 ") PassingPoint;
 		void PassingPoint(const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -4976,7 +4976,7 @@ None
 
 Description
 -----------
-Reverse the points in the line. hasfirst, haslast are kept.
+reverse the points in the line. Hasfirst, HasLast are kept.
 ") Reverse;
 		void Reverse();
 
@@ -5066,7 +5066,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the point of range index. if index <= 0 or index > nbpoints, an exception is raised.
+Returns the point of range Index. If index <= 0 or Index > NbPoints, an exception is raised.
 ") Value;
 		const IntSurf_PntOn2S & Value(const Standard_Integer Index);
 
@@ -5103,7 +5103,7 @@ None
 
 Description
 -----------
-Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. step is the maximum increment admitted between two consecutive points (in 2d space). epsilon is the tolerance beyond which 2 points are confused. thetofillholes is the flag defining whether possible holes between resulting curves are filled or not in case of intpatch walking thetofillholes is false.
+Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused. theToFillHoles is the flag defining whether possible holes between resulting curves are filled or not in case of IntPatch walking theToFillHoles is False.
 ") IntPatch_TheIWalking;
 		 IntPatch_TheIWalking(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step, const Standard_Boolean theToFillHoles = Standard_False);
 
@@ -5129,7 +5129,7 @@ int
 
 Description
 -----------
-Returns the number of resulting polylines. an exception is raised if isdone returns false.
+Returns the number of resulting polylines. An exception is raised if IsDone returns False.
 ") NbLines;
 		Standard_Integer NbLines();
 
@@ -5142,7 +5142,7 @@ int
 
 Description
 -----------
-Returns the number of points belonging to pnts on which no line starts or ends. an exception is raised if isdone returns false.
+Returns the number of points belonging to Pnts on which no line starts or ends. An exception is raised if IsDone returns False.
 ") NbSinglePnts;
 		Standard_Integer NbSinglePnts();
 
@@ -5164,7 +5164,7 @@ None
 
 Description
 -----------
-Searches a set of polylines starting on a point of pnts1 or pnts2. each point on a resulting polyline verifies f(u,v)=0.
+Searches a set of polylines starting on a point of Pnts1 or Pnts2. Each point on a resulting polyline verifies F(u,v)=0.
 ") Perform;
 		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, const IntSurf_SequenceOfInteriorPoint & Pnts2, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
 
@@ -5185,7 +5185,7 @@ None
 
 Description
 -----------
-Searches a set of polylines starting on a point of pnts1. each point on a resulting polyline verifies f(u,v)=0.
+Searches a set of polylines starting on a point of Pnts1. Each point on a resulting polyline verifies F(u,v)=0.
 ") Perform;
 		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
 
@@ -5205,7 +5205,7 @@ None
 
 Description
 -----------
-Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. step is the maximum increment admitted between two consecutive points (in 2d space). epsilon is the tolerance beyond which 2 points are confused.
+Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step);
 
@@ -5223,7 +5223,7 @@ IntSurf_PathPoint
 
 Description
 -----------
-Returns the point of range index . an exception is raised if isdone returns false. an exception is raised if index<=0 or index > nbsinglepnts.
+Returns the point of range Index . An exception is raised if IsDone returns False. An exception is raised if Index<=0 or Index > NbSinglePnts.
 ") SinglePnt;
 		const IntSurf_PathPoint & SinglePnt(const Standard_Integer Index);
 
@@ -5241,7 +5241,7 @@ opencascade::handle<IntPatch_TheIWLineOfTheIWalking>
 
 Description
 -----------
-Returns the polyline of range index. an exception is raised if isdone is false. an exception is raised if index<=0 or index>nblines.
+Returns the polyline of range Index. An exception is raised if IsDone is False. An exception is raised if Index<=0 or Index>NbLines.
 ") Value;
 		const opencascade::handle<IntPatch_TheIWLineOfTheIWalking> & Value(const Standard_Integer Index);
 
@@ -5472,7 +5472,7 @@ bool
 
 Description
 -----------
-Returns true if all arc of the arcs are solution (inside the surface). an exception is raised if isdone returns false.
+Returns true if all arc of the Arcs are solution (inside the surface). An exception is raised if IsDone returns False.
 ") AllArcSolution;
 		Standard_Boolean AllArcSolution();
 
@@ -5485,7 +5485,7 @@ bool
 
 Description
 -----------
-Returns true if the calculus was successful.
+Returns True if the calculus was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5498,7 +5498,7 @@ int
 
 Description
 -----------
-Returns the number of resulting points. an exception is raised if isdone returns false (notdone).
+Returns the number of resulting points. An exception is raised if IsDone returns False (NotDone).
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -5511,7 +5511,7 @@ int
 
 Description
 -----------
-Returns the number of the resulting segments. an exception is raised if isdone returns false (notdone).
+Returns the number of the resulting segments. An exception is raised if IsDone returns False (NotDone).
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -5533,7 +5533,7 @@ None
 
 Description
 -----------
-Algorithm to find the points and parts of curves of domain (domain of of restriction of a surface) which verify f = 0. tolboundary defines if a curve is on q. toltangency defines if a point is on q.
+Algorithm to find the points and parts of curves of Domain (domain of of restriction of a surface) which verify F = 0. TolBoundary defines if a curve is on Q. TolTangency defines if a point is on Q.
 ") Perform;
 		void Perform(IntPatch_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const Standard_Real TolBoundary, const Standard_Real TolTangency, const Standard_Boolean RecheckOnRegularity = Standard_False);
 
@@ -5551,7 +5551,7 @@ IntPatch_ThePathPointOfTheSOnBounds
 
 Description
 -----------
-Returns the resulting point of range index. the exception notdone is raised if isdone() returns false. the exception outofrange is raised if index <= 0 or index > nbpoints.
+Returns the resulting point of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
 ") Point;
 		const IntPatch_ThePathPointOfTheSOnBounds & Point(const Standard_Integer Index);
 
@@ -5569,7 +5569,7 @@ IntPatch_TheSegmentOfTheSOnBounds
 
 Description
 -----------
-Returns the resulting segment of range index. the exception notdone is raised if isdone() returns false. the exception outofrange is raised if index <= 0 or index > nbpoints.
+Returns the resulting segment of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
 ") Segment;
 		const IntPatch_TheSegmentOfTheSOnBounds & Segment(const Standard_Integer Index);
 
@@ -5643,7 +5643,7 @@ int
 
 Description
 -----------
-Returns the number of points. the exception notdone if raised if isdone returns false.
+Returns the number of points. The exception NotDone if raised if IsDone returns False.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -5703,7 +5703,7 @@ IntSurf_InteriorPoint
 
 Description
 -----------
-Returns the point of range index. the exception notdone if raised if isdone returns false. the exception outofrange if raised if index <= 0 or index > nbpoints.
+Returns the point of range Index. The exception NotDone if raised if IsDone returns False. The exception OutOfRange if raised if Index <= 0 or Index > NbPoints.
 ") Value;
 		const IntSurf_InteriorPoint & Value(const Standard_Integer Index);
 
@@ -5769,7 +5769,7 @@ bool
 
 Description
 -----------
-Returns true if there is a vertex (thepathpoint) defining the lowest valid parameter on the arc.
+Returns True if there is a vertex (ThePathPoint) defining the lowest valid parameter on the arc.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -5782,7 +5782,7 @@ bool
 
 Description
 -----------
-Returns true if there is a vertex (thepathpoint) defining the greatest valid parameter on the arc.
+Returns True if there is a vertex (ThePathPoint) defining the greatest valid parameter on the arc.
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -5814,7 +5814,7 @@ None
 
 Description
 -----------
-Defines the first point or the last point, depending on the value of the boolean first.
+Defines the first point or the last point, depending on the value of the boolean First.
 ") SetLimitPoint;
 		void SetLimitPoint(const IntPatch_ThePathPointOfTheSOnBounds & V, const Standard_Boolean First);
 
@@ -6099,7 +6099,7 @@ float
 
 Description
 -----------
-Returns the value tol so that if abs(func.root())<tol the function is considered null.
+Returns the value Tol so that if Abs(Func.Root())<Tol the function is considered null.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -6174,7 +6174,7 @@ opencascade::handle<IntPatch_WLine>
 
 Description
 -----------
-I removes equal points (leave one of equal points) from thewline and recompute vertex parameters. //! ii removes point out of borders in case of non periodic surfaces. //! iii removes exceed points using tube criteria: delete 7d point if it lies near to expected lines in 2d and 3d. each task (2d, 2d, 3d) have its own tolerance and checked separately. //! returns new wline or null wline if the number of the points is less than 2.
+I Removes equal points (leave one of equal points) from theWLine and recompute vertex parameters. //! II Removes point out of borders in case of non periodic surfaces. //! III Removes exceed points using tube criteria: delete 7D point if it lies near to expected lines in 2d and 3d. Each task (2d, 2d, 3d) have its own tolerance and checked separately. //! Returns new WLine or null WLine if the number of the points is less than 2.
 ") ComputePurgedWLine;
 		static opencascade::handle<IntPatch_WLine> ComputePurgedWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theDom1, const opencascade::handle<Adaptor3d_TopolTool> & theDom2);
 
@@ -6199,7 +6199,7 @@ None
 
 Description
 -----------
-Extends every line from theslin (if it is possible) to be started/finished in strictly determined point (in the place of joint of two lines). as result, some gaps between two lines will vanish. the walking lines are supposed (algorithm will do nothing for not-walking line) to be computed as a result of intersection. both thes1 and thes2 must be quadrics. other cases are not supported. thearrperiods must be filled as follows (every value must not be negative; if the surface is not periodic the period must be equal to 0.0 strictly): {<u-period of 1st surface>, <v-period of 1st surface>, <u-period of 2nd surface>, <v-period of 2nd surface>}. thelistofcriticalpoints must contain 3d-points where joining is disabled.
+Extends every line from theSlin (if it is possible) to be started/finished in strictly determined point (in the place of joint of two lines). As result, some gaps between two lines will vanish. The Walking lines are supposed (algorithm will do nothing for not-Walking line) to be computed as a result of intersection. Both theS1 and theS2 must be quadrics. Other cases are not supported. theArrPeriods must be filled as follows (every value must not be negative; if the surface is not periodic the period must be equal to 0.0 strictly): {<U-period of 1st surface>, <V-period of 1st surface>, <U-period of 2nd surface>, <V-period of 2nd surface>}. theListOfCriticalPoints must contain 3D-points where joining is disabled.
 ") ExtendTwoWLines;
 		static void ExtendTwoWLines(IntPatch_SequenceOfLine & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Real theToler3D, const Standard_Real * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
 
@@ -6221,7 +6221,7 @@ None
 
 Description
 -----------
-Joins all wlines from theslin to one if it is possible and records the result into theslin again. lines will be kept to be split if: a) they are separated (has no common points); b) resulted line (after joining) go through seam-edges or surface boundaries. //! in addition, if points in thespnt lies at least in one of the line in theslin, this point will be deleted.
+Joins all WLines from theSlin to one if it is possible and records the result into theSlin again. Lines will be kept to be split if: a) they are separated (has no common points); b) resulted line (after joining) go through seam-edges or surface boundaries. //! In addition, if points in theSPnt lies at least in one of the line in theSlin, this point will be deleted.
 ") JoinWLines;
 		static void JoinWLines(IntPatch_SequenceOfLine & theSlin, IntPatch_SequenceOfPoint & theSPnt, opencascade::handle<Adaptor3d_Surface > theS1, opencascade::handle<Adaptor3d_Surface > theS2, const Standard_Real theTol3D);
 
@@ -6256,7 +6256,7 @@ None
 
 Description
 -----------
-Creates an analytic intersection line when the transitions are in or out.
+Creates an analytic intersection line when the transitions are In or Out.
 ") IntPatch_ALine;
 		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6277,7 +6277,7 @@ None
 
 Description
 -----------
-Creates an analytic intersection line when the transitions are touch.
+Creates an analytic intersection line when the transitions are Touch.
 ") IntPatch_ALine;
 		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6296,7 +6296,7 @@ None
 
 Description
 -----------
-Creates an analytic intersection line when the transitions are undecided.
+Creates an analytic intersection line when the transitions are Undecided.
 ") IntPatch_ALine;
 		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang);
 
@@ -6332,7 +6332,7 @@ IntPatch_Point
 
 Description
 -----------
-Allows modifying the vertex with index theindex on the line.
+Allows modifying the vertex with index theIndex on the line.
 ") ChangeVertex;
 		IntPatch_Point & ChangeVertex(const Standard_Integer theIndex);
 
@@ -6383,7 +6383,7 @@ bool
 
 Description
 -----------
-Returns standard_true when the derivative at parameter u is defined on the analytic intersection line. in that case, du is the derivative. returns standard_false when it is not possible to evaluate the derivative. in both cases, p is the point at parameter u on the intersection.
+Returns Standard_True when the derivative at parameter U is defined on the analytic intersection line. In that case, Du is the derivative. Returns Standard_False when it is not possible to evaluate the derivative. In both cases, P is the point at parameter U on the intersection.
 ") D1;
 		Standard_Boolean D1(const Standard_Real U, gp_Pnt & P, gp_Vec & Du);
 
@@ -6402,7 +6402,7 @@ None
 
 Description
 -----------
-Tries to find the parameters of the point p on the curve. if the method returns false, the 'projection' is impossible. if the method returns true at least one parameter has been found. theparams is always sorted in ascending order.
+Tries to find the parameters of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
 		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
 
@@ -6419,7 +6419,7 @@ IsIncluded: bool
 
 Description
 -----------
-Returns the first parameter on the intersection line. if isincluded returns true, value and d1 methods can be call with a parameter equal to firstparameter. otherwise, the parameter must be greater than firstparameter.
+Returns the first parameter on the intersection line. If IsIncluded returns True, Value and D1 methods can be call with a parameter equal to FirstParameter. Otherwise, the parameter must be greater than FirstParameter.
 ") FirstParameter;
 		Standard_Real FirstParameter(Standard_Boolean &OutValue);
 
@@ -6432,7 +6432,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the firstpoint. an exception is raised when hasfirstpoint returns false.
+Returns the IntPoint corresponding to the FirstPoint. An exception is raised when HasFirstPoint returns False.
 ") FirstPoint;
 		const IntPatch_Point & FirstPoint();
 
@@ -6445,7 +6445,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known first point. this point is given by the method firstpoint().
+Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -6458,7 +6458,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known last point. this point is given by the method lastpoint().
+Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -6475,7 +6475,7 @@ IsIncluded: bool
 
 Description
 -----------
-Returns the last parameter on the intersection line. if isincluded returns true, value and d1 methods can be call with a parameter equal to lastparameter. otherwise, the parameter must be less than lastparameter.
+Returns the last parameter on the intersection line. If IsIncluded returns True, Value and D1 methods can be call with a parameter equal to LastParameter. Otherwise, the parameter must be less than LastParameter.
 ") LastParameter;
 		Standard_Real LastParameter(Standard_Boolean &OutValue);
 
@@ -6488,7 +6488,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the lastpoint. an exception is raised when haslastpoint returns false.
+Returns the IntPoint corresponding to the LastPoint. An exception is raised when HasLastPoint returns False.
 ") LastPoint;
 		const IntPatch_Point & LastPoint();
 
@@ -6520,7 +6520,7 @@ None
 
 Description
 -----------
-Replaces the element of range index in the list of points.
+Replaces the element of range Index in the list of points.
 ") Replace;
 		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -6574,7 +6574,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of parameter u on the analytic intersection line.
+Returns the point of parameter U on the analytic intersection line.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
@@ -6592,7 +6592,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") Vertex;
 		const IntPatch_Point & Vertex(const Standard_Integer Index);
 
@@ -6629,7 +6629,7 @@ None
 
 Description
 -----------
-Creates a line as intersection line when the transitions are in or out.
+Creates a Line as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6650,7 +6650,7 @@ None
 
 Description
 -----------
-Creates a line as intersection line when the transitions are touch.
+Creates a Line as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6669,7 +6669,7 @@ None
 
 Description
 -----------
-Creates a line as intersection line when the transitions are undecided.
+Creates a Line as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang);
 
@@ -6690,7 +6690,7 @@ None
 
 Description
 -----------
-Creates a circle as intersection line when the transitions are in or out.
+Creates a circle as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6711,7 +6711,7 @@ None
 
 Description
 -----------
-Creates a circle as intersection line when the transitions are touch.
+Creates a circle as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6730,7 +6730,7 @@ None
 
 Description
 -----------
-Creates a circle as intersection line when the transitions are undecided.
+Creates a circle as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang);
 
@@ -6751,7 +6751,7 @@ None
 
 Description
 -----------
-Creates an ellipse as intersection line when the transitions are in or out.
+Creates an ellipse as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6772,7 +6772,7 @@ None
 
 Description
 -----------
-Creates an ellispe as intersection line when the transitions are touch.
+Creates an ellispe as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6791,7 +6791,7 @@ None
 
 Description
 -----------
-Creates an ellipse as intersection line when the transitions are undecided.
+Creates an ellipse as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang);
 
@@ -6812,7 +6812,7 @@ None
 
 Description
 -----------
-Creates a parabola as intersection line when the transitions are in or out.
+Creates a parabola as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6833,7 +6833,7 @@ None
 
 Description
 -----------
-Creates a parabola as intersection line when the transitions are touch.
+Creates a parabola as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6852,7 +6852,7 @@ None
 
 Description
 -----------
-Creates a parabola as intersection line when the transitions are undecided.
+Creates a parabola as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang);
 
@@ -6873,7 +6873,7 @@ None
 
 Description
 -----------
-Creates an hyperbola as intersection line when the transitions are in or out.
+Creates an hyperbola as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -6894,7 +6894,7 @@ None
 
 Description
 -----------
-Creates an hyperbola as intersection line when the transitions are touch.
+Creates an hyperbola as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -6913,7 +6913,7 @@ None
 
 Description
 -----------
-Creates an hyperbola as intersection line when the transitions are undecided.
+Creates an hyperbola as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
 		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang);
 
@@ -6944,7 +6944,7 @@ gp_Circ
 
 Description
 -----------
-Returns the circ from gp corresponding to the intersection when arctype returns intpatch_circle.
+Returns the Circ from gp corresponding to the intersection when ArcType returns IntPatch_Circle.
 ") Circle;
 		gp_Circ Circle();
 
@@ -6975,7 +6975,7 @@ gp_Elips
 
 Description
 -----------
-Returns the elips from gp corresponding to the intersection when arctype returns intpatch_ellipse.
+Returns the Elips from gp corresponding to the intersection when ArcType returns IntPatch_Ellipse.
 ") Ellipse;
 		gp_Elips Ellipse();
 
@@ -6988,7 +6988,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the firstpoint. an exception is raised when hasfirstpoint returns false.
+Returns the IntPoint corresponding to the FirstPoint. An exception is raised when HasFirstPoint returns False.
 ") FirstPoint;
 		const IntPatch_Point & FirstPoint();
 
@@ -7001,7 +7001,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known first point. this point is given by the method firstpoint().
+Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -7014,7 +7014,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known last point. this point is given by the method lastpoint().
+Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -7027,7 +7027,7 @@ gp_Hypr
 
 Description
 -----------
-Returns the hypr from gp corresponding to the intersection when arctype returns intpatch_hyperbola.
+Returns the Hypr from gp corresponding to the intersection when ArcType returns IntPatch_Hyperbola.
 ") Hyperbola;
 		gp_Hypr Hyperbola();
 
@@ -7040,7 +7040,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the lastpoint. an exception is raised when haslastpoint returns false.
+Returns the IntPoint corresponding to the LastPoint. An exception is raised when HasLastPoint returns False.
 ") LastPoint;
 		const IntPatch_Point & LastPoint();
 
@@ -7053,7 +7053,7 @@ gp_Lin
 
 Description
 -----------
-Returns the lin from gp corresponding to the intersection when arctype returns intpatch_line.
+Returns the Lin from gp corresponding to the intersection when ArcType returns IntPatch_Line.
 ") Line;
 		gp_Lin Line();
 
@@ -7079,7 +7079,7 @@ gp_Parab
 
 Description
 -----------
-Returns the parab from gp corresponding to the intersection when arctype returns intpatch_parabola.
+Returns the Parab from gp corresponding to the intersection when ArcType returns IntPatch_Parabola.
 ") Parabola;
 		gp_Parab Parabola();
 
@@ -7098,7 +7098,7 @@ None
 
 Description
 -----------
-To replace the element of range index in the list of points.
+To replace the element of range Index in the list of points.
 ") Replace;
 		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -7152,7 +7152,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") Vertex;
 		const IntPatch_Point & Vertex(const Standard_Integer Index);
 
@@ -7188,7 +7188,7 @@ None
 
 Description
 -----------
-Adds a vertex in the list. if theisprepend == true the new vertex will be added before the first element of vertices sequence. otherwise, to the end of the sequence.
+Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
 		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
 
@@ -7206,7 +7206,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") ChangeVertex;
 		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
 
@@ -7239,7 +7239,7 @@ float
 
 Description
 -----------
-Returns the radius of curvature of the intersection line in given point. returns negative value if computation is not possible.
+Returns the radius of curvature of the intersection line in given point. Returns negative value if computation is not possible.
 ") CurvatureRadiusOfIntersLine;
 		static Standard_Real CurvatureRadiusOfIntersLine(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const IntSurf_PntOn2S & theUVPoint);
 
@@ -7270,7 +7270,7 @@ bool
 
 Description
 -----------
-Returns true if p is out of the box built from 3d-points.
+Returns True if P is out of the box built from 3D-points.
 ") IsOutBox;
 		virtual Standard_Boolean IsOutBox(const gp_Pnt & P);
 
@@ -7288,7 +7288,7 @@ bool
 
 Description
 -----------
-Returns true if p1 is out of the box built from the points on 1st surface.
+Returns True if P1 is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
 		virtual Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & P1);
 
@@ -7306,7 +7306,7 @@ bool
 
 Description
 -----------
-Returns true if p2 is out of the box built from the points on 2nd surface.
+Returns True if P2 is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		virtual Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & P2);
 
@@ -7332,7 +7332,7 @@ int
 
 Description
 -----------
-Returns number of vertices (intpatch_point) of the line.
+Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
 		virtual Standard_Integer NbVertex();
 
@@ -7350,7 +7350,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the intersection point of range index.
+Returns the intersection point of range Index.
 ") Point;
 		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
 
@@ -7386,7 +7386,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") Vertex;
 		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
 
@@ -7424,7 +7424,7 @@ None
 
 Description
 -----------
-Creates the polygon of the arc a on the surface s. the arc is limited by the parameters pfirst and plast. none of these parameters can be infinite.
+Creates the polygon of the arc A on the surface S. The arc is limited by the parameters Pfirst and Plast. None of these parameters can be infinite.
 ") IntPatch_PolyArc;
 		 IntPatch_PolyArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Integer NbSample, const Standard_Real Pfirst, const Standard_Real Plast, const Bnd_Box2d & BoxOtherPolygon);
 
@@ -7666,7 +7666,7 @@ None
 
 Description
 -----------
-Creates a restriction as an intersection line when the transitions are in or out.
+Creates a restriction as an intersection line when the transitions are In or Out.
 ") IntPatch_RLine;
 		 IntPatch_RLine(const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -7686,7 +7686,7 @@ None
 
 Description
 -----------
-Creates a restriction as an intersection line when the transitions are touch.
+Creates a restriction as an intersection line when the transitions are Touch.
 ") IntPatch_RLine;
 		 IntPatch_RLine(const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -7704,7 +7704,7 @@ None
 
 Description
 -----------
-Creates a restriction as an intersection line when the transitions are undecided.
+Creates a restriction as an intersection line when the transitions are Undecided.
 ") IntPatch_RLine;
 		 IntPatch_RLine(const Standard_Boolean Tang);
 
@@ -7741,7 +7741,7 @@ None
 
 Description
 -----------
-Adds a vertex in the list. if theisprepend == true the new vertex will be added before the first element of vertices sequence. otherwise, to the end of the sequence.
+Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
 		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
 
@@ -7785,7 +7785,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") ChangeVertex;
 		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
 
@@ -7847,7 +7847,7 @@ None
 
 Description
 -----------
-If (themode == 0) then prints the information about wline if (themode == 1) then prints the list of 3d-points if (themode == 2) then prints the list of 2d-points on the 1st surface otherwise, prints list of 2d-points on the 2nd surface.
+if (theMode == 0) then prints the information about WLine if (theMode == 1) then prints the list of 3d-points if (theMode == 2) then prints the list of 2d-points on the 1st surface Otherwise, prints list of 2d-points on the 2nd surface.
 ") Dump;
 		void Dump(const Standard_Integer theMode);
 
@@ -7860,7 +7860,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the firstpoint. an exception is raised when hasfirstpoint returns false.
+Returns the IntPoint corresponding to the FirstPoint. An exception is raised when HasFirstPoint returns False.
 ") FirstPoint;
 		const IntPatch_Point & FirstPoint();
 
@@ -7873,7 +7873,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known first point. this point is given by the method firstpoint().
+Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -7886,7 +7886,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known last point. this point is given by the method lastpoint().
+Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -7912,7 +7912,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is on the domain of the first patch. returns false if the intersection is on the domain of the second patch.
+Returns True if the intersection is on the domain of the first patch. Returns False if the intersection is on the domain of the second patch.
 ") IsArcOnS1;
 		Standard_Boolean IsArcOnS1();
 
@@ -7925,7 +7925,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection is on the domain of the first patch. returns false if the intersection is on the domain of the second patch.
+Returns True if the intersection is on the domain of the first patch. Returns False if the intersection is on the domain of the second patch.
 ") IsArcOnS2;
 		Standard_Boolean IsArcOnS2();
 
@@ -7943,7 +7943,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from 3d-points.
+Returns True if theP is out of the box built from 3D-points.
 ") IsOutBox;
 		virtual Standard_Boolean IsOutBox(const gp_Pnt & theP);
 
@@ -7961,7 +7961,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 1st surface.
+Returns True if theP is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
 		virtual Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
 
@@ -7979,7 +7979,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 2nd surface.
+Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		virtual Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
 
@@ -7992,7 +7992,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the intpoint corresponding to the lastpoint. an exception is raised when haslastpoint returns false.
+Returns the IntPoint corresponding to the LastPoint. An exception is raised when HasLastPoint returns False.
 ") LastPoint;
 		const IntPatch_Point & LastPoint();
 
@@ -8018,7 +8018,7 @@ int
 
 Description
 -----------
-Returns number of vertices (intpatch_point) of the line.
+Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
 		virtual Standard_Integer NbVertex();
 
@@ -8072,7 +8072,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the intersection point of range index.
+Returns the intersection point of range Index.
 ") Point;
 		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
 
@@ -8109,7 +8109,7 @@ None
 
 Description
 -----------
-Replaces the element of range index in the list of points.
+Replaces the element of range Index in the list of points.
 ") Replace;
 		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -8218,7 +8218,7 @@ None
 
 Description
 -----------
-Set the point of index <index> in the lineon2s.
+Set the Point of index <Index> in the LineOn2S.
 ") SetPoint;
 		void SetPoint(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -8236,7 +8236,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") Vertex;
 		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
 
@@ -8306,7 +8306,7 @@ None
 
 Description
 -----------
-Creates a wline as an intersection when the transitions are in or out.
+Creates a WLine as an intersection when the transitions are In or Out.
 ") IntPatch_WLine;
 		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
@@ -8327,7 +8327,7 @@ None
 
 Description
 -----------
-Creates a wline as an intersection when the transitions are touch.
+Creates a WLine as an intersection when the transitions are Touch.
 ") IntPatch_WLine;
 		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
@@ -8346,7 +8346,7 @@ None
 
 Description
 -----------
-Creates a wline as an intersection when the transitions are undecided.
+Creates a WLine as an intersection when the transitions are Undecided.
 ") IntPatch_WLine;
 		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang);
 
@@ -8365,7 +8365,7 @@ None
 
 Description
 -----------
-Adds a vertex in the list. if theisprepend == true the new vertex will be added before the first element of vertices sequence. otherwise, to the end of the sequence.
+Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
 		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
 
@@ -8383,7 +8383,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") ChangeVertex;
 		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
 
@@ -8445,7 +8445,7 @@ None
 
 Description
 -----------
-If (themode == 0) then prints the information about wline if (themode == 1) then prints the list of 3d-points if (themode == 2) then prints the list of 2d-points on the 1st surface otherwise, prints list of 2d-points on the 2nd surface.
+if (theMode == 0) then prints the information about WLine if (theMode == 1) then prints the list of 3d-points if (theMode == 2) then prints the list of 2d-points on the 1st surface Otherwise, prints list of 2d-points on the 2nd surface.
 ") Dump;
 		void Dump(const Standard_Integer theMode);
 
@@ -8463,7 +8463,7 @@ None
 
 Description
 -----------
-Allows or forbids purging of existing wline.
+Allows or forbids purging of existing WLine.
 ") EnablePurging;
 		void EnablePurging(const Standard_Boolean theIsEnabled);
 
@@ -8476,7 +8476,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the point corresponding to the firstpoint.
+Returns the Point corresponding to the FirstPoint.
 ") FirstPoint;
 		const IntPatch_Point & FirstPoint();
 
@@ -8493,7 +8493,7 @@ Indfirst: int
 
 Description
 -----------
-Returns the point corresponding to the firstpoint. indfirst is the index of the first in the list of vertices.
+Returns the Point corresponding to the FirstPoint. Indfirst is the index of the first in the list of vertices.
 ") FirstPoint;
 		const IntPatch_Point & FirstPoint(Standard_Integer &OutValue);
 
@@ -8571,7 +8571,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known first point. this point is given by the method firstpoint().
+Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -8584,7 +8584,7 @@ bool
 
 Description
 -----------
-Returns true if the line has a known last point. this point is given by the method lastpoint().
+Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -8621,7 +8621,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from 3d-points.
+Returns True if theP is out of the box built from 3D-points.
 ") IsOutBox;
 		Standard_Boolean IsOutBox(const gp_Pnt & theP);
 
@@ -8639,7 +8639,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 1st surface.
+Returns True if theP is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
 		Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
 
@@ -8657,7 +8657,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 2nd surface.
+Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
 
@@ -8670,7 +8670,7 @@ bool
 
 Description
 -----------
-Returns true if purging is allowed or forbidden for existing wline.
+Returns True if purging is allowed or forbidden for existing WLine.
 ") IsPurgingAllowed;
 		Standard_Boolean IsPurgingAllowed();
 
@@ -8683,7 +8683,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the point corresponding to the lastpoint.
+Returns the Point corresponding to the LastPoint.
 ") LastPoint;
 		const IntPatch_Point & LastPoint();
 
@@ -8700,7 +8700,7 @@ Indlast: int
 
 Description
 -----------
-Returns the point corresponding to the lastpoint. indlast is the index of the last in the list of vertices.
+Returns the Point corresponding to the LastPoint. Indlast is the index of the last in the list of vertices.
 ") LastPoint;
 		const IntPatch_Point & LastPoint(Standard_Integer &OutValue);
 
@@ -8726,7 +8726,7 @@ int
 
 Description
 -----------
-Returns number of vertices (intpatch_point) of the line.
+Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
 		virtual Standard_Integer NbVertex();
 
@@ -8744,7 +8744,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the intersection point of range index.
+Returns the intersection point of range Index.
 ") Point;
 		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
 
@@ -8781,7 +8781,7 @@ None
 
 Description
 -----------
-Replaces the element of range index in the list of points. the exception outofrange is raised when index <= 0 or index > nbvertex.
+Replaces the element of range Index in the list of points. The exception OutOfRange is raised when Index <= 0 or Index > NbVertex.
 ") Replace;
 		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -8911,7 +8911,7 @@ None
 
 Description
 -----------
-Set the point of index <index> in the lineon2s.
+Set the Point of index <Index> in the LineOn2S.
 ") SetPoint;
 		void SetPoint(const Standard_Integer Index, const IntPatch_Point & Pnt);
 
@@ -8981,7 +8981,7 @@ IntPatch_Point
 
 Description
 -----------
-Returns the vertex of range index on the line.
+Returns the vertex of range Index on the line.
 ") Vertex;
 		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
 

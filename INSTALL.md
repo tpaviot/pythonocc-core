@@ -1,4 +1,4 @@
-# Building pythonOCC 7.8.1.1 - Complete Guide for Linux and Windows
+# Building pythonOCC 7.9.0 - Complete Guide for Linux and Windows
 
 ## Table of Contents
 - [Linux Build Guide](#linux-build-guide)
@@ -35,14 +35,14 @@ Before starting the build process, ensure your system meets these requirements:
 
 ## System Requirements (Linux)
 
-pythonOCC 7.8.1.1 requires the following components:
+pythonOCC 7.9.0 requires the following components:
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
 | Python | ≥ 3.9 | Runtime environment |
-| OpenCascade | 7.8.1.1 | Core CAD functionality |
+| OpenCascade | 7.9.0 | Core CAD functionality |
 | SWIG | 4.2.1 | Interface generation |
-| CMake | ≥ 3.1 | Build system |
+| CMake | ≥ 3.20 | Build system |
 
 ## Build Process (Linux)
 
@@ -72,12 +72,12 @@ sudo apt-get install -y \
 
 ### 2. Building SWIG (Linux)
 
-SWIG 4.2.1 is required but not available in Ubuntu's default repositories. Build it from source:
+SWIG 4.2.1 or higher is required but not available in Ubuntu's default repositories. Build it from source:
 
 ```bash
-wget http://prdownloads.sourceforge.net/swig/swig-4.2.1.tar.gz
-tar -zxvf swig-4.2.1.tar.gz
-cd swig-4.2.1
+wget http://prdownloads.sourceforge.net/swig/swig-4.3.0.tar.gz
+tar -zxvf swig-4.3.0.tar.gz
+cd swig-4.3.0
 ./configure
 make -j$(nproc)
 sudo make install
@@ -85,12 +85,12 @@ sudo make install
 
 ### 3. Building OpenCascade (Linux)
 
-Download and extract OpenCascade 7.8.1.1:
+Download and extract OpenCascade 7.9.0:
 
 ```bash
-wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
-tar -xvzf V7_8_1.tar.gz
-cd OCCT-7.8.1.1
+wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_9_0.tar.gz
+tar -xvzf V7_9_0.tar.gz
+cd OCCT-7.9.0
 mkdir cmake-build
 cd cmake-build
 ```
@@ -98,7 +98,7 @@ cd cmake-build
 Configure and build OpenCascade:
 
 ```bash
-cmake -DINSTALL_DIR=/opt/occt781 \
+cmake -DINSTALL_DIR=/opt/occt790 \
       -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
       ..
 
@@ -109,7 +109,7 @@ sudo make install
 Add OpenCascade libraries to the system:
 
 ```bash
-sudo bash -c 'echo "/opt/occt781/lib" >> /etc/ld.so.conf.d/occt.conf'
+sudo bash -c 'echo "/opt/occt790/lib" >> /etc/ld.so.conf.d/occt.conf'
 sudo ldconfig
 ```
 
@@ -126,8 +126,8 @@ mkdir cmake-build && cd cmake-build
 PYTHONOCC_INSTALL_DIRECTORY=${PYTHONOCC_INSTALL_DIRECTORY:-/usr/local}
 
 cmake \
-    -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
-    -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
+    -DOCCT_INCLUDE_DIR=/opt/occt790/include/opencascade \
+    -DOCCT_LIBRARY_DIR=/opt/occt790/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
     ..
@@ -138,7 +138,7 @@ make -j$(nproc) && sudo make install
 Add OpenCascade libraries to your environment:
 
 ```bash
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt781/lib' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt790/lib' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -159,11 +159,11 @@ Before starting the build process, ensure your system meets these requirements:
 |-----------|---------|---------------|
 | Visual Studio | 2019 or 2022 Community | [Download](https://visualstudio.microsoft.com/downloads/) |
 | Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
-| CMake | ≥ 3.1 | [Download](https://cmake.org/download/) |
+| CMake | ≥ 3.20 | [Download](https://cmake.org/download/) |
 | Git | Latest | [Download](https://git-scm.com/download/win) |
 | RapidJSON | Latest | [Download](https://github.com/Tencent/rapidjson.git) |
-| SWIG | 4.2.1 | [Download](http://www.swig.org/download.html) |
-| OpenCascade | 7.8.1.1 | [Download](https://dev.opencascade.org/download) |
+| SWIG | ≥ 4.2.1 | [Download](http://www.swig.org/download.html) |
+| OpenCascade | 7.9.0 | [Download](https://dev.opencascade.org/download) |
 
 ## Build Process (Windows)
 
@@ -190,7 +190,7 @@ Before starting the build process, ensure your system meets these requirements:
    - Use OpenSSL library
 
 5. Install SWIG:
-   - Download SWIG 4.2.1 for Windows
+   - Download SWIG 4.3.0 for Windows
    - Extract to C:\swigwin
    - Add C:\swigwin to the system PATH
 
@@ -201,18 +201,18 @@ Binaries for dependencies can be downloaded at https://dev.opencascade.org/resou
 
 ### 2. Installing OpenCascade (Windows)
 
-1. Download OpenCascade 7.8.1.1 for Windows
-2. Extract to, for example, occt-7.8.1.1
+1. Download OpenCascade 7.9.0 for Windows
+2. Extract to, for example, occt-7.9.0
 
 If the binaries are not available, consider compiling by yourself OCCT on Windows. Refer to the official OpenCascade Technology documentation https://dev.opencascade.org/doc/overview/html/build_upgrade.html
 
 When installing OpenCascade and third-party libraries, you should have a structure similar to the one described at https://dev.opencascade.org/doc/overview/html/index.html#intro_install_windows
 
-C:\OpenCASCADE-7.8.1.1-vc10-64
+C:\OpenCASCADE-7.9.0-vc10-64
 ├── ffmpeg-3.3.4-gpl-64
 ├── freeimage-3.17.0-vc10-64
 ├── freetype-2.6.3-vc10-64
-├── occt-7.8.1.1
+├── occt-7.9.0
 ├── qt486-vc10-64
 ├── tclkit-86-64
 ├── vtk-6.1.0-vc10-64
@@ -236,16 +236,16 @@ cd cmake-build
 ```batch
 cmake -G "Visual Studio 16 2019" -A x64 ^
     -DCMAKE_BUILD_TYPE=Release ^
-    -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1.1-vc10-64\occt-7.8.1.1\inc ^
-    -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1.1-vc10-64\occt-7.8.1.1\win64\vc14\lib ^
-    -DOCCT_ESSENTIALS_ROOT=C:\OpenCASCADE-7.8.1.1-vc10-64
+    -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.9.0-vc10-64\occt-7.9.0\inc ^
+    -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.9.0-vc10-64\occt-7.9.0\win64\vc14\lib ^
+    -DOCCT_ESSENTIALS_ROOT=C:\OpenCASCADE-7.9.0-vc10-64
     ..
 ```
 
 If using CMake GUI, make sure to set these two variables before clicking the "Generate" button:
 ```
-OCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1.1-vc10-64\occt-7.8.1.1\inc
-OCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1.1-vc10-64\occt-7.8.1.1\win64\vc14\lib
+OCCT_INCLUDE_DIR=C:\OpenCASCADE-7.9.0-vc10-64\occt-7.9.0\inc
+OCCT_LIBRARY_DIR=C:\OpenCASCADE-7.9.0-vc10-64\occt-7.9.0\win64\vc14\lib
 ```
 
 4. Build:

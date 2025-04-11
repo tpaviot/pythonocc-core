@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMPLATEDOCSTRING
 "GeomPlate module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomplate.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomplate.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMPLATEDOCSTRING) GeomPlate
 
@@ -215,7 +215,7 @@ None
 
 Description
 -----------
-Tol is a tolerance to make the difference between the result plane and the result line. if poption = 1: automatical parametrisation if poption = 2: parametrisation by eigen vectors if noption = 1: the average plane is the inertial plane. if noption = 2: the average plane is the plane of max. flux.
+Tol is a Tolerance to make the difference between the result plane and the result line. if POption = 1: automatic parametrisation if POption = 2: parametrisation by eigen vectors if NOption = 1: the average plane is the inertial plane. if NOption = 2: the average plane is the plane of max. flux.
 ") GeomPlate_BuildAveragePlane;
 		 GeomPlate_BuildAveragePlane(const opencascade::handle<TColgp_HArray1OfPnt> & Pts, const Standard_Integer NbBoundPoints, const Standard_Real Tol, const Standard_Integer POption, const Standard_Integer NOption);
 
@@ -269,7 +269,7 @@ bool
 
 Description
 -----------
-Return ok if is a line.
+return OK if is a line.
 ") IsLine;
 		Standard_Boolean IsLine();
 
@@ -282,7 +282,7 @@ bool
 
 Description
 -----------
-Return ok if is a plane.
+return OK if is a plane.
 ") IsPlane;
 		Standard_Boolean IsPlane();
 
@@ -295,7 +295,7 @@ opencascade::handle<Geom_Line>
 
 Description
 -----------
-Return a line when 2 eigenvalues are null.
+Return a Line when 2 eigenvalues are null.
 ") Line;
 		opencascade::handle<Geom_Line> Line();
 
@@ -315,7 +315,7 @@ Vmax: float
 
 Description
 -----------
-Computes the minimal box to include all normal projection points of the initial array on the plane.
+computes the minimal box to include all normal projection points of the initial array on the plane.
 ") MinMaxBox;
 		void MinMaxBox(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -328,7 +328,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Return the average plane.
+Return the average Plane.
 ") Plane;
 		opencascade::handle<Geom_Plane> Plane();
 
@@ -369,7 +369,7 @@ None
 
 Description
 -----------
-Constructor compatible with the old version with this constructor the constraint are given in a array of curve on surface the array nbpoints contains the number of points for each constraint. the array tang contains the order of constraint for each constraint: the possible values for this order has to be -1 , 0 , 1 , 2 . order i means constraint gi. nbiter is the maximum number of iteration to optimise the number of points for resolution degree is the degree of resolution for plate tol2d is the tolerance used to test if two points of different constraint are identical in the parametric space of the initial surface tol3d is used to test if two identical points in the 2d space are identical in 3d space tolang is used to compare the angle between normal of two identical points in the 2d space raises constructionerror;.
+Constructor compatible with the old version with this constructor the constraint are given in a Array of Curve on Surface The array NbPoints contains the number of points for each constraint. The Array Tang contains the order of constraint for each Constraint: The possible values for this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum number of iteration to optimise the number of points for resolution Degree is the degree of resolution for Plate Tol2d is the tolerance used to test if two points of different constraint are identical in the parametric space of the initial surface Tol3d is used to test if two identical points in the 2d space are identical in 3d space TolAng is used to compare the angle between normal of two identical points in the 2d space Raises ConstructionError;.
 ") GeomPlate_BuildPlateSurface;
 		 GeomPlate_BuildPlateSurface(const opencascade::handle<TColStd_HArray1OfInteger> & NPoints, const opencascade::handle<GeomPlate_HArray1OfHCurve> & TabCurve, const opencascade::handle<TColStd_HArray1OfInteger> & Tang, const Standard_Integer Degree, const Standard_Integer NbIter = 3, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Boolean Anisotropie = Standard_False);
 
@@ -420,7 +420,7 @@ None
 
 Description
 -----------
-Initializes the buildplatesurface framework for deforming plate surfaces using curve and point constraints. you use the first constructor if you have an initial surface to work with at construction time. if not, you use the second. you can add one later by using the method loadinitsurface. if no initial surface is loaded, one will automatically be computed. the curve and point constraints will be defined by using the method add. before the call to the algorithm, the curve constraints will be transformed into sequences of discrete points. each curve defined as a constraint will be given the value of nbptsoncur as the average number of points on it. several arguments serve to improve performance of the algorithm. nbiter, for example, expresses the number of iterations allowed and is used to control the duration of computation. to optimize resolution, degree will have the default value of 3. the surface generated must respect several tolerance values: - 2d tolerance given by tol2d, with a default value of 0.00001 - 3d tolerance expressed by tol3d, with a default value of 0.0001 - angular tolerance given by tolang, with a default value of 0.01, defining the greatest angle allowed between the constraint and the target surface. exceptions standard_constructionerror if nbiter is less than 1 or degree is less than 3.
+Initializes the BuildPlateSurface framework for deforming plate surfaces using curve and point constraints. You use the first constructor if you have an initial surface to work with at construction time. If not, you use the second. You can add one later by using the method LoadInitSurface. If no initial surface is loaded, one will automatically be computed. The curve and point constraints will be defined by using the method Add. Before the call to the algorithm, the curve constraints will be transformed into sequences of discrete points. Each curve defined as a constraint will be given the value of NbPtsOnCur as the average number of points on it. Several arguments serve to improve performance of the algorithm. NbIter, for example, expresses the number of iterations allowed and is used to control the duration of computation. To optimize resolution, Degree will have the default value of 3. The surface generated must respect several tolerance values: - 2d tolerance given by Tol2d, with a default value of 0.00001 - 3d tolerance expressed by Tol3d, with a default value of 0.0001 - angular tolerance given by TolAng, with a default value of 0.01, defining the greatest angle allowed between the constraint and the target surface. Exceptions Standard_ConstructionError if NbIter is less than 1 or Degree is less than 3.
 ") GeomPlate_BuildPlateSurface;
 		 GeomPlate_BuildPlateSurface(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 10, const Standard_Integer NbIter = 3, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Boolean Anisotropie = Standard_False);
 
@@ -474,7 +474,7 @@ opencascade::handle<GeomPlate_CurveConstraint>
 
 Description
 -----------
-Returns the curveconstraints of order order.
+returns the CurveConstraints of order order.
 ") CurveConstraint;
 		opencascade::handle<GeomPlate_CurveConstraint> CurveConstraint(const Standard_Integer order);
 
@@ -487,7 +487,7 @@ opencascade::handle<TColGeom2d_HArray1OfCurve>
 
 Description
 -----------
-Extracts the array of curves on the plate surface which correspond to the curve constraints set in add.
+Extracts the array of curves on the plate surface which correspond to the curve constraints set in Add.
 ") Curves2d;
 		opencascade::handle<TColGeom2d_HArray1OfCurve> Curves2d();
 
@@ -557,7 +557,7 @@ float
 
 Description
 -----------
-Returns the max distance between the result and the constraint index.
+Returns the max distance between the result and the constraint Index.
 ") G0Error;
 		Standard_Real G0Error(const Standard_Integer Index);
 
@@ -588,7 +588,7 @@ float
 
 Description
 -----------
-Returns the max angle between the result and the constraint index.
+Returns the max angle between the result and the constraint Index.
 ") G1Error;
 		Standard_Real G1Error(const Standard_Integer Index);
 
@@ -619,7 +619,7 @@ float
 
 Description
 -----------
-Returns the max difference of curvature between the result and the constraint index.
+Returns the max difference of curvature between the result and the constraint Index.
 ") G2Error;
 		Standard_Real G2Error(const Standard_Integer Index);
 
@@ -663,7 +663,7 @@ None
 
 Description
 -----------
-Loads the initial surface.
+Loads the initial Surface.
 ") LoadInitSurface;
 		void LoadInitSurface(const opencascade::handle<Geom_Surface> & Surf);
 
@@ -676,7 +676,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Returns the order of the curves in the array returned by curves2d. computation changes this order. consequently, this method returns the order of the curves prior to computation.
+Returns the order of the curves in the array returned by Curves2d. Computation changes this order. Consequently, this method returns the order of the curves prior to computation.
 ") Order;
 		opencascade::handle<TColStd_HArray1OfInteger> Order();
 
@@ -694,7 +694,7 @@ None
 
 Description
 -----------
-Calls the algorithm and computes the plate surface using the loaded constraints. if no initial surface is given, the algorithm automatically computes one. exceptions standard_rangeerror if the value of the constraint is null or if plate is not done.
+Calls the algorithm and computes the plate surface using the loaded constraints. If no initial surface is given, the algorithm automatically computes one. Exceptions Standard_RangeError if the value of the constraint is null or if plate is not done.
 ") Perform;
 		void Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -712,7 +712,7 @@ opencascade::handle<GeomPlate_PointConstraint>
 
 Description
 -----------
-Returns the pointconstraint of order order.
+returns the PointConstraint of order order.
 ") PointConstraint;
 		opencascade::handle<GeomPlate_PointConstraint> PointConstraint(const Standard_Integer order);
 
@@ -725,7 +725,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Allows you to ensure that the array of curves returned by curves2d has the correct orientation. returns the orientation of the curves in the array returned by curves2d. computation changes the orientation of these curves. consequently, this method returns the orientation prior to computation.
+Allows you to ensure that the array of curves returned by Curves2d has the correct orientation. Returns the orientation of the curves in the array returned by Curves2d. Computation changes the orientation of these curves. Consequently, this method returns the orientation prior to computation.
 ") Sense;
 		opencascade::handle<TColStd_HArray1OfInteger> Sense();
 
@@ -769,7 +769,7 @@ opencascade::handle<GeomPlate_Surface>
 
 Description
 -----------
-Returns the result of the computation. this surface can then be used by geomplate_makeapprox for converting the resulting surface into a bspline.
+Returns the result of the computation. This surface can then be used by GeomPlate_MakeApprox for converting the resulting surface into a BSpline.
 ") Surface;
 		opencascade::handle<GeomPlate_Surface> Surface();
 
@@ -819,7 +819,7 @@ None
 
 Description
 -----------
-Create a constraint order is the order of the constraint. the possible values for order are -1,0,1,2. order i means constraints gi npt is the number of points associated with the constraint. toldist is the maximum error to satisfy for g0 constraints tolang is the maximum error to satisfy for g1 constraints tolcurv is the maximum error to satisfy for g2 constraints these errors can be replaced by laws of criterion. raises constructionerror if order is not -1 , 0, 1, 2.
+Create a constraint Order is the order of the constraint. The possible values for order are -1,0,1,2. Order i means constraints Gi Npt is the number of points associated with the constraint. TolDist is the maximum error to satisfy for G0 constraints TolAng is the maximum error to satisfy for G1 constraints TolCurv is the maximum error to satisfy for G2 constraints These errors can be replaced by laws of criterion. Raises ConstructionError if Order is not -1 , 0, 1, 2.
 ") GeomPlate_CurveConstraint;
 		 GeomPlate_CurveConstraint(const opencascade::handle<Adaptor3d_Curve> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
@@ -940,7 +940,7 @@ float
 
 Description
 -----------
-Returns the g0 criterion at the parametric point u on the curve. this is the greatest distance allowed between the constraint and the target surface at u.
+Returns the G0 criterion at the parametric point U on the curve. This is the greatest distance allowed between the constraint and the target surface at U.
 ") G0Criterion;
 		Standard_Real G0Criterion(const Standard_Real U);
 
@@ -958,7 +958,7 @@ float
 
 Description
 -----------
-Returns the g1 criterion at the parametric point u on the curve. this is the greatest angle allowed between the constraint and the target surface at u. raises constructionerror if the curve is not on a surface.
+Returns the G1 criterion at the parametric point U on the curve. This is the greatest angle allowed between the constraint and the target surface at U. Raises ConstructionError if the curve is not on a surface.
 ") G1Criterion;
 		Standard_Real G1Criterion(const Standard_Real U);
 
@@ -976,7 +976,7 @@ float
 
 Description
 -----------
-Returns the g2 criterion at the parametric point u on the curve. this is the greatest difference in curvature allowed between the constraint and the target surface at u. raises constructionerror if the curve is not on a surface.
+Returns the G2 criterion at the parametric point U on the curve. This is the greatest difference in curvature allowed between the constraint and the target surface at U. Raises ConstructionError if the curve is not on a surface.
 ") G2Criterion;
 		Standard_Real G2Criterion(const Standard_Real U);
 
@@ -1033,7 +1033,7 @@ int
 
 Description
 -----------
-Returns the number of points on the curve used as a constraint. the default setting is 10. this parameter affects computation time, which increases by the cube of the number of points.
+Returns the number of points on the curve used as a constraint. The default setting is 10. This parameter affects computation time, which increases by the cube of the number of points.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -1046,7 +1046,7 @@ int
 
 Description
 -----------
-Returns the order of constraint, one of g0, g1 or g2.
+Returns the order of constraint, one of G0, G1 or G2.
 ") Order;
 		Standard_Integer Order();
 
@@ -1077,7 +1077,7 @@ None
 
 Description
 -----------
-Loads a 2d curve associated the surface resulting of the constraints.
+loads a 2d curve associated the surface resulting of the constraints.
 ") SetCurve2dOnSurf;
 		void SetCurve2dOnSurf(const opencascade::handle<Geom2d_Curve> & Curve2d);
 
@@ -1095,7 +1095,7 @@ None
 
 Description
 -----------
-Allows you to set the g0 criterion. this is the law defining the greatest distance allowed between the constraint and the target surface for each point of the constraint. if this criterion is not set, toldist, the distance tolerance from the constructor, is used.
+Allows you to set the G0 criterion. This is the law defining the greatest distance allowed between the constraint and the target surface for each point of the constraint. If this criterion is not set, TolDist, the distance tolerance from the constructor, is used.
 ") SetG0Criterion;
 		void SetG0Criterion(const opencascade::handle<Law_Function> & G0Crit);
 
@@ -1113,7 +1113,7 @@ None
 
 Description
 -----------
-Allows you to set the g1 criterion. this is the law defining the greatest angle allowed between the constraint and the target surface. if this criterion is not set, tolang, the angular tolerance from the constructor, is used. raises constructionerror if the curve is not on a surface.
+Allows you to set the G1 criterion. This is the law defining the greatest angle allowed between the constraint and the target surface. If this criterion is not set, TolAng, the angular tolerance from the constructor, is used. Raises ConstructionError if the curve is not on a surface.
 ") SetG1Criterion;
 		void SetG1Criterion(const opencascade::handle<Law_Function> & G1Crit);
 
@@ -1149,7 +1149,7 @@ None
 
 Description
 -----------
-Allows you to set the number of points on the curve constraint. the default setting is 10. this parameter affects computation time, which increases by the cube of the number of points.
+Allows you to set the number of points on the curve constraint. The default setting is 10. This parameter affects computation time, which increases by the cube of the number of points.
 ") SetNbPoints;
 		void SetNbPoints(const Standard_Integer NewNb);
 
@@ -1167,7 +1167,7 @@ None
 
 Description
 -----------
-Allows you to set the order of continuity required for the constraints: g0, g1, and g2, controlled respectively by g0criterion g1criterion and g2criterion.
+Allows you to set the order of continuity required for the constraints: G0, G1, and G2, controlled respectively by G0Criterion G1Criterion and G2Criterion.
 ") SetOrder;
 		void SetOrder(const Standard_Integer Order);
 
@@ -1187,7 +1187,7 @@ None
 
 Description
 -----------
-Loads a 2d curve resulting from the normal projection of the curve on the initial surface.
+loads a 2d curve resulting from the normal projection of the curve on the initial surface.
 ") SetProjectedCurve;
 		void SetProjectedCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve2d, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -1227,7 +1227,7 @@ None
 
 Description
 -----------
-Converts surfplate into a geom_bsplinesurface with n bezier pieces (n<=nbmax) of degree <= dgmax and an approximation error < tol3d if possible the criterion critplate is satisfied if possible.
+Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible the criterion CritPlate is satisfied if possible.
 ") GeomPlate_MakeApprox;
 		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const AdvApp2Var_Criterion & PlateCrit, const Standard_Real Tol3d, const Standard_Integer Nbmax, const Standard_Integer dgmax, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Real EnlargeCoeff = 1.1);
 
@@ -1252,7 +1252,7 @@ None
 
 Description
 -----------
-Converts surfplate into a geom_bsplinesurface with n bezier pieces (n<=nbmax) of degree <= dgmax and an approximation error < tol3d if possible if critorder = -1 , no criterion is used if critorder = 0 , a plateg0criterion is used with max value > 10*dmax if critorder = 1 , a plateg1criterion is used with max value > 10*dmax warning: for critorder = 0 or 1, only the constraints points of surfplate are used to evaluate the value of the criterion.
+Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible if CritOrder = -1 , no criterion is used if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax WARNING: for CritOrder = 0 or 1, only the constraints points of SurfPlate are used to evaluate the value of the criterion.
 ") GeomPlate_MakeApprox;
 		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const Standard_Real Tol3d, const Standard_Integer Nbmax, const Standard_Integer dgmax, const Standard_Real dmax, const Standard_Integer CritOrder = 0, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Real EnlargeCoeff = 1.1);
 
@@ -1265,7 +1265,7 @@ float
 
 Description
 -----------
-Returns the error in computation of the approximation surface. this is the distance between the entire target bspline surface and the entire original surface generated by buildplatesurface and converted by geomplate_surface.
+Returns the error in computation of the approximation surface. This is the distance between the entire target BSpline surface and the entire original surface generated by BuildPlateSurface and converted by GeomPlate_Surface.
 ") ApproxError;
 		Standard_Real ApproxError();
 
@@ -1278,7 +1278,7 @@ float
 
 Description
 -----------
-Returns the criterion error in computation of the approximation surface. this is estimated relative to the curve and point constraints only.
+Returns the criterion error in computation of the approximation surface. This is estimated relative to the curve and point constraints only.
 ") CriterionError;
 		Standard_Real CriterionError();
 
@@ -1291,7 +1291,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the bspline surface extracted from the geomplate_makeapprox object.
+Returns the BSpline surface extracted from the GeomPlate_MakeApprox object.
 ") Surface;
 		opencascade::handle<Geom_BSplineSurface> Surface();
 
@@ -1471,7 +1471,7 @@ None
 
 Description
 -----------
-Constructs a point constraint object defined by pt, a 3d point order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.g0 when assigned to pt - -1 i.e. none, 0 i.e. g0, 1 i.e. g1, 2 i.e. g2 when assigned to u, v and surf. in this constructor, only toldist is given. distance tolerance represents the greatest distance allowed between the constraint and the target surface. angular tolerance represents the largest angle allowed between the constraint and the target surface. curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface. raises constructionerror if order is not 0 or -1.
+Constructs a point constraint object defined by Pt, a 3D point Order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.G0 when assigned to Pt - -1 i.e. none, 0 i.e. G0, 1 i.e. G1, 2 i.e. G2 when assigned to U, V and Surf. In this constructor, only TolDist is given. Distance tolerance represents the greatest distance allowed between the constraint and the target surface. Angular tolerance represents the largest angle allowed between the constraint and the target surface. Curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface. Raises ConstructionError if Order is not 0 or -1.
 ") GeomPlate_PointConstraint;
 		 GeomPlate_PointConstraint(const gp_Pnt & Pt, const Standard_Integer Order, const Standard_Real TolDist = 0.0001);
 
@@ -1495,7 +1495,7 @@ None
 
 Description
 -----------
-Constructs a point constraint object defined by the intersection point of u and v on the surface surf. order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.g0 when assigned to pt - -1 i.e. none, 0 i.e. g0, 1 i.e. g1, 2 i.e. g2 when assigned to u, v and surf. in this constructor the surface to be generated must respect several tolerance values only: - the distance tolerance toldist - the angular tolerance tolang - the curvature tolerance, tolcurv. distance tolerance represents the greatest distance allowed between the constraint and the target surface. angular tolerance represents the largest angle allowed between the constraint and the target surface. curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface.creates a punctual constraint.
+Constructs a point constraint object defined by the intersection point of U and V on the surface Surf. Order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.G0 when assigned to Pt - -1 i.e. none, 0 i.e. G0, 1 i.e. G1, 2 i.e. G2 when assigned to U, V and Surf. In this constructor the surface to be generated must respect several tolerance values only: - the distance tolerance TolDist - the angular tolerance TolAng - the curvature tolerance, TolCurv. Distance tolerance represents the greatest distance allowed between the constraint and the target surface. Angular tolerance represents the largest angle allowed between the constraint and the target surface. Curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface.Creates a punctual constraint.
 ") GeomPlate_PointConstraint;
 		 GeomPlate_PointConstraint(const Standard_Real U, const Standard_Real V, const opencascade::handle<Geom_Surface> & Surf, const Standard_Integer Order, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
@@ -1569,7 +1569,7 @@ float
 
 Description
 -----------
-Returns the g0 criterion. this is the greatest distance allowed between the constraint and the target surface.
+Returns the G0 criterion. This is the greatest distance allowed between the constraint and the target surface.
 ") G0Criterion;
 		Standard_Real G0Criterion();
 
@@ -1582,7 +1582,7 @@ float
 
 Description
 -----------
-Returns the g1 criterion. this is the greatest angle allowed between the constraint and the target surface. raises constructionerror if the point is not on the surface.
+Returns the G1 criterion. This is the greatest angle allowed between the constraint and the target surface. Raises ConstructionError if the point is not on the surface.
 ") G1Criterion;
 		Standard_Real G1Criterion();
 
@@ -1595,7 +1595,7 @@ float
 
 Description
 -----------
-Returns the g2 criterion. this is the greatest difference in curvature allowed between the constraint and the target surface. raises constructionerror if the point is not on the surface.
+Returns the G2 criterion. This is the greatest difference in curvature allowed between the constraint and the target surface. Raises ConstructionError if the point is not on the surface.
 ") G2Criterion;
 		Standard_Real G2Criterion();
 
@@ -1634,7 +1634,7 @@ int
 
 Description
 -----------
-Returns the order of constraint: g0, g1, and g2, controlled respectively by g0criterion g1criterion and g2criterion.
+Returns the order of constraint: G0, G1, and G2, controlled respectively by G0Criterion G1Criterion and G2Criterion.
 ") Order;
 		Standard_Integer Order();
 
@@ -1665,7 +1665,7 @@ None
 
 Description
 -----------
-Allows you to set the g0 criterion. this is the law defining the greatest distance allowed between the constraint and the target surface. if this criterion is not set, {toldist, the distance tolerance from the constructor, is used.
+Allows you to set the G0 criterion. This is the law defining the greatest distance allowed between the constraint and the target surface. If this criterion is not set, {TolDist, the distance tolerance from the constructor, is used.
 ") SetG0Criterion;
 		void SetG0Criterion(const Standard_Real TolDist);
 
@@ -1683,7 +1683,7 @@ None
 
 Description
 -----------
-Allows you to set the g1 criterion. this is the law defining the greatest angle allowed between the constraint and the target surface. if this criterion is not set, tolang, the angular tolerance from the constructor, is used. raises constructionerror if the point is not on the surface.
+Allows you to set the G1 criterion. This is the law defining the greatest angle allowed between the constraint and the target surface. If this criterion is not set, TolAng, the angular tolerance from the constructor, is used. Raises ConstructionError if the point is not on the surface.
 ") SetG1Criterion;
 		void SetG1Criterion(const Standard_Real TolAng);
 
@@ -1701,7 +1701,7 @@ None
 
 Description
 -----------
-Allows you to set the g2 criterion. this is the law defining the greatest difference in curvature allowed between the constraint and the target surface. if this criterion is not set, tolcurv, the curvature tolerance from the constructor, is used. raises constructionerror if the point is not on the surface.
+Allows you to set the G2 criterion. This is the law defining the greatest difference in curvature allowed between the constraint and the target surface. If this criterion is not set, TolCurv, the curvature tolerance from the constructor, is used. Raises ConstructionError if the point is not on the surface.
 ") SetG2Criterion;
 		void SetG2Criterion(const Standard_Real TolCurv);
 
@@ -1836,7 +1836,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Global continuity of the surface in direction u and v: c0: only geometric continuity, c1: continuity of the first derivative all along the surface, c2: continuity of the second derivative all along the surface, c3: continuity of the third derivative all along the surface, g1: tangency continuity all along the surface, g2: curvature continuity all along the surface, cn: the order of continuity is infinite. example: if the surface is c1 in the v parametric direction and c2 in the u parametric direction shape = c1.
+Global Continuity of the surface in direction U and V: C0: only geometric continuity, C1: continuity of the first derivative all along the surface, C2: continuity of the second derivative all along the surface, C3: continuity of the third derivative all along the surface, G1: tangency continuity all along the surface, G2: curvature continuity all along the surface, CN: the order of continuity is infinite. Example: If the surface is C1 in the V parametric direction and C2 in the U parametric direction Shape = C1.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -1869,7 +1869,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u,v on the surface. //! raised only for an 'offsetsurface' if it is not possible to compute the current point.
+Computes the point of parameter U,V on the surface. //! Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
 ") D0;
 		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
@@ -1891,7 +1891,7 @@ None
 
 Description
 -----------
-Computes the point p and the first derivatives in the directions u and v at this point. raised if the continuity of the surface is not c1.
+Computes the point P and the first derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C1.
 ") D1;
 		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -1916,7 +1916,7 @@ None
 
 Description
 -----------
-Computes the point p, the first and the second derivatives in the directions u and v at this point. raised if the continuity of the surface is not c2.
+Computes the point P, the first and the second derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
 ") D2;
 		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
@@ -1945,7 +1945,7 @@ None
 
 Description
 -----------
-Computes the point p, the first,the second and the third derivatives in the directions u and v at this point. raised if the continuity of the surface is not c2.
+Computes the point P, the first,the second and the third derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
 ") D3;
 		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
@@ -1966,7 +1966,7 @@ gp_Vec
 
 Description
 -----------
----purpose ; computes the derivative of order nu in the direction u and nv in the direction v at the point p(u, v). //! raised if the continuity of the surface is not cnu in the u direction or not cnv in the v direction. raised if nu + nv < 1 or nu < 0 or nv < 0.
+---Purpose ; Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
@@ -1984,7 +1984,7 @@ bool
 
 Description
 -----------
-Returns the order of continuity of the surface in the u parametric direction. raised if n < 0.
+Returns the order of continuity of the surface in the U parametric direction. Raised if N < 0.
 ") IsCNu;
 		Standard_Boolean IsCNu(const Standard_Integer N);
 
@@ -2002,7 +2002,7 @@ bool
 
 Description
 -----------
-Returns the order of continuity of the surface in the v parametric direction. raised if n < 0.
+Returns the order of continuity of the surface in the V parametric direction. Raised if N < 0.
 ") IsCNv;
 		Standard_Boolean IsCNv(const Standard_Integer N);
 
@@ -2015,7 +2015,7 @@ bool
 
 Description
 -----------
-Is the surface closed in the parametric direction u ? returns true if for each parameter v the distance between the point p (ufirst, v) and p (ulast, v) is lower or equal to resolution from gp. ufirst and ulast are the parametric bounds in the u direction.
+Is the surface closed in the parametric direction U ? Returns True if for each parameter V the distance between the point P (UFirst, V) and P (ULast, V) is lower or equal to Resolution from gp. UFirst and ULast are the parametric bounds in the U direction.
 ") IsUClosed;
 		Standard_Boolean IsUClosed();
 
@@ -2028,7 +2028,7 @@ bool
 
 Description
 -----------
-Is the parametrization of a surface periodic in the direction u ? it is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter v the distance between the point p (u, v) and the point p (u + t, v) is lower or equal to resolution from package gp. t is the parametric period and must be a constant.
+Is the parametrization of a surface periodic in the direction U ? It is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter V the distance between the point P (U, V) and the point P (U + T, V) is lower or equal to Resolution from package gp. T is the parametric period and must be a constant.
 ") IsUPeriodic;
 		Standard_Boolean IsUPeriodic();
 
@@ -2041,7 +2041,7 @@ bool
 
 Description
 -----------
-Is the surface closed in the parametric direction v ? returns true if for each parameter u the distance between the point p (u, vfirst) and p (u, vlast) is lower or equal to resolution from gp. vfirst and vlast are the parametric bounds in the v direction.
+Is the surface closed in the parametric direction V ? Returns True if for each parameter U the distance between the point P (U, VFirst) and P (U, VLast) is lower or equal to Resolution from gp. VFirst and VLast are the parametric bounds in the V direction.
 ") IsVClosed;
 		Standard_Boolean IsVClosed();
 
@@ -2054,7 +2054,7 @@ bool
 
 Description
 -----------
-Is the parametrization of a surface periodic in the direction u ? it is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter v the distance between the point p (u, v) and the point p (u + t, v) is lower or equal to resolution from package gp. t is the parametric period and must be a constant.
+Is the parametrization of a surface periodic in the direction U ? It is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter V the distance between the point P (U, V) and the point P (U + T, V) is lower or equal to Resolution from package gp. T is the parametric period and must be a constant.
 ") IsVPeriodic;
 		Standard_Boolean IsVPeriodic();
 
@@ -2072,7 +2072,7 @@ gp_GTrsf2d
 
 Description
 -----------
-Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are obtained by transforming u,v with the 2d transformation returned by @code me->parametrictransformation(t) @endcode this method returns an identity transformation //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns an identity transformation //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 ") ParametricTransformation;
 		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
@@ -2131,7 +2131,7 @@ None
 
 Description
 -----------
-Transformation of a geometric object. this tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class transformation of the package geom).
+Transformation of a geometric object. This transformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations. (see class Transformation of the package Geom).
 ") Transform;
 		void Transform(const gp_Trsf & T);
 
@@ -2150,7 +2150,7 @@ V: float
 
 Description
 -----------
-Computes the parameters on the transformed surface for the transform of the point of parameters u,v on <self>. @code me->transformed(t)->value(u',v') @endcode is the same point as @code me->value(u,v).transformed(t) @endcode where u',v' are the new values of u,v after calling @code me->transformparameters(u,v,t) @endcode this methods does not change <u> and <v> //! it can be redefined. for example on the plane, cylinder, cone, revolved and extruded surfaces.
+Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This methods does not change <U> and <V> //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 ") TransformParameters;
 		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
@@ -2168,7 +2168,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Computes the u isoparametric curve.
+Computes the U isoparametric curve.
 ") UIso;
 		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
 
@@ -2181,7 +2181,7 @@ float
 
 Description
 -----------
-Returns the uperiod. raises if the surface is not uperiodic.
+returns the Uperiod. raises if the surface is not uperiodic.
 ") UPeriod;
 		virtual Standard_Real UPeriod();
 
@@ -2194,7 +2194,7 @@ None
 
 Description
 -----------
-Reverses the u direction of parametrization of <self>. the bounds of the surface are not modified.
+Reverses the U direction of parametrization of <self>. The bounds of the surface are not modified.
 ") UReverse;
 		void UReverse();
 
@@ -2212,7 +2212,7 @@ float
 
 Description
 -----------
-Return the parameter on the ureversed surface for the point of parameter u on <self>. @code me->ureversed()->value(me->ureversedparameter(u),v) @endcode is the same point as @code me->value(u,v) @endcode.
+Return the parameter on the Ureversed surface for the point of parameter U on <self>. @code me->UReversed()->Value(me->UReversedParameter(U),V) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") UReversedParameter;
 		Standard_Real UReversedParameter(const Standard_Real U);
 
@@ -2230,7 +2230,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Computes the v isoparametric curve.
+Computes the V isoparametric curve.
 ") VIso;
 		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
 
@@ -2243,7 +2243,7 @@ float
 
 Description
 -----------
-Returns the vperiod. raises if the surface is not vperiodic.
+returns the Vperiod. raises if the surface is not vperiodic.
 ") VPeriod;
 		virtual Standard_Real VPeriod();
 
@@ -2256,7 +2256,7 @@ None
 
 Description
 -----------
-Reverses the v direction of parametrization of <self>. the bounds of the surface are not modified.
+Reverses the V direction of parametrization of <self>. The bounds of the surface are not modified.
 ") VReverse;
 		void VReverse();
 
@@ -2274,7 +2274,7 @@ float
 
 Description
 -----------
-Return the parameter on the vreversed surface for the point of parameter v on <self>. @code me->vreversed()->value(u,me->vreversedparameter(v)) @endcode is the same point as @code me->value(u,v) @endcode.
+Return the parameter on the Vreversed surface for the point of parameter V on <self>. @code me->VReversed()->Value(U,me->VReversedParameter(V)) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") VReversedParameter;
 		Standard_Real VReversedParameter(const Standard_Real V);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFNOTEOBJECTSDOCSTRING
 "XCAFNoteObjects module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xcafnoteobjects.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafnoteobjects.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFNOTEOBJECTSDOCSTRING) XCAFNoteObjects
 
@@ -177,7 +177,7 @@ bool
 
 Description
 -----------
-Returns true if plane is specified.
+Returns True if plane is specified.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
@@ -190,7 +190,7 @@ bool
 
 Description
 -----------
-Returns true if the attachment point on the annotated object is specified.
+Returns True if the attachment point on the annotated object is specified.
 ") HasPoint;
 		Standard_Boolean HasPoint();
 
@@ -203,7 +203,7 @@ bool
 
 Description
 -----------
-Returns true if the text position is specified.
+Returns True if the text position is specified.
 ") HasPointText;
 		Standard_Boolean HasPointText();
 

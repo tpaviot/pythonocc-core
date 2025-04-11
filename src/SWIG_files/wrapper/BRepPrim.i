@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPRIMDOCSTRING
 "BRepPrim module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepprim.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepprim.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMDOCSTRING) BRepPrim
 
@@ -126,7 +126,7 @@ None
 
 Description
 -----------
-Creates an empty, useless builder. necesseray for compilation.
+Creates an empty, useless Builder. Necesseray for compilation.
 ") BRepPrim_Builder;
 		 BRepPrim_Builder();
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Creates from a builder.
+Creates from a Builder.
 ") BRepPrim_Builder;
 		 BRepPrim_Builder(const BRep_Builder & B);
 
@@ -165,7 +165,7 @@ None
 
 Description
 -----------
-Adds the vertex <v> in the edge <e>. <p> is the parameter of the vertex on the edge. if direct is false the vertex is reversed.
+Adds the Vertex <V> in the Edge <E>. <P> is the parameter of the vertex on the edge. If direct is False the Vertex is reversed.
 ") AddEdgeVertex;
 		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P, const Standard_Boolean direct);
 
@@ -186,7 +186,7 @@ None
 
 Description
 -----------
-Adds the vertex <v> in the edge <e>. <p1,p2> are the parameters of the vertex on the closed edge.
+Adds the Vertex <V> in the Edge <E>. <P1,P2> are the parameters of the vertex on the closed edge.
 ") AddEdgeVertex;
 		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P1, const Standard_Real P2);
 
@@ -205,7 +205,7 @@ None
 
 Description
 -----------
-Adds the wire <w> in the face <f>.
+Adds the Wire <W> in the Face <F>.
 ") AddFaceWire;
 		void AddFaceWire(TopoDS_Face & F, const TopoDS_Wire & W);
 
@@ -224,7 +224,7 @@ None
 
 Description
 -----------
-Adds the face <f> in the shell <sh>.
+Adds the Face <F> in the Shell <Sh>.
 ") AddShellFace;
 		void AddShellFace(TopoDS_Shell & Sh, const TopoDS_Face & F);
 
@@ -244,7 +244,7 @@ None
 
 Description
 -----------
-Adds the edge <e> in the wire <w>, if direct is false the edge is reversed.
+Adds the Edge <E> in the Wire <W>, if direct is False the Edge is reversed.
 ") AddWireEdge;
 		void AddWireEdge(TopoDS_Wire & W, const TopoDS_Edge & E, const Standard_Boolean direct);
 
@@ -275,7 +275,7 @@ None
 
 Description
 -----------
-This is called once an edge is completed. it gives the opportunity to perform any post treatment.
+This is called once an edge is completed. It gives the opportunity to perform any post treatment.
 ") CompleteEdge;
 		void CompleteEdge(TopoDS_Edge & E);
 
@@ -293,7 +293,7 @@ None
 
 Description
 -----------
-This is called once a face is completed. it gives the opportunity to perform any post treatment.
+This is called once a face is completed. It gives the opportunity to perform any post treatment.
 ") CompleteFace;
 		void CompleteFace(TopoDS_Face & F);
 
@@ -311,7 +311,7 @@ None
 
 Description
 -----------
-This is called once a shell is completed. it gives the opportunity to perform any post treatment.
+This is called once a shell is completed. It gives the opportunity to perform any post treatment.
 ") CompleteShell;
 		void CompleteShell(TopoDS_Shell & S);
 
@@ -329,7 +329,7 @@ None
 
 Description
 -----------
-This is called once a wire is completed. it gives the opportunity to perform any post treatment.
+This is called once a wire is completed. It gives the opportunity to perform any post treatment.
 ") CompleteWire;
 		void CompleteWire(TopoDS_Wire & W);
 
@@ -347,7 +347,7 @@ None
 
 Description
 -----------
-Returns in <e> a degenerated edge.
+Returns in <E> a degenerated edge.
 ") MakeDegeneratedEdge;
 		void MakeDegeneratedEdge(TopoDS_Edge & E);
 
@@ -366,7 +366,7 @@ None
 
 Description
 -----------
-Returns in <e> an edge built with the line equation <l>.
+Returns in <E> an Edge built with the line equation <L>.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const gp_Lin & L);
 
@@ -385,7 +385,7 @@ None
 
 Description
 -----------
-Returns in <e> an edge built with the circle equation <c>.
+Returns in <E> an Edge built with the circle equation <C>.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const gp_Circ & C);
 
@@ -404,7 +404,7 @@ None
 
 Description
 -----------
-Returns in <f> a face built with the plane equation <p>. used by all primitives.
+Returns in <F> a Face built with the plane equation <P>. Used by all primitives.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F, const gp_Pln & P);
 
@@ -422,7 +422,7 @@ None
 
 Description
 -----------
-Make a empty shell.
+Make a empty Shell.
 ") MakeShell;
 		void MakeShell(TopoDS_Shell & S);
 
@@ -441,7 +441,7 @@ None
 
 Description
 -----------
-Returns in <v> a vertex built with the point <p>.
+Returns in <V> a Vertex built with the point <P>.
 ") MakeVertex;
 		void MakeVertex(TopoDS_Vertex & V, const gp_Pnt & P);
 
@@ -459,7 +459,7 @@ None
 
 Description
 -----------
-Returns in <w> an empty wire.
+Returns in <W> an empty Wire.
 ") MakeWire;
 		void MakeWire(TopoDS_Wire & W);
 
@@ -477,7 +477,7 @@ None
 
 Description
 -----------
-Reverses the face <f>.
+Reverses the Face <F>.
 ") ReverseFace;
 		void ReverseFace(TopoDS_Face & F);
 
@@ -497,7 +497,7 @@ None
 
 Description
 -----------
-Sets the line <l> to be the curve representing the edge <e> in the parametric space of the surface of <f>.
+Sets the line <L> to be the curve representing the edge <E> in the parametric space of the surface of <F>.
 ") SetPCurve;
 		void SetPCurve(TopoDS_Edge & E, const TopoDS_Face & F, const gp_Lin2d & L);
 
@@ -518,7 +518,7 @@ None
 
 Description
 -----------
-Sets the lines <l1,l2> to be the curves representing the edge <e> in the parametric space of the closed surface of <f>.
+Sets the lines <L1,L2> to be the curves representing the edge <E> in the parametric space of the closed surface of <F>.
 ") SetPCurve;
 		void SetPCurve(TopoDS_Edge & E, const TopoDS_Face & F, const gp_Lin2d & L1, const gp_Lin2d & L2);
 
@@ -538,7 +538,7 @@ None
 
 Description
 -----------
-Sets the circle <c> to be the curve representing the edge <e> in the parametric space of the surface of <f>.
+Sets the circle <C> to be the curve representing the edge <E> in the parametric space of the surface of <F>.
 ") SetPCurve;
 		void SetPCurve(TopoDS_Edge & E, const TopoDS_Face & F, const gp_Circ2d & C);
 
@@ -559,7 +559,7 @@ None
 
 Description
 -----------
-<p1,p2> are the parameters of the vertex on the edge. the edge is a closed curve.
+<P1,P2> are the parameters of the vertex on the edge. The edge is a closed curve.
 ") SetParameters;
 		void SetParameters(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P1, const Standard_Real P2);
 
@@ -646,7 +646,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge of index <i> 1 - edge vmin 2 - edge umax 3 - edge vmax 4 - edge umin.
+Returns the edge of index <I> 1 - Edge VMin 2 - Edge UMax 3 - Edge VMax 4 - Edge UMin.
 ") Edge;
 		const TopoDS_Edge Edge(const Standard_Integer I);
 
@@ -719,7 +719,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex of index <i> 1 - vertex umin,vmin 2 - vertex umax,vmin 3 - vertex umax,vmax 4 - vertex umin,vmax.
+Returns the vertex of index <I> 1 - Vertex UMin,VMin 2 - Vertex UMax,VMin 3 - Vertex UMax,VMax 4 - Vertex UMin,VMax.
 ") Vertex;
 		const TopoDS_Vertex Vertex(const Standard_Integer I);
 
@@ -768,7 +768,7 @@ None
 
 Description
 -----------
-Creates a gwedge algorithm. <axes> is the axis system for the primitive. //! xmin, ymin, zmin are set to 0 xmax, ymax, zmax are set to dx, dy, dz z2min = zmin z2max = zmax x2min = xmin x2max = xmax the result is a box dx,dy,dz should be positive.
+Creates a GWedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive.
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
 
@@ -791,7 +791,7 @@ None
 
 Description
 -----------
-Creates a gwedge primitive. <axes> is the axis system for the primitive. //! xmin, ymin, zmin are set to 0 xmax, ymax, zmax are set to dx, dy, dz z2min = zmin z2max = zmax x2min = ltx x2max = ltx the result is a step right angular wedge dx,dy,dz should be positive ltx should not be negative.
+Creates a GWedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative.
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
 
@@ -820,7 +820,7 @@ None
 
 Description
 -----------
-Create a gwedge primitive. <axes> is the axis system for the primitive. //! all the fields are set to the corresponding value xyzmax - xyzmin should be positive zx2max - zx2min should not be negative.
+Create a GWedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative.
 ") BRepPrim_GWedge;
 		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real xmin, const Standard_Real ymin, const Standard_Real zmin, const Standard_Real z2min, const Standard_Real x2min, const Standard_Real xmax, const Standard_Real ymax, const Standard_Real zmax, const Standard_Real z2max, const Standard_Real x2max);
 
@@ -851,7 +851,7 @@ None
 
 Description
 -----------
-Closes <self> in <d1> direction. a face and its edges or vertices are said existant.
+Closes <self> in <d1> direction. A face and its edges or vertices are said existent.
 ") Close;
 		void Close(const BRepPrim_Direction d1);
 
@@ -870,7 +870,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge of <self> located in <d1><d2> direction.
+Returns the Edge of <self> located in <d1><d2> direction.
 ") Edge;
 		const TopoDS_Edge Edge(const BRepPrim_Direction d1, const BRepPrim_Direction d2);
 
@@ -888,7 +888,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face of <self> located in <d1> direction.
+Returns the Face of <self> located in <d1> direction.
 ") Face;
 		const TopoDS_Face Face(const BRepPrim_Direction d1);
 
@@ -901,7 +901,7 @@ float
 
 Description
 -----------
-Returns x2max value from <self>.
+Returns X2Max value from <self>.
 ") GetX2Max;
 		Standard_Real GetX2Max();
 
@@ -914,7 +914,7 @@ float
 
 Description
 -----------
-Returns x2min value from <self>.
+Returns X2Min value from <self>.
 ") GetX2Min;
 		Standard_Real GetX2Min();
 
@@ -927,7 +927,7 @@ float
 
 Description
 -----------
-Returns xmax value from <self>.
+Returns XMax value from <self>.
 ") GetXMax;
 		Standard_Real GetXMax();
 
@@ -940,7 +940,7 @@ float
 
 Description
 -----------
-Returns xmin value from <self>.
+Returns Xmin value from <self>.
 ") GetXMin;
 		Standard_Real GetXMin();
 
@@ -953,7 +953,7 @@ float
 
 Description
 -----------
-Returns ymax value from <self>.
+Returns YMax value from <self>.
 ") GetYMax;
 		Standard_Real GetYMax();
 
@@ -966,7 +966,7 @@ float
 
 Description
 -----------
-Returns ymin value from <self>.
+Returns YMin value from <self>.
 ") GetYMin;
 		Standard_Real GetYMin();
 
@@ -979,7 +979,7 @@ float
 
 Description
 -----------
-Returns z2max value from <self>.
+Returns Z2Max value from <self>.
 ") GetZ2Max;
 		Standard_Real GetZ2Max();
 
@@ -992,7 +992,7 @@ float
 
 Description
 -----------
-Returns z2min value from <self>.
+Returns Z2Min value from <self>.
 ") GetZ2Min;
 		Standard_Real GetZ2Min();
 
@@ -1005,7 +1005,7 @@ float
 
 Description
 -----------
-Returns zmax value from <self>.
+Returns ZMax value from <self>.
 ") GetZMax;
 		Standard_Real GetZMax();
 
@@ -1018,7 +1018,7 @@ float
 
 Description
 -----------
-Returns zmin value from <self>.
+Returns ZMin value from <self>.
 ") GetZMin;
 		Standard_Real GetZMin();
 
@@ -1037,7 +1037,7 @@ bool
 
 Description
 -----------
-Returns true if <self> has an edge in <d1><d2> direction.
+Returns True if <self> has an Edge in <d1><d2> direction.
 ") HasEdge;
 		Standard_Boolean HasEdge(const BRepPrim_Direction d1, const BRepPrim_Direction d2);
 
@@ -1055,7 +1055,7 @@ bool
 
 Description
 -----------
-Returns true if <self> has a face in <d1> direction.
+Returns True if <self> has a Face in <d1> direction.
 ") HasFace;
 		Standard_Boolean HasFace(const BRepPrim_Direction d1);
 
@@ -1075,7 +1075,7 @@ bool
 
 Description
 -----------
-Returns true if <self> has a vertex in <d1><d2><d3> direction.
+Returns True if <self> has a Vertex in <d1><d2><d3> direction.
 ") HasVertex;
 		Standard_Boolean HasVertex(const BRepPrim_Direction d1, const BRepPrim_Direction d2, const BRepPrim_Direction d3);
 
@@ -1093,7 +1093,7 @@ bool
 
 Description
 -----------
-Returns true if <self> has a wire in <d1> direction.
+Returns True if <self> has a Wire in <d1> direction.
 ") HasWire;
 		Standard_Boolean HasWire(const BRepPrim_Direction d1);
 
@@ -1106,7 +1106,8 @@ bool
 
 Description
 -----------
-Checks a shape on degeneracy return true if a shape is degenerated.
+Checks a shape on degeneracy 
+Return: True if a shape is degenerated.
 ") IsDegeneratedShape;
 		Standard_Boolean IsDegeneratedShape();
 
@@ -1124,7 +1125,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is open in <d1> direction.
+Returns True if <self> is open in <d1> direction.
 ") IsInfinite;
 		Standard_Boolean IsInfinite(const BRepPrim_Direction d1);
 
@@ -1143,7 +1144,7 @@ gp_Lin
 
 Description
 -----------
-Returns the line of the edge of <self> located in <d1><d2> direction.
+Returns the line of the Edge of <self> located in <d1><d2> direction.
 ") Line;
 		gp_Lin Line(const BRepPrim_Direction d1, const BRepPrim_Direction d2);
 
@@ -1161,7 +1162,7 @@ None
 
 Description
 -----------
-Opens <self> in <d1> direction. a face and its edges or vertices are said nonexistant.
+Opens <self> in <d1> direction. A face and its edges or vertices are said nonexistent.
 ") Open;
 		void Open(const BRepPrim_Direction d1);
 
@@ -1179,7 +1180,7 @@ gp_Pln
 
 Description
 -----------
-Returns the plane of the face of <self> located in <d1> direction.
+Returns the plane of the Face of <self> located in <d1> direction.
 ") Plane;
 		gp_Pln Plane(const BRepPrim_Direction d1);
 
@@ -1199,7 +1200,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the vertex of <self> located in <d1><d2><d3> direction.
+Returns the point of the Vertex of <self> located in <d1><d2><d3> direction.
 ") Point;
 		gp_Pnt Point(const BRepPrim_Direction d1, const BRepPrim_Direction d2, const BRepPrim_Direction d3);
 
@@ -1212,7 +1213,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the shell containing the faces of <self>.
+Returns the Shell containing the Faces of <self>.
 ") Shell;
 		const TopoDS_Shell Shell();
 
@@ -1232,7 +1233,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex of <self> located in <d1><d2><d3> direction.
+Returns the Vertex of <self> located in <d1><d2><d3> direction.
 ") Vertex;
 		const TopoDS_Vertex Vertex(const BRepPrim_Direction d1, const BRepPrim_Direction d2, const BRepPrim_Direction d3);
 
@@ -1250,7 +1251,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the wire of <self> located in <d1> direction.
+Returns the Wire of <self> located in <d1> direction.
 ") Wire;
 		const TopoDS_Wire Wire(const BRepPrim_Direction d1);
 
@@ -1309,7 +1310,7 @@ gp_Ax2
 
 Description
 -----------
-Returns the ax2 from <self>.
+Returns the Ax2 from <self>.
 ") Axes;
 		const gp_Ax2 Axes();
 
@@ -1340,7 +1341,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex at the bottom altitude on the axis.
+Returns the Vertex at the Bottom altitude on the axis.
 ") AxisBottomVertex;
 		const TopoDS_Vertex AxisBottomVertex();
 
@@ -1353,7 +1354,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge built along the axis and oriented on +z of the axis.
+Returns the Edge built along the Axis and oriented on +Z of the Axis.
 ") AxisEdge;
 		const TopoDS_Edge AxisEdge();
 
@@ -1366,7 +1367,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the wire in the end face with the axisedge.
+Returns the Wire in the end face with the AxisEdge.
 ") AxisEndWire;
 		const TopoDS_Wire AxisEndWire();
 
@@ -1379,7 +1380,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the wire in the start face with the axisedge.
+Returns the wire in the start face with the AxisEdge.
 ") AxisStartWire;
 		const TopoDS_Wire AxisStartWire();
 
@@ -1392,7 +1393,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex at the top altitude on the axis.
+Returns the Vertex at the Top altitude on the axis.
 ") AxisTopVertex;
 		const TopoDS_Vertex AxisTopVertex();
 
@@ -1405,7 +1406,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge at vmin. if meridianclosed() the topedge and the bottomedge are the same edge.
+Returns the edge at VMin. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.
 ") BottomEdge;
 		const TopoDS_Edge BottomEdge();
 
@@ -1418,7 +1419,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex (angle,vmax).
+Returns the vertex (angle,VMax).
 ") BottomEndVertex;
 		const TopoDS_Vertex BottomEndVertex();
 
@@ -1431,7 +1432,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the bottom planar face. it is oriented toward the -z axis (outside).
+Returns the Bottom planar Face. It is Oriented toward the -Z axis (outside).
 ") BottomFace;
 		const TopoDS_Face BottomFace();
 
@@ -1444,7 +1445,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex (0,vmin).
+Returns the vertex (0,VMin).
 ") BottomStartVertex;
 		const TopoDS_Vertex BottomStartVertex();
 
@@ -1470,7 +1471,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the linear edge between end face and bottom face.
+Returns the linear Edge between end Face and bottom Face.
 ") EndBottomEdge;
 		const TopoDS_Edge EndBottomEdge();
 
@@ -1483,7 +1484,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge at angle angle. if !hassides() the startedge and the endedge are the same edge.
+Returns the Edge at angle Angle. If !HasSides() the StartEdge and the EndEdge are the same edge.
 ") EndEdge;
 		const TopoDS_Edge EndEdge();
 
@@ -1496,7 +1497,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face ending the slice, it is oriented toward the exterior of the primitive.
+Returns the Face ending the slice, it is oriented toward the exterior of the primitive.
 ") EndFace;
 		const TopoDS_Face EndFace();
 
@@ -1509,7 +1510,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the linear edge between end face and top face.
+Returns the linear Edge between end Face and top Face.
 ") EndTopEdge;
 		const TopoDS_Edge EndTopEdge();
 
@@ -1522,7 +1523,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the wire in the end face.
+Returns the Wire in the end face.
 ") EndWire;
 		const TopoDS_Wire EndWire();
 
@@ -1535,7 +1536,7 @@ bool
 
 Description
 -----------
-Returns true if there is a bottom face. //! that is neither: vmininfinite() meridianclosed() meridianonaxis(vmin).
+Returns True if there is a bottom face. //! That is neither: VMinInfinite() MeridianClosed() MeridianOnAxis(VMin).
 ") HasBottom;
 		virtual Standard_Boolean HasBottom();
 
@@ -1548,7 +1549,7 @@ bool
 
 Description
 -----------
-Returns true if there are start and end faces. //! that is: 2*pi - angle > precision::angular().
+Returns True if there are Start and End faces. //! That is: 2*PI - Angle > Precision::Angular().
 ") HasSides;
 		virtual Standard_Boolean HasSides();
 
@@ -1561,7 +1562,7 @@ bool
 
 Description
 -----------
-Returns true if there is a top face. //! that is neither: vmaxinfinite() meridianclosed() meridianonaxis(vmax).
+Returns True if there is a top face. //! That is neither: VMaxInfinite() MeridianClosed() MeridianOnAxis(VMax).
 ") HasTop;
 		virtual Standard_Boolean HasTop();
 
@@ -1587,7 +1588,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the lateral face. it is oriented toward the outside of the primitive.
+Returns the lateral Face. It is oriented toward the outside of the primitive.
 ") LateralFace;
 		const TopoDS_Face LateralFace();
 
@@ -1626,7 +1627,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns a face with no edges. the surface is the lateral surface with normals pointing outward. the u parameter is the angle with the origin on the x axis. the v parameter is the parameter of the meridian.
+Returns a face with no edges. The surface is the lateral surface with normals pointing outward. The U parameter is the angle with the origin on the X axis. The V parameter is the parameter of the meridian.
 ") MakeEmptyLateralFace;
 		virtual TopoDS_Face MakeEmptyLateralFace();
 
@@ -1644,7 +1645,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns an edge with a 3d curve made from the meridian in the xz plane rotated by <ang> around the z-axis. ang may be 0 or myangle.
+Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle.
 ") MakeEmptyMeridianEdge;
 		virtual TopoDS_Edge MakeEmptyMeridianEdge(const Standard_Real Ang);
 
@@ -1657,7 +1658,7 @@ bool
 
 Description
 -----------
-Returns true if the meridian is closed. default implementation  is meridianvalue(vmin).isequal(meridianvalue(vmax), precision::confusion()).
+Returns True if the meridian is closed. Default implementation  is MeridianValue(VMin).IsEqual(MeridianValue(VMax), Precision::Confusion()).
 ") MeridianClosed;
 		virtual Standard_Boolean MeridianClosed();
 
@@ -1675,7 +1676,7 @@ bool
 
 Description
 -----------
-Returns true if the point of parameter <v> on the meridian is on the axis. default implementation is abs(meridianvalue(v).x()) < precision::confusion().
+Returns True if the point of parameter <V> on the meridian is on the Axis. Default implementation is Abs(MeridianValue(V).X()) < Precision::Confusion().
 ") MeridianOnAxis;
 		virtual Standard_Boolean MeridianOnAxis(const Standard_Real V);
 
@@ -1693,7 +1694,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the meridian point at parameter <v> in the plane xz.
+Returns the meridian point at parameter <V> in the plane XZ.
 ") MeridianValue;
 		virtual gp_Pnt2d MeridianValue(const Standard_Real V);
 
@@ -1711,7 +1712,7 @@ None
 
 Description
 -----------
-The meridianoffset is added to the parameters on the meridian curve and to the v values of the pcurves. this is used for the sphere for example, to give a range on the meridian edge which is not vmin, vmax.
+The MeridianOffset is added to the parameters on the meridian curve and to the V values of the pcurves. This is used for the sphere for example, to give a range on the meridian edge which is not VMin, VMax.
 ") SetMeridianOffset;
 		void SetMeridianOffset(const Standard_Real MeridianOffset = 0);
 
@@ -1730,7 +1731,7 @@ None
 
 Description
 -----------
-Sets the parametric curve of the edge <e> in the face <f> to be the 2d representation of the meridian.
+Sets the parametric curve of the edge <E> in the face <F> to be the 2d representation of the meridian.
 ") SetMeridianPCurve;
 		virtual void SetMeridianPCurve(TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1743,7 +1744,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the shell containing all the faces of the primitive.
+Returns the Shell containing all the Faces of the primitive.
 ") Shell;
 		const TopoDS_Shell Shell();
 
@@ -1756,7 +1757,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the linear edge between start face and bottom face.
+Returns the linear Edge between start Face and bottom Face.
 ") StartBottomEdge;
 		const TopoDS_Edge StartBottomEdge();
 
@@ -1769,7 +1770,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge at angle 0.
+Returns the Edge at angle 0.
 ") StartEdge;
 		const TopoDS_Edge StartEdge();
 
@@ -1782,7 +1783,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face starting the slice, it is oriented toward the exterior of the primitive.
+Returns the Face starting the slice, it is oriented toward the exterior of the primitive.
 ") StartFace;
 		const TopoDS_Face StartFace();
 
@@ -1795,7 +1796,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the linear edge between start face and top face.
+Returns the linear Edge between start Face and top Face.
 ") StartTopEdge;
 		const TopoDS_Edge StartTopEdge();
 
@@ -1821,7 +1822,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge at vmax. if meridianclosed() the topedge and the bottomedge are the same edge.
+Returns the edge at VMax. If MeridianClosed() the TopEdge and the BottomEdge are the same edge.
 ") TopEdge;
 		const TopoDS_Edge TopEdge();
 
@@ -1834,7 +1835,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex (angle,vmax).
+Returns the vertex (angle,VMax).
 ") TopEndVertex;
 		const TopoDS_Vertex TopEndVertex();
 
@@ -1847,7 +1848,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the top planar face. it is oriented toward the +z axis (outside).
+Returns the top planar Face. It is Oriented toward the +Z axis (outside).
 ") TopFace;
 		const TopoDS_Face TopFace();
 
@@ -1860,7 +1861,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex (0,vmax).
+Returns the vertex (0,VMax).
 ") TopStartVertex;
 		const TopoDS_Vertex TopStartVertex();
 
@@ -1917,7 +1918,7 @@ bool
 
 Description
 -----------
-Returns true if vmax is infinite. default precision::ispositiveinfinite(vmax);.
+Returns True if VMax is infinite. Default Precision::IsPositiveInfinite(VMax);.
 ") VMaxInfinite;
 		virtual Standard_Boolean VMaxInfinite();
 
@@ -1961,7 +1962,7 @@ bool
 
 Description
 -----------
-Returns true if vmin is infinite. default precision::isnegativeinfinite(vmax);.
+Returns True if VMin is infinite. Default Precision::IsNegativeInfinite(VMax);.
 ") VMinInfinite;
 		virtual Standard_Boolean VMinInfinite();
 
@@ -1997,7 +1998,7 @@ None
 
 Description
 -----------
-Create a revolution body <m> is the meridian nd must be in the xz plane of <a>. <pm> is the meridian in the xz plane.
+Create a revolution body <M> is the meridian nd must be in the XZ plane of <A>. <PM> is the meridian in the XZ plane.
 ") BRepPrim_Revolution;
 		 BRepPrim_Revolution(const gp_Ax2 & A, const Standard_Real VMin, const Standard_Real VMax, const opencascade::handle<Geom_Curve> & M, const opencascade::handle<Geom2d_Curve> & PM);
 
@@ -2028,7 +2029,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns an edge with a 3d curve made from the meridian in the xz plane rotated by <ang> around the z-axis. ang may be 0 or myangle.
+Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle.
 ") MakeEmptyMeridianEdge;
 		virtual TopoDS_Edge MakeEmptyMeridianEdge(const Standard_Real Ang);
 
@@ -2046,7 +2047,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the meridian point at parameter <v> in the plane xz.
+Returns the meridian point at parameter <V> in the plane XZ.
 ") MeridianValue;
 		virtual gp_Pnt2d MeridianValue(const Standard_Real V);
 
@@ -2065,7 +2066,7 @@ None
 
 Description
 -----------
-Sets the parametric urve of the edge <e> in the face <f> to be the 2d representation of the meridian.
+Sets the parametric urve of the edge <E> in the face <F> to be the 2d representation of the meridian.
 ") SetMeridianPCurve;
 		virtual void SetMeridianPCurve(TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -2113,7 +2114,7 @@ None
 
 Description
 -----------
-Creates a wedge algorithm. <axes> is the axis system for the primitive. //! xmin, ymin, zmin are set to 0 xmax, ymax, zmax are set to dx, dy, dz z2min = zmin z2max = zmax x2min = xmin x2max = xmax the result is a box dx,dy,dz should be positive.
+Creates a Wedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive.
 ") BRepPrim_Wedge;
 		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
 
@@ -2135,7 +2136,7 @@ None
 
 Description
 -----------
-Creates a wedge primitive. <axes> is the axis system for the primitive. //! xmin, ymin, zmin are set to 0 xmax, ymax, zmax are set to dx, dy, dz z2min = zmin z2max = zmax x2min = ltx x2max = ltx the result is a step right angular wedge dx,dy,dz should be positive ltx should not be negative.
+Creates a Wedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative.
 ") BRepPrim_Wedge;
 		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
 
@@ -2163,7 +2164,7 @@ None
 
 Description
 -----------
-Create a wedge primitive. <axes> is the axis system for the primitive. //! all the fields are set to the corresponding value xyzmax - xyzmin should be positive zx2max - zx2min should not be negative.
+Create a Wedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative.
 ") BRepPrim_Wedge;
 		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real xmin, const Standard_Real ymin, const Standard_Real zmin, const Standard_Real z2min, const Standard_Real x2min, const Standard_Real xmax, const Standard_Real ymax, const Standard_Real zmax, const Standard_Real z2max, const Standard_Real x2max);
 
@@ -2198,7 +2199,7 @@ None
 
 Description
 -----------
-The step definition angle = semi-angle of the cone position: the coordinate system height: height of the cone. radius: radius of truncated face at z = 0 //! the apex is on z < 0 //! errors: height < resolution angle < resolution / height angle > pi/2 - resolution / height.
+the STEP definition Angle = semi-angle of the cone Position: the coordinate system Height: height of the cone. Radius: radius of truncated face at z = 0 //! The apex is on z < 0 //! Errors: Height < Resolution Angle < Resolution / Height Angle > PI/2 - Resolution / Height.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const Standard_Real Angle, const gp_Ax2 & Position, const Standard_Real Height, const Standard_Real Radius = 0);
 
@@ -2216,7 +2217,7 @@ None
 
 Description
 -----------
-Infinite cone at origin on z negative.
+infinite cone at origin on Z negative.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const Standard_Real Angle);
 
@@ -2235,7 +2236,7 @@ None
 
 Description
 -----------
-Infinite cone at apex on z negative.
+infinite cone at Apex on Z negative.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const Standard_Real Angle, const gp_Pnt & Apex);
 
@@ -2254,7 +2255,7 @@ None
 
 Description
 -----------
-Infinite cone with axes.
+infinite cone with Axes.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const Standard_Real Angle, const gp_Ax2 & Axes);
 
@@ -2274,7 +2275,7 @@ None
 
 Description
 -----------
-Create a cone at origin on z axis, of height h, radius r1 at z = 0, r2 at z = h, x is the origin of angles. if r1 or r2 is 0 there is an apex. otherwise, it is a truncated cone. //! error: r1 and r2 < resolution r1 or r2 negative abs(r1-r2) < resolution h < resolution h negative.
+create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone. //! Error: R1 and R2 < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
 
@@ -2295,7 +2296,7 @@ None
 
 Description
 -----------
-Same as above but at a given point.
+same as above but at a given point.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const gp_Pnt & Center, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
 
@@ -2316,7 +2317,7 @@ None
 
 Description
 -----------
-Same as above with given axes system.
+same as above with given axes system.
 ") BRepPrim_Cone;
 		 BRepPrim_Cone(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
 
@@ -2363,7 +2364,7 @@ None
 
 Description
 -----------
-The step definition position: center of a face and axis radius: radius of cylinder height: distance between faces on positive side //! errors: height < resolution radius < resolution.
+the STEP definition Position: center of a Face and Axis Radius: radius of cylinder Height: distance between faces on positive side //! Errors: Height < Resolution Radius < Resolution.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const gp_Ax2 & Position, const Standard_Real Radius, const Standard_Real Height);
 
@@ -2381,7 +2382,7 @@ None
 
 Description
 -----------
-Infinite cylinder at origin on z negative.
+infinite Cylinder at origin on Z negative.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const Standard_Real Radius);
 
@@ -2400,7 +2401,7 @@ None
 
 Description
 -----------
-Infinite cylinder at center on z negative.
+infinite Cylinder at Center on Z negative.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const gp_Pnt & Center, const Standard_Real Radius);
 
@@ -2419,7 +2420,7 @@ None
 
 Description
 -----------
-Infinite cylinder at axes on z negative.
+infinite Cylinder at Axes on Z negative.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const gp_Ax2 & Axes, const Standard_Real Radius);
 
@@ -2438,7 +2439,7 @@ None
 
 Description
 -----------
-Create a cylinder at origin on z axis, of height h and radius r error: radius < resolution h < resolution h negative.
+create a Cylinder at origin on Z axis, of height H and radius R Error: Radius < Resolution H < Resolution H negative.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const Standard_Real R, const Standard_Real H);
 
@@ -2458,7 +2459,7 @@ None
 
 Description
 -----------
-Same as above but at a given point.
+same as above but at a given point.
 ") BRepPrim_Cylinder;
 		 BRepPrim_Cylinder(const gp_Pnt & Center, const Standard_Real R, const Standard_Real H);
 
@@ -2503,7 +2504,7 @@ None
 
 Description
 -----------
-Creates a sphere at origin with radius. the axes of the sphere are the reference axes. an error is raised if the radius is < resolution.
+Creates a Sphere at origin with Radius. The axes of the sphere are the reference axes. An error is raised if the radius is < Resolution.
 ") BRepPrim_Sphere;
 		 BRepPrim_Sphere(const Standard_Real Radius);
 
@@ -2522,7 +2523,7 @@ None
 
 Description
 -----------
-Creates a sphere with center and radius. axes are the reference axes. this is the step constructor.
+Creates a Sphere with Center and Radius. Axes are the reference axes. This is the STEP constructor.
 ") BRepPrim_Sphere;
 		 BRepPrim_Sphere(const gp_Pnt & Center, const Standard_Real Radius);
 
@@ -2588,7 +2589,7 @@ None
 
 Description
 -----------
-The step definition position: center and axes major, minor: radii //! errors: major < resolution minor < resolution.
+the STEP definition Position: center and axes Major, Minor: Radii //! Errors: Major < Resolution Minor < Resolution.
 ") BRepPrim_Torus;
 		 BRepPrim_Torus(const gp_Ax2 & Position, const Standard_Real Major, const Standard_Real Minor);
 
@@ -2627,7 +2628,7 @@ None
 
 Description
 -----------
-Torus at center.
+Torus at Center.
 ") BRepPrim_Torus;
 		 BRepPrim_Torus(const gp_Pnt & Center, const Standard_Real Major, const Standard_Real Minor);
 

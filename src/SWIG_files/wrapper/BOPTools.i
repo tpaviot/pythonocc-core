@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPTOOLSDOCSTRING
 "BOPTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_boptools.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_boptools.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPTOOLSDOCSTRING) BOPTools
 
@@ -159,7 +159,7 @@ bool
 
 Description
 -----------
-Checks if the given faces are same-domain, i.e. coincide.
+Checking if the faces are coinciding Checks if the given faces are same-domain, i.e. coincide.
 ") AreFacesSameDomain;
 		static Standard_Boolean AreFacesSameDomain(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext, const Standard_Real theFuzz = Precision::Confusion());
 
@@ -180,7 +180,7 @@ TopAbs_State
 
 Description
 -----------
-Computes the 3-d state of the point thepoint toward solid thesolid. thetol - value of precision of computation thecontext- cahed geometrical tools returns 3-d state.
+Computes the 3-D state of the point thePoint toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
 		static TopAbs_State ComputeState(const gp_Pnt & thePoint, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -201,7 +201,7 @@ TopAbs_State
 
 Description
 -----------
-Computes the 3-d state of the vertex thevertex toward solid thesolid. thetol - value of precision of computation thecontext- cahed geometrical tools returns 3-d state.
+Computes the 3-D state of the vertex theVertex toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
 		static TopAbs_State ComputeState(const TopoDS_Vertex & theVertex, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -222,7 +222,7 @@ TopAbs_State
 
 Description
 -----------
-Computes the 3-d state of the edge theedge toward solid thesolid. thetol - value of precision of computation thecontext- cahed geometrical tools returns 3-d state.
+Computes the 3-D state of the edge theEdge toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
 		static TopAbs_State ComputeState(const TopoDS_Edge & theEdge, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -244,7 +244,7 @@ TopAbs_State
 
 Description
 -----------
-Computes the 3-d state of the face theface toward solid thesolid. thetol - value of precision of computation thebounds - set of edges of <thesolid> to avoid thecontext- cahed geometrical tools returns 3-d state.
+Computes the 3-D state of the face theFace toward solid theSolid. theTol - value of precision of computation theBounds - set of edges of <theSolid> to avoid theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
 		static TopAbs_State ComputeState(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, const Standard_Real theTol, const TopTools_IndexedMapOfShape & theBounds, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -265,7 +265,7 @@ TopAbs_State
 
 Description
 -----------
-Computes the 3-d state of the shape theshape toward solid thesolid. thetol - value of precision of computation thecontext- cahed geometrical tools returns 3-d state.
+Computes the 3-D state of the shape theShape toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeStateByOnePoint;
 		static TopAbs_State ComputeStateByOnePoint(const TopoDS_Shape & theShape, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -305,7 +305,7 @@ int
 
 Description
 -----------
-Intersects the vertex <thev1> with the point <thep> with tolerance <thetolp>. returns the error status: - 0 - no error, meaning that the vertex intersects the point; - 1 - the distance between vertex and point is grater than the sum of tolerances.
+Intersects the vertex <theV1> with the point <theP> with tolerance <theTolP>. Returns the error status: - 0 - no error, meaning that the vertex intersects the point; - 1 - the distance between vertex and point is grater than the sum of tolerances.
 ") ComputeVV;
 		static Standard_Integer ComputeVV(const TopoDS_Vertex & theV, const gp_Pnt & theP, const Standard_Real theTolP);
 
@@ -325,7 +325,7 @@ int
 
 Description
 -----------
-Intersects the given vertices with given fuzzy value. returns the error status: - 0 - no error, meaning that the vertices interferes with given tolerance; - 1 - the distance between vertices is grater than the sum of their tolerances.
+Intersects the given vertices with given fuzzy value. Returns the error status: - 0 - no error, meaning that the vertices interferes with given tolerance; - 1 - the distance between vertices is grater than the sum of their tolerances.
 ") ComputeVV;
 		static Standard_Integer ComputeVV(const TopoDS_Vertex & theV1, const TopoDS_Vertex & theV2, const Standard_Real theFuzz = Precision::Confusion());
 
@@ -343,7 +343,7 @@ TopoDS_Edge
 
 Description
 -----------
-Makes a copy of <theedge> with vertices.
+Makes a copy of <theEdge> with vertices.
 ") CopyEdge;
 		static TopoDS_Edge CopyEdge(const TopoDS_Edge & theEdge);
 
@@ -364,7 +364,7 @@ None
 
 Description
 -----------
-Provides valid values of tolerances for the shape <thes> in terms of brepcheck_invalidcurveonsurface.
+Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidCurveOnSurface.
 ") CorrectCurveOnSurface;
 		static void CorrectCurveOnSurface(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
 
@@ -385,7 +385,7 @@ None
 
 Description
 -----------
-Provides valid values of tolerances for the shape <thes> in terms of brepcheck_invalidpointoncurve.
+Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidPointOnCurve.
 ") CorrectPointOnCurve;
 		static void CorrectPointOnCurve(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
 
@@ -406,7 +406,7 @@ None
 
 Description
 -----------
-Correct shrunk range <asr> taking into account 3d-curve resolution and corresponding tolerance values of <ae1>, <ae2>.
+Correct shrunk range <aSR> taking into account 3D-curve resolution and corresponding tolerance values of <aE1>, <aE2>.
 ") CorrectRange;
 		static void CorrectRange(const TopoDS_Edge & aE1, const TopoDS_Edge & aE2, const IntTools_Range & aSR, IntTools_Range & aNewSR);
 
@@ -427,7 +427,7 @@ None
 
 Description
 -----------
-Correct shrunk range <asr> taking into account 3d-curve resolution and corresponding tolerance values of <ae>, <af>.
+Correct shrunk range <aSR> taking into account 3D-curve resolution and corresponding tolerance values of <aE>, <aF>.
 ") CorrectRange;
 		static void CorrectRange(const TopoDS_Edge & aE, const TopoDS_Face & aF, const IntTools_Range & aSR, IntTools_Range & aNewSR);
 
@@ -447,7 +447,7 @@ None
 
 Description
 -----------
-Corrects tolerance values of the sub-shapes of the shape <thes> if needed.
+Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
 ") CorrectShapeTolerances;
 		static void CorrectShapeTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Boolean theRunParallel = Standard_False);
 
@@ -468,7 +468,7 @@ None
 
 Description
 -----------
-Provides valid values of tolerances for the shape <thes> <thetolmax> is max value of the tolerance that can be accepted for correction. if real value of the tolerance will be greater than <atolmax>, the correction does not perform.
+Provides valid values of tolerances for the shape <theS> <theTolMax> is max value of the tolerance that can be accepted for correction. If real value of the tolerance will be greater than <aTolMax>, the correction does not perform.
 ") CorrectTolerances;
 		static void CorrectTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
 
@@ -481,7 +481,7 @@ float
 
 Description
 -----------
-Additional tolerance (delta tolerance) is used in boolean operations to ensure that the tolerance of new/old entities obtained by intersection of two shapes is slightly bigger than the actual distances to these shapes. it helps to avoid numerical instability which may occur when comparing distances and tolerances.
+Additional tolerance (delta tolerance) is used in Boolean Operations to ensure that the tolerance of new/old entities obtained by intersection of two shapes is slightly bigger than the actual distances to these shapes. It helps to avoid numerical instability which may occur when comparing distances and tolerances.
 ") DTolerance;
 		static Standard_Real DTolerance();
 
@@ -499,7 +499,7 @@ int
 
 Description
 -----------
-Returns dimension of the shape <thes>. if the shape contains elements of different dimension, -1 is returned.
+Returns dimension of the shape <theS>. If the shape contains elements of different dimension, -1 is returned.
 ") Dimension;
 		static Standard_Integer Dimension(const TopoDS_Shape & theS);
 
@@ -518,7 +518,7 @@ theDMax: int
 
 Description
 -----------
-Returns the min and max dimensions of the shape <thes>.
+Returns the min and max dimensions of the shape <theS>.
 ") Dimensions;
 		static void Dimensions(const TopoDS_Shape & theS, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -538,7 +538,7 @@ bool
 
 Description
 -----------
-Returns true if the face theface contains the edge theedge but with opposite orientation. if the method returns true theedgeoff is the edge founded.
+Returns True if the face theFace contains the edge theEdge but with opposite orientation. If the method returns True theEdgeOff is the edge founded.
 ") GetEdgeOff;
 		static Standard_Boolean GetEdgeOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOff);
 
@@ -558,7 +558,7 @@ bool
 
 Description
 -----------
-For the face theface gets the edge theedgeonf that is the same as theedge returns true if such edge exists returns false if there is no such edge.
+For the face theFace gets the edge theEdgeOnF that is the same as theEdge Returns True if such edge exists Returns False if there is no such edge.
 ") GetEdgeOnFace;
 		static Standard_Boolean GetEdgeOnFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOnF);
 
@@ -580,7 +580,7 @@ bool
 
 Description
 -----------
-For the face theface and its edge theedge finds the face suitable to produce shell. thelcef - set of faces to search. all faces from thelcef must share edge theedge.
+For the face theFace and its edge theEdge finds the face suitable to produce shell. theLCEF - set of faces to search. All faces from theLCEF must share edge theEdge.
 ") GetFaceOff;
 		static Standard_Boolean GetFaceOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, BOPTools_ListOfCoupleOfShape & theLCEF, TopoDS_Face & theFaceOff, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -601,7 +601,7 @@ bool
 
 Description
 -----------
-Returns true if paveblock <apb> lays on the face <af>, i.e the <pb> is in or on in 2d of <af>.
+Returns True if PaveBlock <aPB> lays on the face <aF>, i.e the <PB> is IN or ON in 2D of <aF>.
 ") IsBlockInOnFace;
 		static Standard_Boolean IsBlockInOnFace(const IntTools_Range & aShR, const TopoDS_Face & aF, const TopoDS_Edge & aE, const opencascade::handle<IntTools_Context> & aContext);
 
@@ -642,7 +642,7 @@ int
 
 Description
 -----------
-Returns true if the face theface is inside of the couple of faces theface1, theface2. the faces theface, theface1, theface2 must share the edge theedge return values: * 0 state is not in * 1 state is in * 2 state can not be found by the method of angles.
+Returns True if the face theFace is inside of the couple of faces theFace1, theFace2. The faces theFace, theFace1, theFace2 must share the edge theEdge Return values: * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
 ") IsInternalFace;
 		static Standard_Integer IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -663,7 +663,7 @@ int
 
 Description
 -----------
-Returns true if the face theface is inside of the appropriate couple of faces (from the set thelf) . the faces of the set thelf and theface must share the edge theedge * 0 state is not in * 1 state is in * 2 state can not be found by the method of angles.
+Returns True if the face theFace is inside of the appropriate couple of faces (from the set theLF) . The faces of the set theLF and theFace must share the edge theEdge * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
 ") IsInternalFace;
 		static Standard_Integer IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, TopTools_ListOfShape & theLF, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -685,7 +685,7 @@ bool
 
 Description
 -----------
-Returns true if the face theface is inside the solid thesolid. themef - map edge/faces for thesolid thetol - value of precision of computation thecontext- cahed geometrical tools.
+Returns True if the face theFace is inside the solid theSolid. theMEF - Map Edge/Faces for theSolid theTol - value of precision of computation theContext- cached geometrical tools.
 ") IsInternalFace;
 		static Standard_Boolean IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, TopTools_IndexedDataMapOfShapeListOfShape & theMEF, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -703,7 +703,7 @@ bool
 
 Description
 -----------
-Returns true if the solid <thesolid> is inverted.
+Returns true if the solid <theSolid> is inverted.
 ") IsInvertedSolid;
 		static Standard_Boolean IsInvertedSolid(const TopoDS_Solid & theSolid);
 
@@ -723,7 +723,7 @@ bool
 
 Description
 -----------
-Checks if it is possible to compute shrunk range for the edge <ae> flag <thechecksplittable> defines whether to take into account the possibility to split the edge or not.
+Checks if it is possible to compute shrunk range for the edge <aE> Flag <theCheckSplittable> defines whether to take into account the possibility to split the edge or not.
 ") IsMicroEdge;
 		static Standard_Boolean IsMicroEdge(const TopoDS_Edge & theEdge, const opencascade::handle<IntTools_Context> & theContext, const Standard_Boolean theCheckSplittable = Standard_True);
 
@@ -741,7 +741,7 @@ bool
 
 Description
 -----------
-Returns true if the shell <theshell> is open.
+Returns true if the shell <theShell> is open.
 ") IsOpenShell;
 		static Standard_Boolean IsOpenShell(const TopoDS_Shell & theShell);
 
@@ -762,7 +762,10 @@ bool
 
 Description
 -----------
-Checks if the direction of the split shape is opposite to the direction of the original shape. the method is an overload for (edge,edge) and (face,face) corresponding methods and checks only these types of shapes. for faces the method checks if normal directions are opposite. for edges the method checks if tangent vectors are opposite. //! in case the directions do not coincide, it returns true, meaning that split shape has to be reversed to match the direction of the original shape. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - error from (edge,edge) or (face,face) corresponding method - 100 - bad types. in case of any error the method always returns false. //! @param thesplit [in] split shape @param theshape [in] original shape @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
+Checks if the direction of the split shape is opposite to the direction of the original shape. The method is an overload for (Edge,Edge) and (Face,Face) corresponding methods and checks only these types of shapes. For faces the method checks if normal directions are opposite. For edges the method checks if tangent vectors are opposite. //! In case the directions do not coincide, it returns True, meaning that split shape has to be reversed to match the direction of the original shape. //! If requested (<theError> is not null), the method returns the status of the operation: - 0 - no error; - Error from (Edge,Edge) or (Face,Face) corresponding method - 100 - bad types. In case of any error the method always returns False. //! 
+Input parameter: theSplit Split shape 
+Input parameter: theShape Original shape 
+Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
 		static Standard_Boolean IsSplitToReverse(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
 
@@ -783,7 +786,10 @@ bool
 
 Description
 -----------
-Checks if the normal direction of the split face is opposite to the normal direction of the original face. the normal directions for both faces are taken in the same point - point inside the split face is projected onto the original face. returns true if the normals do not coincide, meaning the necessity to revert the orientation of the split face to match the direction of the original face. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - unable to find the point inside split face; - 2 - unable to compute the normal for the split face; - 3 - unable to project the point inside the split face on the original face; - 4 - unable to compute the normal for the original face. in case of any error the method always returns false. //! @param thesplit [in] split face @param theshape [in] original face @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
+Checks if the normal direction of the split face is opposite to the normal direction of the original face. The normal directions for both faces are taken in the same point - point inside the split face is projected onto the original face. Returns True if the normals do not coincide, meaning the necessity to revert the orientation of the split face to match the direction of the original face. //! If requested (<theError> is not null), the method returns the status of the operation: - 0 - no error; - 1 - unable to find the point inside split face; - 2 - unable to compute the normal for the split face; - 3 - unable to project the point inside the split face on the original face; - 4 - unable to compute the normal for the original face. In case of any error the method always returns False. //! 
+Input parameter: theSplit Split face 
+Input parameter: theShape Original face 
+Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
 		static Standard_Boolean IsSplitToReverse(const TopoDS_Face & theSplit, const TopoDS_Face & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
 
@@ -804,7 +810,10 @@ bool
 
 Description
 -----------
-Checks if the tangent vector of the split edge is opposite to the tangent vector of the original edge. the tangent vectors for both edges are computed in the same point - point inside the split edge is projected onto the original edge. returns true if the tangent vectors do not coincide, meaning the necessity to revert the orientation of the split edge to match the direction of the original edge. //! if requested (<theerror> is not null), the method returns the status of the operation: - 0 - no error; - 1 - degenerated edges are given; - 2 - unable to compute the tangent vector for the split edge; - 3 - unable to project the point inside the split edge on the original edge; - 4 - unable to compute the tangent vector for the original edge; in case of any error the method always returns false. //! @param thesplit [in] split edge @param theshape [in] original edge @param thecontext [in] cached geometrical tools @param theerror [out] error status of the operation.
+Checks if the tangent vector of the split edge is opposite to the tangent vector of the original edge. The tangent vectors for both edges are computed in the same point - point inside the split edge is projected onto the original edge. Returns True if the tangent vectors do not coincide, meaning the necessity to revert the orientation of the split edge to match the direction of the original edge. //! If requested (<theError> is not null), the method returns the status of the operation: - 0 - no error; - 1 - degenerated edges are given; - 2 - unable to compute the tangent vector for the split edge; - 3 - unable to project the point inside the split edge on the original edge; - 4 - unable to compute the tangent vector for the original edge; In case of any error the method always returns False. //! 
+Input parameter: theSplit Split edge 
+Input parameter: theShape Original edge 
+Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
 		static Standard_Boolean IsSplitToReverse(const TopoDS_Edge & theSplit, const TopoDS_Edge & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
 
@@ -825,7 +834,7 @@ bool
 
 Description
 -----------
-Add-on for the *issplittoreverse()* to check for its errors and in case of any add the *bopalgo_alertunabletoorienttheshape* warning to the report.
+Add-on for the *IsSplitToReverse()* to check for its errors and in case of any add the *BOPAlgo_AlertUnableToOrientTheShape* warning to the report.
 ") IsSplitToReverseWithWarn;
 		static Standard_Boolean IsSplitToReverseWithWarn(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, const opencascade::handle<Message_Report> & theReport = NULL);
 
@@ -846,7 +855,7 @@ None
 
 Description
 -----------
-For the list of faces thels build block thelscb in terms of connexity by edges themapavoid - set of edges to avoid for the treatment.
+For the list of faces theLS build block theLSCB in terms of connexity by edges theMapAvoid - set of edges to avoid for the treatment.
 ") MakeConnexityBlock;
 		static void MakeConnexityBlock(TopTools_ListOfShape & theLS, TopTools_IndexedMapOfShape & theMapAvoid, TopTools_ListOfShape & theLSCB, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -867,7 +876,7 @@ None
 
 Description
 -----------
-For the compound <thes> builds the blocks (compounds) of elements of type <theelementtype> connected through the shapes of the type <theconnectiontype>. the blocks are stored into the list <thelcb>.
+For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list <theLCB>.
 ") MakeConnexityBlocks;
 		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfShape & theLCB);
 
@@ -889,7 +898,7 @@ None
 
 Description
 -----------
-For the compound <thes> builds the blocks (compounds) of elements of type <theelementtype> connected through the shapes of the type <theconnectiontype>. the blocks are stored into the list of lists <thelcb>. returns also the connection map <theconnectionmap>, filled during operation.
+For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list of lists <theLCB>. Returns also the connection map <theConnectionMap>, filled during operation.
 ") MakeConnexityBlocks;
 		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfListOfShape & theLCB, TopTools_IndexedDataMapOfShapeListOfShape & theConnectionMap);
 
@@ -910,7 +919,7 @@ None
 
 Description
 -----------
-Makes connexity blocks of elements of the given type with the given type of the connecting elements. the blocks are checked on regularity (multi-connectivity) and stored to the list of blocks <thelcb>.
+Makes connexity blocks of elements of the given type with the given type of the connecting elements. The blocks are checked on regularity (multi-connectivity) and stored to the list of blocks <theLCB>.
 ") MakeConnexityBlocks;
 		static void MakeConnexityBlocks(const TopTools_ListOfShape & theLS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, BOPTools_ListOfConnexityBlock & theLCB);
 
@@ -973,7 +982,7 @@ None
 
 Description
 -----------
-Make a vertex using 3d-point <ap1> and 3d-tolerance value <atol>.
+Make a vertex using 3D-point <aP1> and 3D-tolerance value <aTol>.
 ") MakeNewVertex;
 		static void MakeNewVertex(const gp_Pnt & aP1, const Standard_Real aTol, TopoDS_Vertex & aNewVertex);
 
@@ -993,7 +1002,7 @@ None
 
 Description
 -----------
-Make a vertex using couple of vertices <av1, av2>.
+Make a vertex using couple of vertices <aV1, aV2>.
 ") MakeNewVertex;
 		static void MakeNewVertex(const TopoDS_Vertex & aV1, const TopoDS_Vertex & aV2, TopoDS_Vertex & aNewVertex);
 
@@ -1015,7 +1024,7 @@ None
 
 Description
 -----------
-Make a vertex in place of intersection between two edges <ae1, ae2> with parameters <ap1, ap2>.
+Make a vertex in place of intersection between two edges <aE1, aE2> with parameters <aP1, aP2>.
 ") MakeNewVertex;
 		static void MakeNewVertex(const TopoDS_Edge & aE1, const Standard_Real aP1, const TopoDS_Edge & aE2, const Standard_Real aP2, TopoDS_Vertex & aNewVertex);
 
@@ -1036,7 +1045,7 @@ None
 
 Description
 -----------
-Make a vertex in place of intersection between the edge <ae1> with parameter <ap1> and the face <af2>.
+Make a vertex in place of intersection between the edge <aE1> with parameter <aP1> and the face <aF2>.
 ") MakeNewVertex;
 		static void MakeNewVertex(const TopoDS_Edge & aE1, const Standard_Real aP1, const TopoDS_Face & aF2, TopoDS_Vertex & aNewVertex);
 
@@ -1060,7 +1069,7 @@ None
 
 Description
 -----------
-Makes 2d curve of the edge <thee> on the faces <thef1> and <thef2>. <thecontext> - storage for caching the geometrical tools.
+Makes 2d curve of the edge <theE> on the faces <theF1> and <theF2>. <theContext> - storage for caching the geometrical tools.
 ") MakePCurve;
 		static void MakePCurve(const TopoDS_Edge & theE, const TopoDS_Face & theF1, const TopoDS_Face & theF2, const IntTools_Curve & theCurve, const Standard_Boolean thePC1, const Standard_Boolean thePC2, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1083,7 +1092,7 @@ None
 
 Description
 -----------
-Make the edge from 3d-curve <aic> and two vertices <av1,av2> at parameters <ap1,ap2>.
+Make the edge from 3D-Curve <aIC> and two vertices <aV1,aV2> at parameters <aP1,aP2>.
 ") MakeSectEdge;
 		static void MakeSectEdge(const IntTools_Curve & aIC, const TopoDS_Vertex & aV1, const Standard_Real aP1, const TopoDS_Vertex & aV2, const Standard_Real aP2, TopoDS_Edge & aNewEdge);
 
@@ -1106,7 +1115,7 @@ None
 
 Description
 -----------
-Make the edge from base edge <ae1> and two vertices <av1,av2> at parameters <ap1,ap2>.
+Make the edge from base edge <aE1> and two vertices <aV1,aV2> at parameters <aP1,aP2>.
 ") MakeSplitEdge;
 		static void MakeSplitEdge(const TopoDS_Edge & aE1, const TopoDS_Vertex & aV1, const Standard_Real aP1, const TopoDS_Vertex & aV2, const Standard_Real aP2, TopoDS_Edge & aNewEdge);
 
@@ -1181,7 +1190,7 @@ None
 
 Description
 -----------
-Compute a 3d-point on the edge <aedge> at parameter <aprm>.
+Compute a 3D-point on the edge <aEdge> at parameter <aPrm>.
 ") PointOnEdge;
 		static void PointOnEdge(const TopoDS_Edge & aEdge, const Standard_Real aPrm, gp_Pnt & aP);
 
@@ -1201,7 +1210,7 @@ int
 
 Description
 -----------
-Checks if the normals direction of the given faces computed near the shared edge coincide. returns the status of operation: * 0 - in case of error (shared edge not found or directions are not collinear) * 1 - normal directions coincide; * -1 - normal directions are opposite.
+Checks if the normals direction of the given faces computed near the shared edge coincide. Returns the status of operation: * 0 - in case of error (shared edge not found or directions are not collinear) * 1 - normal directions coincide; * -1 - normal directions are opposite.
 ") Sense;
 		static Standard_Integer Sense(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1221,7 +1230,7 @@ None
 
 Description
 -----------
-Collects in the output list recursively all non-compound sub-shapes of the first level of the given shape thes. the optional map themap is used to avoid the duplicates in the output list, so it will also contain all non-compound sub-shapes.
+Collects in the output list recursively all non-compound sub-shapes of the first level of the given shape theS. The optional map theMap is used to avoid the duplicates in the output list, so it will also contain all non-compound sub-shapes.
 ") TreatCompound;
 		static void TreatCompound(const TopoDS_Shape & theS, TopTools_ListOfShape & theList, TopTools_MapOfShape * theMap = NULL);
 
@@ -1241,7 +1250,7 @@ None
 
 Description
 -----------
-Update the tolerance value for vertex <av> taking into account the fact that <av> lays on the curve <aic>.
+Update the tolerance value for vertex <aV> taking into account the fact that <aV> lays on the curve <aIC>.
 ") UpdateVertex;
 		static void UpdateVertex(const IntTools_Curve & aIC, const Standard_Real aT, const TopoDS_Vertex & aV);
 
@@ -1261,7 +1270,7 @@ None
 
 Description
 -----------
-Update the tolerance value for vertex <av> taking into account the fact that <av> lays on the edge <ae>.
+Update the tolerance value for vertex <aV> taking into account the fact that <aV> lays on the edge <aE>.
 ") UpdateVertex;
 		static void UpdateVertex(const TopoDS_Edge & aE, const Standard_Real aT, const TopoDS_Vertex & aV);
 
@@ -1280,7 +1289,7 @@ None
 
 Description
 -----------
-Update the tolerance value for vertex <avn> taking into account the fact that <avn> should cover tolerance zone of <avf>.
+Update the tolerance value for vertex <aVN> taking into account the fact that <aVN> should cover tolerance zone of <aVF>.
 ") UpdateVertex;
 		static void UpdateVertex(const TopoDS_Vertex & aVF, const TopoDS_Vertex & aVN);
 
@@ -1316,7 +1325,7 @@ None
 
 Description
 -----------
-Adjust p-curve <thec2d> (3d-curve <thec3d>) on surface of the face <thef>. <thecontext> - storage for caching the geometrical tools.
+Adjust P-Curve <theC2D> (3D-curve <theC3D>) on surface of the face <theF>. <theContext> - storage for caching the geometrical tools.
 ") AdjustPCurveOnFace;
 		static void AdjustPCurveOnFace(const TopoDS_Face & theF, const opencascade::handle<Geom_Curve> & theC3D, const opencascade::handle<Geom2d_Curve> & theC2D, opencascade::handle<Geom2d_Curve> & theC2DA, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1339,7 +1348,7 @@ None
 
 Description
 -----------
-Adjust p-curve <ac2d> (3d-curve <c3d>) on surface <af> . [at1, at2] - range to adjust <thecontext> - storage for caching the geometrical tools.
+Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> . [aT1, aT2] - range to adjust <theContext> - storage for caching the geometrical tools.
 ") AdjustPCurveOnFace;
 		static void AdjustPCurveOnFace(const TopoDS_Face & theF, const Standard_Real theFirst, const Standard_Real theLast, const opencascade::handle<Geom2d_Curve> & theC2D, opencascade::handle<Geom2d_Curve> & theC2DA, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1361,7 +1370,7 @@ None
 
 Description
 -----------
-Adjust p-curve <ac2d> (3d-curve <c3d>) on surface <af> . [at1, at2] - range to adjust.
+Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> . [aT1, aT2] - range to adjust.
 ") AdjustPCurveOnSurf;
 		static void AdjustPCurveOnSurf(const BRepAdaptor_Surface & aF, const Standard_Real aT1, const Standard_Real aT2, const opencascade::handle<Geom2d_Curve> & aC2D, opencascade::handle<Geom2d_Curve> & aC2DA);
 
@@ -1382,7 +1391,7 @@ int
 
 Description
 -----------
-Attach p-curve from the edge <aeold> on surface <af> to the edge <aenew> returns 0 in case of success.
+Attach P-Curve from the edge <aEold> on surface <aF> to the edge <aEnew> Returns 0 in case of success.
 ") AttachExistingPCurve;
 		static Standard_Integer AttachExistingPCurve(const TopoDS_Edge & aEold, const TopoDS_Edge & aEnew, const TopoDS_Face & aF, const opencascade::handle<IntTools_Context> & aCtx);
 
@@ -1402,7 +1411,7 @@ None
 
 Description
 -----------
-Compute p-curve for the edge <ae> on the face <af>. raises exception standard_constructionerror if projection algorithm fails. <thecontext> - storage for caching the geometrical tools.
+Compute P-Curve for the edge <aE> on the face <aF>. Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") BuildPCurveForEdgeOnFace;
 		static void BuildPCurveForEdgeOnFace(const TopoDS_Edge & aE, const TopoDS_Face & aF, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1423,7 +1432,7 @@ aToler: float
 
 Description
 -----------
-Get p-curve <ac> for the edge <ae> on surface <af> . if the p-curve does not exist, build it using make2d(). [atoler] - reached tolerance raises exception standard_constructionerror if algorithm make2d() fails. <thecontext> - storage for caching the geometrical tools.
+Get P-Curve <aC> for the edge <aE> on surface <aF> . If the P-Curve does not exist, build it using Make2D(). [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1446,7 +1455,7 @@ aToler: float
 
 Description
 -----------
-Get p-curve <ac> for the edge <ae> on surface <af> . if the p-curve does not exist, build it using make2d(). [afirst, alast] - range of the p-curve [atoler] - reached tolerance raises exception standard_constructionerror if algorithm make2d() fails. <thecontext> - storage for caching the geometrical tools.
+Get P-Curve <aC> for the edge <aE> on surface <aF> . If the P-Curve does not exist, build it using Make2D(). [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1466,7 +1475,7 @@ bool
 
 Description
 -----------
-Compute tangent for the edge <ae> [in 3d] at parameter <at>.
+Compute tangent for the edge <aE> [in 3D] at parameter <aT>.
 ") EdgeTangent;
 		static Standard_Boolean EdgeTangent(const TopoDS_Edge & anE, const Standard_Real aT, gp_Vec & Tau);
 
@@ -1488,7 +1497,7 @@ aToler: float
 
 Description
 -----------
-Returns true if the edge <ae> has p-curve <ac> on surface <af> . [afirst, alast] - range of the p-curve [atoler] - reached tolerance if the p-curve does not exist, ac.isnull()=true.
+Returns True if the edge <aE> has P-Curve <aC> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance If the P-Curve does not exist, aC.IsNull()=True.
 ") HasCurveOnSurface;
 		static Standard_Boolean HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1507,7 +1516,7 @@ bool
 
 Description
 -----------
-Returns true if the edge <ae> has p-curve <ac> on surface <af> . if the p-curve does not exist, ac.isnull()=true.
+Returns True if the edge <aE> has P-Curve <aC> on surface <aF> . If the P-Curve does not exist, aC.IsNull()=True.
 ") HasCurveOnSurface;
 		static Standard_Boolean HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF);
 
@@ -1526,7 +1535,7 @@ float
 
 Description
 -----------
-Compute intermediate value in between [afirst, alast] .
+Compute intermediate value in between [aFirst, aLast] .
 ") IntermediatePoint;
 		static Standard_Real IntermediatePoint(const Standard_Real aFirst, const Standard_Real aLast);
 
@@ -1544,7 +1553,7 @@ float
 
 Description
 -----------
-Compute intermediate value of parameter for the edge <ane>.
+Compute intermediate value of parameter for the edge <anE>.
 ") IntermediatePoint;
 		static Standard_Real IntermediatePoint(const TopoDS_Edge & anE);
 
@@ -1564,7 +1573,7 @@ isTheVIso: bool
 
 Description
 -----------
-Checks if curveonsurface of thee on thef matches with isoline of thef surface. sets corresponding values for istheuiso and istheviso variables. //! attention!!! this method is based on the comparison between direction of surface (which thef is based on) iso-lines and the direction of the edge p-curve (on thef) in middle-point of the p-curve. //! this method should be used carefully (e.g. brep_tool::isclosed(...) together) in order to avoid false classification some p-curves as isoline (e.g. circle on a plane).
+Checks if CurveOnSurface of theE on theF matches with isoline of theF surface. Sets corresponding values for isTheUIso and isTheVIso variables. //! ATTENTION!!! This method is based on the comparison between direction of surface (which theF is based on) iso-lines and the direction of the edge p-curve (on theF) in middle-point of the p-curve. //! This method should be used carefully (e.g. BRep_Tool::IsClosed(...) together) in order to avoid false classification some p-curves as isoline (e.g. circle on a plane).
 ") IsEdgeIsoline;
 		static void IsEdgeIsoline(const TopoDS_Edge & theE, const TopoDS_Face & theF, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -1587,7 +1596,7 @@ aToler: float
 
 Description
 -----------
-Make p-curve <ac> for the edge <ae> on surface <af> . [afirst, alast] - range of the p-curve [atoler] - reached tolerance raises exception standard_constructionerror if algorithm fails. <thecontext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the edge <aE> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") Make2D;
 		static void Make2D(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1608,7 +1617,7 @@ aToler: float
 
 Description
 -----------
-Make p-curve <ac> for the 3d-curve <c3d> on surface <af> . [atoler] - reached tolerance raises exception standard_constructionerror if projection algorithm fails. <thecontext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") MakePCurveOnFace;
 		static void MakePCurveOnFace(const TopoDS_Face & aF, const opencascade::handle<Geom_Curve> & C3D, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1631,7 +1640,7 @@ aToler: float
 
 Description
 -----------
-Make p-curve <ac> for the 3d-curve <c3d> on surface <af> . [at1, at2] - range to build [atoler] - reached tolerance raises exception standard_constructionerror if projection algorithm fails. <thecontext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aT1, aT2] - range to build [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") MakePCurveOnFace;
 		static void MakePCurveOnFace(const TopoDS_Face & aF, const opencascade::handle<Geom_Curve> & C3D, const Standard_Real aT1, const Standard_Real aT2, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1653,7 +1662,7 @@ V: float
 
 Description
 -----------
-Compute surface parameters <u,v> of the face <af> for the point from the edge <ae> at parameter <at>. if <ae> has't pcurve on surface, algorithm tries to get it by projection and can raise exception standard_constructionerror if projection algorithm fails. <thecontext> - storage for caching the geometrical tools.
+Compute surface parameters <U,V> of the face <aF> for the point from the edge <aE> at parameter <aT>. If <aE> has't pcurve on surface, algorithm tries to get it by projection and can raise exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") PointOnSurface;
 		static void PointOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1690,7 +1699,7 @@ bool
 
 Description
 -----------
-Makes the edge <theesplit> seam edge for the face <theface> basing on the surface properties (u and v periods).
+Makes the edge <theESplit> seam edge for the face <theFace> basing on the surface properties (U and V periods).
 ") DoSplitSEAMOnFace;
 		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
 
@@ -1710,7 +1719,7 @@ bool
 
 Description
 -----------
-Makes the split edge <theesplit> seam edge for the face <theface> basing on the positions of 2d curves of the original edge <theeorigin>.
+Makes the split edge <theESplit> seam edge for the face <theFace> basing on the positions of 2d curves of the original edge <theEOrigin>.
 ") DoSplitSEAMOnFace;
 		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theEOrigin, const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
 
@@ -1733,7 +1742,7 @@ bool
 
 Description
 -----------
-Computes normal to the face <af> for the 3d-point that belongs to the edge <ae> at parameter <at>. output: apx - the 3d-point where the normal computed ad - the normal; warning: the normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); the point is computed using pointnearedge function, with the shifting value boptools_algotools3d::minstepin2d(), from the edge, but if this value is too big, the point will be computed using hatcher (pointinface function). returns true in case of success.
+Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function, with the shifting value BOPTools_AlgoTools3D::MinStepIn2d(), from the edge, but if this value is too big, the point will be computed using Hatcher (PointInFace function). Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
 		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Pnt & aPx, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1756,7 +1765,7 @@ bool
 
 Description
 -----------
-Computes normal to the face <af> for the 3d-point that belongs to the edge <ae> at parameter <at>. output: apx - the 3d-point where the normal computed ad - the normal; warning: the normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); the point is computed using pointnearedge function with the shifting value <adt2d> from the edge; no checks on this value will be done. returns true in case of success.
+Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function with the shifting value <aDt2D> from the edge; No checks on this value will be done. Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
 		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const Standard_Real aT, gp_Pnt & aP, gp_Dir & aDNF, const Standard_Real aDt2D);
 
@@ -1780,7 +1789,7 @@ bool
 
 Description
 -----------
-Computes normal to the face <af> for the 3d-point that belongs to the edge <ae> at parameter <at>. output: apx - the 3d-point where the normal computed ad - the normal; warning: the normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); the point is computed using pointnearedge function with the shifting value <adt2d> from the edge, but if this value is too big the point will be computed using hatcher (pointinface function). returns true in case of success.
+Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function with the shifting value <aDt2D> from the edge, but if this value is too big the point will be computed using Hatcher (PointInFace function). Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
 		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt & aP, gp_Dir & aDNF, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1802,7 +1811,7 @@ None
 
 Description
 -----------
-Computes normal to the face <af> for the point on the edge <ae> at parameter <at>. <thecontext> - storage for caching the geometrical tools.
+Computes normal to the face <aF> for the point on the edge <aE> at parameter <aT>. <theContext> - storage for caching the geometrical tools.
 ") GetNormalToFaceOnEdge;
 		static void GetNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1823,7 +1832,7 @@ None
 
 Description
 -----------
-Computes normal to the face <af> for the point on the edge <ae> at arbitrary intermediate parameter. <thecontext> - storage for caching the geometrical tools.
+Computes normal to the face <aF> for the point on the edge <aE> at arbitrary intermediate parameter. <theContext> - storage for caching the geometrical tools.
 ") GetNormalToFaceOnEdge;
 		static void GetNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -1844,7 +1853,7 @@ bool
 
 Description
 -----------
-Compute normal <ad> to surface <as> in point (u,v) returns true if directions ad1u, ad1v coincide.
+Compute normal <aD> to surface <aS> in point (U,V) Returns True if directions aD1U, aD1V coincide.
 ") GetNormalToSurface;
 		static Standard_Boolean GetNormalToSurface(const opencascade::handle<Geom_Surface> & aS, const Standard_Real U, const Standard_Real V, gp_Dir & aD);
 
@@ -1862,7 +1871,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <as> does not contain geometry information (e.g. empty compound).
+Returns True if the shape <aS> does not contain geometry information (e.g. empty compound).
 ") IsEmptyShape;
 		static Standard_Boolean IsEmptyShape(const TopoDS_Shape & aS);
 
@@ -1875,7 +1884,7 @@ float
 
 Description
 -----------
-Returns simple step value that is used in 2d-computations = 1.e-5.
+Returns simple step value that is used in 2D-computations = 1.e-5.
 ") MinStepIn2d;
 		static Standard_Real MinStepIn2d();
 
@@ -1895,7 +1904,7 @@ None
 
 Description
 -----------
-Get the edge <aer> from the face <af> that is the same as the edge <ae>.
+Get the edge <aER> from the face <aF> that is the same as the edge <aE>.
 ") OrientEdgeOnFace;
 		static void OrientEdgeOnFace(const TopoDS_Edge & aE, const TopoDS_Face & aF, TopoDS_Edge & aER);
 
@@ -1916,7 +1925,7 @@ int
 
 Description
 -----------
-Computes arbitrary point <thep> inside the face <thef>. <thep2d> - 2d representation of <thep> on the surface of <thef> returns 0 in case of success.
+Computes arbitrary point <theP> inside the face <theF>. <theP2D> - 2D representation of <theP> on the surface of <theF> Returns 0 in case of success.
 ") PointInFace;
 		static Standard_Integer PointInFace(const TopoDS_Face & theF, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1940,7 +1949,7 @@ int
 
 Description
 -----------
-Computes a point <thep> inside the face <thef> using starting point taken by the parameter <thet> from the 2d curve of the edge <thee> on the face <thef> in the direction perpendicular to the tangent vector of the 2d curve of the edge. the point will be distanced on <thedt2d> from the 2d curve. <thep2d> - 2d representation of <thep> on the surface of <thef> returns 0 in case of success.
+Computes a point <theP> inside the face <theF> using starting point taken by the parameter <theT> from the 2d curve of the edge <theE> on the face <theF> in the direction perpendicular to the tangent vector of the 2d curve of the edge. The point will be distanced on <theDt2D> from the 2d curve. <theP2D> - 2D representation of <theP> on the surface of <theF> Returns 0 in case of success.
 ") PointInFace;
 		static Standard_Integer PointInFace(const TopoDS_Face & theF, const TopoDS_Edge & theE, const Standard_Real theT, const Standard_Real theDt2D, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1963,7 +1972,7 @@ int
 
 Description
 -----------
-Computes a point <thep> inside the face <thef> using the line <thel> so that 2d point <thep2d>, 2d representation of <thep> on the surface of <thef>, lies on that line. returns 0 in case of success.
+Computes a point <theP> inside the face <theF> using the line <theL> so that 2D point <theP2D>, 2D representation of <theP> on the surface of <theF>, lies on that line. Returns 0 in case of success.
 ") PointInFace;
 		static Standard_Integer PointInFace(const TopoDS_Face & theF, const opencascade::handle<Geom2d_Curve> & theL, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext, const Standard_Real theDt2D = 0.0);
 
@@ -1987,7 +1996,7 @@ int
 
 Description
 -----------
-Compute the point <apx>, (<ap2d>) that is near to the edge <ae> at parameter <at> towards to the material of the face <af>. the value of shifting in 2d is <adt2d> if the value of shifting is too big the point will be computed using hatcher (pointinface function). returns error status: 0 - in case of success; 1 - <ae> does not have 2d curve on the face <af>; 2 - the computed point is out of the face.
+Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is <aDt2D> If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
 		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -2010,7 +2019,7 @@ int
 
 Description
 -----------
-Compute the point <apx>, (<ap2d>) that is near to the edge <ae> at parameter <at> towards to the material of the face <af>. the value of shifting in 2d is <adt2d>. no checks on this value will be done. returns error status: 0 - in case of success; 1 - <ae> does not have 2d curve on the face <af>.
+Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is <aDt2D>. No checks on this value will be done. Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>.
 ") PointNearEdge;
 		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx);
 
@@ -2033,7 +2042,7 @@ int
 
 Description
 -----------
-Computes the point <apx>, (<ap2d>) that is near to the edge <ae> at parameter <at> towards to the material of the face <af>. the value of shifting in 2d is dt2d=boptools_algotools3d::minstepin2d() if the value of shifting is too big the point will be computed using hatcher (pointinface function). returns error status: 0 - in case of success; 1 - <ae> does not have 2d curve on the face <af>; 2 - the computed point is out of the face.
+Computes the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is dt2D=BOPTools_AlgoTools3D::MinStepIn2d() If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
 		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -2055,7 +2064,7 @@ int
 
 Description
 -----------
-Compute the point <apx>, (<ap2d>) that is near to the edge <ae> at arbitrary parameter towards to the material of the face <af>. the value of shifting in 2d is dt2d=boptools_algotools3d::minstepin2d(). if the value of shifting is too big the point will be computed using hatcher (pointinface function). returns error status: 0 - in case of success; 1 - <ae> does not have 2d curve on the face <af>; 2 - the computed point is out of the face.
+Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at arbitrary parameter towards to the material of the face <aF>. The value of shifting in 2D is dt2D=BOPTools_AlgoTools3D::MinStepIn2d(). If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
 		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
@@ -2074,7 +2083,7 @@ int
 
 Description
 -----------
-Returns 1 if scalar product anf1* anf2>0. returns 0 if directions anf1 anf2 coincide returns -1 if scalar product anf1* anf2<0.
+Returns 1 if scalar product aNF1* aNF2>0. Returns 0 if directions aNF1 aNF2 coincide Returns -1 if scalar product aNF1* aNF2<0.
 ") SenseFlag;
 		static Standard_Integer SenseFlag(const gp_Dir & aNF1, const gp_Dir & aNF2);
 

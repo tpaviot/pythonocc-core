@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPADAPTORDOCSTRING
 "BRepAdaptor module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepadaptor.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 
@@ -119,7 +119,7 @@ None
 
 Description
 -----------
-Creates an undefined curve with no wire loaded.
+Creates an undefined Curve with no Wire loaded.
 ") BRepAdaptor_CompCurve;
 		 BRepAdaptor_CompCurve();
 
@@ -160,7 +160,7 @@ None
 
 Description
 -----------
-Creates a curve to access the geometry of edge <w>.
+Creates a Curve to access the geometry of edge <W>.
 ") BRepAdaptor_CompCurve;
 		 BRepAdaptor_CompCurve(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -231,7 +231,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u.
+Computes the point of parameter U.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -251,7 +251,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -272,7 +272,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -294,7 +294,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -313,7 +313,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
@@ -345,7 +345,7 @@ UonE: float
 
 Description
 -----------
-Returns an edge and one parameter on them corresponding to the parameter u.
+returns an edge and one parameter on them corresponding to the parameter U.
 ") Edge;
 		void Edge(const Standard_Real U, TopoDS_Edge & E, Standard_Real &OutValue);
 
@@ -416,7 +416,7 @@ None
 
 Description
 -----------
-Sets the wire <w>.
+Sets the wire <W>.
 ") Initialize;
 		void Initialize(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa);
 
@@ -438,7 +438,7 @@ None
 
 Description
 -----------
-Sets wire <w> and trimmed parameter.
+Sets wire <W> and trimmed parameter.
 ") Initialize;
 		void Initialize(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -457,7 +457,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -540,7 +540,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -610,7 +610,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution.
+returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -643,7 +643,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -661,7 +661,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
@@ -703,7 +703,7 @@ None
 
 Description
 -----------
-Creates an undefined curve with no edge loaded.
+Creates an undefined Curve with no Edge loaded.
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve();
 
@@ -721,7 +721,7 @@ None
 
 Description
 -----------
-Creates a curve to access the geometry of edge <e>.
+Creates a Curve to access the geometry of edge <E>.
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve(const TopoDS_Edge & E);
 
@@ -740,7 +740,7 @@ None
 
 Description
 -----------
-Creates a curve to access the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
+Creates a Curve to access the geometry of edge <E>. The geometry will be computed using the parametric curve of <E> on the face <F>. An Error is raised if the edge does not have a pcurve on the face.
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -753,7 +753,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Warning: this will make a copy of the bspline curve since it applies to it mytsrf. be careful when using this method.
+Warning: This will make a copy of the BSpline Curve since it applies to it myTsrf. Be careful when using this method.
 ") BSpline;
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
@@ -766,7 +766,7 @@ opencascade::handle<Geom_BezierCurve>
 
 Description
 -----------
-Warning: this will make a copy of the bezier curve since it applies to it mytsrf. be careful when using this method.
+Warning: This will make a copy of the Bezier Curve since it applies to it myTsrf. Be careful when using this method.
 ") Bezier;
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
@@ -805,7 +805,7 @@ GeomAdaptor_Curve
 
 Description
 -----------
-Returns the curve of the edge.
+Returns the Curve of the edge.
 ") Curve;
 		GeomAdaptor_Curve Curve();
 
@@ -818,7 +818,7 @@ Adaptor3d_CurveOnSurface
 
 Description
 -----------
-Returns the curveonsurface of the edge.
+Returns the CurveOnSurface of the edge.
 ") CurveOnSurface;
 		Adaptor3d_CurveOnSurface CurveOnSurface();
 
@@ -837,7 +837,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u.
+Computes the point of parameter U.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -857,7 +857,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -878,7 +878,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -900,7 +900,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -919,7 +919,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
@@ -1015,7 +1015,7 @@ None
 
 Description
 -----------
-Sets the curve <self> to access the geometry of edge <e>.
+Sets the Curve <self> to access the geometry of edge <E>.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E);
 
@@ -1034,7 +1034,7 @@ None
 
 Description
 -----------
-Sets the curve <self> to access the geometry of edge <e>. the geometry will be computed using the parametric curve of <e> on the face <f>. an error is raised if the edge does not have a pcurve on the face.
+Sets the Curve <self> to access the geometry of edge <E>. The geometry will be computed using the parametric curve of <E> on the face <F>. An Error is raised if the edge does not have a pcurve on the face.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1053,7 +1053,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1066,7 +1066,7 @@ bool
 
 Description
 -----------
-Returns true if the edge geometry is computed from a 3d curve.
+Returns True if the edge geometry is computed from a 3D curve.
 ") Is3DCurve;
 		Standard_Boolean Is3DCurve();
 
@@ -1092,7 +1092,7 @@ bool
 
 Description
 -----------
-Returns true if the edge geometry is computed from a pcurve on a surface.
+Returns True if the edge geometry is computed from a pcurve on a surface.
 ") IsCurveOnSurface;
 		Standard_Boolean IsCurveOnSurface();
 
@@ -1162,7 +1162,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1240,7 +1240,7 @@ None
 
 Description
 -----------
-Reset currently loaded curve (undone load()).
+Reset currently loaded curve (undone Load()).
 ") Reset;
 		void Reset();
 
@@ -1258,7 +1258,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution.
+returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -1304,7 +1304,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -1335,7 +1335,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
@@ -1383,7 +1383,7 @@ None
 
 Description
 -----------
-Creates with the pcurve of <e> on <f>.
+Creates with the pcurve of <E> on <F>.
 ") BRepAdaptor_Curve2d;
 		 BRepAdaptor_Curve2d(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1396,7 +1396,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the edge.
+Returns the Edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
@@ -1409,7 +1409,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face.
+Returns the Face.
 ") Face;
 		const TopoDS_Face Face();
 
@@ -1428,7 +1428,7 @@ None
 
 Description
 -----------
-Initialize with the pcurve of <e> on <f>.
+Initialize with the pcurve of <E> on <F>.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1489,7 +1489,7 @@ None
 
 Description
 -----------
-Creates a surface to access the geometry of <f>. if <restriction> is true the parameter range is the parameter range in the uv space of the restriction.
+Creates a surface to access the geometry of <F>. If <Restriction> is true the parameter range is the parameter range in the UV space of the restriction.
 ") BRepAdaptor_Surface;
 		 BRepAdaptor_Surface(const TopoDS_Face & F, const Standard_Boolean R = Standard_True);
 
@@ -1515,7 +1515,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Warning: this will make a copy of the bspline surface since it applies to it the mytsrf transformation be careful when using this method.
+Warning: this will make a copy of the BSpline Surface since it applies to it the myTsrf transformation Be Careful when using this method.
 ") BSpline;
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
@@ -1528,7 +1528,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Only for surfaceofextrusion and surfaceofrevolution warning: this will make a copy of the underlying curve since it applies to it the transformation mytrsf. be careful when using this method.
+only for SurfaceOfExtrusion and SurfaceOfRevolution Warning: this will make a copy of the underlying curve since it applies to it the transformation myTrsf. Be careful when using this method.
 ") BasisCurve;
 		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
@@ -1613,7 +1613,7 @@ None
 
 Description
 -----------
-Computes the point of parameters u,v on the surface.
+Computes the point of parameters U,V on the surface.
 ") D0;
 		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
@@ -1635,7 +1635,7 @@ None
 
 Description
 -----------
-Computes the point and the first derivatives on the surface. raised if the continuity of the current intervals is not c1. //! tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
+Computes the point and the first derivatives on the surface. Raised if the continuity of the current intervals is not C1. //! Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
 ") D1;
 		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -1660,7 +1660,7 @@ None
 
 Description
 -----------
-Computes the point, the first and second derivatives on the surface. raised if the continuity of the current intervals is not c2.
+Computes the point, the first and second derivatives on the surface. Raised if the continuity of the current intervals is not C2.
 ") D2;
 		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
@@ -1689,7 +1689,7 @@ None
 
 Description
 -----------
-Computes the point, the first, second and third derivatives on the surface. raised if the continuity of the current intervals is not c3.
+Computes the point, the first, second and third derivatives on the surface. Raised if the continuity of the current intervals is not C3.
 ") D3;
 		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
@@ -1710,7 +1710,7 @@ gp_Vec
 
 Description
 -----------
-Computes the derivative of order nu in the direction u and nv in the direction v at the point p(u, v). raised if the current u interval is not not cnu and the current v interval is not cnv. raised if nu + nv < 1 or nu < 0 or nv < 0.
+Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
@@ -1775,7 +1775,7 @@ GeomAbs_SurfaceType
 
 Description
 -----------
-Returns the type of the surface: plane, cylinder, cone, sphere, torus, beziersurface, bsplinesurface, surfaceofrevolution, surfaceofextrusion, othersurface.
+Returns the type of the surface: Plane, Cylinder, Cone, Sphere, Torus, BezierSurface, BSplineSurface, SurfaceOfRevolution, SurfaceOfExtrusion, OtherSurface.
 ") GetType;
 		virtual GeomAbs_SurfaceType GetType();
 
@@ -1794,7 +1794,7 @@ None
 
 Description
 -----------
-Sets the surface to the geometry of <f>.
+Sets the surface to the geometry of <F>.
 ") Initialize;
 		void Initialize(const TopoDS_Face & F, const Standard_Boolean Restriction = Standard_True);
 
@@ -1916,7 +1916,7 @@ int
 
 Description
 -----------
-If necessary, breaks the surface in u intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the surface in U intervals of continuity <S>. And returns the number of intervals.
 ") NbUIntervals;
 		virtual Standard_Integer NbUIntervals(const GeomAbs_Shape theSh);
 
@@ -1960,7 +1960,7 @@ int
 
 Description
 -----------
-If necessary, breaks the surface in v intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the surface in V intervals of continuity <S>. And returns the number of intervals.
 ") NbVIntervals;
 		virtual Standard_Integer NbVIntervals(const GeomAbs_Shape theSh);
 
@@ -2135,7 +2135,7 @@ None
 
 Description
 -----------
-Returns the intervals with the requested continuity in the u direction.
+Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
 		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2166,7 +2166,7 @@ float
 
 Description
 -----------
-Returns the parametric u resolution corresponding to the real space resolution <r3d>.
+Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 ") UResolution;
 		virtual Standard_Real UResolution(const Standard_Real theR3d);
 
@@ -2186,7 +2186,7 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-Returns a surface trimmed in the u direction equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a surface trimmed in the U direction equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") UTrim;
 		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -2231,7 +2231,7 @@ None
 
 Description
 -----------
-Returns the intervals with the requested continuity in the v direction.
+Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
 		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2262,7 +2262,7 @@ float
 
 Description
 -----------
-Returns the parametric v resolution corresponding to the real space resolution <r3d>.
+Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 ") VResolution;
 		virtual Standard_Real VResolution(const Standard_Real theR3d);
 
@@ -2282,7 +2282,7 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-Returns a surface trimmed in the v direction between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a surface trimmed in the V direction between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") VTrim;
 		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -2301,7 +2301,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameters u,v on the surface. tip: use geomlib::normestim() to calculate surface normal at specified (u, v) point.
+Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
 ") Value;
 		gp_Pnt Value(const Standard_Real U, const Standard_Real V);
 

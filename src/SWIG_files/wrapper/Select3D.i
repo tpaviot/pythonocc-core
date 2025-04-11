@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECT3DDOCSTRING
 "Select3D module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_select3d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_select3d.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECT3DDOCSTRING) Select3D
 
@@ -308,9 +308,6 @@ Change index at specified position.
 *********************/
 class Select3D_Pnt {
 	public:
-		float x;
-		float y;
-		float z;
 };
 
 
@@ -462,7 +459,7 @@ None
 
 Description
 -----------
-Constructs a sensitive box object defined by the owner theownerid, and the box thebox.
+Constructs a sensitive box object defined by the owner theOwnerId, and the box theBox.
 ") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Bnd_Box & theBox);
 
@@ -486,7 +483,7 @@ None
 
 Description
 -----------
-Constructs a sensitive box object defined by the owner theownerid, and the coordinates thexmin, theymin, thezmin, thexmax, theymax, thezmax. thexmin, theymin and thezmin define the minimum point in the front lower left hand corner of the box, and thexmax, theymax and thezmax define the maximum point in the back upper right hand corner of the box.
+Constructs a sensitive box object defined by the owner theOwnerId, and the coordinates theXmin, theYMin, theZMin, theXMax, theYMax, theZMax. theXmin, theYMin and theZMin define the minimum point in the front lower left hand corner of the box, and theXMax, theYMax and theZMax define the maximum point in the back upper right hand corner of the box.
 ") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theXMin, const Standard_Real theYMin, const Standard_Real theZMin, const Standard_Real theXMax, const Standard_Real theYMax, const Standard_Real theZMax);
 
@@ -499,7 +496,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns coordinates of the box. if location transformation is set, it will be applied.
+Returns coordinates of the box. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -512,7 +509,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the box. if location transformation is set, it will be applied.
+Returns center of the box. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -591,7 +588,7 @@ bool
 
 Description
 -----------
-Returns true if bvh tree is in invalidated state.
+Returns True if BVH tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -637,7 +634,10 @@ None
 
 Description
 -----------
-Constructs a sensitive cylinder object defined by the owner theownerid, @param[in] thebottomrad cylinder bottom radius @param[in] thetoprad cylinder top radius @param[in] theheight cylinder height.
+Constructs a sensitive cylinder object defined by the owner theOwnerId, 
+Input parameter: theBottomRad cylinder bottom radius 
+Input parameter: theTopRad cylinder top radius 
+Input parameter: theHeight cylinder height.
 ") Select3D_SensitiveCylinder;
 		 Select3D_SensitiveCylinder(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow = Standard_False);
 
@@ -663,7 +663,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the cylinder. if location transformation is set, it will be applied.
+Returns bounding box of the cylinder. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -679,6 +679,19 @@ Description
 Returns center of the cylinder with transformation applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
+
+		/****** Select3D_SensitiveCylinder::GetConnected ******/
+		/****** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ******/
+		%feature("compactdefaultargs") GetConnected;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Returns the copy of this.
+") GetConnected;
+		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****** Select3D_SensitiveCylinder::Height ******/
 		/****** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ******/
@@ -747,7 +760,7 @@ bool
 
 Description
 -----------
-Always returns standard_false.
+Always returns Standard_False.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -809,7 +822,7 @@ None
 
 Description
 -----------
-Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
+Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const Select3D_TypeOfSensitivity theType);
 
@@ -829,7 +842,7 @@ None
 
 Description
 -----------
-Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
+Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Select3D_TypeOfSensitivity theType);
 
@@ -842,7 +855,7 @@ None
 
 Description
 -----------
-Builds bvh tree for the face.
+Builds BVH tree for the face.
 ") BVH;
 		virtual void BVH();
 
@@ -855,7 +868,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the face. if location transformation is set, it will be applied.
+Returns bounding box of the face. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -868,7 +881,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the face. if location transformation is set, it will be applied.
+Returns center of the face. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -920,7 +933,7 @@ None
 
 Description
 -----------
-Initializes the given array theharrayofpnt by 3d coordinates of vertices of the face.
+Initializes the given array theHArrayOfPnt by 3d coordinates of vertices of the face.
 ") GetPoints;
 		void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -965,7 +978,7 @@ bool
 
 Description
 -----------
-Returns true if bvh tree is in invalidated state.
+Returns True if BVH tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1000,7 +1013,7 @@ None
 
 Description
 -----------
-Constructs a sensitive point object defined by the owner ownerid and the point point.
+Constructs a sensitive point object defined by the owner OwnerId and the point Point.
 ") Select3D_SensitivePoint;
 		 Select3D_SensitivePoint(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & thePoint);
 
@@ -1013,7 +1026,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the point. if location transformation is set, it will be applied.
+Returns bounding box of the point. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1026,7 +1039,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of point. if location transformation is set, it will be applied.
+Returns center of point. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1118,7 +1131,7 @@ bool
 
 Description
 -----------
-Returns true if bvh tree is in invalidated state.
+Returns True if BVH tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1154,7 +1167,7 @@ None
 
 Description
 -----------
-Constructs the sensitive segment object defined by the owner theownerid, the points thefirstpnt, thelastpnt.
+Constructs the sensitive segment object defined by the owner theOwnerId, the points theFirstPnt, theLastPnt.
 ") Select3D_SensitiveSegment;
 		 Select3D_SensitiveSegment(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & theFirstPnt, const gp_Pnt & theLastPnt);
 
@@ -1167,7 +1180,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the segment. if location transformation is set, it will be applied.
+Returns bounding box of the segment. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1180,7 +1193,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the segment. if location transformation is set, it will be applied.
+Returns center of the segment. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1214,7 +1227,7 @@ gp_Pnt
 
 Description
 -----------
-Gives the 3d end point of the segment.
+gives the 3D End Point of the Segment.
 ") EndPoint;
 		const gp_Pnt EndPoint();
 
@@ -1232,7 +1245,7 @@ None
 
 Description
 -----------
-Changes the end point of the segment.
+changes the end point of the segment.
 ") EndPoint;
 		void EndPoint(const gp_Pnt & thePnt);
 
@@ -1295,7 +1308,7 @@ None
 
 Description
 -----------
-Changes the end point of the segment.
+changes the end point of the segment.
 ") SetEndPoint;
 		void SetEndPoint(const gp_Pnt & thePnt);
 
@@ -1313,7 +1326,7 @@ None
 
 Description
 -----------
-Changes the start point of the segment;.
+changes the start Point of the Segment;.
 ") SetStartPoint;
 		void SetStartPoint(const gp_Pnt & thePnt);
 
@@ -1326,7 +1339,7 @@ gp_Pnt
 
 Description
 -----------
-Gives the 3d start point of the segment.
+gives the 3D start Point of the Segment.
 ") StartPoint;
 		const gp_Pnt StartPoint();
 
@@ -1344,7 +1357,7 @@ None
 
 Description
 -----------
-Changes the start point of the segment;.
+changes the start Point of the Segment;.
 ") StartPoint;
 		void StartPoint(const gp_Pnt & thePnt);
 
@@ -1357,7 +1370,7 @@ bool
 
 Description
 -----------
-Returns true if bvh tree is in invalidated state.
+Returns True if BVH tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1396,7 +1409,7 @@ None
 
 Description
 -----------
-Constructs a sensitive sphere object defined by the owner theownerid, the center of the sphere and it's radius.
+Constructs a sensitive sphere object defined by the owner theOwnerId, the center of the sphere and it's radius.
 ") Select3D_SensitiveSphere;
 		 Select3D_SensitiveSphere(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & theCenter, const Standard_Real theRadius);
 
@@ -1409,7 +1422,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the sphere. if location transformation is set, it will be applied.
+Returns bounding box of the sphere. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1519,7 +1532,7 @@ bool
 
 Description
 -----------
-Always returns standard_false.
+Always returns Standard_False.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1557,7 +1570,7 @@ None
 
 Description
 -----------
-Constructs a sensitive triangle object defined by the owner theownerid, the points p1, p2, p3, and the type of sensitivity sensitivity.
+Constructs a sensitive triangle object defined by the owner theOwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.
 ") Select3D_SensitiveTriangle;
 		 Select3D_SensitiveTriangle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & thePnt0, const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const Select3D_TypeOfSensitivity theType = Select3D_TOS_INTERIOR);
 
@@ -1570,7 +1583,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the triangle. if location transformation is set, it will be applied.
+Returns bounding box of the triangle. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1682,7 +1695,7 @@ None
 
 Description
 -----------
-Returns the 3d points p1, p2, p3 used at the time of construction.
+Returns the 3D points P1, P2, P3 used at the time of construction.
 ") Points3D;
 		void Points3D(gp_Pnt & thePnt0, gp_Pnt & thePnt1, gp_Pnt & thePnt2);
 
@@ -1695,7 +1708,7 @@ bool
 
 Description
 -----------
-Returns true if bvh tree is in invalidated state.
+Returns True if BVH tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1730,7 +1743,7 @@ None
 
 Description
 -----------
-Splits the given point set thepoints onto planar convex polygons.
+Splits the given point set thePoints onto planar convex polygons.
 ") Select3D_InteriorSensitivePointSet;
 		 Select3D_InteriorSensitivePointSet(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 
@@ -1743,7 +1756,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the point set. if location transformation is set, it will be applied.
+Returns bounding box of the point set. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1761,7 +1774,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of planar convex polygon with index theidx.
+Returns bounding box of planar convex polygon with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -1780,7 +1793,7 @@ float
 
 Description
 -----------
-Returns geometry center of planar convex polygon with index theidx in the vector along the given axis theaxis.
+Returns geometry center of planar convex polygon with index theIdx in the vector along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -1793,7 +1806,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the point set. if location transformation is set, it will be applied.
+Returns center of the point set. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1832,7 +1845,7 @@ None
 
 Description
 -----------
-Initializes the given array theharrayofpnt by 3d coordinates of vertices of the whole point set.
+Initializes the given array theHArrayOfPnt by 3d coordinates of vertices of the whole point set.
 ") GetPoints;
 		virtual void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -1877,7 +1890,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2 in the vector.
+Swaps items with indexes theIdx1 and theIdx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -1912,7 +1925,7 @@ None
 
 Description
 -----------
-Constructs an empty sensitive group object. this is a set of sensitive 3d entities. the sensitive entities will be defined using the function add to fill the entity owner ownerid. if matchall is false, nothing can be added.
+Constructs an empty sensitive group object. This is a set of sensitive 3D entities. The sensitive entities will be defined using the function Add to fill the entity owner OwnerId. If MatchAll is false, nothing can be added.
 ") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Boolean theIsMustMatchAll = Standard_True);
 
@@ -1932,7 +1945,7 @@ None
 
 Description
 -----------
-Constructs a sensitive group object defined by the list thelist and the entity owner ownerid. if matchall is false, nothing is done.
+Constructs a sensitive group object defined by the list TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
 ") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, Select3D_EntitySequence & theEntities, const Standard_Boolean theIsMustMatchAll = Standard_True);
 
@@ -1950,7 +1963,7 @@ None
 
 Description
 -----------
-Adds the list of sensitive entities ll to the empty sensitive group object created at construction time.
+Adds the list of sensitive entities LL to the empty sensitive group object created at construction time.
 ") Add;
 		void Add(Select3D_EntitySequence & theEntities);
 
@@ -1968,7 +1981,7 @@ None
 
 Description
 -----------
-Adds the sensitive entity asensitive to the non-empty sensitive group object created at construction time.
+Adds the sensitive entity aSensitive to the non-empty sensitive group object created at construction time.
 ") Add;
 		void Add(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -1981,7 +1994,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the group. if location transformation is set, it will be applied.
+Returns bounding box of the group. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -1999,7 +2012,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of sensitive entity with index theidx.
+Returns bounding box of sensitive entity with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -2018,7 +2031,7 @@ float
 
 Description
 -----------
-Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
+Returns geometry center of sensitive entity index theIdx in the vector along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -2031,7 +2044,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of entity set. if location transformation is set, it will be applied.
+Returns center of entity set. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2044,7 +2057,7 @@ None
 
 Description
 -----------
-Removes all sensitive entities from the list used at the time of construction, or added using the function add.
+Removes all sensitive entities from the list used at the time of construction, or added using the function Add.
 ") Clear;
 		void Clear();
 
@@ -2109,7 +2122,7 @@ bool
 
 Description
 -----------
-Returns true if the sensitive entity asensitive is in the list used at the time of construction, or added using the function add.
+Returns true if the sensitive entity aSensitive is in the list used at the time of construction, or added using the function Add.
 ") IsIn;
 		Standard_Boolean IsIn(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -2167,7 +2180,7 @@ bool
 
 Description
 -----------
-Returns true if all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
+Returns true if all sensitive entities in the list used at the time of construction, or added using the function Add must be matched.
 ") MustMatchAll;
 		Standard_Boolean MustMatchAll();
 
@@ -2234,7 +2247,7 @@ None
 
 Description
 -----------
-Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
+Returns True if all sensitive entities should be checked within rectangular/polygonal selection, False by default. Can be useful for sensitive entities holding detection results as class property.
 ") SetCheckOverlapAll;
 		void SetCheckOverlapAll(Standard_Boolean theToCheckAll);
 
@@ -2252,7 +2265,7 @@ None
 
 Description
 -----------
-Sets the requirement that all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
+Sets the requirement that all sensitive entities in the list used at the time of construction, or added using the function Add must be matched.
 ") SetMatchType;
 		void SetMatchType(const Standard_Boolean theIsMustMatchAll);
 
@@ -2283,7 +2296,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 
 Description
 -----------
-Access entity by index [1, nbsubelements()].
+Access entity by index [1, NbSubElements()].
 ") SubEntity;
 		const opencascade::handle<Select3D_SensitiveEntity> & SubEntity(const Standard_Integer theIndex);
 
@@ -2302,7 +2315,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2 in the vector.
+Swaps items with indexes theIdx1 and theIdx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -2315,7 +2328,7 @@ bool
 
 Description
 -----------
-Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
+Returns True if all sensitive entities should be checked within rectangular/polygonal selection, False by default. Can be useful for sensitive entities holding detection results as class property.
 ") ToCheckOverlapAll;
 		Standard_Boolean ToCheckOverlapAll();
 
@@ -2351,7 +2364,7 @@ None
 
 Description
 -----------
-Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
+Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const Standard_Boolean theIsBVHEnabled);
 
@@ -2371,7 +2384,7 @@ None
 
 Description
 -----------
-Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
+Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Standard_Boolean theIsBVHEnabled);
 
@@ -2394,7 +2407,7 @@ None
 
 Description
 -----------
-Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
+Constructs the sensitive arc object defined by the owner theOwnerId, the circle theCircle, the parameters theU1 and theU2, the boolean theIsFilled and the number of points theNbPnts. theU1 and theU2 define the first and last points of the arc on theCircle.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
 
@@ -2414,7 +2427,7 @@ None
 
 Description
 -----------
-Constructs a sensitive curve or arc object defined by the owner theownerid, the theisbvhenabled flag, and the maximum number of points on the curve: thenbpnts.
+Constructs a sensitive curve or arc object defined by the owner theOwnerId, the theIsBVHEnabled flag, and the maximum number of points on the curve: theNbPnts.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Boolean theIsBVHEnabled, const Standard_Integer theNbPnts = 6);
 
@@ -2445,7 +2458,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of a polygon. if location transformation is set, it will be applied.
+Returns bounding box of a polygon. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -2463,7 +2476,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of segment with index theidx.
+Returns bounding box of segment with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -2482,7 +2495,7 @@ float
 
 Description
 -----------
-Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
+Returns geometry center of sensitive entity index theIdx in the vector along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -2495,7 +2508,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the point set. if location transformation is set, it will be applied.
+Returns center of the point set. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2584,7 +2597,7 @@ None
 
 Description
 -----------
-Returns the 3d points of the array used at construction time.
+Returns the 3D points of the array used at construction time.
 ") Points3D;
 		void Points3D(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -2616,7 +2629,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2 in the vector.
+Swaps items with indexes theIdx1 and theIdx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -2663,7 +2676,7 @@ None
 
 Description
 -----------
-Builds bvh tree for sensitive set.
+Builds BVH tree for sensitive set.
 ") BVH;
 		virtual void BVH();
 
@@ -2676,7 +2689,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the triangulation. if location transformation is set, it will be applied.
+Returns bounding box of the triangulation. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -2694,7 +2707,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of triangle/edge with index theidx.
+Returns bounding box of triangle/edge with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -2713,7 +2726,7 @@ float
 
 Description
 -----------
-Returns geometry center of triangle/edge with index theidx in array along the given axis theaxis.
+Returns geometry center of triangle/edge with index theIdx in array along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -2726,7 +2739,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of triangulation. if location transformation is set, it will be applied.
+Returns center of triangulation. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2797,7 +2810,14 @@ bool
 
 Description
 -----------
-Initialize the sensitive object from point set. the sub-set of points can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining points @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
+Initialize the sensitive object from point set. The sub-set of points can be specified by arguments theIndexLower and theIndexUpper (these are for iterating theIndices, not to restrict the actual index values!). 
+Parameter theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 
+Parameter theIndices index array defining points 
+Parameter theInitLoc location 
+Parameter theIndexLower the theIndices range - first value (inclusive), starting from 0 
+Parameter theIndexUpper the theIndices range - last value (inclusive), upto theIndices->NbElements-1 
+Parameter theToEvalMinMax compute bounding box within initialization 
+Parameter theNbGroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const Standard_Integer theIndexLower, const Standard_Integer theIndexUpper, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
@@ -2819,7 +2839,12 @@ bool
 
 Description
 -----------
-Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array to define subset of points @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
+Initialize the sensitive object from point set. 
+Parameter theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 
+Parameter theIndices index array to define subset of points 
+Parameter theInitLoc location 
+Parameter theToEvalMinMax compute bounding box within initialization 
+Parameter theNbGroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
@@ -2840,7 +2865,11 @@ bool
 
 Description
 -----------
-Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
+Initialize the sensitive object from point set. 
+Parameter theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 
+Parameter theInitLoc location 
+Parameter theToEvalMinMax compute bounding box within initialization 
+Parameter theNbGroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
@@ -2864,7 +2893,14 @@ bool
 
 Description
 -----------
-Initialize the sensitive object from triangualtion. the sub-triangulation can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 and multiple by 3 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 and multiple by 3 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
+Initialize the sensitive object from triangualtion. The sub-triangulation can be specified by arguments theIndexLower and theIndexUpper (these are for iterating theIndices, not to restrict the actual index values!). 
+Parameter theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 
+Parameter theIndices index array defining triangulation 
+Parameter theInitLoc location 
+Parameter theIndexLower the theIndices range - first value (inclusive), starting from 0 and multiple by 3 
+Parameter theIndexUpper the theIndices range - last value (inclusive), upto theIndices->NbElements-1 and multiple by 3 
+Parameter theToEvalMinMax compute bounding box within initialization 
+Parameter theNbGroups number of groups to split the vertex array into several parts.
 ") InitTriangulation;
 		bool InitTriangulation(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const Standard_Integer theIndexLower, const Standard_Integer theIndexUpper, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
@@ -2886,7 +2922,12 @@ bool
 
 Description
 -----------
-Initialize the sensitive object from triangualtion. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
+Initialize the sensitive object from triangualtion. 
+Parameter theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 
+Parameter theIndices index array defining triangulation 
+Parameter theInitLoc location 
+Parameter theToEvalMinMax compute bounding box within initialization 
+Parameter theNbGroups number of groups to split the vertex array into several parts.
 ") InitTriangulation;
 		bool InitTriangulation(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
@@ -2899,7 +2940,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns inversed location transformation matrix if the shape corresponding to this entity has init location set. otherwise, returns identity matrix.
+Returns inversed location transformation matrix if the shape corresponding to this entity has init location set. Otherwise, returns identity matrix.
 ") InvInitLocation;
 		virtual gp_GTrsf InvInitLocation();
 
@@ -3022,7 +3063,7 @@ float
 
 Description
 -----------
-Maximum allowed distance between consequential elements in patch (shortreallast() by default). has no effect on indexed triangulation.
+Maximum allowed distance between consequential elements in patch (ShortRealLast() by default). Has no effect on indexed triangulation.
 ") PatchDistance;
 		float PatchDistance();
 
@@ -3184,7 +3225,7 @@ None
 
 Description
 -----------
-Assign patch distance limit. should be set before initialization.
+Assign patch distance limit. Should be set before initialization.
 ") SetPatchDistance;
 		void SetPatchDistance(const float thePatchDistMax);
 
@@ -3202,7 +3243,7 @@ None
 
 Description
 -----------
-Assign patch size limit. should be set before initialization.
+Assign patch size limit. Should be set before initialization.
 ") SetPatchSizeMax;
 		void SetPatchSizeMax(const Standard_Integer thePatchSizeMax);
 
@@ -3234,7 +3275,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2 in array.
+Swaps items with indexes theIdx1 and theIdx2 in array.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -3247,7 +3288,7 @@ bool
 
 Description
 -----------
-Return flag to keep index of last topmost detected edge, false by default.
+Return flag to keep index of last topmost detected edge, False by default.
 ") ToDetectEdges;
 		bool ToDetectEdges();
 
@@ -3260,7 +3301,7 @@ bool
 
 Description
 -----------
-Return flag to keep index map of last detected elements, false by default (rectangle selection).
+Return flag to keep index map of last detected elements, False by default (rectangle selection).
 ") ToDetectElementMap;
 		bool ToDetectElementMap();
 
@@ -3273,7 +3314,7 @@ bool
 
 Description
 -----------
-Return flag to keep index of last topmost detected element, true by default.
+Return flag to keep index of last topmost detected element, True by default.
 ") ToDetectElements;
 		bool ToDetectElements();
 
@@ -3286,7 +3327,7 @@ bool
 
 Description
 -----------
-Return flag to keep index map of last detected nodes, false by default (rectangle selection).
+Return flag to keep index map of last detected nodes, False by default (rectangle selection).
 ") ToDetectNodeMap;
 		bool ToDetectNodeMap();
 
@@ -3299,7 +3340,7 @@ bool
 
 Description
 -----------
-Return flag to keep index of last topmost detected node, false by default.
+Return flag to keep index of last topmost detected node, False by default.
 ") ToDetectNodes;
 		bool ToDetectNodes();
 
@@ -3336,7 +3377,7 @@ None
 
 Description
 -----------
-Constructs a sensitive wire object defined by the owner theownerid.
+Constructs a sensitive wire object defined by the owner theOwnerId.
 ") Select3D_SensitiveWire;
 		 Select3D_SensitiveWire(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -3354,7 +3395,7 @@ None
 
 Description
 -----------
-Adds the sensitive entity thesensitive to this framework.
+Adds the sensitive entity theSensitive to this framework.
 ") Add;
 		void Add(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -3367,7 +3408,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the wire. if location transformation is set, it will be applied.
+Returns bounding box of the wire. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -3385,7 +3426,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of sensitive entity with index theidx.
+Returns bounding box of sensitive entity with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -3404,7 +3445,7 @@ float
 
 Description
 -----------
-Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
+Returns geometry center of sensitive entity index theIdx in the vector along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -3417,7 +3458,7 @@ gp_Pnt
 
 Description
 -----------
-Returns center of the wire. if location transformation is set, it will be applied.
+Returns center of the wire. If location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -3464,7 +3505,7 @@ NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>
 
 Description
 -----------
-Returns the sensitive edges stored in this wire.
+returns the sensitive edges stored in this wire.
 ") GetEdges;
 		const NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> & GetEdges();
 
@@ -3540,7 +3581,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2 in the vector.
+Swaps items with indexes theIdx1 and theIdx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -3576,7 +3617,7 @@ None
 
 Description
 -----------
-Constructs a sensitive curve object defined by the owner theownerid, the curve thecurve, and the maximum number of points on the curve: thenbpnts.
+Constructs a sensitive curve object defined by the owner theOwnerId, the curve theCurve, and the maximum number of points on the curve: theNbPnts.
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<Geom_Curve> & theCurve, const Standard_Integer theNbPnts = 17);
 
@@ -3595,7 +3636,7 @@ None
 
 Description
 -----------
-Constructs a sensitive curve object defined by the owner theownerid and the set of points thepoints.
+Constructs a sensitive curve object defined by the owner theOwnerId and the set of points ThePoints.
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints);
 
@@ -3614,7 +3655,7 @@ None
 
 Description
 -----------
-Creation of sensitive curve from points. warning: this method should disappear in the next version...
+Creation of Sensitive Curve from Points. Warning: This Method should disappear in the next version...
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 

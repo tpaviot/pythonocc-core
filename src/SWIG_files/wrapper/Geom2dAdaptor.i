@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DADAPTORDOCSTRING
 "Geom2dAdaptor module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dadaptor.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DADAPTORDOCSTRING) Geom2dAdaptor
 
@@ -105,7 +105,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Inherited from ghcurve. provides a curve handled by reference. creates a 2d curve from a hcurve2d. this cannot process the othercurves.
+Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curve from a HCurve2d. This cannot process the OtherCurves.
 ") MakeCurve;
 		static opencascade::handle<Geom2d_Curve> MakeCurve(const Adaptor2d_Curve2d & HC);
 
@@ -170,7 +170,7 @@ None
 
 Description
 -----------
-Standard_constructionerror is raised if ufirst>ulast.
+Standard_ConstructionError is raised if Ufirst>Ulast.
 ") Geom2dAdaptor_Curve;
 		 Geom2dAdaptor_Curve(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UFirst, const Standard_Real ULast);
 
@@ -254,7 +254,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u.
+Computes the point of parameter U.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -274,7 +274,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -295,7 +295,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -317,7 +317,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -336,7 +336,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -420,7 +420,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -523,7 +523,7 @@ None
 
 Description
 -----------
-Standard_constructionerror is raised if theufirst>theulast.
+Standard_ConstructionError is raised if theUFirst>theULast.
 ") Load;
 		void Load(const opencascade::handle<Geom2d_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
 
@@ -541,7 +541,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -619,7 +619,7 @@ None
 
 Description
 -----------
-Reset currently loaded curve (undone load()).
+Reset currently loaded curve (undone Load()).
 ") Reset;
 		void Reset();
 
@@ -637,7 +637,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution.
+returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real Ruv);
 
@@ -670,7 +670,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -688,7 +688,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt2d Value(const Standard_Real U);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERDOCSTRING
 "Transfer module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transfer.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transfer.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERDOCSTRING) Transfer
 
@@ -47,8 +47,19 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transfer.html"
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<TColStd_module.hxx>
+#include<DE_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TDF_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XSControl_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<Geom_module.hxx>
+#include<gp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -59,6 +70,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transfer.html"
 %import Message.i
 %import Interface.i
 %import TColStd.i
+%import DE.i
 
 %pythoncode {
 from enum import IntEnum
@@ -204,7 +216,7 @@ bool
 
 Description
 -----------
-Returns the last status (see setlast).
+Returns the Last status (see SetLast).
 ") IsLast;
 		Standard_Boolean IsLast();
 
@@ -217,7 +229,7 @@ opencascade::handle<Transfer_ActorOfProcessForFinder>
 
 Description
 -----------
-Returns the actor defined as next, or a null handle.
+Returns the Actor defined as Next, or a Null Handle.
 ") Next;
 		opencascade::handle<Transfer_ActorOfProcessForFinder> Next();
 
@@ -230,7 +242,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns a binder for no result, i.e. a null handle.
+Returns a Binder for No Result, i.e. a Null Handle.
 ") NullResult;
 		opencascade::handle<Transfer_Binder> NullResult();
 
@@ -248,7 +260,7 @@ bool
 
 Description
 -----------
-Prerequesite for transfer: the method transfer is called on a starting object only if recognize has returned true on it this allows to define a list of actors, each one processing a definite kind of data transferprocess calls recognize on each one before calling transfer. but even if recognize has returned true, transfer can reject by returning a null binder (afterwards rejection), the next actor is then invoked //! the provided default returns true, can be redefined.
+Prerequisite for Transfer: the method Transfer is called on a starting object only if Recognize has returned True on it This allows to define a list of Actors, each one processing a definite kind of data TransferProcess calls Recognize on each one before calling Transfer. But even if Recognize has returned True, Transfer can reject by returning a Null Binder (afterwards rejection), the next actor is then invoked //! The provided default returns True, can be redefined.
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<Transfer_Finder> & start);
 
@@ -266,7 +278,7 @@ None
 
 Description
 -----------
-If <mode> is true, commands an actor to be set at the end of the list of actors (see setnext) if it is false (creation default), each add actor is set at the beginning of the list this allows to define default actors (which are last).
+If <mode> is True, commands an Actor to be set at the end of the list of Actors (see SetNext) If it is False (creation default), each add Actor is set at the beginning of the list This allows to define default Actors (which are Last).
 ") SetLast;
 		void SetLast(const Standard_Boolean mode = Standard_True);
 
@@ -284,7 +296,7 @@ None
 
 Description
 -----------
-Defines a next actor: it can then be asked to work if <self> produces no result for a given type of object. if next is already set and is not 'last', calls setnext on it. if next defined and 'last', the new actor is added before it in the list.
+Defines a Next Actor: it can then be asked to work if <self> produces no result for a given type of Object. If Next is already set and is not 'Last', calls SetNext on it. If Next defined and 'Last', the new actor is added before it in the list.
 ") SetNext;
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForFinder> & next);
 
@@ -304,7 +316,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deferred) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
+Specific action of Transfer. The Result is stored in the returned Binder, or a Null Handle for 'No result' (Default defined as doing nothing; should be deferred) 'mutable' allows the Actor to record intermediate information, in addition to those of TransferProcess.
 ") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -322,7 +334,7 @@ opencascade::handle<Transfer_SimpleBinderOfTransient>
 
 Description
 -----------
-Prepares and returns a binder for a transient result returns a null handle if <res> is itself null.
+Prepares and Returns a Binder for a Transient Result Returns a Null Handle if <res> is itself Null.
 ") TransientResult;
 		opencascade::handle<Transfer_SimpleBinderOfTransient> TransientResult(const opencascade::handle<Standard_Transient> & res);
 
@@ -364,7 +376,7 @@ bool
 
 Description
 -----------
-Returns the last status (see setlast).
+Returns the Last status (see SetLast).
 ") IsLast;
 		Standard_Boolean IsLast();
 
@@ -377,7 +389,7 @@ opencascade::handle<Transfer_ActorOfProcessForTransient>
 
 Description
 -----------
-Returns the actor defined as next, or a null handle.
+Returns the Actor defined as Next, or a Null Handle.
 ") Next;
 		opencascade::handle<Transfer_ActorOfProcessForTransient> Next();
 
@@ -390,7 +402,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns a binder for no result, i.e. a null handle.
+Returns a Binder for No Result, i.e. a Null Handle.
 ") NullResult;
 		opencascade::handle<Transfer_Binder> NullResult();
 
@@ -408,7 +420,7 @@ bool
 
 Description
 -----------
-Prerequesite for transfer: the method transfer is called on a starting object only if recognize has returned true on it this allows to define a list of actors, each one processing a definite kind of data transferprocess calls recognize on each one before calling transfer. but even if recognize has returned true, transfer can reject by returning a null binder (afterwards rejection), the next actor is then invoked //! the provided default returns true, can be redefined.
+Prerequisite for Transfer: the method Transfer is called on a starting object only if Recognize has returned True on it This allows to define a list of Actors, each one processing a definite kind of data TransferProcess calls Recognize on each one before calling Transfer. But even if Recognize has returned True, Transfer can reject by returning a Null Binder (afterwards rejection), the next actor is then invoked //! The provided default returns True, can be redefined.
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
 
@@ -426,7 +438,7 @@ None
 
 Description
 -----------
-If <mode> is true, commands an actor to be set at the end of the list of actors (see setnext) if it is false (creation default), each add actor is set at the beginning of the list this allows to define default actors (which are last).
+If <mode> is True, commands an Actor to be set at the end of the list of Actors (see SetNext) If it is False (creation default), each add Actor is set at the beginning of the list This allows to define default Actors (which are Last).
 ") SetLast;
 		void SetLast(const Standard_Boolean mode = Standard_True);
 
@@ -444,7 +456,7 @@ None
 
 Description
 -----------
-Defines a next actor: it can then be asked to work if <self> produces no result for a given type of object. if next is already set and is not 'last', calls setnext on it. if next defined and 'last', the new actor is added before it in the list.
+Defines a Next Actor: it can then be asked to work if <self> produces no result for a given type of Object. If Next is already set and is not 'Last', calls SetNext on it. If Next defined and 'Last', the new actor is added before it in the list.
 ") SetNext;
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForTransient> & next);
 
@@ -464,7 +476,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Specific action of transfer. the result is stored in the returned binder, or a null handle for 'no result' (default defined as doing nothing; should be deferred) 'mutable' allows the actor to record intermediate information, in addition to those of transferprocess.
+Specific action of Transfer. The Result is stored in the returned Binder, or a Null Handle for 'No result' (Default defined as doing nothing; should be deferred) 'mutable' allows the Actor to record intermediate information, in addition to those of TransferProcess.
 ") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -482,7 +494,7 @@ opencascade::handle<Transfer_SimpleBinderOfTransient>
 
 Description
 -----------
-Prepares and returns a binder for a transient result returns a null handle if <res> is itself null.
+Prepares and Returns a Binder for a Transient Result Returns a Null Handle if <res> is itself Null.
 ") TransientResult;
 		opencascade::handle<Transfer_SimpleBinderOfTransient> TransientResult(const opencascade::handle<Standard_Transient> & res);
 
@@ -518,7 +530,7 @@ None
 
 Description
 -----------
-Used to declare an individual transfer as being erroneous (status is set to void, statusexec is set to error, <errmess> is added to check's list of fails) it is possible to record several messages of error //! it has same effect for transferprocess as raising an exception during the operation of transfer, except the transfer tries to continue (as if errorhandle had been set).
+Used to declare an individual transfer as being erroneous (Status is set to Void, StatusExec is set to Error, <errmess> is added to Check's list of Fails) It is possible to record several messages of error //! It has same effect for TransferProcess as raising an exception during the operation of Transfer, except the Transfer tries to continue (as if ErrorHandle had been set).
 ") AddFail;
 		void AddFail(Standard_CString mess, Standard_CString orig = "");
 
@@ -536,7 +548,7 @@ None
 
 Description
 -----------
-Adds a next result (at the end of the list) remark: this information is not processed by merge.
+Adds a next result (at the end of the list) Remark: this information is not processed by Merge.
 ") AddResult;
 		void AddResult(const opencascade::handle<Transfer_Binder> & next);
 
@@ -555,7 +567,7 @@ None
 
 Description
 -----------
-Used to attach a warning message to an individual transfer it has no effect on the status.
+Used to attach a Warning Message to an individual Transfer It has no effect on the Status.
 ") AddWarning;
 		void AddWarning(Standard_CString mess, Standard_CString orig = "");
 
@@ -568,7 +580,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns check which stores fail messages, in order to modify it (adding messages, or replacing it).
+Returns Check which stores Fail messages, in order to modify it (adding messages, or replacing it).
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck();
 
@@ -581,7 +593,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns check which stores fail messages note that no entity is associated in this check.
+Returns Check which stores Fail messages Note that no Entity is associated in this Check.
 ") Check;
 		const opencascade::handle<Interface_Check> Check();
 
@@ -594,7 +606,7 @@ bool
 
 Description
 -----------
-Returns true if a result is available (statusresult = defined) a unique result will be gotten by result (which must be defined in each sub-class according to result type) for a multiple result, see class multiplebinder for other case, specific access has to be forecast.
+Returns True if a Result is available (StatusResult = Defined) A Unique Result will be gotten by Result (which must be defined in each sub-class according to result type) For a Multiple Result, see class MultipleBinder For other case, specific access has to be forecast.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -607,7 +619,7 @@ bool
 
 Description
 -----------
-Returns true if a binder has several results, either by itself or because it has next results can be defined by sub-classes.
+Returns True if a Binder has several results, either by itself or because it has next results Can be defined by sub-classes.
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
@@ -625,7 +637,7 @@ None
 
 Description
 -----------
-Merges basic data (check, execstatus) from another binder but keeps its result. used when a binder is replaced by another one, this allows to keep messages.
+Merges basic data (Check, ExecStatus) from another Binder but keeps its result. Used when a binder is replaced by another one, this allows to keep messages.
 ") Merge;
 		void Merge(const opencascade::handle<Transfer_Binder> & other);
 
@@ -638,7 +650,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the next result, null if none.
+Returns the next result, Null if none.
 ") NextResult;
 		opencascade::handle<Transfer_Binder> NextResult();
 
@@ -651,7 +663,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type which characterizes the result (if known).
+Returns the Type which characterizes the Result (if known).
 ") ResultType;
 		virtual opencascade::handle<Standard_Type> ResultType();
 
@@ -664,7 +676,7 @@ str
 
 Description
 -----------
-Returns the name of the type which characterizes the result can be returned even if resulttype itself is unknown.
+Returns the Name of the Type which characterizes the Result Can be returned even if ResultType itself is unknown.
 ") ResultTypeName;
 		virtual Standard_CString ResultTypeName();
 
@@ -677,7 +689,7 @@ None
 
 Description
 -----------
-Declares that result is now used by another one, it means that it cannot be modified (by rebind).
+Declares that result is now used by another one, it means that it cannot be modified (by Rebind).
 ") SetAlreadyUsed;
 		void SetAlreadyUsed();
 
@@ -695,7 +707,7 @@ None
 
 Description
 -----------
-Modifies execution status; called by transferprocess only (for statuserror, rather use seterror, below).
+Modifies execution status; called by TransferProcess only (for StatusError, rather use SetError, below).
 ") SetStatusExec;
 		void SetStatusExec(const Transfer_StatusExec stat);
 
@@ -708,7 +720,7 @@ Transfer_StatusResult
 
 Description
 -----------
-Returns status, which can be initial (not yet done), made (a result is recorded, not yet shared), used (it is shared and cannot be modified).
+Returns status, which can be Initial (not yet done), Made (a result is recorded, not yet shared), Used (it is shared and cannot be modified).
 ") Status;
 		Transfer_StatusResult Status();
 
@@ -755,7 +767,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type attached to an object here, the dynamic type of a transient. null type if unknown.
+Returns the Type attached to an object Here, the Dynamic Type of a Transient. Null Type if unknown.
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent);
 
@@ -773,7 +785,7 @@ str
 
 Description
 -----------
-Returns type name (string) allows to name type of non-handled objects.
+Returns Type Name (string) Allows to name type of non-handled objects.
 ") TypeName;
 		static Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent);
 
@@ -806,7 +818,7 @@ None
 
 Description
 -----------
-Creates the dispatchcontrol, ready for use.
+Creates the DispatchControl, ready for use.
 ") Transfer_DispatchControl;
 		 Transfer_DispatchControl(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -825,7 +837,7 @@ None
 
 Description
 -----------
-Binds a (transient) result to a (transient) starting entity.
+Binds a (Transient) Result to a (Transient) Starting Entity.
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
@@ -838,7 +850,7 @@ None
 
 Description
 -----------
-Clears the list of copied results.
+Clears the List of Copied Results.
 ") Clear;
 		void Clear();
 
@@ -857,7 +869,7 @@ bool
 
 Description
 -----------
-Searches for the result bound to a starting entity if found, returns true and fills <res> else, returns false and nullifies <res>.
+Searches for the Result bound to a Starting Entity If Found, returns True and fills <res> Else, returns False and nullifies <res>.
 ") Search;
 		Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
@@ -870,7 +882,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model from which the transfer is to be done.
+Returns the Model from which the transfer is to be done.
 ") StartingModel;
 		const opencascade::handle<Interface_InterfaceModel> & StartingModel();
 
@@ -883,7 +895,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the content of the dispatchcontrol: it can be used for a direct call, if the basic methods do not suffice.
+Returns the content of the DispatchControl: it can be used for a direct call, if the basic methods do not suffice.
 ") TransientProcess;
 		const opencascade::handle<Transfer_TransientProcess> & TransientProcess();
 
@@ -945,7 +957,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an attribute from its name. null handle if not recorded (whatever transient, integer, real ...).
+Returns an attribute from its name. Null Handle if not recorded (whatever Transient, Integer, Real ...).
 ") Attribute;
 		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
@@ -963,7 +975,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns the type of an attribute: paramint , paramreal , paramtext (string) , paramident (any) or paramvoid (not recorded).
+Returns the type of an attribute: ParamInt , ParamReal , ParamText (String) , ParamIdent (any) or ParamVoid (not recorded).
 ") AttributeType;
 		Interface_ParamType AttributeType(Standard_CString name);
 
@@ -981,7 +993,7 @@ bool
 
 Description
 -----------
-Specific testof equality: to be defined by each sub-class, must be false if finders have not the same true type, else their contents must be compared.
+Specific testof equality: to be defined by each sub-class, must be False if Finders have not the same true Type, else their contents must be compared.
 ") Equates;
 		virtual Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
@@ -1001,7 +1013,7 @@ bool
 
 Description
 -----------
-Returns an attribute from its name, filtered by a type if no attribute has this name, or if it is not kind of this type, <val> is null and returned value is false else, it is true.
+Returns an attribute from its name, filtered by a type If no attribute has this name, or if it is not kind of this type, <val> is Null and returned value is False Else, it is True.
 ") GetAttribute;
 		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
@@ -1021,7 +1033,7 @@ None
 
 Description
 -----------
-Gets the list of attributes from <other>, by copying it by default, considers all the attributes from <other> if <fromname> is given, considers only the attributes with name beginning by <fromname> //! for each attribute, if <copied> is true (d), its value is also copied if it is a basic type (integer,real,string), else it remains shared between <other> and <self> //! these new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones.
+Gets the list of attributes from <other>, by copying it By default, considers all the attributes from <other> If <fromname> is given, considers only the attributes with name beginning by <fromname> //! For each attribute, if <copied> is True (D), its value is also copied if it is a basic type (Integer,Real,String), else it remains shared between <other> and <self> //! These new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones.
 ") GetAttributes;
 		void GetAttributes(const opencascade::handle<Transfer_Finder> & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
@@ -1034,7 +1046,7 @@ size_t
 
 Description
 -----------
-Returns the hashcode which has been stored by sethashcode (remark that hashcode could be deferred then be defined by sub-classes, the result is the same).
+Returns the HashCode which has been stored by SetHashCode (remark that HashCode could be deferred then be defined by sub-classes, the result is the same).
 ") GetHashCode;
 		size_t GetHashCode();
 
@@ -1052,7 +1064,7 @@ val: int
 
 Description
 -----------
-Returns an attribute from its name, as integer if no attribute has this name, or not an integer, <val> is 0 and returned value is false else, it is true.
+Returns an attribute from its name, as integer If no attribute has this name, or not an integer, <val> is 0 and returned value is False Else, it is True.
 ") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
@@ -1070,7 +1082,7 @@ val: float
 
 Description
 -----------
-Returns an attribute from its name, as real if no attribute has this name, or not a real <val> is 0.0 and returned value is false else, it is true.
+Returns an attribute from its name, as real If no attribute has this name, or not a real <val> is 0.0 and returned value is False Else, it is True.
 ") GetRealAttribute;
 		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
@@ -1089,7 +1101,7 @@ bool
 
 Description
 -----------
-Returns an attribute from its name, as string if no attribute has this name, or not a string <val> is 0.0 and returned value is false else, it is true.
+Returns an attribute from its name, as String If no attribute has this name, or not a String <val> is 0.0 and returned value is False Else, it is True.
 ") GetStringAttribute;
 		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
@@ -1143,7 +1155,7 @@ bool
 
 Description
 -----------
-Removes an attribute returns true when done, false if this attribute did not exist.
+Removes an attribute Returns True when done, False if this attribute did not exist.
 ") RemoveAttribute;
 		Standard_Boolean RemoveAttribute(Standard_CString name);
 
@@ -1161,7 +1173,7 @@ None
 
 Description
 -----------
-Gets the list of attributes from <other>, as such, i.e. not copied: attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa the former list of attributes of <self> is dropped.
+Gets the list of attributes from <other>, as such, i.e. not copied: attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa The former list of attributes of <self> is dropped.
 ") SameAttributes;
 		void SameAttributes(const opencascade::handle<Transfer_Finder> & other);
 
@@ -1237,7 +1249,7 @@ None
 
 Description
 -----------
-Adds a string value for an attribute.
+Adds a String value for an attribute.
 ") SetStringAttribute;
 		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
@@ -1255,7 +1267,7 @@ str
 
 Description
 -----------
-Returns a string attribute from its name. '' if not recorded.
+Returns a String attribute from its name. '' if not recorded.
 ") StringAttribute;
 		Standard_CString StringAttribute(Standard_CString name);
 
@@ -1268,7 +1280,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
+Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
@@ -1281,7 +1293,7 @@ str
 
 Description
 -----------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
+Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
 		virtual Standard_CString ValueTypeName();
 
@@ -1378,7 +1390,7 @@ None
 
 Description
 -----------
-Sets transferprocess at initial state. gives an initial size (indicative) for the map when known (default is 10000). sets default trace file as a printer and default trace level (see message_tracefile).
+Sets TransferProcess at initial state. Gives an Initial size (indicative) for the Map when known (default is 10000). Sets default trace file as a printer and default trace level (see Message_TraceFile).
 ") Transfer_ProcessForTransient;
 		 Transfer_ProcessForTransient(const Standard_Integer nb = 10000);
 
@@ -1397,7 +1409,7 @@ None
 
 Description
 -----------
-Sets transferprocess at initial state. gives an initial size (indicative) for the map when known (default is 10000). sets a specified printer.
+Sets TransferProcess at initial state. Gives an Initial size (indicative) for the Map when known (default is 10000). Sets a specified printer.
 ") Transfer_ProcessForTransient;
 		 Transfer_ProcessForTransient(const opencascade::handle<Message_Messenger> & printer, const Standard_Integer nb = 10000);
 
@@ -1410,7 +1422,7 @@ Transfer_IteratorOfProcessForTransient
 
 Description
 -----------
-Returns binders which are neither 'done' nor 'initial', that is error,loop or run (abnormal states at end of transfer) starting objects are given in correspondence in the iterator.
+Returns Binders which are neither 'Done' nor 'Initial', that is Error,Loop or Run (abnormal states at end of Transfer) Starting Objects are given in correspondence in the iterator.
 ") AbnormalResult;
 		Transfer_IteratorOfProcessForTransient AbnormalResult();
 
@@ -1423,7 +1435,7 @@ opencascade::handle<Transfer_ActorOfProcessForTransient>
 
 Description
 -----------
-Returns the defined actor. returns a null handle if not set.
+Returns the defined Actor. Returns a Null Handle if not set.
 ") Actor;
 		opencascade::handle<Transfer_ActorOfProcessForTransient> Actor();
 
@@ -1443,7 +1455,7 @@ None
 
 Description
 -----------
-(other name of addfail, maintained for compatibility).
+(other name of AddFail, maintained for compatibility).
 ") AddError;
 		void AddError(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -1463,7 +1475,7 @@ None
 
 Description
 -----------
-Adds an error message to a starting entity (to the check of its binder of category 0, as a fail).
+Adds an Error message to a starting entity (to the check of its Binder of category 0, as a Fail).
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -1482,7 +1494,7 @@ None
 
 Description
 -----------
-Adds an error message to a starting entity from the definition of a msg (original+value).
+Adds an Error Message to a starting entity from the definition of a Msg (Original+Value).
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
@@ -1501,7 +1513,7 @@ None
 
 Description
 -----------
-Adds an item to a list of results bound to a starting object. considers a category number, by default 0, for all results.
+Adds an item to a list of results bound to a starting object. Considers a category number, by default 0, for all results.
 ") AddMultiple;
 		void AddMultiple(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Transient> & res);
 
@@ -1521,7 +1533,7 @@ None
 
 Description
 -----------
-Adds a warning message to a starting entity (to the check of its binder of category 0).
+Adds a Warning message to a starting entity (to the check of its Binder of category 0).
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -1540,7 +1552,7 @@ None
 
 Description
 -----------
-Adds a warning message to a starting entity from the definition of a msg (original+value).
+Adds a Warning Message to a starting entity from the definition of a Msg (Original+Value).
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
@@ -1559,7 +1571,7 @@ None
 
 Description
 -----------
-Creates a link a starting object with a binder. this binder can either bring a result (effective binding) or none (it can be set later: pre-binding). considers a category number, by default 0.
+Creates a Link a starting Object with a Binder. This Binder can either bring a Result (effective Binding) or none (it can be set later: pre-binding). Considers a category number, by default 0.
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_Binder> & binder);
 
@@ -1577,7 +1589,7 @@ None
 
 Description
 -----------
-Prepares an object <start> to be bound with several results. if no binder is yet attached to <obj>, a multiplebinder is created, empty. if a binder is already set, it must accept multiple binding. considers a category number, by default 0.
+Prepares an object <start> to be bound with several results. If no Binder is yet attached to <obj>, a MultipleBinder is created, empty. If a Binder is already set, it must accept Multiple Binding. Considers a category number, by default 0.
 ") BindMultiple;
 		void BindMultiple(const opencascade::handle<Standard_Transient> & start);
 
@@ -1596,7 +1608,7 @@ None
 
 Description
 -----------
-Binds a starting object with a transient result. uses a simplebinderoftransient to work. if there is already one but with no result set, sets its result. considers a category number, by default 0.
+Binds a starting object with a Transient Result. Uses a SimpleBinderOfTransient to work. If there is already one but with no Result set, sets its Result. Considers a category number, by default 0.
 ") BindTransient;
 		void BindTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Transient> & res);
 
@@ -1614,7 +1626,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check attached to a starting entity. if <start> is unknown, returns an empty check adds a case name to a starting entity adds a case value to a starting entity returns the complete case list for an entity. null handle if empty in the list of mapped items (between 1 and nbmapped), searches for the first item which follows <num0>(not included) and which has an attribute named <name> attributes are brought by binders hence, allows such an iteration //! for (num = tp->nextitemwithattribute(name,0); num > 0; num = tp->nextitemwithattribute(name,num) { .. process mapped item <num> } returns the type of an attribute attached to binders if this name gives no attribute, returns paramvoid if this name gives several different types, returns parammisc else, returns the effective type (paraminteger, paramreal, paramident, or paramtext) returns the list of recorded attribute names, as a dictionary of integer: each value gives the count of items which bring this attribute name by default, considers all the attribute names if <rootname> is given, considers only the attribute names which begin by <rootname>.
+Returns the Check attached to a starting entity. If <start> is unknown, returns an empty Check Adds a case name to a starting entity Adds a case value to a starting entity Returns the complete case list for an entity. Null Handle if empty In the list of mapped items (between 1 and NbMapped), searches for the first item which follows <num0>(not included) and which has an attribute named <name> Attributes are brought by Binders Hence, allows such an iteration //! for (num = TP->NextItemWithAttribute(name,0); num > 0; num = TP->NextItemWithAttribute(name,num) { .. process mapped item <num> } Returns the type of an Attribute attached to binders If this name gives no Attribute, returns ParamVoid If this name gives several different types, returns ParamMisc Else, returns the effective type (ParamInteger, ParamReal, ParamIdent, or ParamText) Returns the list of recorded Attribute Names, as a Dictionary of Integer: each value gives the count of items which bring this attribute name By default, considers all the attribute names If <rootname> is given, considers only the attribute names which begin by <rootname>.
 ") Check;
 		opencascade::handle<Interface_Check> Check(const opencascade::handle<Standard_Transient> & start);
 
@@ -1632,7 +1644,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns a checklist as a list of check: each one is for a starting entity which have either check (warning or fail) messages are attached, or are in abnormal state: that case gives a specific message if <erronly> is true, checks with warnings only are ignored.
+Returns a CheckList as a list of Check: each one is for a starting entity which have either check (warning or fail) messages are attached, or are in abnormal state: that case gives a specific message If <erronly> is True, checks with Warnings only are ignored.
 ") CheckList;
 		Interface_CheckIterator CheckList(const Standard_Boolean erronly);
 
@@ -1652,7 +1664,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns a checklist for one starting object <level> interpreted as by resultone if <erronly> is true, checks with warnings only are ignored.
+Returns a CheckList for one starting object <level> interpreted as by ResultOne If <erronly> is True, checks with Warnings only are ignored.
 ") CheckListOne;
 		Interface_CheckIterator CheckListOne(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean erronly);
 
@@ -1670,7 +1682,7 @@ int
 
 Description
 -----------
-Computes a number to be associated to a starting object in a check or a check-list by default, returns 0; can be redefined.
+Computes a number to be associated to a starting object in a check or a check-list By default, returns 0; can be redefined.
 ") CheckNum;
 		virtual Standard_Integer CheckNum(const opencascade::handle<Standard_Transient> & start);
 
@@ -1683,7 +1695,7 @@ None
 
 Description
 -----------
-Rebuilds the map and the roots to really remove unbound items because unbind keeps the entity in place, even if not bound hence, working by checking new items is meaningless if a formerly unbound item is rebound.
+Rebuilds the Map and the roots to really remove Unbound items Because Unbind keeps the entity in place, even if not bound Hence, working by checking new items is meaningless if a formerly unbound item is rebound.
 ") Clean;
 		void Clean();
 
@@ -1696,7 +1708,7 @@ None
 
 Description
 -----------
-Resets a transferprocess as ready for a completely new work. clears general data (roots) and the map.
+Resets a TransferProcess as ready for a completely new work. Clears general data (roots) and the Map.
 ") Clear;
 		void Clear();
 
@@ -1714,7 +1726,7 @@ Transfer_IteratorOfProcessForTransient
 
 Description
 -----------
-Returns, as an iterator, the entire log of transfer (list of created objects and binders which can bring errors) if withstart is given true, starting objects are also returned.
+Returns, as an Iterator, the entire log of transfer (list of created objects and Binders which can bring errors) If withstart is given True, Starting Objects are also returned.
 ") CompleteResult;
 		Transfer_IteratorOfProcessForTransient CompleteResult(const Standard_Boolean withstart = Standard_False);
 
@@ -1745,7 +1757,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the binder which is linked with a starting object it can either bring a result (transfer done) or none (for a pre-binding). if no binder is linked with <start>, returns a null handle considers a category number, by default 0.
+Returns the Binder which is linked with a starting Object It can either bring a Result (Transfer done) or none (for a pre-binding). If no Binder is linked with <start>, returns a Null Handle Considers a category number, by default 0.
 ") Find;
 		opencascade::handle<Transfer_Binder> Find(const opencascade::handle<Standard_Transient> & start);
 
@@ -1763,7 +1775,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns a binder for a starting entity, as follows: tries to find the already bound one if none found, creates a voidbinder and binds it.
+Returns a Binder for a starting entity, as follows: Tries to Find the already bound one If none found, creates a VoidBinder and Binds it.
 ") FindElseBind;
 		opencascade::handle<Transfer_Binder> FindElseBind(const opencascade::handle<Standard_Transient> & start);
 
@@ -1781,7 +1793,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the result of the transfer of an object <start> as a transient result. returns a null handle if there is no transient result considers a category number, by default 0 warning: supposes that binding is done with a simplebinderoftransient.
+Returns the Result of the Transfer of an object <start> as a Transient Result. Returns a Null Handle if there is no Transient Result Considers a category number, by default 0 Warning: Supposes that Binding is done with a SimpleBinderOfTransient.
 ") FindTransient;
 		const opencascade::handle<Standard_Transient> & FindTransient(const opencascade::handle<Standard_Transient> & start);
 
@@ -1801,7 +1813,7 @@ bool
 
 Description
 -----------
-Searches for a transient result attached to a starting object, according to its type, by criterium iskind(atype) //! in case of multiple result, explores the list and gives in <val> the first transient result iskind(atype) returns true and fills <val> if found else, returns false (<val> is not touched, not even nullified) //! this syntactic form avoids to do downcast: if a result is found with the good type, it is loaded in <val> and can be immediately used, well initialised.
+Searches for a transient result attached to a starting object, according to its type, by criterium IsKind(atype) //! In case of multiple result, explores the list and gives in <val> the first transient result IsKind(atype) Returns True and fills <val> if found Else, returns False (<val> is not touched, not even nullified) //! This syntactic form avoids to do DownCast: if a result is found with the good type, it is loaded in <val> and can be immediately used, well initialised.
 ") FindTypedTransient;
 		Standard_Boolean FindTypedTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & val);
 
@@ -1821,7 +1833,7 @@ bool
 
 Description
 -----------
-Searches for a transient result recorded in a binder, whatever this binder is recorded or not in <self> //! this is strictly equivalent to the class method gettypedresult from class simplebinderoftransient, but is just lighter to call //! apart from this, works as findtypedtransient.
+Searches for a transient result recorded in a Binder, whatever this Binder is recorded or not in <self> //! This is strictly equivalent to the class method GetTypedResult from class SimpleBinderOfTransient, but is just lighter to call //! Apart from this, works as FindTypedTransient.
 ") GetTypedTransient;
 		Standard_Boolean GetTypedTransient(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & val);
 
@@ -1839,7 +1851,7 @@ bool
 
 Description
 -----------
-Returns true if the result of the transfer of an object is already used in other ones. if it is, rebind cannot change it. considers a category number, by default 0.
+Returns True if the result of the transfer of an object is already used in other ones. If it is, Rebind cannot change it. Considers a category number, by default 0.
 ") IsAlreadyUsed;
 		Standard_Boolean IsAlreadyUsed(const opencascade::handle<Standard_Transient> & start);
 
@@ -1857,7 +1869,7 @@ bool
 
 Description
 -----------
-Returns true if a result (whatever its form) is bound with a starting object. i.e., if a binder with a result set, is linked with it considers a category number, by default 0.
+Returns True if a Result (whatever its form) is Bound with a starting Object. I.e., if a Binder with a Result set, is linked with it Considers a category number, by default 0.
 ") IsBound;
 		Standard_Boolean IsBound(const opencascade::handle<Standard_Transient> & start);
 
@@ -1877,7 +1889,7 @@ bool
 
 Description
 -----------
-Returns true if no check message is attached to a starting object. <level> interpreted as by resultone if <erronly> is true, checks with warnings only are ignored.
+Returns True if no check message is attached to a starting object. <level> interpreted as by ResultOne If <erronly> is True, checks with Warnings only are ignored.
 ") IsCheckListEmpty;
 		Standard_Boolean IsCheckListEmpty(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean erronly);
 
@@ -1895,7 +1907,7 @@ bool
 
 Description
 -----------
-Returns true if we are surely in a deadloop. evaluation is not exact, it is a 'majorant' which must be computed fast. this 'majorant' is: <alevel> greater than nbmapped.
+Returns True if we are surely in a DeadLoop. Evaluation is not exact, it is a 'majorant' which must be computed fast. This 'majorant' is: <alevel> greater than NbMapped.
 ") IsLooping;
 		Standard_Boolean IsLooping(const Standard_Integer alevel);
 
@@ -1913,7 +1925,7 @@ int
 
 Description
 -----------
-Returns the index value bound to a starting object, 0 if none.
+Returns the Index value bound to a Starting Object, 0 if none.
 ") MapIndex;
 		Standard_Integer MapIndex(const opencascade::handle<Standard_Transient> & start);
 
@@ -1931,7 +1943,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the binder bound to an index considers a category number, by default 0.
+Returns the Binder bound to an Index Considers a category number, by default 0.
 ") MapItem;
 		opencascade::handle<Transfer_Binder> MapItem(const Standard_Integer num);
 
@@ -1949,7 +1961,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the starting object bound to an index,.
+Returns the Starting Object bound to an Index,.
 ") Mapped;
 		const opencascade::handle<Standard_Transient> & Mapped(const Standard_Integer num);
 
@@ -1981,7 +1993,7 @@ opencascade::handle<Message_Messenger>
 
 Description
 -----------
-Returns messenger used for outputting messages. the returned object is guaranteed to be non-null; default is message::messenger().
+Returns Messenger used for outputting messages. The returned object is guaranteed to be non-null; default is Message::Messenger().
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
@@ -1994,7 +2006,7 @@ int
 
 Description
 -----------
-Returns the maximum possible value for map index (no result can be bound with a value greater than it).
+Returns the maximum possible value for Map Index (no result can be bound with a value greater than it).
 ") NbMapped;
 		Standard_Integer NbMapped();
 
@@ -2007,7 +2019,7 @@ int
 
 Description
 -----------
-Returns the count of recorded roots.
+Returns the count of recorded Roots.
 ") NbRoots;
 		Standard_Integer NbRoots();
 
@@ -2020,7 +2032,7 @@ int
 
 Description
 -----------
-Returns nesting level of transfers (managed by methods transcriptwith & co). starts to zero. if no automatic transfer is used, it remains to zero. zero means root level.
+Returns Nesting Level of Transfers (managed by methods TranscriptWith & Co). Starts to zero. If no automatic Transfer is used, it remains to zero. Zero means Root Level.
 ") NestingLevel;
 		Standard_Integer NestingLevel();
 
@@ -2038,7 +2050,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints a short information on a starting object. by default prints its dynamic type. can be redefined.
+Prints a short information on a starting object. By default prints its Dynamic Type. Can be redefined.
 ") PrintTrace;
 		virtual void PrintTrace(const opencascade::handle<Standard_Transient> & start, std::ostream &OutValue);
 
@@ -2057,7 +2069,7 @@ None
 
 Description
 -----------
-Changes the binder linked with a starting object for its unitary transfer. this it can be useful when the exact form of the result is known once the transfer is widely engaged. this can be done only on first transfer. considers a category number, by default 0.
+Changes the Binder linked with a starting Object for its unitary transfer. This it can be useful when the exact form of the result is known once the transfer is widely engaged. This can be done only on first transfer. Considers a category number, by default 0.
 ") Rebind;
 		void Rebind(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_Binder> & binder);
 
@@ -2075,7 +2087,7 @@ bool
 
 Description
 -----------
-Tells if <start> has been recognized as good candidate for transfer. i.e. queries the actor and its nexts.
+Tells if <start> has been recognized as good candidate for Transfer. i.e. queries the Actor and its Nexts.
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
 
@@ -2095,7 +2107,7 @@ None
 
 Description
 -----------
-Removes results attached to (== unbinds) a given object and, according <level>: <level> = 0: only it <level> = 1: it plus its immediately owned sub-results(scope) <level> = 2: it plus all its owned sub-results(scope).
+Removes Results attached to (== Unbinds) a given object and, according <level>: <level> = 0: only it <level> = 1: it plus its immediately owned sub-results(scope) <level> = 2: it plus all its owned sub-results(scope).
 ") RemoveResult;
 		void RemoveResult(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean compute = Standard_True);
 
@@ -2108,7 +2120,7 @@ None
 
 Description
 -----------
-Resets nesting level of transfers to zero (root level), whatever its current value.
+Resets Nesting Level of Transfers to Zero (Root Level), whatever its current value.
 ") ResetNestingLevel;
 		void ResetNestingLevel();
 
@@ -2126,7 +2138,7 @@ None
 
 Description
 -----------
-Resizes the map as required (if a new reliable value has been determined). acts only if <nb> is greater than actual nbmapped.
+Resizes the Map as required (if a new reliable value has been determined). Acts only if <nb> is greater than actual NbMapped.
 ") Resize;
 		void Resize(const Standard_Integer nb);
 
@@ -2146,7 +2158,7 @@ Transfer_IteratorOfProcessForTransient
 
 Description
 -----------
-Returns, as an iterator, the log of transfer for one object <level> = 0: this object only and if <start> is a scope owner (else, <level> is ignored): <level> = 1: object plus its immediate scoped ones <level> = 2: object plus all its scoped ones.
+Returns, as an Iterator, the log of transfer for one object <level> = 0: this object only and if <start> is a scope owner (else, <level> is ignored): <level> = 1: object plus its immediate scoped ones <level> = 2: object plus all its scoped ones.
 ") ResultOne;
 		Transfer_IteratorOfProcessForTransient ResultOne(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean withstart = Standard_False);
 
@@ -2164,7 +2176,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a root entity given its number in the list (1-nbroots).
+Returns a Root Entity given its number in the list (1-NbRoots).
 ") Root;
 		const opencascade::handle<Standard_Transient> & Root(const Standard_Integer num);
 
@@ -2200,7 +2212,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the binder bound with a root entity given its number considers a category number, by default 0.
+Returns the Binder bound with a Root Entity given its number Considers a category number, by default 0.
 ") RootItem;
 		opencascade::handle<Transfer_Binder> RootItem(const Standard_Integer num);
 
@@ -2218,7 +2230,7 @@ Transfer_IteratorOfProcessForTransient
 
 Description
 -----------
-Returns, as an iterator, the log of root transfer, i.e. the created objects and binders bound to starting roots if withstart is given true, starting objects are also returned.
+Returns, as an iterator, the log of root transfer, i.e. the created objects and Binders bound to starting roots If withstart is given True, Starting Objects are also returned.
 ") RootResult;
 		Transfer_IteratorOfProcessForTransient RootResult(const Standard_Boolean withstart = Standard_False);
 
@@ -2237,7 +2249,7 @@ None
 
 Description
 -----------
-New name for addfail (msg).
+New name for AddFail (Msg).
 ") SendFail;
 		void SendFail(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
@@ -2256,7 +2268,7 @@ None
 
 Description
 -----------
-Adds an information message trace is filled if trace level is at least 3.
+Adds an information message Trace is filled if trace level is at least 3.
 ") SendMsg;
 		void SendMsg(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
@@ -2275,7 +2287,7 @@ None
 
 Description
 -----------
-New name for addwarning (msg).
+New name for AddWarning (Msg).
 ") SendWarning;
 		void SendWarning(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
@@ -2293,7 +2305,7 @@ None
 
 Description
 -----------
-Defines an actor, which is used for automatic transfer if already defined, the new actor is cumulated (see setnext from actor).
+Defines an Actor, which is used for automatic Transfer If already defined, the new Actor is cumulated (see SetNext from Actor).
 ") SetActor;
 		void SetActor(const opencascade::handle<Transfer_ActorOfProcessForTransient> & actor);
 
@@ -2311,7 +2323,7 @@ None
 
 Description
 -----------
-Allows controls if exceptions will be handled transfer operations <err> false: they are not handled with try {} catch {} <err> true: they are default is false: no handling performed.
+Allows controls if exceptions will be handled Transfer Operations <err> False: they are not handled with try {} catch {} <err> True: they are Default is False: no handling performed.
 ") SetErrorHandle;
 		void SetErrorHandle(const Standard_Boolean err);
 
@@ -2329,7 +2341,7 @@ None
 
 Description
 -----------
-Sets messenger used for outputting messages.
+Sets Messenger used for outputting messages.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
@@ -2347,7 +2359,7 @@ None
 
 Description
 -----------
-Declares <obj> (and its result) as root. this status will be later exploited by rootresult, see below (result can be produced at any time).
+Declares <obj> (and its Result) as Root. This status will be later exploited by RootResult, see below (Result can be produced at any time).
 ") SetRoot;
 		void SetRoot(const opencascade::handle<Standard_Transient> & start);
 
@@ -2365,7 +2377,7 @@ None
 
 Description
 -----------
-Enable (if <stat> true) or disables (if <stat> false) root management. if it is set, transfers are considered as stacked (a first transfer commands other transfers, and so on) and the transfers commanded by an external caller are 'root'. remark: setroot can be called whatever this status, on every object. default is set to true.
+Enable (if <stat> True) or Disables (if <stat> False) Root Management. If it is set, Transfers are considered as stacked (a first Transfer commands other Transfers, and so on) and the Transfers commanded by an external caller are 'Root'. Remark: SetRoot can be called whatever this status, on every object. Default is set to True.
 ") SetRootManagement;
 		void SetRootManagement(const Standard_Boolean stat);
 
@@ -2383,7 +2395,7 @@ None
 
 Description
 -----------
-Sets trace level used for outputting messages: <trace> = 0: no trace at all <trace> = 1: handled exceptions and calls to adderror <trace> = 2: also calls to addwarning <trace> = 3: also traces new roots (uses method errortrace). default is 1: errors traced.
+Sets trace level used for outputting messages: <trace> = 0: no trace at all <trace> = 1: handled exceptions and calls to AddError <trace> = 2: also calls to AddWarning <trace> = 3: also traces new Roots (uses method ErrorTrace). Default is 1: Errors traced.
 ") SetTraceLevel;
 		void SetTraceLevel(const Standard_Integer tracelev);
 
@@ -2404,7 +2416,7 @@ None
 
 Description
 -----------
-Method called when trace is asked calls printtrace to display information relevant for starting objects (which can be redefined) <level> is nesting level of transfer (0 = root) <mode> controls the way the trace is done: 0 neutral, 1 for error, 2 for warning message, 3 for new root.
+Method called when trace is asked Calls PrintTrace to display information relevant for starting objects (which can be redefined) <level> is Nesting Level of Transfer (0 = root) <mode> controls the way the trace is done: 0 neutral, 1 for Error, 2 for Warning message, 3 for new Root.
 ") StartTrace;
 		void StartTrace(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Integer mode);
 
@@ -2436,7 +2448,7 @@ bool
 
 Description
 -----------
-Same as transferring but does not return the binder. simply returns true in case of success (for user call).
+Same as Transferring but does not return the Binder. Simply returns True in case of success (for user call).
 ") Transfer;
 		Standard_Boolean Transfer(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2455,7 +2467,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Performs the transfer of a starting object, by calling the method transferproduct (see below). mapping and roots are managed: nothing is done if a result is already bound, an exception is raised in case of error.
+Performs the Transfer of a Starting Object, by calling the method TransferProduct (see below). Mapping and Roots are managed: nothing is done if a Result is already Bound, an exception is raised in case of error.
 ") Transferring;
 		opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2473,7 +2485,7 @@ bool
 
 Description
 -----------
-Removes the binder linked with a starting object if this binder brings a non-empty check, it is replaced by a voidbinder. also removes from the list of roots as required. returns true if done, false if <start> was not bound considers a category number, by default 0.
+Removes the Binder linked with a starting object If this Binder brings a non-empty Check, it is replaced by a VoidBinder. Also removes from the list of Roots as required. Returns True if done, False if <start> was not bound Considers a category number, by default 0.
 ") Unbind;
 		Standard_Boolean Unbind(const opencascade::handle<Standard_Transient> & start);
 
@@ -2502,7 +2514,7 @@ None
 
 Description
 -----------
-Creates a resultfrommodel, empty.
+Creates a ResultFromModel, empty.
 ") Transfer_ResultFromModel;
 		 Transfer_ResultFromModel();
 
@@ -2521,7 +2533,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check-list of this set of results <erronly> true: only fails are considered <level> = 0: considers only main binder <level> = 1: considers main binder plus immediate subs <level> = 2 (d): considers all checks.
+Returns the check-list of this set of results <erronly> true: only fails are considered <level> = 0: considers only main binder <level> = 1: considers main binder plus immediate subs <level> = 2 (D): considers all checks.
 ") CheckList;
 		Interface_CheckIterator CheckList(const Standard_Boolean erronly, const Standard_Integer level = 2);
 
@@ -2534,7 +2546,7 @@ Interface_CheckStatus
 
 Description
 -----------
-Returns the check status with corresponds to the content of this resultfrommodel; considers all levels of transfer (worst status). returns checkany if not yet computed reads it from recorded status if already computed, else recomputes one.
+Returns the check status with corresponds to the content of this ResultFromModel; considers all levels of transfer (worst status). Returns CheckAny if not yet computed Reads it from recorded status if already computed, else recomputes one.
 ") CheckStatus;
 		Interface_CheckStatus CheckStatus();
 
@@ -2553,7 +2565,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of starting entities to which a check status is attached. <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if true, only entities with an attached result remark: result true and check=0 will give an empty list.
+Returns the list of starting entities to which a check status is attached. <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if True, only entities with an attached result Remark: result True and check=0 will give an empty list.
 ") CheckedList;
 		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const Interface_CheckStatus check, const Standard_Boolean result);
 
@@ -2571,7 +2583,7 @@ Interface_CheckStatus
 
 Description
 -----------
-Computes and records check status (see checkstatus) does not computes it if already done and <enforce> false.
+Computes and records check status (see CheckStatus) Does not computes it if already done and <enforce> False.
 ") ComputeCheckStatus;
 		Interface_CheckStatus ComputeCheckStatus(const Standard_Boolean enforce);
 
@@ -2584,7 +2596,7 @@ str
 
 Description
 -----------
-Returns starting file name (empty if not set).
+Returns starting File Name (empty if not set).
 ") FileName;
 		Standard_CString FileName();
 
@@ -2603,7 +2615,7 @@ bool
 
 Description
 -----------
-Fills from a transientprocess, with the result attached to a starting entity. considers its model if it is set. this action produces a structured set of resultfromtransient, considering scopes, starting by that of <ent>. if <ent> has no recorded result, it remains empty returns true if a result is recorded, false else.
+Fills from a TransientProcess, with the result attached to a starting entity. Considers its Model if it is set. This action produces a structured set of ResultFromTransient, considering scopes, starting by that of <ent>. If <ent> has no recorded result, it remains empty Returns True if a result is recorded, False else.
 ") Fill;
 		Standard_Boolean Fill(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent);
 
@@ -2621,7 +2633,7 @@ None
 
 Description
 -----------
-Fills back a transientprocess from the structured set of binders. also sets the model.
+Fills back a TransientProcess from the structured set of binders. Also sets the Model.
 ") FillBack;
 		void FillBack(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -2634,7 +2646,7 @@ bool
 
 Description
 -----------
-Returns true if a result is recorded.
+Returns True if a Result is recorded.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -2647,7 +2659,7 @@ str
 
 Description
 -----------
-Returns the label in starting model attached to main entity (updated by fill or setmainresult, if model is known).
+Returns the label in starting model attached to main entity (updated by Fill or SetMainResult, if Model is known).
 ") MainLabel;
 		Standard_CString MainLabel();
 
@@ -2673,7 +2685,7 @@ opencascade::handle<Transfer_ResultFromTransient>
 
 Description
 -----------
-Returns the main recorded resultfromtransient, or a null.
+Returns the main recorded ResultFromTransient, or a null.
 ") MainResult;
 		opencascade::handle<Transfer_ResultFromTransient> MainResult();
 
@@ -2686,7 +2698,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns starting model (null if not set).
+Returns starting Model (null if not set).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -2704,7 +2716,7 @@ opencascade::handle<Transfer_ResultFromTransient>
 
 Description
 -----------
-Searches for a key (starting entity) and returns its result returns a null handle if not found.
+Searches for a key (starting entity) and returns its result Returns a null handle if not found.
 ") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey(const opencascade::handle<Standard_Transient> & start);
 
@@ -2722,7 +2734,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Internal method which returns the list of resultfromtransient, according level (2:complete; 1:sub-level 1; 0:main only).
+Internal method which returns the list of ResultFromTransient, according level (2:complete; 1:sub-level 1; 0:main only).
 ") Results;
 		opencascade::handle<TColStd_HSequenceOfTransient> Results(const Standard_Integer level);
 
@@ -2740,7 +2752,7 @@ None
 
 Description
 -----------
-Sets starting file name.
+Sets starting File Name.
 ") SetFileName;
 		void SetFileName(Standard_CString filename);
 
@@ -2758,7 +2770,7 @@ None
 
 Description
 -----------
-Sets a new value for the main recorded resultfromtransient.
+Sets a new value for the main recorded ResultFromTransient.
 ") SetMainResult;
 		void SetMainResult(const opencascade::handle<Transfer_ResultFromTransient> & amain);
 
@@ -2776,7 +2788,7 @@ None
 
 Description
 -----------
-Sets starting model.
+Sets starting Model.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2794,7 +2806,7 @@ None
 
 Description
 -----------
-Clears some data attached to binders used by transientprocess, which become useless once the transfer has been done, by calling strip on its resultfromtransient //! mode = 0: minimum, clears data remaining from transferprocess mode = 10: just keeps file name, label, check status ..., and mainresult but only the result (binder) mode = 11: also clears mainresult (status and names remain).
+Clears some data attached to binders used by TransientProcess, which become useless once the transfer has been done, by calling Strip on its ResultFromTransient //! mode = 0: minimum, clears data remaining from TransferProcess mode = 10: just keeps file name, label, check status ..., and MainResult but only the result (Binder) mode = 11: also clears MainResult (status and names remain).
 ") Strip;
 		void Strip(const Standard_Integer mode);
 
@@ -2812,7 +2824,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of recorded starting entities, ending by the root. entities with check but no transfer result are ignored <level> = 2 (d), considers the complete list <level> = 1 considers the main result plus immediate subs <level> = 0 just the main result.
+Returns the list of recorded starting entities, ending by the root. Entities with check but no transfer result are ignored <level> = 2 (D), considers the complete list <level> = 1 considers the main result plus immediate subs <level> = 0 just the main result.
 ") TransferredList;
 		opencascade::handle<TColStd_HSequenceOfTransient> TransferredList(const Standard_Integer level = 2);
 
@@ -2841,7 +2853,7 @@ None
 
 Description
 -----------
-Creates a resultfromtransient, empty.
+Creates a ResultFromTransient, empty.
 ") Transfer_ResultFromTransient;
 		 Transfer_ResultFromTransient();
 
@@ -2929,7 +2941,7 @@ None
 
 Description
 -----------
-Fills from a transientprocess, with the starting entity which must have been set before. it works with scopes, calls fill on each of its sub-results.
+Fills from a TransientProcess, with the starting entity which must have been set before. It works with scopes, calls Fill on each of its sub-results.
 ") Fill;
 		void Fill(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -2947,7 +2959,7 @@ None
 
 Description
 -----------
-Fills back a transientprocess with definition of a resultfromtransient, respectfully to its structuration in scopes.
+Fills back a TransientProcess with definition of a ResultFromTransient, respectfully to its structuration in scopes.
 ") FillBack;
 		void FillBack(const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -2965,7 +2977,7 @@ None
 
 Description
 -----------
-This method is used by resultfrommodel to collate the list of resultfromtransient, avoiding duplications with a map remark: <self> is already in the map and has not to be bound.
+This method is used by ResultFromModel to collate the list of ResultFromTransient, avoiding duplications with a map Remark: <self> is already in the map and has not to be bound.
 ") FillMap;
 		void FillMap(TColStd_IndexedMapOfTransient & map);
 
@@ -2978,7 +2990,7 @@ bool
 
 Description
 -----------
-Returns true if a result is recorded.
+Returns True if a result is recorded.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -3009,7 +3021,7 @@ opencascade::handle<Transfer_ResultFromTransient>
 
 Description
 -----------
-Returns the resultfromtransient attached to a given starting entity (the key). returns a null handle if not found.
+Returns the ResultFromTransient attached to a given starting entity (the key). Returns a null handle if not found.
 ") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey(const opencascade::handle<Standard_Transient> & key);
 
@@ -3027,7 +3039,7 @@ None
 
 Description
 -----------
-Sets binder (for result plus individual check).
+Sets Binder (for result plus individual check).
 ") SetBinder;
 		void SetBinder(const opencascade::handle<Transfer_Binder> & binder);
 
@@ -3071,7 +3083,7 @@ None
 
 Description
 -----------
-Clears some data attached to binders used by transientprocess, which become useless once the transfer has been done: the list of sub-scoped binders, which is now recorded as sub-results.
+Clears some data attached to binders used by TransientProcess, which become useless once the transfer has been done: the list of sub-scoped binders, which is now recorded as sub-results.
 ") Strip;
 		void Strip();
 
@@ -3124,7 +3136,7 @@ None
 
 Description
 -----------
-Creates a transferdispatch from a model. works with a general service library, given as an argument a transferdispatch is created as a copytool in which the control is set to transientprocess.
+Creates a TransferDispatch from a Model. Works with a General Service Library, given as an Argument A TransferDispatch is created as a CopyTool in which the Control is set to TransientProcess.
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
@@ -3143,7 +3155,7 @@ None
 
 Description
 -----------
-Same as above, but library is defined through a protocol.
+Same as above, but Library is defined through a Protocol.
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3161,7 +3173,7 @@ None
 
 Description
 -----------
-Same as above, but works with the active protocol.
+Same as above, but works with the Active Protocol.
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -3182,7 +3194,7 @@ bool
 
 Description
 -----------
-Copies an entity by calling the method transferring from the transferprocess. if this called produces a null binder, then the standard, inherited copy is called.
+Copies an Entity by calling the method Transferring from the TransferProcess. If this called produces a Null Binder, then the standard, inherited Copy is called.
 ") Copy;
 		virtual Standard_Boolean Copy(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, const Standard_Boolean mapped, const Standard_Boolean errstat);
 
@@ -3195,7 +3207,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the content of control object, as a transientprocess.
+Returns the content of Control Object, as a TransientProcess.
 ") TransientProcess;
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
@@ -3222,7 +3234,7 @@ None
 
 Description
 -----------
-Creates a transferinput ready to use.
+Creates a TransferInput ready to use.
 ") Transfer_TransferInput;
 		 Transfer_TransferInput();
 
@@ -3240,7 +3252,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Takes the transient items stored in a transferiterator.
+Takes the transient items stored in a TransferIterator.
 ") Entities;
 		Interface_EntityIterator Entities(Transfer_TransferIterator & list);
 
@@ -3259,7 +3271,7 @@ None
 
 Description
 -----------
-Fills an interfacemodel with the complete result of a transfer stored in a transientprocess (starting objects are transient) the complete result is exactly added to the model.
+Fills an InterfaceModel with the Complete Result of a Transfer stored in a TransientProcess (Starting Objects are Transient) The complete result is exactly added to the model.
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -3280,7 +3292,7 @@ None
 
 Description
 -----------
-Fills an interfacemodel with results of the transfer recorded in a transientprocess (starting objects are transient): root result if <roots> is true (default), complete result else the entities added to the model are determined from the result by by adding the referenced entities.
+Fills an InterfaceModel with results of the Transfer recorded in a TransientProcess (Starting Objects are Transient): Root Result if <roots> is True (Default), Complete Result else The entities added to the model are determined from the result by by adding the referenced entities.
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & proto, const Standard_Boolean roots = Standard_True);
 
@@ -3299,7 +3311,7 @@ None
 
 Description
 -----------
-Fills an interfacemodel with the complete result of a transfer stored in a transientprocess (starting objects are transient) the complete result is exactly added to the model.
+Fills an InterfaceModel with the Complete Result of a Transfer stored in a TransientProcess (Starting Objects are Transient) The complete result is exactly added to the model.
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_FinderProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -3320,7 +3332,7 @@ None
 
 Description
 -----------
-Fills an interfacemodel with results of the transfer recorded in a transientprocess (starting objects are transient): root result if <roots> is true (default), complete result else the entities added to the model are determined from the result by by adding the referenced entities.
+Fills an InterfaceModel with results of the Transfer recorded in a TransientProcess (Starting Objects are Transient): Root Result if <roots> is True (Default), Complete Result else The entities added to the model are determined from the result by by adding the referenced entities.
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_FinderProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & proto, const Standard_Boolean roots = Standard_True);
 
@@ -3347,7 +3359,7 @@ None
 
 Description
 -----------
-Creates an empty iterator.
+Creates an empty Iterator.
 ") Transfer_TransferIterator;
 		 Transfer_TransferIterator();
 
@@ -3365,7 +3377,7 @@ None
 
 Description
 -----------
-Adds a binder to the iteration list (construction).
+Adds a Binder to the iteration list (construction).
 ") AddItem;
 		void AddItem(const opencascade::handle<Transfer_Binder> & atr);
 
@@ -3378,7 +3390,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns check associated to current binder (in case of error, it brings fail messages) (in case of warnings, it brings warning messages).
+Returns Check associated to current Binder (in case of error, it brings Fail messages) (in case of warnings, it brings Warning messages).
 ") Check;
 		const opencascade::handle<Interface_Check> Check();
 
@@ -3391,7 +3403,7 @@ bool
 
 Description
 -----------
-Returns true if fail messages are recorded with the current binder. they can then be read through check (see below).
+Returns True if Fail Messages are recorded with the current Binder. They can then be read through Check (see below).
 ") HasFails;
 		Standard_Boolean HasFails();
 
@@ -3404,7 +3416,7 @@ bool
 
 Description
 -----------
-Returns true if current item brings a result, transient (handle) or not or multiple. that is to say, if it corresponds to a normally achieved transfer, transient result is read by specific transientresult below. other kind of result must be read specifically from its binder.
+Returns True if current Item brings a Result, Transient (Handle) or not or Multiple. That is to say, if it corresponds to a normally achieved Transfer, Transient Result is read by specific TransientResult below. Other kind of Result must be read specifically from its Binder.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -3417,7 +3429,7 @@ bool
 
 Description
 -----------
-Returns true if the current item has a transient unique result (if yes, use transientresult to get it).
+Returns True if the current Item has a Transient Unique Result (if yes, use TransientResult to get it).
 ") HasTransientResult;
 		Standard_Boolean HasTransientResult();
 
@@ -3430,7 +3442,7 @@ bool
 
 Description
 -----------
-Returns true if current item has a unique result.
+Returns True if Current Item has a Unique Result.
 ") HasUniqueResult;
 		Standard_Boolean HasUniqueResult();
 
@@ -3443,7 +3455,7 @@ bool
 
 Description
 -----------
-Returns true if warning messages are recorded with the current binder. they can then be read through check (see below).
+Returns True if Warning Messages are recorded with the current Binder. They can then be read through Check (see below).
 ") HasWarnings;
 		Standard_Boolean HasWarnings();
 
@@ -3456,7 +3468,7 @@ bool
 
 Description
 -----------
-Returns true if there are other items to iterate.
+Returns True if there are other Items to iterate.
 ") More;
 		Standard_Boolean More();
 
@@ -3469,7 +3481,7 @@ None
 
 Description
 -----------
-Sets iteration to the next item.
+Sets Iteration to the next Item.
 ") Next;
 		void Next();
 
@@ -3482,7 +3494,7 @@ int
 
 Description
 -----------
-Returns count of binders to be iterated.
+Returns count of Binders to be iterated.
 ") Number;
 		Standard_Integer Number();
 
@@ -3495,7 +3507,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the result of the current item, if unique. if no unique result (error transfer or multiple result), returns a null handle the type is: the dynamic type for a transient result, the type defined by the binder class else.
+Returns the Type of the Result of the current Item, if Unique. If No Unique Result (Error Transfer or Multiple Result), returns a Null Handle The Type is: the Dynamic Type for a Transient Result, the Type defined by the Binder Class else.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
@@ -3514,7 +3526,7 @@ None
 
 Description
 -----------
-Selects items on the type of binder: keep only binders which are of a given type (if keep is true) or reject only them (if keep is false).
+Selects Items on the Type of Binder: keep only Binders which are of a given Type (if keep is True) or reject only them (if keep is False).
 ") SelectBinder;
 		void SelectBinder(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
@@ -3533,7 +3545,7 @@ None
 
 Description
 -----------
-Selects/unselect (according to <keep> an item designated by its rank <num> in the list used by sub-classes which have specific criteria.
+Selects/Unselect (according to <keep> an item designated by its rank <num> in the list Used by sub-classes which have specific criteria.
 ") SelectItem;
 		void SelectItem(const Standard_Integer num, const Standard_Boolean keep);
 
@@ -3552,7 +3564,7 @@ None
 
 Description
 -----------
-Selects items on the type of result. considers only unique results. considers dynamic type for transient result, static type (the one given to define the binder) else. //! results which are of a given type (if keep is true) or reject only them (if keep is false).
+Selects Items on the Type of Result. Considers only Unique Results. Considers Dynamic Type for Transient Result, Static Type (the one given to define the Binder) else. //! Results which are of a given Type (if keep is True) or reject only them (if keep is False).
 ") SelectResult;
 		void SelectResult(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
@@ -3570,7 +3582,7 @@ None
 
 Description
 -----------
-Select items according unicity: keep only unique results (if keep is true) or keep only multiple results (if keep is false).
+Select Items according Unicity: keep only Unique Results (if keep is True) or keep only Multiple Results (if keep is False).
 ") SelectUnique;
 		void SelectUnique(const Standard_Boolean keep);
 
@@ -3583,7 +3595,7 @@ None
 
 Description
 -----------
-Clears iteration in progress, to allow it to be restarted.
+Clears Iteration in progress, to allow it to be restarted.
 ") Start;
 		void Start();
 
@@ -3596,7 +3608,7 @@ Transfer_StatusExec
 
 Description
 -----------
-Returns execution status of current binder normal transfer corresponds to statusdone.
+Returns Execution Status of current Binder Normal transfer corresponds to StatusDone.
 ") Status;
 		Transfer_StatusExec Status();
 
@@ -3609,7 +3621,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the transient result of the current item if there is (else, returns a null handle) supposes that binding is done by a simplebinderoftransient.
+Returns the Transient Result of the current Item if there is (else, returns a null Handle) Supposes that Binding is done by a SimpleBinderOfTransient.
 ") TransientResult;
 		const opencascade::handle<Standard_Transient> & TransientResult();
 
@@ -3622,7 +3634,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the current binder.
+Returns the current Binder.
 ") Value;
 		const opencascade::handle<Transfer_Binder> & Value();
 
@@ -3655,7 +3667,7 @@ None
 
 Description
 -----------
-Creates a transferoutput ready to use, with a transientprocess.
+Creates a TransferOutput ready to use, with a TransientProcess.
 ") Transfer_TransferOutput;
 		 Transfer_TransferOutput(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -3674,7 +3686,7 @@ None
 
 Description
 -----------
-Creates a transferoutput from an already existing transientprocess, and a model returns (by reference, hence can be changed) the mode for scope management. false (d) means scope is ignored. true means that each individual transfer (direct or through transferroots) is regarded as one scope.
+Creates a TransferOutput from an already existing TransientProcess, and a Model Returns (by Reference, hence can be changed) the Mode for Scope Management. False (D) means Scope is ignored. True means that each individual Transfer (direct or through TransferRoots) is regarded as one Scope.
 ") Transfer_TransferOutput;
 		 Transfer_TransferOutput(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -3693,7 +3705,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of starting entities with these criteria: - <normal> false, gives the entities bound with abnormal status (e.g.: fail recorded, exception raised during transfer) - <normal> true, gives entities with or without a result, but with no fail, no exception (warnings are not counted) - <roots> false, considers all entities recorded (either for result, or for at least one fail or warning message) - <roots> true (default), considers only roots of transfer (the entities recorded at highest level) this method is based on abnormalresult from transferprocess.
+Returns the list of Starting Entities with these criteria: - <normal> False, gives the entities bound with ABNORMAL STATUS (e.g.: Fail recorded, Exception raised during Transfer) - <normal> True, gives Entities with or without a Result, but with no Fail, no Exception (Warnings are not counted) - <roots> False, considers all entities recorded (either for Result, or for at least one Fail or Warning message) - <roots> True (Default), considers only roots of Transfer (the Entities recorded at highest level) This method is based on AbnormalResult from TransferProcess.
 ") ListForStatus;
 		Interface_EntityIterator ListForStatus(const Standard_Boolean normal, const Standard_Boolean roots = Standard_True);
 
@@ -3706,7 +3718,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the starting model.
+Returns the Starting Model.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -3726,7 +3738,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Fills a model with the list determined by listforstatus this model starts from scratch (made by newemptymodel from the current model), then is filled by addwithrefs //! useful to get separately from a transfer, the entities which have caused problem, in order to furtherly analyse them (with normal = false), or the 'good' entities, to obtain a data set 'which works well' (with normal = true).
+Fills a Model with the list determined by ListForStatus This model starts from scratch (made by NewEmptyModel from the current Model), then is filled by AddWithRefs //! Useful to get separately from a transfer, the entities which have caused problem, in order to furtherly analyse them (with normal = False), or the 'good' entities, to obtain a data set 'which works well' (with normal = True).
 ") ModelForStatus;
 		opencascade::handle<Interface_InterfaceModel> ModelForStatus(const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean normal, const Standard_Boolean roots = Standard_True);
 
@@ -3745,7 +3757,7 @@ None
 
 Description
 -----------
-Transfer checks that all taken entities come from the same model, then calls transfer from transientprocess.
+Transfer checks that all taken Entities come from the same Model, then calls Transfer from TransientProcess.
 ") Transfer;
 		void Transfer(const opencascade::handle<Standard_Transient> & obj, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3764,7 +3776,7 @@ None
 
 Description
 -----------
-Runs transfer on the roots of the interface model the roots are computed with a shareflags created from a protocol given as argument.
+Runs transfer on the roots of the Interface Model The Roots are computed with a ShareFlags created from a Protocol given as Argument.
 ") TransferRoots;
 		void TransferRoots(const opencascade::handle<Interface_Protocol> & protocol, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3783,7 +3795,7 @@ None
 
 Description
 -----------
-Runs transfer on the roots defined by a graph of dependences (which detains also a model and its entities) roots are computed with a shareflags created from the graph.
+Runs transfer on the roots defined by a Graph of dependences (which detains also a Model and its Entities) Roots are computed with a ShareFlags created from the Graph.
 ") TransferRoots;
 		void TransferRoots(const Interface_Graph & G, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3801,7 +3813,7 @@ None
 
 Description
 -----------
-Runs transfer on the roots of the interface model remark: the roots are computed with a shareflags created from the active protocol.
+Runs transfer on the roots of the Interface Model Remark: the Roots are computed with a ShareFlags created from the Active Protocol.
 ") TransferRoots;
 		void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3814,7 +3826,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the transientprocess used to work.
+Returns the TransientProcess used to work.
 ") TransientProcess;
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
@@ -3845,6 +3857,34 @@ No available documentation.
 ") Transfer_ActorOfFinderProcess;
 		 Transfer_ActorOfFinderProcess();
 
+		/****** Transfer_ActorOfFinderProcess::GetShapeFixParameters ******/
+		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
+		/****** Transfer_ActorOfFinderProcess::GetShapeProcessFlags ******/
+		/****** md5 signature: 9a36ef61377dc7b1e6932eb1cc2f212e ******/
+		%feature("compactdefaultargs") GetShapeProcessFlags;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ProcessingFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: Pair of values defining operations to be performed on shapes and a boolean value that indicates whether the flags were set.
+") GetShapeProcessFlags;
+		const XSAlgo_ShapeProcessor::ProcessingFlags & GetShapeProcessFlags();
+
 
         %feature("autodoc","1");
         %extend {
@@ -3858,6 +3898,84 @@ No available documentation.
             $self->ModeTrans()=value;
             }
         };
+		/****** Transfer_ActorOfFinderProcess::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** Transfer_ActorOfFinderProcess::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** Transfer_ActorOfFinderProcess::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+
+		/****** Transfer_ActorOfFinderProcess::SetShapeProcessFlags ******/
+		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
+		%feature("compactdefaultargs") SetShapeProcessFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetShapeProcessFlags;
+		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
+
 		/****** Transfer_ActorOfFinderProcess::Transfer ******/
 		/****** md5 signature: 0fe03bef0cb14a70799d9821bdfd7128 ******/
 		%feature("compactdefaultargs") Transfer;
@@ -3946,6 +4064,112 @@ Description
 No available documentation.
 ") Transfer_ActorOfTransientProcess;
 		 Transfer_ActorOfTransientProcess();
+
+		/****** Transfer_ActorOfTransientProcess::GetProcessingFlags ******/
+		/****** md5 signature: 028e3c39463d40f9b67ea5e4eef4392b ******/
+		%feature("compactdefaultargs") GetProcessingFlags;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ProcessingFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: Pair: the flags defining operations to be performed on shapes and a boolean value that indicates whether the flags were set.
+") GetProcessingFlags;
+		const XSAlgo_ShapeProcessor::ProcessingFlags & GetProcessingFlags();
+
+		/****** Transfer_ActorOfTransientProcess::GetShapeFixParameters ******/
+		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
+		/****** Transfer_ActorOfTransientProcess::SetProcessingFlags ******/
+		/****** md5 signature: ba5863441d51d46161ddfa6b423b2152 ******/
+		%feature("compactdefaultargs") SetProcessingFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetProcessingFlags;
+		void SetProcessingFlags(const ShapeProcess::OperationsFlags & theFlags);
+
+		/****** Transfer_ActorOfTransientProcess::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** Transfer_ActorOfTransientProcess::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** Transfer_ActorOfTransientProcess::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
 
 		/****** Transfer_ActorOfTransientProcess::Transfer ******/
 		/****** md5 signature: 61d6387dc674010808ec9a991a18e31d ******/
@@ -4037,7 +4261,7 @@ None
 
 Description
 -----------
-Sets finderprocess at initial state, with an initial size.
+Sets FinderProcess at initial state, with an initial size.
 ") Transfer_FinderProcess;
 		 Transfer_FinderProcess(const Standard_Integer nb = 10000);
 
@@ -4050,7 +4274,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model which can be used for context.
+Returns the Model which can be used for context.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -4069,7 +4293,7 @@ int
 
 Description
 -----------
-In the list of mapped items (between 1 and nbmapped), searches for the first mapped item which follows <num0> (not included) and which has an attribute named <name> the considered attributes are those brought by finders,i.e. by input data. while nextitemwithattribute works on result data (binders) //! hence, allows such an iteration //! for (num = fp->nextmappedwithattribute(name,0); num > 0; num = fp->nextmappedwithattribute(name,num) { .. process mapped item <num> }.
+In the list of mapped items (between 1 and NbMapped), searches for the first mapped item which follows <num0> (not included) and which has an attribute named <name> The considered Attributes are those brought by Finders,i.e. by Input data. While NextItemWithAttribute works on Result data (Binders) //! Hence, allows such an iteration //! for (num = FP->NextMappedWithAttribute(name,0); num > 0; num = FP->NextMappedWithAttribute(name,num) { .. process mapped item <num> }.
 ") NextMappedWithAttribute;
 		Standard_Integer NextMappedWithAttribute(Standard_CString name, const Standard_Integer num0);
 
@@ -4105,7 +4329,7 @@ S: Standard_OStream
 
 Description
 -----------
-Specific printing to trace a finder (by its method valuetype).
+Specific printing to trace a Finder (by its method ValueType).
 ") PrintTrace;
 		virtual void PrintTrace(const opencascade::handle<Transfer_Finder> & start, std::ostream &OutValue);
 
@@ -4123,7 +4347,7 @@ None
 
 Description
 -----------
-Sets an interfacemodel, which can be used during transfer for instance if a context must be managed, it is in the model.
+Sets an InterfaceModel, which can be used during transfer for instance if a context must be managed, it is in the Model.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -4141,7 +4365,7 @@ opencascade::handle<Transfer_TransientMapper>
 
 Description
 -----------
-Returns a transientmapper for a given transient object either <obj> is already mapped, then its mapper is returned or it is not, then a new one is created then returned, but it is not mapped here (use bind or findelsebind to do this).
+Returns a TransientMapper for a given Transient Object Either <obj> is already mapped, then its Mapper is returned Or it is not, then a new one is created then returned, BUT it is not mapped here (use Bind or FindElseBind to do this).
 ") TransientMapper;
 		opencascade::handle<Transfer_TransientMapper> TransientMapper(const opencascade::handle<Standard_Transient> & obj);
 
@@ -4175,7 +4399,7 @@ None
 
 Description
 -----------
-Creates an empty iterator if withstarts is true, each binder to be iterated will be associated to its corresponding starting object.
+Creates an empty Iterator if withstarts is True, each Binder to be iterated will be associated to its corresponding Starting Object.
 ") Transfer_IteratorOfProcessForFinder;
 		 Transfer_IteratorOfProcessForFinder(const Standard_Boolean withstarts);
 
@@ -4193,7 +4417,7 @@ None
 
 Description
 -----------
-Adds a binder to the iteration list (construction) with no corresponding starting object (note that result is brought by binder).
+Adds a Binder to the iteration list (construction) with no corresponding Starting Object (note that Result is brought by Binder).
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder);
 
@@ -4212,7 +4436,7 @@ None
 
 Description
 -----------
-Adds a binder to the iteration list, associated with its corresponding starting object 'start' starting object is ignored if not required at creation time.
+Adds a Binder to the iteration list, associated with its corresponding Starting Object 'start' Starting Object is ignored if not required at Creation time.
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Transfer_Finder> & start);
 
@@ -4231,7 +4455,7 @@ None
 
 Description
 -----------
-After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = true (d): keeps. <keep> = false: rejects does nothing if <withstarts> was false.
+After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D): keeps. <keep> = False: rejects Does nothing if <withstarts> was False.
 ") Filter;
 		void Filter(const opencascade::handle<Transfer_HSequenceOfFinder> & list, const Standard_Boolean keep = Standard_True);
 
@@ -4244,7 +4468,7 @@ bool
 
 Description
 -----------
-Returns true if starting object is available (defined at creation time).
+Returns True if Starting Object is available (defined at Creation Time).
 ") HasStarting;
 		Standard_Boolean HasStarting();
 
@@ -4257,7 +4481,7 @@ opencascade::handle<Transfer_Finder>
 
 Description
 -----------
-Returns corresponding starting object.
+Returns corresponding Starting Object.
 ") Starting;
 		const opencascade::handle<Transfer_Finder> & Starting();
 
@@ -4289,7 +4513,7 @@ None
 
 Description
 -----------
-Creates an empty iterator if withstarts is true, each binder to be iterated will be associated to its corresponding starting object.
+Creates an empty Iterator if withstarts is True, each Binder to be iterated will be associated to its corresponding Starting Object.
 ") Transfer_IteratorOfProcessForTransient;
 		 Transfer_IteratorOfProcessForTransient(const Standard_Boolean withstarts);
 
@@ -4307,7 +4531,7 @@ None
 
 Description
 -----------
-Adds a binder to the iteration list (construction) with no corresponding starting object (note that result is brought by binder).
+Adds a Binder to the iteration list (construction) with no corresponding Starting Object (note that Result is brought by Binder).
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder);
 
@@ -4326,7 +4550,7 @@ None
 
 Description
 -----------
-Adds a binder to the iteration list, associated with its corresponding starting object 'start' starting object is ignored if not required at creation time.
+Adds a Binder to the iteration list, associated with its corresponding Starting Object 'start' Starting Object is ignored if not required at Creation time.
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Transient> & start);
 
@@ -4345,7 +4569,7 @@ None
 
 Description
 -----------
-After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = true (d): keeps. <keep> = false: rejects does nothing if <withstarts> was false.
+After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D): keeps. <keep> = False: rejects Does nothing if <withstarts> was False.
 ") Filter;
 		void Filter(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Boolean keep = Standard_True);
 
@@ -4358,7 +4582,7 @@ bool
 
 Description
 -----------
-Returns true if starting object is available (defined at creation time).
+Returns True if Starting Object is available (defined at Creation Time).
 ") HasStarting;
 		Standard_Boolean HasStarting();
 
@@ -4371,7 +4595,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns corresponding starting object.
+Returns corresponding Starting Object.
 ") Starting;
 		const opencascade::handle<Standard_Transient> & Starting();
 
@@ -4398,7 +4622,7 @@ None
 
 Description
 -----------
-Normal standard constructor, creates an empty multiplebinder.
+normal standard constructor, creates an empty MultipleBinder.
 ") Transfer_MultipleBinder;
 		 Transfer_MultipleBinder();
 
@@ -4416,7 +4640,7 @@ None
 
 Description
 -----------
-Adds a new item to the multiple result.
+Adds a new Item to the Multiple Result.
 ") AddResult;
 		void AddResult(const opencascade::handle<Standard_Transient> & res);
 
@@ -4429,7 +4653,7 @@ bool
 
 Description
 -----------
-Returns true if a starting object is bound with several results: here, returns always true.
+Returns True if a starting object is bound with SEVERAL results: Here, returns always True.
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
@@ -4442,7 +4666,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the multiple result, if it is defined (at least one item). else, returns a null handle.
+Returns the Multiple Result, if it is defined (at least one Item). Else, returns a Null Handle.
 ") MultipleResult;
 		opencascade::handle<TColStd_HSequenceOfTransient> MultipleResult();
 
@@ -4455,7 +4679,7 @@ int
 
 Description
 -----------
-Returns the actual count of recorded (transient) results.
+Returns the actual count of recorded (Transient) results.
 ") NbResults;
 		Standard_Integer NbResults();
 
@@ -4468,7 +4692,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type permitted for results, i.e. here transient.
+Returns the Type permitted for Results, i.e. here Transient.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
@@ -4481,7 +4705,7 @@ str
 
 Description
 -----------
-Returns the name of the type which characterizes the result here, returns '(list)'.
+Returns the Name of the Type which characterizes the Result Here, returns '(list)'.
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
@@ -4517,7 +4741,7 @@ None
 
 Description
 -----------
-Defines a binding with a multiple result, given as a sequence error if a unique result has yet been defined.
+Defines a Binding with a Multiple Result, given as a Sequence Error if a Unique Result has yet been defined.
 ") SetMultipleResult;
 		void SetMultipleResult(const opencascade::handle<TColStd_HSequenceOfTransient> & mulres);
 
@@ -4546,7 +4770,7 @@ None
 
 Description
 -----------
-Creates an empty simplebinderoftransient returns true if a starting object is bound with several results: here, returns always false see binder itself.
+Creates an empty SimpleBinderOfTransient Returns True if a starting object is bound with SEVERAL results: Here, returns always False See Binder itself.
 ") Transfer_SimpleBinderOfTransient;
 		 Transfer_SimpleBinderOfTransient();
 
@@ -4566,7 +4790,7 @@ bool
 
 Description
 -----------
-Returns a transient result according to its type (iskind) i.e. the result itself if iskind(atype), else searches in nextresult, until first found, then returns true if not found, returns false (res is not touched) //! this syntactic form avoids to do downcast: if a result is found with the good type, it is loaded in <res> and can be immediately used, well initialised.
+Returns a transient result according to its type (IsKind) i.e. the result itself if IsKind(atype), else searches in NextResult, until first found, then returns True If not found, returns False (res is NOT touched) //! This syntactic form avoids to do DownCast: if a result is found with the good type, it is loaded in <res> and can be immediately used, well initialised.
 ") GetTypedResult;
 		static Standard_Boolean GetTypedResult(const opencascade::handle<Transfer_Binder> & bnd, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & res);
 
@@ -4579,7 +4803,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the defined result, if there is one.
+Returns the defined Result, if there is one.
 ") Result;
 		const opencascade::handle<Standard_Transient> & Result();
 
@@ -4592,7 +4816,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the effective (dynamic) type of the result (standard_transient if no result is defined).
+Returns the Effective (Dynamic) Type of the Result (Standard_Transient if no Result is defined).
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
@@ -4605,7 +4829,7 @@ str
 
 Description
 -----------
-Returns the effective name of (dynamic) type of the result (void) if no result is defined.
+Returns the Effective Name of (Dynamic) Type of the Result (void) if no result is defined.
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
@@ -4623,7 +4847,7 @@ None
 
 Description
 -----------
-Defines the result.
+Defines the Result.
 ") SetResult;
 		void SetResult(const opencascade::handle<Standard_Transient> & res);
 
@@ -4824,7 +5048,7 @@ None
 
 Description
 -----------
-Creates a mapper with a value. this value can then not be changed. it is used by the hasher to compute the hashcode, which will then be stored for an immediate reading.
+Creates a Mapper with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 ") Transfer_TransientMapper;
 		 Transfer_TransientMapper(const opencascade::handle<Standard_Transient> & akey);
 
@@ -4842,7 +5066,7 @@ bool
 
 Description
 -----------
-Specific testof equality: defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+Specific testof equality: defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==).
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
@@ -4868,7 +5092,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
+Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
@@ -4881,7 +5105,7 @@ str
 
 Description
 -----------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
+Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
 		virtual Standard_CString ValueTypeName();
 
@@ -4915,7 +5139,7 @@ None
 
 Description
 -----------
-Sets transientprocess at initial state, with an initial size.
+Sets TransientProcess at initial state, with an initial size.
 ") Transfer_TransientProcess;
 		 Transfer_TransientProcess(const Standard_Integer nb = 10000);
 
@@ -4933,7 +5157,7 @@ int
 
 Description
 -----------
-Specific number of a starting object for check-list: number in model.
+Specific number of a starting object for check-list: Number in model.
 ") CheckNum;
 		virtual Standard_Integer CheckNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4946,7 +5170,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transi
 
 Description
 -----------
-Returns (modifiable) the whole definition of context rather for internal use (ex.: preparing and setting in once).
+Returns (modifiable) the whole definition of Context Rather for internal use (ex.: preparing and setting in once).
 ") Context;
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & Context();
 
@@ -4966,7 +5190,7 @@ bool
 
 Description
 -----------
-Returns the context attached to a name, if set and if it is kind of the type, else a null handle returns true if ok, false if no context.
+Returns the Context attached to a name, if set and if it is Kind of the type, else a Null Handle Returns True if OK, False if no Context.
 ") GetContext;
 		Standard_Boolean GetContext(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & ctx);
 
@@ -5023,7 +5247,7 @@ bool
 
 Description
 -----------
-Tells if an entity fails on data checking (load time, syntactic, or semantic check). normally, should answer false. it is not prudent to try transferring an entity which fails on data checking.
+Tells if an entity fails on data checking (load time, syntactic, or semantic check). Normally, should answer False. It is not prudent to try transferring an entity which fails on data checking.
 ") IsDataFail;
 		Standard_Boolean IsDataFail(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5041,7 +5265,7 @@ bool
 
 Description
 -----------
-Tells if an entity is well loaded from file (even if its data fail on checking, they are present). mostly often, answers true. else, there was a syntactic error in the file. a non-loaded entity may not be transferred, unless its report (in the model) is interpreted.
+Tells if an entity is well loaded from file (even if its data fail on checking, they are present). Mostly often, answers True. Else, there was a syntactic error in the file. A non-loaded entity MAY NOT BE transferred, unless its Report (in the model) is interpreted.
 ") IsDataLoaded;
 		Standard_Boolean IsDataLoaded(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5054,7 +5278,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model used for starttrace.
+Returns the Model used for StartTrace.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -5122,7 +5346,7 @@ None
 
 Description
 -----------
-Sets a context: according to receiving appli, to be interpreted by the actor.
+Sets a Context: according to receiving appli, to be interpreted by the Actor.
 ") SetContext;
 		void SetContext(Standard_CString name, const opencascade::handle<Standard_Transient> & ctx);
 
@@ -5140,7 +5364,7 @@ None
 
 Description
 -----------
-Sets a graph: superseedes setmodel if already done.
+Sets a Graph: supersedes SetModel if already done.
 ") SetGraph;
 		void SetGraph(const opencascade::handle<Interface_HGraph> & HG);
 
@@ -5158,7 +5382,7 @@ None
 
 Description
 -----------
-Sets an interfacemodel, used by starttrace, checklist, queries on integrity, to give information significant for each norm.
+Sets an InterfaceModel, used by StartTrace, CheckList, queries on Integrity, to give information significant for each norm.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -5177,7 +5401,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of sharings entities, at any level, which are kind of a given type. calls typedsharings from graph returns an empty list if the graph has not been aknowledged.
+Returns the list of sharings entities, AT ANY LEVEL, which are kind of a given type. Calls TypedSharings from Graph Returns an empty list if the Graph has not been acknowledged.
 ") TypedSharings;
 		Interface_EntityIterator TypedSharings(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Type> & type);
 
@@ -5206,7 +5430,7 @@ None
 
 Description
 -----------
-A voidbinder is not multiple (remark: it is not simple too) but it can bring next results ...
+a VoidBinder is not Multiple (Remark: it is not Simple too) But it can bring next results ...
 ") Transfer_VoidBinder;
 		 Transfer_VoidBinder();
 
@@ -5219,7 +5443,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-While a voidbinder admits no result, its resulttype returns the type of <self>.
+while a VoidBinder admits no Result, its ResultType returns the type of <self>.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
@@ -5267,7 +5491,7 @@ None
 
 Description
 -----------
-Creates an actordispatch from a model. works with a general service library, given as an argument this causes transferdispatch and its transientprocess to be created, with default actor <self>.
+Creates an ActorDispatch from a Model. Works with a General Service Library, given as an Argument This causes TransferDispatch and its TransientProcess to be created, with default actor <self>.
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
@@ -5286,7 +5510,7 @@ None
 
 Description
 -----------
-Same as above, but library is defined through a protocol.
+Same as above, but Library is defined through a Protocol.
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -5304,7 +5528,7 @@ None
 
 Description
 -----------
-Same as above, but works with the active protocol.
+Same as above, but works with the Active Protocol.
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -5322,7 +5546,7 @@ None
 
 Description
 -----------
-Utility which adds an actor to the default <self> (it calls setactor from the transientprocess).
+Utility which adds an actor to the default <self> (it calls SetActor from the TransientProcess).
 ") AddActor;
 		void AddActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
@@ -5342,7 +5566,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Specific action: it calls the method transfer from copytool i.e. the general service copy, then returns the binder produced by the transientprocess.
+Specific action: it calls the method Transfer from CopyTool i.e. the general service Copy, then returns the Binder produced by the TransientProcess.
 ") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -5355,7 +5579,7 @@ Transfer_TransferDispatch
 
 Description
 -----------
-Returns the transferdispatch, which does the work, records the intermediate data, etc... see transferdispatch & copytool, to see the available methods.
+Returns the TransferDispatch, which does the work, records the intermediate data, etc... See TransferDispatch & CopyTool, to see the available methods.
 ") TransferDispatch;
 		Transfer_TransferDispatch & TransferDispatch();
 
@@ -5384,7 +5608,7 @@ None
 
 Description
 -----------
-Creates an empty binderoftransientinteger; default value for the integer part is zero.
+Creates an empty BinderOfTransientInteger; Default value for the integer part is zero.
 ") Transfer_BinderOfTransientInteger;
 		 Transfer_BinderOfTransientInteger();
 

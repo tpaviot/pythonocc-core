@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CDFDOCSTRING
 "CDF module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_cdf.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdf.html"
 %enddef
 %module (package="OCC.Core", docstring=CDFDOCSTRING) CDF
 
@@ -158,8 +158,6 @@ CDF_TOA_Unchanged = CDF_TypeOfActivation.CDF_TOA_Unchanged
 %nodefaultctor CDF_Application;
 class CDF_Application : public CDM_Application {
 	public:
-		opencascade::handle<CDF_MetaDataDriver > myMetaDataDriver;
-		opencascade::handle<CDF_Directory > myDirectory;
 		/****** CDF_Application::CanClose ******/
 		/****** md5 signature: c6d5b2cf0ce51a973521c5b4c25f2ec1 ******/
 		%feature("compactdefaultargs") CanClose;
@@ -233,7 +231,7 @@ None
 
 Description
 -----------
-Removes the document of the current session directory and closes the document;.
+removes the document of the current session directory and closes the document;.
 ") Close;
 		void Close(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -265,7 +263,7 @@ bool
 
 Description
 -----------
-Try to retrieve a format directly in the file or in application resource by using extension. returns true if found;.
+try to retrieve a Format directly in the file or in application resource by using extension. returns True if found;.
 ") Format;
 		Standard_Boolean Format(TCollection_ExtendedString aFileName, TCollection_ExtendedString & theFormat);
 
@@ -278,7 +276,7 @@ PCDM_ReaderStatus
 
 Description
 -----------
-Checks status after retrieve.
+Checks status after Retrieve.
 ") GetRetrieveStatus;
 		PCDM_ReaderStatus GetRetrieveStatus();
 
@@ -296,7 +294,7 @@ None
 
 Description
 -----------
-Initialize a document for the applicative session. this virtual function is called by newdocument and should be redefined for each specific application.
+Initialize a document for the applicative session. This virtual function is called by NewDocument and should be redefined for each specific application.
 ") InitDocument;
 		virtual void InitDocument(const opencascade::handle<CDM_Document> & theDoc);
 
@@ -314,7 +312,7 @@ opencascade::handle<CDF_Application>
 
 Description
 -----------
-Plugs an application. //! open is used - for opening a document that has been created in an application - for opening a document from the database - for opening a document from a file. the open methods always add the document in the session directory and calls the virtual activate method. the document is considered to be opened until close is used. to be storable, a document must be opened by an application since the application resources are needed to store it.
+plugs an application. //! Open is used - for opening a Document that has been created in an application - for opening a Document from the database - for opening a Document from a file. The Open methods always add the document in the session directory and calls the virtual Activate method. The document is considered to be opened until Close is used. To be storable, a document must be opened by an application since the application resources are needed to store it.
 ") Load;
 		static opencascade::handle<CDF_Application> Load(const Standard_GUID & aGUID);
 
@@ -327,7 +325,7 @@ opencascade::handle<CDF_MetaDataDriver>
 
 Description
 -----------
-Returns metadatddriver of this application.
+returns MetaDatdDriver of this application.
 ") MetaDataDriver;
 		opencascade::handle<CDF_MetaDataDriver> MetaDataDriver();
 
@@ -346,7 +344,7 @@ None
 
 Description
 -----------
-Constructs an new empty document. this document will have the specified format. if initdocument() is redefined for a specific application, the new document is handled by the applicative session.
+Constructs an new empty document. This document will have the specified format. If InitDocument() is redefined for a specific application, the new document is handled by the applicative session.
 ") NewDocument;
 		virtual void NewDocument(TCollection_ExtendedString theFormat, opencascade::handle<CDM_Document> & theDoc);
 
@@ -364,7 +362,7 @@ None
 
 Description
 -----------
-Puts the document in the current session directory and calls the virtual method activate on it.
+puts the document in the current session directory and calls the virtual method Activate on it.
 ") Open;
 		void Open(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -385,7 +383,7 @@ None
 
 Description
 -----------
-Reads thedocument from standard seekable stream theistream, the stream should support seek functionality.
+Reads theDocument from standard SEEKABLE stream theIStream, the stream should support SEEK functionality.
 ") Read;
 		void Read(std::istream & theIStream, opencascade::handle<CDM_Document> & theDocument, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -403,7 +401,7 @@ opencascade::handle<PCDM_Reader>
 
 Description
 -----------
-Returns instance of read driver for specified format. //! default implementation uses plugin mechanism to load reader dynamically. for this to work, application resources should define guid of the plugin as value of [format].retrievalplugin, and 'plugin' resource should define name of plugin library to be loaded as value of [guid].location. plugin library should provide method pluginfactory returning instance of the reader for the same guid (see plugin_macro.hxx). //! in case if reader is not available, will raise standard_nosuchobject or other exception if raised by plugin loader.
+Returns instance of read driver for specified format. //! Default implementation uses plugin mechanism to load reader dynamically. For this to work, application resources should define GUID of the plugin as value of [Format].RetrievalPlugin, and 'Plugin' resource should define name of plugin library to be loaded as value of [GUID].Location. Plugin library should provide method PLUGINFACTORY returning instance of the reader for the same GUID (see Plugin_Macro.hxx). //! In case if reader is not available, will raise Standard_NoSuchObject or other exception if raised by plugin loader.
 ") ReaderFromFormat;
 		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat(TCollection_ExtendedString aFormat);
 
@@ -425,7 +423,7 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-This method retrieves a document from the database. if the document references other documents which have been updated, the latest version of these documents will be used if {usestorageconfiguration} is standard_true. the content of {afolder}, {aname} and {aversion} depends on the database manager system. if the dbms is only based on the os, {afolder} is a directory and {aname} is the name of a file. in this case the use of the syntax with {aversion} has no sense. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('/home/cascade','box.dsg'); if the dbms is euclid/design manager, {afolder}, {aname} have the form they have in euclid/design manager. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('|user|cascade','box'); //! since the version is not specified in this syntax, the latest will be used. a link is kept with the database through an instance of cdm_metadata.
+This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. The content of {aFolder}, {aName} and {aVersion} depends on the Database Manager system. If the DBMS is only based on the OS, {aFolder} is a directory and {aName} is the name of a file. In this case the use of the syntax with {aVersion} has no sense. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('/home/cascade','box.dsg'); If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box'); //! Since the version is not specified in this syntax, the latest will be used. A link is kept with the database through an instance of CDM_MetaData.
 ") Retrieve;
 		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -448,7 +446,7 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-This method retrieves a document from the database. if the document references other documents which have been updated, the latest version of these documents will be used if {usestorageconfiguration} is standard_true. -- if the dbms is only based on the os, this syntax should not be used. //! if the dbms is euclid/design manager, {afolder}, {aname} and {aversion} have the form they have in euclid/design manager. for example: //! opencascade::handle<cdm_document> thedocument=myapplication->retrieve('|user|cascade','box','2'); a link is kept with the database through an instance of cdm_metadata.
+This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. -- If the DBMS is only based on the OS, this syntax should not be used. //! If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} and {aVersion} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box','2'); A link is kept with the database through an instance of CDM_MetaData.
 ") Retrieve;
 		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -484,7 +482,7 @@ opencascade::handle<PCDM_StorageDriver>
 
 Description
 -----------
-Returns instance of storage driver for specified format. //! default implementation uses plugin mechanism to load driver dynamically. for this to work, application resources should define guid of the plugin as value of [format].storageplugin, and 'plugin' resource should define name of plugin library to be loaded as value of [guid].location. plugin library should provide method pluginfactory returning instance of the reader for the same guid (see plugin_macro.hxx). //! in case if driver is not available, will raise standard_nosuchobject or other exception if raised by plugin loader.
+Returns instance of storage driver for specified format. //! Default implementation uses plugin mechanism to load driver dynamically. For this to work, application resources should define GUID of the plugin as value of [Format].StoragePlugin, and 'Plugin' resource should define name of plugin library to be loaded as value of [GUID].Location. Plugin library should provide method PLUGINFACTORY returning instance of the reader for the same GUID (see Plugin_Macro.hxx). //! In case if driver is not available, will raise Standard_NoSuchObject or other exception if raised by plugin loader.
 ") WriterFromFormat;
 		virtual opencascade::handle<PCDM_StorageDriver> WriterFromFormat(TCollection_ExtendedString aFormat);
 
@@ -531,7 +529,7 @@ None
 
 Description
 -----------
-Adds a document into the directory.
+adds a document into the directory.
 ") Add;
 		void Add(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -549,7 +547,7 @@ bool
 
 Description
 -----------
-Returns true if the document adocument is in the directory.
+Returns true if the document aDocument is in the directory.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -562,7 +560,7 @@ bool
 
 Description
 -----------
-Returns true if the directory is empty.
+returns true if the directory is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -575,7 +573,7 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-Returns the last document (if any) which has been added in the directory.
+returns the last document (if any) which has been added in the directory.
 ") Last;
 		opencascade::handle<CDM_Document> Last();
 
@@ -588,7 +586,7 @@ int
 
 Description
 -----------
-Returns the number of documents of the directory.
+returns the number of documents of the directory.
 ") Length;
 		Standard_Integer Length();
 
@@ -606,7 +604,7 @@ None
 
 Description
 -----------
-Removes the document.
+removes the document.
 ") Remove;
 		void Remove(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -663,7 +661,7 @@ None
 
 Description
 -----------
-Creates a 'depends on' relation between two datas. by default does nothing.
+Creates a 'Depends On' relation between two Datas. By default does nothing.
 ") CreateDependsOn;
 		virtual void CreateDependsOn(const opencascade::handle<CDM_MetaData> & aFirstData, const opencascade::handle<CDM_MetaData> & aSecondData);
 
@@ -682,7 +680,7 @@ opencascade::handle<CDM_MetaData>
 
 Description
 -----------
-Should create meta-data corresponding to adata and maintaining a meta-link between these meta-data and afilename createmetadata is called by createdata if the metadata-driver has version capabilities, version must be set in the returned data.
+should create meta-data corresponding to aData and maintaining a meta-link between these meta-data and aFileName CreateMetaData is called by CreateData If the metadata-driver has version capabilities, version must be set in the returned Data.
 ") CreateMetaData;
 		virtual opencascade::handle<CDM_MetaData> CreateMetaData(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName);
 
@@ -736,7 +734,7 @@ bool
 
 Description
 -----------
-Should indicate whether meta-data exist in the dbms corresponding to the data. aversion may be null;.
+should indicate whether meta-data exist in the DBMS corresponding to the Data. aVersion may be NULL;.
 ") Find;
 		virtual Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
@@ -755,7 +753,7 @@ bool
 
 Description
 -----------
-Calls find with an empty version.
+calls Find with an empty version.
 ") Find;
 		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
@@ -812,7 +810,7 @@ bool
 
 Description
 -----------
-By default return standard_true.
+by default return Standard_True.
 ") HasVersion;
 		virtual Standard_Boolean HasVersion(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
@@ -825,7 +823,7 @@ bool
 
 Description
 -----------
-Returns true if the metadatadriver can manage different versions of a data. by default, returns standard_false.
+returns true if the MetaDataDriver can manage different versions of a Data. By default, returns Standard_False.
 ") HasVersionCapability;
 		virtual Standard_Boolean HasVersionCapability();
 
@@ -843,7 +841,7 @@ opencascade::handle<CDM_MetaData>
 
 Description
 -----------
-By default returns ametadata should return the metadata stored in the dbms with the meta-data corresponding to the path. if the metadatadriver has version management capabilities the version has to be set in the returned metadata. metadata is called by getmetadata if the version is not included in the path , metadata should return the last version of the metadata is deferred;.
+by default returns aMetaDATA should return the MetaData stored in the DBMS with the meta-data corresponding to the path. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. MetaData is called by GetMetaData If the version is not included in the path , MetaData should return the last version of the metadata is deferred;.
 ") LastVersion;
 		virtual opencascade::handle<CDM_MetaData> LastVersion(const opencascade::handle<CDM_MetaData> & aMetaData);
 
@@ -863,7 +861,7 @@ opencascade::handle<CDM_MetaData>
 
 Description
 -----------
-Should return the metadata stored in the dbms with the meta-data corresponding to the data. if the metadatadriver has version management capabilities the version has to be set in the returned metadata. aversion may be null metadata is called by getmetadata if the version is set to null, metadata should return the last version of the metadata.
+should return the MetaData stored in the DBMS with the meta-data corresponding to the Data. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. aVersion may be NULL MetaData is called by GetMetaData If the version is set to NULL, MetaData should return the last version of the metadata.
 ") MetaData;
 		virtual opencascade::handle<CDM_MetaData> MetaData(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
@@ -882,7 +880,7 @@ opencascade::handle<CDM_MetaData>
 
 Description
 -----------
-Calls metadata with an empty version.
+calls MetaData with an empty version.
 ") MetaData;
 		opencascade::handle<CDM_MetaData> MetaData(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
@@ -919,7 +917,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-This method is useful if the name of an object -- depends on the metadatadriver. for example a driver -- based on the operating system can choose to add the extension of file to create to the object.
+this method is useful if the name of an object -- depends on the metadatadriver. For example a Driver -- based on the operating system can choose to add the extension of file to create to the object.
 ") SetName;
 		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
 
@@ -983,7 +981,7 @@ None
 
 Description
 -----------
-Creates a store list from the document of the current selection.
+creates a store list from the document of the current selection.
 ") CDF_Store;
 		 CDF_Store(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -1035,7 +1033,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Returns the description of the format of the main object.
+returns the description of the format of the main object.
 ") Description;
 		opencascade::handle<TCollection_HExtendedString> Description();
 
@@ -1048,7 +1046,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Returns the folder in which the current document will be stored.
+returns the folder in which the current document will be stored.
 ") Folder;
 		opencascade::handle<TCollection_HExtendedString> Folder();
 
@@ -1087,7 +1085,7 @@ bool
 
 Description
 -----------
-Returns true if the currentdocument is the main one, ie the document of the current selection.
+returns true if the currentdocument is the main one, ie the document of the current selection.
 ") IsMainDocument;
 		Standard_Boolean IsMainDocument();
 
@@ -1113,7 +1111,7 @@ bool
 
 Description
 -----------
-Returns true if the current document is already stored.
+returns true if the current document is already stored.
 ") IsStored;
 		Standard_Boolean IsStored();
 
@@ -1126,7 +1124,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Returns the path of the previous store is the object is already stored, otherwise an empty string;.
+returns the path of the previous store is the object is already stored, otherwise an empty string;.
 ") MetaDataPath;
 		opencascade::handle<TCollection_HExtendedString> MetaDataPath();
 
@@ -1139,7 +1137,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Returns the name under which the current document will be stored.
+returns the name under which the current document will be stored.
 ") Name;
 		opencascade::handle<TCollection_HExtendedString> Name();
 
@@ -1152,7 +1150,7 @@ Standard_ExtString
 
 Description
 -----------
-Returns the complete path of the created meta-data.
+returns the complete path of the created meta-data.
 ") Path;
 		Standard_ExtString Path();
 
@@ -1196,7 +1194,7 @@ CDF_StoreSetNameStatus
 
 Description
 -----------
-Defines the name under which the document should be stored. uses for example after modification of the folder.
+defines the name under which the document should be stored. uses for example after modification of the folder.
 ") RecheckName;
 		CDF_StoreSetNameStatus RecheckName();
 
@@ -1250,7 +1248,7 @@ bool
 
 Description
 -----------
-Defines the folder in which the document should be stored. returns standard_true if the folder exists, standard_false otherwise.
+defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.
 ") SetFolder;
 		Standard_Boolean SetFolder(TCollection_ExtendedString aFolder);
 
@@ -1268,7 +1266,7 @@ bool
 
 Description
 -----------
-Defines the folder in which the document should be stored. returns standard_true if the folder exists, standard_false otherwise.
+defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.
 ") SetFolder;
 		Standard_Boolean SetFolder(const Standard_ExtString aFolder);
 
@@ -1281,7 +1279,7 @@ None
 
 Description
 -----------
-The two following methods can be used just after realize or import -- method to know if thes methods worked correctly, and if not why.
+the two following methods can be used just after Realize or Import -- method to know if thes methods worked correctly, and if not why.
 ") SetMain;
 		void SetMain();
 
@@ -1299,7 +1297,7 @@ CDF_StoreSetNameStatus
 
 Description
 -----------
-Defines the name under which the document should be stored.
+defines the name under which the document should be stored.
 ") SetName;
 		CDF_StoreSetNameStatus SetName(const Standard_ExtString aName);
 
@@ -1317,7 +1315,7 @@ CDF_StoreSetNameStatus
 
 Description
 -----------
-Defines the name under which the document should be stored.
+defines the name under which the document should be stored.
 ") SetName;
 		CDF_StoreSetNameStatus SetName(TCollection_ExtendedString aName);
 
@@ -1452,7 +1450,7 @@ PCDM_StoreStatus
 
 Description
 -----------
-Stores each object of the storelist in the reverse order of which they had been added.
+stores each object of the storelist in the reverse order of which they had been added.
 ") Store;
 		PCDM_StoreStatus Store(opencascade::handle<CDM_MetaData> & aMetaData, TCollection_ExtendedString & aStatusAssociatedText, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1499,7 +1497,7 @@ None
 
 Description
 -----------
-Initializes the metadatadriver connected to specified look-up table. note that the created driver will keep reference to the table, thus it must have life time longer than this object.
+Initializes the MetaDatadriver connected to specified look-up table. Note that the created driver will keep reference to the table, thus it must have life time longer than this object.
 ") CDF_FWOSDriver;
 		 CDF_FWOSDriver(CDM_MetaDataLookUpTable & theLookUpTable);
 
@@ -1550,7 +1548,7 @@ bool
 
 Description
 -----------
-Indicate whether a file exists corresponding to the folder and the name.
+indicate whether a file exists corresponding to the folder and the name.
 ") Find;
 		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 

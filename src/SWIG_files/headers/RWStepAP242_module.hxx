@@ -19,9 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define RWSTEPAP242_HXX
 
 
-#include<RWStepAP242_RWDraughtingModelItemAssociation.hxx>
-#include<RWStepAP242_RWGeometricItemSpecificUsage.hxx>
-#include<RWStepAP242_RWIdAttribute.hxx>
-#include<RWStepAP242_RWItemIdentifiedRepresentationUsage.hxx>
 
 #endif // RWSTEPAP242_HXX

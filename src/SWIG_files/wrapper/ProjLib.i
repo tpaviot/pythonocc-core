@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PROJLIBDOCSTRING
 "ProjLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_projlib.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_projlib.html"
 %enddef
 %module (package="OCC.Core", docstring=PROJLIBDOCSTRING) ProjLib
 
@@ -132,7 +132,7 @@ bool
 
 Description
 -----------
-Returns 'true' if surface is analytical, that is it can be plane, cylinder, cone, sphere, torus. for all other types of surface method returns 'false'.
+Returns 'true' if surface is analytical, that is it can be Plane, Cylinder, Cone, Sphere, Torus. For all other types of surface method returns 'false'.
 ") IsAnaSurf;
 		static Standard_Boolean IsAnaSurf(const opencascade::handle<Adaptor3d_Surface> & theAS);
 
@@ -151,7 +151,7 @@ None
 
 Description
 -----------
-Make empty p-curve <ac> of relevant to <pc> type.
+Make empty P-Curve <aC> of relevant to <PC> type.
 ") MakePCurveOfType;
 		static void MakePCurveOfType(const ProjLib_ProjectedCurve & PC, opencascade::handle<Geom2d_Curve> & aC);
 
@@ -503,7 +503,7 @@ None
 
 Description
 -----------
-Try to find all solutions.
+try to find all solutions.
 ") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -525,7 +525,7 @@ None
 
 Description
 -----------
-This constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then maxdist. if maxdist < 0 then algorithm works as above.
+this constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm works as above.
 ") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV, const Standard_Real MaxDist);
 
@@ -546,7 +546,7 @@ None
 
 Description
 -----------
-This constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then maxdist. if maxdist < 0 then algorithm try to find all solutions tolerances of parameters are calculated automatically.
+this constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm try to find all solutions Tolerances of parameters are calculated automatically.
 ") ProjLib_CompProjectedCurve;
 		 ProjLib_CompProjectedCurve(const Standard_Real Tol3d, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real MaxDist = -1.0);
 
@@ -565,7 +565,7 @@ Ufin: float
 
 Description
 -----------
-Returns the bounds of the continuous part corresponding to index.
+returns the bounds of the continuous part corresponding to Index.
 ") Bounds;
 		void Bounds(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -578,7 +578,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+Returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -597,7 +597,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -617,7 +617,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -638,7 +638,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -657,7 +657,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if n < 1. raised if n > 2.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1. Raised if N > 2.
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -670,7 +670,7 @@ float
 
 Description
 -----------
-Returns the first parameter of the curve c which has a projection on s.
+Returns the first parameter of the curve C which has a projection on S.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
@@ -727,7 +727,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the resulting 2d-curve of projecting of the curve interval with number index.
+Returns the resulting 2d-curve of projecting of the curve interval with number Index.
 ") GetResult2dC;
 		opencascade::handle<Geom2d_Curve> GetResult2dC(const Standard_Integer theIndex);
 
@@ -745,7 +745,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the resulting 2d-point of projecting of the curve interval with number index.
+Returns the resulting 2d-point of projecting of the curve interval with number Index.
 ") GetResult2dP;
 		gp_Pnt2d GetResult2dP(const Standard_Integer theIndex);
 
@@ -763,7 +763,7 @@ float
 
 Description
 -----------
-Returns the error of approximation of u parameter 2d-curve as a result projecting of the curve interval with number index.
+Returns the error of approximation of U parameter 2d-curve as a result projecting of the curve interval with number Index.
 ") GetResult2dUApproxError;
 		Standard_Real GetResult2dUApproxError(const Standard_Integer theIndex);
 
@@ -781,7 +781,7 @@ float
 
 Description
 -----------
-Returns the error of approximation of v parameter 2d-curve as a result projecting of the curve interval with number index.
+Returns the error of approximation of V parameter 2d-curve as a result projecting of the curve interval with number Index.
 ") GetResult2dVApproxError;
 		Standard_Real GetResult2dVApproxError(const Standard_Integer theIndex);
 
@@ -799,7 +799,7 @@ float
 
 Description
 -----------
-Returns the error of approximation of 3d-curve as a result projecting of the curve interval with number index.
+Returns the error of approximation of 3d-curve as a result projecting of the curve interval with number Index.
 ") GetResult3dApproxError;
 		Standard_Real GetResult3dApproxError(const Standard_Integer theIndex);
 
@@ -817,7 +817,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the resulting 3d-curve of projecting of the curve interval with number index.
+Returns the resulting 3d-curve of projecting of the curve interval with number Index.
 ") GetResult3dC;
 		opencascade::handle<Geom_Curve> GetResult3dC(const Standard_Integer theIndex);
 
@@ -835,7 +835,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the resulting 3d-point of projecting of the curve interval with number index.
+Returns the resulting 3d-point of projecting of the curve interval with number Index.
 ") GetResult3dP;
 		gp_Pnt GetResult3dP(const Standard_Integer theIndex);
 
@@ -892,7 +892,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -905,7 +905,7 @@ None
 
 Description
 -----------
-Computes a set of projected point and determine the continuous parts of the projected curves. the points corresponding to a projection on the bounds of the surface are included in this set of points.
+computes a set of projected point and determine the continuous parts of the projected curves. The points corresponding to a projection on the bounds of the surface are included in this set of points.
 ") Init;
 		void Init();
 
@@ -924,7 +924,7 @@ None
 
 Description
 -----------
-Returns the parameters corresponding to s discontinuities. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Returns the parameters corresponding to S discontinuities. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -943,7 +943,7 @@ bool
 
 Description
 -----------
-Returns true if part of projection with number index is a single point and writes its coordinates in p.
+returns True if part of projection with number Index is a single point and writes its coordinates in P.
 ") IsSinglePnt;
 		Standard_Boolean IsSinglePnt(const Standard_Integer Index, gp_Pnt2d & P);
 
@@ -961,7 +961,7 @@ U: float
 
 Description
 -----------
-Returns true if part of projection with number index is an u-isoparametric curve of input surface.
+returns True if part of projection with number Index is an u-isoparametric curve of input surface.
 ") IsUIso;
 		Standard_Boolean IsUIso(const Standard_Integer Index, Standard_Real &OutValue);
 
@@ -979,7 +979,7 @@ V: float
 
 Description
 -----------
-Returns true if part of projection with number index is an v-isoparametric curve of input surface.
+returns True if part of projection with number Index is an v-isoparametric curve of input surface.
 ") IsVIso;
 		Standard_Boolean IsVIso(const Standard_Integer Index, Standard_Real &OutValue);
 
@@ -992,7 +992,7 @@ float
 
 Description
 -----------
-Returns the last parameter of the curve c which has a projection on s.
+Returns the last parameter of the curve C which has a projection on S.
 ") LastParameter;
 		Standard_Real LastParameter();
 
@@ -1046,7 +1046,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between curve to project and surface.
+returns the maximum distance between curve to project and surface.
 ") MaxDistance;
 		Standard_Real MaxDistance(const Standard_Integer Index);
 
@@ -1059,7 +1059,7 @@ int
 
 Description
 -----------
-Returns the number of continuous part of the projected curve.
+returns the number of continuous part of the projected curve.
 ") NbCurves;
 		Standard_Integer NbCurves();
 
@@ -1077,7 +1077,7 @@ int
 
 Description
 -----------
-Returns the number of intervals which define an s continuous part of the projected curve.
+Returns the number of intervals which define an S continuous part of the projected curve.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1090,7 +1090,7 @@ None
 
 Description
 -----------
-Performs projecting for given curve. if projecting uses approximation, approximation parameters can be set before by corresponding methods settol3d(...), secontinuity(...), setmaxdegree(...), setmaxseg(...).
+Performs projecting for given curve. If projecting uses approximation, approximation parameters can be set before by corresponding methods SetTol3d(...), SeContinuity(...), SetMaxDegree(...), SetMaxSeg(...).
 ") Perform;
 		void Perform();
 
@@ -1108,7 +1108,7 @@ bool
 
 Description
 -----------
-Returns true if result of projecting of the curve interval with number index is point.
+Returns true if result of projecting of the curve interval with number Index is point.
 ") ResultIsPoint;
 		Standard_Boolean ResultIsPoint(const Standard_Integer theIndex);
 
@@ -1126,7 +1126,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines curve continuity. default value is geomabs_c2;.
+Set the parameter, which defines curve continuity. Default value is GeomAbs_C2;.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape theContinuity);
 
@@ -1144,7 +1144,7 @@ None
 
 Description
 -----------
-Set max possible degree of result bspline curve2d, which is got by approximation. if maxdegree < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
+Set max possible degree of result BSpline curve2d, which is got by approximation. If MaxDegree < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetMaxDegree;
 		void SetMaxDegree(const Standard_Integer theMaxDegree);
 
@@ -1162,7 +1162,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if maxseg < 0, algorithm uses default value = 16.
+Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If MaxSeg < 0, algorithm uses default value = 16.
 ") SetMaxSeg;
 		void SetMaxSeg(const Standard_Integer theMaxSeg);
 
@@ -1249,7 +1249,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 2d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 2d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real FirstParam, const Standard_Real LastParam, const Standard_Real Tol);
 
@@ -1267,7 +1267,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt2d Value(const Standard_Real U);
 
@@ -1316,7 +1316,7 @@ None
 
 Description
 -----------
-<tol> is the tolerance with which the approximation is performed. other parameters for approximation have default values.
+<Tol> is the tolerance with which the approximation is performed. Other parameters for approximation have default values.
 ") ProjLib_ComputeApprox;
 		 ProjLib_ComputeApprox(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
@@ -1361,7 +1361,7 @@ None
 
 Description
 -----------
-Performs projecting. in case of approximation current values of parameters are used: default values or set by corresponding methods set...
+Performs projecting. In case of approximation current values of parameters are used: default values or set by corresponding methods Set...
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
@@ -1379,7 +1379,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines type of boundary condition between segments during approximation. it can be appparcurves_passpoint or appparcurves_tangencypoint. default value is appparcurves_tangencypoint;.
+Set the parameter, which defines type of boundary condition between segments during approximation. It can be AppParCurves_PassPoint or AppParCurves_TangencyPoint. Default value is AppParCurves_TangencyPoint;.
 ") SetBndPnt;
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
@@ -1398,7 +1398,7 @@ None
 
 Description
 -----------
-Set min and max possible degree of result bspline curve2d, which is got by approximation. if thedegmin/max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
+Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetDegree;
 		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
 
@@ -1416,7 +1416,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if themaxsegments < 0, algorithm uses default value = 1000.
+Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
@@ -1434,7 +1434,7 @@ None
 
 Description
 -----------
-Set tolerance of approximation. default value is precision::confusion().
+Set tolerance of approximation. Default value is Precision::Confusion().
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theTolerance);
 
@@ -1447,7 +1447,7 @@ float
 
 Description
 -----------
-Returns the reached tolerance.
+returns the reached Tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -1515,7 +1515,7 @@ None
 
 Description
 -----------
-Constructor, which performs projecting, using initial curve 2d initcurve2d, which is any rough approximation of result curve. parameter tol is 3d tolerance of approximation.
+Constructor, which performs projecting, using initial curve 2d InitCurve2d, which is any rough approximation of result curve. Parameter Tol is 3d tolerance of approximation.
 ") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
@@ -1537,7 +1537,7 @@ None
 
 Description
 -----------
-Constructor, which performs projecting, using two initial curves 2d: initcurve2d and initcurve2dbis that are any rough approximations of result curves. this constructor is used to get two pcurves for seem edge. parameter tol is 3d tolerance of approximation.
+Constructor, which performs projecting, using two initial curves 2d: InitCurve2d and InitCurve2dBis that are any rough approximations of result curves. This constructor is used to get two pcurves for seem edge. Parameter Tol is 3d tolerance of approximation.
 ") ProjLib_ComputeApproxOnPolarSurface;
 		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2dBis, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
@@ -1569,7 +1569,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Builds initial 2d curve as bspline with degree = 1 using extrema algorithm. method is used in method perform(...).
+Builds initial 2d curve as BSpline with degree = 1 using Extrema algorithm. Method is used in method Perform(...).
 ") BuildInitialCurve2d;
 		opencascade::handle<Adaptor2d_Curve2d> BuildInitialCurve2d(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & S);
 
@@ -1634,7 +1634,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using. parameter initcurve2d is any rough estimation of 2d result curve.
+Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using. Parameter InitCurve2d is any rough estimation of 2d result curve.
 ") Perform;
 		opencascade::handle<Geom2d_BSplineCurve> Perform(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
@@ -1654,7 +1654,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Method, which performs projecting. method is used in method perform(...).
+Method, which performs projecting. Method is used in method Perform(...).
 ") ProjectUsingInitialCurve2d;
 		opencascade::handle<Geom2d_BSplineCurve> ProjectUsingInitialCurve2d(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d);
 
@@ -1672,7 +1672,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines type of boundary condition between segments during approximation. it can be appparcurves_passpoint or appparcurves_tangencypoint. default value is appparcurves_tangencypoint.
+Set the parameter, which defines type of boundary condition between segments during approximation. It can be AppParCurves_PassPoint or AppParCurves_TangencyPoint. Default value is AppParCurves_TangencyPoint.
 ") SetBndPnt;
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
@@ -1691,7 +1691,7 @@ None
 
 Description
 -----------
-Set min and max possible degree of result bspline curve2d, which is got by approximation. if thedegmin/max < 0, algorithm uses values min = 2, max = 8.
+Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values min = 2, max = 8.
 ") SetDegree;
 		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
 
@@ -1709,7 +1709,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines maximal possible distance between projected curve and surface. it is used only for projecting on not analytical surfaces. if themaxdist < 0, algorithm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
+Set the parameter, which defines maximal possible distance between projected curve and surface. It is used only for projecting on not analytical surfaces. If theMaxDist < 0, algorithm uses default value 100.*Tolerance. If real distance between curve and surface more then theMaxDist, algorithm stops working.
 ") SetMaxDist;
 		void SetMaxDist(const Standard_Real theMaxDist);
 
@@ -1727,7 +1727,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if themaxsegments < 0, algorithm uses default value = 1000.
+Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
@@ -1745,7 +1745,7 @@ None
 
 Description
 -----------
-Set the tolerance used to project the curve on the surface. default value is precision::approximation().
+Set the tolerance used to project the curve on the surface. Default value is Precision::Approximation().
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theTolerance);
 
@@ -1758,7 +1758,7 @@ float
 
 Description
 -----------
-Returns the reached tolerance.
+returns the reached Tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -1812,7 +1812,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1825,7 +1825,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -1838,7 +1838,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -1851,7 +1851,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns point on surface.
+returns point on surface.
 ") Solution;
 		gp_Pnt2d Solution();
 
@@ -1870,7 +1870,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1890,7 +1890,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1937,7 +1937,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1962,7 +1962,7 @@ None
 
 Description
 -----------
-Calculates the ort from c(t) to s with a close point. the close point is defined by the parameter values u0 and v0. the function f(u,v)=distance(s(u,v),c(t)) has an extremum when gradient(f)=0. the algorithm searches a zero near the close point.
+Calculates the ort from C(t) to S with a close point. The close point is defined by the parameter values U0 and V0. The function F(u,v)=distance(S(u,v),C(t)) has an extremum when gradient(F)=0. The algorithm searches a zero near the close point.
 ") Perform;
 		void Perform(const Standard_Real t, const Standard_Real U, const Standard_Real V, const gp_Pnt2d & Tol, const gp_Pnt2d & Inf, const gp_Pnt2d & Sup, const Standard_Real FTol = -1, const Standard_Boolean StrictInside = Standard_False);
 
@@ -2020,7 +2020,7 @@ None
 
 Description
 -----------
-The projection will be normal to the plane defined by the ax3 <pl>.
+The projection will be normal to the Plane defined by the Ax3 <Pl>.
 ") ProjLib_ProjectOnPlane;
 		 ProjLib_ProjectOnPlane(const gp_Ax3 & Pl);
 
@@ -2039,7 +2039,7 @@ None
 
 Description
 -----------
-The projection will be along the direction <d> on the plane defined by the ax3 <pl>. raises if the direction <d> is parallel to the plane <pl>.
+The projection will be along the direction <D> on the plane defined by the Ax3 <Pl>. raises if the direction <D> is parallel to the plane <Pl>.
 ") ProjLib_ProjectOnPlane;
 		 ProjLib_ProjectOnPlane(const gp_Ax3 & Pl, const gp_Dir & D);
 
@@ -2052,7 +2052,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Warning ! this will not make a copy of the bspline curve: if you want to modify the curve please make a copy yourself also it will not trim the surface to myfirst/last.
+Warning ! this will NOT make a copy of the BSpline Curve: If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 ") BSpline;
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
@@ -2065,7 +2065,7 @@ opencascade::handle<Geom_BezierCurve>
 
 Description
 -----------
-Warning ! this will not make a copy of the bezier curve: if you want to modify the curve please make a copy yourself also it will not trim the surface to myfirst/last.
+Warning ! this will NOT make a copy of the Bezier Curve: If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 ") Bezier;
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
@@ -2110,7 +2110,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -2130,7 +2130,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -2151,7 +2151,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -2173,7 +2173,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -2192,7 +2192,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
@@ -2296,7 +2296,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -2328,7 +2328,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2413,7 +2413,7 @@ None
 
 Description
 -----------
-Sets the curve and perform the projection. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it means: proj(c(u)) = pc(u) for each u. otherwise, the parametrization may change.
+Sets the Curve and perform the projection. if <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It means: proj(C(u)) = PC(u) for each u. Otherwise, the parametrization may change.
 ") Load;
 		void Load(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tolerance, const Standard_Boolean KeepParametrization = Standard_True);
 
@@ -2431,7 +2431,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2501,7 +2501,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -2534,7 +2534,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -2552,7 +2552,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
@@ -2599,7 +2599,7 @@ None
 
 Description
 -----------
-Create a projector normally to the surface <s>.
+Create a projector normally to the surface <S>.
 ") ProjLib_ProjectOnSurface;
 		 ProjLib_ProjectOnSurface(const opencascade::handle<Adaptor3d_Surface> & S);
 
@@ -2674,7 +2674,7 @@ None
 
 Description
 -----------
-Constructor with initialisation field mysurface.
+Constructor with initialisation field mySurface.
 ") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S);
 
@@ -2693,7 +2693,7 @@ None
 
 Description
 -----------
-Constructor, which performs projecting. if projecting uses approximation, default parameters are used, in particular, 3d tolerance of approximation is precision::confusion().
+Constructor, which performs projecting. If projecting uses approximation, default parameters are used, in particular, 3d tolerance of approximation is Precision::Confusion().
 ") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -2713,7 +2713,7 @@ None
 
 Description
 -----------
-Constructor, which performs projecting. if projecting uses approximation, 3d tolerance is tol, default parameters are used, .
+Constructor, which performs projecting. If projecting uses approximation, 3d tolerance is Tol, default parameters are used,.
 ") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tol);
 
@@ -2726,7 +2726,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Warning ! this will not make a copy of the bspline curve - if you want to modify the curve please make a copy yourself also it will not trim the surface to myfirst/last.
+Warning ! This will NOT make a copy of the BSpline Curve - If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
 ") BSpline;
 		opencascade::handle<Geom2d_BSplineCurve> BSpline();
 
@@ -2739,7 +2739,7 @@ opencascade::handle<Geom2d_BezierCurve>
 
 Description
 -----------
-Warning ! this will not make a copy of the -- bezier curve - if you want to modify -- the curve please make a copy yourself -- also it will not trim the surface to -- myfirst/last.
+Warning ! This will NOT make a copy of the -- Bezier Curve - If you want to modify -- the Curve please make a copy yourself -- Also it will NOT trim the surface to -- myFirst/Last.
 ") Bezier;
 		opencascade::handle<Geom2d_BezierCurve> Bezier();
 
@@ -2784,7 +2784,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -2804,7 +2804,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -2825,7 +2825,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2847,7 +2847,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -2866,7 +2866,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -2944,7 +2944,7 @@ float
 
 Description
 -----------
-Returns the tolerance reached if an approximation is done.
+returns the tolerance reached if an approximation is Done.
 ") GetTolerance;
 		Standard_Real GetTolerance();
 
@@ -2957,7 +2957,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -2989,7 +2989,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3072,7 +3072,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -3129,7 +3129,7 @@ None
 
 Description
 -----------
-Performs projecting for given curve. if projecting uses approximation, approximation parameters can be set before by corresponding methods setdegree(...), setmaxsegmets(...), setbndpnt(...), setmaxdist(...).
+Performs projecting for given curve. If projecting uses approximation, approximation parameters can be set before by corresponding methods SetDegree(...), SetMaxSegmets(...), SetBndPnt(...), SetMaxDist(...).
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -3160,7 +3160,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -3178,7 +3178,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines type of boundary condition between segments during approximation. it can be appparcurves_passpoint or appparcurves_tangencypoint. default value is appparcurves_tangencypoint;.
+Set the parameter, which defines type of boundary condition between segments during approximation. It can be AppParCurves_PassPoint or AppParCurves_TangencyPoint. Default value is AppParCurves_TangencyPoint;.
 ") SetBndPnt;
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
@@ -3197,7 +3197,7 @@ None
 
 Description
 -----------
-Set min and max possible degree of result bspline curve2d, which is got by approximation. if thedegmin/max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
+Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetDegree;
 		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
 
@@ -3215,7 +3215,7 @@ None
 
 Description
 -----------
-Set the parameter, which degines maximal possible distance between projected curve and surface. it uses only for projecting on not analytical surfaces. if themaxdist < 0, algorithm uses default value 100.*tolerance. if real distance between curve and surface more then themaxdist, algorithm stops working.
+Set the parameter, which degines maximal possible distance between projected curve and surface. It uses only for projecting on not analytical surfaces. If theMaxDist < 0, algorithm uses default value 100.*Tolerance. If real distance between curve and surface more then theMaxDist, algorithm stops working.
 ") SetMaxDist;
 		void SetMaxDist(const Standard_Real theMaxDist);
 
@@ -3233,7 +3233,7 @@ None
 
 Description
 -----------
-Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. if themaxsegments < 0, algorithm uses default value = 1000.
+Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
@@ -3266,7 +3266,7 @@ opencascade::handle<Adaptor2d_Curve2d>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion. if <first> >= <last>.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
 		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -3284,7 +3284,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt2d Value(const Standard_Real U);
 
@@ -3317,7 +3317,7 @@ None
 
 Description
 -----------
-Sets the type to othercurve.
+Sets the type to OtherCurve.
 ") ProjLib_Projector;
 		 ProjLib_Projector();
 
@@ -3369,7 +3369,7 @@ None
 
 Description
 -----------
-Set isdone = standard_true;.
+Set isDone = Standard_True;.
 ") Done;
 		void Done();
 
@@ -3638,7 +3638,7 @@ None
 
 Description
 -----------
-Translates the 2d curve to set the part of the curve [cfirst, clast] in the range [ ufirst, ufirst + period [.
+Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ UFirst, UFirst + Period [.
 ") UFrame;
 		void UFrame(const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real UFirst, const Standard_Real Period);
 
@@ -3659,7 +3659,7 @@ None
 
 Description
 -----------
-Translates the 2d curve to set the part of the curve [cfirst, clast] in the range [ vfirst, vfirst + period [.
+Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ VFirst, VFirst + Period [.
 ") VFrame;
 		void VFrame(const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real VFirst, const Standard_Real Period);
 
@@ -3704,7 +3704,7 @@ None
 
 Description
 -----------
-Projection on the cone <co>.
+Projection on the cone <Co>.
 ") ProjLib_Cone;
 		 ProjLib_Cone(const gp_Cone & Co);
 
@@ -3723,7 +3723,7 @@ None
 
 Description
 -----------
-Projection of the line <l> on the cone <co>.
+Projection of the line <L> on the cone <Co>.
 ") ProjLib_Cone;
 		 ProjLib_Cone(const gp_Cone & Co, const gp_Lin & L);
 
@@ -3742,7 +3742,7 @@ None
 
 Description
 -----------
-Projection of the circle <c> on the cone <co>.
+Projection of the circle <C> on the cone <Co>.
 ") ProjLib_Cone;
 		 ProjLib_Cone(const gp_Cone & Co, const gp_Circ & C);
 
@@ -3895,7 +3895,7 @@ None
 
 Description
 -----------
-Projection on the cylinder <cyl>.
+Projection on the cylinder <Cyl>.
 ") ProjLib_Cylinder;
 		 ProjLib_Cylinder(const gp_Cylinder & Cyl);
 
@@ -3914,7 +3914,7 @@ None
 
 Description
 -----------
-Projection of the line <l> on the cylinder <cyl>.
+Projection of the line <L> on the cylinder <Cyl>.
 ") ProjLib_Cylinder;
 		 ProjLib_Cylinder(const gp_Cylinder & Cyl, const gp_Lin & L);
 
@@ -3933,7 +3933,7 @@ None
 
 Description
 -----------
-Projection of the circle <c> on the cylinder <cyl>.
+Projection of the circle <C> on the cylinder <Cyl>.
 ") ProjLib_Cylinder;
 		 ProjLib_Cylinder(const gp_Cylinder & Cyl, const gp_Circ & C);
 
@@ -3952,7 +3952,7 @@ None
 
 Description
 -----------
-Projection of the ellipse <e> on the cylinder <cyl>.
+Projection of the ellipse <E> on the cylinder <Cyl>.
 ") ProjLib_Cylinder;
 		 ProjLib_Cylinder(const gp_Cylinder & Cyl, const gp_Elips & E);
 
@@ -4105,7 +4105,7 @@ None
 
 Description
 -----------
-Projection on the plane <pl>.
+Projection on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl);
 
@@ -4124,7 +4124,7 @@ None
 
 Description
 -----------
-Projection of the line <l> on the plane <pl>.
+Projection of the line <L> on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl, const gp_Lin & L);
 
@@ -4143,7 +4143,7 @@ None
 
 Description
 -----------
-Projection of the circle <c> on the plane <pl>.
+Projection of the circle <C> on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl, const gp_Circ & C);
 
@@ -4162,7 +4162,7 @@ None
 
 Description
 -----------
-Projection of the ellipse <e> on the plane <pl>.
+Projection of the ellipse <E> on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl, const gp_Elips & E);
 
@@ -4181,7 +4181,7 @@ None
 
 Description
 -----------
-Projection of the parabola <p> on the plane <pl>.
+Projection of the parabola <P> on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl, const gp_Parab & P);
 
@@ -4200,7 +4200,7 @@ None
 
 Description
 -----------
-Projection of the hyperbola <h> on the plane <pl>.
+Projection of the hyperbola <H> on the plane <Pl>.
 ") ProjLib_Plane;
 		 ProjLib_Plane(const gp_Pln & Pl, const gp_Hypr & H);
 
@@ -4353,7 +4353,7 @@ None
 
 Description
 -----------
-Projection on the sphere <sp>.
+Projection on the sphere <Sp>.
 ") ProjLib_Sphere;
 		 ProjLib_Sphere(const gp_Sphere & Sp);
 
@@ -4372,7 +4372,7 @@ None
 
 Description
 -----------
-Projection of the circle <c> on the sphere <sp>.
+Projection of the circle <C> on the sphere <Sp>.
 ") ProjLib_Sphere;
 		 ProjLib_Sphere(const gp_Sphere & Sp, const gp_Circ & C);
 
@@ -4498,7 +4498,7 @@ None
 
 Description
 -----------
-Set the point of parameter u on c in the natural restrictions of the sphere.
+Set the point of parameter U on C in the natural restrictions of the sphere.
 ") SetInBounds;
 		void SetInBounds(const Standard_Real U);
 
@@ -4543,7 +4543,7 @@ None
 
 Description
 -----------
-Projection on the torus <to>.
+Projection on the torus <To>.
 ") ProjLib_Torus;
 		 ProjLib_Torus(const gp_Torus & To);
 
@@ -4562,7 +4562,7 @@ None
 
 Description
 -----------
-Projection of the circle <c> on the torus <to>.
+Projection of the circle <C> on the torus <To>.
 ") ProjLib_Torus;
 		 ProjLib_Torus(const gp_Torus & To, const gp_Circ & C);
 

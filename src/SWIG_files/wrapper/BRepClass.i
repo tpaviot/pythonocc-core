@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPCLASSDOCSTRING
 "BRepClass module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepclass.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPCLASSDOCSTRING) BRepClass
 
@@ -141,7 +141,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the current edge .
+Returns the current Edge.
 ") Edge;
 		TopoDS_Edge Edge();
 
@@ -167,7 +167,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the face for the current edge.
+Returns the Face for the current Edge.
 ") Face;
 		TopoDS_Face Face();
 
@@ -206,7 +206,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the next edge.
+Returns the next Edge.
 ") NextEdge;
 		const TopoDS_Edge NextEdge();
 
@@ -242,7 +242,7 @@ None
 
 Description
 -----------
-Finds and sets the next edge for the current.
+Finds and sets the next Edge for the current.
 ") SetNextEdge;
 		void SetNextEdge(const TopTools_IndexedDataMapOfShapeListOfShape & theMapVE);
 
@@ -313,7 +313,7 @@ int
 
 Description
 -----------
-Returns 0 if the last compared edge had no relevant intersection. else returns the index of this intersection in the last intersection algorithm.
+Returns 0 if the last compared edge had no relevant intersection. Else returns the index of this intersection in the last intersection algorithm.
 ") ClosestIntersection;
 		Standard_Integer ClosestIntersection();
 
@@ -332,7 +332,7 @@ None
 
 Description
 -----------
-Updates the classification process with the edge <e> from the boundary.
+Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
@@ -358,7 +358,7 @@ bool
 
 Description
 -----------
-Returns the standard_true if the closest intersection point represents head or end of the edge. returns standard_false otherwise.
+Returns the Standard_True if the closest intersection point represents head or end of the edge. Returns Standard_False otherwise.
 ") IsHeadOrEnd;
 		Standard_Boolean IsHeadOrEnd();
 
@@ -391,7 +391,7 @@ None
 
 Description
 -----------
-Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the line segment in intersections.
+Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the line segment in intersections.
 ") Reset;
 		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
@@ -451,7 +451,7 @@ None
 
 Description
 -----------
-Creates an algorithm to classify the point p with tolerance <t> on the face described by <f>.
+Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
 ") BRepClass_FClassifier;
 		 BRepClass_FClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -464,7 +464,7 @@ BRepClass_Edge
 
 Description
 -----------
-Returns the edge used to determine the classification. when the state is on this is the edge containing the point.
+Returns the Edge used to determine the classification. When the State is ON this is the Edge containing the point.
 ") Edge;
 		const BRepClass_Edge & Edge();
 
@@ -477,7 +477,7 @@ float
 
 Description
 -----------
-Returns the parameter on edge() used to determine the classification.
+Returns the parameter on Edge() used to determine the classification.
 ") EdgeParameter;
 		Standard_Real EdgeParameter();
 
@@ -490,7 +490,7 @@ bool
 
 Description
 -----------
-Returns true if the face contains no wire. the state is in.
+Returns True if the face contains no wire. The state is IN.
 ") NoWires;
 		Standard_Boolean NoWires();
 
@@ -510,7 +510,7 @@ None
 
 Description
 -----------
-Classify the point p with tolerance <t> on the face described by <f>.
+Classify the Point P with Tolerance <T> on the face described by <F>.
 ") Perform;
 		void Perform(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -523,7 +523,7 @@ IntRes2d_Position
 
 Description
 -----------
-Returns the position of the point on the edge returned by edge.
+Returns the position of the point on the edge returned by Edge.
 ") Position;
 		IntRes2d_Position Position();
 
@@ -536,7 +536,7 @@ bool
 
 Description
 -----------
-Returns true when the state was computed by a rejection. the state is out.
+Returns True when the state was computed by a rejection. The state is OUT.
 ") Rejected;
 		Standard_Boolean Rejected();
 
@@ -599,7 +599,7 @@ bool
 
 Description
 -----------
-Checks the point and change its coords if it is located too far from the bounding box of the face. new coordinates of the point will be on the line between the point and the center of the bounding box. returns true if point was not changed.
+Checks the point and change its coords if it is located too far from the bounding box of the face. New Coordinates of the point will be on the line between the point and the center of the bounding box. Returns True if point was not changed.
 ") CheckPoint;
 		Standard_Boolean CheckPoint(gp_Pnt2d & thePoint);
 
@@ -669,7 +669,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current edge.
+Returns True if there is a current edge.
 ") MoreEdges;
 		Standard_Boolean MoreEdges();
 
@@ -682,7 +682,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current wire.
+Returns True if there is a current wire.
 ") MoreWires;
 		Standard_Boolean MoreWires();
 
@@ -727,7 +727,7 @@ Par: float
 
 Description
 -----------
-Returns in <l>, <par> a segment having at least one intersection with the face boundary to compute intersections. each call gives another segment.
+Returns in <L>, <Par> a segment having at least one intersection with the face boundary to compute intersections. Each call gives another segment.
 ") OtherSegment;
 		Standard_Boolean OtherSegment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
@@ -745,7 +745,7 @@ bool
 
 Description
 -----------
-Should return true if the point is outside a bounding volume of the face.
+Should return True if the point is outside a bounding volume of the face.
 ") Reject;
 		Standard_Boolean Reject(const gp_Pnt2d & P);
 
@@ -764,7 +764,7 @@ bool
 
 Description
 -----------
-Returns true if the edge bounding volume does not intersect the segment.
+Returns True if the edge bounding volume does not intersect the segment.
 ") RejectEdge;
 		Standard_Boolean RejectEdge(const gp_Lin2d & L, const Standard_Real Par);
 
@@ -783,7 +783,7 @@ bool
 
 Description
 -----------
-Returns true if the wire bounding volume does not intersect the segment.
+Returns True if the wire bounding volume does not intersect the segment.
 ") RejectWire;
 		Standard_Boolean RejectWire(const gp_Lin2d & L, const Standard_Real Par);
 
@@ -802,7 +802,7 @@ Par: float
 
 Description
 -----------
-Returns in <l>, <par> a segment having at least one intersection with the face boundary to compute intersections.
+Returns in <L>, <Par> a segment having at least one intersection with the face boundary to compute intersections.
 ") Segment;
 		Standard_Boolean Segment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
@@ -891,7 +891,7 @@ int
 
 Description
 -----------
-Returns 0 if the last compared edge had no relevant intersection. else returns the index of this intersection in the last intersection algorithm.
+Returns 0 if the last compared edge had no relevant intersection. Else returns the index of this intersection in the last intersection algorithm.
 ") ClosestIntersection;
 		Standard_Integer ClosestIntersection();
 
@@ -910,7 +910,7 @@ None
 
 Description
 -----------
-Updates the classification process with the edge <e> from the boundary.
+Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
@@ -936,7 +936,7 @@ bool
 
 Description
 -----------
-Returns the standard_true if the closest intersection point represents head or end of the edge. returns standard_false otherwise.
+Returns the Standard_True if the closest intersection point represents head or end of the edge. Returns Standard_False otherwise.
 ") IsHeadOrEnd;
 		Standard_Boolean IsHeadOrEnd();
 
@@ -969,7 +969,7 @@ None
 
 Description
 -----------
-Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the line segment in intersections.
+Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the line segment in intersections.
 ") Reset;
 		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
@@ -1030,7 +1030,7 @@ C: float
 
 Description
 -----------
-Returns in <t>, <n> and <c> the tangent, normal and curvature of the edge <e> at parameter value <u>.
+Returns in <T>, <N> and <C> the tangent, normal and curvature of the edge <E> at parameter value <U>.
 ") LocalGeometry;
 		void LocalGeometry(const BRepClass_Edge & E, const Standard_Real U, gp_Dir2d & T, gp_Dir2d & N, Standard_Real &OutValue);
 
@@ -1098,7 +1098,7 @@ None
 
 Description
 -----------
-Creates an algorithm to classify the point p with tolerance <t> on the face described by <f>.
+Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
 ") BRepClass_FaceClassifier;
 		 BRepClass_FaceClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -1120,7 +1120,7 @@ None
 
 Description
 -----------
-Creates an algorithm to classify the point p with tolerance <t> on the face <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
+Creates an algorithm to classify the Point P with Tolerance <T> on the face <F>. Recommended to use Bnd_Box if the number of edges > 10 and the geometry is mostly spline.
 ") BRepClass_FaceClassifier;
 		 BRepClass_FaceClassifier(const TopoDS_Face & theF, const gp_Pnt2d & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
@@ -1142,7 +1142,7 @@ None
 
 Description
 -----------
-Creates an algorithm to classify the point p with tolerance <t> on the face <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
+Creates an algorithm to classify the Point P with Tolerance <T> on the face <F>. Recommended to use Bnd_Box if the number of edges > 10 and the geometry is mostly spline.
 ") BRepClass_FaceClassifier;
 		 BRepClass_FaceClassifier(const TopoDS_Face & theF, const gp_Pnt & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
@@ -1164,7 +1164,7 @@ None
 
 Description
 -----------
-Classify the point p with tolerance <t> on the face described by <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
+Classify the Point P with Tolerance <T> on the face described by <F>. Recommended to use Bnd_Box if the number of edges > 10 and the geometry is mostly spline.
 ") Perform;
 		void Perform(const TopoDS_Face & theF, const gp_Pnt2d & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 
@@ -1186,7 +1186,7 @@ None
 
 Description
 -----------
-Classify the point p with tolerance <t> on the face described by <f>. recommended to use bnd_box if the number of edges > 10 and the geometry is mostly spline.
+Classify the Point P with Tolerance <T> on the face described by <F>. Recommended to use Bnd_Box if the number of edges > 10 and the geometry is mostly spline.
 ") Perform;
 		void Perform(const TopoDS_Face & theF, const gp_Pnt & theP, const Standard_Real theTol, const Standard_Boolean theUseBndBox = Standard_False, const Standard_Real theGapCheckTol = 0.1);
 

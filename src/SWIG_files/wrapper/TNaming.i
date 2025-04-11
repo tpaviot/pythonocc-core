@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TNAMINGDOCSTRING
 "TNaming module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tnaming.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tnaming.html"
 %enddef
 %module (package="OCC.Core", docstring=TNAMINGDOCSTRING) TNaming
 
@@ -252,7 +252,7 @@ None
 
 Description
 -----------
-Application de la location sur les shapes du label et de ses sous labels.
+Application de la Location sur les shapes du label et de ses sous labels.
 ") Displace;
 		static void Displace(const TDF_Label & label, const TopLoc_Location & aLocation, const Standard_Boolean WithOld = Standard_True);
 
@@ -271,7 +271,7 @@ TopoDS_Shape
 
 Description
 -----------
-Find unique context of shape <s>.
+Find unique context of shape <S>.
 ") FindUniqueContext;
 		static TopoDS_Shape FindUniqueContext(const TopoDS_Shape & S, const TopoDS_Shape & Context);
 
@@ -291,7 +291,7 @@ TopoDS_Shape
 
 Description
 -----------
-Find unique context of shape <s>,which is pure concatenation of atomic shapes (compound). the result is concatenation of single contexts.
+Find unique context of shape <S>,which is pure concatenation of atomic shapes (Compound). The result is concatenation of single contexts.
 ") FindUniqueContextSet;
 		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<TopTools_HArray1OfShape> & Arr);
 
@@ -309,7 +309,7 @@ None
 
 Description
 -----------
-Appends to <anidlist> the list of the attributes ids of this package. caution: <anidlist> is not cleared before use.
+Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -346,7 +346,7 @@ bool
 
 Description
 -----------
-Returns true if outer shell is found and the found shell in <theshell>. print of tnaming enumeration =============================.
+Returns True if outer Shell is found and the found shell in <theShell>. Print of TNaming enumeration =============================.
 ") OuterShell;
 		static Standard_Boolean OuterShell(const TopoDS_Solid & theSolid, TopoDS_Shell & theShell);
 
@@ -365,7 +365,7 @@ bool
 
 Description
 -----------
-Returns true if outer wire is found and the found wire in <thewire>.
+Returns True if outer wire is found and the found wire in <theWire>.
 ") OuterWire;
 		static Standard_Boolean OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
 
@@ -383,7 +383,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the evolution <evol> as a string on the stream <s> and returns <s>.
+Prints the evolution <EVOL> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TNaming_Evolution EVOL, std::ostream &OutValue);
 
@@ -401,7 +401,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of name type <name> as a string on the stream <s> and returns <s>.
+Prints the name of name type <NAME> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TNaming_NameType NAME, std::ostream &OutValue);
 
@@ -419,7 +419,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the content of usedshapes private attribute as a string table on the stream <s> and returns <s>.
+Prints the content of UsedShapes private attribute as a String Table on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TDF_Label & ACCESS, std::ostream &OutValue);
 
@@ -439,7 +439,7 @@ None
 
 Description
 -----------
-Replicates the named shape with the transformation <t> on the label <l> (and sub-labels if necessary) (tnaming_generated is set).
+Replicates the named shape with the transformation <T> on the label <L> (and sub-labels if necessary) (TNaming_GENERATED is set).
 ") Replicate;
 		static void Replicate(const opencascade::handle<TNaming_NamedShape> & NS, const gp_Trsf & T, const TDF_Label & L);
 
@@ -459,7 +459,7 @@ None
 
 Description
 -----------
-Replicates the shape with the transformation <t> on the label <l> (and sub-labels if necessary) (tnaming_generated is set).
+Replicates the shape with the transformation <T> on the label <L> (and sub-labels if necessary) (TNaming_GENERATED is set).
 ") Replicate;
 		static void Replicate(const TopoDS_Shape & SH, const gp_Trsf & T, const TDF_Label & L);
 
@@ -518,7 +518,7 @@ None
 
 Description
 -----------
-Application de la transformation sur les shapes du label et de ses sous labels. warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <label>.
+Application de la transformation sur les shapes du label et de ses sous labels. Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
 ") Transform;
 		static void Transform(const TDF_Label & label, const gp_Trsf & aTransformation);
 
@@ -537,7 +537,7 @@ None
 
 Description
 -----------
-Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapoldnew. //! warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <label>.
+Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. //! Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
 ") Update;
 		static void Update(const TDF_Label & label, TopTools_DataMapOfShapeShape & mapOldNew);
 
@@ -569,7 +569,7 @@ None
 
 Description
 -----------
-Create an builder. warning: before addition copies the current value, and clear.
+Create an Builder. Warning: Before Addition copies the current Value, and clear.
 ") TNaming_Builder;
 		 TNaming_Builder(const TDF_Label & aLabel);
 
@@ -587,7 +587,7 @@ None
 
 Description
 -----------
-Records the shape oldshape which was deleted from the current label. as an example, consider the case of a face removed by a boolean operation.
+Records the shape oldShape which was deleted from the current label. As an example, consider the case of a face removed by a Boolean operation.
 ") Delete;
 		void Delete(const TopoDS_Shape & oldShape);
 
@@ -605,7 +605,7 @@ None
 
 Description
 -----------
-Records the shape newshape which was generated during a topological construction. as an example, consider the case of a face generated in construction of a box.
+Records the shape newShape which was generated during a topological construction. As an example, consider the case of a face generated in construction of a box.
 ") Generated;
 		void Generated(const TopoDS_Shape & newShape);
 
@@ -624,7 +624,7 @@ None
 
 Description
 -----------
-Records the shape newshape which was generated from the shape oldshape during a topological construction. as an example, consider the case of a face generated from an edge in construction of a prism.
+Records the shape newShape which was generated from the shape oldShape during a topological construction. As an example, consider the case of a face generated from an edge in construction of a prism.
 ") Generated;
 		void Generated(const TopoDS_Shape & oldShape, const TopoDS_Shape & newShape);
 
@@ -643,7 +643,7 @@ None
 
 Description
 -----------
-Records the shape newshape which is a modification of the shape oldshape. as an example, consider the case of a face split or merged in a boolean operation.
+Records the shape newShape which is a modification of the shape oldShape. As an example, consider the case of a face split or merged in a Boolean operation.
 ") Modify;
 		void Modify(const TopoDS_Shape & oldShape, const TopoDS_Shape & newShape);
 
@@ -656,7 +656,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the namedshape which has been built or is under construction.
+Returns the NamedShape which has been built or is under construction.
 ") NamedShape;
 		opencascade::handle<TNaming_NamedShape> NamedShape();
 
@@ -675,7 +675,7 @@ None
 
 Description
 -----------
-Add a shape to the current label , this shape is unmodified. used for example to define a set of shapes under a label.
+Add a Shape to the current label , This Shape is unmodified. Used for example to define a set of shapes under a label.
 ") Select;
 		void Select(const TopoDS_Shape & aShape, const TopoDS_Shape & inShape);
 
@@ -709,7 +709,7 @@ None
 
 Description
 -----------
-Makes copy a set of shape(s), using the amap.
+Makes copy a set of shape(s), using the aMap.
 ") CopyTool;
 		static void CopyTool(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult);
 
@@ -730,7 +730,7 @@ None
 
 Description
 -----------
-Translates a transient shape(s) to transient.
+Translates a Transient shape(s) to Transient.
 ") Translate;
 		static void Translate(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
 
@@ -749,7 +749,7 @@ TopLoc_Location
 
 Description
 -----------
-Translates a topological location to an other top. location.
+Translates a Topological Location to an other Top. Location.
 ") Translate;
 		static TopLoc_Location Translate(const TopLoc_Location & L, TColStd_IndexedDataMapOfTransientTransient & aMap);
 
@@ -781,7 +781,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TNaming_DeltaOnModification;
 		 TNaming_DeltaOnModification(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -828,7 +828,7 @@ None
 
 Description
 -----------
-Initializes a tdf_deltaonmodification.
+Initializes a TDF_DeltaOnModification.
 ") TNaming_DeltaOnRemoval;
 		 TNaming_DeltaOnRemoval(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -1163,7 +1163,7 @@ None
 
 Description
 -----------
-Iterates on all the history records in <anatt>.
+Iterates on all the history records in <anAtt>.
 ") TNaming_Iterator;
 		 TNaming_Iterator(const opencascade::handle<TNaming_NamedShape> & anAtt);
 
@@ -1200,7 +1200,7 @@ None
 
 Description
 -----------
-Iterates on all the history records in the transaction <atrans>.
+Iterates on all the history records in the transaction <aTrans>.
 ") TNaming_Iterator;
 		 TNaming_Iterator(const TDF_Label & aLabel, const Standard_Integer aTrans);
 
@@ -1239,7 +1239,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -1265,7 +1265,7 @@ None
 
 Description
 -----------
-Moves the iteration to the next item.
+Moves the iteration to the next Item.
 ") Next;
 		void Next();
 
@@ -1278,7 +1278,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the old shape in this iterator object. this shape can be a null one.
+Returns the old shape in this iterator object. This shape can be a null one.
 ") OldShape;
 		const TopoDS_Shape OldShape();
 
@@ -1354,7 +1354,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -1367,7 +1367,7 @@ None
 
 Description
 -----------
-Move to the next item.
+Move to the next Item.
 ") Next;
 		void Next();
 
@@ -1527,7 +1527,7 @@ None
 
 Description
 -----------
-Finds context of the shape <s>.
+Finds context of the shape <S>.
 ") FindShapeContext;
 		static void FindShapeContext(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & theS, TopoDS_Shape & theSC);
 
@@ -1986,7 +1986,7 @@ bool
 
 Description
 -----------
-Something to do after applying <anattdelta>.
+Something to do after applying <anAttDelta>.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -1999,7 +1999,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Copies the attribute contents into a new other attribute. it is used by backup().
+Copies the attribute contents into a new other attribute. It is used by Backup().
 ") BackupCopy;
 		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
@@ -2031,7 +2031,7 @@ bool
 
 Description
 -----------
-Something to do before applying <anattdelta>.
+Something to do before applying <anAttDelta>.
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -2062,7 +2062,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute.
+Makes a DeltaOnModification between <self> and <anOldAttribute.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -2080,7 +2080,7 @@ None
 
 Description
 -----------
-Applies a deltaonmodification to <self>.
+Applies a DeltaOnModification to <self>.
 ") DeltaOnModification;
 		virtual void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
@@ -2093,7 +2093,7 @@ opencascade::handle<TDF_DeltaOnRemoval>
 
 Description
 -----------
-Makes a deltaonremoval on <self> because <self> has disappeared from the ds.
+Makes a DeltaOnRemoval on <self> because <self> has disappeared from the DS.
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
@@ -2110,7 +2110,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the attribute on <astream>.
+Dumps the attribute on <aStream>.
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -2144,7 +2144,7 @@ TNaming_Evolution
 
 Description
 -----------
-Returns the evolution of the attribute.
+Returns the Evolution of the attribute.
 ") Evolution;
 		TNaming_Evolution Evolution();
 
@@ -2157,7 +2157,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shapes contained in <ns>. returns a null shape if isempty.
+Returns the shapes contained in <NS>. Returns a null shape if IsEmpty.
 ") Get;
 		TopoDS_Shape Get();
 
@@ -2170,7 +2170,7 @@ Standard_GUID
 
 Description
 -----------
-Class method ============ returns the guid for named shapes.
+class method ============ Returns the GUID for named shapes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2183,7 +2183,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2209,7 +2209,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -2228,7 +2228,7 @@ None
 
 Description
 -----------
-This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -2246,7 +2246,7 @@ None
 
 Description
 -----------
-Adds the directly referenced attributes and labels to <adataset>. 'directly' means we have only to look at the first level of references.
+Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -2264,7 +2264,7 @@ None
 
 Description
 -----------
-Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -2282,7 +2282,7 @@ None
 
 Description
 -----------
-Set the version of the attribute.
+Set the Version of the attribute.
 ") SetVersion;
 		void SetVersion(const Standard_Integer version);
 
@@ -2295,7 +2295,7 @@ int
 
 Description
 -----------
-Returns the version of the attribute.
+Returns the Version of the attribute.
 ") Version;
 		Standard_Integer Version();
 
@@ -2407,7 +2407,7 @@ Standard_GUID
 
 Description
 -----------
-Following code from tdesignstd ==============================.
+following code from TDesignStd ==============================.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2433,7 +2433,7 @@ Standard_GUID
 
 Description
 -----------
-Deferred methods from tdf_attribute ===================================.
+Deferred methods from TDF_Attribute ===================================.
 ") ID;
 		virtual const Standard_GUID & ID();
 
@@ -2487,7 +2487,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Creates a namimg attribute at label <where> to identify the shape <selection>. geometry is standard_true if we are only interested by the underlying geometry (e.g. setting a constraint). <context> is used to find neighbours of <s> when required by the naming. if keeporientation is true the selection orientation is taken into account. bnproblem == true points out that context sub-shapes in df have orientation differences with context shape itself. instance method ===============.
+Creates a Namimg attribute at label <where> to identify the shape <Selection>. Geometry is Standard_True if we are only interested by the underlying geometry (e.g. setting a constraint). <Context> is used to find neighbours of <S> when required by the naming. If KeepOrientation is True the Selection orientation is taken into account. BNproblem == True points out that Context sub-shapes in DF have orientation differences with Context shape itself. instance method ===============.
 ") Name;
 		static opencascade::handle<TNaming_NamedShape> Name(const TDF_Label & where, const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientation = Standard_False, const Standard_Boolean BNproblem = Standard_False);
 
@@ -2555,7 +2555,7 @@ bool
 
 Description
 -----------
-Regenerate only the name associated to me.
+regenerate only the Name associated to me.
 ") Regenerate;
 		Standard_Boolean Regenerate(TDF_LabelMap & scope);
 
@@ -2591,7 +2591,7 @@ bool
 
 Description
 -----------
-Regenerate recursively the whole name with scope. if scope is empty it means that all the labels of the framework are valid.
+Regenerate recursively the whole name with scope. If scope is empty it means that all the labels of the framework are valid.
 ") Solve;
 		Standard_Boolean Solve(TDF_LabelMap & scope);
 
@@ -2740,7 +2740,7 @@ None
 
 Description
 -----------
-Iterates from the current shape in <aniterator>.
+Iterates from the current Shape in <anIterator>.
 ") TNaming_NewShapeIterator;
 		 TNaming_NewShapeIterator(const TNaming_NewShapeIterator & anIterator);
 
@@ -2758,7 +2758,7 @@ None
 
 Description
 -----------
-Iterates from the current shape in <aniterator>.
+Iterates from the current Shape in <anIterator>.
 ") TNaming_NewShapeIterator;
 		 TNaming_NewShapeIterator(const TNaming_Iterator & anIterator);
 
@@ -2836,7 +2836,7 @@ TopoDS_Shape
 
 Description
 -----------
-Warning! can be a null shape if a descendant is deleted.
+Warning! Can be a Null Shape if a descendant is deleted.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -2907,7 +2907,7 @@ None
 
 Description
 -----------
-Iterates from the current shape in <aniterator>.
+Iterates from the current Shape in <anIterator>.
 ") TNaming_OldShapeIterator;
 		 TNaming_OldShapeIterator(const TNaming_OldShapeIterator & anIterator);
 
@@ -2925,7 +2925,7 @@ None
 
 Description
 -----------
-Iterates from the current shape in <aniterator>.
+Iterates from the current Shape in <anIterator>.
 ") TNaming_OldShapeIterator;
 		 TNaming_OldShapeIterator(const TNaming_Iterator & anIterator);
 
@@ -3256,7 +3256,7 @@ None
 
 Description
 -----------
-Withvalid = false.
+WithValid = False.
 ") TNaming_Scope;
 		 TNaming_Scope();
 
@@ -3274,7 +3274,7 @@ None
 
 Description
 -----------
-If <withvalid> the scope is defined by the map. if not on the whole framework.
+if <WithValid> the scope is defined by the map. If not on the whole framework.
 ") TNaming_Scope;
 		 TNaming_Scope(const Standard_Boolean WithValid);
 
@@ -3292,7 +3292,7 @@ None
 
 Description
 -----------
-Create a scope with a map. withvalid = true.
+create a scope with a map. WithValid = True.
 ") TNaming_Scope;
 		 TNaming_Scope(TDF_LabelMap & valid);
 
@@ -3336,7 +3336,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current value of <ns> according to the valid scope.
+Returns the current value of <NS> according to the Valid Scope.
 ") CurrentShape;
 		TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -3522,7 +3522,7 @@ None
 
 Description
 -----------
-Returns the attribute list args. this list contains the named shape on which the topological naming was built.
+Returns the attribute list args. This list contains the named shape on which the topological naming was built.
 ") Arguments;
 		void Arguments(TDF_AttributeMap & args);
 
@@ -3543,7 +3543,7 @@ bool
 
 Description
 -----------
-To know if a shape is already identified (not selected) ======================================================= //! the label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. if true, ns is returned as the identity of selection. if geometry is true, ns will be the named shape containing the first appearance of selection and not any other shape. in other words, selection must be the only shape stored in ns.
+To know if a shape is already identified (not selected) ======================================================= //! The label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. If true, NS is returned as the identity of selection. If Geometry is true, NS will be the named shape containing the first appearance of selection and not any other shape. In other words, selection must be the only shape stored in NS.
 ") IsIdentified;
 		static Standard_Boolean IsIdentified(const TDF_Label & access, const TopoDS_Shape & selection, opencascade::handle<TNaming_NamedShape> & NS, const Standard_Boolean Geometry = Standard_False);
 
@@ -3556,7 +3556,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the namedshape build or under construction, which contains the topological naming..
+Returns the NamedShape build or under construction, which contains the topological naming..
 ") NamedShape;
 		opencascade::handle<TNaming_NamedShape> NamedShape();
 
@@ -3577,7 +3577,7 @@ bool
 
 Description
 -----------
-Creates a topological naming on the label alabel given as an argument at construction time. if successful, the shape selection - found in the shape context - is now identified in the named shape returned in namedshape. if geometry is true, namedshape contains the first appearance of selection. this syntax is more robust than the previous syntax for this method.
+Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection - found in the shape Context - is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection. This syntax is more robust than the previous syntax for this method.
 ") Select;
 		Standard_Boolean Select(const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
 
@@ -3597,7 +3597,7 @@ bool
 
 Description
 -----------
-Creates a topological naming on the label alabel given as an argument at construction time. if successful, the shape selection is now identified in the named shape returned in namedshape. if geometry is true, namedshape contains the first appearance of selection.
+Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection.
 ") Select;
 		Standard_Boolean Select(const TopoDS_Shape & Selection, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
 
@@ -3615,7 +3615,7 @@ bool
 
 Description
 -----------
-Updates the topological naming on the label alabel given as an argument at construction time. the underlying shape returned in the method namedshape is updated. to read this shape, use the method tnaming_tool::getshape.
+Updates the topological naming on the label aLabel given as an argument at construction time. The underlying shape returned in the method NamedShape is updated. To read this shape, use the method TNaming_Tool::GetShape.
 ") Solve;
 		Standard_Boolean Solve(TDF_LabelMap & Valid);
 
@@ -3679,7 +3679,7 @@ bool
 
 Description
 -----------
-Adds the shape <s>.
+Adds the Shape <S>.
 ") Add;
 		Standard_Boolean Add(const TopoDS_Shape & S);
 
@@ -3697,7 +3697,7 @@ None
 
 Description
 -----------
-Adds the shapes contained in <shapes>.
+Adds the shapes contained in <Shapes>.
 ") Add;
 		void Add(const TNaming_ShapesSet & Shapes);
 
@@ -3723,7 +3723,7 @@ None
 
 Description
 -----------
-Removes all shapes.
+Removes all Shapes.
 ") Clear;
 		void Clear();
 
@@ -3741,7 +3741,7 @@ bool
 
 Description
 -----------
-Returns true if <s> is in <self>.
+Returns True if <S> is in <self>.
 ") Contains;
 		Standard_Boolean Contains(const TopoDS_Shape & S);
 
@@ -3759,7 +3759,7 @@ None
 
 Description
 -----------
-Erases in <self> the shapes not contained in <shapes>.
+Erases in <self> the shapes not contained in <Shapes>.
 ") Filter;
 		void Filter(const TNaming_ShapesSet & Shapes);
 
@@ -3816,7 +3816,7 @@ bool
 
 Description
 -----------
-Removes <s> in <self>.
+Removes <S> in <self>.
 ") Remove;
 		Standard_Boolean Remove(const TopoDS_Shape & S);
 
@@ -3834,7 +3834,7 @@ None
 
 Description
 -----------
-Removes in <self> the shapes contained in <shapes>.
+Removes in <self> the shapes contained in <Shapes>.
 ") Remove;
 		void Remove(const TNaming_ShapesSet & Shapes);
 
@@ -3887,7 +3887,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the namedshape of the last modification of <ns>. this shape is identified by a label.
+Returns the NamedShape of the last Modification of <NS>. This shape is identified by a label.
 ") CurrentNamedShape;
 		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
@@ -3905,7 +3905,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns namedshape the last modification of <ns>.
+Returns NamedShape the last Modification of <NS>.
 ") CurrentNamedShape;
 		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -3923,7 +3923,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the last modification of <ns>. returns the shape currentshape contained in the named shape attribute ns. currentshape is the current state of the entities if they have been modified in other attributes of the same data structure. each call to this function creates a new compound.
+Returns the last Modification of <NS>. Returns the shape CurrentShape contained in the named shape attribute NS. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound.
 ") CurrentShape;
 		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -3942,7 +3942,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape currentshape contained in the named shape attribute ns, and present in the updated attribute map updated. currentshape is the current state of the entities if they have been modified in other attributes of the same data structure. each call to this function creates a new compound. warning only the contents of updated are searched.r.
+Returns the shape CurrentShape contained in the named shape attribute NS, and present in the updated attribute map Updated. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound. Warning Only the contents of Updated are searched.R.
 ") CurrentShape;
 		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
@@ -3963,7 +3963,7 @@ None
 
 Description
 -----------
-Returns the current shape (a wire or a shell) built (in the data framework) from the shapes of the argument named shape. it is used for identity name type computation.
+Returns the current shape (a Wire or a Shell) built (in the data framework) from the shapes of the argument named shape. It is used for IDENTITY name type computation.
 ") FindShape;
 		static void FindShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
 
@@ -3982,7 +3982,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape generated from s or by a modification of s and contained in the named shape generation.
+Returns the shape generated from S or by a modification of S and contained in the named shape Generation.
 ") GeneratedShape;
 		static TopoDS_Shape GeneratedShape(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & Generation);
 
@@ -4000,7 +4000,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the entities stored in the named shape attribute ns. if there is only one old-new pair, the new shape is returned. otherwise, a compound is returned. this compound is made out of all the new shapes found. each call to this function creates a new compound.
+Returns the entities stored in the named shape attribute NS. If there is only one old-new pair, the new shape is returned. Otherwise, a Compound is returned. This compound is made out of all the new shapes found. Each call to this function creates a new compound.
 ") GetShape;
 		static TopoDS_Shape GetShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -4019,7 +4019,7 @@ bool
 
 Description
 -----------
-Returns true if <ashape> appears under a label.(dp).
+Returns True if <aShape> appears under a label.(DP).
 ") HasLabel;
 		static Standard_Boolean HasLabel(const TDF_Label & access, const TopoDS_Shape & aShape);
 
@@ -4039,7 +4039,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape created from the shape ashape contained in the attribute anacces.
+Returns the shape created from the shape aShape contained in the attribute anAcces.
 ") InitialShape;
 		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, TDF_LabelList & Labels);
 
@@ -4058,7 +4058,7 @@ TransDef: int
 
 Description
 -----------
-Returns the label of the first apparition of <ashape>. transdef is a value of the transaction of the first apparition of <ashape>.
+Returns the label of the first apparition of <aShape>. Transdef is a value of the transaction of the first apparition of <aShape>.
 ") Label;
 		static TDF_Label Label(const TDF_Label & access, const TopoDS_Shape & aShape, Standard_Integer &OutValue);
 
@@ -4077,7 +4077,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the named shape attribute defined by the shape ashape and the label anaccess. this attribute is returned as a new shape. you call this function, if you need to create a topological attribute for existing data. example class mypkg_myclass { public: standard_boolean sameedge(const opencascade::handle<ocaftest_line>& , const opencascade::handle<caftest_line>& ); }; //! standard_boolean mypkg_myclass::sameedge (const opencascade::handle<ocaftest_line>& l1 const opencascade::handle<ocaftest_line>& l2) { opencascade::handle<tnaming_namedshape> ns1 = l1->namedshape(); opencascade::handle<tnaming_namedshape> ns2 = l2->namedshape(); //! return breptools::compare(ns1->get(),ns2->get()); } in the example above, the function sameedge is created to compare the edges having two lines for geometric supports. if these edges are found by breptools::compare to be within the same tolerance, they are considered to be the same. warning to avoid sharing of names, a selected attribute will not be returned. sharing of names makes it harder to manage the data structure. when the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
+Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: Standard_Boolean SameEdge(const opencascade::handle<OCafTest_Line>& , const opencascade::handle<CafTest_Line>& ); }; //! Standard_Boolean MyPkg_MyClass::SameEdge (const opencascade::handle<OCafTest_Line>& L1 const opencascade::handle<OCafTest_Line>& L2) { opencascade::handle<TNaming_NamedShape> NS1 = L1->NamedShape(); opencascade::handle<TNaming_NamedShape> NS2 = L2->NamedShape(); //! return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
 ") NamedShape;
 		static opencascade::handle<TNaming_NamedShape> NamedShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces);
 
@@ -4095,7 +4095,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape contained as oldshape in <ns>.
+Returns the shape contained as OldShape in <NS>.
 ") OriginalShape;
 		static TopoDS_Shape OriginalShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
@@ -4114,7 +4114,7 @@ int
 
 Description
 -----------
-Returns the last transaction where the creation of s is valid.
+Returns the last transaction where the creation of S is valid.
 ") ValidUntil;
 		static Standard_Integer ValidUntil(const TDF_Label & access, const TopoDS_Shape & S);
 
@@ -4435,7 +4435,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns copied shape.
+returns copied shape.
 ") Copied;
 		const TopoDS_Shape Copied(const TopoDS_Shape & aShape);
 
@@ -4448,7 +4448,7 @@ TopTools_DataMapOfShapeShape
 
 Description
 -----------
-Returns datamap of results; (shape <-> copied shape).
+returns DataMap of results; (shape <-> copied shape).
 ") Copied;
 		const TopTools_DataMapOfShapeShape & Copied();
 
@@ -4526,7 +4526,7 @@ bool
 
 Description
 -----------
-Something to do after applying <anattdelta>.
+Something to do after applying <anAttDelta>.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -4539,7 +4539,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Copies the attribute contents into a new other attribute. it is used by backup().
+Copies the attribute contents into a new other attribute. It is used by Backup().
 ") BackupCopy;
 		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
@@ -4565,7 +4565,7 @@ opencascade::handle<TDF_DeltaOnAddition>
 
 Description
 -----------
-This method returns a null handle (no delta).
+this method returns a null handle (no delta).
 ") DeltaOnAddition;
 		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
 
@@ -4578,7 +4578,7 @@ opencascade::handle<TDF_DeltaOnRemoval>
 
 Description
 -----------
-This method returns a null handle (no delta).
+this method returns a null handle (no delta).
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
@@ -4608,7 +4608,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the attribute on <astream>.
+Dumps the attribute on <aStream>.
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -4642,7 +4642,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id: 2a96b614-ec8b-11d0-bee7-080009dc3333.
+Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4655,7 +4655,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -4681,7 +4681,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -4700,7 +4700,7 @@ None
 
 Description
 -----------
-This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -4718,7 +4718,7 @@ None
 
 Description
 -----------
-Adds the directly referenced attributes and labels to <adataset>. 'directly' means we have only to look at the first level of references. //! for this, use only the addlabel() & addattribute() from dataset and do not try to modify information previously stored in <adataset>.
+Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references. //! For this, use only the AddLabel() & AddAttribute() from DataSet and do not try to modify information previously stored in <aDataSet>.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -4736,7 +4736,7 @@ None
 
 Description
 -----------
-Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 

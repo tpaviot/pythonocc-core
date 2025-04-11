@@ -126,6 +126,12 @@ class DE_Wrapper(Standard_Transient):
 #classnotwrapped
 class DE_PluginHolder: ...
 
+#classnotwrapped
+class DE_ShapeFixConfigurationNode: ...
+
+#classnotwrapped
+class DE_ShapeFixParameters: ...
+
 # harray1 classes
 # harray2 classes
 # hsequence classes

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPMESHDATADOCSTRING
 "BRepMeshData module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepmeshdata.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmeshdata.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMESHDATADOCSTRING) BRepMeshData
 
@@ -605,7 +605,7 @@ None
 
 Description
 -----------
-Constructor. initializes empty model.
+Constructor. Initializes empty model.
 ") BRepMeshData_Model;
 		 BRepMeshData_Model(const TopoDS_Shape & theShape);
 
@@ -1001,7 +1001,8 @@ int
 
 Description
 -----------
-Adds new discrete edge with specified orientation to wire chain. return index of added edge in wire chain.
+Adds new discrete edge with specified orientation to wire chain. 
+Return: index of added edge in wire chain.
 ") AddEdge;
 		virtual Standard_Integer AddEdge(const IMeshData::IEdgePtr & theDEdge, const TopAbs_Orientation theOrientation);
 
@@ -1050,7 +1051,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns true if orientation of discrete edge with the given index is forward.
+Returns True if orientation of discrete edge with the given index is forward.
 ") GetEdgeOrientation;
 		virtual TopAbs_Orientation GetEdgeOrientation(const Standard_Integer theIndex);
 

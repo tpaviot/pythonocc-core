@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BOPDSDOCSTRING
 "BOPDS module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bopds.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopds.html"
 %enddef
 %module (package="OCC.Core", docstring=BOPDSDOCSTRING) BOPDS
 
@@ -255,7 +255,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_CommonBlock;
 		 BOPDS_CommonBlock(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -273,7 +274,7 @@ None
 
 Description
 -----------
-Modifier adds the index of the face <af> to the list of indices of faces of the common block.
+Modifier Adds the index of the face <aF> to the list of indices of faces of the common block.
 ") AddFace;
 		void AddFace(const Standard_Integer aF);
 
@@ -291,7 +292,7 @@ None
 
 Description
 -----------
-Modifier adds the pave block <apb> to the list of pave blocks of the common block.
+Modifier Adds the pave block <aPB> to the list of pave blocks of the common block.
 ") AddPaveBlock;
 		void AddPaveBlock(const opencascade::handle<BOPDS_PaveBlock> & aPB);
 
@@ -309,7 +310,7 @@ None
 
 Description
 -----------
-Modifier appends the list of indices of faces <alf> to the list of indices of faces of the common block (the input list is emptied).
+Modifier Appends the list of indices of faces <aLF> to the list of indices of faces of the common block (the input list is emptied).
 ") AppendFaces;
 		void AppendFaces(TColStd_ListOfInteger & aLF);
 
@@ -327,7 +328,7 @@ bool
 
 Description
 -----------
-Query returns true if the common block contains a pave block that is equal to <thepb>.
+Query Returns true if the common block contains a pave block that is equal to <thePB>.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -345,7 +346,7 @@ bool
 
 Description
 -----------
-Query returns true if the common block contains the face with index equal to <thef>.
+Query Returns true if the common block contains the face with index equal to <theF>.
 ") Contains;
 		Standard_Boolean Contains(const Standard_Integer theF);
 
@@ -371,7 +372,7 @@ int
 
 Description
 -----------
-Selector returns the index of the edge of all pave blocks of the common block.
+Selector Returns the index of the edge of all pave blocks of the common block.
 ") Edge;
 		Standard_Integer Edge();
 
@@ -384,7 +385,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Selector returns the list of indices of faces of the common block.
+Selector Returns the list of indices of faces of the common block.
 ") Faces;
 		const TColStd_ListOfInteger & Faces();
 
@@ -402,7 +403,7 @@ bool
 
 Description
 -----------
-Query returns true if the common block contains a pave block that belongs to the edge with index <theix>.
+Query Returns true if the common block contains a pave block that belongs to the edge with index <theIx>.
 ") IsPaveBlockOnEdge;
 		Standard_Boolean IsPaveBlockOnEdge(const Standard_Integer theIndex);
 
@@ -420,7 +421,7 @@ bool
 
 Description
 -----------
-Query returns true if the common block contains a pave block that belongs to the face with index <theix>.
+Query Returns true if the common block contains a pave block that belongs to the face with index <theIx>.
 ") IsPaveBlockOnFace;
 		Standard_Boolean IsPaveBlockOnFace(const Standard_Integer theIndex);
 
@@ -433,7 +434,7 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-Selector returns the first pave block of the common block.
+Selector Returns the first pave block of the common block.
 ") PaveBlock1;
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock1();
 
@@ -451,7 +452,7 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-Selector returns the pave block that belongs to the edge with index <theix>.
+Selector Returns the pave block that belongs to the edge with index <theIx>.
 ") PaveBlockOnEdge;
 		opencascade::handle<BOPDS_PaveBlock> & PaveBlockOnEdge(const Standard_Integer theIndex);
 
@@ -464,7 +465,7 @@ BOPDS_ListOfPaveBlock
 
 Description
 -----------
-Selector returns the list of pave blocks of the common block.
+Selector Returns the list of pave blocks of the common block.
 ") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks();
 
@@ -482,7 +483,7 @@ None
 
 Description
 -----------
-Modifier assign the index <theedge> as the edge index to all pave blocks of the common block.
+Modifier Assign the index <theEdge> as the edge index to all pave blocks of the common block.
 ") SetEdge;
 		void SetEdge(const Standard_Integer theEdge);
 
@@ -500,7 +501,7 @@ None
 
 Description
 -----------
-Modifier sets the list of indices of faces <alf> of the common block.
+Modifier Sets the list of indices of faces <aLF> of the common block.
 ") SetFaces;
 		void SetFaces(const TColStd_ListOfInteger & aLF);
 
@@ -518,7 +519,7 @@ None
 
 Description
 -----------
-Modifier sets the list of pave blocks for the common block.
+Modifier Sets the list of pave blocks for the common block.
 ") SetPaveBlocks;
 		void SetPaveBlocks(const BOPDS_ListOfPaveBlock & aLPB);
 
@@ -536,7 +537,7 @@ None
 
 Description
 -----------
-Moves the pave blocks in the list to make the given pave block to be the first. it will be representative for the whole group.
+Moves the pave blocks in the list to make the given pave block to be the first. It will be representative for the whole group.
 ") SetRealPaveBlock;
 		void SetRealPaveBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -596,7 +597,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks();
 
@@ -615,7 +616,9 @@ None
 
 Description
 -----------
-/** * constructor * @param thepb1 * first pave block * @param thepb2 * secondt pave block */.
+/** * Constructor * 
+Parameter thePB1 * first pave block * 
+Parameter thePB2 * secondt pave block */.
 ") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks(const opencascade::handle<BOPDS_PaveBlock> & thePB1, const opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
@@ -628,7 +631,8 @@ int
 
 Description
 -----------
-/** * returns the index * return * index */.
+/** * Returns the index * 
+Return: * index */.
 ") Index;
 		Standard_Integer Index();
 
@@ -641,7 +645,8 @@ int
 
 Description
 -----------
-/** * returns the index of an interference * return * index of an interference */.
+/** * Returns the index of an interference * 
+Return: * index of an interference */.
 ") IndexInterf;
 		Standard_Integer IndexInterf();
 
@@ -654,7 +659,8 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-No available documentation.
+/** * Returns the first pave block * 
+Return: * the first pave block */.
 ") PaveBlock1;
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock1();
 
@@ -667,7 +673,8 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-No available documentation.
+/** * Returns the second pave block * 
+Return: * the second pave block */.
 ") PaveBlock2;
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock2();
 
@@ -686,7 +693,9 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Returns pave blocks * 
+Parameter thePB1 * the first pave block * 
+Parameter thePB2 * the second pave block */.
 ") PaveBlocks;
 		void PaveBlocks(opencascade::handle<BOPDS_PaveBlock> & thePB1, opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
@@ -704,7 +713,8 @@ None
 
 Description
 -----------
-/** * sets an index * @param theindex * index */.
+/** * Sets an index * 
+Parameter theIndex * index */.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex);
 
@@ -722,7 +732,8 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Sets an index of an interference * 
+Parameter theIndex * index of an interference */.
 ") SetIndexInterf;
 		void SetIndexInterf(const Standard_Integer theIndex);
 
@@ -740,7 +751,8 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Sets the first pave block * 
+Parameter thePB * the first pave block */.
 ") SetPaveBlock1;
 		void SetPaveBlock1(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -758,7 +770,8 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Sets the second pave block * 
+Parameter thePB * the second pave block */.
 ") SetPaveBlock2;
 		void SetPaveBlock2(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -777,7 +790,9 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Sets pave blocks * 
+Parameter thePB1 * first pave block * 
+Parameter thePB2 * secondt pave block */.
 ") SetPaveBlocks;
 		void SetPaveBlocks(const opencascade::handle<BOPDS_PaveBlock> & thePB1, const opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
@@ -795,7 +810,7 @@ None
 
 Description
 -----------
-/** * sets the tolerance associated with this couple */.
+/** * Sets the tolerance associated with this couple */.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theTol);
 
@@ -808,7 +823,7 @@ float
 
 Description
 -----------
-/** * returns the tolerance associated with this couple */.
+/** * Returns the tolerance associated with this couple */.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -853,7 +868,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_Curve;
 		 BOPDS_Curve(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -866,7 +882,7 @@ Bnd_Box
 
 Description
 -----------
-Selector returns the bounding box of the curve.
+Selector Returns the bounding box of the curve.
 ") Box;
 		const Bnd_Box & Box();
 
@@ -879,7 +895,7 @@ Bnd_Box
 
 Description
 -----------
-Selector/modifier returns the bounding box of the curve.
+Selector/Modifier Returns the bounding box of the curve.
 ") ChangeBox;
 		Bnd_Box & ChangeBox();
 
@@ -892,7 +908,7 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-Selector/modifier returns initial pave block of the curve.
+Selector/Modifier Returns initial pave block of the curve.
 ") ChangePaveBlock1;
 		opencascade::handle<BOPDS_PaveBlock> & ChangePaveBlock1();
 
@@ -905,7 +921,7 @@ BOPDS_ListOfPaveBlock
 
 Description
 -----------
-Selector/modifier returns the list of pave blocks of the curve.
+Selector/Modifier Returns the list of pave blocks of the curve.
 ") ChangePaveBlocks;
 		BOPDS_ListOfPaveBlock & ChangePaveBlocks();
 
@@ -918,7 +934,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Selector/modifier returns list of indices of technologic vertices of the curve.
+Selector/Modifier Returns list of indices of technologic vertices of the curve.
 ") ChangeTechnoVertices;
 		TColStd_ListOfInteger & ChangeTechnoVertices();
 
@@ -931,7 +947,7 @@ IntTools_Curve
 
 Description
 -----------
-Selector returns the curve.
+Selector Returns the curve.
 ") Curve;
 		IntTools_Curve Curve();
 
@@ -944,7 +960,7 @@ bool
 
 Description
 -----------
-Query returns true if at least one pave block of the curve has edge.
+Query Returns true if at least one pave block of the curve has edge.
 ") HasEdge;
 		Standard_Boolean HasEdge();
 
@@ -970,7 +986,7 @@ BOPDS_ListOfPaveBlock
 
 Description
 -----------
-Selector returns the list of pave blocks of the curve.
+Selector Returns the list of pave blocks of the curve.
 ") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks();
 
@@ -988,7 +1004,7 @@ None
 
 Description
 -----------
-Modifier sets the bounding box <thebox> of the curve.
+Modifier Sets the bounding box <theBox> of the curve.
 ") SetBox;
 		void SetBox(const Bnd_Box & theBox);
 
@@ -1006,7 +1022,7 @@ None
 
 Description
 -----------
-Modifier sets the curve <thec>.
+Modifier Sets the curve <theC>.
 ") SetCurve;
 		void SetCurve(const IntTools_Curve & theC);
 
@@ -1068,7 +1084,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Selector returns list of indices of technologic vertices of the curve.
+Selector Returns list of indices of technologic vertices of the curve.
 ") TechnoVertices;
 		const TColStd_ListOfInteger & TechnoVertices();
 
@@ -1126,7 +1142,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_DS;
 		 BOPDS_DS(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -1145,7 +1162,7 @@ bool
 
 Description
 -----------
-Modifier adds the information about an interference between shapes with indices thei1, thei2 to the summary table of interferences.
+Modifier Adds the information about an interference between shapes with indices theI1, theI2 to the summary table of interferences.
 ") AddInterf;
 		Standard_Boolean AddInterf(const Standard_Integer theI1, const Standard_Integer theI2);
 
@@ -1164,7 +1181,7 @@ None
 
 Description
 -----------
-Modifier adds the information about same domain shapes with indices theindex, theindexsd.
+Modifier Adds the information about same domain shapes with indices theIndex, theIndexSD.
 ") AddShapeSD;
 		void AddShapeSD(const Standard_Integer theIndex, const Standard_Integer theIndexSD);
 
@@ -1196,7 +1213,7 @@ None
 
 Description
 -----------
-Selector returns the indices of alone vertices for the face with index theindex.
+Selector Returns the indices of alone vertices for the face with index theIndex.
 ") AloneVertices;
 		void AloneVertices(const Standard_Integer theF, TColStd_ListOfInteger & theLI);
 
@@ -1214,7 +1231,7 @@ int
 
 Description
 -----------
-Modifier appends the information about the shape [thesi] to the data structure returns the index of thesi in the data structure.
+Modifier Appends the information about the shape [theSI] to the data structure Returns the index of theSI in the data structure.
 ") Append;
 		Standard_Integer Append(const BOPDS_ShapeInfo & theSI);
 
@@ -1232,7 +1249,7 @@ int
 
 Description
 -----------
-Modifier appends the default information about the shape [thes] to the data structure returns the index of thes in the data structure.
+Modifier Appends the default information about the shape [theS] to the data structure Returns the index of theS in the data structure.
 ") Append;
 		Standard_Integer Append(const TopoDS_Shape & theS);
 
@@ -1245,7 +1262,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Selector returns the arguments of an operation.
+Selector Returns the arguments of an operation.
 ") Arguments;
 		const TopTools_ListOfShape & Arguments();
 
@@ -1265,7 +1282,7 @@ None
 
 Description
 -----------
-Computes bounding box <thebox> for the solid with ds-index <theindex>. the flag <thecheckinverted> enables/disables the check of the solid for inverted status. by default the solids will be checked.
+Computes bounding box <theBox> for the solid with DS-index <theIndex>. The flag <theCheckInverted> enables/disables the check of the solid for inverted status. By default the solids will be checked.
 ") BuildBndBoxSolid;
 		void BuildBndBoxSolid(const Standard_Integer theIndex, Bnd_Box & theBox, const Standard_Boolean theCheckInverted = Standard_True);
 
@@ -1283,7 +1300,7 @@ BOPDS_FaceInfo
 
 Description
 -----------
-Selector/modifier returns the state of face with index theindex.
+Selector/Modifier Returns the state of face with index theIndex.
 ") ChangeFaceInfo;
 		BOPDS_FaceInfo & ChangeFaceInfo(const Standard_Integer theIndex);
 
@@ -1301,7 +1318,7 @@ BOPDS_ListOfPaveBlock
 
 Description
 -----------
-Selector/modifier returns the pave blocks for the shape with index theindex.
+Selector/Modifier Returns the pave blocks for the shape with index theIndex.
 ") ChangePaveBlocks;
 		BOPDS_ListOfPaveBlock & ChangePaveBlocks(const Standard_Integer theIndex);
 
@@ -1314,7 +1331,7 @@ BOPDS_VectorOfListOfPaveBlock
 
 Description
 -----------
-Selector/modifier returns the information about pave blocks on source edges.
+Selector/Modifier Returns the information about pave blocks on source edges.
 ") ChangePaveBlocksPool;
 		BOPDS_VectorOfListOfPaveBlock & ChangePaveBlocksPool();
 
@@ -1332,7 +1349,7 @@ BOPDS_ShapeInfo
 
 Description
 -----------
-Selector/modifier returns the information about the shape with index theindex.
+Selector/Modifier Returns the information about the shape with index theIndex.
 ") ChangeShapeInfo;
 		BOPDS_ShapeInfo & ChangeShapeInfo(const Standard_Integer theIndex);
 
@@ -1363,7 +1380,7 @@ opencascade::handle<BOPDS_CommonBlock>
 
 Description
 -----------
-Selector returns the common block.
+Selector Returns the common block.
 ") CommonBlock;
 		opencascade::handle<BOPDS_CommonBlock> CommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -1394,7 +1411,7 @@ BOPDS_FaceInfo
 
 Description
 -----------
-Selector returns the state of face with index theindex.
+Selector Returns the state of face with index theIndex.
 ") FaceInfo;
 		const BOPDS_FaceInfo & FaceInfo(const Standard_Integer theIndex);
 
@@ -1414,7 +1431,7 @@ None
 
 Description
 -----------
-Selector returns the state in [thempb,themvp] of face with index theindex.
+Selector Returns the state In [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoIn;
 		void FaceInfoIn(const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock & theMPB, TColStd_MapOfInteger & theMVP);
 
@@ -1434,7 +1451,7 @@ None
 
 Description
 -----------
-Selector returns the state on [thempb,themvp] of face with index theindex.
+Selector Returns the state On [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoOn;
 		void FaceInfoOn(const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock & theMPB, TColStd_MapOfInteger & theMVP);
 
@@ -1447,7 +1464,7 @@ BOPDS_VectorOfFaceInfo
 
 Description
 -----------
-Selector returns the information about state of faces.
+Selector Returns the information about state of faces.
 ") FaceInfoPool;
 		const BOPDS_VectorOfFaceInfo & FaceInfoPool();
 
@@ -1465,7 +1482,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape with index theindex has the information about state of face.
+Query Returns true if the shape with index theIndex has the information about state of face.
 ") HasFaceInfo;
 		Standard_Boolean HasFaceInfo(const Standard_Integer theIndex);
 
@@ -1483,7 +1500,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape with index thei is interferred.
+Query Returns true if the shape with index theI is interferred.
 ") HasInterf;
 		Standard_Boolean HasInterf(const Standard_Integer theI);
 
@@ -1502,7 +1519,7 @@ bool
 
 Description
 -----------
-Query returns true if the shapes with indices thei1, thei2 are interferred.
+Query Returns true if the shapes with indices theI1, theI2 are interferred.
 ") HasInterf;
 		Standard_Boolean HasInterf(const Standard_Integer theI1, const Standard_Integer theI2);
 
@@ -1522,7 +1539,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape with index thei1 is interfered with any sub-shape of the shape with index thei2 (theflag=true) all sub-shapes of the shape with index thei2 (theflag=false).
+Query Returns true if the shape with index theI1 is interfered with any sub-shape of the shape with index theI2 (theFlag=true) all sub-shapes of the shape with index theI2 (theFlag=false).
 ") HasInterfShapeSubShapes;
 		Standard_Boolean HasInterfShapeSubShapes(const Standard_Integer theI1, const Standard_Integer theI2, const Standard_Boolean theFlag = Standard_True);
 
@@ -1541,7 +1558,7 @@ bool
 
 Description
 -----------
-Query returns true if the shapes with indices thei1, thei2 have interferred sub-shapes.
+Query Returns true if the shapes with indices theI1, theI2 have interferred sub-shapes.
 ") HasInterfSubShapes;
 		Standard_Boolean HasInterfSubShapes(const Standard_Integer theI1, const Standard_Integer theI2);
 
@@ -1559,7 +1576,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape with index theindex has the information about pave blocks.
+Query Returns true if the shape with index theIndex has the information about pave blocks.
 ") HasPaveBlocks;
 		Standard_Boolean HasPaveBlocks(const Standard_Integer theIndex);
 
@@ -1577,7 +1594,7 @@ theIndexSD: int
 
 Description
 -----------
-Query returns true if the shape with index theindex has the same domain shape. in this case theindexsd will contain the index of same domain shape found //! interferences.
+Query Returns true if the shape with index theIndex has the same domain shape. In this case theIndexSD will contain the index of same domain shape found //! interferences.
 ") HasShapeSD;
 		Standard_Boolean HasShapeSD(const Standard_Integer theIndex, Standard_Integer &OutValue);
 
@@ -1595,7 +1612,7 @@ int
 
 Description
 -----------
-Selector returns the index of the shape thes.
+Selector Returns the index of the shape theS.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & theS);
 
@@ -1644,7 +1661,7 @@ BOPDS_VectorOfInterfEE
 
 Description
 -----------
-Selector/modifier returns the collection of interferences edge/edge.
+Selector/Modifier Returns the collection of interferences Edge/Edge.
 ") InterfEE;
 		BOPDS_VectorOfInterfEE & InterfEE();
 
@@ -1657,7 +1674,7 @@ BOPDS_VectorOfInterfEF
 
 Description
 -----------
-Selector/modifier returns the collection of interferences edge/face.
+Selector/Modifier Returns the collection of interferences Edge/Face.
 ") InterfEF;
 		BOPDS_VectorOfInterfEF & InterfEF();
 
@@ -1670,7 +1687,7 @@ BOPDS_VectorOfInterfEZ
 
 Description
 -----------
-Selector/modifier returns the collection of interferences edge/solid.
+Selector/Modifier Returns the collection of interferences Edge/Solid.
 ") InterfEZ;
 		BOPDS_VectorOfInterfEZ & InterfEZ();
 
@@ -1683,7 +1700,7 @@ BOPDS_VectorOfInterfFF
 
 Description
 -----------
-Selector/modifier returns the collection of interferences face/face.
+Selector/Modifier Returns the collection of interferences Face/Face.
 ") InterfFF;
 		BOPDS_VectorOfInterfFF & InterfFF();
 
@@ -1696,7 +1713,7 @@ BOPDS_VectorOfInterfFZ
 
 Description
 -----------
-Selector/modifier returns the collection of interferences face/solid.
+Selector/Modifier Returns the collection of interferences Face/Solid.
 ") InterfFZ;
 		BOPDS_VectorOfInterfFZ & InterfFZ();
 
@@ -1709,7 +1726,7 @@ BOPDS_VectorOfInterfVE
 
 Description
 -----------
-Selector/modifier returns the collection of interferences vertex/edge.
+Selector/Modifier Returns the collection of interferences Vertex/Edge.
 ") InterfVE;
 		BOPDS_VectorOfInterfVE & InterfVE();
 
@@ -1722,7 +1739,7 @@ BOPDS_VectorOfInterfVF
 
 Description
 -----------
-Selector/modifier returns the collection of interferences vertex/face.
+Selector/Modifier Returns the collection of interferences Vertex/Face.
 ") InterfVF;
 		BOPDS_VectorOfInterfVF & InterfVF();
 
@@ -1735,7 +1752,7 @@ BOPDS_VectorOfInterfVV
 
 Description
 -----------
-Selector/modifier returns the collection of interferences vertex/vertex.
+Selector/Modifier Returns the collection of interferences Vertex/Vertex.
 ") InterfVV;
 		BOPDS_VectorOfInterfVV & InterfVV();
 
@@ -1748,7 +1765,7 @@ BOPDS_VectorOfInterfVZ
 
 Description
 -----------
-Selector/modifier returns the collection of interferences vertex/solid.
+Selector/Modifier Returns the collection of interferences Vertex/Solid.
 ") InterfVZ;
 		BOPDS_VectorOfInterfVZ & InterfVZ();
 
@@ -1761,7 +1778,7 @@ BOPDS_VectorOfInterfZZ
 
 Description
 -----------
-Selector/modifier returns the collection of interferences solid/solid.
+Selector/Modifier Returns the collection of interferences Solid/Solid.
 ") InterfZZ;
 		BOPDS_VectorOfInterfZZ & InterfZZ();
 
@@ -1774,7 +1791,7 @@ BOPDS_MapOfPair
 
 Description
 -----------
-Selector returns the table of interferences //! debug.
+Selector Returns the table of interferences //! debug.
 ") Interferences;
 		const BOPDS_MapOfPair & Interferences();
 
@@ -1792,7 +1809,7 @@ bool
 
 Description
 -----------
-Query returns true if the pave block is common block.
+Query Returns true if the pave block is common block.
 ") IsCommonBlock;
 		Standard_Boolean IsCommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -1810,7 +1827,7 @@ bool
 
 Description
 -----------
-Query returns true if common block contains more then one pave block.
+Query Returns true if common block contains more then one pave block.
 ") IsCommonBlockOnEdge;
 		Standard_Boolean IsCommonBlockOnEdge(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -1865,7 +1882,7 @@ bool
 
 Description
 -----------
-Checks if the existing shrunk data of the pave block is still valid. the shrunk data may become invalid if e.g. the vertices of the pave block have been replaced with the new one with bigger tolerances, or the tolerances of the existing vertices have been increased.
+Checks if the existing shrunk data of the pave block is still valid. The shrunk data may become invalid if e.g. the vertices of the pave block have been replaced with the new one with bigger tolerances, or the tolerances of the existing vertices have been increased.
 ") IsValidShrunkData;
 		Standard_Boolean IsValidShrunkData(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -1891,7 +1908,7 @@ int
 
 Description
 -----------
-Selector returns the number of index ranges.
+Selector Returns the number of index ranges.
 ") NbRanges;
 		Standard_Integer NbRanges();
 
@@ -1904,7 +1921,7 @@ int
 
 Description
 -----------
-Selector returns the total number of shapes stored.
+Selector Returns the total number of shapes stored.
 ") NbShapes;
 		Standard_Integer NbShapes();
 
@@ -1917,7 +1934,7 @@ int
 
 Description
 -----------
-Selector returns the total number of source shapes stored.
+Selector Returns the total number of source shapes stored.
 ") NbSourceShapes;
 		Standard_Integer NbSourceShapes();
 
@@ -1935,7 +1952,7 @@ BOPDS_ListOfPaveBlock
 
 Description
 -----------
-Selector returns the pave blocks for the shape with index theindex.
+Selector Returns the pave blocks for the shape with index theIndex.
 ") PaveBlocks;
 		const BOPDS_ListOfPaveBlock & PaveBlocks(const Standard_Integer theIndex);
 
@@ -1948,7 +1965,7 @@ BOPDS_VectorOfListOfPaveBlock
 
 Description
 -----------
-Selector returns the information about pave blocks on source edges.
+Selector Returns the information about pave blocks on source edges.
 ") PaveBlocksPool;
 		const BOPDS_VectorOfListOfPaveBlock & PaveBlocksPool();
 
@@ -1967,7 +1984,7 @@ None
 
 Description
 -----------
-Fills thelp with sorted paves of the shape with index theindex.
+Fills theLP with sorted paves of the shape with index theIndex.
 ") Paves;
 		void Paves(const Standard_Integer theIndex, BOPDS_ListOfPave & theLP);
 
@@ -1985,7 +2002,7 @@ BOPDS_IndexRange
 
 Description
 -----------
-Selector returns the index range 'i'.
+Selector Returns the index range 'i'.
 ") Range;
 		const BOPDS_IndexRange & Range(const Standard_Integer theIndex);
 
@@ -2003,7 +2020,7 @@ int
 
 Description
 -----------
-Selector returns the rank of the shape of index 'i'.
+Selector Returns the rank of the shape of index 'i'.
 ") Rank;
 		Standard_Integer Rank(const Standard_Integer theIndex);
 
@@ -2021,7 +2038,7 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-Selector returns the real first pave block.
+Selector Returns the real first pave block.
 ") RealPaveBlock;
 		opencascade::handle<BOPDS_PaveBlock> RealPaveBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -2034,7 +2051,7 @@ None
 
 Description
 -----------
-Removes any pave block from list of having in state if it has also the state on.
+Removes any pave block from list of having IN state if it has also the state ON.
 ") RefineFaceInfoIn;
 		void RefineFaceInfoIn();
 
@@ -2047,7 +2064,7 @@ None
 
 Description
 -----------
-Refine the state on for the all faces having state information //! ++.
+Refine the state On for the all faces having state information //! ++.
 ") RefineFaceInfoOn;
 		void RefineFaceInfoOn();
 
@@ -2060,7 +2077,7 @@ None
 
 Description
 -----------
-Clears information about paveblocks for the untouched edges.
+Clears information about PaveBlocks for the untouched edges.
 ") ReleasePaveBlocks;
 		void ReleasePaveBlocks();
 
@@ -2078,7 +2095,7 @@ None
 
 Description
 -----------
-Modifier sets the arguments [thels] of an operation.
+Modifier Sets the arguments [theLS] of an operation.
 ") SetArguments;
 		void SetArguments(const TopTools_ListOfShape & theLS);
 
@@ -2097,7 +2114,7 @@ None
 
 Description
 -----------
-Modifier sets the common block <thecb>.
+Modifier Sets the common block <theCB>.
 ") SetCommonBlock;
 		void SetCommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB, const opencascade::handle<BOPDS_CommonBlock> & theCB);
 
@@ -2115,7 +2132,7 @@ TopoDS_Shape
 
 Description
 -----------
-Selector returns the shape with index theindex.
+Selector Returns the shape with index theIndex.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer theIndex);
 
@@ -2133,7 +2150,7 @@ BOPDS_ShapeInfo
 
 Description
 -----------
-Selector returns the information about the shape with index theindex.
+Selector Returns the information about the shape with index theIndex.
 ") ShapeInfo;
 		const BOPDS_ShapeInfo & ShapeInfo(const Standard_Integer theIndex);
 
@@ -2146,7 +2163,7 @@ TColStd_DataMapOfIntegerInteger
 
 Description
 -----------
-Selector returns the collection same domain shapes.
+Selector Returns the collection same domain shapes.
 ") ShapesSD;
 		TColStd_DataMapOfIntegerInteger & ShapesSD();
 
@@ -2167,7 +2184,7 @@ None
 
 Description
 -----------
-Returns the indices of edges that are shared for the faces with indices thef1, thef2 //! same domain shapes.
+Returns the indices of edges that are shared for the faces with indices theF1, theF2 //! same domain shapes.
 ") SharedEdges;
 		void SharedEdges(const Standard_Integer theF1, const Standard_Integer theF2, TColStd_ListOfInteger & theLI, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2190,7 +2207,11 @@ None
 
 Description
 -----------
-Returns information about on/in sub-shapes of the given faces. @param themvonin the indices of on/in vertices from both faces @param themvcommon the indices of common vertices for both faces @param thepbonin all on/in pave blocks from both faces @param thecommonpb the common pave blocks (that are shared by both faces).
+Returns information about ON/IN sub-shapes of the given faces. 
+Parameter theMVOnIn the indices of ON/IN vertices from both faces 
+Parameter theMVCommon the indices of common vertices for both faces 
+Parameter thePBOnIn all On/In pave blocks from both faces 
+Parameter theCommonPB the common pave blocks (that are shared by both faces).
 ") SubShapesOnIn;
 		void SubShapesOnIn(const Standard_Integer theNF1, const Standard_Integer theNF2, TColStd_MapOfInteger & theMVOnIn, TColStd_MapOfInteger & theMVCommon, BOPDS_IndexedMapOfPaveBlock & thePBOnIn, BOPDS_MapOfPaveBlock & theCommonPB);
 
@@ -2209,7 +2230,7 @@ None
 
 Description
 -----------
-Update the common block thecb.
+Update the common block theCB.
 ") UpdateCommonBlock;
 		void UpdateCommonBlock(const opencascade::handle<BOPDS_CommonBlock> & theCB, const Standard_Real theFuzz);
 
@@ -2245,7 +2266,7 @@ None
 
 Description
 -----------
-Update the state in of face with index theindex.
+Update the state In of face with index theIndex.
 ") UpdateFaceInfoIn;
 		void UpdateFaceInfoIn(const Standard_Integer theIndex);
 
@@ -2263,7 +2284,7 @@ None
 
 Description
 -----------
-Update the state in for all faces in the given map.
+Update the state IN for all faces in the given map.
 ") UpdateFaceInfoIn;
 		void UpdateFaceInfoIn(const TColStd_MapOfInteger & theFaces);
 
@@ -2281,7 +2302,7 @@ None
 
 Description
 -----------
-Update the state on of face with index theindex.
+Update the state On of face with index theIndex.
 ") UpdateFaceInfoOn;
 		void UpdateFaceInfoOn(const Standard_Integer theIndex);
 
@@ -2299,7 +2320,7 @@ None
 
 Description
 -----------
-Update the state on for all faces in the given map.
+Update the state ON for all faces in the given map.
 ") UpdateFaceInfoOn;
 		void UpdateFaceInfoOn(const TColStd_MapOfInteger & theFaces);
 
@@ -2317,7 +2338,7 @@ None
 
 Description
 -----------
-Update the pave block thepb.
+Update the pave block thePB.
 ") UpdatePaveBlock;
 		void UpdatePaveBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -2406,7 +2427,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_FaceInfo;
 		 BOPDS_FaceInfo(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2419,7 +2441,7 @@ BOPDS_IndexedMapOfPaveBlock
 
 Description
 -----------
-Selector/modifier returns the pave blocks of the face that have state in.
+Selector/Modifier Returns the pave blocks of the face that have state In.
 ") ChangePaveBlocksIn;
 		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksIn();
 
@@ -2432,7 +2454,7 @@ BOPDS_IndexedMapOfPaveBlock
 
 Description
 -----------
-Selector/modifier returns the pave blocks of the face that have state on.
+Selector/Modifier Returns the pave blocks of the face that have state On.
 ") ChangePaveBlocksOn;
 		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksOn();
 
@@ -2458,7 +2480,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector/modifier returns the list of indices for vertices of the face that have state in //! on.
+Selector/Modifier Returns the list of indices for vertices of the face that have state In //! On.
 ") ChangeVerticesIn;
 		TColStd_MapOfInteger & ChangeVerticesIn();
 
@@ -2471,7 +2493,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector/modifier returns the list of indices for vertices of the face that have state on //! sections.
+Selector/Modifier Returns the list of indices for vertices of the face that have state On //! Sections.
 ") ChangeVerticesOn;
 		TColStd_MapOfInteger & ChangeVerticesOn();
 
@@ -2484,7 +2506,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector/modifier returns the list of indices for section vertices of the face //! others.
+Selector/Modifier Returns the list of indices for section vertices of the face //! Others.
 ") ChangeVerticesSc;
 		TColStd_MapOfInteger & ChangeVerticesSc();
 
@@ -2510,7 +2532,7 @@ int
 
 Description
 -----------
-Selector returns the index of the face //! in.
+Selector Returns the index of the face //! In.
 ") Index;
 		Standard_Integer Index();
 
@@ -2523,7 +2545,7 @@ BOPDS_IndexedMapOfPaveBlock
 
 Description
 -----------
-Selector returns the pave blocks of the face that have state in.
+Selector Returns the pave blocks of the face that have state In.
 ") PaveBlocksIn;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksIn();
 
@@ -2536,7 +2558,7 @@ BOPDS_IndexedMapOfPaveBlock
 
 Description
 -----------
-Selector returns the pave blocks of the face that have state on.
+Selector Returns the pave blocks of the face that have state On.
 ") PaveBlocksOn;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksOn();
 
@@ -2549,7 +2571,7 @@ BOPDS_IndexedMapOfPaveBlock
 
 Description
 -----------
-Selector returns the pave blocks of the face that are pave blocks of section edges.
+Selector Returns the pave blocks of the face that are pave blocks of section edges.
 ") PaveBlocksSc;
 		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksSc();
 
@@ -2567,7 +2589,7 @@ None
 
 Description
 -----------
-Modifier sets the index of the face <thei>.
+Modifier Sets the index of the face <theI>.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theI);
 
@@ -2580,7 +2602,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector returns the list of indices for vertices of the face that have state in.
+Selector Returns the list of indices for vertices of the face that have state In.
 ") VerticesIn;
 		const TColStd_MapOfInteger & VerticesIn();
 
@@ -2593,7 +2615,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector returns the list of indices for vertices of the face that have state on.
+Selector Returns the list of indices for vertices of the face that have state On.
 ") VerticesOn;
 		const TColStd_MapOfInteger & VerticesOn();
 
@@ -2606,7 +2628,7 @@ TColStd_MapOfInteger
 
 Description
 -----------
-Selector returns the list of indices for section vertices of the face.
+Selector Returns the list of indices for section vertices of the face.
 ") VerticesSc;
 		const TColStd_MapOfInteger & VerticesSc();
 
@@ -2651,7 +2673,7 @@ bool
 
 Description
 -----------
-Query returns true if the range contains <theindex>.
+Query Returns true if the range contains <theIndex>.
 ") Contains;
 		Standard_Boolean Contains(const Standard_Integer theIndex);
 
@@ -2677,7 +2699,7 @@ int
 
 Description
 -----------
-Selector returns the first index of the range.
+Selector Returns the first index of the range.
 ") First;
 		Standard_Integer First();
 
@@ -2695,7 +2717,7 @@ theI2: int
 
 Description
 -----------
-Selector returns the first index of the range <thei1> returns the second index of the range <thei2>.
+Selector Returns the first index of the range <theI1> Returns the second index of the range <theI2>.
 ") Indices;
 		void Indices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2708,7 +2730,7 @@ int
 
 Description
 -----------
-Selector returns the second index of the range.
+Selector Returns the second index of the range.
 ") Last;
 		Standard_Integer Last();
 
@@ -2726,7 +2748,7 @@ None
 
 Description
 -----------
-Modifier sets the first index <thei1> of the range.
+Modifier Sets the first index <theI1> of the range.
 ") SetFirst;
 		void SetFirst(const Standard_Integer theI1);
 
@@ -2745,7 +2767,7 @@ None
 
 Description
 -----------
-Modifier sets the first index of the range <thei1> sets the second index of the range <thei2>.
+Modifier Sets the first index of the range <theI1> Sets the second index of the range <theI2>.
 ") SetIndices;
 		void SetIndices(const Standard_Integer theI1, const Standard_Integer theI2);
 
@@ -2763,7 +2785,7 @@ None
 
 Description
 -----------
-Modifier sets the second index <thei2> of the range.
+Modifier Sets the second index <theI2> of the range.
 ") SetLast;
 		void SetLast(const Standard_Integer theI2);
 
@@ -2811,7 +2833,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_Iterator;
 		 BOPDS_Iterator(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2837,7 +2860,7 @@ BOPDS_DS
 
 Description
 -----------
-Selector returns the data structure.
+Selector Returns the data structure.
 ") DS;
 		const BOPDS_DS & DS();
 
@@ -2869,7 +2892,7 @@ None
 
 Description
 -----------
-Initializes the iterator thetype1 - the first type of shape thetype2 - the second type of shape.
+Initializes the iterator theType1 - the first type of shape theType2 - the second type of shape.
 ") Initialize;
 		void Initialize(const TopAbs_ShapeEnum theType1, const TopAbs_ShapeEnum theType2);
 
@@ -2887,7 +2910,7 @@ None
 
 Description
 -----------
-Updates the tree of bounding boxes with increased boxes and intersects such elements with the tree.
+Updates the tree of Bounding Boxes with increased boxes and intersects such elements with the tree.
 ") IntersectExt;
 		void IntersectExt(const TColStd_MapOfInteger & theIndicies);
 
@@ -2977,7 +3000,7 @@ None
 
 Description
 -----------
-Modifier sets the data structure <pds> to process.
+Modifier Sets the data structure <pDS> to process.
 ") SetDS;
 		void SetDS(const BOPDS_PDS & pDS);
 
@@ -2995,7 +3018,7 @@ None
 
 Description
 -----------
-Set the flag of parallel processing if <theflag> is true the parallel processing is switched on if <theflag> is false the parallel processing is switched off.
+Set the flag of parallel processing if <theFlag> is true the parallel processing is switched on if <theFlag> is false the parallel processing is switched off.
 ") SetRunParallel;
 		void SetRunParallel(const Standard_Boolean theFlag);
 
@@ -3013,7 +3036,7 @@ theIndex2: int
 
 Description
 -----------
-Returns indices (ds) of intersected shapes theindex1 - the index of the first shape theindex2 - the index of the second shape.
+Returns indices (DS) of intersected shapes theIndex1 - the index of the first shape theIndex2 - the index of the second shape.
 ") Value;
 		void Value(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3095,7 +3118,7 @@ bool
 
 Description
 -----------
-Returns true if the pair is equal to <the theother>.
+Returns true if the Pair is equal to <the theOther>.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BOPDS_Pair & theOther);
 
@@ -3173,7 +3196,7 @@ theParameter: float
 
 Description
 -----------
-Selector returns the index of vertex <theindex> returns the parameter of vertex <theparameter>.
+Selector Returns the index of vertex <theIndex> Returns the parameter of vertex <theParameter>.
 ") Contents;
 		void Contents(Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -3199,7 +3222,7 @@ int
 
 Description
 -----------
-Selector returns the index of vertex.
+Selector Returns the index of vertex.
 ") Index;
 		Standard_Integer Index();
 
@@ -3217,7 +3240,7 @@ bool
 
 Description
 -----------
-Query returns true if thr parameter od this is equal to the parameter of <theother>.
+Query Returns true if thr parameter od this is equal to the parameter of <theOther>.
 ") IsEqual;
 		Standard_Boolean IsEqual(const BOPDS_Pave & theOther);
 
@@ -3235,7 +3258,7 @@ bool
 
 Description
 -----------
-Query returns true if thr parameter od this is less than the parameter of <theother>.
+Query Returns true if thr parameter od this is less than the parameter of <theOther>.
 ") IsLess;
 		Standard_Boolean IsLess(const BOPDS_Pave & theOther);
 
@@ -3248,7 +3271,7 @@ float
 
 Description
 -----------
-Selector returns the parameter of vertex.
+Selector Returns the parameter of vertex.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -3266,7 +3289,7 @@ None
 
 Description
 -----------
-Modifier sets the index of vertex <theindex>.
+Modifier Sets the index of vertex <theIndex>.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex);
 
@@ -3284,7 +3307,7 @@ None
 
 Description
 -----------
-Modifier sets the parameter of vertex <theparameter>.
+Modifier Sets the parameter of vertex <theParameter>.
 ") SetParameter;
 		void SetParameter(const Standard_Real theParameter);
 
@@ -3343,7 +3366,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_PaveBlock;
 		 BOPDS_PaveBlock(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -3361,7 +3385,7 @@ None
 
 Description
 -----------
-Modifier appends extra paves <thepave>.
+Modifier Appends extra paves <thePave>.
 ") AppendExtPave;
 		void AppendExtPave(const BOPDS_Pave & thePave);
 
@@ -3379,7 +3403,7 @@ None
 
 Description
 -----------
-Modifier appends extra pave <thepave>.
+Modifier Appends extra pave <thePave>.
 ") AppendExtPave1;
 		void AppendExtPave1(const BOPDS_Pave & thePave);
 
@@ -3392,7 +3416,7 @@ BOPDS_ListOfPave
 
 Description
 -----------
-Selector / modifier returns the extra paves.
+Selector / Modifier Returns the extra paves.
 ") ChangeExtPaves;
 		BOPDS_ListOfPave & ChangeExtPaves();
 
@@ -3411,7 +3435,7 @@ theInd: int
 
 Description
 -----------
-Query returns true if the extra paves contain the pave with given value of the parameter <theprm> <thetol> - the value of the tolerance to compare <theind> - index of the found pave.
+Query Returns true if the extra paves contain the pave with given value of the parameter <thePrm> <theTol> - the value of the tolerance to compare <theInd> - index of the found pave.
 ") ContainsParameter;
 		Standard_Boolean ContainsParameter(const Standard_Real thePrm, const Standard_Real theTol, Standard_Integer &OutValue);
 
@@ -3437,7 +3461,7 @@ int
 
 Description
 -----------
-Selector returns the index of edge of pave block.
+Selector Returns the index of edge of pave block.
 ") Edge;
 		Standard_Integer Edge();
 
@@ -3450,7 +3474,7 @@ BOPDS_ListOfPave
 
 Description
 -----------
-Selector returns the extra paves.
+Selector Returns the extra paves.
 ") ExtPaves;
 		const BOPDS_ListOfPave & ExtPaves();
 
@@ -3463,7 +3487,7 @@ bool
 
 Description
 -----------
-Query returns true if the pave block has edge.
+Query Returns true if the pave block has edge.
 ") HasEdge;
 		Standard_Boolean HasEdge();
 
@@ -3480,7 +3504,7 @@ theEdge: int
 
 Description
 -----------
-Query returns true if the pave block has edge returns the index of edge <theedge>.
+Query Returns true if the pave block has edge Returns the index of edge <theEdge>.
 ") HasEdge;
 		Standard_Boolean HasEdge(Standard_Integer &OutValue);
 
@@ -3498,7 +3522,7 @@ bool
 
 Description
 -----------
-Query returns true if the pave block has pave indices that equal to the pave indices of the pave block <theother>.
+Query Returns true if the pave block has pave indices that equal to the pave indices of the pave block <theOther>.
 ") HasSameBounds;
 		Standard_Boolean HasSameBounds(const opencascade::handle<BOPDS_PaveBlock> & theOther);
 
@@ -3511,7 +3535,7 @@ bool
 
 Description
 -----------
-Query returns true if the pave block contains the shrunk data.
+Query Returns true if the pave block contains the shrunk data.
 ") HasShrunkData;
 		Standard_Boolean HasShrunkData();
 
@@ -3529,7 +3553,7 @@ theIndex2: int
 
 Description
 -----------
-Selector returns the pave indices <theindex1,theindex2> of the pave block.
+Selector Returns the pave indices <theIndex1,theIndex2> of the pave block.
 ") Indices;
 		void Indices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3542,7 +3566,7 @@ bool
 
 Description
 -----------
-Query returns true if the edge is equal to the original edge of the pave block.
+Query Returns true if the edge is equal to the original edge of the pave block.
 ") IsSplitEdge;
 		Standard_Boolean IsSplitEdge();
 
@@ -3555,7 +3579,7 @@ bool
 
 Description
 -----------
-Query returns false if the pave block has a too short shrunk range and cannot be split, otherwise returns true.
+Query Returns False if the pave block has a too short shrunk range and cannot be split, otherwise returns True.
 ") IsSplittable;
 		Standard_Boolean IsSplittable();
 
@@ -3568,7 +3592,7 @@ bool
 
 Description
 -----------
-Query returns true if the pave block contains extra paves.
+Query Returns true if the pave block contains extra paves.
 ") IsToUpdate;
 		Standard_Boolean IsToUpdate();
 
@@ -3581,7 +3605,7 @@ int
 
 Description
 -----------
-Selector returns the index of original edge of pave block.
+Selector Returns the index of original edge of pave block.
 ") OriginalEdge;
 		Standard_Integer OriginalEdge();
 
@@ -3594,7 +3618,7 @@ BOPDS_Pave
 
 Description
 -----------
-Selector returns the first pave.
+Selector Returns the first pave.
 ") Pave1;
 		const BOPDS_Pave & Pave1();
 
@@ -3607,7 +3631,7 @@ BOPDS_Pave
 
 Description
 -----------
-Selector returns the second pave.
+Selector Returns the second pave.
 ") Pave2;
 		const BOPDS_Pave & Pave2();
 
@@ -3625,7 +3649,7 @@ theT2: float
 
 Description
 -----------
-Selector returns the parametric range <thet1,thet2> of the pave block.
+Selector Returns the parametric range <theT1,theT2> of the pave block.
 ") Range;
 		void Range(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3643,7 +3667,7 @@ None
 
 Description
 -----------
-Modifier removes a pave with the given vertex number from extra paves.
+Modifier Removes a pave with the given vertex number from extra paves.
 ") RemoveExtPave;
 		void RemoveExtPave(const Standard_Integer theVertNum);
 
@@ -3661,7 +3685,7 @@ None
 
 Description
 -----------
-Modifier sets the index of edge of pave block <theedge>.
+Modifier Sets the index of edge of pave block <theEdge>.
 ") SetEdge;
 		void SetEdge(const Standard_Integer theEdge);
 
@@ -3679,7 +3703,7 @@ None
 
 Description
 -----------
-Modifier sets the index of original edge of the pave block <theedge>.
+Modifier Sets the index of original edge of the pave block <theEdge>.
 ") SetOriginalEdge;
 		void SetOriginalEdge(const Standard_Integer theEdge);
 
@@ -3697,7 +3721,7 @@ None
 
 Description
 -----------
-Modifier sets the first pave <thepave>.
+Modifier Sets the first pave <thePave>.
 ") SetPave1;
 		void SetPave1(const BOPDS_Pave & thePave);
 
@@ -3715,7 +3739,7 @@ None
 
 Description
 -----------
-Modifier sets the second pave <thepave>.
+Modifier Sets the second pave <thePave>.
 ") SetPave2;
 		void SetPave2(const BOPDS_Pave & thePave);
 
@@ -3736,7 +3760,7 @@ None
 
 Description
 -----------
-Modifier sets the shrunk data for the pave block <thets1>, <thets2> - shrunk range <thebox> - the bounding box <theissplittable> - defines whether the edge can be split.
+Modifier Sets the shrunk data for the pave block <theTS1>, <theTS2> - shrunk range <theBox> - the bounding box <theIsSplittable> - defines whether the edge can be split.
 ") SetShrunkData;
 		void SetShrunkData(const Standard_Real theTS1, const Standard_Real theTS2, const Bnd_Box & theBox, const Standard_Boolean theIsSplittable);
 
@@ -3756,7 +3780,7 @@ theIsSplittable: bool
 
 Description
 -----------
-Selector returns the shrunk data for the pave block <thets1>, <thets2> - shrunk range <thebox> - the bounding box <theissplittable> - defines whether the edge can be split.
+Selector Returns the shrunk data for the pave block <theTS1>, <theTS2> - shrunk range <theBox> - the bounding box <theIsSplittable> - defines whether the edge can be split.
 ") ShrunkData;
 		void ShrunkData(Standard_Real &OutValue, Standard_Real &OutValue, Bnd_Box & theBox, Standard_Boolean &OutValue);
 
@@ -3775,7 +3799,7 @@ None
 
 Description
 -----------
-Modifier updates the pave block. the extra paves are used to create new pave blocks <thelpb>. <theflag> - if true, the first pave and the second pave are used to produce new pave blocks.
+Modifier Updates the pave block. The extra paves are used to create new pave blocks <theLPB>. <theFlag> - if true, the first pave and the second pave are used to produce new pave blocks.
 ") Update;
 		void Update(BOPDS_ListOfPaveBlock & theLPB, const Standard_Boolean theFlag = Standard_True);
 
@@ -3817,7 +3841,7 @@ int
 
 Description
 -----------
-Selector returns index of the vertex.
+Selector Returns index of the vertex.
 ") Index;
 		Standard_Integer Index();
 
@@ -3830,7 +3854,7 @@ gp_Pnt
 
 Description
 -----------
-Selector returns 3d point.
+Selector Returns 3D point.
 ") Pnt;
 		const gp_Pnt Pnt();
 
@@ -3843,7 +3867,7 @@ gp_Pnt2d
 
 Description
 -----------
-Selector returns 2d point on the first face <thepnt>.
+Selector Returns 2D point on the first face <thePnt>.
 ") Pnt2D1;
 		const gp_Pnt2d Pnt2D1();
 
@@ -3856,7 +3880,7 @@ gp_Pnt2d
 
 Description
 -----------
-Selector returns 2d point on the second face <thepnt>.
+Selector Returns 2D point on the second face <thePnt>.
 ") Pnt2D2;
 		const gp_Pnt2d Pnt2D2();
 
@@ -3874,7 +3898,7 @@ None
 
 Description
 -----------
-Modifier sets the index of the vertex <theindex>.
+Modifier Sets the index of the vertex <theIndex>.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex);
 
@@ -3892,7 +3916,7 @@ None
 
 Description
 -----------
-Modifier sets 3d point <thepnt>.
+Modifier Sets 3D point <thePnt>.
 ") SetPnt;
 		void SetPnt(const gp_Pnt & thePnt);
 
@@ -3910,7 +3934,7 @@ None
 
 Description
 -----------
-Modifier sets 2d point on the first face <thepnt>.
+Modifier Sets 2D point on the first face <thePnt>.
 ") SetPnt2D1;
 		void SetPnt2D1(const gp_Pnt2d & thePnt);
 
@@ -3928,7 +3952,7 @@ None
 
 Description
 -----------
-Modifier sets 2d point on the second face <thepnt>.
+Modifier Sets 2D point on the second face <thePnt>.
 ") SetPnt2D2;
 		void SetPnt2D2(const gp_Pnt2d & thePnt);
 
@@ -3973,7 +3997,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_ShapeInfo;
 		 BOPDS_ShapeInfo(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -3986,7 +4011,7 @@ Bnd_Box
 
 Description
 -----------
-Selector returns the boundung box of the shape.
+Selector Returns the boundung box of the shape.
 ") Box;
 		const Bnd_Box & Box();
 
@@ -3999,7 +4024,7 @@ Bnd_Box
 
 Description
 -----------
-Selector/modifier returns the boundung box of the shape.
+Selector/Modifier Returns the boundung box of the shape.
 ") ChangeBox;
 		Bnd_Box & ChangeBox();
 
@@ -4012,7 +4037,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Selector/ modifier returns the list of indices of sub-shapes.
+Selector/ Modifier Returns the list of indices of sub-shapes.
 ") ChangeSubShapes;
 		TColStd_ListOfInteger & ChangeSubShapes();
 
@@ -4051,7 +4076,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape has boundary representation.
+Query Returns true if the shape has boundary representation.
 ") HasBRep;
 		Standard_Boolean HasBRep();
 
@@ -4064,7 +4089,7 @@ bool
 
 Description
 -----------
-Query returns true if there is flag.
+Query Returns true if there is flag.
 ") HasFlag;
 		Standard_Boolean HasFlag();
 
@@ -4081,7 +4106,7 @@ theFlag: int
 
 Description
 -----------
-Query returns true if there is flag. returns the flag theflag.
+Query Returns true if there is flag. Returns the flag theFlag.
 ") HasFlag;
 		Standard_Boolean HasFlag(Standard_Integer &OutValue);
 
@@ -4112,7 +4137,7 @@ bool
 
 Description
 -----------
-Query returns true if the shape has sub-shape with index thei.
+Query Returns true if the shape has sub-shape with index theI.
 ") HasSubShape;
 		Standard_Boolean HasSubShape(const Standard_Integer theI);
 
@@ -4125,7 +4150,7 @@ bool
 
 Description
 -----------
-Returns true if the shape can be participant of an interference //! flag.
+Returns true if the shape can be participant of an interference //! Flag.
 ") IsInterfering;
 		Standard_Boolean IsInterfering();
 
@@ -4138,7 +4163,7 @@ int
 
 Description
 -----------
-Selector returns the index of a reference information.
+Selector Returns the index of a reference information.
 ") Reference;
 		Standard_Integer Reference();
 
@@ -4156,7 +4181,7 @@ None
 
 Description
 -----------
-Modifier sets the boundung box of the shape thebox.
+Modifier Sets the boundung box of the shape theBox.
 ") SetBox;
 		void SetBox(const Bnd_Box & theBox);
 
@@ -4174,7 +4199,7 @@ None
 
 Description
 -----------
-Modifier sets the flag.
+Modifier Sets the flag.
 ") SetFlag;
 		void SetFlag(const Standard_Integer theI);
 
@@ -4192,7 +4217,7 @@ None
 
 Description
 -----------
-Modifier sets the index of a reference information.
+Modifier Sets the index of a reference information.
 ") SetReference;
 		void SetReference(const Standard_Integer theI);
 
@@ -4210,7 +4235,7 @@ None
 
 Description
 -----------
-Modifier sets the shape <thes>.
+Modifier Sets the shape <theS>.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theS);
 
@@ -4228,7 +4253,7 @@ None
 
 Description
 -----------
-Modifier sets the type of shape thetype.
+Modifier Sets the type of shape theType.
 ") SetShapeType;
 		void SetShapeType(const TopAbs_ShapeEnum theType);
 
@@ -4241,7 +4266,7 @@ TopoDS_Shape
 
 Description
 -----------
-Selector returns the shape.
+Selector Returns the shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -4254,7 +4279,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Selector returns the type of shape.
+Selector Returns the type of shape.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -4267,7 +4292,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Selector returns the list of indices of sub-shapes.
+Selector Returns the list of indices of sub-shapes.
 ") SubShapes;
 		const TColStd_ListOfInteger & SubShapes();
 
@@ -4312,7 +4337,7 @@ None
 
 Description
 -----------
-Constructor theallocator - the allocator to manage the memory.
+Constructor theAllocator - the allocator to manage the memory.
 ") BOPDS_SubIterator;
 		 BOPDS_SubIterator(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -4408,7 +4433,7 @@ None
 
 Description
 -----------
-Sets the data structure <pds> to process. it is used to access the shapes and their bounding boxes.
+Sets the data structure <pDS> to process. It is used to access the shapes and their bounding boxes.
 ") SetDS;
 		void SetDS(const BOPDS_PDS & pDS);
 
@@ -4426,7 +4451,7 @@ None
 
 Description
 -----------
-Sets the first set of indices <theli> to process.
+Sets the first set of indices <theLI> to process.
 ") SetSubSet1;
 		void SetSubSet1(const TColStd_ListOfInteger & theLI);
 
@@ -4444,7 +4469,7 @@ None
 
 Description
 -----------
-Sets the second set of indices <theli> to process.
+Sets the second set of indices <theLI> to process.
 ") SetSubSet2;
 		void SetSubSet2(const TColStd_ListOfInteger & theLI);
 
@@ -4488,7 +4513,7 @@ theIndex2: int
 
 Description
 -----------
-Returns indices (ds) of intersected shapes theindex1 - the index of the first shape theindex2 - the index of the second shape.
+Returns indices (DS) of intersected shapes theIndex1 - the index of the first shape theIndex2 - the index of the second shape.
 ") Value;
 		void Value(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -4520,7 +4545,7 @@ bool
 
 Description
 -----------
-Returns true if the type <thet> correspond to a shape having boundary representation.
+Returns true if the type <theT> correspond to a shape having boundary representation.
 ") HasBRep;
 		static Standard_Boolean HasBRep(const TopAbs_ShapeEnum theT);
 
@@ -4538,7 +4563,7 @@ bool
 
 Description
 -----------
-Returns true if the type <thet> can be participant of an interference.
+Returns true if the type <theT> can be participant of an interference.
 ") IsInterfering;
 		static Standard_Boolean IsInterfering(const TopAbs_ShapeEnum theT);
 
@@ -4557,7 +4582,7 @@ int
 
 Description
 -----------
-Converts the conmbination of two types of shape <thet1>,<thet2> to the one integer value, that is returned.
+Converts the conmbination of two types of shape <theT1>,<theT2> to the one integer value, that is returned.
 ") TypeToInteger;
 		static Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT1, const TopAbs_ShapeEnum theT2);
 
@@ -4575,7 +4600,7 @@ int
 
 Description
 -----------
-Converts the type of shape <thet>, to integer value, that is returned.
+Converts the type of shape <theT>, to integer value, that is returned.
 ") TypeToInteger;
 		static Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT);
 
@@ -4608,7 +4633,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfEE;
 		 BOPDS_InterfEE();
 
@@ -4626,7 +4651,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfEE;
 		 BOPDS_InterfEE(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -4639,7 +4665,8 @@ IntTools_CommonPrt
 
 Description
 -----------
-/** * selector * returns the info of common part * return * common part */.
+/** * Selector * Returns the info of common part * 
+Return: * common part */.
 ") CommonPart;
 		const IntTools_CommonPrt & CommonPart();
 
@@ -4657,7 +4684,8 @@ None
 
 Description
 -----------
-/** * modifier * sets the info of common part * @param thecp * common part */.
+/** * Modifier * Sets the info of common part * 
+Parameter theCP * common part */.
 ") SetCommonPart;
 		void SetCommonPart(const IntTools_CommonPrt & theCP);
 
@@ -4684,7 +4712,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfEF;
 		 BOPDS_InterfEF();
 
@@ -4702,7 +4730,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfEF;
 		 BOPDS_InterfEF(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -4715,7 +4744,8 @@ IntTools_CommonPrt
 
 Description
 -----------
-/** * selector * returns the info of common part * return * common part */.
+/** * Selector * Returns the info of common part * 
+Return: * common part */.
 ") CommonPart;
 		const IntTools_CommonPrt & CommonPart();
 
@@ -4733,7 +4763,8 @@ None
 
 Description
 -----------
-/** * modifier * sets the info of common part * @param thecp * common part */.
+/** * Modifier * Sets the info of common part * 
+Parameter theCP * common part */.
 ") SetCommonPart;
 		void SetCommonPart(const IntTools_CommonPrt & theCP);
 
@@ -4760,7 +4791,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfEZ;
 		 BOPDS_InterfEZ();
 
@@ -4778,7 +4809,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfEZ;
 		 BOPDS_InterfEZ(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -4805,7 +4837,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfFF;
 		 BOPDS_InterfFF();
 
@@ -4818,7 +4850,8 @@ BOPDS_VectorOfCurve
 
 Description
 -----------
-/** * selector/modifier * returns the intersection curves * return * intersection curves */.
+/** * Selector/Modifier * Returns the intersection curves * 
+Return: * intersection curves */.
 ") ChangeCurves;
 		BOPDS_VectorOfCurve & ChangeCurves();
 
@@ -4831,7 +4864,8 @@ BOPDS_VectorOfPoint
 
 Description
 -----------
-/** * selector/modifier * returns the intersection points * return * intersection points */.
+/** * Selector/Modifier * Returns the intersection points * 
+Return: * intersection points */.
 ") ChangePoints;
 		BOPDS_VectorOfPoint & ChangePoints();
 
@@ -4844,7 +4878,8 @@ BOPDS_VectorOfCurve
 
 Description
 -----------
-/** * selector * returns the intersection curves * return * intersection curves */.
+/** * Selector * Returns the intersection curves * 
+Return: * intersection curves */.
 ") Curves;
 		BOPDS_VectorOfCurve Curves();
 
@@ -4876,7 +4911,8 @@ BOPDS_VectorOfPoint
 
 Description
 -----------
-/** * selector * returns the intersection points * return * intersection points */.
+/** * Selector * Returns the intersection points * 
+Return: * intersection points */.
 ") Points;
 		const BOPDS_VectorOfPoint & Points();
 
@@ -4894,7 +4930,8 @@ None
 
 Description
 -----------
-/** * modifier * sets the flag of whether the faces are tangent * @param theflag * the flag */.
+/** * Modifier * Sets the flag of whether the faces are tangent * 
+Parameter theFlag * the flag */.
 ") SetTangentFaces;
 		void SetTangentFaces(const Standard_Boolean theFlag);
 
@@ -4907,7 +4944,8 @@ bool
 
 Description
 -----------
-/** * selector * returns the flag whether the faces are tangent * return * the flag */.
+/** * Selector * Returns the flag whether the faces are tangent * 
+Return: * the flag */.
 ") TangentFaces;
 		Standard_Boolean TangentFaces();
 
@@ -4934,7 +4972,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfFZ;
 		 BOPDS_InterfFZ();
 
@@ -4952,7 +4990,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfFZ;
 		 BOPDS_InterfFZ(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -4979,7 +5018,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfVE;
 		 BOPDS_InterfVE();
 
@@ -4997,7 +5036,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfVE;
 		 BOPDS_InterfVE(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5010,7 +5050,8 @@ float
 
 Description
 -----------
-/** * selector * returrns the value of parameter * of the point of the vertex * on the curve of the edge * return * value of parameter */.
+/** * Selector * Returrns the value of parameter * of the point of the vertex * on the curve of the edge * 
+Return: * value of parameter */.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -5028,7 +5069,8 @@ None
 
 Description
 -----------
-/** * modifier * sets the value of parameter * of the point of the vertex * on the curve of the edge * @param thet * value of parameter */.
+/** * Modifier * Sets the value of parameter * of the point of the vertex * on the curve of the edge * 
+Parameter theT * value of parameter */.
 ") SetParameter;
 		void SetParameter(const Standard_Real theT);
 
@@ -5055,7 +5097,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfVF;
 		 BOPDS_InterfVF();
 
@@ -5073,7 +5115,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfVF;
 		 BOPDS_InterfVF(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5092,7 +5135,9 @@ None
 
 Description
 -----------
-/** * modifier * sets the value of parameters * of the point of the vertex * on the surface of of the face * @param theu * value of u parameter * @param thev * value of u parameter */.
+/** * Modifier * Sets the value of parameters * of the point of the vertex * on the surface of of the face * 
+Parameter theU * value of U parameter * 
+Parameter theV * value of U parameter */.
 ") SetUV;
 		void SetUV(const Standard_Real theU, const Standard_Real theV);
 
@@ -5110,7 +5155,9 @@ theV: float
 
 Description
 -----------
-/** * selector * returns the value of parameters * of the point of the vertex * on the surface of of the face * @param theu * value of u parameter * @param thev * value of u parameter */.
+/** * Selector * Returns the value of parameters * of the point of the vertex * on the surface of of the face * 
+Parameter theU * value of U parameter * 
+Parameter theV * value of U parameter */.
 ") UV;
 		void UV(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5137,7 +5184,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfVV;
 		 BOPDS_InterfVV();
 
@@ -5155,7 +5202,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfVV;
 		 BOPDS_InterfVV(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5182,7 +5230,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfVZ;
 		 BOPDS_InterfVZ();
 
@@ -5200,7 +5248,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfVZ;
 		 BOPDS_InterfVZ(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5227,7 +5276,7 @@ None
 
 Description
 -----------
-/** * constructor */.
+/** * Constructor */.
 ") BOPDS_InterfZZ;
 		 BOPDS_InterfZZ();
 
@@ -5245,7 +5294,8 @@ None
 
 Description
 -----------
-/** * constructor * @param theallocator * allocator to manage the memory */.
+/** * Constructor * 
+Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfZZ;
 		 BOPDS_InterfZZ(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5290,7 +5340,8 @@ None
 
 Description
 -----------
-Constructor @param theallocator the allocator to manage the memory.
+Constructor 
+Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_IteratorSI;
 		 BOPDS_IteratorSI(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -5308,7 +5359,7 @@ None
 
 Description
 -----------
-Updates the lists of possible intersections according to the value of <thelevel>. it defines which interferferences will be checked: 0 - only v/v; 1 - v/v and v/e; 2 - v/v, v/e and e/e; 3 - v/v, v/e, e/e and v/f; 4 - v/v, v/e, e/e, v/f and e/f; other - all interferences.
+Updates the lists of possible intersections according to the value of <theLevel>. It defines which interferferences will be checked: 0 - only V/V; 1 - V/V and V/E; 2 - V/V, V/E and E/E; 3 - V/V, V/E, E/E and V/F; 4 - V/V, V/E, E/E, V/F and E/F; other - all interferences.
 ") UpdateByLevelOfCheck;
 		void UpdateByLevelOfCheck(const Standard_Integer theLevel);
 

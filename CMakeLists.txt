@@ -1,36 +1,36 @@
-##Copyright (c) 2011-2020 Thomas Paviot (tpaviot@gmail.com)
+##Copyright (c) 2011-2025 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
 ##pythonOCC is free software: you can redistribute it and/or modify
-##it under the terms of the GNU General Public License as published by
+##it under the terms of the GNU Lesser General Public License as published by
 ##the Free Software Foundation, either version 3 of the License, or
 ##(at your option) any later version.
 ##
 ##pythonOCC is distributed in the hope that it will be useful,
 ##but WITHOUT ANY WARRANTY; without even the implied warranty of
 ##MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##GNU General Public License for more details.
+##GNU Lesser General Public License for more details.
 ##
-##You should have received a copy of the GNU General Public License
+##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.18)
 
 project(PYTHONOCC)
 
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
-set(PYTHONOCC_VERSION_MINOR 8)
-set(PYTHONOCC_VERSION_PATCH 1)
+set(PYTHONOCC_VERSION_MINOR 9)
+set(PYTHONOCC_VERSION_PATCH 0)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL 1)
+set(PYTHONOCC_VERSION_DEVEL)
 
 # set OCCT version
 set(OCCT_VERSION_MAJOR 7)
-set(OCCT_VERSION_MINOR 8)
-set(OCCT_VERSION_PATCH 1)
+set(OCCT_VERSION_MINOR 9)
+set(OCCT_VERSION_PATCH 0)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
@@ -96,7 +96,7 @@ option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh 
 set(Python3_FIND_STRATEGY LOCATION)
 set(Python3_FIND_FRAMEWORK NEVER)
 if(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+    find_package(Python3 3.9 COMPONENTS Interpreter Development NumPy REQUIRED)
     include_directories(${Python3_NumPy_INCLUDE_DIRS})
     message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
     set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DBUILD_MESHDS_NUMPY)
@@ -110,7 +110,8 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 4.2.1 REQUIRED)
+find_package(SWIG 4.2.1...4.3.0 REQUIRED)
+message(STATUS "SWIG version found: ${SWIG_VERSION}")
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual)
@@ -148,7 +149,7 @@ endif()
 # OCE include and lib location #
 ################################
 if(OCCT_HIDE_DEPRECATED)
-  message(STATUS "Disabled deprecation warnings for oce")
+  message(STATUS "Disabled deprecation warnings for OpenCASCADE")
   add_definitions(-DOCCT_NO_DEPRECATED)
 endif(OCCT_HIDE_DEPRECATED)
 
@@ -163,15 +164,15 @@ if(DEFINED OCCT_INCLUDE_DIR)
 # if OCCT_INCLUDE_DIR is not passed at command line,
 # find OCE automatically
 else(OCCT_INCLUDE_DIR)
-  find_package(OpenCASCADE ${OCCT_VERSION_MAJOR}.${OCCT_VERSION_MINOR}.${OCCT_VERSION_PATCH} REQUIRED)
+  find_package(OpenCASCADE ${OCCT_VERSION_MAJOR}.${OCCT_VERSION_MINOR}.${OCCT_VERSION_PATCH} EXACT REQUIRED)
   if(OpenCASCADE_FOUND)
     message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
     message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
     message(STATUS "OpenCASCADE binary directory: " ${OpenCASCADE_BINARY_DIR})
     include_directories(${OpenCASCADE_INCLUDE_DIR})
   else(OpenCASCADE_FOUND)  # set default paths
-    set(OCCT_INCLUDE_DIR /usr/local/include/oce CACHE PATH "OCE include path")
-    set(OCCT_LIBRARY_DIR /usr/local/lib CACHE PATH "OCE lib path")
+    set(OCCT_INCLUDE_DIR /usr/local/include/opencascade CACHE PATH "OpenCASCADE include path")
+    set(OCCT_LIBRARY_DIR /usr/local/lib CACHE PATH "OpenCASCADE lib path")
     include_directories(${OCCT_INCLUDE_DIR})
     link_directories(${OCCT_LIBRARY_DIR})
   endif(OpenCASCADE_FOUND)
@@ -312,6 +313,9 @@ swig_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
 #################
 if(PYTHONOCC_WRAP_VISU)
     find_package(OpenGL REQUIRED)
+    if(OPENGL_FOUND)
+      message(STATUS "OpenGL found; Visualization support enabled")
+    endif()
     include_directories(OPENGL_INCLUDE_DIR)
 
     foreach(OCCT_MODULE ${OCCT_TOOLKIT_VISUALIZATION})

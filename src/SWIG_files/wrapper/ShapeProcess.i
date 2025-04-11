@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEPROCESSDOCSTRING
 "ShapeProcess module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeprocess.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocess.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEPROCESSDOCSTRING) ShapeProcess
 
@@ -39,6 +39,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeprocess.html
 
 
 %{
+#include <bitset>
+using namespace std;
 #include<ShapeProcess_module.hxx>
 
 //Dependencies
@@ -106,7 +108,6 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle<ShapeProcess_Context>& context, const Message_ProgressRange & theProgress );
 /* end typedefs declaration */
 
 /*********************
@@ -115,6 +116,79 @@ typedef Standard_Boolean ( * ShapeProcess_OperFunc ) ( const opencascade::handle
 %rename(shapeprocess) ShapeProcess;
 class ShapeProcess {
 	public:
+/* public enums */
+enum Operation {
+	First = 0,
+	DirectFaces = First,
+	SameParameter = 2,
+	SetTolerance = 3,
+	SplitAngle = 4,
+	BSplineRestriction = 5,
+	ElementaryToRevolution = 6,
+	SweptToElementary = 7,
+	SurfaceToBSpline = 8,
+	ToBezier = 9,
+	SplitContinuity = 10,
+	SplitClosedFaces = 11,
+	FixWireGaps = 12,
+	FixFaceSize = 13,
+	DropSmallSolids = 14,
+	DropSmallEdges = 15,
+	FixShape = 16,
+	SplitClosedEdges = 17,
+	SplitCommonVertex = 18,
+	Last = SplitCommonVertex,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class Operation(IntEnum):
+	First = 0
+	DirectFaces = First
+	SameParameter = 2
+	SetTolerance = 3
+	SplitAngle = 4
+	BSplineRestriction = 5
+	ElementaryToRevolution = 6
+	SweptToElementary = 7
+	SurfaceToBSpline = 8
+	ToBezier = 9
+	SplitContinuity = 10
+	SplitClosedFaces = 11
+	FixWireGaps = 12
+	FixFaceSize = 13
+	DropSmallSolids = 14
+	DropSmallEdges = 15
+	FixShape = 16
+	SplitClosedEdges = 17
+	SplitCommonVertex = 18
+	Last = SplitCommonVertex
+First = Operation.First
+DirectFaces = Operation.DirectFaces
+SameParameter = Operation.SameParameter
+SetTolerance = Operation.SetTolerance
+SplitAngle = Operation.SplitAngle
+BSplineRestriction = Operation.BSplineRestriction
+ElementaryToRevolution = Operation.ElementaryToRevolution
+SweptToElementary = Operation.SweptToElementary
+SurfaceToBSpline = Operation.SurfaceToBSpline
+ToBezier = Operation.ToBezier
+SplitContinuity = Operation.SplitContinuity
+SplitClosedFaces = Operation.SplitClosedFaces
+FixWireGaps = Operation.FixWireGaps
+FixFaceSize = Operation.FixFaceSize
+DropSmallSolids = Operation.DropSmallSolids
+DropSmallEdges = Operation.DropSmallEdges
+FixShape = Operation.FixShape
+SplitClosedEdges = Operation.SplitClosedEdges
+SplitCommonVertex = Operation.SplitCommonVertex
+Last = Operation.Last
+};
+/* end python proxy for enums */
+
 		/****** ShapeProcess::FindOperator ******/
 		/****** md5 signature: ac666265198f26dac6234760a5de3179 ******/
 		%feature("compactdefaultargs") FindOperator;
@@ -150,9 +224,33 @@ bool
 
 Description
 -----------
-Performs a specified sequence of operators on context resource file and other data should be already loaded to context (including description of sequence seq).
+Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq).
 ") Perform;
 		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, Standard_CString seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** ShapeProcess::Perform ******/
+		/****** md5 signature: 1a9b7124b83f1109d58f5a7bb67b2dc2 ******/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+theContext: ShapeProcess_Context
+theOperations: bitset<Operation::Last + 1 >
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Performs a specified sequence of operators on @p theContext. 
+Parameter theContext Context to perform operations on. Contains the shape to process and processing parameters. If processing parameters are not set, default values are used. Parameters should be in a scope of operation, for example, instead of 'FromSTEP.FixShape.Tolerance3d'	we should use just 'FixShape.Tolerance3d'. 
+Parameter theOperations Bitset of operations to perform. 
+Parameter theProgress Progress indicator. 
+Return: true if at least one operation was performed, false otherwise.
+") Perform;
+		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & theContext, bitset<Operation::Last + 1 > theOperations, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeProcess::RegisterOperator ******/
 		/****** md5 signature: f3fc4533ca3193906e102f361e526b9e ******/
@@ -169,9 +267,29 @@ bool
 
 Description
 -----------
-Registers operator to make it visible for performer.
+Registers operator to make it visible for Performer.
 ") RegisterOperator;
 		static Standard_Boolean RegisterOperator(Standard_CString name, const opencascade::handle<ShapeProcess_Operator> & op);
+
+		/****** ShapeProcess::ToOperationFlag ******/
+		/****** md5 signature: fc2c7e06a6ec1c89c6f54a912f7afaef ******/
+		%feature("compactdefaultargs") ToOperationFlag;
+		%feature("autodoc", "
+Parameters
+----------
+theName: char *
+
+Return
+-------
+std::pair<Operation, bool >
+
+Description
+-----------
+Converts operation name to operation flag. 
+Parameter theName Operation name. 
+Return: Operation flag and true if the operation name is valid, false otherwise.
+") ToOperationFlag;
+		static std::pair<Operation, bool > ToOperationFlag(const char * theName);
 
 };
 
@@ -215,7 +333,7 @@ None
 
 Description
 -----------
-Creates a new tool and initialises by name of resource file and (if specified) starting scope calls method init().
+Creates a new tool and initialises by name of resource file and (if specified) starting scope Calls method Init().
 ") ShapeProcess_Context;
 		 ShapeProcess_Context(Standard_CString file, Standard_CString scope = "");
 
@@ -307,7 +425,7 @@ bool
 
 Description
 -----------
-Get value of parameter as being of specific type returns false if parameter is not defined or has a wrong type.
+Get value of parameter as being of specific type Returns False if parameter is not defined or has a wrong type.
 ") GetString;
 		Standard_Boolean GetString(Standard_CString param, TCollection_AsciiString & val);
 
@@ -326,7 +444,7 @@ bool
 
 Description
 -----------
-Initialises a tool by loading resource file and (if specified) sets starting scope returns false if resource file not found.
+Initialises a tool by loading resource file and (if specified) sets starting scope Returns False if resource file not found.
 ") Init;
 		Standard_Boolean Init(Standard_CString file, Standard_CString scope = "");
 
@@ -363,7 +481,7 @@ bool
 
 Description
 -----------
-Returns true if parameter is defined in the resource file.
+Returns True if parameter is defined in the resource file.
 ") IsParamSet;
 		Standard_Boolean IsParamSet(Standard_CString param);
 
@@ -381,7 +499,7 @@ opencascade::handle<Resource_Manager>
 
 Description
 -----------
-Loading resource_manager object if this object not equal internal static resource_manager object or internal static resource_manager object is null.
+Loading Resource_Manager object if this object not equal internal static Resource_Manager object or internal static Resource_Manager object is null.
 ") LoadResourceManager;
 		opencascade::handle<Resource_Manager> LoadResourceManager(Standard_CString file);
 
@@ -394,7 +512,7 @@ opencascade::handle<Message_Messenger>
 
 Description
 -----------
-Returns messenger used for outputting messages.
+Returns Messenger used for outputting messages.
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
@@ -426,7 +544,7 @@ opencascade::handle<Resource_Manager>
 
 Description
 -----------
-Returns internal resource_manager object.
+Returns internal Resource_Manager object.
 ") ResourceManager;
 		const opencascade::handle<Resource_Manager> & ResourceManager();
 
@@ -444,7 +562,7 @@ None
 
 Description
 -----------
-Sets messenger used for outputting messages.
+Sets Messenger used for outputting messages.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
@@ -480,7 +598,7 @@ None
 
 Description
 -----------
-Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages default is 1: errors traced.
+Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages Default is 1: Errors traced.
 ") SetTraceLevel;
 		void SetTraceLevel(const Standard_Integer tracelev);
 
@@ -499,7 +617,7 @@ str
 
 Description
 -----------
-Get value of parameter as being of specific type if parameter is not defined or does not have expected type, returns default value as specified.
+Get value of parameter as being of specific type If parameter is not defined or does not have expected type, returns default value as specified.
 ") StringVal;
 		Standard_CString StringVal(Standard_CString param, Standard_CString def);
 
@@ -564,7 +682,7 @@ TopoDS_Shape
 
 Description
 -----------
-Applies breptools_modification to a shape, taking into account sharing of components of compounds. if themutableinput vat is set to true then input shape s can be modified during the modification process.
+Applies BRepTools_Modification to a shape, taking into account sharing of components of compounds. if theMutableInput vat is set to true then input shape S can be modified during the modification process.
 ") ApplyModifier;
 		static TopoDS_Shape ApplyModifier(const TopoDS_Shape & S, const opencascade::handle<ShapeProcess_ShapeContext> & context, const opencascade::handle<BRepTools_Modification> & M, TopTools_DataMapOfShapeShape & map, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = 0, Standard_Boolean theMutableInput = Standard_False);
 
@@ -686,7 +804,7 @@ None
 
 Description
 -----------
-Record a message for shape s shape s should be one of subshapes of original shape (or whole one), but not one of intermediate shapes records only if message() is not null.
+Record a message for shape S Shape S should be one of subshapes of original shape (or whole one), but not one of intermediate shapes Records only if Message() is not Null.
 ") AddMessage;
 		void AddMessage(const TopoDS_Shape & S, const Message_Msg & msg, const Message_Gravity gravity = Message_Warning);
 
@@ -705,7 +823,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Get value of parameter as being of the type geomabs_shape if parameter is not defined or does not have expected type, returns default value as specified.
+Get value of parameter as being of the type GeomAbs_Shape If parameter is not defined or does not have expected type, returns default value as specified.
 ") ContinuityVal;
 		GeomAbs_Shape ContinuityVal(Standard_CString param, const GeomAbs_Shape def);
 
@@ -723,7 +841,7 @@ val: GeomAbs_Shape
 
 Description
 -----------
-Get value of parameter as being of the type geomabs_shape returns false if parameter is not defined or has a wrong type.
+Get value of parameter as being of the type GeomAbs_Shape Returns False if parameter is not defined or has a wrong type.
 ") GetContinuity;
 		Standard_Boolean GetContinuity(Standard_CString param, GeomAbs_Shape &OutValue);
 
@@ -736,7 +854,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Set and get value for detalisation level only shapes of types from topods_compound and until specified detalisation level will be recorded in maps to cancel mapping, use topabs_shape to force full mapping, use topabs_vertex the default level is topabs_face.
+Set and get value for detalisation level Only shapes of types from TopoDS_COMPOUND and until specified detalisation level will be recorded in maps To cancel mapping, use TopAbs_SHAPE To force full mapping, use TopAbs_VERTEX The default level is TopAbs_FACE.
 ") GetDetalisation;
 		TopAbs_ShapeEnum GetDetalisation();
 
@@ -767,7 +885,7 @@ bool
 
 Description
 -----------
-Get nonmanifold flag.
+Get NonManifold flag.
 ") IsNonManifold;
 		Standard_Boolean IsNonManifold();
 
@@ -780,7 +898,7 @@ TopTools_DataMapOfShapeShape
 
 Description
 -----------
-Returns map of replacements shape -> shape this map is not recursive.
+Returns map of replacements shape -> shape This map is not recursive.
 ") Map;
 		const TopTools_DataMapOfShapeShape & Map();
 
@@ -806,7 +924,7 @@ opencascade::handle<ShapeExtend_MsgRegistrator>
 
 Description
 -----------
-Returns messages recorded during shape processing it can be nullified before processing in order to avoid recording messages.
+Returns messages recorded during shape processing It can be nullified before processing in order to avoid recording messages.
 ") Messages;
 		opencascade::handle<ShapeExtend_MsgRegistrator> & Messages();
 
@@ -819,7 +937,7 @@ None
 
 Description
 -----------
-Prints statistics on shape processing onto the current messenger.
+Prints statistics on Shape Processing onto the current Messenger.
 ") PrintStatistics;
 		void PrintStatistics();
 
@@ -895,7 +1013,7 @@ None
 
 Description
 -----------
-Records modifications and resets result accordingly note: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes //! in the last function, sh is the shape on which modifier was run. it can be different from the whole shape, but in that case result as a whole should be reset later either by call to setresult(), or by another call to recordmodification() which contains mapping of current result to a new one explicitly.
+Records modifications and resets result accordingly NOTE: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes //! In the last function, sh is the shape on which Modifier was run. It can be different from the whole shape, but in that case result as a whole should be reset later either by call to SetResult(), or by another call to RecordModification() which contains mapping of current result to a new one explicitly.
 ") RecordModification;
 		void RecordModification(const TopoDS_Shape & sh, const BRepTools_Modifier & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = 0);
 
@@ -944,7 +1062,7 @@ None
 
 Description
 -----------
-Set nonmanifold flag.
+Set NonManifold flag.
 ") SetNonManifold;
 		void SetNonManifold(Standard_Boolean theNonManifold);
 
@@ -962,7 +1080,7 @@ None
 
 Description
 -----------
-Sets a new result shape note: this method should be used very carefully to keep consistency of modifications it is recommended to use recordmodification() methods with explicit definition of mapping from current result to a new one.
+Sets a new result shape NOTE: this method should be used very carefully to keep consistency of modifications It is recommended to use RecordModification() methods with explicit definition of mapping from current result to a new one.
 ") SetResult;
 		void SetResult(const TopoDS_Shape & S);
 
@@ -1009,7 +1127,7 @@ None
 
 Description
 -----------
-Creates operator with implementation defined as operfunc (static function).
+Creates operator with implementation defined as OperFunc (static function).
 ") ShapeProcess_UOperator;
 		 ShapeProcess_UOperator(const ShapeProcess_OperFunc func);
 
@@ -1060,8 +1178,16 @@ def shapeprocess_Perform(*args):
 	return shapeprocess.Perform(*args)
 
 @deprecated
+def shapeprocess_Perform(*args):
+	return shapeprocess.Perform(*args)
+
+@deprecated
 def shapeprocess_RegisterOperator(*args):
 	return shapeprocess.RegisterOperator(*args)
+
+@deprecated
+def shapeprocess_ToOperationFlag(*args):
+	return shapeprocess.ToOperationFlag(*args)
 
 @deprecated
 def ShapeProcess_OperLibrary_ApplyModifier(*args):

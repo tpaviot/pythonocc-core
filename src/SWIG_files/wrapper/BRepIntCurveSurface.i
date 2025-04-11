@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPINTCURVESURFACEDOCSTRING
 "BRepIntCurveSurface module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepintcurvesurface.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepintcurvesurface.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 
@@ -119,7 +119,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the current face.
+returns the current face.
 ") Face;
 		const TopoDS_Face Face();
 
@@ -139,7 +139,7 @@ None
 
 Description
 -----------
-Load the shape, the curve and initialize the tolerance used for the classification.
+Load the Shape, the curve and initialize the tolerance used for the classification.
 ") Init;
 		void Init(const TopoDS_Shape & theShape, const GeomAdaptor_Curve & theCurve, const Standard_Real theTol);
 
@@ -159,7 +159,7 @@ None
 
 Description
 -----------
-Load the shape, the curve and initialize the tolerance used for the classification.
+Load the Shape, the curve and initialize the tolerance used for the classification.
 ") Init;
 		void Init(const TopoDS_Shape & theShape, const gp_Lin & theLine, const Standard_Real theTol);
 
@@ -196,7 +196,7 @@ None
 
 Description
 -----------
-Load the shape, and initialize the tolerance used for the classification.
+Load the Shape, and initialize the tolerance used for the classification.
 ") Load;
 		void Load(const TopoDS_Shape & theShape, const Standard_Real theTol);
 
@@ -209,7 +209,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current face.
+returns True if there is a current face.
 ") More;
 		Standard_Boolean More();
 
@@ -235,7 +235,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the current geometric point.
+returns the current geometric Point.
 ") Pnt;
 		const gp_Pnt Pnt();
 
@@ -248,7 +248,7 @@ IntCurveSurface_IntersectionPoint
 
 Description
 -----------
-Returns the current intersection point.
+returns the current Intersection point.
 ") Point;
 		IntCurveSurface_IntersectionPoint Point();
 
@@ -261,7 +261,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the current state (in or on).
+returns the current state (IN or ON).
 ") State;
 		TopAbs_State State();
 
@@ -274,7 +274,7 @@ IntCurveSurface_TransitionOnCurve
 
 Description
 -----------
-Returns the transition of the line on the surface (in or out or unknown).
+returns the transition of the line on the surface (IN or OUT or UNKNOWN).
 ") Transition;
 		IntCurveSurface_TransitionOnCurve Transition();
 
@@ -287,7 +287,7 @@ float
 
 Description
 -----------
-Returns the u parameter of the current point on the current face.
+returns the U parameter of the current point on the current face.
 ") U;
 		Standard_Real U();
 
@@ -300,7 +300,7 @@ float
 
 Description
 -----------
-Returns the v parameter of the current point on the current face.
+returns the V parameter of the current point on the current face.
 ") V;
 		Standard_Real V();
 
@@ -313,7 +313,7 @@ float
 
 Description
 -----------
-Returns the parameter of the current point on the curve.
+returns the parameter of the current point on the curve.
 ") W;
 		Standard_Real W();
 

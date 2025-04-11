@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define NLPLATEDOCSTRING
 "NLPlate module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_nlplate.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_nlplate.html"
 %enddef
 %module (package="OCC.Core", docstring=NLPLATEDOCSTRING) NLPlate
 
@@ -592,7 +592,7 @@ None
 
 Description
 -----------
-Reset the plate in the initial state ( same as after create((surface)).
+reset the Plate in the initial state ( same as after Create((Surface)).
 ") Init;
 		void Init();
 
@@ -605,7 +605,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 

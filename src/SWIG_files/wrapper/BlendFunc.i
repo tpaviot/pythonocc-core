@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDFUNCDOCSTRING
 "BlendFunc module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_blendfunc.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_blendfunc.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDFUNCDOCSTRING) BlendFunc
 
@@ -192,19 +192,19 @@ Parameters
 ----------
 SectShape: BlendFunc_SectionShape
 MaxAng: float
-TypeConv: Convert_ParameterisationType
 
 Return
 -------
 NbPoles: int
 NbKnots: int
 Degree: int
+TypeConv: Convert_ParameterisationType
 
 Description
 -----------
 No available documentation.
 ") GetShape;
-		static void GetShape(const BlendFunc_SectionShape SectShape, const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType & TypeConv);
+		static void GetShape(const BlendFunc_SectionShape SectShape, const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType &OutValue);
 
 		/****** BlendFunc::NextShape ******/
 		/****** md5 signature: 5efba1f9776f24ad69a107a235287f2c ******/
@@ -263,7 +263,7 @@ None
 
 Description
 -----------
-Creates a function for a circular blending between a curve <c> and a surface <s>. the direction of the planes are given by <cguide>. the position of the plane is determined on the curve <c>. <l> defines the change of parameter between <c> and <cguide>. so, the planes are defined as described below: t is the current parameter on the guide line. pguide = c(l(t)); nguide = cguide'(t)/||cguide'(t)||.
+Creates a function for a circular blending between a curve <C> and a surface <S>. The direction of the planes are given by <CGuide>. The position of the plane is determined on the curve <C>. <L> defines the change of parameter between <C> and <CGuide>. So, the planes are defined as described below: t is the current parameter on the guide line. Pguide = C(L(t)); Nguide = CGuide'(t)/||CGuide'(t)||.
 ") BlendFunc_CSCircular;
 		 BlendFunc_CSCircular(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & CGuide, const opencascade::handle<Law_Function> & L);
 
@@ -282,7 +282,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -416,7 +416,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -435,7 +435,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -448,7 +448,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -529,7 +529,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function (3).
+returns the number of equations of the function (3).
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -547,7 +547,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -586,7 +586,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2d;
 		const gp_Pnt2d Pnt2d();
 
@@ -682,7 +682,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -880,7 +880,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -900,7 +900,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -953,7 +953,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1087,7 +1087,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -1106,7 +1106,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1119,7 +1119,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -1200,7 +1200,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function (3).
+returns the number of equations of the function (3).
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -1218,7 +1218,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -1244,7 +1244,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2d;
 		const gp_Pnt2d Pnt2d();
 
@@ -1340,7 +1340,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -1538,7 +1538,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1558,7 +1558,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1612,7 +1612,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the derivatives for the variable <x> between degf and degl. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the derivatives for the variable <X> between DegF and DegL. Returns True if the computation was done successfully, False otherwise.
 ") ComputeValues;
 		Standard_Boolean ComputeValues(const math_Vector & X, const Standard_Integer DegF, const Standard_Integer DegL);
 
@@ -1631,7 +1631,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1663,7 +1663,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -1755,7 +1755,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -1774,7 +1774,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1787,7 +1787,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -1868,7 +1868,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -1886,7 +1886,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2207,7 +2207,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -2227,7 +2227,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2281,7 +2281,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the derivatives for the variable <x> between degf and degl. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the derivatives for the variable <X> between DegF and DegL. Returns True if the computation was done successfully, False otherwise.
 ") ComputeValues;
 		Standard_Boolean ComputeValues(const math_Vector & X, const Standard_Integer DegF, const Standard_Integer DegL);
 
@@ -2300,7 +2300,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -2370,7 +2370,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -2428,7 +2428,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -2448,7 +2448,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2519,7 +2519,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -2551,7 +2551,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -2643,7 +2643,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -2662,7 +2662,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2675,7 +2675,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -2756,7 +2756,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -2774,7 +2774,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -3112,7 +3112,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3132,7 +3132,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3185,7 +3185,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3255,7 +3255,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -3312,7 +3312,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3332,7 +3332,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3403,7 +3403,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3422,7 +3422,7 @@ bool
 
 Description
 -----------
-Returns false if sol is not solution else returns true and updates the fields tgs and tg2d.
+Returns False if Sol is not solution else returns True and updates the fields tgs and tg2d.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -3435,7 +3435,7 @@ bool
 
 Description
 -----------
-Returns true when it is not possible to compute the tangent vectors at pointons.
+Returns True when it is not possible to compute the tangent vectors at PointOnS.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
@@ -3448,7 +3448,7 @@ gp_Vec
 
 Description
 -----------
-Returns the normal to cguide at ptgui.
+returns the normal to CGuide at Ptgui.
 ") NPlan;
 		const gp_Vec NPlan();
 
@@ -3461,7 +3461,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of parameter <param> on cguide.
+returns the point of parameter <Param> on CGuide.
 ") PointOnGuide;
 		const gp_Pnt PointOnGuide();
 
@@ -3523,7 +3523,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons, in the parametric space of the first surface.
+Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 ") Tangent2dOnS;
 		const gp_Vec2d Tangent2dOnS();
 
@@ -3536,7 +3536,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons, in 3d space.
+Returns the tangent vector at PointOnS, in 3d space.
 ") TangentOnS;
 		const gp_Vec TangentOnS();
 
@@ -3555,7 +3555,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the function for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Function for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3609,7 +3609,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3641,7 +3641,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -3733,7 +3733,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -3752,7 +3752,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3765,7 +3765,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -3846,7 +3846,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -3864,7 +3864,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -4201,7 +4201,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -4221,7 +4221,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -4275,7 +4275,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -4345,7 +4345,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -4401,7 +4401,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -4421,7 +4421,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -4487,7 +4487,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -4546,7 +4546,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -4593,7 +4593,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -4672,7 +4672,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -4691,7 +4691,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -4704,7 +4704,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -4753,7 +4753,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -4771,7 +4771,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -4905,7 +4905,7 @@ None
 
 Description
 -----------
-Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
+Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.
 ") Set;
 		void Set(const Standard_Real Param);
 
@@ -4924,7 +4924,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -4964,7 +4964,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5035,7 +5035,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5067,7 +5067,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -5183,7 +5183,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -5202,7 +5202,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -5215,7 +5215,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsRational;
 		Standard_Boolean IsRational();
 
@@ -5296,7 +5296,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -5314,7 +5314,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -5565,7 +5565,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5585,7 +5585,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5638,7 +5638,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5708,7 +5708,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -5746,7 +5746,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -5766,7 +5766,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -5831,7 +5831,7 @@ None
 
 Description
 -----------
-Initialize all the elements of a tensor to initialvalue.
+Initialize all the elements of a Tensor to InitialValue.
 ") Init;
 		void Init(const Standard_Real InitialValue);
 
@@ -5870,7 +5870,7 @@ float
 
 Description
 -----------
-Accesses (in read or write mode) the value of index <row>, <col> and <mat> of a tensor. an exception is raised if <row>, <col> or <mat> are not in the correct range.
+accesses (in read or write mode) the value of index <Row>, <Col> and <Mat> of a Tensor. An exception is raised if <Row>, <Col> or <Mat> are not in the correct range.
 ") Value;
 		const Standard_Real & Value(const Standard_Integer Row, const Standard_Integer Col, const Standard_Integer Mat);
 
@@ -5923,7 +5923,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -5981,7 +5981,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6034,7 +6034,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6239,7 +6239,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6292,7 +6292,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6497,7 +6497,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6550,7 +6550,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6608,7 +6608,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6661,7 +6661,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6764,7 +6764,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -6817,7 +6817,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -6855,7 +6855,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 

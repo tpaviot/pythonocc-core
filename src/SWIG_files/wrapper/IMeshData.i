@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IMESHDATADOCSTRING
 "IMeshData module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_imeshdata.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_imeshdata.html"
 %enddef
 %module (package="OCC.Core", docstring=IMESHDATADOCSTRING) IMeshData
 
@@ -904,7 +904,7 @@ bool
 
 Description
 -----------
-Returns degenerative flag. by default equals to flag stored in topological shape.
+Returns degenerative flag. By default equals to flag stored in topological shape.
 ") GetDegenerated;
 		Standard_Boolean GetDegenerated();
 
@@ -917,7 +917,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns topods_edge attached to model.
+Returns TopoDS_Edge attached to model.
 ") GetEdge;
 		const TopoDS_Edge GetEdge();
 
@@ -967,7 +967,7 @@ bool
 
 Description
 -----------
-Returns same param flag. by default equals to flag stored in topological shape.
+Returns same param flag. By default equals to flag stored in topological shape.
 ") GetSameParam;
 		Standard_Boolean GetSameParam();
 
@@ -980,7 +980,7 @@ bool
 
 Description
 -----------
-Returns same range flag. by default equals to flag stored in topological shape.
+Returns same range flag. By default equals to flag stored in topological shape.
 ") GetSameRange;
 		Standard_Boolean GetSameRange();
 
@@ -1145,7 +1145,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns topods_face attached to model.
+Returns TopoDS_Face attached to model.
 ") GetFace;
 		const TopoDS_Face GetFace();
 
@@ -1238,7 +1238,8 @@ int
 
 Description
 -----------
-Adds new discrete edge with specified orientation to wire chain. return index of added edge in wire chain.
+Adds new discrete edge with specified orientation to wire chain. 
+Return: index of added edge in wire chain.
 ") AddEdge;
 		virtual Standard_Integer AddEdge(const IMeshData::IEdgePtr & theDEdge, const TopAbs_Orientation theOrientation);
 
@@ -1287,7 +1288,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns true if orientation of discrete edge with the given index is forward.
+Returns True if orientation of discrete edge with the given index is forward.
 ") GetEdgeOrientation;
 		virtual TopAbs_Orientation GetEdgeOrientation(const Standard_Integer theIndex);
 
@@ -1300,7 +1301,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns topods_face attached to model.
+Returns TopoDS_Face attached to model.
 ") GetWire;
 		const TopoDS_Wire GetWire();
 

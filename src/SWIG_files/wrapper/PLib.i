@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PLIBDOCSTRING
 "PLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_plib.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plib.html"
 %enddef
 %module (package="OCC.Core", docstring=PLIBDOCSTRING) PLib
 
@@ -107,7 +107,7 @@ float
 
 Description
 -----------
-Returns the binomial cnp. n should be <= bsplclib::maxdegree().
+Returns the Binomial Cnp. N should be <= BSplCLib::MaxDegree().
 ") Bin;
 		static Standard_Real Bin(const Standard_Integer N, const Standard_Integer P);
 
@@ -231,7 +231,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Translates from integer to geomabs_shape.
+translates from Integer to GeomAbs_Shape.
 ") ConstraintOrder;
 		static GeomAbs_Shape ConstraintOrder(const Standard_Integer NivConstr);
 
@@ -254,7 +254,7 @@ Results: float
 
 Description
 -----------
-Performs the cubic hermite interpolation of given series of points with given parameters with the requested derivative order. valuearray stores the value at the first and last parameter. it has the following format: @code [0], [dimension-1] : value at first param [dimension], [dimension + dimension-1]: value at last param @endcode derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format @code [0], [dimension-1] : derivative at @endcode first param @code [dimension], [dimension + dimension-1]: derivative at @endcode last param //! parameterarray stores the first and last parameter in the following format: @code [0]: first parameter [1]: last parameter @endcode //! results will store things in the following format with d = derivativeorder @code [0], [dimension-1] : value [dimension], [dimension + dimension-1]: first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative @endcode.
+Performs the Cubic Hermite Interpolation of given series of points with given parameters with the requested derivative order. ValueArray stores the value at the first and last parameter. It has the following format: @code [0], [Dimension-1] : value at first param [Dimension], [Dimension + Dimension-1]: value at last param @endcode Derivative array stores the value of the derivatives at the first parameter and at the last parameter in the following format @code [0], [Dimension-1] : derivative at @endcode first param @code [Dimension], [Dimension + Dimension-1]: derivative at @endcode last param //! ParameterArray stores the first and last parameter in the following format: @code [0]: first parameter [1]: last parameter @endcode //! Results will store things in the following format with d = DerivativeOrder @code [0], [Dimension-1] : value [Dimension], [Dimension + Dimension-1]: first derivative //! [d *Dimension], [d*Dimension + Dimension-1]: dth derivative @endcode.
 ") EvalCubicHermite;
 		static Standard_Integer EvalCubicHermite(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -277,7 +277,7 @@ Results: float
 
 Description
 -----------
-Performs the lagrange interpolation of given series of points with given parameters with the requested derivative order results will store things in the following format with d = derivativeorder @code [0], [dimension-1] : value [dimension], [dimension + dimension-1]: first derivative //! [d *dimension], [d*dimension + dimension-1]: dth derivative @endcode.
+Performs the Lagrange Interpolation of given series of points with given parameters with the requested derivative order Results will store things in the following format with d = DerivativeOrder @code [0], [Dimension-1] : value [Dimension], [Dimension + Dimension-1]: first derivative //! [d *Dimension], [d*Dimension + Dimension-1]: dth derivative @endcode.
 ") EvalLagrange;
 		static Standard_Integer EvalLagrange(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -348,7 +348,7 @@ Results: float
 
 Description
 -----------
-Applies evalpolynomial twice to evaluate the derivative of orders uderivativeorder in u, vderivativeorder in v at parameters u,v //! polynomialcoeff are stored in the following fashion @code c00(1) .... c00(dimension) c10(1) .... c10(dimension) .... cm0(1) .... cm0(dimension) .... c01(1) .... c01(dimension) c11(1) .... c11(dimension) .... cm1(1) .... cm1(dimension) .... c0n(1) .... c0n(dimension) c1n(1) .... c1n(dimension) .... cmn(1) .... cmn(dimension) @endcode where the polynomial is defined as: @code 2  m c00 + c10 u + c20 u + .... + cm0 u 2  m + c01 v + c11 uv + c21 u v + .... + cm1 u v n m n + .... + c0n v + .... + cmn u v @endcode with m = udegree and n = vdegree //! results stores the result in the following format @code f(1) f(2) .... f(dimension) @endcode warning: <results> and <polynomialcoeff> must be dimensioned properly.
+Applies EvalPolynomial twice to evaluate the derivative of orders UDerivativeOrder in U, VDerivativeOrder in V at parameters U,V //! PolynomialCoeff are stored in the following fashion @code c00(1) .... c00(Dimension) c10(1) .... c10(Dimension) .... cm0(1) .... cm0(Dimension) .... c01(1) .... c01(Dimension) c11(1) .... c11(Dimension) .... cm1(1) .... cm1(Dimension) .... c0n(1) .... c0n(Dimension) c1n(1) .... c1n(Dimension) .... cmn(1) .... cmn(Dimension) @endcode where the polynomial is defined as: @code 2  m c00 + c10 U + c20 U + .... + cm0 U 2  m + c01 V + c11 UV + c21 U V + .... + cm1 U V n m n + .... + c0n V + .... + cmn U V @endcode with m = UDegree and n = VDegree //! Results stores the result in the following format @code f(1) f(2) .... f(Dimension) @endcode Warning: <Results> and <PolynomialCoeff> must be dimensioned properly.
 ") EvalPoly2Var;
 		static void EvalPoly2Var(const Standard_Real U, const Standard_Real V, const Standard_Integer UDerivativeOrder, const Standard_Integer VDerivativeOrder, const Standard_Integer UDegree, const Standard_Integer VDegree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -370,7 +370,7 @@ Results: float
 
 Description
 -----------
-Performs horner method with synthetic division for derivatives parameter <u>, with <degree> and <dimension>. polynomialcoeff are stored in the following fashion @code c0(1) c0(2) .... c0(dimension) c1(1) c1(2) .... c1(dimension) //! cdegree(1) cdegree(2) .... cdegree(dimension) @endcode where the polynomial is defined as: @code 2 degree c0 + c1 x + c2 x + .... cdegree x @endcode results stores the result in the following format @code f(1) f(2) .... f(dimension) (1)  (1)  (1) f (1) f (2) .... f (dimension) //! (derivativerequest) (derivativerequest) f (1)  f (dimension) @endcode this just evaluates the point at parameter u //! warning: <results> and <polynomialcoeff> must be dimensioned properly.
+Performs Horner method with synthetic division for derivatives parameter <U>, with <Degree> and <Dimension>. PolynomialCoeff are stored in the following fashion @code c0(1) c0(2) .... c0(Dimension) c1(1) c1(2) .... c1(Dimension) //! cDegree(1) cDegree(2) .... cDegree(Dimension) @endcode where the polynomial is defined as: @code 2 Degree c0 + c1 X + c2 X + .... cDegree X @endcode Results stores the result in the following format @code f(1) f(2) .... f(Dimension) (1)  (1)  (1) f (1) f (2) .... f (Dimension) //! (DerivativeRequest) (DerivativeRequest) f (1)  f (Dimension) @endcode this just evaluates the point at parameter U //! Warning: <Results> and <PolynomialCoeff> must be dimensioned properly.
 ") EvalPolynomial;
 		static void EvalPolynomial(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -389,7 +389,7 @@ None
 
 Description
 -----------
-Get from fp the coordinates of the poles.
+Get from FP the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles);
 
@@ -409,7 +409,7 @@ None
 
 Description
 -----------
-Get from fp the coordinates of the poles.
+Get from FP the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
@@ -428,7 +428,7 @@ None
 
 Description
 -----------
-Get from fp the coordinates of the poles.
+Get from FP the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles);
 
@@ -448,7 +448,7 @@ None
 
 Description
 -----------
-Get from fp the coordinates of the poles.
+Get from FP the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights);
 
@@ -470,7 +470,7 @@ bool
 
 Description
 -----------
-This build the coefficient of hermite's polynomes on [firstparameter, lastparameter] //! if j <= firstorder+1 then //! matrixcoefs[i, j] = ith coefficient of the polynome h0,j-1 //! else //! matrixcoefs[i, j] = ith coefficient of the polynome h1,k with k = j - firstorder - 2 //! return false if - |firstparameter| > 100 - |lastparameter| > 100 - |firstparameter| +|lastparameter| < 1/100 - |lastparameter - firstparameter| / (|firstparameter| +|lastparameter|) < 1/100.
+This build the coefficient of Hermite's polynomes on [FirstParameter, LastParameter] //! if j <= FirstOrder+1 then //! MatrixCoefs[i, j] = ith coefficient of the polynome H0,j-1 //! else //! MatrixCoefs[i, j] = ith coefficient of the polynome H1,k with k = j - FirstOrder - 2 //! return false if - |FirstParameter| > 100 - |LastParameter| > 100 - |FirstParameter| +|LastParameter| < 1/100 - |LastParameter - FirstParameter| / (|FirstParameter| +|LastParameter|) < 1/100.
 ") HermiteCoefficients;
 		static Standard_Boolean HermiteCoefficients(const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Integer FirstOrder, const Standard_Integer LastOrder, math_Matrix & MatrixCoefs);
 
@@ -495,7 +495,7 @@ bool
 
 Description
 -----------
-Compute the coefficients in the canonical base of the polynomial satisfying the given constraints at the given parameters the array firstcontr(i,j) i=1,dimension j=0,firstorder contains the values of the constraint at parameter firstparameter idem for lastconstr.
+Compute the coefficients in the canonical base of the polynomial satisfying the given constraints at the given parameters The array FirstContr(i,j) i=1,Dimension j=0,FirstOrder contains the values of the constraint at parameter FirstParameter idem for LastConstr.
 ") HermiteInterpolate;
 		static Standard_Boolean HermiteInterpolate(const Standard_Integer Dimension, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Integer FirstOrder, const Standard_Integer LastOrder, const TColStd_Array2OfReal & FirstConstr, const TColStd_Array2OfReal & LastConstr, TColStd_Array1OfReal & Coefficients);
 
@@ -516,7 +516,7 @@ WorkDegree: int
 
 Description
 -----------
-Compute the number of points used for integral computations (nbgausspoints) and the degree of jacobi polynomial (workdegree). constraintorder has to be geomabs_c0, geomabs_c1 or geomabs_c2 code: code d' init. des parametres de discretisation. = -5 = -4 = -3 = -2 = -1 = 1 calcul rapide avec precision moyenne. = 2 calcul rapide avec meilleure precision. = 3 calcul un peu plus lent avec bonne precision. = 4 calcul lent avec la meilleure precision possible.
+Compute the number of points used for integral computations (NbGaussPoints) and the degree of Jacobi Polynomial (WorkDegree). ConstraintOrder has to be GeomAbs_C0, GeomAbs_C1 or GeomAbs_C2 Code: Code d' init. des parametres de discretisation. = -5 = -4 = -3 = -2 = -1 = 1 calcul rapide avec precision moyenne. = 2 calcul rapide avec meilleure precision. = 3 calcul un peu plus lent avec bonne precision. = 4 calcul lent avec la meilleure precision possible.
 ") JacobiParameters;
 		static void JacobiParameters(const GeomAbs_Shape ConstraintOrder, const Standard_Integer MaxDegree, const Standard_Integer Code, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -534,7 +534,7 @@ int
 
 Description
 -----------
-Translates from geomabs_shape to integer.
+translates from GeomAbs_Shape to Integer.
 ") NivConstr;
 		static Standard_Integer NivConstr(const GeomAbs_Shape ConstraintOrder);
 
@@ -556,7 +556,7 @@ Results: float
 
 Description
 -----------
-Same as above with derivativeorder = 0;.
+Same as above with DerivativeOrder = 0;.
 ") NoDerivativeEvalPolynomial;
 		static void NoDerivativeEvalPolynomial(const Standard_Real U, const Standard_Integer Degree, const Standard_Integer Dimension, const Standard_Integer DegreeDimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -604,7 +604,7 @@ RDers: float
 
 Description
 -----------
-Computes the derivatives of a ratio at order <n> in dimension <dimension>. //! <ders> is an array containing the values of the input derivatives from 0 to min(<n>,<degree>). for orders higher than <degree> the inputcd /s2d1/bmdl/ derivatives are assumed to be 0. //! content of <ders>: //! x(1),x(2),...,x(dimension),w x'(1),x'(2),...,x'(dimension),w' x''(1),x''(2),...,x''(dimension),w'' //! if <all> is false, only the derivative at order <n> is computed. <rders> is an array of length dimension which will contain the result: //! x(1)/w , x(2)/w , ... derivated <n> times //! if <all> is true all the derivatives up to order <n> are computed. <rders> is an array of length dimension * (n+1) which will contains: //! x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated <1> times x(1)/w , x(2)/w , ... derivated <2> times ... x(1)/w , x(2)/w , ... derivated <n> times //! warning: <rders> must be dimensionned properly.
+Computes the derivatives of a ratio at order <N> in dimension <Dimension>. //! <Ders> is an array containing the values of the input derivatives from 0 to Min(<N>,<Degree>). For orders higher than <Degree> the inputcd /s2d1/BMDL/ derivatives are assumed to be 0. //! Content of <Ders>: //! x(1),x(2),...,x(Dimension),w x'(1),x'(2),...,x'(Dimension),w' x''(1),x''(2),...,x''(Dimension),w'' //! If <All> is false, only the derivative at order <N> is computed. <RDers> is an array of length Dimension which will contain the result: //! x(1)/w , x(2)/w , ... derivated <N> times //! If <All> is true all the derivatives up to order <N> are computed. <RDers> is an array of length Dimension * (N+1) which will contains: //! x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated <1> times x(1)/w , x(2)/w , ... derivated <2> times ... x(1)/w , x(2)/w , ... derivated <N> times //! Warning: <RDers> must be dimensioned properly.
 ") RationalDerivative;
 		static void RationalDerivative(const Standard_Integer Degree, const Standard_Integer N, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean All = Standard_True);
 
@@ -625,7 +625,7 @@ RationalDerivates: float
 
 Description
 -----------
-Computes derivativesrequest derivatives of a ratio at of a bspline function of degree <degree> dimension <dimension>. //! <polesderivatives> is an array containing the values of the input derivatives from 0 to <derivativerequest> for orders higher than <degree> the input derivatives are assumed to be 0. //! content of <poleasderivatives>: //! x(1),x(2),...,x(dimension) x'(1),x'(2),...,x'(dimension) x''(1),x''(2),...,x''(dimension) //! weightsderivatives is an array that contains derivatives from 0 to <derivativerequest> after returning from the routine the array rationalderivatives contains the following x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated once x(1)/w , x(2)/w , ... twice x(1)/w , x(2)/w , ... derivated <derivativerequest> times //! the array rationalderivatives and polesderivatives can be same since the overwrite is non destructive within the algorithm //! warning: <rationalderivates> must be dimensionned properly.
+Computes DerivativesRequest derivatives of a ratio at of a BSpline function of degree <Degree> dimension <Dimension>. //! <PolesDerivatives> is an array containing the values of the input derivatives from 0 to <DerivativeRequest> For orders higher than <Degree> the input derivatives are assumed to be 0. //! Content of <PoleasDerivatives>: //! x(1),x(2),...,x(Dimension) x'(1),x'(2),...,x'(Dimension) x''(1),x''(2),...,x''(Dimension) //! WeightsDerivatives is an array that contains derivatives from 0 to <DerivativeRequest> After returning from the routine the array RationalDerivatives contains the following x(1)/w , x(2)/w , ... x(1)/w , x(2)/w , ... derivated once x(1)/w , x(2)/w , ... twice x(1)/w , x(2)/w , ... derivated <DerivativeRequest> times //! The array RationalDerivatives and PolesDerivatives can be same since the overwrite is non destructive within the algorithm //! Warning: <RationalDerivates> must be dimensioned properly.
 ") RationalDerivatives;
 		static void RationalDerivatives(const Standard_Integer DerivativesRequest, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -644,7 +644,7 @@ None
 
 Description
 -----------
-Copy in fp the coordinates of the poles.
+Copy in FP the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & FP);
 
@@ -664,7 +664,7 @@ None
 
 Description
 -----------
-Copy in fp the coordinates of the poles.
+Copy in FP the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
@@ -683,7 +683,7 @@ None
 
 Description
 -----------
-Copy in fp the coordinates of the poles.
+Copy in FP the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & FP);
 
@@ -703,7 +703,7 @@ None
 
 Description
 -----------
-Copy in fp the coordinates of the poles.
+Copy in FP the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
@@ -949,7 +949,7 @@ MaxError: float
 
 Description
 -----------
-Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can be greater than tol if it is not possible to find a newdegree <= maxdegree. in this case newdegree = maxdegree.
+Compute NewDegree <= MaxDegree so that MaxError is lower than Tol. MaxError can be greater than Tol if it is not possible to find a NewDegree <= MaxDegree. In this case NewDegree = MaxDegree.
 ") ReduceDegree;
 		virtual void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -970,7 +970,7 @@ None
 
 Description
 -----------
-Convert the polynomial p(t) in the canonical base.
+Convert the polynomial P(t) in the canonical base.
 ") ToCoefficients;
 		virtual void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & CoeffinBase, TColStd_Array1OfReal & Coefficients);
 
@@ -983,7 +983,7 @@ int
 
 Description
 -----------
-Returns workdegree.
+returns WorkDegree.
 ") WorkDegree;
 		virtual Standard_Integer WorkDegree();
 
@@ -1162,7 +1162,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns mytabmaxu;.
+returns myTabMaxU;.
 ") TabMaxU;
 		opencascade::handle<TColStd_HArray1OfReal> TabMaxU();
 
@@ -1175,7 +1175,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns mytabmaxv;.
+returns myTabMaxV;.
 ") TabMaxV;
 		opencascade::handle<TColStd_HArray1OfReal> TabMaxV();
 
@@ -1188,7 +1188,7 @@ opencascade::handle<PLib_JacobiPolynomial>
 
 Description
 -----------
-Returns myjacpolu;.
+returns myJacPolU;.
 ") U;
 		opencascade::handle<PLib_JacobiPolynomial> U();
 
@@ -1201,7 +1201,7 @@ opencascade::handle<PLib_JacobiPolynomial>
 
 Description
 -----------
-Returns myjacpolv;.
+returns myJacPolV;.
 ") V;
 		opencascade::handle<PLib_JacobiPolynomial> V();
 
@@ -1256,7 +1256,7 @@ None
 
 Description
 -----------
-Initialize the polynomial class degree has to be <= 30 constraintorder has to be geomabs_c0 geomabs_c1 geomabs_c2.
+Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0 GeomAbs_C1 GeomAbs_C2.
 ") PLib_HermitJacobi;
 		 PLib_HermitJacobi(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
@@ -1376,7 +1376,7 @@ HermJacCoeff: float
 
 Description
 -----------
-This method computes the maximum error on the polynomial w(t) q(t) obtained by missing the coefficients of jaccoeff from newdegree +1 to degree.
+This method computes the maximum error on the polynomial W(t) Q(t) obtained by missing the coefficients of JacCoeff from NewDegree +1 to Degree.
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
@@ -1389,7 +1389,7 @@ int
 
 Description
 -----------
-Returns nivconstr.
+returns NivConstr.
 ") NivConstr;
 		Standard_Integer NivConstr();
 
@@ -1411,7 +1411,7 @@ MaxError: float
 
 Description
 -----------
-Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can be greater than tol if it is not possible to find a newdegree <= maxdegree. in this case newdegree = maxdegree.
+Compute NewDegree <= MaxDegree so that MaxError is lower than Tol. MaxError can be greater than Tol if it is not possible to find a NewDegree <= MaxDegree. In this case NewDegree = MaxDegree.
 ") ReduceDegree;
 		void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -1432,7 +1432,7 @@ None
 
 Description
 -----------
-Convert the polynomial p(t) = h(t) + w(t) q(t) in the canonical base.
+Convert the polynomial P(t) = H(t) + W(t) Q(t) in the canonical base.
 ") ToCoefficients;
 		void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & HermJacCoeff, TColStd_Array1OfReal & Coefficients);
 
@@ -1445,7 +1445,7 @@ int
 
 Description
 -----------
-Returns workdegree.
+returns WorkDegree.
 ") WorkDegree;
 		Standard_Integer WorkDegree();
 
@@ -1480,7 +1480,7 @@ None
 
 Description
 -----------
-Initialize the polynomial class degree has to be <= 30 constraintorder has to be geomabs_c0 geomabs_c1 geomabs_c2.
+Initialize the polynomial class Degree has to be <= 30 ConstraintOrder has to be GeomAbs_C0 GeomAbs_C1 GeomAbs_C2.
 ") PLib_JacobiPolynomial;
 		 PLib_JacobiPolynomial(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
@@ -1600,7 +1600,7 @@ JacCoeff: float
 
 Description
 -----------
-This method computes the maximum error on the polynomial w(t) q(t) obtained by missing the coefficients of jaccoeff from newdegree +1 to degree.
+This method computes the maximum error on the polynomial W(t) Q(t) obtained by missing the coefficients of JacCoeff from NewDegree +1 to Degree.
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
@@ -1618,7 +1618,7 @@ None
 
 Description
 -----------
-This method loads for k=0,q the maximum value of abs ( w(t)*jk(t) )for t bellonging to [-1,1] this values are loaded is the array tabmax(0,myworkdegree-2*(mynivconst+1)) maxvalue ( me ; tabmaxpointer: in out real );.
+this method loads for k=0,q the maximum value of abs ( W(t)*Jk(t) )for t bellonging to [-1,1] This values are loaded is the array TabMax(0,myWorkDegree-2*(myNivConst+1)) MaxValue ( me ; TabMaxPointer: in out Real );.
 ") MaxValue;
 		void MaxValue(TColStd_Array1OfReal & TabMax);
 
@@ -1631,7 +1631,7 @@ int
 
 Description
 -----------
-Returns nivconstr.
+returns NivConstr.
 ") NivConstr;
 		Standard_Integer NivConstr();
 
@@ -1650,7 +1650,7 @@ None
 
 Description
 -----------
-Returns the jacobi points for gauss integration ie the positive values of the legendre roots by increasing values nbgausspoints is the number of points chosen for the integral computation. tabpoints (0,nbgausspoints/2) tabpoints (0) is loaded only for the odd values of nbgausspoints the possible values for nbgausspoints are: 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 nbgausspoints must be greater than degree.
+returns the Jacobi Points for Gauss integration ie the positive values of the Legendre roots by increasing values NbGaussPoints is the number of points chosen for the integral computation. TabPoints (0,NbGaussPoints/2) TabPoints (0) is loaded only for the odd values of NbGaussPoints The possible values for NbGaussPoints are: 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 NbGaussPoints must be greater than Degree.
 ") Points;
 		void Points(const Standard_Integer NbGaussPoints, TColStd_Array1OfReal & TabPoints);
 
@@ -1672,7 +1672,7 @@ MaxError: float
 
 Description
 -----------
-Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can be greater than tol if it is not possible to find a newdegree <= maxdegree. in this case newdegree = maxdegree.
+Compute NewDegree <= MaxDegree so that MaxError is lower than Tol. MaxError can be greater than Tol if it is not possible to find a NewDegree <= MaxDegree. In this case NewDegree = MaxDegree.
 ") ReduceDegree;
 		void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -1693,7 +1693,7 @@ None
 
 Description
 -----------
-Convert the polynomial p(t) = r(t) + w(t) q(t) in the canonical base.
+Convert the polynomial P(t) = R(t) + W(t) Q(t) in the canonical base.
 ") ToCoefficients;
 		void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & JacCoeff, TColStd_Array1OfReal & Coefficients);
 
@@ -1712,7 +1712,7 @@ None
 
 Description
 -----------
-Returns the jacobi weigths for gauss integration only for the positive values of the legendre roots in the order they are given by the method points nbgausspoints is the number of points chosen for the integral computation. tabweights (0,nbgausspoints/2,0,degree) tabweights (0,.) are only loaded for the odd values of nbgausspoints the possible values for nbgausspoints are: 8 , 10 , 15 ,20 ,25 , 30, 35 , 40 , 50 , 61 nbgausspoints must be greater than degree.
+returns the Jacobi weights for Gauss integration only for the positive values of the Legendre roots in the order they are given by the method Points NbGaussPoints is the number of points chosen for the integral computation. TabWeights (0,NbGaussPoints/2,0,Degree) TabWeights (0,.) are only loaded for the odd values of NbGaussPoints The possible values for NbGaussPoints are: 8 , 10 , 15 ,20 ,25 , 30, 35 , 40 , 50 , 61 NbGaussPoints must be greater than Degree.
 ") Weights;
 		void Weights(const Standard_Integer NbGaussPoints, TColStd_Array2OfReal & TabWeights);
 
@@ -1725,7 +1725,7 @@ int
 
 Description
 -----------
-Returns workdegree.
+returns WorkDegree.
 ") WorkDegree;
 		Standard_Integer WorkDegree();
 

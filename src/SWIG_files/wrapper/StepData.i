@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPDATADOCSTRING
 "StepData module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepdata.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepdata.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPDATADOCSTRING) StepData
 
@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepdata.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TCollection_module.hxx>
 #include<Interface_module.hxx>
+#include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
@@ -58,8 +58,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepdata.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TCollection.i
 %import Interface.i
+%import TCollection.i
 %import TColStd.i
 %import Resource.i
 
@@ -146,7 +146,7 @@ None
 
 Description
 -----------
-Adds a new header protocol to the header definition.
+Adds a new Header Protocol to the Header Definition.
 ") AddHeaderProtocol;
 		static void AddHeaderProtocol(const opencascade::handle<StepData_Protocol> & headerproto);
 
@@ -159,7 +159,7 @@ opencascade::handle<StepData_Protocol>
 
 Description
 -----------
-Returns the recorded headerprotocol, which can be: - a null handle if no header protocol was yet defined - a simple protocol if only one was defined - a fileprotocol if more than one protocol was yet defined.
+Returns the recorded HeaderProtocol, which can be: - a Null Handle if no Header Protocol was yet defined - a simple Protocol if only one was defined - a FileProtocol if more than one Protocol was yet defined.
 ") HeaderProtocol;
 		static opencascade::handle<StepData_Protocol> HeaderProtocol();
 
@@ -172,7 +172,7 @@ None
 
 Description
 -----------
-Prepares general data required to work with this package, which are the protocol and modules to be loaded into libraries.
+Prepares General Data required to work with this package, which are the Protocol and Modules to be loaded into Libraries.
 ") Init;
 		static void Init();
 
@@ -185,7 +185,7 @@ opencascade::handle<StepData_Protocol>
 
 Description
 -----------
-Returns a protocol from stepdata (avoids to create it).
+Returns a Protocol from StepData (avoids to create it).
 ") Protocol;
 		static opencascade::handle<StepData_Protocol> Protocol();
 
@@ -193,335 +193,6 @@ Returns a protocol from stepdata (avoids to create it).
 
 
 %extend StepData {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************
-* class StepData_ConfParameters *
-********************************/
-class StepData_ConfParameters {
-	public:
-/* public enums */
-enum ReadMode_BSplineContinuity {
-	ReadMode_BSplineContinuity_C0 = 0,
-	ReadMode_BSplineContinuity_C1 = 1,
-	ReadMode_BSplineContinuity_C2 = 2,
-};
-
-enum ReadMode_Precision {
-	ReadMode_Precision_File = 0,
-	ReadMode_Precision_User = 1,
-};
-
-enum ReadMode_MaxPrecision {
-	ReadMode_MaxPrecision_Preferred = 0,
-	ReadMode_MaxPrecision_Forced = 1,
-};
-
-enum ReadMode_SurfaceCurve {
-	ReadMode_SurfaceCurve_Default = 0,
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
-};
-
-enum AngleUnitMode {
-	AngleUnitMode_File = 0,
-	AngleUnitMode_Rad = 1,
-	AngleUnitMode_Deg = 2,
-};
-
-enum ReadMode_ProductContext {
-	ReadMode_ProductContext_All = 1,
-	ReadMode_ProductContext_Design = 2,
-	ReadMode_ProductContext_Analysis = 3,
-};
-
-enum ReadMode_ShapeRepr {
-	ReadMode_ShapeRepr_All = 1,
-	ReadMode_ShapeRepr_ABSR = 2,
-	ReadMode_ShapeRepr_MSSR = 3,
-	ReadMode_ShapeRepr_GBSSR = 4,
-	ReadMode_ShapeRepr_FBSR = 5,
-	ReadMode_ShapeRepr_EBWSR = 6,
-	ReadMode_ShapeRepr_GBWSR = 7,
-};
-
-enum ReadMode_AssemblyLevel {
-	ReadMode_AssemblyLevel_All = 1,
-	ReadMode_AssemblyLevel_Assembly = 2,
-	ReadMode_AssemblyLevel_Structure = 3,
-	ReadMode_AssemblyLevel_Shape = 4,
-};
-
-enum RWMode_Tessellated {
-	RWMode_Tessellated_Off = 0,
-	RWMode_Tessellated_On = 1,
-	RWMode_Tessellated_OnNoBRep = 2,
-};
-
-enum WriteMode_PrecisionMode {
-	WriteMode_PrecisionMode_Least = - 1,
-	WriteMode_PrecisionMode_Average = 0,
-	WriteMode_PrecisionMode_Greatest = 1,
-	WriteMode_PrecisionMode_Session = 2,
-};
-
-enum WriteMode_Assembly {
-	WriteMode_Assembly_Off = 0,
-	WriteMode_Assembly_On = 1,
-	WriteMode_Assembly_Auto = 2,
-};
-
-enum WriteMode_StepSchema {
-	WriteMode_StepSchema_AP214CD = 1,
-	WriteMode_StepSchema_AP214DIS = 2,
-	WriteMode_StepSchema_AP203 = 3,
-	WriteMode_StepSchema_AP214IS = 4,
-	WriteMode_StepSchema_AP242DIS = 5,
-};
-
-enum WriteMode_VertexMode {
-	WriteMode_VertexMode_OneCompound = 0,
-	WriteMode_VertexMode_SingleVertex = 1,
-};
-
-/* end public enums declaration */
-
-/* python proxy classes for enums */
-%pythoncode {
-
-class ReadMode_BSplineContinuity(IntEnum):
-	ReadMode_BSplineContinuity_C0 = 0
-	ReadMode_BSplineContinuity_C1 = 1
-	ReadMode_BSplineContinuity_C2 = 2
-ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C0
-ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
-ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
-
-class ReadMode_Precision(IntEnum):
-	ReadMode_Precision_File = 0
-	ReadMode_Precision_User = 1
-ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
-ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
-
-class ReadMode_MaxPrecision(IntEnum):
-	ReadMode_MaxPrecision_Preferred = 0
-	ReadMode_MaxPrecision_Forced = 1
-ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
-ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
-
-class ReadMode_SurfaceCurve(IntEnum):
-	ReadMode_SurfaceCurve_Default = 0
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3
-ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
-ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
-ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
-ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
-ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
-
-class AngleUnitMode(IntEnum):
-	AngleUnitMode_File = 0
-	AngleUnitMode_Rad = 1
-	AngleUnitMode_Deg = 2
-AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
-AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
-AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
-
-class ReadMode_ProductContext(IntEnum):
-	ReadMode_ProductContext_All = 1
-	ReadMode_ProductContext_Design = 2
-	ReadMode_ProductContext_Analysis = 3
-ReadMode_ProductContext_All = ReadMode_ProductContext.ReadMode_ProductContext_All
-ReadMode_ProductContext_Design = ReadMode_ProductContext.ReadMode_ProductContext_Design
-ReadMode_ProductContext_Analysis = ReadMode_ProductContext.ReadMode_ProductContext_Analysis
-
-class ReadMode_ShapeRepr(IntEnum):
-	ReadMode_ShapeRepr_All = 1
-	ReadMode_ShapeRepr_ABSR = 2
-	ReadMode_ShapeRepr_MSSR = 3
-	ReadMode_ShapeRepr_GBSSR = 4
-	ReadMode_ShapeRepr_FBSR = 5
-	ReadMode_ShapeRepr_EBWSR = 6
-	ReadMode_ShapeRepr_GBWSR = 7
-ReadMode_ShapeRepr_All = ReadMode_ShapeRepr.ReadMode_ShapeRepr_All
-ReadMode_ShapeRepr_ABSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_ABSR
-ReadMode_ShapeRepr_MSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_MSSR
-ReadMode_ShapeRepr_GBSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBSSR
-ReadMode_ShapeRepr_FBSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_FBSR
-ReadMode_ShapeRepr_EBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_EBWSR
-ReadMode_ShapeRepr_GBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBWSR
-
-class ReadMode_AssemblyLevel(IntEnum):
-	ReadMode_AssemblyLevel_All = 1
-	ReadMode_AssemblyLevel_Assembly = 2
-	ReadMode_AssemblyLevel_Structure = 3
-	ReadMode_AssemblyLevel_Shape = 4
-ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
-ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
-ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
-ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
-
-class RWMode_Tessellated(IntEnum):
-	RWMode_Tessellated_Off = 0
-	RWMode_Tessellated_On = 1
-	RWMode_Tessellated_OnNoBRep = 2
-RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
-RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
-RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
-
-class WriteMode_PrecisionMode(IntEnum):
-	WriteMode_PrecisionMode_Least = - 1
-	WriteMode_PrecisionMode_Average = 0
-	WriteMode_PrecisionMode_Greatest = 1
-	WriteMode_PrecisionMode_Session = 2
-WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Least
-WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
-WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
-WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
-
-class WriteMode_Assembly(IntEnum):
-	WriteMode_Assembly_Off = 0
-	WriteMode_Assembly_On = 1
-	WriteMode_Assembly_Auto = 2
-WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
-WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
-WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
-
-class WriteMode_StepSchema(IntEnum):
-	WriteMode_StepSchema_AP214CD = 1
-	WriteMode_StepSchema_AP214DIS = 2
-	WriteMode_StepSchema_AP203 = 3
-	WriteMode_StepSchema_AP214IS = 4
-	WriteMode_StepSchema_AP242DIS = 5
-WriteMode_StepSchema_AP214CD = WriteMode_StepSchema.WriteMode_StepSchema_AP214CD
-WriteMode_StepSchema_AP214DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP214DIS
-WriteMode_StepSchema_AP203 = WriteMode_StepSchema.WriteMode_StepSchema_AP203
-WriteMode_StepSchema_AP214IS = WriteMode_StepSchema.WriteMode_StepSchema_AP214IS
-WriteMode_StepSchema_AP242DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP242DIS
-
-class WriteMode_VertexMode(IntEnum):
-	WriteMode_VertexMode_OneCompound = 0
-	WriteMode_VertexMode_SingleVertex = 1
-WriteMode_VertexMode_OneCompound = WriteMode_VertexMode.WriteMode_VertexMode_OneCompound
-WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_SingleVertex
-};
-/* end python proxy for enums */
-
-		ReadMode_BSplineContinuity ReadBSplineContinuity;
-		ReadMode_Precision ReadPrecisionMode;
-		double ReadPrecisionVal;
-		ReadMode_MaxPrecision ReadMaxPrecisionMode;
-		double ReadMaxPrecisionVal;
-		bool ReadSameParamMode;
-		ReadMode_SurfaceCurve ReadSurfaceCurveMode;
-		double EncodeRegAngle;
-		AngleUnitMode AngleUnit;
-		TCollection_AsciiString ReadResourceName;
-		TCollection_AsciiString ReadSequence;
-		bool ReadProductMode;
-		ReadMode_ProductContext ReadProductContext;
-		ReadMode_ShapeRepr ReadShapeRepr;
-		RWMode_Tessellated ReadTessellated;
-		ReadMode_AssemblyLevel ReadAssemblyLevel;
-		bool ReadRelationship;
-		bool ReadShapeAspect;
-		bool ReadConstrRelation;
-		bool ReadSubshapeNames;
-		Resource_FormatType ReadCodePage;
-		bool ReadNonmanifold;
-		bool ReadIdeas;
-		bool ReadAllShapes;
-		bool ReadRootTransformation;
-		bool ReadColor;
-		bool ReadName;
-		bool ReadLayer;
-		bool ReadProps;
-		WriteMode_PrecisionMode WritePrecisionMode;
-		double WritePrecisionVal;
-		WriteMode_Assembly WriteAssembly;
-		WriteMode_StepSchema WriteSchema;
-		RWMode_Tessellated WriteTessellated;
-		TCollection_AsciiString WriteProductName;
-		bool WriteSurfaceCurMode;
-		UnitsMethods_LengthUnit WriteUnit;
-		TCollection_AsciiString WriteResourceName;
-		TCollection_AsciiString WriteSequence;
-		WriteMode_VertexMode WriteVertexMode;
-		bool WriteSubshapeNames;
-		bool WriteColor;
-		bool WriteNonmanifold;
-		bool WriteName;
-		bool WriteLayer;
-		bool WriteProps;
-		STEPControl_StepModelType WriteModelType;
-		/****** StepData_ConfParameters::StepData_ConfParameters ******/
-		/****** md5 signature: 6cd16b53e26cd95b2cccf6e0b916f490 ******/
-		%feature("compactdefaultargs") StepData_ConfParameters;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") StepData_ConfParameters;
-		 StepData_ConfParameters();
-
-		/****** StepData_ConfParameters::GetString ******/
-		/****** md5 signature: 0b97a9f1604c7e3c66fd073f257dbba1 ******/
-		%feature("compactdefaultargs") GetString;
-		%feature("autodoc", "
-Parameters
-----------
-theMode: ReadMode_ProductContext
-
-Return
--------
-TCollection_AsciiString
-
-Description
------------
-No available documentation.
-") GetString;
-		TCollection_AsciiString GetString(ReadMode_ProductContext theMode);
-
-		/****** StepData_ConfParameters::InitFromStatic ******/
-		/****** md5 signature: de21b82628fd5143cf3f7d14ba546a72 ******/
-		%feature("compactdefaultargs") InitFromStatic;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Initialize parameters.
-") InitFromStatic;
-		void InitFromStatic();
-
-		/****** StepData_ConfParameters::Reset ******/
-		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
-		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Reset used parameters.
-") Reset;
-		void Reset();
-
-};
-
-
-%extend StepData_ConfParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -547,7 +218,7 @@ opencascade::handle<StepData_Simple>
 
 Description
 -----------
-Returns a simple entity which matches with a type in <self>: for a simple entity: me if it matches, else a null handle for a complex entity: the member which matches, else null.
+Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
 		virtual opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
@@ -565,7 +236,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read or write.
+Returns a Field from its name; read or write.
 ") CField;
 		virtual StepData_Field & CField(Standard_CString name);
 
@@ -583,7 +254,7 @@ None
 
 Description
 -----------
-Fills a check by using its description.
+Fills a Check by using its Description.
 ") Check;
 		virtual void Check(opencascade::handle<Interface_Check> & ach);
 
@@ -596,7 +267,7 @@ opencascade::handle<StepData_EDescr>
 
 Description
 -----------
-Returns the description used to define this entity.
+Returns the Description used to define this entity.
 ") Description;
 		opencascade::handle<StepData_EDescr> Description();
 
@@ -614,7 +285,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read-only.
+Returns a Field from its name; read-only.
 ") Field;
 		virtual const StepData_Field & Field(Standard_CString name);
 
@@ -632,7 +303,7 @@ bool
 
 Description
 -----------
-Tells if a field brings a given name.
+Tells if a Field brings a given name.
 ") HasField;
 		virtual Standard_Boolean HasField(Standard_CString name);
 
@@ -663,7 +334,7 @@ bool
 
 Description
 -----------
-Tells if a step type is matched by <self> for a simple entity: own type or super type for a complex entity: one of the members.
+Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString steptype);
 
@@ -681,7 +352,7 @@ None
 
 Description
 -----------
-Fills an entityiterator with entities shared by <self>.
+Fills an EntityIterator with entities shared by <self>.
 ") Shared;
 		virtual void Shared(Interface_EntityIterator & list);
 
@@ -711,7 +382,7 @@ bool
 
 Description
 -----------
-Tells if a edescr is complex (ecdescr) or simple (esdescr).
+Tells if a EDescr is complex (ECDescr) or simple (ESDescr).
 ") IsComplex;
 		virtual Standard_Boolean IsComplex();
 
@@ -729,7 +400,7 @@ bool
 
 Description
 -----------
-Tells if a esdescr matches a step type: exact or super type.
+Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString steptype);
 
@@ -815,7 +486,7 @@ None
 
 Description
 -----------
-Creates an enumtool with definitions given by e0 .. e<max> each definition string can bring one term, or several separated by blanks. each term corresponds to one value of the enumeration, if dots are not presents they are added //! such a static constructor allows to build a static description as: static stepdata_enumtool myenumtool('e0','e1'...); then use it without having to initialise it //! a null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list).
+Creates an EnumTool with definitions given by e0 .. e<max> Each definition string can bring one term, or several separated by blanks. Each term corresponds to one value of the enumeration, if dots are not presents they are added //! Such a static constructor allows to build a static description as: static StepData_EnumTool myenumtool('e0','e1'...); then use it without having to initialise it //! A null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list).
 ") StepData_EnumTool;
 		 StepData_EnumTool(Standard_CString e0 = "", Standard_CString e1 = "", Standard_CString e2 = "", Standard_CString e3 = "", Standard_CString e4 = "", Standard_CString e5 = "", Standard_CString e6 = "", Standard_CString e7 = "", Standard_CString e8 = "", Standard_CString e9 = "", Standard_CString e10 = "", Standard_CString e11 = "", Standard_CString e12 = "", Standard_CString e13 = "", Standard_CString e14 = "", Standard_CString e15 = "", Standard_CString e16 = "", Standard_CString e17 = "", Standard_CString e18 = "", Standard_CString e19 = "", Standard_CString e20 = "", Standard_CString e21 = "", Standard_CString e22 = "", Standard_CString e23 = "", Standard_CString e24 = "", Standard_CString e25 = "", Standard_CString e26 = "", Standard_CString e27 = "", Standard_CString e28 = "", Standard_CString e29 = "", Standard_CString e30 = "", Standard_CString e31 = "", Standard_CString e32 = "", Standard_CString e33 = "", Standard_CString e34 = "", Standard_CString e35 = "", Standard_CString e36 = "", Standard_CString e37 = "", Standard_CString e38 = "", Standard_CString e39 = "");
 
@@ -833,7 +504,7 @@ None
 
 Description
 -----------
-Processes a definition, splits it according blanks if any empty definitions are ignored a null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list) see also isset.
+Processes a definition, splits it according blanks if any empty definitions are ignored A null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list) See also IsSet.
 ") AddDefinition;
 		void AddDefinition(Standard_CString term);
 
@@ -846,7 +517,7 @@ bool
 
 Description
 -----------
-Returns true if at least one definition has been entered after creation time (i.e. by adddefinition only) //! this allows to build a static description by a first pass: static stepdata_enumtool myenumtool('e0' ...); ... if (!myenumtool.isset()) { for further inits myenumtool.adddefinition('e21'); ... }.
+Returns True if at least one definition has been entered after creation time (i.e. by AddDefinition only) //! This allows to build a static description by a first pass: static StepData_EnumTool myenumtool('e0' ...); ... if (!myenumtool.IsSet()) { for further inits myenumtool.AddDefinition('e21'); ... }.
 ") IsSet;
 		Standard_Boolean IsSet();
 
@@ -859,7 +530,7 @@ int
 
 Description
 -----------
-Returns the maximum integer for a suitable value remark: while values begin at zero, maxvalue is the count of recorded values minus one.
+Returns the maximum integer for a suitable value Remark: while values begin at zero, MaxValue is the count of recorded values minus one.
 ") MaxValue;
 		Standard_Integer MaxValue();
 
@@ -872,7 +543,7 @@ int
 
 Description
 -----------
-Returns the value attached to 'null/undefined value' if none is specified or if optional has been set to false, returns -1 null value has been specified by definition '$'.
+Returns the value attached to 'null/undefined value' If none is specified or if Optional has been set to False, returns -1 Null Value has been specified by definition '$'.
 ") NullValue;
 		Standard_Integer NullValue();
 
@@ -890,7 +561,7 @@ None
 
 Description
 -----------
-Sets or unsets the enumtool to accept undefined value (for optional field). ignored if no null value is defined (by '$') can be changed during execution (to read each field), default is true (if a null value is defined).
+Sets or Unsets the EnumTool to accept undefined value (for optional field). Ignored if no null value is defined (by '$') Can be changed during execution (to read each field), Default is True (if a null value is defined).
 ") Optional;
 		void Optional(const Standard_Boolean mode);
 
@@ -908,7 +579,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the text which corresponds to a given numeric value it is limited by dots if num is out of range, returns an empty string.
+Returns the text which corresponds to a given numeric value It is limited by dots If num is out of range, returns an empty string.
 ") Text;
 		const TCollection_AsciiString & Text(const Standard_Integer num);
 
@@ -926,7 +597,7 @@ int
 
 Description
 -----------
-Returns the numeric value found for a text the text must be in capitals and limited by dots a non-suitable text gives a negative value to be returned.
+Returns the numeric value found for a text The text must be in capitals and limited by dots A non-suitable text gives a negative value to be returned.
 ") Value;
 		Standard_Integer Value(Standard_CString txt);
 
@@ -944,7 +615,7 @@ int
 
 Description
 -----------
-Same as above but works on an asciistring.
+Same as above but works on an AsciiString.
 ") Value;
 		Standard_Integer Value(TCollection_AsciiString txt);
 
@@ -1114,7 +785,7 @@ None
 
 Description
 -----------
-Creates a field, empty ('no value defined').
+Creates a Field, empty ('no value defined').
 ") StepData_Field;
 		 StepData_Field();
 
@@ -1133,7 +804,7 @@ None
 
 Description
 -----------
-Creates a field from another one. if <copy> is true, handled data (select,string,list, not entities) are copied.
+Creates a Field from another one. If <copy> is True, Handled data (Select,String,List, not entities) are copied.
 ") StepData_Field;
 		 StepData_Field(const StepData_Field & other, const Standard_Boolean copy = Standard_False);
 
@@ -1183,7 +854,7 @@ None
 
 Description
 -----------
-Clears the field, to set it as 'no value defined' just before setlist, predeclares it as 'any' a kind can be directly set here to declare a type.
+Clears the field, to set it as 'no value defined' Just before SetList, predeclares it as 'any' A Kind can be directly set here to declare a type.
 ") Clear;
 		void Clear(const Standard_Integer kind = 0);
 
@@ -1201,7 +872,7 @@ None
 
 Description
 -----------
-Declares an item of the list as undefined (ignored if list not defined as string,entity or any).
+Declares an item of the list as undefined (ignored if list not defined as String,Entity or Any).
 ") ClearItem;
 		void ClearItem(const Standard_Integer num);
 
@@ -1346,7 +1017,7 @@ int
 
 Description
 -----------
-Returns the kind of an item in a list or double list it is the kind of the list, except if it is 'any', in such a case the true kind is determined and returned.
+Returns the kind of an item in a list or double list It is the kind of the list, except if it is 'Any', in such a case the true kind is determined and returned.
 ") ItemKind;
 		Standard_Integer ItemKind(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
 
@@ -1364,7 +1035,7 @@ int
 
 Description
 -----------
-Returns the kind of the field <type> true (d): returns only the type itself else, returns the complete kind.
+Returns the kind of the field <type> True (D): returns only the type itself else, returns the complete kind.
 ") Kind;
 		Standard_Integer Kind(const Standard_Boolean type = Standard_True);
 
@@ -1456,7 +1127,7 @@ None
 
 Description
 -----------
-Sets an undetermined value: can be string, selectmember, harray(1-2) ... else, an entity in case of an harray, determines and records its size(s).
+Sets an undetermined value: can be String, SelectMember, HArray(1-2) ... else, an Entity In case of an HArray, determines and records its size(s).
 ") Set;
 		void Set(const opencascade::handle<Standard_Transient> & val);
 
@@ -1474,7 +1145,7 @@ None
 
 Description
 -----------
-Sets a boolean value (or predeclares a list as boolean).
+Sets a Boolean value (or predeclares a list as boolean).
 ") SetBoolean;
 		void SetBoolean(const Standard_Boolean val = Standard_False);
 
@@ -1506,7 +1177,7 @@ None
 
 Description
 -----------
-Codes a field as derived (no proper value).
+Codes a Field as derived (no proper value).
 ") SetDerived;
 		void SetDerived();
 
@@ -1524,7 +1195,7 @@ None
 
 Description
 -----------
-Sets an entity value.
+Sets an Entity Value.
 ") SetEntity;
 		void SetEntity(const opencascade::handle<Standard_Transient> & val);
 
@@ -1575,7 +1246,7 @@ None
 
 Description
 -----------
-Sets an enum value (as its integer counterpart) (or predeclares a list as enum) if <text> is given , also sets its textual expression <val> negative means unknown (known values begin at 0).
+Sets an Enum Value (as its integer counterpart) (or predeclares a list as Enum) If <text> is given , also sets its textual expression <val> negative means unknown (known values begin at 0).
 ") SetEnum;
 		void SetEnum(const Standard_Integer val = -1, Standard_CString text = "");
 
@@ -1595,7 +1266,7 @@ None
 
 Description
 -----------
-Sets an enum value (integer counterpart), also its text expression if known (if list has been set as 'any').
+Sets an Enum Value (Integer counterpart), also its text expression if known (if list has been set as 'any').
 ") SetEnum;
 		void SetEnum(const Standard_Integer num, const Standard_Integer val, Standard_CString text = "");
 
@@ -1613,7 +1284,7 @@ None
 
 Description
 -----------
-Directly sets the integer value, if its kind matches integer, boolean, logical, or enum (does not change kind).
+Directly sets the Integer value, if its Kind matches Integer, Boolean, Logical, or Enum (does not change Kind).
 ") SetInt;
 		void SetInt(const Standard_Integer val);
 
@@ -1633,7 +1304,7 @@ None
 
 Description
 -----------
-Internal access to an integer value for a list, plus its kind.
+Internal access to an Integer Value for a list, plus its kind.
 ") SetInt;
 		void SetInt(const Standard_Integer num, const Standard_Integer val, const Standard_Integer kind);
 
@@ -1651,7 +1322,7 @@ None
 
 Description
 -----------
-Sets an integer value (before setlist* declares it as integer).
+Sets an Integer value (before SetList* declares it as Integer).
 ") SetInteger;
 		void SetInteger(const Standard_Integer val = 0);
 
@@ -1670,7 +1341,7 @@ None
 
 Description
 -----------
-Sets an integer value for a list (rank num) (recognizes a selectmember).
+Sets an Integer Value for a list (rank num) (recognizes a SelectMember).
 ") SetInteger;
 		void SetInteger(const Standard_Integer num, const Standard_Integer val);
 
@@ -1689,7 +1360,7 @@ None
 
 Description
 -----------
-Declares a field as a list, with an initial size initial lower is defaulted as 1, can be defined the list starts empty, typed by the last set* if no set* before, sets it as 'any' (transient/select).
+Declares a field as a list, with an initial size Initial lower is defaulted as 1, can be defined The list starts empty, typed by the last Set* If no Set* before, sets it as 'any' (transient/select).
 ") SetList;
 		void SetList(const Standard_Integer size, const Standard_Integer first = 1);
 
@@ -1728,7 +1399,7 @@ None
 
 Description
 -----------
-Sets a logical value (or predeclares a list as logical).
+Sets a Logical Value (or predeclares a list as logical).
 ") SetLogical;
 		void SetLogical(const StepData_Logical val = StepData_LFalse);
 
@@ -1765,7 +1436,7 @@ None
 
 Description
 -----------
-Sets a real value (or predeclares a list as real);.
+Sets a Real Value (or predeclares a list as Real);.
 ") SetReal;
 		void SetReal(const Standard_Real val = 0.0);
 
@@ -1802,7 +1473,7 @@ None
 
 Description
 -----------
-Sets a selectmember (for integer,boolean,enum,real,logical) hence, the value of the field is accessed through this member.
+Sets a SelectMember (for Integer,Boolean,Enum,Real,Logical) Hence, the value of the field is accessed through this member.
 ") SetSelectMember;
 		void SetSelectMember(const opencascade::handle<StepData_SelectMember> & val);
 
@@ -1820,7 +1491,7 @@ None
 
 Description
 -----------
-Sets a string value (or predeclares a list as string) does not redefine the kind if it is already string or enum.
+Sets a String Value (or predeclares a list as String) Does not redefine the Kind if it is already String or Enum.
 ") SetString;
 		void SetString(Standard_CString val = "");
 
@@ -1898,7 +1569,7 @@ None
 
 Description
 -----------
-Creates a fieldlist of 0 field.
+Creates a FieldList of 0 Field.
 ") StepData_FieldList;
 		 StepData_FieldList();
 
@@ -1916,7 +1587,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields, in order to modify its content.
+Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
 		virtual StepData_Field & CField(const Standard_Integer num);
 
@@ -1934,7 +1605,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields (read only).
+Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
 		virtual const StepData_Field & Field(const Standard_Integer num);
 
@@ -1965,7 +1636,7 @@ int
 
 Description
 -----------
-Returns the count of fields. here, returns 0.
+Returns the count of fields. Here, returns 0.
 ") NbFields;
 		virtual Standard_Integer NbFields();
 
@@ -1998,7 +1669,7 @@ None
 
 Description
 -----------
-Adds a new recognizer to the compound, at the end several calls to add work by adding in the order of calls: hence, when eval has failed to recognize, evaluate will call evaluate from the first added recognizer if there is one, and to the second if there is still no result, and so on.
+Adds a new Recognizer to the Compound, at the end Several calls to Add work by adding in the order of calls: Hence, when Eval has failed to recognize, Evaluate will call Evaluate from the first added Recognizer if there is one, and to the second if there is still no result, and so on.
 ") Add;
 		void Add(const opencascade::handle<StepData_FileRecognizer> & reco);
 
@@ -2017,7 +1688,7 @@ bool
 
 Description
 -----------
-Evaluates if recognition has a result, returns it if yes in case of success, returns true and puts result in 'res' in case of failure, simply returns false works by calling deferred method eval, and in case of failure, looks for added recognizers to work.
+Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work.
 ") Evaluate;
 		Standard_Boolean Evaluate(TCollection_AsciiString akey, opencascade::handle<Standard_Transient> & res);
 
@@ -2030,7 +1701,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns result of last recognition (call of evaluate).
+Returns result of last recognition (call of Evaluate).
 ") Result;
 		opencascade::handle<Standard_Transient> Result();
 
@@ -2071,7 +1742,7 @@ None
 
 Description
 -----------
-Specific checking of an entity <ent>.
+Specific Checking of an Entity <ent>.
 ") CheckCase;
 		virtual void CheckCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -2092,7 +1763,7 @@ None
 
 Description
 -----------
-Specific copy ('deep') from <entfrom> to <entto> (same type) by using a transfercontrol which provides its working map. use method transferred from transfercontrol to work specific copying of implied references a default is provided which does nothing (must current case !) already copied references (by copyfrom) must remain unchanged use method search from transfercontrol to work.
+Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a TransferControl which provides its working Map. Use method Transferred from TransferControl to work Specific Copying of Implied References A Default is provided which does nothing (must current case !) Already copied references (by CopyFrom) must remain unchanged Use method Search from TransferControl to work.
 ") CopyCase;
 		virtual void CopyCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -2112,7 +1783,7 @@ None
 
 Description
 -----------
-Specific filling of the list of entities shared by an entity <ent>. can use the internal utility method share, below.
+Specific filling of the list of Entities shared by an Entity <ent>. Can use the internal utility method Share, below.
 ") FillSharedCase;
 		virtual void FillSharedCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -2141,7 +1812,7 @@ None
 
 Description
 -----------
-Creates an empty globalnode, with no next.
+Creates an empty GlobalNode, with no Next.
 ") StepData_GlobalNodeOfWriterLib;
 		 StepData_GlobalNodeOfWriterLib();
 
@@ -2160,7 +1831,7 @@ None
 
 Description
 -----------
-Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
+Adds a Module bound with a Protocol to the list: does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondence.
 ") Add;
 		void Add(const opencascade::handle<StepData_ReadWriteModule> & amodule, const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -2173,7 +1844,7 @@ opencascade::handle<StepData_ReadWriteModule>
 
 Description
 -----------
-Returns the module stored in a given globalnode.
+Returns the Module stored in a given GlobalNode.
 ") Module;
 		const opencascade::handle<StepData_ReadWriteModule> & Module();
 
@@ -2186,7 +1857,7 @@ opencascade::handle<StepData_GlobalNodeOfWriterLib>
 
 Description
 -----------
-Returns the next globalnode. if none is defined, returned value is a null handle.
+Returns the Next GlobalNode. If none is defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<StepData_GlobalNodeOfWriterLib> & Next();
 
@@ -2199,7 +1870,7 @@ opencascade::handle<StepData_Protocol>
 
 Description
 -----------
-Returns the attached protocol stored in a given globalnode.
+Returns the attached Protocol stored in a given GlobalNode.
 ") Protocol;
 		const opencascade::handle<StepData_Protocol> & Protocol();
 
@@ -2228,7 +1899,7 @@ None
 
 Description
 -----------
-Creates an empty node, with no next.
+Creates an empty Node, with no Next.
 ") StepData_NodeOfWriterLib;
 		 StepData_NodeOfWriterLib();
 
@@ -2246,7 +1917,7 @@ None
 
 Description
 -----------
-Adds a couple (module,protocol), that is, stores it into itself if not yet done, else creates a next node to do it.
+Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it.
 ") AddNode;
 		void AddNode(const opencascade::handle<StepData_GlobalNodeOfWriterLib> & anode);
 
@@ -2259,7 +1930,7 @@ opencascade::handle<StepData_ReadWriteModule>
 
 Description
 -----------
-Returns the module designated by a precise node.
+Returns the Module designated by a precise Node.
 ") Module;
 		const opencascade::handle<StepData_ReadWriteModule> & Module();
 
@@ -2272,7 +1943,7 @@ opencascade::handle<StepData_NodeOfWriterLib>
 
 Description
 -----------
-Returns the next node. if none was defined, returned value is a null handle.
+Returns the Next Node. If none was defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<StepData_NodeOfWriterLib> & Next();
 
@@ -2285,7 +1956,7 @@ opencascade::handle<StepData_Protocol>
 
 Description
 -----------
-Returns the protocol designated by a precise node.
+Returns the Protocol designated by a precise Node.
 ") Protocol;
 		const opencascade::handle<StepData_Protocol> & Protocol();
 
@@ -2332,7 +2003,7 @@ None
 
 Description
 -----------
-Adds an arity count to <self>, by default 1 1: a simple field passes to a list/array etc or a list to a list of list 2: a simple field passes to a list of list.
+Adds an arity count to <self>, by default 1 1: a simple field passes to a LIST/ARRAY etc or a LIST to a LIST OF LIST 2: a simple field passes to a LIST OF LIST.
 ") AddArity;
 		void AddArity(const Standard_Integer arity = 1);
 
@@ -2368,7 +2039,7 @@ None
 
 Description
 -----------
-Adds a member to a select description.
+Adds a member to a SELECT description.
 ") AddMember;
 		void AddMember(const opencascade::handle<StepData_PDescr> & member);
 
@@ -2400,7 +2071,7 @@ None
 
 Description
 -----------
-Semantic check of a field: does it complies with the given description ?.
+Semantic Check of a Field: does it complies with the given description ?.
 ") Check;
 		virtual void Check(const StepData_Field & afild, opencascade::handle<Interface_Check> & ach);
 
@@ -2413,7 +2084,7 @@ str
 
 Description
 -----------
-Returns the description (type name) to match, for a described (else, empty string).
+Returns the description (type name) to match, for a Described (else, empty string).
 ") DescrName;
 		Standard_CString DescrName();
 
@@ -2444,7 +2115,7 @@ str
 
 Description
 -----------
-Returns the text which corresponds to a numeric value, between 0 and enummax. it is limited by dots.
+Returns the text which corresponds to a numeric value, between 0 and EnumMax. It is limited by dots.
 ") EnumText;
 		Standard_CString EnumText(const Standard_Integer val);
 
@@ -2462,7 +2133,7 @@ int
 
 Description
 -----------
-Returns the numeric value found for an enum text the text must be in capitals and limited by dots a non-suitable text gives a negative value to be returned.
+Returns the numeric value found for an enum text The text must be in capitals and limited by dots A non-suitable text gives a negative value to be returned.
 ") EnumValue;
 		Standard_Integer EnumValue(Standard_CString name);
 
@@ -2501,7 +2172,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a boolean value (false,true).
+Tells if <self> is for a Boolean value (false,true).
 ") IsBoolean;
 		Standard_Boolean IsBoolean();
 
@@ -2514,7 +2185,7 @@ bool
 
 Description
 -----------
-Tells if <self> is derived.
+Tells if <self> is Derived.
 ") IsDerived;
 		Standard_Boolean IsDerived();
 
@@ -2532,7 +2203,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a described entity of a given edescr (does this edescr match description name ?). for late-bnd (works for <self> + nexts if <self> is a select).
+Tells if <self> is for a Described entity of a given EDescr (does this EDescr match description name ?). For late-bnd (works for <self> + nexts if <self> is a Select).
 ") IsDescr;
 		Standard_Boolean IsDescr(const opencascade::handle<StepData_EDescr> & descr);
 
@@ -2545,7 +2216,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for an entity, either described or cdl type.
+Tells if <self> is for an Entity, either Described or CDL Type.
 ") IsEntity;
 		Standard_Boolean IsEntity();
 
@@ -2558,7 +2229,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for an enum value then, call addenumdef ordered from the first one (value 0) managed by an enumtool.
+Tells if <self> is for an Enum value Then, call AddEnumDef ordered from the first one (value 0) Managed by an EnumTool.
 ") IsEnum;
 		Standard_Boolean IsEnum();
 
@@ -2571,7 +2242,7 @@ bool
 
 Description
 -----------
-Tells if <self> is a field. else it is a type.
+Tells if <self> is a Field. Else it is a Type.
 ") IsField;
 		Standard_Boolean IsField();
 
@@ -2584,7 +2255,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for an integer.
+Tells if <self> is for an Integer.
 ") IsInteger;
 		Standard_Boolean IsInteger();
 
@@ -2597,7 +2268,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a logical value (false,true,unknown).
+Tells if <self> is for a Logical value (false,true,unknown).
 ") IsLogical;
 		Standard_Boolean IsLogical();
 
@@ -2610,7 +2281,7 @@ bool
 
 Description
 -----------
-Tells if <self> is optional.
+Tells if <self> is Optional.
 ") IsOptional;
 		Standard_Boolean IsOptional();
 
@@ -2623,7 +2294,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a real value.
+Tells if <self> is for a Real value.
 ") IsReal;
 		Standard_Boolean IsReal();
 
@@ -2636,7 +2307,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a select.
+Tells if <self> is for a SELECT.
 ") IsSelect;
 		Standard_Boolean IsSelect();
 
@@ -2649,7 +2320,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for a string value.
+Tells if <self> is for a String value.
 ") IsString;
 		Standard_Boolean IsString();
 
@@ -2667,7 +2338,7 @@ bool
 
 Description
 -----------
-Tells if <self> is for an entity of a given cdl type (early-bnd) (works for <self> + nexts if <self> is a select).
+Tells if <self> is for an entity of a given CDL type (early-bnd) (works for <self> + nexts if <self> is a Select).
 ") IsType;
 		Standard_Boolean IsType(const opencascade::handle<Standard_Type> & atype);
 
@@ -2685,7 +2356,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-For a select, returns the member whose name matches <name> to this member, the following question can then be asked null handle if <name> not matched or <self> not a select //! remark: not to be asked for an entity type hence, following isinteger .. enum* only apply on <self> and require member while istype applies on <self> and all select members.
+For a SELECT, returns the member whose name matches <name> To this member, the following question can then be asked Null Handle if <name> not matched or <self> not a SELECT //! Remark: not to be asked for an entity type Hence, following IsInteger .. Enum* only apply on <self> and require Member While IsType applies on <self> and all Select Members.
 ") Member;
 		opencascade::handle<StepData_PDescr> Member(Standard_CString name);
 
@@ -2716,7 +2387,7 @@ None
 
 Description
 -----------
-Directly sets the arity count 0: simple field 1: list or array etc 2: list of list.
+Directly sets the arity count 0: simple field 1: LIST or ARRAY etc 2: LIST OF LIST.
 ") SetArity;
 		void SetArity(const Standard_Integer arity = 1);
 
@@ -2729,7 +2400,7 @@ None
 
 Description
 -----------
-Sets <self> for a boolean value (false,true).
+Sets <self> for a Boolean value (false,true).
 ") SetBoolean;
 		void SetBoolean();
 
@@ -2747,7 +2418,7 @@ None
 
 Description
 -----------
-Sets/unsets <self> to be for a derived field.
+Sets/Unsets <self> to be for a derived field.
 ") SetDerived;
 		void SetDerived(const Standard_Boolean der = Standard_True);
 
@@ -2765,7 +2436,7 @@ None
 
 Description
 -----------
-Sets <self> for a described entity, whose description must match the type name <dscnam>.
+Sets <self> for a Described Entity, whose Description must match the type name <dscnam>.
 ") SetDescr;
 		void SetDescr(Standard_CString dscnam);
 
@@ -2778,7 +2449,7 @@ None
 
 Description
 -----------
-Sets <self> for an enum value then, call addenumdef ordered from the first one (value 0).
+Sets <self> for an Enum value Then, call AddEnumDef ordered from the first one (value 0).
 ") SetEnum;
 		void SetEnum();
 
@@ -2797,7 +2468,7 @@ None
 
 Description
 -----------
-Sets <self> to describe a field of an entity with a name and a rank.
+Sets <self> to describe a field of an entity With a name and a rank.
 ") SetField;
 		void SetField(Standard_CString name, const Standard_Integer rank);
 
@@ -2815,7 +2486,7 @@ None
 
 Description
 -----------
-Sets <self> as <other> but duplicated hence, some definition may be changed.
+Sets <self> as <other> but duplicated Hence, some definition may be changed.
 ") SetFrom;
 		void SetFrom(const opencascade::handle<StepData_PDescr> & other);
 
@@ -2828,7 +2499,7 @@ None
 
 Description
 -----------
-Sets <self> for an integer value.
+Sets <self> for an Integer value.
 ") SetInteger;
 		void SetInteger();
 
@@ -2841,7 +2512,7 @@ None
 
 Description
 -----------
-Sets <self> for a logical value (false,true,unknown).
+Sets <self> for a Logical value (false,true,unknown).
 ") SetLogical;
 		void SetLogical();
 
@@ -2859,7 +2530,7 @@ None
 
 Description
 -----------
-Sets a name for select member. to be used if a member is for an immediate type.
+Sets a name for SELECT member. To be used if a member is for an immediate type.
 ") SetMemberName;
 		void SetMemberName(Standard_CString memname);
 
@@ -2895,7 +2566,7 @@ None
 
 Description
 -----------
-Sets/unsets <self> to accept undefined values.
+Sets/Unsets <self> to accept undefined values.
 ") SetOptional;
 		void SetOptional(const Standard_Boolean opt = Standard_True);
 
@@ -2908,7 +2579,7 @@ None
 
 Description
 -----------
-Sets <self> for a real value.
+Sets <self> for a Real value.
 ") SetReal;
 		void SetReal();
 
@@ -2921,7 +2592,7 @@ None
 
 Description
 -----------
-Declares this pdescr to be a select, hence to have members <self> itself can be the first member.
+Declares this PDescr to be a Select, hence to have members <self> itself can be the first member.
 ") SetSelect;
 		void SetSelect();
 
@@ -2934,7 +2605,7 @@ None
 
 Description
 -----------
-Sets <self> for a string value.
+Sets <self> for a String value.
 ") SetString;
 		void SetString();
 
@@ -2952,7 +2623,7 @@ None
 
 Description
 -----------
-Sets <self> for an entity which must match a type (early-bound).
+Sets <self> for an Entity which must match a Type (early-bound).
 ") SetType;
 		void SetType(const opencascade::handle<Standard_Type> & atype);
 
@@ -2965,7 +2636,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-For a list or list of list, returns the pdescr for the simpler pdescr. else, returns <self> this allows to have different attributes for optional for instance, on a field, and on the parameter of a list: [optional] list of [optional] ...
+For a LIST or LIST OF LIST, Returns the PDescr for the simpler PDescr. Else, returns <self> This allows to have different attributes for Optional for instance, on a field, and on the parameter of a LIST: [OPTIONAL] LIST OF [OPTIONAL] ...
 ") Simple;
 		opencascade::handle<StepData_PDescr> Simple();
 
@@ -2978,7 +2649,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type to match (iskind), for a cdl entity (else, null handle).
+Returns the type to match (IsKind), for a CDL Entity (else, null handle).
 ") Type;
 		opencascade::handle<Standard_Type> Type();
 
@@ -3025,7 +2696,7 @@ None
 
 Description
 -----------
-Records an esdescr, intended to build complex descriptions.
+Records an ESDescr, intended to build complex descriptions.
 ") AddBasicDescr;
 		void AddBasicDescr(const opencascade::handle<StepData_ESDescr> & esdescr);
 
@@ -3044,7 +2715,7 @@ None
 
 Description
 -----------
-Records an edescr with its case number also records its name for an esdescr (simple type): an esdescr is then used, for case number, or for type name.
+Records an EDescr with its case number Also records its name for an ESDescr (simple type): an ESDescr is then used, for case number, or for type name.
 ") AddDescr;
 		void AddDescr(const opencascade::handle<StepData_EDescr> & adescr, const Standard_Integer CN);
 
@@ -3062,7 +2733,7 @@ None
 
 Description
 -----------
-Records an pdescr.
+Records an PDescr.
 ") AddPDescr;
 		void AddPDescr(const opencascade::handle<StepData_PDescr> & pdescr);
 
@@ -3081,7 +2752,7 @@ opencascade::handle<StepData_EDescr>
 
 Description
 -----------
-Returns a basic description according to its name <anylevel> true (d): for <self> and its resources <anylevel> false: for <self> only.
+Returns a basic description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") BasicDescr;
 		opencascade::handle<StepData_EDescr> BasicDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
@@ -3099,7 +2770,7 @@ int
 
 Description
 -----------
-Returns a unique positive number for any recognized entity redefined to work by calling both typenumber and, for a described entity (late binding) descrnumber.
+Returns a unique positive number for any recognized entity Redefined to work by calling both TypeNumber and, for a Described Entity (late binding) DescrNumber.
 ") CaseNumber;
 		virtual Standard_Integer CaseNumber(const opencascade::handle<Standard_Transient> & obj);
 
@@ -3136,7 +2807,7 @@ opencascade::handle<StepData_EDescr>
 
 Description
 -----------
-Returns a description according to its name <anylevel> true (d): for <self> and its resources <anylevel> false: for <self> only.
+Returns a description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") Descr;
 		opencascade::handle<StepData_EDescr> Descr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
@@ -3154,7 +2825,7 @@ int
 
 Description
 -----------
-Returns a unique positive casenumber for types described by an edescr (late binding) warning: typenumber and descrnumber must give together a unique positive case number for each distinct case, type or descr.
+Returns a unique positive CaseNumber for types described by an EDescr (late binding) Warning: TypeNumber and DescrNumber must give together a unique positive case number for each distinct case, type or descr.
 ") DescrNumber;
 		virtual Standard_Integer DescrNumber(const opencascade::handle<StepData_EDescr> & adescr);
 
@@ -3173,7 +2844,7 @@ opencascade::handle<StepData_ECDescr>
 
 Description
 -----------
-Returns a complex description according to list of names <anylevel> true (d): for <self> and its resources <anylevel> false: for <self> only.
+Returns a complex description according to list of names <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") ECDescr;
 		opencascade::handle<StepData_ECDescr> ECDescr(const TColStd_SequenceOfAsciiString & names, const Standard_Boolean anylevel = Standard_True);
 
@@ -3192,7 +2863,7 @@ opencascade::handle<StepData_ESDescr>
 
 Description
 -----------
-Idem as descr but cast to simple description.
+Idem as Descr but cast to simple description.
 ") ESDescr;
 		opencascade::handle<StepData_ESDescr> ESDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
@@ -3205,7 +2876,7 @@ bool
 
 Description
 -----------
-Tells if a protocol brings at least one esdescr, i.e. if it defines at least one entity description by esdescr mechanism.
+Tells if a Protocol brings at least one ESDescr, i.e. if it defines at least one entity description by ESDescr mechanism.
 ") HasDescr;
 		Standard_Boolean HasDescr();
 
@@ -3223,7 +2894,7 @@ bool
 
 Description
 -----------
-Returns true if <model> is a model of step norm.
+Returns True if <model> is a Model of Step Norm.
 ") IsSuitableModel;
 		Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -3241,7 +2912,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is an unknown entity for the norm, i.e. type undefinedentity, status unknown.
+Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown.
 ") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3254,7 +2925,7 @@ int
 
 Description
 -----------
-Gives the count of protocols used as resource (can be zero) here, no resource.
+Gives the count of Protocols used as Resource (can be zero) Here, No resource.
 ") NbResources;
 		Standard_Integer NbResources();
 
@@ -3267,7 +2938,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Creates an empty model for step norm.
+Creates an empty Model for Step Norm.
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -3286,7 +2957,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-Returns a parameter description according to its name <anylevel> true (d): for <self> and its resources <anylevel> false: for <self> only.
+Returns a parameter description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") PDescr;
 		opencascade::handle<StepData_PDescr> PDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
 
@@ -3304,22 +2975,27 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given a rank. here, none.
+Returns a Resource, given a rank. Here, none.
 ") Resource;
 		opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
 		/****** StepData_Protocol::SchemaName ******/
-		/****** md5 signature: 9c27d71e6dcc0627440d6ceb3d19c0ab ******/
+		/****** md5 signature: 9b6562a0bce45ba741d1284ad388153f ******/
 		%feature("compactdefaultargs") SchemaName;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
 -------
 str
 
 Description
 -----------
-Returns the schema name attached to each class of protocol to be redefined by each sub-class here, schemaname returns '(default)' was c++: return const.
+Returns the Schema Name attached to each class of Protocol To be redefined by each sub-class Here, SchemaName returns '(DEFAULT)' was C++: return const.
 ") SchemaName;
-		virtual Standard_CString SchemaName();
+		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****** StepData_Protocol::TypeNumber ******/
 		/****** md5 signature: c141bcfd5e7e4d36c0619b6951ddde94 ******/
@@ -3335,7 +3011,7 @@ int
 
 Description
 -----------
-Returns a case number, specific of each recognized type here, only unknown entity is recognized.
+Returns a Case Number, specific of each recognized Type Here, only Unknown Entity is recognized.
 ") TypeNumber;
 		Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
@@ -3348,7 +3024,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Creates a new unknown entity for step (undefinedentity).
+Creates a new Unknown Entity for Step (UndefinedEntity).
 ") UnknownEntity;
 		opencascade::handle<Standard_Transient> UnknownEntity();
 
@@ -3384,7 +3060,7 @@ int
 
 Description
 -----------
-Translate the type of record <num> in <data> to a positive case number, or 0 if failed. works with a stepreaderdata, in which the type of an entity is defined as a string: reads the recordtype <num> then calls casenum (this type) warning: the methods casestep, steptype and recognize, must be in phase (triplets casenum-steptype-type of object).
+Translate the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with a StepReaderData, in which the Type of an Entity is defined as a String: Reads the RecordType <num> then calls CaseNum (this type) Warning: The methods CaseStep, StepType and Recognize, must be in phase (triplets CaseNum-StepType-Type of Object).
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
 
@@ -3402,7 +3078,7 @@ int
 
 Description
 -----------
-Defines case numbers corresponding to the recognized types called by casenum (data,num) above for a simple type entity warning: casestep must give the same value as protocol does for the entity type which corresponds to this type given as a string.
+Defines Case Numbers corresponding to the recognized Types Called by CaseNum (data,num) above for a Simple Type Entity Warning: CaseStep must give the same Value as Protocol does for the Entity type which corresponds to this Type given as a String.
 ") CaseStep;
 		virtual Standard_Integer CaseStep(TCollection_AsciiString atype);
 
@@ -3420,7 +3096,7 @@ int
 
 Description
 -----------
-Same a above but for a complex type entity ('plex') the provided default recognizes nothing.
+Same a above but for a Complex Type Entity ('Plex') The provided Default recognizes nothing.
 ") CaseStep;
 		virtual Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString & types);
 
@@ -3439,7 +3115,7 @@ bool
 
 Description
 -----------
-Function specific to step, which delivers the list of types which corresponds to a complex type. if <cn> is not for a complex type, this method returns false. else it returns true and fills the list in alphabetic order. the default returns false. to be redefined as required.
+Function specific to STEP, which delivers the list of types which corresponds to a complex type. If <CN> is not for a complex type, this method returns False. Else it returns True and fills the list in alphabetic order. The default returns False. To be redefined as required.
 ") ComplexType;
 		virtual Standard_Boolean ComplexType(const Standard_Integer CN, TColStd_SequenceOfAsciiString & types);
 
@@ -3457,7 +3133,7 @@ bool
 
 Description
 -----------
-Returns true if the case number corresponds to a complex type ('plex'). remember that all possible combinations must be aknowledged to be processed default is false for all cases. for a protocol which defines possible plexes, this method must be redefined.
+Returns True if the Case Number corresponds to a Complex Type ('Plex'). Remember that all possible combinations must be acknowledged to be processed Default is False for all cases. For a Protocol which defines possible Plexes, this method must be redefined.
 ") IsComplex;
 		virtual Standard_Boolean IsComplex(const Standard_Integer CN);
 
@@ -3479,7 +3155,7 @@ None
 
 Description
 -----------
-General read function, calls readstep.
+General Read Function, calls ReadStep.
 ") Read;
 		void Read(const Standard_Integer CN, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
@@ -3501,7 +3177,7 @@ None
 
 Description
 -----------
-Specific read function. works with stepreaderdata.
+Specific Read Function. Works with StepReaderData.
 ") ReadStep;
 		virtual void ReadStep(const Standard_Integer CN, const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
@@ -3519,7 +3195,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Function specific to step. some step types have a short form this method can be redefined to fill it by default, returns an empty string, which is then interpreted to take normal form from steptype.
+Function specific to STEP. Some STEP Types have a short form This method can be redefined to fill it By default, returns an empty string, which is then interpreted to take normal form from StepType.
 ") ShortType;
 		virtual TCollection_AsciiString ShortType(const Standard_Integer CN);
 
@@ -3537,7 +3213,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Function specific to step, which delivers the steptype as it is recorded in and read from a file compliant with step. this method is symmetric to the method casestep. steptype can be different from dynamic type's name, but belongs to the same class of object. returns an empty string if <cn> is zero. warning: for a complex type entity, returns an empty string (complex type must be managed by users).
+Function specific to STEP, which delivers the StepType as it is recorded in and read from a File compliant with STEP. This method is symmetric to the method CaseStep. StepType can be different from Dynamic Type's name, but belongs to the same class of Object. Returns an empty String if <CN> is zero. Warning: For a Complex Type Entity, returns an Empty String (Complex Type must be managed by users).
 ") StepType;
 		virtual const TCollection_AsciiString & StepType(const Standard_Integer CN);
 
@@ -3557,7 +3233,7 @@ None
 
 Description
 -----------
-Write function, switched by casenum.
+Write Function, switched by CaseNum.
 ") WriteStep;
 		virtual void WriteStep(const Standard_Integer CN, StepData_StepWriter & SW, const opencascade::handle<Standard_Transient> & ent);
 
@@ -3638,7 +3314,7 @@ bool
 
 Description
 -----------
-Tells if a selectmember has a name. default is false.
+Tells if a SelectMember has a name. Default is False.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -3651,7 +3327,7 @@ int
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to read it).
+This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
 		virtual Standard_Integer Int();
 
@@ -3664,7 +3340,7 @@ int
 
 Description
 -----------
-Gets the value as an integer.
+Gets the value as an Integer.
 ") Integer;
 		Standard_Integer Integer();
 
@@ -3708,7 +3384,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one by default, compares the strings, can be redefined (optimised).
+Tells if the name of a SelectMember matches a given one By default, compares the strings, can be redefined (optimised).
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -3721,7 +3397,7 @@ str
 
 Description
 -----------
-Returns the name of a selectmember. default is empty.
+Returns the name of a SelectMember. Default is empty.
 ") Name;
 		virtual Standard_CString Name();
 
@@ -3734,7 +3410,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns the kind of the selectmember, under the form of an enum paramtype.
+Returns the Kind of the SelectMember, under the form of an enum ParamType.
 ") ParamType;
 		Interface_ParamType ParamType();
 
@@ -3821,7 +3497,7 @@ None
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to set it).
+This internal method gives access to a value implemented by an Integer (to set it).
 ") SetInt;
 		virtual void SetInt(const Standard_Integer val);
 
@@ -3893,7 +3569,7 @@ bool
 
 Description
 -----------
-Sets the name of a selectmember, returns true if done, false if no name is allowed default does nothing and returns false.
+Sets the name of a SelectMember, returns True if done, False if no name is allowed Default does nothing and returns False.
 ") SetName;
 		virtual Standard_Boolean SetName(Standard_CString name);
 
@@ -3990,7 +3666,7 @@ int
 
 Description
 -----------
-Recognize a selectmember (kind, name). returns a positive value which identifies the case in the list of immediate cases (distinct from the list of entity types). zero if not recognizes default returns 0, saying that no immediate value is allowed.
+Recognize a SelectMember (kind, name). Returns a positive value which identifies the case in the List of immediate cases (distinct from the List of Entity Types). Zero if not recognizes Default returns 0, saying that no immediate value is allowed.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -4003,7 +3679,7 @@ int
 
 Description
 -----------
-Returns the type of the stored selectmember, or zero if it is null or entity. calls the method casemem on value.
+Returns the Type of the stored SelectMember, or zero if it is Null or Entity. Calls the method CaseMem on Value.
 ") CaseMember;
 		Standard_Integer CaseMember();
 
@@ -4021,7 +3697,7 @@ int
 
 Description
 -----------
-Recognizes the type of an entity. returns a positive number which identifies the type in the definition list of the selecttype. returns zero if its type in not in this list.
+Recognizes the Type of an Entity. Returns a positive Number which identifies the Type in the definition List of the SelectType. Returns Zero if its Type in not in this List.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4034,7 +3710,7 @@ int
 
 Description
 -----------
-Recognizes the type of the stored entity, or zero if it is null or selectmember. calls the first method casenum on value.
+Recognizes the Type of the stored Entity, or zero if it is Null or SelectMember. Calls the first method CaseNum on Value.
 ") CaseNumber;
 		Standard_Integer CaseNumber();
 
@@ -4047,7 +3723,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-Returns the description which corresponds to <self> null if no specific description to give. this description is used to control reading an check validity. default returns a null handle, i.e. undefined description it can suffice if casenum and casemem give enough control.
+Returns the Description which corresponds to <self> Null if no specific description to give. This description is used to control reading an check validity. Default returns a Null Handle, i.e. undefined description It can suffice if CaseNum and CaseMem give enough control.
 ") Description;
 		virtual opencascade::handle<StepData_PDescr> Description();
 
@@ -4060,7 +3736,7 @@ int
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to read it).
+This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
 		Standard_Integer Int();
 
@@ -4073,7 +3749,7 @@ int
 
 Description
 -----------
-Gets the value as an integer.
+Gets the value as an Integer.
 ") Integer;
 		Standard_Integer Integer();
 
@@ -4086,7 +3762,7 @@ bool
 
 Description
 -----------
-Returns true if there is no stored entity (i.e. it is null).
+Returns True if there is no Stored Entity (i.e. it is Null).
 ") IsNull;
 		Standard_Boolean IsNull();
 
@@ -4117,7 +3793,7 @@ bool
 
 Description
 -----------
-Returns true if the type of an entity complies with the definition list of the selecttype. also checks for a selectmember default implementation looks for casenum or casemem positive.
+Returns True if the Type of an Entity complies with the definition list of the SelectType. Also checks for a SelectMember Default Implementation looks for CaseNum or CaseMem positive.
 ") Matches;
 		Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4130,7 +3806,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns value as a selectmember. null if not a selectmember.
+Returns Value as a SelectMember. Null if not a SelectMember.
 ") Member;
 		opencascade::handle<StepData_SelectMember> Member();
 
@@ -4143,7 +3819,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a preferred selectmember. default returns a null by default, a selectmember can be set according to data type and name: it is a selectnamed if name is defined //! this method allows to define, for a specific selecttype, a specific selectmember than selectnamed. for instance for a real plus a name, a selectreal plus a case number is a good solution, lighter than selectnamed which is very multipurpose.
+Returns a preferred SelectMember. Default returns a Null By default, a SelectMember can be set according to data type and Name: it is a SelectNamed if Name is defined //! This method allows to define, for a specific SelectType, a specific SelectMember than SelectNamed. For instance for a Real plus a Name, a SelectReal plus a case number is a good solution, lighter than SelectNamed which is very multipurpose.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -4156,7 +3832,7 @@ None
 
 Description
 -----------
-Nullifies the stored entity.
+Nullifies the Stored Entity.
 ") Nullify;
 		void Nullify();
 
@@ -4182,7 +3858,7 @@ str
 
 Description
 -----------
-Returns the type name of selectmember. if no selectmember or with no type name, returns an empty string to change it, pass through the selectmember itself.
+Returns the type name of SelectMember. If no SelectMember or with no type name, returns an empty string To change it, pass through the SelectMember itself.
 ") SelectName;
 		Standard_CString SelectName();
 
@@ -4219,7 +3895,7 @@ None
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to set it): a selectmember must already be there !.
+This internal method gives access to a value implemented by an Integer (to set it): a SelectMember MUST ALREADY BE THERE !.
 ") SetInt;
 		void SetInt(const Standard_Integer val);
 
@@ -4238,7 +3914,7 @@ None
 
 Description
 -----------
-Sets a new integer value, with an optional type name warning: if a selectmember is already set, works on it: value and name must then be accepted by this selectmember.
+Sets a new Integer value, with an optional type name Warning: If a SelectMember is already set, works on it: value and name must then be accepted by this SelectMember.
 ") SetInteger;
 		void SetInteger(const Standard_Integer val, Standard_CString name = "");
 
@@ -4294,7 +3970,7 @@ None
 
 Description
 -----------
-Stores an entity. this allows to define a specific selecttype class with one read method per member type, which returns the value casted with the good type.
+Stores an Entity. This allows to define a specific SelectType class with one read method per member Type, which returns the Value casted with the good Type.
 ") SetValue;
 		void SetValue(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4307,7 +3983,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the effective (dynamic) type of the stored entity if it is null, returns type(transient).
+Returns the Effective (Dynamic) Type of the Stored Entity If it is Null, returns TYPE(Transient).
 ") Type;
 		opencascade::handle<Standard_Type> Type();
 
@@ -4320,7 +3996,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the stored entity. can be used to define specific read methods (see above).
+Returns the Stored Entity. Can be used to define specific read methods (see above).
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value();
 
@@ -4354,7 +4030,7 @@ None
 
 Description
 -----------
-Creates a stepdumper, able to work on a given stepmodel (which defines the total scope for dumping entities) and a given protocol from step (which defines the authorized types to be dumped) <mode> commands what is to be displayed (number or label) 0 for number (and corresponding labels are displayed apart) 1 for label (and corresponding numbers are displayed apart) 2 for label without anymore.
+Creates a StepDumper, able to work on a given StepModel (which defines the total scope for dumping entities) and a given Protocol from Step (which defines the authorized types to be dumped) <mode> commands what is to be displayed (number or label) 0 for number (and corresponding labels are displayed apart) 1 for label (and corresponding numbers are displayed apart) 2 for label without anymore.
 ") StepData_StepDumper;
 		 StepData_StepDumper(const opencascade::handle<StepData_StepModel> & amodel, const opencascade::handle<StepData_Protocol> & protocol, const Standard_Integer mode = 0);
 
@@ -4373,7 +4049,7 @@ S: Standard_OStream
 
 Description
 -----------
-Dumps a entity on an messenger. returns true if success, false, if the entity to dump has not been recognized by the protocol. <level> can have one of these values: - 0: prints the type only, as known in step files (steptype) if <ent> has not been regognized by the protocol, or if its type is complex, the steptype is replaced by the display of the cdl type. complex type are well processed by level 1. - 1: dumps the entity, completely (whatever it has simple or complex type) but alone. - 2: dumps the entity completely, plus the item its refers to at first level (a header message designates the starting entity of the dump) <lists shared and implied> - 3: dumps the entity and its referred items at any levels //! for levels 1,2,3, the numbers displayed (form #nnn) are the numbers of the corresponding entities in the model.
+Dumps a Entity on an Messenger. Returns True if success, False, if the entity to dump has not been recognized by the Protocol. <level> can have one of these values: - 0: prints the TYPE only, as known in STEP Files (StepType) If <ent> has not been regognized by the Protocol, or if its type is Complex, the StepType is replaced by the display of the cdl type. Complex Type are well processed by level 1. - 1: dumps the entity, completely (whatever it has simple or complex type) but alone. - 2: dumps the entity completely, plus the item its refers to at first level (a header message designates the starting entity of the dump) <Lists Shared and Implied> - 3: dumps the entity and its referred items at any levels //! For levels 1,2,3, the numbers displayed (form #nnn) are the numbers of the corresponding entities in the Model.
 ") Dump;
 		Standard_Boolean Dump(std::ostream &OutValue, const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level);
 
@@ -4392,7 +4068,7 @@ S: Standard_OStream
 
 Description
 -----------
-Works as dump with a transient, but directly takes the entity designated by its number in the model returns false, also if <num> is out of range.
+Works as Dump with a Transient, but directly takes the entity designated by its number in the Model Returns False, also if <num> is out of range.
 ") Dump;
 		Standard_Boolean Dump(std::ostream &OutValue, const Standard_Integer num, const Standard_Integer level);
 
@@ -4405,7 +4081,7 @@ StepData_StepWriter
 
 Description
 -----------
-Gives an access to the tool which is used to work: this allow to acts on some parameters: floating format, scopes ...
+Gives an access to the tool which is used to work: this allow to acts on some parameters: Floating Format, Scopes ...
 ") StepWriter;
 		StepData_StepWriter & StepWriter();
 
@@ -4423,7 +4099,6 @@ Gives an access to the tool which is used to work: this allow to acts on some pa
 ***************************/
 class StepData_StepModel : public Interface_InterfaceModel {
 	public:
-		StepData_ConfParameters InternalParameters;
 		/****** StepData_StepModel::StepData_StepModel ******/
 		/****** md5 signature: c99203119f72afa543e25ef26579062e ******/
 		%feature("compactdefaultargs") StepData_StepModel;
@@ -4433,7 +4108,7 @@ None
 
 Description
 -----------
-Creates an empty step model with an empty header.
+Creates an empty STEP model with an empty header.
 ") StepData_StepModel;
 		 StepData_StepModel();
 
@@ -4451,7 +4126,7 @@ None
 
 Description
 -----------
-Adds an entity to the header.
+Adds an Entity to the Header.
 ") AddHeaderEntity;
 		void AddHeaderEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4464,7 +4139,7 @@ None
 
 Description
 -----------
-Clears the header.
+Clears the Header.
 ") ClearHeader;
 		void ClearHeader();
 
@@ -4477,7 +4152,7 @@ None
 
 Description
 -----------
-Erases specific labels, i.e. clears the map (entity-ident).
+erases specific labels, i.e. clears the map (entity-ident).
 ") ClearLabels;
 		void ClearLabels();
 
@@ -4495,7 +4170,7 @@ S: Standard_OStream
 
 Description
 -----------
-Dumps the header, with the header protocol of stepdata. if the header protocol is not defined, for each header entity, prints its type. else sends the header under the form of header section of an ascii step file <level> is not used because header is not so big.
+Dumps the Header, with the Header Protocol of StepData. If the Header Protocol is not defined, for each Header Entity, prints its Type. Else sends the Header under the form of HEADER Section of an Ascii Step File <level> is not used because Header is not so big.
 ") DumpHeader;
 		void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
 
@@ -4513,7 +4188,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns entity given its rank. same as interfaceentity, but with a shorter name.
+returns entity given its rank. Same as InterfaceEntity, but with a shorter name.
 ") Entity;
 		opencascade::handle<Standard_Transient> Entity(const Standard_Integer num);
 
@@ -4531,7 +4206,7 @@ None
 
 Description
 -----------
-Gets header from another model (uses header protocol).
+gets header from another Model (uses Header Protocol).
 ") GetFromAnother;
 		void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -4549,7 +4224,7 @@ bool
 
 Description
 -----------
-Says if a header entity has a specified type.
+says if a Header entity has a specified type.
 ") HasHeaderEntity;
 		Standard_Boolean HasHeaderEntity(const opencascade::handle<Standard_Type> & atype);
 
@@ -4562,7 +4237,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns header entities under the form of an iterator.
+returns Header entities under the form of an iterator.
 ") Header;
 		Interface_EntityIterator Header();
 
@@ -4580,7 +4255,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns header entity with specified type, if there is.
+Returns Header entity with specified type, if there is.
 ") HeaderEntity;
 		opencascade::handle<Standard_Transient> HeaderEntity(const opencascade::handle<Standard_Type> & atype);
 
@@ -4598,7 +4273,7 @@ int
 
 Description
 -----------
-Returns the label ident attached to an entity, 0 if not in me.
+returns the label ident attached to an entity, 0 if not in me.
 ") IdentLabel;
 		Standard_Integer IdentLabel(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4611,7 +4286,7 @@ bool
 
 Description
 -----------
-Returns the unit initialization flag true - the unit was initialized false - the unit value was not initialized, the default value is used.
+Returns the unit initialization flag True - the unit was initialized False - the unit value was not initialized, the default value is used.
 ") IsInitializedUnit;
 		Standard_Boolean IsInitializedUnit();
 
@@ -4637,7 +4312,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns a new empty model, same type as <self>, i.e. stepmodel.
+Returns a New Empty Model, same type as <self>, i.e. StepModel.
 ") NewEmptyModel;
 		opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
@@ -4655,7 +4330,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to step norm for a given entity, i.e. if a labelident has been recorded, its value with '#', else the number in the model with '#' and between ().
+Prints label specific to STEP norm for a given entity, i.e. if a LabelIdent has been recorded, its value with '#', else the number in the model with '#' and between ().
 ") PrintLabel;
 		void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
@@ -4710,7 +4385,7 @@ None
 
 Description
 -----------
-Return the encoding of step file for converting names into unicode.
+Return the encoding of STEP file for converting names into UNICODE.
 ") SetSourceCodePage;
 		void SetSourceCodePage(Resource_FormatType theCode);
 
@@ -4741,7 +4416,7 @@ Resource_FormatType
 
 Description
 -----------
-Return the encoding of step file for converting names into unicode. initialized from 'read.step.codepage' variable by constructor, which is resource_utf8 by default.
+Return the encoding of STEP file for converting names into UNICODE. Initialized from 'read.step.codepage' variable by constructor, which is Resource_UTF8 by default.
 ") SourceCodePage;
 		Resource_FormatType SourceCodePage();
 
@@ -4759,7 +4434,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a string with the label attached to a given entity, same form as for printlabel.
+Returns a string with the label attached to a given entity, same form as for PrintLabel.
 ") StringLabel;
 		opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4777,7 +4452,7 @@ None
 
 Description
 -----------
-Specific check, checks header items with headerprotocol.
+Specific Check, checks Header Items with HeaderProtocol.
 ") VerifyCheck;
 		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
@@ -4827,7 +4502,7 @@ None
 
 Description
 -----------
-Creates stepreaderdata correctly dimensionned (necessary at creation time, because it contains arrays) nbheader is nb of records for header, nbtotal for header+data and nbpar gives the total count of parameters.
+creates StepReaderData correctly dimensioned (necessary at creation time, because it contains arrays) nbheader is nb of records for Header, nbtotal for Header+Data and nbpar gives the total count of parameters.
 ") StepData_StepReaderData;
 		 StepData_StepReaderData(const Standard_Integer nbheader, const Standard_Integer nbtotal, const Standard_Integer nbpar, const Resource_FormatType theSourceCodePage = Resource_FormatType_UTF8);
 
@@ -4848,7 +4523,7 @@ None
 
 Description
 -----------
-Fills the fields of a parameter of a record. this is a variant of addparam, adapted to step (optimized for specific values).
+Fills the fields of a parameter of a record. This is a variant of AddParam, Adapted to STEP (optimized for specific values).
 ") AddStepParam;
 		void AddStepParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
@@ -4866,7 +4541,7 @@ str
 
 Description
 -----------
-Returns record type as a cstring was c++: return const.
+Returns Record Type as a CString was C++: return const.
 ") CType;
 		Standard_CString CType(const Standard_Integer num);
 
@@ -4888,7 +4563,7 @@ bool
 
 Description
 -----------
-Checks if parameter <nump> of record <num> is given as derived if this check is successful (i.e. param = '*'), returns true else, fills <ach> with a message which contains <mess> and returns false. according to <errstat>, this message is warning if errstat is false (default), fail if errstat is true.
+Checks if parameter <nump> of record <num> is given as Derived If this Check is successful (i.e. Param = '*'), returns True Else, fills <ach> with a Message which contains <mess> and returns False. According to <errstat>, this message is Warning if errstat is False (Default), Fail if errstat is True.
 ") CheckDerived;
 		Standard_Boolean CheckDerived(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const Standard_Boolean errstat = Standard_False);
 
@@ -4909,7 +4584,7 @@ bool
 
 Description
 -----------
-Checks count of parameters of record <num> to equate <nbreq> if this check is successful, returns true else, fills <ach> with an error message then returns false <mess> is included in the error message if given non empty.
+Checks Count of Parameters of record <num> to equate <nbreq> If this Check is successful, returns True Else, fills <ach> with an Error Message then returns False <mess> is included in the Error message if given non empty.
 ") CheckNbParams;
 		Standard_Boolean CheckNbParams(const Standard_Integer num, const Standard_Integer nbreq, opencascade::handle<Interface_Check> & ach, Standard_CString mess = "");
 
@@ -4928,7 +4603,7 @@ None
 
 Description
 -----------
-Returns the list of types which correspond to a complex type entity. if not complex, there is just one type in it for a sublist or a scope mark, <types> remains empty.
+Returns the List of Types which correspond to a Complex Type Entity. If not Complex, there is just one Type in it For a SubList or a Scope mark, <types> remains empty.
 ") ComplexType;
 		void ComplexType(const Standard_Integer num, TColStd_SequenceOfAsciiString & types);
 
@@ -4949,7 +4624,7 @@ None
 
 Description
 -----------
-Fills a check with a fail message if enumeration value does match parameter definition just a help to centralize message definitions.
+Fills a check with a fail message if enumeration value does match parameter definition Just a help to centralize message definitions.
 ") FailEnumValue;
 		void FailEnumValue(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach);
 
@@ -4967,7 +4642,7 @@ int
 
 Description
 -----------
-Determine first suitable record of header works as findnextrecord, but treats only header records.
+determine first suitable record of Header works as FindNextRecord, but treats only Header records.
 ") FindNextHeaderRecord;
 		Standard_Integer FindNextHeaderRecord(const Standard_Integer num);
 
@@ -4985,7 +4660,7 @@ int
 
 Description
 -----------
-Determines the first suitable record following a given one that is, skips scope,endscope and sublist records note: skips header records, which are accessed separately.
+determines the first suitable record following a given one that is, skips SCOPE,ENDSCOPE and SUBLIST records Note: skips Header records, which are accessed separately.
 ") FindNextRecord;
 		Standard_Integer FindNextRecord(const Standard_Integer num);
 
@@ -4998,7 +4673,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the global check. it can record fail messages about undefined references (detected by setentitynumbers).
+Returns the Global Check. It can record Fail messages about Undefined References (detected by SetEntityNumbers).
 ") GlobalCheck;
 		const opencascade::handle<Interface_Check> GlobalCheck();
 
@@ -5016,7 +4691,7 @@ bool
 
 Description
 -----------
-Returns true if <num> corresponds to a complex type entity (as can be defined by andor express clause).
+Returns True if <num> corresponds to a Complex Type Entity (as can be defined by ANDOR Express clause).
 ") IsComplex;
 		Standard_Boolean IsComplex(const Standard_Integer num);
 
@@ -5036,7 +4711,7 @@ num: int
 
 Description
 -----------
-Determines the first component which brings a given name, for a complex type entity <num0> is the very first record of this entity <num> is given the last nextnamedforcomplex, starts at zero it is returned as the newly found number hence, in the normal case, nextnamedforcomplex starts by num0 if <num> is zero, else by nextforcomplex(num) if the alphabetic order is not respected, it restarts from num0 and loops on nextforcomplex until finding <name> in case of 'non-alphabetic order', <ach> is filled with a warning for this name in case of 'not-found at all', <ach> is filled with a fail, and <num> is returned as zero //! returns true if alphabetic order, false else.
+Determines the first component which brings a given name, for a Complex Type Entity <num0> is the very first record of this entity <num> is given the last NextNamedForComplex, starts at zero it is returned as the newly found number Hence, in the normal case, NextNamedForComplex starts by num0 if <num> is zero, else by NextForComplex(num) If the alphabetic order is not respected, it restarts from num0 and loops on NextForComplex until finding <name> In case of 'non-alphabetic order', <ach> is filled with a Warning for this name In case of 'not-found at all', <ach> is filled with a Fail, and <num> is returned as zero //! Returns True if alphabetic order, False else.
 ") NamedForComplex;
 		Standard_Boolean NamedForComplex(Standard_CString name, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
@@ -5057,7 +4732,7 @@ num: int
 
 Description
 -----------
-Determines the first component which brings a given name, or short name for a complex type entity <num0> is the very first record of this entity <num> is given the last nextnamedforcomplex, starts at zero it is returned as the newly found number hence, in the normal case, nextnamedforcomplex starts by num0 if <num> is zero, else by nextforcomplex(num) if the alphabetic order is not respected, it restarts from num0 and loops on nextforcomplex until finding <name> in case of 'non-alphabetic order', <ach> is filled with a warning for this name in case of 'not-found at all', <ach> is filled with a fail, and <num> is returned as zero //! returns true if alphabetic order, false else.
+Determines the first component which brings a given name, or short name for a Complex Type Entity <num0> is the very first record of this entity <num> is given the last NextNamedForComplex, starts at zero it is returned as the newly found number Hence, in the normal case, NextNamedForComplex starts by num0 if <num> is zero, else by NextForComplex(num) If the alphabetic order is not respected, it restarts from num0 and loops on NextForComplex until finding <name> In case of 'non-alphabetic order', <ach> is filled with a Warning for this name In case of 'not-found at all', <ach> is filled with a Fail, and <num> is returned as zero //! Returns True if alphabetic order, False else.
 ") NamedForComplex;
 		Standard_Boolean NamedForComplex(Standard_CString theName, Standard_CString theShortName, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
@@ -5070,7 +4745,7 @@ int
 
 Description
 -----------
-Returns total count of entities (including header).
+Returns total count of Entities (including Header).
 ") NbEntities;
 		virtual Standard_Integer NbEntities();
 
@@ -5088,7 +4763,7 @@ int
 
 Description
 -----------
-Returns the next 'component' for a complex type entity, of which <num> is already a component (the first one or a next one) returns 0 for a simple type or for the last component.
+Returns the Next 'Component' for a Complex Type Entity, of which <num> is already a Component (the first one or a next one) Returns 0 for a Simple Type or for the last Component.
 ") NextForComplex;
 		Standard_Integer NextForComplex(const Standard_Integer num);
 
@@ -5101,7 +4776,7 @@ None
 
 Description
 -----------
-Works as setentitynumbers but for header: more simple because there are no reference, only sub-lists.
+Works as SetEntityNumbers but for Header: more simple because there are no Reference, only Sub-Lists.
 ") PrepareHeader;
 		void PrepareHeader();
 
@@ -5124,7 +4799,7 @@ bool
 
 Description
 -----------
-Reads parameter <nump> of record <num> into a transient value according to the type of the parameter: named for integer,boolean,logical,enum,real: selectnamed immediate integer,boolean,logical,enum,real: selectint/real text: hasciistring ident: the referenced entity sub-list not processed, see readsub this value is controlled by a parameter descriptor (pdescr), which controls its allowed type and value <ach> is filled if the read parameter does not match its description (the select is nevertheless created if possible) //! warning: val is in out, hence it is possible to predefine a specific selectmember then to fill it. if <val> is null or if the result is not a selectmember, val itself is returned a new ref for a select with a name, <val> must then be a selectnamed.
+Reads parameter <nump> of record <num> into a Transient Value according to the type of the parameter: Named for Integer,Boolean,Logical,Enum,Real: SelectNamed Immediate Integer,Boolean,Logical,Enum,Real: SelectInt/Real Text: HAsciiString Ident: the referenced Entity Sub-List not processed, see ReadSub This value is controlled by a Parameter Descriptor (PDescr), which controls its allowed type and value <ach> is filled if the read parameter does not match its description (the select is nevertheless created if possible) //! Warning: val is in out, hence it is possible to predefine a specific SelectMember then to fill it. If <val> is Null or if the result is not a SelectMember, val itself is returned a new ref For a Select with a Name, <val> must then be a SelectNamed.
 ") ReadAny;
 		Standard_Boolean ReadAny(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
@@ -5145,7 +4820,7 @@ flag: bool
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a boolean return value and check managed as by readreal (demands a boolean enum, i.e. text '.t.' for true or '.f.' for false).
+reads parameter <nump> of record <num> as a Boolean Return value and Check managed as by ReadReal (demands a Boolean enum, i.e. text '.T.' for True or '.F.' for False).
 ") ReadBoolean;
 		Standard_Boolean ReadBoolean(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Boolean &OutValue);
 
@@ -5167,7 +4842,7 @@ val: int
 
 Description
 -----------
-Reads parameter <nump> of record <num> as an enumeration (text between dots) and converts it to an integer value, by an enumtool. returns true if ok, false if: this parameter is not enumeration, or is not recognized by the enumtool (with fail).
+Reads parameter <nump> of record <num> as an Enumeration (text between dots) and converts it to an integer value, by an EnumTool. Returns True if OK, false if: this parameter is not enumeration, or is not recognized by the EnumTool (with fail).
 ") ReadEnum;
 		Standard_Boolean ReadEnum(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const StepData_EnumTool & enumtool, Standard_Integer &OutValue);
 
@@ -5212,7 +4887,7 @@ bool
 
 Description
 -----------
-Reads parameter <nump> of record <num> into a field, controlled by a parameter descriptor (pdescr), which controls its allowed type(s) and value <ach> is filled if the read parameter does not match its description (but the field is read anyway) if the description is not defined, no control is done returns true when done.
+reads parameter <nump> of record <num> into a Field, controlled by a Parameter Descriptor (PDescr), which controls its allowed type(s) and value <ach> is filled if the read parameter does not match its description (but the field is read anyway) If the description is not defined, no control is done Returns True when done.
 ") ReadField;
 		Standard_Boolean ReadField(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, StepData_Field & fild);
 
@@ -5233,7 +4908,7 @@ val: int
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a single integer. return value & check managed as by readxy (demands an integer).
+reads parameter <nump> of record <num> as a single Integer. Return value & Check managed as by ReadXY (demands an Integer).
 ") ReadInteger;
 		Standard_Boolean ReadInteger(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue);
 
@@ -5254,7 +4929,7 @@ bool
 
 Description
 -----------
-Reads a list of fields controlled by an esdescr.
+reads a list of fields controlled by an ESDescr.
 ") ReadList;
 		Standard_Boolean ReadList(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_ESDescr> & descr, StepData_FieldList & list);
 
@@ -5275,7 +4950,7 @@ flag: StepData_Logical
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a logical return value and check managed as by readboolean (demands a logical enum, i.e. text '.t.', '.f.', or '.u.').
+reads parameter <nump> of record <num> as a Logical Return value and Check managed as by ReadBoolean (demands a Logical enum, i.e. text '.T.', '.F.', or '.U.').
 ") ReadLogical;
 		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
 
@@ -5296,7 +4971,7 @@ val: float
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a single real value. return value and check managed as by readxy (demands a real).
+reads parameter <nump> of record <num> as a single Real value. Return value and Check managed as by ReadXY (demands a Real).
 ") ReadReal;
 		Standard_Boolean ReadReal(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue);
 
@@ -5317,7 +4992,7 @@ val: TCollection_HAsciiString
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a string (text between quotes, quotes are removed by the read operation) return value and check managed as by readxy (demands a string).
+reads parameter <nump> of record <num> as a String (text between quotes, quotes are removed by the Read operation) Return value and Check managed as by ReadXY (demands a String).
 ") ReadString;
 		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -5339,7 +5014,7 @@ int
 
 Description
 -----------
-Reads the content of a sub-list into a transient: selectnamed, or harray1 of integer,real,string,transient ... recursive call if list of list ... if a sub-list has mixed types, an harray1oftransient is produced, it may contain selectmember intended to be called by readfield the returned status is: negative if failed, 0 if empty. else the kind to be recorded in the field.
+reads the content of a sub-list into a transient: SelectNamed, or HArray1 of Integer,Real,String,Transient ... recursive call if list of list ... If a sub-list has mixed types, an HArray1OfTransient is produced, it may contain SelectMember Intended to be called by ReadField The returned status is: negative if failed, 0 if empty. Else the kind to be recorded in the field.
 ") ReadSub;
 		Standard_Integer ReadSub(const Standard_Integer numsub, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
@@ -5363,7 +5038,7 @@ numsub: int
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a sub-list (may be typed, see readtypedparameter in this case) returns true if ok. else (not a list), returns false and feeds check with appropriate check if <optional> is true and param is not defined, returns true with <ach> not filled and <numsub> returned as 0 works with sublistnumber with <aslast> false (no specific case for last parameter).
+reads parameter <nump> of record <num> as a sub-list (may be typed, see ReadTypedParameter in this case) Returns True if OK. Else (not a LIST), returns false and feeds Check with appropriate check If <optional> is True and Param is not defined, returns True with <ach> not filled and <numsub> returned as 0 Works with SubListNumber with <aslast> false (no specific case for last parameter).
 ") ReadSubList;
 		Standard_Boolean ReadSubList(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, const Standard_Boolean optional = Standard_False, const Standard_Integer lenmin = 0, const Standard_Integer lenmax = 0);
 
@@ -5387,7 +5062,7 @@ numrp: int
 
 Description
 -----------
-Resolves a parameter which can be enclosed in a type def., as type(val). the parameter must then be read normally according its type. parameter to be resolved is <nump> of record <num> <mustbetyped> true demands a typed parameter <mustbetyped> false accepts a non-typed parameter as option mess and ach as usual <numr>,<numrp> are the resolved record and parameter numbers = num,nump if no type, else numrp=1 <typ> returns the recorded type, or empty string remark: a non-typed list is considered as 'non-typed'.
+Resolves a parameter which can be enclosed in a type def., as TYPE(val). The parameter must then be read normally according its type. Parameter to be resolved is <nump> of record <num> <mustbetyped> True demands a typed parameter <mustbetyped> False accepts a non-typed parameter as option mess and ach as usual <numr>,<numrp> are the resolved record and parameter numbers = num,nump if no type, else numrp=1 <typ> returns the recorded type, or empty string Remark: a non-typed list is considered as 'non-typed'.
 ") ReadTypedParam;
 		Standard_Boolean ReadTypedParam(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean mustbetyped, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, Standard_Integer &OutValue, TCollection_AsciiString & typ);
 
@@ -5409,7 +5084,7 @@ Y: float
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a sub-list of two reals x,y. returns true if ok. else, returns false and feeds check with appropriate fails (parameter not a sub-list, not two reals in the sub-list) composed with 'mess' which gives the name of the parameter.
+reads parameter <nump> of record <num> as a sub-list of two Reals X,Y. Returns True if OK. Else, returns false and feeds Check with appropriate Fails (parameter not a sub-list, not two Reals in the sub-list) composed with 'mess' which gives the name of the parameter.
 ") ReadXY;
 		Standard_Boolean ReadXY(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5432,7 +5107,7 @@ Z: float
 
 Description
 -----------
-Reads parameter <nump> of record <num> as a sub-list of three reals x,y,z. return value and check managed as by readxy (demands a sub-list of three reals).
+reads parameter <nump> of record <num> as a sub-list of three Reals X,Y,Z. Return value and Check managed as by ReadXY (demands a sub-list of three Reals).
 ") ReadXYZ;
 		Standard_Boolean ReadXYZ(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5450,7 +5125,7 @@ int
 
 Description
 -----------
-Returns record identifier (positive number) if returned ident is not positive: sub-list or scope mark.
+Returns record identifier (Positive number) If returned ident is not positive: Sub-List or Scope mark.
 ") RecordIdent;
 		Standard_Integer RecordIdent(const Standard_Integer num);
 
@@ -5468,7 +5143,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns record type.
+Returns Record Type.
 ") RecordType;
 		const TCollection_AsciiString & RecordType(const Standard_Integer num);
 
@@ -5486,7 +5161,7 @@ None
 
 Description
 -----------
-Determines reference numbers in entitynumber fields called by prepare from stepreadertool to prepare later using by a stepmodel. this method is attached to stepreaderdata because it needs a massive amount of data accesses to work //! if <withmap> is given false, the basic exploration algorithm is activated, otherwise a map is used as far as it is possible this option can be used only to test this algorithm.
+determines reference numbers in EntityNumber fields called by Prepare from StepReaderTool to prepare later using by a StepModel. This method is attached to StepReaderData because it needs a massive amount of data accesses to work //! If <withmap> is given False, the basic exploration algorithm is activated, otherwise a map is used as far as it is possible this option can be used only to test this algorithm.
 ") SetEntityNumbers;
 		void SetEntityNumbers(const Standard_Boolean withmap = Standard_True);
 
@@ -5527,7 +5202,7 @@ int
 
 Description
 -----------
-Returns sublist numero designated by a parameter (nump) in a record (num), or zero if the parameter does not exist or is not a sublist address. zero too if aslast is true and nump is not for the last parameter.
+Returns SubList numero designated by a parameter (nump) in a record (num), or zero if the parameter does not exist or is not a SubList address. Zero too If aslast is True and nump is not for the last parameter.
 ") SubListNumber;
 		Standard_Integer SubListNumber(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean aslast);
 
@@ -5570,7 +5245,7 @@ None
 
 Description
 -----------
-Creates stepreadertool to work with a stepreaderdata according to a step protocol. defines the readerlib at this time.
+creates StepReaderTool to work with a StepReaderData according to a Step Protocol. Defines the ReaderLib at this time.
 ") StepData_StepReaderTool;
 		 StepData_StepReaderTool(const opencascade::handle<StepData_StepReaderData> & reader, const opencascade::handle<StepData_Protocol> & protocol);
 
@@ -5590,7 +5265,7 @@ bool
 
 Description
 -----------
-Fills an entity, given record no; works by using a readerlib to load each entity, which must be a transient actually, returned value is true if no fail, false else.
+fills an entity, given record no; works by using a ReaderLib to load each entity, which must be a Transient Actually, returned value is True if no fail, False else.
 ") AnalyseRecord;
 		Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
@@ -5608,7 +5283,7 @@ None
 
 Description
 -----------
-Fills model's header; that is, gives to it header entities and commands their loading. also fills stepmodel's global check from stepreaderdata's globalcheck.
+fills model's header; that is, gives to it Header entities and commands their loading. Also fills StepModel's Global Check from StepReaderData's GlobalCheck.
 ") BeginRead;
 		void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -5626,7 +5301,7 @@ None
 
 Description
 -----------
-Ends file reading after reading all the entities here, it binds in the model, idents to entities (for checks).
+Ends file reading after reading all the entities Here, it binds in the model, Idents to Entities (for checks).
 ") EndRead;
 		virtual void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -5644,7 +5319,7 @@ None
 
 Description
 -----------
-Bounds empty entities to records, uses default recognition provided by readerlib and readermodule. also calls computation of references (setentitynumbers from stepreaderdata) works only on data entities (skips header) <optimize> given false allows to test some internal algorithms which are normally avoided (see also stepreaderdata).
+Bounds empty entities to records, uses default Recognition provided by ReaderLib and ReaderModule. Also calls computation of references (SetEntityNumbers from StepReaderData) Works only on data entities (skips header) <optimize> given False allows to test some internal algorithms which are normally avoided (see also StepReaderData).
 ") Prepare;
 		void Prepare(const Standard_Boolean optimize = Standard_True);
 
@@ -5663,7 +5338,7 @@ None
 
 Description
 -----------
-Bounds empty entities to records, works with a specific filerecognizer, stored and later used in recognize works only on data entities (skips header) <optimize: same as above.
+Bounds empty entities to records, works with a specific FileRecognizer, stored and later used in Recognize Works only on data entities (skips header) <optimize: same as above.
 ") Prepare;
 		void Prepare(const opencascade::handle<StepData_FileRecognizer> & reco, const Standard_Boolean optimize = Standard_True);
 
@@ -5681,7 +5356,7 @@ None
 
 Description
 -----------
-Bounds empty entities and sub-lists to header records works like prepare + setentitynumbers, but for header (n.b.: in header, no ident and no reference) filerecognizer is to specify entities which are allowed to be defined in the header (not every type can be).
+bounds empty entities and sub-lists to header records works like Prepare + SetEntityNumbers, but for header (N.B.: in Header, no Ident and no reference) FileRecognizer is to specify Entities which are allowed to be defined in the Header (not every type can be).
 ") PrepareHeader;
 		void PrepareHeader(const opencascade::handle<StepData_FileRecognizer> & reco);
 
@@ -5701,7 +5376,7 @@ bool
 
 Description
 -----------
-Recognizes records, by asking either readerlib (default) or filerecognizer (if defined) to do so. <ach> is to call recognizebylib.
+recognizes records, by asking either ReaderLib (default) or FileRecognizer (if defined) to do so. <ach> is to call RecognizeByLib.
 ") Recognize;
 		Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
@@ -5733,7 +5408,7 @@ None
 
 Description
 -----------
-Creates an empty stepwriter from a stepmodel. the stepmodel provides the number of entities, as identifiers for file.
+Creates an empty StepWriter from a StepModel. The StepModel provides the Number of Entities, as identifiers for File.
 ") StepData_StepWriter;
 		 StepData_StepWriter(const opencascade::handle<StepData_StepModel> & amodel);
 
@@ -5746,7 +5421,7 @@ None
 
 Description
 -----------
-Prepares adding a parameter (that is, adds ',' except for first one); normally for internal use; can be used to send a totally empty parameter (with no literal value).
+prepares adding a parameter (that is, adds ',' except for first one); normally for internal use; can be used to send a totally empty parameter (with no literal value).
 ") AddParam;
 		void AddParam();
 
@@ -5772,7 +5447,7 @@ None
 
 Description
 -----------
-Closes a sublist by a ')'.
+closes a sublist by a ')'.
 ") CloseSub;
 		void CloseSub();
 
@@ -5790,7 +5465,7 @@ None
 
 Description
 -----------
-Sets a comment mark: if mode is true, begins comment zone, if mode is false, ends comment zone (if one is begun).
+sets a comment mark: if mode is True, begins Comment zone, if mode is False, ends Comment zone (if one is begun).
 ") Comment;
 		void Comment(const Standard_Boolean mode);
 
@@ -5803,7 +5478,7 @@ None
 
 Description
 -----------
-Sends the end of a complex entity: a simple closed bracket it must be called after sending all the components and before the final call to endentity.
+sends the end of a complex entity: a simple closed bracket It must be called AFTER sending all the components and BEFORE the final call to EndEntity.
 ") EndComplex;
 		void EndComplex();
 
@@ -5816,7 +5491,7 @@ None
 
 Description
 -----------
-Sends end of entity (closing bracket plus ';') error if count of opened-closed brackets is not null.
+sends end of entity (closing bracket plus ';') Error if count of opened-closed brackets is not null.
 ") EndEntity;
 		void EndEntity();
 
@@ -5829,7 +5504,7 @@ None
 
 Description
 -----------
-Sets end of file; error is endsec was not set.
+sets end of file; error is EndSec was not set.
 ") EndFile;
 		void EndFile();
 
@@ -5842,7 +5517,7 @@ None
 
 Description
 -----------
-Sets end of section; to be done before passing to next one.
+sets end of section; to be done before passing to next one.
 ") EndSec;
 		void EndSec();
 
@@ -5855,7 +5530,7 @@ Interface_FloatWriter
 
 Description
 -----------
-Returns the embedded floatwriter, which controls sending reals use this method to access floatwriter in order to consult or change its options (mainformat, formatforrange,zerosuppress), because it is returned as the address of its field.
+Returns the embedded FloatWriter, which controls sending Reals Use this method to access FloatWriter in order to consult or change its options (MainFormat, FormatForRange,ZeroSuppress), because it is returned as the address of its field.
 ") FloatWriter;
 		Interface_FloatWriter & FloatWriter();
 
@@ -5873,7 +5548,7 @@ None
 
 Description
 -----------
-Asks that further indentations will begin at position of entity first opening bracket; else they begin at zero (def) for each sublist level, two more blancks are added at beginning (except for text continuation, which must begin at true zero).
+asks that further indentations will begin at position of entity first opening bracket; else they begin at zero (def) for each sublist level, two more blancks are added at beginning (except for text continuation, which must begin at true zero).
 ") Indent;
 		void Indent(const Standard_Boolean onent);
 
@@ -5891,7 +5566,7 @@ bool
 
 Description
 -----------
-Returns true if an entity identified by its number is in a scope.
+Returns True if an Entity identified by its Number is in a Scope.
 ") IsInScope;
 		Standard_Boolean IsInScope(const Standard_Integer num);
 
@@ -5909,7 +5584,7 @@ None
 
 Description
 -----------
-Joins current line to last one, only if new length is 72 max if newline is true, a new current line begins; else, current line is set to the last line (once joined) itself an can be completed.
+joins current line to last one, only if new length is 72 max if newline is True, a new current line begins; else, current line is set to the last line (once joined) itself an can be completed.
 ") JoinLast;
 		void JoinLast(const Standard_Boolean newline);
 
@@ -5940,7 +5615,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a line given its rank in the file.
+Returns a Line given its rank in the File.
 ") Line;
 		opencascade::handle<TCollection_HAsciiString> Line(const Standard_Integer num);
 
@@ -5953,7 +5628,7 @@ int
 
 Description
 -----------
-Returns count of lines.
+Returns count of Lines.
 ") NbLines;
 		Standard_Integer NbLines();
 
@@ -5971,7 +5646,7 @@ None
 
 Description
 -----------
-Flushes current line; if empty, flushes it (defines a new empty line) if evenempty is true; else, skips it.
+flushes current line; if empty, flushes it (defines a new empty line) if evenempty is True; else, skips it.
 ") NewLine;
 		void NewLine(const Standard_Boolean evenempty);
 
@@ -5984,7 +5659,7 @@ None
 
 Description
 -----------
-Open a sublist by a '('.
+open a sublist by a '('.
 ") OpenSub;
 		void OpenSub();
 
@@ -6002,7 +5677,7 @@ None
 
 Description
 -----------
-Open a sublist with its type then a '('.
+open a sublist with its type then a '('.
 ") OpenTypedSub;
 		void OpenTypedSub(Standard_CString subtype);
 
@@ -6019,7 +5694,7 @@ S: Standard_OStream
 
 Description
 -----------
-Writes result on an output defined as an ostream then clears it.
+writes result on an output defined as an OStream then clears it.
 ") Print;
 		Standard_Boolean Print(std::ostream &OutValue);
 
@@ -6037,7 +5712,7 @@ None
 
 Description
 -----------
-Sends an integer parameter.
+sends an integer parameter.
 ") Send;
 		void Send(const Standard_Integer val);
 
@@ -6055,7 +5730,7 @@ None
 
 Description
 -----------
-Sends a real parameter (works with floatwriter).
+sends a real parameter (works with FloatWriter).
 ") Send;
 		void Send(const Standard_Real val);
 
@@ -6073,7 +5748,7 @@ None
 
 Description
 -----------
-Sends a text given as string (it will be set between '...').
+sends a text given as string (it will be set between '...').
 ") Send;
 		void Send(TCollection_AsciiString val);
 
@@ -6091,7 +5766,7 @@ None
 
 Description
 -----------
-Sends a reference to an entity (its identifier with '#') remark 1: a null <val> is interpreted as 'undefined' remark 2: for an hasciistring which is not recorded in the model, it is send as its string content, between quotes.
+sends a reference to an entity (its identifier with '#') REMARK 1: a Null <val> is interpreted as 'Undefined' REMARK 2: for an HAsciiString which is not recorded in the Model, it is send as its String Content, between quotes.
 ") Send;
 		void Send(const opencascade::handle<Standard_Transient> & val);
 
@@ -6109,7 +5784,7 @@ None
 
 Description
 -----------
-Sends an array of real.
+sends an array of real.
 ") SendArrReal;
 		void SendArrReal(const opencascade::handle<TColStd_HArray1OfReal> & anArr);
 
@@ -6127,7 +5802,7 @@ None
 
 Description
 -----------
-Sends a boolean as .t. for true or .f. for false (it is an useful case of enum, which is built-in).
+sends a Boolean as .T. for True or .F. for False (it is an useful case of Enum, which is built-in).
 ") SendBoolean;
 		void SendBoolean(const Standard_Boolean val);
 
@@ -6145,7 +5820,7 @@ None
 
 Description
 -----------
-Sends a comment. error if we are not inside a comment zone.
+sends a comment. Error if we are not inside a comment zone.
 ") SendComment;
 		void SendComment(const opencascade::handle<TCollection_HAsciiString> & text);
 
@@ -6163,7 +5838,7 @@ None
 
 Description
 -----------
-Same as above but accepts a cstring (ex.: '...' directly).
+same as above but accepts a CString (ex.: '...' directly).
 ") SendComment;
 		void SendComment(Standard_CString text);
 
@@ -6176,7 +5851,7 @@ None
 
 Description
 -----------
-Begins data section; error if endsec was not set.
+Begins data section; error if EndSec was not set.
 ") SendData;
 		void SendData();
 
@@ -6189,7 +5864,7 @@ None
 
 Description
 -----------
-Sends a 'derived' parameter (by '*'). a derived parameter has been inherited from a super-type then redefined as being computed by a function. hence its value in file is senseless.
+sends a 'Derived' parameter (by '*'). A Derived Parameter has been inherited from a Super-Type then redefined as being computed by a function. Hence its value in file is senseless.
 ") SendDerived;
 		void SendDerived();
 
@@ -6202,7 +5877,7 @@ None
 
 Description
 -----------
-Sets an end of scope (on a separate line).
+sets an end of Scope (on a separate line).
 ") SendEndscope;
 		void SendEndscope();
 
@@ -6221,7 +5896,7 @@ None
 
 Description
 -----------
-Send an entity of the data section. if it corresponds to a scope, also sends the scope information and contained items.
+Send an Entity of the Data Section. If it corresponds to a Scope, also Sends the Scope information and contained Items.
 ") SendEntity;
 		void SendEntity(const Standard_Integer nument, const StepData_WriterLib & lib);
 
@@ -6239,7 +5914,7 @@ None
 
 Description
 -----------
-Sends an enum given by string (literal expression) adds '.' around it if not done remark: val can be computed by class enumtool from stepdata: stepwriter.sendenum (myenum.text(enumval));.
+sends an enum given by String (literal expression) adds '.' around it if not done Remark: val can be computed by class EnumTool from StepData: StepWriter.SendEnum (myenum.Text(enumval));.
 ") SendEnum;
 		void SendEnum(TCollection_AsciiString val);
 
@@ -6257,7 +5932,7 @@ None
 
 Description
 -----------
-Sends an enum given by string (literal expression) adds '.' around it if not done.
+sends an enum given by String (literal expression) adds '.' around it if not done.
 ") SendEnum;
 		void SendEnum(Standard_CString val);
 
@@ -6276,7 +5951,7 @@ None
 
 Description
 -----------
-Sends the content of a field, controlled by its descriptor if the descriptor is not defined, follows the description detained by the field itself.
+Sends the content of a field, controlled by its descriptor If the descriptor is not defined, follows the description detained by the field itself.
 ") SendField;
 		void SendField(const StepData_Field & fild, const opencascade::handle<StepData_PDescr> & descr);
 
@@ -6307,7 +5982,7 @@ None
 
 Description
 -----------
-Begins an entity with an ident plus '=' (at beginning of line) entity ident is its number given by the containing model warning: <ident> must be, either number or label, according labelmode.
+begins an entity with an ident plus '=' (at beginning of line) entity ident is its Number given by the containing Model Warning: <ident> must be, either Number or Label, according LabelMode.
 ") SendIdent;
 		void SendIdent(const Standard_Integer ident);
 
@@ -6326,7 +6001,7 @@ None
 
 Description
 -----------
-Send the content of an entity as being a fieldlist controlled by its descriptor. this includes start and end brackets but not the entity type.
+Send the content of an entity as being a FieldList controlled by its descriptor. This includes start and end brackets but not the entity type.
 ") SendList;
 		void SendList(const StepData_FieldList & list, const opencascade::handle<StepData_ESDescr> & descr);
 
@@ -6344,7 +6019,7 @@ None
 
 Description
 -----------
-Sends a logical as .t. or .f. or .u. according its value (it is a standard case of enum for step, and is built-in).
+sends a Logical as .T. or .F. or .U. according its Value (it is a standard case of Enum for Step, and is built-in).
 ") SendLogical;
 		void SendLogical(const StepData_Logical val);
 
@@ -6363,7 +6038,7 @@ None
 
 Description
 -----------
-Sends the complete model, included header and data sections works with a writerlib defined through a protocol if <headeronly> is given true, only the header section is sent (used to dump the header of a stepmodel).
+Sends the complete Model, included HEADER and DATA Sections Works with a WriterLib defined through a Protocol If <headeronly> is given True, only the HEADER Section is sent (used to Dump the Header of a StepModel).
 ") SendModel;
 		void SendModel(const opencascade::handle<StepData_Protocol> & protocol, const Standard_Boolean headeronly = Standard_False);
 
@@ -6376,7 +6051,7 @@ None
 
 Description
 -----------
-Sets a begin of scope (ends this line).
+sets a begin of Scope (ends this line).
 ") SendScope;
 		void SendScope();
 
@@ -6395,7 +6070,7 @@ None
 
 Description
 -----------
-Sends a selectmember, which cab be named or not.
+Sends a SelectMember, which cab be named or not.
 ") SendSelect;
 		void SendSelect(const opencascade::handle<StepData_SelectMember> & sm, const opencascade::handle<StepData_PDescr> & descr);
 
@@ -6413,7 +6088,7 @@ None
 
 Description
 -----------
-Sends a string exactly as it is given.
+sends a string exactly as it is given.
 ") SendString;
 		void SendString(TCollection_AsciiString val);
 
@@ -6431,7 +6106,7 @@ None
 
 Description
 -----------
-Sends a string exactly as it is given.
+sends a string exactly as it is given.
 ") SendString;
 		void SendString(Standard_CString val);
 
@@ -6444,7 +6119,7 @@ None
 
 Description
 -----------
-Sends an undefined (optional absent) parameter (by '$').
+sends an undefined (optional absent) parameter (by '$').
 ") SendUndef;
 		void SendUndef();
 
@@ -6463,7 +6138,7 @@ None
 
 Description
 -----------
-Declares the entity number <numscope> to correspond to a scope which contains the entity number <numin>. several calls to the same <numscope> add entities in this scope, in this order. error if <numin> is already declared in the scope warning: the declaration of the scopes is assumed to be consistent, i.e. <numin> is not referenced from outside this scope (not checked here).
+Declares the Entity Number <numscope> to correspond to a Scope which contains the Entity Number <numin>. Several calls to the same <numscope> add Entities in this Scope, in this order. Error if <numin> is already declared in the Scope Warning: the declaration of the Scopes is assumed to be consistent, i.e. <numin> is not referenced from outside this Scope (not checked here).
 ") SetScope;
 		void SetScope(const Standard_Integer numscope, const Standard_Integer numin);
 
@@ -6476,7 +6151,7 @@ None
 
 Description
 -----------
-Sends the start of a complex entity, which is a simple open bracket (without increasing braket level) it must be called just after sendentity and before sending components, each one begins by startentity.
+sends the start of a complex entity, which is a simple open bracket (without increasing bracket level) It must be called JUST AFTER SendEntity and BEFORE sending components, each one begins by StartEntity.
 ") StartComplex;
 		void StartComplex();
 
@@ -6494,7 +6169,7 @@ None
 
 Description
 -----------
-Sets entity's steptype, opens brakets, starts param no to 0 params are separated by comma remark: for a multiple type entity (see express andor clause) startcomplex must be called before sending components, then each 'component' must be sent separately (one call to startentity for each one): the type which precedes is then automatically closed. once all the components have been sent, endcomplex must be called, then and only then endentity.
+sets entity's StepType, opens brackets, starts param no to 0 params are separated by comma Remark: for a Multiple Type Entity (see Express ANDOR clause) StartComplex must be called before sending components, then each 'Component' must be sent separately (one call to StartEntity for each one): the Type which precedes is then automatically closed. Once all the components have been sent, EndComplex must be called, then and only then EndEntity.
 ") StartEntity;
 		void StartEntity(TCollection_AsciiString atype);
 
@@ -6542,7 +6217,7 @@ None
 
 Description
 -----------
-Creates a library which complies with a protocol, that is: same class (criterium isinstance) this creation gets the modules from the global set, those which are bound to the given protocol and its resources.
+Creates a Library which complies with a Protocol, that is: Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources.
 ") StepData_WriterLib;
 		 StepData_WriterLib(const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -6555,7 +6230,7 @@ None
 
 Description
 -----------
-Creates an empty library: it will later by filled by method addprotocol.
+Creates an empty Library: it will later by filled by method AddProtocol.
 ") StepData_WriterLib;
 		 StepData_WriterLib();
 
@@ -6573,7 +6248,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) to the library, given the class of a protocol. takes resources into account. (if <aprotocol> is not of type theprotocol, it is not added).
+Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added).
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -6586,7 +6261,7 @@ None
 
 Description
 -----------
-Clears the list of modules of a library (can be used to redefine the order of modules before action: clear then refill the library by calls to addprotocol).
+Clears the list of Modules of a library (can be used to redefine the order of Modules before action: Clear then refill the Library by calls to AddProtocol).
 ") Clear;
 		void Clear();
 
@@ -6599,7 +6274,7 @@ opencascade::handle<StepData_ReadWriteModule>
 
 Description
 -----------
-Returns the current module in the iteration.
+Returns the current Module in the Iteration.
 ") Module;
 		const opencascade::handle<StepData_ReadWriteModule> & Module();
 
@@ -6612,7 +6287,7 @@ bool
 
 Description
 -----------
-Returns true if there are more modules to iterate on.
+Returns True if there are more Modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
@@ -6625,7 +6300,7 @@ None
 
 Description
 -----------
-Iterates by getting the next module in the list if there is none, the exception will be raised by value.
+Iterates by getting the next Module in the list If there is none, the exception will be raised by Value.
 ") Next;
 		void Next();
 
@@ -6638,7 +6313,7 @@ opencascade::handle<StepData_Protocol>
 
 Description
 -----------
-Returns the current protocol in the iteration.
+Returns the current Protocol in the Iteration.
 ") Protocol;
 		const opencascade::handle<StepData_Protocol> & Protocol();
 
@@ -6657,7 +6332,7 @@ CN: int
 
 Description
 -----------
-Selects a module from the library, given an object. returns true if select has succeeded, false else. also returns (as arguments) the selected module and the case number determined by the associated protocol. if select has failed, <module> is null handle and cn is zero. (select can work on any criterium, such as object dynamictype).
+Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<StepData_ReadWriteModule> & module, Standard_Integer &OutValue);
 
@@ -6670,7 +6345,7 @@ None
 
 Description
 -----------
-Sets a library to be defined with the complete global list (all the couples protocol/modules recorded in it).
+Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it).
 ") SetComplete;
 		void SetComplete();
 
@@ -6689,7 +6364,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) into the global definition set for this class of library.
+Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<StepData_ReadWriteModule> & amodule, const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -6702,7 +6377,7 @@ None
 
 Description
 -----------
-Starts iteration on the modules (sets it on the first one).
+Starts Iteration on the Modules (sets it on the first one).
 ") Start;
 		void Start();
 
@@ -6729,7 +6404,7 @@ None
 
 Description
 -----------
-Creates a default general module.
+Creates a Default General Module.
 ") StepData_DefaultGeneral;
 		 StepData_DefaultGeneral();
 
@@ -6750,7 +6425,7 @@ None
 
 Description
 -----------
-Specific checking of an entity <ent>.
+Specific Checking of an Entity <ent>.
 ") CheckCase;
 		void CheckCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -6771,7 +6446,7 @@ None
 
 Description
 -----------
-Specific copy ('deep') from <entfrom> to <entto> (same type) by using a copytool which provides its working map. use method transferred from transfercontrol to work.
+Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from TransferControl to work.
 ") CopyCase;
 		void CopyCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -6791,7 +6466,7 @@ None
 
 Description
 -----------
-Specific filling of the list of entities shared by an entity <ent>, which is an unknownentity from stepdata.
+Specific filling of the list of Entities shared by an Entity <ent>, which is an UnknownEntity from StepData.
 ") FillSharedCase;
 		void FillSharedCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -6839,7 +6514,7 @@ None
 
 Description
 -----------
-Creates an ecdescr, empty.
+Creates an ECDescr, empty.
 ") StepData_ECDescr;
 		 StepData_ECDescr();
 
@@ -6857,7 +6532,7 @@ None
 
 Description
 -----------
-Adds a member warning: members are added in alphabetic order.
+Adds a member Warning: members are added in alphabetic order.
 ") Add;
 		void Add(const opencascade::handle<StepData_ESDescr> & member);
 
@@ -6870,7 +6545,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsComplex;
 		Standard_Boolean IsComplex();
 
@@ -6888,7 +6563,7 @@ bool
 
 Description
 -----------
-Tells if a esdescr matches a step type: exact or super type.
+Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
 		Standard_Boolean Matches(Standard_CString steptype);
 
@@ -6906,7 +6581,7 @@ opencascade::handle<StepData_ESDescr>
 
 Description
 -----------
-Returns a member from its rank.
+Returns a Member from its rank.
 ") Member;
 		opencascade::handle<StepData_ESDescr> Member(const Standard_Integer num);
 
@@ -6979,7 +6654,7 @@ None
 
 Description
 -----------
-Creates an esdescr with a type name.
+Creates an ESDescr with a type name.
 ") StepData_ESDescr;
 		 StepData_ESDescr(Standard_CString name);
 
@@ -6992,7 +6667,7 @@ opencascade::handle<StepData_ESDescr>
 
 Description
 -----------
-Returns the basic esdescr, null if <self> is not derived.
+Returns the basic ESDescr, null if <self> is not derived.
 ") Base;
 		opencascade::handle<StepData_ESDescr> Base();
 
@@ -7010,7 +6685,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-Returns the pdescr for the field <num> (or null).
+Returns the PDescr for the field <num> (or Null).
 ") Field;
 		opencascade::handle<StepData_PDescr> Field(const Standard_Integer num);
 
@@ -7023,7 +6698,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsComplex;
 		Standard_Boolean IsComplex();
 
@@ -7059,7 +6734,7 @@ bool
 
 Description
 -----------
-Tells if a esdescr matches a step type: exact or super type.
+Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
 		Standard_Boolean Matches(Standard_CString steptype);
 
@@ -7095,7 +6770,7 @@ opencascade::handle<StepData_PDescr>
 
 Description
 -----------
-Returns the pdescr for the field named <name> (or null).
+Returns the PDescr for the field named <name> (or Null).
 ") NamedField;
 		opencascade::handle<StepData_PDescr> NamedField(Standard_CString name);
 
@@ -7157,7 +6832,7 @@ None
 
 Description
 -----------
-Sets an esdescr as based on another one hence, if there are inherited fields, the derived esdescr cumulates all them, while the base just records its own ones.
+Sets an ESDescr as based on another one Hence, if there are inherited fields, the derived ESDescr cumulates all them, while the base just records its own ones.
 ") SetBase;
 		void SetBase(const opencascade::handle<StepData_ESDescr> & base);
 
@@ -7177,7 +6852,7 @@ None
 
 Description
 -----------
-Sets a pdescr to describe a field a field is designated by its rank and name.
+Sets a PDescr to describe a field A Field is designated by its rank and name.
 ") SetField;
 		void SetField(const Standard_Integer num, Standard_CString name, const opencascade::handle<StepData_PDescr> & descr);
 
@@ -7195,7 +6870,7 @@ None
 
 Description
 -----------
-Sets a new count of fields each one is described by a pdescr.
+Sets a new count of fields Each one is described by a PDescr.
 ") SetNbFields;
 		void SetNbFields(const Standard_Integer nb);
 
@@ -7213,7 +6888,7 @@ None
 
 Description
 -----------
-Sets an esdescr as 'super-type'. applies an a base (non derived) esdescr.
+Sets an ESDescr as 'super-type'. Applies an a base (non derived) ESDescr.
 ") SetSuper;
 		void SetSuper(const opencascade::handle<StepData_ESDescr> & super);
 
@@ -7226,7 +6901,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the type name as an asciistring.
+Returns the type name as an AsciiString.
 ") StepType;
 		const TCollection_AsciiString & StepType();
 
@@ -7239,7 +6914,7 @@ opencascade::handle<StepData_ESDescr>
 
 Description
 -----------
-Returns the super-type esdescr, null if <self> is root.
+Returns the super-type ESDescr, null if <self> is root.
 ") Super;
 		opencascade::handle<StepData_ESDescr> Super();
 
@@ -7281,7 +6956,7 @@ None
 
 Description
 -----------
-Creates a fieldlist of 1 field.
+Creates a FieldList of 1 Field.
 ") StepData_FieldList1;
 		 StepData_FieldList1();
 
@@ -7299,7 +6974,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields, in order to modify its content.
+Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
 		virtual StepData_Field & CField(const Standard_Integer num);
 
@@ -7317,7 +6992,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields (read only).
+Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
 		virtual const StepData_Field & Field(const Standard_Integer num);
 
@@ -7330,7 +7005,7 @@ int
 
 Description
 -----------
-Returns the count of fields. here, returns 1.
+Returns the count of fields. Here, returns 1.
 ") NbFields;
 		virtual Standard_Integer NbFields();
 
@@ -7362,7 +7037,7 @@ None
 
 Description
 -----------
-Creates a fieldlistd of <nb> fields.
+Creates a FieldListD of <nb> Fields.
 ") StepData_FieldListD;
 		 StepData_FieldListD(const Standard_Integer nb);
 
@@ -7380,7 +7055,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields, in order to modify its content.
+Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
 		virtual StepData_Field & CField(const Standard_Integer num);
 
@@ -7398,7 +7073,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields (read only).
+Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
 		virtual const StepData_Field & Field(const Standard_Integer num);
 
@@ -7411,7 +7086,7 @@ int
 
 Description
 -----------
-Returns the count of fields. here, returns starting <nb>.
+Returns the count of fields. Here, returns starting <nb>.
 ") NbFields;
 		virtual Standard_Integer NbFields();
 
@@ -7429,7 +7104,7 @@ None
 
 Description
 -----------
-Sets a new count of fields. former contents are lost.
+Sets a new count of Fields. Former contents are lost.
 ") SetNb;
 		void SetNb(const Standard_Integer nb);
 
@@ -7461,7 +7136,7 @@ None
 
 Description
 -----------
-Creates a fieldlistn of <nb> fields.
+Creates a FieldListN of <nb> Fields.
 ") StepData_FieldListN;
 		 StepData_FieldListN(const Standard_Integer nb);
 
@@ -7479,7 +7154,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields, in order to modify its content.
+Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
 		virtual StepData_Field & CField(const Standard_Integer num);
 
@@ -7497,7 +7172,7 @@ StepData_Field
 
 Description
 -----------
-Returns the field n0 <num> between 1 and nbfields (read only).
+Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
 		virtual const StepData_Field & Field(const Standard_Integer num);
 
@@ -7510,7 +7185,7 @@ int
 
 Description
 -----------
-Returns the count of fields. here, returns starting <nb>.
+Returns the count of fields. Here, returns starting <nb>.
 ") NbFields;
 		virtual Standard_Integer NbFields();
 
@@ -7537,7 +7212,7 @@ None
 
 Description
 -----------
-Creates an empty fileprotocol.
+Creates an empty FileProtocol.
 ") StepData_FileProtocol;
 		 StepData_FileProtocol();
 
@@ -7555,7 +7230,7 @@ None
 
 Description
 -----------
-Adds a protocol to the definition list of the fileprotocol but ensures that each class of protocol is present only once in this list.
+Adds a Protocol to the definition list of the FileProtocol But ensures that each class of Protocol is present only once in this list.
 ") Add;
 		void Add(const opencascade::handle<StepData_Protocol> & protocol);
 
@@ -7574,7 +7249,7 @@ bool
 
 Description
 -----------
-Calls globalcheck for each of its recorded resources.
+Calls GlobalCheck for each of its recorded resources.
 ") GlobalCheck;
 		virtual Standard_Boolean GlobalCheck(const Interface_Graph & G, opencascade::handle<Interface_Check> & ach);
 
@@ -7587,7 +7262,7 @@ int
 
 Description
 -----------
-Gives the count of protocols used as resource (can be zero) i.e. the count of protocol recorded by calling the method add.
+Gives the count of Protocols used as Resource (can be zero) i.e. the count of Protocol recorded by calling the method Add.
 ") NbResources;
 		virtual Standard_Integer NbResources();
 
@@ -7605,22 +7280,27 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given a rank. here, rank of calling add.
+Returns a Resource, given a rank. Here, rank of calling Add.
 ") Resource;
 		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
 		/****** StepData_FileProtocol::SchemaName ******/
-		/****** md5 signature: 27a898737676170f03381527c0752a7e ******/
+		/****** md5 signature: 52640e28819c7e829718ce5927c4da83 ******/
 		%feature("compactdefaultargs") SchemaName;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
 -------
 str
 
 Description
 -----------
-Returns the schema name attached to each class of protocol to be redefined by each sub-class here, schemaname returns '' (empty string) was c++: return const.
+Returns the Schema Name attached to each class of Protocol To be redefined by each sub-class Here, SchemaName returns '' (empty String) was C++: return const.
 ") SchemaName;
-		virtual Standard_CString SchemaName();
+		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****** StepData_FileProtocol::TypeNumber ******/
 		/****** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ******/
@@ -7636,7 +7316,7 @@ int
 
 Description
 -----------
-Returns a case number, specific of each recognized type here, no type at all is recognized properly: all types are recognized by the resources.
+Returns a Case Number, specific of each recognized Type Here, NO Type at all is recognized properly: all Types are recognized by the resources.
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
@@ -7670,7 +7350,7 @@ None
 
 Description
 -----------
-Creates a plex (empty). the complete creation is made by the ecdescr itself, by calling add.
+Creates a Plex (empty). The complete creation is made by the ECDescr itself, by calling Add.
 ") StepData_Plex;
 		 StepData_Plex(const opencascade::handle<StepData_ECDescr> & descr);
 
@@ -7706,7 +7386,7 @@ opencascade::handle<StepData_Simple>
 
 Description
 -----------
-Returns a simple entity which matches with a type in <self>: for a simple entity: me if it matches, else a null handle for a complex entity: the member which matches, else null.
+Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
 		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
@@ -7724,7 +7404,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read or write.
+Returns a Field from its name; read or write.
 ") CField;
 		StepData_Field & CField(Standard_CString name);
 
@@ -7742,7 +7422,7 @@ None
 
 Description
 -----------
-Fills a check by using its description.
+Fills a Check by using its Description.
 ") Check;
 		void Check(opencascade::handle<Interface_Check> & ach);
 
@@ -7755,7 +7435,7 @@ opencascade::handle<StepData_ECDescr>
 
 Description
 -----------
-Returns the description as for a plex.
+Returns the Description as for a Plex.
 ") ECDescr;
 		opencascade::handle<StepData_ECDescr> ECDescr();
 
@@ -7773,7 +7453,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read-only.
+Returns a Field from its name; read-only.
 ") Field;
 		const StepData_Field & Field(Standard_CString name);
 
@@ -7791,7 +7471,7 @@ bool
 
 Description
 -----------
-Tells if a field brings a given name.
+Tells if a Field brings a given name.
 ") HasField;
 		Standard_Boolean HasField(Standard_CString name);
 
@@ -7804,7 +7484,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsComplex;
 		Standard_Boolean IsComplex();
 
@@ -7822,7 +7502,7 @@ bool
 
 Description
 -----------
-Tells if a step type is matched by <self> for a simple entity: own type or super type for a complex entity: one of the members.
+Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
 		Standard_Boolean Matches(Standard_CString steptype);
 
@@ -7871,7 +7551,7 @@ None
 
 Description
 -----------
-Fills an entityiterator with entities shared by <self>.
+Fills an EntityIterator with entities shared by <self>.
 ") Shared;
 		void Shared(Interface_EntityIterator & list);
 
@@ -8056,7 +7736,7 @@ int
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to read it).
+This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
 		virtual Standard_Integer Int();
 
@@ -8113,7 +7793,7 @@ None
 
 Description
 -----------
-This internal method gives access to a value implemented by an integer (to set it).
+This internal method gives access to a value implemented by an Integer (to set it).
 ") SetInt;
 		virtual void SetInt(const Standard_Integer val);
 
@@ -8305,7 +7985,7 @@ None
 
 Description
 -----------
-Creates a simple entity.
+Creates a Simple Entity.
 ") StepData_Simple;
 		 StepData_Simple(const opencascade::handle<StepData_ESDescr> & descr);
 
@@ -8323,7 +8003,7 @@ opencascade::handle<StepData_Simple>
 
 Description
 -----------
-Returns a simple entity which matches with a type in <self>: for a simple entity: me if it matches, else a null handle for a complex entity: the member which matches, else null.
+Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
 		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
 
@@ -8341,7 +8021,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read or write.
+Returns a Field from its name; read or write.
 ") CField;
 		StepData_Field & CField(Standard_CString name);
 
@@ -8390,7 +8070,7 @@ None
 
 Description
 -----------
-Fills a check by using its description.
+Fills a Check by using its Description.
 ") Check;
 		void Check(opencascade::handle<Interface_Check> & ach);
 
@@ -8421,7 +8101,7 @@ StepData_Field
 
 Description
 -----------
-Returns a field from its name; read-only.
+Returns a Field from its name; read-only.
 ") Field;
 		const StepData_Field & Field(Standard_CString name);
 
@@ -8470,7 +8150,7 @@ bool
 
 Description
 -----------
-Tells if a field brings a given name.
+Tells if a Field brings a given name.
 ") HasField;
 		Standard_Boolean HasField(Standard_CString name);
 
@@ -8483,7 +8163,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsComplex;
 		Standard_Boolean IsComplex();
 
@@ -8501,7 +8181,7 @@ bool
 
 Description
 -----------
-Tells if a step type is matched by <self> for a simple entity: own type or super type for a complex entity: one of the members.
+Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
 		Standard_Boolean Matches(Standard_CString steptype);
 
@@ -8532,7 +8212,7 @@ None
 
 Description
 -----------
-Fills an entityiterator with entities shared by <self>.
+Fills an EntityIterator with entities shared by <self>.
 ") Shared;
 		void Shared(Interface_EntityIterator & list);
 
@@ -8545,7 +8225,7 @@ str
 
 Description
 -----------
-Returns the recorded steptype (typename of its esdescr).
+Returns the recorded StepType (TypeName of its ESDescr).
 ") StepType;
 		Standard_CString StepType();
 

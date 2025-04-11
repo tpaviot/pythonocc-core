@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTRES2DDOCSTRING
 "IntRes2d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intres2d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intres2d.html"
 %enddef
 %module (package="OCC.Core", docstring=INTRES2DDOCSTRING) IntRes2d
 
@@ -153,7 +153,7 @@ None
 
 Description
 -----------
-Creates an infinite domain (hasfirstpoint = false and haslastpoint = false).
+Creates an infinite Domain (HasFirstPoint = False and HasLastPoint = False).
 ") IntRes2d_Domain;
 		 IntRes2d_Domain();
 
@@ -176,7 +176,7 @@ None
 
 Description
 -----------
-Creates a bounded domain.
+Creates a bounded Domain.
 ") IntRes2d_Domain;
 		 IntRes2d_Domain(const gp_Pnt2d & Pnt1, const Standard_Real Par1, const Standard_Real Tol1, const gp_Pnt2d & Pnt2, const Standard_Real Par2, const Standard_Real Tol2);
 
@@ -197,7 +197,7 @@ None
 
 Description
 -----------
-Creates a semi-infinite domain. if first is set to true, the given point is the first point of the domain, otherwise it is the last point.
+Creates a semi-infinite Domain. If First is set to True, the given point is the first point of the domain, otherwise it is the last point.
 ") IntRes2d_Domain;
 		 IntRes2d_Domain(const gp_Pnt2d & Pnt, const Standard_Real Par, const Standard_Real Tol, const Standard_Boolean First);
 
@@ -215,7 +215,7 @@ zeroplusperiod: float
 
 Description
 -----------
-Returns equivalent parameters if the domain is closed. otherwise, the exception domainerror is raised.
+Returns Equivalent parameters if the domain is closed. Otherwise, the exception DomainError is raised.
 ") EquivalentParameters;
 		void EquivalentParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -228,7 +228,7 @@ float
 
 Description
 -----------
-Returns the parameter of the first point of the domain the exception domainerror is raised if hasfirstpoint returns false.
+Returns the parameter of the first point of the domain The exception DomainError is raised if HasFirstPoint returns False.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
@@ -241,7 +241,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the first point of the domain. the exception domainerror is raised if hasfirstpoint returns false.
+Returns the first point of the domain. The exception DomainError is raised if HasFirstPoint returns False.
 ") FirstPoint;
 		const gp_Pnt2d FirstPoint();
 
@@ -254,7 +254,7 @@ float
 
 Description
 -----------
-Returns the tolerance of the first (left) bound. the exception domainerror is raised if hasfirstpoint returns false.
+Returns the tolerance of the first (left) bound. The exception DomainError is raised if HasFirstPoint returns False.
 ") FirstTolerance;
 		Standard_Real FirstTolerance();
 
@@ -267,7 +267,7 @@ bool
 
 Description
 -----------
-Returns true if the domain has a first point, i-e a point defining the lowest admitted parameter on the curve.
+Returns True if the domain has a first point, i-e a point defining the lowest admitted parameter on the curve.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -280,7 +280,7 @@ bool
 
 Description
 -----------
-Returns true if the domain has a last point, i-e a point defining the highest admitted parameter on the curve.
+Returns True if the domain has a last point, i-e a point defining the highest admitted parameter on the curve.
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -293,7 +293,7 @@ bool
 
 Description
 -----------
-Returns true if the domain is closed.
+Returns True if the domain is closed.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
@@ -306,7 +306,7 @@ float
 
 Description
 -----------
-Returns the parameter of the last point of the domain. the exception domainerror is raised if haslastpoint returns false.
+Returns the parameter of the last point of the domain. The exception DomainError is raised if HasLastPoint returns False.
 ") LastParameter;
 		Standard_Real LastParameter();
 
@@ -319,7 +319,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the last point of the domain. the exception domainerror is raised if haslastpoint returns false.
+Returns the last point of the domain. The exception DomainError is raised if HasLastPoint returns False.
 ") LastPoint;
 		const gp_Pnt2d LastPoint();
 
@@ -332,7 +332,7 @@ float
 
 Description
 -----------
-Returns the tolerance of the last (right) bound. the exception domainerror is raised if haslastpoint returns false.
+Returns the tolerance of the last (right) bound. The exception DomainError is raised if HasLastPoint returns False.
 ") LastTolerance;
 		Standard_Real LastTolerance();
 
@@ -437,7 +437,7 @@ bool
 
 Description
 -----------
-Returns true when the computation was successful.
+returns True when the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -450,7 +450,7 @@ bool
 
 Description
 -----------
-Returns true if there is no intersection between the given arguments. the exception notdone is raised if isdone returns false.
+Returns True if there is no intersection between the given arguments. The exception NotDone is raised if IsDone returns False.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -463,7 +463,7 @@ int
 
 Description
 -----------
-This function returns the number of intersection points between the 2 curves. the exception notdone is raised if isdone returns false.
+This function returns the number of intersection points between the 2 curves. The exception NotDone is raised if IsDone returns False.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -476,7 +476,7 @@ int
 
 Description
 -----------
-This function returns the number of intersection segments between the two curves. the exception notdone is raised if isdone returns false.
+This function returns the number of intersection segments between the two curves. The exception NotDone is raised if IsDone returns False.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -494,7 +494,7 @@ IntRes2d_IntersectionPoint
 
 Description
 -----------
-This function returns the intersection point of range n; the exception notdone is raised if isdone returns false. the exception outofrange is raised if (n <= 0) or (n > nbpoints).
+This function returns the intersection point of range N; The exception NotDone is raised if IsDone returns False. The exception OutOfRange is raised if (N <= 0) or (N > NbPoints).
 ") Point;
 		const IntRes2d_IntersectionPoint & Point(const Standard_Integer N);
 
@@ -512,7 +512,7 @@ IntRes2d_IntersectionSegment
 
 Description
 -----------
-This function returns the intersection segment of range n; the exception notdone is raised if isdone returns false. the exception outofrange is raised if (n <= 0) or (n > nbpoints).
+This function returns the intersection segment of range N; The exception NotDone is raised if IsDone returns False. The exception OutOfRange is raised if (N <= 0) or (N > NbPoints).
 ") Segment;
 		const IntRes2d_IntersectionSegment & Segment(const Standard_Integer N);
 
@@ -580,7 +580,7 @@ None
 
 Description
 -----------
-Creates an intersectionpoint. if reversedflag is false, the parameter uc1(resp. uc2) and the transition trans1 (resp. trans2) refer to the first curve (resp. second curve) otherwise uc1 and trans1 (resp. uc2 and trans2) refer to the second curve (resp. the first curve).
+Creates an IntersectionPoint. if ReversedFlag is False, the parameter Uc1(resp. Uc2) and the Transition Trans1 (resp. Trans2) refer to the first curve (resp. second curve) otherwise Uc1 and Trans1 (resp. Uc2 and Trans2) refer to the second curve (resp. the first curve).
 ") IntRes2d_IntersectionPoint;
 		 IntRes2d_IntersectionPoint(const gp_Pnt2d & P, const Standard_Real Uc1, const Standard_Real Uc2, const IntRes2d_Transition & Trans1, const IntRes2d_Transition & Trans2, const Standard_Boolean ReversedFlag);
 
@@ -629,7 +629,7 @@ None
 
 Description
 -----------
-Sets the values for an existing intersection point. the meaning of the parameters are the same as for the create.
+Sets the values for an existing intersection point. The meaning of the parameters are the same as for the Create.
 ") SetValues;
 		void SetValues(const gp_Pnt2d & P, const Standard_Real Uc1, const Standard_Real Uc2, const IntRes2d_Transition & Trans1, const IntRes2d_Transition & Trans2, const Standard_Boolean ReversedFlag);
 
@@ -655,7 +655,7 @@ IntRes2d_Transition
 
 Description
 -----------
-Returns the transition of the 2nd curve compared to the 1st one.
+returns the transition of the 2nd curve compared to the 1st one.
 ") TransitionOfSecond;
 		const IntRes2d_Transition & TransitionOfSecond();
 
@@ -668,7 +668,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the value of the coordinates of the intersection point in the 2d space.
+Returns the value of the coordinates of the intersection point in the 2D space.
 ") Value;
 		const gp_Pnt2d Value();
 
@@ -768,7 +768,7 @@ IntRes2d_IntersectionPoint
 
 Description
 -----------
-Returns the first point of the segment as an intersectionpoint (with a transition). the exception domainerror is raised if hasfirstpoint returns false.
+Returns the first point of the segment as an IntersectionPoint (with a transition). The exception DomainError is raised if HasFirstPoint returns False.
 ") FirstPoint;
 		const IntRes2d_IntersectionPoint & FirstPoint();
 
@@ -781,7 +781,7 @@ bool
 
 Description
 -----------
-Returns true if the segment is limited by a first point. this point defines the lowest parameter admitted on the first curve for the segment. if isopposite returns false, it defines the lowest parameter on the second curve, otherwise, it is the highest parameter on the second curve.
+Returns True if the segment is limited by a first point. This point defines the lowest parameter admitted on the first curve for the segment. If IsOpposite returns False, it defines the lowest parameter on the second curve, otherwise, it is the highest parameter on the second curve.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -794,7 +794,7 @@ bool
 
 Description
 -----------
-Returns true if the segment is limited by a last point. this point defines the highest parameter admitted on the first curve for the segment. if isopposite returns false, it defines the highest parameter on the second curve, otherwise, it is the lowest parameter on the second curve.
+Returns True if the segment is limited by a last point. This point defines the highest parameter admitted on the first curve for the segment. If IsOpposite returns False, it defines the highest parameter on the second curve, otherwise, it is the lowest parameter on the second curve.
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
@@ -807,7 +807,7 @@ bool
 
 Description
 -----------
-Returns false if the intersection segment has got the same orientation on both curves.
+Returns False if the intersection segment has got the same orientation on both curves.
 ") IsOpposite;
 		Standard_Boolean IsOpposite();
 
@@ -820,7 +820,7 @@ IntRes2d_IntersectionPoint
 
 Description
 -----------
-Returns the last point of the segment as an intersectionpoint (with a transition). the exception domainerror is raised if haslastextremity returns false.
+Returns the last point of the segment as an IntersectionPoint (with a transition). The exception DomainError is raised if HasLastExtremity returns False.
 ") LastPoint;
 		const IntRes2d_IntersectionPoint & LastPoint();
 
@@ -867,7 +867,7 @@ None
 
 Description
 -----------
-Creates an in or out transition.
+Creates an IN or OUT transition.
 ") IntRes2d_Transition;
 		 IntRes2d_Transition(const Standard_Boolean Tangent, const IntRes2d_Position Pos, const IntRes2d_TypeTrans Type);
 
@@ -888,7 +888,7 @@ None
 
 Description
 -----------
-Creates a touch transition.
+Creates a TOUCH transition.
 ") IntRes2d_Transition;
 		 IntRes2d_Transition(const Standard_Boolean Tangent, const IntRes2d_Position Pos, const IntRes2d_Situation Situ, const Standard_Boolean Oppos);
 
@@ -906,7 +906,7 @@ None
 
 Description
 -----------
-Creates an undecided transition.
+Creates an UNDECIDED transition.
 ") IntRes2d_Transition;
 		 IntRes2d_Transition(const IntRes2d_Position Pos);
 
@@ -919,7 +919,7 @@ bool
 
 Description
 -----------
-Returns a significant value if transitiontype returns touch. in this case, the function returns true when the 2 curves locally define two different parts of the space. if transitiontype returns in or out or undecided, the exception domainerror is raised.
+returns a significant value if TransitionType returns TOUCH. In this case, the function returns true when the 2 curves locally define two different parts of the space. If TransitionType returns IN or OUT or UNDECIDED, the exception DomainError is raised.
 ") IsOpposite;
 		Standard_Boolean IsOpposite();
 
@@ -932,7 +932,7 @@ bool
 
 Description
 -----------
-Returns true when the 2 curves are tangent at the intersection point. theexception domainerror is raised if the type of transition is undecided.
+Returns True when the 2 curves are tangent at the intersection point. Theexception DomainError is raised if the type of transition is UNDECIDED.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
@@ -945,7 +945,7 @@ IntRes2d_Position
 
 Description
 -----------
-Indicates if the intersection is at the beginning (intres2d_head), at the end (intres2d_end), or in the middle (intres2d_middle) of the curve.
+Indicates if the intersection is at the beginning (IntRes2d_Head), at the end (IntRes2d_End), or in the middle (IntRes2d_Middle) of the curve.
 ") PositionOnCurve;
 		IntRes2d_Position PositionOnCurve();
 
@@ -983,7 +983,7 @@ None
 
 Description
 -----------
-Sets the values of an in or out transition.
+Sets the values of an IN or OUT transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntRes2d_Position Pos, const IntRes2d_TypeTrans Type);
 
@@ -1004,7 +1004,7 @@ None
 
 Description
 -----------
-Sets the values of a touch transition.
+Sets the values of a TOUCH transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntRes2d_Position Pos, const IntRes2d_Situation Situ, const Standard_Boolean Oppos);
 
@@ -1022,7 +1022,7 @@ None
 
 Description
 -----------
-Sets the values of an undecided transition.
+Sets the values of an UNDECIDED transition.
 ") SetValue;
 		void SetValue(const IntRes2d_Position Pos);
 
@@ -1035,7 +1035,7 @@ IntRes2d_Situation
 
 Description
 -----------
-Returns a significant value if transitiontype returns touch. in this case, the function returns: inside when the curve remains inside the other one, outside when it remains outside the other one, unknown when the calculus, based on the second derivatives cannot give the result. if transitiontype returns in or out or undecided, the exception domainerror is raised.
+returns a significant value if TransitionType returns TOUCH. In this case, the function returns: INSIDE when the curve remains inside the other one, OUTSIDE when it remains outside the other one, UNKNOWN when the calculus, based on the second derivatives cannot give the result. If TransitionType returns IN or OUT or UNDECIDED, the exception DomainError is raised.
 ") Situation;
 		IntRes2d_Situation Situation();
 
@@ -1048,7 +1048,7 @@ IntRes2d_TypeTrans
 
 Description
 -----------
-Returns the type of transition at the intersection. it may be in or out or touch, or undecided if the two first derivatives are not enough to give the tangent to one of the two curves.
+Returns the type of transition at the intersection. It may be IN or OUT or TOUCH, or UNDECIDED if the two first derivatives are not enough to give the tangent to one of the two curves.
 ") TransitionType;
 		IntRes2d_TypeTrans TransitionType();
 

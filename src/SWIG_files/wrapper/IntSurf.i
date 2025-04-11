@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTSURFDOCSTRING
 "IntSurf module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intsurf.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=INTSURFDOCSTRING) IntSurf
 
@@ -189,7 +189,7 @@ None
 
 Description
 -----------
-Computes the transition of the intersection point between the two lines. tgfirst is the tangent vector of the first line. tgsecond is the tangent vector of the second line. normal is the direction used to orientate the cross product tgfirst^tgsecond. tfirst is the transition of the point on the first line. tsecond is the transition of the point on the second line.
+Computes the transition of the intersection point between the two lines. TgFirst is the tangent vector of the first line. TgSecond is the tangent vector of the second line. Normal is the direction used to orientate the cross product TgFirst^TgSecond. TFirst is the transition of the point on the first line. TSecond is the transition of the point on the second line.
 ") MakeTransition;
 		static void MakeTransition(const gp_Vec & TgFirst, const gp_Vec & TgSecond, const gp_Dir & Normal, IntSurf_Transition & TFirst, IntSurf_Transition & TSecond);
 
@@ -209,7 +209,7 @@ None
 
 Description
 -----------
-Fills thearrofperiod array by the period values of thefirstsurf and thesecondsurf. [0] = u-period of thefirstsurf, [1] = v-period of thefirstsurf, [2] = u-period of thesecondsurf, [3] = v-period of thesecondsurf. //! if surface is not periodic in correspond direction then its period is considered to be equal to 0.
+Fills theArrOfPeriod array by the period values of theFirstSurf and theSecondSurf. [0] = U-period of theFirstSurf, [1] = V-period of theFirstSurf, [2] = U-period of theSecondSurf, [3] = V-period of theSecondSurf. //! If surface is not periodic in correspond direction then its period is considered to be equal to 0.
 ") SetPeriod;
 		static void SetPeriod(const opencascade::handle<Adaptor3d_Surface> & theFirstSurf, const opencascade::handle<Adaptor3d_Surface> & theSecondSurf, Standard_Real theArrOfPeriod[4]);
 
@@ -268,7 +268,7 @@ int
 
 Description
 -----------
-Returns the first element.
+returns the first element.
 ") First;
 		Standard_Integer First();
 
@@ -281,7 +281,7 @@ int
 
 Description
 -----------
-Returns the second element.
+returns the Second element.
 ") Second;
 		Standard_Integer Second();
 
@@ -467,7 +467,7 @@ gp_Dir2d
 
 Description
 -----------
-Returns the tangent at the intersectin in the parametric space of the parametrized surface.this tangent is associated to the value2d.
+returns the tangent at the intersection in the parametric space of the parametrized surface.This tangent is associated to the value2d.
 ") Direction2d;
 		static gp_Dir2d Direction2d(const IntSurf_InteriorPoint & PStart);
 
@@ -485,7 +485,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent at the intersectin in 3d space associated to <p>.
+returns the tangent at the intersection in 3d space associated to <P>.
 ") Direction3d;
 		static gp_Vec Direction3d(const IntSurf_InteriorPoint & PStart);
 
@@ -504,7 +504,7 @@ V: float
 
 Description
 -----------
-Returns the <u,v> parameters which are associated with <p> it's the parameters which start the marching algorithm.
+Returns the <U,V> parameters which are associated with <P> it's the parameters which start the marching algorithm.
 ") Value2d;
 		static void Value2d(const IntSurf_InteriorPoint & PStart, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -622,7 +622,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from 3d-points.
+Returns True if theP is out of the box built from 3D-points.
 ") IsOutBox;
 		Standard_Boolean IsOutBox(const gp_Pnt & theP);
 
@@ -640,7 +640,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 1st surface.
+Returns True if theP is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
 		Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
 
@@ -658,7 +658,7 @@ bool
 
 Description
 -----------
-Returns true if thep is out of the box built from the points on 2nd surface.
+Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
 
@@ -721,7 +721,7 @@ None
 
 Description
 -----------
-Sets the 3d point of the index-th pnton2s.
+Sets the 3D point of the Index-th PntOn2S.
 ") SetPoint;
 		void SetPoint(const Standard_Integer Index, const gp_Pnt & thePnt);
 
@@ -742,7 +742,7 @@ None
 
 Description
 -----------
-Sets the parametric coordinates on one of the surfaces of the point of range index in the line.
+Sets the parametric coordinates on one of the surfaces of the point of range Index in the line.
 ") SetUV;
 		void SetUV(const Standard_Integer Index, const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V);
 
@@ -760,7 +760,7 @@ opencascade::handle<IntSurf_LineOn2S>
 
 Description
 -----------
-Keeps in <self> the points 1 to index-1, and returns the items index to the end.
+Keeps in <self> the points 1 to Index-1, and returns the items Index to the end.
 ") Split;
 		opencascade::handle<IntSurf_LineOn2S> Split(const Standard_Integer Index);
 
@@ -778,7 +778,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Returns the point of range index in the line.
+Returns the point of range Index in the line.
 ") Value;
 		const IntSurf_PntOn2S & Value(const Standard_Integer Index);
 
@@ -797,7 +797,7 @@ None
 
 Description
 -----------
-Replaces the point of range index in the line.
+Replaces the point of range Index in the line.
 ") Value;
 		void Value(const Standard_Integer Index, const IntSurf_PntOn2S & P);
 
@@ -1087,7 +1087,7 @@ gp_Dir2d
 
 Description
 -----------
-Returns the tangent at the intersection in the parametric space of the parametrized surface.this tangent is associated to the value2d la tangente a un sens signifiant (indique le sens de chemin ement) an exception is raised if istangent is true.
+returns the tangent at the intersection in the parametric space of the parametrized surface.This tangent is associated to the value2d la tangente a un sens signifiant (indique le sens de chemin ement) an exception is raised if IsTangent is true.
 ") Direction2d;
 		static gp_Dir2d Direction2d(const IntSurf_PathPoint & PStart);
 
@@ -1105,7 +1105,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent at the intersection in 3d space associated to <p> an exception is raised if istangent is true.
+returns the tangent at the intersection in 3d space associated to <P> an exception is raised if IsTangent is true.
 ") Direction3d;
 		static gp_Vec Direction3d(const IntSurf_PathPoint & PStart);
 
@@ -1123,7 +1123,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a point on a non-oriented arc, which means that the intersection line does not stop at such a point but just go through such a point. ispassingpnt is true when isonarc is true.
+Returns True if the point is a point on a non-oriented arc, which means that the intersection line does not stop at such a point but just go through such a point. IsPassingPnt is True when IsOnArc is True.
 ") IsPassingPnt;
 		static Standard_Boolean IsPassingPnt(const IntSurf_PathPoint & PStart);
 
@@ -1141,7 +1141,7 @@ bool
 
 Description
 -----------
-Returns true if the surfaces are tangent at this point. istangent can be true when isonarc is true if ispassingpnt is true and istangent is true,this point is a stopped point.
+Returns True if the surfaces are tangent at this point. IsTangent can be True when IsOnArc is True if IsPassingPnt is True and IsTangent is True,this point is a stopped point.
 ") IsTangent;
 		static Standard_Boolean IsTangent(const IntSurf_PathPoint & PStart);
 
@@ -1159,7 +1159,7 @@ int
 
 Description
 -----------
-Returns the multiplicity of the point i-e the number of auxillar parameters associated to the point which the principal parameters are given by value2d.
+Returns the multiplicity of the point i-e the number of auxillar parameters associated to the point which the principal parameters are given by Value2d.
 ") Multiplicity;
 		static Standard_Integer Multiplicity(const IntSurf_PathPoint & PStart);
 
@@ -1179,7 +1179,7 @@ V: float
 
 Description
 -----------
-Parametric coordinates associated to the multiplicity. an exception is raised if mult<=0 or mult>multiplicity.
+Parametric coordinates associated to the multiplicity. An exception is raised if Mult<=0 or Mult>multiplicity.
 ") Parameters;
 		static void Parameters(const IntSurf_PathPoint & PStart, const Standard_Integer Mult, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1198,7 +1198,7 @@ V: float
 
 Description
 -----------
-Returns the <u, v> parameters which are associated with <p> it's the parameters which start the marching algorithm.
+Returns the <U, V> parameters which are associated with <P> it's the parameters which start the marching algorithm.
 ") Value2d;
 		static void Value2d(const IntSurf_PathPoint & PStart, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1263,7 +1263,7 @@ bool
 
 Description
 -----------
-Returns true if 2d- and 3d-coordinates of theoterpoint are equal to corresponding coordinates of me (with given tolerance). if thetol2d < 0.0 we will compare 3d-points only.
+Returns True if 2D- and 3D-coordinates of theOterPoint are equal to corresponding coordinates of me (with given tolerance). If theTol2D < 0.0 we will compare 3D-points only.
 ") IsSame;
 		Standard_Boolean IsSame(const IntSurf_PntOn2S & theOtherPoint, const Standard_Real theTol3D = 0.0, const Standard_Real theTol2D = -1.0);
 
@@ -1983,7 +1983,7 @@ float
 
 Description
 -----------
-Returns the tolerance of the zero of the implicit function.
+returns the tolerance of the zero of the implicit function.
 ") Tolerance;
 		static Standard_Real Tolerance(const IntSurf_Quadric & Quad);
 
@@ -2053,7 +2053,7 @@ None
 
 Description
 -----------
-Empty constructor. creates an undecided transition.
+Empty constructor. Creates an UNDECIDED transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition();
 
@@ -2072,7 +2072,7 @@ None
 
 Description
 -----------
-Create a in or out transition.
+Create a IN or OUT transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition(const Standard_Boolean Tangent, const IntSurf_TypeTrans Type);
 
@@ -2092,7 +2092,7 @@ None
 
 Description
 -----------
-Create a touch transition.
+Create a TOUCH transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition(const Standard_Boolean Tangent, const IntSurf_Situation Situ, const Standard_Boolean Oppos);
 
@@ -2105,7 +2105,7 @@ bool
 
 Description
 -----------
-Returns a significant value if transitiontype returns touch. in this case, the function returns true when the 2 curves locally define two different parts of the space. if transitiontype returns in or out or undecided, an exception is raised.
+returns a significant value if TransitionType returns TOUCH. In this case, the function returns true when the 2 curves locally define two different parts of the space. If TransitionType returns IN or OUT or UNDECIDED, an exception is raised.
 ") IsOpposite;
 		Standard_Boolean IsOpposite();
 
@@ -2118,7 +2118,7 @@ bool
 
 Description
 -----------
-Returns true if the point is tangent to the arc given by value. an exception is raised if transitiontype returns undecided.
+Returns True if the point is tangent to the arc given by Value. An exception is raised if TransitionType returns UNDECIDED.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
@@ -2137,7 +2137,7 @@ None
 
 Description
 -----------
-Set the values of an in or out transition.
+Set the values of an IN or OUT transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntSurf_TypeTrans Type);
 
@@ -2157,7 +2157,7 @@ None
 
 Description
 -----------
-Set the values of a touch transition.
+Set the values of a TOUCH transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntSurf_Situation Situ, const Standard_Boolean Oppos);
 
@@ -2170,7 +2170,7 @@ None
 
 Description
 -----------
-Set the values of an undecided transition.
+Set the values of an UNDECIDED transition.
 ") SetValue;
 		void SetValue();
 
@@ -2183,7 +2183,7 @@ IntSurf_Situation
 
 Description
 -----------
-Returns a significant value if transitiontype returns touch. in this case, the function returns: inside when the intersection line remains inside the arc, outside when it remains outside the arc, unknown when the calsulus cannot give results. if transitiontype returns in, or out, or undecided, a exception is raised.
+Returns a significant value if TransitionType returns TOUCH. In this case, the function returns: INSIDE when the intersection line remains inside the Arc, OUTSIDE when it remains outside the Arc, UNKNOWN when the calsulus cannot give results. If TransitionType returns IN, or OUT, or UNDECIDED, a exception is raised.
 ") Situation;
 		IntSurf_Situation Situation();
 
@@ -2196,7 +2196,7 @@ IntSurf_TypeTrans
 
 Description
 -----------
-Returns the type of transition (in/out/touch/undecided) for the arc given by value. this the transition of the intersection line compared to the arc of restriction, i-e when the function returns inside for example, it means that the intersection line goes inside the part of plane limited by the arc of restriction.
+Returns the type of Transition (in/out/touch/undecided) for the arc given by value. This the transition of the intersection line compared to the Arc of restriction, i-e when the function returns INSIDE for example, it means that the intersection line goes inside the part of plane limited by the arc of restriction.
 ") TransitionType;
 		IntSurf_TypeTrans TransitionType();
 

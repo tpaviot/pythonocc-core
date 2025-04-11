@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCCANADOCSTRING
 "GccAna module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gccana.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gccana.html"
 %enddef
 %module (package="OCC.Core", docstring=GCCANADOCSTRING) GccAna
 
@@ -102,7 +102,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d circles and having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -123,7 +123,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d circle and a 2d line having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d lines having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -165,7 +165,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d circle and a point having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -186,7 +186,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d line and a point having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -207,7 +207,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two points having the center on a 2d line.
+This method implements the algorithms used to create 2d circles TANgent to two points having the center ON a 2d line.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
@@ -228,7 +228,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d circles and having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -249,7 +249,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a circle and a line having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to a circle and a line having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -270,7 +270,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a circle and a point having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to a circle and a point having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -291,7 +291,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d lines having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -312,7 +312,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a line and a point having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to a line and a point having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -333,7 +333,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two points having the center on a 2d circle.
+This method implements the algorithms used to create 2d circles TANgent to two points having the center ON a 2d circle.
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
@@ -352,7 +352,7 @@ ParArg: float
 
 Description
 -----------
-Returns the information about the center (on the curv) of the result number index and the third argument. pararg is the intrinsic parameter of the point pntarg on the third argument. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the information about the center (on the curv) of the result number Index and the third argument. ParArg is the intrinsic parameter of the point PntArg on the third argument. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") CenterOn3;
 		void CenterOn3(const Standard_Integer Index, Standard_Real &OutValue, gp_Pnt2d & PntArg);
 
@@ -365,7 +365,7 @@ bool
 
 Description
 -----------
-Returns true if the construction algorithm does not fail (even if it finds no solution). note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -383,7 +383,7 @@ bool
 
 Description
 -----------
-True if the solution and the first argument are the same (2 circles). if r1 is the radius of the first argument and rsol the radius of the solution and dist the distance between the two centers, we concider the two circles are identical if r1+dist-rsol is less than tolerance. false in the other cases. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+True if the solution and the first argument are the same (2 circles). If R1 is the radius of the first argument and Rsol the radius of the solution and dist the distance between the two centers, we consider the two circles are identical if R1+dist-Rsol is less than Tolerance. False in the other cases. Raises OutOfRange if Index is greater than the number of solutions and NotDone if IsDone returns false.
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
@@ -401,7 +401,7 @@ bool
 
 Description
 -----------
-True if the solution and the second argument are the same (2 circles). if r2 is the radius of the second argument and rsol the radius of the solution and dist the distance between the two centers, we concider the two circles are identical if r2+dist-rsol is less than tolerance. false in the other cases. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+True if the solution and the second argument are the same (2 circles). If R2 is the radius of the second argument and Rsol the radius of the solution and dist the distance between the two centers, we consider the two circles are identical if R2+dist-Rsol is less than Tolerance. False in the other cases. Raises OutOfRange if Index is greater than the number of solutions and NotDone if IsDone returns false.
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
@@ -414,7 +414,7 @@ int
 
 Description
 -----------
-Returns the number of circles, representing solutions computed by this algorithm. exceptions stdfail_notdone if the construction fails.
+Returns the number of circles, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -434,7 +434,7 @@ ParArg: float
 
 Description
 -----------
-Returns the information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution pararg is the intrinsic parameter of the point pntsol on the first argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+Returns the information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution ParArg is the intrinsic parameter of the point PntSol on the first argument. Raises OutOfRange if Index is greater than the number of solutions and NotDone if IsDone returns false.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -454,7 +454,7 @@ ParArg: float
 
 Description
 -----------
-Returns the information about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point pntsol on the solution. pararg is the intrinsic parameter of the point pntsol on the second argument. raises outofrange if index is greater than the number of solutions and notdone if isdone returns false.
+Returns the information about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntSol on the second argument. Raises OutOfRange if Index is greater than the number of solutions and NotDone if IsDone returns false.
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -472,7 +472,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-Returns the qualifiers qualif1 and qualif2 of the tangency arguments for the solution of index index computed by this algorithm. the returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - gccent_noqualifier if the tangency argument is a point. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
 
@@ -527,7 +527,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d circle with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles TANgent to two 2d circle with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -548,7 +548,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d circle and a 2d line with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -569,7 +569,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d circle and a point with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -590,7 +590,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a 2d line and a point with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -611,7 +611,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to two 2d lines with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles TANgent to two 2d lines with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -632,7 +632,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles passing through two points with a radius of radius. it raises negativevalue if radius is lower than zero.
+This method implements the algorithms used to create 2d circles passing through two points with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -645,7 +645,7 @@ bool
 
 Description
 -----------
-This method returns true if the algorithm succeeded. note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+This method returns True if the algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -663,7 +663,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the first argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the construction algorithm did not succeed.
+Returns True if the solution number Index is equal to the first argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
@@ -681,7 +681,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the second argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the construction algorithm did not succeed.
+Returns True if the solution number Index is equal to the second argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
@@ -694,7 +694,7 @@ int
 
 Description
 -----------
-This method returns the number of circles, representing solutions computed by this algorithm. exceptions stdfail_notdone if the construction fails. of solutions.
+This method returns the number of circles, representing solutions computed by this algorithm. Exceptions StdFail_NotDone if the construction fails. of solutions.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -714,7 +714,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution. pararg is the intrinsic parameter of the point pntsol on the first argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the construction algorithm did not succeed.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntSol on the first argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -734,7 +734,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point pntsol on the solution. pararg is the intrinsic parameter of the point pntarg on the second argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the construction algorithm did not succeed.
+Returns information about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point PntSol on the solution. ParArg is the intrinsic parameter of the point PntArg on the second argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -752,7 +752,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the solution number index. be careful: the index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. raises outofrange exception if index is greater than the number of solutions. it raises notdone if the construction algorithm did not succeed.
+Returns the solution number Index. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Raises OutOfRange exception if Index is greater than the number of solutions. It raises NotDone if the construction algorithm did not succeed.
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
@@ -772,7 +772,7 @@ None
 
 Description
 -----------
-Returns the information about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
+Returns the information about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
 
@@ -807,7 +807,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 3 circles. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 3 circles. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const GccEnt_QualifiedCirc & Qualified3, const Standard_Real Tolerance);
 
@@ -828,7 +828,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 line. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 line. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
@@ -849,7 +849,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 1 circle and 2 lines. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 1 circle and 2 lines. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
@@ -870,7 +870,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 3 lines. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 3 lines. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
@@ -891,7 +891,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 point. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 Point. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -912,7 +912,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a circle and a line and 1 point. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to a circle and a line and 1 Point. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -933,7 +933,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to 2 lines and 1 point. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to 2 lines and 1 Point. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -954,7 +954,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a circle and passing through 2 points. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to a circle and passing through 2 Points. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -975,7 +975,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles tangent to a line and passing through 2 points. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles tangent to a line and passing through 2 Points. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -996,7 +996,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles passing through 3 points. constructionerror is raised if there is a problem during the computation.
+This method implements the algorithms used to create 2d circles passing through 3 Points. ConstructionError is raised if there is a problem during the computation.
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
@@ -1009,7 +1009,7 @@ bool
 
 Description
 -----------
-This method returns true if the construction algorithm succeeded. note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+This method returns True if the construction algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1027,7 +1027,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the first argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns True if the solution number Index is equal to the first argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
@@ -1045,7 +1045,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the second argument. raises outofrange index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns True if the solution number Index is equal to the second argument. Raises OutOfRange Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
@@ -1063,7 +1063,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the third argument. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns True if the solution number Index is equal to the third argument. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") IsTheSame3;
 		Standard_Boolean IsTheSame3(const Standard_Integer Index);
 
@@ -1076,7 +1076,7 @@ int
 
 Description
 -----------
-This method returns the number of solutions. raises notdone if the construction algorithm didn't succeed.
+This method returns the number of solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1096,7 +1096,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntArg on the argument curv. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1116,7 +1116,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point Pntsol on the argument curv. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1136,7 +1136,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point Pntsol on the argument curv. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") Tangency3;
 		void Tangency3(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1154,7 +1154,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. raises outofrange if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Raises OutOfRange if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
@@ -1175,7 +1175,7 @@ None
 
 Description
 -----------
-Returns the information about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
+Returns the information about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2, GccEnt_Position & Qualif3);
 
@@ -1208,7 +1208,7 @@ None
 
 Description
 -----------
-Constructs bisecting curves between the two circles circ1 and circ2.
+Constructs bisecting curves between the two circles Circ1 and Circ2.
 ") GccAna_Circ2dBisec;
 		 GccAna_Circ2dBisec(const gp_Circ2d & Circ1, const gp_Circ2d & Circ2);
 
@@ -1221,7 +1221,7 @@ bool
 
 Description
 -----------
-This method returns true if the construction algorithm succeeded.
+This method returns True if the construction algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1234,7 +1234,7 @@ int
 
 Description
 -----------
-This method returns the number of solutions. raises notdone if the construction algorithm didn't succeed.
+This method returns the number of solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1252,7 +1252,7 @@ opencascade::handle<GccInt_Bisec>
 
 Description
 -----------
-Returns the solution number index raises outofrange exception if index is greater than the number of solutions. it raises notdone if the construction algorithm didn't succeed.
+Returns the solution number Index Raises OutOfRange exception if Index is greater than the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
 ") ThisSolution;
 		opencascade::handle<GccInt_Bisec> ThisSolution(const Standard_Integer Index);
 
@@ -1324,7 +1324,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create 2d circles passing through a point and centered on a point. tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. in these algorithms tolerance is only used in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is therefore a very small circle. exceptions gccent_badqualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
+This method implements the algorithms used to create 2d circles passing through a point and centered on a point. Tolerance is a tolerance criterion used by the algorithm to find a solution when, mathematically, the problem posed does not have a solution, but where there is numeric uncertainty attached to the arguments. In these algorithms Tolerance is only used in very specific cases where the center of the solution is very close to the circle to which it is tangential, and where the solution is therefore a very small circle. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosing for a line).
 ") GccAna_Circ2dTanCen;
 		 GccAna_Circ2dTanCen(const gp_Pnt2d & Point1, const gp_Pnt2d & Pcenter);
 
@@ -1337,7 +1337,7 @@ bool
 
 Description
 -----------
-This method returns true if the construction algorithm succeeded. note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+This method returns True if the construction algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1355,7 +1355,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the first argument. it raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zero.
+Returns True if the solution number Index is equal to the first argument. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
@@ -1368,7 +1368,7 @@ int
 
 Description
 -----------
-Returns the number of circles, representing solutions computed by this algorithm and raises notdone exception if the algorithm didn't succeed.
+Returns the number of circles, representing solutions computed by this algorithm and raises NotDone exception if the algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1388,7 +1388,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntarg on the argument curv. it raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zero.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntArg on the argument curv. It raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zero.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1406,7 +1406,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the circle, representing the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions or less than zer.
+Returns the circle, representing the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions or less than zer.
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
@@ -1425,7 +1425,7 @@ None
 
 Description
 -----------
-Returns the qualifier qualif1 of the tangency argument for the solution of index index computed by this algorithm. the returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
+Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computedin case of unqualified).
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
 
@@ -1460,7 +1460,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles tangent to a circle and centered on a 2d line with a given radius. tolerance is used to find solution in every limit cases. for example tolerance is used in the case of enclosedcirc when radius-r1+dist is greater tolerance (dist is the distance between the line and the location of the circ, r1 is the radius of the circ) because there is no solution. raises negativevalue in case of negativeradius.
+This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. For example Tolerance is used in the case of EnclosedCirc when Radius-R1+dist is greater Tolerance (dist is the distance between the line and the location of the circ, R1 is the radius of the circ) because there is no solution. raises NegativeValue in case of NegativeRadius.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1481,7 +1481,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles tangent to a 2d line and centered on a 2d line with a given radius. tolerance is used to find solution in every limit cases. raises negativevalue in case of negativeradius.
+This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedLin & Qualified1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1502,7 +1502,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles passing through a 2d point and centered on a 2d line with a given radius. tolerance is used to find solution in every limit cases.
+This methods implements the algorithms used to create 2d Circles passing through a 2d Point and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const gp_Pnt2d & Point1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1523,7 +1523,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles tangent to a circle and centered on a 2d circle with a given radius. tolerance is used to find solution in every limit cases. raises negativevalue in case of negativeradius.
+This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d Circle with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1544,7 +1544,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles tangent to a 2d line and centered on a 2d line with a given radius. tolerance is used to find solution in every limit cases. raises negativevalue in case of negativeradius.
+This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedLin & Qualified1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1565,7 +1565,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d circles passing through a 2d point and centered on a 2d line with a given radius. tolerance is used to find solution in every limit cases. raises negativevalue in case of negativeradius.
+This methods implements the algorithms used to create 2d Circles passing through a 2d Point and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const gp_Pnt2d & Point1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
@@ -1584,7 +1584,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the center (on the curv) of the result. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the center point of the solution curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the center (on the curv) of the result. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the center point of the solution curv. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") CenterOn3;
 		void CenterOn3(const Standard_Integer Index, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1597,7 +1597,7 @@ bool
 
 Description
 -----------
-Returns true if the construction algorithm does not fail (even if it finds no solution). note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+Returns true if the construction algorithm does not fail (even if it finds no solution). Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1615,7 +1615,7 @@ bool
 
 Description
 -----------
-Returns true if the solution number index is equal to the first argument and false in the other cases. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns True if the solution number Index is equal to the first argument and False in the other cases. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
@@ -1628,7 +1628,7 @@ int
 
 Description
 -----------
-This method returns the number of circles, representing solutions. raises notdone if the construction algorithm didn't succeed.
+This method returns the number of circles, representing solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1648,7 +1648,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pntsol is the tangency point on the solution curv. pntarg is the tangency point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. PntSol is the tangency point on the solution curv. PntArg is the tangency point on the argument curv. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1666,7 +1666,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
@@ -1685,7 +1685,7 @@ None
 
 Description
 -----------
-Returns the qualifier qualif1 of the tangency argument for the solution of index index computed by this algorithm. the returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - gccent_noqualifier if the tangency argument is a point. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosed, enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosed, enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
 
@@ -1718,7 +1718,7 @@ None
 
 Description
 -----------
-Constructs bisecting curves between the circle circle and the line line.
+Constructs bisecting curves between the circle Circle and the line Line.
 ") GccAna_CircLin2dBisec;
 		 GccAna_CircLin2dBisec(const gp_Circ2d & Circle, const gp_Lin2d & Line);
 
@@ -1762,7 +1762,7 @@ opencascade::handle<GccInt_Bisec>
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
 ") ThisSolution;
 		opencascade::handle<GccInt_Bisec> ThisSolution(const Standard_Integer Index);
 
@@ -1795,7 +1795,7 @@ None
 
 Description
 -----------
-Constructs bisecting curves between the circle circle1 and the point point2.
+Constructs bisecting curves between the circle Circle1 and the point Point2.
 ") GccAna_CircPnt2dBisec;
 		 GccAna_CircPnt2dBisec(const gp_Circ2d & Circle1, const gp_Pnt2d & Point2);
 
@@ -1815,7 +1815,7 @@ None
 
 Description
 -----------
-Constructs bisecting curves between the circle circle1 and the point point2. tolerance is used.
+Constructs bisecting curves between the circle Circle1 and the point Point2. Tolerance is used.
 ") GccAna_CircPnt2dBisec;
 		 GccAna_CircPnt2dBisec(const gp_Circ2d & Circle1, const gp_Pnt2d & Point2, const Standard_Real Tolerance);
 
@@ -1859,7 +1859,7 @@ opencascade::handle<GccInt_Bisec>
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm.
 ") ThisSolution;
 		opencascade::handle<GccInt_Bisec> ThisSolution(const Standard_Integer Index);
 
@@ -1893,7 +1893,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d lines passing through 2 points. tolerance is used because we can't create a line when the distance between the two points is too small.
+This methods implements the algorithms used to create 2d lines passing through 2 points. Tolerance is used because we can't create a line when the distance between the two points is too small.
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const gp_Pnt2d & ThePoint1, const gp_Pnt2d & ThePoint2, const Standard_Real Tolerance);
 
@@ -1913,7 +1913,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d lines tangent to one circle and passing through a point. exception badqualifier is raised in the case of enclosedcirc tolerance is used because there is no solution when the point is inside the solution according to the tolerance.
+This methods implements the algorithms used to create 2d lines tangent to one circle and passing through a point. Exception BadQualifier is raised in the case of EnclosedCirc Tolerance is used because there is no solution when the point is inside the solution according to the tolerance.
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & ThePoint, const Standard_Real Tolerance);
 
@@ -1933,7 +1933,7 @@ None
 
 Description
 -----------
-This methods implements the algorithms used to create 2d lines tangent to 2 circles. exception badqualifier is raised in the case of enclosedcirc.
+This methods implements the algorithms used to create 2d lines tangent to 2 circles. Exception BadQualifier is raised in the case of EnclosedCirc.
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const Standard_Real Tolerance);
 
@@ -1959,7 +1959,7 @@ int
 
 Description
 -----------
-This method returns the number of solutions. raises notdone if the construction algorithm didn't succeed.
+This method returns the number of solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1979,7 +1979,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point pntsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point PntSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Raises OutOfRange is raised if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -1999,7 +1999,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the second argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pntsol on the argument curv. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns information about the tangency point between the result number Index and the second argument. ParSol is the intrinsic parameter of the point ParSol on the solution curv. ParArg is the intrinsic parameter of the point PntSol on the argument curv. Raises OutOfRange is raised if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2017,7 +2017,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises outofrange is raised if index is greater than the number of solutions. it raises notdone if the algorithm failed.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. Raises OutOfRange is raised if Index is greater than the number of solutions. It raises NotDone if the algorithm failed.
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
@@ -2037,7 +2037,7 @@ None
 
 Description
 -----------
-Returns the qualifiers qualif1 and qualif2 of the tangency arguments for the solution of index index computed by this algorithm. the returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - gccent_noqualifier if the tangency argument is a point. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the qualifiers Qualif1 and Qualif2 of the tangency arguments for the solution of index Index computed by this algorithm. The returned qualifiers are: - those specified at the start of construction when the solutions are defined as enclosing or outside with respect to the arguments, or - those computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the arguments, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1, GccEnt_Position & Qualif2);
 
@@ -2070,7 +2070,7 @@ None
 
 Description
 -----------
-Constructs bisecting lines between the two lines lin1 and lin2.
+Constructs bisecting lines between the two lines Lin1 and Lin2.
 ") GccAna_Lin2dBisec;
 		 GccAna_Lin2dBisec(const gp_Lin2d & Lin1, const gp_Lin2d & Lin2);
 
@@ -2090,7 +2090,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the intersection point between the result number index and the first argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the intersection point between the result number Index and the first argument. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Intersection1;
 		void Intersection1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2110,7 +2110,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the intersection point between the result number index and the second argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the intersection point between the result number Index and the second argument. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2123,7 +2123,7 @@ bool
 
 Description
 -----------
-Returns true when the algorithm succeeded.
+Returns True when the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2136,7 +2136,7 @@ int
 
 Description
 -----------
-Returns the number of solutions and raise notdone if the constructor wasn't called before.
+Returns the number of solutions and raise NotDone if the constructor wasn't called before.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -2154,7 +2154,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the solution number index . the first solution is the inside one and the second is the outside one. for the first solution the direction is d1+d2 (d1 is the direction of the first argument and d2 the direction of the second argument). for the second solution the direction is d1-d2. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the solution number Index . The first solution is the inside one and the second is the outside one. For the first solution the direction is D1+D2 (D1 is the direction of the first argument and D2 the direction of the second argument). For the second solution the direction is D1-D2. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
@@ -2208,7 +2208,7 @@ None
 
 Description
 -----------
-This class implements the algorithms used to create 2d line tangent to a circle and making an angle with a line. exceptions gccent_badqualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
+This class implements the algorithms used to create 2d line tangent to a circle and making an angle with a line. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 ") GccAna_Lin2dTanObl;
 		 GccAna_Lin2dTanObl(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & TheLine, const Standard_Real TheAngle);
 
@@ -2228,7 +2228,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the intersection between the result number index and the third argument. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the intersection between the result number Index and the third argument. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2241,7 +2241,7 @@ bool
 
 Description
 -----------
-Returns true if the algorithm succeeded. note: isdone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
+Returns True if the algorithm succeeded. Note: IsDone protects against a failure arising from a more internal intersection algorithm, which has reached its numeric limits.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2254,7 +2254,7 @@ int
 
 Description
 -----------
-Returns the number of of lines, representing solutions computed by this algorithm. raises notdone if the construction algorithm didn't succeed.
+Returns the number of of lines, representing solutions computed by this algorithm. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -2274,7 +2274,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point parsol on the solution curv. pararg is the intrinsic parameter of the point pararg on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point ParSol on the solution curv. ParArg is the intrinsic parameter of the point ParArg on the argument curv. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2292,7 +2292,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the solution number index. be careful: the index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the solution number Index. Be careful: the Index is only a way to get all the solutions, but is not associated to these outside the context of the algorithm-object. raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
@@ -2311,7 +2311,7 @@ None
 
 Description
 -----------
-Returns the qualifier qualif1 of the tangency argument for the solution of index index computed by this algorithm. the returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - gccent_noqualifier if the tangency argument is a point. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
 
@@ -2363,7 +2363,7 @@ None
 
 Description
 -----------
-This method implements the algorithms used to create a 2d line tangent to a circle and parallel to another line. it raises badqualifier in case of enclosedcirc. exceptions gccent_badqualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
+This method implements the algorithms used to create a 2d line tangent to a circle and parallel to another line. It raises BadQualifier in case of EnclosedCirc. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 ") GccAna_Lin2dTanPar;
 		 GccAna_Lin2dTanPar(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & Lin1);
 
@@ -2376,7 +2376,7 @@ bool
 
 Description
 -----------
-Returns true if the algorithm succeeded.
+Returns True if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2389,7 +2389,7 @@ int
 
 Description
 -----------
-Returns the number of solutions. raises notdone if the construction algorithm didn't succeed.
+Returns the number of solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -2409,7 +2409,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. pararg is equal 0 when the solution is passing through a point. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. ParArg is equal 0 when the solution is passing through a point. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & Pnt);
 
@@ -2427,7 +2427,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
@@ -2446,7 +2446,7 @@ None
 
 Description
 -----------
-Returns the information about the qualifiers of the tangency arguments concerning the solution number index. it returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computed in case of unqualified). raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the information about the qualifiers of the tangency arguments concerning the solution number Index. It returns the real qualifiers (the qualifiers given to the constructor method in case of enclosed, enclosing and outside and the qualifiers computed in case of unqualified). Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
 
@@ -2556,7 +2556,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the intersection between the solution number index and the second argument. it returns the first intersection in a case of lin2dtanper which is perpendicular to a circle . parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the intersection between the solution number Index and the second argument. It returns the first intersection in a case of Lin2dTanPer which is perpendicular to a circle . ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
@@ -2569,7 +2569,7 @@ bool
 
 Description
 -----------
-Returns true if the algorithm succeeded.
+Returns True if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2582,7 +2582,7 @@ int
 
 Description
 -----------
-Returns the number of solutions. raises notdone if the construction algorithm didn't succeed.
+Returns the number of solutions. Raises NotDone if the construction algorithm didn't succeed.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -2602,7 +2602,7 @@ ParArg: float
 
 Description
 -----------
-Returns information about the tangency point between the result number index and the first argument. parsol is the intrinsic parameter of the point on the solution curv. pararg is the intrinsic parameter of the point on the argument curv. if the first argument is a point pararg is equal zero. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns information about the tangency point between the result number Index and the first argument. ParSol is the intrinsic parameter of the point on the solution curv. ParArg is the intrinsic parameter of the point on the argument curv. If the first argument is a point ParArg is equal zero. raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & Pnt);
 
@@ -2620,7 +2620,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the solution number index and raises outofrange exception if index is greater than the number of solutions. be careful: the index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. raises notdone if the construction algorithm didn't succeed. it raises outofrange if index is greater than the number of solutions.
+Returns the solution number Index and raises OutOfRange exception if Index is greater than the number of solutions. Be careful: the Index is only a way to get all the solutions, but is not associated to those outside the context of the algorithm-object. Raises NotDone if the construction algorithm didn't succeed. It raises OutOfRange if Index is greater than the number of solutions.
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
@@ -2639,7 +2639,7 @@ None
 
 Description
 -----------
-Returns the qualifier qualif1 of the tangency argument for the solution of index index computed by this algorithm. the returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - gccent_noqualifier if the tangency argument is a point. exceptions standard_outofrange if index is less than zero or greater than the number of solutions computed by this algorithm. stdfail_notdone if the construction fails.
+Returns the qualifier Qualif1 of the tangency argument for the solution of index Index computed by this algorithm. The returned qualifier is: - that specified at the start of construction when the solutions are defined as enclosing or outside with respect to the argument, or - that computed during construction (i.e. enclosing or outside) when the solutions are defined as unqualified with respect to the argument, or - GccEnt_noqualifier if the tangency argument is a point. Exceptions Standard_OutOfRange if Index is less than zero or greater than the number of solutions computed by this algorithm. StdFail_NotDone if the construction fails.
 ") WhichQualifier;
 		void WhichQualifier(const Standard_Integer Index, GccEnt_Position & Qualif1);
 
@@ -2672,7 +2672,7 @@ None
 
 Description
 -----------
-Constructs a bisecting curve between the line line1 and the point point2.
+Constructs a bisecting curve between the line Line1 and the point Point2.
 ") GccAna_LinPnt2dBisec;
 		 GccAna_LinPnt2dBisec(const gp_Lin2d & Line1, const gp_Pnt2d & Point2);
 
@@ -2685,7 +2685,7 @@ bool
 
 Description
 -----------
-Returns true if the algorithm succeeded.
+Returns True if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2698,7 +2698,7 @@ opencascade::handle<GccInt_Bisec>
 
 Description
 -----------
-Returns the number of solutions. it raises notdone if the construction algorithm didn't succeed.
+Returns the number of solutions. It raises NotDone if the construction algorithm didn't succeed.
 ") ThisSolution;
 		opencascade::handle<GccInt_Bisec> ThisSolution();
 
@@ -2731,7 +2731,7 @@ None
 
 Description
 -----------
-Constructs a bisecting line between the points point1 and point2.
+Constructs a bisecting line between the points Point1 and Point2.
 ") GccAna_Pnt2dBisec;
 		 GccAna_Pnt2dBisec(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HEADERSECTIONDOCSTRING
 "HeaderSection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_headersection.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_headersection.html"
 %enddef
 %module (package="OCC.Core", docstring=HEADERSECTIONDOCSTRING) HeaderSection
 
@@ -103,7 +103,7 @@ opencascade::handle<HeaderSection_Protocol>
 
 Description
 -----------
-Creates a protocol.
+creates a Protocol.
 ") Protocol;
 		static opencascade::handle<HeaderSection_Protocol> Protocol();
 
@@ -130,7 +130,7 @@ None
 
 Description
 -----------
-Returns a filedescription.
+Returns a FileDescription.
 ") HeaderSection_FileDescription;
 		 HeaderSection_FileDescription();
 
@@ -271,7 +271,7 @@ None
 
 Description
 -----------
-Returns a filename.
+Returns a FileName.
 ") HeaderSection_FileName;
 		 HeaderSection_FileName();
 
@@ -603,7 +603,7 @@ None
 
 Description
 -----------
-Returns a fileschema.
+Returns a FileSchema.
 ") HeaderSection_FileSchema;
 		 HeaderSection_FileSchema();
 
@@ -717,9 +717,14 @@ No available documentation.
 		 HeaderSection_Protocol();
 
 		/****** HeaderSection_Protocol::SchemaName ******/
-		/****** md5 signature: 27a898737676170f03381527c0752a7e ******/
+		/****** md5 signature: 0c51a9fc74d66689427470d02465afcd ******/
 		%feature("compactdefaultargs") SchemaName;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+&: Interface_InterfaceModel
+
+Return
 -------
 str
 
@@ -727,7 +732,7 @@ Description
 -----------
 No available documentation.
 ") SchemaName;
-		virtual Standard_CString SchemaName();
+		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel > &);
 
 		/****** HeaderSection_Protocol::TypeNumber ******/
 		/****** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ******/
@@ -743,7 +748,7 @@ int
 
 Description
 -----------
-Returns a case number for each of the headersection entities.
+Returns a Case Number for each of the HeaderSection Entities.
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 

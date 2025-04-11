@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPPARCURVESDOCSTRING
 "AppParCurves module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_appparcurves.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appparcurves.html"
 %enddef
 %module (package="OCC.Core", docstring=APPPARCURVESDOCSTRING) AppParCurves
 
@@ -251,7 +251,7 @@ None
 
 Description
 -----------
-Returns an indefinite constraintcouple.
+returns an indefinite ConstraintCouple.
 ") AppParCurves_ConstraintCouple;
 		 AppParCurves_ConstraintCouple();
 
@@ -270,7 +270,7 @@ None
 
 Description
 -----------
-Create a couple the object <index> will have the constraint <cons>.
+Create a couple the object <Index> will have the constraint <Cons>.
 ") AppParCurves_ConstraintCouple;
 		 AppParCurves_ConstraintCouple(const Standard_Integer TheIndex, const AppParCurves_Constraint Cons);
 
@@ -283,7 +283,7 @@ AppParCurves_Constraint
 
 Description
 -----------
-Returns the constraint of the object.
+returns the constraint of the object.
 ") Constraint;
 		AppParCurves_Constraint Constraint();
 
@@ -296,7 +296,7 @@ int
 
 Description
 -----------
-Returns the index of the constraint object.
+returns the index of the constraint object.
 ") Index;
 		Standard_Integer Index();
 
@@ -359,7 +359,7 @@ None
 
 Description
 -----------
-Returns an indefinite multicurve.
+returns an indefinite MultiCurve.
 ") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve();
 
@@ -377,7 +377,7 @@ None
 
 Description
 -----------
-Creates a multicurve, describing bezier curves all containing the same number of multipoint. an exception is raised if degree < 0.
+creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 ") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve(const Standard_Integer NbPol);
 
@@ -395,7 +395,7 @@ None
 
 Description
 -----------
-Creates a multicurve, describing bezier curves all containing the same number of multipoint. each multipoint must have nbcurves poles.
+creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 ") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve(const AppParCurves_Array1OfMultiPoint & tabMU);
 
@@ -414,7 +414,7 @@ None
 
 Description
 -----------
-Returns the pole array of the curve of range cuindex. an exception is raised if the dimension of the curve is 2d.
+returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 2d.
 ") Curve;
 		void Curve(const Standard_Integer CuIndex, TColgp_Array1OfPnt & TabPnt);
 
@@ -433,7 +433,7 @@ None
 
 Description
 -----------
-Returns the pole array of the curve of range cuindex. an exception is raised if the dimension of the curve is 3d.
+returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 3d.
 ") Curve;
 		void Curve(const Standard_Integer CuIndex, TColgp_Array1OfPnt2d & TabPnt);
 
@@ -454,7 +454,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") D1;
 		virtual void D1(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt, gp_Vec & V1);
 
@@ -475,7 +475,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") D1;
 		virtual void D1(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt, gp_Vec2d & V1);
 
@@ -497,7 +497,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") D2;
 		virtual void D2(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt, gp_Vec & V1, gp_Vec & V2);
 
@@ -519,7 +519,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") D2;
 		virtual void D2(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -532,7 +532,7 @@ int
 
 Description
 -----------
-Returns the degree of the curves.
+returns the degree of the curves.
 ") Degree;
 		virtual Standard_Integer Degree();
 
@@ -550,7 +550,7 @@ int
 
 Description
 -----------
-Returns the dimension of the cuindex curve. an exception is raised if cuindex<0 or cuindex>nbcurves.
+returns the dimension of the CuIndex curve. An exception is raised if CuIndex<0 or CuIndex>NbCurves.
 ") Dimension;
 		Standard_Integer Dimension(const Standard_Integer CuIndex);
 
@@ -567,7 +567,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -580,7 +580,7 @@ int
 
 Description
 -----------
-Returns the number of curves resulting from the approximation of a multiline.
+Returns the number of curves resulting from the approximation of a MultiLine.
 ") NbCurves;
 		Standard_Integer NbCurves();
 
@@ -593,7 +593,7 @@ int
 
 Description
 -----------
-Returns the number of poles on curves resulting from the approximation of a multiline.
+Returns the number of poles on curves resulting from the approximation of a MultiLine.
 ") NbPoles;
 		virtual Standard_Integer NbPoles();
 
@@ -612,7 +612,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the nieme pole of the cuindex curve. the curve must be a 3d curve.
+returns the Nieme pole of the CuIndex curve. the curve must be a 3D curve.
 ") Pole;
 		const gp_Pnt Pole(const Standard_Integer CuIndex, const Standard_Integer Nieme);
 
@@ -631,7 +631,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the nieme pole of the cuindex curve. the curve must be a 2d curve.
+returns the Nieme pole of the CuIndex curve. the curve must be a 2D curve.
 ") Pole2d;
 		const gp_Pnt2d Pole2d(const Standard_Integer CuIndex, const Standard_Integer Nieme);
 
@@ -649,7 +649,7 @@ None
 
 Description
 -----------
-The number of poles of the multicurve will be set to <nbpoles>.
+The number of poles of the MultiCurve will be set to <nbPoles>.
 ") SetNbPoles;
 		void SetNbPoles(const Standard_Integer nbPoles);
 
@@ -668,7 +668,7 @@ None
 
 Description
 -----------
-Sets the multipoint of range index to the value <mpoint>. an exception is raised if index <0 or index >nbmpoint.
+sets the MultiPoint of range Index to the value <MPoint>. An exception is raised if Index <0 or Index >NbMPoint.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const AppParCurves_MultiPoint & MPoint);
 
@@ -692,7 +692,7 @@ None
 
 Description
 -----------
-Applies a transformation to the curve of range <cuindex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz.
+Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz.
 ") Transform;
 		void Transform(const Standard_Integer CuIndex, const Standard_Real x, const Standard_Real dx, const Standard_Real y, const Standard_Real dy, const Standard_Real z, const Standard_Real dz);
 
@@ -714,7 +714,7 @@ None
 
 Description
 -----------
-Applies a transformation to the curve of range <cuindex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
+Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 ") Transform2d;
 		void Transform2d(const Standard_Integer CuIndex, const Standard_Real x, const Standard_Real dx, const Standard_Real y, const Standard_Real dy);
 
@@ -732,7 +732,7 @@ AppParCurves_MultiPoint
 
 Description
 -----------
-Returns the index multipoint. an exception is raised if index <0 or index >degree+1.
+returns the Index MultiPoint. An exception is raised if Index <0 or Index >Degree+1.
 ") Value;
 		AppParCurves_MultiPoint Value(const Standard_Integer Index);
 
@@ -752,7 +752,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") Value;
 		virtual void Value(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt);
 
@@ -772,7 +772,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bezier curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the Bezier curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") Value;
 		virtual void Value(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt);
 
@@ -799,7 +799,7 @@ None
 
 Description
 -----------
-Creates an indefinite multipoint.
+creates an indefinite MultiPoint.
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint();
 
@@ -818,7 +818,7 @@ None
 
 Description
 -----------
-Constructs a set of points used to approximate a multiline. these points can be of 2 or 3 dimensions. points will be initialized with setpoint and setpoint2d. nbpoints is the number of 3d points. nbpoints2d is the number of 2d points.
+constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the number of 3D Points. NbPoints2d is the number of 2D Points.
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint(const Standard_Integer NbPoints, const Standard_Integer NbPoints2d);
 
@@ -836,7 +836,7 @@ None
 
 Description
 -----------
-Creates a multipoint only composed of 3d points.
+creates a MultiPoint only composed of 3D points.
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt & tabP);
 
@@ -854,7 +854,7 @@ None
 
 Description
 -----------
-Creates a multipoint only composed of 2d points.
+creates a MultiPoint only composed of 2D points.
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt2d & tabP2d);
 
@@ -873,7 +873,7 @@ None
 
 Description
 -----------
-Constructs a set of points used to approximate a multiline. these points can be of 2 or 3 dimensions. points will be initialized with setpoint and setpoint2d. nbpoints is the total number of points.
+constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the total number of Points.
 ") AppParCurves_MultiPoint;
 		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d);
 
@@ -891,7 +891,7 @@ int
 
 Description
 -----------
-Returns the dimension of the point of range index. an exception is raised if index <0 or index > nbcurves.
+returns the dimension of the point of range Index. An exception is raised if Index <0 or Index > NbCurves.
 ") Dimension;
 		Standard_Integer Dimension(const Standard_Integer Index);
 
@@ -908,7 +908,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -921,7 +921,7 @@ int
 
 Description
 -----------
-Returns the number of points of dimension 3d.
+returns the number of points of dimension 3D.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -934,7 +934,7 @@ int
 
 Description
 -----------
-Returns the number of points of dimension 2d.
+returns the number of points of dimension 2D.
 ") NbPoints2d;
 		Standard_Integer NbPoints2d();
 
@@ -952,7 +952,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the 3d point of range index. an exception is raised if index < 0 or index < number of 3d points.
+returns the 3d Point of range Index. An exception is raised if Index < 0 or Index < number of 3d Points.
 ") Point;
 		const gp_Pnt Point(const Standard_Integer Index);
 
@@ -970,7 +970,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the 2d point of range index. an exception is raised if index <= number of 3d points or index > total number of points.
+returns the 2d Point of range Index. An exception is raised if index <= number of 3d Points or Index > total number of Points.
 ") Point2d;
 		const gp_Pnt2d Point2d(const Standard_Integer Index);
 
@@ -989,7 +989,7 @@ None
 
 Description
 -----------
-The 3d point of range index of this multipoint is set to <point>. an exception is raised if index < 0 or index > number of 3d points.
+the 3d Point of range Index of this MultiPoint is set to <Point>. An exception is raised if Index < 0 or Index > number of 3d Points.
 ") SetPoint;
 		void SetPoint(const Standard_Integer Index, const gp_Pnt & Point);
 
@@ -1008,7 +1008,7 @@ None
 
 Description
 -----------
-The 2d point of range index is set to <point>. an exception is raised if index > 3d points or index > total number of points.
+The 2d Point of range Index is set to <Point>. An exception is raised if Index > 3d Points or Index > total number of Points.
 ") SetPoint2d;
 		void SetPoint2d(const Standard_Integer Index, const gp_Pnt2d & Point);
 
@@ -1032,7 +1032,7 @@ None
 
 Description
 -----------
-Applies a transformation to the curve of range <cuindex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz.
+Applies a transformation to the curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve. newz = z + dz*oldz.
 ") Transform;
 		void Transform(const Standard_Integer CuIndex, const Standard_Real x, const Standard_Real dx, const Standard_Real y, const Standard_Real dy, const Standard_Real z, const Standard_Real dz);
 
@@ -1054,7 +1054,7 @@ None
 
 Description
 -----------
-Applies a transformation to the curve of range <cuindex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
+Applies a transformation to the Curve of range <CuIndex>. newx = x + dx*oldx newy = y + dy*oldy for all points of the curve.
 ") Transform2d;
 		void Transform2d(const Standard_Integer CuIndex, const Standard_Real x, const Standard_Real dx, const Standard_Real y, const Standard_Real dy);
 
@@ -1081,7 +1081,7 @@ None
 
 Description
 -----------
-Returns an indefinite multibspcurve.
+returns an indefinite MultiBSpCurve.
 ") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve();
 
@@ -1099,7 +1099,7 @@ None
 
 Description
 -----------
-Creates a multibspcurve, describing bspline curves all containing the same number of multipoint. an exception is raised if degree < 0.
+creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. An exception is raised if Degree < 0.
 ") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve(const Standard_Integer NbPol);
 
@@ -1119,7 +1119,7 @@ None
 
 Description
 -----------
-Creates a multibspcurve, describing bspline curves all containing the same number of multipoint. each multipoint must have nbcurves poles.
+creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 ") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve(const AppParCurves_Array1OfMultiPoint & tabMU, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
@@ -1139,7 +1139,7 @@ None
 
 Description
 -----------
-Creates a multibspcurve, describing bspline curves, taking control points from <sc>.
+creates a MultiBSpCurve, describing BSpline curves, taking control points from <SC>.
 ") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve(const AppParCurves_MultiCurve & SC, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
@@ -1160,7 +1160,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") D1;
 		virtual void D1(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt, gp_Vec & V1);
 
@@ -1181,7 +1181,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") D1;
 		virtual void D1(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt, gp_Vec2d & V1);
 
@@ -1203,7 +1203,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") D2;
 		virtual void D2(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt, gp_Vec & V1, gp_Vec & V2);
 
@@ -1225,7 +1225,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") D2;
 		virtual void D2(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -1238,7 +1238,7 @@ int
 
 Description
 -----------
-Returns the degree of the curve(s).
+returns the degree of the curve(s).
 ") Degree;
 		virtual Standard_Integer Degree();
 
@@ -1255,7 +1255,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -1268,7 +1268,7 @@ TColStd_Array1OfReal
 
 Description
 -----------
-Returns an array of reals containing the multiplicities of curves resulting from the approximation.
+Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
 ") Knots;
 		const TColStd_Array1OfReal & Knots();
 
@@ -1281,7 +1281,7 @@ TColStd_Array1OfInteger
 
 Description
 -----------
-Returns an array of reals containing the multiplicities of curves resulting from the approximation.
+Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
 ") Multiplicities;
 		const TColStd_Array1OfInteger & Multiplicities();
 
@@ -1299,7 +1299,7 @@ None
 
 Description
 -----------
-Knots of the multibspcurve are assigned to <theknots>.
+Knots of the multiBSpCurve are assigned to <theknots>.
 ") SetKnots;
 		void SetKnots(const TColStd_Array1OfReal & theKnots);
 
@@ -1317,7 +1317,7 @@ None
 
 Description
 -----------
-Multiplicities of the multibspcurve are assigned to <themults>.
+Multiplicities of the multiBSpCurve are assigned to <theMults>.
 ") SetMultiplicities;
 		void SetMultiplicities(const TColStd_Array1OfInteger & theMults);
 
@@ -1337,7 +1337,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 2d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 2d.
 ") Value;
 		virtual void Value(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt & Pt);
 
@@ -1357,7 +1357,7 @@ None
 
 Description
 -----------
-Returns the value of the point with a parameter u on the bspline curve number cuindex. an exception is raised if cuindex <0 or > nbcurves. an exception is raised if the curve dimension is 3d.
+returns the value of the point with a parameter U on the BSpline curve number CuIndex. An exception is raised if CuIndex <0 or > NbCurves. An exception is raised if the curve dimension is 3d.
 ") Value;
 		virtual void Value(const Standard_Integer CuIndex, const Standard_Real U, gp_Pnt2d & Pt);
 

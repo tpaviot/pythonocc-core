@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define POLYDOCSTRING
 "Poly module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_poly.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_poly.html"
 %enddef
 %module (package="OCC.Core", docstring=POLYDOCSTRING) Poly
 
@@ -167,7 +167,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Computes and stores the link from nodes to triangles and from triangles to neighbouring triangles. this tool is obsolete, replaced by poly_coherenttriangulation algorithm to make minimal loops in a graph join several triangulations to one new triangulation object. the new triangulation is just a mechanical sum of input triangulations, without node sharing. uv coordinates are dropped in the result.
+Computes and stores the link from nodes to triangles and from triangles to neighbouring triangles. This tool is obsolete, replaced by Poly_CoherentTriangulation Algorithm to make minimal loops in a graph Join several triangulations to one new triangulation object. The new triangulation is just a mechanical sum of input triangulations, without node sharing. UV coordinates are dropped in the result.
 ") Catenate;
 		static opencascade::handle<Poly_Triangulation> Catenate(const Poly_ListOfTriangulation & lstTri);
 
@@ -203,7 +203,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the triangulation. this is a call to the previous method with comapct set to false.
+Dumps the triangulation. This is a call to the previous method with Comapct set to False.
 ") Dump;
 		static void Dump(const opencascade::handle<Poly_Triangulation> & T, std::ostream &OutValue);
 
@@ -221,7 +221,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the 3d polygon. this is a call to the previous method with comapct set to false.
+Dumps the 3D polygon. This is a call to the previous method with Comapct set to False.
 ") Dump;
 		static void Dump(const opencascade::handle<Poly_Polygon3D> & P, std::ostream &OutValue);
 
@@ -239,7 +239,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the 2d polygon. this is a call to the previous method with comapct set to false.
+Dumps the 2D polygon. This is a call to the previous method with Comapct set to False.
 ") Dump;
 		static void Dump(const opencascade::handle<Poly_Polygon2D> & P, std::ostream &OutValue);
 
@@ -260,7 +260,11 @@ theDistance: float
 
 Description
 -----------
-Computes the intersection between axis and triangulation. @param thetri [in] input triangulation @param theaxis [in] intersecting ray @param theisclosest [in] finds the closest intersection when true, finds the farthest otherwise @param thetriangle [out] intersected triangle @param thedistance [out] distance along ray to intersection point return true if intersection takes place, false otherwise.
+Computes the intersection between axis and triangulation. 
+Input parameter: theTri input triangulation 
+Input parameter: theAxis intersecting ray 
+Input parameter: theIsClosest finds the closest intersection when True, finds the farthest otherwise @param[out] theTriangle intersected triangle @param[out] theDistance distance along ray to intersection point 
+Return: True if intersection takes place, False otherwise.
 ") Intersect;
 		static Standard_Boolean Intersect(const opencascade::handle<Poly_Triangulation> & theTri, const gp_Ax1 & theAxis, const Standard_Boolean theIsClosest, Poly_Triangle & theTriangle, Standard_Real &OutValue);
 
@@ -282,7 +286,13 @@ theParam: float
 
 Description
 -----------
-Computes the intersection between a triangle defined by three vertexes and a line. @param thestart [in] picking ray origin @param thedir [in] picking ray direction @param thev0 [in] first triangle node @param thev1 [in] second triangle node @param thev2 [in] third triangle node @param theparam [out] param on line of the intersection point return 1 if intersection was found, 0 otherwise.
+Computes the intersection between a triangle defined by three vertexes and a line. 
+Input parameter: theStart picking ray origin 
+Input parameter: theDir picking ray direction 
+Input parameter: theV0 first triangle node 
+Input parameter: theV1 second triangle node 
+Input parameter: theV2 third triangle node @param[out] theParam param on line of the intersection point 
+Return: 1 if intersection was found, 0 otherwise.
 ") IntersectTriLine;
 		static Standard_Integer IntersectTriLine(const gp_XYZ & theStart, const gp_Dir & theDir, const gp_XYZ & theV0, const gp_XYZ & theV1, const gp_XYZ & theV2, Standard_Real &OutValue);
 
@@ -304,7 +314,7 @@ float
 
 Description
 -----------
-Computes parameters of the point p on triangle defined by points p1, p2, and p3, in 2d. the parameters u and v are defined so that p = p1 + u * (p2 - p1) + v * (p3 - p1), with u >= 0, v >= 0, u + v <= 1. if p is located outside of triangle, or triangle is degenerated, the returned parameters correspond to closest point, and returned value is square of the distance from original point to triangle (0 if point is inside).
+Computes parameters of the point P on triangle defined by points P1, P2, and P3, in 2d. The parameters U and V are defined so that P = P1 + U * (P2 - P1) + V * (P3 - P1), with U >= 0, V >= 0, U + V <= 1. If P is located outside of triangle, or triangle is degenerated, the returned parameters correspond to closest point, and returned value is square of the distance from original point to triangle (0 if point is inside).
 ") PointOnTriangle;
 		static Standard_Real PointOnTriangle(const gp_XY & P1, const gp_XY & P2, const gp_XY & P3, const gp_XY & P, gp_XY & UV);
 
@@ -322,7 +332,7 @@ opencascade::handle<Poly_Polygon2D>
 
 Description
 -----------
-Reads a 2d polygon from the stream <is>.
+Reads a 2D polygon from the stream <IS>.
 ") ReadPolygon2D;
 		static opencascade::handle<Poly_Polygon2D> ReadPolygon2D(std::istream & IS);
 
@@ -340,7 +350,7 @@ opencascade::handle<Poly_Polygon3D>
 
 Description
 -----------
-Reads a 3d polygon from the stream <is>.
+Reads a 3d polygon from the stream <IS>.
 ") ReadPolygon3D;
 		static opencascade::handle<Poly_Polygon3D> ReadPolygon3D(std::istream & IS);
 
@@ -358,7 +368,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Reads a triangulation from the stream <is>.
+Reads a triangulation from the stream <IS>.
 ") ReadTriangulation;
 		static opencascade::handle<Poly_Triangulation> ReadTriangulation(std::istream & IS);
 
@@ -377,7 +387,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of the triangulation <t> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+Writes the content of the triangulation <T> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 ") Write;
 		static void Write(const opencascade::handle<Poly_Triangulation> & T, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
 
@@ -396,7 +406,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of the 3d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+Writes the content of the 3D polygon <P> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 ") Write;
 		static void Write(const opencascade::handle<Poly_Polygon3D> & P, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
 
@@ -415,7 +425,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of the 2d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+Writes the content of the 2D polygon <P> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 ") Write;
 		static void Write(const opencascade::handle<Poly_Polygon2D> & P, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
 
@@ -478,7 +488,7 @@ None
 
 Description
 -----------
-Copy constructor .
+Copy constructor.
 ") Poly_ArrayOfNodes;
 		 Poly_ArrayOfNodes(const Poly_ArrayOfNodes & theOther);
 
@@ -497,7 +507,7 @@ None
 
 Description
 -----------
-Constructor wrapping pre-allocated c-array of values without copying them.
+Constructor wrapping pre-allocated C-array of values without copying them.
 ") Poly_ArrayOfNodes;
 		 Poly_ArrayOfNodes(const gp_Pnt & theBegin, Standard_Integer theLength);
 
@@ -516,7 +526,7 @@ None
 
 Description
 -----------
-Constructor wrapping pre-allocated c-array of values without copying them.
+Constructor wrapping pre-allocated C-array of values without copying them.
 ") Poly_ArrayOfNodes;
 		 Poly_ArrayOfNodes(const gp_Vec3f & theBegin, Standard_Integer theLength);
 
@@ -552,7 +562,7 @@ Poly_ArrayOfNodes
 
 Description
 -----------
-Copies data of theother array to this. the arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
+Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
 ") Assign;
 		Poly_ArrayOfNodes & Assign(const Poly_ArrayOfNodes & theOther);
 
@@ -565,7 +575,7 @@ bool
 
 Description
 -----------
-Returns true if array defines nodes with double precision.
+Returns True if array defines nodes with double precision.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -601,7 +611,7 @@ None
 
 Description
 -----------
-Sets if array should define nodes with double or single precision. raises exception if array was already allocated.
+Sets if array should define nodes with double or single precision. Raises exception if array was already allocated.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theIsDouble);
 
@@ -701,7 +711,7 @@ None
 
 Description
 -----------
-Copy constructor .
+Copy constructor.
 ") Poly_ArrayOfUVNodes;
 		 Poly_ArrayOfUVNodes(const Poly_ArrayOfUVNodes & theOther);
 
@@ -720,7 +730,7 @@ None
 
 Description
 -----------
-Constructor wrapping pre-allocated c-array of values without copying them.
+Constructor wrapping pre-allocated C-array of values without copying them.
 ") Poly_ArrayOfUVNodes;
 		 Poly_ArrayOfUVNodes(const gp_Pnt2d & theBegin, Standard_Integer theLength);
 
@@ -739,7 +749,7 @@ None
 
 Description
 -----------
-Constructor wrapping pre-allocated c-array of values without copying them.
+Constructor wrapping pre-allocated C-array of values without copying them.
 ") Poly_ArrayOfUVNodes;
 		 Poly_ArrayOfUVNodes(const gp_Vec2f & theBegin, Standard_Integer theLength);
 
@@ -775,7 +785,7 @@ Poly_ArrayOfUVNodes
 
 Description
 -----------
-Copies data of theother array to this. the arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
+Copies data of theOther array to this. The arrays should have the same length, but may have different precision / number of components (data conversion will be applied in the latter case).
 ") Assign;
 		Poly_ArrayOfUVNodes & Assign(const Poly_ArrayOfUVNodes & theOther);
 
@@ -788,7 +798,7 @@ bool
 
 Description
 -----------
-Returns true if array defines nodes with double precision.
+Returns True if array defines nodes with double precision.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -824,7 +834,7 @@ None
 
 Description
 -----------
-Sets if array should define nodes with double or single precision. raises exception if array was already allocated.
+Sets if array should define nodes with double or single precision. Raises exception if array was already allocated.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theIsDouble);
 
@@ -888,7 +898,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") Poly_CoherentLink;
 		 Poly_CoherentLink();
 
@@ -907,7 +917,7 @@ None
 
 Description
 -----------
-No available documentation.
+/** * Constructor. Creates a Link that has no reference to 'opposite nodes'. * This constructor is useful to create temporary object that is not * inserted into any existing triangulation. */.
 ") Poly_CoherentLink;
 		 Poly_CoherentLink(const Standard_Integer iNode0, const Standard_Integer iNode1);
 
@@ -926,7 +936,9 @@ None
 
 Description
 -----------
-/** * constructor, takes a triangle and a side. a link is created always such * that mynode[0] < mynode[1]. unlike the previous constructor, this one * assigns the 'opposite node' fields. this constructor is used when a * link is inserted into a poly_coherenttriangulation structure. * @param thetri * triangle containing the link that is created * @param iside * can be 0, 1 or 2. index of the node */.
+/** * Constructor, takes a triangle and a side. A link is created always such * that myNode[0] < myNode[1]. Unlike the previous constructor, this one * assigns the 'opposite node' fields. This constructor is used when a * link is inserted into a Poly_CoherentTriangulation structure. * 
+Parameter theTri * Triangle containing the link that is created * 
+Parameter iSide * Can be 0, 1 or 2. Index of the node */.
 ") Poly_CoherentLink;
 		 Poly_CoherentLink(const Poly_CoherentTriangle & theTri, Standard_Integer iSide);
 
@@ -939,7 +951,7 @@ Standard_Address
 
 Description
 -----------
-/** * query the attribute of the link. */.
+/** * Query the attribute of the Link. */.
 ") GetAttribute;
 		Standard_Address GetAttribute();
 
@@ -952,7 +964,7 @@ bool
 
 Description
 -----------
-/** * query the status of the link - if it is an invalid one. * an invalid link has node members equal to -1. */.
+/** * Query the status of the link - if it is an invalid one. * An invalid link has Node members equal to -1. */.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -970,7 +982,8 @@ int
 
 Description
 -----------
-/** * return the node index in the current triangulation. * @param ind * 0 or 1 making distinction of the two nodes that constitute the link. * node(0) always returns a smaller number than node(1). */.
+/** * Return the node index in the current triangulation. * 
+Parameter ind * 0 or 1 making distinction of the two nodes that constitute the Link. * Node(0) always returns a smaller number than Node(1). */.
 ") Node;
 		Standard_Integer Node(const Standard_Integer ind);
 
@@ -983,7 +996,7 @@ None
 
 Description
 -----------
-/** * invalidate this link. */.
+/** * Invalidate this Link. */.
 ") Nullify;
 		void Nullify();
 
@@ -1001,7 +1014,8 @@ int
 
 Description
 -----------
-/** * return the opposite node (belonging to the left or right incident triangle) * index in the current triangulation. * @param ind * 0 or 1 making distinction of the two involved triangles: 0 on the left, * 1 on the right side of the link. */.
+/** * Return the opposite node (belonging to the left or right incident triangle) * index in the current triangulation. * 
+Parameter ind * 0 or 1 making distinction of the two involved triangles: 0 on the left, * 1 on the right side of the Link. */.
 ") OppositeNode;
 		Standard_Integer OppositeNode(const Standard_Integer ind);
 
@@ -1019,7 +1033,7 @@ None
 
 Description
 -----------
-/** * set the attribute of the link. */.
+/** * Set the attribute of the Link. */.
 ") SetAttribute;
 		void SetAttribute(const Standard_Address theAtt);
 
@@ -1046,7 +1060,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") Poly_CoherentNode;
 		 Poly_CoherentNode();
 
@@ -1064,7 +1078,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") Poly_CoherentNode;
 		 Poly_CoherentNode(const gp_XYZ & thePnt);
 
@@ -1083,7 +1097,7 @@ None
 
 Description
 -----------
-/** * connect a triangle to this node. */.
+/** * Connect a triangle to this Node. */.
 ") AddTriangle;
 		void AddTriangle(const Poly_CoherentTriangle & theTri, const opencascade::handle<NCollection_BaseAllocator> & theA);
 
@@ -1101,7 +1115,7 @@ None
 
 Description
 -----------
-/** * reset the node to void. */.
+/** * Reset the Node to void. */.
 ") Clear;
 		void Clear(const opencascade::handle<NCollection_BaseAllocator > &);
 
@@ -1131,7 +1145,7 @@ int
 
 Description
 -----------
-/** * get the value of node index. */.
+/** * Get the value of node Index. */.
 ") GetIndex;
 		Standard_Integer GetIndex();
 
@@ -1144,7 +1158,7 @@ gp_XYZ
 
 Description
 -----------
-/** * get the stored normal in the node. */.
+/** * Get the stored normal in the node. */.
 ") GetNormal;
 		gp_XYZ GetNormal();
 
@@ -1157,7 +1171,7 @@ float
 
 Description
 -----------
-/** * get u coordinate of the node. */.
+/** * Get U coordinate of the Node. */.
 ") GetU;
 		Standard_Real GetU();
 
@@ -1170,7 +1184,7 @@ float
 
 Description
 -----------
-/** * get v coordinate of the node. */.
+/** * Get V coordinate of the Node. */.
 ") GetV;
 		Standard_Real GetV();
 
@@ -1183,7 +1197,7 @@ bool
 
 Description
 -----------
-/** * query if the node contains a normal vector. */.
+/** * Query if the Node contains a normal vector. */.
 ") HasNormal;
 		Standard_Boolean HasNormal();
 
@@ -1196,7 +1210,7 @@ bool
 
 Description
 -----------
-/** * check if this is a free node, i.e., a node without a single * incident triangle. */.
+/** * Check if this is a free node, i.e., a node without a single * incident triangle. */.
 ") IsFreeNode;
 		Standard_Boolean IsFreeNode();
 
@@ -1215,7 +1229,7 @@ bool
 
 Description
 -----------
-/** * disconnect a triangle from this node. */.
+/** * Disconnect a triangle from this Node. */.
 ") RemoveTriangle;
 		Standard_Boolean RemoveTriangle(const Poly_CoherentTriangle & theTri, const opencascade::handle<NCollection_BaseAllocator> & theA);
 
@@ -1233,7 +1247,7 @@ None
 
 Description
 -----------
-/** * set the value of node index. */.
+/** * Set the value of node Index. */.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex);
 
@@ -1251,7 +1265,7 @@ None
 
 Description
 -----------
-/** * define the normal vector in the node. */.
+/** * Define the normal vector in the Node. */.
 ") SetNormal;
 		void SetNormal(const gp_XYZ & theVector);
 
@@ -1270,7 +1284,7 @@ None
 
 Description
 -----------
-/** * set the uv coordinates of the node. */.
+/** * Set the UV coordinates of the Node. */.
 ") SetUV;
 		void SetUV(const Standard_Real theU, const Standard_Real theV);
 
@@ -1283,7 +1297,7 @@ Poly_CoherentTriPtr::Iterator
 
 Description
 -----------
-/** * create an iterator of incident triangles. */.
+/** * Create an iterator of incident triangles. */.
 ") TriangleIterator;
 		Poly_CoherentTriPtr::Iterator TriangleIterator();
 
@@ -1313,7 +1327,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") Poly_CoherentTriangle;
 		 Poly_CoherentTriangle();
 
@@ -1333,7 +1347,7 @@ None
 
 Description
 -----------
-/** * constructor. */.
+/** * Constructor. */.
 ") Poly_CoherentTriangle;
 		 Poly_CoherentTriangle(const Standard_Integer iNode0, const Standard_Integer iNode1, const Standard_Integer iNode2);
 
@@ -1351,7 +1365,7 @@ int
 
 Description
 -----------
-/** * returns the index of the connection with the given triangle, or -1 if not found. */.
+/** * Returns the index of the connection with the given triangle, or -1 if not found. */.
 ") FindConnection;
 		Standard_Integer FindConnection(const Poly_CoherentTriangle &);
 
@@ -1369,7 +1383,7 @@ int
 
 Description
 -----------
-/** * query the connected node on the given side. * returns -1 if there is no connection on the specified side. */.
+/** * Query the connected node on the given side. * Returns -1 if there is no connection on the specified side. */.
 ") GetConnectedNode;
 		Standard_Integer GetConnectedNode(const Standard_Integer iConn);
 
@@ -1387,7 +1401,7 @@ Poly_CoherentTriangle *
 
 Description
 -----------
-/** * query the connected triangle on the given side. * returns null if there is no connection on the specified side. */.
+/** * Query the connected triangle on the given side. * Returns NULL if there is no connection on the specified side. */.
 ") GetConnectedTri;
 		const Poly_CoherentTriangle * GetConnectedTri(const Standard_Integer iConn);
 
@@ -1405,7 +1419,7 @@ Poly_CoherentLink *
 
 Description
 -----------
-/** * query the link associate with the given side of the triangle. * may return null if there are no links in the triangulation. */.
+/** * Query the Link associate with the given side of the Triangle. * May return NULL if there are no links in the triangulation. */.
 ") GetLink;
 		const Poly_CoherentLink * GetLink(const Standard_Integer iLink);
 
@@ -1418,7 +1432,7 @@ bool
 
 Description
 -----------
-/** * query if this is a valid triangle. */.
+/** * Query if this is a valid triangle. */.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -1431,7 +1445,7 @@ int
 
 Description
 -----------
-/** * query the number of connected triangles. */.
+/** * Query the number of connected triangles. */.
 ") NConnections;
 		Standard_Integer NConnections();
 
@@ -1449,7 +1463,7 @@ int
 
 Description
 -----------
-/** * query the node index in the position given by the parameter 'ind' */.
+/** * Query the node index in the position given by the parameter 'ind' */.
 ") Node;
 		Standard_Integer Node(const Standard_Integer ind);
 
@@ -1467,7 +1481,8 @@ None
 
 Description
 -----------
-/** * remove the connection with the given index. * @param iconn * can be 0, 1 or 2 - index of the node that is opposite to the connection * (shared link). */.
+/** * Remove the connection with the given index. * 
+Parameter iConn * Can be 0, 1 or 2 - index of the node that is opposite to the connection * (shared link). */.
 ") RemoveConnection;
 		void RemoveConnection(const Standard_Integer iConn);
 
@@ -1485,7 +1500,8 @@ bool
 
 Description
 -----------
-/** * remove the connection with the given triangle. * return * true if successfuol or false if the connection has not been found. */.
+/** * Remove the connection with the given Triangle. * 
+Return: * True if successfuol or False if the connection has not been found. */.
 ") RemoveConnection;
 		Standard_Boolean RemoveConnection(Poly_CoherentTriangle & theTri);
 
@@ -1504,7 +1520,10 @@ bool
 
 Description
 -----------
-/** * create connection with another triangle thetri. * this method creates both connections: in this triangle and in thetri. you * do not need to call the same method on triangle thetr. * @param iconn * can be 0, 1 or 2 - index of the node that is opposite to the connection * (shared link). * @param thetr * triangle that is connected on the given link. * return * true if successful, false if the connection is rejected * due to improper topology. */.
+/** * Create connection with another triangle theTri. * This method creates both connections: in this triangle and in theTri. You * do not need to call the same method on triangle theTr. * 
+Parameter iConn * Can be 0, 1 or 2 - index of the node that is opposite to the connection * (shared link). * 
+Parameter theTr * Triangle that is connected on the given link. * 
+Return: * True if successful, False if the connection is rejected * due to improper topology. */.
 ") SetConnection;
 		Standard_Boolean SetConnection(const Standard_Integer iConn, Poly_CoherentTriangle & theTr);
 
@@ -1522,7 +1541,9 @@ bool
 
 Description
 -----------
-/** * create connection with another triangle thetri. * this method creates both connections: in this triangle and in thetri. * this method is slower than the previous one, because it makes analysis * what sides of both triangles are connected. * @param thetri * triangle that is connected. * return * true if successful, false if the connection is rejected * due to improper topology. */.
+/** * Create connection with another triangle theTri. * This method creates both connections: in this triangle and in theTri. * This method is slower than the previous one, because it makes analysis * what sides of both triangles are connected. * 
+Parameter theTri * Triangle that is connected. * 
+Return: * True if successful, False if the connection is rejected * due to improper topology. */.
 ") SetConnection;
 		Standard_Boolean SetConnection(Poly_CoherentTriangle & theTri);
 
@@ -1558,7 +1579,7 @@ None
 
 Description
 -----------
-/** * empty constructor. */.
+/** * Empty constructor. */.
 ") Poly_CoherentTriangulation;
 		 Poly_CoherentTriangulation(const opencascade::handle<NCollection_BaseAllocator> & theAlloc = 0L);
 
@@ -1577,7 +1598,7 @@ None
 
 Description
 -----------
-/** * constructor. it does not create links, you should call computelinks * following this constructor if you need these links. */.
+/** * Constructor. It does not create Links, you should call ComputeLinks * following this constructor if you need these links. */.
 ") Poly_CoherentTriangulation;
 		 Poly_CoherentTriangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<NCollection_BaseAllocator> & theAlloc = 0L);
 
@@ -1596,7 +1617,9 @@ Poly_CoherentLink *
 
 Description
 -----------
-/** * add a single link to triangulation, based on a triangle and its side index. * this method does not check for coincidence with already present links. * @param thetri * triangle that contains the link to be added. * @param theconn * index of the side (i.e., 0, 1 0r 2) defining the added link. */.
+/** * Add a single link to triangulation, based on a triangle and its side index. * This method does not check for coincidence with already present links. * 
+Parameter theTri * Triangle that contains the link to be added. * 
+Parameter theConn * Index of the side (i.e., 0, 1 0r 2) defining the added link. */.
 ") AddLink;
 		Poly_CoherentLink * AddLink(const Poly_CoherentTriangle & theTri, const Standard_Integer theConn);
 
@@ -1616,7 +1639,8 @@ Poly_CoherentTriangle *
 
 Description
 -----------
-/** * add a triangle to the triangulation. * return * pointer to the added triangle instance or null if an error occurred. */.
+/** * Add a triangle to the triangulation. * 
+Return: * Pointer to the added triangle instance or NULL if an error occurred. */.
 ") AddTriangle;
 		Poly_CoherentTriangle * AddTriangle(const Standard_Integer iNode0, const Standard_Integer iNode1, const Standard_Integer iNode2);
 
@@ -1629,7 +1653,7 @@ opencascade::handle<NCollection_BaseAllocator>
 
 Description
 -----------
-/** * query the allocator of elements, this allocator can be used for other * objects */.
+/** * Query the allocator of elements, this allocator can be used for other * objects */.
 ") Allocator;
 		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
 
@@ -1647,7 +1671,7 @@ Poly_CoherentNode
 
 Description
 -----------
-/** * get the node at the given index 'i'. */.
+/** * Get the node at the given index 'i'. */.
 ") ChangeNode;
 		Poly_CoherentNode & ChangeNode(const Standard_Integer i);
 
@@ -1660,7 +1684,7 @@ None
 
 Description
 -----------
-/** * clear all links data from the triangulation data. */.
+/** * Clear all Links data from the Triangulation data. */.
 ") ClearLinks;
 		void ClearLinks();
 
@@ -1678,7 +1702,7 @@ opencascade::handle<Poly_CoherentTriangulation>
 
 Description
 -----------
-/** * create a copy of this triangulation, using the given allocator. */.
+/** * Create a copy of this Triangulation, using the given allocator. */.
 ") Clone;
 		opencascade::handle<Poly_CoherentTriangulation> Clone(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
@@ -1691,7 +1715,7 @@ int
 
 Description
 -----------
-/** * (re)calculate all links in this triangulation. */.
+/** * (Re)Calculate all links in this Triangulation. */.
 ") ComputeLinks;
 		Standard_Integer ComputeLinks();
 
@@ -1704,7 +1728,7 @@ float
 
 Description
 -----------
-/** * query the deflection parameter (default value 0. -- if never initialized) */.
+/** * Query the Deflection parameter (default value 0. -- if never initialized) */.
 ") Deflection;
 		Standard_Real Deflection();
 
@@ -1721,7 +1745,7 @@ Return
 
 Description
 -----------
-/** * debugging output. */.
+/** * Debugging output. */.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1740,7 +1764,10 @@ bool
 
 Description
 -----------
-No available documentation.
+/** * Find one or two triangles that share the given couple of nodes. * 
+Parameter theLink * Link (in fact, just a couple of nodes) on which the triangle is * searched. * 
+Parameter pTri * <tt>[out]</tt> Array of two pointers to triangle. pTri[0] stores the * triangle to the left of the link, while pTri[1] stores the one to the * right of the link. * 
+Return: * True if at least one triangle is found and output as pTri. */.
 ") FindTriangle;
 		Standard_Boolean FindTriangle(const Poly_CoherentLink & theLink, const Poly_CoherentTriangle * pTri[2]);
 
@@ -1758,7 +1785,8 @@ bool
 
 Description
 -----------
-/** * create a list of free nodes. these nodes may appear as a result of any * custom mesh decimation or removedegenerated() call. this analysis is * necessary if you support additional data structures based on the * triangulation (e.g., edges on the surface boundary). * @param lstnodes * <tt>[out]</tt> list that receives the indices of free nodes. */.
+/** * Create a list of free nodes. These nodes may appear as a result of any * custom mesh decimation or RemoveDegenerated() call. This analysis is * necessary if you support additional data structures based on the * triangulation (e.g., edges on the surface boundary). * 
+Parameter lstNodes * <tt>[out]</tt> List that receives the indices of free nodes. */.
 ") GetFreeNodes;
 		Standard_Boolean GetFreeNodes(NCollection_List<Standard_Integer> & lstNodes);
 
@@ -1771,7 +1799,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-/** * create an instance of poly_triangulation from this object. */.
+/** * Create an instance of Poly_Triangulation from this object. */.
 ") GetTriangulation;
 		opencascade::handle<Poly_Triangulation> GetTriangulation();
 
@@ -1784,7 +1812,7 @@ int
 
 Description
 -----------
-/** * query the index of the last node in the triangulation */.
+/** * Query the index of the last node in the triangulation */.
 ") MaxNode;
 		Standard_Integer MaxNode();
 
@@ -1797,7 +1825,7 @@ int
 
 Description
 -----------
-/** * query the index of the last triangle in the triangulation */.
+/** * Query the index of the last triangle in the triangulation */.
 ") MaxTriangle;
 		Standard_Integer MaxTriangle();
 
@@ -1810,7 +1838,7 @@ int
 
 Description
 -----------
-/** * query the total number of active links. */.
+/** * Query the total number of active Links. */.
 ") NLinks;
 		Standard_Integer NLinks();
 
@@ -1823,7 +1851,7 @@ int
 
 Description
 -----------
-/** * query the total number of active nodes (i.e. nodes used by 1 or more * triangles) */.
+/** * Query the total number of active nodes (i.e. nodes used by 1 or more * triangles) */.
 ") NNodes;
 		Standard_Integer NNodes();
 
@@ -1836,7 +1864,7 @@ int
 
 Description
 -----------
-/** * query the total number of active triangles (i.e. triangles that refer * nodes, non-empty ones) */.
+/** * Query the total number of active triangles (i.e. triangles that refer * nodes, non-empty ones) */.
 ") NTriangles;
 		Standard_Integer NTriangles();
 
@@ -1854,7 +1882,7 @@ Poly_CoherentNode
 
 Description
 -----------
-/** * get the node at the given index 'i'. */.
+/** * Get the node at the given index 'i'. */.
 ") Node;
 		const Poly_CoherentNode & Node(const Standard_Integer i);
 
@@ -1873,7 +1901,9 @@ bool
 
 Description
 -----------
-/** * find and remove degenerated triangles in triangulation. * @param thetol * tolerance for the degeneration case. if any two nodes of a triangle have * the distance less than this tolerance, this triangle is considered * degenerated and therefore removed by this method. * @param plstremovednode * optional parameter. if defined, then it will receive the list of arrays * where the first number is the index of removed node and the second - * the index of remaining node to which the mesh was reconnected. */.
+/** * Find and remove degenerated triangles in Triangulation. * 
+Parameter theTol * Tolerance for the degeneration case. If any two nodes of a triangle have * the distance less than this tolerance, this triangle is considered * degenerated and therefore removed by this method. * 
+Parameter pLstRemovedNode * Optional parameter. If defined, then it will receive the list of arrays * where the first number is the index of removed node and the second - * the index of remaining node to which the mesh was reconnected. */.
 ") RemoveDegenerated;
 		Standard_Boolean RemoveDegenerated(const Standard_Real theTol, NCollection_List<TwoIntegers> * pLstRemovedNode = 0L);
 
@@ -1891,7 +1921,7 @@ None
 
 Description
 -----------
-/** * removal of a single link from the triangulation. */.
+/** * Removal of a single link from the triangulation. */.
 ") RemoveLink;
 		void RemoveLink(Poly_CoherentLink & theLink);
 
@@ -1909,7 +1939,7 @@ bool
 
 Description
 -----------
-/** * removal of a single triangle from the triangulation. */.
+/** * Removal of a single triangle from the triangulation. */.
 ") RemoveTriangle;
 		Standard_Boolean RemoveTriangle(Poly_CoherentTriangle & theTr);
 
@@ -1930,7 +1960,8 @@ bool
 
 Description
 -----------
-/** * replace nodes in the given triangle. * return * true if operation succeeded. */.
+/** * Replace nodes in the given triangle. * 
+Return: * True if operation succeeded. */.
 ") ReplaceNodes;
 		Standard_Boolean ReplaceNodes(Poly_CoherentTriangle & theTriangle, const Standard_Integer iNode0, const Standard_Integer iNode1, const Standard_Integer iNode2);
 
@@ -1948,7 +1979,7 @@ None
 
 Description
 -----------
-/** * set the deflection value as the parameter of the given triangulation. */.
+/** * Set the Deflection value as the parameter of the given triangulation. */.
 ") SetDeflection;
 		void SetDeflection(const Standard_Real theDefl);
 
@@ -1967,7 +1998,10 @@ int
 
 Description
 -----------
-/** * initialize a node * @param thepoint * 3d coordinates of the node. * @param in * index of the node. if negative (default), the node is added to the * end of the current array of nodes. * return * index of the added node. */.
+/** * Initialize a node * 
+Parameter thePoint * 3D Coordinates of the node. * 
+Parameter iN * Index of the node. If negative (default), the node is added to the * end of the current array of nodes. * 
+Return: * Index of the added node. */.
 ") SetNode;
 		Standard_Integer SetNode(const gp_XYZ & thePnt, const Standard_Integer iN = -1);
 
@@ -1985,7 +2019,7 @@ Poly_CoherentTriangle
 
 Description
 -----------
-/** * get the triangle at the given index 'i'. */.
+/** * Get the triangle at the given index 'i'. */.
 ") Triangle;
 		const Poly_CoherentTriangle & Triangle(const Standard_Integer i);
 
@@ -2032,7 +2066,7 @@ None
 
 Description
 -----------
-Constructs an algorithm to explore the adjacency data of nodes or triangles for the triangulation t.
+Constructs an algorithm to explore the adjacency data of nodes or triangles for the triangulation T.
 ") Poly_Connect;
 		 Poly_Connect(const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -2050,7 +2084,7 @@ None
 
 Description
 -----------
-Initializes an iterator to search for all the triangles containing the node referenced at index n in the nodes table, for the triangulation analyzed by this tool. the iterator is managed by the following functions: - more, which checks if there are still elements in the iterator - next, which positions the iterator on the next element - value, which returns the current element. the use of such an iterator provides direct access to the triangles around a particular node, i.e. it avoids iterating on all the component triangles of a triangulation. example poly_connect c(tr); for (c.initialize(n1);c.more();c.next()) { t = c.value(); }.
+Initializes an iterator to search for all the triangles containing the node referenced at index N in the nodes table, for the triangulation analyzed by this tool. The iterator is managed by the following functions: - More, which checks if there are still elements in the iterator - Next, which positions the iterator on the next element - Value, which returns the current element. The use of such an iterator provides direct access to the triangles around a particular node, i.e. it avoids iterating on all the component triangles of a triangulation. Example Poly_Connect C(Tr); for (C.Initialize(n1);C.More();C.Next()) { t = C.Value(); }.
 ") Initialize;
 		void Initialize(const Standard_Integer N);
 
@@ -2068,7 +2102,7 @@ None
 
 Description
 -----------
-Initialize the algorithm to explore the adjacency data of nodes or triangles for the triangulation thetriangulation.
+Initialize the algorithm to explore the adjacency data of nodes or triangles for the triangulation theTriangulation.
 ") Load;
 		void Load(const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -2081,7 +2115,7 @@ bool
 
 Description
 -----------
-Returns true if there is another element in the iterator defined with the function initialize (i.e. if there is another triangle containing the given node).
+Returns true if there is another element in the iterator defined with the function Initialize (i.e. if there is another triangle containing the given node).
 ") More;
 		Standard_Boolean More();
 
@@ -2094,7 +2128,7 @@ None
 
 Description
 -----------
-Advances the iterator defined with the function initialize to access the next triangle. note: there is no action if the iterator is empty (i.e. if the function more returns false).-.
+Advances the iterator defined with the function Initialize to access the next triangle. Note: There is no action if the iterator is empty (i.e. if the function More returns false).-.
 ") Next;
 		void Next();
 
@@ -2114,7 +2148,7 @@ n3: int
 
 Description
 -----------
-Returns, in n1, n2 and n3, the indices of the 3 nodes adjacent to the triangle referenced at index t in the triangles table specific to the triangulation analyzed by this tool. warning null indices are returned when there are fewer than 3 adjacent nodes.
+Returns, in n1, n2 and n3, the indices of the 3 nodes adjacent to the triangle referenced at index T in the triangles table specific to the triangulation analyzed by this tool. Warning Null indices are returned when there are fewer than 3 adjacent nodes.
 ") Nodes;
 		void Nodes(const Standard_Integer T, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2132,7 +2166,7 @@ int
 
 Description
 -----------
-Returns the index of a triangle containing the node at index n in the nodes table specific to the triangulation analyzed by this tool.
+Returns the index of a triangle containing the node at index N in the nodes table specific to the triangulation analyzed by this tool.
 ") Triangle;
 		Standard_Integer Triangle(const Standard_Integer N);
 
@@ -2152,7 +2186,7 @@ t3: int
 
 Description
 -----------
-Returns in t1, t2 and t3, the indices of the 3 triangles adjacent to the triangle at index t in the triangles table specific to the triangulation analyzed by this tool. warning null indices are returned when there are fewer than 3 adjacent triangles.
+Returns in t1, t2 and t3, the indices of the 3 triangles adjacent to the triangle at index T in the triangles table specific to the triangulation analyzed by this tool. Warning Null indices are returned when there are fewer than 3 adjacent triangles.
 ") Triangles;
 		void Triangles(const Standard_Integer T, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2178,7 +2212,7 @@ int
 
 Description
 -----------
-Returns the index of the current triangle to which the iterator, defined with the function initialize, points. this is an index in the triangles table specific to the triangulation analyzed by this tool.
+Returns the index of the current triangle to which the iterator, defined with the function Initialize, points. This is an index in the triangles table specific to the triangulation analyzed by this tool.
 ") Value;
 		Standard_Integer Value();
 
@@ -2218,7 +2252,10 @@ None
 
 Description
 -----------
-Constructor @param[in] thesmoothangle smooth angle in radians or 0.0 to disable merging by angle @param[in] themergetolerance node merging maximum distance @param[in] thenbfacets estimated number of facets for map preallocation.
+Constructor 
+Input parameter: theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle 
+Input parameter: theMergeTolerance node merging maximum distance 
+Input parameter: theNbFacets estimated number of facets for map preallocation.
 ") Poly_MergeNodesTool;
 		 Poly_MergeNodesTool(const double theSmoothAngle, const double theMergeTolerance = 0.0, const int theNbFacets = -1);
 
@@ -2237,7 +2274,9 @@ None
 
 Description
 -----------
-Add new triangle or quad. @param[in] theelemnodes element nodes @param[in] thenbnodes number of element nodes, should be 3 or 4.
+Add new triangle or quad. 
+Input parameter: theElemNodes element nodes 
+Input parameter: theNbNodes number of element nodes, should be 3 or 4.
 ") AddElement;
 		void AddElement(const gp_XYZ * theElemNodes, int theNbNodes);
 
@@ -2255,7 +2294,8 @@ None
 
 Description
 -----------
-Add new quad. @param[in] theelemnodes 4 element nodes.
+Add new quad. 
+Input parameter: theElemNodes 4 element nodes.
 ") AddQuad;
 		void AddQuad(const gp_XYZ theElemNodes[4]);
 
@@ -2273,7 +2313,8 @@ None
 
 Description
 -----------
-Add new triangle. @param[in] theelemnodes 3 element nodes.
+Add new triangle. 
+Input parameter: theElemNodes 3 element nodes.
 ") AddTriangle;
 		void AddTriangle(const gp_XYZ theElemNodes[3]);
 
@@ -2293,7 +2334,10 @@ None
 
 Description
 -----------
-Add another triangulation to created one. @param[in] thetris triangulation to add @param[in] thetrsf transformation to apply @param[in] thetoreverse reverse triangle nodes order.
+Add another triangulation to created one. 
+Input parameter: theTris triangulation to add 
+Input parameter: theTrsf transformation to apply 
+Input parameter: theToReverse reverse triangle nodes order.
 ") AddTriangulation;
 		virtual void AddTriangulation(const opencascade::handle<Poly_Triangulation> & theTris, const gp_Trsf & theTrsf = gp_Trsf(), const Standard_Boolean theToReverse = false);
 
@@ -2311,7 +2355,8 @@ gp_XYZ
 
 Description
 -----------
-Change node coordinates of element to be pushed. @param[in] theindex node index within current element, in 0..3 range.
+Change node coordinates of element to be pushed. 
+Input parameter: theIndex node index within current element, in 0..3 range.
 ") ChangeElementNode;
 		gp_XYZ ChangeElementNode(int theIndex);
 
@@ -2324,7 +2369,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Setup output triangulation for modifications. when set to null, the tool could be used as a merge map for filling in external mesh structure.
+Setup output triangulation for modifications. When set to NULL, the tool could be used as a merge map for filling in external mesh structure.
 ") ChangeOutput;
 		opencascade::handle<Poly_Triangulation> & ChangeOutput();
 
@@ -2342,7 +2387,7 @@ int
 
 Description
 -----------
-Return current element node index defined by pushlastelement().
+Return current element node index defined by PushLastElement().
 ") ElementNodeIndex;
 		Standard_Integer ElementNodeIndex(int theIndex);
 
@@ -2378,7 +2423,14 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Merge nodes of existing mesh and return the new mesh. @param[in] thetris triangulation to add @param[in] thetrsf transformation to apply @param[in] thetoreverse reverse triangle nodes order @param[in] thesmoothangle merge angle in radians @param[in] themergetolerance linear merge tolerance @param[in] thetoforce return merged triangulation even if it's statistics is equal to input one return merged triangulation or null on no result.
+Merge nodes of existing mesh and return the new mesh. 
+Input parameter: theTris triangulation to add 
+Input parameter: theTrsf transformation to apply 
+Input parameter: theToReverse reverse triangle nodes order 
+Input parameter: theSmoothAngle merge angle in radians 
+Input parameter: theMergeTolerance linear merge tolerance 
+Input parameter: theToForce return merged triangulation even if it's statistics is equal to input one 
+Return: merged triangulation or NULL on no result.
 ") MergeNodes;
 		static opencascade::handle<Poly_Triangulation> MergeNodes(const opencascade::handle<Poly_Triangulation> & theTris, const gp_Trsf & theTrsf, const Standard_Boolean theToReverse, const double theSmoothAngle, const double theMergeTolerance = 0.0, const bool theToForce = true);
 
@@ -2391,7 +2443,7 @@ double
 
 Description
 -----------
-Return merge tolerance; 0.0 by default (only 3d points with exactly matching coordinates are merged).
+Return merge tolerance; 0.0 by default (only 3D points with exactly matching coordinates are merged).
 ") MergeTolerance;
 		double MergeTolerance();
 
@@ -2461,7 +2513,7 @@ None
 
 Description
 -----------
-Add new triangle or quad with nodes specified by changeelementnode().
+Add new triangle or quad with nodes specified by ChangeElementNode().
 ") PushLastElement;
 		void PushLastElement(int theNbNodes);
 
@@ -2474,7 +2526,7 @@ None
 
 Description
 -----------
-Add new quad with nodes specified by changeelementnode().
+Add new quad with nodes specified by ChangeElementNode().
 ") PushLastQuad;
 		void PushLastQuad();
 
@@ -2487,7 +2539,7 @@ None
 
 Description
 -----------
-Add new triangle with nodes specified by changeelementnode().
+Add new triangle with nodes specified by ChangeElementNode().
 ") PushLastTriangle;
 		void PushLastTriangle();
 
@@ -2621,7 +2673,7 @@ bool
 
 Description
 -----------
-Return true if degenerate elements should be discarded; true by default.
+Return True if degenerate elements should be discarded; True by default.
 ") ToDropDegenerative;
 		bool ToDropDegenerative();
 
@@ -2634,7 +2686,7 @@ bool
 
 Description
 -----------
-Return true if equal elements should be filtered; false by default.
+Return True if equal elements should be filtered; False by default.
 ") ToMergeElems;
 		bool ToMergeElems();
 
@@ -2647,7 +2699,7 @@ bool
 
 Description
 -----------
-Return true if nodes with opposite normals should be merged; false by default.
+Return True if nodes with opposite normals should be merged; False by default.
 ") ToMergeOpposite;
 		bool ToMergeOpposite();
 
@@ -2694,7 +2746,7 @@ None
 
 Description
 -----------
-Constructs a 2d polygon with specified number of nodes.
+Constructs a 2D polygon with specified number of nodes.
 ") Poly_Polygon2D;
 		 Poly_Polygon2D(const Standard_Integer theNbNodes);
 
@@ -2712,7 +2764,7 @@ None
 
 Description
 -----------
-Constructs a 2d polygon defined by the table of points, <nodes>.
+Constructs a 2D polygon defined by the table of points, <Nodes>.
 ") Poly_Polygon2D;
 		 Poly_Polygon2D(const TColgp_Array1OfPnt2d & Nodes);
 
@@ -2738,7 +2790,7 @@ float
 
 Description
 -----------
-Returns the deflection of this polygon. deflection is used in cases where the polygon is an approximate representation of a curve. deflection represents the maximum distance permitted between any point on the curve and the corresponding point on the polygon. by default the deflection value is equal to 0. an algorithm using this 2d polygon with a deflection value equal to 0 considers that it is working with a true polygon and not with an approximate representation of a curve. the deflection function is used to modify the deflection value of this polygon. the deflection value can be used by any algorithm working with 2d polygons. for example: - an algorithm may use a unique deflection value for all its polygons. in this case it is not necessary to use the deflection function. - or an algorithm may want to attach a different deflection to each polygon. in this case, the deflection function is used to set a value on each polygon, and later to fetch the value.
+Returns the deflection of this polygon. Deflection is used in cases where the polygon is an approximate representation of a curve. Deflection represents the maximum distance permitted between any point on the curve and the corresponding point on the polygon. By default the deflection value is equal to 0. An algorithm using this 2D polygon with a deflection value equal to 0 considers that it is working with a true polygon and not with an approximate representation of a curve. The Deflection function is used to modify the deflection value of this polygon. The deflection value can be used by any algorithm working with 2D polygons. For example: - An algorithm may use a unique deflection value for all its polygons. In this case it is not necessary to use the Deflection function. - Or an algorithm may want to attach a different deflection to each polygon. In this case, the Deflection function is used to set a value on each polygon, and later to fetch the value.
 ") Deflection;
 		Standard_Real Deflection();
 
@@ -2790,7 +2842,7 @@ int
 
 Description
 -----------
-Returns the number of nodes in this polygon. note: if the polygon is closed, the point of closure is repeated at the end of its table of nodes. thus, on a closed triangle, the function nbnodes returns 4.
+Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
@@ -2838,7 +2890,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon with specific number of nodes.
+Constructs a 3D polygon with specific number of nodes.
 ") Poly_Polygon3D;
 		 Poly_Polygon3D(const Standard_Integer theNbNodes, const Standard_Boolean theHasParams);
 
@@ -2856,7 +2908,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon defined by the table of points, nodes.
+Constructs a 3D polygon defined by the table of points, Nodes.
 ") Poly_Polygon3D;
 		 Poly_Polygon3D(const TColgp_Array1OfPnt & Nodes);
 
@@ -2875,7 +2927,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon defined by the table of points, nodes, and the parallel table of parameters, parameters, where each value of the table parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. warning both the nodes and parameters tables must have the same bounds. this property is not checked at construction time.
+Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time.
 ") Poly_Polygon3D;
 		 Poly_Polygon3D(const TColgp_Array1OfPnt & Nodes, const TColStd_Array1OfReal & Parameters);
 
@@ -2901,7 +2953,7 @@ TColStd_Array1OfReal
 
 Description
 -----------
-Returns the table of the parameters associated with each node in this polygon. changeparameters function returns the array as shared. therefore if the table is selected by reference you can, by simply modifying it, directly modify the data structure of this polygon.
+Returns the table of the parameters associated with each node in this polygon. ChangeParameters function returns the array as shared. Therefore if the table is selected by reference you can, by simply modifying it, directly modify the data structure of this polygon.
 ") ChangeParameters;
 		TColStd_Array1OfReal & ChangeParameters();
 
@@ -2945,7 +2997,7 @@ None
 
 Description
 -----------
-Sets the deflection of this polygon. see more on deflection in poly_polygon2d.
+Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D.
 ") Deflection;
 		void Deflection(const Standard_Real theDefl);
 
@@ -2979,7 +3031,7 @@ bool
 
 Description
 -----------
-Returns the table of the parameters associated with each node in this polygon. hasparameters function checks if parameters are associated with the nodes of this polygon.
+Returns the table of the parameters associated with each node in this polygon. HasParameters function checks if parameters are associated with the nodes of this polygon.
 ") HasParameters;
 		Standard_Boolean HasParameters();
 
@@ -2992,7 +3044,7 @@ int
 
 Description
 -----------
-Returns the number of nodes in this polygon. note: if the polygon is closed, the point of closure is repeated at the end of its table of nodes. thus, on a closed triangle the function nbnodes returns 4.
+Returns the number of nodes in this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle the function NbNodes returns 4.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
@@ -3053,7 +3105,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon on the triangulation of a shape with specified size of nodes.
+Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
 ") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation(const Standard_Integer theNbNodes, const Standard_Boolean theHasParams);
 
@@ -3071,7 +3123,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon on the triangulation of a shape, defined by the table of nodes, <nodes>.
+Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>.
 ") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes);
 
@@ -3090,7 +3142,7 @@ None
 
 Description
 -----------
-Constructs a 3d polygon on the triangulation of a shape, defined by: - the table of nodes, nodes, and the table of parameters, <parameters>. where: - a node value is an index in the table of nodes specific to an existing triangulation of a shape - and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. warning the tables nodes and parameters must be the same size. this property is not checked at construction time.
+Constructs a 3D polygon on the triangulation of a shape, defined by: - the table of nodes, Nodes, and the table of parameters, <Parameters>. where: - a node value is an index in the table of nodes specific to an existing triangulation of a shape - and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time.
 ") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes, const TColStd_Array1OfReal & Parameters);
 
@@ -3160,7 +3212,7 @@ None
 
 Description
 -----------
-Sets the deflection of this polygon. see more on deflection in poly_polygones2d.
+Sets the deflection of this polygon. See more on deflection in Poly_Polygones2D.
 ") Deflection;
 		void Deflection(const Standard_Real theDefl);
 
@@ -3207,7 +3259,7 @@ int
 
 Description
 -----------
-Returns the number of nodes for this polygon. note: if the polygon is closed, the point of closure is repeated at the end of its table of nodes. thus, on a closed triangle, the function nbnodes returns 4.
+Returns the number of nodes for this polygon. Note: If the polygon is closed, the point of closure is repeated at the end of its table of nodes. Thus, on a closed triangle, the function NbNodes returns 4.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
@@ -3238,7 +3290,7 @@ TColStd_Array1OfInteger
 
 Description
 -----------
-Returns the table of nodes for this polygon. a node value is an index in the table of nodes specific to an existing triangulation of a shape.
+Returns the table of nodes for this polygon. A node value is an index in the table of nodes specific to an existing triangulation of a shape.
 ") Nodes;
 		const TColStd_Array1OfInteger & Nodes();
 
@@ -3269,7 +3321,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the table of the parameters associated with each node in this polygon. warning! use the function hasparameters to check if parameters are associated with the nodes in this polygon.
+Returns the table of the parameters associated with each node in this polygon. Warning! Use the function HasParameters to check if parameters are associated with the nodes in this polygon.
 ") Parameters;
 		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
 
@@ -3325,7 +3377,7 @@ None
 
 Description
 -----------
-Sets the table of the parameters associated with each node in this polygon. raises exception if array size doesn't much number of polygon nodes.
+Sets the table of the parameters associated with each node in this polygon. Raises exception if array size doesn't much number of polygon nodes.
 ") SetParameters;
 		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & theParameters);
 
@@ -3445,7 +3497,7 @@ None
 
 Description
 -----------
-Sets the value of node with specified index of this triangle. raises standard_outofrange if index is not in 1,2,3.
+Sets the value of node with specified index of this triangle. Raises Standard_OutOfRange if index is not in 1,2,3.
 ") Set;
 		void Set(const Standard_Integer theIndex, const Standard_Integer theNode);
 
@@ -3463,7 +3515,7 @@ int
 
 Description
 -----------
-Get the node of given index. raises outofrange from standard if index is not in 1,2,3.
+Get the node of given Index. Raises OutOfRange from Standard if Index is not in 1,2,3.
 ") Value;
 		Standard_Integer Value(const Standard_Integer theIndex);
 
@@ -3511,7 +3563,11 @@ None
 
 Description
 -----------
-Constructs a triangulation from a set of triangles. the triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. @param thenbnodes [in] number of nodes to allocate @param thenbtriangles [in] number of triangles to allocate @param thehasuvnodes [in] indicates whether 2d nodes will be associated with 3d ones,  (i.e. to enable a 2d representation) @param thehasnormals [in] indicates whether normals will be given and associated with nodes.
+Constructs a triangulation from a set of triangles. The triangulation is initialized without a triangle or a node, but capable of containing specified number of nodes and triangles. 
+Input parameter: theNbNodes number of nodes to allocate 
+Input parameter: theNbTriangles number of triangles to allocate 
+Input parameter: theHasUVNodes indicates whether 2D nodes will be associated with 3D ones,  (i.e. to enable a 2D representation) 
+Input parameter: theHasNormals indicates whether normals will be given and associated with nodes.
 ") Poly_Triangulation;
 		 Poly_Triangulation(const Standard_Integer theNbNodes, const Standard_Integer theNbTriangles, const Standard_Boolean theHasUVNodes, const Standard_Boolean theHasNormals = false);
 
@@ -3530,7 +3586,7 @@ None
 
 Description
 -----------
-Constructs a triangulation from a set of triangles. the triangulation is initialized with 3d points from nodes and triangles from triangles.
+Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles.
 ") Poly_Triangulation;
 		 Poly_Triangulation(const TColgp_Array1OfPnt & Nodes, const Poly_Array1OfTriangle & Triangles);
 
@@ -3550,7 +3606,7 @@ None
 
 Description
 -----------
-Constructs a triangulation from a set of triangles. the triangulation is initialized with 3d points from nodes, 2d points from uvnodes and triangles from triangles, where coordinates of a 2d point from uvnodes are the (u, v) parameters of the corresponding 3d point from nodes on the surface approximated by the constructed triangulation.
+Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation.
 ") Poly_Triangulation;
 		 Poly_Triangulation(const TColgp_Array1OfPnt & Nodes, const TColgp_Array1OfPnt2d & UVNodes, const Poly_Array1OfTriangle & Triangles);
 
@@ -3594,7 +3650,7 @@ None
 
 Description
 -----------
-If an array for uv coordinates is not allocated yet, do it now.
+If an array for UV coordinates is not allocated yet, do it now.
 ") AddUVNodes;
 		void AddUVNodes();
 
@@ -3607,7 +3663,7 @@ Bnd_Box
 
 Description
 -----------
-Returns cached min - max range of triangulation data, which is void by default (e.g, no cached information).
+Returns cached min - max range of triangulation data, which is VOID by default (e.g, no cached information).
 ") CachedMinMax;
 		const Bnd_Box & CachedMinMax();
 
@@ -3708,7 +3764,7 @@ None
 
 Description
 -----------
-Sets the deflection of this triangulation to thedeflection. see more on deflection in polygon2d.
+Sets the deflection of this triangulation to theDeflection. See more on deflection in Polygon2D.
 ") Deflection;
 		void Deflection(const Standard_Real theDeflection);
 
@@ -3726,7 +3782,7 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Loads triangulation data into new poly_triangulation object from some deferred storage using specified shared input file system.
+Loads triangulation data into new Poly_Triangulation object from some deferred storage using specified shared input file system.
 ") DetachedLoadDeferredData;
 		virtual opencascade::handle<Poly_Triangulation> DetachedLoadDeferredData(const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
@@ -3760,7 +3816,7 @@ bool
 
 Description
 -----------
-Returns true if there is some cached min - max range of this triangulation.
+Returns True if there is some cached min - max range of this triangulation.
 ") HasCachedMinMax;
 		Standard_Boolean HasCachedMinMax();
 
@@ -3773,7 +3829,7 @@ bool
 
 Description
 -----------
-Returns true if there is some triangulation data that can be loaded using loaddeferreddata().
+Returns True if there is some triangulation data that can be loaded using LoadDeferredData().
 ") HasDeferredData;
 		virtual Standard_Boolean HasDeferredData();
 
@@ -3786,7 +3842,7 @@ bool
 
 Description
 -----------
-Returns true if triangulation has some geometry.
+Returns True if triangulation has some geometry.
 ") HasGeometry;
 		virtual Standard_Boolean HasGeometry();
 
@@ -3799,7 +3855,7 @@ bool
 
 Description
 -----------
-Returns standard_true if nodal normals are defined.
+Returns Standard_True if nodal normals are defined.
 ") HasNormals;
 		Standard_Boolean HasNormals();
 
@@ -3812,7 +3868,7 @@ bool
 
 Description
 -----------
-Returns standard_true if 2d nodes are associated with 3d nodes for this triangulation.
+Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
 ") HasUVNodes;
 		Standard_Boolean HasUVNodes();
 
@@ -3825,7 +3881,7 @@ Poly_ArrayOfNodes
 
 Description
 -----------
-Returns an internal array of nodes. node()/setnode() should be used instead in portable code.
+Returns an internal array of nodes. Node()/SetNode() should be used instead in portable code.
 ") InternalNodes;
 		Poly_ArrayOfNodes & InternalNodes();
 
@@ -3838,7 +3894,7 @@ NCollection_Array1<gp_Vec3f>
 
 Description
 -----------
-Return an internal array of normals. normal()/setnormal() should be used instead in portable code.
+Return an internal array of normals. Normal()/SetNormal() should be used instead in portable code.
 ") InternalNormals;
 		NCollection_Array1<gp_Vec3f> InternalNormals();
 
@@ -3851,7 +3907,7 @@ Poly_Array1OfTriangle
 
 Description
 -----------
-Returns an internal array of triangles. triangle()/settriangle() should be used instead in portable code.
+Returns an internal array of triangles. Triangle()/SetTriangle() should be used instead in portable code.
 ") InternalTriangles;
 		Poly_Array1OfTriangle & InternalTriangles();
 
@@ -3864,7 +3920,7 @@ Poly_ArrayOfUVNodes
 
 Description
 -----------
-Returns an internal array of uv nodes. ubnode()/setuvnode() should be used instead in portable code.
+Returns an internal array of UV nodes. UBNode()/SetUVNode() should be used instead in portable code.
 ") InternalUVNodes;
 		Poly_ArrayOfUVNodes & InternalUVNodes();
 
@@ -3877,7 +3933,7 @@ bool
 
 Description
 -----------
-Returns true if node positions are defined with double precision; true by default.
+Returns True if node positions are defined with double precision; True by default.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -3908,7 +3964,7 @@ opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
-Returns the table of 3d points for read-only access or null if nodes array is undefined. poly_triangulation::node() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapNodeArray;
 		opencascade::handle<TColgp_HArray1OfPnt> MapNodeArray();
 
@@ -3921,7 +3977,7 @@ opencascade::handle<TShort_HArray1OfShortReal>
 
 Description
 -----------
-Returns the table of per-vertex normals for read-only access or null if normals array is undefined. poly_triangulation::normal() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapNormalArray;
 		opencascade::handle<TShort_HArray1OfShortReal> MapNormalArray();
 
@@ -3934,7 +3990,7 @@ opencascade::handle<Poly_HArray1OfTriangle>
 
 Description
 -----------
-Returns the triangle array for read-only access or null if triangle array is undefined. poly_triangulation::triangle() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapTriangleArray;
 		opencascade::handle<Poly_HArray1OfTriangle> MapTriangleArray();
 
@@ -3947,7 +4003,7 @@ opencascade::handle<TColgp_HArray1OfPnt2d>
 
 Description
 -----------
-Returns the table of 2d nodes for read-only access or null if uv nodes array is undefined. poly_triangulation::uvnode() should be used instead when possible. returned object should not be used after poly_triangulation destruction.
+Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapUVNodeArray;
 		opencascade::handle<TColgp_HArray1OfPnt2d> MapUVNodeArray();
 
@@ -3980,7 +4036,11 @@ bool
 
 Description
 -----------
-Extends the passed box with bounding box of this triangulation. uses cached min - max range when available and: - input transformation thetrsf has no rotation part; - theisaccurate is set to false; - no triangulation data available (e.g. it is deferred and not loaded). @param thebox [in] [out] bounding box to extend by this triangulation @param thetrsf [in] optional transformation @param theisaccurate [in] when false, allows using a cached min - max range of this triangulation  even for non-identity transformation. return false if there is no any data to extend the passed box (no both triangulation and cached min - max range).
+Extends the passed box with bounding box of this triangulation. Uses cached min - max range when available and: - input transformation theTrsf has no rotation part; - theIsAccurate is set to False; - no triangulation data available (e.g. it is deferred and not loaded). 
+Input parameter:[out] theBox bounding box to extend by this triangulation 
+Input parameter: theTrsf optional transformation 
+Input parameter: theIsAccurate when False, allows using a cached min - max range of this triangulation  even for non-identity transformation. 
+Return: False if there is no any data to extend the passed box (no both triangulation and cached min - max range).
 ") MinMax;
 		Standard_Boolean MinMax(Bnd_Box & theBox, const gp_Trsf & theTrsf, const bool theIsAccurate = false);
 
@@ -3993,7 +4053,7 @@ int
 
 Description
 -----------
-Returns number of deferred nodes that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values. always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+Returns number of deferred nodes that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values. Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 ") NbDeferredNodes;
 		virtual Standard_Integer NbDeferredNodes();
 
@@ -4006,7 +4066,7 @@ int
 
 Description
 -----------
-Returns number of deferred triangles that can be loaded using loaddeferreddata(). note: this is estimated values, which might be different from actually loaded values always check triangulation size of actually loaded data in code to avoid out-of-range issues.
+Returns number of deferred triangles that can be loaded using LoadDeferredData(). Note: this is estimated values, which might be different from actually loaded values Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 ") NbDeferredTriangles;
 		virtual Standard_Integer NbDeferredTriangles();
 
@@ -4050,7 +4110,9 @@ gp_Pnt
 
 Description
 -----------
-Returns a node at the given index. @param[in] theindex node index within [1, nbnodes()] range return 3d point coordinates.
+Returns a node at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Return: 3D point coordinates.
 ") Node;
 		gp_Pnt Node(Standard_Integer theIndex);
 
@@ -4068,7 +4130,9 @@ gp_Dir
 
 Description
 -----------
-Returns normal at the given index. @param[in] theindex node index within [1, nbnodes()] range return normalized 3d vector defining a surface normal.
+Returns normal at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Return: normalized 3D vector defining a surface normal.
 ") Normal;
 		gp_Dir Normal(Standard_Integer theIndex);
 
@@ -4087,7 +4151,8 @@ None
 
 Description
 -----------
-Returns normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[out] thevec3 3d vector defining a surface normal.
+Returns normal at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range @param[out] theVec3 3D vector defining a surface normal.
 ") Normal;
 		void Normal(Standard_Integer theIndex, gp_Vec3f & theVec3);
 
@@ -4144,7 +4209,7 @@ None
 
 Description
 -----------
-Deallocates the uv nodes array.
+Deallocates the UV nodes array.
 ") RemoveUVNodes;
 		void RemoveUVNodes();
 
@@ -4163,7 +4228,9 @@ None
 
 Description
 -----------
-Method resizing internal arrays of nodes (synchronously for all attributes). @param thenbnodes [in] new number of nodes @param thetocopyold [in] copy old nodes into the new array.
+Method resizing internal arrays of nodes (synchronously for all attributes). 
+Input parameter: theNbNodes new number of nodes 
+Input parameter: theToCopyOld copy old nodes into the new array.
 ") ResizeNodes;
 		void ResizeNodes(Standard_Integer theNbNodes, Standard_Boolean theToCopyOld);
 
@@ -4182,7 +4249,9 @@ None
 
 Description
 -----------
-Method resizing an internal array of triangles. @param thenbtriangles [in] new number of triangles @param thetocopyold [in] copy old triangles into the new array.
+Method resizing an internal array of triangles. 
+Input parameter: theNbTriangles new number of triangles 
+Input parameter: theToCopyOld copy old triangles into the new array.
 ") ResizeTriangles;
 		void ResizeTriangles(Standard_Integer theNbTriangles, Standard_Boolean theToCopyOld);
 
@@ -4200,7 +4269,7 @@ None
 
 Description
 -----------
-Sets a cached min - max range of this triangulation. the bounding box should exactly match actual range of triangulation data without a gap or transformation, or otherwise undefined behavior will be observed. passing a void range invalidates the cache.
+Sets a cached min - max range of this triangulation. The bounding box should exactly match actual range of triangulation data without a gap or transformation, or otherwise undefined behavior will be observed. Passing a VOID range invalidates the cache.
 ") SetCachedMinMax;
 		void SetCachedMinMax(const Bnd_Box & theBox);
 
@@ -4218,7 +4287,7 @@ None
 
 Description
 -----------
-Set if node positions should be defined with double or single precision for 3d and uv nodes. raises exception if data was already allocated.
+Set if node positions should be defined with double or single precision for 3D and UV nodes. Raises exception if data was already allocated.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theIsDouble);
 
@@ -4255,7 +4324,9 @@ None
 
 Description
 -----------
-Sets a node coordinates. @param[in] theindex node index within [1, nbnodes()] range @param[in] thepnt 3d point coordinates.
+Sets a node coordinates. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Input parameter: thePnt 3D point coordinates.
 ") SetNode;
 		void SetNode(Standard_Integer theIndex, const gp_Pnt & thePnt);
 
@@ -4274,7 +4345,9 @@ None
 
 Description
 -----------
-Changes normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[in] thevec3 normalized 3d vector defining a surface normal.
+Changes normal at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Input parameter: theVec3 normalized 3D vector defining a surface normal.
 ") SetNormal;
 		void SetNormal(const Standard_Integer theIndex, const gp_Vec3f & theNormal);
 
@@ -4293,7 +4366,9 @@ None
 
 Description
 -----------
-Changes normal at the given index. @param[in] theindex node index within [1, nbnodes()] range @param[in] thenormal normalized 3d vector defining a surface normal.
+Changes normal at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Input parameter: theNormal normalized 3D vector defining a surface normal.
 ") SetNormal;
 		void SetNormal(const Standard_Integer theIndex, const gp_Dir & theNormal);
 
@@ -4330,7 +4405,9 @@ None
 
 Description
 -----------
-Sets a triangle. @param[in] theindex triangle index within [1, nbtriangles()] range @param[in] thetriangle triangle node indices, with each node defined within [1, nbnodes()] range.
+Sets a triangle. 
+Input parameter: theIndex triangle index within [1, NbTriangles()] range 
+Input parameter: theTriangle triangle node indices, with each node defined within [1, NbNodes()] range.
 ") SetTriangle;
 		void SetTriangle(Standard_Integer theIndex, const Poly_Triangle & theTriangle);
 
@@ -4349,7 +4426,9 @@ None
 
 Description
 -----------
-Sets an uv-node coordinates. @param[in] theindex node index within [1, nbnodes()] range @param[in] thepnt uv coordinates.
+Sets an UV-node coordinates. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Input parameter: thePnt UV coordinates.
 ") SetUVNode;
 		void SetUVNode(Standard_Integer theIndex, const gp_Pnt2d & thePnt);
 
@@ -4367,7 +4446,9 @@ Poly_Triangle
 
 Description
 -----------
-Returns triangle at the given index. @param[in] theindex triangle index within [1, nbtriangles()] range return triangle node indices, with each node defined within [1, nbnodes()] range.
+Returns triangle at the given index. 
+Input parameter: theIndex triangle index within [1, NbTriangles()] range 
+Return: triangle node indices, with each node defined within [1, NbNodes()] range.
 ") Triangle;
 		const Poly_Triangle & Triangle(Standard_Integer theIndex);
 
@@ -4398,7 +4479,9 @@ gp_Pnt2d
 
 Description
 -----------
-Returns uv-node at the given index. @param[in] theindex node index within [1, nbnodes()] range return 2d point defining uv coordinates.
+Returns UV-node at the given index. 
+Input parameter: theIndex node index within [1, NbNodes()] range 
+Return: 2D point defining UV coordinates.
 ") UVNode;
 		gp_Pnt2d UVNode(Standard_Integer theIndex);
 
@@ -4460,7 +4543,10 @@ None
 
 Description
 -----------
-Constructor. initializes object with the given parameters. @param thedeflection linear deflection @param theangle angular deflection @param theminsize minimum size.
+Constructor. Initializes object with the given parameters. 
+Parameter theDeflection linear deflection 
+Parameter theAngle angular deflection 
+Parameter theMinSize minimum size.
 ") Poly_TriangulationParameters;
 		 Poly_TriangulationParameters(const Standard_Real theDeflection = -1, const Standard_Real theAngle = -1, const Standard_Real theMinSize = -1);
 

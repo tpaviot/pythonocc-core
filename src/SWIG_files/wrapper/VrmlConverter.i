@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define VRMLCONVERTERDOCSTRING
 "VrmlConverter module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_vrmlconverter.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.html"
 %enddef
 %module (package="OCC.Core", docstring=VRMLCONVERTERDOCSTRING) VrmlConverter
 
@@ -178,7 +178,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve. the aspect is defined by lineaspect in adrawer.
+adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer.
 ") Add;
 		static void Add(const Adaptor3d_Curve & aCurve, const opencascade::handle<VrmlConverter_Drawer> & aDrawer, std::ostream &OutValue);
 
@@ -199,7 +199,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve. the aspect is defined by lineaspect in adrawer. the drawing will be limited between the points of parameter u1 and u2.
+adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
 		static void Add(const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer, std::ostream &OutValue);
 
@@ -220,7 +220,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve. the aspect is the current aspect. the drawing will be limited between the points of parameter u1 and u2. anbpoints defines number of points on one interval.
+adds to the OStream the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aNbPoints defines number of points on one interval.
 ") Add;
 		static void Add(const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, std::ostream &OutValue, const Standard_Integer aNbPoints);
 
@@ -253,7 +253,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with respect to the maximal chordial deviation defined by the drawer adrawer. the aspect is defined by lineaspect in adrawer.
+adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer.
 ") Add;
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -274,7 +274,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with respect to the maximal chordial deviation defined by the drawer adrawer. the aspect is defined by lineaspect in adrawer. the drawing will be limited between the points of parameter u1 and u2.
+adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -294,7 +294,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with respect to the maximal chordial deviation adeflection. the aspect is the current aspect.
+adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect.
 ") Add;
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const Standard_Real aLimit);
 
@@ -314,7 +314,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with respect to the maximal chordial deviation adeflection. the aspect is the current aspect.
+adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect.
 ") Add;
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -335,7 +335,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with respect to the maximal chordial deviation adeflection. the aspect is the current aspect the drawing will be limited between the points of parameter u1 and u2.
+adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real aDeflection);
 
@@ -356,7 +356,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds to the ostream the drawing of the curve acurve with the array of parameters to retrieve points on curve.
+adds to the OStream the drawing of the curve aCurve with the array of parameters to retrieve points on curve.
 ") Add;
 		static void Add(std::ostream &OutValue, const Adaptor3d_Curve & aCurve, const opencascade::handle<TColStd_HArray1OfReal> & aParams, const Standard_Integer aNbNodes, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -409,7 +409,7 @@ None
 
 Description
 -----------
-Sets drawhiddenline = standard_false - the hidden lines are not drawn.
+sets DrawHiddenLine = Standard_False - the hidden lines are not drawn.
 ") DisableDrawHiddenLine;
 		void DisableDrawHiddenLine();
 
@@ -435,7 +435,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the hidden lines are to be drawn. by default the hidden lines are not drawn.
+returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 ") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine();
 
@@ -448,7 +448,7 @@ None
 
 Description
 -----------
-Sets drawhiddenline = standard_true - the hidden lines are drawn.
+sets DrawHiddenLine = Standard_True - the hidden lines are drawn.
 ") EnableDrawHiddenLine;
 		void EnableDrawHiddenLine();
 
@@ -461,7 +461,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-The default values are the same default values from vrml package. these attributes are used by the following algorithms: vrmlconverter_wfshape vrmlconverter_wfdeflectionshape.
+The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape.
 ") FreeBoundaryAspect;
 		opencascade::handle<VrmlConverter_LineAspect> FreeBoundaryAspect();
 
@@ -474,7 +474,7 @@ bool
 
 Description
 -----------
-Returns true if the drawing of the free boundaries is enabled.
+returns True if the drawing of the free boundaries is enabled.
 ") FreeBoundaryDraw;
 		Standard_Boolean FreeBoundaryDraw();
 
@@ -487,7 +487,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-Returns lineaspect for the hidden lines. the default values are the same default values from vrml package.
+returns LineAspect for the hidden lines. The default values are the same default values from Vrml package.
 ") HiddenLineAspect;
 		opencascade::handle<VrmlConverter_LineAspect> HiddenLineAspect();
 
@@ -500,7 +500,7 @@ bool
 
 Description
 -----------
-Returns true if the drawing of isos on planes is enabled.
+returns True if the drawing of isos on planes is enabled.
 ") IsoOnPlane;
 		Standard_Boolean IsoOnPlane();
 
@@ -513,7 +513,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-The default values are the same default values from vrml package.
+The default values are the same default values from Vrml package.
 ") LineAspect;
 		opencascade::handle<VrmlConverter_LineAspect> LineAspect();
 
@@ -526,7 +526,7 @@ float
 
 Description
 -----------
-Returns the maximal chordial deviation. default value: 0.1.
+returns the maximal chordial deviation. Default value: 0.1.
 ") MaximalChordialDeviation;
 		Standard_Real MaximalChordialDeviation();
 
@@ -565,7 +565,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-Returns lineaspect for the seen lines. the default values are the same default values from vrml package.
+returns LineAspect for the seen lines. The default values are the same default values from Vrml package.
 ") SeenLineAspect;
 		opencascade::handle<VrmlConverter_LineAspect> SeenLineAspect();
 
@@ -583,7 +583,7 @@ None
 
 Description
 -----------
-Default 0.001.
+default 0.001.
 ") SetDeviationCoefficient;
 		void SetDeviationCoefficient(const Standard_Real aCoefficient);
 
@@ -601,7 +601,7 @@ None
 
 Description
 -----------
-Default: 17 points. defines the discretisation (mynbpoints) when drawing any curve; if this value is one of the obvious parameters of methods, current value from drawer won't be used. this value is used by: //! vrmlconverter_curve vrmlconverter_wfrestrictedface vrmlconverter_wfshape.
+default: 17 points. Defines the Discretisation (myNbPoints) when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape.
 ") SetDiscretisation;
 		void SetDiscretisation(const Standard_Integer d);
 
@@ -637,7 +637,7 @@ None
 
 Description
 -----------
-Enables the drawing the free boundaries by default the free boundaries are drawn.
+enables the drawing the free boundaries By default the free boundaries are drawn.
 ") SetFreeBoundaryDraw;
 		void SetFreeBoundaryDraw(const Standard_Boolean OnOff);
 
@@ -655,7 +655,7 @@ None
 
 Description
 -----------
-Sets lineaspect for the hidden lines.
+sets LineAspect for the hidden lines.
 ") SetHiddenLineAspect;
 		void SetHiddenLineAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -673,7 +673,7 @@ None
 
 Description
 -----------
-Enables the drawing of isos on planes. by default there are no isos on planes.
+enables the drawing of isos on planes. By default there are no isos on planes.
 ") SetIsoOnPlane;
 		void SetIsoOnPlane(const Standard_Boolean OnOff);
 
@@ -709,7 +709,7 @@ None
 
 Description
 -----------
-Defines the maximal chordial deviation when drawing any curve; if this value is one of the obvious parameters of methods, current value from drawer won't be used. this value is used by: //! vrmlconverter_deflectioncurve vrmlconverter_wfdeflectionrestrictedface vrmlconverter_wfdeflectionshape.
+Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape.
 ") SetMaximalChordialDeviation;
 		void SetMaximalChordialDeviation(const Standard_Real aChordialDeviation);
 
@@ -727,7 +727,7 @@ None
 
 Description
 -----------
-Defines the maximum value allowed for the first and last parameters of an infinite curve. default value: 500. vrmlconverter_curve vrmlconverter_wfrestrictedface vrmlconverter_wfshape.
+defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500. VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape.
 ") SetMaximalParameterValue;
 		void SetMaximalParameterValue(const Standard_Real Value);
 
@@ -763,7 +763,7 @@ None
 
 Description
 -----------
-Sets lineaspect for the seen lines.
+sets LineAspect for the seen lines.
 ") SetSeenLineAspect;
 		void SetSeenLineAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -799,7 +799,7 @@ None
 
 Description
 -----------
-By default: tod_relative; however, except for the shapes, the drawing will be made using the absolute deviation.
+by default: TOD_Relative; however, except for the shapes, the drawing will be made using the absolute deviation.
 ") SetTypeOfDeflection;
 		void SetTypeOfDeflection(const Aspect_TypeOfDeflection aTypeOfDeflection);
 
@@ -853,7 +853,7 @@ None
 
 Description
 -----------
-Enables the drawing the unfree boundaries by default the unfree boundaries are drawn.
+enables the drawing the unfree boundaries By default the unfree boundaries are drawn.
 ") SetUnFreeBoundaryDraw;
 		void SetUnFreeBoundaryDraw(const Standard_Boolean OnOff);
 
@@ -907,7 +907,7 @@ None
 
 Description
 -----------
-Enables the drawing the wire by default the wire are drawn.
+enables the drawing the wire By default the wire are drawn.
 ") SetWireDraw;
 		void SetWireDraw(const Standard_Boolean OnOff);
 
@@ -920,7 +920,7 @@ opencascade::handle<VrmlConverter_ShadingAspect>
 
 Description
 -----------
-The default values are the same default values from vrml package.
+The default values are the same default values from Vrml package.
 ") ShadingAspect;
 		opencascade::handle<VrmlConverter_ShadingAspect> ShadingAspect();
 
@@ -946,7 +946,7 @@ opencascade::handle<VrmlConverter_IsoAspect>
 
 Description
 -----------
-Defines the attributes which are used when drawing an u isoparametric curve of a face. defines the number of u isoparametric curves to be drawn for a single face. the default values are the same default values from vrml package. //! these attributes are used by the following algorithms: vrmlconverter_wfrestrictedface vrmlconverter_wfdeflectionrestrictedface.
+Defines the attributes which are used when drawing an U isoparametric curve of a face. Defines the number of U isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace.
 ") UIsoAspect;
 		opencascade::handle<VrmlConverter_IsoAspect> UIsoAspect();
 
@@ -959,7 +959,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-The default values are the same default values from vrml package. these attributes are used by the following algorithms: vrmlconverter_wfshape vrmlconverter_wfdeflectionshape.
+The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape.
 ") UnFreeBoundaryAspect;
 		opencascade::handle<VrmlConverter_LineAspect> UnFreeBoundaryAspect();
 
@@ -972,7 +972,7 @@ bool
 
 Description
 -----------
-Returns true if the drawing of the unfree boundaries is enabled.
+returns True if the drawing of the unfree boundaries is enabled.
 ") UnFreeBoundaryDraw;
 		Standard_Boolean UnFreeBoundaryDraw();
 
@@ -985,7 +985,7 @@ opencascade::handle<VrmlConverter_IsoAspect>
 
 Description
 -----------
-Defines the attributes which are used when drawing an v isoparametric curve of a face. defines the number of v isoparametric curves to be drawn for a single face. the default values are the same default values from vrml package. //! these attributes are used by the following algorithms: vrmlconverter_wfrestrictedface vrmlconverter_wfdeflectionrestrictedface.
+Defines the attributes which are used when drawing an V isoparametric curve of a face. Defines the number of V isoparametric curves to be drawn for a single face. The default values are the same default values from Vrml package. //! These attributes are used by the following algorithms: VrmlConverter_WFRestrictedFace VrmlConverter_WFDeflectionRestrictedFace.
 ") VIsoAspect;
 		opencascade::handle<VrmlConverter_IsoAspect> VIsoAspect();
 
@@ -998,7 +998,7 @@ opencascade::handle<VrmlConverter_LineAspect>
 
 Description
 -----------
-The default values are the same default values from vrml package. these attributes are used by the following algorithms: vrmlconverter_wfshape vrmlconverter_wfdeflectionshape.
+The default values are the same default values from Vrml package. These attributes are used by the following algorithms: VrmlConverter_WFShape VrmlConverter_WFDeflectionShape.
 ") WireAspect;
 		opencascade::handle<VrmlConverter_LineAspect> WireAspect();
 
@@ -1011,7 +1011,7 @@ bool
 
 Description
 -----------
-Returns true if the drawing of the wire is enabled.
+returns True if the drawing of the wire is enabled.
 ") WireDraw;
 		Standard_Boolean WireDraw();
 
@@ -1074,7 +1074,7 @@ None
 
 Description
 -----------
-Create a default lineaspect. default value: hasmaterial = false - a line hasn't own material (color).
+create a default LineAspect. Default value: HasMaterial = False - a line hasn't own material (color).
 ") VrmlConverter_LineAspect;
 		 VrmlConverter_LineAspect();
 
@@ -1106,7 +1106,7 @@ bool
 
 Description
 -----------
-Returns true if the materials is writing into ostream.
+returns True if the materials is writing into OStream.
 ") HasMaterial;
 		Standard_Boolean HasMaterial();
 
@@ -1137,7 +1137,7 @@ None
 
 Description
 -----------
-Defines the necessary of writing own material from vrml into output ostream. by default false - the material is not writing into ostream, true - the material is writing.
+defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
 		void SetHasMaterial(const Standard_Boolean OnOff);
 
@@ -1184,7 +1184,7 @@ None
 
 Description
 -----------
-Create a default pointaspect. default value: hasmaterial = false - a line hasn't own material (color).
+create a default PointAspect. Default value: HasMaterial = False - a line hasn't own material (color).
 ") VrmlConverter_PointAspect;
 		 VrmlConverter_PointAspect();
 
@@ -1216,7 +1216,7 @@ bool
 
 Description
 -----------
-Returns true if the materials is writing into ostream.
+returns True if the materials is writing into OStream.
 ") HasMaterial;
 		Standard_Boolean HasMaterial();
 
@@ -1247,7 +1247,7 @@ None
 
 Description
 -----------
-Defines the necessary of writing own material from vrml into output ostream. by default false - the material is not writing into ostream, true - the material is writing.
+defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
 		void SetHasMaterial(const Standard_Boolean OnOff);
 
@@ -1325,7 +1325,7 @@ anOStream: Standard_OStream
 
 Description
 -----------
-Adds into anostream if they are defined in create. perspectivecamera, orthographiccamera, directionlight, pointlight, spotlight with matrixtransform from vrmlconverter;.
+Adds into anOStream if they are defined in Create. PerspectiveCamera, OrthographicCamera, DirectionLight, PointLight, SpotLight with MatrixTransform from VrmlConverter;.
 ") Add;
 		void Add(std::ostream &OutValue);
 
@@ -1482,7 +1482,7 @@ None
 
 Description
 -----------
-Create a default shadingaspect.
+create a default ShadingAspect.
 ") VrmlConverter_ShadingAspect;
 		 VrmlConverter_ShadingAspect();
 
@@ -1508,7 +1508,7 @@ bool
 
 Description
 -----------
-Returns true if the materials is writing into ostream.
+returns True if the materials is writing into OStream.
 ") HasMaterial;
 		Standard_Boolean HasMaterial();
 
@@ -1521,7 +1521,7 @@ bool
 
 Description
 -----------
-Returns true if the normals are calculating.
+returns True if the normals are calculating.
 ") HasNormals;
 		Standard_Boolean HasNormals();
 
@@ -1557,7 +1557,7 @@ None
 
 Description
 -----------
-Defines necessary of writing material from vrml into output ostream. by default false - the material is not writing into ostream, true - the material is writing.
+defines necessary of writing Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
 		void SetHasMaterial(const Standard_Boolean OnOff);
 
@@ -1575,7 +1575,7 @@ None
 
 Description
 -----------
-Defines necessary of a calculation of normals for shadedshape to more accurately display curved surfaces, pacticularly when smoooth or phong shading is used in vrml viewer. by default false - the normals are not calculated, true - the normals are calculated. warning: if normals are calculated the resulting vrml file will be substantially lager.
+defines necessary of a calculation of normals for ShadedShape to more accurately display curved surfaces, pacticularly when smoooth or phong shading is used in VRML viewer. By default False - the normals are not calculated, True - the normals are calculated. Warning: If normals are calculated the resulting VRML file will be substantially lager.
 ") SetHasNormals;
 		void SetHasNormals(const Standard_Boolean OnOff);
 
@@ -1890,7 +1890,7 @@ None
 
 Description
 -----------
-Create a default isoaspect. default value: mynumber - 10.
+create a default IsoAspect. Default value: myNumber - 10.
 ") VrmlConverter_IsoAspect;
 		 VrmlConverter_IsoAspect();
 
@@ -1923,7 +1923,7 @@ int
 
 Description
 -----------
-Returns the number of u or v isoparametric curves drawn for a single face.
+returns the number of U or V isoparametric curves drawn for a single face.
 ") Number;
 		Standard_Integer Number();
 

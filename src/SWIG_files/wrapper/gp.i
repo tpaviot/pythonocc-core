@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GPDOCSTRING
 "gp module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gp.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gp.html"
 %enddef
 %module (package="OCC.Core", docstring=GPDOCSTRING) gp
 
@@ -281,7 +281,7 @@ gp_Ax1
 
 Description
 -----------
-Identifies an axis where its origin is origin and its unit vector coordinates x = 1.0, y = z = 0.0.
+Identifies an axis where its origin is Origin and its unit vector coordinates X = 1.0, Y = Z = 0.0.
 ") OX;
 		static const gp_Ax1 OX();
 
@@ -294,7 +294,7 @@ gp_Ax2d
 
 Description
 -----------
-Identifies an axis where its origin is origin2d and its unit vector coordinates are: x = 1.0, y = 0.0.
+Identifies an axis where its origin is Origin2d and its unit vector coordinates are: X = 1.0, Y = 0.0.
 ") OX2d;
 		static const gp_Ax2d OX2d();
 
@@ -307,7 +307,7 @@ gp_Ax1
 
 Description
 -----------
-Identifies an axis where its origin is origin and its unit vector coordinates y = 1.0, x = z = 0.0.
+Identifies an axis where its origin is Origin and its unit vector coordinates Y = 1.0, X = Z = 0.0.
 ") OY;
 		static const gp_Ax1 OY();
 
@@ -320,7 +320,7 @@ gp_Ax2d
 
 Description
 -----------
-Identifies an axis where its origin is origin2d and its unit vector coordinates are y = 1.0, x = 0.0.
+Identifies an axis where its origin is Origin2d and its unit vector coordinates are Y = 1.0, X = 0.0.
 ") OY2d;
 		static const gp_Ax2d OY2d();
 
@@ -333,7 +333,7 @@ gp_Ax1
 
 Description
 -----------
-Identifies an axis where its origin is origin and its unit vector coordinates z = 1.0, y = x = 0.0.
+Identifies an axis where its origin is Origin and its unit vector coordinates Z = 1.0, Y = X = 0.0.
 ") OZ;
 		static const gp_Ax1 OZ();
 
@@ -346,7 +346,7 @@ gp_Pnt
 
 Description
 -----------
-Identifies a cartesian point with coordinates x = y = z = 0.0.0.
+Identifies a Cartesian point with coordinates X = Y = Z = 0.0.0.
 ") Origin;
 		static const gp_Pnt Origin();
 
@@ -359,7 +359,7 @@ gp_Pnt2d
 
 Description
 -----------
-Identifies a cartesian point with coordinates x = y = 0.0.
+Identifies a Cartesian point with coordinates X = Y = 0.0.
 ") Origin2d;
 		static const gp_Pnt2d Origin2d();
 
@@ -372,7 +372,7 @@ float
 
 Description
 -----------
-Method of package gp //! in geometric computations, defines the tolerance criterion used to determine when two numbers can be considered equal. many class functions use this tolerance criterion, for example, to avoid division by zero in geometric computations. in the documentation, tolerance criterion is always referred to as gp::resolution().
+Method of package gp //! In geometric computations, defines the tolerance criterion used to determine when two numbers can be considered equal. Many class functions use this tolerance criterion, for example, to avoid division by zero in geometric computations. In the documentation, tolerance criterion is always referred to as gp::Resolution().
 ") Resolution;
 		static Standard_Real Resolution();
 
@@ -385,7 +385,7 @@ gp_Ax2
 
 Description
 -----------
-Identifies a coordinate system where its origin is origin, and its 'main direction' and 'x direction' coordinates z = 1.0, x = y =0.0 and x direction coordinates x = 1.0, y = z = 0.0.
+Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates Z = 1.0, X = Y =0.0 and X direction coordinates X = 1.0, Y = Z = 0.0.
 ") XOY;
 		static const gp_Ax2 XOY();
 
@@ -398,7 +398,7 @@ gp_Ax2
 
 Description
 -----------
-Identifies a coordinate system where its origin is origin, and its 'main direction' and 'x direction' coordinates x = 1.0, z = y =0.0 and x direction coordinates y = 1.0, x = z = 0.0 in 2d space.
+Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates X = 1.0, Z = Y =0.0 and X direction coordinates Y = 1.0, X = Z = 0.0 In 2D space.
 ") YOZ;
 		static const gp_Ax2 YOZ();
 
@@ -411,7 +411,7 @@ gp_Ax2
 
 Description
 -----------
-Identifies a coordinate system where its origin is origin, and its 'main direction' and 'x direction' coordinates y = 1.0, x = z =0.0 and x direction coordinates z = 1.0, x = y = 0.0.
+Identifies a coordinate system where its origin is Origin, and its 'main Direction' and 'X Direction' coordinates Y = 1.0, X = Z =0.0 and X direction coordinates Z = 1.0, X = Y = 0.0.
 ") ZOX;
 		static const gp_Ax2 ZOX();
 
@@ -438,7 +438,7 @@ None
 
 Description
 -----------
-Creates an axis object representing z axis of the reference coordinate system.
+Creates an axis object representing Z axis of the reference coordinate system.
 ") gp_Ax1;
 		 gp_Ax1();
 
@@ -457,7 +457,7 @@ None
 
 Description
 -----------
-P is the location point and v is the direction of <self>.
+P is the location point and V is the direction of <self>.
 ") gp_Ax1;
 		 gp_Ax1(const gp_Pnt & theP, const gp_Dir & theV);
 
@@ -475,7 +475,7 @@ float
 
 Description
 -----------
-Computes the angular value, in radians, between this.direction() and theother.direction(). returns the angle between 0 and 2*pi radians.
+Computes the angular value, in radians, between this.Direction() and theOther.Direction(). Returns the angle between 0 and 2*PI radians.
 ") Angle;
 		Standard_Real Angle(const gp_Ax1 & theOther);
 
@@ -550,7 +550,7 @@ bool
 
 Description
 -----------
-Returns true if: . the angle between <self> and <other> is lower or equal to <angulartolerance> and . the distance between <self>.location() and <other> is lower or equal to <lineartolerance> and . the distance between <other>.location() and <self> is lower or equal to lineartolerance.
+Returns True if: . the angle between <self> and <Other> is lower or equal to <AngularTolerance> and . the distance between <self>.Location() and <Other> is lower or equal to <LinearTolerance> and . the distance between <Other>.Location() and <self> is lower or equal to LinearTolerance.
 ") IsCoaxial;
 		Standard_Boolean IsCoaxial(const gp_Ax1 & Other, const Standard_Real AngularTolerance, const Standard_Real LinearTolerance);
 
@@ -569,7 +569,7 @@ bool
 
 Description
 -----------
-Returns true if the direction of this and another axis are normal to each other. that is, if the angle between the two axes is equal to pi/2. note: the tolerance criterion is given by theangulartolerance.
+Returns True if the direction of this and another axis are normal to each other. That is, if the angle between the two axes is equal to Pi/2. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Ax1 & theOther, const Standard_Real theAngularTolerance);
 
@@ -588,7 +588,7 @@ bool
 
 Description
 -----------
-Returns true if the direction of this and another axis are parallel with opposite orientation. that is, if the angle between the two axes is equal to pi. note: the tolerance criterion is given by theangulartolerance.
+Returns True if the direction of this and another axis are parallel with opposite orientation. That is, if the angle between the two axes is equal to Pi. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Ax1 & theOther, const Standard_Real theAngularTolerance);
 
@@ -607,7 +607,7 @@ bool
 
 Description
 -----------
-Returns true if the direction of this and another axis are parallel with same orientation or opposite orientation. that is, if the angle between the two axes is equal to 0 or pi. note: the tolerance criterion is given by theangulartolerance.
+Returns True if the direction of this and another axis are parallel with same orientation or opposite orientation. That is, if the angle between the two axes is equal to 0 or Pi. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Ax1 & theOther, const Standard_Real theAngularTolerance);
 
@@ -638,7 +638,7 @@ None
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to the point p which is the center of the symmetry and assigns the result to this axis.
+Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry and assigns the result to this axis.
 ") Mirror;
 		void Mirror(const gp_Pnt & P);
 
@@ -674,7 +674,7 @@ None
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to a plane. the axis placement <a2> locates the plane of the symmetry: (location, xdirection, ydirection) and assigns the result to this axis.
+Performs the symmetrical transformation of an axis placement with respect to a plane. The axis placement <A2> locates the plane of the symmetry: (Location, XDirection, YDirection) and assigns the result to this axis.
 ") Mirror;
 		void Mirror(const gp_Ax2 & A2);
 
@@ -692,7 +692,7 @@ gp_Ax1
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to the point p which is the center of the symmetry and creates a new axis.
+Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry and creates a new axis.
 ") Mirrored;
 		gp_Ax1 Mirrored(const gp_Pnt & P);
 
@@ -728,7 +728,7 @@ gp_Ax1
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to a plane. the axis placement <a2> locates the plane of the symmetry: (location, xdirection, ydirection) and creates a new axis.
+Performs the symmetrical transformation of an axis placement with respect to a plane. The axis placement <A2> locates the plane of the symmetry: (Location, XDirection, YDirection) and creates a new axis.
 ") Mirrored;
 		gp_Ax1 Mirrored(const gp_Ax2 & A2);
 
@@ -773,7 +773,7 @@ None
 
 Description
 -----------
-Rotates this axis at an angle theangrad (in radians) about the axis thea1 and assigns the result to this axis.
+Rotates this axis at an angle theAngRad (in radians) about the axis theA1 and assigns the result to this axis.
 ") Rotate;
 		void Rotate(const gp_Ax1 & theA1, const Standard_Real theAngRad);
 
@@ -792,7 +792,7 @@ gp_Ax1
 
 Description
 -----------
-Rotates this axis at an angle theangrad (in radians) about the axis thea1 and creates a new one.
+Rotates this axis at an angle theAngRad (in radians) about the axis theA1 and creates a new one.
 ") Rotated;
 		gp_Ax1 Rotated(const gp_Ax1 & theA1, const Standard_Real theAngRad);
 
@@ -811,7 +811,7 @@ None
 
 Description
 -----------
-Applies a scaling transformation to this axis with: - scale factor thes, and - center thep and assigns the result to this axis.
+Applies a scaling transformation to this axis with: - scale factor theS, and - center theP and assigns the result to this axis.
 ") Scale;
 		void Scale(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -830,7 +830,7 @@ gp_Ax1
 
 Description
 -----------
-Applies a scaling transformation to this axis with: - scale factor thes, and - center thep and creates a new axis.
+Applies a scaling transformation to this axis with: - scale factor theS, and - center theP and creates a new axis.
 ") Scaled;
 		gp_Ax1 Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -848,7 +848,7 @@ None
 
 Description
 -----------
-Assigns v as the 'direction' of this axis.
+Assigns V as the 'Direction' of this axis.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theV);
 
@@ -866,7 +866,7 @@ None
 
 Description
 -----------
-Assigns p as the origin of this axis.
+Assigns P as the origin of this axis.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -884,7 +884,7 @@ None
 
 Description
 -----------
-Applies the transformation thet to this axis and assigns the result to this axis.
+Applies the transformation theT to this axis and assigns the result to this axis.
 ") Transform;
 		void Transform(const gp_Trsf & theT);
 
@@ -902,7 +902,7 @@ gp_Ax1
 
 Description
 -----------
-Applies the transformation thet to this axis and creates a new one. //! translates an axis plaxement in the direction of the vector <v>. the magnitude of the translation is the vector's magnitude.
+Applies the transformation theT to this axis and creates a new one. //! Translates an axis plaxement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 ") Transformed;
 		gp_Ax1 Transformed(const gp_Trsf & theT);
 
@@ -920,7 +920,7 @@ None
 
 Description
 -----------
-Translates this axis by the vector thev, and assigns the result to this axis.
+Translates this axis by the vector theV, and assigns the result to this axis.
 ") Translate;
 		void Translate(const gp_Vec & theV);
 
@@ -939,7 +939,7 @@ None
 
 Description
 -----------
-Translates this axis by: the vector (thep1, thep2) defined from point thep1 to point thep2. and assigns the result to this axis.
+Translates this axis by: the vector (theP1, theP2) defined from point theP1 to point theP2. and assigns the result to this axis.
 ") Translate;
 		void Translate(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -957,7 +957,7 @@ gp_Ax1
 
 Description
 -----------
-Translates this axis by the vector thev, and creates a new one.
+Translates this axis by the vector theV, and creates a new one.
 ") Translated;
 		gp_Ax1 Translated(const gp_Vec & theV);
 
@@ -976,7 +976,7 @@ gp_Ax1
 
 Description
 -----------
-Translates this axis by: the vector (thep1, thep2) defined from point thep1 to point thep2. and creates a new one.
+Translates this axis by: the vector (theP1, theP2) defined from point theP1 to point theP2. and creates a new one.
 ") Translated;
 		gp_Ax1 Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -1021,7 +1021,7 @@ None
 
 Description
 -----------
-Creates an object corresponding to the reference coordinate system (oxyz).
+Creates an object corresponding to the reference coordinate system (OXYZ).
 ") gp_Ax2;
 		 gp_Ax2();
 
@@ -1041,7 +1041,7 @@ None
 
 Description
 -----------
-Creates an axis placement with an origin p such that: - n is the direction, and - the 'x direction' is normal to n, in the plane defined by the vectors (n, vx): 'x direction' = (n ^ vx) ^ n, exception: raises constructionerror if n and vx are parallel (same or opposite orientation).
+Creates an axis placement with an origin P such that: - N is the Direction, and - the 'X Direction' is normal to N, in the plane defined by the vectors (N, Vx): 'X Direction' = (N ^ Vx) ^ N, Exception: raises ConstructionError if N and Vx are parallel (same or opposite orientation).
 ") gp_Ax2;
 		 gp_Ax2(const gp_Pnt & P, const gp_Dir & N, const gp_Dir & Vx);
 
@@ -1060,7 +1060,7 @@ None
 
 Description
 -----------
-Creates - a coordinate system with an origin p, where v gives the 'main direction' (here, 'x direction' and 'y direction' are defined automatically).
+Creates - a coordinate system with an origin P, where V gives the 'main Direction' (here, 'X Direction' and 'Y Direction' are defined automatically).
 ") gp_Ax2;
 		 gp_Ax2(const gp_Pnt & P, const gp_Dir & V);
 
@@ -1078,7 +1078,7 @@ float
 
 Description
 -----------
-Computes the angular value, in radians, between the main direction of <self> and the main direction of <theother>. returns the angle between 0 and pi in radians.
+Computes the angular value, in radians, between the main direction of <self> and the main direction of <theOther>. Returns the angle between 0 and PI in radians.
 ") Angle;
 		Standard_Real Angle(const gp_Ax2 & theOther);
 
@@ -1091,7 +1091,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the main axis of <self>. it is the 'location' point and the main 'direction'.
+Returns the main axis of <self>. It is the 'Location' point and the main 'Direction'.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -1186,7 +1186,7 @@ bool
 
 Description
 -----------
-Returns true if . the distance between <self> and the 'location' point of a1 is lower of equal to lineartolerance and . the main direction of <self> and the direction of a1 are normal. note: the tolerance criterion for angular equality is given by angulartolerance.
+Returns True if . the distance between <self> and the 'Location' point of A1 is lower of equal to LinearTolerance and . the main direction of <self> and the direction of A1 are normal. Note: the tolerance criterion for angular equality is given by AngularTolerance.
 ") IsCoplanar;
 		Standard_Boolean IsCoplanar(const gp_Ax1 & A1, const Standard_Real LinearTolerance, const Standard_Real AngularTolerance);
 
@@ -1199,7 +1199,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the 'location' point (origin) of <self>.
+Returns the 'Location' point (origin) of <self>.
 ") Location;
 		const gp_Pnt Location();
 
@@ -1217,7 +1217,7 @@ None
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the point p, and assigns the result to this coordinate system. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the point P, and assigns the result to this coordinate system. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirror;
 		void Mirror(const gp_Pnt & P);
 
@@ -1235,7 +1235,7 @@ None
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the axis a1, and assigns the result to this coordinate systeme. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the axis A1, and assigns the result to this coordinate systeme. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirror;
 		void Mirror(const gp_Ax1 & A1);
 
@@ -1253,7 +1253,7 @@ None
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the plane defined by the origin, 'x direction' and 'y direction' of coordinate system a2 and assigns the result to this coordinate systeme. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the plane defined by the origin, 'X Direction' and 'Y Direction' of coordinate system A2 and assigns the result to this coordinate systeme. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirror;
 		void Mirror(const gp_Ax2 & A2);
 
@@ -1271,7 +1271,7 @@ gp_Ax2
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the point p, and creates a new one. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the point P, and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirrored;
 		gp_Ax2 Mirrored(const gp_Pnt & P);
 
@@ -1289,7 +1289,7 @@ gp_Ax2
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the axis a1, and creates a new one. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the axis A1, and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirrored;
 		gp_Ax2 Mirrored(const gp_Ax1 & A1);
 
@@ -1307,7 +1307,7 @@ gp_Ax2
 
 Description
 -----------
-Performs a symmetrical transformation of this coordinate system with respect to: - the plane defined by the origin, 'x direction' and 'y direction' of coordinate system a2 and creates a new one. warning this transformation is always performed on the origin. in case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'x direction' and the 'y direction' are simply reversed in case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'x direction' and the 'y direction', then - the 'main direction' is recomputed as the cross product 'x direction' ^ 'y direction'. this maintains the right-handed property of the coordinate system.
+Performs a symmetrical transformation of this coordinate system with respect to: - the plane defined by the origin, 'X Direction' and 'Y Direction' of coordinate system A2 and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 ") Mirrored;
 		gp_Ax2 Mirrored(const gp_Ax2 & A2);
 
@@ -1345,7 +1345,7 @@ gp_Ax2
 
 Description
 -----------
-Rotates an axis placement. <thea1> is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates an axis placement. <theA1> is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Ax2 Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -1383,7 +1383,7 @@ gp_Ax2
 
 Description
 -----------
-Applies a scaling transformation on the axis placement. the 'location' point of the axisplacement is modified. warnings: if the scale <s> is negative: . the main direction of the axis placement is not changed. . the 'xdirection' and the 'ydirection' are reversed. so the axis placement stay right handed.
+Applies a scaling transformation on the axis placement. The 'Location' point of the axisplacement is modified. Warnings: If the scale <S> is negative: . the main direction of the axis placement is not changed. . The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 ") Scaled;
 		gp_Ax2 Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -1401,7 +1401,7 @@ None
 
 Description
 -----------
-Assigns the origin and 'main direction' of the axis a1 to this coordinate system, then recomputes its 'x direction' and 'y direction'. note: the new 'x direction' is computed as follows: new 'x direction' = v1 ^(previous 'x direction' ^ v) where v is the 'direction' of a1. exceptions standard_constructionerror if a1 is parallel to the 'x direction' of this coordinate system.
+Assigns the origin and 'main Direction' of the axis A1 to this coordinate system, then recomputes its 'X Direction' and 'Y Direction'. Note: The new 'X Direction' is computed as follows: new 'X Direction' = V1 ^(previous 'X Direction' ^ V) where V is the 'Direction' of A1. Exceptions Standard_ConstructionError if A1 is parallel to the 'X Direction' of this coordinate system.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & A1);
 
@@ -1419,7 +1419,7 @@ None
 
 Description
 -----------
-Changes the 'main direction' of this coordinate system, then recomputes its 'x direction' and 'y direction'. note: the new 'x direction' is computed as follows: new 'x direction' = v ^ (previous 'x direction' ^ v) exceptions standard_constructionerror if v is parallel to the 'x direction' of this coordinate system.
+Changes the 'main Direction' of this coordinate system, then recomputes its 'X Direction' and 'Y Direction'. Note: the new 'X Direction' is computed as follows: new 'X Direction' = V ^ (previous 'X Direction' ^ V) Exceptions Standard_ConstructionError if V is parallel to the 'X Direction' of this coordinate system.
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
@@ -1437,7 +1437,7 @@ None
 
 Description
 -----------
-Changes the 'location' point (origin) of <self>.
+Changes the 'Location' point (origin) of <self>.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -1455,7 +1455,7 @@ None
 
 Description
 -----------
-Changes the 'xdirection' of <self>. the main direction 'direction' is not modified, the 'ydirection' is modified. if <vx> is not normal to the main direction then <xdirection> is computed as follows xdirection = direction ^ (vx ^ direction). exceptions standard_constructionerror if vx or vy is parallel to the 'main direction' of this coordinate system.
+Changes the 'Xdirection' of <self>. The main direction 'Direction' is not modified, the 'Ydirection' is modified. If <Vx> is not normal to the main direction then <XDirection> is computed as follows XDirection = Direction ^ (Vx ^ Direction). Exceptions Standard_ConstructionError if Vx or Vy is parallel to the 'main Direction' of this coordinate system.
 ") SetXDirection;
 		void SetXDirection(const gp_Dir & theVx);
 
@@ -1473,7 +1473,7 @@ None
 
 Description
 -----------
-Changes the 'ydirection' of <self>. the main direction is not modified but the 'xdirection' is changed. if <vy> is not normal to the main direction then 'ydirection' is computed as follows ydirection = direction ^ (<vy> ^ direction). exceptions standard_constructionerror if vx or vy is parallel to the 'main direction' of this coordinate system.
+Changes the 'Ydirection' of <self>. The main direction is not modified but the 'Xdirection' is changed. If <Vy> is not normal to the main direction then 'YDirection' is computed as follows YDirection = Direction ^ (<Vy> ^ Direction). Exceptions Standard_ConstructionError if Vx or Vy is parallel to the 'main Direction' of this coordinate system.
 ") SetYDirection;
 		void SetYDirection(const gp_Dir & theVy);
 
@@ -1509,7 +1509,7 @@ gp_Ax2
 
 Description
 -----------
-Transforms an axis placement with a trsf. the 'location' point, the 'xdirection' and the 'ydirection' are transformed with thet. the resulting main 'direction' of <self> is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with theT. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Transformed;
 		gp_Ax2 Transformed(const gp_Trsf & theT);
 
@@ -1564,7 +1564,7 @@ gp_Ax2
 
 Description
 -----------
-Translates an axis plaxement in the direction of the vector <thev>. the magnitude of the translation is the vector's magnitude.
+Translates an axis plaxement in the direction of the vector <theV>. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Ax2 Translated(const gp_Vec & theV);
 
@@ -1583,7 +1583,7 @@ gp_Ax2
 
 Description
 -----------
-Translates an axis placement from the point <thep1> to the point <thep2>.
+Translates an axis placement from the point <theP1> to the point <theP2>.
 ") Translated;
 		gp_Ax2 Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -1596,7 +1596,7 @@ gp_Dir
 
 Description
 -----------
-Returns the 'xdirection' of <self>.
+Returns the 'XDirection' of <self>.
 ") XDirection;
 		const gp_Dir XDirection();
 
@@ -1609,7 +1609,7 @@ gp_Dir
 
 Description
 -----------
-Returns the 'ydirection' of <self>.
+Returns the 'YDirection' of <self>.
 ") YDirection;
 		const gp_Dir YDirection();
 
@@ -1654,7 +1654,7 @@ None
 
 Description
 -----------
-Creates an object representing the reference coordinate system (oxy).
+Creates an object representing the reference coordinate system (OXY).
 ") gp_Ax22d;
 		 gp_Ax22d();
 
@@ -1674,7 +1674,7 @@ None
 
 Description
 -----------
-Creates a coordinate system with origin thep and where: - thevx is the 'x direction', and - the 'y direction' is orthogonal to thevx and oriented so that the cross products thevx^'y direction' and thevx^thevy have the same sign. raises constructionerror if thevx and thevy are parallel (same or opposite orientation).
+Creates a coordinate system with origin theP and where: - theVx is the 'X Direction', and - the 'Y Direction' is orthogonal to theVx and oriented so that the cross products theVx^'Y Direction' and theVx^theVy have the same sign. Raises ConstructionError if theVx and theVy are parallel (same or opposite orientation).
 ") gp_Ax22d;
 		 gp_Ax22d(const gp_Pnt2d & theP, const gp_Dir2d & theVx, const gp_Dir2d & theVy);
 
@@ -1694,7 +1694,7 @@ None
 
 Description
 -----------
-Creates - a coordinate system with origin thep and 'x direction' thev, which is: - right-handed if theissense is true (default value), or - left-handed if theissense is false.
+Creates - a coordinate system with origin theP and 'X Direction' theV, which is: - right-handed if theIsSense is true (default value), or - left-handed if theIsSense is false.
 ") gp_Ax22d;
 		 gp_Ax22d(const gp_Pnt2d & theP, const gp_Dir2d & theV, const Standard_Boolean theIsSense = Standard_True);
 
@@ -1713,7 +1713,7 @@ None
 
 Description
 -----------
-Creates - a coordinate system where its origin is the origin of thea and its 'x direction' is the unit vector of thea, which is: - right-handed if theissense is true (default value), or - left-handed if theissense is false.
+Creates - a coordinate system where its origin is the origin of theA and its 'X Direction' is the unit vector of theA, which is: - right-handed if theIsSense is true (default value), or - left-handed if theIsSense is false.
 ") gp_Ax22d;
 		 gp_Ax22d(const gp_Ax2d & theA, const Standard_Boolean theIsSense = Standard_True);
 
@@ -1747,7 +1747,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the 'location' point (origin) of <self>.
+Returns the 'Location' point (origin) of <self>.
 ") Location;
 		const gp_Pnt2d Location();
 
@@ -1801,7 +1801,7 @@ gp_Ax22d
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to the point thep which is the center of the symmetry. warnings: the main direction of the axis placement is not changed. the 'xdirection' and the 'ydirection' are reversed. so the axis placement stay right handed.
+Performs the symmetrical transformation of an axis placement with respect to the point theP which is the center of the symmetry. Warnings: The main direction of the axis placement is not changed. The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 ") Mirrored;
 		gp_Ax22d Mirrored(const gp_Pnt2d & theP);
 
@@ -1819,7 +1819,7 @@ gp_Ax22d
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. the transformation is performed on the 'location' point, on the 'xdirection' and 'ydirection'. the resulting main 'direction' is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Mirrored;
 		gp_Ax22d Mirrored(const gp_Ax2d & theA);
 
@@ -1857,7 +1857,7 @@ gp_Ax22d
 
 Description
 -----------
-Rotates an axis placement. <thea1> is the axis of the rotation . theang is the angular value of the rotation in radians.
+Rotates an axis placement. <theA1> is the axis of the rotation . theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Ax22d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -1895,7 +1895,7 @@ gp_Ax22d
 
 Description
 -----------
-Applies a scaling transformation on the axis placement. the 'location' point of the axisplacement is modified. warnings: if the scale <thes> is negative: . the main direction of the axis placement is not changed. . the 'xdirection' and the 'ydirection' are reversed. so the axis placement stay right handed.
+Applies a scaling transformation on the axis placement. The 'Location' point of the axisplacement is modified. Warnings: If the scale <theS> is negative: . the main direction of the axis placement is not changed. . The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 ") Scaled;
 		gp_Ax22d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -1913,7 +1913,7 @@ None
 
 Description
 -----------
-Assigns the origin and the two unit vectors of the coordinate system thea1 to this coordinate system.
+Assigns the origin and the two unit vectors of the coordinate system theA1 to this coordinate system.
 ") SetAxis;
 		void SetAxis(const gp_Ax22d & theA1);
 
@@ -1931,7 +1931,7 @@ None
 
 Description
 -----------
-Changes the 'location' point (origin) of <self>.
+Changes the 'Location' point (origin) of <self>.
 ") SetLocation;
 		void SetLocation(const gp_Pnt2d & theP);
 
@@ -1949,7 +1949,7 @@ None
 
 Description
 -----------
-Changes the xaxis and yaxis ('location' point and 'direction') of <self>. the 'ydirection' is recomputed in the same sense as before.
+Changes the XAxis and YAxis ('Location' point and 'Direction') of <self>. The 'YDirection' is recomputed in the same sense as before.
 ") SetXAxis;
 		void SetXAxis(const gp_Ax2d & theA1);
 
@@ -1967,7 +1967,7 @@ None
 
 Description
 -----------
-Assigns thevx to the 'x direction' of this coordinate system. the other unit vector of this coordinate system is recomputed, normal to thevx , without modifying the orientation (right-handed or left-handed) of this coordinate system.
+Assigns theVx to the 'X Direction' of this coordinate system. The other unit vector of this coordinate system is recomputed, normal to theVx , without modifying the orientation (right-handed or left-handed) of this coordinate system.
 ") SetXDirection;
 		void SetXDirection(const gp_Dir2d & theVx);
 
@@ -1985,7 +1985,7 @@ None
 
 Description
 -----------
-Changes the xaxis and yaxis ('location' point and 'direction') of <self>. the 'xdirection' is recomputed in the same sense as before.
+Changes the XAxis and YAxis ('Location' point and 'Direction') of <self>. The 'XDirection' is recomputed in the same sense as before.
 ") SetYAxis;
 		void SetYAxis(const gp_Ax2d & theA1);
 
@@ -2003,7 +2003,7 @@ None
 
 Description
 -----------
-Assignsr thevy to the 'y direction' of this coordinate system. the other unit vector of this coordinate system is recomputed, normal to thevy, without modifying the orientation (right-handed or left-handed) of this coordinate system.
+Assignsr theVy to the 'Y Direction' of this coordinate system. The other unit vector of this coordinate system is recomputed, normal to theVy, without modifying the orientation (right-handed or left-handed) of this coordinate system.
 ") SetYDirection;
 		void SetYDirection(const gp_Dir2d & theVy);
 
@@ -2039,7 +2039,7 @@ gp_Ax22d
 
 Description
 -----------
-Transforms an axis placement with a trsf. the 'location' point, the 'xdirection' and the 'ydirection' are transformed with thet. the resulting main 'direction' of <self> is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with theT. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Transformed;
 		gp_Ax22d Transformed(const gp_Trsf2d & theT);
 
@@ -2094,7 +2094,7 @@ gp_Ax22d
 
 Description
 -----------
-Translates an axis plaxement in the direction of the vector <thev>. the magnitude of the translation is the vector's magnitude.
+Translates an axis plaxement in the direction of the vector <theV>. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Ax22d Translated(const gp_Vec2d & theV);
 
@@ -2113,7 +2113,7 @@ gp_Ax22d
 
 Description
 -----------
-Translates an axis placement from the point <thep1> to the point <thep2>.
+Translates an axis placement from the point <theP1> to the point <theP2>.
 ") Translated;
 		gp_Ax22d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -2126,7 +2126,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns an axis, for which - the origin is that of this coordinate system, and - the unit vector is either the 'x direction' of this coordinate system. note: the result is the 'x axis' of this coordinate system.
+Returns an axis, for which - the origin is that of this coordinate system, and - the unit vector is either the 'X Direction' of this coordinate system. Note: the result is the 'X Axis' of this coordinate system.
 ") XAxis;
 		gp_Ax2d XAxis();
 
@@ -2139,7 +2139,7 @@ gp_Dir2d
 
 Description
 -----------
-Returns the 'xdirection' of <self>.
+Returns the 'XDirection' of <self>.
 ") XDirection;
 		const gp_Dir2d XDirection();
 
@@ -2152,7 +2152,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns an axis, for which - the origin is that of this coordinate system, and - the unit vector is either the 'y direction' of this coordinate system. note: the result is the 'y axis' of this coordinate system.
+Returns an axis, for which - the origin is that of this coordinate system, and - the unit vector is either the 'Y Direction' of this coordinate system. Note: the result is the 'Y Axis' of this coordinate system.
 ") YAxis;
 		gp_Ax2d YAxis();
 
@@ -2165,7 +2165,7 @@ gp_Dir2d
 
 Description
 -----------
-Returns the 'ydirection' of <self>.
+Returns the 'YDirection' of <self>.
 ") YDirection;
 		const gp_Dir2d YDirection();
 
@@ -2210,7 +2210,7 @@ None
 
 Description
 -----------
-Creates an axis object representing x axis of the reference co-ordinate system.
+Creates an axis object representing X axis of the reference co-ordinate system.
 ") gp_Ax2d;
 		 gp_Ax2d();
 
@@ -2229,7 +2229,7 @@ None
 
 Description
 -----------
-Creates an ax2d. <thep> is the 'location' point of the axis placement and thev is the 'direction' of the axis placement.
+Creates an Ax2d. <theP> is the 'Location' point of the axis placement and theV is the 'Direction' of the axis placement.
 ") gp_Ax2d;
 		 gp_Ax2d(const gp_Pnt2d & theP, const gp_Dir2d & theV);
 
@@ -2247,7 +2247,7 @@ float
 
 Description
 -----------
-Computes the angle, in radians, between this axis and the axis theother. the value of the angle is between -pi and pi.
+Computes the angle, in radians, between this axis and the axis theOther. The value of the angle is between -Pi and Pi.
 ") Angle;
 		Standard_Real Angle(const gp_Ax2d & theOther);
 
@@ -2301,7 +2301,7 @@ bool
 
 Description
 -----------
-Returns true if: . the angle between <self> and <other> is lower or equal to <angulartolerance> and . the distance between <self>.location() and <other> is lower or equal to <lineartolerance> and . the distance between <other>.location() and <self> is lower or equal to lineartolerance.
+Returns True if: . the angle between <self> and <Other> is lower or equal to <AngularTolerance> and . the distance between <self>.Location() and <Other> is lower or equal to <LinearTolerance> and . the distance between <Other>.Location() and <self> is lower or equal to LinearTolerance.
 ") IsCoaxial;
 		Standard_Boolean IsCoaxial(const gp_Ax2d & Other, const Standard_Real AngularTolerance, const Standard_Real LinearTolerance);
 
@@ -2320,7 +2320,7 @@ bool
 
 Description
 -----------
-Returns true if this axis and the axis theother are normal to each other. that is, if the angle between the two axes is equal to pi/2 or -pi/2. note: the tolerance criterion is given by theangulartolerance.
+Returns true if this axis and the axis theOther are normal to each other. That is, if the angle between the two axes is equal to Pi/2 or -Pi/2. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Ax2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -2339,7 +2339,7 @@ bool
 
 Description
 -----------
-Returns true if this axis and the axis theother are parallel, and have opposite orientations. that is, if the angle between the two axes is equal to pi or -pi. note: the tolerance criterion is given by theangulartolerance.
+Returns true if this axis and the axis theOther are parallel, and have opposite orientations. That is, if the angle between the two axes is equal to Pi or -Pi. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Ax2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -2358,7 +2358,7 @@ bool
 
 Description
 -----------
-Returns true if this axis and the axis theother are parallel, and have either the same or opposite orientations. that is, if the angle between the two axes is equal to 0, pi or -pi. note: the tolerance criterion is given by theangulartolerance.
+Returns true if this axis and the axis theOther are parallel, and have either the same or opposite orientations. That is, if the angle between the two axes is equal to 0, Pi or -Pi. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Ax2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -2425,7 +2425,7 @@ gp_Ax2d
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to the point p which is the center of the symmetry.
+Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry.
 ") Mirrored;
 		gp_Ax2d Mirrored(const gp_Pnt2d & P);
 
@@ -2507,7 +2507,7 @@ gp_Ax2d
 
 Description
 -----------
-Rotates an axis placement. <thep> is the center of the rotation. theang is the angular value of the rotation in radians.
+Rotates an axis placement. <theP> is the center of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Ax2d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -2545,7 +2545,7 @@ gp_Ax2d
 
 Description
 -----------
-Applies a scaling transformation on the axis placement. the 'location' point of the axisplacement is modified. the 'direction' is reversed if the scale is negative.
+Applies a scaling transformation on the axis placement. The 'Location' point of the axisplacement is modified. The 'Direction' is reversed if the scale is negative.
 ") Scaled;
 		gp_Ax2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -2581,7 +2581,7 @@ None
 
 Description
 -----------
-Changes the 'location' point (origin) of <self>.
+Changes the 'Location' point (origin) of <self>.
 ") SetLocation;
 		void SetLocation(const gp_Pnt2d & theP);
 
@@ -2617,7 +2617,7 @@ gp_Ax2d
 
 Description
 -----------
-Transforms an axis placement with a trsf.
+Transforms an axis placement with a Trsf.
 ") Transformed;
 		gp_Ax2d Transformed(const gp_Trsf2d & theT);
 
@@ -2672,7 +2672,7 @@ gp_Ax2d
 
 Description
 -----------
-Translates an axis placement in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates an axis placement in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Ax2d Translated(const gp_Vec2d & theV);
 
@@ -2691,7 +2691,7 @@ gp_Ax2d
 
 Description
 -----------
-Translates an axis placement from the point thep1 to the point thep2.
+Translates an axis placement from the point theP1 to the point theP2.
 ") Translated;
 		gp_Ax2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -2736,7 +2736,7 @@ None
 
 Description
 -----------
-Creates an object corresponding to the reference coordinate system (oxyz).
+Creates an object corresponding to the reference coordinate system (OXYZ).
 ") gp_Ax3;
 		 gp_Ax3();
 
@@ -2774,7 +2774,7 @@ None
 
 Description
 -----------
-Creates a right handed axis placement with the 'location' point thep and two directions, then gives the 'direction' and thevx gives the 'xdirection'. raises constructionerror if then and thevx are parallel (same or opposite orientation).
+Creates a right handed axis placement with the 'Location' point theP and two directions, theN gives the 'Direction' and theVx gives the 'XDirection'. Raises ConstructionError if theN and theVx are parallel (same or opposite orientation).
 ") gp_Ax3;
 		 gp_Ax3(const gp_Pnt & theP, const gp_Dir & theN, const gp_Dir & theVx);
 
@@ -2793,7 +2793,7 @@ None
 
 Description
 -----------
-Creates an axis placement with the 'location' point <thep> and the normal direction <thev>.
+Creates an axis placement with the 'Location' point <theP> and the normal direction <theV>.
 ") gp_Ax3;
 		 gp_Ax3(const gp_Pnt & theP, const gp_Dir & theV);
 
@@ -2811,7 +2811,7 @@ float
 
 Description
 -----------
-Computes the angular value between the main direction of <self> and the main direction of <theother>. returns the angle between 0 and pi in radians.
+Computes the angular value between the main direction of <self> and the main direction of <theOther>. Returns the angle between 0 and PI in radians.
 ") Angle;
 		Standard_Real Angle(const gp_Ax3 & theOther);
 
@@ -2824,7 +2824,7 @@ gp_Ax2
 
 Description
 -----------
-Computes a right-handed coordinate system with the same 'x direction' and 'y direction' as those of this coordinate system, then recomputes the 'main direction'. if this coordinate system is right-handed, the result returned is the same coordinate system. if this coordinate system is left-handed, the result is reversed.
+Computes a right-handed coordinate system with the same 'X Direction' and 'Y Direction' as those of this coordinate system, then recomputes the 'main Direction'. If this coordinate system is right-handed, the result returned is the same coordinate system. If this coordinate system is left-handed, the result is reversed.
 ") Ax2;
 		gp_Ax2 Ax2();
 
@@ -2837,7 +2837,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the main axis of <self>. it is the 'location' point and the main 'direction'.
+Returns the main axis of <self>. It is the 'Location' point and the main 'Direction'.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -2850,7 +2850,7 @@ bool
 
 Description
 -----------
-Returns true if the coordinate system is right-handed. i.e. xdirection().crossed(ydirection()).dot(direction()) > 0.
+Returns True if the coordinate system is right-handed. i.e. XDirection().Crossed(YDirection()).Dot(Direction()) > 0.
 ") Direct;
 		Standard_Boolean Direct();
 
@@ -2925,7 +2925,7 @@ bool
 
 Description
 -----------
-Returns true if . the distance between the 'location' point of <self> and <theother> is lower or equal to thelineartolerance and . the distance between the 'location' point of <theother> and <self> is lower or equal to thelineartolerance and . the main direction of <self> and the main direction of <theother> are parallel (same or opposite orientation).
+Returns True if . the distance between the 'Location' point of <self> and <theOther> is lower or equal to theLinearTolerance and . the distance between the 'Location' point of <theOther> and <self> is lower or equal to theLinearTolerance and . the main direction of <self> and the main direction of <theOther> are parallel (same or opposite orientation).
 ") IsCoplanar;
 		Standard_Boolean IsCoplanar(const gp_Ax3 & theOther, const Standard_Real theLinearTolerance, const Standard_Real theAngularTolerance);
 
@@ -2945,7 +2945,7 @@ bool
 
 Description
 -----------
-Returns true if . the distance between <self> and the 'location' point of thea1 is lower of equal to thelineartolerance and . the distance between thea1 and the 'location' point of <self> is lower or equal to thelineartolerance and . the main direction of <self> and the direction of thea1 are normal.
+Returns True if . the distance between <self> and the 'Location' point of theA1 is lower of equal to theLinearTolerance and . the distance between theA1 and the 'Location' point of <self> is lower or equal to theLinearTolerance and . the main direction of <self> and the direction of theA1 are normal.
 ") IsCoplanar;
 		Standard_Boolean IsCoplanar(const gp_Ax1 & theA1, const Standard_Real theLinearTolerance, const Standard_Real theAngularTolerance);
 
@@ -2958,7 +2958,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the 'location' point (origin) of <self>.
+Returns the 'Location' point (origin) of <self>.
 ") Location;
 		const gp_Pnt Location();
 
@@ -3030,7 +3030,7 @@ gp_Ax3
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to the point thep which is the center of the symmetry. warnings: the main direction of the axis placement is not changed. the 'xdirection' and the 'ydirection' are reversed. so the axis placement stay right handed.
+Performs the symmetrical transformation of an axis placement with respect to the point theP which is the center of the symmetry. Warnings: The main direction of the axis placement is not changed. The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 ") Mirrored;
 		gp_Ax3 Mirrored(const gp_Pnt & theP);
 
@@ -3048,7 +3048,7 @@ gp_Ax3
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. the transformation is performed on the 'location' point, on the 'xdirection' and 'ydirection'. the resulting main 'direction' is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Mirrored;
 		gp_Ax3 Mirrored(const gp_Ax1 & theA1);
 
@@ -3066,7 +3066,7 @@ gp_Ax3
 
 Description
 -----------
-Performs the symmetrical transformation of an axis placement with respect to a plane. the axis placement <thea2> locates the plane of the symmetry: (location, xdirection, ydirection). the transformation is performed on the 'location' point, on the 'xdirection' and 'ydirection'. the resulting main 'direction' is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Performs the symmetrical transformation of an axis placement with respect to a plane. The axis placement <theA2> locates the plane of the symmetry: (Location, XDirection, YDirection). The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Mirrored;
 		gp_Ax3 Mirrored(const gp_Ax2 & theA2);
 
@@ -3104,7 +3104,7 @@ gp_Ax3
 
 Description
 -----------
-Rotates an axis placement. <thea1> is the axis of the rotation . theang is the angular value of the rotation in radians.
+Rotates an axis placement. <theA1> is the axis of the rotation . theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Ax3 Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -3142,7 +3142,7 @@ gp_Ax3
 
 Description
 -----------
-Applies a scaling transformation on the axis placement. the 'location' point of the axisplacement is modified. warnings: if the scale <thes> is negative: . the main direction of the axis placement is not changed. . the 'xdirection' and the 'ydirection' are reversed. so the axis placement stay right handed.
+Applies a scaling transformation on the axis placement. The 'Location' point of the axisplacement is modified. Warnings: If the scale <theS> is negative: . the main direction of the axis placement is not changed. . The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 ") Scaled;
 		gp_Ax3 Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -3160,7 +3160,7 @@ None
 
 Description
 -----------
-Assigns the origin and 'main direction' of the axis thea1 to this coordinate system, then recomputes its 'x direction' and 'y direction'. note: - the new 'x direction' is computed as follows: new 'x direction' = v1 ^(previous 'x direction' ^ v) where v is the 'direction' of thea1. - the orientation of this coordinate system (right-handed or left-handed) is not modified. raises constructionerror if the 'direction' of <thea1> and the 'xdirection' of <self> are parallel (same or opposite orientation) because it is impossible to calculate the new 'xdirection' and the new 'ydirection'.
+Assigns the origin and 'main Direction' of the axis theA1 to this coordinate system, then recomputes its 'X Direction' and 'Y Direction'. Note: - The new 'X Direction' is computed as follows: new 'X Direction' = V1 ^(previous 'X Direction' ^ V) where V is the 'Direction' of theA1. - The orientation of this coordinate system (right-handed or left-handed) is not modified. Raises ConstructionError if the 'Direction' of <theA1> and the 'XDirection' of <self> are parallel (same or opposite orientation) because it is impossible to calculate the new 'XDirection' and the new 'YDirection'.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -3178,7 +3178,7 @@ None
 
 Description
 -----------
-Changes the main direction of this coordinate system, then recomputes its 'x direction' and 'y direction'. note: - the new 'x direction' is computed as follows: new 'x direction' = thev ^ (previous 'x direction' ^ thev). - the orientation of this coordinate system (left- or right-handed) is not modified. raises constructionerror if <thev> and the previous 'xdirection' are parallel because it is impossible to calculate the new 'xdirection' and the new 'ydirection'.
+Changes the main direction of this coordinate system, then recomputes its 'X Direction' and 'Y Direction'. Note: - The new 'X Direction' is computed as follows: new 'X Direction' = theV ^ (previous 'X Direction' ^ theV). - The orientation of this coordinate system (left- or right-handed) is not modified. Raises ConstructionError if <theV> and the previous 'XDirection' are parallel because it is impossible to calculate the new 'XDirection' and the new 'YDirection'.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theV);
 
@@ -3196,7 +3196,7 @@ None
 
 Description
 -----------
-Changes the 'location' point (origin) of <self>.
+Changes the 'Location' point (origin) of <self>.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -3214,7 +3214,7 @@ None
 
 Description
 -----------
-Changes the 'xdirection' of <self>. the main direction 'direction' is not modified, the 'ydirection' is modified. if <thevx> is not normal to the main direction then <xdirection> is computed as follows xdirection = direction ^ (thevx ^ direction). raises constructionerror if <thevx> is parallel (same or opposite orientation) to the main direction of <self>.
+Changes the 'Xdirection' of <self>. The main direction 'Direction' is not modified, the 'Ydirection' is modified. If <theVx> is not normal to the main direction then <XDirection> is computed as follows XDirection = Direction ^ (theVx ^ Direction). Raises ConstructionError if <theVx> is parallel (same or opposite orientation) to the main direction of <self>.
 ") SetXDirection;
 		void SetXDirection(const gp_Dir & theVx);
 
@@ -3232,7 +3232,7 @@ None
 
 Description
 -----------
-Changes the 'ydirection' of <self>. the main direction is not modified but the 'xdirection' is changed. if <thevy> is not normal to the main direction then 'ydirection' is computed as follows ydirection = direction ^ (<thevy> ^ direction). raises constructionerror if <thevy> is parallel to the main direction of <self>.
+Changes the 'Ydirection' of <self>. The main direction is not modified but the 'Xdirection' is changed. If <theVy> is not normal to the main direction then 'YDirection' is computed as follows YDirection = Direction ^ (<theVy> ^ Direction). Raises ConstructionError if <theVy> is parallel to the main direction of <self>.
 ") SetYDirection;
 		void SetYDirection(const gp_Dir & theVy);
 
@@ -3268,7 +3268,7 @@ gp_Ax3
 
 Description
 -----------
-Transforms an axis placement with a trsf. the 'location' point, the 'xdirection' and the 'ydirection' are transformed with thet. the resulting main 'direction' of <self> is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with theT. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Transformed;
 		gp_Ax3 Transformed(const gp_Trsf & theT);
 
@@ -3323,7 +3323,7 @@ gp_Ax3
 
 Description
 -----------
-Translates an axis plaxement in the direction of the vector <thev>. the magnitude of the translation is the vector's magnitude.
+Translates an axis plaxement in the direction of the vector <theV>. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Ax3 Translated(const gp_Vec & theV);
 
@@ -3342,7 +3342,7 @@ gp_Ax3
 
 Description
 -----------
-Translates an axis placement from the point <thep1> to the point <thep2>.
+Translates an axis placement from the point <theP1> to the point <theP2>.
 ") Translated;
 		gp_Ax3 Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -3355,7 +3355,7 @@ gp_Dir
 
 Description
 -----------
-Returns the 'xdirection' of <self>.
+Returns the 'XDirection' of <self>.
 ") XDirection;
 		const gp_Dir XDirection();
 
@@ -3368,7 +3368,7 @@ None
 
 Description
 -----------
-Reverses the x direction of <self>.
+Reverses the X direction of <self>.
 ") XReverse;
 		void XReverse();
 
@@ -3381,7 +3381,7 @@ gp_Dir
 
 Description
 -----------
-Returns the 'ydirection' of <self>.
+Returns the 'YDirection' of <self>.
 ") YDirection;
 		const gp_Dir YDirection();
 
@@ -3394,7 +3394,7 @@ None
 
 Description
 -----------
-Reverses the y direction of <self>.
+Reverses the Y direction of <self>.
 ") YReverse;
 		void YReverse();
 
@@ -3407,7 +3407,7 @@ None
 
 Description
 -----------
-Reverses the z direction of <self>.
+Reverses the Z direction of <self>.
 ") ZReverse;
 		void ZReverse();
 
@@ -3471,7 +3471,7 @@ None
 
 Description
 -----------
-A2 locates the circle and gives its orientation in 3d space. warnings: it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0.
+A2 locates the circle and gives its orientation in 3D space. Warnings: It is not forbidden to create a circle with theRadius = 0.0 Raises ConstructionError if theRadius < 0.0.
 ") gp_Circ;
 		 gp_Circ(const gp_Ax2 & theA2, const Standard_Real theRadius);
 
@@ -3497,7 +3497,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the main axis of the circle. it is the axis perpendicular to the plane of the circle, passing through the 'location' point (center) of the circle.
+Returns the main axis of the circle. It is the axis perpendicular to the plane of the circle, passing through the 'Location' point (center) of the circle.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -3516,7 +3516,7 @@ bool
 
 Description
 -----------
-Returns true if the point thep is on the circumference. the distance between <self> and <thep> must be lower or equal to thelineartolerance.
+Returns True if the point theP is on the circumference. The distance between <self> and <theP> must be lower or equal to theLinearTolerance.
 ") Contains;
 		Standard_Boolean Contains(const gp_Pnt & theP, const Standard_Real theLinearTolerance);
 
@@ -3534,7 +3534,7 @@ float
 
 Description
 -----------
-Computes the minimum of distance between the point thep and any point on the circumference of the circle.
+Computes the minimum of distance between the point theP and any point on the circumference of the circle.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt & theP);
 
@@ -3560,7 +3560,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the center of the circle. it is the 'location' point of the local coordinate system of the circle.
+Returns the center of the circle. It is the 'Location' point of the local coordinate system of the circle.
 ") Location;
 		const gp_Pnt Location();
 
@@ -3632,7 +3632,7 @@ gp_Circ
 
 Description
 -----------
-Performs the symmetrical transformation of a circle with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a circle with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Circ Mirrored(const gp_Pnt & theP);
 
@@ -3668,7 +3668,7 @@ gp_Circ
 
 Description
 -----------
-Performs the symmetrical transformation of a circle with respect to a plane. the axis placement thea2 locates the plane of the of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a circle with respect to a plane. The axis placement theA2 locates the plane of the of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Circ Mirrored(const gp_Ax2 & theA2);
 
@@ -3681,7 +3681,7 @@ gp_Ax2
 
 Description
 -----------
-Returns the position of the circle. it is the local coordinate system of the circle.
+Returns the position of the circle. It is the local coordinate system of the circle.
 ") Position;
 		const gp_Ax2 Position();
 
@@ -3732,7 +3732,7 @@ gp_Circ
 
 Description
 -----------
-Rotates a circle. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a circle. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Circ Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -3770,7 +3770,7 @@ gp_Circ
 
 Description
 -----------
-Scales a circle. thes is the scaling value. warnings: if thes is negative the radius stay positive but the 'xaxis' and the 'yaxis' are reversed as for an ellipse.
+Scales a circle. theS is the scaling value. Warnings: If theS is negative the radius stay positive but the 'XAxis' and the 'YAxis' are reversed as for an ellipse.
 ") Scaled;
 		gp_Circ Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -3788,7 +3788,7 @@ None
 
 Description
 -----------
-Changes the main axis of the circle. it is the axis perpendicular to the plane of the circle. raises constructionerror if the direction of thea1 is parallel to the 'xaxis' of the circle.
+Changes the main axis of the circle. It is the axis perpendicular to the plane of the circle. Raises ConstructionError if the direction of theA1 is parallel to the 'XAxis' of the circle.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -3806,7 +3806,7 @@ None
 
 Description
 -----------
-Changes the 'location' point (center) of the circle.
+Changes the 'Location' point (center) of the circle.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -3842,7 +3842,7 @@ None
 
 Description
 -----------
-Modifies the radius of this circle. warning. this class does not prevent the creation of a circle where theradius is null. exceptions standard_constructionerror if theradius is negative.
+Modifies the radius of this circle. Warning. This class does not prevent the creation of a circle where theRadius is null. Exceptions Standard_ConstructionError if theRadius is negative.
 ") SetRadius;
 		void SetRadius(const Standard_Real theRadius);
 
@@ -3860,7 +3860,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the point thep.
+Computes the square distance between <self> and the point theP.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Pnt & theP);
 
@@ -3896,7 +3896,7 @@ gp_Circ
 
 Description
 -----------
-Transforms a circle with the transformation thet from class trsf.
+Transforms a circle with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Circ Transformed(const gp_Trsf & theT);
 
@@ -3951,7 +3951,7 @@ gp_Circ
 
 Description
 -----------
-Translates a circle in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a circle in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Circ Translated(const gp_Vec & theV);
 
@@ -3970,7 +3970,7 @@ gp_Circ
 
 Description
 -----------
-Translates a circle from the point thep1 to the point thep2.
+Translates a circle from the point theP1 to the point theP2.
 ") Translated;
 		gp_Circ Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -3983,7 +3983,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the 'xaxis' of the circle. this axis is perpendicular to the axis of the conic. this axis and the 'yaxis' define the plane of the conic.
+Returns the 'XAxis' of the circle. This axis is perpendicular to the axis of the conic. This axis and the 'Yaxis' define the plane of the conic.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -3996,7 +3996,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the 'yaxis' of the circle. this axis and the 'xaxis' define the plane of the conic. the 'yaxis' is perpendicular to the 'xaxis'.
+Returns the 'YAxis' of the circle. This axis and the 'Xaxis' define the plane of the conic. The 'YAxis' is perpendicular to the 'Xaxis'.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -4041,7 +4041,7 @@ None
 
 Description
 -----------
-Creates an indefinite circle.
+creates an indefinite circle.
 ") gp_Circ2d;
 		 gp_Circ2d();
 
@@ -4061,7 +4061,7 @@ None
 
 Description
 -----------
-The location point of thexaxis is the center of the circle. warnings: it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0. raised if theradius < 0.0.
+The location point of theXAxis is the center of the circle. Warnings: It is not forbidden to create a circle with theRadius = 0.0 Raises ConstructionError if theRadius < 0.0. Raised if theRadius < 0.0.
 ") gp_Circ2d;
 		 gp_Circ2d(const gp_Ax2d & theXAxis, const Standard_Real theRadius, const Standard_Boolean theIsSense = Standard_True);
 
@@ -4080,7 +4080,7 @@ None
 
 Description
 -----------
-Theaxis defines the xaxis and yaxis of the circle which defines the origin and the sense of parametrization. the location point of theaxis is the center of the circle. warnings: it is not forbidden to create a circle with theradius = 0.0 raises constructionerror if theradius < 0.0. raised if theradius < 0.0.
+theAxis defines the Xaxis and Yaxis of the circle which defines the origin and the sense of parametrization. The location point of theAxis is the center of the circle. Warnings: It is not forbidden to create a circle with theRadius = 0.0 Raises ConstructionError if theRadius < 0.0. Raised if theRadius < 0.0.
 ") gp_Circ2d;
 		 gp_Circ2d(const gp_Ax22d & theAxis, const Standard_Real theRadius);
 
@@ -4106,7 +4106,7 @@ gp_Ax22d
 
 Description
 -----------
-Returns the position of the circle.
+returns the position of the circle.
 ") Axis;
 		const gp_Ax22d Axis();
 
@@ -4128,7 +4128,7 @@ theF: float
 
 Description
 -----------
-Returns the normalized coefficients from the implicit equation of the circle: thea * (x**2) + theb * (y**2) + 2*thec*(x*y) + 2*thed*x + 2*thee*y + thef = 0.0.
+Returns the normalized coefficients from the implicit equation of the circle: theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4147,7 +4147,7 @@ bool
 
 Description
 -----------
-Does <self> contain thep ? returns true if the distance between thep and any point on the circumference of the circle is lower of equal to <thelineartolerance>.
+Does <self> contain theP ? Returns True if the distance between theP and any point on the circumference of the circle is lower of equal to <theLinearTolerance>.
 ") Contains;
 		Standard_Boolean Contains(const gp_Pnt2d & theP, const Standard_Real theLinearTolerance);
 
@@ -4165,7 +4165,7 @@ float
 
 Description
 -----------
-Computes the minimum of distance between the point thep and any point on the circumference of the circle.
+Computes the minimum of distance between the point theP and any point on the circumference of the circle.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt2d & theP);
 
@@ -4191,7 +4191,7 @@ float
 
 Description
 -----------
-Computes the circumference of the circle.
+computes the circumference of the circle.
 ") Length;
 		Standard_Real Length();
 
@@ -4258,7 +4258,7 @@ gp_Circ2d
 
 Description
 -----------
-Performs the symmetrical transformation of a circle with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a circle with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Circ2d Mirrored(const gp_Pnt2d & theP);
 
@@ -4289,7 +4289,7 @@ gp_Ax22d
 
 Description
 -----------
-Returns the position of the circle. idem axis(me).
+returns the position of the circle. Idem Axis(me).
 ") Position;
 		const gp_Ax22d Position();
 
@@ -4315,7 +4315,7 @@ None
 
 Description
 -----------
-Reverses the orientation of the local coordinate system of this circle (the 'y direction' is reversed) and therefore changes the implicit orientation of this circle. reverse assigns the result to this circle,.
+Reverses the orientation of the local coordinate system of this circle (the 'Y Direction' is reversed) and therefore changes the implicit orientation of this circle. Reverse assigns the result to this circle,.
 ") Reverse;
 		void Reverse();
 
@@ -4328,7 +4328,7 @@ gp_Circ2d
 
 Description
 -----------
-Reverses the orientation of the local coordinate system of this circle (the 'y direction' is reversed) and therefore changes the implicit orientation of this circle. reversed creates a new circle.
+Reverses the orientation of the local coordinate system of this circle (the 'Y Direction' is reversed) and therefore changes the implicit orientation of this circle. Reversed creates a new circle.
 ") Reversed;
 		gp_Circ2d Reversed();
 
@@ -4366,7 +4366,7 @@ gp_Circ2d
 
 Description
 -----------
-Rotates a circle. thep is the center of the rotation. ang is the angular value of the rotation in radians.
+Rotates a circle. theP is the center of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Circ2d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -4404,7 +4404,7 @@ gp_Circ2d
 
 Description
 -----------
-Scales a circle. thes is the scaling value. warnings: if thes is negative the radius stay positive but the 'xaxis' and the 'yaxis' are reversed as for an ellipse.
+Scales a circle. theS is the scaling value. Warnings: If theS is negative the radius stay positive but the 'XAxis' and the 'YAxis' are reversed as for an ellipse.
 ") Scaled;
 		gp_Circ2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -4422,7 +4422,7 @@ None
 
 Description
 -----------
-Changes the x axis of the circle.
+Changes the X axis of the circle.
 ") SetAxis;
 		void SetAxis(const gp_Ax22d & theA);
 
@@ -4458,7 +4458,7 @@ None
 
 Description
 -----------
-Modifies the radius of this circle. this class does not prevent the creation of a circle where theradius is null. exceptions standard_constructionerror if theradius is negative.
+Modifies the radius of this circle. This class does not prevent the creation of a circle where theRadius is null. Exceptions Standard_ConstructionError if theRadius is negative.
 ") SetRadius;
 		void SetRadius(const Standard_Real theRadius);
 
@@ -4476,7 +4476,7 @@ None
 
 Description
 -----------
-Changes the x axis of the circle.
+Changes the X axis of the circle.
 ") SetXAxis;
 		void SetXAxis(const gp_Ax2d & theA);
 
@@ -4494,7 +4494,7 @@ None
 
 Description
 -----------
-Changes the y axis of the circle.
+Changes the Y axis of the circle.
 ") SetYAxis;
 		void SetYAxis(const gp_Ax2d & theA);
 
@@ -4512,7 +4512,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the point thep.
+Computes the square distance between <self> and the point theP.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Pnt2d & theP);
 
@@ -4548,7 +4548,7 @@ gp_Circ2d
 
 Description
 -----------
-Transforms a circle with the transformation thet from class trsf2d.
+Transforms a circle with the transformation theT from class Trsf2d.
 ") Transformed;
 		gp_Circ2d Transformed(const gp_Trsf2d & theT);
 
@@ -4603,7 +4603,7 @@ gp_Circ2d
 
 Description
 -----------
-Translates a circle in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a circle in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Circ2d Translated(const gp_Vec2d & theV);
 
@@ -4622,7 +4622,7 @@ gp_Circ2d
 
 Description
 -----------
-Translates a circle from the point thep1 to the point thep2.
+Translates a circle from the point theP1 to the point theP2.
 ") Translated;
 		gp_Circ2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -4635,7 +4635,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns the x axis of the circle.
+returns the X axis of the circle.
 ") XAxis;
 		gp_Ax2d XAxis();
 
@@ -4648,7 +4648,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns the y axis of the circle. reverses the direction of the circle.
+Returns the Y axis of the circle. Reverses the direction of the circle.
 ") YAxis;
 		gp_Ax2d YAxis();
 
@@ -4693,7 +4693,7 @@ None
 
 Description
 -----------
-Creates an indefinite cone.
+Creates an indefinite Cone.
 ") gp_Cone;
 		 gp_Cone();
 
@@ -4713,7 +4713,7 @@ None
 
 Description
 -----------
-Creates an infinite conical surface. thea3 locates the cone in the space and defines the reference plane of the surface. ang is the conical surface semi-angle. its absolute value is in range ]0, pi/2[. theradius is the radius of the circle in the reference plane of the cone. theraises constructionerror * if theradius is lower than 0.0 * abs(theang) < resolution from gp or abs(theang) >= (pi/2) - resolution.
+Creates an infinite conical surface. theA3 locates the cone in the space and defines the reference plane of the surface. Ang is the conical surface semi-angle. Its absolute value is in range ]0, PI/2[. theRadius is the radius of the circle in the reference plane of the cone. theRaises ConstructionError * if theRadius is lower than 0.0 * Abs(theAng) < Resolution from gp or Abs(theAng) >= (PI/2) - Resolution.
 ") gp_Cone;
 		 gp_Cone(const gp_Ax3 & theA3, const Standard_Real theAng, const Standard_Real theRadius);
 
@@ -4726,7 +4726,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the cone's top. the apex of the cone is on the negative side of the symmetry axis of the cone.
+Computes the cone's top. The Apex of the cone is on the negative side of the symmetry axis of the cone.
 ") Apex;
 		gp_Pnt Apex();
 
@@ -4739,7 +4739,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the symmetry axis of the cone.
+returns the symmetry axis of the cone.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -4765,7 +4765,7 @@ theD: float
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system: thea1.x**2 + thea2.y**2 + thea3.z**2 + 2.(theb1.x.y + theb2.x.z + theb3.y.z) + 2.(thec1.x + thec2.y + thec3.z) + thed = 0.0.
+Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system: theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) + 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4791,7 +4791,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the 'location' point of the cone.
+returns the 'Location' point of the cone.
 ") Location;
 		const gp_Pnt Location();
 
@@ -4863,7 +4863,7 @@ gp_Cone
 
 Description
 -----------
-Performs the symmetrical transformation of a cone with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a cone with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Cone Mirrored(const gp_Pnt & theP);
 
@@ -4899,7 +4899,7 @@ gp_Cone
 
 Description
 -----------
-Performs the symmetrical transformation of a cone with respect to a plane. the axis placement thea2 locates the plane of the of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a cone with respect to a plane. The axis placement theA2 locates the plane of the of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Cone Mirrored(const gp_Ax2 & theA2);
 
@@ -4963,7 +4963,7 @@ gp_Cone
 
 Description
 -----------
-Rotates a cone. thea1 is the axis of the rotation. ang is the angular value of the rotation in radians.
+Rotates a cone. theA1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Cone Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -5001,7 +5001,7 @@ gp_Cone
 
 Description
 -----------
-Scales a cone. thes is the scaling value. the absolute value of thes is used to scale the cone.
+Scales a cone. theS is the scaling value. The absolute value of theS is used to scale the cone.
 ") Scaled;
 		gp_Cone Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -5014,7 +5014,7 @@ float
 
 Description
 -----------
-Returns the half-angle at the apex of this cone. attention! semi-angle can be negative.
+Returns the half-angle at the apex of this cone. Attention! Semi-angle can be negative.
 ") SemiAngle;
 		Standard_Real SemiAngle();
 
@@ -5032,7 +5032,7 @@ None
 
 Description
 -----------
-Changes the symmetry axis of the cone. raises constructionerror the direction of thea1 is parallel to the 'xdirection' of the coordinate system of the cone.
+Changes the symmetry axis of the cone. Raises ConstructionError the direction of theA1 is parallel to the 'XDirection' of the coordinate system of the cone.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -5068,7 +5068,7 @@ None
 
 Description
 -----------
-Changes the local coordinate system of the cone. this coordinate system defines the reference plane of the cone.
+Changes the local coordinate system of the cone. This coordinate system defines the reference plane of the cone.
 ") SetPosition;
 		void SetPosition(const gp_Ax3 & theA3);
 
@@ -5086,7 +5086,7 @@ None
 
 Description
 -----------
-Changes the radius of the cone in the reference plane of the cone. raised if ther < 0.0.
+Changes the radius of the cone in the reference plane of the cone. Raised if theR < 0.0.
 ") SetRadius;
 		void SetRadius(const Standard_Real theR);
 
@@ -5104,7 +5104,7 @@ None
 
 Description
 -----------
-Changes the semi-angle of the cone. semi-angle can be negative. its absolute value abs(theang) is in range ]0,pi/2[. raises constructionerror if abs(theang) < resolution from gp or abs(theang) >= pi/2 - resolution.
+Changes the semi-angle of the cone. Semi-angle can be negative. Its absolute value Abs(theAng) is in range ]0,PI/2[. Raises ConstructionError if Abs(theAng) < Resolution from gp or Abs(theAng) >= PI/2 - Resolution.
 ") SetSemiAngle;
 		void SetSemiAngle(const Standard_Real theAng);
 
@@ -5140,7 +5140,7 @@ gp_Cone
 
 Description
 -----------
-Transforms a cone with the transformation thet from class trsf.
+Transforms a cone with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Cone Transformed(const gp_Trsf & theT);
 
@@ -5195,7 +5195,7 @@ gp_Cone
 
 Description
 -----------
-Translates a cone in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a cone in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Cone Translated(const gp_Vec & theV);
 
@@ -5214,7 +5214,7 @@ gp_Cone
 
 Description
 -----------
-Translates a cone from the point p1 to the point p2.
+Translates a cone from the point P1 to the point P2.
 ") Translated;
 		gp_Cone Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -5227,7 +5227,7 @@ None
 
 Description
 -----------
-Reverses the u parametrization of the cone reversing the yaxis.
+Reverses the U parametrization of the cone reversing the YAxis.
 ") UReverse;
 		void UReverse();
 
@@ -5240,7 +5240,7 @@ None
 
 Description
 -----------
-Reverses the v parametrization of the cone reversing the zaxis.
+Reverses the V parametrization of the cone reversing the ZAxis.
 ") VReverse;
 		void VReverse();
 
@@ -5253,7 +5253,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the xaxis of the reference plane.
+Returns the XAxis of the reference plane.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -5266,7 +5266,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the yaxis of the reference plane.
+Returns the YAxis of the reference plane.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -5330,7 +5330,7 @@ None
 
 Description
 -----------
-Creates a cylinder of radius radius, whose axis is the 'main axis' of thea3. thea3 is the local coordinate system of the cylinder. raises constructionerrord if theradius < 0.0.
+Creates a cylinder of radius Radius, whose axis is the 'main Axis' of theA3. theA3 is the local coordinate system of the cylinder. Raises ConstructionErrord if theRadius < 0.0.
 ") gp_Cylinder;
 		 gp_Cylinder(const gp_Ax3 & theA3, const Standard_Real theRadius);
 
@@ -5369,7 +5369,7 @@ theD: float
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system: thea1.x**2 + thea2.y**2 + thea3.z**2 + 2.(theb1.x.y + theb2.x.z + theb3.y.z) + 2.(thec1.x + thec2.y + thec3.z) + thed = 0.0.
+Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system: theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) + 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5395,7 +5395,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the 'location' point of the cylinder.
+Returns the 'Location' point of the cylinder.
 ") Location;
 		const gp_Pnt Location();
 
@@ -5467,7 +5467,7 @@ gp_Cylinder
 
 Description
 -----------
-Performs the symmetrical transformation of a cylinder with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a cylinder with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Cylinder Mirrored(const gp_Pnt & theP);
 
@@ -5503,7 +5503,7 @@ gp_Cylinder
 
 Description
 -----------
-Performs the symmetrical transformation of a cylinder with respect to a plane. the axis placement thea2 locates the plane of the of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a cylinder with respect to a plane. The axis placement theA2 locates the plane of the of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Cylinder Mirrored(const gp_Ax2 & theA2);
 
@@ -5567,7 +5567,7 @@ gp_Cylinder
 
 Description
 -----------
-Rotates a cylinder. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a cylinder. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Cylinder Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -5605,7 +5605,7 @@ gp_Cylinder
 
 Description
 -----------
-Scales a cylinder. thes is the scaling value. the absolute value of thes is used to scale the cylinder.
+Scales a cylinder. theS is the scaling value. The absolute value of theS is used to scale the cylinder.
 ") Scaled;
 		gp_Cylinder Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -5623,7 +5623,7 @@ None
 
 Description
 -----------
-Changes the symmetry axis of the cylinder. raises constructionerror if the direction of thea1 is parallel to the 'xdirection' of the coordinate system of the cylinder.
+Changes the symmetry axis of the cylinder. Raises ConstructionError if the direction of theA1 is parallel to the 'XDirection' of the coordinate system of the cylinder.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -5677,7 +5677,7 @@ None
 
 Description
 -----------
-Modifies the radius of this cylinder. exceptions standard_constructionerror if ther is negative.
+Modifies the radius of this cylinder. Exceptions Standard_ConstructionError if theR is negative.
 ") SetRadius;
 		void SetRadius(const Standard_Real theR);
 
@@ -5713,7 +5713,7 @@ gp_Cylinder
 
 Description
 -----------
-Transforms a cylinder with the transformation thet from class trsf.
+Transforms a cylinder with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Cylinder Transformed(const gp_Trsf & theT);
 
@@ -5768,7 +5768,7 @@ gp_Cylinder
 
 Description
 -----------
-Translates a cylinder in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a cylinder in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Cylinder Translated(const gp_Vec & theV);
 
@@ -5787,7 +5787,7 @@ gp_Cylinder
 
 Description
 -----------
-Translates a cylinder from the point thep1 to the point thep2.
+Translates a cylinder from the point theP1 to the point theP2.
 ") Translated;
 		gp_Cylinder Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -5800,7 +5800,7 @@ None
 
 Description
 -----------
-Reverses the u parametrization of the cylinder reversing the yaxis.
+Reverses the U parametrization of the cylinder reversing the YAxis.
 ") UReverse;
 		void UReverse();
 
@@ -5813,7 +5813,7 @@ None
 
 Description
 -----------
-Reverses the v parametrization of the plane reversing the axis.
+Reverses the V parametrization of the plane reversing the Axis.
 ") VReverse;
 		void VReverse();
 
@@ -5826,7 +5826,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis x of the cylinder.
+Returns the axis X of the cylinder.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -5839,7 +5839,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis y of the cylinder.
+Returns the axis Y of the cylinder.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -5884,7 +5884,7 @@ None
 
 Description
 -----------
-Creates a direction corresponding to x axis.
+Creates a direction corresponding to X axis.
 ") gp_Dir;
 		 gp_Dir();
 
@@ -5902,7 +5902,7 @@ None
 
 Description
 -----------
-Normalizes the vector thev and creates a direction. raises constructionerror if thev.magnitude() <= resolution.
+Normalizes the vector theV and creates a direction. Raises ConstructionError if theV.Magnitude() <= Resolution.
 ") gp_Dir;
 		 gp_Dir(const gp_Vec & theV);
 
@@ -5920,7 +5920,7 @@ None
 
 Description
 -----------
-Creates a direction from a triplet of coordinates. raises constructionerror if thecoord.modulus() <= resolution from gp.
+Creates a direction from a triplet of coordinates. Raises ConstructionError if theCoord.Modulus() <= Resolution from gp.
 ") gp_Dir;
 		 gp_Dir(const gp_XYZ & theCoord);
 
@@ -5940,7 +5940,7 @@ None
 
 Description
 -----------
-Creates a direction with its 3 cartesian coordinates. raises constructionerror if sqrt(thexv*thexv + theyv*theyv + thezv*thezv) <= resolution modification of the direction's coordinates if sqrt (thexv*thexv + theyv*theyv + thezv*thezv) <= resolution from gp where thexv, theyv ,thezv are the new coordinates it is not possible to construct the direction and the method raises the exception constructionerror.
+Creates a direction with its 3 cartesian coordinates. Raises ConstructionError if Sqrt(theXv*theXv + theYv*theYv + theZv*theZv) <= Resolution Modification of the direction's coordinates If Sqrt (theXv*theXv + theYv*theYv + theZv*theZv) <= Resolution from gp where theXv, theYv ,theZv are the new coordinates it is not possible to construct the direction and the method raises the exception ConstructionError.
 ") gp_Dir;
 		 gp_Dir(const Standard_Real theXv, const Standard_Real theYv, const Standard_Real theZv);
 
@@ -5958,7 +5958,7 @@ float
 
 Description
 -----------
-Computes the angular value in radians between <self> and <theother>. this value is always positive in 3d space. returns the angle in the range [0, pi].
+Computes the angular value in radians between <self> and <theOther>. This value is always positive in 3D space. Returns the angle in the range [0, PI].
 ") Angle;
 		Standard_Real Angle(const gp_Dir & theOther);
 
@@ -5977,7 +5977,7 @@ float
 
 Description
 -----------
-Computes the angular value between <self> and <theother>. <thevref> is the direction of reference normal to <self> and <theother> and its orientation gives the positive sense of rotation. if the cross product <self> ^ <theother> has the same orientation as <thevref> the angular value is positive else negative. returns the angular value in the range -pi and pi (in radians). raises domainerror if <self> and <theother> are not parallel this exception is raised when <thevref> is in the same plane as <self> and <theother> the tolerance criterion is resolution from package gp.
+Computes the angular value between <self> and <theOther>. <theVRef> is the direction of reference normal to <self> and <theOther> and its orientation gives the positive sense of rotation. If the cross product <self> ^ <theOther> has the same orientation as <theVRef> the angular value is positive else negative. Returns the angular value in the range -PI and PI (in radians). Raises DomainError if <self> and <theOther> are not parallel this exception is raised when <theVRef> is in the same plane as <self> and <theOther> The tolerance criterion is Resolution from package gp.
 ") AngleWithRef;
 		Standard_Real AngleWithRef(const gp_Dir & theOther, const gp_Dir & theVRef);
 
@@ -5995,7 +5995,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned ithendex = 2 => y is returned theindex = 3 => z is returned exceptions standard_outofrange if theindex is not 1, 2, or 3.
+Returns the coordinate of range theIndex: theIndex = 1 => X is returned Ithendex = 2 => Y is returned theIndex = 3 => Z is returned Exceptions Standard_OutOfRange if theIndex is not 1, 2, or 3.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -6014,7 +6014,7 @@ theZv: float
 
 Description
 -----------
-Returns for the unit vector its three coordinates thexv, theyv, and thezv.
+Returns for the unit vector its three coordinates theXv, theYv, and theZv.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6032,7 +6032,7 @@ None
 
 Description
 -----------
-Computes the cross product between two directions raises the exception constructionerror if the two directions are parallel because the computed vector cannot be normalized to create a direction.
+Computes the cross product between two directions Raises the exception ConstructionError if the two directions are parallel because the computed vector cannot be normalized to create a direction.
 ") Cross;
 		void Cross(const gp_Dir & theRight);
 
@@ -6070,7 +6070,7 @@ gp_Dir
 
 Description
 -----------
-Computes the double vector product this ^ (thev1 ^ thev2). - crosscrossed creates a new unit vector. exceptions standard_constructionerror if: - thev1 and thev2 are parallel, or - this unit vector and (thev1 ^ thev2) are parallel. this is because, in these conditions, the computed vector is null and cannot be normalized.
+Computes the double vector product this ^ (theV1 ^ theV2). - CrossCrossed creates a new unit vector. Exceptions Standard_ConstructionError if: - theV1 and theV2 are parallel, or - this unit vector and (theV1 ^ theV2) are parallel. This is because, in these conditions, the computed vector is null and cannot be normalized.
 ") CrossCrossed;
 		gp_Dir CrossCrossed(const gp_Dir & theV1, const gp_Dir & theV2);
 
@@ -6088,7 +6088,7 @@ gp_Dir
 
 Description
 -----------
-Computes the triple vector product. <self> ^ (v1 ^ v2) raises the exception constructionerror if v1 and v2 are parallel or <self> and (v1^v2) are parallel because the computed vector can't be normalized to create a direction.
+Computes the triple vector product. <self> ^ (V1 ^ V2) Raises the exception ConstructionError if V1 and V2 are parallel or <self> and (V1^V2) are parallel because the computed vector can't be normalized to create a direction.
 ") Crossed;
 		gp_Dir Crossed(const gp_Dir & theRight);
 
@@ -6125,7 +6125,7 @@ float
 
 Description
 -----------
-Computes the triple scalar product <self> * (thev1 ^ thev2). warnings: the computed vector thev1' = thev1 ^ thev2 is not normalized to create a unitary vector. so this method never raises an exception even if thev1 and thev2 are parallel.
+Computes the triple scalar product <self> * (theV1 ^ theV2). Warnings: The computed vector theV1' = theV1 ^ theV2 is not normalized to create a unitary vector. So this method never raises an exception even if theV1 and theV2 are parallel.
 ") DotCross;
 		Standard_Real DotCross(const gp_Dir & theV1, const gp_Dir & theV2);
 
@@ -6186,7 +6186,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between the two directions is lower or equal to theangulartolerance.
+Returns True if the angle between the two directions is lower or equal to theAngularTolerance.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Dir & theOther, const Standard_Real theAngularTolerance);
 
@@ -6205,7 +6205,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and the unit vector theother is equal to pi/2 (normal).
+Returns True if the angle between this unit vector and the unit vector theOther is equal to Pi/2 (normal).
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Dir & theOther, const Standard_Real theAngularTolerance);
 
@@ -6224,7 +6224,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and the unit vector theother is equal to pi (opposite).
+Returns True if the angle between this unit vector and the unit vector theOther is equal to Pi (opposite).
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Dir & theOther, const Standard_Real theAngularTolerance);
 
@@ -6243,7 +6243,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and the unit vector theother is equal to 0 or to pi. note: the tolerance criterion is given by theangulartolerance.
+Returns true if the angle between this unit vector and the unit vector theOther is equal to 0 or to Pi. Note: the tolerance criterion is given by theAngularTolerance.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Dir & theOther, const Standard_Real theAngularTolerance);
 
@@ -6315,7 +6315,7 @@ gp_Dir
 
 Description
 -----------
-Performs the symmetrical transformation of a direction with respect to the direction thev which is the center of the symmetry.
+Performs the symmetrical transformation of a direction with respect to the direction theV which is the center of the symmetry.
 ") Mirrored;
 		gp_Dir Mirrored(const gp_Dir & theV);
 
@@ -6351,7 +6351,7 @@ gp_Dir
 
 Description
 -----------
-Performs the symmetrical transformation of a direction with respect to a plane. the axis placement thea2 locates the plane of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a direction with respect to a plane. The axis placement theA2 locates the plane of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Dir Mirrored(const gp_Ax2 & theA2);
 
@@ -6377,7 +6377,7 @@ gp_Dir
 
 Description
 -----------
-Reverses the orientation of a direction geometric transformations performs the symmetrical transformation of a direction with respect to the direction v which is the center of the symmetry.].
+Reverses the orientation of a direction geometric transformations Performs the symmetrical transformation of a direction with respect to the direction V which is the center of the symmetry.].
 ") Reversed;
 		gp_Dir Reversed();
 
@@ -6415,7 +6415,7 @@ gp_Dir
 
 Description
 -----------
-Rotates a direction. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a direction. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Dir Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -6434,7 +6434,7 @@ None
 
 Description
 -----------
-For this unit vector, assigns the value xi to: - the x coordinate if theindex is 1, or - the y coordinate if theindex is 2, or - the z coordinate if theindex is 3, and then normalizes it. warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_outofrange if theindex is not 1, 2, or 3. standard_constructionerror if either of the following is less than or equal to gp::resolution(): - sqrt(xv*xv + yv*yv + zv*zv), or - the modulus of the number triple formed by the new value thexi and the two other coordinates of this vector that were not directly modified.
+For this unit vector, assigns the value Xi to: - the X coordinate if theIndex is 1, or - the Y coordinate if theIndex is 2, or - the Z coordinate if theIndex is 3, and then normalizes it. Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_OutOfRange if theIndex is not 1, 2, or 3. Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - Sqrt(Xv*Xv + Yv*Yv + Zv*Zv), or - the modulus of the number triple formed by the new value theXi and the two other coordinates of this vector that were not directly modified.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -6454,7 +6454,7 @@ None
 
 Description
 -----------
-For this unit vector, assigns the values thexv, theyv and thezv to its three coordinates. remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly.
+For this unit vector, assigns the values theXv, theYv and theZv to its three coordinates. Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXv, const Standard_Real theYv, const Standard_Real theZv);
 
@@ -6472,7 +6472,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this unit vector.
+Assigns the given value to the X coordinate of this unit vector.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -6490,7 +6490,7 @@ None
 
 Description
 -----------
-Assigns the three coordinates of thecoord to this unit vector.
+Assigns the three coordinates of theCoord to this unit vector.
 ") SetXYZ;
 		void SetXYZ(const gp_XYZ & theCoord);
 
@@ -6508,7 +6508,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this unit vector.
+Assigns the given value to the Y coordinate of this unit vector.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -6526,7 +6526,7 @@ None
 
 Description
 -----------
-Assigns the given value to the z coordinate of this unit vector.
+Assigns the given value to the Z coordinate of this unit vector.
 ") SetZ;
 		void SetZ(const Standard_Real theZ);
 
@@ -6562,7 +6562,7 @@ gp_Dir
 
 Description
 -----------
-Transforms a direction with a 'trsf' from gp. warnings: if the scale factor of the 'trsf' thet is negative then the direction <self> is reversed.
+Transforms a direction with a 'Trsf' from gp. Warnings: If the scale factor of the 'Trsf' theT is negative then the direction <self> is reversed.
 ") Transformed;
 		gp_Dir Transformed(const gp_Trsf & theT);
 
@@ -6575,7 +6575,7 @@ float
 
 Description
 -----------
-Returns the x coordinate for a unit vector.
+Returns the X coordinate for a unit vector.
 ") X;
 		Standard_Real X();
 
@@ -6588,7 +6588,7 @@ gp_XYZ
 
 Description
 -----------
-For this unit vector, returns its three coordinates as a number triplea.
+for this unit vector, returns its three coordinates as a number triplea.
 ") XYZ;
 		const gp_XYZ XYZ();
 
@@ -6601,7 +6601,7 @@ float
 
 Description
 -----------
-Returns the y coordinate for a unit vector.
+Returns the Y coordinate for a unit vector.
 ") Y;
 		Standard_Real Y();
 
@@ -6614,7 +6614,7 @@ float
 
 Description
 -----------
-Returns the z coordinate for a unit vector.
+Returns the Z coordinate for a unit vector.
 ") Z;
 		Standard_Real Z();
 
@@ -6690,7 +6690,7 @@ None
 
 Description
 -----------
-Creates a direction corresponding to x axis.
+Creates a direction corresponding to X axis.
 ") gp_Dir2d;
 		 gp_Dir2d();
 
@@ -6708,7 +6708,7 @@ None
 
 Description
 -----------
-Normalizes the vector thev and creates a direction. raises constructionerror if thev.magnitude() <= resolution from gp.
+Normalizes the vector theV and creates a Direction. Raises ConstructionError if theV.Magnitude() <= Resolution from gp.
 ") gp_Dir2d;
 		 gp_Dir2d(const gp_Vec2d & theV);
 
@@ -6726,7 +6726,7 @@ None
 
 Description
 -----------
-Creates a direction from a doublet of coordinates. raises constructionerror if thecoord.modulus() <= resolution from gp.
+Creates a Direction from a doublet of coordinates. Raises ConstructionError if theCoord.Modulus() <= Resolution from gp.
 ") gp_Dir2d;
 		 gp_Dir2d(const gp_XY & theCoord);
 
@@ -6745,7 +6745,7 @@ None
 
 Description
 -----------
-Creates a direction with its 2 cartesian coordinates. raises constructionerror if sqrt(thexv*thexv + theyv*theyv) <= resolution from gp.
+Creates a Direction with its 2 cartesian coordinates. Raises ConstructionError if Sqrt(theXv*theXv + theYv*theYv) <= Resolution from gp.
 ") gp_Dir2d;
 		 gp_Dir2d(const Standard_Real theXv, const Standard_Real theYv);
 
@@ -6763,7 +6763,7 @@ float
 
 Description
 -----------
-Computes the angular value in radians between <self> and <theother>. returns the angle in the range [-pi, pi].
+Computes the angular value in radians between <self> and <theOther>. Returns the angle in the range [-PI, PI].
 ") Angle;
 		Standard_Real Angle(const gp_Dir2d & theOther);
 
@@ -6781,7 +6781,7 @@ float
 
 Description
 -----------
-For this unit vector returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned raises outofrange if theindex != {1, 2}.
+For this unit vector returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned Raises OutOfRange if theIndex != {1, 2}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -6799,7 +6799,7 @@ theYv: float
 
 Description
 -----------
-For this unit vector returns its two coordinates thexv and theyv. raises outofrange if theindex != {1, 2}.
+For this unit vector returns its two coordinates theXv and theYv. Raises OutOfRange if theIndex != {1, 2}.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6875,7 +6875,7 @@ bool
 
 Description
 -----------
-Returns true if the two vectors have the same direction i.e. the angle between this unit vector and the unit vector theother is less than or equal to theangulartolerance.
+Returns True if the two vectors have the same direction i.e. the angle between this unit vector and the unit vector theOther is less than or equal to theAngularTolerance.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Dir2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -6894,7 +6894,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and the unit vector theother is equal to pi/2 or -pi/2 (normal) i.e. abs(abs(<self>.angle(theother)) - pi/2.) <= theangulartolerance.
+Returns True if the angle between this unit vector and the unit vector theOther is equal to Pi/2 or -Pi/2 (normal) i.e. Abs(Abs(<self>.Angle(theOther)) - PI/2.) <= theAngularTolerance.
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Dir2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -6913,7 +6913,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and the unit vector theother is equal to pi or -pi (opposite). i.e. pi - abs(<self>.angle(theother)) <= theangulartolerance.
+Returns True if the angle between this unit vector and the unit vector theOther is equal to Pi or -Pi (opposite). i.e. PI - Abs(<self>.Angle(theOther)) <= theAngularTolerance.
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Dir2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -6932,7 +6932,7 @@ bool
 
 Description
 -----------
-Returns true if the angle between this unit vector and unit vector theother is equal to 0, pi or -pi. i.e. abs(angle(<self>, theother)) <= theangulartolerance or pi - abs(angle(<self>, theother)) <= theangulartolerance.
+returns true if the angle between this unit vector and unit vector theOther is equal to 0, Pi or -Pi. i.e. Abs(Angle(<self>, theOther)) <= theAngularTolerance or PI - Abs(Angle(<self>, theOther)) <= theAngularTolerance.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Dir2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -6986,7 +6986,7 @@ gp_Dir2d
 
 Description
 -----------
-Performs the symmetrical transformation of a direction with respect to the direction thev which is the center of the symmetry.
+Performs the symmetrical transformation of a direction with respect to the direction theV which is the center of the symmetry.
 ") Mirrored;
 		gp_Dir2d Mirrored(const gp_Dir2d & theV);
 
@@ -7066,7 +7066,7 @@ gp_Dir2d
 
 Description
 -----------
-Rotates a direction. theang is the angular value of the rotation in radians.
+Rotates a direction. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Dir2d Rotated(const Standard_Real theAng);
 
@@ -7085,7 +7085,7 @@ None
 
 Description
 -----------
-For this unit vector, assigns: the value thexi to: - the x coordinate if theindex is 1, or - the y coordinate if theindex is 2, and then normalizes it. warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_outofrange if theindex is not 1 or 2. standard_constructionerror if either of the following is less than or equal to gp::resolution(): - sqrt(thexv*thexv + theyv*theyv), or - the modulus of the number pair formed by the new value thexi and the other coordinate of this vector that was not directly modified. raises outofrange if theindex != {1, 2}.
+For this unit vector, assigns: the value theXi to: - the X coordinate if theIndex is 1, or - the Y coordinate if theIndex is 2, and then normalizes it. Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_OutOfRange if theIndex is not 1 or 2. Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - Sqrt(theXv*theXv + theYv*theYv), or - the modulus of the number pair formed by the new value theXi and the other coordinate of this vector that was not directly modified. Raises OutOfRange if theIndex != {1, 2}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -7104,7 +7104,7 @@ None
 
 Description
 -----------
-For this unit vector, assigns: - the values thexv and theyv to its two coordinates, warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_outofrange if theindex is not 1 or 2. standard_constructionerror if either of the following is less than or equal to gp::resolution(): - sqrt(thexv*thexv + theyv*theyv), or - the modulus of the number pair formed by the new value xi and the other coordinate of this vector that was not directly modified. raises outofrange if theindex != {1, 2}.
+For this unit vector, assigns: - the values theXv and theYv to its two coordinates, Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_OutOfRange if theIndex is not 1 or 2. Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - Sqrt(theXv*theXv + theYv*theYv), or - the modulus of the number pair formed by the new value Xi and the other coordinate of this vector that was not directly modified. Raises OutOfRange if theIndex != {1, 2}.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXv, const Standard_Real theYv);
 
@@ -7122,7 +7122,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this unit vector, and then normalizes it. warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_constructionerror if either of the following is less than or equal to gp::resolution(): - the modulus of coord, or - the modulus of the number pair formed from the new x or y coordinate and the other coordinate of this vector that was not directly modified.
+Assigns the given value to the X coordinate of this unit vector, and then normalizes it. Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - the modulus of Coord, or - the modulus of the number pair formed from the new X or Y coordinate and the other coordinate of this vector that was not directly modified.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -7140,7 +7140,7 @@ None
 
 Description
 -----------
-Assigns: - the two coordinates of thecoord to this unit vector, and then normalizes it. warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_constructionerror if either of the following is less than or equal to gp::resolution(): - the modulus of thecoord, or - the modulus of the number pair formed from the new x or y coordinate and the other coordinate of this vector that was not directly modified.
+Assigns: - the two coordinates of theCoord to this unit vector, and then normalizes it. Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - the modulus of theCoord, or - the modulus of the number pair formed from the new X or Y coordinate and the other coordinate of this vector that was not directly modified.
 ") SetXY;
 		void SetXY(const gp_XY & theCoord);
 
@@ -7158,7 +7158,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this unit vector, and then normalizes it. warning remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. exceptions standard_constructionerror if either of the following is less than or equal to gp::resolution(): - the modulus of coord, or - the modulus of the number pair formed from the new x or y coordinate and the other coordinate of this vector that was not directly modified.
+Assigns the given value to the Y coordinate of this unit vector, and then normalizes it. Warning Remember that all the coordinates of a unit vector are implicitly modified when any single one is changed directly. Exceptions Standard_ConstructionError if either of the following is less than or equal to gp::Resolution(): - the modulus of Coord, or - the modulus of the number pair formed from the new X or Y coordinate and the other coordinate of this vector that was not directly modified.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -7194,7 +7194,7 @@ gp_Dir2d
 
 Description
 -----------
-Transforms a direction with the 'trsf' thet. warnings: if the scale factor of the 'trsf' thet is negative then the direction <self> is reversed.
+Transforms a direction with the 'Trsf' theT. Warnings: If the scale factor of the 'Trsf' theT is negative then the direction <self> is reversed.
 ") Transformed;
 		gp_Dir2d Transformed(const gp_Trsf2d & theT);
 
@@ -7207,7 +7207,7 @@ float
 
 Description
 -----------
-For this unit vector, returns its x coordinate.
+For this unit vector, returns its X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -7220,7 +7220,7 @@ gp_XY
 
 Description
 -----------
-For this unit vector, returns its two coordinates as a number pair. comparison between directions the precision value is an input data.
+For this unit vector, returns its two coordinates as a number pair. Comparison between Directions The precision value is an input data.
 ") XY;
 		const gp_XY XY();
 
@@ -7233,7 +7233,7 @@ float
 
 Description
 -----------
-For this unit vector, returns its y coordinate.
+For this unit vector, returns its Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -7329,7 +7329,7 @@ None
 
 Description
 -----------
-The major radius of the ellipse is on the 'xaxis' and the minor radius is on the 'yaxis' of the ellipse. the 'xaxis' is defined with the 'xdirection' of thea2 and the 'yaxis' is defined with the 'ydirection' of thea2. warnings: it is not forbidden to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.
+The major radius of the ellipse is on the 'XAxis' and the minor radius is on the 'YAxis' of the ellipse. The 'XAxis' is defined with the 'XDirection' of theA2 and the 'YAxis' is defined with the 'YDirection' of theA2. Warnings: It is not forbidden to create an ellipse with theMajorRadius = theMinorRadius. Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.
 ") gp_Elips;
 		 gp_Elips(const gp_Ax2 & theA2, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius);
 
@@ -7342,7 +7342,7 @@ float
 
 Description
 -----------
-Computes the area of the ellipse.
+Computes the area of the Ellipse.
 ") Area;
 		Standard_Real Area();
 
@@ -7368,7 +7368,7 @@ gp_Ax1
 
 Description
 -----------
-Computes the first or second directrix of this ellipse. these are the lines, in the plane of the ellipse, normal to the major axis, at a distance equal to majorradius/e from the center of the ellipse, where e is the eccentricity of the ellipse. the first directrix (directrix1) is on the positive side of the major axis. the second directrix (directrix2) is on the negative side. the directrix is returned as an axis (gp_ax1 object), the origin of which is situated on the 'x axis' of the local coordinate system of this ellipse. exceptions standard_constructionerror if the eccentricity is null (the ellipse has degenerated into a circle).
+Computes the first or second directrix of this ellipse. These are the lines, in the plane of the ellipse, normal to the major axis, at a distance equal to MajorRadius/e from the center of the ellipse, where e is the eccentricity of the ellipse. The first directrix (Directrix1) is on the positive side of the major axis. The second directrix (Directrix2) is on the negative side. The directrix is returned as an axis (gp_Ax1 object), the origin of which is situated on the 'X Axis' of the local coordinate system of this ellipse. Exceptions Standard_ConstructionError if the eccentricity is null (the ellipse has degenerated into a circle).
 ") Directrix1;
 		gp_Ax1 Directrix1();
 
@@ -7381,7 +7381,7 @@ gp_Ax1
 
 Description
 -----------
-This line is obtained by the symmetrical transformation of 'directrix1' with respect to the 'yaxis' of the ellipse. exceptions standard_constructionerror if the eccentricity is null (the ellipse has degenerated into a circle).
+This line is obtained by the symmetrical transformation of 'Directrix1' with respect to the 'YAxis' of the ellipse. Exceptions Standard_ConstructionError if the eccentricity is null (the ellipse has degenerated into a circle).
 ") Directrix2;
 		gp_Ax1 Directrix2();
 
@@ -7394,7 +7394,7 @@ float
 
 Description
 -----------
-Returns the eccentricity of the ellipse between 0.0 and 1.0 if f is the distance between the center of the ellipse and the focus1 then the eccentricity e = f / majorradius. raises constructionerror if majorradius = 0.0.
+Returns the eccentricity of the ellipse between 0.0 and 1.0 If f is the distance between the center of the ellipse and the Focus1 then the eccentricity e = f / MajorRadius. Raises ConstructionError if MajorRadius = 0.0.
 ") Eccentricity;
 		Standard_Real Eccentricity();
 
@@ -7407,7 +7407,7 @@ float
 
 Description
 -----------
-Computes the focal distance. it is the distance between the two focus focus1 and focus2 of the ellipse.
+Computes the focal distance. It is the distance between the two focus focus1 and focus2 of the ellipse.
 ") Focal;
 		Standard_Real Focal();
 
@@ -7420,7 +7420,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the first focus of the ellipse. this focus is on the positive side of the 'xaxis' of the ellipse.
+Returns the first focus of the ellipse. This focus is on the positive side of the 'XAxis' of the ellipse.
 ") Focus1;
 		gp_Pnt Focus1();
 
@@ -7433,7 +7433,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the second focus of the ellipse. this focus is on the negative side of the 'xaxis' of the ellipse.
+Returns the second focus of the ellipse. This focus is on the negative side of the 'XAxis' of the ellipse.
 ") Focus2;
 		gp_Pnt Focus2();
 
@@ -7446,7 +7446,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the center of the ellipse. it is the 'location' point of the coordinate system of the ellipse.
+Returns the center of the ellipse. It is the 'Location' point of the coordinate system of the ellipse.
 ") Location;
 		const gp_Pnt Location();
 
@@ -7544,7 +7544,7 @@ gp_Elips
 
 Description
 -----------
-Performs the symmetrical transformation of an ellipse with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of an ellipse with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Elips Mirrored(const gp_Pnt & theP);
 
@@ -7580,7 +7580,7 @@ gp_Elips
 
 Description
 -----------
-Performs the symmetrical transformation of an ellipse with respect to a plane. the axis placement thea2 locates the plane of the symmetry (location, xdirection, ydirection).
+Performs the symmetrical transformation of an ellipse with respect to a plane. The axis placement theA2 locates the plane of the symmetry (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Elips Mirrored(const gp_Ax2 & theA2);
 
@@ -7593,7 +7593,7 @@ float
 
 Description
 -----------
-Returns p = (1 - e * e) * majorradius where e is the eccentricity of the ellipse. returns 0 if majorradius = 0.
+Returns p = (1 - e * e) * MajorRadius where e is the eccentricity of the ellipse. Returns 0 if MajorRadius = 0.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -7644,7 +7644,7 @@ gp_Elips
 
 Description
 -----------
-Rotates an ellipse. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates an ellipse. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Elips Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -7682,7 +7682,7 @@ gp_Elips
 
 Description
 -----------
-Scales an ellipse. thes is the scaling value.
+Scales an ellipse. theS is the scaling value.
 ") Scaled;
 		gp_Elips Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -7700,7 +7700,7 @@ None
 
 Description
 -----------
-Changes the axis normal to the plane of the ellipse. it modifies the definition of this plane. the 'xaxis' and the 'yaxis' are recomputed. the local coordinate system is redefined so that: - its origin and 'main direction' become those of the axis thea1 (the 'x direction' and 'y direction' are then recomputed in the same way as for any gp_ax2), or raises constructionerror if the direction of thea1 is parallel to the direction of the 'xaxis' of the ellipse.
+Changes the axis normal to the plane of the ellipse. It modifies the definition of this plane. The 'XAxis' and the 'YAxis' are recomputed. The local coordinate system is redefined so that: - its origin and 'main Direction' become those of the axis theA1 (the 'X Direction' and 'Y Direction' are then recomputed in the same way as for any gp_Ax2), or Raises ConstructionError if the direction of theA1 is parallel to the direction of the 'XAxis' of the ellipse.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -7718,7 +7718,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate so that its origin becomes thep.
+Modifies this ellipse, by redefining its local coordinate so that its origin becomes theP.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -7736,7 +7736,7 @@ None
 
 Description
 -----------
-The major radius of the ellipse is on the 'xaxis' (major axis) of the ellipse. raises constructionerror if themajorradius < minorradius.
+The major radius of the ellipse is on the 'XAxis' (major axis) of the ellipse. Raises ConstructionError if theMajorRadius < MinorRadius.
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real theMajorRadius);
 
@@ -7754,7 +7754,7 @@ None
 
 Description
 -----------
-The minor radius of the ellipse is on the 'yaxis' (minor axis) of the ellipse. raises constructionerror if theminorradius > majorradius or minorradius < 0.
+The minor radius of the ellipse is on the 'YAxis' (minor axis) of the ellipse. Raises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0.
 ") SetMinorRadius;
 		void SetMinorRadius(const Standard_Real theMinorRadius);
 
@@ -7772,7 +7772,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate so that it becomes thea2.
+Modifies this ellipse, by redefining its local coordinate so that it becomes theA2.
 ") SetPosition;
 		void SetPosition(const gp_Ax2 & theA2);
 
@@ -7808,7 +7808,7 @@ gp_Elips
 
 Description
 -----------
-Transforms an ellipse with the transformation thet from class trsf.
+Transforms an ellipse with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Elips Transformed(const gp_Trsf & theT);
 
@@ -7863,7 +7863,7 @@ gp_Elips
 
 Description
 -----------
-Translates an ellipse in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates an ellipse in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Elips Translated(const gp_Vec & theV);
 
@@ -7882,7 +7882,7 @@ gp_Elips
 
 Description
 -----------
-Translates an ellipse from the point thep1 to the point thep2.
+Translates an ellipse from the point theP1 to the point theP2.
 ") Translated;
 		gp_Elips Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -7895,7 +7895,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the 'xaxis' of the ellipse whose origin is the center of this ellipse. it is the major axis of the ellipse.
+Returns the 'XAxis' of the ellipse whose origin is the center of this ellipse. It is the major axis of the ellipse.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -7908,7 +7908,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the 'yaxis' of the ellipse whose unit vector is the 'x direction' or the 'y direction' of the local coordinate system of this ellipse. this is the minor axis of the ellipse.
+Returns the 'YAxis' of the ellipse whose unit vector is the 'X Direction' or the 'Y Direction' of the local coordinate system of this ellipse. This is the minor axis of the ellipse.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -7974,7 +7974,7 @@ None
 
 Description
 -----------
-Creates an ellipse with the major axis, the major and the minor radius. the location of the themajoraxis is the center of the ellipse. the sense of parametrization is given by theissense. warnings: it is possible to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.0.
+Creates an ellipse with the major axis, the major and the minor radius. The location of the theMajorAxis is the center of the ellipse. The sense of parametrization is given by theIsSense. Warnings: It is possible to create an ellipse with theMajorRadius = theMinorRadius. Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0.
 ") gp_Elips2d;
 		 gp_Elips2d(const gp_Ax2d & theMajorAxis, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius, const Standard_Boolean theIsSense = Standard_True);
 
@@ -7994,7 +7994,7 @@ None
 
 Description
 -----------
-Creates an ellipse with radii majorradius and minorradius, positioned in the plane by coordinate system thea where: - the origin of thea is the center of the ellipse, - the 'x direction' of thea defines the major axis of the ellipse, that is, the major radius majorradius is measured along this axis, and - the 'y direction' of thea defines the minor axis of the ellipse, that is, the minor radius theminorradius is measured along this axis, and - the orientation (direct or indirect sense) of thea gives the orientation of the ellipse. warnings: it is possible to create an ellipse with themajorradius = theminorradius. raises constructionerror if themajorradius < theminorradius or theminorradius < 0.0.
+Creates an ellipse with radii MajorRadius and MinorRadius, positioned in the plane by coordinate system theA where: - the origin of theA is the center of the ellipse, - the 'X Direction' of theA defines the major axis of the ellipse, that is, the major radius MajorRadius is measured along this axis, and - the 'Y Direction' of theA defines the minor axis of the ellipse, that is, the minor radius theMinorRadius is measured along this axis, and - the orientation (direct or indirect sense) of theA gives the orientation of the ellipse. Warnings: It is possible to create an ellipse with theMajorRadius = theMinorRadius. Raises ConstructionError if theMajorRadius < theMinorRadius or theMinorRadius < 0.0.
 ") gp_Elips2d;
 		 gp_Elips2d(const gp_Ax22d & theA, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius);
 
@@ -8042,7 +8042,7 @@ theF: float
 
 Description
 -----------
-Returns the coefficients of the implicit equation of the ellipse. thea * (x**2) + theb * (y**2) + 2*thec*(x*y) + 2*thed*x + 2*thee*y + thef = 0.
+Returns the coefficients of the implicit equation of the ellipse. theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -8055,7 +8055,7 @@ gp_Ax2d
 
 Description
 -----------
-This directrix is the line normal to the xaxis of the ellipse in the local plane (z = 0) at a distance d = majorradius / e from the center of the ellipse, where e is the eccentricity of the ellipse. this line is parallel to the 'yaxis'. the intersection point between directrix1 and the 'xaxis' is the location point of the directrix1. this point is on the positive side of the 'xaxis'. //! raised if eccentricity = 0.0. (the ellipse degenerates into a circle).
+This directrix is the line normal to the XAxis of the ellipse in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the ellipse, where e is the eccentricity of the ellipse. This line is parallel to the 'YAxis'. The intersection point between directrix1 and the 'XAxis' is the location point of the directrix1. This point is on the positive side of the 'XAxis'. //! Raised if Eccentricity = 0.0. (The ellipse degenerates into a circle).
 ") Directrix1;
 		gp_Ax2d Directrix1();
 
@@ -8068,7 +8068,7 @@ gp_Ax2d
 
 Description
 -----------
-This line is obtained by the symmetrical transformation of 'directrix1' with respect to the minor axis of the ellipse. //! raised if eccentricity = 0.0. (the ellipse degenerates into a circle).
+This line is obtained by the symmetrical transformation of 'Directrix1' with respect to the minor axis of the ellipse. //! Raised if Eccentricity = 0.0. (The ellipse degenerates into a circle).
 ") Directrix2;
 		gp_Ax2d Directrix2();
 
@@ -8081,7 +8081,7 @@ float
 
 Description
 -----------
-Returns the eccentricity of the ellipse between 0.0 and 1.0 if f is the distance between the center of the ellipse and the focus1 then the eccentricity e = f / majorradius. returns 0 if majorradius = 0.
+Returns the eccentricity of the ellipse between 0.0 and 1.0 If f is the distance between the center of the ellipse and the Focus1 then the eccentricity e = f / MajorRadius. Returns 0 if MajorRadius = 0.
 ") Eccentricity;
 		Standard_Real Eccentricity();
 
@@ -8107,7 +8107,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the first focus of the ellipse. this focus is on the positive side of the major axis of the ellipse.
+Returns the first focus of the ellipse. This focus is on the positive side of the major axis of the ellipse.
 ") Focus1;
 		gp_Pnt2d Focus1();
 
@@ -8120,7 +8120,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the second focus of the ellipse. this focus is on the negative side of the major axis of the ellipse.
+Returns the second focus of the ellipse. This focus is on the negative side of the major axis of the ellipse.
 ") Focus2;
 		gp_Pnt2d Focus2();
 
@@ -8159,7 +8159,7 @@ float
 
 Description
 -----------
-Returns the major radius of the ellipse.
+Returns the major radius of the Ellipse.
 ") MajorRadius;
 		Standard_Real MajorRadius();
 
@@ -8172,7 +8172,7 @@ float
 
 Description
 -----------
-Returns the minor radius of the ellipse.
+Returns the minor radius of the Ellipse.
 ") MinorRadius;
 		Standard_Real MinorRadius();
 
@@ -8226,7 +8226,7 @@ gp_Elips2d
 
 Description
 -----------
-Performs the symmetrical transformation of a ellipse with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a ellipse with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Elips2d Mirrored(const gp_Pnt2d & theP);
 
@@ -8257,7 +8257,7 @@ float
 
 Description
 -----------
-Returns p = (1 - e * e) * majorradius where e is the eccentricity of the ellipse. returns 0 if majorradius = 0.
+Returns p = (1 - e * e) * MajorRadius where e is the eccentricity of the ellipse. Returns 0 if MajorRadius = 0.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -8359,7 +8359,7 @@ gp_Elips2d
 
 Description
 -----------
-Scales a ellipse. thes is the scaling value.
+Scales a ellipse. theS is the scaling value.
 ") Scaled;
 		gp_Elips2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -8377,7 +8377,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate system so that it becomes thea.
+Modifies this ellipse, by redefining its local coordinate system so that it becomes theA.
 ") SetAxis;
 		void SetAxis(const gp_Ax22d & theA);
 
@@ -8395,7 +8395,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate system so that - its origin becomes thep.
+Modifies this ellipse, by redefining its local coordinate system so that - its origin becomes theP.
 ") SetLocation;
 		void SetLocation(const gp_Pnt2d & theP);
 
@@ -8413,7 +8413,7 @@ None
 
 Description
 -----------
-Changes the value of the major radius. raises constructionerror if themajorradius < minorradius.
+Changes the value of the major radius. Raises ConstructionError if theMajorRadius < MinorRadius.
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real theMajorRadius);
 
@@ -8431,7 +8431,7 @@ None
 
 Description
 -----------
-Changes the value of the minor radius. raises constructionerror if majorradius < theminorradius or minorradius < 0.0.
+Changes the value of the minor radius. Raises ConstructionError if MajorRadius < theMinorRadius or MinorRadius < 0.0.
 ") SetMinorRadius;
 		void SetMinorRadius(const Standard_Real theMinorRadius);
 
@@ -8449,7 +8449,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate system so that its origin and its 'x direction' become those of the axis thea. the 'y direction' is then recomputed. the orientation of the local coordinate system is not modified.
+Modifies this ellipse, by redefining its local coordinate system so that its origin and its 'X Direction' become those of the axis theA. The 'Y Direction' is then recomputed. The orientation of the local coordinate system is not modified.
 ") SetXAxis;
 		void SetXAxis(const gp_Ax2d & theA);
 
@@ -8467,7 +8467,7 @@ None
 
 Description
 -----------
-Modifies this ellipse, by redefining its local coordinate system so that its origin and its 'y direction' become those of the axis thea. the 'x direction' is then recomputed. the orientation of the local coordinate system is not modified.
+Modifies this ellipse, by redefining its local coordinate system so that its origin and its 'Y Direction' become those of the axis theA. The 'X Direction' is then recomputed. The orientation of the local coordinate system is not modified.
 ") SetYAxis;
 		void SetYAxis(const gp_Ax2d & theA);
 
@@ -8503,7 +8503,7 @@ gp_Elips2d
 
 Description
 -----------
-Transforms an ellipse with the transformation thet from class trsf2d.
+Transforms an ellipse with the transformation theT from class Trsf2d.
 ") Transformed;
 		gp_Elips2d Transformed(const gp_Trsf2d & theT);
 
@@ -8558,7 +8558,7 @@ gp_Elips2d
 
 Description
 -----------
-Translates a ellipse in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a ellipse in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Elips2d Translated(const gp_Vec2d & theV);
 
@@ -8577,7 +8577,7 @@ gp_Elips2d
 
 Description
 -----------
-Translates a ellipse from the point thep1 to the point thep2.
+Translates a ellipse from the point theP1 to the point theP2.
 ") Translated;
 		gp_Elips2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -8603,7 +8603,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns the minor axis of the ellipse. reverses the direction of the circle.
+Returns the minor axis of the ellipse. Reverses the direction of the circle.
 ") YAxis;
 		gp_Ax2d YAxis();
 
@@ -8648,7 +8648,7 @@ None
 
 Description
 -----------
-Returns the identity transformation.
+Returns the Identity transformation.
 ") gp_GTrsf;
 		 gp_GTrsf();
 
@@ -8666,7 +8666,7 @@ None
 
 Description
 -----------
-Converts the gp_trsf transformation thet into a general transformation, i.e. returns a gtrsf with the same matrix of coefficients as the trsf thet.
+Converts the gp_Trsf transformation theT into a general transformation, i.e. Returns a GTrsf with the same matrix of coefficients as the Trsf theT.
 ") gp_GTrsf;
 		 gp_GTrsf(const gp_Trsf & theT);
 
@@ -8685,7 +8685,7 @@ None
 
 Description
 -----------
-Creates a transformation based on the matrix them and the vector thev where them defines the vectorial part of the transformation, and v the translation part, or.
+Creates a transformation based on the matrix theM and the vector theV where theM defines the vectorial part of the transformation, and V the translation part, or.
 ") gp_GTrsf;
 		 gp_GTrsf(const gp_Mat & theM, const gp_XYZ & theV);
 
@@ -8719,7 +8719,7 @@ gp_TrsfForm
 
 Description
 -----------
-Returns the nature of the transformation. it can be an identity transformation, a rotation, a translation, a mirror transformation (relative to a point, an axis or a plane), a scaling transformation, a compound transformation or some other type of transformation.
+Returns the nature of the transformation. It can be an identity transformation, a rotation, a translation, a mirror transformation (relative to a point, an axis or a plane), a scaling transformation, a compound transformation or some other type of transformation.
 ") Form;
 		gp_TrsfForm Form();
 
@@ -8745,7 +8745,7 @@ gp_GTrsf
 
 Description
 -----------
-Computes the reverse transformation. raises an exception if the matrix of the transformation is not inversible.
+Computes the reverse transformation. Raises an exception if the matrix of the transformation is not inversible.
 ") Inverted;
 		gp_GTrsf Inverted();
 
@@ -8771,7 +8771,7 @@ bool
 
 Description
 -----------
-Returns true if this transformation is singular (and therefore, cannot be inverted). note: the gauss lu decomposition is used to invert the transformation matrix. consequently, the transformation is considered as singular if the largest pivot found is less than or equal to gp::resolution(). warning if this transformation is singular, it cannot be inverted.
+Returns true if this transformation is singular (and therefore, cannot be inverted). Note: The Gauss LU decomposition is used to invert the transformation matrix. Consequently, the transformation is considered as singular if the largest pivot found is less than or equal to gp::Resolution(). Warning If this transformation is singular, it cannot be inverted.
 ") IsSingular;
 		Standard_Boolean IsSingular();
 
@@ -8789,7 +8789,7 @@ gp_GTrsf
 
 Description
 -----------
-Computes the transformation composed from thet and <self>. in a c++ implementation you can also write tcomposed = <self> * thet. example: @code gp_gtrsf t1, t2, tcomp; ............... //composition: tcomp = t2.multiplied(t1); // or (tcomp = t2 * t1) // transformation of a point gp_xyz p(10.,3.,4.); gp_xyz p1(p); tcomp.transforms(p1); //using tcomp gp_xyz p2(p); t1.transforms(p2); //using t1 then t2 t2.transforms(p2); // p1 = p2 !!! @endcode.
+Computes the transformation composed from theT and <self>. In a C++ implementation you can also write Tcomposed = <self> * theT. Example: @code gp_GTrsf T1, T2, Tcomp; ............... //composition: Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) // transformation of a point gp_XYZ P(10.,3.,4.); gp_XYZ P1(P); Tcomp.Transforms(P1); //using Tcomp gp_XYZ P2(P); T1.Transforms(P2); //using T1 then T2 T2.Transforms(P2); // P1 = P2 !!! @endcode.
 ") Multiplied;
 		gp_GTrsf Multiplied(const gp_GTrsf & theT);
 
@@ -8807,7 +8807,7 @@ None
 
 Description
 -----------
-Computes the transformation composed with <self> and thet. <self> = <self> * thet.
+Computes the transformation composed with <self> and theT. <self> = <self> * theT.
 ") Multiply;
 		void Multiply(const gp_GTrsf & theT);
 
@@ -8843,7 +8843,7 @@ gp_GTrsf
 
 Description
 -----------
-Computes: - the product of this transformation multiplied by itself then times, if then is positive, or - the product of the inverse of this transformation multiplied by itself |then| times, if then is negative. if then equals zero, the result is equal to the identity transformation. i.e.: <self> * <self> * .......* <self>, then time. if then =0 <self> = identity if then < 0 <self> = <self>.inverse() *...........* <self>.inverse(). //! raises an exception if n < 0 and if the matrix of the transformation not inversible.
+Computes: - the product of this transformation multiplied by itself theN times, if theN is positive, or - the product of the inverse of this transformation multiplied by itself |theN| times, if theN is negative. If theN equals zero, the result is equal to the Identity transformation. I.e.: <self> * <self> * .......* <self>, theN time. if theN =0 <self> = Identity if theN < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises an exception if N < 0 and if the matrix of the transformation not inversible.
 ") Powered;
 		gp_GTrsf Powered(const Standard_Integer theN);
 
@@ -8861,7 +8861,7 @@ None
 
 Description
 -----------
-Computes the product of the transformation thet and this transformation and assigns the result to this transformation. this = thet * this.
+Computes the product of the transformation theT and this transformation and assigns the result to this transformation. this = theT * this.
 ") PreMultiply;
 		void PreMultiply(const gp_GTrsf & theT);
 
@@ -8880,7 +8880,7 @@ None
 
 Description
 -----------
-Changes this transformation into an affinity of ratio theratio with respect to the axis thea1. note: an affinity is a point-by-point transformation that transforms any point p into a point p' such that if h is the orthogonal projection of p on the axis thea1 or the plane a2, the vectors hp and hp' satisfy: hp' = theratio * hp.
+Changes this transformation into an affinity of ratio theRatio with respect to the axis theA1. Note: an affinity is a point-by-point transformation that transforms any point P into a point P' such that if H is the orthogonal projection of P on the axis theA1 or the plane A2, the vectors HP and HP' satisfy: HP' = theRatio * HP.
 ") SetAffinity;
 		void SetAffinity(const gp_Ax1 & theA1, const Standard_Real theRatio);
 
@@ -8899,7 +8899,7 @@ None
 
 Description
 -----------
-Changes this transformation into an affinity of ratio theratio with respect to the plane defined by the origin, the 'x direction' and the 'y direction' of coordinate system thea2. note: an affinity is a point-by-point transformation that transforms any point p into a point p' such that if h is the orthogonal projection of p on the axis a1 or the plane thea2, the vectors hp and hp' satisfy: hp' = theratio * hp.
+Changes this transformation into an affinity of ratio theRatio with respect to the plane defined by the origin, the 'X Direction' and the 'Y Direction' of coordinate system theA2. Note: an affinity is a point-by-point transformation that transforms any point P into a point P' such that if H is the orthogonal projection of P on the axis A1 or the plane theA2, the vectors HP and HP' satisfy: HP' = theRatio * HP.
 ") SetAffinity;
 		void SetAffinity(const gp_Ax2 & theA2, const Standard_Real theRatio);
 
@@ -8912,7 +8912,7 @@ None
 
 Description
 -----------
-Verify and set the shape of the gtrsf other or compoundtrsf ex: @code mygtrsf.setvalue(row1,col1,val1); mygtrsf.setvalue(row2,col2,val2); ... mygtrsf.setform(); @endcode.
+verify and set the shape of the GTrsf Other or CompoundTrsf Ex: @code myGTrsf.SetValue(row1,col1,val1); myGTrsf.SetValue(row2,col2,val2); ... myGTrsf.SetForm(); @endcode.
 ") SetForm;
 		void SetForm();
 
@@ -8930,7 +8930,7 @@ None
 
 Description
 -----------
-Replaces the translation part of this transformation by the coordinates of the number triple thecoord.
+Replaces the translation part of this transformation by the coordinates of the number triple theCoord.
 ") SetTranslationPart;
 		void SetTranslationPart(const gp_XYZ & theCoord);
 
@@ -8948,7 +8948,7 @@ None
 
 Description
 -----------
-Assigns the vectorial and translation parts of thet to this transformation.
+Assigns the vectorial and translation parts of theT to this transformation.
 ") SetTrsf;
 		void SetTrsf(const gp_Trsf & theT);
 
@@ -8968,7 +8968,7 @@ None
 
 Description
 -----------
-Replaces the coefficient (therow, thecol) of the matrix representing this transformation by thevalue. raises outofrange if therow < 1 or therow > 3 or thecol < 1 or thecol > 4.
+Replaces the coefficient (theRow, theCol) of the matrix representing this transformation by theValue. Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4.
 ") SetValue;
 		void SetValue(const Standard_Integer theRow, const Standard_Integer theCol, const Standard_Real theValue);
 
@@ -8986,7 +8986,7 @@ None
 
 Description
 -----------
-Replaces the vectorial part of this transformation by thematrix.
+Replaces the vectorial part of this transformation by theMatrix.
 ") SetVectorialPart;
 		void SetVectorialPart(const gp_Mat & theMatrix);
 
@@ -9023,7 +9023,7 @@ theZ: float
 
 Description
 -----------
-Transforms a triplet xyz with a gtrsf.
+Transforms a triplet XYZ with a GTrsf.
 ") Transforms;
 		void Transforms(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -9036,7 +9036,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the translation part of the gtrsf.
+Returns the translation part of the GTrsf.
 ") TranslationPart;
 		const gp_XYZ TranslationPart();
 
@@ -9068,7 +9068,7 @@ float
 
 Description
 -----------
-Returns the coefficients of the global matrix of transformation. raises outofrange if therow < 1 or therow > 3 or thecol < 1 or thecol > 4.
+Returns the coefficients of the global matrix of transformation. Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4.
 ") Value;
 		Standard_Real Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -9081,7 +9081,7 @@ gp_Mat
 
 Description
 -----------
-Computes the vectorial part of the gtrsf. the returned matrix is a 3*3 matrix.
+Computes the vectorial part of the GTrsf. The returned Matrix is a 3*3 matrix.
 ") VectorialPart;
 		const gp_Mat VectorialPart();
 
@@ -9155,7 +9155,7 @@ None
 
 Description
 -----------
-Returns identity transformation.
+returns identity transformation.
 ") gp_GTrsf2d;
 		 gp_GTrsf2d();
 
@@ -9173,7 +9173,7 @@ None
 
 Description
 -----------
-Converts the gp_trsf2d transformation thet into a general transformation.
+Converts the gp_Trsf2d transformation theT into a general transformation.
 ") gp_GTrsf2d;
 		 gp_GTrsf2d(const gp_Trsf2d & theT);
 
@@ -9192,7 +9192,7 @@ None
 
 Description
 -----------
-Creates a transformation based on the matrix them and the vector thev where them defines the vectorial part of the transformation, and thev the translation part.
+Creates a transformation based on the matrix theM and the vector theV where theM defines the vectorial part of the transformation, and theV the translation part.
 ") gp_GTrsf2d;
 		 gp_GTrsf2d(const gp_Mat2d & theM, const gp_XY & theV);
 
@@ -9205,7 +9205,7 @@ gp_TrsfForm
 
 Description
 -----------
-Returns the nature of the transformation. it can be an identity transformation, a rotation, a translation, a mirror transformation (relative to a point or axis), a scaling transformation, a compound transformation or some other type of transformation.
+Returns the nature of the transformation. It can be an identity transformation, a rotation, a translation, a mirror transformation (relative to a point or axis), a scaling transformation, a compound transformation or some other type of transformation.
 ") Form;
 		gp_TrsfForm Form();
 
@@ -9231,7 +9231,7 @@ gp_GTrsf2d
 
 Description
 -----------
-Computes the reverse transformation. raised an exception if the matrix of the transformation is not inversible.
+Computes the reverse transformation. Raised an exception if the matrix of the transformation is not inversible.
 ") Inverted;
 		gp_GTrsf2d Inverted();
 
@@ -9257,7 +9257,7 @@ bool
 
 Description
 -----------
-Returns true if this transformation is singular (and therefore, cannot be inverted). note: the gauss lu decomposition is used to invert the transformation matrix. consequently, the transformation is considered as singular if the largest pivot found is less than or equal to gp::resolution(). warning if this transformation is singular, it cannot be inverted.
+Returns true if this transformation is singular (and therefore, cannot be inverted). Note: The Gauss LU decomposition is used to invert the transformation matrix. Consequently, the transformation is considered as singular if the largest pivot found is less than or equal to gp::Resolution(). Warning If this transformation is singular, it cannot be inverted.
 ") IsSingular;
 		Standard_Boolean IsSingular();
 
@@ -9275,7 +9275,7 @@ gp_GTrsf2d
 
 Description
 -----------
-Computes the transformation composed with thet and <self>. in a c++ implementation you can also write tcomposed = <self> * thet. example: @code gp_gtrsf2d t1, t2, tcomp; ............... //composition: tcomp = t2.multiplied(t1); // or (tcomp = t2 * t1) // transformation of a point gp_xy p(10.,3.); gp_xy p1(p); tcomp.transforms(p1); //using tcomp gp_xy p2(p); t1.transforms(p2); //using t1 then t2 t2.transforms(p2); // p1 = p2 !!! @endcode.
+Computes the transformation composed with theT and <self>. In a C++ implementation you can also write Tcomposed = <self> * theT. Example: @code gp_GTrsf2d T1, T2, Tcomp; ............... //composition: Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) // transformation of a point gp_XY P(10.,3.); gp_XY P1(P); Tcomp.Transforms(P1); //using Tcomp gp_XY P2(P); T1.Transforms(P2); //using T1 then T2 T2.Transforms(P2); // P1 = P2 !!! @endcode.
 ") Multiplied;
 		gp_GTrsf2d Multiplied(const gp_GTrsf2d & theT);
 
@@ -9329,7 +9329,7 @@ gp_GTrsf2d
 
 Description
 -----------
-Computes the following composition of transformations <self> * <self> * .......* <self>, then time. if then = 0 <self> = identity if then < 0 <self> = <self>.inverse() *...........* <self>.inverse(). //! raises an exception if then < 0 and if the matrix of the transformation is not inversible.
+Computes the following composition of transformations <self> * <self> * .......* <self>, theN time. if theN = 0 <self> = Identity if theN < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises an exception if theN < 0 and if the matrix of the transformation is not inversible.
 ") Powered;
 		gp_GTrsf2d Powered(const Standard_Integer theN);
 
@@ -9347,7 +9347,7 @@ None
 
 Description
 -----------
-Computes the product of the transformation thet and this transformation, and assigns the result to this transformation: this = thet * this.
+Computes the product of the transformation theT and this transformation, and assigns the result to this transformation: this = theT * this.
 ") PreMultiply;
 		void PreMultiply(const gp_GTrsf2d & theT);
 
@@ -9366,7 +9366,7 @@ None
 
 Description
 -----------
-Changes this transformation into an affinity of ratio theratio with respect to the axis thea. note: an affinity is a point-by-point transformation that transforms any point p into a point p' such that if h is the orthogonal projection of p on the axis thea, the vectors hp and hp' satisfy: hp' = theratio * hp.
+Changes this transformation into an affinity of ratio theRatio with respect to the axis theA. Note: An affinity is a point-by-point transformation that transforms any point P into a point P' such that if H is the orthogonal projection of P on the axis theA, the vectors HP and HP' satisfy: HP' = theRatio * HP.
 ") SetAffinity;
 		void SetAffinity(const gp_Ax2d & theA, const Standard_Real theRatio);
 
@@ -9384,7 +9384,7 @@ None
 
 Description
 -----------
-Replaces the translation part of this transformation by the coordinates of the number pair thecoord.
+Replaces the translation part of this transformation by the coordinates of the number pair theCoord.
 ") SetTranslationPart;
 		void SetTranslationPart(const gp_XY & theCoord);
 
@@ -9402,7 +9402,7 @@ None
 
 Description
 -----------
-Assigns the vectorial and translation parts of thet to this transformation.
+Assigns the vectorial and translation parts of theT to this transformation.
 ") SetTrsf2d;
 		void SetTrsf2d(const gp_Trsf2d & theT);
 
@@ -9422,7 +9422,7 @@ None
 
 Description
 -----------
-Replaces the coefficient (therow, thecol) of the matrix representing this transformation by thevalue, raises outofrange if therow < 1 or therow > 2 or thecol < 1 or thecol > 3.
+Replaces the coefficient (theRow, theCol) of the matrix representing this transformation by theValue, Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3.
 ") SetValue;
 		void SetValue(const Standard_Integer theRow, const Standard_Integer theCol, const Standard_Real theValue);
 
@@ -9440,7 +9440,7 @@ None
 
 Description
 -----------
-Replaces the vectorial part of this transformation by thematrix.
+Replaces the vectorial part of this transformation by theMatrix.
 ") SetVectorialPart;
 		void SetVectorialPart(const gp_Mat2d & theMatrix);
 
@@ -9494,7 +9494,7 @@ theY: float
 
 Description
 -----------
-Applies this transformation to the coordinates: - of the number pair coord, or - x and y. //! note: - transforms modifies thex, they, or the coordinate pair coord, while - transformed creates a new coordinate pair.
+Applies this transformation to the coordinates: - of the number pair Coord, or - X and Y. //! Note: - Transforms modifies theX, theY, or the coordinate pair Coord, while - Transformed creates a new coordinate pair.
 ") Transforms;
 		void Transforms(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -9507,7 +9507,7 @@ gp_XY
 
 Description
 -----------
-Returns the translation part of the gtrsf2d.
+Returns the translation part of the GTrsf2d.
 ") TranslationPart;
 		const gp_XY TranslationPart();
 
@@ -9520,7 +9520,7 @@ gp_Trsf2d
 
 Description
 -----------
-Converts this transformation into a gp_trsf2d transformation. exceptions standard_constructionerror if this transformation cannot be converted, i.e. if its form is gp_other.
+Converts this transformation into a gp_Trsf2d transformation. Exceptions Standard_ConstructionError if this transformation cannot be converted, i.e. if its form is gp_Other.
 ") Trsf2d;
 		gp_Trsf2d Trsf2d();
 
@@ -9539,7 +9539,7 @@ float
 
 Description
 -----------
-Returns the coefficients of the global matrix of transformation. raised outofrange if therow < 1 or therow > 2 or thecol < 1 or thecol > 3.
+Returns the coefficients of the global matrix of transformation. Raised OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3.
 ") Value;
 		Standard_Real Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -9552,7 +9552,7 @@ gp_Mat2d
 
 Description
 -----------
-Computes the vectorial part of the gtrsf2d. the returned matrix is a 2*2 matrix.
+Computes the vectorial part of the GTrsf2d. The returned Matrix is a 2*2 matrix.
 ") VectorialPart;
 		const gp_Mat2d VectorialPart();
 
@@ -9646,7 +9646,7 @@ None
 
 Description
 -----------
-Creates a hyperbola with radius themajorradius and theminorradius, positioned in the space by the coordinate system thea2 such that: - the origin of thea2 is the center of the hyperbola, - the 'x direction' of thea2 defines the major axis of the hyperbola, that is, the major radius themajorradius is measured along this axis, and - the 'y direction' of thea2 defines the minor axis of the hyperbola, that is, the minor radius theminorradius is measured along this axis. note: this class does not prevent the creation of a hyperbola where: - themajoraxis is equal to theminoraxis, or - themajoraxis is less than theminoraxis. exceptions standard_constructionerror if themajoraxis or theminoraxis is negative. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0 raised if themajorradius < 0.0 or theminorradius < 0.0.
+Creates a hyperbola with radius theMajorRadius and theMinorRadius, positioned in the space by the coordinate system theA2 such that: - the origin of theA2 is the center of the hyperbola, - the 'X Direction' of theA2 defines the major axis of the hyperbola, that is, the major radius theMajorRadius is measured along this axis, and - the 'Y Direction' of theA2 defines the minor axis of the hyperbola, that is, the minor radius theMinorRadius is measured along this axis. Note: This class does not prevent the creation of a hyperbola where: - theMajorAxis is equal to theMinorAxis, or - theMajorAxis is less than theMinorAxis. Exceptions Standard_ConstructionError if theMajorAxis or theMinorAxis is negative. Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0 Raised if theMajorRadius < 0.0 or theMinorRadius < 0.0.
 ") gp_Hypr;
 		 gp_Hypr(const gp_Ax2 & theA2, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius);
 
@@ -9659,7 +9659,7 @@ gp_Ax1
 
 Description
 -----------
-In the local coordinate system of the hyperbola the equation of the hyperbola is (x*x)/(a*a) - (y*y)/(b*b) = 1.0 and the equation of the first asymptote is y = (b/a)*x where a is the major radius and b is the minor radius. raises constructionerror if majorradius = 0.0.
+In the local coordinate system of the hyperbola the equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the equation of the first asymptote is Y = (B/A)*X where A is the major radius and B is the minor radius. Raises ConstructionError if MajorRadius = 0.0.
 ") Asymptote1;
 		gp_Ax1 Asymptote1();
 
@@ -9672,7 +9672,7 @@ gp_Ax1
 
 Description
 -----------
-In the local coordinate system of the hyperbola the equation of the hyperbola is (x*x)/(a*a) - (y*y)/(b*b) = 1.0 and the equation of the first asymptote is y = -(b/a)*x. where a is the major radius and b is the minor radius. raises constructionerror if majorradius = 0.0.
+In the local coordinate system of the hyperbola the equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the equation of the first asymptote is Y = -(B/A)*X. where A is the major radius and B is the minor radius. Raises ConstructionError if MajorRadius = 0.0.
 ") Asymptote2;
 		gp_Ax1 Asymptote2();
 
@@ -9698,7 +9698,7 @@ gp_Hypr
 
 Description
 -----------
-Computes the branch of hyperbola which is on the positive side of the 'yaxis' of <self>.
+Computes the branch of hyperbola which is on the positive side of the 'YAxis' of <self>.
 ") ConjugateBranch1;
 		gp_Hypr ConjugateBranch1();
 
@@ -9711,7 +9711,7 @@ gp_Hypr
 
 Description
 -----------
-Computes the branch of hyperbola which is on the negative side of the 'yaxis' of <self>.
+Computes the branch of hyperbola which is on the negative side of the 'YAxis' of <self>.
 ") ConjugateBranch2;
 		gp_Hypr ConjugateBranch2();
 
@@ -9724,7 +9724,7 @@ gp_Ax1
 
 Description
 -----------
-This directrix is the line normal to the xaxis of the hyperbola in the local plane (z = 0) at a distance d = majorradius / e from the center of the hyperbola, where e is the eccentricity of the hyperbola. this line is parallel to the 'yaxis'. the intersection point between the directrix1 and the 'xaxis' is the 'location' point of the directrix1. this point is on the positive side of the 'xaxis'.
+This directrix is the line normal to the XAxis of the hyperbola in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the hyperbola, where e is the eccentricity of the hyperbola. This line is parallel to the 'YAxis'. The intersection point between the directrix1 and the 'XAxis' is the 'Location' point of the directrix1. This point is on the positive side of the 'XAxis'.
 ") Directrix1;
 		gp_Ax1 Directrix1();
 
@@ -9737,7 +9737,7 @@ gp_Ax1
 
 Description
 -----------
-This line is obtained by the symmetrical transformation of 'directrix1' with respect to the 'yaxis' of the hyperbola.
+This line is obtained by the symmetrical transformation of 'Directrix1' with respect to the 'YAxis' of the hyperbola.
 ") Directrix2;
 		gp_Ax1 Directrix2();
 
@@ -9750,7 +9750,7 @@ float
 
 Description
 -----------
-Returns the eccentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raises domainerror if majorradius = 0.0.
+Returns the eccentricity of the hyperbola (e > 1). If f is the distance between the location of the hyperbola and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius = 0.0.
 ") Eccentricity;
 		Standard_Real Eccentricity();
 
@@ -9763,7 +9763,7 @@ float
 
 Description
 -----------
-Computes the focal distance. it is the distance between the the two focus of the hyperbola.
+Computes the focal distance. It is the distance between the the two focus of the hyperbola.
 ") Focal;
 		Standard_Real Focal();
 
@@ -9776,7 +9776,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the first focus of the hyperbola. this focus is on the positive side of the 'xaxis' of the hyperbola.
+Returns the first focus of the hyperbola. This focus is on the positive side of the 'XAxis' of the hyperbola.
 ") Focus1;
 		gp_Pnt Focus1();
 
@@ -9789,7 +9789,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the second focus of the hyperbola. this focus is on the negative side of the 'xaxis' of the hyperbola.
+Returns the second focus of the hyperbola. This focus is on the negative side of the 'XAxis' of the hyperbola.
 ") Focus2;
 		gp_Pnt Focus2();
 
@@ -9802,7 +9802,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the location point of the hyperbola. it is the intersection point between the 'xaxis' and the 'yaxis'.
+Returns the location point of the hyperbola. It is the intersection point between the 'XAxis' and the 'YAxis'.
 ") Location;
 		const gp_Pnt Location();
 
@@ -9815,7 +9815,7 @@ float
 
 Description
 -----------
-Returns the major radius of the hyperbola. it is the radius on the 'xaxis' of the hyperbola.
+Returns the major radius of the hyperbola. It is the radius on the 'XAxis' of the hyperbola.
 ") MajorRadius;
 		Standard_Real MajorRadius();
 
@@ -9828,7 +9828,7 @@ float
 
 Description
 -----------
-Returns the minor radius of the hyperbola. it is the radius on the 'yaxis' of the hyperbola.
+Returns the minor radius of the hyperbola. It is the radius on the 'YAxis' of the hyperbola.
 ") MinorRadius;
 		Standard_Real MinorRadius();
 
@@ -9900,7 +9900,7 @@ gp_Hypr
 
 Description
 -----------
-Performs the symmetrical transformation of an hyperbola with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of an hyperbola with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Hypr Mirrored(const gp_Pnt & theP);
 
@@ -9936,7 +9936,7 @@ gp_Hypr
 
 Description
 -----------
-Performs the symmetrical transformation of an hyperbola with respect to a plane. the axis placement thea2 locates the plane of the symmetry (location, xdirection, ydirection).
+Performs the symmetrical transformation of an hyperbola with respect to a plane. The axis placement theA2 locates the plane of the symmetry (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Hypr Mirrored(const gp_Ax2 & theA2);
 
@@ -9949,7 +9949,7 @@ gp_Hypr
 
 Description
 -----------
-Returns the branch of hyperbola obtained by doing the symmetrical transformation of <self> with respect to the 'yaxis' of <self>.
+Returns the branch of hyperbola obtained by doing the symmetrical transformation of <self> with respect to the 'YAxis' of <self>.
 ") OtherBranch;
 		gp_Hypr OtherBranch();
 
@@ -9962,7 +9962,7 @@ float
 
 Description
 -----------
-Returns p = (e * e - 1) * majorradius where e is the eccentricity of the hyperbola. raises domainerror if majorradius = 0.0.
+Returns p = (e * e - 1) * MajorRadius where e is the eccentricity of the hyperbola. Raises DomainError if MajorRadius = 0.0.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -10013,7 +10013,7 @@ gp_Hypr
 
 Description
 -----------
-Rotates an hyperbola. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates an hyperbola. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Hypr Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -10051,7 +10051,7 @@ gp_Hypr
 
 Description
 -----------
-Scales an hyperbola. thes is the scaling value.
+Scales an hyperbola. theS is the scaling value.
 ") Scaled;
 		gp_Hypr Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -10069,7 +10069,7 @@ None
 
 Description
 -----------
-Modifies this hyperbola, by redefining its local coordinate system so that: - its origin and 'main direction' become those of the axis thea1 (the 'x direction' and 'y direction' are then recomputed in the same way as for any gp_ax2). raises constructionerror if the direction of thea1 is parallel to the direction of the 'xaxis' of the hyperbola.
+Modifies this hyperbola, by redefining its local coordinate system so that: - its origin and 'main Direction' become those of the axis theA1 (the 'X Direction' and 'Y Direction' are then recomputed in the same way as for any gp_Ax2). Raises ConstructionError if the direction of theA1 is parallel to the direction of the 'XAxis' of the hyperbola.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -10087,7 +10087,7 @@ None
 
 Description
 -----------
-Modifies this hyperbola, by redefining its local coordinate system so that its origin becomes thep.
+Modifies this hyperbola, by redefining its local coordinate system so that its origin becomes theP.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -10105,7 +10105,7 @@ None
 
 Description
 -----------
-Modifies the major radius of this hyperbola. exceptions standard_constructionerror if themajorradius is negative.
+Modifies the major radius of this hyperbola. Exceptions Standard_ConstructionError if theMajorRadius is negative.
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real theMajorRadius);
 
@@ -10123,7 +10123,7 @@ None
 
 Description
 -----------
-Modifies the minor radius of this hyperbola. exceptions standard_constructionerror if theminorradius is negative.
+Modifies the minor radius of this hyperbola. Exceptions Standard_ConstructionError if theMinorRadius is negative.
 ") SetMinorRadius;
 		void SetMinorRadius(const Standard_Real theMinorRadius);
 
@@ -10141,7 +10141,7 @@ None
 
 Description
 -----------
-Modifies this hyperbola, by redefining its local coordinate system so that it becomes a2.
+Modifies this hyperbola, by redefining its local coordinate system so that it becomes A2.
 ") SetPosition;
 		void SetPosition(const gp_Ax2 & theA2);
 
@@ -10177,7 +10177,7 @@ gp_Hypr
 
 Description
 -----------
-Transforms an hyperbola with the transformation thet from class trsf.
+Transforms an hyperbola with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Hypr Transformed(const gp_Trsf & theT);
 
@@ -10232,7 +10232,7 @@ gp_Hypr
 
 Description
 -----------
-Translates an hyperbola in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates an hyperbola in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Hypr Translated(const gp_Vec & theV);
 
@@ -10251,7 +10251,7 @@ gp_Hypr
 
 Description
 -----------
-Translates an hyperbola from the point thep1 to the point thep2.
+Translates an hyperbola from the point theP1 to the point theP2.
 ") Translated;
 		gp_Hypr Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -10264,7 +10264,7 @@ gp_Ax1
 
 Description
 -----------
-Computes an axis, whose - the origin is the center of this hyperbola, and - the unit vector is the 'x direction' of the local coordinate system of this hyperbola. these axes are, the major axis (the 'x axis') and of this hyperboreturns the 'xaxis' of the hyperbola.
+Computes an axis, whose - the origin is the center of this hyperbola, and - the unit vector is the 'X Direction' of the local coordinate system of this hyperbola. These axes are, the major axis (the 'X Axis') and of this hyperboReturns the 'XAxis' of the hyperbola.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -10277,7 +10277,7 @@ gp_Ax1
 
 Description
 -----------
-Computes an axis, whose - the origin is the center of this hyperbola, and - the unit vector is the 'y direction' of the local coordinate system of this hyperbola. these axes are the minor axis (the 'y axis') of this hyperbola.
+Computes an axis, whose - the origin is the center of this hyperbola, and - the unit vector is the 'Y Direction' of the local coordinate system of this hyperbola. These axes are the minor axis (the 'Y Axis') of this hyperbola.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -10343,7 +10343,7 @@ None
 
 Description
 -----------
-Creates a hyperbola with radii themajorradius and theminorradius, centered on the origin of themajoraxis and where the unit vector of themajoraxis is the 'x direction' of the local coordinate system of the hyperbola. this coordinate system is direct if theissense is true (the default value), and indirect if theissense is false. warnings: it is yet possible to create an hyperbola with themajorradius <= theminorradius. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0.
+Creates a hyperbola with radii theMajorRadius and theMinorRadius, centered on the origin of theMajorAxis and where the unit vector of theMajorAxis is the 'X Direction' of the local coordinate system of the hyperbola. This coordinate system is direct if theIsSense is true (the default value), and indirect if theIsSense is false. Warnings: It is yet possible to create an Hyperbola with theMajorRadius <= theMinorRadius. Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0.
 ") gp_Hypr2d;
 		 gp_Hypr2d(const gp_Ax2d & theMajorAxis, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius, const Standard_Boolean theIsSense = Standard_True);
 
@@ -10363,7 +10363,7 @@ None
 
 Description
 -----------
-A hyperbola with radii themajorradius and theminorradius, positioned in the plane by coordinate system thea where: - the origin of thea is the center of the hyperbola, - the 'x direction' of thea defines the major axis of the hyperbola, that is, the major radius themajorradius is measured along this axis, and - the 'y direction' of thea defines the minor axis of the hyperbola, that is, the minor radius theminorradius is measured along this axis, and - the orientation (direct or indirect sense) of thea gives the implicit orientation of the hyperbola. warnings: it is yet possible to create an hyperbola with themajorradius <= theminorradius. raises constructionerror if themajorradius < 0.0 or theminorradius < 0.0.
+a hyperbola with radii theMajorRadius and theMinorRadius, positioned in the plane by coordinate system theA where: - the origin of theA is the center of the hyperbola, - the 'X Direction' of theA defines the major axis of the hyperbola, that is, the major radius theMajorRadius is measured along this axis, and - the 'Y Direction' of theA defines the minor axis of the hyperbola, that is, the minor radius theMinorRadius is measured along this axis, and - the orientation (direct or indirect sense) of theA gives the implicit orientation of the hyperbola. Warnings: It is yet possible to create an Hyperbola with theMajorRadius <= theMinorRadius. Raises ConstructionError if theMajorRadius < 0.0 or theMinorRadius < 0.0.
 ") gp_Hypr2d;
 		 gp_Hypr2d(const gp_Ax22d & theA, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius);
 
@@ -10376,7 +10376,7 @@ gp_Ax2d
 
 Description
 -----------
-In the local coordinate system of the hyperbola the equation of the hyperbola is (x*x)/(a*a) - (y*y)/(b*b) = 1.0 and the equation of the first asymptote is y = (b/a)*x where a is the major radius of the hyperbola and b the minor radius of the hyperbola. raises constructionerror if majorradius = 0.0.
+In the local coordinate system of the hyperbola the equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the equation of the first asymptote is Y = (B/A)*X where A is the major radius of the hyperbola and B the minor radius of the hyperbola. Raises ConstructionError if MajorRadius = 0.0.
 ") Asymptote1;
 		gp_Ax2d Asymptote1();
 
@@ -10389,7 +10389,7 @@ gp_Ax2d
 
 Description
 -----------
-In the local coordinate system of the hyperbola the equation of the hyperbola is (x*x)/(a*a) - (y*y)/(b*b) = 1.0 and the equation of the first asymptote is y = -(b/a)*x where a is the major radius of the hyperbola and b the minor radius of the hyperbola. raises constructionerror if majorradius = 0.0.
+In the local coordinate system of the hyperbola the equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the equation of the first asymptote is Y = -(B/A)*X where A is the major radius of the hyperbola and B the minor radius of the hyperbola. Raises ConstructionError if MajorRadius = 0.0.
 ") Asymptote2;
 		gp_Ax2d Asymptote2();
 
@@ -10424,7 +10424,7 @@ theF: float
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the hyperbola: thea * (x**2) + theb * (y**2) + 2*thec*(x*y) + 2*thed*x + 2*thee*y + thef = 0.
+Computes the coefficients of the implicit equation of the hyperbola: theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -10437,7 +10437,7 @@ gp_Hypr2d
 
 Description
 -----------
-Computes the branch of hyperbola which is on the positive side of the 'yaxis' of <self>.
+Computes the branch of hyperbola which is on the positive side of the 'YAxis' of <self>.
 ") ConjugateBranch1;
 		gp_Hypr2d ConjugateBranch1();
 
@@ -10450,7 +10450,7 @@ gp_Hypr2d
 
 Description
 -----------
-Computes the branch of hyperbola which is on the negative side of the 'yaxis' of <self>.
+Computes the branch of hyperbola which is on the negative side of the 'YAxis' of <self>.
 ") ConjugateBranch2;
 		gp_Hypr2d ConjugateBranch2();
 
@@ -10463,7 +10463,7 @@ gp_Ax2d
 
 Description
 -----------
-Computes the directrix which is the line normal to the xaxis of the hyperbola in the local plane (z = 0) at a distance d = majorradius / e from the center of the hyperbola, where e is the eccentricity of the hyperbola. this line is parallel to the 'yaxis'. the intersection point between the 'directrix1' and the 'xaxis' is the 'location' point of the 'directrix1'. this point is on the positive side of the 'xaxis'.
+Computes the directrix which is the line normal to the XAxis of the hyperbola in the local plane (Z = 0) at a distance d = MajorRadius / e from the center of the hyperbola, where e is the eccentricity of the hyperbola. This line is parallel to the 'YAxis'. The intersection point between the 'Directrix1' and the 'XAxis' is the 'Location' point of the 'Directrix1'. This point is on the positive side of the 'XAxis'.
 ") Directrix1;
 		gp_Ax2d Directrix1();
 
@@ -10476,7 +10476,7 @@ gp_Ax2d
 
 Description
 -----------
-This line is obtained by the symmetrical transformation of 'directrix1' with respect to the 'yaxis' of the hyperbola.
+This line is obtained by the symmetrical transformation of 'Directrix1' with respect to the 'YAxis' of the hyperbola.
 ") Directrix2;
 		gp_Ax2d Directrix2();
 
@@ -10489,7 +10489,7 @@ float
 
 Description
 -----------
-Returns the eccentricity of the hyperbola (e > 1). if f is the distance between the location of the hyperbola and the focus1 then the eccentricity e = f / majorradius. raises domainerror if majorradius = 0.0.
+Returns the eccentricity of the hyperbola (e > 1). If f is the distance between the location of the hyperbola and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius = 0.0.
 ") Eccentricity;
 		Standard_Real Eccentricity();
 
@@ -10502,7 +10502,7 @@ float
 
 Description
 -----------
-Computes the focal distance. it is the distance between the 'location' of the hyperbola and 'focus1' or 'focus2'.
+Computes the focal distance. It is the distance between the 'Location' of the hyperbola and 'Focus1' or 'Focus2'.
 ") Focal;
 		Standard_Real Focal();
 
@@ -10515,7 +10515,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the first focus of the hyperbola. this focus is on the positive side of the 'xaxis' of the hyperbola.
+Returns the first focus of the hyperbola. This focus is on the positive side of the 'XAxis' of the hyperbola.
 ") Focus1;
 		gp_Pnt2d Focus1();
 
@@ -10528,7 +10528,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the second focus of the hyperbola. this focus is on the negative side of the 'xaxis' of the hyperbola.
+Returns the second focus of the hyperbola. This focus is on the negative side of the 'XAxis' of the hyperbola.
 ") Focus2;
 		gp_Pnt2d Focus2();
 
@@ -10554,7 +10554,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the location point of the hyperbola. it is the intersection point between the 'xaxis' and the 'yaxis'.
+Returns the location point of the hyperbola. It is the intersection point between the 'XAxis' and the 'YAxis'.
 ") Location;
 		const gp_Pnt2d Location();
 
@@ -10567,7 +10567,7 @@ float
 
 Description
 -----------
-Returns the major radius of the hyperbola (it is the radius corresponding to the 'xaxis' of the hyperbola).
+Returns the major radius of the hyperbola (it is the radius corresponding to the 'XAxis' of the hyperbola).
 ") MajorRadius;
 		Standard_Real MajorRadius();
 
@@ -10580,7 +10580,7 @@ float
 
 Description
 -----------
-Returns the minor radius of the hyperbola (it is the radius corresponding to the 'yaxis' of the hyperbola).
+Returns the minor radius of the hyperbola (it is the radius corresponding to the 'YAxis' of the hyperbola).
 ") MinorRadius;
 		Standard_Real MinorRadius();
 
@@ -10634,7 +10634,7 @@ gp_Hypr2d
 
 Description
 -----------
-Performs the symmetrical transformation of an hyperbola with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of an hyperbola with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Hypr2d Mirrored(const gp_Pnt2d & theP);
 
@@ -10665,7 +10665,7 @@ gp_Hypr2d
 
 Description
 -----------
-Returns the branch of hyperbola obtained by doing the symmetrical transformation of <self> with respect to the 'yaxis' of <self>.
+Returns the branch of hyperbola obtained by doing the symmetrical transformation of <self> with respect to the 'YAxis' of <self>.
 ") OtherBranch;
 		gp_Hypr2d OtherBranch();
 
@@ -10678,7 +10678,7 @@ float
 
 Description
 -----------
-Returns p = (e * e - 1) * majorradius where e is the eccentricity of the hyperbola. raises domainerror if majorradius = 0.0.
+Returns p = (e * e - 1) * MajorRadius where e is the eccentricity of the hyperbola. Raises DomainError if MajorRadius = 0.0.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -10704,7 +10704,7 @@ gp_Hypr2d
 
 Description
 -----------
-Reverses the orientation of the local coordinate system of this hyperbola (the 'y axis' is reversed). therefore, the implicit orientation of this hyperbola is reversed. note: - reverse assigns the result to this hyperbola, while - reversed creates a new one.
+Reverses the orientation of the local coordinate system of this hyperbola (the 'Y Axis' is reversed). Therefore, the implicit orientation of this hyperbola is reversed. Note: - Reverse assigns the result to this hyperbola, while - Reversed creates a new one.
 ") Reversed;
 		gp_Hypr2d Reversed();
 
@@ -10742,7 +10742,7 @@ gp_Hypr2d
 
 Description
 -----------
-Rotates an hyperbola. thep is the center of the rotation. theang is the angular value of the rotation in radians.
+Rotates an hyperbola. theP is the center of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Hypr2d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -10780,7 +10780,7 @@ gp_Hypr2d
 
 Description
 -----------
-Scales an hyperbola. <thes> is the scaling value. if <thes> is positive only the location point is modified. but if <thes> is negative the 'xaxis' is reversed and the 'yaxis' too.
+Scales an hyperbola. <theS> is the scaling value. If <theS> is positive only the location point is modified. But if <theS> is negative the 'XAxis' is reversed and the 'YAxis' too.
 ") Scaled;
 		gp_Hypr2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -10798,7 +10798,7 @@ None
 
 Description
 -----------
-Modifies this hyperbola, by redefining its local coordinate system so that it becomes thea.
+Modifies this hyperbola, by redefining its local coordinate system so that it becomes theA.
 ") SetAxis;
 		void SetAxis(const gp_Ax22d & theA);
 
@@ -10816,7 +10816,7 @@ None
 
 Description
 -----------
-Modifies this hyperbola, by redefining its local coordinate system so that its origin becomes thep.
+Modifies this hyperbola, by redefining its local coordinate system so that its origin becomes theP.
 ") SetLocation;
 		void SetLocation(const gp_Pnt2d & theP);
 
@@ -10834,7 +10834,7 @@ None
 
 Description
 -----------
-Modifies the major or minor radius of this hyperbola. exceptions standard_constructionerror if themajorradius or minorradius is negative.
+Modifies the major or minor radius of this hyperbola. Exceptions Standard_ConstructionError if theMajorRadius or MinorRadius is negative.
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real theMajorRadius);
 
@@ -10852,7 +10852,7 @@ None
 
 Description
 -----------
-Modifies the major or minor radius of this hyperbola. exceptions standard_constructionerror if majorradius or theminorradius is negative.
+Modifies the major or minor radius of this hyperbola. Exceptions Standard_ConstructionError if MajorRadius or theMinorRadius is negative.
 ") SetMinorRadius;
 		void SetMinorRadius(const Standard_Real theMinorRadius);
 
@@ -10870,7 +10870,7 @@ None
 
 Description
 -----------
-Changes the major axis of the hyperbola. the minor axis is recomputed and the location of the hyperbola too.
+Changes the major axis of the hyperbola. The minor axis is recomputed and the location of the hyperbola too.
 ") SetXAxis;
 		void SetXAxis(const gp_Ax2d & theA);
 
@@ -10888,7 +10888,7 @@ None
 
 Description
 -----------
-Changes the minor axis of the hyperbola.the minor axis is recomputed and the location of the hyperbola too.
+Changes the minor axis of the hyperbola.The minor axis is recomputed and the location of the hyperbola too.
 ") SetYAxis;
 		void SetYAxis(const gp_Ax2d & theA);
 
@@ -10924,7 +10924,7 @@ gp_Hypr2d
 
 Description
 -----------
-Transforms an hyperbola with the transformation thet from class trsf2d.
+Transforms an hyperbola with the transformation theT from class Trsf2d.
 ") Transformed;
 		gp_Hypr2d Transformed(const gp_Trsf2d & theT);
 
@@ -10979,7 +10979,7 @@ gp_Hypr2d
 
 Description
 -----------
-Translates an hyperbola in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates an hyperbola in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Hypr2d Translated(const gp_Vec2d & theV);
 
@@ -10998,7 +10998,7 @@ gp_Hypr2d
 
 Description
 -----------
-Translates an hyperbola from the point thep1 to the point thep2.
+Translates an hyperbola from the point theP1 to the point theP2.
 ") Translated;
 		gp_Hypr2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -11011,7 +11011,7 @@ gp_Ax2d
 
 Description
 -----------
-Computes an axis whose - the origin is the center of this hyperbola, and - the unit vector is the 'x direction' or 'y direction' respectively of the local coordinate system of this hyperbola returns the major axis of the hyperbola.
+Computes an axis whose - the origin is the center of this hyperbola, and - the unit vector is the 'X Direction' or 'Y Direction' respectively of the local coordinate system of this hyperbola Returns the major axis of the hyperbola.
 ") XAxis;
 		gp_Ax2d XAxis();
 
@@ -11024,7 +11024,7 @@ gp_Ax2d
 
 Description
 -----------
-Computes an axis whose - the origin is the center of this hyperbola, and - the unit vector is the 'x direction' or 'y direction' respectively of the local coordinate system of this hyperbola returns the minor axis of the hyperbola.
+Computes an axis whose - the origin is the center of this hyperbola, and - the unit vector is the 'X Direction' or 'Y Direction' respectively of the local coordinate system of this hyperbola Returns the minor axis of the hyperbola.
 ") YAxis;
 		gp_Ax2d YAxis();
 
@@ -11069,7 +11069,7 @@ None
 
 Description
 -----------
-Creates a line corresponding to z axis of the reference coordinate system.
+Creates a Line corresponding to Z axis of the reference coordinate system.
 ") gp_Lin;
 		 gp_Lin();
 
@@ -11087,7 +11087,7 @@ None
 
 Description
 -----------
-Creates a line defined by axis thea1.
+Creates a line defined by axis theA1.
 ") gp_Lin;
 		 gp_Lin(const gp_Ax1 & theA1);
 
@@ -11106,7 +11106,7 @@ None
 
 Description
 -----------
-Creates a line passing through point thep and parallel to vector thev (thep and thev are, respectively, the origin and the unit vector of the positioning axis of the line).
+Creates a line passing through point theP and parallel to vector theV (theP and theV are, respectively, the origin and the unit vector of the positioning axis of the line).
 ") gp_Lin;
 		 gp_Lin(const gp_Pnt & theP, const gp_Dir & theV);
 
@@ -11143,7 +11143,7 @@ bool
 
 Description
 -----------
-Returns true if this line contains the point thep, that is, if the distance between point thep and this line is less than or equal to thelineartolerance..
+Returns true if this line contains the point theP, that is, if the distance between point theP and this line is less than or equal to theLinearTolerance..
 ") Contains;
 		Standard_Boolean Contains(const gp_Pnt & theP, const Standard_Real theLinearTolerance);
 
@@ -11174,7 +11174,7 @@ float
 
 Description
 -----------
-Computes the distance between <self> and the point thep.
+Computes the distance between <self> and the point theP.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt & theP);
 
@@ -11277,7 +11277,7 @@ gp_Lin
 
 Description
 -----------
-Performs the symmetrical transformation of a line with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a line with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Lin Mirrored(const gp_Pnt & theP);
 
@@ -11313,7 +11313,7 @@ gp_Lin
 
 Description
 -----------
-Performs the symmetrical transformation of a line with respect to a plane. the axis placement <thea2> locates the plane of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a line with respect to a plane. The axis placement <theA2> locates the plane of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Lin Mirrored(const gp_Ax2 & theA2);
 
@@ -11331,7 +11331,7 @@ gp_Lin
 
 Description
 -----------
-Computes the line normal to the direction of <self>, passing through the point thep. raises constructionerror if the distance between <self> and the point thep is lower or equal to resolution from gp because there is an infinity of solutions in 3d space.
+Computes the line normal to the direction of <self>, passing through the point theP. Raises ConstructionError if the distance between <self> and the point theP is lower or equal to Resolution from gp because there is an infinity of solutions in 3D space.
 ") Normal;
 		gp_Lin Normal(const gp_Pnt & theP);
 
@@ -11370,7 +11370,7 @@ gp_Lin
 
 Description
 -----------
-Reverses the direction of the line. note: - reverse assigns the result to this line, while - reversed creates a new one.
+Reverses the direction of the line. Note: - Reverse assigns the result to this line, while - Reversed creates a new one.
 ") Reversed;
 		gp_Lin Reversed();
 
@@ -11408,7 +11408,7 @@ gp_Lin
 
 Description
 -----------
-Rotates a line. a1 is the axis of the rotation. ang is the angular value of the rotation in radians.
+Rotates a line. A1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Lin Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -11446,7 +11446,7 @@ gp_Lin
 
 Description
 -----------
-Scales a line. thes is the scaling value. the 'location' point (origin) of the line is modified. the 'direction' is reversed if the scale is negative.
+Scales a line. theS is the scaling value. The 'Location' point (origin) of the line is modified. The 'Direction' is reversed if the scale is negative.
 ") Scaled;
 		gp_Lin Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -11500,7 +11500,7 @@ None
 
 Description
 -----------
-Complete redefinition of the line. the 'location' point of <thea1> is the origin of the line. the 'direction' of <thea1> is the direction of the line.
+Complete redefinition of the line. The 'Location' point of <theA1> is the origin of the line. The 'Direction' of <theA1> is the direction of the line.
 ") SetPosition;
 		void SetPosition(const gp_Ax1 & theA1);
 
@@ -11518,7 +11518,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the point thep.
+Computes the square distance between <self> and the point theP.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Pnt & theP);
 
@@ -11572,7 +11572,7 @@ gp_Lin
 
 Description
 -----------
-Transforms a line with the transformation thet from class trsf.
+Transforms a line with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Lin Transformed(const gp_Trsf & theT);
 
@@ -11627,7 +11627,7 @@ gp_Lin
 
 Description
 -----------
-Translates a line in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a line in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Lin Translated(const gp_Vec & theV);
 
@@ -11646,7 +11646,7 @@ gp_Lin
 
 Description
 -----------
-Translates a line from the point thep1 to the point thep2.
+Translates a line from the point theP1 to the point theP2.
 ") Translated;
 		gp_Lin Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -11691,7 +11691,7 @@ None
 
 Description
 -----------
-Creates a line corresponding to x axis of the reference coordinate system.
+Creates a Line corresponding to X axis of the reference coordinate system.
 ") gp_Lin2d;
 		 gp_Lin2d();
 
@@ -11709,7 +11709,7 @@ None
 
 Description
 -----------
-Creates a line located with thea.
+Creates a line located with theA.
 ") gp_Lin2d;
 		 gp_Lin2d(const gp_Ax2d & theA);
 
@@ -11728,7 +11728,7 @@ None
 
 Description
 -----------
-<thep> is the location point (origin) of the line and <thev> is the direction of the line.
+<theP> is the location point (origin) of the line and <theV> is the direction of the line.
 ") gp_Lin2d;
 		 gp_Lin2d(const gp_Pnt2d & theP, const gp_Dir2d & theV);
 
@@ -11748,7 +11748,7 @@ None
 
 Description
 -----------
-Creates the line from the equation thea*x + theb*y + thec = 0.0 raises constructionerror if sqrt(thea*thea + theb*theb) <= resolution from gp. raised if sqrt(thea*thea + theb*theb) <= resolution from gp.
+Creates the line from the equation theA*X + theB*Y + theC = 0.0 Raises ConstructionError if Sqrt(theA*theA + theB*theB) <= Resolution from gp. Raised if Sqrt(theA*theA + theB*theB) <= Resolution from gp.
 ") gp_Lin2d;
 		 gp_Lin2d(const Standard_Real theA, const Standard_Real theB, const Standard_Real theC);
 
@@ -11785,7 +11785,7 @@ theC: float
 
 Description
 -----------
-Returns the normalized coefficients of the line: thea * x + theb * y + thec = 0.
+Returns the normalized coefficients of the line: theA * X + theB * Y + theC = 0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -11804,7 +11804,7 @@ bool
 
 Description
 -----------
-Returns true if this line contains the point thep, that is, if the distance between point thep and this line is less than or equal to thelineartolerance.
+Returns true if this line contains the point theP, that is, if the distance between point theP and this line is less than or equal to theLinearTolerance.
 ") Contains;
 		Standard_Boolean Contains(const gp_Pnt2d & theP, const Standard_Real theLinearTolerance);
 
@@ -11835,7 +11835,7 @@ float
 
 Description
 -----------
-Computes the distance between <self> and the point <thep>.
+Computes the distance between <self> and the point <theP>.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt2d & theP);
 
@@ -11920,7 +11920,7 @@ gp_Lin2d
 
 Description
 -----------
-Performs the symmetrical transformation of a line with respect to the point <thep> which is the center of the symmetry.
+Performs the symmetrical transformation of a line with respect to the point <theP> which is the center of the symmetry.
 ") Mirrored;
 		gp_Lin2d Mirrored(const gp_Pnt2d & theP);
 
@@ -11956,7 +11956,7 @@ gp_Lin2d
 
 Description
 -----------
-Computes the line normal to the direction of <self>, passing through the point <thep>.
+Computes the line normal to the direction of <self>, passing through the point <theP>.
 ") Normal;
 		gp_Lin2d Normal(const gp_Pnt2d & theP);
 
@@ -11995,7 +11995,7 @@ gp_Lin2d
 
 Description
 -----------
-Reverses the positioning axis of this line. note: - reverse assigns the result to this line, while - reversed creates a new one.
+Reverses the positioning axis of this line. Note: - Reverse assigns the result to this line, while - Reversed creates a new one.
 ") Reversed;
 		gp_Lin2d Reversed();
 
@@ -12033,7 +12033,7 @@ gp_Lin2d
 
 Description
 -----------
-Rotates a line. thep is the center of the rotation. theang is the angular value of the rotation in radians.
+Rotates a line. theP is the center of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Lin2d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -12071,7 +12071,7 @@ gp_Lin2d
 
 Description
 -----------
-Scales a line. thes is the scaling value. only the origin of the line is modified.
+Scales a line. theS is the scaling value. Only the origin of the line is modified.
 ") Scaled;
 		gp_Lin2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -12125,7 +12125,7 @@ None
 
 Description
 -----------
-Complete redefinition of the line. the 'location' point of <thea> is the origin of the line. the 'direction' of <thea> is the direction of the line.
+Complete redefinition of the line. The 'Location' point of <theA> is the origin of the line. The 'Direction' of <theA> is the direction of the line.
 ") SetPosition;
 		void SetPosition(const gp_Ax2d & theA);
 
@@ -12143,7 +12143,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the point <thep>.
+Computes the square distance between <self> and the point <theP>.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Pnt2d & theP);
 
@@ -12197,7 +12197,7 @@ gp_Lin2d
 
 Description
 -----------
-Transforms a line with the transformation thet from class trsf2d.
+Transforms a line with the transformation theT from class Trsf2d.
 ") Transformed;
 		gp_Lin2d Transformed(const gp_Trsf2d & theT);
 
@@ -12252,7 +12252,7 @@ gp_Lin2d
 
 Description
 -----------
-Translates a line in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a line in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Lin2d Translated(const gp_Vec2d & theV);
 
@@ -12271,7 +12271,7 @@ gp_Lin2d
 
 Description
 -----------
-Translates a line from the point thep1 to the point thep2.
+Translates a line from the point theP1 to the point theP2.
 ") Translated;
 		gp_Lin2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -12316,7 +12316,7 @@ None
 
 Description
 -----------
-Creates a matrix with null coefficients.
+creates a matrix with null coefficients.
 ") gp_Mat;
 		 gp_Mat();
 
@@ -12362,7 +12362,7 @@ None
 
 Description
 -----------
-Creates a matrix. thecol1, thecol2, thecol3 are the 3 columns of the matrix.
+Creates a matrix. theCol1, theCol2, theCol3 are the 3 columns of the matrix.
 ") gp_Mat;
 		 gp_Mat(const gp_XYZ & theCol1, const gp_XYZ & theCol2, const gp_XYZ & theCol3);
 
@@ -12398,7 +12398,7 @@ gp_Mat
 
 Description
 -----------
-Computes the sum of this matrix and the matrix theother for each coefficient of the matrix: <self>.coef(i,j) + <theother>.coef(i,j).
+Computes the sum of this matrix and the matrix theOther for each coefficient of the matrix: <self>.Coef(i,j) + <theOther>.Coef(i,j).
 ") Added;
 		gp_Mat Added(const gp_Mat & theOther);
 
@@ -12429,7 +12429,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the column of thecol index. raises outofrange if thecol < 1 or thecol > 3.
+Returns the column of theCol index. Raises OutOfRange if theCol < 1 or theCol > 3.
 ") Column;
 		gp_XYZ Column(const Standard_Integer theCol);
 
@@ -12491,7 +12491,7 @@ gp_Mat
 
 Description
 -----------
-Divides all the coefficients of the matrix by scalar.
+Divides all the coefficients of the matrix by Scalar.
 ") Divided;
 		gp_Mat Divided(const Standard_Real theScalar);
 
@@ -12538,7 +12538,7 @@ gp_Mat
 
 Description
 -----------
-Inverses the matrix and raises if the matrix is singular. - invert assigns the result to this matrix, while - inverted creates a new one. warning the gauss lu decomposition is used to invert the matrix. consequently, the matrix is considered as singular if the largest pivot found is less than or equal to gp::resolution(). exceptions standard_constructionerror if this matrix is singular, and therefore cannot be inverted.
+Inverses the matrix and raises if the matrix is singular. - Invert assigns the result to this matrix, while - Inverted creates a new one. Warning The Gauss LU decomposition is used to invert the matrix. Consequently, the matrix is considered as singular if the largest pivot found is less than or equal to gp::Resolution(). Exceptions Standard_ConstructionError if this matrix is singular, and therefore cannot be inverted.
 ") Inverted;
 		gp_Mat Inverted();
 
@@ -12551,7 +12551,7 @@ bool
 
 Description
 -----------
-The gauss lu decomposition is used to invert the matrix (see math package) so the matrix is considered as singular if the largest pivot found is lower or equal to resolution from gp.
+The Gauss LU decomposition is used to invert the matrix (see Math package) so the matrix is considered as singular if the largest pivot found is lower or equal to Resolution from gp.
 ") IsSingular;
 		Standard_Boolean IsSingular();
 
@@ -12569,7 +12569,7 @@ gp_Mat
 
 Description
 -----------
-Computes the product of two matrices <self> * <other>.
+Computes the product of two matrices <self> * <Other>.
 ") Multiplied;
 		gp_Mat Multiplied(const gp_Mat & theOther);
 
@@ -12605,7 +12605,7 @@ None
 
 Description
 -----------
-Computes the product of two matrices <self> = <other> * <self>.
+Computes the product of two matrices <self> = <Other> * <self>.
 ") Multiply;
 		void Multiply(const gp_Mat & theOther);
 
@@ -12623,7 +12623,7 @@ None
 
 Description
 -----------
-Multiplies all the coefficients of the matrix by scalar.
+Multiplies all the coefficients of the matrix by Scalar.
 ") Multiply;
 		void Multiply(const Standard_Real theScalar);
 
@@ -12659,7 +12659,7 @@ gp_Mat
 
 Description
 -----------
-Computes <self> = <self> * <self> * .......* <self>, then time. if then = 0 <self> = identity if then < 0 <self> = <self>.invert() *...........* <self>.invert(). if then < 0 an exception will be raised if the matrix is not inversible.
+Computes <self> = <self> * <self> * .......* <self>, theN time. if theN = 0 <self> = Identity if theN < 0 <self> = <self>.Invert() *...........* <self>.Invert(). If theN < 0 an exception will be raised if the matrix is not inversible.
 ") Powered;
 		gp_Mat Powered(const Standard_Integer theN);
 
@@ -12695,7 +12695,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the row of therow index. raises outofrange if therow < 1 or therow > 3.
+returns the row of theRow index. Raises OutOfRange if theRow < 1 or theRow > 3.
 ") Row;
 		gp_XYZ Row(const Standard_Integer theRow);
 
@@ -12714,7 +12714,7 @@ None
 
 Description
 -----------
-Assigns the three coordinates of thevalue to the column of index thecol of this matrix. raises outofrange if thecol < 1 or thecol > 3.
+Assigns the three coordinates of theValue to the column of index theCol of this matrix. Raises OutOfRange if theCol < 1 or theCol > 3.
 ") SetCol;
 		void SetCol(const Standard_Integer theCol, const gp_XYZ & theValue);
 
@@ -12734,7 +12734,7 @@ None
 
 Description
 -----------
-Assigns the number triples thecol1, thecol2, thecol3 to the three columns of this matrix.
+Assigns the number triples theCol1, theCol2, theCol3 to the three columns of this matrix.
 ") SetCols;
 		void SetCols(const gp_XYZ & theCol1, const gp_XYZ & theCol2, const gp_XYZ & theCol3);
 
@@ -12752,7 +12752,7 @@ None
 
 Description
 -----------
-Modifies the matrix m so that applying it to any number triple (x, y, z) produces the same result as the cross product of theref and the number triple (x, y, z): i.e.: m * {x,y,z}t = theref.cross({x, y ,z}) this matrix is anti symmetric. to apply this matrix to the triplet {xyz} is the same as to do the cross product between the triplet theref and the triplet {xyz}. note: this matrix is anti-symmetric.
+Modifies the matrix M so that applying it to any number triple (X, Y, Z) produces the same result as the cross product of theRef and the number triple (X, Y, Z): i.e.: M * {X,Y,Z}t = theRef.Cross({X, Y ,Z}) this matrix is anti symmetric. To apply this matrix to the triplet {XYZ} is the same as to do the cross product between the triplet theRef and the triplet {XYZ}. Note: this matrix is anti-symmetric.
 ") SetCross;
 		void SetCross(const gp_XYZ & theRef);
 
@@ -12772,7 +12772,7 @@ None
 
 Description
 -----------
-Modifies the main diagonal of the matrix. @code <self>.value (1, 1) = thex1 <self>.value (2, 2) = thex2 <self>.value (3, 3) = thex3 @endcode the other coefficients of the matrix are not modified.
+Modifies the main diagonal of the matrix. @code <self>.Value (1, 1) = theX1 <self>.Value (2, 2) = theX2 <self>.Value (3, 3) = theX3 @endcode The other coefficients of the matrix are not modified.
 ") SetDiagonal;
 		void SetDiagonal(const Standard_Real theX1, const Standard_Real theX2, const Standard_Real theX3);
 
@@ -12790,7 +12790,7 @@ None
 
 Description
 -----------
-Modifies this matrix so that applying it to any number triple (x, y, z) produces the same result as the scalar product of theref and the number triple (x, y, z): this * (x,y,z) = theref.(x,y,z) note: this matrix is symmetric.
+Modifies this matrix so that applying it to any number triple (X, Y, Z) produces the same result as the scalar product of theRef and the number triple (X, Y, Z): this * (X,Y,Z) = theRef.(X,Y,Z) Note: this matrix is symmetric.
 ") SetDot;
 		void SetDot(const gp_XYZ & theRef);
 
@@ -12803,7 +12803,7 @@ None
 
 Description
 -----------
-Modifies this matrix so that it represents the identity matrix.
+Modifies this matrix so that it represents the Identity matrix.
 ") SetIdentity;
 		void SetIdentity();
 
@@ -12822,7 +12822,7 @@ None
 
 Description
 -----------
-Modifies this matrix so that it represents a rotation. theang is the angular value in radians and the xyz axis gives the direction of the rotation. raises constructionerror if xyz.modulus() <= resolution().
+Modifies this matrix so that it represents a rotation. theAng is the angular value in radians and the XYZ axis gives the direction of the rotation. Raises ConstructionError if XYZ.Modulus() <= Resolution().
 ") SetRotation;
 		void SetRotation(const gp_XYZ & theAxis, const Standard_Real theAng);
 
@@ -12841,7 +12841,7 @@ None
 
 Description
 -----------
-Assigns the three coordinates of value to the row of index therow of this matrix. raises outofrange if therow < 1 or therow > 3.
+Assigns the three coordinates of Value to the row of index theRow of this matrix. Raises OutOfRange if theRow < 1 or theRow > 3.
 ") SetRow;
 		void SetRow(const Standard_Integer theRow, const gp_XYZ & theValue);
 
@@ -12861,7 +12861,7 @@ None
 
 Description
 -----------
-Assigns the number triples therow1, therow2, therow3 to the three rows of this matrix.
+Assigns the number triples theRow1, theRow2, theRow3 to the three rows of this matrix.
 ") SetRows;
 		void SetRows(const gp_XYZ & theRow1, const gp_XYZ & theRow2, const gp_XYZ & theRow3);
 
@@ -12879,7 +12879,7 @@ None
 
 Description
 -----------
-Modifies the matrix so that it represents a scaling transformation, where thes is the scale factor.: @code | thes 0.0 0.0 | <self> = | 0.0 thes 0.0 | | 0.0 0.0 thes | @endcode.
+Modifies the matrix so that it represents a scaling transformation, where theS is the scale factor.: @code | theS 0.0 0.0 | <self> = | 0.0 theS 0.0 | | 0.0 0.0 theS | @endcode.
 ") SetScale;
 		void SetScale(const Standard_Real theS);
 
@@ -12899,7 +12899,7 @@ None
 
 Description
 -----------
-Assigns <thevalue> to the coefficient of row therow, column thecol of this matrix. raises outofrange if therow < 1 or therow > 3 or thecol < 1 or thecol > 3.
+Assigns <theValue> to the coefficient of row theRow, column theCol of this matrix. Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3.
 ") SetValue;
 		void SetValue(const Standard_Integer theRow, const Standard_Integer theCol, const Standard_Real theValue);
 
@@ -12935,7 +12935,7 @@ gp_Mat
 
 Description
 -----------
-Computes for each coefficient of the matrix: <self>.coef(i,j) - <theother>.coef(i,j).
+cOmputes for each coefficient of the matrix: <self>.Coef(i,j) - <theOther>.Coef(i,j).
 ") Subtracted;
 		gp_Mat Subtracted(const gp_Mat & theOther);
 
@@ -12961,7 +12961,7 @@ gp_Mat
 
 Description
 -----------
-Transposes the matrix. a(j, i) -> a (i, j).
+Transposes the matrix. A(j, i) -> A (i, j).
 ") Transposed;
 		gp_Mat Transposed();
 
@@ -12980,7 +12980,7 @@ float
 
 Description
 -----------
-Returns the coefficient of range (therow, thecol) raises outofrange if therow < 1 or therow > 3 or thecol < 1 or thecol > 3.
+Returns the coefficient of range (theRow, theCol) Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3.
 ") Value;
 		const Standard_Real & Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -13189,7 +13189,7 @@ None
 
 Description
 -----------
-Thecol1, thecol2 are the 2 columns of the matrix.
+theCol1, theCol2 are the 2 columns of the matrix.
 ") gp_Mat2d;
 		 gp_Mat2d(const gp_XY & theCol1, const gp_XY & theCol2);
 
@@ -13225,7 +13225,7 @@ gp_Mat2d
 
 Description
 -----------
-Computes the sum of this matrix and the matrix theother.for each coefficient of the matrix: @code <self>.coef(i,j) + <theother>.coef(i,j) @endcode note: - operator += assigns the result to this matrix, while - operator + creates a new one.
+Computes the sum of this matrix and the matrix theOther.for each coefficient of the matrix: @code <self>.Coef(i,j) + <theOther>.Coef(i,j) @endcode Note: - operator += assigns the result to this matrix, while - operator + creates a new one.
 ") Added;
 		gp_Mat2d Added(const gp_Mat2d & theOther);
 
@@ -13256,7 +13256,7 @@ gp_XY
 
 Description
 -----------
-Returns the column of thecol index. raises outofrange if thecol < 1 or thecol > 2.
+Returns the column of theCol index. Raises OutOfRange if theCol < 1 or theCol > 2.
 ") Column;
 		gp_XY Column(const Standard_Integer theCol);
 
@@ -13357,7 +13357,7 @@ bool
 
 Description
 -----------
-Returns true if this matrix is singular (and therefore, cannot be inverted). the gauss lu decomposition is used to invert the matrix so the matrix is considered as singular if the largest pivot found is lower or equal to resolution from gp.
+Returns true if this matrix is singular (and therefore, cannot be inverted). The Gauss LU decomposition is used to invert the matrix so the matrix is considered as singular if the largest pivot found is lower or equal to Resolution from gp.
 ") IsSingular;
 		Standard_Boolean IsSingular();
 
@@ -13411,7 +13411,7 @@ None
 
 Description
 -----------
-Computes the product of two matrices <self> * <theother>.
+Computes the product of two matrices <self> * <theOther>.
 ") Multiply;
 		void Multiply(const gp_Mat2d & theOther);
 
@@ -13465,7 +13465,7 @@ gp_Mat2d
 
 Description
 -----------
-Computes <self> = <self> * <self> * .......* <self>, then time. if then = 0 <self> = identity if then < 0 <self> = <self>.invert() *...........* <self>.invert(). if then < 0 an exception can be raised if the matrix is not inversible.
+computes <self> = <self> * <self> * .......* <self>, theN time. if theN = 0 <self> = Identity if theN < 0 <self> = <self>.Invert() *...........* <self>.Invert(). If theN < 0 an exception can be raised if the matrix is not inversible.
 ") Powered;
 		gp_Mat2d Powered(const Standard_Integer theN);
 
@@ -13483,7 +13483,7 @@ None
 
 Description
 -----------
-Modifies this matrix by premultiplying it by the matrix other <self> = theother * <self>.
+Modifies this matrix by premultiplying it by the matrix Other <self> = theOther * <self>.
 ") PreMultiply;
 		void PreMultiply(const gp_Mat2d & theOther);
 
@@ -13501,7 +13501,7 @@ gp_XY
 
 Description
 -----------
-Returns the row of index therow. raised if therow < 1 or therow > 2.
+Returns the row of index theRow. Raised if theRow < 1 or theRow > 2.
 ") Row;
 		gp_XY Row(const Standard_Integer theRow);
 
@@ -13520,7 +13520,7 @@ None
 
 Description
 -----------
-Assigns the two coordinates of thevalue to the column of range thecol of this matrix raises outofrange if thecol < 1 or thecol > 2.
+Assigns the two coordinates of theValue to the column of range theCol of this matrix Raises OutOfRange if theCol < 1 or theCol > 2.
 ") SetCol;
 		void SetCol(const Standard_Integer theCol, const gp_XY & theValue);
 
@@ -13539,7 +13539,7 @@ None
 
 Description
 -----------
-Assigns the number pairs thecol1, thecol2 to the two columns of this matrix.
+Assigns the number pairs theCol1, theCol2 to the two columns of this matrix.
 ") SetCols;
 		void SetCols(const gp_XY & theCol1, const gp_XY & theCol2);
 
@@ -13558,7 +13558,7 @@ None
 
 Description
 -----------
-Modifies the main diagonal of the matrix. @code <self>.value (1, 1) = thex1 <self>.value (2, 2) = thex2 @endcode the other coefficients of the matrix are not modified.
+Modifies the main diagonal of the matrix. @code <self>.Value (1, 1) = theX1 <self>.Value (2, 2) = theX2 @endcode The other coefficients of the matrix are not modified.
 ") SetDiagonal;
 		void SetDiagonal(const Standard_Real theX1, const Standard_Real theX2);
 
@@ -13571,7 +13571,7 @@ None
 
 Description
 -----------
-Modifies this matrix, so that it represents the identity matrix.
+Modifies this matrix, so that it represents the Identity matrix.
 ") SetIdentity;
 		void SetIdentity();
 
@@ -13589,7 +13589,7 @@ None
 
 Description
 -----------
-Modifies this matrix, so that it represents a rotation. theang is the angular value in radian of the rotation.
+Modifies this matrix, so that it represents a rotation. theAng is the angular value in radian of the rotation.
 ") SetRotation;
 		void SetRotation(const Standard_Real theAng);
 
@@ -13608,7 +13608,7 @@ None
 
 Description
 -----------
-Assigns the two coordinates of thevalue to the row of index therow of this matrix. raises outofrange if therow < 1 or therow > 2.
+Assigns the two coordinates of theValue to the row of index theRow of this matrix. Raises OutOfRange if theRow < 1 or theRow > 2.
 ") SetRow;
 		void SetRow(const Standard_Integer theRow, const gp_XY & theValue);
 
@@ -13627,7 +13627,7 @@ None
 
 Description
 -----------
-Assigns the number pairs therow1, therow2 to the two rows of this matrix.
+Assigns the number pairs theRow1, theRow2 to the two rows of this matrix.
 ") SetRows;
 		void SetRows(const gp_XY & theRow1, const gp_XY & theRow2);
 
@@ -13645,7 +13645,7 @@ None
 
 Description
 -----------
-Modifies the matrix such that it represents a scaling transformation, where thes is the scale factor: @code | thes 0.0 | <self> = | 0.0 thes | @endcode.
+Modifies the matrix such that it represents a scaling transformation, where theS is the scale factor: @code | theS 0.0 | <self> = | 0.0 theS | @endcode.
 ") SetScale;
 		void SetScale(const Standard_Real theS);
 
@@ -13665,7 +13665,7 @@ None
 
 Description
 -----------
-Assigns <thevalue> to the coefficient of row therow, column thecol of this matrix. raises outofrange if therow < 1 or therow > 2 or thecol < 1 or thecol > 2.
+Assigns <theValue> to the coefficient of row theRow, column theCol of this matrix. Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2.
 ") SetValue;
 		void SetValue(const Standard_Integer theRow, const Standard_Integer theCol, const Standard_Real theValue);
 
@@ -13701,7 +13701,7 @@ gp_Mat2d
 
 Description
 -----------
-Computes for each coefficient of the matrix: @code <self>.coef(i,j) - <theother>.coef(i,j) @endcode.
+Computes for each coefficient of the matrix: @code <self>.Coef(i,j) - <theOther>.Coef(i,j) @endcode.
 ") Subtracted;
 		gp_Mat2d Subtracted(const gp_Mat2d & theOther);
 
@@ -13727,7 +13727,7 @@ gp_Mat2d
 
 Description
 -----------
-Transposes the matrix. a(j, i) -> a (i, j).
+Transposes the matrix. A(j, i) -> A (i, j).
 ") Transposed;
 		gp_Mat2d Transposed();
 
@@ -13746,7 +13746,7 @@ float
 
 Description
 -----------
-Returns the coefficient of range (ttheherow, thecol) raises outofrange if therow < 1 or therow > 2 or thecol < 1 or thecol > 2.
+Returns the coefficient of range (ttheheRow, theCol) Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2.
 ") Value;
 		const Standard_Real & Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -13925,7 +13925,7 @@ None
 
 Description
 -----------
-Creates an indefinite parabola.
+Creates an indefinite Parabola.
 ") gp_Parab;
 		 gp_Parab();
 
@@ -13944,7 +13944,7 @@ None
 
 Description
 -----------
-Creates a parabola with its local coordinate system 'thea2' and it's focal length 'focal'. the xdirection of thea2 defines the axis of symmetry of the parabola. the ydirection of thea2 is parallel to the directrix of the parabola. the location point of thea2 is the vertex of the parabola raises constructionerror if thefocal < 0.0 raised if thefocal < 0.0.
+Creates a parabola with its local coordinate system 'theA2' and it's focal length 'Focal'. The XDirection of theA2 defines the axis of symmetry of the parabola. The YDirection of theA2 is parallel to the directrix of the parabola. The Location point of theA2 is the vertex of the parabola Raises ConstructionError if theFocal < 0.0 Raised if theFocal < 0.0.
 ") gp_Parab;
 		 gp_Parab(const gp_Ax2 & theA2, const Standard_Real theFocal);
 
@@ -13963,7 +13963,7 @@ None
 
 Description
 -----------
-Thed is the directrix of the parabola and thef the focus point. the symmetry axis (xaxis) of the parabola is normal to the directrix and pass through the focus point thef, but its location point is the vertex of the parabola. the yaxis of the parabola is parallel to thed and its location point is the vertex of the parabola. the normal to the plane of the parabola is the cross product between the xaxis and the yaxis.
+theD is the directrix of the parabola and theF the focus point. The symmetry axis (XAxis) of the parabola is normal to the directrix and pass through the focus point theF, but its location point is the vertex of the parabola. The YAxis of the parabola is parallel to theD and its location point is the vertex of the parabola. The normal to the plane of the parabola is the cross product between the XAxis and the YAxis.
 ") gp_Parab;
 		 gp_Parab(const gp_Ax1 & theD, const gp_Pnt & theF);
 
@@ -13976,7 +13976,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the main axis of the parabola. it is the axis normal to the plane of the parabola passing through the vertex of the parabola.
+Returns the main axis of the parabola. It is the axis normal to the plane of the parabola passing through the vertex of the parabola.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -13989,7 +13989,7 @@ gp_Ax1
 
 Description
 -----------
-Computes the directrix of this parabola. the directrix is: - a line parallel to the 'y direction' of the local coordinate system of this parabola, and - located on the negative side of the axis of symmetry, at a distance from the apex which is equal to the focal length of this parabola. the directrix is returned as an axis (a gp_ax1 object), the origin of which is situated on the 'x axis' of this parabola.
+Computes the directrix of this parabola. The directrix is: - a line parallel to the 'Y Direction' of the local coordinate system of this parabola, and - located on the negative side of the axis of symmetry, at a distance from the apex which is equal to the focal length of this parabola. The directrix is returned as an axis (a gp_Ax1 object), the origin of which is situated on the 'X Axis' of this parabola.
 ") Directrix;
 		gp_Ax1 Directrix();
 
@@ -14015,7 +14015,7 @@ gp_Pnt
 
 Description
 -----------
-- computes the focus of the parabola.
+- Computes the focus of the parabola.
 ") Focus;
 		gp_Pnt Focus();
 
@@ -14028,7 +14028,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the vertex of the parabola. it is the 'location' point of the coordinate system of the parabola.
+Returns the vertex of the parabola. It is the 'Location' point of the coordinate system of the parabola.
 ") Location;
 		const gp_Pnt Location();
 
@@ -14100,7 +14100,7 @@ gp_Parab
 
 Description
 -----------
-Performs the symmetrical transformation of a parabola with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a parabola with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Parab Mirrored(const gp_Pnt & theP);
 
@@ -14136,7 +14136,7 @@ gp_Parab
 
 Description
 -----------
-Performs the symmetrical transformation of a parabola with respect to a plane. the axis placement thea2 locates the plane of the symmetry (location, xdirection, ydirection).
+Performs the symmetrical transformation of a parabola with respect to a plane. The axis placement theA2 locates the plane of the symmetry (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Parab Mirrored(const gp_Ax2 & theA2);
 
@@ -14149,7 +14149,7 @@ float
 
 Description
 -----------
-Computes the parameter of the parabola. it is the distance between the focus and the directrix of the parabola. this distance is twice the focal length.
+Computes the parameter of the parabola. It is the distance between the focus and the directrix of the parabola. This distance is twice the focal length.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -14200,7 +14200,7 @@ gp_Parab
 
 Description
 -----------
-Rotates a parabola. thea1 is the axis of the rotation. ang is the angular value of the rotation in radians.
+Rotates a parabola. theA1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Parab Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -14238,7 +14238,7 @@ gp_Parab
 
 Description
 -----------
-Scales a parabola. thes is the scaling value. if thes is negative the direction of the symmetry axis xaxis is reversed and the direction of the yaxis too.
+Scales a parabola. theS is the scaling value. If theS is negative the direction of the symmetry axis XAxis is reversed and the direction of the YAxis too.
 ") Scaled;
 		gp_Parab Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -14256,7 +14256,7 @@ None
 
 Description
 -----------
-Modifies this parabola by redefining its local coordinate system so that - its origin and 'main direction' become those of the axis thea1 (the 'x direction' and 'y direction' are then recomputed in the same way as for any gp_ax2) raises constructionerror if the direction of thea1 is parallel to the previous xaxis of the parabola.
+Modifies this parabola by redefining its local coordinate system so that - its origin and 'main Direction' become those of the axis theA1 (the 'X Direction' and 'Y Direction' are then recomputed in the same way as for any gp_Ax2) Raises ConstructionError if the direction of theA1 is parallel to the previous XAxis of the parabola.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -14274,7 +14274,7 @@ None
 
 Description
 -----------
-Changes the focal distance of the parabola. raises constructionerror if thefocal < 0.0.
+Changes the focal distance of the parabola. Raises ConstructionError if theFocal < 0.0.
 ") SetFocal;
 		void SetFocal(const Standard_Real theFocal);
 
@@ -14292,7 +14292,7 @@ None
 
 Description
 -----------
-Changes the location of the parabola. it is the vertex of the parabola.
+Changes the location of the parabola. It is the vertex of the parabola.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theP);
 
@@ -14346,7 +14346,7 @@ gp_Parab
 
 Description
 -----------
-Transforms a parabola with the transformation thet from class trsf.
+Transforms a parabola with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Parab Transformed(const gp_Trsf & theT);
 
@@ -14401,7 +14401,7 @@ gp_Parab
 
 Description
 -----------
-Translates a parabola in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a parabola in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Parab Translated(const gp_Vec & theV);
 
@@ -14420,7 +14420,7 @@ gp_Parab
 
 Description
 -----------
-Translates a parabola from the point thep1 to the point thep2.
+Translates a parabola from the point theP1 to the point theP2.
 ") Translated;
 		gp_Parab Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -14433,7 +14433,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the symmetry axis of the parabola. the location point of the axis is the vertex of the parabola.
+Returns the symmetry axis of the parabola. The location point of the axis is the vertex of the parabola.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -14446,7 +14446,7 @@ gp_Ax1
 
 Description
 -----------
-It is an axis parallel to the directrix of the parabola. the location point of this axis is the vertex of the parabola.
+It is an axis parallel to the directrix of the parabola. The location point of this axis is the vertex of the parabola.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -14511,7 +14511,7 @@ None
 
 Description
 -----------
-Creates a parabola with its vertex point, its axis of symmetry ('xaxis') and its focal length. the sense of parametrization is given by thesense. if thesense == true (by default) then right-handed coordinate system is used, otherwise - left-handed. warnings: it is possible to have focallength = 0. in this case, the parabola looks like a line, which is parallel to the symmetry-axis. raises constructionerror if focallength < 0.0.
+Creates a parabola with its vertex point, its axis of symmetry ('XAxis') and its focal length. The sense of parametrization is given by theSense. If theSense == True (by default) then right-handed coordinate system is used, otherwise - left-handed. Warnings: It is possible to have FocalLength = 0. In this case, the parabola looks like a line, which is parallel to the symmetry-axis. Raises ConstructionError if FocalLength < 0.0.
 ") gp_Parab2d;
 		 gp_Parab2d(const gp_Ax2d & theMirrorAxis, const Standard_Real theFocalLength, const Standard_Boolean theSense = Standard_True);
 
@@ -14530,7 +14530,7 @@ None
 
 Description
 -----------
-Creates a parabola with its vertex point, its axis of symmetry ('xaxis'), correspond y-axis and its focal length. warnings: it is possible to have focallength = 0. in this case, the parabola looks like a line, which is parallel to the symmetry-axis. raises constructionerror if focal < 0.0.
+Creates a parabola with its vertex point, its axis of symmetry ('XAxis'), correspond Y-axis and its focal length. Warnings: It is possible to have FocalLength = 0. In this case, the parabola looks like a line, which is parallel to the symmetry-axis. Raises ConstructionError if Focal < 0.0.
 ") gp_Parab2d;
 		 gp_Parab2d(const gp_Ax22d & theAxes, const Standard_Real theFocalLength);
 
@@ -14550,7 +14550,7 @@ None
 
 Description
 -----------
-Creates a parabola with the directrix and the focus point. y-axis of the parabola (in user coordinate system - ucs) is the direction of thedirectrix. x-axis always directs from thedirectrix to thefocus point and always comes through thefocus. apex of the parabola is a middle point between the thefocus and the intersection point of thedirectrix and the x-axis. warnings: it is possible to have focallength = 0 (when thefocus lies in thedirectrix). in this case, x-direction of the parabola is defined by thesense parameter. if thesense == true (by default) then right-handed coordinate system is used, otherwise - left-handed. result parabola will look like a line, which is perpendicular to the directrix.
+Creates a parabola with the directrix and the focus point. Y-axis of the parabola (in User Coordinate System - UCS) is the direction of theDirectrix. X-axis always directs from theDirectrix to theFocus point and always comes through theFocus. Apex of the parabola is a middle point between the theFocus and the intersection point of theDirectrix and the X-axis. Warnings: It is possible to have FocalLength = 0 (when theFocus lies in theDirectrix). In this case, X-direction of the parabola is defined by theSense parameter. If theSense == True (by default) then right-handed coordinate system is used, otherwise - left-handed. Result parabola will look like a line, which is perpendicular to the directrix.
 ") gp_Parab2d;
 		 gp_Parab2d(const gp_Ax2d & theDirectrix, const gp_Pnt2d & theFocus, const Standard_Boolean theSense = Standard_True);
 
@@ -14563,7 +14563,7 @@ gp_Ax22d
 
 Description
 -----------
-Returns the local coordinate system of the parabola. the 'location' point of this axis is the vertex of the parabola.
+Returns the local coordinate system of the parabola. The 'Location' point of this axis is the vertex of the parabola.
 ") Axis;
 		gp_Ax22d Axis();
 
@@ -14585,7 +14585,7 @@ theF: float
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the parabola (in wcs - world coordinate system). @code thea * (x**2) + theb * (y**2) + 2*thec*(x*y) + 2*thed*x + 2*thee*y + thef = 0. @endcode.
+Computes the coefficients of the implicit equation of the parabola (in WCS - World Coordinate System). @code theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0. @endcode.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -14598,7 +14598,7 @@ gp_Ax2d
 
 Description
 -----------
-Computes the directrix of the parabola. the directrix is: - a line parallel to the 'y direction' of the local coordinate system of this parabola, and - located on the negative side of the axis of symmetry, at a distance from the apex which is equal to the focal length of this parabola. the directrix is returned as an axis (a gp_ax2d object), the origin of which is situated on the 'x axis' of this parabola.
+Computes the directrix of the parabola. The directrix is: - a line parallel to the 'Y Direction' of the local coordinate system of this parabola, and - located on the negative side of the axis of symmetry, at a distance from the apex which is equal to the focal length of this parabola. The directrix is returned as an axis (a gp_Ax2d object), the origin of which is situated on the 'X Axis' of this parabola.
 ") Directrix;
 		gp_Ax2d Directrix();
 
@@ -14699,7 +14699,7 @@ gp_Ax2d
 
 Description
 -----------
-Returns the symmetry axis of the parabola. the 'location' point of this axis is the vertex of the parabola.
+Returns the symmetry axis of the parabola. The 'Location' point of this axis is the vertex of the parabola.
 ") MirrorAxis;
 		gp_Ax2d MirrorAxis();
 
@@ -14717,7 +14717,7 @@ gp_Parab2d
 
 Description
 -----------
-Performs the symmetrical transformation of a parabola with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a parabola with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Parab2d Mirrored(const gp_Pnt2d & theP);
 
@@ -14774,7 +14774,7 @@ gp_Parab2d
 
 Description
 -----------
-Reverses the orientation of the local coordinate system of this parabola (the 'y direction' is reversed). therefore, the implicit orientation of this parabola is reversed. note: - reverse assigns the result to this parabola, while - reversed creates a new one.
+Reverses the orientation of the local coordinate system of this parabola (the 'Y Direction' is reversed). Therefore, the implicit orientation of this parabola is reversed. Note: - Reverse assigns the result to this parabola, while - Reversed creates a new one.
 ") Reversed;
 		gp_Parab2d Reversed();
 
@@ -14812,7 +14812,7 @@ gp_Parab2d
 
 Description
 -----------
-Rotates a parabola. thep is the center of the rotation. theang is the angular value of the rotation in radians.
+Rotates a parabola. theP is the center of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Parab2d Rotated(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -14850,7 +14850,7 @@ gp_Parab2d
 
 Description
 -----------
-Scales a parabola. thes is the scaling value. if thes is negative the direction of the symmetry axis 'xaxis' is reversed and the direction of the 'yaxis' too.
+Scales a parabola. theS is the scaling value. If theS is negative the direction of the symmetry axis 'XAxis' is reversed and the direction of the 'YAxis' too.
 ") Scaled;
 		gp_Parab2d Scaled(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -14868,7 +14868,7 @@ None
 
 Description
 -----------
-Changes the local coordinate system of the parabola. the 'location' point of a becomes the vertex of the parabola.
+Changes the local coordinate system of the parabola. The 'Location' point of A becomes the vertex of the parabola.
 ") SetAxis;
 		void SetAxis(const gp_Ax22d & theA);
 
@@ -14886,7 +14886,7 @@ None
 
 Description
 -----------
-Changes the focal distance of the parabola warnings: it is possible to have thefocal = 0. raises constructionerror if thefocal < 0.0.
+Changes the focal distance of the parabola Warnings: It is possible to have theFocal = 0. Raises ConstructionError if theFocal < 0.0.
 ") SetFocal;
 		void SetFocal(const Standard_Real theFocal);
 
@@ -14904,7 +14904,7 @@ None
 
 Description
 -----------
-Changes the 'location' point of the parabola. it is the vertex of the parabola.
+Changes the 'Location' point of the parabola. It is the vertex of the parabola.
 ") SetLocation;
 		void SetLocation(const gp_Pnt2d & theP);
 
@@ -14922,7 +14922,7 @@ None
 
 Description
 -----------
-Modifies this parabola, by redefining its local coordinate system so that its origin and 'x direction' become those of the axis ma. the 'y direction' of the local coordinate system is then recomputed. the orientation of the local coordinate system is not modified.
+Modifies this parabola, by redefining its local coordinate system so that its origin and 'X Direction' become those of the axis MA. The 'Y Direction' of the local coordinate system is then recomputed. The orientation of the local coordinate system is not modified.
 ") SetMirrorAxis;
 		void SetMirrorAxis(const gp_Ax2d & theA);
 
@@ -14958,7 +14958,7 @@ gp_Parab2d
 
 Description
 -----------
-Transforms an parabola with the transformation thet from class trsf2d.
+Transforms an parabola with the transformation theT from class Trsf2d.
 ") Transformed;
 		gp_Parab2d Transformed(const gp_Trsf2d & theT);
 
@@ -15013,7 +15013,7 @@ gp_Parab2d
 
 Description
 -----------
-Translates a parabola in the direction of the vectorthe thev. the magnitude of the translation is the vector's magnitude.
+Translates a parabola in the direction of the vectorthe theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Parab2d Translated(const gp_Vec2d & theV);
 
@@ -15032,7 +15032,7 @@ gp_Parab2d
 
 Description
 -----------
-Translates a parabola from the point thep1 to the point thep2.
+Translates a parabola from the point theP1 to the point theP2.
 ") Translated;
 		gp_Parab2d Translated(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -15077,7 +15077,7 @@ None
 
 Description
 -----------
-Creates a plane coincident with oxy plane of the reference coordinate system.
+Creates a plane coincident with OXY plane of the reference coordinate system.
 ") gp_Pln;
 		 gp_Pln();
 
@@ -15095,7 +15095,7 @@ None
 
 Description
 -----------
-The coordinate system of the plane is defined with the axis placement thea3. the 'direction' of thea3 defines the normal to the plane. the 'location' of thea3 defines the location (origin) of the plane. the 'xdirection' and 'ydirection' of thea3 define the 'xaxis' and the 'yaxis' of the plane used to parametrize the plane.
+The coordinate system of the plane is defined with the axis placement theA3. The 'Direction' of theA3 defines the normal to the plane. The 'Location' of theA3 defines the location (origin) of the plane. The 'XDirection' and 'YDirection' of theA3 define the 'XAxis' and the 'YAxis' of the plane used to parametrize the plane.
 ") gp_Pln;
 		 gp_Pln(const gp_Ax3 & theA3);
 
@@ -15114,7 +15114,7 @@ None
 
 Description
 -----------
-Creates a plane with the 'location' point <thep> and the normal direction <thev>.
+Creates a plane with the 'Location' point <theP> and the normal direction <theV>.
 ") gp_Pln;
 		 gp_Pln(const gp_Pnt & theP, const gp_Dir & theV);
 
@@ -15135,7 +15135,7 @@ None
 
 Description
 -----------
-Creates a plane from its cartesian equation: @code thea * x + theb * y + thec * z + thed = 0.0 @endcode raises constructionerror if sqrt (thea*thea + theb*theb + thec*thec) <= resolution from gp.
+Creates a plane from its cartesian equation: @code theA * X + theB * Y + theC * Z + theD = 0.0 @endcode Raises ConstructionError if Sqrt (theA*theA + theB*theB + theC*theC) <= Resolution from gp.
 ") gp_Pln;
 		 gp_Pln(const Standard_Real theA, const Standard_Real theB, const Standard_Real theC, const Standard_Real theD);
 
@@ -15148,7 +15148,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the plane's normal axis.
+Returns the plane's normal Axis.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -15168,7 +15168,7 @@ theD: float
 
 Description
 -----------
-Returns the coefficients of the plane's cartesian equation: @code thea * x + theb * y + thec * z + thed = 0. @endcode.
+Returns the coefficients of the plane's cartesian equation: @code theA * X + theB * Y + theC * Z + theD = 0. @endcode.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -15187,7 +15187,7 @@ bool
 
 Description
 -----------
-Returns true if this plane contains the point thep. this means that - the distance between point thep and this plane is less than or equal to thelineartolerance, or - line l is normal to the 'main axis' of the local coordinate system of this plane, within the tolerance angulartolerance, and the distance between the origin of line l and this plane is less than or equal to thelineartolerance.
+Returns true if this plane contains the point theP. This means that - the distance between point theP and this plane is less than or equal to theLinearTolerance, or - line L is normal to the 'main Axis' of the local coordinate system of this plane, within the tolerance AngularTolerance, and the distance between the origin of line L and this plane is less than or equal to theLinearTolerance.
 ") Contains;
 		Standard_Boolean Contains(const gp_Pnt & theP, const Standard_Real theLinearTolerance);
 
@@ -15207,7 +15207,7 @@ bool
 
 Description
 -----------
-Returns true if this plane contains the line thel. this means that - the distance between point p and this plane is less than or equal to lineartolerance, or - line thel is normal to the 'main axis' of the local coordinate system of this plane, within the tolerance theangulartolerance, and the distance between the origin of line thel and this plane is less than or equal to thelineartolerance.
+Returns true if this plane contains the line theL. This means that - the distance between point P and this plane is less than or equal to LinearTolerance, or - line theL is normal to the 'main Axis' of the local coordinate system of this plane, within the tolerance theAngularTolerance, and the distance between the origin of line theL and this plane is less than or equal to theLinearTolerance.
 ") Contains;
 		Standard_Boolean Contains(const gp_Lin & theL, const Standard_Real theLinearTolerance, const Standard_Real theAngularTolerance);
 
@@ -15220,7 +15220,7 @@ bool
 
 Description
 -----------
-Returns true if the ax3 is right handed.
+returns true if the Ax3 is right handed.
 ") Direct;
 		Standard_Boolean Direct();
 
@@ -15238,7 +15238,7 @@ float
 
 Description
 -----------
-Computes the distance between <self> and the point <thep>.
+Computes the distance between <self> and the point <theP>.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt & theP);
 
@@ -15256,7 +15256,7 @@ float
 
 Description
 -----------
-Computes the distance between <self> and the line <thel>.
+Computes the distance between <self> and the line <theL>.
 ") Distance;
 		Standard_Real Distance(const gp_Lin & theL);
 
@@ -15380,7 +15380,7 @@ gp_Pln
 
 Description
 -----------
-Performs the symmetrical transformation of a plane with respect to the point <thep> which is the center of the symmetry warnings: the normal direction to the plane is not changed. the 'xaxis' and the 'yaxis' are reversed.
+Performs the symmetrical transformation of a plane with respect to the point <theP> which is the center of the symmetry Warnings: The normal direction to the plane is not changed. The 'XAxis' and the 'YAxis' are reversed.
 ") Mirrored;
 		gp_Pln Mirrored(const gp_Pnt & theP);
 
@@ -15398,7 +15398,7 @@ gp_Pln
 
 Description
 -----------
-Performs the symmetrical transformation of a plane with respect to an axis placement which is the axis of the symmetry. the transformation is performed on the 'location' point, on the 'xaxis' and the 'yaxis'. the resulting normal direction is the cross product between the 'xdirection' and the 'ydirection' after transformation if the initial plane was right handed, else it is the opposite.
+Performs the symmetrical transformation of a plane with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation if the initial plane was right handed, else it is the opposite.
 ") Mirrored;
 		gp_Pln Mirrored(const gp_Ax1 & theA1);
 
@@ -15416,7 +15416,7 @@ gp_Pln
 
 Description
 -----------
-Performs the symmetrical transformation of a plane with respect to an axis placement. the axis placement <a2> locates the plane of the symmetry. the transformation is performed on the 'location' point, on the 'xaxis' and the 'yaxis'. the resulting normal direction is the cross product between the 'xdirection' and the 'ydirection' after transformation if the initial plane was right handed, else it is the opposite.
+Performs the symmetrical transformation of a plane with respect to an axis placement. The axis placement <A2> locates the plane of the symmetry. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation if the initial plane was right handed, else it is the opposite.
 ") Mirrored;
 		gp_Pln Mirrored(const gp_Ax2 & theA2);
 
@@ -15467,7 +15467,7 @@ gp_Pln
 
 Description
 -----------
-Rotates a plane. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+rotates a plane. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Pln Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -15505,7 +15505,7 @@ gp_Pln
 
 Description
 -----------
-Scales a plane. thes is the scaling value.
+Scales a plane. theS is the scaling value.
 ") Scaled;
 		gp_Pln Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -15523,7 +15523,7 @@ None
 
 Description
 -----------
-Modifies this plane, by redefining its local coordinate system so that - its origin and 'main direction' become those of the axis thea1 (the 'x direction' and 'y direction' are then recomputed). raises constructionerror if the thea1 is parallel to the 'xaxis' of the plane.
+Modifies this plane, by redefining its local coordinate system so that - its origin and 'main Direction' become those of the axis theA1 (the 'X Direction' and 'Y Direction' are then recomputed). Raises ConstructionError if the theA1 is parallel to the 'XAxis' of the plane.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -15577,7 +15577,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the point <thep>.
+Computes the square distance between <self> and the point <theP>.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Pnt & theP);
 
@@ -15595,7 +15595,7 @@ float
 
 Description
 -----------
-Computes the square distance between <self> and the line <thel>.
+Computes the square distance between <self> and the line <theL>.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_Lin & theL);
 
@@ -15649,7 +15649,7 @@ gp_Pln
 
 Description
 -----------
-Transforms a plane with the transformation thet from class trsf. the transformation is performed on the 'location' point, on the 'xaxis' and the 'yaxis'. the resulting normal direction is the cross product between the 'xdirection' and the 'ydirection' after transformation.
+Transforms a plane with the transformation theT from class Trsf. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 ") Transformed;
 		gp_Pln Transformed(const gp_Trsf & theT);
 
@@ -15704,7 +15704,7 @@ gp_Pln
 
 Description
 -----------
-Translates a plane in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a plane in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Pln Translated(const gp_Vec & theV);
 
@@ -15723,7 +15723,7 @@ gp_Pln
 
 Description
 -----------
-Translates a plane from the point thep1 to the point thep2.
+Translates a plane from the point theP1 to the point theP2.
 ") Translated;
 		gp_Pln Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -15736,7 +15736,7 @@ None
 
 Description
 -----------
-Reverses the u parametrization of the plane reversing the xaxis.
+Reverses the U parametrization of the plane reversing the XAxis.
 ") UReverse;
 		void UReverse();
 
@@ -15749,7 +15749,7 @@ None
 
 Description
 -----------
-Reverses the v parametrization of the plane reversing the yaxis.
+Reverses the V parametrization of the plane reversing the YAxis.
 ") VReverse;
 		void VReverse();
 
@@ -15762,7 +15762,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the x axis of the plane.
+Returns the X axis of the plane.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -15775,7 +15775,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the y axis of the plane.
+Returns the Y axis of the plane.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -15838,7 +15838,7 @@ None
 
 Description
 -----------
-Creates a point from a xyz object.
+Creates a point from a XYZ object.
 ") gp_Pnt;
 		 gp_Pnt(const gp_XYZ & theCoord);
 
@@ -15858,7 +15858,7 @@ None
 
 Description
 -----------
-Creates a point with its 3 cartesian's coordinates: thexp, theyp, thezp.
+Creates a point with its 3 cartesian's coordinates: theXp, theYp, theZp.
 ") gp_Pnt;
 		 gp_Pnt(const Standard_Real theXp, const Standard_Real theYp, const Standard_Real theZp);
 
@@ -15878,7 +15878,7 @@ None
 
 Description
 -----------
-Assigns the result of the following expression to this point (thealpha*this + thebeta*thep) / (thealpha + thebeta).
+Assigns the result of the following expression to this point (theAlpha*this + theBeta*theP) / (theAlpha + theBeta).
 ") BaryCenter;
 		void BaryCenter(const Standard_Real theAlpha, const gp_Pnt & theP, const Standard_Real theBeta);
 
@@ -15891,7 +15891,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the coordinates of this point. note: this syntax allows direct modification of the returned value.
+Returns the coordinates of this point. Note: This syntax allows direct modification of the returned value.
 ") ChangeCoord;
 		gp_XYZ ChangeCoord();
 
@@ -15909,7 +15909,7 @@ float
 
 Description
 -----------
-Returns the coordinate of corresponding to the value of theindex: theindex = 1 => x is returned theindex = 2 => y is returned theindex = 3 => z is returned raises outofrange if theindex != {1, 2, 3}. raised if theindex != {1, 2, 3}.
+Returns the coordinate of corresponding to the value of theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned theIndex = 3 => Z is returned Raises OutOfRange if theIndex != {1, 2, 3}. Raised if theIndex != {1, 2, 3}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -15928,7 +15928,7 @@ theZp: float
 
 Description
 -----------
-For this point gives its three coordinates thexp, theyp and thezp.
+For this point gives its three coordinates theXp, theYp and theZp.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -15941,7 +15941,7 @@ gp_XYZ
 
 Description
 -----------
-For this point, returns its three coordinates as a xyz object.
+For this point, returns its three coordinates as a XYZ object.
 ") Coord;
 		const gp_XYZ Coord();
 
@@ -16020,7 +16020,7 @@ bool
 
 Description
 -----------
-Comparison returns true if the distance between the two points is lower or equal to thelineartolerance.
+Comparison Returns True if the distance between the two points is lower or equal to theLinearTolerance.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Pnt & theOther, const Standard_Real theLinearTolerance);
 
@@ -16038,7 +16038,7 @@ None
 
 Description
 -----------
-Performs the symmetrical transformation of a point with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a point with respect to the point theP which is the center of the symmetry.
 ") Mirror;
 		void Mirror(const gp_Pnt & theP);
 
@@ -16110,7 +16110,7 @@ gp_Pnt
 
 Description
 -----------
-Performs the symmetrical transformation of a point with respect to a plane. the axis placement thea2 locates the plane of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a point with respect to a plane. The axis placement theA2 locates the plane of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Pnt Mirrored(const gp_Ax1 & theA1);
 
@@ -16128,7 +16128,7 @@ gp_Pnt
 
 Description
 -----------
-Rotates a point. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a point. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Mirrored;
 		gp_Pnt Mirrored(const gp_Ax2 & theA2);
 
@@ -16185,7 +16185,7 @@ None
 
 Description
 -----------
-Scales a point. thes is the scaling value.
+Scales a point. theS is the scaling value.
 ") Scale;
 		void Scale(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -16223,7 +16223,7 @@ None
 
 Description
 -----------
-Changes the coordinate of range theindex: theindex = 1 => x is modified theindex = 2 => y is modified theindex = 3 => z is modified raised if theindex != {1, 2, 3}.
+Changes the coordinate of range theIndex: theIndex = 1 => X is modified theIndex = 2 => Y is modified theIndex = 3 => Z is modified Raised if theIndex != {1, 2, 3}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -16243,7 +16243,7 @@ None
 
 Description
 -----------
-For this point, assigns the values thexp, theyp and thezp to its three coordinates.
+For this point, assigns the values theXp, theYp and theZp to its three coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXp, const Standard_Real theYp, const Standard_Real theZp);
 
@@ -16261,7 +16261,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this point.
+Assigns the given value to the X coordinate of this point.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -16279,7 +16279,7 @@ None
 
 Description
 -----------
-Assigns the three coordinates of thecoord to this point.
+Assigns the three coordinates of theCoord to this point.
 ") SetXYZ;
 		void SetXYZ(const gp_XYZ & theCoord);
 
@@ -16297,7 +16297,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this point.
+Assigns the given value to the Y coordinate of this point.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -16315,7 +16315,7 @@ None
 
 Description
 -----------
-Assigns the given value to the z coordinate of this point.
+Assigns the given value to the Z coordinate of this point.
 ") SetZ;
 		void SetZ(const Standard_Real theZ);
 
@@ -16351,7 +16351,7 @@ None
 
 Description
 -----------
-Transforms a point with the transformation t.
+Transforms a point with the transformation T.
 ") Transform;
 		void Transform(const gp_Trsf & theT);
 
@@ -16387,7 +16387,7 @@ None
 
 Description
 -----------
-Translates a point in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a point in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translate;
 		void Translate(const gp_Vec & theV);
 
@@ -16406,7 +16406,7 @@ None
 
 Description
 -----------
-Translates a point from the point thep1 to the point thep2.
+Translates a point from the point theP1 to the point theP2.
 ") Translate;
 		void Translate(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -16456,7 +16456,7 @@ float
 
 Description
 -----------
-For this point, returns its x coordinate.
+For this point, returns its X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -16469,7 +16469,7 @@ gp_XYZ
 
 Description
 -----------
-For this point, returns its three coordinates as a xyz object.
+For this point, returns its three coordinates as a XYZ object.
 ") XYZ;
 		const gp_XYZ XYZ();
 
@@ -16482,7 +16482,7 @@ float
 
 Description
 -----------
-For this point, returns its y coordinate.
+For this point, returns its Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -16495,7 +16495,7 @@ float
 
 Description
 -----------
-For this point, returns its z coordinate.
+For this point, returns its Z coordinate.
 ") Z;
 		Standard_Real Z();
 
@@ -16577,7 +16577,7 @@ None
 
 Description
 -----------
-Creates a point with its 2 cartesian's coordinates: thexp, theyp.
+Creates a point with its 2 cartesian's coordinates: theXp, theYp.
 ") gp_Pnt2d;
 		 gp_Pnt2d(const Standard_Real theXp, const Standard_Real theYp);
 
@@ -16590,7 +16590,7 @@ gp_XY
 
 Description
 -----------
-Returns the coordinates of this point. note: this syntax allows direct modification of the returned value.
+Returns the coordinates of this point. Note: This syntax allows direct modification of the returned value.
 ") ChangeCoord;
 		gp_XY ChangeCoord();
 
@@ -16608,7 +16608,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned raises outofrange if theindex != {1, 2}.
+Returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned Raises OutOfRange if theIndex != {1, 2}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -16697,7 +16697,7 @@ bool
 
 Description
 -----------
-Comparison returns true if the distance between the two points is lower or equal to thelineartolerance.
+Comparison Returns True if the distance between the two points is lower or equal to theLinearTolerance.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Pnt2d & theOther, const Standard_Real theLinearTolerance);
 
@@ -16715,7 +16715,7 @@ None
 
 Description
 -----------
-Performs the symmetrical transformation of a point with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a point with respect to the point theP which is the center of the symmetry.
 ") Mirror;
 		void Mirror(const gp_Pnt2d & theP);
 
@@ -16788,7 +16788,7 @@ None
 
 Description
 -----------
-Rotates a point. thea1 is the axis of the rotation. ang is the angular value of the rotation in radians.
+Rotates a point. theA1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotate;
 		void Rotate(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -16826,7 +16826,7 @@ None
 
 Description
 -----------
-Scales a point. thes is the scaling value.
+Scales a point. theS is the scaling value.
 ") Scale;
 		void Scale(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -16864,7 +16864,7 @@ None
 
 Description
 -----------
-Assigns the value xi to the coordinate that corresponds to theindex: theindex = 1 => x is modified theindex = 2 => y is modified raises outofrange if theindex != {1, 2}.
+Assigns the value Xi to the coordinate that corresponds to theIndex: theIndex = 1 => X is modified theIndex = 2 => Y is modified Raises OutOfRange if theIndex != {1, 2}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -16883,7 +16883,7 @@ None
 
 Description
 -----------
-For this point, assigns the values thexp and theyp to its two coordinates.
+For this point, assigns the values theXp and theYp to its two coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXp, const Standard_Real theYp);
 
@@ -16901,7 +16901,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this point.
+Assigns the given value to the X coordinate of this point.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -16919,7 +16919,7 @@ None
 
 Description
 -----------
-Assigns the two coordinates of coord to this point.
+Assigns the two coordinates of Coord to this point.
 ") SetXY;
 		void SetXY(const gp_XY & theCoord);
 
@@ -16937,7 +16937,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this point.
+Assigns the given value to the Y coordinate of this point.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -16973,7 +16973,7 @@ None
 
 Description
 -----------
-Transforms a point with the transformation thet.
+Transforms a point with the transformation theT.
 ") Transform;
 		void Transform(const gp_Trsf2d & theT);
 
@@ -17009,7 +17009,7 @@ None
 
 Description
 -----------
-Translates a point in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a point in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translate;
 		void Translate(const gp_Vec2d & theV);
 
@@ -17028,7 +17028,7 @@ None
 
 Description
 -----------
-Translates a point from the point thep1 to the point thep2.
+Translates a point from the point theP1 to the point theP2.
 ") Translate;
 		void Translate(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -17078,7 +17078,7 @@ float
 
 Description
 -----------
-For this point, returns its x coordinate.
+For this point, returns its X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -17104,7 +17104,7 @@ float
 
 Description
 -----------
-For this point, returns its y coordinate.
+For this point, returns its Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -17189,7 +17189,7 @@ None
 
 Description
 -----------
-Creates quaternion representing shortest-arc rotation operator producing vector thevecto from vector thevecfrom.
+Creates quaternion representing shortest-arc rotation operator producing vector theVecTo from vector theVecFrom.
 ") gp_Quaternion;
 		 gp_Quaternion(const gp_Vec & theVecFrom, const gp_Vec & theVecTo);
 
@@ -17209,7 +17209,7 @@ None
 
 Description
 -----------
-Creates quaternion representing shortest-arc rotation operator producing vector thevecto from vector thevecfrom. additional vector thehelpcrossvec defines preferred direction for rotation and is used when thevecto and thevecfrom are directed oppositely.
+Creates quaternion representing shortest-arc rotation operator producing vector theVecTo from vector theVecFrom. Additional vector theHelpCrossVec defines preferred direction for rotation and is used when theVecTo and theVecFrom are directed oppositely.
 ") gp_Quaternion;
 		 gp_Quaternion(const gp_Vec & theVecFrom, const gp_Vec & theVecTo, const gp_Vec & theHelpCrossVec);
 
@@ -17228,7 +17228,7 @@ None
 
 Description
 -----------
-Creates quaternion representing rotation on angle theangle around vector theaxis.
+Creates quaternion representing rotation on angle theAngle around vector theAxis.
 ") gp_Quaternion;
 		 gp_Quaternion(const gp_Vec & theAxis, const Standard_Real theAngle);
 
@@ -17300,7 +17300,7 @@ float
 
 Description
 -----------
-Computes inner product / scalar product / dot.
+Computes inner product / scalar product / Dot.
 ") Dot;
 		Standard_Real Dot(const gp_Quaternion & theOther);
 
@@ -17320,7 +17320,7 @@ theGamma: float
 
 Description
 -----------
-Returns euler angles describing current rotation.
+Returns Euler angles describing current rotation.
 ") GetEulerAngles;
 		void GetEulerAngles(const gp_EulerSequence theOrder, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -17346,7 +17346,7 @@ float
 
 Description
 -----------
-Return rotation angle from -pi to pi.
+Return rotation angle from -PI to PI.
 ") GetRotationAngle;
 		Standard_Real GetRotationAngle();
 
@@ -17364,7 +17364,7 @@ theAngle: float
 
 Description
 -----------
-Convert a quaternion to axis+angle representation, preserve the axis direction and angle from -pi to +pi.
+Convert a quaternion to Axis+Angle representation, preserve the axis direction and angle from -PI to +PI.
 ") GetVectorAndAngle;
 		void GetVectorAndAngle(gp_Vec & theAxis, Standard_Real &OutValue);
 
@@ -17426,7 +17426,7 @@ gp_Quaternion
 
 Description
 -----------
-Multiply function - work the same as matrices multiplying. @code qq' = (cross(v,v') + wv' + w'v, ww' - dot(v,v')) @endcode result is rotation combination: q' than q (here q=this, q'=theq). notices that: @code qq' != q'q; qq^-1 = q; @endcode.
+Multiply function - work the same as Matrices multiplying. @code qq' = (cross(v,v') + wv' + w'v, ww' - dot(v,v')) @endcode Result is rotation combination: q' than q (here q=this, q'=theQ). Notices that: @code qq' != q'q; qq^-1 = q; @endcode.
 ") Multiplied;
 		gp_Quaternion Multiplied(const gp_Quaternion & theOther);
 
@@ -17475,7 +17475,7 @@ gp_Quaternion
 
 Description
 -----------
-Returns quaternion with all components negated. note that this operation does not affect neither rotation operator defined by quaternion nor its norm.
+Returns quaternion with all components negated. Note that this operation does not affect neither rotation operator defined by quaternion nor its norm.
 ") Negated;
 		gp_Quaternion Negated();
 
@@ -17501,7 +17501,7 @@ None
 
 Description
 -----------
-Scale quaternion that its norm goes to 1. the appearing of 0 magnitude or near is a error, so we can be sure that can divide by magnitude.
+Scale quaternion that its norm goes to 1. The appearing of 0 magnitude or near is a error, so we can be sure that can divide by magnitude.
 ") Normalize;
 		void Normalize();
 
@@ -17558,7 +17558,7 @@ None
 
 Description
 -----------
-Scale all components by quaternion by thescale; note that rotation is not changed by this operation (except 0-scaling).
+Scale all components by quaternion by theScale; note that rotation is not changed by this operation (except 0-scaling).
 ") Scale;
 		void Scale(const Standard_Real theScale);
 
@@ -17636,7 +17636,7 @@ None
 
 Description
 -----------
-Create a unit quaternion representing rotation defined by generalized euler angles.
+Create a unit quaternion representing rotation defined by generalized Euler angles.
 ") SetEulerAngles;
 		void SetEulerAngles(const gp_EulerSequence theOrder, const Standard_Real theAlpha, const Standard_Real theBeta, const Standard_Real theGamma);
 
@@ -17667,7 +17667,7 @@ None
 
 Description
 -----------
-Create a unit quaternion by rotation matrix matrix must contain only rotation (not scale or shear) //! for numerical stability we find first the greatest component of quaternion and than search others from this one.
+Create a unit quaternion by rotation matrix matrix must contain only rotation (not scale or shear) //! For numerical stability we find first the greatest component of quaternion and than search others from this one.
 ") SetMatrix;
 		void SetMatrix(const gp_Mat & theMat);
 
@@ -17686,7 +17686,7 @@ None
 
 Description
 -----------
-Sets quaternion to shortest-arc rotation producing vector thevecto from vector thevecfrom. if vectors thevecfrom and thevecto are opposite then rotation axis is computed as thevecfrom ^ (1,0,0) or thevecfrom ^ (0,0,1).
+Sets quaternion to shortest-arc rotation producing vector theVecTo from vector theVecFrom. If vectors theVecFrom and theVecTo are opposite then rotation axis is computed as theVecFrom ^ (1,0,0) or theVecFrom ^ (0,0,1).
 ") SetRotation;
 		void SetRotation(const gp_Vec & theVecFrom, const gp_Vec & theVecTo);
 
@@ -17706,7 +17706,7 @@ None
 
 Description
 -----------
-Sets quaternion to shortest-arc rotation producing vector thevecto from vector thevecfrom. if vectors thevecfrom and thevecto are opposite then rotation axis is computed as thevecfrom ^ thehelpcrossvec.
+Sets quaternion to shortest-arc rotation producing vector theVecTo from vector theVecFrom. If vectors theVecFrom and theVecTo are opposite then rotation axis is computed as theVecFrom ^ theHelpCrossVec.
 ") SetRotation;
 		void SetRotation(const gp_Vec & theVecFrom, const gp_Vec & theVecTo, const gp_Vec & theHelpCrossVec);
 
@@ -17725,7 +17725,7 @@ None
 
 Description
 -----------
-Create a unit quaternion from axis+angle representation.
+Create a unit quaternion from Axis+Angle representation.
 ") SetVectorAndAngle;
 		void SetVectorAndAngle(const gp_Vec & theAxis, const Standard_Real theAngle);
 
@@ -17751,7 +17751,7 @@ None
 
 Description
 -----------
-Stabilize quaternion length within 1 - 1/4. this operation is a lot faster than normalization and preserve length goes to 0 or infinity.
+Stabilize quaternion length within 1 - 1/4. This operation is a lot faster than normalization and preserve length goes to 0 or infinity.
 ") StabilizeLength;
 		void StabilizeLength();
 
@@ -18069,7 +18069,7 @@ None
 
 Description
 -----------
-Initialize the tool with start and end values.
+Initialize the tool with Start and End values.
 ") Init;
 		void Init(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd);
 
@@ -18088,7 +18088,7 @@ None
 
 Description
 -----------
-Initialize the tool with start and end unit quaternions.
+Initialize the tool with Start and End unit quaternions.
 ") InitFromUnit;
 		void InitFromUnit(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd);
 
@@ -18108,7 +18108,10 @@ gp_Quaternion
 
 Description
 -----------
-Compute interpolated quaternion between two quaternions. @param thestart first quaternion @param theend second quaternion @param thet normalized interpolation coefficient within 0..1 range, with 0 pointing to thestart and 1 to theend.
+Compute interpolated quaternion between two quaternions. 
+Parameter theStart first quaternion 
+Parameter theEnd second quaternion 
+Parameter theT normalized interpolation coefficient within 0..1 range, with 0 pointing to theStart and 1 to theEnd.
 ") Interpolate;
 		static gp_Quaternion Interpolate(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd, Standard_Real theT);
 
@@ -18127,7 +18130,7 @@ None
 
 Description
 -----------
-Set interpolated quaternion for thet position (from 0.0 to 1.0).
+Set interpolated quaternion for theT position (from 0.0 to 1.0).
 ") Interpolate;
 		void Interpolate(Standard_Real theT, gp_Quaternion & theResultQ);
 
@@ -18210,7 +18213,7 @@ None
 
 Description
 -----------
-Initialize the tool with start and end values.
+Initialize the tool with Start and End values.
 ") Init;
 		void Init(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd);
 
@@ -18229,7 +18232,7 @@ None
 
 Description
 -----------
-Initialize the tool with start and end unit quaternions.
+Initialize the tool with Start and End unit quaternions.
 ") InitFromUnit;
 		void InitFromUnit(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd);
 
@@ -18249,7 +18252,10 @@ gp_Quaternion
 
 Description
 -----------
-Compute interpolated quaternion between two quaternions. @param thestart first quaternion @param theend second quaternion @param thet normalized interpolation coefficient within 0..1 range, with 0 pointing to thestart and 1 to theend.
+Compute interpolated quaternion between two quaternions. 
+Parameter theStart first quaternion 
+Parameter theEnd second quaternion 
+Parameter theT normalized interpolation coefficient within 0..1 range, with 0 pointing to theStart and 1 to theEnd.
 ") Interpolate;
 		static gp_Quaternion Interpolate(const gp_Quaternion & theQStart, const gp_Quaternion & theQEnd, Standard_Real theT);
 
@@ -18268,7 +18274,7 @@ None
 
 Description
 -----------
-Set interpolated quaternion for thet position (from 0.0 to 1.0).
+Set interpolated quaternion for theT position (from 0.0 to 1.0).
 ") Interpolate;
 		void Interpolate(Standard_Real theT, gp_Quaternion & theResultQ);
 
@@ -18332,7 +18338,7 @@ None
 
 Description
 -----------
-Constructs a sphere with radius theradius, centered on the origin of thea3. thea3 is the local coordinate system of the sphere. warnings: it is not forbidden to create a sphere with null radius. raises constructionerror if theradius < 0.0.
+Constructs a sphere with radius theRadius, centered on the origin of theA3. theA3 is the local coordinate system of the sphere. Warnings: It is not forbidden to create a sphere with null radius. Raises ConstructionError if theRadius < 0.0.
 ") gp_Sphere;
 		 gp_Sphere(const gp_Ax3 & theA3, const Standard_Real theRadius);
 
@@ -18371,7 +18377,7 @@ theD: float
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system: @code thea1.x**2 + thea2.y**2 + thea3.z**2 + 2.(theb1.x.y + theb2.x.z + theb3.y.z) + 2.(thec1.x + thec2.y + thec3.z) + thed = 0.0 @endcode.
+Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system: @code theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) + 2.(theC1.X + theC2.Y + theC3.Z) + theD = 0.0 @endcode.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -18397,7 +18403,7 @@ gp_Pnt
 
 Description
 -----------
---- purpose ; returns the center of the sphere.
+--- Purpose ; Returns the center of the sphere.
 ") Location;
 		const gp_Pnt Location();
 
@@ -18469,7 +18475,7 @@ gp_Sphere
 
 Description
 -----------
-Performs the symmetrical transformation of a sphere with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a sphere with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Sphere Mirrored(const gp_Pnt & theP);
 
@@ -18505,7 +18511,7 @@ gp_Sphere
 
 Description
 -----------
-Performs the symmetrical transformation of a sphere with respect to a plane. the axis placement thea2 locates the plane of the of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a sphere with respect to a plane. The axis placement theA2 locates the plane of the of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Sphere Mirrored(const gp_Ax2 & theA2);
 
@@ -18569,7 +18575,7 @@ gp_Sphere
 
 Description
 -----------
-Rotates a sphere. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a sphere. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Sphere Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -18607,7 +18613,7 @@ gp_Sphere
 
 Description
 -----------
-Scales a sphere. thes is the scaling value. the absolute value of s is used to scale the sphere.
+Scales a sphere. theS is the scaling value. The absolute value of S is used to scale the sphere.
 ") Scaled;
 		gp_Sphere Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -18661,7 +18667,7 @@ None
 
 Description
 -----------
-Assigns ther the radius of the sphere. warnings: it is not forbidden to create a sphere with null radius. raises constructionerror if ther < 0.0.
+Assigns theR the radius of the Sphere. Warnings: It is not forbidden to create a sphere with null radius. Raises ConstructionError if theR < 0.0.
 ") SetRadius;
 		void SetRadius(const Standard_Real theR);
 
@@ -18697,7 +18703,7 @@ gp_Sphere
 
 Description
 -----------
-Transforms a sphere with the transformation thet from class trsf.
+Transforms a sphere with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Sphere Transformed(const gp_Trsf & theT);
 
@@ -18752,7 +18758,7 @@ gp_Sphere
 
 Description
 -----------
-Translates a sphere in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a sphere in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Sphere Translated(const gp_Vec & theV);
 
@@ -18771,7 +18777,7 @@ gp_Sphere
 
 Description
 -----------
-Translates a sphere from the point thep1 to the point thep2.
+Translates a sphere from the point theP1 to the point theP2.
 ") Translated;
 		gp_Sphere Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -18784,7 +18790,7 @@ None
 
 Description
 -----------
-Reverses the u parametrization of the sphere reversing the yaxis.
+Reverses the U parametrization of the sphere reversing the YAxis.
 ") UReverse;
 		void UReverse();
 
@@ -18797,7 +18803,7 @@ None
 
 Description
 -----------
-Reverses the v parametrization of the sphere reversing the zaxis.
+Reverses the V parametrization of the sphere reversing the ZAxis.
 ") VReverse;
 		void VReverse();
 
@@ -18823,7 +18829,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis x of the sphere.
+Returns the axis X of the sphere.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -18836,7 +18842,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis y of the sphere.
+Returns the axis Y of the sphere.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -18881,7 +18887,7 @@ None
 
 Description
 -----------
-Creates an indefinite torus.
+creates an indefinite Torus.
 ") gp_Torus;
 		 gp_Torus();
 
@@ -18901,7 +18907,7 @@ None
 
 Description
 -----------
-A torus centered on the origin of coordinate system thea3, with major radius themajorradius and minor radius theminorradius, and with the reference plane defined by the origin, the 'x direction' and the 'y direction' of thea3. warnings: it is not forbidden to create a torus with themajorradius = theminorradius = 0.0 raises constructionerror if theminorradius < 0.0 or if themajorradius < 0.0.
+a torus centered on the origin of coordinate system theA3, with major radius theMajorRadius and minor radius theMinorRadius, and with the reference plane defined by the origin, the 'X Direction' and the 'Y Direction' of theA3. Warnings: It is not forbidden to create a torus with theMajorRadius = theMinorRadius = 0.0 Raises ConstructionError if theMinorRadius < 0.0 or if theMajorRadius < 0.0.
 ") gp_Torus;
 		 gp_Torus(const gp_Ax3 & theA3, const Standard_Real theMajorRadius, const Standard_Real theMinorRadius);
 
@@ -18927,7 +18933,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the symmetry axis of the torus.
+returns the symmetry axis of the torus.
 ") Axis;
 		const gp_Ax1 Axis();
 
@@ -18945,7 +18951,7 @@ None
 
 Description
 -----------
-Computes the coefficients of the implicit equation of the surface in the absolute cartesian coordinate system: @code coef(1) * x^4 + coef(2) * y^4 + coef(3) * z^4 + coef(4) * x^3 * y + coef(5) * x^3 * z + coef(6) * y^3 * x + coef(7) * y^3 * z + coef(8) * z^3 * x + coef(9) * z^3 * y + coef(10) * x^2 * y^2 + coef(11) * x^2 * z^2 + coef(12) * y^2 * z^2 + coef(13) * x^2 * y * z + coef(14) * x * y^2 * z + coef(15) * x * y * z^2 + coef(16) * x^3 + coef(17) * y^3 + coef(18) * z^3 + coef(19) * x^2 * y + coef(20) * x^2 * z + coef(21) * y^2 * x + coef(22) * y^2 * z + coef(23) * z^2 * x + coef(24) * z^2 * y + coef(25) * x * y * z + coef(26) * x^2 + coef(27) * y^2 + coef(28) * z^2 + coef(29) * x * y + coef(30) * x * z + coef(31) * y * z + coef(32) * x + coef(33) * y + coef(34) * z + coef(35) = 0.0 @endcode raises dimensionerror if the length of thecoef is lower than 35.
+Computes the coefficients of the implicit equation of the surface in the absolute Cartesian coordinate system: @code Coef(1) * X^4 + Coef(2) * Y^4 + Coef(3) * Z^4 + Coef(4) * X^3 * Y + Coef(5) * X^3 * Z + Coef(6) * Y^3 * X + Coef(7) * Y^3 * Z + Coef(8) * Z^3 * X + Coef(9) * Z^3 * Y + Coef(10) * X^2 * Y^2 + Coef(11) * X^2 * Z^2 + Coef(12) * Y^2 * Z^2 + Coef(13) * X^2 * Y * Z + Coef(14) * X * Y^2 * Z + Coef(15) * X * Y * Z^2 + Coef(16) * X^3 + Coef(17) * Y^3 + Coef(18) * Z^3 + Coef(19) * X^2 * Y + Coef(20) * X^2 * Z + Coef(21) * Y^2 * X + Coef(22) * Y^2 * Z + Coef(23) * Z^2 * X + Coef(24) * Z^2 * Y + Coef(25) * X * Y * Z + Coef(26) * X^2 + Coef(27) * Y^2 + Coef(28) * Z^2 + Coef(29) * X * Y + Coef(30) * X * Z + Coef(31) * Y * Z + Coef(32) * X + Coef(33) * Y + Coef(34) * Z + Coef(35) = 0.0 @endcode Raises DimensionError if the length of theCoef is lower than 35.
 ") Coefficients;
 		void Coefficients(TColStd_Array1OfReal & theCoef);
 
@@ -18958,7 +18964,7 @@ bool
 
 Description
 -----------
-Returns true if the ax3, the local coordinate system of this torus, is right handed.
+returns true if the Ax3, the local coordinate system of this torus, is right handed.
 ") Direct;
 		Standard_Boolean Direct();
 
@@ -18971,7 +18977,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the torus's location.
+Returns the Torus's location.
 ") Location;
 		const gp_Pnt Location();
 
@@ -18984,7 +18990,7 @@ float
 
 Description
 -----------
-Returns the major radius of the torus.
+returns the major radius of the torus.
 ") MajorRadius;
 		Standard_Real MajorRadius();
 
@@ -18997,7 +19003,7 @@ float
 
 Description
 -----------
-Returns the minor radius of the torus.
+returns the minor radius of the torus.
 ") MinorRadius;
 		Standard_Real MinorRadius();
 
@@ -19069,7 +19075,7 @@ gp_Torus
 
 Description
 -----------
-Performs the symmetrical transformation of a torus with respect to the point thep which is the center of the symmetry.
+Performs the symmetrical transformation of a torus with respect to the point theP which is the center of the symmetry.
 ") Mirrored;
 		gp_Torus Mirrored(const gp_Pnt & theP);
 
@@ -19105,7 +19111,7 @@ gp_Torus
 
 Description
 -----------
-Performs the symmetrical transformation of a torus with respect to a plane. the axis placement thea2 locates the plane of the of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a torus with respect to a plane. The axis placement theA2 locates the plane of the of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Torus Mirrored(const gp_Ax2 & theA2);
 
@@ -19156,7 +19162,7 @@ gp_Torus
 
 Description
 -----------
-Rotates a torus. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a torus. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Torus Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -19194,7 +19200,7 @@ gp_Torus
 
 Description
 -----------
-Scales a torus. s is the scaling value. the absolute value of s is used to scale the torus.
+Scales a torus. S is the scaling value. The absolute value of S is used to scale the torus.
 ") Scaled;
 		gp_Torus Scaled(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -19212,7 +19218,7 @@ None
 
 Description
 -----------
-Modifies this torus, by redefining its local coordinate system so that: - its origin and 'main direction' become those of the axis thea1 (the 'x direction' and 'y direction' are then recomputed). raises constructionerror if the direction of thea1 is parallel to the 'xdirection' of the coordinate system of the toroidal surface.
+Modifies this torus, by redefining its local coordinate system so that: - its origin and 'main Direction' become those of the axis theA1 (the 'X Direction' and 'Y Direction' are then recomputed). Raises ConstructionError if the direction of theA1 is parallel to the 'XDirection' of the coordinate system of the toroidal surface.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theA1);
 
@@ -19248,7 +19254,7 @@ None
 
 Description
 -----------
-Assigns value to the major radius of this torus. raises constructionerror if themajorradius - minorradius <= resolution().
+Assigns value to the major radius of this torus. Raises ConstructionError if theMajorRadius - MinorRadius <= Resolution().
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real theMajorRadius);
 
@@ -19266,7 +19272,7 @@ None
 
 Description
 -----------
-Assigns value to the minor radius of this torus. raises constructionerror if theminorradius < 0.0 or if majorradius - theminorradius <= resolution from gp.
+Assigns value to the minor radius of this torus. Raises ConstructionError if theMinorRadius < 0.0 or if MajorRadius - theMinorRadius <= Resolution from gp.
 ") SetMinorRadius;
 		void SetMinorRadius(const Standard_Real theMinorRadius);
 
@@ -19320,7 +19326,7 @@ gp_Torus
 
 Description
 -----------
-Transforms a torus with the transformation thet from class trsf.
+Transforms a torus with the transformation theT from class Trsf.
 ") Transformed;
 		gp_Torus Transformed(const gp_Trsf & theT);
 
@@ -19375,7 +19381,7 @@ gp_Torus
 
 Description
 -----------
-Translates a torus in the direction of the vector thev. the magnitude of the translation is the vector's magnitude.
+Translates a torus in the direction of the vector theV. The magnitude of the translation is the vector's magnitude.
 ") Translated;
 		gp_Torus Translated(const gp_Vec & theV);
 
@@ -19394,7 +19400,7 @@ gp_Torus
 
 Description
 -----------
-Translates a torus from the point thep1 to the point thep2.
+Translates a torus from the point theP1 to the point theP2.
 ") Translated;
 		gp_Torus Translated(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -19407,7 +19413,7 @@ None
 
 Description
 -----------
-Reverses the u parametrization of the torus reversing the yaxis.
+Reverses the U parametrization of the torus reversing the YAxis.
 ") UReverse;
 		void UReverse();
 
@@ -19420,7 +19426,7 @@ None
 
 Description
 -----------
-Reverses the v parametrization of the torus reversing the zaxis.
+Reverses the V parametrization of the torus reversing the ZAxis.
 ") VReverse;
 		void VReverse();
 
@@ -19446,7 +19452,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis x of the torus.
+returns the axis X of the torus.
 ") XAxis;
 		gp_Ax1 XAxis();
 
@@ -19459,7 +19465,7 @@ gp_Ax1
 
 Description
 -----------
-Returns the axis y of the torus.
+returns the axis Y of the torus.
 ") YAxis;
 		gp_Ax1 YAxis();
 
@@ -19522,7 +19528,7 @@ None
 
 Description
 -----------
-Creates a 3d transformation from the 2d transformation thet. the resulting transformation has a homogeneous vectorial part, v3, and a translation part, t3, built from thet: a11 a12 0 a13 v3 = a21 a22 0 t3 = a23 0 0 1. 0 it also has the same scale factor as thet. this guarantees (by projection) that the transformation which would be performed by thet in a plane (2d space) is performed by the resulting transformation in the xoy plane of the 3d space, (i.e. in the plane defined by the origin (0., 0., 0.) and the vectors dx (1., 0., 0.), and dy (0., 1., 0.)). the scale factor is applied to the entire space.
+Creates a 3D transformation from the 2D transformation theT. The resulting transformation has a homogeneous vectorial part, V3, and a translation part, T3, built from theT: a11 a12 0 a13 V3 = a21 a22 0 T3 = a23 0 0 1. 0 It also has the same scale factor as theT. This guarantees (by projection) that the transformation which would be performed by theT in a plane (2D space) is performed by the resulting transformation in the xOy plane of the 3D space, (i.e. in the plane defined by the origin (0., 0., 0.) and the vectors DX (1., 0., 0.), and DY (0., 1., 0.)). The scale factor is applied to the entire space.
 ") gp_Trsf;
 		 gp_Trsf(const gp_Trsf2d & theT);
 
@@ -19556,7 +19562,7 @@ gp_TrsfForm
 
 Description
 -----------
-Returns the nature of the transformation. it can be: an identity transformation, a rotation, a translation, a mirror transformation (relative to a point, an axis or a plane), a scaling transformation, or a compound transformation.
+Returns the nature of the transformation. It can be: an identity transformation, a rotation, a translation, a mirror transformation (relative to a point, an axis or a plane), a scaling transformation, or a compound transformation.
 ") Form;
 		gp_TrsfForm Form();
 
@@ -19574,7 +19580,7 @@ theAngle: float
 
 Description
 -----------
-Returns the boolean true if there is non-zero rotation. in the presence of rotation, the output parameters store the axis and the angle of rotation. the method always returns positive value 'theangle', i.e., 0. < theangle <= pi. note that this rotation is defined only by the vectorial part of the transformation; generally you would need to check also the translational part to obtain the axis (gp_ax1) of rotation.
+Returns the boolean True if there is non-zero rotation. In the presence of rotation, the output parameters store the axis and the angle of rotation. The method always returns positive value 'theAngle', i.e., 0. < theAngle <= PI. Note that this rotation is defined only by the vectorial part of the transformation; generally you would need to check also the translational part to obtain the axis (gp_Ax1) of rotation.
 ") GetRotation;
 		Standard_Boolean GetRotation(gp_XYZ & theAxis, Standard_Real &OutValue);
 
@@ -19600,7 +19606,7 @@ gp_Mat
 
 Description
 -----------
-Computes the homogeneous vectorial part of the transformation. it is a 3*3 matrix which doesn't include the scale factor. in other words, the vectorial part of this transformation is equal to its homogeneous vectorial part, multiplied by the scale factor. the coefficients of this matrix must be multiplied by the scale factor to obtain the coefficients of the transformation.
+Computes the homogeneous vectorial part of the transformation. It is a 3*3 matrix which doesn't include the scale factor. In other words, the vectorial part of this transformation is equal to its homogeneous vectorial part, multiplied by the scale factor. The coefficients of this matrix must be multiplied by the scale factor to obtain the coefficients of the transformation.
 ") HVectorialPart;
 		const gp_Mat HVectorialPart();
 
@@ -19647,7 +19653,7 @@ gp_Trsf
 
 Description
 -----------
-Computes the reverse transformation raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to resolution from package gp. computes the transformation composed with t and <self>. in a c++ implementation you can also write tcomposed = <self> * t. example: @code gp_trsf t1, t2, tcomp; ............... tcomp = t2.multiplied(t1); // or (tcomp = t2 * t1) gp_pnt p1(10.,3.,4.); gp_pnt p2 = p1.transformed(tcomp); // using tcomp gp_pnt p3 = p1.transformed(t1); // using t1 then t2 p3.transform(t2); // p3 = p2 !!! @endcode.
+Computes the reverse transformation Raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to Resolution from package gp. Computes the transformation composed with T and <self>. In a C++ implementation you can also write Tcomposed = <self> * T. Example: @code gp_Trsf T1, T2, Tcomp; ............... Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) gp_Pnt P1(10.,3.,4.); gp_Pnt P2 = P1.Transformed(Tcomp); // using Tcomp gp_Pnt P3 = P1.Transformed(T1); // using T1 then T2 P3.Transform(T2); // P3 = P2 !!! @endcode.
 ") Inverted;
 		gp_Trsf Inverted();
 
@@ -19696,7 +19702,7 @@ None
 
 Description
 -----------
-Computes the transformation composed with <self> and thet. <self> = <self> * thet.
+Computes the transformation composed with <self> and theT. <self> = <self> * theT.
 ") Multiply;
 		void Multiply(const gp_Trsf & theT);
 
@@ -19732,7 +19738,7 @@ gp_Trsf
 
 Description
 -----------
-Computes the following composition of transformations <self> * <self> * .......* <self>, then time. if then = 0 <self> = identity if then < 0 <self> = <self>.inverse() *...........* <self>.inverse(). //! raises if then < 0 and if the matrix of the transformation not inversible.
+Computes the following composition of transformations <self> * <self> * .......* <self>, theN time. if theN = 0 <self> = Identity if theN < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises if theN < 0 and if the matrix of the transformation not inversible.
 ") Powered;
 		gp_Trsf Powered(const Standard_Integer theN);
 
@@ -19750,7 +19756,7 @@ None
 
 Description
 -----------
-Computes the transformation composed with <self> and t. <self> = thet * <self>.
+Computes the transformation composed with <self> and T. <self> = theT * <self>.
 ") PreMultiply;
 		void PreMultiply(const gp_Trsf & theT);
 
@@ -19782,7 +19788,7 @@ None
 
 Description
 -----------
-Modifies this transformation so that it transforms the coordinate system defined by thefromsystem1 into the one defined by thetosystem2. after this modification, this transformation transforms: - the origin of thefromsystem1 into the origin of thetosystem2, - the 'x direction' of thefromsystem1 into the 'x direction' of thetosystem2, - the 'y direction' of thefromsystem1 into the 'y direction' of thetosystem2, and - the 'main direction' of thefromsystem1 into the 'main direction' of thetosystem2. warning when you know the coordinates of a point in one coordinate system and you want to express these coordinates in another one, do not use the transformation resulting from this function. use the transformation that results from settransformation instead. setdisplacement and settransformation create related transformations: the vectorial part of one is the inverse of the vectorial part of the other.
+Modifies this transformation so that it transforms the coordinate system defined by theFromSystem1 into the one defined by theToSystem2. After this modification, this transformation transforms: - the origin of theFromSystem1 into the origin of theToSystem2, - the 'X Direction' of theFromSystem1 into the 'X Direction' of theToSystem2, - the 'Y Direction' of theFromSystem1 into the 'Y Direction' of theToSystem2, and - the 'main Direction' of theFromSystem1 into the 'main Direction' of theToSystem2. Warning When you know the coordinates of a point in one coordinate system and you want to express these coordinates in another one, do not use the transformation resulting from this function. Use the transformation that results from SetTransformation instead. SetDisplacement and SetTransformation create related transformations: the vectorial part of one is the inverse of the vectorial part of the other.
 ") SetDisplacement;
 		void SetDisplacement(const gp_Ax3 & theFromSystem1, const gp_Ax3 & theToSystem2);
 
@@ -19818,7 +19824,7 @@ None
 
 Description
 -----------
-Makes the transformation into a symmetrical transformation. thep is the center of the symmetry.
+Makes the transformation into a symmetrical transformation. theP is the center of the symmetry.
 ") SetMirror;
 		void SetMirror(const gp_Pnt & theP);
 
@@ -19836,7 +19842,7 @@ None
 
 Description
 -----------
-Makes the transformation into a symmetrical transformation. thea1 is the center of the axial symmetry.
+Makes the transformation into a symmetrical transformation. theA1 is the center of the axial symmetry.
 ") SetMirror;
 		void SetMirror(const gp_Ax1 & theA1);
 
@@ -19854,7 +19860,7 @@ None
 
 Description
 -----------
-Makes the transformation into a symmetrical transformation. thea2 is the center of the planar symmetry and defines the plane of symmetry by its origin, 'x direction' and 'y direction'.
+Makes the transformation into a symmetrical transformation. theA2 is the center of the planar symmetry and defines the plane of symmetry by its origin, 'X Direction' and 'Y Direction'.
 ") SetMirror;
 		void SetMirror(const gp_Ax2 & theA2);
 
@@ -19873,7 +19879,7 @@ None
 
 Description
 -----------
-Changes the transformation into a rotation. thea1 is the rotation axis and theang is the angular value of the rotation in radians.
+Changes the transformation into a rotation. theA1 is the rotation axis and theAng is the angular value of the rotation in radians.
 ") SetRotation;
 		void SetRotation(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -19891,7 +19897,7 @@ None
 
 Description
 -----------
-Changes the transformation into a rotation defined by quaternion. note that rotation is performed around origin, i.e. no translation is involved.
+Changes the transformation into a rotation defined by quaternion. Note that rotation is performed around origin, i.e. no translation is involved.
 ") SetRotation;
 		void SetRotation(const gp_Quaternion & theR);
 
@@ -19928,7 +19934,7 @@ None
 
 Description
 -----------
-Changes the transformation into a scale. thep is the center of the scale and thes is the scaling value. raises constructionerror if <thes> is null.
+Changes the transformation into a scale. theP is the center of the scale and theS is the scaling value. Raises ConstructionError If <theS> is null.
 ") SetScale;
 		void SetScale(const gp_Pnt & theP, const Standard_Real theS);
 
@@ -19946,7 +19952,7 @@ None
 
 Description
 -----------
-Modifies the scale factor. raises constructionerror if thes is null.
+Modifies the scale factor. Raises ConstructionError If theS is null.
 ") SetScaleFactor;
 		void SetScaleFactor(const Standard_Real theS);
 
@@ -19965,7 +19971,7 @@ None
 
 Description
 -----------
-Modifies this transformation so that it transforms the coordinates of any point, (x, y, z), relative to a source coordinate system into the coordinates (x', y', z') which are relative to a target coordinate system, but which represent the same point the transformation is from the coordinate system 'thefromsystem1' to the coordinate system 'thetosystem2'. example: @code gp_ax3 thefromsystem1, thetosystem2; double x1, y1, z1; // are the coordinates of a point in the local system thefromsystem1 double x2, y2, z2; // are the coordinates of a point in the local system thetosystem2 gp_pnt p1 (x1, y1, z1) gp_trsf t; t.settransformation (thefromsystem1, thetosystem2); gp_pnt p2 = p1.transformed (t); p2.coord (x2, y2, z2); @endcode.
+Modifies this transformation so that it transforms the coordinates of any point, (x, y, z), relative to a source coordinate system into the coordinates (x', y', z') which are relative to a target coordinate system, but which represent the same point The transformation is from the coordinate system 'theFromSystem1' to the coordinate system 'theToSystem2'. Example: @code gp_Ax3 theFromSystem1, theToSystem2; double x1, y1, z1; // are the coordinates of a point in the local system theFromSystem1 double x2, y2, z2; // are the coordinates of a point in the local system theToSystem2 gp_Pnt P1 (x1, y1, z1) gp_Trsf T; T.SetTransformation (theFromSystem1, theToSystem2); gp_Pnt P2 = P1.Transformed (T); P2.Coord (x2, y2, z2); @endcode.
 ") SetTransformation;
 		void SetTransformation(const gp_Ax3 & theFromSystem1, const gp_Ax3 & theToSystem2);
 
@@ -19983,7 +19989,7 @@ None
 
 Description
 -----------
-Modifies this transformation so that it transforms the coordinates of any point, (x, y, z), relative to a source coordinate system into the coordinates (x', y', z') which are relative to a target coordinate system, but which represent the same point the transformation is from the default coordinate system @code {p(0.,0.,0.), vx (1.,0.,0.), vy (0.,1.,0.), vz (0., 0. ,1.) } @endcode to the local coordinate system defined with the ax3 thetosystem. use in the same way as the previous method. fromsystem1 is defaulted to the absolute coordinate system.
+Modifies this transformation so that it transforms the coordinates of any point, (x, y, z), relative to a source coordinate system into the coordinates (x', y', z') which are relative to a target coordinate system, but which represent the same point The transformation is from the default coordinate system @code {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.), VZ (0., 0. ,1.) } @endcode to the local coordinate system defined with the Ax3 theToSystem. Use in the same way as the previous method. FromSystem1 is defaulted to the absolute coordinate system.
 ") SetTransformation;
 		void SetTransformation(const gp_Ax3 & theToSystem);
 
@@ -20020,7 +20026,7 @@ None
 
 Description
 -----------
-Changes the transformation into a translation. thev is the vector of the translation.
+Changes the transformation into a translation. theV is the vector of the translation.
 ") SetTranslation;
 		void SetTranslation(const gp_Vec & theV);
 
@@ -20039,7 +20045,7 @@ None
 
 Description
 -----------
-Makes the transformation into a translation where the translation vector is the vector (thep1, thep2) defined from point thep1 to point thep2.
+Makes the transformation into a translation where the translation vector is the vector (theP1, theP2) defined from point theP1 to point theP2.
 ") SetTranslation;
 		void SetTranslation(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -20057,7 +20063,7 @@ None
 
 Description
 -----------
-Replaces the translation vector with the vector thev.
+Replaces the translation vector with the vector theV.
 ") SetTranslationPart;
 		void SetTranslationPart(const gp_Vec & theV);
 
@@ -20086,7 +20092,7 @@ None
 
 Description
 -----------
-Sets the coefficients of the transformation. the transformation of the point x,y,z is the point x',y',z' with: @code x' = a11 x + a12 y + a13 z + a14 y' = a21 x + a22 y + a23 z + a24 z' = a31 x + a32 y + a33 z + a34 @endcode the method value(i,j) will return aij. raises constructionerror if the determinant of the aij is null. the matrix is orthogonalized before future using.
+Sets the coefficients of the transformation. The transformation of the point x,y,z is the point x',y',z' with: @code x' = a11 x + a12 y + a13 z + a14 y' = a21 x + a22 y + a23 z + a24 z' = a31 x + a32 y + a33 z + a34 @endcode The method Value(i,j) will return aij. Raises ConstructionError if the determinant of the aij is null. The matrix is orthogonalized before future using.
 ") SetValues;
 		void SetValues(const Standard_Real a11, const Standard_Real a12, const Standard_Real a13, const Standard_Real a14, const Standard_Real a21, const Standard_Real a22, const Standard_Real a23, const Standard_Real a24, const Standard_Real a31, const Standard_Real a32, const Standard_Real a33, const Standard_Real a34);
 
@@ -20123,7 +20129,7 @@ None
 
 Description
 -----------
-Transformation of a triplet xyz with a trsf.
+Transformation of a triplet XYZ with a Trsf.
 ") Transforms;
 		void Transforms(gp_XYZ & theCoord);
 
@@ -20155,7 +20161,7 @@ float
 
 Description
 -----------
-Returns the coefficients of the transformation's matrix. it is a 3 rows * 4 columns matrix. this coefficient includes the scale factor. raises outofranged if therow < 1 or therow > 3 or thecol < 1 or thecol > 4.
+Returns the coefficients of the transformation's matrix. It is a 3 rows * 4 columns matrix. This coefficient includes the scale factor. Raises OutOfRanged if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4.
 ") Value;
 		Standard_Real Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -20168,7 +20174,7 @@ gp_Mat
 
 Description
 -----------
-Returns the vectorial part of the transformation. it is a 3*3 matrix which includes the scale factor.
+Returns the vectorial part of the transformation. It is a 3*3 matrix which includes the scale factor.
 ") VectorialPart;
 		gp_Mat VectorialPart();
 
@@ -20260,7 +20266,7 @@ None
 
 Description
 -----------
-Creates a 2d transformation in the xy plane from a 3d transformation .
+Creates a 2d transformation in the XY plane from a 3d transformation .
 ") gp_Trsf2d;
 		 gp_Trsf2d(const gp_Trsf & theT);
 
@@ -20273,7 +20279,7 @@ gp_TrsfForm
 
 Description
 -----------
-Returns the nature of the transformation. it can be an identity transformation, a rotation, a translation, a mirror (relative to a point or an axis), a scaling transformation, or a compound transformation.
+Returns the nature of the transformation. It can be an identity transformation, a rotation, a translation, a mirror (relative to a point or an axis), a scaling transformation, or a compound transformation.
 ") Form;
 		gp_TrsfForm Form();
 
@@ -20286,7 +20292,7 @@ gp_Mat2d
 
 Description
 -----------
-Returns the homogeneous vectorial part of the transformation. it is a 2*2 matrix which doesn't include the scale factor. the coefficients of this matrix must be multiplied by the scale factor to obtain the coefficients of the transformation.
+Returns the homogeneous vectorial part of the transformation. It is a 2*2 matrix which doesn't include the scale factor. The coefficients of this matrix must be multiplied by the scale factor to obtain the coefficients of the transformation.
 ") HVectorialPart;
 		const gp_Mat2d HVectorialPart();
 
@@ -20312,7 +20318,7 @@ gp_Trsf2d
 
 Description
 -----------
-Computes the reverse transformation. raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to resolution from package gp.
+Computes the reverse transformation. Raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to Resolution from package gp.
 ") Inverted;
 		gp_Trsf2d Inverted();
 
@@ -20361,7 +20367,7 @@ None
 
 Description
 -----------
-Computes the transformation composed from <self> and thet. <self> = <self> * thet.
+Computes the transformation composed from <self> and theT. <self> = <self> * theT.
 ") Multiply;
 		void Multiply(const gp_Trsf2d & theT);
 
@@ -20397,7 +20403,7 @@ gp_Trsf2d
 
 Description
 -----------
-Computes the following composition of transformations <self> * <self> * .......* <self>, then time. if then = 0 <self> = identity if then < 0 <self> = <self>.inverse() *...........* <self>.inverse(). //! raises if then < 0 and if the matrix of the transformation not inversible.
+Computes the following composition of transformations <self> * <self> * .......* <self>, theN time. if theN = 0 <self> = Identity if theN < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises if theN < 0 and if the matrix of the transformation not inversible.
 ") Powered;
 		gp_Trsf2d Powered(const Standard_Integer theN);
 
@@ -20415,7 +20421,7 @@ None
 
 Description
 -----------
-Computes the transformation composed from <self> and thet. <self> = thet * <self>.
+Computes the transformation composed from <self> and theT. <self> = theT * <self>.
 ") PreMultiply;
 		void PreMultiply(const gp_Trsf2d & theT);
 
@@ -20428,7 +20434,7 @@ float
 
 Description
 -----------
-Returns the angle corresponding to the rotational component of the transformation matrix (operation opposite to setrotation()).
+Returns the angle corresponding to the rotational component of the transformation matrix (operation opposite to SetRotation()).
 ") RotationPart;
 		Standard_Real RotationPart();
 
@@ -20459,7 +20465,7 @@ None
 
 Description
 -----------
-Changes the transformation into a symmetrical transformation. thep is the center of the symmetry.
+Changes the transformation into a symmetrical transformation. theP is the center of the symmetry.
 ") SetMirror;
 		void SetMirror(const gp_Pnt2d & theP);
 
@@ -20477,7 +20483,7 @@ None
 
 Description
 -----------
-Changes the transformation into a symmetrical transformation. thea is the center of the axial symmetry.
+Changes the transformation into a symmetrical transformation. theA is the center of the axial symmetry.
 ") SetMirror;
 		void SetMirror(const gp_Ax2d & theA);
 
@@ -20496,7 +20502,7 @@ None
 
 Description
 -----------
-Changes the transformation into a rotation. thep is the rotation's center and theang is the angular value of the rotation in radian.
+Changes the transformation into a rotation. theP is the rotation's center and theAng is the angular value of the rotation in radian.
 ") SetRotation;
 		void SetRotation(const gp_Pnt2d & theP, const Standard_Real theAng);
 
@@ -20515,7 +20521,7 @@ None
 
 Description
 -----------
-Changes the transformation into a scale. thep is the center of the scale and thes is the scaling value.
+Changes the transformation into a scale. theP is the center of the scale and theS is the scaling value.
 ") SetScale;
 		void SetScale(const gp_Pnt2d & theP, const Standard_Real theS);
 
@@ -20552,7 +20558,7 @@ None
 
 Description
 -----------
-Changes a transformation allowing passage from the coordinate system 'thefromsystem1' to the coordinate system 'thetosystem2'.
+Changes a transformation allowing passage from the coordinate system 'theFromSystem1' to the coordinate system 'theToSystem2'.
 ") SetTransformation;
 		void SetTransformation(const gp_Ax2d & theFromSystem1, const gp_Ax2d & theToSystem2);
 
@@ -20570,7 +20576,7 @@ None
 
 Description
 -----------
-Changes the transformation allowing passage from the basic coordinate system {p(0.,0.,0.), vx (1.,0.,0.), vy (0.,1.,0.)} to the local coordinate system defined with the ax2d thetosystem.
+Changes the transformation allowing passage from the basic coordinate system {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.)} to the local coordinate system defined with the Ax2d theToSystem.
 ") SetTransformation;
 		void SetTransformation(const gp_Ax2d & theToSystem);
 
@@ -20588,7 +20594,7 @@ None
 
 Description
 -----------
-Changes the transformation into a translation. thev is the vector of the translation.
+Changes the transformation into a translation. theV is the vector of the translation.
 ") SetTranslation;
 		void SetTranslation(const gp_Vec2d & theV);
 
@@ -20607,7 +20613,7 @@ None
 
 Description
 -----------
-Makes the transformation into a translation from the point thep1 to the point thep2.
+Makes the transformation into a translation from the point theP1 to the point theP2.
 ") SetTranslation;
 		void SetTranslation(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -20625,7 +20631,7 @@ None
 
 Description
 -----------
-Replaces the translation vector with thev.
+Replaces the translation vector with theV.
 ") SetTranslationPart;
 		void SetTranslationPart(const gp_Vec2d & theV);
 
@@ -20648,7 +20654,7 @@ None
 
 Description
 -----------
-Sets the coefficients of the transformation. the transformation of the point x,y is the point x',y' with: @code x' = a11 x + a12 y + a13 y' = a21 x + a22 y + a23 @endcode the method value(i,j) will return aij. raises constructionerror if the determinant of the aij is null. if the matrix as not a uniform scale it will be orthogonalized before future using.
+Sets the coefficients of the transformation. The transformation of the point x,y is the point x',y' with: @code x' = a11 x + a12 y + a13 y' = a21 x + a22 y + a23 @endcode The method Value(i,j) will return aij. Raises ConstructionError if the determinant of the aij is null. If the matrix as not a uniform scale it will be orthogonalized before future using.
 ") SetValues;
 		void SetValues(const Standard_Real a11, const Standard_Real a12, const Standard_Real a13, const Standard_Real a21, const Standard_Real a22, const Standard_Real a23);
 
@@ -20684,7 +20690,7 @@ None
 
 Description
 -----------
-Transforms a doublet xy with a trsf2d.
+Transforms a doublet XY with a Trsf2d.
 ") Transforms;
 		void Transforms(gp_XY & theCoord);
 
@@ -20716,7 +20722,7 @@ float
 
 Description
 -----------
-Returns the coefficients of the transformation's matrix. it is a 2 rows * 3 columns matrix. raises outofrange if therow < 1 or therow > 2 or thecol < 1 or thecol > 3.
+Returns the coefficients of the transformation's matrix. It is a 2 rows * 3 columns matrix. Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3.
 ") Value;
 		Standard_Real Value(const Standard_Integer theRow, const Standard_Integer theCol);
 
@@ -20729,7 +20735,7 @@ gp_Mat2d
 
 Description
 -----------
-Returns the vectorial part of the transformation. it is a 2*2 matrix which includes the scale factor.
+Returns the vectorial part of the transformation. It is a 2*2 matrix which includes the scale factor.
 ") VectorialPart;
 		gp_Mat2d VectorialPart();
 
@@ -20821,7 +20827,7 @@ None
 
 Description
 -----------
-Creates a unitary vector from a direction thev.
+Creates a unitary vector from a direction theV.
 ") gp_Vec;
 		 gp_Vec(const gp_Dir & theV);
 
@@ -20878,7 +20884,7 @@ None
 
 Description
 -----------
-Creates a vector from two points. the length of the vector is the distance between thep1 and thep2.
+Creates a vector from two points. The length of the vector is the distance between theP1 and theP2.
 ") gp_Vec;
 		 gp_Vec(const gp_Pnt & theP1, const gp_Pnt & theP2);
 
@@ -20932,7 +20938,7 @@ float
 
 Description
 -----------
-Computes the angular value between <self> and <theother> returns the angle value between 0 and pi in radian. raises vectorwithnullmagnitude if <self>.magnitude() <= resolution from gp or theother.magnitude() <= resolution because the angular value is indefinite if one of the vectors has a null magnitude.
+Computes the angular value between <self> and <theOther> Returns the angle value between 0 and PI in radian. Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution from gp or theOther.Magnitude() <= Resolution because the angular value is indefinite if one of the vectors has a null magnitude.
 ") Angle;
 		Standard_Real Angle(const gp_Vec & theOther);
 
@@ -20951,7 +20957,7 @@ float
 
 Description
 -----------
-Computes the angle, in radians, between this vector and vector theother. the result is a value between -pi and pi. for this, thevref defines the positive sense of rotation: the angular value is positive, if the cross product this ^ theother has the same orientation as thevref relative to the plane defined by the vectors this and theother. otherwise, the angular value is negative. exceptions gp_vectorwithnullmagnitude if the magnitude of this vector, the vector theother, or the vector thevref is less than or equal to gp::resolution(). standard_domainerror if this vector, the vector theother, and the vector thevref are coplanar, unless this vector and the vector theother are parallel.
+Computes the angle, in radians, between this vector and vector theOther. The result is a value between -Pi and Pi. For this, theVRef defines the positive sense of rotation: the angular value is positive, if the cross product this ^ theOther has the same orientation as theVRef relative to the plane defined by the vectors this and theOther. Otherwise, the angular value is negative. Exceptions gp_VectorWithNullMagnitude if the magnitude of this vector, the vector theOther, or the vector theVRef is less than or equal to gp::Resolution(). Standard_DomainError if this vector, the vector theOther, and the vector theVRef are coplanar, unless this vector and the vector theOther are parallel.
 ") AngleWithRef;
 		Standard_Real AngleWithRef(const gp_Vec & theOther, const gp_Vec & theVRef);
 
@@ -20969,7 +20975,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned theindex = 3 => z is returned raised if theindex != {1, 2, 3}.
+Returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned theIndex = 3 => Z is returned Raised if theIndex != {1, 2, 3}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -20988,7 +20994,7 @@ theZv: float
 
 Description
 -----------
-For this vector returns its three coordinates thexv, theyv, and thezv inline.
+For this vector returns its three coordinates theXv, theYv, and theZv inline.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -21006,7 +21012,7 @@ None
 
 Description
 -----------
-Computes the cross product between two vectors.
+computes the cross product between two vectors.
 ") Cross;
 		void Cross(const gp_Vec & theRight);
 
@@ -21025,7 +21031,7 @@ None
 
 Description
 -----------
-Computes the triple vector product. <self> ^= (thev1 ^ thev2).
+Computes the triple vector product. <self> ^= (theV1 ^ theV2).
 ") CrossCross;
 		void CrossCross(const gp_Vec & theV1, const gp_Vec & theV2);
 
@@ -21044,7 +21050,7 @@ gp_Vec
 
 Description
 -----------
-Computes the triple vector product. <self> ^ (thev1 ^ thev2).
+Computes the triple vector product. <self> ^ (theV1 ^ theV2).
 ") CrossCrossed;
 		gp_Vec CrossCrossed(const gp_Vec & theV1, const gp_Vec & theV2);
 
@@ -21062,7 +21068,7 @@ float
 
 Description
 -----------
-Computes the magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||.
+Computes the magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||.
 ") CrossMagnitude;
 		Standard_Real CrossMagnitude(const gp_Vec & theRight);
 
@@ -21080,7 +21086,7 @@ float
 
 Description
 -----------
-Computes the square magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||**2.
+Computes the square magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||**2.
 ") CrossSquareMagnitude;
 		Standard_Real CrossSquareMagnitude(const gp_Vec & theRight);
 
@@ -21098,7 +21104,7 @@ gp_Vec
 
 Description
 -----------
-Computes the cross product between two vectors.
+computes the cross product between two vectors.
 ") Crossed;
 		gp_Vec Crossed(const gp_Vec & theRight);
 
@@ -21152,7 +21158,7 @@ float
 
 Description
 -----------
-Computes the scalar product.
+computes the scalar product.
 ") Dot;
 		Standard_Real Dot(const gp_Vec & theOther);
 
@@ -21171,7 +21177,7 @@ float
 
 Description
 -----------
-Computes the triple scalar product <self> * (thev1 ^ thev2).
+Computes the triple scalar product <self> * (theV1 ^ theV2).
 ") DotCross;
 		Standard_Real DotCross(const gp_Vec & theV1, const gp_Vec & theV2);
 
@@ -21212,7 +21218,7 @@ bool
 
 Description
 -----------
-Returns true if the two vectors have the same magnitude value and the same direction. the precision values are thelineartolerance for the magnitude and theangulartolerance for the direction.
+Returns True if the two vectors have the same magnitude value and the same direction. The precision values are theLinearTolerance for the magnitude and theAngularTolerance for the direction.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Vec & theOther, const Standard_Real theLinearTolerance, const Standard_Real theAngularTolerance);
 
@@ -21231,7 +21237,7 @@ bool
 
 Description
 -----------
-Returns true if abs(<self>.angle(theother) - pi/2.) <= theangulartolerance raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or theother.magnitude() <= resolution from gp.
+Returns True if abs(<self>.Angle(theOther) - PI/2.) <= theAngularTolerance Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or theOther.Magnitude() <= Resolution from gp.
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Vec & theOther, const Standard_Real theAngularTolerance);
 
@@ -21250,7 +21256,7 @@ bool
 
 Description
 -----------
-Returns true if pi - <self>.angle(theother) <= theangulartolerance raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or other.magnitude() <= resolution from gp.
+Returns True if PI - <self>.Angle(theOther) <= theAngularTolerance Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or Other.Magnitude() <= Resolution from gp.
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Vec & theOther, const Standard_Real theAngularTolerance);
 
@@ -21269,7 +21275,7 @@ bool
 
 Description
 -----------
-Returns true if angle(<self>, theother) <= theangulartolerance or pi - angle(<self>, theother) <= theangulartolerance this definition means that two parallel vectors cannot define a plane but two vectors with opposite directions are considered as parallel. raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or other.magnitude() <= resolution from gp.
+Returns True if Angle(<self>, theOther) <= theAngularTolerance or PI - Angle(<self>, theOther) <= theAngularTolerance This definition means that two parallel vectors cannot define a plane but two vectors with opposite directions are considered as parallel. Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or Other.Magnitude() <= Resolution from gp.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Vec & theOther, const Standard_Real theAngularTolerance);
 
@@ -21354,7 +21360,7 @@ gp_Vec
 
 Description
 -----------
-Performs the symmetrical transformation of a vector with respect to the vector thev which is the center of the symmetry.
+Performs the symmetrical transformation of a vector with respect to the vector theV which is the center of the symmetry.
 ") Mirrored;
 		gp_Vec Mirrored(const gp_Vec & theV);
 
@@ -21390,7 +21396,7 @@ gp_Vec
 
 Description
 -----------
-Performs the symmetrical transformation of a vector with respect to a plane. the axis placement thea2 locates the plane of the symmetry: (location, xdirection, ydirection).
+Performs the symmetrical transformation of a vector with respect to a plane. The axis placement theA2 locates the plane of the symmetry: (Location, XDirection, YDirection).
 ") Mirrored;
 		gp_Vec Mirrored(const gp_Ax2 & theA2);
 
@@ -21439,7 +21445,7 @@ None
 
 Description
 -----------
-Normalizes a vector raises an exception if the magnitude of the vector is lower or equal to resolution from gp.
+normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
 ") Normalize;
 		void Normalize();
 
@@ -21452,7 +21458,7 @@ gp_Vec
 
 Description
 -----------
-Normalizes a vector raises an exception if the magnitude of the vector is lower or equal to resolution from gp.
+normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
 ") Normalized;
 		gp_Vec Normalized();
 
@@ -21516,7 +21522,7 @@ gp_Vec
 
 Description
 -----------
-Rotates a vector. thea1 is the axis of the rotation. theang is the angular value of the rotation in radians.
+Rotates a vector. theA1 is the axis of the rotation. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Vec Rotated(const gp_Ax1 & theA1, const Standard_Real theAng);
 
@@ -21552,7 +21558,7 @@ gp_Vec
 
 Description
 -----------
-Scales a vector. thes is the scaling value.
+Scales a vector. theS is the scaling value.
 ") Scaled;
 		gp_Vec Scaled(const Standard_Real theS);
 
@@ -21571,7 +21577,7 @@ None
 
 Description
 -----------
-Changes the coordinate of range theindex theindex = 1 => x is modified theindex = 2 => y is modified theindex = 3 => z is modified raised if theindex != {1, 2, 3}.
+Changes the coordinate of range theIndex theIndex = 1 => X is modified theIndex = 2 => Y is modified theIndex = 3 => Z is modified Raised if theIndex != {1, 2, 3}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -21591,7 +21597,7 @@ None
 
 Description
 -----------
-For this vector, assigns - the values thexv, theyv and thezv to its three coordinates.
+For this vector, assigns - the values theXv, theYv and theZv to its three coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXv, const Standard_Real theYv, const Standard_Real theZv);
 
@@ -21615,7 +21621,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2 + thea3 * thev3 + thev4.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2 + theA3 * theV3 + theV4.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec & theV1, const Standard_Real theA2, const gp_Vec & theV2, const Standard_Real theA3, const gp_Vec & theV3, const gp_Vec & theV4);
 
@@ -21638,7 +21644,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2 + thea3 * thev3.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2 + theA3 * theV3.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec & theV1, const Standard_Real theA2, const gp_Vec & theV2, const Standard_Real theA3, const gp_Vec & theV3);
 
@@ -21660,7 +21666,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2 + thev3.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2 + theV3.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec & theV1, const Standard_Real theA2, const gp_Vec & theV2, const gp_Vec & theV3);
 
@@ -21681,7 +21687,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec & theV1, const Standard_Real theA2, const gp_Vec & theV2);
 
@@ -21701,7 +21707,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thev2.
+<self> is set to the following linear form: theA1 * theV1 + theV2.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec & theV1, const gp_Vec & theV2);
 
@@ -21720,7 +21726,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thev1 + thev2.
+<self> is set to the following linear form: theV1 + theV2.
 ") SetLinearForm;
 		void SetLinearForm(const gp_Vec & theV1, const gp_Vec & theV2);
 
@@ -21738,7 +21744,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this vector.
+Assigns the given value to the X coordinate of this vector.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -21756,7 +21762,7 @@ None
 
 Description
 -----------
-Assigns the three coordinates of thecoord to this vector.
+Assigns the three coordinates of theCoord to this vector.
 ") SetXYZ;
 		void SetXYZ(const gp_XYZ & theCoord);
 
@@ -21774,7 +21780,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this vector.
+Assigns the given value to the X coordinate of this vector.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -21792,7 +21798,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this vector.
+Assigns the given value to the X coordinate of this vector.
 ") SetZ;
 		void SetZ(const Standard_Real theZ);
 
@@ -21859,7 +21865,7 @@ None
 
 Description
 -----------
-Transforms a vector with the transformation thet.
+Transforms a vector with the transformation theT.
 ") Transform;
 		void Transform(const gp_Trsf & theT);
 
@@ -21877,7 +21883,7 @@ gp_Vec
 
 Description
 -----------
-Transforms a vector with the transformation thet.
+Transforms a vector with the transformation theT.
 ") Transformed;
 		gp_Vec Transformed(const gp_Trsf & theT);
 
@@ -21890,7 +21896,7 @@ float
 
 Description
 -----------
-For this vector, returns its x coordinate.
+For this vector, returns its X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -21916,7 +21922,7 @@ float
 
 Description
 -----------
-For this vector, returns its y coordinate.
+For this vector, returns its Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -21929,7 +21935,7 @@ float
 
 Description
 -----------
-For this vector, returns its z coordinate.
+For this vector, returns its Z coordinate.
 ") Z;
 		Standard_Real Z();
 
@@ -22139,7 +22145,7 @@ None
 
 Description
 -----------
-Creates a unitary vector from a direction thev.
+Creates a unitary vector from a direction theV.
 ") gp_Vec2d;
 		 gp_Vec2d(const gp_Dir2d & theV);
 
@@ -22176,7 +22182,7 @@ None
 
 Description
 -----------
-Creates a point with its two cartesian coordinates.
+Creates a point with its two Cartesian coordinates.
 ") gp_Vec2d;
 		 gp_Vec2d(const Standard_Real theXv, const Standard_Real theYv);
 
@@ -22195,7 +22201,7 @@ None
 
 Description
 -----------
-Creates a vector from two points. the length of the vector is the distance between thep1 and thep2.
+Creates a vector from two points. The length of the vector is the distance between theP1 and theP2.
 ") gp_Vec2d;
 		 gp_Vec2d(const gp_Pnt2d & theP1, const gp_Pnt2d & theP2);
 
@@ -22249,7 +22255,7 @@ float
 
 Description
 -----------
-Computes the angular value between <self> and <theother> returns the angle value between -pi and pi in radian. the orientation is from <self> to theother. the positive sense is the trigonometric sense. raises vectorwithnullmagnitude if <self>.magnitude() <= resolution from gp or theother.magnitude() <= resolution because the angular value is indefinite if one of the vectors has a null magnitude.
+Computes the angular value between <self> and <theOther> returns the angle value between -PI and PI in radian. The orientation is from <self> to theOther. The positive sense is the trigonometric sense. Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution from gp or theOther.Magnitude() <= Resolution because the angular value is indefinite if one of the vectors has a null magnitude.
 ") Angle;
 		Standard_Real Angle(const gp_Vec2d & theOther);
 
@@ -22267,7 +22273,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned raised if theindex != {1, 2}.
+Returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned Raised if theIndex != {1, 2}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -22285,7 +22291,7 @@ theYv: float
 
 Description
 -----------
-For this vector, returns its two coordinates thexv and theyv.
+For this vector, returns its two coordinates theXv and theYv.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -22303,7 +22309,7 @@ float
 
 Description
 -----------
-Computes the magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||.
+Computes the magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||.
 ") CrossMagnitude;
 		Standard_Real CrossMagnitude(const gp_Vec2d & theRight);
 
@@ -22321,7 +22327,7 @@ float
 
 Description
 -----------
-Computes the square magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||**2.
+Computes the square magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||**2.
 ") CrossSquareMagnitude;
 		Standard_Real CrossSquareMagnitude(const gp_Vec2d & theRight);
 
@@ -22375,7 +22381,7 @@ gp_Vec2d
 
 Description
 -----------
-Divides a vector by a scalar.
+divides a vector by a scalar.
 ") Divided;
 		gp_Vec2d Divided(const Standard_Real theScalar);
 
@@ -22426,7 +22432,7 @@ bool
 
 Description
 -----------
-Returns true if the two vectors have the same magnitude value and the same direction. the precision values are thelineartolerance for the magnitude and theangulartolerance for the direction.
+Returns True if the two vectors have the same magnitude value and the same direction. The precision values are theLinearTolerance for the magnitude and theAngularTolerance for the direction.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_Vec2d & theOther, const Standard_Real theLinearTolerance, const Standard_Real theAngularTolerance);
 
@@ -22445,7 +22451,7 @@ bool
 
 Description
 -----------
-Returns true if abs(abs(<self>.angle(theother)) - pi/2.) <= theangulartolerance raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or theother.magnitude() <= resolution from gp.
+Returns True if abs(Abs(<self>.Angle(theOther)) - PI/2.) <= theAngularTolerance Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or theOther.Magnitude() <= Resolution from gp.
 ") IsNormal;
 		Standard_Boolean IsNormal(const gp_Vec2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -22464,7 +22470,7 @@ bool
 
 Description
 -----------
-Returns true if pi - abs(<self>.angle(theother)) <= theangulartolerance raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or theother.magnitude() <= resolution from gp.
+Returns True if PI - Abs(<self>.Angle(theOther)) <= theAngularTolerance Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or theOther.Magnitude() <= Resolution from gp.
 ") IsOpposite;
 		Standard_Boolean IsOpposite(const gp_Vec2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -22483,7 +22489,7 @@ bool
 
 Description
 -----------
-Returns true if abs(angle(<self>, theother)) <= theangulartolerance or pi - abs(angle(<self>, theother)) <= theangulartolerance two vectors with opposite directions are considered as parallel. raises vectorwithnullmagnitude if <self>.magnitude() <= resolution or theother.magnitude() <= resolution from gp.
+Returns true if Abs(Angle(<self>, theOther)) <= theAngularTolerance or PI - Abs(Angle(<self>, theOther)) <= theAngularTolerance Two vectors with opposite directions are considered as parallel. Raises VectorWithNullMagnitude if <self>.Magnitude() <= Resolution or theOther.Magnitude() <= Resolution from gp.
 ") IsParallel;
 		Standard_Boolean IsParallel(const gp_Vec2d & theOther, const Standard_Real theAngularTolerance);
 
@@ -22514,7 +22520,7 @@ None
 
 Description
 -----------
-Performs the symmetrical transformation of a vector with respect to the vector thev which is the center of the symmetry.
+Performs the symmetrical transformation of a vector with respect to the vector theV which is the center of the symmetry.
 ") Mirror;
 		void Mirror(const gp_Vec2d & theV);
 
@@ -22550,7 +22556,7 @@ gp_Vec2d
 
 Description
 -----------
-Performs the symmetrical transformation of a vector with respect to the vector thev which is the center of the symmetry.
+Performs the symmetrical transformation of a vector with respect to the vector theV which is the center of the symmetry.
 ") Mirrored;
 		gp_Vec2d Mirrored(const gp_Vec2d & theV);
 
@@ -22586,7 +22592,7 @@ gp_Vec2d
 
 Description
 -----------
-Normalizes a vector raises an exception if the magnitude of the vector is lower or equal to resolution from package gp.
+Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp.
 ") Multiplied;
 		gp_Vec2d Multiplied(const Standard_Real theScalar);
 
@@ -22630,7 +22636,7 @@ gp_Vec2d
 
 Description
 -----------
-Normalizes a vector raises an exception if the magnitude of the vector is lower or equal to resolution from package gp. reverses the direction of a vector.
+Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp. Reverses the direction of a vector.
 ") Normalized;
 		gp_Vec2d Normalized();
 
@@ -22692,7 +22698,7 @@ gp_Vec2d
 
 Description
 -----------
-Rotates a vector. theang is the angular value of the rotation in radians.
+Rotates a vector. theAng is the angular value of the rotation in radians.
 ") Rotated;
 		gp_Vec2d Rotated(const Standard_Real theAng);
 
@@ -22728,7 +22734,7 @@ gp_Vec2d
 
 Description
 -----------
-Scales a vector. thes is the scaling value.
+Scales a vector. theS is the scaling value.
 ") Scaled;
 		gp_Vec2d Scaled(const Standard_Real theS);
 
@@ -22747,7 +22753,7 @@ None
 
 Description
 -----------
-Changes the coordinate of range theindex theindex = 1 => x is modified theindex = 2 => y is modified raises outofrange if theindex != {1, 2}.
+Changes the coordinate of range theIndex theIndex = 1 => X is modified theIndex = 2 => Y is modified Raises OutOfRange if theIndex != {1, 2}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -22766,7 +22772,7 @@ None
 
 Description
 -----------
-For this vector, assigns the values thexv and theyv to its two coordinates.
+For this vector, assigns the values theXv and theYv to its two coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theXv, const Standard_Real theYv);
 
@@ -22788,7 +22794,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2 + thev3.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2 + theV3.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec2d & theV1, const Standard_Real theA2, const gp_Vec2d & theV2, const gp_Vec2d & theV3);
 
@@ -22809,7 +22815,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thea2 * thev2.
+<self> is set to the following linear form: theA1 * theV1 + theA2 * theV2.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec2d & theV1, const Standard_Real theA2, const gp_Vec2d & theV2);
 
@@ -22829,7 +22835,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thea1 * thev1 + thev2.
+<self> is set to the following linear form: theA1 * theV1 + theV2.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_Vec2d & theV1, const gp_Vec2d & theV2);
 
@@ -22848,7 +22854,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: thev1 + thev2.
+<self> is set to the following linear form: theV1 + theV2.
 ") SetLinearForm;
 		void SetLinearForm(const gp_Vec2d & theV1, const gp_Vec2d & theV2);
 
@@ -22866,7 +22872,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this vector.
+Assigns the given value to the X coordinate of this vector.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -22884,7 +22890,7 @@ None
 
 Description
 -----------
-Assigns the two coordinates of thecoord to this vector.
+Assigns the two coordinates of theCoord to this vector.
 ") SetXY;
 		void SetXY(const gp_XY & theCoord);
 
@@ -22902,7 +22908,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this vector.
+Assigns the given value to the Y coordinate of this vector.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -22987,7 +22993,7 @@ gp_Vec2d
 
 Description
 -----------
-Transforms a vector with a trsf from gp.
+Transforms a vector with a Trsf from gp.
 ") Transformed;
 		gp_Vec2d Transformed(const gp_Trsf2d & theT);
 
@@ -23000,7 +23006,7 @@ float
 
 Description
 -----------
-For this vector, returns its x coordinate.
+For this vector, returns its X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -23026,7 +23032,7 @@ float
 
 Description
 -----------
-For this vector, returns its y coordinate.
+For this vector, returns its Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -23218,7 +23224,7 @@ None
 
 Description
 -----------
-Creates xy object with zero coordinates (0,0).
+Creates XY object with zero coordinates (0,0).
 ") gp_XY;
 		 gp_XY();
 
@@ -23237,7 +23243,7 @@ None
 
 Description
 -----------
-A number pair defined by the xy coordinates.
+a number pair defined by the XY coordinates.
 ") gp_XY;
 		 gp_XY(const Standard_Real theX, const Standard_Real theY);
 
@@ -23255,7 +23261,7 @@ None
 
 Description
 -----------
-Computes the sum of this number pair and number pair theother @code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y() @endcode.
+Computes the sum of this number pair and number pair theOther @code <self>.X() = <self>.X() + theOther.X() <self>.Y() = <self>.Y() + theOther.Y() @endcode.
 ") Add;
 		void Add(const gp_XY & theOther);
 
@@ -23273,7 +23279,7 @@ gp_XY
 
 Description
 -----------
-Computes the sum of this number pair and number pair theother @code new.x() = <self>.x() + theother.x() new.y() = <self>.y() + theother.y() @endcode.
+Computes the sum of this number pair and number pair theOther @code new.X() = <self>.X() + theOther.X() new.Y() = <self>.Y() + theOther.Y() @endcode.
 ") Added;
 		gp_XY Added(const gp_XY & theOther);
 
@@ -23304,7 +23310,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned raises outofrange if theindex != {1, 2}.
+returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned Raises OutOfRange if theIndex != {1, 2}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -23322,7 +23328,7 @@ theY: float
 
 Description
 -----------
-For this number pair, returns its coordinates x and y.
+For this number pair, returns its coordinates X and Y.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -23340,7 +23346,7 @@ float
 
 Description
 -----------
-Computes the magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||.
+computes the magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||.
 ") CrossMagnitude;
 		Standard_Real CrossMagnitude(const gp_XY & theRight);
 
@@ -23358,7 +23364,7 @@ float
 
 Description
 -----------
-Computes the square magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||**2.
+computes the square magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||**2.
 ") CrossSquareMagnitude;
 		Standard_Real CrossSquareMagnitude(const gp_XY & theRight);
 
@@ -23376,7 +23382,7 @@ float
 
 Description
 -----------
-@code double d = <self>.x() * theother.y() - <self>.y() * theother.x() @endcode.
+@code double D = <self>.X() * theOther.Y() - <self>.Y() * theOther.X() @endcode.
 ") Crossed;
 		Standard_Real Crossed(const gp_XY & theOther);
 
@@ -23394,7 +23400,7 @@ None
 
 Description
 -----------
-Divides <self> by a real.
+divides <self> by a real.
 ") Divide;
 		void Divide(const Standard_Real theScalar);
 
@@ -23430,7 +23436,7 @@ float
 
 Description
 -----------
-Computes the scalar product between <self> and theother.
+Computes the scalar product between <self> and theOther.
 ") Dot;
 		Standard_Real Dot(const gp_XY & theOther);
 
@@ -23449,7 +23455,7 @@ bool
 
 Description
 -----------
-Returns true if the coordinates of this number pair are equal to the respective coordinates of the number pair theother, within the specified tolerance thetolerance. i.e.: abs(<self>.x() - theother.x()) <= thetolerance and abs(<self>.y() - theother.y()) <= thetolerance and computations.
+Returns true if the coordinates of this number pair are equal to the respective coordinates of the number pair theOther, within the specified tolerance theTolerance. I.e.: abs(<self>.X() - theOther.X()) <= theTolerance and abs(<self>.Y() - theOther.Y()) <= theTolerance and computations.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_XY & theOther, const Standard_Real theTolerance);
 
@@ -23462,7 +23468,7 @@ float
 
 Description
 -----------
-Computes sqrt (x*x + y*y) where x and y are the two coordinates of this number pair.
+Computes Sqrt (X*X + Y*Y) where X and Y are the two coordinates of this number pair.
 ") Modulus;
 		Standard_Real Modulus();
 
@@ -23480,7 +23486,7 @@ gp_XY
 
 Description
 -----------
-@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar; @endcode.
+@code New.X() = <self>.X() * theScalar; New.Y() = <self>.Y() * theScalar; @endcode.
 ") Multiplied;
 		gp_XY Multiplied(const Standard_Real theScalar);
 
@@ -23498,7 +23504,7 @@ gp_XY
 
 Description
 -----------
-@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y(); @endcode.
+@code new.X() = <self>.X() * theOther.X(); new.Y() = <self>.Y() * theOther.Y(); @endcode.
 ") Multiplied;
 		gp_XY Multiplied(const gp_XY & theOther);
 
@@ -23516,7 +23522,7 @@ gp_XY
 
 Description
 -----------
-New = thematrix * <self>.
+New = theMatrix * <self>.
 ") Multiplied;
 		gp_XY Multiplied(const gp_Mat2d & theMatrix);
 
@@ -23534,7 +23540,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar; @endcode.
+@code <self>.X() = <self>.X() * theScalar; <self>.Y() = <self>.Y() * theScalar; @endcode.
 ") Multiply;
 		void Multiply(const Standard_Real theScalar);
 
@@ -23552,7 +23558,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y(); @endcode.
+@code <self>.X() = <self>.X() * theOther.X(); <self>.Y() = <self>.Y() * theOther.Y(); @endcode.
 ") Multiply;
 		void Multiply(const gp_XY & theOther);
 
@@ -23570,7 +23576,7 @@ None
 
 Description
 -----------
-<self> = thematrix * <self>.
+<self> = theMatrix * <self>.
 ") Multiply;
 		void Multiply(const gp_Mat2d & theMatrix);
 
@@ -23583,7 +23589,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x()/ <self>.modulus() <self>.y() = <self>.y()/ <self>.modulus() @endcode raises constructionerror if <self>.modulus() <= resolution from gp.
+@code <self>.X() = <self>.X()/ <self>.Modulus() <self>.Y() = <self>.Y()/ <self>.Modulus() @endcode Raises ConstructionError if <self>.Modulus() <= Resolution from gp.
 ") Normalize;
 		void Normalize();
 
@@ -23596,7 +23602,7 @@ gp_XY
 
 Description
 -----------
-@code new.x() = <self>.x()/ <self>.modulus() new.y() = <self>.y()/ <self>.modulus() @endcode raises constructionerror if <self>.modulus() <= resolution from gp.
+@code New.X() = <self>.X()/ <self>.Modulus() New.Y() = <self>.Y()/ <self>.Modulus() @endcode Raises ConstructionError if <self>.Modulus() <= Resolution from gp.
 ") Normalized;
 		gp_XY Normalized();
 
@@ -23609,7 +23615,7 @@ None
 
 Description
 -----------
-@code <self>.x() = -<self>.x() <self>.y() = -<self>.y().
+@code <self>.X() = -<self>.X() <self>.Y() = -<self>.Y().
 ") Reverse;
 		void Reverse();
 
@@ -23622,7 +23628,7 @@ gp_XY
 
 Description
 -----------
-@code new.x() = -<self>.x() new.y() = -<self>.y() @endcode.
+@code New.X() = -<self>.X() New.Y() = -<self>.Y() @endcode.
 ") Reversed;
 		gp_XY Reversed();
 
@@ -23641,7 +23647,7 @@ None
 
 Description
 -----------
-Modifies the coordinate of range theindex theindex = 1 => x is modified theindex = 2 => y is modified raises outofrange if theindex != {1, 2}.
+modifies the coordinate of range theIndex theIndex = 1 => X is modified theIndex = 2 => Y is modified Raises OutOfRange if theIndex != {1, 2}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -23660,7 +23666,7 @@ None
 
 Description
 -----------
-For this number pair, assigns the values thex and they to its coordinates.
+For this number pair, assigns the values theX and theY to its coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theX, const Standard_Real theY);
 
@@ -23681,7 +23687,7 @@ None
 
 Description
 -----------
-Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2 @endcode.
+Computes the following linear combination and assigns the result to this number pair: @code theA1 * theXY1 + theA2 * theXY2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2);
 
@@ -23703,7 +23709,7 @@ None
 
 Description
 -----------
--- computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thea2 * thexy2 + thexy3 @endcode.
+-- Computes the following linear combination and assigns the result to this number pair: @code theA1 * theXY1 + theA2 * theXY2 + theXY3 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const Standard_Real theA2, const gp_XY & theXY2, const gp_XY & theXY3);
 
@@ -23723,7 +23729,7 @@ None
 
 Description
 -----------
-Computes the following linear combination and assigns the result to this number pair: @code thea1 * thexy1 + thexy2 @endcode.
+Computes the following linear combination and assigns the result to this number pair: @code theA1 * theXY1 + theXY2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XY & theXY1, const gp_XY & theXY2);
 
@@ -23742,7 +23748,7 @@ None
 
 Description
 -----------
-Computes the following linear combination and assigns the result to this number pair: @code thexy1 + thexy2 @endcode.
+Computes the following linear combination and assigns the result to this number pair: @code theXY1 + theXY2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const gp_XY & theXY1, const gp_XY & theXY2);
 
@@ -23760,7 +23766,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate of this number pair.
+Assigns the given value to the X coordinate of this number pair.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -23778,7 +23784,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate of this number pair.
+Assigns the given value to the Y coordinate of this number pair.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -23791,7 +23797,7 @@ float
 
 Description
 -----------
-Computes x*x + y*y where x and y are the two coordinates of this number pair.
+Computes X*X + Y*Y where X and Y are the two coordinates of this number pair.
 ") SquareModulus;
 		Standard_Real SquareModulus();
 
@@ -23809,7 +23815,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y() @endcode.
+@code <self>.X() = <self>.X() - theOther.X() <self>.Y() = <self>.Y() - theOther.Y() @endcode.
 ") Subtract;
 		void Subtract(const gp_XY & theOther);
 
@@ -23827,7 +23833,7 @@ gp_XY
 
 Description
 -----------
-@code new.x() = <self>.x() - theother.x() new.y() = <self>.y() - theother.y() @endcode.
+@code new.X() = <self>.X() - theOther.X() new.Y() = <self>.Y() - theOther.Y() @endcode.
 ") Subtracted;
 		gp_XY Subtracted(const gp_XY & theOther);
 
@@ -23840,7 +23846,7 @@ float
 
 Description
 -----------
-Returns the x coordinate of this number pair.
+Returns the X coordinate of this number pair.
 ") X;
 		Standard_Real X();
 
@@ -23853,7 +23859,7 @@ float
 
 Description
 -----------
-Returns the y coordinate of this number pair.
+Returns the Y coordinate of this number pair.
 ") Y;
 		Standard_Real Y();
 
@@ -24085,7 +24091,7 @@ None
 
 Description
 -----------
-Creates an xyz object with zero coordinates (0,0,0).
+Creates an XYZ object with zero coordinates (0,0,0).
 ") gp_XYZ;
 		 gp_XYZ();
 
@@ -24105,7 +24111,7 @@ None
 
 Description
 -----------
-Creates an xyz with given coordinates.
+creates an XYZ with given coordinates.
 ") gp_XYZ;
 		 gp_XYZ(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
@@ -24123,7 +24129,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() + theother.x() <self>.y() = <self>.y() + theother.y() <self>.z() = <self>.z() + theother.z() @endcode.
+@code <self>.X() = <self>.X() + theOther.X() <self>.Y() = <self>.Y() + theOther.Y() <self>.Z() = <self>.Z() + theOther.Z() @endcode.
 ") Add;
 		void Add(const gp_XYZ & theOther);
 
@@ -24141,7 +24147,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.x() + theother.x() new.y() = <self>.y() + theother.y() new.z() = <self>.z() + theother.z() @endcode.
+@code new.X() = <self>.X() + theOther.X() new.Y() = <self>.Y() + theOther.Y() new.Z() = <self>.Z() + theOther.Z() @endcode.
 ") Added;
 		gp_XYZ Added(const gp_XYZ & theOther);
 
@@ -24167,7 +24173,7 @@ float *
 
 Description
 -----------
-Returns a ptr to coordinates location. is useful for algorithms, but does not perform any checks!.
+Returns a ptr to coordinates location. Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!.
 ") ChangeData;
 		Standard_Real * ChangeData();
 
@@ -24185,7 +24191,7 @@ float
 
 Description
 -----------
-Returns the coordinate of range theindex: theindex = 1 => x is returned theindex = 2 => y is returned theindex = 3 => z is returned //! raises outofrange if theindex != {1, 2, 3}.
+returns the coordinate of range theIndex: theIndex = 1 => X is returned theIndex = 2 => Y is returned theIndex = 3 => Z is returned //! Raises OutOfRange if theIndex != {1, 2, 3}.
 ") Coord;
 		Standard_Real Coord(const Standard_Integer theIndex);
 
@@ -24222,7 +24228,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.y() * theother.z() - <self>.z() * theother.y() <self>.y() = <self>.z() * theother.x() - <self>.x() * theother.z() <self>.z() = <self>.x() * theother.y() - <self>.y() * theother.x() @endcode.
+@code <self>.X() = <self>.Y() * theOther.Z() - <self>.Z() * theOther.Y() <self>.Y() = <self>.Z() * theOther.X() - <self>.X() * theOther.Z() <self>.Z() = <self>.X() * theOther.Y() - <self>.Y() * theOther.X() @endcode.
 ") Cross;
 		void Cross(const gp_XYZ & theOther);
 
@@ -24241,7 +24247,7 @@ None
 
 Description
 -----------
-Triple vector product computes <self> = <self>.cross(thecoord1.cross(thecoord2)).
+Triple vector product Computes <self> = <self>.Cross(theCoord1.Cross(theCoord2)).
 ") CrossCross;
 		void CrossCross(const gp_XYZ & theCoord1, const gp_XYZ & theCoord2);
 
@@ -24260,7 +24266,7 @@ gp_XYZ
 
 Description
 -----------
-Triple vector product computes new = <self>.cross(thecoord1.cross(thecoord2)).
+Triple vector product computes New = <self>.Cross(theCoord1.Cross(theCoord2)).
 ") CrossCrossed;
 		gp_XYZ CrossCrossed(const gp_XYZ & theCoord1, const gp_XYZ & theCoord2);
 
@@ -24278,7 +24284,7 @@ float
 
 Description
 -----------
-Computes the magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||.
+Computes the magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||.
 ") CrossMagnitude;
 		Standard_Real CrossMagnitude(const gp_XYZ & theRight);
 
@@ -24296,7 +24302,7 @@ float
 
 Description
 -----------
-Computes the square magnitude of the cross product between <self> and theright. returns || <self> ^ theright ||**2.
+Computes the square magnitude of the cross product between <self> and theRight. Returns || <self> ^ theRight ||**2.
 ") CrossSquareMagnitude;
 		Standard_Real CrossSquareMagnitude(const gp_XYZ & theRight);
 
@@ -24314,7 +24320,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.y() * theother.z() - <self>.z() * theother.y() new.y() = <self>.z() * theother.x() - <self>.x() * theother.z() new.z() = <self>.x() * theother.y() - <self>.y() * theother.x() @endcode.
+@code new.X() = <self>.Y() * theOther.Z() - <self>.Z() * theOther.Y() new.Y() = <self>.Z() * theOther.X() - <self>.X() * theOther.Z() new.Z() = <self>.X() * theOther.Y() - <self>.Y() * theOther.X() @endcode.
 ") Crossed;
 		gp_XYZ Crossed(const gp_XYZ & theOther);
 
@@ -24332,7 +24338,7 @@ None
 
 Description
 -----------
-Divides <self> by a real.
+divides <self> by a real.
 ") Divide;
 		void Divide(const Standard_Real theScalar);
 
@@ -24350,7 +24356,7 @@ gp_XYZ
 
 Description
 -----------
-Divides <self> by a real.
+divides <self> by a real.
 ") Divided;
 		gp_XYZ Divided(const Standard_Real theScalar);
 
@@ -24368,7 +24374,7 @@ float
 
 Description
 -----------
-Computes the scalar product between <self> and theother.
+computes the scalar product between <self> and theOther.
 ") Dot;
 		Standard_Real Dot(const gp_XYZ & theOther);
 
@@ -24387,7 +24393,7 @@ float
 
 Description
 -----------
-Computes the triple scalar product.
+computes the triple scalar product.
 ") DotCross;
 		Standard_Real DotCross(const gp_XYZ & theCoord1, const gp_XYZ & theCoord2);
 
@@ -24421,7 +24427,7 @@ float *
 
 Description
 -----------
-Returns a const ptr to coordinates location. is useful for algorithms, but does not perform any checks!.
+Returns a const ptr to coordinates location. Is useful for algorithms, but DOES NOT PERFORM ANY CHECKS!.
 ") GetData;
 		const Standard_Real * GetData();
 
@@ -24461,7 +24467,7 @@ bool
 
 Description
 -----------
-Returns true if he coordinates of this xyz object are equal to the respective coordinates other, within the specified tolerance thetolerance. i.e.: abs(<self>.x() - theother.x()) <= thetolerance and abs(<self>.y() - theother.y()) <= thetolerance and abs(<self>.z() - theother.z()) <= thetolerance.
+Returns True if he coordinates of this XYZ object are equal to the respective coordinates Other, within the specified tolerance theTolerance. I.e.: abs(<self>.X() - theOther.X()) <= theTolerance and abs(<self>.Y() - theOther.Y()) <= theTolerance and abs(<self>.Z() - theOther.Z()) <= theTolerance.
 ") IsEqual;
 		Standard_Boolean IsEqual(const gp_XYZ & theOther, const Standard_Real theTolerance);
 
@@ -24474,7 +24480,7 @@ float
 
 Description
 -----------
-Computes sqrt (x*x + y*y + z*z) where x, y and z are the three coordinates of this xyz object.
+computes Sqrt (X*X + Y*Y + Z*Z) where X, Y and Z are the three coordinates of this XYZ object.
 ") Modulus;
 		Standard_Real Modulus();
 
@@ -24492,7 +24498,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.x() * thescalar; new.y() = <self>.y() * thescalar; new.z() = <self>.z() * thescalar; @endcode.
+@code New.X() = <self>.X() * theScalar; New.Y() = <self>.Y() * theScalar; New.Z() = <self>.Z() * theScalar; @endcode.
 ") Multiplied;
 		gp_XYZ Multiplied(const Standard_Real theScalar);
 
@@ -24510,7 +24516,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.x() * theother.x(); new.y() = <self>.y() * theother.y(); new.z() = <self>.z() * theother.z(); @endcode.
+@code new.X() = <self>.X() * theOther.X(); new.Y() = <self>.Y() * theOther.Y(); new.Z() = <self>.Z() * theOther.Z(); @endcode.
 ") Multiplied;
 		gp_XYZ Multiplied(const gp_XYZ & theOther);
 
@@ -24528,7 +24534,7 @@ gp_XYZ
 
 Description
 -----------
-New = thematrix * <self>.
+New = theMatrix * <self>.
 ") Multiplied;
 		gp_XYZ Multiplied(const gp_Mat & theMatrix);
 
@@ -24546,7 +24552,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() * thescalar; <self>.y() = <self>.y() * thescalar; <self>.z() = <self>.z() * thescalar; @endcode.
+@code <self>.X() = <self>.X() * theScalar; <self>.Y() = <self>.Y() * theScalar; <self>.Z() = <self>.Z() * theScalar; @endcode.
 ") Multiply;
 		void Multiply(const Standard_Real theScalar);
 
@@ -24564,7 +24570,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() * theother.x(); <self>.y() = <self>.y() * theother.y(); <self>.z() = <self>.z() * theother.z(); @endcode.
+@code <self>.X() = <self>.X() * theOther.X(); <self>.Y() = <self>.Y() * theOther.Y(); <self>.Z() = <self>.Z() * theOther.Z(); @endcode.
 ") Multiply;
 		void Multiply(const gp_XYZ & theOther);
 
@@ -24582,7 +24588,7 @@ None
 
 Description
 -----------
-<self> = thematrix * <self>.
+<self> = theMatrix * <self>.
 ") Multiply;
 		void Multiply(const gp_Mat & theMatrix);
 
@@ -24595,7 +24601,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x()/ <self>.modulus() <self>.y() = <self>.y()/ <self>.modulus() <self>.z() = <self>.z()/ <self>.modulus() @endcode raised if <self>.modulus() <= resolution from gp.
+@code <self>.X() = <self>.X()/ <self>.Modulus() <self>.Y() = <self>.Y()/ <self>.Modulus() <self>.Z() = <self>.Z()/ <self>.Modulus() @endcode Raised if <self>.Modulus() <= Resolution from gp.
 ") Normalize;
 		void Normalize();
 
@@ -24608,7 +24614,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.x()/ <self>.modulus() new.y() = <self>.y()/ <self>.modulus() new.z() = <self>.z()/ <self>.modulus() @endcode raised if <self>.modulus() <= resolution from gp.
+@code New.X() = <self>.X()/ <self>.Modulus() New.Y() = <self>.Y()/ <self>.Modulus() New.Z() = <self>.Z()/ <self>.Modulus() @endcode Raised if <self>.Modulus() <= Resolution from gp.
 ") Normalized;
 		gp_XYZ Normalized();
 
@@ -24621,7 +24627,7 @@ None
 
 Description
 -----------
-@code <self>.x() = -<self>.x() <self>.y() = -<self>.y() <self>.z() = -<self>.z() @endcode.
+@code <self>.X() = -<self>.X() <self>.Y() = -<self>.Y() <self>.Z() = -<self>.Z() @endcode.
 ") Reverse;
 		void Reverse();
 
@@ -24634,7 +24640,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = -<self>.x() new.y() = -<self>.y() new.z() = -<self>.z() @endcode.
+@code New.X() = -<self>.X() New.Y() = -<self>.Y() New.Z() = -<self>.Z() @endcode.
 ") Reversed;
 		gp_XYZ Reversed();
 
@@ -24654,7 +24660,7 @@ None
 
 Description
 -----------
-For this xyz object, assigns the values thex, they and thez to its three coordinates.
+For this XYZ object, assigns the values theX, theY and theZ to its three coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
@@ -24673,7 +24679,7 @@ None
 
 Description
 -----------
-Modifies the coordinate of range theindex theindex = 1 => x is modified theindex = 2 => y is modified theindex = 3 => z is modified raises outofrange if theindex != {1, 2, 3}.
+modifies the coordinate of range theIndex theIndex = 1 => X is modified theIndex = 2 => Y is modified theIndex = 3 => Z is modified Raises OutOfRange if theIndex != {1, 2, 3}.
 ") SetCoord;
 		void SetCoord(const Standard_Integer theIndex, const Standard_Real theXi);
 
@@ -24697,7 +24703,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3 + thexyz4 @endcode.
+<self> is set to the following linear form: @code theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3 + theXYZ4 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XYZ & theXYZ1, const Standard_Real theA2, const gp_XYZ & theXYZ2, const Standard_Real theA3, const gp_XYZ & theXYZ3, const gp_XYZ & theXYZ4);
 
@@ -24720,7 +24726,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thea1 * thexyz1 + thea2 * thexyz2 + thea3 * thexyz3 @endcode.
+<self> is set to the following linear form: @code theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XYZ & theXYZ1, const Standard_Real theA2, const gp_XYZ & theXYZ2, const Standard_Real theA3, const gp_XYZ & theXYZ3);
 
@@ -24742,7 +24748,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thea1 * thexyz1 + thea2 * thexyz2 + thexyz3 @endcode.
+<self> is set to the following linear form: @code theA1 * theXYZ1 + theA2 * theXYZ2 + theXYZ3 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XYZ & theXYZ1, const Standard_Real theA2, const gp_XYZ & theXYZ2, const gp_XYZ & theXYZ3);
 
@@ -24763,7 +24769,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thea1 * thexyz1 + thea2 * thexyz2 @endcode.
+<self> is set to the following linear form: @code theA1 * theXYZ1 + theA2 * theXYZ2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XYZ & theXYZ1, const Standard_Real theA2, const gp_XYZ & theXYZ2);
 
@@ -24783,7 +24789,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thea1 * thexyz1 + thexyz2 @endcode.
+<self> is set to the following linear form: @code theA1 * theXYZ1 + theXYZ2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const Standard_Real theA1, const gp_XYZ & theXYZ1, const gp_XYZ & theXYZ2);
 
@@ -24802,7 +24808,7 @@ None
 
 Description
 -----------
-<self> is set to the following linear form: @code thexyz1 + thexyz2 @endcode.
+<self> is set to the following linear form: @code theXYZ1 + theXYZ2 @endcode.
 ") SetLinearForm;
 		void SetLinearForm(const gp_XYZ & theXYZ1, const gp_XYZ & theXYZ2);
 
@@ -24820,7 +24826,7 @@ None
 
 Description
 -----------
-Assigns the given value to the x coordinate.
+Assigns the given value to the X coordinate.
 ") SetX;
 		void SetX(const Standard_Real theX);
 
@@ -24838,7 +24844,7 @@ None
 
 Description
 -----------
-Assigns the given value to the y coordinate.
+Assigns the given value to the Y coordinate.
 ") SetY;
 		void SetY(const Standard_Real theY);
 
@@ -24856,7 +24862,7 @@ None
 
 Description
 -----------
-Assigns the given value to the z coordinate.
+Assigns the given value to the Z coordinate.
 ") SetZ;
 		void SetZ(const Standard_Real theZ);
 
@@ -24869,7 +24875,7 @@ float
 
 Description
 -----------
-Computes x*x + y*y + z*z where x, y and z are the three coordinates of this xyz object.
+Computes X*X + Y*Y + Z*Z where X, Y and Z are the three coordinates of this XYZ object.
 ") SquareModulus;
 		Standard_Real SquareModulus();
 
@@ -24887,7 +24893,7 @@ None
 
 Description
 -----------
-@code <self>.x() = <self>.x() - theother.x() <self>.y() = <self>.y() - theother.y() <self>.z() = <self>.z() - theother.z() @endcode.
+@code <self>.X() = <self>.X() - theOther.X() <self>.Y() = <self>.Y() - theOther.Y() <self>.Z() = <self>.Z() - theOther.Z() @endcode.
 ") Subtract;
 		void Subtract(const gp_XYZ & theOther);
 
@@ -24905,7 +24911,7 @@ gp_XYZ
 
 Description
 -----------
-@code new.x() = <self>.x() - theother.x() new.y() = <self>.y() - theother.y() new.z() = <self>.z() - theother.z() @endcode.
+@code new.X() = <self>.X() - theOther.X() new.Y() = <self>.Y() - theOther.Y() new.Z() = <self>.Z() - theOther.Z() @endcode.
 ") Subtracted;
 		gp_XYZ Subtracted(const gp_XYZ & theOther);
 
@@ -24918,7 +24924,7 @@ float
 
 Description
 -----------
-Returns the x coordinate.
+Returns the X coordinate.
 ") X;
 		Standard_Real X();
 
@@ -24931,7 +24937,7 @@ float
 
 Description
 -----------
-Returns the y coordinate.
+Returns the Y coordinate.
 ") Y;
 		Standard_Real Y();
 
@@ -24944,7 +24950,7 @@ float
 
 Description
 -----------
-Returns the z coordinate.
+Returns the Z coordinate.
 ") Z;
 		Standard_Real Z();
 

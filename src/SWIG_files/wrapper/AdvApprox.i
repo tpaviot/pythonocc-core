@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ADVAPPROXDOCSTRING
 "AdvApprox module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_advapprox.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapprox.html"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPPROXDOCSTRING) AdvApprox
 
@@ -113,7 +113,7 @@ None
 
 Description
 -----------
-Constructs approximator tool. //! warning: the func should be valid reference to object of type inherited from class evaluatorfunction from approx with life time longer than that of the approximator tool; //! the result should be formatted in the following way: <--num1dss--> <--2 * num2dss--> <--3 * num3dss--> r[0] .... r[num1dss].....  r[dimension-1] //! the order in which each subspace appears should be consistent with the tolerances given in the create function and the results will be given in that order as well that is: curve2d(n) will correspond to the nth entry described by num2dss, curve(n) will correspond to the nth entry described by num3dss the same type of schema applies to the poles1d, poles2d and poles.
+Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool; //! the result should be formatted in the following way: <--Num1DSS--> <--2 * Num2DSS--> <--3 * Num3DSS--> R[0] .... R[Num1DSS].....  R[Dimension-1] //! the order in which each Subspace appears should be consistent with the tolerances given in the create function and the results will be given in that order as well that is: Curve2d(n) will correspond to the nth entry described by Num2DSS, Curve(n) will correspond to the nth entry described by Num3DSS The same type of schema applies to the Poles1d, Poles2d and Poles.
 ") AdvApprox_ApproxAFunction;
 		 AdvApprox_ApproxAFunction(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const Standard_Real First, const Standard_Real Last, const GeomAbs_Shape Continuity, const Standard_Integer MaxDeg, const Standard_Integer MaxSeg, const AdvApprox_EvaluatorFunction & Func);
 
@@ -196,7 +196,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the error as is in the algorithms.
+returns the error as is in the algorithms.
 ") AverageError;
 		opencascade::handle<TColStd_HArray1OfReal> AverageError(const Standard_Integer Dimension);
 
@@ -245,7 +245,7 @@ o: Standard_OStream
 
 Description
 -----------
-Display information on approximation.
+display information on approximation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -302,7 +302,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the error as is in the algorithms.
+returns the error as is in the algorithms.
 ") MaxError;
 		opencascade::handle<TColStd_HArray1OfReal> MaxError(const Standard_Integer Dimension);
 
@@ -360,7 +360,7 @@ int
 
 Description
 -----------
-As the name says.
+as the name says.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
@@ -410,7 +410,7 @@ None
 
 Description
 -----------
-Returns the poles at index from the 3d subspace.
+returns the poles at Index from the 3d subspace.
 ") Poles;
 		void Poles(const Standard_Integer Index, TColgp_Array1OfPnt & P);
 
@@ -423,7 +423,7 @@ opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
-Returns the poles from the algorithms as is.
+returns the poles from the algorithms as is.
 ") Poles1d;
 		opencascade::handle<TColStd_HArray2OfReal> Poles1d();
 
@@ -442,7 +442,7 @@ None
 
 Description
 -----------
-Returns the poles at index from the 1d subspace.
+returns the poles at Index from the 1d subspace.
 ") Poles1d;
 		void Poles1d(const Standard_Integer Index, TColStd_Array1OfReal & P);
 
@@ -455,7 +455,7 @@ opencascade::handle<TColgp_HArray2OfPnt2d>
 
 Description
 -----------
-Returns the poles from the algorithms as is.
+returns the poles from the algorithms as is.
 ") Poles2d;
 		opencascade::handle<TColgp_HArray2OfPnt2d> Poles2d();
 
@@ -474,7 +474,7 @@ None
 
 Description
 -----------
-Returns the poles at index from the 2d subspace.
+returns the poles at Index from the 2d subspace.
 ") Poles2d;
 		void Poles2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & P);
 
@@ -580,7 +580,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the coefficients in the jacobi base.
+returns the coefficients in the Jacobi Base.
 ") Coefficients;
 		opencascade::handle<TColStd_HArray1OfReal> Coefficients();
 
@@ -623,7 +623,7 @@ o: Standard_OStream
 
 Description
 -----------
-Display information on approximation.
+display information on approximation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -636,7 +636,7 @@ opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
-Returns the constraints at first.
+returns the constraints at First.
 ") FirstConstr;
 		opencascade::handle<TColStd_HArray2OfReal> FirstConstr();
 
@@ -662,7 +662,7 @@ opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
-Returns the constraints at last.
+returns the constraints at Last.
 ") LastConstr;
 		opencascade::handle<TColStd_HArray2OfReal> LastConstr();
 
@@ -702,7 +702,7 @@ None
 
 Description
 -----------
-Constructs approximator tool. //! warning: the func should be valid reference to object of type inherited from class evaluatorfunction from approx with life time longer than that of the approximator tool;.
+Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool;.
 ") Perform;
 		void Perform(const TColStd_Array1OfInteger & LocalDimension, const TColStd_Array1OfReal & LocalTolerancesArray, const Standard_Real First, const Standard_Real Last, const Standard_Integer MaxDegree);
 
@@ -814,7 +814,7 @@ cuttingvalue: float
 
 Description
 -----------
-Cuting value is - the recommended point nerest of (a+b)/2 if pi is in ]a,b[ or else - the preferential point nearest of (a+b) / 2 if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = weight - or (a+b)/2 else.
+cuting value is - the recommended point nerest of (a+b)/2 if pi is in ]a,b[ or else - the preferential point nearest of (a+b) / 2 if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight - or (a+b)/2 else.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real a, const Standard_Real b, Standard_Real &OutValue);
 

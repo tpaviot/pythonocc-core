@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CDMDOCSTRING
 "CDM module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_cdm.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdm.html"
 %enddef
 %module (package="OCC.Core", docstring=CDMDOCSTRING) CDM
 
@@ -156,7 +156,7 @@ None
 
 Description
 -----------
-This method is called before the update of a document. by default, writes in messagedriver().
+this method is called before the update of a document. By default, writes in MessageDriver().
 ") BeginOfUpdate;
 		virtual void BeginOfUpdate(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -197,7 +197,7 @@ None
 
 Description
 -----------
-This method is called affter the update of a document. by default, writes in messagedriver().
+this method is called after the update of a document. By default, writes in MessageDriver().
 ") EndOfUpdate;
 		virtual void EndOfUpdate(const opencascade::handle<CDM_Document> & aDocument, const Standard_Boolean theStatus, TCollection_ExtendedString ErrorString);
 
@@ -223,7 +223,7 @@ CDM_MetaDataLookUpTable
 
 Description
 -----------
-Returns metadata lookuptable.
+Returns MetaData LookUpTable.
 ") MetaDataLookUpTable;
 		virtual CDM_MetaDataLookUpTable & MetaDataLookUpTable();
 
@@ -249,7 +249,7 @@ opencascade::handle<Resource_Manager>
 
 Description
 -----------
-The manager returned by this virtual method will be used to search for format.retrieval resource items.
+The manager returned by this virtual method will be used to search for Format.Retrieval resource items.
 ") Resources;
 		virtual opencascade::handle<Resource_Manager> Resources();
 
@@ -280,7 +280,7 @@ None
 
 Description
 -----------
-Writes the string in the application messagerdriver.
+writes the string in the application MessagerDriver.
 ") Write;
 		void Write(const Standard_ExtString aString);
 
@@ -316,7 +316,7 @@ None
 
 Description
 -----------
-Appends a comment into comments of this document.
+appends a comment into comments of this document.
 ") AddComment;
 		void AddComment(TCollection_ExtendedString aComment);
 
@@ -361,7 +361,7 @@ bool
 
 Description
 -----------
-A referenced document may indicate through this virtual method that it does not allow the closing of adocument which it references through the reference areferenceidentifier. by default returns standard_true.
+A referenced document may indicate through this virtual method that it does not allow the closing of aDocument which it references through the reference aReferenceIdentifier. By default returns Standard_True.
 ") CanCloseReference;
 		virtual Standard_Boolean CanCloseReference(const opencascade::handle<CDM_Document> & aDocument, const Standard_Integer aReferenceIdentifier);
 
@@ -393,7 +393,7 @@ None
 
 Description
 -----------
-A referenced document may update its internal data structure when {adocument} which it references through the reference {areferenceidentifier} is being closed. by default this method does nothing.
+A referenced document may update its internal data structure when {aDocument} which it references through the reference {aReferenceIdentifier} is being closed. By default this method does nothing.
 ") CloseReference;
 		virtual void CloseReference(const opencascade::handle<CDM_Document> & aDocument, const Standard_Integer aReferenceIdentifier);
 
@@ -406,7 +406,7 @@ Standard_ExtString
 
 Description
 -----------
-Returns the first of associated comments. by default the comment is an empty string.
+Returns the first of associated comments. By default the comment is an empty string.
 ") Comment;
 		Standard_ExtString Comment();
 
@@ -424,7 +424,7 @@ None
 
 Description
 -----------
-Returns the associated comments through <acomments>. returns empty sequence if no comments are associated.
+returns the associated comments through <aComments>. Returns empty sequence if no comments are associated.
 ") Comments;
 		void Comments(TColStd_SequenceOfExtendedString & aComments);
 
@@ -443,7 +443,7 @@ int
 
 Description
 -----------
-Copies a reference to this document. this method avoid retrieval of referenced document. the arguments are the original document and a valid reference identifier returns the local identifier.
+Copies a reference to this document. This method avoid retrieval of referenced document. The arguments are the original document and a valid reference identifier Returns the local identifier.
 ") CopyReference;
 		Standard_Integer CopyReference(const opencascade::handle<CDM_Document> & aFromDocument, const Standard_Integer aReferenceIdentifier);
 
@@ -461,7 +461,7 @@ int
 
 Description
 -----------
-Creates a reference from this document to {anotherdocument}. returns a reference identifier. this reference identifier is unique in the document and will not be used for the next references, even after the storing of the document. if there is already a reference between the two documents, the reference is not created, but its reference identifier is returned.
+Creates a reference from this document to {anOtherDocument}. Returns a reference identifier. This reference identifier is unique in the document and will not be used for the next references, even after the storing of the document. If there is already a reference between the two documents, the reference is not created, but its reference identifier is returned.
 ") CreateReference;
 		Standard_Integer CreateReference(const opencascade::handle<CDM_Document> & anOtherDocument);
 
@@ -522,7 +522,7 @@ bool
 
 Description
 -----------
-Returns true is this document references adocument;.
+returns True is this document references aDocument;.
 ") DeepReferences;
 		Standard_Boolean DeepReferences(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -535,7 +535,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Gets the `fileformat`.description resource.
+gets the `FileFormat`.Description resource.
 ") Description;
 		TCollection_ExtendedString Description();
 
@@ -553,7 +553,7 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-Returns the to document of the reference identified by areferenceidentifier. if the todocument is stored and has not yet been retrieved, this method will retrieve it.
+Returns the To Document of the reference identified by aReferenceIdentifier. If the ToDocument is stored and has not yet been retrieved, this method will retrieve it.
 ") Document;
 		opencascade::handle<CDM_Document> Document(const Standard_Integer aReferenceIdentifier);
 
@@ -592,7 +592,7 @@ None
 
 Description
 -----------
-By default empties the extensions.
+by default empties the extensions.
 ") Extensions;
 		virtual void Extensions(TColStd_SequenceOfExtendedString & Extensions);
 
@@ -605,7 +605,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Gets the desktop.domain.application.`fileformat`.fileextension resource.
+gets the Desktop.Domain.Application.`FileFormat`.FileExtension resource.
 ") FileExtension;
 		TCollection_ExtendedString FileExtension();
 
@@ -657,7 +657,7 @@ int
 
 Description
 -----------
-Returns the number of references having this document as to document.
+returns the number of references having this document as To Document.
 ") FromReferencesNumber;
 		Standard_Integer FromReferencesNumber();
 
@@ -676,7 +676,7 @@ bool
 
 Description
 -----------
-This method can be redefined to extract another document in a different format. for example, to extract a shape from an applicative document.
+This method can be redefined to extract another document in a different format. For example, to extract a Shape from an applicative document.
 ") GetAlternativeDocument;
 		virtual Standard_Boolean GetAlternativeDocument(TCollection_ExtendedString aFormat, opencascade::handle<CDM_Document> & anAlternativeDocument);
 
@@ -720,7 +720,7 @@ bool
 
 Description
 -----------
-Returns true if the to document of the reference identified by areferenceidentifier is in session, false if it corresponds to a not yet retrieved document.
+returns True if the To Document of the reference identified by aReferenceIdentifier is in session, False if it corresponds to a not yet retrieved document.
 ") IsInSession;
 		Standard_Boolean IsInSession(const Standard_Integer aReferenceIdentifier);
 
@@ -733,7 +733,7 @@ bool
 
 Description
 -----------
-Returns true if the version is greater than the storage version.
+returns true if the version is greater than the storage version.
 ") IsModified;
 		Standard_Boolean IsModified();
 
@@ -764,7 +764,7 @@ bool
 
 Description
 -----------
-Returns true if the document corresponding to the given reference has been retrieved and opened. otherwise returns false. this method does not retrieve the referenced document.
+returns true if the document corresponding to the given reference has been retrieved and opened. Otherwise returns false. This method does not retrieve the referenced document.
 ") IsOpened;
 		Standard_Boolean IsOpened(const Standard_Integer aReferenceIdentifier);
 
@@ -777,7 +777,7 @@ bool
 
 Description
 -----------
-Indicates that this document cannot be modified.
+indicates that this document cannot be modified.
 ") IsReadOnly;
 		Standard_Boolean IsReadOnly();
 
@@ -795,7 +795,7 @@ bool
 
 Description
 -----------
-Indicates that the referenced document cannot be modified,.
+indicates that the referenced document cannot be modified,.
 ") IsReadOnly;
 		Standard_Boolean IsReadOnly(const Standard_Integer aReferenceIdentifier);
 
@@ -813,7 +813,7 @@ bool
 
 Description
 -----------
-Returns true if the to document of the reference identified by areferenceidentifier has already been stored, false otherwise.
+returns True if the To Document of the reference identified by aReferenceIdentifier has already been stored, False otherwise.
 ") IsStored;
 		Standard_Boolean IsStored(const Standard_Integer aReferenceIdentifier);
 
@@ -844,7 +844,7 @@ bool
 
 Description
 -----------
-Returns true if the modification counter found in the given reference is equal to the actual modification counter of the to document. this method is able to deal with a reference to a not retrieved document.
+returns true if the modification counter found in the given reference is equal to the actual modification counter of the To Document. This method is able to deal with a reference to a not retrieved document.
 ") IsUpToDate;
 		Standard_Boolean IsUpToDate(const Standard_Integer aReferenceIdentifier);
 
@@ -857,7 +857,7 @@ None
 
 Description
 -----------
-Read (or rereads) the following resource.
+read (or rereads) the following resource.
 ") LoadResources;
 		void LoadResources();
 
@@ -883,7 +883,7 @@ int
 
 Description
 -----------
-Returns the current modification counter.
+returns the current modification counter.
 ") Modifications;
 		Standard_Integer Modifications();
 
@@ -896,7 +896,7 @@ None
 
 Description
 -----------
-Indicates that this document has been modified. this method increments the modification counter.
+Indicates that this document has been modified. This method increments the modification counter.
 ") Modify;
 		void Modify();
 
@@ -914,7 +914,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the name of the metadata of the to document of the reference identified by areferenceidentifier.
+returns the name of the metadata of the To Document of the reference identified by aReferenceIdentifier.
 ") Name;
 		TCollection_ExtendedString Name(const Standard_Integer aReferenceIdentifier);
 
@@ -993,7 +993,7 @@ None
 
 Description
 -----------
-Removes all references having this document for from document.
+Removes all references having this document for From Document.
 ") RemoveAllReferences;
 		void RemoveAllReferences();
 
@@ -1011,7 +1011,7 @@ None
 
 Description
 -----------
-Removes the reference between the from document and the to document identified by a reference identifier.
+Removes the reference between the From Document and the To Document identified by a reference identifier.
 ") RemoveReference;
 		void RemoveReference(const Standard_Integer aReferenceIdentifier);
 
@@ -1050,7 +1050,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Determines under which the document is going to be store. by default the name of the document will be used. if the document has no name its presentation will be used.
+Determines under which the document is going to be store. By default the name of the document will be used. If the document has no name its presentation will be used.
 ") RequestedName;
 		TCollection_ExtendedString RequestedName();
 
@@ -1081,7 +1081,7 @@ None
 
 Description
 -----------
-Associates a comment with this document.
+associates a comment with this document.
 ") SetComment;
 		void SetComment(TCollection_ExtendedString aComment);
 
@@ -1099,7 +1099,7 @@ None
 
 Description
 -----------
-Associates a comments with this document.
+associates a comments with this document.
 ") SetComments;
 		void SetComments(const TColStd_SequenceOfExtendedString & aComments);
 
@@ -1130,7 +1130,7 @@ None
 
 Description
 -----------
-Resets the modification counter in the given reference to the actual modification counter of its to document. this method should be called after the application has updated this document.
+Resets the modification counter in the given reference to the actual modification counter of its To Document. This method should be called after the application has updated this document.
 ") SetIsUpToDate;
 		void SetIsUpToDate(const Standard_Integer aReferenceIdentifier);
 
@@ -1148,7 +1148,7 @@ None
 
 Description
 -----------
-Associates database information to a document which has been stored. the name of the document is now the name which has beenused to store the data.
+associates database information to a document which has been stored. The name of the document is now the name which has beenused to store the data.
 ") SetMetaData;
 		void SetMetaData(const opencascade::handle<CDM_MetaData> & aMetaData);
 
@@ -1202,7 +1202,7 @@ None
 
 Description
 -----------
-Defines the comment with which the object should be stored.
+defines the Comment with which the object should be stored.
 ") SetRequestedComment;
 		void SetRequestedComment(TCollection_ExtendedString aComment);
 
@@ -1220,7 +1220,7 @@ None
 
 Description
 -----------
-Defines the folder in which the object should be stored.
+defines the folder in which the object should be stored.
 ") SetRequestedFolder;
 		void SetRequestedFolder(TCollection_ExtendedString aFolder);
 
@@ -1238,7 +1238,7 @@ None
 
 Description
 -----------
-Defines the name under which the object should be stored.
+defines the name under which the object should be stored.
 ") SetRequestedName;
 		void SetRequestedName(TCollection_ExtendedString aName);
 
@@ -1274,7 +1274,7 @@ bool
 
 Description
 -----------
-Returns true is this document references adocument;.
+returns True is this document references aDocument;.
 ") ShallowReferences;
 		Standard_Boolean ShallowReferences(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -1287,7 +1287,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-The storage format is the key which is used to determine in the application resources the storage driver plugin, the file extension and other data used to store the document.
+The Storage Format is the key which is used to determine in the application resources the storage driver plugin, the file extension and other data used to store the document.
 ") StorageFormat;
 		virtual TCollection_ExtendedString StorageFormat();
 
@@ -1300,7 +1300,7 @@ int
 
 Description
 -----------
-Returns the value of the modification counter at the time of storage. by default returns 0.
+returns the value of the modification counter at the time of storage. By default returns 0.
 ") StorageVersion;
 		Standard_Integer StorageVersion();
 
@@ -1313,7 +1313,7 @@ int
 
 Description
 -----------
-Returns the number of references having this document as from document.
+returns the number of references having this document as From Document.
 ") ToReferencesNumber;
 		Standard_Integer ToReferencesNumber();
 
@@ -1385,7 +1385,7 @@ None
 
 Description
 -----------
-The update method will be called once for each reference, but it should not perform any computation, to avoid multiple computation of a same document.
+The Update method will be called once for each reference, but it should not perform any computation, to avoid multiple computation of a same document.
 ") Update;
 		virtual void Update(const opencascade::handle<CDM_Document> & aToDocument, const Standard_Integer aReferenceIdentifier, const Standard_Address aModifContext);
 
@@ -1403,7 +1403,7 @@ bool
 
 Description
 -----------
-This method update will be called to signal the end of the modified references list. the document should be recomputed and updatefromdocuments should be called. update should returns true in case of success, false otherwise. in case of failure, additional information can be given in errorstring.
+This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString.
 ") Update;
 		virtual Standard_Boolean Update(TCollection_ExtendedString & ErrorString);
 
@@ -1416,7 +1416,7 @@ None
 
 Description
 -----------
-The following method should be used instead: //! update(me:mutable; errorstring: out extendedstring from tcollection) returns boolean from standard.
+the following method should be used instead: //! Update(me:mutable; ErrorString: out ExtendedString from TCollection) returns Boolean from Standard.
 ") Update;
 		virtual void Update();
 
@@ -1434,7 +1434,7 @@ None
 
 Description
 -----------
-Call virtual method update on all referencing documents. this method keeps the list of the -- documents to process.it may be the starting of an update -- cycle. if not, the reentrant calls made by update method (without argument) will append the referencing documents to the list and call the update method (with arguments). only the first call to updatefromdocuments generate call to update().
+call virtual method Update on all referencing documents. This method keeps the list of the -- documents to process.It may be the starting of an update -- cycle. If not, the reentrant calls made by Update method (without argument) will append the referencing documents to the list and call the Update method (with arguments). Only the first call to UpdateFromDocuments generate call to Update().
 ") UpdateFromDocuments;
 		void UpdateFromDocuments(const Standard_Address aModifContext);
 
@@ -1511,7 +1511,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the folder in which the meta-data has to be created or has to be found.
+returns the folder in which the meta-data has to be created or has to be found.
 ") Folder;
 		TCollection_ExtendedString Folder();
 
@@ -1524,7 +1524,7 @@ bool
 
 Description
 -----------
-Indicates that the version has to be taken into account when searching the corresponding meta-data.
+indicates that the version has to be taken into account when searching the corresponding meta-data.
 ") HasVersion;
 		Standard_Boolean HasVersion();
 
@@ -1610,7 +1610,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the name under which the meta-data has to be created or has to be found.
+returns the name under which the meta-data has to be created or has to be found.
 ") Name;
 		TCollection_ExtendedString Name();
 
@@ -1692,7 +1692,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the version under which the meta-data has to be found. warning: raises nosuchobject from standard if no version has been defined.
+returns the version under which the meta-data has to be found. Warning: raises NoSuchObject from Standard if no Version has been defined.
 ") Version;
 		TCollection_ExtendedString Version();
 
@@ -1855,7 +1855,7 @@ int
 
 Description
 -----------
-Returns the document version in the reference.
+returns the Document Version in the reference.
 ") DocumentVersion;
 		Standard_Integer DocumentVersion();
 

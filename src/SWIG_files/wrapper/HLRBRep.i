@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRBREPDOCSTRING
 "HLRBRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_hlrbrep.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRBREPDOCSTRING) HLRBRep
 
@@ -291,7 +291,7 @@ None
 
 Description
 -----------
-The previous and next field are set to null.
+The previous and next field are set to NULL.
 ") HLRBRep_AreaLimit;
 		 HLRBRep_AreaLimit(const HLRAlgo_Intersection & V, const Standard_Boolean Boundary, const Standard_Boolean Interference, const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_State EdgeBefore, const TopAbs_State EdgeAfter);
 
@@ -637,7 +637,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P);
 
@@ -658,7 +658,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -680,7 +680,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -703,7 +703,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -723,7 +723,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec DN(const BRepAdaptor_Curve & C, const Standard_Real U, const Standard_Integer N);
 
@@ -795,7 +795,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const BRepAdaptor_Curve & C);
 
@@ -833,7 +833,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -942,7 +942,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const BRepAdaptor_Curve & C, const GeomAbs_Shape S);
 
@@ -1092,7 +1092,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const BRepAdaptor_Curve & C, const Standard_Real R3d);
 
@@ -1111,7 +1111,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt Value(const BRepAdaptor_Curve & C, const Standard_Real U);
 
@@ -1655,7 +1655,7 @@ None
 
 Description
 -----------
-Self intersection of a curve.
+Self Intersection of a curve.
 ") HLRBRep_CInter;
 		 HLRBRep_CInter(const Standard_Address & C, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -1676,7 +1676,7 @@ None
 
 Description
 -----------
-Self intersection of a curve with a domain.
+Self Intersection of a curve with a domain.
 ") HLRBRep_CInter;
 		 HLRBRep_CInter(const Standard_Address & C, const IntRes2d_Domain & D, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -1977,7 +1977,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve <c> the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, 2 or 3). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
+Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 ") HLRBRep_CLProps;
 		 HLRBRep_CLProps(const HLRBRep_Curve * & C, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -1998,7 +1998,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u>. all the computations done will be related to <c> and <u>.
+Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 ") HLRBRep_CLProps;
 		 HLRBRep_CLProps(const HLRBRep_Curve * & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -2017,7 +2017,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u> and the curve is set with setcurve. the curve can have a empty constructor all the computations done will be related to <c> and <u> when the functions 'set' will be done.
+Same as previous constructor but here the parameter is set to the value <U> and the curve is set with SetCurve. the curve can have a empty constructor All the computations done will be related to <C> and <U> when the functions 'set' will be done.
 ") HLRBRep_CLProps;
 		 HLRBRep_CLProps(const Standard_Integer N, const Standard_Real Resolution);
 
@@ -2035,7 +2035,7 @@ None
 
 Description
 -----------
-Returns the centre of curvature <p>.
+Returns the centre of curvature <P>.
 ") CentreOfCurvature;
 		void CentreOfCurvature(gp_Pnt2d & P);
 
@@ -2061,7 +2061,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the first derivative. the derivative is computed if it has not been yet.
+Returns the first derivative. The derivative is computed if it has not been yet.
 ") D1;
 		const gp_Vec2d D1();
 
@@ -2074,7 +2074,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the second derivative. the derivative is computed if it has not been yet.
+Returns the second derivative. The derivative is computed if it has not been yet.
 ") D2;
 		const gp_Vec2d D2();
 
@@ -2087,7 +2087,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the third derivative. the derivative is computed if it has not been yet.
+Returns the third derivative. The derivative is computed if it has not been yet.
 ") D3;
 		const gp_Vec2d D3();
 
@@ -2100,7 +2100,7 @@ bool
 
 Description
 -----------
-Returns true if the tangent is defined. for example, the tangent is not defined if the three first derivatives are all null.
+Returns True if the tangent is defined. For example, the tangent is not defined if the three first derivatives are all null.
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined();
 
@@ -2118,7 +2118,7 @@ None
 
 Description
 -----------
-Returns the normal direction <n>.
+Returns the normal direction <N>.
 ") Normal;
 		void Normal(gp_Dir2d & N);
 
@@ -2154,7 +2154,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve for the parameter value <u>.
+Initializes the local properties of the curve for the parameter value <U>.
 ") SetParameter;
 		void SetParameter(const Standard_Real U);
 
@@ -2172,7 +2172,7 @@ None
 
 Description
 -----------
-Output the tangent direction <d>.
+output the tangent direction <D>.
 ") Tangent;
 		void Tangent(gp_Dir2d & D);
 
@@ -2185,7 +2185,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the point.
+Returns the Point.
 ") Value;
 		const gp_Pnt2d Value();
 
@@ -2217,7 +2217,7 @@ int
 
 Description
 -----------
-Returns the order of continuity of the curve <c>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
+returns the order of continuity of the curve <C>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
 ") Continuity;
 		static Standard_Integer Continuity(const HLRBRep_Curve * A);
 
@@ -2238,7 +2238,7 @@ None
 
 Description
 -----------
-Computes the point <p> and first derivative <v1> of parameter <u> on the curve <c>.
+Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 ") D1;
 		static void D1(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -2260,7 +2260,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1> and second derivative <v2> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 ") D2;
 		static void D2(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2283,7 +2283,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1>, the second derivative <v2> and third derivative <v3> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 ") D3;
 		static void D3(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -2301,7 +2301,7 @@ float
 
 Description
 -----------
-Returns the first parameter bound of the curve.
+returns the first parameter bound of the curve.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const HLRBRep_Curve * A);
 
@@ -2319,7 +2319,7 @@ float
 
 Description
 -----------
-Returns the last parameter bound of the curve. firstparameter must be less than lastparamenter.
+returns the last parameter bound of the curve. FirstParameter must be less than LastParamenter.
 ") LastParameter;
 		static Standard_Real LastParameter(const HLRBRep_Curve * A);
 
@@ -2339,7 +2339,7 @@ None
 
 Description
 -----------
-Computes the point <p> of parameter <u> on the curve from hlrbrep <c>.
+Computes the point <P> of parameter <U> on the Curve from HLRBRep <C>.
 ") Value;
 		static void Value(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P);
 
@@ -2366,7 +2366,7 @@ None
 
 Description
 -----------
-Creates an undefined curve.
+Creates an undefined Curve.
 ") HLRBRep_Curve;
 		 HLRBRep_Curve();
 
@@ -2405,7 +2405,7 @@ BRepAdaptor_Curve
 
 Description
 -----------
-Returns the 3d curve.
+Returns the 3D curve.
 ") Curve;
 		BRepAdaptor_Curve & Curve();
 
@@ -2423,7 +2423,7 @@ None
 
 Description
 -----------
-Sets the 3d curve to be projected.
+Sets the 3D curve to be projected.
 ") Curve;
 		void Curve(const TopoDS_Edge & E);
 
@@ -2442,7 +2442,7 @@ None
 
 Description
 -----------
-Computes the 3d point of parameter u on the curve.
+Computes the 3D point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -2461,7 +2461,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt2d & P);
 
@@ -2481,7 +2481,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative.
+Computes the point of parameter U on the curve with its first derivative.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -2501,7 +2501,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -2522,7 +2522,7 @@ None
 
 Description
 -----------
-Raised if the continuity of the current interval is not c2.
+Raised if the continuity of the current interval is not C2.
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -2544,7 +2544,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -2563,7 +2563,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
 
@@ -2615,7 +2615,7 @@ BRepAdaptor_Curve
 
 Description
 -----------
-Returns the 3d curve.
+Returns the 3D curve.
 ") GetCurve;
 		BRepAdaptor_Curve GetCurve();
 
@@ -2628,7 +2628,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
@@ -2660,7 +2660,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -2779,7 +2779,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -2979,7 +2979,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
@@ -2999,7 +2999,7 @@ None
 
 Description
 -----------
-Depending on <atstart> computes the 2d point and tangent on the curve at sart (or at end). if the first derivative is null look after at start (or before at end) with the second derivative.
+Depending on <AtStart> computes the 2D point and tangent on the curve at sart (or at end). If the first derivative is null look after at start (or before at end) with the second derivative.
 ") Tangent;
 		void Tangent(const Standard_Boolean AtStart, gp_Pnt2d & P, gp_Dir2d & D);
 
@@ -3055,7 +3055,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		gp_Pnt2d Value(const Standard_Real U);
 
@@ -3073,7 +3073,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the 3d point of parameter u on the curve.
+Computes the 3D point of parameter U on the curve.
 ") Value3D;
 		gp_Pnt Value3D(const Standard_Real U);
 
@@ -3091,7 +3091,7 @@ float
 
 Description
 -----------
-Computes the z coordinate of the point of parameter u on the curve in the viewing coordinate system.
+Computes the Z coordinate of the point of parameter U on the curve in the viewing coordinate system.
 ") Z;
 		Standard_Real Z(const Standard_Real U);
 
@@ -3197,7 +3197,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -3218,7 +3218,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -3240,7 +3240,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -3263,7 +3263,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -3283,7 +3283,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec2d DN(const Standard_Address C, const Standard_Real U, const Standard_Integer N);
 
@@ -3376,7 +3376,7 @@ U2: float
 
 Description
 -----------
-Output the bounds of interval of index <index> used if type == composite.
+output the bounds of interval of index <Index> used if Type == Composite.
 ") GetInterval;
 		static void GetInterval(const Standard_Address C, const Standard_Integer Index, const TColStd_Array1OfReal & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3394,7 +3394,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const Standard_Address C);
 
@@ -3431,7 +3431,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const Standard_Address C, TColStd_Array1OfReal & T);
 
@@ -3521,7 +3521,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const Standard_Address C);
 
@@ -3614,7 +3614,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const Standard_Address C, const Standard_Real R3d);
 
@@ -3632,7 +3632,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") TheType;
 		static GeomAbs_CurveType TheType(const Standard_Address C);
 
@@ -3651,7 +3651,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt2d Value(const Standard_Address C, const Standard_Real U);
 
@@ -3685,7 +3685,7 @@ None
 
 Description
 -----------
-Create an empty data structure of <nv> vertices, <ne> edges and <nf> faces.
+Create an empty data structure of <NV> vertices, <NE> edges and <NF> faces.
 ") HLRBRep_Data;
 		 HLRBRep_Data(const Standard_Integer NV, const Standard_Integer NE, const Standard_Integer NF);
 
@@ -3698,7 +3698,7 @@ bool
 
 Description
 -----------
-Returns true if the rejected interference is above the face.
+Returns True if the rejected interference is above the face.
 ") AboveInterference;
 		Standard_Boolean AboveInterference();
 
@@ -3738,7 +3738,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of the edge <ed> after classification.
+Returns the state of the Edge <ED> after classification.
 ") Compare;
 		TopAbs_State Compare(const Standard_Integer E, const HLRBRep_EdgeData & ED);
 
@@ -3777,7 +3777,7 @@ int
 
 Description
 -----------
-Returns the current edge.
+Returns the current Edge.
 ") Edge;
 		Standard_Integer Edge();
 
@@ -3809,7 +3809,7 @@ bool
 
 Description
 -----------
-Returns the true if the edge <ed> belongs to the hiding face.
+Returns the true if the Edge <ED> belongs to the Hiding Face.
 ") EdgeOfTheHidingFace;
 		Standard_Boolean EdgeOfTheHidingFace(const Standard_Integer E, const HLRBRep_EdgeData & ED);
 
@@ -3829,7 +3829,7 @@ staf: TopAbs_State
 
 Description
 -----------
-Returns the local 3d state of the intersection between the current edge and the current face at the <p1> and <p2> parameters.
+Returns the local 3D state of the intersection between the current edge and the current face at the <p1> and <p2> parameters.
 ") EdgeState;
 		void EdgeState(const Standard_Real p1, const Standard_Real p2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
@@ -3875,7 +3875,7 @@ int
 
 Description
 -----------
-Returns the number of levels of hiding face above the first point of the edge <ed>. the interferencelist is given to compute far away of the interferences and then come back.
+Returns the number of levels of hiding face above the first point of the edge <ED>. The InterferenceList is given to compute far away of the Interferences and then come back.
 ") HidingStartLevel;
 		Standard_Integer HidingStartLevel(const Standard_Integer E, const HLRBRep_EdgeData & ED, const HLRAlgo_InterferenceList & IL);
 
@@ -3908,7 +3908,7 @@ None
 
 Description
 -----------
-To compare with only non rejected edges.
+to compare with only non rejected edges.
 ") InitBoundSort;
 		void InitBoundSort(const HLRAlgo_EdgesBlock::MinMaxIndices & MinMaxTot, const Standard_Integer e1, const Standard_Integer e2);
 
@@ -3927,7 +3927,7 @@ None
 
 Description
 -----------
-Begin an iteration only on visible edges crossing the face number <fi>.
+Begin an iteration only on visible Edges crossing the face number <FI>.
 ") InitEdge;
 		void InitEdge(const Standard_Integer FI, BRepTopAdaptor_MapOfShapeTool & MST);
 
@@ -3940,7 +3940,7 @@ None
 
 Description
 -----------
-Intersect the current edge with the boundary of the hiding face. the interferences are given by the more, next, and value methods.
+Intersect the current Edge with the boundary of the hiding face. The interferences are given by the More, Next, and Value methods.
 ") InitInterference;
 		void InitInterference();
 
@@ -3987,7 +3987,7 @@ Cu: float
 
 Description
 -----------
-Returns the local description of the projection of the current fedge at parameter <param>.
+Returns the local description of the projection of the current FEdge at parameter <Param>.
 ") LocalFEGeometry2D;
 		void LocalFEGeometry2D(const Standard_Integer FE, const Standard_Real Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
 
@@ -4007,7 +4007,7 @@ Cu: float
 
 Description
 -----------
-Returns the local description of the projection of the current ledge at parameter <param>.
+Returns the local description of the projection of the current LEdge at parameter <Param>.
 ") LocalLEGeometry2D;
 		void LocalLEGeometry2D(const Standard_Real Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
 
@@ -4129,7 +4129,7 @@ bool
 
 Description
 -----------
-Returns true if the interference is rejected.
+Returns True if the interference is rejected.
 ") RejectedInterference;
 		Standard_Boolean RejectedInterference();
 
@@ -4151,7 +4151,7 @@ TopAbs_State
 
 Description
 -----------
-Simple classification of part of edge [p1, p2]. returns out if at least 1 of nbp points of edge is out; otherwise returns in. it is used to check 'suspicion' hidden part of edge.
+Simple classification of part of edge [p1, p2]. Returns OUT if at least 1 of Nbp points of edge is out; otherwise returns IN. It is used to check 'suspicion' hidden part of edge.
 ") SimplClassify;
 		TopAbs_State SimplClassify(const Standard_Integer E, const HLRBRep_EdgeData & ED, const Standard_Integer Nbp, const Standard_Real p1, const Standard_Real p2);
 
@@ -4195,7 +4195,7 @@ float
 
 Description
 -----------
-Returns the tolerance for the rejections during the exploration.
+returns the tolerance for the rejections during the exploration.
 ") Tolerance;
 		Standard_ShortReal Tolerance();
 
@@ -4213,7 +4213,7 @@ None
 
 Description
 -----------
-End of building of the data and updating all the information linked to the projection.
+end of building of the Data and updating all the information linked to the projection.
 ") Update;
 		void Update(const HLRAlgo_Projector & P);
 
@@ -4234,7 +4234,7 @@ None
 
 Description
 -----------
-Write <ds> in me with a translation of <dv>,<de>,<df>.
+Write <DS> in me with a translation of <dv>,<de>,<df>.
 ") Write;
 		void Write(const opencascade::handle<HLRBRep_Data> & DS, const Standard_Integer dv, const Standard_Integer de, const Standard_Integer df);
 
@@ -4268,7 +4268,7 @@ None
 
 Description
 -----------
-Creates an edgebuilder algorithm. <vlist> describes the edge and the interferences. arealimits are created from the vertices. builds(in) is automatically called.
+Creates an EdgeBuilder algorithm. <VList> describes the edge and the interferences. AreaLimits are created from the vertices. Builds(IN) is automatically called.
 ") HLRBRep_EdgeBuilder;
 		 HLRBRep_EdgeBuilder(HLRBRep_VertexList & VList);
 
@@ -4312,7 +4312,7 @@ None
 
 Description
 -----------
-Reinitialize the results iteration to the parts with state <tobuild>. if this method is not called after construction the default is <tobuild> = in.
+Reinitialize the results iteration to the parts with State <ToBuild>. If this method is not called after construction the default is <ToBuild> = IN.
 ") Builds;
 		void Builds(const TopAbs_State ToBuild);
 
@@ -4351,7 +4351,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current area.
+Returns True if there is a current area.
 ") HasArea;
 		Standard_Boolean HasArea();
 
@@ -4377,7 +4377,7 @@ bool
 
 Description
 -----------
-Returns true if the current vertex comes from the boundary of the edge.
+Returns True if the current vertex comes from the boundary of the edge.
 ") IsBoundary;
 		Standard_Boolean IsBoundary();
 
@@ -4390,7 +4390,7 @@ bool
 
 Description
 -----------
-Returns true if the current vertex was an interference.
+Returns True if the current vertex was an interference.
 ") IsInterference;
 		Standard_Boolean IsInterference();
 
@@ -4403,7 +4403,7 @@ opencascade::handle<HLRBRep_AreaLimit>
 
 Description
 -----------
-Returns the arealimit beginning the current area. this is a null handle when the area is infinite on the left.
+Returns the AreaLimit beginning the current area. This is a NULL handle when the area is infinite on the left.
 ") LeftLimit;
 		opencascade::handle<HLRBRep_AreaLimit> LeftLimit();
 
@@ -4416,7 +4416,7 @@ bool
 
 Description
 -----------
-Returns true if there are more new edges to build.
+Returns True if there are more new edges to build.
 ") MoreEdges;
 		Standard_Boolean MoreEdges();
 
@@ -4455,7 +4455,7 @@ None
 
 Description
 -----------
-Proceeds to the next edge to build. skip all remaining vertices on the current edge.
+Proceeds to the next edge to build. Skip all remaining vertices on the current edge.
 ") NextEdge;
 		void NextEdge();
 
@@ -4507,7 +4507,7 @@ opencascade::handle<HLRBRep_AreaLimit>
 
 Description
 -----------
-Returns the arealimit ending the current area. this is a null handle when the area is infinite on the right.
+Returns the AreaLimit ending the current area. This is a NULL handle when the area is infinite on the right.
 ") RightLimit;
 		opencascade::handle<HLRBRep_AreaLimit> RightLimit();
 
@@ -5212,7 +5212,7 @@ V: float
 
 Description
 -----------
-Return true if u and v are found.
+return True if U and V are found.
 ") UVPoint;
 		static Standard_Boolean UVPoint(const Standard_Real Par, const Standard_Address E, const Standard_Address F, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5246,7 +5246,7 @@ None
 
 Description
 -----------
-Add the interference <i> to the list <il>.
+Add the interference <I> to the list <IL>.
 ") AddInterference;
 		static void AddInterference(HLRAlgo_InterferenceList & IL, const HLRAlgo_Interference & I, const HLRBRep_EdgeInterferenceTool & T);
 
@@ -5265,7 +5265,7 @@ None
 
 Description
 -----------
-Process complex transitions on the list il.
+Process complex transitions on the list IL.
 ") ProcessComplex;
 		static void ProcessComplex(HLRAlgo_InterferenceList & IL, const HLRBRep_EdgeInterferenceTool & T);
 
@@ -5356,7 +5356,7 @@ Curv: float
 
 Description
 -----------
-Returns local geometric description of the edge at parameter <para>. see method reset of class edgefacetransition from topcnx for other arguments.
+Returns local geometric description of the Edge at parameter <Para>. See method Reset of class EdgeFaceTransition from TopCnx for other arguments.
 ") EdgeGeometry;
 		void EdgeGeometry(const Standard_Real Param, gp_Dir & Tgt, gp_Dir & Nrm, Standard_Real &OutValue);
 
@@ -5389,7 +5389,7 @@ Curv: float
 
 Description
 -----------
-Returns the geometry of the boundary at the interference <i>. see the addinterference method of the class edgefacetransition from topcnx for the other arguments.
+Returns the geometry of the boundary at the interference <I>. See the AddInterference method of the class EdgeFaceTransition from TopCnx for the other arguments.
 ") InterferenceBoundaryGeometry;
 		void InterferenceBoundaryGeometry(const HLRAlgo_Interference & I, gp_Dir & Tang, gp_Dir & Norm, Standard_Real &OutValue);
 
@@ -5496,7 +5496,7 @@ bool
 
 Description
 -----------
-True if the interference and the current vertex are on the same geometric locus.
+True if the Interference and the current Vertex are on the same geometric locus.
 ") SameVertexAndInterference;
 		Standard_Boolean SameVertexAndInterference(const HLRAlgo_Interference & I);
 
@@ -5959,7 +5959,7 @@ None
 
 Description
 -----------
-<or> is the orientation of the face. <cl> is true if the face belongs to a closed volume. <nw> is the number of wires ( or block of edges ) of the face.
+<Or> is the orientation of the face. <Cl> is true if the face belongs to a closed volume. <NW> is the number of wires ( or block of edges ) of the face.
 ") Set;
 		void Set(const TopoDS_Face & FG, const TopAbs_Orientation Or, const Standard_Boolean Cl, const Standard_Integer NW);
 
@@ -5984,7 +5984,7 @@ None
 
 Description
 -----------
-Set the edge number <ewi> of the wire <wi>.
+Set the edge number <EWI> of the wire <WI>.
 ") SetWEdge;
 		void SetWEdge(const Standard_Integer WI, const Standard_Integer EWI, const Standard_Integer EI, const TopAbs_Orientation Or, const Standard_Boolean OutL, const Standard_Boolean Inte, const Standard_Boolean Dble, const Standard_Boolean IsoL);
 
@@ -6003,7 +6003,7 @@ None
 
 Description
 -----------
-Set <ne> the number of edges of the wire number <wi>.
+Set <NE> the number of edges of the wire number <WI>.
 ") SetWire;
 		void SetWire(const Standard_Integer WI, const Standard_Integer NE);
 
@@ -6255,7 +6255,7 @@ bool
 
 Description
 -----------
-Returns true if the current edge is the first of a wire.
+Returns True if the current edge is the first of a wire.
 ") BeginningOfWire;
 		Standard_Boolean BeginningOfWire();
 
@@ -6294,7 +6294,7 @@ bool
 
 Description
 -----------
-Returns true if the current edge is the last of a wire.
+Returns True if the current edge is the last of a wire.
 ") EndOfWire;
 		Standard_Boolean EndOfWire();
 
@@ -6448,7 +6448,7 @@ None
 
 Description
 -----------
-Constructs a framework for filtering the results of the hlrbrep_algo algorithm, a. use the extraction filters to obtain the results you want for a.
+Constructs a framework for filtering the results of the HLRBRep_Algo algorithm, A. Use the extraction filters to obtain the results you want for A.
 ") HLRBRep_HLRToShape;
 		 HLRBRep_HLRToShape(const opencascade::handle<HLRBRep_Algo> & A);
 
@@ -6844,7 +6844,7 @@ None
 
 Description
 -----------
-Creates a hider processing the set of edges and hiding faces described by <ds>. stores the hidden parts in <ds>.
+Creates a Hider processing the set of Edges and hiding faces described by <DS>. Stores the hidden parts in <DS>.
 ") HLRBRep_Hider;
 		 HLRBRep_Hider(const opencascade::handle<HLRBRep_Data> & DS);
 
@@ -6863,7 +6863,7 @@ None
 
 Description
 -----------
-Removes from the edges, the parts hidden by the hiding face number <fi>.
+Removes from the edges, the parts hidden by the hiding face number <FI>.
 ") Hide;
 		void Hide(const Standard_Integer FI, BRepTopAdaptor_MapOfShapeTool & MST);
 
@@ -6881,7 +6881,7 @@ None
 
 Description
 -----------
-Own hiding the side face number <fi>.
+own hiding the side face number <FI>.
 ") OwnHiding;
 		void OwnHiding(const Standard_Integer FI);
 
@@ -7165,7 +7165,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") HLRBRep_InterCSurf;
 		 HLRBRep_InterCSurf();
 
@@ -7184,7 +7184,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface.
+Compute the Intersection between the curve and the surface.
 ") Perform;
 		void Perform(const gp_Lin & Curve, const Standard_Address & Surface);
 
@@ -7204,7 +7204,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given.
 ") Perform;
 		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & Polygon, const Standard_Address & Surface);
 
@@ -7225,7 +7225,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given. the surface is also sampled and <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 ") Perform;
 		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & ThePolygon, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
 
@@ -7247,7 +7247,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given. the surface is also sampled and <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 ") Perform;
 		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & ThePolygon, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron, Bnd_BoundSortBox & BndBSB);
 
@@ -7267,7 +7267,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the surface is already sampled and its polyhedron: <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Surface is already sampled and its polyhedron: <Polyhedron> is given.
 ") Perform;
 		void Perform(const gp_Lin & Curve, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
 
@@ -7369,7 +7369,7 @@ None
 
 Description
 -----------
-Hide all the datastructure.
+hide all the DataStructure.
 ") Hide;
 		void Hide();
 
@@ -7387,7 +7387,7 @@ None
 
 Description
 -----------
-Hide the shape <s> by itself.
+hide the Shape <S> by itself.
 ") Hide;
 		void Hide(const Standard_Integer I);
 
@@ -7406,7 +7406,7 @@ None
 
 Description
 -----------
-Hide the shape <s1> by the shape <s2>.
+hide the Shape <S1> by the shape <S2>.
 ") Hide;
 		void Hide(const Standard_Integer I, const Standard_Integer J);
 
@@ -7419,7 +7419,7 @@ None
 
 Description
 -----------
-Set to hide all the edges.
+set to hide all the edges.
 ") HideAll;
 		void HideAll();
 
@@ -7437,7 +7437,7 @@ None
 
 Description
 -----------
-Set to hide all the edges of the shape <s>.
+set to hide all the edges of the Shape <S>.
 ") HideAll;
 		void HideAll(const Standard_Integer I);
 
@@ -7455,7 +7455,7 @@ int
 
 Description
 -----------
-Return the index of the shape <s> and return 0 if the shape <s> is not found.
+return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<HLRTopoBRep_OutLiner> & S);
 
@@ -7468,7 +7468,7 @@ None
 
 Description
 -----------
-Init the status of the selected edges depending of the back faces of a closed shell.
+init the status of the selected edges depending of the back faces of a closed shell.
 ") InitEdgeStatus;
 		void InitEdgeStatus();
 
@@ -7488,7 +7488,7 @@ None
 
 Description
 -----------
-Add the shape <s>.
+add the shape <S>.
 ") Load;
 		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const opencascade::handle<Standard_Transient> & SData, const Standard_Integer nbIso = 0);
 
@@ -7507,7 +7507,7 @@ None
 
 Description
 -----------
-Add the shape <s>.
+add the shape <S>.
 ") Load;
 		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const Standard_Integer nbIso = 0);
 
@@ -7533,7 +7533,7 @@ None
 
 Description
 -----------
-Own hiding of all the shapes of the datastructure without hiding by each other.
+own hiding of all the shapes of the DataStructure without hiding by each other.
 ") PartialHide;
 		void PartialHide();
 
@@ -7551,7 +7551,7 @@ None
 
 Description
 -----------
-Set the projector.
+set the projector.
 ") Projector;
 		void Projector(const HLRAlgo_Projector & P);
 
@@ -7564,7 +7564,7 @@ HLRAlgo_Projector
 
 Description
 -----------
-Set the projector.
+set the projector.
 ") Projector;
 		HLRAlgo_Projector & Projector();
 
@@ -7582,7 +7582,7 @@ None
 
 Description
 -----------
-Remove the shape of index <i>.
+remove the Shape of Index <I>.
 ") Remove;
 		void Remove(const Standard_Integer I);
 
@@ -7595,7 +7595,7 @@ None
 
 Description
 -----------
-Select all the datastructure.
+select all the DataStructure.
 ") Select;
 		void Select();
 
@@ -7613,7 +7613,7 @@ None
 
 Description
 -----------
-Select only the shape of index <i>.
+select only the Shape of index <I>.
 ") Select;
 		void Select(const Standard_Integer I);
 
@@ -7631,7 +7631,7 @@ None
 
 Description
 -----------
-Select only the edges of the shape <s>.
+select only the edges of the Shape <S>.
 ") SelectEdge;
 		void SelectEdge(const Standard_Integer I);
 
@@ -7649,7 +7649,7 @@ None
 
 Description
 -----------
-Select only the faces of the shape <s>.
+select only the faces of the Shape <S>.
 ") SelectFace;
 		void SelectFace(const Standard_Integer I);
 
@@ -7699,7 +7699,7 @@ None
 
 Description
 -----------
-Change the shape data of the shape of index <i>.
+Change the Shape Data of the Shape of index <I>.
 ") ShapeData;
 		void ShapeData(const Standard_Integer I, const opencascade::handle<Standard_Transient> & SData);
 
@@ -7712,7 +7712,7 @@ None
 
 Description
 -----------
-Set to visible all the edges.
+set to visible all the edges.
 ") ShowAll;
 		void ShowAll();
 
@@ -7730,7 +7730,7 @@ None
 
 Description
 -----------
-Set to visible all the edges of the shape <s>.
+set to visible all the edges of the Shape <S>.
 ") ShowAll;
 		void ShowAll(const Standard_Integer I);
 
@@ -7743,7 +7743,7 @@ None
 
 Description
 -----------
-Update the datastructure.
+update the DataStructure.
 ") Update;
 		void Update();
 
@@ -7898,7 +7898,7 @@ None
 
 Description
 -----------
-Performs the auto intersection of an edge. the edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
+Performs the auto intersection of an edge. The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
 ") Perform;
 		void Perform(const Standard_Address A1, const Standard_Real da1, const Standard_Real db1);
 
@@ -7924,7 +7924,7 @@ None
 
 Description
 -----------
-Performs the intersection between the two edges. the edges domains are cut at start with da*(b-a) and at end with db*(b-a).
+Performs the intersection between the two edges. The edges domains are cut at start with da*(b-a) and at end with db*(b-a).
 ") Perform;
 		void Perform(const Standard_Integer nA, const Standard_Address A1, const Standard_Real da1, const Standard_Real db1, const Standard_Integer nB, const Standard_Address A2, const Standard_Real da2, const Standard_Real db2, const Standard_Boolean NoBound);
 
@@ -8000,7 +8000,7 @@ None
 
 Description
 -----------
-Create a single intersectionpoint (u on a1) (v on a2) the point is middle on both curves.
+Create a single IntersectionPoint (U on A1) (V on A2) The point is middle on both curves.
 ") SimulateOnePoint;
 		void SimulateOnePoint(const Standard_Address A1, const Standard_Real U, const Standard_Address A2, const Standard_Real V);
 
@@ -8106,7 +8106,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the line.
+Computes the point of parameter U on the line.
 ") D0;
 		static void D0(const gp_Lin & C, const Standard_Real U, gp_Pnt & P);
 
@@ -8127,7 +8127,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the line with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the line with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
@@ -8149,7 +8149,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -8172,7 +8172,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -8192,7 +8192,7 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec DN(const gp_Lin & C, const Standard_Real U, const Standard_Integer N);
 
@@ -8264,7 +8264,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the line in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the line in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const gp_Lin & C);
 
@@ -8485,7 +8485,7 @@ int
 
 Description
 -----------
-If necessary, breaks the line in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the line in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const gp_Lin & C, const GeomAbs_Shape S);
 
@@ -8635,7 +8635,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const gp_Lin & C, const Standard_Real R3d);
 
@@ -8677,7 +8677,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the line.
+Computes the point of parameter U on the line.
 ") Value;
 		static gp_Pnt Value(const gp_Lin & C, const Standard_Real U);
 
@@ -8728,7 +8728,7 @@ D: float
 
 Description
 -----------
-Computes the derivative of the previous function at parameter param.
+Computes the derivative of the previous function at parameter Param.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -8746,7 +8746,7 @@ F: float
 
 Description
 -----------
-Computes the value of the signed distance between the implicit curve and the point at parameter param on the parametrised curve.
+Computes the value of the signed distance between the implicit curve and the point at parameter Param on the parametrised curve.
 ") Value;
 		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -8829,7 +8829,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -8860,7 +8860,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Standard_Address & C);
 
@@ -8878,7 +8878,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -8909,7 +8909,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -8922,7 +8922,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -8940,7 +8940,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt2d & P);
 
@@ -8958,7 +8958,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -8995,7 +8995,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -9014,7 +9014,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -9041,7 +9041,7 @@ None
 
 Description
 -----------
-Constructs an empty framework for the calculation of the visible and hidden lines of a shape in a projection. use the functions: - projector to define the point of view - load to select the shape or shapes to be visualized - update to compute the visible and hidden lines of the shape. warning the shape or shapes to be visualized must have already been triangulated.
+Constructs an empty framework for the calculation of the visible and hidden lines of a shape in a projection. Use the functions: - Projector to define the point of view - Load to select the shape or shapes to be visualized - Update to compute the visible and hidden lines of the shape. Warning The shape or shapes to be visualized must have already been triangulated.
 ") HLRBRep_PolyAlgo;
 		 HLRBRep_PolyAlgo();
 
@@ -9161,7 +9161,7 @@ int
 
 Description
 -----------
-Return the index of the shape <s> and return 0 if the shape <s> is not found.
+return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
@@ -9205,7 +9205,7 @@ None
 
 Description
 -----------
-Loads the shape s into this framework. warning s must have already been triangulated.
+Loads the shape S into this framework. Warning S must have already been triangulated.
 ") Load;
 		void Load(const TopoDS_Shape & theShape);
 
@@ -9301,7 +9301,7 @@ HLRAlgo_Projector
 
 Description
 -----------
-Sets the parameters of the view for this framework. these parameters are defined by an hlralgo_projector object, which is returned by the projector function on a prs3d_projector object.
+Sets the parameters of the view for this framework. These parameters are defined by an HLRAlgo_Projector object, which is returned by the Projector function on a Prs3d_Projector object.
 ") Projector;
 		const HLRAlgo_Projector & Projector();
 
@@ -9337,7 +9337,7 @@ None
 
 Description
 -----------
-Remove the shape of index <i>.
+remove the Shape of Index <I>.
 ") Remove;
 		void Remove(const Standard_Integer I);
 
@@ -9451,7 +9451,7 @@ None
 
 Description
 -----------
-Launches calculation of outlines of the shape visualized by this framework. used after setting the point of view and defining the shape or shapes to be visualized.
+Launches calculation of outlines of the shape visualized by this framework. Used after setting the point of view and defining the shape or shapes to be visualized.
 ") Update;
 		void Update();
 
@@ -9480,7 +9480,7 @@ None
 
 Description
 -----------
-Constructs a framework for filtering the results of the hlrbrep_algo algorithm, a. use the extraction filters to obtain the results you want for a.
+Constructs a framework for filtering the results of the HLRBRep_Algo algorithm, A. Use the extraction filters to obtain the results you want for A.
 ") HLRBRep_PolyHLRToShape;
 		 HLRBRep_PolyHLRToShape();
 
@@ -9555,7 +9555,7 @@ TopoDS_Shape
 
 Description
 -----------
-Sets the extraction filter for hidden outlines. hidden outlines occur, for instance, in tori. in this case, the inner outlines of the torus seen on its side are hidden.
+Sets the extraction filter for hidden outlines. Hidden outlines occur, for instance, in tori. In this case, the inner outlines of the torus seen on its side are hidden.
 ") OutLineHCompound;
 		TopoDS_Shape OutLineHCompound(const TopoDS_Shape & S);
 
@@ -9808,7 +9808,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface <s> for the parameter values (<u>, <v>). the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, or 2). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
+Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 ") HLRBRep_SLProps;
 		 HLRBRep_SLProps(const Standard_Address & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -9828,7 +9828,7 @@ None
 
 Description
 -----------
-Idem as previous constructor but without setting the value of parameters <u> and <v>.
+idem as previous constructor but without setting the value of parameters <U> and <V>.
 ") HLRBRep_SLProps;
 		 HLRBRep_SLProps(const Standard_Address & S, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -9847,7 +9847,7 @@ None
 
 Description
 -----------
-Idem as previous constructor but without setting the value of parameters <u> and <v> and the surface. the surface can have an empty constructor.
+idem as previous constructor but without setting the value of parameters <U> and <V> and the surface. the surface can have an empty constructor.
 ") HLRBRep_SLProps;
 		 HLRBRep_SLProps(const Standard_Integer N, const Standard_Real Resolution);
 
@@ -9866,7 +9866,7 @@ None
 
 Description
 -----------
-Returns the direction of the maximum and minimum curvature <maxd> and <mind>.
+Returns the direction of the maximum and minimum curvature <MaxD> and <MinD>.
 ") CurvatureDirections;
 		void CurvatureDirections(gp_Dir & MaxD, gp_Dir & MinD);
 
@@ -9879,7 +9879,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first u derivative. the derivative is computed if it has not been yet.
+Returns the first U derivative. The derivative is computed if it has not been yet.
 ") D1U;
 		const gp_Vec D1U();
 
@@ -9892,7 +9892,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first v derivative. the derivative is computed if it has not been yet.
+Returns the first V derivative. The derivative is computed if it has not been yet.
 ") D1V;
 		const gp_Vec D1V();
 
@@ -9905,7 +9905,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second u derivatives the derivative is computed if it has not been yet.
+Returns the second U derivatives The derivative is computed if it has not been yet.
 ") D2U;
 		const gp_Vec D2U();
 
@@ -9918,7 +9918,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second v derivative. the derivative is computed if it has not been yet.
+Returns the second V derivative. The derivative is computed if it has not been yet.
 ") D2V;
 		const gp_Vec D2V();
 
@@ -9931,7 +9931,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second uv cross-derivative. the derivative is computed if it has not been yet.
+Returns the second UV cross-derivative. The derivative is computed if it has not been yet.
 ") DUV;
 		const gp_Vec DUV();
 
@@ -9944,7 +9944,7 @@ float
 
 Description
 -----------
-Returns the gaussian curvature.
+Returns the Gaussian curvature.
 ") GaussianCurvature;
 		Standard_Real GaussianCurvature();
 
@@ -9957,7 +9957,7 @@ bool
 
 Description
 -----------
-Returns true if the curvature is defined.
+returns True if the curvature is defined.
 ") IsCurvatureDefined;
 		Standard_Boolean IsCurvatureDefined();
 
@@ -9983,7 +9983,7 @@ bool
 
 Description
 -----------
-Returns true if the u tangent is defined. for example, the tangent is not defined if the two first u derivatives are null.
+returns True if the U tangent is defined. For example, the tangent is not defined if the two first U derivatives are null.
 ") IsTangentUDefined;
 		Standard_Boolean IsTangentUDefined();
 
@@ -9996,7 +9996,7 @@ bool
 
 Description
 -----------
-Returns if the v tangent is defined. for example, the tangent is not defined if the two first v derivatives are null.
+returns if the V tangent is defined. For example, the tangent is not defined if the two first V derivatives are null.
 ") IsTangentVDefined;
 		Standard_Boolean IsTangentVDefined();
 
@@ -10009,7 +10009,7 @@ bool
 
 Description
 -----------
-Returns true if the point is umbilic (i.e. if the curvature is constant).
+returns True if the point is umbilic (i.e. if the curvature is constant).
 ") IsUmbilic;
 		Standard_Boolean IsUmbilic();
 
@@ -10080,7 +10080,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface s for the new parameter values (<u>, <v>).
+Initializes the local properties of the surface S for the new parameter values (<U>, <V>).
 ") SetParameters;
 		void SetParameters(const Standard_Real U, const Standard_Real V);
 
@@ -10098,7 +10098,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface s for the new surface.
+Initializes the local properties of the surface S for the new surface.
 ") SetSurface;
 		void SetSurface(const Standard_Address & S);
 
@@ -10116,7 +10116,7 @@ None
 
 Description
 -----------
-Returns the tangent direction <d> on the iso-v.
+Returns the tangent direction <D> on the iso-V.
 ") TangentU;
 		void TangentU(gp_Dir & D);
 
@@ -10134,7 +10134,7 @@ None
 
 Description
 -----------
-Returns the tangent direction <d> on the iso-v.
+Returns the tangent direction <D> on the iso-V.
 ") TangentV;
 		void TangentV(gp_Dir & D);
 
@@ -10182,7 +10182,7 @@ V2: float
 
 Description
 -----------
-Returns the bounds of the surface.
+returns the bounds of the Surface.
 ") Bounds;
 		static void Bounds(const Standard_Address A, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -10200,7 +10200,7 @@ int
 
 Description
 -----------
-Returns the order of continuity of the surface <a>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable.
+returns the order of continuity of the Surface <A>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable.
 ") Continuity;
 		static Standard_Integer Continuity(const Standard_Address A);
 
@@ -10223,7 +10223,7 @@ None
 
 Description
 -----------
-Computes the point <p> and first derivative <d1*> of parameter <u> and <v> on the surface <a>.
+Computes the point <P> and first derivative <D1*> of parameter <U> and <V> on the Surface <A>.
 ") D1;
 		static void D1(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -10249,7 +10249,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <d1*> and second derivative <d2*> of parameter <u> and <v> on the surface <a>.
+Computes the point <P>, the first derivative <D1*> and second derivative <D2*> of parameter <U> and <V> on the Surface <A>.
 ") D2;
 		static void D2(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
@@ -10292,7 +10292,7 @@ None
 
 Description
 -----------
-Computes the point <p> of 	parameter <u> and <v> on the surface <a>.
+Computes the point <P> of 	parameter <U> and <V> on the Surface <A>.
 ") Value;
 		static void Value(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
@@ -10590,7 +10590,7 @@ opencascade::handle<HLRBRep_Data>
 
 Description
 -----------
-Creates a datastructure containing the outliner <s> depending on the projector <p> and nbiso.
+Creates a DataStructure containing the OutLiner <S> depending on the projector <P> and nbIso.
 ") Load;
 		static opencascade::handle<HLRBRep_Data> Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const HLRAlgo_Projector & P, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso = 0);
 
@@ -11299,7 +11299,7 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-If <first> >= <last>.
+If <First> >= <Last>.
 ") UTrim;
 		static opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -11377,7 +11377,7 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-If <first> >= <last>.
+If <First> >= <Last>.
 ") VTrim;
 		static opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -11621,7 +11621,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -11634,7 +11634,7 @@ int
 
 Description
 -----------
-Returns 2.
+returns 2.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -11647,7 +11647,7 @@ int
 
 Description
 -----------
-Returns 2.
+returns 2.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -11666,7 +11666,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -11686,7 +11686,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -11723,7 +11723,7 @@ None
 
 Description
 -----------
-Compute the solution point with the close point margincoef is the coefficient for extension of uv bounds. ex., ufirst -= margincoef*(ulast-ufirst).
+compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") HLRBRep_TheExactInterCSurf;
 		 HLRBRep_TheExactInterCSurf(const Standard_Real U, const Standard_Real V, const Standard_Real W, const HLRBRep_TheCSFunctionOfInterCSurf & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
 
@@ -11742,7 +11742,7 @@ None
 
 Description
 -----------
-Initialize the parameters to compute the solution.
+initialize the parameters to compute the solution.
 ") HLRBRep_TheExactInterCSurf;
 		 HLRBRep_TheExactInterCSurf(const HLRBRep_TheCSFunctionOfInterCSurf & F, const Standard_Real TolTangency);
 
@@ -11755,7 +11755,7 @@ HLRBRep_TheCSFunctionOfInterCSurf
 
 Description
 -----------
-Return the math function which is used to compute the intersection.
+return the math function which is used to compute the intersection.
 ") Function;
 		HLRBRep_TheCSFunctionOfInterCSurf & Function();
 
@@ -11768,7 +11768,7 @@ bool
 
 Description
 -----------
-Returns true if the creation completed without failure.
+Returns True if the creation completed without failure.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11839,7 +11839,7 @@ None
 
 Description
 -----------
-Compute the solution it's possible to write to optimize: intimp_intcs inter(s1,c1,toltangency) math_functionsetroot rsnld(inter.function()) while ...{ u=... v=... w=... inter.perform(u,v,w,rsnld) } or intimp_intcs inter(toltangency) inter.setsurface(s); math_functionsetroot rsnld(inter.function()) while ...{ c=... inter.setcurve(c); u=... v=... w=... inter.perform(u,v,w,rsnld) }.
+compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
 		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
 
@@ -11852,7 +11852,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the intersection point the exception notdone is raised if isdone is false. the exception domainerror is raised if isempty is true.
+returns the intersection point The exception NotDone is raised if IsDone is false. The exception DomainError is raised if IsEmpty is true.
 ") Point;
 		const gp_Pnt Point();
 
@@ -12238,7 +12238,7 @@ None
 
 Description
 -----------
-Constructs an empty interference between polygon and polyhedron.
+Constructs an empty interference between Polygon and Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf();
 
@@ -12257,7 +12257,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the polygon and the polyhedron.
+Constructs and computes an interference between the Polygon and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12276,7 +12276,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight line and the polyhedron.
+Constructs and computes an interference between the Straight Line and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12295,7 +12295,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight lines and the polyhedron.
+Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12315,7 +12315,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the polygon and the polyhedron.
+Constructs and computes an interference between the Polygon and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12335,7 +12335,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight line and the polyhedron.
+Constructs and computes an interference between the Straight Line and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12355,7 +12355,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight lines and the polyhedron.
+Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12375,7 +12375,7 @@ None
 
 Description
 -----------
-Compares the boundings between the segment of <thepolyg> and the facets of <thepolyh>.
+Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 ") Interference;
 		void Interference(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12394,7 +12394,7 @@ None
 
 Description
 -----------
-Compares the boundings between the segment of <thepolyg> and the facets of <thepolyh>.
+Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 ") Interference;
 		void Interference(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12413,7 +12413,7 @@ None
 
 Description
 -----------
-Computes an interference between the polygon and the polyhedron.
+Computes an interference between the Polygon and the Polyhedron.
 ") Perform;
 		void Perform(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12432,7 +12432,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight line and the polyhedron.
+Computes an interference between the Straight Line and the Polyhedron.
 ") Perform;
 		void Perform(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12451,7 +12451,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight lines and the polyhedron.
+Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
 		void Perform(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -12471,7 +12471,7 @@ None
 
 Description
 -----------
-Computes an interference between the polygon and the polyhedron.
+Computes an interference between the Polygon and the Polyhedron.
 ") Perform;
 		void Perform(const HLRBRep_ThePolygonOfInterCSurf & thePolyg, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12491,7 +12491,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight line and the polyhedron.
+Computes an interference between the Straight Line and the Polyhedron.
 ") Perform;
 		void Perform(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12511,7 +12511,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight lines and the polyhedron.
+Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
 		void Perform(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -12561,7 +12561,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 		 HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Standard_Address & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -12656,7 +12656,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") Perform;
 		void Perform(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Standard_Address & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -12704,7 +12704,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 		 HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(const gp_Pnt2d & P, const Standard_Address & C, const Standard_Real U0, const Standard_Real TolU);
 
@@ -12727,7 +12727,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin and usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin and Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 		 HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(const gp_Pnt2d & P, const Standard_Address & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -12748,7 +12748,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Standard_Address & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -12761,7 +12761,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -12774,7 +12774,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -12793,7 +12793,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
 
@@ -12873,7 +12873,7 @@ float
 
 Description
 -----------
-Give an approximation of the parameter on the curve according to the discretization of the curve.
+Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
 		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
 
@@ -12940,7 +12940,7 @@ bool
 
 Description
 -----------
-Returns true if the polyline is closed.
+Returns True if the polyline is closed.
 ") Closed;
 		virtual Standard_Boolean Closed();
 
@@ -12959,7 +12959,7 @@ None
 
 Description
 -----------
-The current polygon is modified if most of the points of the polygon are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
+The current polygon is modified if most of the points of the polygon are outside the box <OtherBox>. In this situation, bounds are computed to build a polygon inside or near the OtherBox.
 ") ComputeWithBox;
 		void ComputeWithBox(const Standard_Address & Curve, const Bnd_Box2d & OtherBox);
 
@@ -12998,7 +12998,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the first point of the polygon.
+Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
 		Standard_Real InfParameter();
 
@@ -13011,7 +13011,7 @@ int
 
 Description
 -----------
-Give the number of segments in the polyline.
+Give the number of Segments in the polyline.
 ") NbSegments;
 		virtual Standard_Integer NbSegments();
 
@@ -13031,7 +13031,7 @@ None
 
 Description
 -----------
-Returns the points of the segment <index> in the polygon.
+Returns the points of the segment <Index> in the Polygon.
 ") Segment;
 		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
@@ -13062,7 +13062,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the last point of the polygon.
+Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
 		Standard_Real SupParameter();
 
@@ -13154,7 +13154,7 @@ float
 
 Description
 -----------
-Give an approximation of the parameter on the curve according to the discretization of the curve.
+Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
 		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
 
@@ -13172,7 +13172,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		const gp_Pnt BeginOfSeg(const Standard_Integer theIndex);
 
@@ -13260,7 +13260,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") EndOfSeg;
 		const gp_Pnt EndOfSeg(const Standard_Integer theIndex);
 
@@ -13273,7 +13273,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the first point of the polygon.
+Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
 		Standard_Real InfParameter();
 
@@ -13286,7 +13286,7 @@ int
 
 Description
 -----------
-Give the number of segments in the polyline.
+Give the number of Segments in the polyline.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -13317,7 +13317,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the last point of the polygon.
+Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
 		Standard_Real SupParameter();
 
@@ -13350,7 +13350,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		static const gp_Pnt BeginOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const Standard_Integer Index);
 
@@ -13441,7 +13441,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") EndOfSeg;
 		static const gp_Pnt EndOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const Standard_Integer Index);
 
@@ -13494,7 +13494,7 @@ Bnd_Box
 
 Description
 -----------
-Give the bounding box of the polyhedrontool.
+Give the bounding box of the PolyhedronTool.
 ") Bounding;
 		static const Bnd_Box & Bounding(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -13512,7 +13512,7 @@ opencascade::handle<Bnd_HArray1OfBox>
 
 Description
 -----------
-Give the array of boxes. the box <n> corresponding to the triangle <n>.
+Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
 		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -13586,7 +13586,7 @@ bool
 
 Description
 -----------
-This method returns true if the edge based on points with indices index1 and index2 represents a boundary edge. it is necessary to take into account the boundary deflection for this edge.
+This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 ") IsOnBound;
 		static Standard_Boolean IsOnBound(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Index1, const Standard_Integer Index2);
 
@@ -13645,7 +13645,7 @@ OtherP: int
 
 Description
 -----------
-Give the address tricon of the triangle connexe to the triangle of address triang by the edge pivot pedge and the third point of this connexe triangle. when we are on a free edge tricon==0 but the function return the value of the triangle in the other side of pivot on the free edge. used to turn around a vertex.
+Give the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
 		static Standard_Integer TriConnex(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -13666,7 +13666,7 @@ P3: int
 
 Description
 -----------
-Give the indices of the 3 points of the triangle of address index in the polyhedrontool.
+Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 ") Triangle;
 		static void Triangle(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -13700,7 +13700,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the right parameter has to be made on the natural parametric domain of the curve.
 ") FindParameter;
 		static Standard_Real FindParameter(const Standard_Address & C, const gp_Pnt2d & Pnt, const Standard_Real Tol);
 
@@ -13722,7 +13722,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in which the parameter certainly lies. These parameters are given to implement a more efficient algorithm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 ") FindParameter;
 		static Standard_Real FindParameter(const Standard_Address & C, const gp_Pnt2d & Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol);
 
@@ -13755,7 +13755,7 @@ None
 
 Description
 -----------
-Provides the signed distance function: q(w) and its first derivative dq(w)/dw.
+Provides the signed distance function: Q(w) and its first derivative dQ(w)/dw.
 ") HLRBRep_TheQuadCurvExactInterCSurf;
 		 HLRBRep_TheQuadCurvExactInterCSurf(const Standard_Address & S, const gp_Lin & C);
 
@@ -13774,7 +13774,7 @@ U2: float
 
 Description
 -----------
-U1 and u2 are the parameters of a segment on the curve.
+U1 and U2 are the parameters of a segment on the curve.
 ") Intervals;
 		void Intervals(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -13882,7 +13882,7 @@ D: float
 
 Description
 -----------
-Computes the derivative of the previous function at parameter param. derivative always returns true.
+Computes the derivative of the previous function at parameter Param. Derivative always returns True.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -13900,7 +13900,7 @@ F: float
 
 Description
 -----------
-Computes the value of the signed distance between the implicit surface and the point at parameter param on the parametrised curve. value always returns true.
+Computes the value of the signed distance between the implicit surface and the point at parameter Param on the parametrised curve. Value always returns True.
 ") Value;
 		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -13919,7 +13919,7 @@ D: float
 
 Description
 -----------
-Computes the value and the derivative of the function. returns true.
+Computes the value and the derivative of the function. returns True.
 ") Values;
 		Standard_Boolean Values(const Standard_Real Param, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -13991,7 +13991,7 @@ bool
 
 Description
 -----------
-Returns true if the current vertex is on the boundary of the edge.
+Returns True if the current vertex is on the boundary of the edge.
 ") IsBoundary;
 		Standard_Boolean IsBoundary();
 
@@ -14004,7 +14004,7 @@ bool
 
 Description
 -----------
-Returns true if the current vertex is an interference.
+Returns True if the current vertex is an interference.
 ") IsInterference;
 		Standard_Boolean IsInterference();
 
@@ -14017,7 +14017,7 @@ bool
 
 Description
 -----------
-Returns true when the curve is periodic.
+Returns True when the curve is periodic.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
@@ -14030,7 +14030,7 @@ bool
 
 Description
 -----------
-Returns true when there are more vertices.
+Returns True when there are more vertices.
 ") More;
 		Standard_Boolean More();
 
@@ -14096,7 +14096,7 @@ None
 
 Description
 -----------
-Constructs an empty framework for the calculation of visible and hidden lines of a shape in a projection. use the function: - projector to define the point of view - add to select the shape or shapes to be visualized - update to compute the outlines of the shape, and - hide to compute the visible and hidden lines of the shape.
+Constructs an empty framework for the calculation of visible and hidden lines of a shape in a projection. Use the function: - Projector to define the point of view - Add to select the shape or shapes to be visualized - Update to compute the outlines of the shape, and - Hide to compute the visible and hidden lines of the shape.
 ") HLRBRep_Algo;
 		 HLRBRep_Algo();
 
@@ -14134,7 +14134,7 @@ None
 
 Description
 -----------
-Add the shape <s>.
+add the Shape <S>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const opencascade::handle<Standard_Transient> & SData, const Standard_Integer nbIso = 0);
 
@@ -14153,7 +14153,7 @@ None
 
 Description
 -----------
-Adds the shape s to this framework, and specifies the number of isoparameters nbiso desired in visualizing s. you may add as many shapes as you wish. use the function add once for each shape.
+Adds the shape S to this framework, and specifies the number of isoparameters nbiso desired in visualizing S. You may add as many shapes as you wish. Use the function Add once for each shape.
 ") Add;
 		void Add(const TopoDS_Shape & S, const Standard_Integer nbIso = 0);
 
@@ -14171,7 +14171,7 @@ int
 
 Description
 -----------
-Return the index of the shape <s> and return 0 if the shape <s> is not found.
+return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
@@ -14184,7 +14184,7 @@ None
 
 Description
 -----------
-Nullify all the results of outliner from hlrtopobrep.
+nullify all the results of OutLiner from HLRTopoBRep.
 ") OutLinedShapeNullify;
 		void OutLinedShapeNullify();
 

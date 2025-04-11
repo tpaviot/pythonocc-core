@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTCURVESURFACEDOCSTRING
 "IntCurveSurface module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intcurvesurface.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurvesurface.html"
 %enddef
 %module (package="OCC.Core", docstring=INTCURVESURFACEDOCSTRING) IntCurveSurface
 
@@ -156,7 +156,7 @@ bool
 
 Description
 -----------
-Returns the <done> field.
+returns the <done> field.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -169,7 +169,7 @@ bool
 
 Description
 -----------
-Returns true if curve is parallel or belongs surface this case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
+Returns true if curve is parallel or belongs surface This case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -182,7 +182,7 @@ int
 
 Description
 -----------
-Returns the number of intersectionpoint if isdone returns true. else notdone is raised.
+returns the number of IntersectionPoint if IsDone returns True. else NotDone is raised.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -195,7 +195,7 @@ int
 
 Description
 -----------
-Returns the number of intersectionsegment if isdone returns true. else notdone is raised.
+returns the number of IntersectionSegment if IsDone returns True. else NotDone is raised.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -213,7 +213,7 @@ IntCurveSurface_IntersectionPoint
 
 Description
 -----------
-Returns the intersectionpoint of range <index> raises notdone if the computation has failed or if the computation has not been done raises outofrange if index is not in the range <1..nbpoints>.
+returns the IntersectionPoint of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbPoints>.
 ") Point;
 		IntCurveSurface_IntersectionPoint Point(const Standard_Integer Index);
 
@@ -231,7 +231,7 @@ IntCurveSurface_IntersectionSegment
 
 Description
 -----------
-Returns the intersectionsegment of range <index> raises notdone if the computation has failed or if the computation has not been done raises outofrange if index is not in the range <1..nbsegment>.
+returns the IntersectionSegment of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbSegment>.
 ") Segment;
 		IntCurveSurface_IntersectionSegment Segment(const Standard_Integer Index);
 
@@ -258,7 +258,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntCurveSurface_IntersectionPoint;
 		 IntCurveSurface_IntersectionPoint();
 
@@ -280,7 +280,7 @@ None
 
 Description
 -----------
-Create an intersectionpoint.
+Create an IntersectionPoint.
 ") IntCurveSurface_IntersectionPoint;
 		 IntCurveSurface_IntersectionPoint(const gp_Pnt & P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
 
@@ -306,7 +306,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the geometric point.
+returns the geometric point.
 ") Pnt;
 		const gp_Pnt Pnt();
 
@@ -328,7 +328,7 @@ None
 
 Description
 -----------
-Set the fields of the current intersectionpoint.
+Set the fields of the current IntersectionPoint.
 ") SetValues;
 		void SetValues(const gp_Pnt & P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
 
@@ -341,7 +341,7 @@ IntCurveSurface_TransitionOnCurve
 
 Description
 -----------
-Returns the transition of the point.
+returns the Transition of the point.
 ") Transition;
 		IntCurveSurface_TransitionOnCurve Transition();
 
@@ -354,7 +354,7 @@ float
 
 Description
 -----------
-Returns the u parameter on the surface.
+returns the U parameter on the surface.
 ") U;
 		Standard_Real U();
 
@@ -367,7 +367,7 @@ float
 
 Description
 -----------
-Returns the v parameter on the surface.
+returns the V parameter on the surface.
 ") V;
 		Standard_Real V();
 
@@ -388,7 +388,7 @@ TrCurv: IntCurveSurface_TransitionOnCurve
 
 Description
 -----------
-Get the fields of the current intersectionpoint.
+Get the fields of the current IntersectionPoint.
 ") Values;
 		void Values(gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, IntCurveSurface_TransitionOnCurve &OutValue);
 
@@ -401,7 +401,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve.
+returns the parameter on the curve.
 ") W;
 		Standard_Real W();
 
@@ -766,7 +766,7 @@ None
 
 Description
 -----------
-Compute the solution point with the close point margincoef is the coefficient for extension of uv bounds. ex., ufirst -= margincoef*(ulast-ufirst).
+compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") IntCurveSurface_TheExactHInter;
 		 IntCurveSurface_TheExactHInter(const Standard_Real U, const Standard_Real V, const Standard_Real W, const IntCurveSurface_TheCSFunctionOfHInter & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
 
@@ -785,7 +785,7 @@ None
 
 Description
 -----------
-Initialize the parameters to compute the solution.
+initialize the parameters to compute the solution.
 ") IntCurveSurface_TheExactHInter;
 		 IntCurveSurface_TheExactHInter(const IntCurveSurface_TheCSFunctionOfHInter & F, const Standard_Real TolTangency);
 
@@ -798,7 +798,7 @@ IntCurveSurface_TheCSFunctionOfHInter
 
 Description
 -----------
-Return the math function which is used to compute the intersection.
+return the math function which is used to compute the intersection.
 ") Function;
 		IntCurveSurface_TheCSFunctionOfHInter & Function();
 
@@ -811,7 +811,7 @@ bool
 
 Description
 -----------
-Returns true if the creation completed without failure.
+Returns True if the creation completed without failure.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -882,7 +882,7 @@ None
 
 Description
 -----------
-Compute the solution it's possible to write to optimize: intimp_intcs inter(s1,c1,toltangency) math_functionsetroot rsnld(inter.function()) while ...{ u=... v=... w=... inter.perform(u,v,w,rsnld) } or intimp_intcs inter(toltangency) inter.setsurface(s); math_functionsetroot rsnld(inter.function()) while ...{ c=... inter.setcurve(c); u=... v=... w=... inter.perform(u,v,w,rsnld) }.
+compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
 		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
 
@@ -895,7 +895,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the intersection point the exception notdone is raised if isdone is false. the exception domainerror is raised if isempty is true.
+returns the intersection point The exception NotDone is raised if IsDone is false. The exception DomainError is raised if IsEmpty is true.
 ") Point;
 		const gp_Pnt Point();
 
@@ -914,7 +914,7 @@ Returns the intersection point the exception notdone is raised if isdone is fals
 class IntCurveSurface_TheHCurveTool {
 	public:
 		/****** IntCurveSurface_TheHCurveTool::BSpline ******/
-		/****** md5 signature: 73295d8773f31004aa0bf55b549ab48f ******/
+		/****** md5 signature: f2a2c90a0bedf5095eea00c2e107a369 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "
 Parameters
@@ -932,7 +932,7 @@ No available documentation.
 		static opencascade::handle<Geom_BSplineCurve> BSpline(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Bezier ******/
-		/****** md5 signature: f306f8462315905af8e276236266123d ******/
+		/****** md5 signature: b42ebe6c926b5fb77a6331705b4963e5 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "
 Parameters
@@ -950,7 +950,7 @@ No available documentation.
 		static opencascade::handle<Geom_BezierCurve> Bezier(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Circle ******/
-		/****** md5 signature: 7b6731a5a54fc11dc51059ac04fa7d96 ******/
+		/****** md5 signature: aa9214afb3ea57c15d5f41b39ea0359e ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "
 Parameters
@@ -968,7 +968,7 @@ No available documentation.
 		static gp_Circ Circle(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Continuity ******/
-		/****** md5 signature: 36a22861c63402bce70a44cade7cd4e2 ******/
+		/****** md5 signature: 6a07d78b03295fd033c1463c953b327a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -986,7 +986,7 @@ No available documentation.
 		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::D0 ******/
-		/****** md5 signature: 8132d18251425c9a08facd1890d4dc14 ******/
+		/****** md5 signature: 1904835766bb10f31708f629b8bb606d ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1001,12 +1001,12 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
 		/****** IntCurveSurface_TheHCurveTool::D1 ******/
-		/****** md5 signature: e2eff93238cd61643a22155760ca87e7 ******/
+		/****** md5 signature: 354bdf853d601711ce0e15e45fbe03c7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1022,12 +1022,12 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
 		/****** IntCurveSurface_TheHCurveTool::D2 ******/
-		/****** md5 signature: a03fec54dc9fb384b49128be1eeb6ab5 ******/
+		/****** md5 signature: cc9b7dad360ef1436afcb96410e2145a ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1044,12 +1044,12 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** IntCurveSurface_TheHCurveTool::D3 ******/
-		/****** md5 signature: daf7fd27ce53952002a95005add4c7db ******/
+		/****** md5 signature: e1e4feeb3ea84a4f70c896deb89d59cd ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1067,12 +1067,12 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** IntCurveSurface_TheHCurveTool::DN ******/
-		/****** md5 signature: 19abd9a6442d6a3469d8f9590507387e ******/
+		/****** md5 signature: 33fba57fa0e43164542a459fa95cc32b ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1087,12 +1087,12 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
 		static gp_Vec DN(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, const Standard_Integer N);
 
 		/****** IntCurveSurface_TheHCurveTool::Ellipse ******/
-		/****** md5 signature: c32c615877d264a7d9a959c38c10dac5 ******/
+		/****** md5 signature: de248e1260f87dec86decdd85617a0d4 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "
 Parameters
@@ -1110,7 +1110,7 @@ No available documentation.
 		static gp_Elips Ellipse(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::FirstParameter ******/
-		/****** md5 signature: 25c42492a02c6ff0b57c4cf91fb40f86 ******/
+		/****** md5 signature: 065317d1a0ad241cbbf084ece4451980 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -1128,7 +1128,7 @@ No available documentation.
 		static Standard_Real FirstParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::GetType ******/
-		/****** md5 signature: a686bd836352e7b0b82151881246c5a7 ******/
+		/****** md5 signature: cb051ca1196d0306cf670dc876af9ad8 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "
 Parameters
@@ -1141,12 +1141,12 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Hyperbola ******/
-		/****** md5 signature: d833c49b900f354e019cfd82c1b21d0e ******/
+		/****** md5 signature: 5d3c9969f2fdc07af59bef8fa5cc0e25 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "
 Parameters
@@ -1164,7 +1164,7 @@ No available documentation.
 		static gp_Hypr Hyperbola(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Intervals ******/
-		/****** md5 signature: ba9ef7becad6f3e6ee434061971db40d ******/
+		/****** md5 signature: d5a4bb40cdb6a8b5891abeea0ea89a92 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -1179,12 +1179,12 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** IntCurveSurface_TheHCurveTool::IsClosed ******/
-		/****** md5 signature: 178cf2cfae4002c04a5499797f8bd656 ******/
+		/****** md5 signature: aeb1d7388bc1c1c6c162cf2bb09b47c3 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -1202,7 +1202,7 @@ No available documentation.
 		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::IsPeriodic ******/
-		/****** md5 signature: d48777dd4aacf834a3350873acc52ff6 ******/
+		/****** md5 signature: b28709e22e2b6eb72c7ae6c9691d26cc ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1220,7 +1220,7 @@ No available documentation.
 		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::LastParameter ******/
-		/****** md5 signature: c00409255c9efae31d007ea0f35327b6 ******/
+		/****** md5 signature: ddc56989a2eb226d2e27c5454157f912 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -1238,7 +1238,7 @@ No available documentation.
 		static Standard_Real LastParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Line ******/
-		/****** md5 signature: 5d669526ea2c83636bcd5abea25c7993 ******/
+		/****** md5 signature: 81850752bdbb876955439b815e391b19 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -1256,7 +1256,7 @@ No available documentation.
 		static gp_Lin Line(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::NbIntervals ******/
-		/****** md5 signature: 14a07173bd3c33d26deeb9707ee34cb3 ******/
+		/****** md5 signature: 3aacda9f1e126d5751d268b46a4f7576 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1270,7 +1270,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor3d_Curve> & C, const GeomAbs_Shape S);
 
@@ -1295,7 +1295,7 @@ No available documentation.
 		static Standard_Integer NbSamples(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U0, const Standard_Real U1);
 
 		/****** IntCurveSurface_TheHCurveTool::Parabola ******/
-		/****** md5 signature: cc30b6b7d2e5eb272de9d92bc65e5ba5 ******/
+		/****** md5 signature: cd5041b75a0e8fd63a8ea0db7fdf8b69 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "
 Parameters
@@ -1313,7 +1313,7 @@ No available documentation.
 		static gp_Parab Parabola(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Period ******/
-		/****** md5 signature: f7986452fbb7b824f9223306a3748bb0 ******/
+		/****** md5 signature: c1952c704f70b1bcad49c5690ca1f85f ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
@@ -1331,7 +1331,7 @@ No available documentation.
 		static Standard_Real Period(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Resolution ******/
-		/****** md5 signature: 5b1954ce6b6bbeec3732ad23161bfe7f ******/
+		/****** md5 signature: a30595435b718ddc527b3d6b86455085 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -1345,7 +1345,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real R3d);
 
@@ -1373,7 +1373,7 @@ No available documentation.
 		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U0, const Standard_Real U1, const Standard_Real Defl, const Standard_Integer NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
 		/****** IntCurveSurface_TheHCurveTool::Value ******/
-		/****** md5 signature: 2a733041fbe29fa56e33746589b73c76 ******/
+		/****** md5 signature: 533412a1a9d91bbfb74754dc0e074a68 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1387,7 +1387,7 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U);
 
@@ -1414,7 +1414,7 @@ None
 
 Description
 -----------
-Constructs an empty interference between polygon and polyhedron.
+Constructs an empty interference between Polygon and Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter();
 
@@ -1433,7 +1433,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the polygon and the polyhedron.
+Constructs and computes an interference between the Polygon and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1452,7 +1452,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight line and the polyhedron.
+Constructs and computes an interference between the Straight Line and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1471,7 +1471,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight lines and the polyhedron.
+Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1491,7 +1491,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the polygon and the polyhedron.
+Constructs and computes an interference between the Polygon and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1511,7 +1511,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight line and the polyhedron.
+Constructs and computes an interference between the Straight Line and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1531,7 +1531,7 @@ None
 
 Description
 -----------
-Constructs and computes an interference between the straight lines and the polyhedron.
+Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1551,7 +1551,7 @@ None
 
 Description
 -----------
-Compares the boundings between the segment of <thepolyg> and the facets of <thepolyh>.
+Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 ") Interference;
 		void Interference(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1570,7 +1570,7 @@ None
 
 Description
 -----------
-Compares the boundings between the segment of <thepolyg> and the facets of <thepolyh>.
+Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 ") Interference;
 		void Interference(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1589,7 +1589,7 @@ None
 
 Description
 -----------
-Computes an interference between the polygon and the polyhedron.
+Computes an interference between the Polygon and the Polyhedron.
 ") Perform;
 		void Perform(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1608,7 +1608,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight line and the polyhedron.
+Computes an interference between the Straight Line and the Polyhedron.
 ") Perform;
 		void Perform(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1627,7 +1627,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight lines and the polyhedron.
+Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
 		void Perform(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1647,7 +1647,7 @@ None
 
 Description
 -----------
-Computes an interference between the polygon and the polyhedron.
+Computes an interference between the Polygon and the Polyhedron.
 ") Perform;
 		void Perform(const IntCurveSurface_ThePolygonOfHInter & thePolyg, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1667,7 +1667,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight line and the polyhedron.
+Computes an interference between the Straight Line and the Polyhedron.
 ") Perform;
 		void Perform(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1687,7 +1687,7 @@ None
 
 Description
 -----------
-Computes an interference between the straight lines and the polyhedron.
+Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
 		void Perform(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
@@ -1779,7 +1779,7 @@ float
 
 Description
 -----------
-Give an approximation of the parameter on the curve according to the discretization of the curve.
+Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
 		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
 
@@ -1797,7 +1797,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		const gp_Pnt BeginOfSeg(const Standard_Integer theIndex);
 
@@ -1885,7 +1885,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") EndOfSeg;
 		const gp_Pnt EndOfSeg(const Standard_Integer theIndex);
 
@@ -1898,7 +1898,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the first point of the polygon.
+Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
 		Standard_Real InfParameter();
 
@@ -1911,7 +1911,7 @@ int
 
 Description
 -----------
-Give the number of segments in the polyline.
+Give the number of Segments in the polyline.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -1942,7 +1942,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the last point of the polygon.
+Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
 		Standard_Real SupParameter();
 
@@ -1975,7 +1975,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		static const gp_Pnt BeginOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const Standard_Integer Index);
 
@@ -2066,7 +2066,7 @@ gp_Pnt
 
 Description
 -----------
-Give the point of range index in the polygon.
+Give the point of range Index in the Polygon.
 ") EndOfSeg;
 		static const gp_Pnt EndOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const Standard_Integer Index);
 
@@ -2119,7 +2119,7 @@ Bnd_Box
 
 Description
 -----------
-Give the bounding box of the polyhedrontool.
+Give the bounding box of the PolyhedronTool.
 ") Bounding;
 		static const Bnd_Box & Bounding(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -2137,7 +2137,7 @@ opencascade::handle<Bnd_HArray1OfBox>
 
 Description
 -----------
-Give the array of boxes. the box <n> corresponding to the triangle <n>.
+Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
 		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -2211,7 +2211,7 @@ bool
 
 Description
 -----------
-This method returns true if the edge based on points with indices index1 and index2 represents a boundary edge. it is necessary to take into account the boundary deflection for this edge.
+This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 ") IsOnBound;
 		static Standard_Boolean IsOnBound(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Index1, const Standard_Integer Index2);
 
@@ -2270,7 +2270,7 @@ OtherP: int
 
 Description
 -----------
-Give the address tricon of the triangle connexe to the triangle of address triang by the edge pivot pedge and the third point of this connexe triangle. when we are on a free edge tricon==0 but the function return the value of the triangle in the other side of pivot on the free edge. used to turn around a vertex.
+Give the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
 		static Standard_Integer TriConnex(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2291,7 +2291,7 @@ P3: int
 
 Description
 -----------
-Give the indices of the 3 points of the triangle of address index in the polyhedrontool.
+Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 ") Triangle;
 		static void Triangle(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2324,7 +2324,7 @@ None
 
 Description
 -----------
-Provides the signed distance function: q(w) and its first derivative dq(w)/dw.
+Provides the signed distance function: Q(w) and its first derivative dQ(w)/dw.
 ") IntCurveSurface_TheQuadCurvExactHInter;
 		 IntCurveSurface_TheQuadCurvExactHInter(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
@@ -2343,7 +2343,7 @@ U2: float
 
 Description
 -----------
-U1 and u2 are the parameters of a segment on the curve.
+U1 and U2 are the parameters of a segment on the curve.
 ") Intervals;
 		void Intervals(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2451,7 +2451,7 @@ D: float
 
 Description
 -----------
-Computes the derivative of the previous function at parameter param. derivative always returns true.
+Computes the derivative of the previous function at parameter Param. Derivative always returns True.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -2469,7 +2469,7 @@ F: float
 
 Description
 -----------
-Computes the value of the signed distance between the implicit surface and the point at parameter param on the parametrised curve. value always returns true.
+Computes the value of the signed distance between the implicit surface and the point at parameter Param on the parametrised curve. Value always returns True.
 ") Value;
 		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -2488,7 +2488,7 @@ D: float
 
 Description
 -----------
-Computes the value and the derivative of the function. returns true.
+Computes the value and the derivative of the function. returns True.
 ") Values;
 		Standard_Boolean Values(const Standard_Real Param, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2515,7 +2515,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntCurveSurface_HInter;
 		 IntCurveSurface_HInter();
 
@@ -2534,7 +2534,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface.
+Compute the Intersection between the curve and the surface.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & Surface);
 
@@ -2554,7 +2554,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Curve, const IntCurveSurface_ThePolygonOfHInter & Polygon, const opencascade::handle<Adaptor3d_Surface> & Surface);
 
@@ -2575,7 +2575,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given. the surface is also sampled and <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Curve, const IntCurveSurface_ThePolygonOfHInter & ThePolygon, const opencascade::handle<Adaptor3d_Surface> & Surface, const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
 
@@ -2597,7 +2597,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the curve is already sampled and its polygon: <polygon> is given. the surface is also sampled and <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Curve, const IntCurveSurface_ThePolygonOfHInter & ThePolygon, const opencascade::handle<Adaptor3d_Surface> & Surface, const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron, Bnd_BoundSortBox & BndBSB);
 
@@ -2617,7 +2617,7 @@ None
 
 Description
 -----------
-Compute the intersection between the curve and the surface. the surface is already sampled and its polyhedron: <polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Surface is already sampled and its polyhedron: <Polyhedron> is given.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Curve, const opencascade::handle<Adaptor3d_Surface> & Surface, const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
 

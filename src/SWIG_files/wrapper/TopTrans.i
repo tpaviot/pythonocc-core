@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTRANSDOCSTRING
 "TopTrans module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_toptrans.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_toptrans.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTRANSDOCSTRING) TopTrans
 
@@ -93,7 +93,7 @@ None
 
 Description
 -----------
-Create an empty curve transition.
+Create an empty Curve Transition.
 ") TopTrans_CurveTransition;
 		 TopTrans_CurveTransition();
 
@@ -116,7 +116,7 @@ None
 
 Description
 -----------
-Add a curve element to the boundary. if or is reversed the curve is before the intersection, else if or is forward the curv is after the intersection and if or is internal the intersection is in the middle of the curv.
+Add a curve element to the boundary. If Or is REVERSED the curve is before the intersection, else if Or is FORWARD the curv is after the intersection and if Or is INTERNAL the intersection is in the middle of the curv.
 ") Compare;
 		void Compare(const Standard_Real Tole, const gp_Dir & Tang, const gp_Dir & Norm, const Standard_Real Curv, const TopAbs_Orientation S, const TopAbs_Orientation Or);
 
@@ -136,7 +136,7 @@ None
 
 Description
 -----------
-Initialize a transition with the local description of a curve.
+Initialize a Transition with the local description of a Curve.
 ") Reset;
 		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const Standard_Real Curv);
 
@@ -154,7 +154,7 @@ None
 
 Description
 -----------
-Initialize a transition with the local description of a straight line.
+Initialize a Transition with the local description of a straight line.
 ") Reset;
 		void Reset(const gp_Dir & Tgt);
 
@@ -167,7 +167,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of the curve after the intersection, this is the position relative to the boundary of a point very close to the intersection on the positive side of the tangent.
+returns the state of the curve after the intersection, this is the position relative to the boundary of a point very close to the intersection on the positive side of the tangent.
 ") StateAfter;
 		TopAbs_State StateAfter();
 
@@ -180,7 +180,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of the curve before the intersection, this is the position relative to the boundary of a point very close to the intersection on the negative side of the tangent.
+returns the state of the curve before the intersection, this is the position relative to the boundary of a point very close to the intersection on the negative side of the tangent.
 ") StateBefore;
 		TopAbs_State StateBefore();
 
@@ -207,7 +207,7 @@ None
 
 Description
 -----------
-Create an empty surface transition.
+Create an empty Surface Transition.
 ") TopTrans_SurfaceTransition;
 		 TopTrans_SurfaceTransition();
 
@@ -232,7 +232,7 @@ None
 
 Description
 -----------
-Add a face element to the boundary. //! - s defines topological orientation for the face: s forward means: along the intersection curve on the reference surface, transition states while crossing the face are out,in. s reversed means states are in,out. s internal means states are in,in. //! - o defines curve's position on face: o forward means the face is before the intersection o reversed means the face is after o internal means the curve intersection is in the face. prequesitory: norm oriented outside 'geometric matter'.
+Add a face element to the boundary. //! - S defines topological orientation for the face: S FORWARD means: along the intersection curve on the reference surface, transition states while crossing the face are OUT,IN. S REVERSED means states are IN,OUT. S INTERNAL means states are IN,IN. //! - O defines curve's position on face: O FORWARD means the face is before the intersection O REVERSED means the face is AFTER O INTERNAL means the curve intersection is in the face. PREQUESITORY: Norm oriented OUTSIDE 'geometric matter'.
 ") Compare;
 		void Compare(const Standard_Real Tole, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const Standard_Real MaxCurv, const Standard_Real MinCurv, const TopAbs_Orientation S, const TopAbs_Orientation O);
 
@@ -312,7 +312,7 @@ None
 
 Description
 -----------
-Initialize a surface transition with the local description of the intersection curve and of the reference surface. prequesitory: norm oriented outside 'geometric matter'.
+Initialize a Surface Transition with the local description of the intersection curve and of the reference surface. PREQUESITORY: Norm oriented OUTSIDE 'geometric matter'.
 ") Reset;
 		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const Standard_Real MaxCurv, const Standard_Real MinCurv);
 
@@ -331,7 +331,7 @@ None
 
 Description
 -----------
-Initialize a surface transition with the local description of a straight line.
+Initialize a Surface Transition with the local description of a straight line.
 ") Reset;
 		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CONVERTDOCSTRING
 "Convert module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_convert.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_convert.html"
 %enddef
 %module (package="OCC.Core", docstring=CONVERTDOCSTRING) Convert
 
@@ -139,7 +139,7 @@ None
 
 Description
 -----------
-Constructs a framework for converting a sequence of adjacent non-rational bezier curves into a bspline curve. knots will be created on the computed bspline curve at each junction point of two consecutive bezier curves. the degree of continuity of the bspline curve will be increased at the junction point of two consecutive bezier curves if their tangent vectors at this point are parallel. angulartolerance (given in radians, and defaulted to 1.0 e-4) will be used to check the parallelism of the two tangent vectors. use the following functions: - addcurve to define in sequence the adjacent bezier curves to be converted, - perform to compute the data needed to build the bspline curve, - and the available consultation functions to access the computed data. this data may be used to construct the bspline curve.
+Constructs a framework for converting a sequence of adjacent non-rational Bezier curves into a BSpline curve. Knots will be created on the computed BSpline curve at each junction point of two consecutive Bezier curves. The degree of continuity of the BSpline curve will be increased at the junction point of two consecutive Bezier curves if their tangent vectors at this point are parallel. AngularTolerance (given in radians, and defaulted to 1.0 e-4) will be used to check the parallelism of the two tangent vectors. Use the following functions: - AddCurve to define in sequence the adjacent Bezier curves to be converted, - Perform to compute the data needed to build the BSpline curve, - and the available consultation functions to access the computed data. This data may be used to construct the BSpline curve.
 ") Convert_CompBezierCurves2dToBSplineCurve2d;
 		 Convert_CompBezierCurves2dToBSplineCurve2d(const Standard_Real AngularTolerance = 1.0e-4);
 
@@ -157,7 +157,7 @@ None
 
 Description
 -----------
-Adds the bezier curve defined by the table of poles poles, to the sequence (still contained in this framework) of adjacent bezier curves to be converted into a bspline curve. only polynomial (i.e. non-rational) bezier curves are converted using this framework. if this is not the first call to the function (i.e. if this framework still contains data in its sequence of bezier curves), the degree of continuity of the bspline curve will be increased at the time of computation at the first point of the added bezier curve (i.e. the first point of the poles table). this will be the case if the tangent vector of the curve at this point is parallel to the tangent vector at the end point of the preceding bezier curve in the sequence of bezier curves still contained in this framework. an angular tolerance given at the time of construction of this framework, will be used to check the parallelism of the two tangent vectors. this checking procedure, and all the relative computations will be performed by the function perform. when the sequence of adjacent bezier curves is complete, use the following functions: - perform to compute the data needed to build the bspline curve, - and the available consultation functions to access the computed data. this data may be used to construct the bspline curve. warning the sequence of bezier curves treated by this framework is automatically initialized with the first bezier curve when the function is first called. during subsequent use of this function, ensure that the first point of the added bezier curve (i.e. the first point of the poles table) is coincident with the last point of the sequence (i.e. the last point of the preceding bezier curve in the sequence) of bezier curves still contained in this framework. an error may occur at the time of computation if this condition is not satisfied. particular care must be taken with respect to the above, as this condition is not checked either when defining the sequence of bezier curves or at the time of computation.
+Adds the Bezier curve defined by the table of poles Poles, to the sequence (still contained in this framework) of adjacent Bezier curves to be converted into a BSpline curve. Only polynomial (i.e. non-rational) Bezier curves are converted using this framework. If this is not the first call to the function (i.e. if this framework still contains data in its sequence of Bezier curves), the degree of continuity of the BSpline curve will be increased at the time of computation at the first point of the added Bezier curve (i.e. the first point of the Poles table). This will be the case if the tangent vector of the curve at this point is parallel to the tangent vector at the end point of the preceding Bezier curve in the sequence of Bezier curves still contained in this framework. An angular tolerance given at the time of construction of this framework, will be used to check the parallelism of the two tangent vectors. This checking procedure, and all the relative computations will be performed by the function Perform. When the sequence of adjacent Bezier curves is complete, use the following functions: - Perform to compute the data needed to build the BSpline curve, - and the available consultation functions to access the computed data. This data may be used to construct the BSpline curve. Warning The sequence of Bezier curves treated by this framework is automatically initialized with the first Bezier curve when the function is first called. During subsequent use of this function, ensure that the first point of the added Bezier curve (i.e. the first point of the Poles table) is coincident with the last point of the sequence (i.e. the last point of the preceding Bezier curve in the sequence) of Bezier curves still contained in this framework. An error may occur at the time of computation if this condition is not satisfied. Particular care must be taken with respect to the above, as this condition is not checked either when defining the sequence of Bezier curves or at the time of computation.
 ") AddCurve;
 		void AddCurve(const TColgp_Array1OfPnt2d & Poles);
 
@@ -170,7 +170,7 @@ int
 
 Description
 -----------
-Returns the degree of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the degree of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") Degree;
 		Standard_Integer Degree();
 
@@ -189,7 +189,7 @@ None
 
 Description
 -----------
-Loads the knots table with the knots and the mults table with the corresponding multiplicities of the bspline curve whose data is computed in this framework. warning - do not use this function before the computation is performed (perform function). - the length of the knots and mults arrays must be equal to the number of knots in the bspline curve whose data is computed in this framework. particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
+Loads the Knots table with the knots and the Mults table with the corresponding multiplicities of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Knots and Mults arrays must be equal to the number of knots in the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
 ") KnotsAndMults;
 		void KnotsAndMults(TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults);
 
@@ -202,7 +202,7 @@ int
 
 Description
 -----------
-Returns the number of knots of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the number of knots of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
@@ -215,7 +215,7 @@ int
 
 Description
 -----------
-Returns the number of poles of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the number of poles of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
@@ -228,7 +228,7 @@ None
 
 Description
 -----------
-Computes all the data needed to build a bspline curve equivalent to the sequence of adjacent bezier curves still contained in this framework. a knot is inserted on the computed bspline curve at the junction point of two consecutive bezier curves. the degree of continuity of the bspline curve will be increased at the junction point of two consecutive bezier curves if their tangent vectors at this point are parallel. an angular tolerance given at the time of construction of this framework is used to check the parallelism of the two tangent vectors. use the available consultation functions to access the computed data. this data may then be used to construct the bspline curve. warning ensure that the curves in the sequence of bezier curves contained in this framework are adjacent. an error may occur at the time of computation if this condition is not satisfied. particular care must be taken with respect to the above as this condition is not checked, either when defining the bezier curve sequence or at the time of computation.
+Computes all the data needed to build a BSpline curve equivalent to the sequence of adjacent Bezier curves still contained in this framework. A knot is inserted on the computed BSpline curve at the junction point of two consecutive Bezier curves. The degree of continuity of the BSpline curve will be increased at the junction point of two consecutive Bezier curves if their tangent vectors at this point are parallel. An angular tolerance given at the time of construction of this framework is used to check the parallelism of the two tangent vectors. Use the available consultation functions to access the computed data. This data may then be used to construct the BSpline curve. Warning Ensure that the curves in the sequence of Bezier curves contained in this framework are adjacent. An error may occur at the time of computation if this condition is not satisfied. Particular care must be taken with respect to the above as this condition is not checked, either when defining the Bezier curve sequence or at the time of computation.
 ") Perform;
 		void Perform();
 
@@ -246,7 +246,7 @@ None
 
 Description
 -----------
-Loads the poles table with the poles of the bspline curve whose data is computed in this framework. warning - do not use this function before the computation is performed (perform function). - the length of the poles array must be equal to the number of poles of the bspline curve whose data is computed in this framework. particular care must be taken with respect to the above, as these conditions are not checked, and an error may occur.
+Loads the Poles table with the poles of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Poles array must be equal to the number of poles of the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above, as these conditions are not checked, and an error may occur.
 ") Poles;
 		void Poles(TColgp_Array1OfPnt2d & Poles);
 
@@ -278,7 +278,7 @@ None
 
 Description
 -----------
-Constructs a framework for converting a sequence of adjacent non-rational bezier curves into a bspline curve. knots will be created on the computed bspline curve at each junction point of two consecutive bezier curves. the degree of continuity of the bspline curve will be increased at the junction point of two consecutive bezier curves if their tangent vectors at this point are parallel. angulartolerance (given in radians, and defaulted to 1.0 e-4) will be used to check the parallelism of the two tangent vectors. use the following functions: - addcurve to define in sequence the adjacent bezier curves to be converted, - perform to compute the data needed to build the bspline curve, - and the available consultation functions to access the computed data. this data may be used to construct the bspline curve.
+Constructs a framework for converting a sequence of adjacent non-rational Bezier curves into a BSpline curve. Knots will be created on the computed BSpline curve at each junction point of two consecutive Bezier curves. The degree of continuity of the BSpline curve will be increased at the junction point of two consecutive Bezier curves if their tangent vectors at this point are parallel. AngularTolerance (given in radians, and defaulted to 1.0 e-4) will be used to check the parallelism of the two tangent vectors. Use the following functions: - AddCurve to define in sequence the adjacent Bezier curves to be converted, - Perform to compute the data needed to build the BSpline curve, - and the available consultation functions to access the computed data. This data may be used to construct the BSpline curve.
 ") Convert_CompBezierCurvesToBSplineCurve;
 		 Convert_CompBezierCurvesToBSplineCurve(const Standard_Real AngularTolerance = 1.0e-4);
 
@@ -296,7 +296,7 @@ None
 
 Description
 -----------
-Adds the bezier curve defined by the table of poles poles, to the sequence (still contained in this framework) of adjacent bezier curves to be converted into a bspline curve. only polynomial (i.e. non-rational) bezier curves are converted using this framework. if this is not the first call to the function (i.e. if this framework still contains data in its bezier curve sequence), the degree of continuity of the bspline curve will be increased at the time of computation at the first point of the added bezier curve (i.e. the first point of the poles table). this will be the case if the tangent vector of the curve at this point is parallel to the tangent vector at the end point of the preceding bezier curve in the bezier curve sequence still contained in this framework. an angular tolerance given at the time of construction of this framework will be used to check the parallelism of the two tangent vectors. this checking procedure and all related computations will be performed by the perform function. when the adjacent bezier curve sequence is complete, use the following functions: - perform to compute the data needed to build the bspline curve, - and the available consultation functions to access the computed data. this data may be used to construct the bspline curve. warning the bezier curve sequence treated by this framework is automatically initialized with the first bezier curve when the function is first called. during subsequent use of this function, ensure that the first point of the added bezier curve (i.e. the first point of the poles table) is coincident with the last point of the bezier curve sequence (i.e. the last point of the preceding bezier curve in the sequence) still contained in this framework. an error may occur at the time of computation if this condition is not satisfied. particular care must be taken with respect to the above, as this condition is not checked either when defining the bezier curve sequence or at the time of computation.
+Adds the Bezier curve defined by the table of poles Poles, to the sequence (still contained in this framework) of adjacent Bezier curves to be converted into a BSpline curve. Only polynomial (i.e. non-rational) Bezier curves are converted using this framework. If this is not the first call to the function (i.e. if this framework still contains data in its Bezier curve sequence), the degree of continuity of the BSpline curve will be increased at the time of computation at the first point of the added Bezier curve (i.e. the first point of the Poles table). This will be the case if the tangent vector of the curve at this point is parallel to the tangent vector at the end point of the preceding Bezier curve in the Bezier curve sequence still contained in this framework. An angular tolerance given at the time of construction of this framework will be used to check the parallelism of the two tangent vectors. This checking procedure and all related computations will be performed by the Perform function. When the adjacent Bezier curve sequence is complete, use the following functions: - Perform to compute the data needed to build the BSpline curve, - and the available consultation functions to access the computed data. This data may be used to construct the BSpline curve. Warning The Bezier curve sequence treated by this framework is automatically initialized with the first Bezier curve when the function is first called. During subsequent use of this function, ensure that the first point of the added Bezier curve (i.e. the first point of the Poles table) is coincident with the last point of the Bezier curve sequence (i.e. the last point of the preceding Bezier curve in the sequence) still contained in this framework. An error may occur at the time of computation if this condition is not satisfied. Particular care must be taken with respect to the above, as this condition is not checked either when defining the Bezier curve sequence or at the time of computation.
 ") AddCurve;
 		void AddCurve(const TColgp_Array1OfPnt & Poles);
 
@@ -309,7 +309,7 @@ int
 
 Description
 -----------
-Returns the degree of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the degree of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") Degree;
 		Standard_Integer Degree();
 
@@ -328,7 +328,7 @@ None
 
 Description
 -----------
-- loads the knots table with the knots, - and loads the mults table with the corresponding multiplicities of the bspline curve whose data is computed in this framework. warning - do not use this function before the computation is performed (perform function). - the length of the knots and mults arrays must be equal to the number of knots in the bspline curve whose data is computed in this framework. particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
+- loads the Knots table with the knots, - and loads the Mults table with the corresponding multiplicities of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Knots and Mults arrays must be equal to the number of knots in the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
 ") KnotsAndMults;
 		void KnotsAndMults(TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults);
 
@@ -341,7 +341,7 @@ int
 
 Description
 -----------
-Returns the number of knots of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the number of knots of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
@@ -354,7 +354,7 @@ int
 
 Description
 -----------
-Returns the number of poles of the bspline curve whose data is computed in this framework. warning take particular care not to use this function before the computation is performed (perform function), as this condition is not checked and an error may therefore occur.
+Returns the number of poles of the BSpline curve whose data is computed in this framework. Warning Take particular care not to use this function before the computation is performed (Perform function), as this condition is not checked and an error may therefore occur.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
@@ -367,7 +367,7 @@ None
 
 Description
 -----------
-Computes all the data needed to build a bspline curve equivalent to the adjacent bezier curve sequence still contained in this framework. a knot is inserted on the computed bspline curve at the junction point of two consecutive bezier curves. the degree of continuity of the bspline curve will be increased at the junction point of two consecutive bezier curves if their tangent vectors at this point are parallel. an angular tolerance given at the time of construction of this framework is used to check the parallelism of the two tangent vectors. use the available consultation functions to access the computed data. this data may then be used to construct the bspline curve. warning make sure that the curves in the bezier curve sequence contained in this framework are adjacent. an error may occur at the time of computation if this condition is not satisfied. particular care must be taken with respect to the above as this condition is not checked, either when defining the bezier curve sequence or at the time of computation.
+Computes all the data needed to build a BSpline curve equivalent to the adjacent Bezier curve sequence still contained in this framework. A knot is inserted on the computed BSpline curve at the junction point of two consecutive Bezier curves. The degree of continuity of the BSpline curve will be increased at the junction point of two consecutive Bezier curves if their tangent vectors at this point are parallel. An angular tolerance given at the time of construction of this framework is used to check the parallelism of the two tangent vectors. Use the available consultation functions to access the computed data. This data may then be used to construct the BSpline curve. Warning Make sure that the curves in the Bezier curve sequence contained in this framework are adjacent. An error may occur at the time of computation if this condition is not satisfied. Particular care must be taken with respect to the above as this condition is not checked, either when defining the Bezier curve sequence or at the time of computation.
 ") Perform;
 		void Perform();
 
@@ -385,7 +385,7 @@ None
 
 Description
 -----------
-Loads the poles table with the poles of the bspline curve whose data is computed in this framework. warning - do not use this function before the computation is performed (perform function). - the length of the poles array must be equal to the number of poles of the bspline curve whose data is computed in this framework. particular care must be taken with respect to the above, as these conditions are not checked, and an error may occur.
+Loads the Poles table with the poles of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Poles array must be equal to the number of poles of the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above, as these conditions are not checked, and an error may occur.
 ") Poles;
 		void Poles(TColgp_Array1OfPnt & Poles);
 
@@ -424,7 +424,7 @@ None
 
 Description
 -----------
-Warning! continuity can be at most the maximum degree of the polynomial functions trueintervals: this is the true parameterisation for the composite curve that is: the curve has mycontinuity if the nth curve is parameterized between mytrueintervals(n) and mytrueintervals(n+1) //! coefficients have to be the implicit 'c form': coefficients[numcurves][maxdegree+1][dimension] //! warning! the numberofcoefficient of an polynome is his degree + 1 example: to convert the linear function f(x) = 2*x + 1 on the domaine [2,5] to bspline with the bound [-1,1]. arguments are: numcurves = 1; continuity = 1; dimension = 1; maxdegree = 1; numcoeffpercurve [1] = {2}; coefficients[2] = {1, 2}; polynomialintervals[1,2] = {{2,5}} trueintervals[2] = {-1, 1}.
+Warning! Continuity can be at MOST the maximum degree of the polynomial functions TrueIntervals: this is the true parameterisation for the composite curve that is: the curve has myContinuity if the nth curve is parameterized between myTrueIntervals(n) and myTrueIntervals(n+1) //! Coefficients have to be the implicit 'c form': Coefficients[Numcurves][MaxDegree+1][Dimension] //! Warning! The NumberOfCoefficient of an polynome is his degree + 1 Example: To convert the linear function f(x) = 2*x + 1 on the domaine [2,5] to BSpline with the bound [-1,1]. Arguments are: NumCurves = 1; Continuity = 1; Dimension = 1; MaxDegree = 1; NumCoeffPerCurve [1] = {2}; Coefficients[2] = {1, 2}; PolynomialIntervals[1,2] = {{2,5}} TrueIntervals[2] = {-1, 1}.
 ") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles(const Standard_Integer NumCurves, const Standard_Integer Continuity, const Standard_Integer Dimension, const Standard_Integer MaxDegree, const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeffPerCurve, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray2OfReal> & PolynomialIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueIntervals);
 
@@ -449,7 +449,7 @@ None
 
 Description
 -----------
-To convert sevral span with different order of continuity. warning: the length of continuity have to be numcurves-1.
+To Convert several span with different order of Continuity. Warning: The Length of Continuity have to be NumCurves-1.
 ") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles(const Standard_Integer NumCurves, const Standard_Integer Dimension, const Standard_Integer MaxDegree, const TColStd_Array1OfInteger & Continuity, const TColStd_Array1OfInteger & NumCoeffPerCurve, const TColStd_Array1OfReal & Coefficients, const TColStd_Array2OfReal & PolynomialIntervals, const TColStd_Array1OfReal & TrueIntervals);
 
@@ -472,7 +472,7 @@ None
 
 Description
 -----------
-To convert only one span.
+To Convert only one span.
 ") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Integer Degree, const TColStd_Array1OfReal & Coefficients, const TColStd_Array1OfReal & PolynomialIntervals, const TColStd_Array1OfReal & TrueIntervals);
 
@@ -516,7 +516,7 @@ None
 
 Description
 -----------
-Knots of the n-dimensional bspline.
+Knots of the n-dimensional Bspline.
 ") Knots;
 		void Knots(opencascade::handle<TColStd_HArray1OfReal> & K);
 
@@ -534,7 +534,7 @@ None
 
 Description
 -----------
-Multiplicities of the knots in the bspline.
+Multiplicities of the knots in the BSpline.
 ") Multiplicities;
 		void Multiplicities(opencascade::handle<TColStd_HArray1OfInteger> & M);
 
@@ -547,7 +547,7 @@ int
 
 Description
 -----------
-Degree of the n-dimensional bspline.
+Degree of the n-dimensional Bspline.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
@@ -560,7 +560,7 @@ int
 
 Description
 -----------
-Number of poles of the n-dimensional bspline.
+number of poles of the n-dimensional BSpline.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
@@ -578,7 +578,7 @@ None
 
 Description
 -----------
-Returns the poles of the n-dimensional bspline in the following format: [1..numpoles][1..dimension].
+returns the poles of the n-dimensional BSpline in the following format: [1..NumPoles][1..Dimension].
 ") Poles;
 		void Poles(opencascade::handle<TColStd_HArray2OfReal> & Poles);
 
@@ -654,7 +654,7 @@ int
 
 Description
 -----------
-Returns the degree of the bspline curve whose data is computed in this framework.
+Returns the degree of the BSpline curve whose data is computed in this framework.
 ") Degree;
 		Standard_Integer Degree();
 
@@ -667,7 +667,7 @@ bool
 
 Description
 -----------
-Returns true if the bspline curve whose data is computed in this framework is periodic.
+Returns true if the BSpline curve whose data is computed in this framework is periodic.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
@@ -685,7 +685,7 @@ float
 
 Description
 -----------
-Returns the knot of index index to the knots table of the bspline curve whose data is computed in this framework. exceptions standard_outofrange if index is outside the bounds of the knots table of the bspline curve whose data is computed in this framework.
+Returns the knot of index Index to the knots table of the BSpline curve whose data is computed in this framework. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table of the BSpline curve whose data is computed in this framework.
 ") Knot;
 		Standard_Real Knot(const Standard_Integer Index);
 
@@ -703,7 +703,7 @@ int
 
 Description
 -----------
-Returns the multiplicity of the knot of index index to the knots table of the bspline curve whose data is computed in this framework. exceptions standard_outofrange if index is outside the bounds of the knots table of the bspline curve whose data is computed in this framework.
+Returns the multiplicity of the knot of index Index to the knots table of the BSpline curve whose data is computed in this framework. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table of the BSpline curve whose data is computed in this framework.
 ") Multiplicity;
 		Standard_Integer Multiplicity(const Standard_Integer Index);
 
@@ -716,7 +716,7 @@ int
 
 Description
 -----------
-Returns the number of knots of the bspline curve whose data is computed in this framework.
+Returns the number of knots of the BSpline curve whose data is computed in this framework.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
@@ -729,7 +729,7 @@ int
 
 Description
 -----------
-Returns the number of poles of the bspline curve whose data is computed in this framework.
+Returns the number of poles of the BSpline curve whose data is computed in this framework.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
@@ -747,7 +747,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the pole of index index to the poles table of the bspline curve whose data is computed in this framework. exceptions standard_outofrange if index is outside the bounds of the poles table of the bspline curve whose data is computed in this framework.
+Returns the pole of index Index to the poles table of the BSpline curve whose data is computed in this framework. Exceptions Standard_OutOfRange if Index is outside the bounds of the poles table of the BSpline curve whose data is computed in this framework.
 ") Pole;
 		gp_Pnt2d Pole(const Standard_Integer Index);
 
@@ -765,7 +765,7 @@ float
 
 Description
 -----------
-Returns the weight of the pole of index index to the poles table of the bspline curve whose data is computed in this framework. exceptions standard_outofrange if index is outside the bounds of the poles table of the bspline curve whose data is computed in this framework.
+Returns the weight of the pole of index Index to the poles table of the BSpline curve whose data is computed in this framework. Exceptions Standard_OutOfRange if Index is outside the bounds of the poles table of the BSpline curve whose data is computed in this framework.
 ") Weight;
 		Standard_Real Weight(const Standard_Integer Index);
 
@@ -806,7 +806,7 @@ bool
 
 Description
 -----------
-Returns true if the bspline surface whose data is computed in this framework is periodic in the u or v parametric direction.
+Returns true if the BSpline surface whose data is computed in this framework is periodic in the u or v parametric direction.
 ") IsVPeriodic;
 		Standard_Boolean IsVPeriodic();
 
@@ -845,7 +845,7 @@ int
 
 Description
 -----------
-Returns the number of knots for the u or v parametric direction of the bspline surface whose data is computed in this framework .
+Returns the number of knots for the u or v parametric direction of the BSpline surface whose data is computed in this framework .
 ") NbVKnots;
 		Standard_Integer NbVKnots();
 
@@ -858,7 +858,7 @@ int
 
 Description
 -----------
-Returns the number of poles for the u or v parametric direction of the bspline surface whose data is computed in this framework.
+Returns the number of poles for the u or v parametric direction of the BSpline surface whose data is computed in this framework.
 ") NbVPoles;
 		Standard_Integer NbVPoles();
 
@@ -877,7 +877,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the pole of index (uindex,vindex) to the poles table of the bspline surface whose data is computed in this framework. exceptions standard_outofrange if, for the bspline surface whose data is computed in this framework: - uindex is outside the bounds of the poles table in the u parametric direction, or - vindex is outside the bounds of the poles table in the v parametric direction.
+Returns the pole of index (UIndex,VIndex) to the poles table of the BSpline surface whose data is computed in this framework. Exceptions Standard_OutOfRange if, for the BSpline surface whose data is computed in this framework: - UIndex is outside the bounds of the poles table in the u parametric direction, or - VIndex is outside the bounds of the poles table in the v parametric direction.
 ") Pole;
 		gp_Pnt Pole(const Standard_Integer UIndex, const Standard_Integer VIndex);
 
@@ -908,7 +908,7 @@ float
 
 Description
 -----------
-Returns the u-knot of range uindex. raised if uindex < 1 or uindex > nbuknots.
+Returns the U-knot of range UIndex. Raised if UIndex < 1 or UIndex > NbUKnots.
 ") UKnot;
 		Standard_Real UKnot(const Standard_Integer UIndex);
 
@@ -926,7 +926,7 @@ int
 
 Description
 -----------
-Returns the multiplicity of the u-knot of range uindex. raised if uindex < 1 or uindex > nbuknots.
+Returns the multiplicity of the U-knot of range UIndex. Raised if UIndex < 1 or UIndex > NbUKnots.
 ") UMultiplicity;
 		Standard_Integer UMultiplicity(const Standard_Integer UIndex);
 
@@ -939,7 +939,7 @@ int
 
 Description
 -----------
-Returns the degree for the u or v parametric direction of the bspline surface whose data is computed in this framework.
+Returns the degree for the u or v parametric direction of the BSpline surface whose data is computed in this framework.
 ") VDegree;
 		Standard_Integer VDegree();
 
@@ -957,7 +957,7 @@ float
 
 Description
 -----------
-Returns the v-knot of range vindex. raised if vindex < 1 or vindex > nbvknots.
+Returns the V-knot of range VIndex. Raised if VIndex < 1 or VIndex > NbVKnots.
 ") VKnot;
 		Standard_Real VKnot(const Standard_Integer UIndex);
 
@@ -975,7 +975,7 @@ int
 
 Description
 -----------
-Returns the multiplicity of the v-knot of range vindex. raised if vindex < 1 or vindex > nbvknots.
+Returns the multiplicity of the V-knot of range VIndex. Raised if VIndex < 1 or VIndex > NbVKnots.
 ") VMultiplicity;
 		Standard_Integer VMultiplicity(const Standard_Integer VIndex);
 
@@ -994,7 +994,7 @@ float
 
 Description
 -----------
-Returns the weight of the pole of index (uindex,vindex) to the poles table of the bspline surface whose data is computed in this framework. exceptions standard_outofrange if, for the bspline surface whose data is computed in this framework: - uindex is outside the bounds of the poles table in the u parametric direction, or - vindex is outside the bounds of the poles table in the v parametric direction.
+Returns the weight of the pole of index (UIndex,VIndex) to the poles table of the BSpline surface whose data is computed in this framework. Exceptions Standard_OutOfRange if, for the BSpline surface whose data is computed in this framework: - UIndex is outside the bounds of the poles table in the u parametric direction, or - VIndex is outside the bounds of the poles table in the v parametric direction.
 ") Weight;
 		Standard_Real Weight(const Standard_Integer UIndex, const Standard_Integer VIndex);
 
@@ -1031,7 +1031,7 @@ None
 
 Description
 -----------
-To only one polynomial surface. the length of <polynomialuintervals> and <polynomialvintervals> have to be 2. this values defined the parametric domain of the polynomial equation. //! coefficients: the <coefficients> have to be formatted than an 'c array' [maxudegree+1] [maxvdegree+1] [3].
+To only one polynomial Surface. The Length of <PolynomialUIntervals> and <PolynomialVIntervals> have to be 2. This values defined the parametric domain of the Polynomial Equation. //! Coefficients: The <Coefficients> have to be formatted than an 'C array' [MaxUDegree+1] [MaxVDegree+1] [3].
 ") Convert_GridPolynomialToPoles;
 		 Convert_GridPolynomialToPoles(const Standard_Integer MaxUDegree, const Standard_Integer MaxVDegree, const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeff, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals);
 
@@ -1060,7 +1060,7 @@ None
 
 Description
 -----------
-To one grid of polynomial surface. warning! continuity in each parametric direction can be at most the maximum degree of the polynomial functions. //! <trueuintervals>, <truevintervals>: this is the true parameterisation for the composite surface //! coefficients: the coefficients have to be formatted than an 'c array' [nbvsurfaces] [nbusurfaces] [maxudegree+1] [maxvdegree+1] [3] raises domainerror if <numcoeffpersurface> is not a [1, nbvsurfaces*nbusurfaces, 1,2] array. if <coefficients> is not a.
+To one grid of polynomial Surface. Warning! Continuity in each parametric direction can be at MOST the maximum degree of the polynomial functions. //! <TrueUIntervals>, <TrueVIntervals>: this is the true parameterisation for the composite surface //! Coefficients: The Coefficients have to be formatted than an 'C array' [NbVSurfaces] [NBUSurfaces] [MaxUDegree+1] [MaxVDegree+1] [3] raises DomainError if <NumCoeffPerSurface> is not a [1, NbVSurfaces*NbUSurfaces, 1,2] array. if <Coefficients> is not a.
 ") Convert_GridPolynomialToPoles;
 		 Convert_GridPolynomialToPoles(const Standard_Integer NbUSurfaces, const Standard_Integer NBVSurfaces, const Standard_Integer UContinuity, const Standard_Integer VContinuity, const Standard_Integer MaxUDegree, const Standard_Integer MaxVDegree, const opencascade::handle<TColStd_HArray2OfInteger> & NumCoeffPerSurface, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueVIntervals);
 
@@ -1165,7 +1165,7 @@ opencascade::handle<TColgp_HArray2OfPnt>
 
 Description
 -----------
-Returns the poles of the bspline surface.
+returns the poles of the BSpline Surface.
 ") Poles;
 		const opencascade::handle<TColgp_HArray2OfPnt> & Poles();
 
@@ -1191,7 +1191,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Knots in the u direction.
+Knots in the U direction.
 ") UKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & UKnots();
 
@@ -1204,7 +1204,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Multiplicities of the knots in the u direction.
+Multiplicities of the knots in the U direction.
 ") UMultiplicities;
 		const opencascade::handle<TColStd_HArray1OfInteger> & UMultiplicities();
 
@@ -1230,7 +1230,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Knots in the v direction.
+Knots in the V direction.
 ") VKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & VKnots();
 
@@ -1243,7 +1243,7 @@ opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
-Multiplicities of the knots in the v direction.
+Multiplicities of the knots in the V direction.
 ") VMultiplicities;
 		const opencascade::handle<TColStd_HArray1OfInteger> & VMultiplicities();
 
@@ -1276,7 +1276,7 @@ None
 
 Description
 -----------
-The equivalent b-spline curve has the same orientation as the circle c.
+The equivalent B-spline curve has the same orientation as the circle C.
 ") Convert_CircleToBSplineCurve;
 		 Convert_CircleToBSplineCurve(const gp_Circ2d & C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1297,7 +1297,7 @@ None
 
 Description
 -----------
-The circle c is limited between the parametric values u1, u2 in radians. u1 and u2 [0.0, 2*pi] . the equivalent b-spline curve is oriented from u1 to u2 and has the same orientation as the circle c. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi.
+The circle C is limited between the parametric values U1, U2 in radians. U1 and U2 [0.0, 2*Pi] . The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as the circle C. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi.
 ") Convert_CircleToBSplineCurve;
 		 Convert_CircleToBSplineCurve(const gp_Circ2d & C, const Standard_Real U1, const Standard_Real U2, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1333,7 +1333,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the cone in the u and v parametric directions. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi raised if v1 = v2.
+The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 ") Convert_ConeToBSplineSurface;
 		 Convert_ConeToBSplineSurface(const gp_Cone & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
 
@@ -1353,7 +1353,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the cone in the u and v parametric directions. //! raised if v1 = v2.
+The equivalent B-spline surface as the same orientation as the Cone in the U and V parametric directions. //! Raised if V1 = V2.
 ") Convert_ConeToBSplineSurface;
 		 Convert_ConeToBSplineSurface(const gp_Cone & C, const Standard_Real V1, const Standard_Real V2);
 
@@ -1389,7 +1389,7 @@ None
 
 Description
 -----------
-The equivalent b-splinesurface as the same orientation as the cylinder in the u and v parametric directions. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi raised if v1 = v2.
+The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 ") Convert_CylinderToBSplineSurface;
 		 Convert_CylinderToBSplineSurface(const gp_Cylinder & Cyl, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
 
@@ -1409,7 +1409,7 @@ None
 
 Description
 -----------
-The equivalent b-splinesurface as the same orientation as the cylinder in the u and v parametric directions. //! raised if v1 = v2.
+The equivalent B-splineSurface as the same orientation as the cylinder in the U and V parametric directions. //! Raised if V1 = V2.
 ") Convert_CylinderToBSplineSurface;
 		 Convert_CylinderToBSplineSurface(const gp_Cylinder & Cyl, const Standard_Real V1, const Standard_Real V2);
 
@@ -1442,7 +1442,7 @@ None
 
 Description
 -----------
-The equivalent b-spline curve has the same orientation as the ellipse e.
+The equivalent B-spline curve has the same orientation as the ellipse E.
 ") Convert_EllipseToBSplineCurve;
 		 Convert_EllipseToBSplineCurve(const gp_Elips2d & E, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1463,7 +1463,7 @@ None
 
 Description
 -----------
-The ellipse e is limited between the parametric values u1, u2. the equivalent b-spline curve is oriented from u1 to u2 and has the same orientation as e. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi.
+The ellipse E is limited between the parametric values U1, U2. The equivalent B-spline curve is oriented from U1 to U2 and has the same orientation as E. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi.
 ") Convert_EllipseToBSplineCurve;
 		 Convert_EllipseToBSplineCurve(const gp_Elips2d & E, const Standard_Real U1, const Standard_Real U2, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -1497,7 +1497,7 @@ None
 
 Description
 -----------
-The hyperbola h is limited between the parametric values u1, u2 and the equivalent b-spline curve has the same orientation as the hyperbola.
+The hyperbola H is limited between the parametric values U1, U2 and the equivalent B-spline curve has the same orientation as the hyperbola.
 ") Convert_HyperbolaToBSplineCurve;
 		 Convert_HyperbolaToBSplineCurve(const gp_Hypr2d & H, const Standard_Real U1, const Standard_Real U2);
 
@@ -1531,7 +1531,7 @@ None
 
 Description
 -----------
-The parabola prb is limited between the parametric values u1, u2 and the equivalent b-spline curve as the same orientation as the parabola prb.
+The parabola Prb is limited between the parametric values U1, U2 and the equivalent B-spline curve as the same orientation as the parabola Prb.
 ") Convert_ParabolaToBSplineCurve;
 		 Convert_ParabolaToBSplineCurve(const gp_Parab2d & Prb, const Standard_Real U1, const Standard_Real U2);
 
@@ -1567,7 +1567,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the sphere in the u and v parametric directions. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi raised if v1 = v2.
+The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2.
 ") Convert_SphereToBSplineSurface;
 		 Convert_SphereToBSplineSurface(const gp_Sphere & Sph, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
 
@@ -1588,7 +1588,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the sphere in the u and v parametric directions. //! raised if utrim = true and param1 = param2 or param1 = param2 + 2.0 * pi raised if utrim = false and param1 = param2.
+The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions. //! Raised if UTrim = True and Param1 = Param2 or Param1 = Param2 + 2.0 * Pi Raised if UTrim = False and Param1 = Param2.
 ") Convert_SphereToBSplineSurface;
 		 Convert_SphereToBSplineSurface(const gp_Sphere & Sph, const Standard_Real Param1, const Standard_Real Param2, const Standard_Boolean UTrim = Standard_True);
 
@@ -1606,7 +1606,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the sphere in the u and v parametric directions.
+The equivalent B-spline surface as the same orientation as the sphere in the U and V parametric directions.
 ") Convert_SphereToBSplineSurface;
 		 Convert_SphereToBSplineSurface(const gp_Sphere & Sph);
 
@@ -1642,7 +1642,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the torus in the u and v parametric directions. //! raised if u1 = u2 or u1 = u2 + 2.0 * pi raised if v1 = v2 or v1 = v2 + 2.0 * pi.
+The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi Raised if V1 = V2 or V1 = V2 + 2.0 * Pi.
 ") Convert_TorusToBSplineSurface;
 		 Convert_TorusToBSplineSurface(const gp_Torus & T, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
 
@@ -1663,7 +1663,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the torus in the u and v parametric directions. //! raised if param1 = param2 or param1 = param2 + 2.0 * pi.
+The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions. //! Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi.
 ") Convert_TorusToBSplineSurface;
 		 Convert_TorusToBSplineSurface(const gp_Torus & T, const Standard_Real Param1, const Standard_Real Param2, const Standard_Boolean UTrim = Standard_True);
 
@@ -1681,7 +1681,7 @@ None
 
 Description
 -----------
-The equivalent b-spline surface as the same orientation as the torus in the u and v parametric directions.
+The equivalent B-spline surface as the same orientation as the torus in the U and V parametric directions.
 ") Convert_TorusToBSplineSurface;
 		 Convert_TorusToBSplineSurface(const gp_Torus & T);
 

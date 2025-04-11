@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPFEATDOCSTRING
 "BRepFeat module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepfeat.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPFEATDOCSTRING) BRepFeat
 
@@ -342,7 +342,7 @@ flag: bool
 
 Description
 -----------
-Ori = true taking account the orientation.
+Ori = True taking account the orientation.
 ") ParametricMinMax;
 		static void ParametricMinMax(const TopoDS_Shape & S, const opencascade::handle<Geom_Curve> & C, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue, const Standard_Boolean Ori = Standard_False);
 
@@ -360,7 +360,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the error description of the state <st> as a string on the stream <s> and returns <s>.
+Prints the Error description of the State <St> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const BRepFeat_StatusError SE, std::ostream &OutValue);
 
@@ -469,7 +469,7 @@ None
 
 Description
 -----------
-Collects the removed parts of the tool into myremoved map.
+Collects the removed parts of the tool into myRemoved map.
 ") FillRemoved;
 		void FillRemoved();
 
@@ -488,7 +488,7 @@ None
 
 Description
 -----------
-Adds the shape s and its sub-shapes into myremoved map.
+Adds the shape S and its sub-shapes into myRemoved map.
 ") FillRemoved;
 		void FillRemoved(const TopoDS_Shape & theS, TopTools_MapOfShape & theM);
 
@@ -543,7 +543,7 @@ None
 
 Description
 -----------
-Adds shape thes and all its sub-shapes into myshapes map.
+Adds shape theS and all its sub-shapes into myShapes map.
 ") KeepPart;
 		void KeepPart(const TopoDS_Shape & theS);
 
@@ -561,7 +561,7 @@ None
 
 Description
 -----------
-Initializes parts of the tool for second step of algorithm. collects shapes and all sub-shapes into myshapes map.
+Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
 ") KeepParts;
 		void KeepParts(const TopTools_ListOfShape & theIm);
 
@@ -649,7 +649,7 @@ None
 
 Description
 -----------
-Sets the operation of local boolean operation. if thefuse = 0 than the operation is cut, otherwise fuse.
+Sets the operation of local boolean operation. If theFuse = 0 than the operation is CUT, otherwise FUSE.
 ") SetOperation;
 		void SetOperation(const Standard_Integer theFuse);
 
@@ -668,7 +668,7 @@ None
 
 Description
 -----------
-Sets the operation of local boolean operation. if theflag = true it means that no selection of parts of the tool is needed, t.e. no second part. in that case if thefuse = 0 than operation is common, otherwise cut21. if theflag = false setoperation(thefuse) function is called.
+Sets the operation of local boolean operation. If theFlag = True it means that no selection of parts of the tool is needed, t.e. no second part. In that case if theFuse = 0 than operation is COMMON, otherwise CUT21. If theFlag = False SetOperation(theFuse) function is called.
 ") SetOperation;
 		void SetOperation(const Standard_Integer theFuse, const Standard_Boolean theFlag);
 
@@ -753,7 +753,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes created at the bottom of the created form. it may be an empty list.
+Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
 		const TopTools_ListOfShape & FirstShape();
 
@@ -771,7 +771,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the created faces from the shape <s>.
+returns a list of the created faces from the shape <S>.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -784,7 +784,7 @@ None
 
 Description
 -----------
-Initializes the topological construction if the generated shape s is present.
+Initializes the topological construction if the generated shape S is present.
 ") GeneratedShapeValid;
 		void GeneratedShapeValid();
 
@@ -828,7 +828,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes created at the top of the created form. it may be an empty list.
+Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
 		const TopTools_ListOfShape & LastShape();
 
@@ -846,7 +846,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of generated faces.
+returns the list of generated Faces.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
@@ -859,7 +859,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the limiting and glueing edges generated by the feature. these edges did not originally exist in the basis shape. the list provides the information necessary for subsequent addition of fillets. it may be an empty list.
+Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges();
 
@@ -911,7 +911,7 @@ None
 
 Description
 -----------
-Initializes the topological construction if the sketch face is present. if the sketch face is inside the basis shape, local operations such as glueing can be performed.
+Initializes the topological construction if the sketch face is present. If the sketch face is inside the basis shape, local operations such as glueing can be performed.
 ") SketchFaceValid;
 		void SketchFaceValid();
 
@@ -924,7 +924,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. these edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. the list provides the information necessary for subsequent addition of fillets. it may be an empty list. if an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
+Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
 		const TopTools_ListOfShape & TgtEdges();
 
@@ -970,7 +970,7 @@ None
 
 Description
 -----------
-Initializes the shapes to be glued, the new shape snew and the basis shape sbase.
+Initializes the shapes to be glued, the new shape Snew and the basis shape Sbase.
 ") BRepFeat_Gluer;
 		 BRepFeat_Gluer(const TopoDS_Shape & Snew, const TopoDS_Shape & Sbase);
 
@@ -1002,7 +1002,7 @@ None
 
 Description
 -----------
-Defines a contact between fnew on the new shape snew and fbase on the basis shape sbase. informs other methods that fnew in the new shape snew is connected to the face fbase in the basis shape sbase. the contact faces of the glued shape must not have parts outside the contact faces of the basis shape. this indicates that glueing is possible.
+Defines a contact between Fnew on the new shape Snew and Fbase on the basis shape Sbase. Informs other methods that Fnew in the new shape Snew is connected to the face Fbase in the basis shape Sbase. The contact faces of the glued shape must not have parts outside the contact faces of the basis shape. This indicates that glueing is possible.
 ") Bind;
 		void Bind(const TopoDS_Face & Fnew, const TopoDS_Face & Fbase);
 
@@ -1021,7 +1021,7 @@ None
 
 Description
 -----------
-Nforms other methods that the edge enew in the new shape is the same as the edge ebase in the basis shape and is therefore attached to the basis shape. this indicates that glueing is possible.
+nforms other methods that the edge Enew in the new shape is the same as the edge Ebase in the basis shape and is therefore attached to the basis shape. This indicates that glueing is possible.
 ") Bind;
 		void Bind(const TopoDS_Edge & Enew, const TopoDS_Edge & Ebase);
 
@@ -1039,7 +1039,7 @@ None
 
 Description
 -----------
-This is called by shape(). it does nothing but may be redefined.
+This is called by Shape(). It does nothing but may be redefined.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1071,7 +1071,7 @@ None
 
 Description
 -----------
-Initializes the new shape snew and the basis shape sbase for the local glueing operation.
+Initializes the new shape Snew and the basis shape Sbase for the local glueing operation.
 ") Init;
 		void Init(const TopoDS_Shape & Snew, const TopoDS_Shape & Sbase);
 
@@ -1089,7 +1089,7 @@ bool
 
 Description
 -----------
-Returns the status of the face after the shape creation.
+returns the status of the Face after the shape creation.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & F);
 
@@ -1107,7 +1107,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of generated faces.
+returns the list of generated Faces.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
@@ -1183,7 +1183,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the limiting and glueing faces generated by the feature. these faces did not originally exist in the basis shape. the list provides the information necessary for subsequent addition of a draft to a face. it may be an empty list. if a face has tangent edges, no draft is possible, and the tangent edges must subsequently be removed if you want to add a draft to the face.
+Returns a list of the limiting and glueing faces generated by the feature. These faces did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of a draft to a face. It may be an empty list. If a face has tangent edges, no draft is possible, and the tangent edges must subsequently be removed if you want to add a draft to the face.
 ") FacesForDraft;
 		const TopTools_ListOfShape & FacesForDraft();
 
@@ -1196,7 +1196,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes created at the bottom of the created form. it may be an empty list.
+Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
 		const TopTools_ListOfShape & FirstShape();
 
@@ -1214,7 +1214,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list toptools_listofshape of the faces s created in the shape.
+Returns a list TopTools_ListOfShape of the faces S created in the shape.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1251,7 +1251,7 @@ bool
 
 Description
 -----------
-Returns true if f a topods_shape of type edge or face has been deleted.
+Returns true if F a TopoDS_Shape of type edge or face has been deleted.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & F);
 
@@ -1264,7 +1264,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes created at the top of the created form. it may be an empty list.
+Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
 		const TopTools_ListOfShape & LastShape();
 
@@ -1282,7 +1282,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of generated faces f. this list may be empty.
+Returns the list of generated Faces F. This list may be empty.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
@@ -1295,7 +1295,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the limiting and glueing edges generated by the feature. these edges did not originally exist in the basis shape. the list provides the information necessary for subsequent addition of fillets. it may be an empty list.
+Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges();
 
@@ -1308,7 +1308,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. these edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. the list provides the information necessary for subsequent addition of fillets. it may be an empty list. if an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
+Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
 		const TopTools_ListOfShape & TgtEdges();
 
@@ -1353,7 +1353,7 @@ None
 
 Description
 -----------
-Creates the process with the shape <s>.
+Creates the process with the shape <S>.
 ") BRepFeat_SplitShape;
 		 BRepFeat_SplitShape(const TopoDS_Shape & S);
 
@@ -1371,7 +1371,7 @@ bool
 
 Description
 -----------
-Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge this method puts edge on the corresponding faces from initial shape.
+Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
 		Standard_Boolean Add(const TopTools_SequenceOfShape & theEdges);
 
@@ -1390,7 +1390,7 @@ None
 
 Description
 -----------
-Adds the wire <w> on the face <f>. raises nosuchobject if <f> does not belong to the original shape.
+Adds the wire <W> on the face <F>. Raises NoSuchObject if <F> does not belong to the original shape.
 ") Add;
 		void Add(const TopoDS_Wire & W, const TopoDS_Face & F);
 
@@ -1409,7 +1409,7 @@ None
 
 Description
 -----------
-Adds the edge <e> on the face <f>.
+Adds the edge <E> on the face <F>.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1428,7 +1428,7 @@ None
 
 Description
 -----------
-Adds the compound <comp> on the face <f>. the compound <comp> must consist of edges lying on the face <f>. if edges are geometrically connected, they must be connected topologically, i.e. they must share common vertices. //! raises nosuchobject if <f> does not belong to the original shape.
+Adds the compound <Comp> on the face <F>. The compound <Comp> must consist of edges lying on the face <F>. If edges are geometrically connected, they must be connected topologically, i.e. they must share common vertices. //! Raises NoSuchObject if <F> does not belong to the original shape.
 ") Add;
 		void Add(const TopoDS_Compound & Comp, const TopoDS_Face & F);
 
@@ -1447,7 +1447,7 @@ None
 
 Description
 -----------
-Adds the edge <e> on the existing edge <eon>.
+Adds the edge <E> on the existing edge <EOn>.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Edge & EOn);
 
@@ -1496,7 +1496,7 @@ None
 
 Description
 -----------
-Initializes the process on the shape <s>.
+Initializes the process on the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -1527,7 +1527,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the faces of the 'left' part on the shape. (it is build from directleft, with the faces connected to this set, and so on...). raises notdone if isdone returns <standard_false>.
+Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...). Raises NotDone if IsDone returns <Standard_False>.
 ") Left;
 		const TopTools_ListOfShape & Left();
 
@@ -1545,7 +1545,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of generated faces.
+Returns the list of generated Faces.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
@@ -1576,7 +1576,7 @@ None
 
 Description
 -----------
-Set the flag of check internal intersections default value is true (to check).
+Set the flag of check internal intersections default value is True (to check).
 ") SetCheckInterior;
 		void SetCheckInterior(const Standard_Boolean ToCheckInterior);
 
@@ -1616,7 +1616,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape). invalidates the given parts of tools if any, and performs the result of the local operation.
+Builds the resulting shape (redefined from MakeShape). Invalidates the given parts of tools if any, and performs the result of the local operation.
 ") Build;
 		void Build();
 
@@ -1671,7 +1671,7 @@ None
 
 Description
 -----------
-Performs every holes of radius <radius>. this command has the same effect as a cut operation with an infinite cylinder defined by the given axis and <radius>.
+Performs every hole of radius <Radius>. This command has the same effect as a cut operation with an infinite cylinder defined by the given axis and <Radius>.
 ") Perform;
 		void Perform(const Standard_Real Radius);
 
@@ -1692,7 +1692,7 @@ None
 
 Description
 -----------
-Performs evry hole of radius <radius> located between pfrom and pto on the given axis. if <withcontrol> is set to standard_false no control are done on the resulting shape after the operation is performed.
+Performs every hole of radius <Radius> located between PFrom and PTo on the given axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
 ") Perform;
 		void Perform(const Standard_Real Radius, const Standard_Real PFrom, const Standard_Real PTo, const Standard_Boolean WithControl = Standard_True);
 
@@ -1712,7 +1712,7 @@ None
 
 Description
 -----------
-Performs a blind hole of radius <radius> and length <length>. the length is measured from the origin of the given axis. if <withcontrol> is set to standard_false no control are done after the operation is performed.
+Performs a blind hole of radius <Radius> and length <Length>. The length is measured from the origin of the given axis. If <WithControl> is set to Standard_False no control are done after the operation is performed.
 ") PerformBlind;
 		void PerformBlind(const Standard_Real Radius, const Standard_Real Length, const Standard_Boolean WithControl = Standard_True);
 
@@ -1731,7 +1731,7 @@ None
 
 Description
 -----------
-Performs the first hole of radius <radius>, in the direction of the defined axis. first hole signify first encountered after the origin of the axis. if <withcontrol> is set to standard_false no control are done on the resulting shape after the operation is performed.
+Performs the first hole of radius <Radius>, in the direction of the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
 ") PerformThruNext;
 		void PerformThruNext(const Standard_Real Radius, const Standard_Boolean WithControl = Standard_True);
 
@@ -1750,7 +1750,7 @@ None
 
 Description
 -----------
-Performs evry holes of radius <radius> located after the origin of the given axis. if <withcontrol> is set to standard_false no control are done on the resulting shape after the operation is performed.
+Performs every hole of radius <Radius> located after the origin of the given axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
 ") PerformUntilEnd;
 		void PerformUntilEnd(const Standard_Real Radius, const Standard_Boolean WithControl = Standard_True);
 
@@ -1800,7 +1800,7 @@ None
 
 Description
 -----------
-A face pbase is selected in the shape sbase to serve as the basis for the draft prism. the draft will be defined by the angle angle and fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed. initializes the draft prism class.
+A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class.
 ") BRepFeat_MakeDPrism;
 		 BRepFeat_MakeDPrism(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -1832,7 +1832,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -1863,7 +1863,7 @@ None
 
 Description
 -----------
-Determination of topedges and latedges. sig = 1 -> topedges = firstshape of the dprism sig = 2 -> topedges = lastshape of the dprism.
+Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the DPrism sig = 2 -> TOpEdges = LastShape of the DPrism.
 ") BossEdges;
 		void BossEdges(const Standard_Integer sig);
 
@@ -1904,7 +1904,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for building draft prisms along surfaces. a face pbase is selected in the basis shape sbase to serve as the basis from the draft prism. the draft will be defined by the angle angle and fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed.
+Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -1917,7 +1917,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of topods edges of the bottom of the boss.
+Returns the list of TopoDS Edges of the bottom of the boss.
 ") LatEdges;
 		const TopTools_ListOfShape & LatEdges();
 
@@ -1972,7 +1972,7 @@ None
 
 Description
 -----------
-Assigns one of the following semantics - to a height height - to a face until - from a face from to a height until. reconstructs the feature topologically according to the semantic option chosen.
+Assigns one of the following semantics - to a height Height - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 ") Perform;
 		void Perform(const TopoDS_Shape & From, const TopoDS_Shape & Until);
 
@@ -1990,7 +1990,7 @@ None
 
 Description
 -----------
-Realizes a semi-infinite prism, limited by the face funtil.
+Realizes a semi-infinite prism, limited by the face Funtil.
 ") PerformFromEnd;
 		void PerformFromEnd(const TopoDS_Shape & FUntil);
 
@@ -2003,7 +2003,7 @@ None
 
 Description
 -----------
-Builds an infinite prism. the infinite descendants will not be kept in the result.
+Builds an infinite prism. The infinite descendants will not be kept in the result.
 ") PerformThruAll;
 		void PerformThruAll();
 
@@ -2035,7 +2035,7 @@ None
 
 Description
 -----------
-Assigns both a limiting shape, until from topods_shape, and a height, height at which to stop generation of the prism feature.
+Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature.
 ") PerformUntilHeight;
 		void PerformUntilHeight(const TopoDS_Shape & Until, const Standard_Real Height);
 
@@ -2048,7 +2048,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of topods edges of the top of the boss.
+Returns the list of TopoDS Edges of the top of the boss.
 ") TopEdges;
 		const TopTools_ListOfShape & TopEdges();
 
@@ -2075,7 +2075,7 @@ None
 
 Description
 -----------
-Initializes the linear form class.
+initializes the linear form class.
 ") BRepFeat_MakeLinearForm;
 		 BRepFeat_MakeLinearForm();
 
@@ -2099,7 +2099,7 @@ None
 
 Description
 -----------
-Contour w, a shape sbase and a plane p are initialized to serve as the basic elements in the construction of the rib or groove. direction and direction1 give the vectors for defining the direction(s) in which thickness will be built up. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 in case of the groove - adding matter with boolean fusion using the setting 1 in case of the rib.
+contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. Direction and Direction1 give The vectors for defining the direction(s) in which thickness will be built up. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") BRepFeat_MakeLinearForm;
 		 BRepFeat_MakeLinearForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2118,7 +2118,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -2142,7 +2142,7 @@ None
 
 Description
 -----------
-Initializes this construction algorithm. a contour w, a shape sbase and a plane p are initialized to serve as the basic elements in the construction of the rib or groove. the vectors for defining the direction(s) in which thickness will be built up are given by direction and direction1. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 in case of the groove - adding matter with boolean fusion using the setting 1 in case of the rib.
+Initializes this construction algorithm. A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The vectors for defining the direction(s) in which thickness will be built up are given by Direction and Direction1. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2155,7 +2155,7 @@ None
 
 Description
 -----------
-Performs a prism from the wire to the plane along the basis shape sbase. reconstructs the feature topologically.
+Performs a prism from the wire to the plane along the basis shape Sbase. Reconstructs the feature topologically.
 ") Perform;
 		void Perform();
 
@@ -2207,7 +2207,7 @@ None
 
 Description
 -----------
-Initializes the pipe class.
+initializes the pipe class.
 ") BRepFeat_MakePipe;
 		 BRepFeat_MakePipe();
 
@@ -2230,7 +2230,7 @@ None
 
 Description
 -----------
-A face pbase is selected in the shape sbase to serve as the basis for the pipe. it will be defined by the wire spine. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed.
+A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") BRepFeat_MakePipe;
 		 BRepFeat_MakePipe(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2249,7 +2249,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -2303,7 +2303,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for adding pipes to shapes. a face pbase is selected in the shape sbase to serve as the basis for the pipe. it will be defined by the wire spine. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed.
+Initializes this algorithm for adding pipes to shapes. A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2353,7 +2353,7 @@ None
 
 Description
 -----------
-Assigns one of the following semantics - to a face until - from a face from to a height until. reconstructs the feature topologically according to the semantic option chosen.
+Assigns one of the following semantics - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 ") Perform;
 		void Perform(const TopoDS_Shape & From, const TopoDS_Shape & Until);
 
@@ -2380,7 +2380,7 @@ None
 
 Description
 -----------
-Builds a prism by projecting a wire along the face of a shape. initializes the prism class.
+Builds a prism by projecting a wire along the face of a shape. Initializes the prism class.
 ") BRepFeat_MakePrism;
 		 BRepFeat_MakePrism();
 
@@ -2403,7 +2403,7 @@ None
 
 Description
 -----------
-Builds a prism by projecting a wire along the face of a shape. a face pbase is selected in the shape sbase to serve as the basis for the prism. the orientation of the prism will be defined by the vector direction. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed. exceptions standard_constructionerror if the face does not belong to the basis or the prism shape.
+Builds a prism by projecting a wire along the face of a shape. a face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Exceptions Standard_ConstructionError if the face does not belong to the basis or the prism shape.
 ") BRepFeat_MakePrism;
 		 BRepFeat_MakePrism(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2422,7 +2422,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -2453,7 +2453,7 @@ None
 
 Description
 -----------
-Returns the list of curves s parallel to the axis of the prism.
+Returns the list of curves S parallel to the axis of the prism.
 ") Curves;
 		void Curves(TColGeom_SequenceOfCurve & S);
 
@@ -2476,7 +2476,7 @@ None
 
 Description
 -----------
-Initializes this algorithm for building prisms along surfaces. a face pbase is selected in the shape sbase to serve as the basis for the prism. the orientation of the prism will be defined by the vector direction. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed.
+Initializes this algorithm for building prisms along surfaces. A face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2531,7 +2531,7 @@ None
 
 Description
 -----------
-Assigns one of the following semantics - to a height length - to a face until - from a face from to a height until. reconstructs the feature topologically according to the semantic option chosen.
+Assigns one of the following semantics - to a height Length - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 ") Perform;
 		void Perform(const TopoDS_Shape & From, const TopoDS_Shape & Until);
 
@@ -2549,7 +2549,7 @@ None
 
 Description
 -----------
-Realizes a semi-infinite prism, limited by the face funtil.
+Realizes a semi-infinite prism, limited by the face Funtil.
 ") PerformFromEnd;
 		void PerformFromEnd(const TopoDS_Shape & FUntil);
 
@@ -2562,7 +2562,7 @@ None
 
 Description
 -----------
-Builds an infinite prism. the infinite descendants will not be kept in the result.
+Builds an infinite prism. The infinite descendants will not be kept in the result.
 ") PerformThruAll;
 		void PerformThruAll();
 
@@ -2575,7 +2575,7 @@ None
 
 Description
 -----------
-Realizes a semi-infinite prism, limited by the position of the prism base. all other faces extend infinitely.
+Realizes a semi-infinite prism, limited by the position of the prism base. All other faces extend infinitely.
 ") PerformUntilEnd;
 		void PerformUntilEnd();
 
@@ -2594,7 +2594,7 @@ None
 
 Description
 -----------
-Assigns both a limiting shape, until from topods_shape, and a height, length at which to stop generation of the prism feature.
+Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Length at which to stop generation of the prism feature.
 ") PerformUntilHeight;
 		void PerformUntilHeight(const TopoDS_Shape & Until, const Standard_Real Length);
 
@@ -2621,7 +2621,7 @@ None
 
 Description
 -----------
-Initializes the revolved shell class.
+initializes the revolved shell class.
 ") BRepFeat_MakeRevol;
 		 BRepFeat_MakeRevol();
 
@@ -2644,7 +2644,7 @@ None
 
 Description
 -----------
-A face pbase is selected in the shape sbase to serve as the basis for the revolved shell. the revolution will be defined by the axis axis and fuse offers a choice between: - removing matter with a boolean cut using the setting 0 - adding matter with boolean fusion using the setting 1. the sketch face skface serves to determine the type of operation. if it is inside the basis shape, a local operation such as glueing can be performed.
+a face Pbase is selected in the shape Sbase to serve as the basis for the revolved shell. The revolution will be defined by the axis Axis and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") BRepFeat_MakeRevol;
 		 BRepFeat_MakeRevol(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Ax1 & Axis, const Standard_Integer Fuse, const Standard_Boolean Modify);
 
@@ -2663,7 +2663,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -2785,7 +2785,7 @@ None
 
 Description
 -----------
-Builds an infinite shell. the infinite descendants will not be kept in the result.
+Builds an infinite shell. The infinite descendants will not be kept in the result.
 ") PerformThruAll;
 		void PerformThruAll();
 
@@ -2804,7 +2804,7 @@ None
 
 Description
 -----------
-Assigns both a limiting shape, until from topods_shape, and an angle, angle at which to stop generation of the revolved shell feature.
+Assigns both a limiting shape, Until from TopoDS_Shape, and an angle, Angle at which to stop generation of the revolved shell feature.
 ") PerformUntilAngle;
 		void PerformUntilAngle(const TopoDS_Shape & Until, const Standard_Real Angle);
 
@@ -2831,7 +2831,7 @@ None
 
 Description
 -----------
-Initializes the linear form class.
+initializes the linear form class.
 ") BRepFeat_MakeRevolutionForm;
 		 BRepFeat_MakeRevolutionForm();
 
@@ -2855,7 +2855,7 @@ Sliding: bool
 
 Description
 -----------
-A contour w, a shape sbase and a plane p are initialized to serve as the basic elements in the construction of the rib or groove. the axis axis of the revolved surface in the basis shape defines the feature's axis of revolution. height1 and height2 may be used as limits to the construction of the feature. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 in case of the groove - adding matter with boolean fusion using the setting 1 in case of the rib.
+a contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") BRepFeat_MakeRevolutionForm;
 		 BRepFeat_MakeRevolutionForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const Standard_Real Height1, const Standard_Real Height2, const Standard_Integer Fuse, Standard_Boolean &OutValue);
 
@@ -2874,7 +2874,7 @@ None
 
 Description
 -----------
-Indicates that the edge <e> will slide on the face <onface>. raises constructionerror if the face does not belong to the basis shape, or the edge to the prismed shape.
+Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 ") Add;
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
@@ -2898,7 +2898,7 @@ Sliding: bool
 
 Description
 -----------
-Initializes this construction algorithm a contour w, a shape sbase and a plane p are initialized to serve as the basic elements in the construction of the rib or groove. the axis axis of the revolved surface in the basis shape defines the feature's axis of revolution. height1 and height2 may be used as limits to the construction of the feature. fuse offers a choice between: - removing matter with a boolean cut using the setting 0 in case of the groove - adding matter with boolean fusion using the setting 1 in case of the rib.
+Initializes this construction algorithm A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const Standard_Real Height1, const Standard_Real Height2, const Standard_Integer Fuse, Standard_Boolean &OutValue);
 
@@ -2911,7 +2911,7 @@ None
 
 Description
 -----------
-Performs a prism from the wire to the plane along the basis shape s. reconstructs the feature topologically.
+Performs a prism from the wire to the plane along the basis shape S. Reconstructs the feature topologically.
 ") Perform;
 		void Perform();
 

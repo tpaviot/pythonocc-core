@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEEXTENDDOCSTRING
 "ShapeExtend module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeextend.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeextend.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEEXTENDDOCSTRING) ShapeExtend
 
@@ -237,7 +237,7 @@ None
 
 Description
 -----------
-Inits using of shapeextend. currently, loads messages output by shapehealing algorithms.
+Inits using of ShapeExtend. Currently, loads messages output by ShapeHealing algorithms.
 ") Init;
 		static void Init();
 
@@ -284,7 +284,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the object. object can be of any type interpreted by redefined msgregistrator.
+Sends a message to be attached to the object. Object can be of any type interpreted by redefined MsgRegistrator.
 ") Send;
 		virtual void Send(const opencascade::handle<Standard_Transient> & object, const Message_Msg & message, const Message_Gravity gravity);
 
@@ -323,7 +323,7 @@ None
 
 Description
 -----------
-Calls send method with null transient.
+Calls Send method with Null Transient.
 ") Send;
 		virtual void Send(const Message_Msg & message, const Message_Gravity gravity);
 
@@ -358,7 +358,7 @@ bool
 
 Description
 -----------
-Checks geometrical connectivity of the curves, including closure (sets fields myclosed).
+Checks geometrical connectivity of the curves, including closure (sets fields myClosed).
 ") CheckConnectivity;
 		Standard_Boolean CheckConnectivity(const Standard_Real Preci);
 
@@ -371,7 +371,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns geomabs_c0.
+Returns GeomAbs_C0.
 ") Continuity;
 		virtual GeomAbs_Shape Continuity();
 
@@ -408,7 +408,7 @@ None
 
 Description
 -----------
-Returns point at parameter u. finds appropriate curve and local parameter on it.
+Returns point at parameter U. Finds appropriate curve and local parameter on it.
 ") D0;
 		virtual void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -539,7 +539,7 @@ bool
 
 Description
 -----------
-Returns false if n > 0.
+Returns False if N > 0.
 ") IsCN;
 		virtual Standard_Boolean IsCN(const Standard_Integer N);
 
@@ -552,7 +552,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is closed.
+Returns True if the curve is closed.
 ") IsClosed;
 		virtual Standard_Boolean IsClosed();
 
@@ -565,7 +565,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsPeriodic;
 		virtual Standard_Boolean IsPeriodic();
 
@@ -615,7 +615,7 @@ UOut: float
 
 Description
 -----------
-Returns number of the curve for the given parameter u and local paramete r uout for the found curve.
+Returns number of the curve for the given parameter U and local parameter UOut for the found curve.
 ") LocateParameter;
 		virtual Standard_Integer LocateParameter(const Standard_Real U, Standard_Real &OutValue);
 
@@ -646,7 +646,7 @@ float
 
 Description
 -----------
-Returns 1 - u.
+Returns 1 - U.
 ") ReversedParameter;
 		virtual Standard_Real ReversedParameter(const Standard_Real U);
 
@@ -712,7 +712,7 @@ None
 
 Description
 -----------
-Initializes by a grid of surfaces (calls init()).
+Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
 		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
@@ -732,7 +732,7 @@ None
 
 Description
 -----------
-Initializes by a grid of surfaces (calls init()).
+Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
 		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
 
@@ -770,7 +770,7 @@ bool
 
 Description
 -----------
-Checks geometrical connectivity of the patches, including closedness (sets fields muuclosed and myvclosed).
+Checks geometrical connectivity of the patches, including closedness (sets fields muUClosed and myVClosed).
 ") CheckConnectivity;
 		Standard_Boolean CheckConnectivity(const Standard_Real prec);
 
@@ -788,7 +788,7 @@ None
 
 Description
 -----------
-Computes joint values according to parameter.
+Computes Joint values according to parameter.
 ") ComputeJointValues;
 		void ComputeJointValues(const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
@@ -801,7 +801,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns c0.
+returns C0.
 ") Continuity;
 		virtual GeomAbs_Shape Continuity();
 
@@ -834,7 +834,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u,v on the grid.
+Computes the point of parameter U,V on the grid.
 ") D0;
 		virtual void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
@@ -856,7 +856,7 @@ None
 
 Description
 -----------
-Computes the point p and the first derivatives in the directions u and v at this point.
+Computes the point P and the first derivatives in the directions U and V at this point.
 ") D1;
 		virtual void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -881,7 +881,7 @@ None
 
 Description
 -----------
-Computes the point p, the first and the second derivatives in the directions u and v at this point.
+Computes the point P, the first and the second derivatives in the directions U and V at this point.
 ") D2;
 		virtual void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
@@ -910,7 +910,7 @@ None
 
 Description
 -----------
-Computes the point p, the first,the second and the third derivatives in the directions u and v at this point.
+Computes the point P, the first,the second and the third derivatives in the directions U and V at this point.
 ") D3;
 		virtual void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
@@ -931,7 +931,7 @@ gp_Vec
 
 Description
 -----------
-Computes the derivative of order nu in the direction u and nv in the direction v at the point p(u, v).
+Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V).
 ") DN;
 		virtual gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
@@ -951,7 +951,7 @@ gp_Pnt2d
 
 Description
 -----------
-Converts global parameters uv to local parameters uv on patch i,j.
+Converts global parameters UV to local parameters uv on patch i,j.
 ") GlobalToLocal;
 		gp_Pnt2d GlobalToLocal(const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d & UV);
 
@@ -971,7 +971,7 @@ uFact: float
 
 Description
 -----------
-Computes transformation operator and ufactor descrinbing affine transformation required to convert global parameters on composite surface to local parameters on patch (i,j): uv = ( ufactor, 1. ) x trsf * uv; note: thus trsf contains shift and scale by v, scale by u is stored in ufact. returns true if transformation is not an identity.
+Computes transformation operator and uFactor descrinbing affine transformation required to convert global parameters on composite surface to local parameters on patch (i,j): uv = ( uFactor, 1. ) X Trsf * UV; NOTE: Thus Trsf contains shift and scale by V, scale by U is stored in uFact. Returns True if transformation is not an identity.
 ") GlobalToLocalTransformation;
 		Standard_Boolean GlobalToLocalTransformation(const Standard_Integer i, const Standard_Integer j, Standard_Real &OutValue, gp_Trsf2d & Trsf);
 
@@ -990,7 +990,7 @@ bool
 
 Description
 -----------
-Initializes by a grid of surfaces. all the surfaces of the grid must have geometrical connectivity as stated above. if geometrical connectivity is not satisfied, method returns false. however, class is initialized even in that case. //! last parameter defines how global parametrisation (joint values) will be computed: shapeextend_natural: u1 = u11min, ui+1 = ui + (ui1max-ui1min), etc. shapeextend_uniform: ui = i-1, vj = j-1 shapeextend_unitary: ui = (i-1)/nu, vi = (j-1)/nv.
+Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case. //! Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
@@ -1010,7 +1010,7 @@ bool
 
 Description
 -----------
-Initializes by a grid of surfaces with given global parametrisation defined by ujoints and vjoints arrays, each having langth equal to number of patches in corresponding direction + 1. global joint values should be sorted in increasing order. all the surfaces of the grid must have geometrical connectivity as stated above. if geometrical connectivity is not satisfied, method returns false. however, class is initialized even in that case.
+Initializes by a grid of surfaces with given global parametrisation defined by UJoints and VJoints arrays, each having length equal to number of patches in corresponding direction + 1. Global joint values should be sorted in increasing order. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
 
@@ -1028,7 +1028,7 @@ bool
 
 Description
 -----------
-Returns true if n <=0.
+returns True if N <=0.
 ") IsCNu;
 		virtual Standard_Boolean IsCNu(const Standard_Integer N);
 
@@ -1046,7 +1046,7 @@ bool
 
 Description
 -----------
-Returns true if n <=0.
+returns True if N <=0.
 ") IsCNv;
 		virtual Standard_Boolean IsCNv(const Standard_Integer N);
 
@@ -1059,7 +1059,7 @@ bool
 
 Description
 -----------
-Returns true if grid is closed in u direction (i.e. connected with precision::confusion).
+Returns True if grid is closed in U direction (i.e. connected with Precision::Confusion).
 ") IsUClosed;
 		virtual Standard_Boolean IsUClosed();
 
@@ -1072,7 +1072,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
@@ -1085,7 +1085,7 @@ bool
 
 Description
 -----------
-Returns true if grid is closed in v direction (i.e. connected with precision::confusion).
+Returns True if grid is closed in V direction (i.e. connected with Precision::Confusion).
 ") IsVClosed;
 		virtual Standard_Boolean IsVClosed();
 
@@ -1098,7 +1098,7 @@ bool
 
 Description
 -----------
-Returns false.
+Returns False.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
@@ -1118,7 +1118,7 @@ gp_Pnt2d
 
 Description
 -----------
-Converts local parameters uv on patch i,j to global parameters uv.
+Converts local parameters uv on patch i,j to global parameters UV.
 ") LocalToGlobal;
 		gp_Pnt2d LocalToGlobal(const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d & uv);
 
@@ -1186,7 +1186,7 @@ int
 
 Description
 -----------
-Returns number of patches in u direction.
+Returns number of patches in U direction.
 ") NbUPatches;
 		Standard_Integer NbUPatches();
 
@@ -1199,7 +1199,7 @@ int
 
 Description
 -----------
-Returns number of patches in v direction.
+Returns number of patches in V direction.
 ") NbVPatches;
 		Standard_Integer NbVPatches();
 
@@ -1286,7 +1286,7 @@ None
 
 Description
 -----------
-Changes starting value for global u parametrisation (all other joint values are shifted accordingly).
+Changes starting value for global U parametrisation (all other joint values are shifted accordingly).
 ") SetUFirstValue;
 		void SetUFirstValue(const Standard_Real UFirst);
 
@@ -1304,7 +1304,7 @@ bool
 
 Description
 -----------
-Sets the array of u values corresponding to joint points, which define global parametrisation of the surface. number of values in array should be equal to nbupatches()+1. all the values should be sorted in increasing order. if this is not satisfied, does nothing and returns false.
+Sets the array of U values corresponding to joint points, which define global parametrisation of the surface. Number of values in array should be equal to NbUPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetUJointValues;
 		Standard_Boolean SetUJointValues(const TColStd_Array1OfReal & UJoints);
 
@@ -1322,7 +1322,7 @@ None
 
 Description
 -----------
-Changes starting value for global v parametrisation (all other joint values are shifted accordingly).
+Changes starting value for global V parametrisation (all other joint values are shifted accordingly).
 ") SetVFirstValue;
 		void SetVFirstValue(const Standard_Real VFirst);
 
@@ -1340,7 +1340,7 @@ bool
 
 Description
 -----------
-Sets the array of v values corresponding to joint points, which define global parametrisation of the surface number of values in array should be equal to nbvpatches()+1. all the values should be sorted in increasing order. if this is not satisfied, does nothing and returns false.
+Sets the array of V values corresponding to joint points, which define global parametrisation of the surface Number of values in array should be equal to NbVPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetVJointValues;
 		Standard_Boolean SetVJointValues(const TColStd_Array1OfReal & VJoints);
 
@@ -1378,7 +1378,7 @@ float
 
 Description
 -----------
-Converts global parameter u to local parameter u on patch i,j.
+Converts global parameter U to local parameter u on patch i,j.
 ") UGlobalToLocal;
 		Standard_Real UGlobalToLocal(const Standard_Integer i, const Standard_Integer j, const Standard_Real U);
 
@@ -1396,7 +1396,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Not implemented (returns null curve).
+NOT IMPLEMENTED (returns Null curve).
 ") UIso;
 		virtual opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
 
@@ -1414,7 +1414,7 @@ float
 
 Description
 -----------
-Returns i-th joint value in u direction (1-st is global umin, (nbupatches()+1)-th is global umax on the composite surface).
+Returns i-th joint value in U direction (1-st is global Umin, (NbUPatches()+1)-th is global Umax on the composite surface).
 ") UJointValue;
 		Standard_Real UJointValue(const Standard_Integer i);
 
@@ -1427,7 +1427,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the array of u values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
+Returns the array of U values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") UJointValues;
 		opencascade::handle<TColStd_HArray1OfReal> UJointValues();
 
@@ -1447,7 +1447,7 @@ float
 
 Description
 -----------
-Converts local parameter u on patch i,j to global parameter u.
+Converts local parameter u on patch i,j to global parameter U.
 ") ULocalToGlobal;
 		Standard_Real ULocalToGlobal(const Standard_Integer i, const Standard_Integer j, const Standard_Real u);
 
@@ -1460,7 +1460,7 @@ None
 
 Description
 -----------
-Not implemented (does nothing).
+NOT IMPLEMENTED (does nothing).
 ") UReverse;
 		virtual void UReverse();
 
@@ -1478,7 +1478,7 @@ float
 
 Description
 -----------
-Returns u.
+Returns U.
 ") UReversedParameter;
 		virtual Standard_Real UReversedParameter(const Standard_Real U);
 
@@ -1498,7 +1498,7 @@ float
 
 Description
 -----------
-Converts global parameter v to local parameter v on patch i,j.
+Converts global parameter V to local parameter v on patch i,j.
 ") VGlobalToLocal;
 		Standard_Real VGlobalToLocal(const Standard_Integer i, const Standard_Integer j, const Standard_Real V);
 
@@ -1516,7 +1516,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Not implemented (returns null curve).
+NOT IMPLEMENTED (returns Null curve).
 ") VIso;
 		virtual opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
 
@@ -1534,7 +1534,7 @@ float
 
 Description
 -----------
-Returns j-th joint value in v direction (1-st is global vmin, (nbvpatches()+1)-th is global vmax on the composite surface).
+Returns j-th joint value in V direction (1-st is global Vmin, (NbVPatches()+1)-th is global Vmax on the composite surface).
 ") VJointValue;
 		Standard_Real VJointValue(const Standard_Integer j);
 
@@ -1547,7 +1547,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the array of v values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
+Returns the array of V values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") VJointValues;
 		opencascade::handle<TColStd_HArray1OfReal> VJointValues();
 
@@ -1567,7 +1567,7 @@ float
 
 Description
 -----------
-Converts local parameter v on patch i,j to global parameter v.
+Converts local parameter v on patch i,j to global parameter V.
 ") VLocalToGlobal;
 		Standard_Real VLocalToGlobal(const Standard_Integer i, const Standard_Integer j, const Standard_Real v);
 
@@ -1580,7 +1580,7 @@ None
 
 Description
 -----------
-Not implemented (does nothing).
+NOT IMPLEMENTED (does nothing).
 ") VReverse;
 		virtual void VReverse();
 
@@ -1598,7 +1598,7 @@ float
 
 Description
 -----------
-Returns v.
+Returns V.
 ") VReversedParameter;
 		virtual Standard_Real VReversedParameter(const Standard_Real V);
 
@@ -1645,7 +1645,7 @@ None
 
 Description
 -----------
-Creates an object explorer.
+Creates an object Explorer.
 ") ShapeExtend_Explorer;
 		 ShapeExtend_Explorer();
 
@@ -1663,7 +1663,7 @@ TopoDS_Shape
 
 Description
 -----------
-Converts a sequence of shapes to a compound.
+Converts a sequence of Shapes to a Compound.
 ") CompoundFromSeq;
 		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
@@ -1689,7 +1689,7 @@ None
 
 Description
 -----------
-Dispatches starting list of shapes according to their type, to the appropriate resulting lists for each of these lists, if it is null, it is firstly created else, new items are appended to the already existing ones.
+Dispatches starting list of shapes according to their type, to the appropriate resulting lists For each of these lists, if it is null, it is firstly created else, new items are appended to the already existing ones.
 ") DispatchList;
 		void DispatchList(const opencascade::handle<TopTools_HSequenceOfShape> & list, opencascade::handle<TopTools_HSequenceOfShape> & vertices, opencascade::handle<TopTools_HSequenceOfShape> & edges, opencascade::handle<TopTools_HSequenceOfShape> & wires, opencascade::handle<TopTools_HSequenceOfShape> & faces, opencascade::handle<TopTools_HSequenceOfShape> & shells, opencascade::handle<TopTools_HSequenceOfShape> & solids, opencascade::handle<TopTools_HSequenceOfShape> & compsols, opencascade::handle<TopTools_HSequenceOfShape> & compounds);
 
@@ -1709,7 +1709,7 @@ None
 
 Description
 -----------
-Converts a sequence of shapes to a list of shapes <clear> if true (d), commands the list to start from scratch else, the list is cumulated.
+Converts a Sequence of Shapes to a List of Shapes <clear> if True (D), commands the list to start from scratch else, the list is cumulated.
 ") ListFromSeq;
 		void ListFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval, TopTools_ListOfShape & lisval, const Standard_Boolean clear = Standard_True);
 
@@ -1728,7 +1728,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Converts a compound to a list of shapes if <comp> is not a compound, the list contains only <comp> if <comp> is null, the list is empty if <comp> is a compound, its sub-shapes are put into the list then if <expcomp> is true, if a sub-shape is a compound, it is not put to the list but its sub-shapes are (recursive).
+Converts a Compound to a list of Shapes if <comp> is not a compound, the list contains only <comp> if <comp> is Null, the list is empty if <comp> is a Compound, its sub-shapes are put into the list then if <expcomp> is True, if a sub-shape is a Compound, it is not put to the list but its sub-shapes are (recursive).
 ") SeqFromCompound;
 		opencascade::handle<TopTools_HSequenceOfShape> SeqFromCompound(const TopoDS_Shape & comp, const Standard_Boolean expcomp);
 
@@ -1746,7 +1746,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Converts a list of shapes to a sequence of shapes.
+Converts a List of Shapes to a Sequence of Shapes.
 ") SeqFromList;
 		opencascade::handle<TopTools_HSequenceOfShape> SeqFromList(const TopTools_ListOfShape & lisval);
 
@@ -1765,7 +1765,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type of a shape: true type if <compound> is false if <compound> is true and <shape> is a compound, iterates on its items. if all are of the same type, returns this type. else, returns compound. if it is empty, returns shape for a null shape, returns shape.
+Returns the type of a Shape: true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const Standard_Boolean compound);
 
@@ -1786,7 +1786,7 @@ TopoDS_Shape
 
 Description
 -----------
-Builds a compound from the given shape. it explores the shape level by level, according to the <explore> argument. if <explore> is false, only compound items are explored, else all items are. the following shapes are added to resulting compound: - shapes which comply to <type> - if <type> is wire, considers also free edges (and makes wires) - if <type> is shell, considers also free faces (and makes shells) if <compound> is true, gathers items in compounds which correspond to starting compound,solid or shell containers, or items directly contained in a compound.
+Builds a COMPOUND from the given shape. It explores the shape level by level, according to the <explore> argument. If <explore> is False, only COMPOUND items are explored, else all items are. The following shapes are added to resulting compound: - shapes which comply to <type> - if <type> is WIRE, considers also free edges (and makes wires) - if <type> is SHELL, considers also free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound.
 ") SortedCompound;
 		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const Standard_Boolean explore, const Standard_Boolean compound);
 
@@ -1833,7 +1833,7 @@ None
 
 Description
 -----------
-Constructor initializing the data from topods_wire. calls init(wire,chained).
+Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
 ") ShapeExtend_WireData;
 		 ShapeExtend_WireData(const TopoDS_Wire & wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True);
 
@@ -1852,7 +1852,7 @@ None
 
 Description
 -----------
-Adds an edge to a wire, being defined (not yet ended) this is the plain, basic, function to add an edge <num> = 0 (d): appends at end <num> = 1: preprends at start else, insert before <num> remark: null edge is simply ignored.
+Adds an edge to a wire, being defined (not yet ended) This is the plain, basic, function to add an edge <num> = 0 (D): Appends at end <num> = 1: Preprends at start else, Insert before <num> Remark: Null Edge is simply ignored.
 ") Add;
 		void Add(const TopoDS_Edge & edge, const Standard_Integer atnum = 0);
 
@@ -1871,7 +1871,7 @@ None
 
 Description
 -----------
-Adds an entire wire, considered as a list of edges remark: the wire is assumed to be ordered (topods_iterator is used).
+Adds an entire wire, considered as a list of edges Remark: The wire is assumed to be ordered (TopoDS_Iterator is used).
 ") Add;
 		void Add(const TopoDS_Wire & wire, const Standard_Integer atnum = 0);
 
@@ -1890,7 +1890,7 @@ None
 
 Description
 -----------
-Adds a wire in the form of wiredata.
+Adds a wire in the form of WireData.
 ") Add;
 		void Add(const opencascade::handle<ShapeExtend_WireData> & wire, const Standard_Integer atnum = 0);
 
@@ -1909,7 +1909,7 @@ None
 
 Description
 -----------
-Adds an edge or a wire invoking corresponding method add.
+Adds an edge or a wire invoking corresponding method Add.
 ") Add;
 		void Add(const TopoDS_Shape & shape, const Standard_Integer atnum = 0);
 
@@ -1966,7 +1966,7 @@ None
 
 Description
 -----------
-Adds an edge or a wire invoking corresponding method addoriented.
+Adds an edge or a wire invoking corresponding method AddOriented.
 ") AddOriented;
 		void AddOriented(const TopoDS_Shape & shape, const Standard_Integer mode);
 
@@ -1979,7 +1979,7 @@ None
 
 Description
 -----------
-Clears data about wire.
+Clears data about Wire.
 ") Clear;
 		void Clear();
 
@@ -1997,7 +1997,7 @@ None
 
 Description
 -----------
-Computes the list of seam edges by default (direct call), computing is enforced for indirect call (from isseam) it is redone only if not yet already done or if the list of edges has changed remark: a seam edge is an edge present twice in the list, once as forward and once as reversed each sense has its own pcurve, the one for forward must be set in first.
+Computes the list of seam edges By default (direct call), computing is enforced For indirect call (from IsSeam) it is redone only if not yet already done or if the list of edges has changed Remark: A Seam Edge is an Edge present twice in the list, once as FORWARD and once as REVERSED Each sense has its own PCurve, the one for FORWARD must be set in first.
 ") ComputeSeams;
 		void ComputeSeams(const Standard_Boolean enforce = Standard_True);
 
@@ -2015,7 +2015,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns <num>th edge.
+Returns <num>th Edge.
 ") Edge;
 		TopoDS_Edge Edge(const Standard_Integer num);
 
@@ -2033,7 +2033,7 @@ int
 
 Description
 -----------
-Returns the index of the edge if the edge is a seam the orientation is also checked returns 0 if the edge is not found in the list.
+Returns the index of the edge If the edge is a seam the orientation is also checked Returns 0 if the edge is not found in the list.
 ") Index;
 		Standard_Integer Index(const TopoDS_Edge & edge);
 
@@ -2051,7 +2051,7 @@ None
 
 Description
 -----------
-Copies data from another wiredata.
+Copies data from another WireData.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_WireData> & other);
 
@@ -2071,7 +2071,7 @@ bool
 
 Description
 -----------
-Loads an already existing wire if <chained> is true (default), edges are added in the sequence as they are explored by topods_iterator else, if <chained> is false, wire is explored by breptools_wireexplorer and it is guaranteed that edges will be sequentially connected. remark: in the latter case it can happen that not all edges will be found (because of limitations of breptools_wireexplorer for disconnected wires and wires with seam edges).
+Loads an already existing wire If <chained> is True (default), edges are added in the sequence as they are explored by TopoDS_Iterator Else, if <chained> is False, wire is explored by BRepTools_WireExplorer and it is guaranteed that edges will be sequentially connected. Remark: In the latter case it can happen that not all edges will be found (because of limitations of BRepTools_WireExplorer for disconnected wires and wires with seam edges).
 ") Init;
 		Standard_Boolean Init(const TopoDS_Wire & wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True);
 
@@ -2089,7 +2089,7 @@ bool
 
 Description
 -----------
-Tells if an edge is seam (see computeseams) an edge is considered as seam if it presents twice in the edge list, once as forward and once as reversed.
+Tells if an Edge is seam (see ComputeSeams) An edge is considered as seam if it presents twice in the edge list, once as FORWARD and once as REVERSED.
 ") IsSeam;
 		Standard_Boolean IsSeam(const Standard_Integer num);
 
@@ -2146,7 +2146,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns <num>th nonmanifold edge.
+Returns <num>th nonmanifold Edge.
 ") NonmanifoldEdge;
 		TopoDS_Edge NonmanifoldEdge(const Standard_Integer num);
 
@@ -2159,7 +2159,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Returns sequence of non-manifold edges this sequence can be not empty if wire data set in manifold mode but initial wire has internal orientation or contains internal edges.
+Returns sequence of non-manifold edges This sequence can be not empty if wire data set in manifold mode but initial wire has INTERNAL orientation or contains INTERNAL edges.
 ") NonmanifoldEdges;
 		opencascade::handle<TopTools_HSequenceOfShape> NonmanifoldEdges();
 
@@ -2177,7 +2177,7 @@ None
 
 Description
 -----------
-Removes an edge, given its rank. by default removes the last edge.
+Removes an Edge, given its rank. By default removes the last edge.
 ") Remove;
 		void Remove(const Standard_Integer num = 0);
 
@@ -2190,7 +2190,7 @@ None
 
 Description
 -----------
-Reverses the sense of the list and the orientation of each edge this method should be called when either wire has no seam edges or face is not available.
+Reverses the sense of the list and the orientation of each Edge This method should be called when either wire has no seam edges or face is not available.
 ") Reverse;
 		void Reverse();
 
@@ -2208,7 +2208,7 @@ None
 
 Description
 -----------
-Reverses the sense of the list and the orientation of each edge the face is necessary for swapping pcurves for seam edges (first pcurve corresponds to orientation forward, and second to reversed; when edge is reversed, pcurves must be swapped) if face is null, no swapping is performed.
+Reverses the sense of the list and the orientation of each Edge The face is necessary for swapping pcurves for seam edges (first pcurve corresponds to orientation FORWARD, and second to REVERSED; when edge is reversed, pcurves must be swapped) If face is NULL, no swapping is performed.
 ") Reverse;
 		void Reverse(const TopoDS_Face & face);
 
@@ -2227,7 +2227,7 @@ None
 
 Description
 -----------
-Replaces an edge at the given rank number <num> with new one. default is last edge (<num> = 0).
+Replaces an edge at the given rank number <num> with new one. Default is last edge (<num> = 0).
 ") Set;
 		void Set(const TopoDS_Edge & edge, const Standard_Integer num = 0);
 
@@ -2240,7 +2240,7 @@ None
 
 Description
 -----------
-When the wire contains at least one degenerated edge, sets it as last one note: it is useful to process pcurves, for instance, while the pcurve of a dgnr may not be computed from its 3d part (there is none) it is computed after the other edges have been computed and chained.
+When the wire contains at least one degenerated edge, sets it as last one Note: It is useful to process pcurves, for instance, while the pcurve of a DGNR may not be computed from its 3D part (there is none) it is computed after the other edges have been computed and chained.
 ") SetDegeneratedLast;
 		void SetDegeneratedLast();
 
@@ -2271,7 +2271,7 @@ TopoDS_Wire
 
 Description
 -----------
-Makes topods_wire using brep_builder (just creates the topods_wire object and adds all edges into it). this method should be called when the wire is correct (for example, after successful fixes by shapefix_wire) and adjacent edges share common vertices. in case if adjacent edges do not share the same vertices the resulting topods_wire will be invalid.
+Makes TopoDS_Wire using BRep_Builder (just creates the TopoDS_Wire object and adds all edges into it). This method should be called when the wire is correct (for example, after successful fixes by ShapeFix_Wire) and adjacent edges share common vertices. In case if adjacent edges do not share the same vertices the resulting TopoDS_Wire will be invalid.
 ") Wire;
 		TopoDS_Wire Wire();
 
@@ -2284,7 +2284,7 @@ TopoDS_Wire
 
 Description
 -----------
-Makes topods_wire using brepapi_makewire. class brepapi_makewire merges geometrically coincided vertices and can disturb correct order of edges in the wire. if this class fails, null shape is returned.
+Makes TopoDS_Wire using BRepAPI_MakeWire. Class BRepAPI_MakeWire merges geometrically coincided vertices and can disturb correct order of edges in the wire. If this class fails, null shape is returned.
 ") WireAPIMake;
 		TopoDS_Wire WireAPIMake();
 
@@ -2326,7 +2326,7 @@ ShapeExtend_DataMapOfShapeListOfMsg
 
 Description
 -----------
-Returns a map of shapes and message list.
+Returns a Map of shapes and message list.
 ") MapShape;
 		const ShapeExtend_DataMapOfShapeListOfMsg & MapShape();
 
@@ -2339,7 +2339,7 @@ ShapeExtend_DataMapOfTransientListOfMsg
 
 Description
 -----------
-Returns a map of objects and message list.
+Returns a Map of objects and message list.
 ") MapTransient;
 		const ShapeExtend_DataMapOfTransientListOfMsg & MapTransient();
 
@@ -2359,7 +2359,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the object. if the object is in the map then the message is added to the list, otherwise the object is firstly added to the map.
+Sends a message to be attached to the object. If the object is in the map then the message is added to the list, otherwise the object is firstly added to the map.
 ") Send;
 		virtual void Send(const opencascade::handle<Standard_Transient> & object, const Message_Msg & message, const Message_Gravity gravity);
 
@@ -2379,7 +2379,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the shape. if the shape is in the map then the message is added to the list, otherwise the shape is firstly added to the map.
+Sends a message to be attached to the shape. If the shape is in the map then the message is added to the list, otherwise the shape is firstly added to the map.
 ") Send;
 		virtual void Send(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity);
 

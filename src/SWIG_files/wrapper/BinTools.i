@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINTOOLSDOCSTRING
 "BinTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bintools.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bintools.html"
 %enddef
 %module (package="OCC.Core", docstring=BINTOOLSDOCSTRING) BinTools
 
@@ -391,7 +391,7 @@ None
 
 Description
 -----------
-Reads a shape from <thestream> and returns it in <theshape>.
+Reads a shape from <theStream> and returns it in <theShape>.
 ") Read;
 		static void Read(TopoDS_Shape & theShape, std::istream & theStream, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -411,7 +411,7 @@ bool
 
 Description
 -----------
-Reads a shape from <thefile> and returns it in <theshape>.
+Reads a shape from <theFile> and returns it in <theShape>.
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -430,7 +430,10 @@ theStream: Standard_OStream
 
 Description
 -----------
-Writes the shape to the stream in binary format bintools_formatversion_current. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param therange the range of progress indicator to fill in.
+Writes the shape to the stream in binary format BinTools_FormatVersion_CURRENT. This alias writes shape with triangulation data. 
+Input parameter: theShape the shape to write 
+Input parameter:[out] theStream the stream to output shape into 
+Parameter theRange the range of progress indicator to fill in.
 ") Write;
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -452,7 +455,13 @@ theStream: Standard_OStream
 
 Description
 -----------
-Writes the shape to the stream in binary format of specified version. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the bintools format version @param therange  the range of progress indicator to fill in.
+Writes the shape to the stream in binary format of specified version. 
+Input parameter: theShape the shape to write 
+Input parameter:[out] theStream the stream to output shape into 
+Input parameter: theWithTriangles flag which specifies whether to save shape with (True) or without (False) triangles;  has no effect on triangulation-only geometry 
+Input parameter: theWithNormals flag which specifies whether to save triangulation with (True) or without (False) normals;  has no effect on triangulation-only geometry 
+Input parameter: theVersion the BinTools format version 
+Parameter theRange  the range of progress indicator to fill in.
 ") Write;
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -472,7 +481,10 @@ bool
 
 Description
 -----------
-Writes the shape to the file in binary format bintools_formatversion_current. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param therange the range of progress indicator to fill in.
+Writes the shape to the file in binary format BinTools_FormatVersion_CURRENT. 
+Input parameter: theShape the shape to write 
+Input parameter: theFile the path to file to output shape into 
+Parameter theRange the range of progress indicator to fill in.
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -495,7 +507,13 @@ bool
 
 Description
 -----------
-Writes the shape to the file in binary format of specified version. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the bintools format version @param therange  the range of progress indicator to fill in.
+Writes the shape to the file in binary format of specified version. 
+Input parameter: theShape the shape to write 
+Input parameter: theFile  the path to file to output shape into 
+Input parameter: theWithTriangles flag which specifies whether to save shape with (True) or without (False) triangles;  has no effect on triangulation-only geometry 
+Input parameter: theWithNormals flag which specifies whether to save triangulation with (True) or without (False) normals;  has no effect on triangulation-only geometry 
+Input parameter: theVersion the BinTools format version 
+Parameter theRange  the range of progress indicator to fill in.
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -522,7 +540,7 @@ None
 
 Description
 -----------
-Returns an empty set of curves.
+Returns an empty set of Curves.
 ") BinTools_Curve2dSet;
 		 BinTools_Curve2dSet();
 
@@ -540,7 +558,7 @@ int
 
 Description
 -----------
-Incorporate a new curve in the set and returns its index.
+Incorporate a new Curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -571,7 +589,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer I);
 
@@ -589,7 +607,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -608,7 +626,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -627,7 +645,7 @@ Standard_IStream
 
 Description
 -----------
-Reads the curve from the stream. the curve is assumed to have been written with the write method.
+Reads the curve from the stream. The curve is assumed to have been written with the Write method.
 ") ReadCurve2d;
 		static Standard_IStream & ReadCurve2d(std::istream & IS, opencascade::handle<Geom2d_Curve> & C);
 
@@ -645,7 +663,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -695,7 +713,7 @@ None
 
 Description
 -----------
-Returns an empty set of curves.
+Returns an empty set of Curves.
 ") BinTools_CurveSet;
 		 BinTools_CurveSet();
 
@@ -713,7 +731,7 @@ int
 
 Description
 -----------
-Incorporate a new curve in the set and returns its index.
+Incorporate a new Curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
 
@@ -744,7 +762,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve(const Standard_Integer I);
 
@@ -762,7 +780,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
 
@@ -781,7 +799,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -800,7 +818,7 @@ Standard_IStream
 
 Description
 -----------
-Reads the curve from the stream. the curve is assumed to have been written with the write method.
+Reads the curve from the stream. The curve is assumed to have been written with the Write method.
 ") ReadCurve;
 		static Standard_IStream & ReadCurve(std::istream & IS, opencascade::handle<Geom_Curve> & C);
 
@@ -818,7 +836,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -885,7 +903,7 @@ int
 
 Description
 -----------
-Incorporate a new location in the set and returns its index.
+Incorporate a new Location in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const TopLoc_Location & L);
 
@@ -916,7 +934,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const TopLoc_Location & L);
 
@@ -934,7 +952,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns the location of index <i>.
+Returns the location of index <I>.
 ") Location;
 		const TopLoc_Location & Location(const Standard_Integer I);
 
@@ -965,7 +983,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS);
 
@@ -982,7 +1000,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in a format that can be read back by read.
+Writes the content of me on the stream <OS> in a format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue);
 
@@ -1038,7 +1056,7 @@ int
 
 Description
 -----------
-Returns the bintools_formatversion.
+Returns the BinTools_FormatVersion.
 ") FormatNb;
 		Standard_Integer FormatNb();
 
@@ -1083,7 +1101,7 @@ None
 
 Description
 -----------
-Reads the content of me from the binary stream <is>. me is first cleared. //! reads the locations. //! reads the geometry calling readgeometry. //! reads the shapes. for each shape reads the type. calls readgeometry(t,s). reads the flag, the subshapes.
+Reads the content of me from the binary stream <IS>. me is first cleared. //! Reads the locations. //! Reads the geometry calling ReadGeometry. //! Reads the shapes. For each shape Reads the type. calls ReadGeometry(T,S). Reads the flag, the subshapes.
 ") Read;
 		virtual void Read(std::istream &, const Message_ProgressRange & = Message_ProgressRange());
 
@@ -1120,7 +1138,7 @@ None
 
 Description
 -----------
-Sets the bintools_formatversion.
+Sets the BinTools_FormatVersion.
 ") SetFormatNb;
 		void SetFormatNb(const Standard_Integer theFormatNb);
 
@@ -1138,7 +1156,7 @@ None
 
 Description
 -----------
-Define if shape will be stored triangulation with normals. ignored (always written) if face defines only triangulation (no surface).
+Define if shape will be stored triangulation with normals. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithNormals;
 		void SetWithNormals(const Standard_Boolean theWithNormals);
 
@@ -1156,7 +1174,7 @@ None
 
 Description
 -----------
-Define if shape will be stored with triangles. ignored (always written) if face defines only triangulation (no surface).
+Define if shape will be stored with triangles. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean theWithTriangles);
 
@@ -1174,7 +1192,7 @@ Return
 
 Description
 -----------
-Writes the content of me on the stream <os> in binary format that can be read back by read. //! writes the locations. //! writes the geometry calling writegeometry. //! dumps the shapes from last to first. for each shape: write the type. calls writegeometry(s). write the flags, the subshapes.
+Writes the content of me on the stream <OS> in binary format that can be read back by Read. //! Writes the locations. //! Writes the geometry calling WriteGeometry. //! Dumps the shapes from last to first. For each shape: Write the type. calls WriteGeometry(S). Write the flags, the subshapes.
 ") Write;
 		virtual void Write(std::ostream &OutValue, const Message_ProgressRange & = Message_ProgressRange());
 
@@ -1192,7 +1210,7 @@ Return
 
 Description
 -----------
-Writes on <os> the shape <s>. writes the orientation, the index of the tshape and the index of the location.
+Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 ") Write;
 		virtual void Write(const TopoDS_Shape &, std::ostream &OutValue);
 
@@ -1219,7 +1237,7 @@ None
 
 Description
 -----------
-Returns an empty set of surfaces.
+Returns an empty set of Surfaces.
 ") BinTools_SurfaceSet;
 		 BinTools_SurfaceSet();
 
@@ -1237,7 +1255,7 @@ int
 
 Description
 -----------
-Incorporate a new surface in the set and returns its index.
+Incorporate a new Surface in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
 
@@ -1268,7 +1286,7 @@ int
 
 Description
 -----------
-Returns the index of <l>.
+Returns the index of <L>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
 
@@ -1287,7 +1305,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <is>. me is first cleared.
+Reads the content of me from the stream <IS>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & therange = Message_ProgressRange());
 
@@ -1306,7 +1324,7 @@ Standard_IStream
 
 Description
 -----------
-Reads the surface from the stream. the surface is assumed to have been written with the write method.
+Reads the surface from the stream. The surface is assumed to have been written with the Write method.
 ") ReadSurface;
 		static Standard_IStream & ReadSurface(std::istream & IS, opencascade::handle<Geom_Surface> & S);
 
@@ -1324,7 +1342,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the surface of index <i>.
+Returns the Surface of index <I>.
 ") Surface;
 		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
 
@@ -1342,7 +1360,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in binary format that can be read back by read.
+Writes the content of me on the stream <OS> in binary format that can be read back by Read.
 ") Write;
 		void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1465,7 +1483,8 @@ None
 
 Description
 -----------
-Builds an empty shapeset. @param thewithtriangles [in] flag to write triangulation data.
+Builds an empty ShapeSet. 
+Input parameter: theWithTriangles flag to write triangulation data.
 ") BinTools_ShapeSet;
 		 BinTools_ShapeSet();
 
@@ -1483,7 +1502,7 @@ int
 
 Description
 -----------
-Stores <s> and its sub-shape. returns the index of <s>. the method addgeometry is called on each sub-shape.
+Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 ") Add;
 		Standard_Integer Add(const TopoDS_Shape & S);
 
@@ -1501,7 +1520,7 @@ None
 
 Description
 -----------
-Stores the shape <s>.
+Stores the shape <S>.
 ") AddShape;
 		virtual void AddShape(const TopoDS_Shape & S);
 
@@ -1520,7 +1539,7 @@ None
 
 Description
 -----------
-Inserts the shape <s2> in the shape <s1>.
+Inserts the shape <S2> in the shape <S1>.
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -1564,7 +1583,7 @@ int
 
 Description
 -----------
-Returns the index of <s>.
+Returns the index of <S>.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
@@ -1609,7 +1628,7 @@ None
 
 Description
 -----------
-Reads the content of me from the binary stream <is>. me is first cleared. //! reads the locations. //! reads the geometry calling readgeometry. //! reads the shapes. for each shape reads the type. calls readgeometry(t,s). reads the flag, the subshapes.
+Reads the content of me from the binary stream <IS>. me is first cleared. //! Reads the locations. //! Reads the geometry calling ReadGeometry. //! Reads the shapes. For each shape Reads the type. calls ReadGeometry(T,S). Reads the flag, the subshapes.
 ") Read;
 		virtual void Read(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1649,7 +1668,7 @@ None
 
 Description
 -----------
-Reads from <is> a shape flags and sub-shapes and modifies s.
+Reads from <IS> a shape flags and sub-shapes and modifies S.
 ") ReadFlagsAndSubs;
 		virtual void ReadFlagsAndSubs(TopoDS_Shape & S, const TopAbs_ShapeEnum T, std::istream & IS, const Standard_Integer NbShapes);
 
@@ -1668,7 +1687,7 @@ None
 
 Description
 -----------
-Reads the geometry of me from the stream <is>.
+Reads the geometry of me from the stream <IS>.
 ") ReadGeometry;
 		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1687,7 +1706,7 @@ None
 
 Description
 -----------
-Reads the 3d polygons of me from the stream <is>.
+Reads the 3d polygons of me from the stream <IS>.
 ") ReadPolygon3D;
 		void ReadPolygon3D(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1706,7 +1725,7 @@ None
 
 Description
 -----------
-Reads the polygons on triangulation of me from the stream <is>.
+Reads the polygons on triangulation of me from the stream <IS>.
 ") ReadPolygonOnTriangulation;
 		void ReadPolygonOnTriangulation(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1726,7 +1745,7 @@ None
 
 Description
 -----------
-Reads a shape of type <t> from the stream <is> and returns it in <s>.
+Reads a shape of type <T> from the stream <IS> and returns it in <S>.
 ") ReadShape;
 		virtual void ReadShape(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
@@ -1746,7 +1765,7 @@ None
 
 Description
 -----------
-Reads from <is> a shape and returns it in s. <nbshapes> is the number of tshapes in the set.
+Reads from <IS> a shape and returns it in S. <NbShapes> is the number of tshapes in the set.
 ") ReadSubs;
 		virtual void ReadSubs(TopoDS_Shape & S, std::istream & IS, const Standard_Integer NbShapes);
 
@@ -1765,7 +1784,7 @@ None
 
 Description
 -----------
-Reads the triangulation of me from the stream <is>.
+Reads the triangulation of me from the stream <IS>.
 ") ReadTriangulation;
 		void ReadTriangulation(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1783,7 +1802,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the sub-shape of index <i>.
+Returns the sub-shape of index <I>.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I);
 
@@ -1801,7 +1820,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the content of me on the stream <os> in binary format that can be read back by read. //! writes the locations. //! writes the geometry calling writegeometry. //! dumps the shapes from last to first. for each shape: write the type. calls writegeometry(s). write the flags, the subshapes.
+Writes the content of me on the stream <OS> in binary format that can be read back by Read. //! Writes the locations. //! Writes the geometry calling WriteGeometry. //! Dumps the shapes from last to first. For each shape: Write the type. calls WriteGeometry(S). Write the flags, the subshapes.
 ") Write;
 		virtual void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1819,7 +1838,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes on <os> the shape <s>. writes the orientation, the index of the tshape and the index of the location.
+Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 ") Write;
 		virtual void Write(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -1837,7 +1856,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the geometry of me on the stream <os> in a binary format that can be read back by read.
+Writes the geometry of me on the stream <OS> in a binary format that can be read back by Read.
 ") WriteGeometry;
 		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1855,7 +1874,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the 3d polygons on the stream <os> in a format that can be read back by read.
+Writes the 3d polygons on the stream <OS> in a format that can be read back by Read.
 ") WritePolygon3D;
 		void WritePolygon3D(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1873,7 +1892,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the polygons on triangulation on the stream <os> in a format that can be read back by read.
+Writes the polygons on triangulation on the stream <OS> in a format that can be read back by Read.
 ") WritePolygonOnTriangulation;
 		void WritePolygonOnTriangulation(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1891,7 +1910,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the shape <s> on the stream <os> in a binary format that can be read back by read.
+Writes the shape <S> on the stream <OS> in a binary format that can be read back by Read.
 ") WriteShape;
 		virtual void WriteShape(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -1909,7 +1928,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the triangulation on the stream <os> in a format that can be read back by read.
+Writes the triangulation on the stream <OS> in a format that can be read back by Read.
 ") WriteTriangulation;
 		void WriteTriangulation(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1936,7 +1955,7 @@ None
 
 Description
 -----------
-Builds an empty shapeset. parameter <thewithtriangles> is added for xml persistence.
+Builds an empty ShapeSet. Parameter <theWithTriangles> is added for XML Persistence.
 ") BinTools_ShapeWriter;
 		 BinTools_ShapeWriter();
 

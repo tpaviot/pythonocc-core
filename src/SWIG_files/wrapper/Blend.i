@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDDOCSTRING
 "Blend module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_blend.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_blend.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDDOCSTRING) Blend
 
@@ -165,7 +165,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -184,7 +184,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 4 variables. Returns in the vector SupBound the greatest values allowed for each of the 4 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -197,7 +197,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -267,7 +267,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 4 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -289,7 +289,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -308,7 +308,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals() raises outofrange from standard.
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -321,7 +321,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -340,7 +340,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space. The computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -389,7 +389,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -407,7 +407,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -420,7 +420,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -438,7 +438,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point p. used to impose the parameters in the approximation.
+Returns the parameter of the point P. Used to impose the parameters in the approximation.
 ") Parameter;
 		Standard_Real Parameter(const Blend_Point & P);
 
@@ -508,7 +508,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -556,7 +556,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -574,7 +574,7 @@ None
 
 Description
 -----------
-Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
+Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
@@ -593,7 +593,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -612,7 +612,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -632,7 +632,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -666,7 +666,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -685,7 +685,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -704,7 +704,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -723,7 +723,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -736,7 +736,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -767,7 +767,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		virtual void Set(const gp_Pnt & P);
 
@@ -786,7 +786,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -806,7 +806,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -840,7 +840,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -859,7 +859,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 4 variables. returns in the vector supbound the greatest values allowed for each of the 4 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 4 variables. Returns in the vector SupBound the greatest values allowed for each of the 4 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -878,7 +878,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 4 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 4 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -897,7 +897,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -910,7 +910,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -942,7 +942,7 @@ None
 
 Description
 -----------
-Sets the curveonsurface on which a solution has to be found. if <onfirst> is set to standard_true, the curve will be on the first surface, otherwise the curve is on the second one.
+Sets the CurveOnSurface on which a solution has to be found. If <OnFirst> is set to Standard_True, the curve will be on the first surface, otherwise the curve is on the second one.
 ") Set;
 		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
@@ -961,7 +961,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -981,7 +981,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1232,7 +1232,7 @@ bool
 
 Description
 -----------
-Returns standard_true if it was not possible to compute the tangent vectors at pointons1 and/or pointons2.
+Returns Standard_True if it was not possible to compute the tangent vectors at PointOnS1 and/or PointOnS2.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
@@ -1818,7 +1818,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1837,7 +1837,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -1856,7 +1856,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -1875,7 +1875,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -1888,7 +1888,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -1919,7 +1919,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		virtual void Set(const opencascade::handle<Adaptor2d_Curve2d> & Rst);
 
@@ -1938,7 +1938,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1958,7 +1958,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -1992,7 +1992,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -2011,7 +2011,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -2030,7 +2030,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -2049,7 +2049,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -2062,7 +2062,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -2093,7 +2093,7 @@ None
 
 Description
 -----------
-Set the point on which a solution has to be found.
+Set the Point on which a solution has to be found.
 ") Set;
 		virtual void Set(const gp_Pnt & P);
 
@@ -2112,7 +2112,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -2132,7 +2132,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2166,7 +2166,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -2185,7 +2185,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each of the 3 variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -2198,7 +2198,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		virtual Standard_Real GetMinimalDistance();
 
@@ -2237,7 +2237,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each of the 3 variables; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -2259,7 +2259,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -2278,7 +2278,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space. The computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -2291,7 +2291,7 @@ bool
 
 Description
 -----------
-Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonc.
+Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnC.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
@@ -2340,7 +2340,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -2353,7 +2353,7 @@ int
 
 Description
 -----------
-Returns 3 (default value). can be redefined.
+Returns 3 (default value). Can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -2405,7 +2405,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2d;
 		virtual const gp_Pnt2d Pnt2d();
 
@@ -2455,7 +2455,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -2503,7 +2503,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -2521,7 +2521,7 @@ None
 
 Description
 -----------
-Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
+Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
@@ -2540,7 +2540,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -2574,7 +2574,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons, in the parametric space of the first surface.
+Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 ") Tangent2d;
 		virtual const gp_Vec2d Tangent2d();
 
@@ -2587,7 +2587,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointonc, in 3d space.
+Returns the tangent vector at PointOnC, in 3d space.
 ") TangentOnC;
 		virtual const gp_Vec TangentOnC();
 
@@ -2600,7 +2600,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons, in 3d space.
+Returns the tangent vector at PointOnS, in 3d space.
 ") TangentOnS;
 		virtual const gp_Vec TangentOnS();
 
@@ -2619,7 +2619,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -2639,7 +2639,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2667,7 +2667,7 @@ bool
 
 Description
 -----------
-Returns true when it is not possible to compute the tangent vectors at pointons1 and/or pointons2.
+Returns True when it is not possible to compute the tangent vectors at PointOnS1 and/or PointOnS2.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
@@ -2719,7 +2719,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point on the first surface, at parameter sol(1),sol(2) (sol is the vector used in the call of issolution.
+Returns the point on the first surface, at parameter Sol(1),Sol(2) (Sol is the vector used in the call of IsSolution.
 ") PointOnS1;
 		virtual const gp_Pnt PointOnS1();
 
@@ -2732,7 +2732,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point on the second surface, at parameter sol(3),sol(4) (sol is the vector used in the call of issolution.
+Returns the point on the second surface, at parameter Sol(3),Sol(4) (Sol is the vector used in the call of IsSolution.
 ") PointOnS2;
 		virtual const gp_Pnt PointOnS2();
 
@@ -2780,7 +2780,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -2818,7 +2818,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons1, in the parametric space of the first surface.
+Returns the tangent vector at PointOnS1, in the parametric space of the first surface.
 ") Tangent2dOnS1;
 		virtual const gp_Vec2d Tangent2dOnS1();
 
@@ -2831,7 +2831,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons2, in the parametric space of the second surface.
+Returns the tangent vector at PointOnS2, in the parametric space of the second surface.
 ") Tangent2dOnS2;
 		virtual const gp_Vec2d Tangent2dOnS2();
 
@@ -2844,7 +2844,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons1, in 3d space.
+Returns the tangent vector at PointOnS1, in 3d space.
 ") TangentOnS1;
 		virtual const gp_Vec TangentOnS1();
 
@@ -2857,7 +2857,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons2, in 3d space.
+Returns the tangent vector at PointOnS2, in 3d space.
 ") TangentOnS2;
 		virtual const gp_Vec TangentOnS2();
 
@@ -2920,7 +2920,7 @@ Blend_DecrochStatus
 
 Description
 -----------
-Enables to implement a criterion of decrochage specific to the function. warning: can be called without previous call of issolution but the values calculated can be senseless.
+Enables to implement a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.
 ") Decroch;
 		virtual Blend_DecrochStatus Decroch(const math_Vector & Sol, gp_Vec & NRst1, gp_Vec & TgRst1, gp_Vec & NRst2, gp_Vec & TgRst2);
 
@@ -2939,7 +2939,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -2958,7 +2958,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -2971,7 +2971,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -3041,7 +3041,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each variable; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -3063,7 +3063,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -3082,7 +3082,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3095,7 +3095,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -3114,7 +3114,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space. The computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -3127,7 +3127,7 @@ bool
 
 Description
 -----------
-Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
+Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnRst.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
@@ -3176,7 +3176,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -3194,7 +3194,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -3207,7 +3207,7 @@ int
 
 Description
 -----------
-Returns 2 (default value). can be redefined.
+Returns 2 (default value). Can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -3272,7 +3272,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnRst1;
 		virtual const gp_Pnt2d Pnt2dOnRst1();
 
@@ -3285,7 +3285,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst2;
 		virtual const gp_Pnt2d Pnt2dOnRst2();
 
@@ -3356,7 +3356,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -3383,7 +3383,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -3401,7 +3401,7 @@ None
 
 Description
 -----------
-Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
+Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
@@ -3420,7 +3420,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -3433,7 +3433,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons, in the parametric space of the first surface.
+Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 ") Tangent2dOnRst1;
 		virtual const gp_Vec2d Tangent2dOnRst1();
 
@@ -3446,7 +3446,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointonrst, in the parametric space of the second surface.
+Returns the tangent vector at PointOnRst, in the parametric space of the second surface.
 ") Tangent2dOnRst2;
 		virtual const gp_Vec2d Tangent2dOnRst2();
 
@@ -3459,7 +3459,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons, in 3d space.
+Returns the tangent vector at PointOnS, in 3d space.
 ") TangentOnRst1;
 		virtual const gp_Vec TangentOnRst1();
 
@@ -3472,7 +3472,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointonc, in 3d space.
+Returns the tangent vector at PointOnC, in 3d space.
 ") TangentOnRst2;
 		virtual const gp_Vec TangentOnRst2();
 
@@ -3491,7 +3491,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -3511,7 +3511,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -3565,7 +3565,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -3584,7 +3584,7 @@ None
 
 Description
 -----------
-Returns in the vector infbound the lowest values allowed for each variables. returns in the vector supbound the greatest values allowed for each of the 3 variables.
+Returns in the vector InfBound the lowest values allowed for each variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 ") GetBounds;
 		virtual void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
@@ -3597,7 +3597,7 @@ float
 
 Description
 -----------
-Returns the minimal distance between two extremities of calculated sections.
+Returns the minimal Distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
@@ -3667,7 +3667,7 @@ None
 
 Description
 -----------
-Returns in the vector tolerance the parametric tolerance for each variable; tol is the tolerance used in 3d space.
+Returns in the vector Tolerance the parametric tolerance for each variable; Tol is the tolerance used in 3d space.
 ") GetTolerance;
 		virtual void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
@@ -3689,7 +3689,7 @@ None
 
 Description
 -----------
-Returns the tolerance to reach in approximation to respecte boundtol error at the boundary angletol tangent error at the boundary surftol error inside the surface.
+Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary SurfTol error inside the surface.
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
@@ -3708,7 +3708,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -3721,7 +3721,7 @@ bool
 
 Description
 -----------
-Returns if the section is rationnal.
+Returns if the section is rational.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
@@ -3740,7 +3740,7 @@ bool
 
 Description
 -----------
-Returns standard_true if sol is a zero of the function. tol is the tolerance used in 3d space. the computation is made at the current value of the parameter on the guide line.
+Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space. The computation is made at the current value of the parameter on the guide line.
 ") IsSolution;
 		virtual Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
@@ -3753,7 +3753,7 @@ bool
 
 Description
 -----------
-Returns true when it is not possible to compute the tangent vectors at pointons and/or pointonrst.
+Returns True when it is not possible to compute the tangent vectors at PointOnS and/or PointOnRst.
 ") IsTangencyPoint;
 		virtual Standard_Boolean IsTangencyPoint();
 
@@ -3802,7 +3802,7 @@ int
 
 Description
 -----------
-Returns the number of equations of the function.
+returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
@@ -3820,7 +3820,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
@@ -3833,7 +3833,7 @@ int
 
 Description
 -----------
-Returns 3 (default value). can be redefined.
+Returns 3 (default value). Can be redefined.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -3885,7 +3885,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the curve on surface.
+Returns U,V coordinates of the point on the curve on surface.
 ") Pnt2dOnRst;
 		virtual const gp_Pnt2d Pnt2dOnRst();
 
@@ -3898,7 +3898,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns u,v coordinates of the point on the surface.
+Returns U,V coordinates of the point on the surface.
 ") Pnt2dOnS;
 		virtual const gp_Pnt2d Pnt2dOnS();
 
@@ -3948,7 +3948,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
@@ -3975,7 +3975,7 @@ bool
 
 Description
 -----------
-Used for the first and last section the method returns standard_true if the derivatives are computed, otherwise it returns standard_false.
+Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
@@ -4014,7 +4014,7 @@ None
 
 Description
 -----------
-Sets the value of the parameter along the guide line. this determines the plane in which the solution has to be found.
+Sets the value of the parameter along the guide line. This determines the plane in which the solution has to be found.
 ") Set;
 		virtual void Set(const Standard_Real Param);
 
@@ -4033,7 +4033,7 @@ None
 
 Description
 -----------
-Sets the bounds of the parametric interval on the guide line. this determines the derivatives in these values if the function is not cn.
+Sets the bounds of the parametric interval on the guide line. This determines the derivatives in these values if the function is not Cn.
 ") Set;
 		virtual void Set(const Standard_Real First, const Standard_Real Last);
 
@@ -4046,7 +4046,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointonrst, in the parametric space of the second surface.
+Returns the tangent vector at PointOnRst, in the parametric space of the second surface.
 ") Tangent2dOnRst;
 		virtual const gp_Vec2d Tangent2dOnRst();
 
@@ -4059,7 +4059,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangent vector at pointons, in the parametric space of the first surface.
+Returns the tangent vector at PointOnS, in the parametric space of the first surface.
 ") Tangent2dOnS;
 		virtual const gp_Vec2d Tangent2dOnS();
 
@@ -4072,7 +4072,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointonc, in 3d space.
+Returns the tangent vector at PointOnC, in 3d space.
 ") TangentOnRst;
 		virtual const gp_Vec TangentOnRst();
 
@@ -4085,7 +4085,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangent vector at pointons, in 3d space.
+Returns the tangent vector at PointOnS, in 3d space.
 ") TangentOnS;
 		virtual const gp_Vec TangentOnS();
 
@@ -4104,7 +4104,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -4124,7 +4124,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 

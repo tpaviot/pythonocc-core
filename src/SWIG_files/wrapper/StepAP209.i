@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPAP209DOCSTRING
 "StepAP209 module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepap209.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepap209.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPAP209DOCSTRING) StepAP209
 
@@ -70,6 +70,11 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepap209.html"
 #include<StepData_module.hxx>
 #include<MoniTool_module.hxx>
 #include<Resource_module.hxx>
+#include<TDF_module.hxx>
+#include<TDocStd_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<DE_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -153,7 +158,7 @@ opencascade::handle<StepData_StepModel>
 
 Description
 -----------
-Create ap203 structure from existing ap209 structure.
+Create AP203 structure from existing AP209 structure.
 ") CreateAP203Structure;
 		opencascade::handle<StepData_StepModel> CreateAP203Structure();
 
@@ -522,7 +527,7 @@ bool
 
 Description
 -----------
-Initializes tool; returns true if succeeded.
+Initializes tool; returns True if succeeded.
 ") Init;
 		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -607,7 +612,7 @@ bool
 
 Description
 -----------
-Put into model entities applied... for ap209 instead of entities ccdesing... from ap203.
+Put into model entities Applied... for AP209 instead of entities CcDesing... from AP203.
 ") ReplaceCcDesingToApplied;
 		Standard_Boolean ReplaceCcDesingToApplied();
 

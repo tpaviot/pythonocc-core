@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWHEADERSECTIONDOCSTRING
 "RWHeaderSection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwheadersection.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwheadersection.html"
 %enddef
 %module (package="OCC.Core", docstring=RWHEADERSECTIONDOCSTRING) RWHeaderSection
 
@@ -105,7 +105,7 @@ None
 
 Description
 -----------
-Enforced the initialisation of the libraries.
+enforced the initialisation of the libraries.
 ") Init;
 		static void Init();
 
@@ -132,7 +132,7 @@ None
 
 Description
 -----------
-Creates a generalmodule.
+Creates a GeneralModule.
 ") RWHeaderSection_GeneralModule;
 		 RWHeaderSection_GeneralModule();
 
@@ -153,7 +153,7 @@ None
 
 Description
 -----------
-Specific checking of an entity <ent>.
+Specific Checking of an Entity <ent>.
 ") CheckCase;
 		void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -174,7 +174,7 @@ None
 
 Description
 -----------
-Specific copy ('deep') from <entfrom> to <entto> (same type) by using a copytool which provides its working map. use method transferred from copytool to work.
+Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from CopyTool to work.
 ") CopyCase;
 		void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -194,7 +194,7 @@ None
 
 Description
 -----------
-Specific filling of the list of entities shared by an entity <ent>, according to a case number <cn> (provided by headersection protocol).
+Specific filling of the list of Entities shared by an Entity <ent>, according to a Case Number <CN> (provided by HeaderSection Protocol).
 ") FillSharedCase;
 		void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -461,7 +461,7 @@ int
 
 Description
 -----------
-Associates a positive case number to each type of headersection entity, given as a string defined in the express form.
+associates a positive Case Number to each type of HeaderSection entity, given as a String defined in the EXPRESS form.
 ") CaseStep;
 		Standard_Integer CaseStep(TCollection_AsciiString atype);
 
@@ -479,7 +479,7 @@ int
 
 Description
 -----------
-Associates a positive case number to each type of headersection complex entity, given as a string defined in the express form.
+associates a positive Case Number to each type of HeaderSection Complex entity, given as a String defined in the EXPRESS form.
 ") CaseStep;
 		virtual Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString & types);
 
@@ -497,7 +497,7 @@ bool
 
 Description
 -----------
-Returns true if the case number corresponds to a complex type.
+returns True if the Case Number corresponds to a Complex Type.
 ") IsComplex;
 		virtual Standard_Boolean IsComplex(const Standard_Integer CN);
 
@@ -537,7 +537,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a steptype (defined in express form which belongs to a type of entity, identified by its casenumber determined by protocol.
+returns a StepType (defined in EXPRESS form which belongs to a Type of Entity, identified by its CaseNumber determined by Protocol.
 ") StepType;
 		const TCollection_AsciiString & StepType(const Standard_Integer CN);
 

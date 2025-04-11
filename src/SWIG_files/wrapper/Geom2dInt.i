@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DINTDOCSTRING
 "Geom2dInt module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dint.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dint.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DINTDOCSTRING) Geom2dInt
 
@@ -256,7 +256,7 @@ None
 
 Description
 -----------
-Self intersection of a curve.
+Self Intersection of a curve.
 ") Geom2dInt_GInter;
 		 Geom2dInt_GInter(const Adaptor2d_Curve2d & C, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -277,7 +277,7 @@ None
 
 Description
 -----------
-Self intersection of a curve with a domain.
+Self Intersection of a curve with a domain.
 ") Geom2dInt_GInter;
 		 Geom2dInt_GInter(const Adaptor2d_Curve2d & C, const IntRes2d_Domain & D, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -576,7 +576,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the circ2d from gp corresponding to the curve c. this method is called only when thetype returns geomabs_circle.
+Returns the Circ2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Circle.
 ") Circle;
 		static gp_Circ2d Circle(const Adaptor2d_Curve2d & C);
 
@@ -718,7 +718,7 @@ gp_Elips2d
 
 Description
 -----------
-Returns the elips2d from gp corresponding to the curve c. this method is called only when thetype returns geomabs_ellipse.
+Returns the Elips2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Ellipse.
 ") Ellipse;
 		static gp_Elips2d Ellipse(const Adaptor2d_Curve2d & C);
 
@@ -794,7 +794,7 @@ U2: float
 
 Description
 -----------
-Output the bounds of interval of index <index> used if type == composite.
+output the bounds of interval of index <Index> used if Type == Composite.
 ") GetInterval;
 		static void GetInterval(const Adaptor2d_Curve2d & C, const Standard_Integer Index, const TColStd_Array1OfReal & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -830,7 +830,7 @@ gp_Hypr2d
 
 Description
 -----------
-Returns the hypr2d from gp corresponding to the curve c. this method is called only when thetype returns geomabs_hyperbola.
+Returns the Hypr2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Hyperbola.
 ") Hyperbola;
 		static gp_Hypr2d Hyperbola(const Adaptor2d_Curve2d & C);
 
@@ -849,7 +849,7 @@ None
 
 Description
 -----------
-Compute tab.
+compute Tab.
 ") Intervals;
 		static void Intervals(const Adaptor2d_Curve2d & C, TColStd_Array1OfReal & Tab);
 
@@ -885,7 +885,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the lin2d from gp corresponding to the curve c. this method is called only when thetype returns geomabs_line.
+Returns the Lin2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Line.
 ") Line;
 		static gp_Lin2d Line(const Adaptor2d_Curve2d & C);
 
@@ -903,7 +903,7 @@ int
 
 Description
 -----------
-Output the number of interval of continuity c2 of the curve.
+output the number of interval of continuity C2 of the curve.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const Adaptor2d_Curve2d & C);
 
@@ -959,7 +959,7 @@ gp_Parab2d
 
 Description
 -----------
-Returns the parab2d from gp corresponding to the curve c. this method is called only when thetype returns geomabs_parabola.
+Returns the Parab2d from gp corresponding to the curve C. This method is called only when TheType returns GeomAbs_Parabola.
 ") Parabola;
 		static gp_Parab2d Parabola(const Adaptor2d_Curve2d & C);
 
@@ -1290,7 +1290,7 @@ D: float
 
 Description
 -----------
-Computes the derivative of the previous function at parameter param.
+Computes the derivative of the previous function at parameter Param.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -1308,7 +1308,7 @@ F: float
 
 Description
 -----------
-Computes the value of the signed distance between the implicit curve and the point at parameter param on the parametrised curve.
+Computes the value of the signed distance between the implicit curve and the point at parameter Param on the parametrised curve.
 ") Value;
 		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
 
@@ -1391,7 +1391,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -1422,7 +1422,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -1440,7 +1440,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -1471,7 +1471,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -1484,7 +1484,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -1502,7 +1502,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt2d & P);
 
@@ -1520,7 +1520,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -1557,7 +1557,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -1576,7 +1576,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1646,7 +1646,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <D> of the derivatives for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -1659,7 +1659,7 @@ int
 
 Description
 -----------
-Returns 2.
+returns 2.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
@@ -1672,7 +1672,7 @@ int
 
 Description
 -----------
-Returns 2.
+returns 2.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -1691,7 +1691,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values <F> of the Functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -1711,7 +1711,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -2120,7 +2120,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter;
 		 Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Adaptor2d_Curve2d & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -2215,7 +2215,7 @@ None
 
 Description
 -----------
-Intersection between an implicit curve and a parametrised curve. the exception constructionerror is raised if the domain of the parametrised curve does not verify hasfirstpoint and haslastpoint return true.
+Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") Perform;
 		void Perform(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Adaptor2d_Curve2d & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
 
@@ -2263,7 +2263,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 		 Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real TolU);
 
@@ -2286,7 +2286,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 		 Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -2307,7 +2307,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -2320,7 +2320,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2333,7 +2333,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -2352,7 +2352,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
 
@@ -2432,7 +2432,7 @@ float
 
 Description
 -----------
-Give an approximation of the parameter on the curve according to the discretization of the curve.
+Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
 		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
 
@@ -2499,7 +2499,7 @@ bool
 
 Description
 -----------
-Returns true if the polyline is closed.
+Returns True if the polyline is closed.
 ") Closed;
 		virtual Standard_Boolean Closed();
 
@@ -2518,7 +2518,7 @@ None
 
 Description
 -----------
-The current polygon is modified if most of the points of the polygon are outside the box <otherbox>. in this situation, bounds are computed to build a polygon inside or near the otherbox.
+The current polygon is modified if most of the points of the polygon are outside the box <OtherBox>. In this situation, bounds are computed to build a polygon inside or near the OtherBox.
 ") ComputeWithBox;
 		void ComputeWithBox(const Adaptor2d_Curve2d & Curve, const Bnd_Box2d & OtherBox);
 
@@ -2557,7 +2557,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the first point of the polygon.
+Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
 		Standard_Real InfParameter();
 
@@ -2570,7 +2570,7 @@ int
 
 Description
 -----------
-Give the number of segments in the polyline.
+Give the number of Segments in the polyline.
 ") NbSegments;
 		virtual Standard_Integer NbSegments();
 
@@ -2590,7 +2590,7 @@ None
 
 Description
 -----------
-Returns the points of the segment <index> in the polygon.
+Returns the points of the segment <Index> in the Polygon.
 ") Segment;
 		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
@@ -2621,7 +2621,7 @@ float
 
 Description
 -----------
-Returns the parameter (on the curve) of the last point of the polygon.
+Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
 		Standard_Real SupParameter();
 
@@ -2655,7 +2655,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. in that case, no bounds are given. the research of the right parameter has to be made on the natural parametric domain of the curve.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the right parameter has to be made on the natural parametric domain of the curve.
 ") FindParameter;
 		static Standard_Real FindParameter(const Adaptor2d_Curve2d & C, const gp_Pnt2d & Pnt, const Standard_Real Tol);
 
@@ -2677,7 +2677,7 @@ float
 
 Description
 -----------
-Returns the parameter v of the point on the parametric curve corresponding to the point pnt. the correspondence between pnt and the point p(v) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. tol is the tolerance on the distance between a point and the parametrised curve. lowparameter and highparameter give the boundaries of the interval in which the parameter certainly lies. these parameters are given to implement a more efficient algorithm. so, it is not necessary to check that the returned value verifies lowparameter <= value <= highparameter.
+Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in which the parameter certainly lies. These parameters are given to implement a more efficient algorithm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 ") FindParameter;
 		static Standard_Real FindParameter(const Adaptor2d_Curve2d & C, const gp_Pnt2d & Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol);
 

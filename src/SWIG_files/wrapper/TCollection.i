@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLLECTIONDOCSTRING
 "TCollection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tcollection.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tcollection.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
@@ -83,7 +83,7 @@ from OCC.Core.Exception import *
 class TCollection {
 	public:
 		/****** TCollection::NextPrimeForMap ******/
-		/****** md5 signature: 0dfc681e40254d86f9cdc0ca18fc6465 ******/
+		/****** md5 signature: 59e2427909b2a24f9e2a1a72698151bc ******/
 		%feature("compactdefaultargs") NextPrimeForMap;
 		%feature("autodoc", "
 Parameters
@@ -96,7 +96,7 @@ int
 
 Description
 -----------
-Returns a prime number greater than <i> suitable to dimension a map. when <i> becomes great there is a limit on the result (today the limit is around 1 000 000). this is not a limit of the number of items but a limit in the number of buckets. i.e. there will be more collisions in the map.
+Returns a prime number greater than <I> suitable to dimension a Map. When <I> becomes great there is a limit on the result (today the limit is around 1 000 000). This is not a limit of the number of items but a limit in the number of buckets. i.e. there will be more collisions in the map.
 ") NextPrimeForMap;
 		static Standard_Integer NextPrimeForMap(const Standard_Integer I);
 
@@ -123,7 +123,7 @@ None
 
 Description
 -----------
-Initializes a asciistring to an empty asciistring.
+Initializes a AsciiString to an empty AsciiString.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString();
 
@@ -141,7 +141,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with a cstring.
+Initializes a AsciiString with a CString.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(Standard_CString message);
 
@@ -160,7 +160,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with a cstring.
+Initializes a AsciiString with a CString.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(Standard_CString message, const Standard_Integer aLen);
 
@@ -178,7 +178,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with a single character.
+Initializes a AsciiString with a single character.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Character aChar);
 
@@ -197,7 +197,7 @@ None
 
 Description
 -----------
-Initializes an asciistring with <length> space allocated. and filled with <filler>. this is useful for buffers.
+Initializes an AsciiString with <length> space allocated. and filled with <filler>. This is useful for buffers.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Integer length, const Standard_Character filler);
 
@@ -215,7 +215,7 @@ None
 
 Description
 -----------
-Initializes an asciistring with an integer value.
+Initializes an AsciiString with an integer value.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Integer value);
 
@@ -233,7 +233,7 @@ None
 
 Description
 -----------
-Initializes an asciistring with a real value.
+Initializes an AsciiString with a real value.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Real value);
 
@@ -251,7 +251,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with another asciistring.
+Initializes a AsciiString with another AsciiString.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring);
 
@@ -288,7 +288,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with copy of another asciistring concatenated with the message character.
+Initializes a AsciiString with copy of another AsciiString concatenated with the message character.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, const Standard_Character message);
 
@@ -307,7 +307,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with copy of another asciistring concatenated with the message string.
+Initializes a AsciiString with copy of another AsciiString concatenated with the message string.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, Standard_CString message);
 
@@ -326,7 +326,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with copy of another asciistring concatenated with the message string.
+Initializes a AsciiString with copy of another AsciiString concatenated with the message string.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, TCollection_AsciiString message);
 
@@ -345,7 +345,7 @@ None
 
 Description
 -----------
-Creation by converting an extended string to an ascii string. if replacenonascii is non-null character, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
+Creation by converting an extended string to an ascii string. If replaceNonAscii is non-null character, it will be used in place of any non-ascii character found in the source string. Otherwise, creates UTF-8 unicode string.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_ExtendedString astring, const Standard_Character replaceNonAscii = 0);
 
@@ -363,7 +363,7 @@ None
 
 Description
 -----------
-Initialize utf-8 unicode string from wide-char string considering it as unicode string (the size of wide char is a platform-dependent - e.g. on windows wchar_t is utf-16). //! this constructor is unavailable if application is built with deprecated msvc option '-zc:wchar_t-', since occt itself is never built with this option.
+Initialize UTF-8 Unicode string from wide-char string considering it as Unicode string (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16). //! This constructor is unavailable if application is built with deprecated msvc option '-Zc:wchar_t-', since OCCT itself is never built with this option.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_WideChar * theStringUtf);
 
@@ -381,7 +381,7 @@ None
 
 Description
 -----------
-Appends <other> to me. this is an unary operator.
+Appends <other> to me. This is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Character other);
 
@@ -399,7 +399,7 @@ None
 
 Description
 -----------
-Appends <other> to me. this is an unary operator.
+Appends <other> to me. This is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Integer other);
 
@@ -417,7 +417,7 @@ None
 
 Description
 -----------
-Appends <other> to me. this is an unary operator.
+Appends <other> to me. This is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Real other);
 
@@ -435,7 +435,7 @@ None
 
 Description
 -----------
-Appends <other> to me. this is an unary operator. ex: astring += 'dummy' to catenate more than one cstring, you must put a asciistring before. example: astring += 'hello ' + 'dolly' is not valid ! but astring += anotherstring + 'hello ' + 'dolly' is valid.
+Appends <other> to me. This is an unary operator. ex: aString += 'Dummy' To catenate more than one CString, you must put a AsciiString before. Example: aString += 'Hello ' + 'Dolly' IS NOT VALID ! But astring += anotherString + 'Hello ' + 'Dolly' is valid.
 ") AssignCat;
 		void AssignCat(Standard_CString other);
 
@@ -453,7 +453,7 @@ None
 
 Description
 -----------
-Appends <other> to me. this is an unary operator. example: astring += anotherstring.
+Appends <other> to me. This is an unary operator. Example: aString += anotherString.
 ") AssignCat;
 		void AssignCat(TCollection_AsciiString other);
 
@@ -466,7 +466,7 @@ None
 
 Description
 -----------
-Converts the first character into its corresponding upper-case character and the other characters into lowercase example: before me = 'hello ' after me = 'hello '.
+Converts the first character into its corresponding upper-case character and the other characters into lowercase Example: before me = 'hellO ' after me = 'Hello '.
 ") Capitalize;
 		void Capitalize();
 
@@ -484,7 +484,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Appends <other> to me. syntax: astring = astring + 'dummy' example: astring contains 'i say ' astring = astring + 'hello ' + 'dolly' gives 'i say hello dolly' to catenate more than one cstring, you must put a string before. so the following example is wrong ! astring = 'hello ' + 'dolly' this is not allowed this rule is applicable to assigncat (operator +=) too.
+Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Character other);
 
@@ -502,7 +502,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Appends <other> to me. syntax: astring = astring + 15; example: astring contains 'i say ' gives 'i say 15' to catenate more than one cstring, you must put a string before. so the following example is wrong ! astring = 'hello ' + 'dolly' this is not allowed this rule is applicable to assigncat (operator +=) too.
+Appends <other> to me. Syntax: aString = aString + 15; Example: aString contains 'I say ' gives 'I say 15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Integer other);
 
@@ -520,7 +520,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Appends <other> to me. syntax: astring = astring + 15.15; example: astring contains 'i say ' gives 'i say 15.15' to catenate more than one cstring, you must put a string before. so the following example is wrong ! astring = 'hello ' + 'dolly' this is not allowed this rule is applicable to assigncat (operator +=) too.
+Appends <other> to me. Syntax: aString = aString + 15.15; Example: aString contains 'I say ' gives 'I say 15.15' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Real other);
 
@@ -538,7 +538,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Appends <other> to me. syntax: astring = astring + 'dummy' example: astring contains 'i say ' astring = astring + 'hello ' + 'dolly' gives 'i say hello dolly' to catenate more than one cstring, you must put a string before. so the following example is wrong ! astring = 'hello ' + 'dolly' this is not allowed this rule is applicable to assigncat (operator +=) too.
+Appends <other> to me. Syntax: aString = aString + 'Dummy' Example: aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 ") Cat;
 		TCollection_AsciiString Cat(Standard_CString other);
 
@@ -556,7 +556,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Appends <other> to me. example: astring = astring + anotherstring.
+Appends <other> to me. Example: aString = aString + anotherString.
 ") Cat;
 		TCollection_AsciiString Cat(TCollection_AsciiString other);
 
@@ -575,7 +575,7 @@ None
 
 Description
 -----------
-Modifies this ascii string so that its length becomes equal to width and the new characters are equal to filler. new characters are added both at the beginning and at the end of this string. if width is less than the length of this ascii string, nothing happens. example tcollection_asciistring myalphabet('abcdef'); myalphabet.center(9,' '); assert ( myalphabet == ' abcdef ' );.
+Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example TCollection_AsciiString myAlphabet('abcdef'); myAlphabet.Center(9,' '); assert ( myAlphabet == ' abcdef ' );.
 ") Center;
 		void Center(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -595,7 +595,7 @@ None
 
 Description
 -----------
-Substitutes all the characters equal to achar by newchar in the asciistring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter whether achar is uppercase or not. example: me = 'histake' -> changeall('h','m',standard_true) gives me = 'mistake'.
+Substitutes all the characters equal to aChar by NewChar in the AsciiString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter whether aChar is uppercase or not. Example: me = 'Histake' -> ChangeAll('H','M',Standard_True) gives me = 'Mistake'.
 ") ChangeAll;
 		void ChangeAll(const Standard_Character aChar, const Standard_Character NewChar, const Standard_Boolean CaseSensitive = Standard_True);
 
@@ -608,7 +608,7 @@ None
 
 Description
 -----------
-Removes all characters contained in <self>. this produces an empty asciistring.
+Removes all characters contained in <self>. This produces an empty AsciiString.
 ") Clear;
 		void Clear();
 
@@ -626,7 +626,7 @@ None
 
 Description
 -----------
-Copy <fromwhere> to <self>. used as operator = example: astring = anothercstring;.
+Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherCString;.
 ") Copy;
 		void Copy(Standard_CString fromwhere);
 
@@ -644,7 +644,7 @@ None
 
 Description
 -----------
-Copy <fromwhere> to <self>. used as operator = example: astring = anotherstring;.
+Copy <fromwhere> to <self>. Used as operator = Example: aString = anotherString;.
 ") Copy;
 		void Copy(TCollection_AsciiString fromwhere);
 
@@ -682,7 +682,7 @@ int
 
 Description
 -----------
-Returns the index of the first character of <self> that is present in <set>. the search begins to the index fromindex and ends to the the index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabacaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabacaa' returns 1.
+Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1.
 ") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -702,7 +702,7 @@ int
 
 Description
 -----------
-Returns the index of the first character of <self> that is not present in the set <set>. the search begins to the index fromindex and ends to the the index toindex in <self>. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabacaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabacaa' returns 3.
+Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3.
 ") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -715,7 +715,8 @@ size_t
 
 Description
 -----------
-Computes a hash code for the given ascii string returns the same integer value as the hash function for tcollection_extendedstring return a computed hash code.
+Computes a hash code for the given ASCII string Returns the same integer value as the hash function for TCollection_ExtendedString 
+Return: a computed hash code.
 ") HashCode;
 		size_t HashCode();
 
@@ -734,7 +735,7 @@ None
 
 Description
 -----------
-Inserts a character at position <where>. example: astring contains 'hy not ?' astring.insert(1,'w'); gives 'why not ?' astring contains 'wh' astring.insert(3,'y'); gives 'why' astring contains 'way' astring.insert(2,'h'); gives 'why'.
+Inserts a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'.
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_Character what);
 
@@ -753,7 +754,7 @@ None
 
 Description
 -----------
-Inserts a cstring at position <where>. example: astring contains 'o more' astring.insert(2,'nce'); gives 'once more'.
+Inserts a CString at position <where>. Example: aString contains 'O more' aString.Insert(2,'nce'); gives 'Once more'.
 ") Insert;
 		void Insert(const Standard_Integer where, Standard_CString what);
 
@@ -772,7 +773,7 @@ None
 
 Description
 -----------
-Inserts a asciistring at position <where>.
+Inserts a AsciiString at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, TCollection_AsciiString what);
 
@@ -791,7 +792,7 @@ None
 
 Description
 -----------
-Pushing a string after a specific index in the string <self>. raises an exception if index is out of bounds. - less than 0 (insertafter), or less than 1 (insertbefore), or - greater than the number of characters in this ascii string. example: before me = 'cde' , index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'.
+Pushing a string after a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'.
 ") InsertAfter;
 		void InsertAfter(const Standard_Integer Index, TCollection_AsciiString other);
 
@@ -810,7 +811,7 @@ None
 
 Description
 -----------
-Pushing a string before a specific index in the string <self>. raises an exception if index is out of bounds. - less than 0 (insertafter), or less than 1 (insertbefore), or - greater than the number of characters in this ascii string. example: before me = 'cde' , index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'.
+Pushing a string before a specific index in the string <self>. Raises an exception if Index is out of bounds. - less than 0 (InsertAfter), or less than 1 (InsertBefore), or - greater than the number of characters in this ASCII string. Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'.
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer Index, TCollection_AsciiString other);
 
@@ -823,7 +824,7 @@ int
 
 Description
 -----------
-Converts a asciistring containing a numeric expression to an integer. example: '215' returns 215.
+Converts a AsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
@@ -836,7 +837,7 @@ bool
 
 Description
 -----------
-Returns true if the asciistring contains only ascii characters between ' ' and '~'. this means no control character and no extended ascii code.
+Returns True if the AsciiString contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
@@ -854,7 +855,7 @@ bool
 
 Description
 -----------
-Returns true if there are differences between the characters in this ascii string and ascii string other. note that this method is an alias of operator !=.
+Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(Standard_CString other);
 
@@ -872,7 +873,7 @@ bool
 
 Description
 -----------
-Returns true if there are differences between the characters in this ascii string and ascii string other. note that this method is an alias of operator !=.
+Returns true if there are differences between the characters in this ASCII string and ASCII string other. Note that this method is an alias of operator !=.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(TCollection_AsciiString other);
 
@@ -885,7 +886,7 @@ bool
 
 Description
 -----------
-Returns true if the string <self> contains zero character.
+Returns True if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -903,7 +904,7 @@ bool
 
 Description
 -----------
-Returns true if the characters in this ascii string are identical to the characters in ascii string other. note that this method is an alias of operator ==.
+Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(Standard_CString other);
 
@@ -921,7 +922,7 @@ bool
 
 Description
 -----------
-Returns true if the characters in this ascii string are identical to the characters in ascii string other. note that this method is an alias of operator ==.
+Returns true if the characters in this ASCII string are identical to the characters in ASCII string other. Note that this method is an alias of operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(TCollection_AsciiString other);
 
@@ -940,7 +941,7 @@ bool
 
 Description
 -----------
-Returns true when the two strings are the same. (just for hashcode for asciistring).
+Returns True when the two strings are the same. (Just for HashCode for AsciiString).
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_AsciiString string1, TCollection_AsciiString string2);
 
@@ -959,7 +960,7 @@ bool
 
 Description
 -----------
-Returns true when the two strings are the same. (just for hashcode for asciistring).
+Returns True when the two strings are the same. (Just for HashCode for AsciiString).
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_AsciiString string1, Standard_CString string2);
 
@@ -977,7 +978,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' greater than <other>.
+Returns True if <self> is 'ASCII' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(Standard_CString other);
 
@@ -995,7 +996,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' greater than <other>.
+Returns True if <self> is 'ASCII' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(TCollection_AsciiString other);
 
@@ -1008,7 +1009,7 @@ bool
 
 Description
 -----------
-Returns true if the asciistring contains an integer value. note: an integer value is considered to be a real value as well.
+Returns True if the AsciiString contains an integer value. Note: an integer value is considered to be a real value as well.
 ") IsIntegerValue;
 		Standard_Boolean IsIntegerValue();
 
@@ -1026,7 +1027,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' less than <other>.
+Returns True if <self> is 'ASCII' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(Standard_CString other);
 
@@ -1044,7 +1045,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' less than <other>.
+Returns True if <self> is 'ASCII' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(TCollection_AsciiString other);
 
@@ -1062,7 +1063,8 @@ bool
 
 Description
 -----------
-Returns true if the asciistring starts with some characters that can be interpreted as integer or real value. @param thetocheckfull [in] when true, checks if entire string defines a real value;  otherwise checks if string starts with a real value note: an integer value is considered to be a real value as well.
+Returns True if the AsciiString starts with some characters that can be interpreted as integer or real value. 
+Input parameter: theToCheckFull when True, checks if entire string defines a real value;  otherwise checks if string starts with a real value Note: an integer value is considered to be a real value as well.
 ") IsRealValue;
 		Standard_Boolean IsRealValue(Standard_Boolean theToCheckFull = Standard_False);
 
@@ -1082,7 +1084,7 @@ bool
 
 Description
 -----------
-Returns true if the strings contain same characters.
+Returns True if the strings contain same characters.
 ") IsSameString;
 		static Standard_Boolean IsSameString(TCollection_AsciiString theString1, TCollection_AsciiString theString2, const Standard_Boolean theIsCaseSensitive);
 
@@ -1114,7 +1116,7 @@ None
 
 Description
 -----------
-Left justify length becomes equal to width and the new characters are equal to filler. if width < length nothing happens. raises an exception if width is less than zero. example: before me = 'abcdef' , width = 9 , filler = ' ' after me = 'abcdef '.
+left justify Length becomes equal to Width and the new characters are equal to Filler. If Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '.
 ") LeftJustify;
 		void LeftJustify(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -1127,7 +1129,7 @@ int
 
 Description
 -----------
-Returns number of characters in <self>. this is the same functionality as 'strlen' in c. example tcollection_asciistring myalphabet('abcdef'); assert ( myalphabet.length() == 6 ); - 1 is the position of the first character in this string. - the length of this string gives the position of its last character. - positions less than or equal to zero, or greater than the length of this string are invalid in functions which identify a character of this string by its position.
+Returns number of characters in <self>. This is the same functionality as 'strlen' in C. Example TCollection_AsciiString myAlphabet('abcdef'); assert ( myAlphabet.Length() == 6 ); - 1 is the position of the first character in this string. - The length of this string gives the position of its last character. - Positions less than or equal to zero, or greater than the length of this string are invalid in functions which identify a character of this string by its position.
 ") Length;
 		Standard_Integer Length();
 
@@ -1147,7 +1149,7 @@ int
 
 Description
 -----------
-Returns an index in the string <self> of the first occurrence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
+Returns an index in the string <self> of the first occurrence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4.
 ") Location;
 		Standard_Integer Location(TCollection_AsciiString other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -1168,7 +1170,7 @@ int
 
 Description
 -----------
-Returns the index of the nth occurrence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
+Returns the index of the nth occurrence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5.
 ") Location;
 		Standard_Integer Location(const Standard_Integer N, const Standard_Character C, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -1181,7 +1183,7 @@ None
 
 Description
 -----------
-Converts <self> to its lower-case equivalent. example tcollection_asciistring mystring('hello dolly'); mystring.uppercase(); assert ( mystring == 'hello dolly' ); mystring.lowercase(); assert ( mystring == 'hello dolly' );.
+Converts <self> to its lower-case equivalent. Example TCollection_AsciiString myString('Hello Dolly'); myString.UpperCase(); assert ( myString == 'HELLO DOLLY' ); myString.LowerCase(); assert ( myString == 'hello dolly' );.
 ") LowerCase;
 		void LowerCase();
 
@@ -1199,7 +1201,7 @@ None
 
 Description
 -----------
-Inserts the string other at the beginning of this ascii string. example tcollection_asciistring myalphabet('cde'); tcollection_asciistring mybegin('ab'); myalphabet.prepend(mybegin); assert ( myalphabet == 'abcde' );.
+Inserts the string other at the beginning of this ASCII string. Example TCollection_AsciiString myAlphabet('cde'); TCollection_AsciiString myBegin('ab'); myAlphabet.Prepend(myBegin); assert ( myAlphabet == 'abcde' );.
 ") Prepend;
 		void Prepend(TCollection_AsciiString other);
 
@@ -1247,7 +1249,7 @@ float
 
 Description
 -----------
-Converts an asciistring containing a numeric expression. to a real. example: ex: '215' returns 215.0. ex: '3.14159267' returns 3.14159267.
+Converts an AsciiString containing a numeric expression. to a Real. Example: ex: '215' returns 215.0. ex: '3.14159267' returns 3.14159267.
 ") RealValue;
 		Standard_Real RealValue();
 
@@ -1266,7 +1268,7 @@ None
 
 Description
 -----------
-Erases <ahowmany> characters from position <where>, <where> included. example: astring contains 'hello' astring.remove(2,2) erases 2 characters from position 2 this gives 'hlo'.
+Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Remove(2,2) erases 2 characters from position 2 This gives 'Hlo'.
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
@@ -1285,7 +1287,7 @@ None
 
 Description
 -----------
-Remove all the occurrences of the character c in the string. example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
+Remove all the occurrences of the character C in the string. Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'.
 ") RemoveAll;
 		void RemoveAll(const Standard_Character C, const Standard_Boolean CaseSensitive);
 
@@ -1335,7 +1337,7 @@ None
 
 Description
 -----------
-Right justify. length becomes equal to width and the new characters are equal to filler. if width < length nothing happens. raises an exception if width is less than zero. example: before me = 'abcdef' , width = 9 , filler = ' ' after me = ' abcdef'.
+Right justify. Length becomes equal to Width and the new characters are equal to Filler. if Width < Length nothing happens. Raises an exception if Width is less than zero. Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'.
 ") RightJustify;
 		void RightJustify(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -1353,7 +1355,7 @@ int
 
 Description
 -----------
-Searches a cstring in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. example: astring contains 'sample single test' astring.search('le') returns 5.
+Searches a CString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5.
 ") Search;
 		Standard_Integer Search(Standard_CString what);
 
@@ -1371,7 +1373,7 @@ int
 
 Description
 -----------
-Searches an asciistring in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
+Searches an AsciiString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
 ") Search;
 		Standard_Integer Search(TCollection_AsciiString what);
 
@@ -1389,7 +1391,7 @@ int
 
 Description
 -----------
-Searches a cstring in a asciistring from the end and returns position of first item <what> matching. it returns -1 if not found. example: astring contains 'sample single test' astring.searchfromend('le') returns 12.
+Searches a CString in a AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(Standard_CString what);
 
@@ -1407,7 +1409,7 @@ int
 
 Description
 -----------
-Searches a asciistring in another asciistring from the end and returns position of first item <what> matching. it returns -1 if not found.
+Searches a AsciiString in another AsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(TCollection_AsciiString what);
 
@@ -1426,7 +1428,7 @@ None
 
 Description
 -----------
-Replaces one character in the asciistring at position <where>. if <where> is less than zero or greater than the length of <self> an exception is raised. example: astring contains 'garbake' astring.replace(6,'g') gives <self> = 'garbage'.
+Replaces one character in the AsciiString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_Character what);
 
@@ -1445,7 +1447,7 @@ None
 
 Description
 -----------
-Replaces a part of <self> by a cstring. if <where> is less than zero or greater than the length of <self> an exception is raised. example: astring contains 'abcde' astring.setvalue(4,'1234567') gives <self> = 'abc1234567'.
+Replaces a part of <self> by a CString. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'abcde' aString.SetValue(4,'1234567') gives <self> = 'abc1234567'.
 ") SetValue;
 		void SetValue(const Standard_Integer where, Standard_CString what);
 
@@ -1464,7 +1466,7 @@ None
 
 Description
 -----------
-Replaces a part of <self> by another asciistring.
+Replaces a part of <self> by another AsciiString.
 ") SetValue;
 		void SetValue(const Standard_Integer where, TCollection_AsciiString what);
 
@@ -1482,7 +1484,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Splits a asciistring into two sub-strings. example: astring contains 'abcdefg' astring.split(3) gives <self> = 'abc' and returns 'defg'.
+Splits a AsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'.
 ") Split;
 		TCollection_AsciiString Split(const Standard_Integer where);
 
@@ -1519,7 +1521,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Creation of a sub-string of the string <self>. the sub-string starts to the index fromindex and ends to the index toindex. raises an exception if toindex or fromindex is out of bounds example: before me = 'abcdefg', toindex=3, fromindex=6 after me = 'abcdefg' returns 'cdef'.
+Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'.
 ") SubString;
 		TCollection_AsciiString SubString(const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -1550,7 +1552,7 @@ str
 
 Description
 -----------
-Returns pointer to asciistring (char *). this is useful for some casual manipulations. warning: because this 'char *' is 'const', you can't modify its contents.
+Returns pointer to AsciiString (char *). This is useful for some casual manipulations. Warning: Because this 'char *' is 'const', you can't modify its contents.
 ") ToCString;
 		Standard_CString ToCString();
 
@@ -1569,7 +1571,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Extracts <whichone> token from <self>. by default, the <separators> is set to space and tabulation. by default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. if no token indexed by <whichone> is found, it returns empty asciistring. example: astring contains 'this is a message' astring.token() returns 'this' astring.token(' ',4) returns 'message' astring.token(' ',2) returns 'is' astring.token(' ',9) returns '' other separators than space character and tabulation are allowed: astring contains '1234; test:message , value' astring.token('; :,',4) returns 'value' astring.token('; :,',2) returns 'test'.
+Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed: aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'.
 ") Token;
 		TCollection_AsciiString Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
@@ -1587,7 +1589,7 @@ None
 
 Description
 -----------
-Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(3) -> me = 'hel'.
+Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'.
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
@@ -1631,7 +1633,7 @@ Standard_Character
 
 Description
 -----------
-Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
+Returns character at position <where> in <self>. If <where> is less than zero or greater than the length of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'.
 ") Value;
 		Standard_Character Value(const Standard_Integer where);
 
@@ -1863,7 +1865,7 @@ None
 
 Description
 -----------
-Initializes a extendedstring to an empty extendedstring.
+Initializes a ExtendedString to an empty ExtendedString.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString();
 
@@ -1882,7 +1884,7 @@ None
 
 Description
 -----------
-Creation by converting a cstring to an extended string. if <ismultibyte> is true then the string is treated as having utf-8 coding. if it is not a utf-8 then <ismultibyte> is ignored and each character is copied to extcharacter.
+Creation by converting a CString to an extended string. If <isMultiByte> is true then the string is treated as having UTF-8 coding. If it is not a UTF-8 then <isMultiByte> is ignored and each character is copied to ExtCharacter.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(Standard_CString astring, const Standard_Boolean isMultiByte = Standard_False);
 
@@ -1900,7 +1902,7 @@ None
 
 Description
 -----------
-Creation by converting an extstring to an extended string.
+Creation by converting an ExtString to an extended string.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_ExtString astring);
 
@@ -1918,7 +1920,7 @@ None
 
 Description
 -----------
-Initialize from wide-char string considering it as unicode string (the size of wide char is a platform-dependent - e.g. on windows wchar_t is utf-16). //! this constructor is unavailable if application is built with deprecated msvc option '-zc:wchar_t-', since occt itself is never built with this option.
+Initialize from wide-char string considering it as Unicode string (the size of wide char is a platform-dependent - e.g. on Windows wchar_t is UTF-16). //! This constructor is unavailable if application is built with deprecated msvc option '-Zc:wchar_t-', since OCCT itself is never built with this option.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_WideChar * theStringUtf);
 
@@ -1936,7 +1938,7 @@ None
 
 Description
 -----------
-Initializes a asciistring with a single character.
+Initializes a AsciiString with a single character.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Character aChar);
 
@@ -1954,7 +1956,7 @@ None
 
 Description
 -----------
-Initializes a extendedstring with a single character.
+Initializes a ExtendedString with a single character.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_ExtCharacter aChar);
 
@@ -1973,7 +1975,7 @@ None
 
 Description
 -----------
-Initializes a extendedstring with <length> space allocated. and filled with <filler>.this is useful for buffers.
+Initializes a ExtendedString with <length> space allocated. and filled with <filler>.This is useful for buffers.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Integer length, const Standard_ExtCharacter filler);
 
@@ -1991,7 +1993,7 @@ None
 
 Description
 -----------
-Initializes an extendedstring with an integer value.
+Initializes an ExtendedString with an integer value.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Integer value);
 
@@ -2009,7 +2011,7 @@ None
 
 Description
 -----------
-Initializes an extendedstring with a real value.
+Initializes an ExtendedString with a real value.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Real value);
 
@@ -2027,7 +2029,7 @@ None
 
 Description
 -----------
-Initializes a extendedstring with another extendedstring.
+Initializes a ExtendedString with another ExtendedString.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(TCollection_ExtendedString astring);
 
@@ -2064,7 +2066,7 @@ None
 
 Description
 -----------
-Creation by converting an ascii string to an extended string. the string is treated as having utf-8 coding. if it is not a utf-8 or multi byte then each character is copied to extcharacter.
+Creation by converting an Ascii string to an extended string. The string is treated as having UTF-8 coding. If it is not a UTF-8 or multi byte then each character is copied to ExtCharacter.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(TCollection_AsciiString astring, const Standard_Boolean isMultiByte = Standard_True);
 
@@ -2082,7 +2084,7 @@ None
 
 Description
 -----------
-Appends the other extended string to this extended string. note that this method is an alias of operator +=. example: astring += anotherstring.
+Appends the other extended string to this extended string. Note that this method is an alias of operator +=. Example: aString += anotherString.
 ") AssignCat;
 		void AssignCat(TCollection_ExtendedString other);
 
@@ -2137,7 +2139,7 @@ None
 
 Description
 -----------
-Substitutes all the characters equal to achar by newchar in the extendedstring <self>. the substitution can be case sensitive. if you don't use default case sensitive, no matter whether achar is uppercase or not.
+Substitutes all the characters equal to aChar by NewChar in the ExtendedString <self>. The substitution can be case sensitive. If you don't use default case sensitive, no matter whether aChar is uppercase or not.
 ") ChangeAll;
 		void ChangeAll(const Standard_ExtCharacter aChar, const Standard_ExtCharacter NewChar);
 
@@ -2150,7 +2152,7 @@ None
 
 Description
 -----------
-Removes all characters contained in <self>. this produces an empty extendedstring.
+Removes all characters contained in <self>. This produces an empty ExtendedString.
 ") Clear;
 		void Clear();
 
@@ -2168,7 +2170,7 @@ None
 
 Description
 -----------
-Copy <fromwhere> to <self>. used as operator =.
+Copy <fromwhere> to <self>. Used as operator =.
 ") Copy;
 		void Copy(TCollection_ExtendedString fromwhere);
 
@@ -2199,7 +2201,8 @@ size_t
 
 Description
 -----------
-Returns a hashed value for the extended string. note: if string is ascii, the computed value is the same as the value computed with the hashcode function on a tcollection_asciistring string composed with equivalent ascii characters. return a computed hash code.
+Returns a hashed value for the extended string. Note: if string is ASCII, the computed value is the same as the value computed with the HashCode function on a TCollection_AsciiString string composed with equivalent ASCII characters. 
+Return: a computed hash code.
 ") HashCode;
 		size_t HashCode();
 
@@ -2218,7 +2221,7 @@ None
 
 Description
 -----------
-Insert a character at position <where>.
+Insert a Character at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_ExtCharacter what);
 
@@ -2237,7 +2240,7 @@ None
 
 Description
 -----------
-Insert a extendedstring at position <where>.
+Insert a ExtendedString at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, TCollection_ExtendedString what);
 
@@ -2250,7 +2253,7 @@ bool
 
 Description
 -----------
-Returns true if the extendedstring contains only 'ascii range' characters .
+Returns True if the ExtendedString contains only 'Ascii Range' characters .
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
@@ -2268,7 +2271,7 @@ bool
 
 Description
 -----------
-Returns true if there are differences between the characters in this extended string and the other extended string. note that this method is an alias of operator !=.
+Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const Standard_ExtString other);
 
@@ -2286,7 +2289,7 @@ bool
 
 Description
 -----------
-Returns true if there are differences between the characters in this extended string and the other extended string. note that this method is an alias of operator !=.
+Returns true if there are differences between the characters in this extended string and the other extended string. Note that this method is an alias of operator !=.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(TCollection_ExtendedString other);
 
@@ -2299,7 +2302,7 @@ bool
 
 Description
 -----------
-Returns true if this string contains no characters.
+Returns True if this string contains no characters.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -2317,7 +2320,7 @@ bool
 
 Description
 -----------
-Returns true if the characters in this extended string are identical to the characters in the other extended string. note that this method is an alias of operator ==.
+Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Standard_ExtString other);
 
@@ -2335,7 +2338,7 @@ bool
 
 Description
 -----------
-Returns true if the characters in this extended string are identical to the characters in the other extended string. note that this method is an alias of operator ==.
+Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(TCollection_ExtendedString other);
 
@@ -2354,7 +2357,7 @@ bool
 
 Description
 -----------
-Returns true if the characters in this extended string are identical to the characters in the other extended string. note that this method is an alias of operator ==.
+Returns true if the characters in this extended string are identical to the characters in the other extended string. Note that this method is an alias of operator ==.
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_ExtendedString theString1, TCollection_ExtendedString theString2);
 
@@ -2372,7 +2375,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is greater than <other>.
+Returns True if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const Standard_ExtString other);
 
@@ -2390,7 +2393,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is greater than <other>.
+Returns True if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(TCollection_ExtendedString other);
 
@@ -2408,7 +2411,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is less than <other>.
+Returns True if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const Standard_ExtString other);
 
@@ -2426,7 +2429,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is less than <other>.
+Returns True if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(TCollection_ExtendedString other);
 
@@ -2439,7 +2442,7 @@ int
 
 Description
 -----------
-Returns the number of 16-bit code units (might be greater than number of unicode symbols if string contains surrogate pairs).
+Returns the number of 16-bit code units (might be greater than number of Unicode symbols if string contains surrogate pairs).
 ") Length;
 		Standard_Integer Length();
 
@@ -2452,7 +2455,7 @@ int
 
 Description
 -----------
-Returns expected cstring length in utf8 coding. it can be used for memory calculation before converting to cstring containing symbols in utf8 coding.
+Returns expected CString length in UTF8 coding. It can be used for memory calculation before converting to CString containing symbols in UTF8 coding.
 ") LengthOfCString;
 		Standard_Integer LengthOfCString();
 
@@ -2524,7 +2527,7 @@ int
 
 Description
 -----------
-Searches a extendedstring in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
+Searches a ExtendedString in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
 ") Search;
 		Standard_Integer Search(TCollection_ExtendedString what);
 
@@ -2542,7 +2545,7 @@ int
 
 Description
 -----------
-Searches a extendedstring in another extendedstring from the end and returns position of first item <what> matching. it returns -1 if not found.
+Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. it returns -1 if not found.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(TCollection_ExtendedString what);
 
@@ -2561,7 +2564,7 @@ None
 
 Description
 -----------
-Replaces one character in the extendedstring at position <where>. if <where> is less than zero or greater than the length of <self> an exception is raised.
+Replaces one character in the ExtendedString at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_ExtCharacter what);
 
@@ -2580,7 +2583,7 @@ None
 
 Description
 -----------
-Replaces a part of <self> by another extendedstring see above.
+Replaces a part of <self> by another ExtendedString see above.
 ") SetValue;
 		void SetValue(const Standard_Integer where, TCollection_ExtendedString what);
 
@@ -2598,7 +2601,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Splits this extended string into two sub-strings at position where. - the second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. - this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). example: astring contains 'abcdefg' astring.split(3) gives <self> = 'abc' and returns 'defg'.
+Splits this extended string into two sub-strings at position where. - The second sub-string (from position where + 1 of this string to the end) is returned in a new extended string. - this extended string is modified: its last characters are removed, it becomes equal to the first sub-string (from the first character to position where). Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'.
 ") Split;
 		TCollection_ExtendedString Split(const Standard_Integer where);
 
@@ -2647,7 +2650,7 @@ Standard_ExtString
 
 Description
 -----------
-Returns pointer to extstring.
+Returns pointer to ExtString.
 ") ToExtString;
 		Standard_ExtString ToExtString();
 
@@ -2665,7 +2668,7 @@ int
 
 Description
 -----------
-Converts the internal <mystring> to utf8 coding and returns length of the out cstring. a memory for the <thecstring> should be allocated before call!.
+Converts the internal <mystring> to UTF8 coding and returns length of the out CString. A memory for the <theCString> should be allocated before call!.
 ") ToUTF8CString;
 		Standard_Integer ToUTF8CString(Standard_PCharacter & theCString);
 
@@ -2684,7 +2687,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Extracts <whichone> token from <self>. by default, the <separators> is set to space and tabulation. by default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. if no token indexed by <whichone> is found, it returns an empty asciistring. example: astring contains 'this is a message' astring.token() returns 'this' astring.token(' ',4) returns 'message' astring.token(' ',2) returns 'is' astring.token(' ',9) returns '' other separators than space character and tabulation are allowed: astring contains '1234; test:message , value' astring.token('; :,',4) returns 'value' astring.token('; :,',2) returns 'test'.
+Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty AsciiString. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed: aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'.
 ") Token;
 		TCollection_ExtendedString Token(const Standard_ExtString separators, const Standard_Integer whichone = 1);
 
@@ -2702,7 +2705,7 @@ None
 
 Description
 -----------
-Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(3) -> me = 'hel' exceptions standard_outofrange if ahowmany is greater than the length of this string.
+Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel' Exceptions Standard_OutOfRange if ahowmany is greater than the length of this string.
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
@@ -2720,7 +2723,7 @@ Standard_ExtCharacter
 
 Description
 -----------
-Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e' exceptions standard_outofrange if where lies outside the bounds of this extended string.
+Returns character at position <where> in <self>. If <where> is less than zero or greater than the length of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e' Exceptions Standard_OutOfRange if where lies outside the bounds of this extended string.
 ") Value;
 		Standard_ExtCharacter Value(const Standard_Integer where);
 
@@ -2840,7 +2843,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring to an empty asciistring.
+Initializes a HAsciiString to an empty AsciiString.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString();
 
@@ -2858,7 +2861,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a cstring.
+Initializes a HAsciiString with a CString.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(Standard_CString message);
 
@@ -2876,7 +2879,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a single character.
+Initializes a HAsciiString with a single character.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Character aChar);
 
@@ -2895,7 +2898,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with <length> space allocated. and filled with <filler>.this is useful for buffers.
+Initializes a HAsciiString with <length> space allocated. and filled with <filler>.This is useful for buffers.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Integer length, const Standard_Character filler);
 
@@ -2913,7 +2916,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with an integer value.
+Initializes a HAsciiString with an integer value.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Integer value);
 
@@ -2931,7 +2934,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a real value.
+Initializes a HAsciiString with a real value.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Real value);
 
@@ -2949,7 +2952,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a asciistring.
+Initializes a HAsciiString with a AsciiString.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(TCollection_AsciiString aString);
 
@@ -2967,7 +2970,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a asciistring.
+Initializes a HAsciiString with a AsciiString.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(TCollection_AsciiString & theString);
 
@@ -2985,7 +2988,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a hasciistring.
+Initializes a HAsciiString with a HAsciiString.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const opencascade::handle<TCollection_HAsciiString> & aString);
 
@@ -3004,7 +3007,7 @@ None
 
 Description
 -----------
-Initializes a hasciistring with a hextendedstring. if replacenonascii is non-null character, it will be used in place of any non-ascii character found in the source string. otherwise, creates utf-8 unicode string.
+Initializes a HAsciiString with a HExtendedString. If replaceNonAscii is non-null character, it will be used in place of any non-ascii character found in the source string. Otherwise, creates UTF-8 unicode string.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const opencascade::handle<TCollection_HExtendedString> & aString, const Standard_Character replaceNonAscii);
 
@@ -3040,7 +3043,7 @@ None
 
 Description
 -----------
-Appends <other> to me. example: astring = astring + anotherstring.
+Appends <other> to me. Example: aString = aString + anotherString.
 ") AssignCat;
 		void AssignCat(const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3053,7 +3056,7 @@ None
 
 Description
 -----------
-Converts the first character into its corresponding upper-case character and the other characters into lowercase. example: before me = 'hello ' after me = 'hello '.
+Converts the first character into its corresponding upper-case character and the other characters into lowercase. Example: before me = 'hellO ' after me = 'Hello '.
 ") Capitalize;
 		void Capitalize();
 
@@ -3071,7 +3074,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Creates a new string by concatenation of this ascii string and the other ascii string. example: astring = astring + anotherstring astring = astring + 'dummy' astring contains 'i say ' astring = astring + 'hello ' + 'dolly' gives 'i say hello dolly' warning: to catenate more than one cstring, you must put a string before. so the following example is wrong ! astring = 'hello ' + 'dolly' this is not allowed this rule is applicable to assigncat (operator +=) too.
+Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString aString = aString + 'Dummy' aString contains 'I say ' aString = aString + 'Hello ' + 'Dolly' gives 'I say Hello Dolly' Warning: To catenate more than one CString, you must put a String before. So the following example is WRONG ! aString = 'Hello ' + 'Dolly' THIS IS NOT ALLOWED This rule is applicable to AssignCat (operator +=) too.
 ") Cat;
 		opencascade::handle<TCollection_HAsciiString> Cat(Standard_CString other);
 
@@ -3089,7 +3092,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Creates a new string by concatenation of this ascii string and the other ascii string. example: astring = astring + anotherstring.
+Creates a new string by concatenation of this ASCII string and the other ASCII string. Example: aString = aString + anotherString.
 ") Cat;
 		opencascade::handle<TCollection_HAsciiString> Cat(const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3108,7 +3111,7 @@ None
 
 Description
 -----------
-Modifies this ascii string so that its length becomes equal to width and the new characters are equal to filler. new characters are added both at the beginning and at the end of this string. if width is less than the length of this ascii string, nothing happens. example opencascade::handle<tcollection_hasciistring> myalphabet = new tcollection_hasciistring ('abcdef'); myalphabet->center(9,' '); assert ( !strcmp( myalphabet->tocstring(), ' abcdef ') );.
+Modifies this ASCII string so that its length becomes equal to Width and the new characters are equal to Filler. New characters are added both at the beginning and at the end of this string. If Width is less than the length of this ASCII string, nothing happens. Example opencascade::handle<TCollection_HAsciiString> myAlphabet = new TCollection_HAsciiString ('abcdef'); myAlphabet->Center(9,' '); assert ( !strcmp( myAlphabet->ToCString(), ' abcdef ') );.
 ") Center;
 		void Center(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -3128,7 +3131,7 @@ None
 
 Description
 -----------
-Replaces all characters equal to achar by newchar in this ascii string. the substitution is case sensitive if casesensitive is true (default value). if you do not use the default case sensitive option, it does not matter whether achar is upper-case or not. example opencascade::handle<tcollection_hasciistring> mymistake = new tcollection_hasciistring ('hather'); mymistake->changeall('h','f'); assert ( !strcmp( mymistake->tocstring(), 'father') );.
+Replaces all characters equal to aChar by NewChar in this ASCII string. The substitution is case sensitive if CaseSensitive is true (default value). If you do not use the default case sensitive option, it does not matter whether aChar is upper-case or not. Example opencascade::handle<TCollection_HAsciiString> myMistake = new TCollection_HAsciiString ('Hather'); myMistake->ChangeAll('H','F'); assert ( !strcmp( myMistake->ToCString(), 'Father') );.
 ") ChangeAll;
 		void ChangeAll(const Standard_Character aChar, const Standard_Character NewChar, const Standard_Boolean CaseSensitive = Standard_True);
 
@@ -3141,7 +3144,7 @@ None
 
 Description
 -----------
-Removes all characters contained in <self>. this produces an empty hasciistring.
+Removes all characters contained in <self>. This produces an empty HAsciiString.
 ") Clear;
 		void Clear();
 
@@ -3161,7 +3164,7 @@ int
 
 Description
 -----------
-Returns the index of the first character of <self> that is present in <set>. the search begins to the index fromindex and ends to the the index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range example: before me = 'aabacaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabacaa' returns 1.
+Returns the index of the first character of <self> that is present in <Set>. The search begins to the index FromIndex and ends to the the index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 1.
 ") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet(const opencascade::handle<TCollection_HAsciiString> & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3181,7 +3184,7 @@ int
 
 Description
 -----------
-Returns the index of the first character of <self> that is not present in the set <set>. the search begins to the index fromindex and ends to the the index toindex in <self>. returns zero if failure. raises an exception if fromindex or toindex is out of range. example: before me = 'aabacaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabacaa' returns 3.
+Returns the index of the first character of <self> that is not present in the set <Set>. The search begins to the index FromIndex and ends to the the index ToIndex in <self>. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAcAa', S = 'Aa', FromIndex = 1, Toindex = 7 after me = 'aabAcAa' returns 3.
 ") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet(const opencascade::handle<TCollection_HAsciiString> & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3200,7 +3203,7 @@ None
 
 Description
 -----------
-Insert a character at position <where>. example: astring contains 'hy not ?' astring.insert(1,'w'); gives 'why not ?' astring contains 'wh' astring.insert(3,'y'); gives 'why' astring contains 'way' astring.insert(2,'h'); gives 'why'.
+Insert a Character at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'.
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_Character what);
 
@@ -3219,7 +3222,7 @@ None
 
 Description
 -----------
-Insert a hasciistring at position <where>.
+Insert a HAsciiString at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, Standard_CString what);
 
@@ -3238,7 +3241,7 @@ None
 
 Description
 -----------
-Insert a hasciistring at position <where>.
+Insert a HAsciiString at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const opencascade::handle<TCollection_HAsciiString> & what);
 
@@ -3257,7 +3260,7 @@ None
 
 Description
 -----------
-Inserts the other ascii string a after a specific index in the string <self> example: before me = 'cde' , index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'.
+Inserts the other ASCII string a after a specific index in the string <self> Example: before me = 'cde' , Index = 0 , other = 'ab' after me = 'abcde' , other = 'ab'.
 ") InsertAfter;
 		void InsertAfter(const Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3276,7 +3279,7 @@ None
 
 Description
 -----------
-Inserts the other ascii string a before a specific index in the string <self> raises an exception if index is out of bounds example: before me = 'cde' , index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'.
+Inserts the other ASCII string a before a specific index in the string <self> Raises an exception if Index is out of bounds Example: before me = 'cde' , Index = 1 , other = 'ab' after me = 'abcde' , other = 'ab'.
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3289,7 +3292,7 @@ int
 
 Description
 -----------
-Converts a hasciistring containing a numeric expression to an integer. example: '215' returns 215.
+Converts a HAsciiString containing a numeric expression to an Integer. Example: '215' returns 215.
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
@@ -3302,7 +3305,7 @@ bool
 
 Description
 -----------
-Returns true if the string contains only ascii characters between ' ' and '~'. this means no control character and no extended ascii code.
+Returns True if the string contains only ASCII characters between ' ' and '~'. This means no control character and no extended ASCII code.
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
@@ -3320,7 +3323,7 @@ bool
 
 Description
 -----------
-Returns true if the string s not contains same characters than the string <self>.
+Returns True if the string S not contains same characters than the string <self>.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const opencascade::handle<TCollection_HAsciiString> & S);
 
@@ -3333,7 +3336,7 @@ bool
 
 Description
 -----------
-Returns true if the string <self> contains zero character.
+Returns True if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -3351,7 +3354,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' greater than <other>.
+Returns True if <self> is 'ASCII' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3364,7 +3367,7 @@ bool
 
 Description
 -----------
-Returns true if the string contains an integer value.
+Returns True if the string contains an integer value.
 ") IsIntegerValue;
 		Standard_Boolean IsIntegerValue();
 
@@ -3382,7 +3385,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is 'ascii' less than <other>.
+Returns True if <self> is 'ASCII' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3395,7 +3398,7 @@ bool
 
 Description
 -----------
-Returns true if the string contains a real value.
+Returns True if the string contains a real value.
 ") IsRealValue;
 		Standard_Boolean IsRealValue();
 
@@ -3431,7 +3434,7 @@ bool
 
 Description
 -----------
-Returns true if the string s contains same characters than the string <self>.
+Returns True if the string S contains same characters than the string <self>.
 ") IsSameString;
 		Standard_Boolean IsSameString(const opencascade::handle<TCollection_HAsciiString> & S);
 
@@ -3450,7 +3453,7 @@ bool
 
 Description
 -----------
-Returns true if the string s contains same characters than the string <self>.
+Returns True if the string S contains same characters than the string <self>.
 ") IsSameString;
 		Standard_Boolean IsSameString(const opencascade::handle<TCollection_HAsciiString> & S, const Standard_Boolean CaseSensitive);
 
@@ -3482,7 +3485,7 @@ None
 
 Description
 -----------
-Left justify. length becomes equal to width and the new characters are equal to filler if width < length nothing happens raises an exception if width is less than zero example: before me = 'abcdef' , width = 9 , filler = ' ' after me = 'abcdef '.
+Left justify. Length becomes equal to Width and the new characters are equal to Filler if Width < Length nothing happens Raises an exception if Width is less than zero Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = 'abcdef '.
 ") LeftJustify;
 		void LeftJustify(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -3495,7 +3498,7 @@ int
 
 Description
 -----------
-Returns number of characters in <self>. this is the same functionality as 'strlen' in c.
+Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
 ") Length;
 		Standard_Integer Length();
 
@@ -3515,7 +3518,7 @@ int
 
 Description
 -----------
-Returns an index in the string <self> of the first occurrence of the string s in the string <self> from the starting index fromindex to the ending index toindex returns zero if failure raises an exception if fromindex or toindex is out of range. example: before me = 'aabaaaa', s = 'aa', fromindex = 1, toindex = 7 after me = 'aabaaaa' returns 4.
+returns an index in the string <self> of the first occurrence of the string S in the string <self> from the starting index FromIndex to the ending index ToIndex returns zero if failure Raises an exception if FromIndex or ToIndex is out of range. Example: before me = 'aabAaAa', S = 'Aa', FromIndex = 1, ToIndex = 7 after me = 'aabAaAa' returns 4.
 ") Location;
 		Standard_Integer Location(const opencascade::handle<TCollection_HAsciiString> & other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3536,7 +3539,7 @@ int
 
 Description
 -----------
-Returns the index of the nth occurrence of the character c in the string <self> from the starting index fromindex to the ending index toindex. returns zero if failure. raises an exception if fromindex or toindex is out of range example: before me = 'aabaa', n = 3, c = 'a', fromindex = 1, toindex = 5 after me = 'aabaa' returns 5.
+Returns the index of the nth occurrence of the character C in the string <self> from the starting index FromIndex to the ending index ToIndex. Returns zero if failure. Raises an exception if FromIndex or ToIndex is out of range Example: before me = 'aabAa', N = 3, C = 'a', FromIndex = 1, ToIndex = 5 after me = 'aabAa' returns 5.
 ") Location;
 		Standard_Integer Location(const Standard_Integer N, const Standard_Character C, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3567,7 +3570,7 @@ None
 
 Description
 -----------
-Inserts the other string at the beginning of the string <self> example: before me = 'cde' , s = 'ab' after me = 'abcde' , s = 'ab'.
+Inserts the other string at the beginning of the string <self> Example: before me = 'cde' , S = 'ab' after me = 'abcde' , S = 'ab'.
 ") Prepend;
 		void Prepend(const opencascade::handle<TCollection_HAsciiString> & other);
 
@@ -3597,7 +3600,7 @@ float
 
 Description
 -----------
-Converts a string containing a numeric expression to a real. example: '215' returns 215.0. '3.14159267' returns 3.14159267.
+Converts a string containing a numeric expression to a Real. Example: '215' returns 215.0. '3.14159267' returns 3.14159267.
 ") RealValue;
 		Standard_Real RealValue();
 
@@ -3616,7 +3619,7 @@ None
 
 Description
 -----------
-Erases <ahowmany> characters from position <where>, <where> included. example: astring contains 'hello' astring.erase(2,2) erases 2 characters from position 1 this gives 'hlo'.
+Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
@@ -3635,7 +3638,7 @@ None
 
 Description
 -----------
-Remove all the occurrences of the character c in the string example: before me = 'hellllo', c = 'l' , casesensitive = true after me = 'hello'.
+Remove all the occurrences of the character C in the string Example: before me = 'HellLLo', C = 'L' , CaseSensitive = True after me = 'Hello'.
 ") RemoveAll;
 		void RemoveAll(const Standard_Character C, const Standard_Boolean CaseSensitive);
 
@@ -3685,7 +3688,7 @@ None
 
 Description
 -----------
-Right justify. length becomes equal to width and the new characters are equal to filler if width < length nothing happens raises an exception if width is less than zero example: before me = 'abcdef' , width = 9 , filler = ' ' after me = ' abcdef'.
+Right justify. Length becomes equal to Width and the new characters are equal to Filler if Width < Length nothing happens Raises an exception if Width is less than zero Example: before me = 'abcdef' , Width = 9 , Filler = ' ' after me = ' abcdef'.
 ") RightJustify;
 		void RightJustify(const Standard_Integer Width, const Standard_Character Filler);
 
@@ -3703,7 +3706,7 @@ int
 
 Description
 -----------
-Searches a cstring in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found. example: astring contains 'sample single test' astring.search('le') returns 5.
+Searches a CString in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.Search('le') returns 5.
 ") Search;
 		Standard_Integer Search(Standard_CString what);
 
@@ -3721,7 +3724,7 @@ int
 
 Description
 -----------
-Searches a string in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
+Searches a String in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
 ") Search;
 		Standard_Integer Search(const opencascade::handle<TCollection_HAsciiString> & what);
 
@@ -3739,7 +3742,7 @@ int
 
 Description
 -----------
-Searches a cstring in a string from the end and returns position of first item <what> matching. it returns -1 if not found. example: astring contains 'sample single test' astring.searchfromend('le') returns 12.
+Searches a CString in a String from the end and returns position of first item <what> matching. It returns -1 if not found. Example: aString contains 'Sample single test' aString.SearchFromEnd('le') returns 12.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(Standard_CString what);
 
@@ -3757,7 +3760,7 @@ int
 
 Description
 -----------
-Searches a hasciistring in another hasciistring from the end and returns position of first item <what> matching. it returns -1 if not found.
+Searches a HAsciiString in another HAsciiString from the end and returns position of first item <what> matching. It returns -1 if not found.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(const opencascade::handle<TCollection_HAsciiString> & what);
 
@@ -3776,7 +3779,7 @@ None
 
 Description
 -----------
-Replaces one character in the string at position <where>. if <where> is less than zero or greater than the length of <self> an exception is raised. example: astring contains 'garbake' astring.replace(6,'g') gives <self> = 'garbage'.
+Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_Character what);
 
@@ -3795,7 +3798,7 @@ None
 
 Description
 -----------
-Replaces a part of <self> in the string at position <where>. if <where> is less than zero or greater than the length of <self> an exception is raised. example: astring contains 'garbake' astring.replace(6,'g') gives <self> = 'garbage'.
+Replaces a part of <self> in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'.
 ") SetValue;
 		void SetValue(const Standard_Integer where, Standard_CString what);
 
@@ -3832,7 +3835,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Splits a hasciistring into two sub-strings. example: astring contains 'abcdefg' astring.split(3) gives <self> = 'abc' and returns 'defg'.
+Splits a HAsciiString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'.
 ") Split;
 		opencascade::handle<TCollection_HAsciiString> Split(const Standard_Integer where);
 
@@ -3845,7 +3848,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the field mystring.
+Returns the field myString.
 ") String;
 		const TCollection_AsciiString & String();
 
@@ -3864,7 +3867,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Creation of a sub-string of the string <self>. the sub-string starts to the index fromindex and ends to the index toindex. raises an exception if toindex or fromindex is out of bounds example: before me = 'abcdefg', toindex=3, fromindex=6 after me = 'abcdefg' returns 'cdef'.
+Creation of a sub-string of the string <self>. The sub-string starts to the index Fromindex and ends to the index ToIndex. Raises an exception if ToIndex or FromIndex is out of bounds Example: before me = 'abcdefg', ToIndex=3, FromIndex=6 after me = 'abcdefg' returns 'cdef'.
 ") SubString;
 		opencascade::handle<TCollection_HAsciiString> SubString(const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
@@ -3877,7 +3880,7 @@ str
 
 Description
 -----------
-Returns pointer to string (char *) this is useful for some casual manipulations because this 'char *' is 'const', you can't modify its contents.
+Returns pointer to string (char *) This is useful for some casual manipulations Because this 'char *' is 'const', you can't modify its contents.
 ") ToCString;
 		Standard_CString ToCString();
 
@@ -3896,7 +3899,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Extracts <whichone> token from <self>. by default, the <separators> is set to space and tabulation. by default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. if no token indexed by <whichone> is found, it returns an empty string. example: astring contains 'this is a message' astring.token() returns 'this' astring.token(' ',4) returns 'message' astring.token(' ',2) returns 'is' astring.token(' ',9) returns '' other separators than space character and tabulation are allowed astring contains '1234; test:message , value' astring.token('; :,',4) returns 'value' astring.token('; :,',2) returns 'test'.
+Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'.
 ") Token;
 		opencascade::handle<TCollection_HAsciiString> Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
@@ -3914,7 +3917,7 @@ None
 
 Description
 -----------
-Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(3) -> me = 'hel'.
+Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'.
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
@@ -3958,7 +3961,7 @@ Standard_Character
 
 Description
 -----------
-Returns character at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
+Returns character at position <where> in <self>. If <where> is less than zero or greater than the length of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'.
 ") Value;
 		Standard_Character Value(const Standard_Integer where);
 
@@ -3987,7 +3990,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring to an empty extendedstring.
+Initializes a HExtendedString to an empty ExtendedString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString();
 
@@ -4005,7 +4008,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a cstring.
+Initializes a HExtendedString with a CString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(Standard_CString message);
 
@@ -4023,7 +4026,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with an extstring.
+Initializes a HExtendedString with an ExtString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_ExtString message);
 
@@ -4041,7 +4044,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a single character.
+Initializes a HExtendedString with a single character.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_ExtCharacter aChar);
 
@@ -4060,7 +4063,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with <length> space allocated. and filled with <filler>. this is useful for buffers.
+Initializes a HExtendedString with <length> space allocated. and filled with <filler>. This is useful for buffers.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_Integer length, const Standard_ExtCharacter filler);
 
@@ -4078,7 +4081,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a extendedstring.
+Initializes a HExtendedString with a ExtendedString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(TCollection_ExtendedString aString);
 
@@ -4096,7 +4099,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a extendedstring.
+Initializes a HExtendedString with a ExtendedString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(TCollection_ExtendedString & theString);
 
@@ -4114,7 +4117,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with an hasciistring.
+Initializes a HExtendedString with an HAsciiString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const opencascade::handle<TCollection_HAsciiString> & aString);
 
@@ -4132,7 +4135,7 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a hextendedstring.
+Initializes a HExtendedString with a HExtendedString.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const opencascade::handle<TCollection_HExtendedString> & aString);
 
@@ -4187,7 +4190,7 @@ None
 
 Description
 -----------
-Substitutes all the characters equal to achar by newchar in the string <self>.
+Substitutes all the characters equal to aChar by NewChar in the string <self>.
 ") ChangeAll;
 		void ChangeAll(const Standard_ExtCharacter aChar, const Standard_ExtCharacter NewChar);
 
@@ -4200,7 +4203,7 @@ None
 
 Description
 -----------
-Removes all characters contained in <self>. this produces an empty extendedstring.
+Removes all characters contained in <self>. This produces an empty ExtendedString.
 ") Clear;
 		void Clear();
 
@@ -4219,7 +4222,7 @@ None
 
 Description
 -----------
-Insert a extcharacter at position <where>. example: astring contains 'hy not ?' astring.insert(1,'w'); gives 'why not ?' astring contains 'wh' astring.insert(3,'y'); gives 'why' astring contains 'way' astring.insert(2,'h'); gives 'why'.
+Insert a ExtCharacter at position <where>. Example: aString contains 'hy not ?' aString.Insert(1,'W'); gives 'Why not ?' aString contains 'Wh' aString.Insert(3,'y'); gives 'Why' aString contains 'Way' aString.Insert(2,'h'); gives 'Why'.
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_ExtCharacter what);
 
@@ -4238,7 +4241,7 @@ None
 
 Description
 -----------
-Insert a hextendedstring at position <where>.
+Insert a HExtendedString at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const opencascade::handle<TCollection_HExtendedString> & what);
 
@@ -4251,7 +4254,7 @@ bool
 
 Description
 -----------
-Returns true if the string contains only 'ascii range' characters.
+Returns True if the string contains only 'Ascii Range' characters.
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
@@ -4264,7 +4267,7 @@ bool
 
 Description
 -----------
-Returns true if the string <self> contains zero character.
+Returns True if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -4282,7 +4285,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is greater than <other>.
+Returns True if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const opencascade::handle<TCollection_HExtendedString> & other);
 
@@ -4300,7 +4303,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is less than <other>.
+Returns True if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const opencascade::handle<TCollection_HExtendedString> & other);
 
@@ -4331,7 +4334,7 @@ int
 
 Description
 -----------
-Returns number of characters in <self>. this is the same functionality as 'strlen' in c.
+Returns number of characters in <self>. This is the same functionality as 'strlen' in C.
 ") Length;
 		Standard_Integer Length();
 
@@ -4367,7 +4370,7 @@ None
 
 Description
 -----------
-Erases <ahowmany> characters from position <where>, <where> included. example: astring contains 'hello' astring.erase(2,2) erases 2 characters from position 1 this gives 'hlo'.
+Erases <ahowmany> characters from position <where>, <where> included. Example: aString contains 'Hello' aString.Erase(2,2) erases 2 characters from position 1 This gives 'Hlo'.
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
@@ -4403,7 +4406,7 @@ int
 
 Description
 -----------
-Searches a string in <self> from the beginning and returns position of first item <what> matching. it returns -1 if not found.
+Searches a String in <self> from the beginning and returns position of first item <what> matching. It returns -1 if not found.
 ") Search;
 		Standard_Integer Search(const opencascade::handle<TCollection_HExtendedString> & what);
 
@@ -4421,7 +4424,7 @@ int
 
 Description
 -----------
-Searches a extendedstring in another extendedstring from the end and returns position of first item <what> matching. it returns -1 if not found.
+Searches a ExtendedString in another ExtendedString from the end and returns position of first item <what> matching. It returns -1 if not found.
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(const opencascade::handle<TCollection_HExtendedString> & what);
 
@@ -4440,7 +4443,7 @@ None
 
 Description
 -----------
-Replaces one character in the string at position <where>. if <where> is less than zero or greater than the length of <self> an exception is raised. example: astring contains 'garbake' astring.replace(6,'g') gives <self> = 'garbage'.
+Replaces one character in the string at position <where>. If <where> is less than zero or greater than the length of <self> an exception is raised. Example: aString contains 'Garbake' astring.Replace(6,'g') gives <self> = 'Garbage'.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_ExtCharacter what);
 
@@ -4477,7 +4480,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Splits a extendedstring into two sub-strings. example: astring contains 'abcdefg' astring.split(3) gives <self> = 'abc' and returns 'defg'.
+Splits a ExtendedString into two sub-strings. Example: aString contains 'abcdefg' aString.Split(3) gives <self> = 'abc' and returns 'defg'.
 ") Split;
 		opencascade::handle<TCollection_HExtendedString> Split(const Standard_Integer where);
 
@@ -4490,7 +4493,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the field mystring.
+Returns the field myString.
 ") String;
 		const TCollection_ExtendedString & String();
 
@@ -4503,7 +4506,7 @@ Standard_ExtString
 
 Description
 -----------
-Returns pointer to extstring.
+Returns pointer to ExtString.
 ") ToExtString;
 		Standard_ExtString ToExtString();
 
@@ -4522,7 +4525,7 @@ opencascade::handle<TCollection_HExtendedString>
 
 Description
 -----------
-Extracts <whichone> token from <self>. by default, the <separators> is set to space and tabulation. by default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. if no token indexed by <whichone> is found, it returns an empty string. example: astring contains 'this is a message' astring.token() returns 'this' astring.token(' ',4) returns 'message' astring.token(' ',2) returns 'is' astring.token(' ',9) returns '' other separators than space character and tabulation are allowed astring contains '1234; test:message , value' astring.token('; :,',4) returns 'value' astring.token('; :,',2) returns 'test'.
+Extracts <whichone> token from <self>. By default, the <separators> is set to space and tabulation. By default, the token extracted is the first one (whichone = 1). <separators> contains all separators you need. If no token indexed by <whichone> is found, it returns an empty String. Example: aString contains 'This is a message' aString.Token() returns 'This' aString.Token(' ',4) returns 'message' aString.Token(' ',2) returns 'is' aString.Token(' ',9) returns '' Other separators than space character and tabulation are allowed aString contains '1234; test:message , value' aString.Token('; :,',4) returns 'value' aString.Token('; :,',2) returns 'test'.
 ") Token;
 		opencascade::handle<TCollection_HExtendedString> Token(const Standard_ExtString separators, const Standard_Integer whichone = 1);
 
@@ -4540,7 +4543,7 @@ None
 
 Description
 -----------
-Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(3) -> me = 'hel'.
+Truncates <self> to <ahowmany> characters. Example: me = 'Hello Dolly' -> Trunc(3) -> me = 'Hel'.
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
@@ -4558,7 +4561,7 @@ Standard_ExtCharacter
 
 Description
 -----------
-Returns extcharacter at position <where> in <self>. if <where> is less than zero or greater than the length of <self>, an exception is raised. example: astring contains 'hello' astring.value(2) returns 'e'.
+Returns ExtCharacter at position <where> in <self>. If <where> is less than zero or greater than the length of <self>, an exception is raised. Example: aString contains 'Hello' aString.Value(2) returns 'e'.
 ") Value;
 		Standard_ExtCharacter Value(const Standard_Integer where);
 

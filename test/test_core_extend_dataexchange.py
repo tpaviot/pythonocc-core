@@ -62,6 +62,7 @@ A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
 
 def check_is_file(filename):
     assert os.path.isfile(filename)
+    assert os.path.getsize(filename) > 50
 
 
 def test_read_step_file():
@@ -173,7 +174,14 @@ def test_write_obj():
     check_is_file(obj_filename)
 
 
-def test_write_gltf():
-    gltf_filename = get_test_fullname("sample.gltf")
-    write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
+def test_write_gltf_binary():
+    gltf_filename = get_test_fullname("sample_binary.gltf")
+    write_gltf_file(A_TOPODS_SHAPE, gltf_filename, binary=True)
     check_is_file(gltf_filename)
+
+
+def test_write_gltf_ascii():
+    gltf_filename = get_test_fullname("sample_ascii.glta")
+    write_gltf_file(A_TOPODS_SHAPE, gltf_filename, binary=False)
+    check_is_file(gltf_filename)
+    check_is_file(get_test_fullname("sample_ascii.bin"))

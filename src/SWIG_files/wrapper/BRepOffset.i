@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPOFFSETDOCSTRING
 "BRepOffset module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepoffset.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffset.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPOFFSETDOCSTRING) BRepOffset
 
@@ -273,7 +273,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Preprocess surface to be offset (bspline, bezier, or revolution based on bspline or bezier curve), by collapsing each singular side to single point. //! this is to avoid possible flipping of normal at the singularity of the surface due to non-zero distance between the poles that logically should be in one point (singularity). the (parametric) side of the surface is considered to be singularity if face has degenerated edge whose vertex encompasses (by its tolerance) all points on that side, or if all poles defining that side fit into sphere with radius theprecision. //! returns either original surface or its modified copy (if some poles have been moved).
+Preprocess surface to be offset (bspline, bezier, or revolution based on bspline or bezier curve), by collapsing each singular side to single point. //! This is to avoid possible flipping of normal at the singularity of the surface due to non-zero distance between the poles that logically should be in one point (singularity). //! The (parametric) side of the surface is considered to be singularity if face has degenerated edge whose vertex encompasses (by its tolerance) all points on that side, or if all poles defining that side fit into sphere with radius thePrecision. //! Returns either original surface or its modified copy (if some poles have been moved).
 ") CollapseSingularities;
 		static opencascade::handle<Geom_Surface> CollapseSingularities(const opencascade::handle<Geom_Surface> & theSurface, const TopoDS_Face & theFace, Standard_Real thePrecision);
 
@@ -293,7 +293,7 @@ theStatus: BRepOffset_Status
 
 Description
 -----------
-Returns the offset surface computed from the surface <surface> at an offsetdistance <offset>. //! if possible, this method returns the real type of the surface ( e.g. an offset of a plane is a plane). //! if no particular case is detected, the returned surface will have the type geom_offsetsurface. parameter allowc0 is then passed as last argument to constructor of geom_offsetsurface.
+returns the Offset surface computed from the surface <Surface> at an OffsetDistance <Offset>. //! If possible, this method returns the real type of the surface ( e.g. An Offset of a plane is a plane). //! If no particular case is detected, the returned surface will have the Type Geom_OffsetSurface. Parameter allowC0 is then passed as last argument to constructor of Geom_OffsetSurface.
 ") Surface;
 		static opencascade::handle<Geom_Surface> Surface(const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Offset, BRepOffset_Status &OutValue, Standard_Boolean allowC0 = Standard_False);
 
@@ -360,7 +360,7 @@ None
 
 Description
 -----------
-Add in <co> the faces of the shell containing <face> where all the connex edges are of type <side>.
+Add in <CO> the faces of the shell containing <Face> where all the connex edges are of type <Side>.
 ") AddFaces;
 		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType);
 
@@ -382,7 +382,7 @@ None
 
 Description
 -----------
-Add in <co> the faces of the shell containing <face> where all the connex edges are of type <side1> or <side2>.
+Add in <CO> the faces of the shell containing <Face> where all the connex edges are of type <Side1> or <Side2>.
 ") AddFaces;
 		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
@@ -451,7 +451,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the replacement of the edge in the face. if no replacement exists, returns the edge.
+Returns the replacement of the edge in the face. If no replacement exists, returns the edge.
 ") EdgeReplacement;
 		const TopoDS_Edge EdgeReplacement(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
 
@@ -471,7 +471,7 @@ None
 
 Description
 -----------
-Stores in <l> all the edges of type <t> on the vertex <v>.
+Stores in <L> all the edges of Type <T> on the vertex <V>.
 ") Edges;
 		void Edges(const TopoDS_Vertex & theV, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
@@ -491,7 +491,7 @@ None
 
 Description
 -----------
-Stores in <l> all the edges of type <t> on the face <f>.
+Stores in <L> all the edges of Type <T> on the face <F>.
 ") Edges;
 		void Edges(const TopoDS_Face & theF, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
@@ -510,7 +510,7 @@ None
 
 Description
 -----------
-Explode in compounds of faces where all the connex edges are of type <side>.
+Explode in compounds of faces where all the connex edges are of type <Side>.
 ") Explode;
 		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType);
 
@@ -530,7 +530,7 @@ None
 
 Description
 -----------
-Explode in compounds of faces where all the connex edges are of type <side1> or <side2>.
+Explode in compounds of faces where all the connex edges are of type <Side1> or <Side2>.
 ") Explode;
 		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
@@ -686,7 +686,7 @@ None
 
 Description
 -----------
-Set in <edges> all the edges of <shape> which are tangent to <edge> at the vertex <vertex>.
+set in <Edges> all the Edges of <Shape> which are tangent to <Edge> at the vertex <Vertex>.
 ") TangentEdges;
 		void TangentEdges(const TopoDS_Edge & theEdge, const TopoDS_Vertex & theVertex, TopTools_ListOfShape & theEdges);
 
@@ -742,7 +742,7 @@ None
 
 Description
 -----------
-Computes the intersections between the edges stored is asdes as descendants of <f> . intersections is computed between two edges if one of them is bound in newedges. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
+Computes the intersections between the edges stored is AsDes as descendants of <F> . Intersections is computed between two edges if one of them is bound in NewEdges. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") Compute;
 		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const Standard_Real Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
@@ -773,7 +773,7 @@ bool
 
 Description
 -----------
-Computes the intersection between the offset edges of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
+Computes the intersection between the offset edges of the <FI>. All intersection vertices will be stored in AsDes2d. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") ConnexIntByInt;
 		static Standard_Boolean ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, BRepAlgo_Image & theImageVV, TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
@@ -800,7 +800,7 @@ None
 
 Description
 -----------
-Computes the intersection between the offset edges generated from vertices and stored into asdes as descendants of the <fi>. all intersection vertices will be stored in asdes2d. when all faces of the shape are treated the intersection vertices have to be fused using the fusevertices method. thedmvv contains the vertices that should be fused.
+Computes the intersection between the offset edges generated from vertices and stored into AsDes as descendants of the <FI>. All intersection vertices will be stored in AsDes2d. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") ConnexIntByIntInVert;
 		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const Standard_Real Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
@@ -820,7 +820,7 @@ bool
 
 Description
 -----------
-Extents the edge.
+extents the edge.
 ") ExtentEdge;
 		static Standard_Boolean ExtentEdge(const TopoDS_Edge & E, TopoDS_Edge & NE, const Standard_Real theOffset);
 
@@ -840,7 +840,7 @@ bool
 
 Description
 -----------
-Fuses the chains of vertices in the thedmvv and updates asdes by replacing the old vertices with the new ones.
+Fuses the chains of vertices in the theDMVV and updates AsDes by replacing the old vertices with the new ones.
 ") FuseVertices;
 		static Standard_Boolean FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, BRepAlgo_Image & theImageVV);
 
@@ -859,12 +859,12 @@ Fuses the chains of vertices in the thedmvv and updates asdes by replacing the o
 class BRepOffset_Inter3d {
 	public:
 		/****** BRepOffset_Inter3d::BRepOffset_Inter3d ******/
-		/****** md5 signature: a50e9a2c6e0d91514a6703132cf5226e ******/
+		/****** md5 signature: 9fd66aef3ebdcf13bcde09e6d645c2ee ******/
 		%feature("compactdefaultargs") BRepOffset_Inter3d;
 		%feature("autodoc", "
 Parameters
 ----------
-AsDes: Handle ( BRepAlgo_AsDes )
+AsDes: BRepAlgo_AsDes
 Side: TopAbs_State
 Tol: float
 
@@ -876,7 +876,20 @@ Description
 -----------
 Constructor.
 ") BRepOffset_Inter3d;
-		 BRepOffset_Inter3d(const Handle ( BRepAlgo_AsDes ) & AsDes, const TopAbs_State Side, const Standard_Real Tol);
+		 BRepOffset_Inter3d(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopAbs_State Side, const Standard_Real Tol);
+
+		/****** BRepOffset_Inter3d::AsDes ******/
+		/****** md5 signature: 31e3fa329859da45e4f2b833e342b7a0 ******/
+		%feature("compactdefaultargs") AsDes;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<BRepAlgo_AsDes>
+
+Description
+-----------
+Returns AsDes tool.
+") AsDes;
+		opencascade::handle<BRepAlgo_AsDes> AsDes();
 
 		/****** BRepOffset_Inter3d::CompletInt ******/
 		/****** md5 signature: 3d14748ac531a357f6f40197c38eda01 ******/
@@ -1379,7 +1392,7 @@ None
 
 Description
 -----------
-Add closing faces, <f> has to be in the initial shape s.
+Add Closing Faces, <F> has to be in the initial shape S.
 ") AddFace;
 		void AddFace(const TopoDS_Face & F);
 
@@ -1415,7 +1428,8 @@ bool
 
 Description
 -----------
-Makes pre analysis of possibility offset perform. use method error() to get more information. finds first error. list of checks: 1) check for existence object with non-null offset. 2) check for connectivity in offset shell. 3) check continuity of input surfaces. 4) check for normals existence on grid. return true if possible make computations and false otherwise.
+Makes pre analysis of possibility offset perform. Use method Error() to get more information. Finds first error. List of checks: 1) Check for existence object with non-null offset. 2) Check for connectivity in offset shell. 3) Check continuity of input surfaces. 4) Check for normals existence on grid. 
+Return: True if possible make computations and false otherwise.
 ") CheckInputData;
 		Standard_Boolean CheckInputData(const Message_ProgressRange & theRange);
 
@@ -1441,7 +1455,7 @@ TopTools_IndexedMapOfShape
 
 Description
 -----------
-Returns the list of closing faces stores by addface.
+Returns the list of closing faces stores by AddFace.
 ") ClosingFaces;
 		const TopTools_IndexedMapOfShape & ClosingFaces();
 
@@ -1454,7 +1468,7 @@ BRepOffset_Error
 
 Description
 -----------
-Returns information about offset state.
+returns information about offset state.
 ") Error;
 		BRepOffset_Error Error();
 
@@ -1472,7 +1486,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
@@ -1485,7 +1499,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return bad shape, which obtained in checkinputdata.
+Return bad shape, which obtained in CheckInputData.
 ") GetBadShape;
 		const TopoDS_Shape GetBadShape();
 
@@ -1498,7 +1512,7 @@ GeomAbs_JoinType
 
 Description
 -----------
-Returns myjoin.
+Returns myJoin.
 ") GetJoinType;
 		GeomAbs_JoinType GetJoinType();
 
@@ -1555,7 +1569,7 @@ bool
 
 Description
 -----------
-Returns true if the shape s has been deleted.
+Returns true if the shape S has been deleted.
 ") IsDeleted;
 		Standard_Boolean IsDeleted(const TopoDS_Shape & S);
 
@@ -1622,7 +1636,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <s>.
+Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
@@ -1635,7 +1649,7 @@ BRepAlgo_Image
 
 Description
 -----------
-Returns <image> containing links between initials shapes and offset edges.
+Returns <Image> containing links between initials shapes and offset edges.
 ") OffsetEdgesFromShapes;
 		const BRepAlgo_Image & OffsetEdgesFromShapes();
 
@@ -1648,7 +1662,7 @@ BRepAlgo_Image
 
 Description
 -----------
-Returns <image> containing links between initials shapes and offset faces.
+Returns <Image> containing links between initials shapes and offset faces.
 ") OffsetFacesFromShapes;
 		const BRepAlgo_Image & OffsetFacesFromShapes();
 
@@ -1667,7 +1681,7 @@ None
 
 Description
 -----------
-Set the offset <off> on the face <f>.
+set the offset <Off> on the Face <F>.
 ") SetOffsetOnFace;
 		void SetOffsetOnFace(const TopoDS_Face & F, const Standard_Real Off);
 
@@ -1711,7 +1725,7 @@ None
 
 Description
 -----------
-Constructor. does nothing.
+Constructor. Does nothing.
 ") BRepOffset_MakeSimpleOffset;
 		 BRepOffset_MakeSimpleOffset();
 
@@ -1845,7 +1859,7 @@ None
 
 Description
 -----------
-Initialies shape for modifications.
+Initialise shape for modifications.
 ") Initialize;
 		void Initialize(const TopoDS_Shape & theInputShape, const Standard_Real theOffsetValue);
 
@@ -2017,7 +2031,7 @@ None
 
 Description
 -----------
-This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! the map will be fill as follow: //! created(e) = e' with: e = an edge of <face> e' = the image of e in the offsetting of another face sharing e with a continuity at least g1.
+This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! The Map will be fill as follow: //! Created(E) = E' with: E = an edge of <Face> E' = the image of E in the offsetting of another face sharing E with a continuity at least G1.
 ") BRepOffset_Offset;
 		 BRepOffset_Offset(const TopoDS_Face & Face, const Standard_Real Offset, const TopTools_DataMapOfShapeShape & Created, const Standard_Boolean OffsetOutside = Standard_True, const GeomAbs_JoinType JoinType = GeomAbs_Arc);
 
@@ -2090,7 +2104,7 @@ None
 
 Description
 -----------
-Tol and conti are only used if polynomial is true (used to perform the approximation).
+Tol and Conti are only used if Polynomial is True (Used to perform the approximation).
 ") BRepOffset_Offset;
 		 BRepOffset_Offset(const TopoDS_Vertex & Vertex, const TopTools_ListOfShape & LEdge, const Standard_Real Offset, const Standard_Boolean Polynomial = Standard_False, const Standard_Real Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
 
@@ -2237,7 +2251,7 @@ None
 
 Description
 -----------
-Tol and conti are only used if polynomial is true (used to perform the approximation).
+Tol and Conti are only used if Polynomial is True (Used to perform the approximation).
 ") Init;
 		void Init(const TopoDS_Vertex & Vertex, const TopTools_ListOfShape & LEdge, const Standard_Real Offset, const Standard_Boolean Polynomial = Standard_False, const Standard_Real Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
 
@@ -2256,7 +2270,7 @@ None
 
 Description
 -----------
-Only used in rolling ball. pipe on free boundary.
+Only used in Rolling Ball. Pipe on Free Boundary.
 ") Init;
 		void Init(const TopoDS_Edge & Edge, const Standard_Real Offset);
 
@@ -2319,7 +2333,10 @@ None
 
 Description
 -----------
-Constructor. @param theinputshape shape to be offset @param theoffsetvalue offset distance (signed) @param thetolerance tolerance for handling singular points.
+Constructor. 
+Parameter theInputShape shape to be offset 
+Parameter theOffsetValue offset distance (signed) 
+Parameter theTolerance tolerance for handling singular points.
 ") BRepOffset_SimpleOffset;
 		 BRepOffset_SimpleOffset(const TopoDS_Shape & theInputShape, const Standard_Real theOffsetValue, const Standard_Real theTolerance);
 
@@ -2342,7 +2359,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -2362,7 +2379,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -2384,7 +2401,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -2404,7 +2421,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2423,7 +2440,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -2445,7 +2462,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location,<tol> the new tolerance.<revwires> has to be set to standard_true when the modification reverses the normal of the surface.(the wires have to be reversed). <revface> has to be set to standard_true if the orientation of the modified face changes in the shells which contain it. -- here, <revface> will return standard_true if the -- gp_trsf is negative.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -2482,7 +2499,7 @@ None
 
 Description
 -----------
-Via the wire explorer store in <nonv1> for an edge <e> of <w> his edge neighbour on the first vertex <v1> of <e>. store in nonv2 the neighbour of <e>on the last vertex <v2> of <e>.
+Via the wire explorer store in <NOnV1> for an Edge <E> of <W> his Edge neighbour on the first vertex <V1> of <E>. Store in NOnV2 the Neighbour of <E>on the last vertex <V2> of <E>.
 ") BuildNeighbour;
 		static void BuildNeighbour(const TopoDS_Wire & W, const TopoDS_Face & F, TopTools_DataMapOfShapeShape & NOnV1, TopTools_DataMapOfShapeShape & NOnV2);
 
@@ -2523,7 +2540,7 @@ bool
 
 Description
 -----------
-Compares the normal directions of the planar faces and returns true if the directions are the same with the given precision.
+Compares the normal directions of the planar faces and returns True if the directions are the same with the given precision.
 ") CheckPlanesNormals;
 		static Standard_Boolean CheckPlanesNormals(const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const Standard_Real theTolAng = 1e-8);
 
@@ -2564,7 +2581,7 @@ TopoDS_Shape
 
 Description
 -----------
-Remove the non valid part of an offsetshape 1 - remove all the free boundary and the faces connex to such edges. 2 - remove all the shapes not valid in the result (according to the side of offsetting) in this version only the first point is implemented.
+Remove the non valid part of an offsetshape 1 - Remove all the free boundary and the faces connex to such edges. 2 - Remove all the shapes not valid in the result (according to the side of offsetting) in this version only the first point is implemented.
 ") Deboucle3D;
 		static TopoDS_Shape Deboucle3D(const TopoDS_Shape & S, const TopTools_MapOfShape & Boundary);
 
@@ -2584,7 +2601,7 @@ None
 
 Description
 -----------
-<v1> is the firstvertex ,<v2> is the last vertex of <edge> taking account the orientation of edge.
+<V1> is the FirstVertex ,<V2> is the Last Vertex of <Edge> taking account the orientation of Edge.
 ") EdgeVertices;
 		static void EdgeVertices(const TopoDS_Edge & E, TopoDS_Vertex & V1, TopoDS_Vertex & V2);
 
@@ -2613,7 +2630,7 @@ bool
 
 Description
 -----------
-Returns true if the surface of <nf> has changed. if <changegeom> is true , the surface can be changed . if <updatepcurve> is true, update the pcurves of the edges of <f> on the new surface if the surface has been changed. <enlargeu>, <enlargevfirst>, <enlargevlast> allow or forbid enlargement in u and v directions correspondingly. <theextensionmode> is a mode of extension of the surface of the face: if <theextensionmode> equals 1, potentially infinite surfaces are extended by maximum value, and limited surfaces are extended by 25%. if <theextensionmode> equals 2, potentially infinite surfaces are extended by 10*(correspondent size of face), and limited surfaces are extended by 100%. <thelenbeforeufirst>, <thelenafterulast>, <thelenbeforevfirst>, <thelenaftervlast> set the values of enlargement on correspondent directions. if some of them equals -1, the default value of enlargement is used.
+Returns True if The Surface of <NF> has changed. if <ChangeGeom> is True , the surface can be changed . if <UpdatePCurve> is True, update the pcurves of the edges of <F> on the new surface if the surface has been changed. <enlargeU>, <enlargeVfirst>, <enlargeVlast> allow or forbid enlargement in U and V directions correspondingly. <theExtensionMode> is a mode of extension of the surface of the face: if <theExtensionMode> equals 1, potentially infinite surfaces are extended by maximum value, and limited surfaces are extended by 25%. if <theExtensionMode> equals 2, potentially infinite surfaces are extended by 10*(correspondent size of face), and limited surfaces are extended by 100%. <theLenBeforeUfirst>, <theLenAfterUlast>, <theLenBeforeVfirst>, <theLenAfterVlast> set the values of enlargement on correspondent directions. If some of them equals -1, the default value of enlargement is used.
 ") EnLargeFace;
 		static Standard_Boolean EnLargeFace(const TopoDS_Face & F, TopoDS_Face & NF, const Standard_Boolean ChangeGeom, const Standard_Boolean UpDatePCurve = Standard_False, const Standard_Boolean enlargeU = Standard_True, const Standard_Boolean enlargeVfirst = Standard_True, const Standard_Boolean enlargeVlast = Standard_True, const Standard_Integer theExtensionMode = 1, const Standard_Real theLenBeforeUfirst = -1, const Standard_Real theLenAfterUlast = -1, const Standard_Real theLenBeforeVfirst = -1, const Standard_Real theLenAfterVlast = -1);
 
@@ -2657,7 +2674,7 @@ bool
 
 Description
 -----------
-Looks for the common vertices and edges between faces <thef1> and <thef2>. returns true if common shapes have been found. <thele> will contain the found common edges; <thelv> will contain the found common vertices.
+Looks for the common Vertices and Edges between faces <theF1> and <theF2>. Returns True if common shapes have been found. <theLE> will contain the found common edges; <theLV> will contain the found common vertices.
 ") FindCommonShapes;
 		static Standard_Boolean FindCommonShapes(const TopoDS_Face & theF1, const TopoDS_Face & theF2, TopTools_ListOfShape & theLE, TopTools_ListOfShape & theLV);
 
@@ -2678,7 +2695,7 @@ bool
 
 Description
 -----------
-Looks for the common shapes of type <thetype> between shapes <thes1> and <thes2>. returns true if common shapes have been found. <thelsc> will contain the found common shapes.
+Looks for the common shapes of type <theType> between shapes <theS1> and <theS2>. Returns True if common shapes have been found. <theLSC> will contain the found common shapes.
 ") FindCommonShapes;
 		static Standard_Boolean FindCommonShapes(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const TopAbs_ShapeEnum theType, TopTools_ListOfShape & theLSC);
 
@@ -2743,7 +2760,7 @@ None
 
 Description
 -----------
-Computes the section betwwen <f1> and <f2> the edges solution are stored in <lint1> with the orientation on <f1>, the sames edges are stored in <lint2> with the orientation on <f2>.
+Computes the Section between <F1> and <F2> the edges solution are stored in <LInt1> with the orientation on <F1>, the sames edges are stored in <Lint2> with the orientation on <F2>.
 ") Inter3D;
 		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const TopoDS_Face & RefFace1, const TopoDS_Face & RefFace2);
 
@@ -2784,7 +2801,7 @@ None
 
 Description
 -----------
-Store in mve for a vertex <v> in <s> the incident edges <e> in <s>. an edge is store only one time for a vertex.
+Store in MVE for a vertex <V> in <S> the incident edges <E> in <S>. An Edge is Store only one Time for a vertex.
 ") MapVertexEdges;
 		static void MapVertexEdges(const TopoDS_Shape & S, TopTools_DataMapOfShapeListOfShape & MVE);
 
@@ -2805,7 +2822,7 @@ O2: TopAbs_Orientation
 
 Description
 -----------
-<e> is a section between <f1> and <f2>. computes <o1> the orientation of <e> in <f1> influenced by <f2>. idem for <o2>.
+<E> is a section between <F1> and <F2>. Computes <O1> the orientation of <E> in <F1> influenced by <F2>. idem for <O2>.
 ") OrientSection;
 		static void OrientSection(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue);
 
@@ -2851,7 +2868,7 @@ bool
 
 Description
 -----------
-Find if the edges <edges> of the face <f2> are on the face <f1>. set in <lint1> <lint2> the updated edges. if all the edges are computed, returns true.
+Find if the edges <Edges> of the face <F2> are on the face <F1>. Set in <LInt1> <LInt2> the updated edges. If all the edges are computed, returns true.
 ") TryProject;
 		static Standard_Boolean TryProject(const TopoDS_Face & F1, const TopoDS_Face & F2, const TopTools_ListOfShape & Edges, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const Standard_Real TolConf);
 

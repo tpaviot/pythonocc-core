@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IGESDATADOCSTRING
 "IGESData module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igesdata.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igesdata.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESDATADOCSTRING) IGESData
 
@@ -47,7 +47,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igesdata.html"
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
-#include<ShapeBuild_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<MoniTool_module.hxx>
@@ -72,7 +71,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igesdata.html"
 %import Interface.i
 %import TCollection.i
 %import gp.i
-%import ShapeBuild.i
 %import TColStd.i
 %import Message.i
 
@@ -228,7 +226,7 @@ None
 
 Description
 -----------
-Prepares general dynamic data used for igesdata specifically: protocol and modules, which treat undefinedentity.
+Prepares General dynamic data used for IGESData specifically: Protocol and Modules, which treat UndefinedEntity.
 ") Init;
 		static void Init();
 
@@ -241,7 +239,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns a protocol from igesdata (avoids to create it).
+Returns a Protocol from IGESData (avoids to create it).
 ") Protocol;
 		static opencascade::handle<IGESData_Protocol> Protocol();
 
@@ -268,7 +266,7 @@ None
 
 Description
 -----------
-Creates an empty basic editor which should be initialized via init() method.
+Creates an empty Basic Editor which should be initialized via Init() method.
 ") IGESData_BasicEditor;
 		 IGESData_BasicEditor();
 
@@ -286,7 +284,7 @@ None
 
 Description
 -----------
-Creates a basic editor, with a new igesmodel, ready to run.
+Creates a Basic Editor, with a new IGESModel, ready to run.
 ") IGESData_BasicEditor;
 		 IGESData_BasicEditor(const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -305,7 +303,7 @@ None
 
 Description
 -----------
-Creates a basic editor for iges data, ready to run.
+Creates a Basic Editor for IGES Data, ready to run.
 ") IGESData_BasicEditor;
 		 IGESData_BasicEditor(const opencascade::handle<IGESData_IGESModel> & model, const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -323,7 +321,7 @@ None
 
 Description
 -----------
-Applies unit value to convert header data: resolution, maxcoord, maxlineweight applies unit only once after setunit... has been called, if <enforce> is given as true. it can be called just before writing the model to a file, i.e. when definitive values are finally known.
+Applies unit value to convert header data: Resolution, MaxCoord, MaxLineWeight Applies unit only once after SetUnit... has been called, if <enforce> is given as True. It can be called just before writing the model to a file, i.e. when definitive values are finally known.
 ") ApplyUnit;
 		void ApplyUnit(const Standard_Boolean enforce = Standard_False);
 
@@ -341,7 +339,7 @@ bool
 
 Description
 -----------
-Performs auto-correction on an igesentity returns true if something has changed, false if nothing done. //! works with the specific iges services: dirchecker which allows to correct data in 'directory part' of entities (such as required values for status, or references to be null), and the specific iges service owncorrect, which is specialised for each type of entity.
+Performs auto-correction on an IGESEntity Returns True if something has changed, False if nothing done. //! Works with the specific IGES Services: DirChecker which allows to correct data in 'Directory Part' of Entities (such as required values for status, or references to be null), and the specific IGES service OwnCorrect, which is specialised for each type of entity.
 ") AutoCorrect;
 		Standard_Boolean AutoCorrect(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -354,7 +352,7 @@ int
 
 Description
 -----------
-Performs auto-correction on the whole model returns the count of modified entities.
+Performs auto-correction on the whole Model Returns the count of modified entities.
 ") AutoCorrectModel;
 		Standard_Integer AutoCorrectModel();
 
@@ -367,7 +365,7 @@ None
 
 Description
 -----------
-Performs the re-computation of status on the whole model (subordinate status and use flag of each iges entity), which can have required values according the way they are referenced (see definitions of logical use, physical use, etc...).
+Performs the re-computation of status on the whole model (Subordinate Status and Use Flag of each IGES Entity), which can have required values according the way they are referenced (see definitions of Logical use, Physical use, etc...).
 ") ComputeStatus;
 		void ComputeStatus();
 
@@ -380,7 +378,7 @@ int
 
 Description
 -----------
-Returns the maximum allowed value for drafting flag.
+Returns the maximum allowed value for Drafting Flag.
 ") DraftingMax;
 		static Standard_Integer DraftingMax();
 
@@ -402,6 +400,24 @@ From the flag of drafting standard, returns name, '' if incorrect.
 ") DraftingName;
 		static Standard_CString DraftingName(const Standard_Integer flag);
 
+		/****** IGESData_BasicEditor::GetFlagByValue ******/
+		/****** md5 signature: 1fbf7be16f7e6c0af91267909c4970a8 ******/
+		%feature("compactdefaultargs") GetFlagByValue;
+		%feature("autodoc", "
+Parameters
+----------
+theValue: float
+
+Return
+-------
+int
+
+Description
+-----------
+Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag.
+") GetFlagByValue;
+		static Standard_Integer GetFlagByValue(const Standard_Real theValue);
+
 		/****** IGESData_BasicEditor::IGESVersionMax ******/
 		/****** md5 signature: 019f789bb05d370b5b7bd697923db3e3 ******/
 		%feature("compactdefaultargs") IGESVersionMax;
@@ -411,7 +427,7 @@ int
 
 Description
 -----------
-Returns the maximum allowed value for igesversion flag.
+Returns the maximum allowed value for IGESVersion Flag.
 ") IGESVersionMax;
 		static Standard_Integer IGESVersionMax();
 
@@ -429,7 +445,7 @@ str
 
 Description
 -----------
-From the flag of iges version, returns name, '' if incorrect.
+From the flag of IGES version, returns name, '' if incorrect.
 ") IGESVersionName;
 		static Standard_CString IGESVersionName(const Standard_Integer flag);
 
@@ -447,7 +463,7 @@ None
 
 Description
 -----------
-Initialize a basic editor, with a new igesmodel, ready to run.
+Initialize a Basic Editor, with a new IGESModel, ready to run.
 ") Init;
 		void Init(const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -466,7 +482,7 @@ None
 
 Description
 -----------
-Initialize a basic editor for iges data, ready to run.
+Initialize a Basic Editor for IGES Data, ready to run.
 ") Init;
 		void Init(const opencascade::handle<IGESData_IGESModel> & model, const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -497,7 +513,7 @@ bool
 
 Description
 -----------
-Sets a new unit from its flag (param 14 of global section) returns true if done, false if <flag> is incorrect.
+Sets a new unit from its flag (param 14 of Global Section) Returns True if done, False if <flag> is incorrect.
 ") SetUnitFlag;
 		Standard_Boolean SetUnitFlag(const Standard_Integer flag);
 
@@ -515,7 +531,7 @@ bool
 
 Description
 -----------
-Sets a new unit from its name (param 15 of global section) returns true if done, false if <name> is incorrect remark: if <flag> has been set to 3 (user defined), <name> is then free.
+Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark: if <flag> has been set to 3 (user defined), <name> is then free.
 ") SetUnitName;
 		Standard_Boolean SetUnitName(Standard_CString name);
 
@@ -533,7 +549,7 @@ bool
 
 Description
 -----------
-Sets a new unit from its value in meters (rounded to the closest one, max gap 1%) returns true if done, false if <val> is too far from a suitable value.
+Sets a new unit from its value in meters (rounded to the closest one, max gap 1%) Returns True if done, False if <val> is too far from a suitable value.
 ") SetUnitValue;
 		Standard_Boolean SetUnitValue(const Standard_Real val);
 
@@ -569,7 +585,7 @@ float
 
 Description
 -----------
-From the flag of unit, determines value in mm, 0 if incorrect.
+From the flag of unit, determines value in MM, 0 if incorrect.
 ") UnitFlagValue;
 		static Standard_Real UnitFlagValue(const Standard_Integer flag);
 
@@ -614,7 +630,7 @@ None
 
 Description
 -----------
-Creates a defswitch as void.
+creates a DefSwitch as Void.
 ") IGESData_DefSwitch;
 		 IGESData_DefSwitch();
 
@@ -627,7 +643,7 @@ IGESData_DefType
 
 Description
 -----------
-Returns deftype status (void,reference,rank).
+returns DefType status (Void,Reference,Rank).
 ") DefType;
 		IGESData_DefType DefType();
 
@@ -645,7 +661,7 @@ None
 
 Description
 -----------
-Sets defswitch to 'rank' with a value (in file: integer > 0).
+sets DefSwitch to 'Rank' with a Value (in file: Integer > 0).
 ") SetRank;
 		void SetRank(const Standard_Integer val);
 
@@ -658,7 +674,7 @@ None
 
 Description
 -----------
-Sets defswitch to 'reference' status (in file: integer < 0).
+sets DefSwitch to 'Reference' Status (in file: Integer < 0).
 ") SetReference;
 		void SetReference();
 
@@ -671,7 +687,7 @@ None
 
 Description
 -----------
-Sets defswitch to 'void' status (in file: integer = 0).
+sets DefSwitch to 'Void' status (in file: Integer = 0).
 ") SetVoid;
 		void SetVoid();
 
@@ -684,7 +700,7 @@ int
 
 Description
 -----------
-Returns value as integer (sensefull for a rank).
+returns Value as Integer (sensefull for a Rank).
 ") Value;
 		Standard_Integer Value();
 
@@ -711,7 +727,7 @@ None
 
 Description
 -----------
-Returns a dirchecker, with no criterium at all to be checked.
+Returns a DirChecker, with no criterium at all to be checked.
 ") IGESData_DirChecker;
 		 IGESData_DirChecker();
 
@@ -729,7 +745,7 @@ None
 
 Description
 -----------
-Returns a dirchecker, with no criterium except required type.
+Returns a DirChecker, with no criterium except Required Type.
 ") IGESData_DirChecker;
 		 IGESData_DirChecker(const Standard_Integer atype);
 
@@ -748,7 +764,7 @@ None
 
 Description
 -----------
-Returns a dirchecker, with no criterium except required values for type and form numbers.
+Returns a DirChecker, with no criterium except Required values for Type and Form numbers.
 ") IGESData_DirChecker;
 		 IGESData_DirChecker(const Standard_Integer atype, const Standard_Integer aform);
 
@@ -768,7 +784,7 @@ None
 
 Description
 -----------
-Returns a dirchecker, with no criterium except required values for type number (atype), and required range for form number (which must be between aform1 and aform2 included).
+Returns a DirChecker, with no criterium except Required values for Type number (atype), and Required Range for Form number (which must be between aform1 and aform2 included).
 ") IGESData_DirChecker;
 		 IGESData_DirChecker(const Standard_Integer atype, const Standard_Integer aform1, const Standard_Integer aform2);
 
@@ -781,7 +797,7 @@ None
 
 Description
 -----------
-Sets blank status to be ignored (should not be defined, or its value should be 0).
+Sets Blank Status to be ignored (should not be defined, or its value should be 0).
 ") BlankStatusIgnored;
 		void BlankStatusIgnored();
 
@@ -799,7 +815,7 @@ None
 
 Description
 -----------
-Sets blank status to be required at a given value.
+Sets Blank Status to be required at a given value.
 ") BlankStatusRequired;
 		void BlankStatusRequired(const Standard_Integer val);
 
@@ -818,7 +834,7 @@ None
 
 Description
 -----------
-Performs the checks on an igesentity, according to the recorded criteria in addition, does minimal checks, such as admitted range for status, or presence of error status in some data (color, ...).
+Performs the Checks on an IGESEntity, according to the recorded criteria In addition, does minimal Checks, such as admitted range for Status, or presence of Error status in some data (Color, ...).
 ") Check;
 		void Check(opencascade::handle<Interface_Check> & ach, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -837,7 +853,7 @@ None
 
 Description
 -----------
-Performs a check only on values of type number and form number this allows to do a check on an entity not yet completely filled but of which type and form number have been already set.
+Performs a Check only on Values of Type Number and Form Number This allows to do a check on an Entity not yet completely filled but of which Type and Form Number have been already set.
 ") CheckTypeAndForm;
 		void CheckTypeAndForm(opencascade::handle<Interface_Check> & ach, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -855,7 +871,7 @@ None
 
 Description
 -----------
-Sets color criterium if crit is defvoid, ignored: should not be defined if crit is defany, required: must be defined (value or ref) other values are not taken in account.
+Sets Color criterium If crit is DefVoid, Ignored: should not be defined If crit is DefAny, Required: must be defined (value or ref) Other values are not taken in account.
 ") Color;
 		void Color(const IGESData_DefType crit);
 
@@ -873,7 +889,7 @@ bool
 
 Description
 -----------
-Corrects the directory entry of an iges entity as far as it is possible according recorded criteria without any ambiguity: - if a numeric status is required a given value, this value is enforced - if an item is required to be void, or if it recorded as erroneous, it is cleared (set to void) - type number is enforced - finally form number is enforced only if one and only value is admitted (no range, see constructors of dirchecker).
+Corrects the Directory Entry of an IGES Entity as far as it is possible according recorded criteria without any ambiguity: - if a numeric Status is required a given value, this value is enforced - if an item is required to be Void, or if it recorded as Erroneous, it is cleared (set to Void) - Type Number is enforced - finally Form Number is enforced only if one and only Value is admitted (no range, see Constructors of DirChecker).
 ") Correct;
 		Standard_Boolean Correct(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -891,7 +907,7 @@ None
 
 Description
 -----------
-Sets graphics data (linefont, lineweight, color, level, view) to be ignored according value of hierarchy status: if hierarchy is not given, they are ignored any way (that is, they should not be defined) if hierarchy is given, graphics are ignored if the hierarchy status has the value given in argument 'hierarchy'.
+Sets Graphics data (LineFont, LineWeight, Color, Level, View) to be ignored according value of Hierarchy status: If hierarchy is not given, they are Ignored any way (that is, they should not be defined) If hierarchy is given, Graphics are Ignored if the Hierarchy status has the value given in argument 'hierarchy'.
 ") GraphicsIgnored;
 		void GraphicsIgnored(const Standard_Integer hierarchy = -1);
 
@@ -904,7 +920,7 @@ None
 
 Description
 -----------
-Sets hierarchy status to be ignored (should not be defined, or its value should be 0).
+Sets Hierarchy Status to be ignored (should not be defined, or its value should be 0).
 ") HierarchyStatusIgnored;
 		void HierarchyStatusIgnored();
 
@@ -922,7 +938,7 @@ None
 
 Description
 -----------
-Sets hierarchy status to be required at a given value.
+Sets Hierarchy Status to be required at a given value.
 ") HierarchyStatusRequired;
 		void HierarchyStatusRequired(const Standard_Integer val);
 
@@ -935,7 +951,7 @@ bool
 
 Description
 -----------
-Returns true if at least one criterium has already been set allows user to store a dirchecker (static variable) then ask if it has been set before setting it.
+Returns True if at least one criterium has already been set Allows user to store a DirChecker (static variable) then ask if it has been set before setting it.
 ") IsSet;
 		Standard_Boolean IsSet();
 
@@ -953,7 +969,7 @@ None
 
 Description
 -----------
-Sets linefont criterium if crit is defvoid, ignored: should not be defined if crit is defany, required: must be defined (value or ref) if crit is defvalue, required as a value (error if reference) other values are not taken in account.
+Sets LineFont criterium If crit is DefVoid, Ignored: should not be defined If crit is DefAny, Required: must be defined (value or ref) If crit is DefValue, Required as a Value (error if Reference) Other values are not taken in account.
 ") LineFont;
 		void LineFont(const IGESData_DefType crit);
 
@@ -971,7 +987,7 @@ None
 
 Description
 -----------
-Sets lineweight criterium if crit is defvoid, ignored: should not be defined if crit is defvalue, required other values are not taken in account.
+Sets LineWeight criterium If crit is DefVoid, Ignored: should not be defined If crit is DefValue, Required Other values are not taken in account.
 ") LineWeight;
 		void LineWeight(const IGESData_DefType crit);
 
@@ -984,7 +1000,7 @@ None
 
 Description
 -----------
-Sets a dirchecker with most current criteria, that is: structure ignored ( worths call structure(crit = defvoid) ).
+Sets a DirChecker with most current criteria, that is: Structure Ignored ( worths call Structure(crit = DefVoid) ).
 ") SetDefault;
 		void SetDefault();
 
@@ -1002,7 +1018,7 @@ None
 
 Description
 -----------
-Sets structure criterium. if crit is defvoid, ignored: should not be defined if crit is defreference, required: must be defined other values are not taken in account.
+Sets Structure criterium. If crit is DefVoid, Ignored: should not be defined If crit is DefReference, Required: must be defined Other values are not taken in account.
 ") Structure;
 		void Structure(const IGESData_DefType crit);
 
@@ -1015,7 +1031,7 @@ None
 
 Description
 -----------
-Sets subordinate status to be ignored (should not be defined, or its value should be 0).
+Sets Subordinate Status to be ignored (should not be defined, or its value should be 0).
 ") SubordinateStatusIgnored;
 		void SubordinateStatusIgnored();
 
@@ -1033,7 +1049,7 @@ None
 
 Description
 -----------
-Sets subordinate status to be required at a given value.
+Sets Subordinate Status to be required at a given value.
 ") SubordinateStatusRequired;
 		void SubordinateStatusRequired(const Standard_Integer val);
 
@@ -1046,7 +1062,7 @@ None
 
 Description
 -----------
-Sets blank status to be ignored (should not be defined, or its value should be 0).
+Sets Blank Status to be ignored (should not be defined, or its value should be 0).
 ") UseFlagIgnored;
 		void UseFlagIgnored();
 
@@ -1064,7 +1080,7 @@ None
 
 Description
 -----------
-Sets blank status to be required at a given value give -1 to demand useflag not zero (but no precise value req.).
+Sets Blank Status to be required at a given value Give -1 to demand UseFlag not zero (but no precise value req.).
 ") UseFlagRequired;
 		void UseFlagRequired(const Standard_Integer val);
 
@@ -1091,7 +1107,7 @@ None
 
 Description
 -----------
-Creates an empty dirpart, ready to be filled by init.
+creates an empty DirPart, ready to be filled by Init.
 ") IGESData_DirPart;
 		 IGESData_DirPart();
 
@@ -1129,7 +1145,7 @@ None
 
 Description
 -----------
-Fills dirpart with consistent data read from file.
+fills DirPart with consistent data read from file.
 ") Init;
 		void Init(const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i19, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
 
@@ -1142,7 +1158,7 @@ IGESData_IGESType
 
 Description
 -----------
-Returns 'type' and 'form' info, used to recognize the entity.
+returns 'type' and 'form' info, used to recognize the entity.
 ") Type;
 		IGESData_IGESType Type();
 
@@ -1179,7 +1195,7 @@ i17: int
 
 Description
 -----------
-Returns values recorded in dirpart (content of cstrings are modified).
+returns values recorded in DirPart (content of cstrings are modified).
 ") Values;
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
 
@@ -1212,7 +1228,7 @@ None
 
 Description
 -----------
-Adds a new recognizer to the compound, at the end several calls to add work by adding in the order of calls: hence, when eval has failed to recognize, evaluate will call evaluate from the first added recognizer if there is one, and to the second if there is still no result, and so on.
+Adds a new Recognizer to the Compound, at the end Several calls to Add work by adding in the order of calls: Hence, when Eval has failed to recognize, Evaluate will call Evaluate from the first added Recognizer if there is one, and to the second if there is still no result, and so on.
 ") Add;
 		void Add(const opencascade::handle<IGESData_FileRecognizer> & reco);
 
@@ -1231,7 +1247,7 @@ bool
 
 Description
 -----------
-Evaluates if recognition has a result, returns it if yes in case of success, returns true and puts result in 'res' in case of failure, simply returns false works by calling deferred method eval, and in case of failure, looks for added recognizers to work.
+Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work.
 ") Evaluate;
 		Standard_Boolean Evaluate(const IGESData_IGESType & akey, opencascade::handle<IGESData_IGESEntity> & res);
 
@@ -1244,7 +1260,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns result of last recognition (call of evaluate).
+Returns result of last recognition (call of Evaluate).
 ") Result;
 		opencascade::handle<IGESData_IGESEntity> Result();
 
@@ -1280,7 +1296,7 @@ bool
 
 Description
 -----------
-Specific answer to the question 'is copy properly implemented' for iges, answer is always true.
+Specific answer to the question 'is Copy properly implemented' For IGES, answer is always True.
 ") CanCopy;
 		virtual Standard_Boolean CanCopy(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent);
 
@@ -1301,7 +1317,7 @@ None
 
 Description
 -----------
-Semantic checking of an igesentity. performs general checks, which use dirchecker, then call owncheck which does a check specific for each type of entity.
+Semantic Checking of an IGESEntity. Performs general Checks, which use DirChecker, then call OwnCheck which does a check specific for each type of Entity.
 ") CheckCase;
 		void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -1322,7 +1338,7 @@ None
 
 Description
 -----------
-Copy ('deep') from <entfrom> to <entto> (same type) by using a copytool which provides its working map. for igesentities, copies general data (directory part, list of properties) and call owncopycase.
+Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. For IGESEntities, Copies general data (Directory Part, List of Properties) and call OwnCopyCase.
 ") CopyCase;
 		void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
@@ -1341,7 +1357,7 @@ IGESData_DirChecker
 
 Description
 -----------
-Returns a dirchecker, specific for each type of entity (identified by its case number): this dirchecker defines constraints which must be respected by the directorypart.
+Returns a DirChecker, specific for each type of Entity (identified by its Case Number): this DirChecker defines constraints which must be respected by the DirectoryPart.
 ") DirChecker;
 		virtual IGESData_DirChecker DirChecker(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1361,7 +1377,7 @@ None
 
 Description
 -----------
-Fills the list of entities shared by an igesentity <ent>, according a case number <cn> (formerly computed by casenum). considers properties and directory part, and calls ownsharedcase (which is adapted to each type of entity).
+Fills the list of Entities shared by an IGESEntity <ent>, according a Case Number <CN> (formerly computed by CaseNum). Considers Properties and Directory Part, and calls OwnSharedCase (which is adapted to each Type of Entity).
 ") FillSharedCase;
 		void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -1381,7 +1397,7 @@ None
 
 Description
 -----------
-Lists the implied references of <ent>. here, these are the associativities, plus the entities defined by ownsharedcase.
+Lists the Implied References of <ent>. Here, these are the Associativities, plus the Entities defined by OwnSharedCase.
 ") ListImpliedCase;
 		virtual void ListImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
@@ -1401,7 +1417,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of an iges entity (its namevalue) can be redefined for an even more specific case ...
+Returns the name of an IGES Entity (its NameValue) Can be redefined for an even more specific case ...
 ") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
@@ -1441,7 +1457,7 @@ None
 
 Description
 -----------
-Performs specific semantic check for each type of entity.
+Performs Specific Semantic Check for each type of Entity.
 ") OwnCheckCase;
 		virtual void OwnCheckCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -1462,7 +1478,7 @@ None
 
 Description
 -----------
-Copies parameters which are specific of each type of entity.
+Copies parameters which are specific of each Type of Entity.
 ") OwnCopyCase;
 		virtual void OwnCopyCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
 
@@ -1481,7 +1497,7 @@ None
 
 Description
 -----------
-Specific preparation for delete, acts on own parameters default does nothing, to be redefined as required.
+Specific preparation for delete, acts on own parameters Default does nothing, to be redefined as required.
 ") OwnDeleteCase;
 		virtual void OwnDeleteCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1501,7 +1517,7 @@ None
 
 Description
 -----------
-Specific list of entities implied by a given igesentity <ent> (in addition to associativities). by default, there are none, but this method can be redefined as required.
+Specific list of Entities implied by a given IGESEntity <ent> (in addition to Associativities). By default, there are none, but this method can be redefined as required.
 ") OwnImpliedCase;
 		virtual void OwnImpliedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
@@ -1522,7 +1538,7 @@ None
 
 Description
 -----------
-Renews parameters which are specific of each type of entity: the provided default does nothing, but this method may be redefined as required.
+Renews parameters which are specific of each Type of Entity: the provided default does nothing, but this method may be redefined as required.
 ") OwnRenewCase;
 		virtual void OwnRenewCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, const Interface_CopyTool & TC);
 
@@ -1542,7 +1558,7 @@ None
 
 Description
 -----------
-Lists the entities shared by a given igesentity <ent>, from its specific parameters: specific for each type.
+Lists the Entities shared by a given IGESEntity <ent>, from its specific parameters: specific for each type.
 ") OwnSharedCase;
 		virtual void OwnSharedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
@@ -1563,7 +1579,7 @@ None
 
 Description
 -----------
-Renewing of implied references. for igesentities, copies general data(list of associativities) and calls ownrenewcase.
+Renewing of Implied References. For IGESEntities, Copies general data(List of Associativities) and calls OwnRenewCase.
 ") RenewImpliedCase;
 		virtual void RenewImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, const Interface_CopyTool & TC);
 
@@ -1583,7 +1599,7 @@ None
 
 Description
 -----------
-Prepares an iges entity for delete: works on directory part then calls owndeletecase while dispatch requires to copy the entities, <dispatched> is ignored, entities are cleared in any case.
+Prepares an IGES Entity for delete: works on directory part then calls OwnDeleteCase While dispatch requires to copy the entities, <dispatched> is ignored, entities are cleared in any case.
 ") WhenDeleteCase;
 		virtual void WhenDeleteCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean dispatched);
 
@@ -1612,7 +1628,7 @@ None
 
 Description
 -----------
-Creates an empty globalnode, with no next.
+Creates an empty GlobalNode, with no Next.
 ") IGESData_GlobalNodeOfSpecificLib;
 		 IGESData_GlobalNodeOfSpecificLib();
 
@@ -1631,7 +1647,7 @@ None
 
 Description
 -----------
-Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required) once added, stores its attached protocol in correspondence.
+Adds a Module bound with a Protocol to the list: does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondence.
 ") Add;
 		void Add(const opencascade::handle<IGESData_SpecificModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -1644,7 +1660,7 @@ opencascade::handle<IGESData_SpecificModule>
 
 Description
 -----------
-Returns the module stored in a given globalnode.
+Returns the Module stored in a given GlobalNode.
 ") Module;
 		const opencascade::handle<IGESData_SpecificModule> & Module();
 
@@ -1657,7 +1673,7 @@ opencascade::handle<IGESData_GlobalNodeOfSpecificLib>
 
 Description
 -----------
-Returns the next globalnode. if none is defined, returned value is a null handle.
+Returns the Next GlobalNode. If none is defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<IGESData_GlobalNodeOfSpecificLib> & Next();
 
@@ -1670,7 +1686,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the attached protocol stored in a given globalnode.
+Returns the attached Protocol stored in a given GlobalNode.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -1699,7 +1715,7 @@ None
 
 Description
 -----------
-Creates an empty globalnode, with no next.
+Creates an empty GlobalNode, with no Next.
 ") IGESData_GlobalNodeOfWriterLib;
 		 IGESData_GlobalNodeOfWriterLib();
 
@@ -1718,7 +1734,7 @@ None
 
 Description
 -----------
-Adds a module bound with a protocol to the list: does nothing if already in the list, that is, same type (exact match) and same state (that is, isequal is not required). once added, stores its attached protocol in correspondence.
+Adds a Module bound with a Protocol to the list: does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required). Once added, stores its attached Protocol in correspondence.
 ") Add;
 		void Add(const opencascade::handle<IGESData_ReadWriteModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -1731,7 +1747,7 @@ opencascade::handle<IGESData_ReadWriteModule>
 
 Description
 -----------
-Returns the module stored in a given globalnode.
+Returns the Module stored in a given GlobalNode.
 ") Module;
 		const opencascade::handle<IGESData_ReadWriteModule> & Module();
 
@@ -1744,7 +1760,7 @@ opencascade::handle<IGESData_GlobalNodeOfWriterLib>
 
 Description
 -----------
-Returns the next globalnode. if none is defined, returned value is a null handle.
+Returns the Next GlobalNode. If none is defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<IGESData_GlobalNodeOfWriterLib> & Next();
 
@@ -1757,7 +1773,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the attached protocol stored in a given globalnode.
+Returns the attached Protocol stored in a given GlobalNode.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -1786,7 +1802,7 @@ None
 
 Description
 -----------
-Creates an empty globalsection, ready to be filled, warning: no default value is provided.
+Creates an empty GlobalSection, ready to be filled, Warning: No default value is provided.
 ") IGESData_GlobalSection;
 		 IGESData_GlobalSection();
 
@@ -1812,7 +1828,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of the iges file author.
+Returns the name of the IGES file author.
 ") AuthorName;
 		opencascade::handle<TCollection_HAsciiString> AuthorName();
 
@@ -1838,7 +1854,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of the company where the iges file was written.
+Returns the name of the company where the IGES file was written.
 ") CompanyName;
 		opencascade::handle<TCollection_HAsciiString> CompanyName();
 
@@ -1851,7 +1867,7 @@ None
 
 Description
 -----------
-Copies data referenced by handle (that is, strings) useful to 'isolate' a globalsection after copy by '=' (from a model to another model for instance).
+Copies data referenced by Handle (that is, Strings) useful to 'isolate' a GlobalSection after copy by '=' (from a Model to another Model for instance).
 ") CopyRefs;
 		void CopyRefs();
 
@@ -1864,7 +1880,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the iges file creation date.
+Returns the IGES file creation date.
 ") Date;
 		opencascade::handle<TCollection_HAsciiString> Date();
 
@@ -1903,7 +1919,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of the iges file.
+Returns the name of the IGES file.
 ") FileName;
 		opencascade::handle<TCollection_HAsciiString> FileName();
 
@@ -1929,7 +1945,7 @@ bool
 
 Description
 -----------
-Returns true if the date and time when the model was created or last modified are specified, i.e. not defaulted to null.
+Returns True if the date and time when the model was created or last modified are specified, i.e. not defaulted to NULL.
 ") HasLastChangeDate;
 		Standard_Boolean HasLastChangeDate();
 
@@ -1942,7 +1958,7 @@ bool
 
 Description
 -----------
-Returns true if the approximate maximum coordinate value found in the model is greater than 0.
+Returns True if the approximate maximum coordinate value found in the model is greater than 0.
 ") HasMaxCoord;
 		Standard_Boolean HasMaxCoord();
 
@@ -1955,7 +1971,7 @@ int
 
 Description
 -----------
-Returns the iges version that the iges file was written in.
+Returns the IGES version that the IGES file was written in.
 ") IGESVersion;
 		Standard_Integer IGESVersion();
 
@@ -1974,7 +1990,7 @@ None
 
 Description
 -----------
-Fills globalsection from a paramset (i.e. taken from file) undefined parameters do not change default values when defined fills check about corrections or fails.
+Fills GlobalSection from a ParamSet (i.e. taken from file) undefined parameters do not change default values when defined Fills Check about Corrections or Fails.
 ") Init;
 		void Init(const opencascade::handle<Interface_ParamSet> & params, opencascade::handle<Interface_Check> & ach);
 
@@ -2000,7 +2016,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of the pre-processor used to write the iges file.
+Returns the name of the pre-processor used to write the IGES file.
 ") InterfaceVersion;
 		opencascade::handle<TCollection_HAsciiString> InterfaceVersion();
 
@@ -2013,7 +2029,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the date and time when the model was created or last modified (for iges 5.1 and later).
+Returns the date and time when the model was created or last modified (for IGES 5.1 and later).
 ") LastChangeDate;
 		opencascade::handle<TCollection_HAsciiString> LastChangeDate();
 
@@ -2078,7 +2094,7 @@ float
 
 Description
 -----------
-Returns the of maximum line weight width in iges file units.
+Returns the of maximum line weight width in IGES file units.
 ") MaxLineWeight;
 		Standard_Real MaxLineWeight();
 
@@ -2164,7 +2180,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a string built from year, month, day, hour, minute and second values. the form of the resulting string is defined as follows: - -1: yymmdd.hhnnss, - 0: yyyymmdd.hhnnss, - 1: yyyy-mm-dd:hh-nn-ss, where: - yyyy or yy is 4 or 2 digit year, - hh is hour (00-23), - mm is month (01-12), - nn is minute (00-59) - dd is day (01-31), - ss is second (00-59).
+Returns a string built from year, month, day, hour, minute and second values. The form of the resulting string is defined as follows: - -1: YYMMDD.HHNNSS, - 0: YYYYMMDD.HHNNSS, - 1: YYYY-MM-DD:HH-NN-SS, where: - YYYY or YY is 4 or 2 digit year, - HH is hour (00-23), - MM is month (01-12), - NN is minute (00-59) - DD is day (01-31), - SS is second (00-59).
 ") NewDateString;
 		static opencascade::handle<TCollection_HAsciiString> NewDateString(const Standard_Integer year, const Standard_Integer month, const Standard_Integer day, const Standard_Integer hour, const Standard_Integer minut, const Standard_Integer second, const Standard_Integer mode = -1);
 
@@ -2183,7 +2199,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Converts the string given in the form yymmdd.hhnnss or yyyymmdd.hhnnss to either yymmdd.hhnnss, yyyymmdd.hhnnss or yyyy-mm-dd:hh-nn-ss.
+Converts the string given in the form YYMMDD.HHNNSS or YYYYMMDD.HHNNSS to either YYMMDD.HHNNSS, YYYYMMDD.HHNNSS or YYYY-MM-DD:HH-NN-SS.
 ") NewDateString;
 		static opencascade::handle<TCollection_HAsciiString> NewDateString(const opencascade::handle<TCollection_HAsciiString> & date, const Standard_Integer mode = 1);
 
@@ -2196,7 +2212,7 @@ opencascade::handle<Interface_ParamSet>
 
 Description
 -----------
-Returns all contained data in the form of a paramset remark: strings are given under hollerith form.
+Returns all contained data in the form of a ParamSet Remark: Strings are given under Hollerith form.
 ") Params;
 		opencascade::handle<Interface_ParamSet> Params();
 
@@ -2222,7 +2238,7 @@ float
 
 Description
 -----------
-Returns the resolution used in the iges file.
+Returns the resolution used in the IGES file.
 ") Resolution;
 		Standard_Real Resolution();
 
@@ -2235,7 +2251,7 @@ float
 
 Description
 -----------
-Returns the scale used in the iges file.
+Returns the scale used in the IGES file.
 ") Scale;
 		Standard_Real Scale();
 
@@ -2773,7 +2789,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the native system id of the system that created the iges file.
+Returns the Native System ID of the system that created the IGES file.
 ") SystemId;
 		opencascade::handle<TCollection_HAsciiString> SystemId();
 
@@ -2791,7 +2807,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a string withpout its hollerith marks (nnnh ahead). remark: all strings stored in globalsection are expurged from hollerith information (without nnnh) if <astr> is not hollerith form, it is simply copied.
+Returns a string withpout its Hollerith marks (nnnH ahead). Remark: all strings stored in GlobalSection are expurged from Hollerith information (without nnnH) If <astr> is not Hollerith form, it is simply copied.
 ") TranslatedFromHollerith;
 		opencascade::handle<TCollection_HAsciiString> TranslatedFromHollerith(const opencascade::handle<TCollection_HAsciiString> & astr);
 
@@ -2804,7 +2820,7 @@ int
 
 Description
 -----------
-Returns the unit flag that was used to write the iges file.
+Returns the unit flag that was used to write the IGES file.
 ") UnitFlag;
 		Standard_Integer UnitFlag();
 
@@ -2817,7 +2833,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of the unit the iges file was written in.
+Returns the name of the unit the IGES file was written in.
 ") UnitName;
 		opencascade::handle<TCollection_HAsciiString> UnitName();
 
@@ -2830,7 +2846,7 @@ float
 
 Description
 -----------
-Returns the unit value (in meters) that the iges file was written in.
+Returns the unit value (in meters) that the IGES file was written in.
 ") UnitValue;
 		Standard_Real UnitValue();
 
@@ -2863,7 +2879,7 @@ None
 
 Description
 -----------
-Returns an igesdumper ready to work. the igesmodel provides the numbering of entities: as for any interfacemodel, it gives each entity a number; but for igesentities, the 'number of directory entry' according to the definition of iges files, is also useful.
+Returns an IGESDumper ready to work. The IGESModel provides the numbering of Entities: as for any InterfaceModel, it gives each Entity a number; but for IGESEntities, the 'Number of Directory Entry' according to the definition of IGES Files, is also useful.
 ") IGESData_IGESDumper;
 		 IGESData_IGESDumper(const opencascade::handle<IGESData_IGESModel> & model, const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -2902,7 +2918,7 @@ S: Standard_OStream
 
 Description
 -----------
-Specific dump for each iges entity, call by dump (just above) <own> is the parameter <own> from dump.
+Specific Dump for each IGES Entity, call by Dump (just above) <own> is the parameter <own> from Dump.
 ") OwnDump;
 		void OwnDump(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue, const Standard_Integer own);
 
@@ -2920,7 +2936,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints onto an output, the 'number of directory entry' which corresponds to an igesentity in the igesmodel, under the form 'd#nnn' (a null handle gives d#0).
+Prints onto an output, the 'Number of Directory Entry' which corresponds to an IGESEntity in the IGESModel, under the form 'D#nnn' (a Null Handle gives D#0).
 ") PrintDNum;
 		void PrintDNum(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue);
 
@@ -2938,7 +2954,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints onto an output, the 'number of directory entry' (see printdnum) plus iges type and form numbers, which gives 'd#nnn type nnn form nnn'.
+Prints onto an output, the 'Number of Directory Entry' (see PrintDNum) plus IGES Type and Form Numbers, which gives 'D#nnn Type nnn Form nnn'.
 ") PrintShort;
 		void PrintShort(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue);
 
@@ -2971,7 +2987,7 @@ None
 
 Description
 -----------
-Adds a property in the list.
+Adds a Property in the list.
 ") AddProperty;
 		void AddProperty(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -2984,7 +3000,7 @@ bool
 
 Description
 -----------
-Returns true if the entity is defined with an associativity list, even empty (that is, file contains its length 0) else, the file contained no idencation at all about this list.
+Returns True if the Entity is defined with an Associativity list, even empty (that is, file contains its length 0) Else, the file contained NO idencation at all about this list.
 ") ArePresentAssociativities;
 		Standard_Boolean ArePresentAssociativities();
 
@@ -2997,7 +3013,7 @@ bool
 
 Description
 -----------
-Returns true if the entity is defined with a property list, even empty (that is, file contains its length 0) else, the file contained no idencation at all about this list.
+Returns True if the Entity is defined with a Property list, even empty (that is, file contains its length 0) Else, the file contained NO idencation at all about this list.
 ") ArePresentProperties;
 		Standard_Boolean ArePresentProperties();
 
@@ -3015,7 +3031,7 @@ None
 
 Description
 -----------
-Sets 'me' in the associativity list of another entity.
+Sets 'me' in the Associativity list of another Entity.
 ") Associate;
 		void Associate(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -3028,7 +3044,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the associativity list under the form of an entityiterator.
+Returns the Associativity List under the form of an EntityIterator.
 ") Associativities;
 		Interface_EntityIterator Associativities();
 
@@ -3041,7 +3057,7 @@ int
 
 Description
 -----------
-Gives blank status (0 visible, 1 blanked).
+gives Blank Status (0 visible, 1 blanked).
 ") BlankStatus;
 		Standard_Integer BlankStatus();
 
@@ -3060,7 +3076,7 @@ bool
 
 Description
 -----------
-Returns 'reserved' alphanumeric values res1 and res2 res1 and res2 have to be reserved as character[9 at least] (remark: their content is changed) returned values are ended by null character in 9th returned boolean is false if res1 and res2 are blank, true else.
+returns 'reserved' alphanumeric values res1 and res2 res1 and res2 have to be reserved as Character[9 at least] (remark: their content is changed) returned values are ended by null character in 9th returned Boolean is False if res1 and res2 are blank, true else.
 ") CResValues;
 		Standard_Boolean CResValues(Standard_CString res1, Standard_CString res2);
 
@@ -3073,7 +3089,7 @@ opencascade::handle<IGESData_ColorEntity>
 
 Description
 -----------
-Returns the iges entity which describes the color of the entity. returns a null handle if this entity was defined as an integer.
+Returns the IGES entity which describes the color of the entity. Returns a null handle if this entity was defined as an integer.
 ") Color;
 		opencascade::handle<IGESData_ColorEntity> Color();
 
@@ -3086,7 +3102,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns location by taking in account a parent which has its own location: that one will be combined to that of <self> the parent is considered only if hasoneparent is true, else it is ignored and compoundlocation = location.
+Returns Location by taking in account a Parent which has its own Location: that one will be combined to that of <self> The Parent is considered only if HasOneParent is True, else it is ignored and CompoundLocation = Location.
 ") CompoundLocation;
 		gp_GTrsf CompoundLocation();
 
@@ -3099,7 +3115,7 @@ IGESData_DefType
 
 Description
 -----------
-Returns the definition status of color.
+Returns the definition status of Color.
 ") DefColor;
 		virtual IGESData_DefType DefColor();
 
@@ -3112,7 +3128,7 @@ IGESData_DefList
 
 Description
 -----------
-Returns the definition status of level.
+Returns the definition status of Level.
 ") DefLevel;
 		virtual IGESData_DefList DefLevel();
 
@@ -3125,7 +3141,7 @@ IGESData_DefType
 
 Description
 -----------
-Returns the definition status of linefont.
+Returns the definition status of LineFont.
 ") DefLineFont;
 		virtual IGESData_DefType DefLineFont();
 
@@ -3138,7 +3154,7 @@ IGESData_DefList
 
 Description
 -----------
-Returns the definition status of the view. this can be: none, one or several.
+Returns the definition status of the view. This can be: none, one or several.
 ") DefView;
 		virtual IGESData_DefList DefView();
 
@@ -3156,7 +3172,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the entity which has been recorded for a given field number, i.e. without any cast. maps with: 3: structure 4: linefont 5: levellist 6: view 7: transf(ormation matrix) 8: labeldisplay 13: color. other values give a null handle it can then be of any kind, while specific items have a type.
+Returns the Entity which has been recorded for a given Field Number, i.e. without any cast. Maps with: 3: Structure 4: LineFont 5: LevelList 6: View 7: Transf(ormation Matrix) 8: LabelDisplay 13: Color. Other values give a null handle It can then be of any kind, while specific items have a Type.
 ") DirFieldEntity;
 		opencascade::handle<IGESData_IGESEntity> DirFieldEntity(const Standard_Integer fieldnum);
 
@@ -3174,7 +3190,7 @@ None
 
 Description
 -----------
-Resets 'me' from the associativity list of another entity.
+Resets 'me' from the Associativity list of another Entity.
 ") Dissociate;
 		void Dissociate(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -3187,7 +3203,7 @@ int
 
 Description
 -----------
-Returns the form number for that type of an iges entity. the default form number is 0.
+Returns the form number for that type of an IGES entity. The default form number is 0.
 ") FormNumber;
 		Standard_Integer FormNumber();
 
@@ -3200,7 +3216,7 @@ bool
 
 Description
 -----------
-Returns true if a labeldisplay mode is defined for this entity.
+Returns True if a LabelDisplay mode is defined for this entity.
 ") HasLabelDisplay;
 		Standard_Boolean HasLabelDisplay();
 
@@ -3213,7 +3229,7 @@ bool
 
 Description
 -----------
-Says if a name is defined, as short label or as name property (property is looked first, else shortlabel is considered).
+says if a Name is defined, as Short Label or as Name Property (Property is looked first, else ShortLabel is considered).
 ") HasName;
 		Standard_Boolean HasName();
 
@@ -3226,7 +3242,7 @@ bool
 
 Description
 -----------
-Returns true if an entity has one and only one parent, defined by a singleparententity type associativity (explicit sharing). thus, implicit sharing remains defined at model level (see class toollocation).
+Returns True if an entity has one and only one parent, defined by a SingleParentEntity Type Associativity (explicit sharing). Thus, implicit sharing remains defined at model level (see class ToolLocation).
 ") HasOneParent;
 		Standard_Boolean HasOneParent();
 
@@ -3239,7 +3255,7 @@ bool
 
 Description
 -----------
-Returns true if a short label is defined. a short label is a non-blank 8-character string.
+Returns true if a short label is defined. A short label is a non-blank 8-character string.
 ") HasShortLabel;
 		Standard_Boolean HasShortLabel();
 
@@ -3252,7 +3268,7 @@ bool
 
 Description
 -----------
-Returns true if an igesentity is defined with a structure (it is normally reserved for certain classes, such as macros).
+returns True if an IGESEntity is defined with a Structure (it is normally reserved for certain classes, such as Macros).
 ") HasStructure;
 		Standard_Boolean HasStructure();
 
@@ -3265,7 +3281,7 @@ bool
 
 Description
 -----------
-Returns true if a subscript number is defined. a subscript number is an integer used to identify a label.
+Returns true if a subscript number is defined. A subscript number is an integer used to identify a label.
 ") HasSubScriptNumber;
 		virtual Standard_Boolean HasSubScriptNumber();
 
@@ -3278,7 +3294,7 @@ bool
 
 Description
 -----------
-Returns true if a transformation matrix is defined.
+Returns True if a Transformation Matrix is defined.
 ") HasTransf;
 		Standard_Boolean HasTransf();
 
@@ -3291,7 +3307,7 @@ int
 
 Description
 -----------
-Gives hierarchy status (0-1-2).
+gives Hierarchy status (0-1-2).
 ") HierarchyStatus;
 		Standard_Integer HierarchyStatus();
 
@@ -3304,7 +3320,7 @@ IGESData_IGESType
 
 Description
 -----------
-Gives iges typing info (includes 'type' and 'form' data).
+gives IGES typing info (includes 'Type' and 'Form' data).
 ") IGESType;
 		IGESData_IGESType IGESType();
 
@@ -3323,7 +3339,7 @@ None
 
 Description
 -----------
-Initializes color data: if <ent> is not null, it gives color, else <rank> gives or erases (if zero) rankcolor.
+Initializes Color data: if <ent> is not Null, it gives Color, else <rank> gives or erases (if zero) RankColor.
 ") InitColor;
 		void InitColor(const opencascade::handle<IGESData_ColorEntity> & ent, const Standard_Integer rank = 0);
 
@@ -3342,7 +3358,7 @@ None
 
 Description
 -----------
-Initializes a directory field as an entiy of any kind see dirfieldentity for more details.
+Initializes a directory field as an Entity of any kind See DirFieldEntity for more details.
 ") InitDirFieldEntity;
 		void InitDirFieldEntity(const Standard_Integer fieldnum, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -3361,7 +3377,7 @@ None
 
 Description
 -----------
-Initializes level: if <ent> is not null, it gives levellist, else <val> gives or erases (if zero) unique level.
+Initializes Level: if <ent> is not Null, it gives LevelList, else <val> gives or erases (if zero) unique Level.
 ") InitLevel;
 		void InitLevel(const opencascade::handle<IGESData_LevelListEntity> & ent, const Standard_Integer val = 0);
 
@@ -3380,7 +3396,7 @@ None
 
 Description
 -----------
-Initializes linefont: if <ent> is not null, it gives linefont, else <rank> gives or erases (if zero) ranklinefont.
+Initializes LineFont: if <ent> is not Null, it gives LineFont, else <rank> gives or erases (if zero) RankLineFont.
 ") InitLineFont;
 		void InitLineFont(const opencascade::handle<IGESData_LineFontEntity> & ent, const Standard_Integer rank = 0);
 
@@ -3400,7 +3416,7 @@ None
 
 Description
 -----------
-Initializes various data (those not yet seen above), or erases them if they are given as null (zero for <weightnum>): <str> for structure, <lab> for labeldisplay, and <weightnum> for weightnumber.
+Initializes various data (those not yet seen above), or erases them if they are given as Null (Zero for <weightnum>): <str> for Structure, <lab> for LabelDisplay, and <weightnum> for WeightNumber.
 ") InitMisc;
 		void InitMisc(const opencascade::handle<IGESData_IGESEntity> & str, const opencascade::handle<IGESData_LabelDisplayEntity> & lab, const Standard_Integer weightnum);
 
@@ -3421,7 +3437,7 @@ None
 
 Description
 -----------
-Initializes the status of directory part.
+Initializes the Status of Directory Part.
 ") InitStatus;
 		void InitStatus(const Standard_Integer blank, const Standard_Integer subordinate, const Standard_Integer useflag, const Standard_Integer hierarchy);
 
@@ -3439,7 +3455,7 @@ None
 
 Description
 -----------
-Initializes transf, or erases it if <ent> is given null.
+Initializes Transf, or erases it if <ent> is given Null.
 ") InitTransf;
 		void InitTransf(const opencascade::handle<IGESData_TransfEntity> & ent);
 
@@ -3457,7 +3473,7 @@ None
 
 Description
 -----------
-Initializes view, or erases it if <ent> is given null.
+Initializes View, or erases it if <ent> is given Null.
 ") InitView;
 		void InitView(const opencascade::handle<IGESData_ViewKindEntity> & ent);
 
@@ -3470,7 +3486,7 @@ opencascade::handle<IGESData_LabelDisplayEntity>
 
 Description
 -----------
-Returns the label display associativity entity if there is one. returns a null handle if there is none.
+Returns the Label Display Associativity Entity if there is one. Returns a null handle if there is none.
 ") LabelDisplay;
 		opencascade::handle<IGESData_LabelDisplayEntity> LabelDisplay();
 
@@ -3483,7 +3499,7 @@ int
 
 Description
 -----------
-Returns the level the entity belongs to. returns -1 if the entity belongs to more than one level.
+Returns the level the entity belongs to. Returns -1 if the entity belongs to more than one level.
 ") Level;
 		Standard_Integer Level();
 
@@ -3496,7 +3512,7 @@ opencascade::handle<IGESData_LevelListEntity>
 
 Description
 -----------
-Returns levellist if level is defined as a list. returns a null handle if deflevel is not defseveral.
+Returns LevelList if Level is defined as a list. Returns a null handle if DefLevel is not DefSeveral.
 ") LevelList;
 		opencascade::handle<IGESData_LevelListEntity> LevelList();
 
@@ -3509,7 +3525,7 @@ opencascade::handle<IGESData_LineFontEntity>
 
 Description
 -----------
-Returns linefont as an entity (if defined as reference) returns a null handle if deflinefont is not 'defreference'.
+Returns LineFont as an Entity (if defined as Reference) Returns a Null Handle if DefLineFont is not 'DefReference'.
 ") LineFont;
 		opencascade::handle<IGESData_LineFontEntity> LineFont();
 
@@ -3522,7 +3538,7 @@ float
 
 Description
 -----------
-Returns the true line weight, computed from lineweightnumber and global parameter in the model by call to setlineweight.
+Returns the true Line Weight, computed from LineWeightNumber and Global Parameter in the Model by call to SetLineWeight.
 ") LineWeight;
 		Standard_Real LineWeight();
 
@@ -3535,7 +3551,7 @@ int
 
 Description
 -----------
-Returns the lineweight number (0 not defined), see also lineweight.
+Returns the LineWeight Number (0 not defined), see also LineWeight.
 ") LineWeightNumber;
 		Standard_Integer LineWeightNumber();
 
@@ -3548,7 +3564,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns location given by transf in directory part (see above) it must be considered for local definition: if the entity is set in a 'parent', that one can add its one location, but this is not taken in account here: see compoundlocation for that. if no transf is defined, returns identity if transf is itself compound, gives the final result.
+Returns Location given by Transf in Directory Part (see above) It must be considered for local definition: if the Entity is set in a 'Parent', that one can add its one Location, but this is not taken in account here: see CompoundLocation for that. If no Transf is defined, returns Identity If Transf is itself compound, gives the final result.
 ") Location;
 		gp_GTrsf Location();
 
@@ -3561,7 +3577,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns name value as a string (property name or shortlabel) if subnumber is defined, it is concatenated after shortlabel as follows label(number). ignored with a property name.
+returns Name value as a String (Property Name or ShortLabel) if SubNumber is defined, it is concatenated after ShortLabel as follows label(number). Ignored with a Property Name.
 ") NameValue;
 		opencascade::handle<TCollection_HAsciiString> NameValue();
 
@@ -3574,7 +3590,7 @@ int
 
 Description
 -----------
-Gives number of recorded associativities (0 no list defined).
+gives number of recorded associativities (0 no list defined).
 ") NbAssociativities;
 		Standard_Integer NbAssociativities();
 
@@ -3605,7 +3621,7 @@ int
 
 Description
 -----------
-Gives how many associativities have a given type.
+gives how many Associativities have a given type.
 ") NbTypedAssociativities;
 		Standard_Integer NbTypedAssociativities(const opencascade::handle<Standard_Type> & atype);
 
@@ -3623,7 +3639,7 @@ int
 
 Description
 -----------
-Gives how many properties have a given type.
+gives how many Properties have a given type.
 ") NbTypedProperties;
 		Standard_Integer NbTypedProperties(const opencascade::handle<Standard_Type> & atype);
 
@@ -3636,7 +3652,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns property list under the form of an entityiterator.
+Returns Property List under the form of an EntityIterator.
 ") Properties;
 		Interface_EntityIterator Properties();
 
@@ -3649,7 +3665,7 @@ int
 
 Description
 -----------
-Returns the color definition as an integer value if the color was defined as a rank. warning a negative value is returned if the color was defined as an entity.
+Returns the color definition as an integer value if the color was defined as a rank. Warning A negative value is returned if the color was defined as an entity.
 ") RankColor;
 		Standard_Integer RankColor();
 
@@ -3662,7 +3678,7 @@ int
 
 Description
 -----------
-Returns linefont definition as an integer (if defined as rank) if linefont is defined as an entity, returns a negative value.
+Returns LineFont definition as an Integer (if defined as Rank) If LineFont is defined as an Entity, returns a negative value.
 ") RankLineFont;
 		Standard_Integer RankLineFont();
 
@@ -3680,7 +3696,7 @@ None
 
 Description
 -----------
-Removes a property from the list.
+Removes a Property from the list.
 ") RemoveProperty;
 		void RemoveProperty(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -3699,7 +3715,7 @@ None
 
 Description
 -----------
-Sets a new label to an iges entity if <sub> is given, it sets value of subscriptnumber else, subscriptnumber is erased.
+Sets a new Label to an IGES Entity If <sub> is given, it sets value of SubScriptNumber else, SubScriptNumber is erased.
 ") SetLabel;
 		void SetLabel(const opencascade::handle<TCollection_HAsciiString> & label, const Standard_Integer sub = -1);
 
@@ -3719,7 +3735,7 @@ None
 
 Description
 -----------
-Computes and sets 'true' line weight according iges rules from global data maxlineweight (maxv) and lineweightgrad (gradw), or sets it to defw (default) if lineweightnumber is null.
+computes and sets 'true' line weight according IGES rules from global data MaxLineWeight (maxv) and LineWeightGrad (gradw), or sets it to defw (Default) if LineWeightNumber is null.
 ") SetLineWeight;
 		void SetLineWeight(const Standard_Real defw, const Standard_Real maxw, const Standard_Integer gradw);
 
@@ -3732,7 +3748,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the label value for this iges entity as a string. warning if the label is blank, this string is null.
+Returns the label value for this IGES entity as a string. Warning If the label is blank, this string is null.
 ") ShortLabel;
 		opencascade::handle<TCollection_HAsciiString> ShortLabel();
 
@@ -3745,7 +3761,7 @@ opencascade::handle<IGESData_ViewKindEntity>
 
 Description
 -----------
-Returns the view as a single view if it was defined as such and not as a list of views. warning a null handle is returned if defview does not have the value defone.
+Returns the view as a single view if it was defined as such and not as a list of views. Warning A null handle is returned if DefView does not have the value DefOne.
 ") SingleView;
 		opencascade::handle<IGESData_ViewKindEntity> SingleView();
 
@@ -3758,7 +3774,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns structure (used by some types of iges entities only) returns a null handle if structure is not defined.
+Returns Structure (used by some types of IGES Entities only) Returns a Null Handle if Structure is not defined.
 ") Structure;
 		opencascade::handle<IGESData_IGESEntity> Structure();
 
@@ -3771,7 +3787,7 @@ int
 
 Description
 -----------
-Returns the integer subscript number used to identify this iges entity. warning 0 is returned if no subscript number is defined for this iges entity.
+Returns the integer subscript number used to identify this IGES entity. Warning 0 is returned if no subscript number is defined for this IGES entity.
 ") SubScriptNumber;
 		Standard_Integer SubScriptNumber();
 
@@ -3784,7 +3800,7 @@ int
 
 Description
 -----------
-Gives subordinate switch (0-1-2-3).
+gives Subordinate Switch (0-1-2-3).
 ") SubordinateStatus;
 		Standard_Integer SubordinateStatus();
 
@@ -3797,7 +3813,7 @@ opencascade::handle<IGESData_TransfEntity>
 
 Description
 -----------
-Returns the transformation matrix (under iges definition) returns a null handle if there is none for a more complete use, see location & compoundlocation.
+Returns the Transformation Matrix (under IGES definition) Returns a Null Handle if there is none for a more complete use, see Location & CompoundLocation.
 ") Transf;
 		opencascade::handle<IGESData_TransfEntity> Transf();
 
@@ -3810,7 +3826,7 @@ int
 
 Description
 -----------
-Gives iges type number (often coupled with form number).
+gives IGES Type Number (often coupled with Form Number).
 ") TypeNumber;
 		Standard_Integer TypeNumber();
 
@@ -3828,7 +3844,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the associativity of a given type (if only one exists) error if none or more than one.
+returns the Associativity of a given Type (if only one exists) Error if none or more than one.
 ") TypedAssociativity;
 		opencascade::handle<IGESData_IGESEntity> TypedAssociativity(const opencascade::handle<Standard_Type> & atype);
 
@@ -3847,7 +3863,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the property of a given type error if none or more than one.
+returns the Property of a given Type Error if none or more than one.
 ") TypedProperty;
 		opencascade::handle<IGESData_IGESEntity> TypedProperty(const opencascade::handle<Standard_Type> & atype, const Standard_Integer anum = 0);
 
@@ -3860,7 +3876,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the unique parent (in the sense given by hasoneparent) error if there is none or several.
+Returns the Unique Parent (in the sense given by HasOneParent) Error if there is none or several.
 ") UniqueParent;
 		opencascade::handle<IGESData_IGESEntity> UniqueParent();
 
@@ -3873,7 +3889,7 @@ int
 
 Description
 -----------
-Gives entity's use flag (0 to 5).
+gives Entity's Use Flag (0 to 5).
 ") UseFlag;
 		Standard_Integer UseFlag();
 
@@ -3886,7 +3902,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns location considered for vectors, i.e. without its translation part. as location, it gives local definition.
+Returns Location considered for Vectors, i.e. without its Translation Part. As Location, it gives local definition.
 ") VectorLocation;
 		gp_GTrsf VectorLocation();
 
@@ -3899,7 +3915,7 @@ opencascade::handle<IGESData_ViewKindEntity>
 
 Description
 -----------
-Returns the view of this iges entity. this view can be a single view or a list of views. warning a null handle is returned if the view is not defined.
+Returns the view of this IGES entity. This view can be a single view or a list of views. Warning A null handle is returned if the view is not defined.
 ") View;
 		opencascade::handle<IGESData_ViewKindEntity> View();
 
@@ -3912,7 +3928,7 @@ opencascade::handle<IGESData_ViewKindEntity>
 
 Description
 -----------
-Returns the view of this iges entity as a list. warning a null handle is returned if the definition status does not have the value defseveral.
+Returns the view of this IGES entity as a list. Warning A null handle is returned if the definition status does not have the value DefSeveral.
 ") ViewList;
 		opencascade::handle<IGESData_ViewKindEntity> ViewList();
 
@@ -3960,7 +3976,7 @@ None
 
 Description
 -----------
-Adds a new string to the existing start section at the end if atnum is 0 or not given, or before atnumth line.
+Adds a new string to the existing Start section at the end if atnum is 0 or not given, or before atnumth line.
 ") AddStartLine;
 		void AddStartLine(Standard_CString line, const Standard_Integer atnum = 0);
 
@@ -3978,7 +3994,7 @@ bool
 
 Description
 -----------
-Sets some of the global section parameters with the values defined by the translation parameters. param may be: - receiver (value read in xstep.iges.header.receiver), - author (value read in xstep.iges.header.author), - company (value read in xstep.iges.header.company). the default value for param is an empty string. returns true when done and if param is given, false if param is unknown or empty. note: set the unit in the iges file global section via igesdata_basiceditor class.
+Sets some of the Global section parameters with the values defined by the translation parameters. param may be: - receiver (value read in XSTEP.iges.header.receiver), - author (value read in XSTEP.iges.header.author), - company (value read in XSTEP.iges.header.company). The default value for param is an empty string. Returns True when done and if param is given, False if param is unknown or empty. Note: Set the unit in the IGES file Global section via IGESData_BasicEditor class.
 ") ApplyStatic;
 		Standard_Boolean ApplyStatic(Standard_CString param = "");
 
@@ -3991,7 +4007,7 @@ IGESData_GlobalSection
 
 Description
 -----------
-Returns the global section of the iges file.
+Returns the Global section of the IGES file.
 ") ChangeGlobalSection;
 		IGESData_GlobalSection & ChangeGlobalSection();
 
@@ -4004,7 +4020,7 @@ None
 
 Description
 -----------
-Erases all data specific to iges file header (start + global).
+Erases all data specific to IGES file Header (Start + Global).
 ") ClearHeader;
 		void ClearHeader();
 
@@ -4017,7 +4033,7 @@ None
 
 Description
 -----------
-Erases specific labels, i.e. does nothing.
+erases specific labels, i.e. does nothing.
 ") ClearLabels;
 		void ClearLabels();
 
@@ -4030,7 +4046,7 @@ None
 
 Description
 -----------
-Clears the iges file start section.
+Clears the IGES file Start Section.
 ") ClearStartSection;
 		void ClearStartSection();
 
@@ -4048,7 +4064,7 @@ int
 
 Description
 -----------
-Returns the equivalent de number for an entity, i.e. 2*number(ent)-1 , or 0 if <ent> is unknown from <self> this de number is used for file writing for instance.
+Returns the equivalent DE Number for an Entity, i.e. 2*Number(ent)-1 , or 0 if <ent> is unknown from <self> This DE Number is used for File Writing for instance.
 ") DNum;
 		Standard_Integer DNum(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4066,7 +4082,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the iges file header (start and global sections) to the log file. the integer parameter is intended to be used as a level indicator but is not used at present.
+Prints the IGES file header (Start and Global Sections) to the log file. The integer parameter is intended to be used as a level indicator but is not used at present.
 ") DumpHeader;
 		void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
 
@@ -4084,7 +4100,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns an iges entity given by its rank number.
+Returns an IGES entity given by its rank number.
 ") Entity;
 		opencascade::handle<IGESData_IGESEntity> Entity(const Standard_Integer num);
 
@@ -4102,7 +4118,7 @@ None
 
 Description
 -----------
-Gets header (globalsection) from another model.
+gets Header (GlobalSection) from another Model.
 ") GetFromAnother;
 		void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -4115,7 +4131,7 @@ IGESData_GlobalSection
 
 Description
 -----------
-Returns the global section of the iges file.
+Returns the Global section of the IGES file.
 ") GlobalSection;
 		const IGESData_GlobalSection & GlobalSection();
 
@@ -4128,7 +4144,7 @@ int
 
 Description
 -----------
-Returns the count of recorded start lines.
+Returns the count of recorded Start Lines.
 ") NbStartLines;
 		Standard_Integer NbStartLines();
 
@@ -4141,7 +4157,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns a new empty model, same type as <self> i.e. igesmodel.
+Returns a New Empty Model, same type as <self> i.e. IGESModel.
 ") NewEmptyModel;
 		opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
@@ -4159,7 +4175,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to iges norm for a given entity, i.e. its directory entry number (2*number-1).
+Prints label specific to IGES norm for a given entity, i.e. its directory entry number (2*Number-1).
 ") PrintInfo;
 		void PrintInfo(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
@@ -4177,7 +4193,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to iges norm for a given entity, i.e. its directory entry number (2*number-1).
+Prints label specific to IGES norm for a given entity, i.e. its directory entry number (2*Number-1).
 ") PrintLabel;
 		void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
@@ -4195,22 +4211,9 @@ S: Standard_OStream
 
 Description
 -----------
-Prints label specific to iges norm for a given -- -- entity, i.e. its directory entry number (2*number-1) in the log file format.
+Prints label specific to IGES norm for a given -- -- entity, i.e. its directory entry number (2*Number-1) in the log file format.
 ") PrintToLog;
 		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
-
-		/****** IGESData_IGESModel::ReShape ******/
-		/****** md5 signature: acfc9c298bd502c36bf4f2873869a723 ******/
-		%feature("compactdefaultargs") ReShape;
-		%feature("autodoc", "Return
--------
-opencascade::handle<ShapeBuild_ReShape>
-
-Description
------------
-Gets reshape used to store a model's shapes changes.
-") ReShape;
-		const opencascade::handle<ShapeBuild_ReShape> & ReShape();
 
 		/****** IGESData_IGESModel::SetGlobalSection ******/
 		/****** md5 signature: 1af9179d630020de23e87e44cbffad84 ******/
@@ -4226,7 +4229,7 @@ None
 
 Description
 -----------
-Sets the global section of the iges file.
+Sets the Global section of the IGES file.
 ") SetGlobalSection;
 		void SetGlobalSection(const IGESData_GlobalSection & header);
 
@@ -4244,27 +4247,9 @@ None
 
 Description
 -----------
-Sets lineweights of contained entities according header data (maxlineweight and lineweightgrad) or to a default value for undefined weights.
+Sets LineWeights of contained Entities according header data (MaxLineWeight and LineWeightGrad) or to a default value for undefined weights.
 ") SetLineWeights;
 		void SetLineWeights(const Standard_Real defw);
-
-		/****** IGESData_IGESModel::SetReShape ******/
-		/****** md5 signature: 6fed24c5337580b51b9e978b8e16cc46 ******/
-		%feature("compactdefaultargs") SetReShape;
-		%feature("autodoc", "
-Parameters
-----------
-theReShape: ShapeBuild_ReShape
-
-Return
--------
-None
-
-Description
------------
-Sets reshape used to store a history of changes of the model's shapes.
-") SetReShape;
-		void SetReShape(const opencascade::handle<ShapeBuild_ReShape> & theReShape);
 
 		/****** IGESData_IGESModel::SetStartSection ******/
 		/****** md5 signature: ebf891bd634c8accc53a220ba641c312 ******/
@@ -4281,7 +4266,7 @@ None
 
 Description
 -----------
-Sets a new start section from a list of strings. if copy is false, the start section will be shared. any modifications made to the strings later on, will have an effect on the start section. if copy is true (default value), an independent copy of the strings is created and used as the start section. any modifications made to the strings later on, will have no effect on the start section.
+Sets a new Start section from a list of strings. If copy is false, the Start section will be shared. Any modifications made to the strings later on, will have an effect on the Start section. If copy is true (default value), an independent copy of the strings is created and used as the Start section. Any modifications made to the strings later on, will have no effect on the Start section.
 ") SetStartSection;
 		void SetStartSection(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, const Standard_Boolean copy = Standard_True);
 
@@ -4299,7 +4284,7 @@ str
 
 Description
 -----------
-Returns a line from the iges file start section by specifying its number. an empty string is returned if the number given is out of range, the range being from 1 to nbstartlines.
+Returns a line from the IGES file Start section by specifying its number. An empty string is returned if the number given is out of range, the range being from 1 to NbStartLines.
 ") StartLine;
 		Standard_CString StartLine(const Standard_Integer num);
 
@@ -4312,7 +4297,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns model's start section (list of comment lines).
+Returns Model's Start Section (list of comment lines).
 ") StartSection;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
 
@@ -4330,7 +4315,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a string with the label attached to a given entity, i.e. a string 'dnn' with nn = directory entry number (2*n-1).
+Returns a string with the label attached to a given entity, i.e. a string 'Dnn' with nn = directory entry number (2*N-1).
 ") StringLabel;
 		opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4348,7 +4333,7 @@ None
 
 Description
 -----------
-Checks that the iges file global section contains valid data that conforms to the iges specifications.
+Checks that the IGES file Global section contains valid data that conforms to the IGES specifications.
 ") VerifyCheck;
 		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
@@ -4383,7 +4368,7 @@ None
 
 Description
 -----------
-Creates igesreaderdata correctly dimensionned (for arrays) <nbe> count of entities, that is, half nb of directory lines <nbp>: count of parameters.
+creates IGESReaderData correctly dimensioned (for arrays) <nbe> count of entities, that is, half nb of directory lines <nbp>: count of parameters.
 ") IGESData_IGESReaderData;
 		 IGESData_IGESReaderData(const Standard_Integer nbe, const Standard_Integer nbp);
 
@@ -4402,7 +4387,7 @@ None
 
 Description
 -----------
-Adds a parameter to global section's parameter list.
+adds a parameter to global section's parameter list.
 ") AddGlobal;
 		void AddGlobal(const Interface_ParamType atype, Standard_CString aval);
 
@@ -4420,7 +4405,7 @@ None
 
 Description
 -----------
-Adds a start line to start section.
+adds a start line to start section.
 ") AddStartLine;
 		void AddStartLine(Standard_CString aval);
 
@@ -4433,7 +4418,7 @@ float
 
 Description
 -----------
-Returns the recorded default line weight, if there is (else, returns 0).
+Returns the recorded Default Line Weight, if there is (else, returns 0).
 ") DefaultLineWeight;
 		Standard_Real DefaultLineWeight();
 
@@ -4451,7 +4436,7 @@ IGESData_DirPart
 
 Description
 -----------
-Returns dirpart identified by record no (half dsect number).
+returns DirPart identified by record no (half Dsect number).
 ") DirPart;
 		const IGESData_DirPart & DirPart(const Standard_Integer num);
 
@@ -4469,7 +4454,7 @@ IGESData_IGESType
 
 Description
 -----------
-Returns 'type' and 'form' info from a directory part.
+returns 'type' and 'form' info from a directory part.
 ") DirType;
 		IGESData_IGESType DirType(const Standard_Integer num);
 
@@ -4507,7 +4492,7 @@ i17: int
 
 Description
 -----------
-Returns values recorded in directory part n0 <num>.
+returns values recorded in directory part n0 <num>.
 ") DirValues;
 		void DirValues(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
 
@@ -4525,7 +4510,7 @@ int
 
 Description
 -----------
-Determines next suitable record from num; that is num+1 except for last one which gives 0.
+determines next suitable record from num; that is num+1 except for last one which gives 0.
 ") FindNextRecord;
 		Standard_Integer FindNextRecord(const Standard_Integer num);
 
@@ -4538,7 +4523,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the recorded global check.
+Returns the recorded Global Check.
 ") GlobalCheck;
 		opencascade::handle<Interface_Check> GlobalCheck();
 
@@ -4551,7 +4536,7 @@ IGESData_GlobalSection
 
 Description
 -----------
-Returns header as globalsection.
+returns header as GlobalSection.
 ") GlobalSection;
 		const IGESData_GlobalSection & GlobalSection();
 
@@ -4564,7 +4549,7 @@ int
 
 Description
 -----------
-Returns count of recorded entities (i.e. size of directory).
+Returns count of recorded Entities (i.e. size of Directory).
 ") NbEntities;
 		virtual Standard_Integer NbEntities();
 
@@ -4582,7 +4567,7 @@ None
 
 Description
 -----------
-Allows to set a default line weight, will be later applied at load time, on entities which have no specified line weight.
+allows to set a default line weight, will be later applied at load time, on Entities which have no specified line weight.
 ") SetDefaultLineWeight;
 		void SetDefaultLineWeight(const Standard_Real defw);
 
@@ -4621,7 +4606,7 @@ None
 
 Description
 -----------
-Fills a dirpart, designated by its rank (that is, (n+1)/2 if n is its first number in section d).
+fills a DirPart, designated by its rank (that is, (N+1)/2 if N is its first number in section D).
 ") SetDirPart;
 		void SetDirPart(const Standard_Integer num, const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i10, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
 
@@ -4634,7 +4619,7 @@ None
 
 Description
 -----------
-Determines reference numbers in entitynumber fields (called by setentities from igesreadertool) works on 'integer' type parameters, because iges does not distinguish integer and entity refs: every integer which is odd and less than twice nbrecords can be an entity ref ... (ref number is then (n+1)/2 if n is the integer value).
+determines reference numbers in EntityNumber fields (called by SetEntities from IGESReaderTool) works on 'Integer' type Parameters, because IGES does not distinguish Integer and Entity Refs: every Integer which is odd and less than twice NbRecords can be an Entity Ref ... (Ref Number is then (N+1)/2 if N is the Integer Value).
 ") SetEntityNumbers;
 		void SetEntityNumbers();
 
@@ -4647,7 +4632,7 @@ None
 
 Description
 -----------
-Reads header (as globalsection) content from the paramset after it has been filled by successive calls to addglobal.
+reads header (as GlobalSection) content from the ParamSet after it has been filled by successive calls to AddGlobal.
 ") SetGlobalSection;
 		void SetGlobalSection();
 
@@ -4660,7 +4645,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the start section in once.
+Returns the Start Section in once.
 ") StartSection;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
 
@@ -4695,7 +4680,7 @@ None
 
 Description
 -----------
-Creates igesreadertool to work with an igesreaderdata and an iges protocol. actually, no lib is used.
+creates IGESReaderTool to work with an IGESReaderData and an IGES Protocol. Actually, no Lib is used.
 ") IGESData_IGESReaderTool;
 		 IGESData_IGESReaderTool(const opencascade::handle<IGESData_IGESReaderData> & reader, const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -4715,7 +4700,7 @@ bool
 
 Description
 -----------
-Fills an entity, given record no; works by calling readdirpart then readparams (with help of a paramreader), then if required readprops and readassocs, from igesentity returns true if no fail has been recorded.
+fills an entity, given record no; works by calling ReadDirPart then ReadParams (with help of a ParamReader), then if required ReadProps and ReadAssocs, from IGESEntity Returns True if no fail has been recorded.
 ") AnalyseRecord;
 		Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
@@ -4733,7 +4718,7 @@ None
 
 Description
 -----------
-Fills model's header, that is, its globalsection.
+fills model's header, that is, its GlobalSection.
 ") BeginRead;
 		void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -4751,7 +4736,7 @@ None
 
 Description
 -----------
-After reading entities, true line weights can be computed.
+after reading entities, true line weights can be computed.
 ") EndRead;
 		virtual void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -4769,7 +4754,7 @@ None
 
 Description
 -----------
-Binds empty entities to records, works with the protocol (from igesdata) stored and later used rq: actually, sets dnum into iges entities also loads the list of parameters for paramreader.
+binds empty entities to records, works with the Protocol (from IGESData) stored and later used RQ: Actually, sets DNum into IGES Entities Also loads the list of parameters for ParamReader.
 ") Prepare;
 		void Prepare(const opencascade::handle<IGESData_FileRecognizer> & reco);
 
@@ -4789,7 +4774,7 @@ None
 
 Description
 -----------
-Reads associativity list, if there is (if not, does nothing) criterium is: current parameter of pr remains inside params list, and stage is 'own' same conditions as above; in addition, no parameter must be let after the list once read note that 'associated' entities are not declared 'shared'.
+Reads Associativity List, if there is (if not, does nothing) criterium is: current parameter of PR remains inside params list, and Stage is 'Own' Same conditions as above; in addition, no parameter must be let after the list once read Note that 'Associated' entities are not declared 'Shared'.
 ") ReadAssocs;
 		void ReadAssocs(const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
@@ -4810,7 +4795,7 @@ None
 
 Description
 -----------
-Reads directory part components from file; dp is the literal directory part, ir detains entities referenced by dp.
+Reads directory part components from file; DP is the literal directory part, IR detains entities referenced by DP.
 ") ReadDir;
 		void ReadDir(const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_DirPart & DP, opencascade::handle<Interface_Check> & ach);
 
@@ -4830,7 +4815,7 @@ None
 
 Description
 -----------
-Performs reading of own parameters for each igesentity works with the readerlib loaded with readwritemodules for iges in case of failure, tries undefinedentity from iges.
+Performs Reading of own Parameters for each IGESEntity Works with the ReaderLib loaded with ReadWriteModules for IGES In case of failure, tries UndefinedEntity from IGES.
 ") ReadOwnParams;
 		void ReadOwnParams(const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
@@ -4850,7 +4835,7 @@ None
 
 Description
 -----------
-Reads property list, if there is (if not, does nothing) criterium is: current parameter of pr remains inside params list, and stage is 'own' current parameter must be a positive integer, which value gives the length of the list; else, a fail is produced (into check of pr) and reading process is stopped.
+Reads Property List, if there is (if not, does nothing) criterium is: current parameter of PR remains inside params list, and Stage is 'Own' Current parameter must be a positive integer, which value gives the length of the list; else, a Fail is produced (into Check of PR) and reading process is stopped.
 ") ReadProps;
 		void ReadProps(const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
@@ -4870,7 +4855,7 @@ bool
 
 Description
 -----------
-Recognizes records by asking protocol (on data of dirtype).
+recognizes records by asking Protocol (on data of DirType).
 ") Recognize;
 		Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
@@ -4929,7 +4914,7 @@ int
 
 Description
 -----------
-Returns 'form' data.
+returns 'form' data.
 ") Form;
 		Standard_Integer Form();
 
@@ -4947,7 +4932,7 @@ bool
 
 Description
 -----------
-Compares two igestypes, avoiding comparing their fields.
+compares two IGESTypes, avoiding comparing their fields.
 ") IsEqual;
 		Standard_Boolean IsEqual(const IGESData_IGESType & another);
 
@@ -4960,7 +4945,7 @@ None
 
 Description
 -----------
-Resets fields (useful when an igestype is stored as mask).
+resets fields (useful when an IGESType is stored as mask).
 ") Nullify;
 		void Nullify();
 
@@ -4973,7 +4958,7 @@ int
 
 Description
 -----------
-Returns 'type' data.
+returns 'type' data.
 ") Type;
 		Standard_Integer Type();
 
@@ -5019,7 +5004,7 @@ None
 
 Description
 -----------
-Creates an igeswriter, empty ready to work (see the methods sendmodel and print).
+Creates an IGESWriter, empty ready to work (see the methods SendModel and Print).
 ") IGESData_IGESWriter;
 		 IGESData_IGESWriter(const opencascade::handle<IGESData_IGESModel> & amodel);
 
@@ -5068,7 +5053,7 @@ None
 
 Description
 -----------
-Sends associativity list, as complement of parameters list error if not in sections dp or stage not 'associativity'.
+sends associativity list, as complement of parameters list error if not in sections DP or Stage not 'Associativity'.
 ") Associativities;
 		void Associativities(const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -5086,7 +5071,7 @@ None
 
 Description
 -----------
-Translates directory part of an entity into a literal dirpart some infos are computed after sending parameters error if not in sections dp or stage not 'dir'.
+translates directory part of an Entity into a literal DirPart Some infos are computed after sending parameters Error if not in sections DP or Stage not 'Dir'.
 ") DirPart;
 		void DirPart(const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -5099,7 +5084,7 @@ None
 
 Description
 -----------
-Declares end of sending an entity (ends param list by ';').
+declares end of sending an entity (ends param list by ';').
 ") EndEntity;
 		void EndEntity();
 
@@ -5112,7 +5097,7 @@ Interface_FloatWriter
 
 Description
 -----------
-Returns the embedded floatwriter, which controls sending reals use this method to access floatwriter in order to consult or change its options (mainformat, formatforrange,zerosuppress), because it is returned as the address of its field.
+Returns the embedded FloatWriter, which controls sending Reals Use this method to access FloatWriter in order to consult or change its options (MainFormat, FormatForRange,ZeroSuppress), because it is returned as the address of its field.
 ") FloatWriter;
 		Interface_FloatWriter & FloatWriter();
 
@@ -5130,7 +5115,7 @@ None
 
 Description
 -----------
-Sends own parameters of the entity, by sending firstly its type, then calling specific method writeownparams error if not in sections dp or stage not 'own'.
+sends own parameters of the entity, by sending firstly its type, then calling specific method WriteOwnParams Error if not in sections DP or Stage not 'Own'.
 ") OwnParams;
 		void OwnParams(const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -5147,7 +5132,7 @@ S: Standard_OStream
 
 Description
 -----------
-Writes result on an output defined as an ostream resolves stored infos at this time; in particular, numbers of lines used to address p-section from d-section and final totals takes writemode into account.
+Writes result on an output defined as an OStream resolves stored infos at this time; in particular, numbers of lines used to address P-section from D-section and final totals Takes WriteMode into account.
 ") Print;
 		Standard_Boolean Print(std::ostream &OutValue);
 
@@ -5165,7 +5150,7 @@ None
 
 Description
 -----------
-Sends property list, as complement of parameters list error if not in sections dp or stage not 'property'.
+sends property list, as complement of parameters list error if not in sections DP or Stage not 'Property'.
 ") Properties;
 		void Properties(const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -5183,7 +5168,7 @@ None
 
 Description
 -----------
-Prepares sending of header, from a globalsection (stores it) error if sections was not called just before takes in account special characters (separator, endmark).
+prepares sending of header, from a GlobalSection (stores it) error if SectionS was not called just before takes in account special characters (Separator, EndMark).
 ") SectionG;
 		void SectionG(const IGESData_GlobalSection & header);
 
@@ -5196,7 +5181,7 @@ None
 
 Description
 -----------
-Declares sending of s section (only a declaration) error if state is not initial.
+declares sending of S section (only a declaration) error if state is not initial.
 ") SectionS;
 		void SectionS();
 
@@ -5214,7 +5199,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of strings for a section given its rank 1: start (if not empty) 2: global 3 or 4: parameters rq: no string list for directory section an empty section gives a null handle.
+Returns the list of strings for a section given its rank 1: Start (if not empty) 2: Global 3 or 4: Parameters RQ: no string list for Directory section An empty section gives a null handle.
 ") SectionStrings;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> SectionStrings(const Standard_Integer numsec);
 
@@ -5227,7 +5212,7 @@ None
 
 Description
 -----------
-Declares sending of t section (only a declaration) error if does not follow entities sending.
+declares sending of T section (only a declaration) error if does not follow Entities sending.
 ") SectionT;
 		void SectionT();
 
@@ -5240,7 +5225,7 @@ None
 
 Description
 -----------
-Prepares sending of list of entities, as sections d (directory list) and p (parameters lists, one per entity) entities will be then processed, one after the other error if sectiong has not be called just before.
+prepares sending of list of entities, as Sections D (directory list) and P (Parameters lists, one per entity) Entities will be then processed, one after the other error if SectionG has not be called just before.
 ") SectionsDP;
 		void SectionsDP();
 
@@ -5258,7 +5243,7 @@ None
 
 Description
 -----------
-Sends a boolean parameter as an integer value 0(false)/1(true).
+sends a Boolean parameter as an Integer value 0(False)/1(True).
 ") SendBoolean;
 		void SendBoolean(const Standard_Boolean val);
 
@@ -5276,7 +5261,7 @@ None
 
 Description
 -----------
-Sends the complete igesmodel (global section, entities as directory entries & parameter lists, etc...) i.e. fills a list of texts. once filled, it can be sent by method print.
+Sends the complete IGESModel (Global Section, Entities as Directory Entries & Parameter Lists, etc...) i.e. fills a list of texts. Once filled, it can be sent by method Print.
 ") SendModel;
 		void SendModel(const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -5294,7 +5279,7 @@ None
 
 Description
 -----------
-Sends an additional starting line: this is the way used to send comments in an iges file (at beginning of the file). if the line is more than 72 char.s long, it is splited into as many lines as required to send it completely.
+Sends an additional Starting Line: this is the way used to send comments in an IGES File (at beginning of the file). If the line is more than 72 chars long, it is split into as many lines as required to send it completely.
 ") SendStartLine;
 		void SendStartLine(Standard_CString startline);
 
@@ -5312,7 +5297,7 @@ None
 
 Description
 -----------
-Sends a parameter under its exact form given as a string.
+sends a parameter under its exact form given as a string.
 ") SendString;
 		void SendString(const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -5325,7 +5310,7 @@ None
 
 Description
 -----------
-Sends a void parameter, that is null text.
+sends a void parameter, that is null text.
 ") SendVoid;
 		void SendVoid();
 
@@ -5369,7 +5354,7 @@ None
 
 Description
 -----------
-Creates an empty node, with no next.
+Creates an empty Node, with no Next.
 ") IGESData_NodeOfSpecificLib;
 		 IGESData_NodeOfSpecificLib();
 
@@ -5387,7 +5372,7 @@ None
 
 Description
 -----------
-Adds a couple (module,protocol), that is, stores it into itself if not yet done, else creates a next node to do it.
+Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it.
 ") AddNode;
 		void AddNode(const opencascade::handle<IGESData_GlobalNodeOfSpecificLib> & anode);
 
@@ -5400,7 +5385,7 @@ opencascade::handle<IGESData_SpecificModule>
 
 Description
 -----------
-Returns the module designated by a precise node.
+Returns the Module designated by a precise Node.
 ") Module;
 		const opencascade::handle<IGESData_SpecificModule> & Module();
 
@@ -5413,7 +5398,7 @@ opencascade::handle<IGESData_NodeOfSpecificLib>
 
 Description
 -----------
-Returns the next node. if none was defined, returned value is a null handle.
+Returns the Next Node. If none was defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<IGESData_NodeOfSpecificLib> & Next();
 
@@ -5426,7 +5411,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the protocol designated by a precise node.
+Returns the Protocol designated by a precise Node.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -5455,7 +5440,7 @@ None
 
 Description
 -----------
-Creates an empty node, with no next.
+Creates an empty Node, with no Next.
 ") IGESData_NodeOfWriterLib;
 		 IGESData_NodeOfWriterLib();
 
@@ -5473,7 +5458,7 @@ None
 
 Description
 -----------
-Adds a couple (module,protocol), that is, stores it into itself if not yet done, else creates a next node to do it.
+Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it.
 ") AddNode;
 		void AddNode(const opencascade::handle<IGESData_GlobalNodeOfWriterLib> & anode);
 
@@ -5486,7 +5471,7 @@ opencascade::handle<IGESData_ReadWriteModule>
 
 Description
 -----------
-Returns the module designated by a precise node.
+Returns the Module designated by a precise Node.
 ") Module;
 		const opencascade::handle<IGESData_ReadWriteModule> & Module();
 
@@ -5499,7 +5484,7 @@ opencascade::handle<IGESData_NodeOfWriterLib>
 
 Description
 -----------
-Returns the next node. if none was defined, returned value is a null handle.
+Returns the Next Node. If none was defined, returned value is a Null Handle.
 ") Next;
 		const opencascade::handle<IGESData_NodeOfWriterLib> & Next();
 
@@ -5512,7 +5497,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the protocol designated by a precise node.
+Returns the Protocol designated by a precise Node.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -5546,7 +5531,7 @@ None
 
 Description
 -----------
-Creates a cursor to read a precise parameter of paramreader, identified by its number, then set current number to 'num + 1' (this constructor allows to simply give a number to a method read... from paramreader, which will be translated into a paramcursor by compiler).
+Creates a Cursor to read a precise parameter of ParamReader, identified by its number, then set Current Number to 'num + 1' (this constructor allows to simply give a Number to a method Read... from ParamReader, which will be translated into a ParamCursor by compiler).
 ") IGESData_ParamCursor;
 		 IGESData_ParamCursor(const Standard_Integer num);
 
@@ -5566,7 +5551,7 @@ None
 
 Description
 -----------
-Creates a cursor to read a list of parameters (count 'nb') starting from a precise one (number 'num') included, then set current number of paramnumber to the first following one ('num + nb') if size is given, it means that each parameter is made of more than one term. one term is the normal (default) case: for instance, a parameter comprises one integer, or one entity ... size gives the complete size of each item if it is complex. to be used only if it is constant.
+Creates a Cursor to read a list of parameters (count 'nb') starting from a precise one (number 'num') included, then set Current Number of ParamNumber to the first following one ('num + nb') If size is given, it means that each parameter is made of more than one term. One term is the normal (default) case: for instance, a Parameter comprises one Integer, or one Entity ... Size gives the complete size of each Item if it is complex. To be used ONLY IF it is constant.
 ") IGESData_ParamCursor;
 		 IGESData_ParamCursor(const Standard_Integer num, const Standard_Integer nb, const Standard_Integer size = 1);
 
@@ -5579,7 +5564,7 @@ bool
 
 Description
 -----------
-Returns true if advance command has been set.
+Returns True if Advance command has been set.
 ") Advance;
 		Standard_Boolean Advance();
 
@@ -5649,7 +5634,7 @@ None
 
 Description
 -----------
-Changes command to advance current cursor after reading parameters. if 'advance' true, sets advance, if 'false', resets it. paramcursor is created by default with true.
+Changes command to advance current cursor after reading parameters. If 'advance' True, sets advance, if 'False', resets it. ParamCursor is created by default with True.
 ") SetAdvance;
 		void SetAdvance(const Standard_Boolean advance);
 
@@ -5667,7 +5652,7 @@ None
 
 Description
 -----------
-Defines a term of one parameter (very current case).
+Defines a term of one Parameter (very current case).
 ") SetOne;
 		void SetOne(const Standard_Boolean autoadv = Standard_True);
 
@@ -5686,7 +5671,7 @@ None
 
 Description
 -----------
-Defines the size of a term to read in the item: this commands paramreader to read 'size' parameters for each item, then skip the remainder of the item to the same term of next item (that is, skip 'item size' - 'term size') //! in addition, offset from beginning of item is managed: after being created, and for the first call to setterm, the part of item to be read begins exactly as the item begins but after a setterm, the next read will add an offset which is the size of former term. //! autoadv commands advance management. if it is true (default), the last setterm (item size has been covered) calls setadvance if it is false, setadvance must be called directly if necessary //! error if a setterm overpasses the size of the item.
+Defines the size of a term to read in the item: this commands ParamReader to read 'size' parameters for each item, then skip the remainder of the item to the same term of next Item (that is, skip 'item size' - 'term size') //! In addition, Offset from beginning of Item is managed: After being created, and for the first call to SetTerm, the part of Item to be read begins exactly as the Item begins But after a SetTerm, the next read will add an offset which is the size of former term. //! autoadv commands Advance management. If it is True (default), the last SetTerm (Item size has been covered) calls SetAdvance If it is False, SetAdvance must be called directly if necessary //! Error if a SetTerm overpasses the size of the Item.
 ") SetTerm;
 		void SetTerm(const Standard_Integer size, const Standard_Boolean autoadv = Standard_True);
 
@@ -5704,7 +5689,7 @@ None
 
 Description
 -----------
-Defines a term of two parameters for a xy (current case).
+Defines a term of two Parameters for a XY (current case).
 ") SetXY;
 		void SetXY(const Standard_Boolean autoadv = Standard_True);
 
@@ -5722,7 +5707,7 @@ None
 
 Description
 -----------
-Defines a term of three parameters for xyz (current case).
+Defines a term of three Parameters for XYZ (current case).
 ") SetXYZ;
 		void SetXYZ(const Standard_Boolean autoadv = Standard_True);
 
@@ -5784,7 +5769,7 @@ None
 
 Description
 -----------
-Prepares a paramreader, stage 'own', current param = 1 it considers a part of the list, from <base> (excluded) for <nbpar> parameters; <nbpar> = 0 commands to take list length. default is (1 to skip type).
+Prepares a ParamReader, stage 'Own', current param = 1 It considers a part of the list, from <base> (excluded) for <nbpar> parameters; <nbpar> = 0 commands to take list length. Default is (1 to skip type).
 ") IGESData_ParamReader;
 		 IGESData_ParamReader(const opencascade::handle<Interface_ParamList> & list, const opencascade::handle<Interface_Check> & ach, const Standard_Integer base = 1, const Standard_Integer nbpar = 0, const Standard_Integer num = 0);
 
@@ -5822,7 +5807,7 @@ None
 
 Description
 -----------
-Feeds the check with a new fail (as a string or as a cstring).
+feeds the Check with a new fail (as a String or as a CString).
 ") AddFail;
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & af, const opencascade::handle<TCollection_HAsciiString> & bf);
 
@@ -5860,7 +5845,7 @@ None
 
 Description
 -----------
-Feeds the check with a new warning message.
+feeds the Check with a new Warning message.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<TCollection_HAsciiString> & aw, const opencascade::handle<TCollection_HAsciiString> & bw);
 
@@ -5873,7 +5858,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check in a way which allows to work on it directly (i.e. messages added to the check are added to paramreader too).
+returns the check in a way which allows to work on it directly (i.e. messages added to the Check are added to ParamReader too).
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck();
 
@@ -5886,7 +5871,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns the check note that any error signaled above is also recorded into it.
+returns the Check Note that any error signaled above is also recorded into it.
 ") Check;
 		const opencascade::handle<Interface_Check> & Check();
 
@@ -5899,7 +5884,7 @@ None
 
 Description
 -----------
-Resets state (stage, current param number, check with no fail).
+resets state (stage, current param number, check with no fail).
 ") Clear;
 		void Clear();
 
@@ -5912,7 +5897,7 @@ IGESData_ParamCursor
 
 Description
 -----------
-Creates a paramcursor from the current number, to read one parameter, and to advance current number after reading.
+Creates a ParamCursor from the Current Number, to read one parameter, and to advance Current Number after reading.
 ") Current;
 		IGESData_ParamCursor Current();
 
@@ -5931,7 +5916,7 @@ IGESData_ParamCursor
 
 Description
 -----------
-Creates a paramcursor from the current number, to read a list of 'nb' items, and to advance current number after reading by default, each item is made of one parameter if size is given, it precises the number of params per item.
+Creates a ParamCursor from the Current Number, to read a list of 'nb' items, and to advance Current Number after reading By default, each item is made of one parameter If size is given, it precises the number of params per item.
 ") CurrentList;
 		IGESData_ParamCursor CurrentList(const Standard_Integer nb, const Standard_Integer size = 1);
 
@@ -5944,7 +5929,7 @@ int
 
 Description
 -----------
-Returns the current parameter number this notion is involved by the organisation of an iges list of parameter: it can be ended by two lists (associativities and properties), which can be empty, or even absent. hence, it is necessary to know, at the end of specific reading, how many parameters have been read: the optional lists follow.
+returns the current parameter number This notion is involved by the organisation of an IGES list of parameter: it can be ended by two lists (Associativities and Properties), which can be empty, or even absent. Hence, it is necessary to know, at the end of specific reading, how many parameters have been read: the optional lists follow.
 ") CurrentNumber;
 		Standard_Integer CurrentNumber();
 
@@ -5957,7 +5942,7 @@ bool
 
 Description
 -----------
-Allows to simply process a parameter which can be defaulted. waits on the current number a defined parameter or skips it: if the parameter <num> is defined, changes nothing and returns true hence, the next reading with current cursor will concern <num> if it is void, advances current position by one, and returns false the next reading will concern <num+1> (except if <num> = nbparams) //! this allows to process default values as follows (c++): if (pr.definedelseskip()) { .. pr.read... (current parameter); } else { <current parameter> = default value .. nothing else to do with paramreader } for message.
+Allows to simply process a parameter which can be defaulted. Waits on the Current Number a defined parameter or skips it: If the parameter <num> is defined, changes nothing and returns True Hence, the next reading with current cursor will concern <num> If it is void, advances Current Position by one, and returns False The next reading will concern <num+1> (except if <num> = NbParams) //! This allows to process Default values as follows (C++): if (PR.DefinedElseSkip()) { .. PR.Read... (current parameter); } else { <current parameter> = default value .. nothing else to do with ParamReader } For Message.
 ") DefinedElseSkip;
 		Standard_Boolean DefinedElseSkip();
 
@@ -5970,7 +5955,7 @@ None
 
 Description
 -----------
-Passes directly to the end of reading process.
+passes directly to the end of reading process.
 ") EndAll;
 		void EndAll();
 
@@ -5996,7 +5981,7 @@ bool
 
 Description
 -----------
-Says if fails have been recorded into the check.
+says if fails have been recorded into the Check.
 ") HasFailed;
 		Standard_Boolean HasFailed();
 
@@ -6009,7 +5994,7 @@ bool
 
 Description
 -----------
-Returns true if the check is empty else, it has to be recorded with the read entity.
+Returns True if the Check is Empty Else, it has to be recorded with the Read Entity.
 ") IsCheckEmpty;
 		Standard_Boolean IsCheckEmpty();
 
@@ -6027,7 +6012,7 @@ bool
 
 Description
 -----------
-Says if a parameter is defined (not void) see also definedelseskip.
+says if a parameter is defined (not void) See also DefinedElseSkip.
 ") IsParamDefined;
 		Standard_Boolean IsParamDefined(const Standard_Integer num);
 
@@ -6045,7 +6030,7 @@ bool
 
 Description
 -----------
-Says if a parameter can be regarded as an entity reference (see prepare from igesreaderdata for more explanation) note that such a parameter can seen as be a plain integer too.
+says if a parameter can be regarded as an entity reference (see Prepare from IGESReaderData for more explanation) Note that such a parameter can seen as be a plain Integer too.
 ") IsParamEntity;
 		Standard_Boolean IsParamEntity(const Standard_Integer num);
 
@@ -6076,7 +6061,7 @@ int
 
 Description
 -----------
-Returns number of parameters (minus the first one) following method skip the first parameter (1 gives the 2nd).
+returns number of parameters (minus the first one) following method skip the first parameter (1 gives the 2nd).
 ") NbParams;
 		Standard_Integer NbParams();
 
@@ -6089,7 +6074,7 @@ None
 
 Description
 -----------
-Passes to next stage (must be linked with setting current).
+passes to next stage (must be linked with setting Current).
 ") NextStage;
 		void NextStage();
 
@@ -6108,7 +6093,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Directly returns entity referenced by a parameter.
+directly returns entity referenced by a parameter.
 ") ParamEntity;
 		opencascade::handle<IGESData_IGESEntity> ParamEntity(const opencascade::handle<IGESData_IGESReaderData> & IR, const Standard_Integer num);
 
@@ -6126,7 +6111,7 @@ int
 
 Description
 -----------
-Returns entity number corresponding to a parameter if there is otherwise zero (according criterium isparamentity).
+returns entity number corresponding to a parameter if there is otherwise zero (according criterium IsParamEntity).
 ") ParamNumber;
 		Standard_Integer ParamNumber(const Standard_Integer num);
 
@@ -6144,7 +6129,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns type of parameter; note that 'ident' or 'sub' cannot be encountered, they correspond to 'integer', see also below.
+returns type of parameter; note that 'Ident' or 'Sub' cannot be encountered, they correspond to 'Integer', see also below.
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num);
 
@@ -6162,7 +6147,7 @@ str
 
 Description
 -----------
-Returns literal value of a parameter, as it was in file.
+returns literal value of a parameter, as it was in file.
 ") ParamValue;
 		Standard_CString ParamValue(const Standard_Integer num);
 
@@ -6202,7 +6187,7 @@ val: bool
 
 Description
 -----------
-Reads a boolean value from parameter 'num' a boolean is given as an integer value 0 (false) or 1 (true) anyway, an integer is demanded (else, check is filled) if exact is given true, those precise values are demanded else, correction is done, as false for 0 or <0, true for >0 (with a warning error message, and return is true) in case of error (not an integer, or not 0/1 and exact true), check is filled with a fail (using mess) and return is false.
+Reads a Boolean value from parameter 'num' A Boolean is given as an Integer value 0 (False) or 1 (True) Anyway, an Integer is demanded (else, Check is filled) If exact is given True, those precise values are demanded Else, Correction is done, as False for 0 or <0, True for >0 (with a Warning error message, and return is True) In case of error (not an Integer, or not 0/1 and exact True), Check is filled with a Fail (using mess) and return is False.
 ") ReadBoolean;
 		Standard_Boolean ReadBoolean(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Boolean &OutValue, const Standard_Boolean exact = Standard_True);
 
@@ -6246,7 +6231,7 @@ bool
 
 Description
 -----------
-Reads a list of entities defined by pc same conditions as for readents, for pc the list is given as an entitylist (index has no meaning; the entitylist starts from clear) if 'ord' is given true (default), entities will be added to the list in their original order remark: negative or null pointers are ignored else ('ord' false), order is not guaranteed (faster mode) if all params cannot be read as entities, same as above warning give 'ord' to false only if order is not significant.
+Reads a list of Entities defined by PC Same conditions as for ReadEnts, for PC The list is given as an EntityList (index has no meaning; the EntityList starts from clear) If 'ord' is given True (default), entities will be added to the list in their original order Remark: Negative or Null Pointers are ignored Else ('ord' False), order is not guaranteed (faster mode) If all params cannot be read as Entities, same as above Warning Give 'ord' to False ONLY if order is not significant.
 ") ReadEntList;
 		Standard_Boolean ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, Interface_EntityList & val, const Standard_Boolean ord = Standard_True);
 
@@ -6290,7 +6275,7 @@ bool
 
 Description
 -----------
-Reads a list of entities defined by pc same conditions as for readints, for pc and index the list is given as a harray1, numered from 'index' if all params cannot be read as entities, check is filled (using mess) and return value is false remark: null references are accepted, they are ignored (negative pointers too: they provoke a warning message) if the caller wants to check them, a loop on readentity should be used.
+Reads a list of Entities defined by PC Same conditions as for ReadInts, for PC and index The list is given as a HArray1, numered from 'index' If all params cannot be read as Entities, Check is filled (using mess) and return value is False Remark: Null references are accepted, they are ignored (negative pointers too: they provoke a Warning message) If the caller wants to check them, a loop on ReadEntity should be used.
 ") ReadEnts;
 		Standard_Boolean ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<IGESData_HArray1OfIGESEntity> & val, const Standard_Integer index = 1);
 
@@ -6327,7 +6312,7 @@ val: int
 
 Description
 -----------
-Reads an integer value designated by pc the method current designates the current parameter and advances the current number by one after reading note that if a count (not 1) is given, it is ignored if it is not an integer, fills check with a fail (using mess) and returns false.
+Reads an Integer value designated by PC The method Current designates the current parameter and advances the Current Number by one after reading Note that if a count (not 1) is given, it is ignored If it is not an Integer, fills Check with a Fail (using mess) and returns False.
 ") ReadInteger;
 		Standard_Boolean ReadInteger(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Integer &OutValue);
 
@@ -6369,7 +6354,7 @@ bool
 
 Description
 -----------
-Reads a list of integer values, defined by pc (with a count of parameters). pc can start from current number and command it to advance after reading (use method currentlist to do this) the list is given as a harray1, numered from 'index' if all params are not integer, check is filled (using mess) and return value is false.
+Reads a list of Integer values, defined by PC (with a count of parameters). PC can start from Current Number and command it to advance after reading (use method CurrentList to do this) The list is given as a HArray1, numered from 'index' If all params are not Integer, Check is filled (using mess) and return value is False.
 ") ReadInts;
 		Standard_Boolean ReadInts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfInteger> & val, const Standard_Integer index = 1);
 
@@ -6406,7 +6391,7 @@ val: float
 
 Description
 -----------
-Reads a real value from parameter 'num' an integer is accepted (check is filled with a warning message) and causes return to be true (as normal case) in other cases, check is filled with a fail and return is false.
+Reads a Real value from parameter 'num' An Integer is accepted (Check is filled with a Warning message) and causes return to be True (as normal case) In other cases, Check is filled with a Fail and return is False.
 ") ReadReal;
 		Standard_Boolean ReadReal(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Real &OutValue);
 
@@ -6448,7 +6433,7 @@ bool
 
 Description
 -----------
-Reads a list of real values defined by pc same conditions as for readints, for pc and index an integer parameter is accepted, if at least one parameter is integer, check is filled with a 'warning' message if all params are neither real nor integer, check is filled (using mess) and return value is false.
+Reads a list of Real values defined by PC Same conditions as for ReadInts, for PC and index An Integer parameter is accepted, if at least one parameter is Integer, Check is filled with a 'Warning' message If all params are neither Real nor Integer, Check is filled (using mess) and return value is False.
 ") ReadReals;
 		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
 
@@ -6486,7 +6471,7 @@ val: TCollection_HAsciiString
 
 Description
 -----------
-Reads a text value from parameter 'num', as a string from collection, that is, hollerith text without leading 'nnnh' if it is not a string, fills check with a fail (using mess) and returns false.
+Reads a Text value from parameter 'num', as a String from Collection, that is, Hollerith text without leading 'nnnH' If it is not a String, fills Check with a Fail (using mess) and returns False.
 ") ReadText;
 		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -6528,7 +6513,7 @@ bool
 
 Description
 -----------
-Reads a list of hollerith texts, defined by pc texts are read as hollerith texts without leading 'nnnh' same conditions as for readints, for pc and index if all params are not text, check is filled (using mess) and return value is false.
+Reads a list of Hollerith Texts, defined by PC Texts are read as Hollerith texts without leading 'nnnH' Same conditions as for ReadInts, for PC and index If all params are not Text, Check is filled (using mess) and return value is False.
 ") ReadTexts;
 		Standard_Boolean ReadTexts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<Interface_HArray1OfHAsciiString> & val, const Standard_Integer index = 1);
 
@@ -6568,7 +6553,7 @@ bool
 
 Description
 -----------
-Reads a couple of real values (x,y) from parameter 'num' integers are accepted (check is filled with a warning message) and cause return to be true (as normal case) in other cases, check is filled with a fail and return is false.
+Reads a couple of Real values (X,Y) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False.
 ") ReadXY;
 		Standard_Boolean ReadXY(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XY & val);
 
@@ -6608,7 +6593,7 @@ bool
 
 Description
 -----------
-Reads a triplet of real values (x,y,z) from parameter 'num' integers are accepted (check is filled with a warning message) and cause return to be true (as normal case) in other cases, check is filled with a fail and return is false for message.
+Reads a triplet of Real values (X,Y,Z) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False For Message.
 ") ReadXYZ;
 		Standard_Boolean ReadXYZ(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XYZ & val);
 
@@ -6645,7 +6630,7 @@ val: int
 
 Description
 -----------
-Routine which reads an entity number (which allows to read the entity in the igesreaderdata by boundentity), given its number in the list of parameters same conditions as readentity for mess, val, and return value in particular, returns true and val to zero means null entity, and val not zero means entity read by boundentity.
+Routine which reads an Entity Number (which allows to read the Entity in the IGESReaderData by BoundEntity), given its number in the list of Parameters Same conditions as ReadEntity for mess, val, and return value In particular, returns True and val to zero means Null Entity, and val not zero means Entity read by BoundEntity.
 ") ReadingEntityNumber;
 		Standard_Boolean ReadingEntityNumber(const Standard_Integer num, Standard_CString mess, Standard_Integer &OutValue);
 
@@ -6682,7 +6667,7 @@ val: float
 
 Description
 -----------
-Routine which reads a real parameter, given its number same conditions as readreal for mess, val, and return value.
+Routine which reads a Real parameter, given its number Same conditions as ReadReal for mess, val, and return value.
 ") ReadingReal;
 		Standard_Boolean ReadingReal(const Standard_Integer num, Standard_CString mess, Standard_Real &OutValue);
 
@@ -6736,7 +6721,7 @@ None
 
 Description
 -----------
-Sets current parameter number to a new value must be done at end of each step: set on first parameter following last read one; is done by some read... methods (must be done directly if these method are not used) num greater than nbparams means that following lists are empty if current num is not managed, it remains at 1, which probably will cause error when successive steps of reading are made.
+sets current parameter number to a new value must be done at end of each step: set on first parameter following last read one; is done by some Read... methods (must be done directly if these method are not used) num greater than NbParams means that following lists are empty If current num is not managed, it remains at 1, which probably will cause error when successive steps of reading are made.
 ") SetCurrentNumber;
 		void SetCurrentNumber(const Standard_Integer num);
 
@@ -6749,7 +6734,7 @@ IGESData_ReadStage
 
 Description
 -----------
-Gives current stage (own-props-assocs-end, begins at own).
+gives current stage (Own-Props-Assocs-End, begins at Own).
 ") Stage;
 		IGESData_ReadStage Stage();
 
@@ -6798,7 +6783,7 @@ bool
 
 Description
 -----------
-Returns true if <model> is a model of iges norm.
+Returns True if <model> is a Model of IGES Norm.
 ") IsSuitableModel;
 		Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6816,7 +6801,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is an unknown entity for the norm, i.e. type undefinedentity, status unknown.
+Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown.
 ") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6829,7 +6814,7 @@ int
 
 Description
 -----------
-Gives the count of resource protocol. here, none.
+Gives the count of Resource Protocol. Here, none.
 ") NbResources;
 		Standard_Integer NbResources();
 
@@ -6842,7 +6827,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Creates an empty model for iges norm.
+Creates an empty Model for IGES Norm.
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
@@ -6860,7 +6845,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given a rank. here, none.
+Returns a Resource, given a rank. Here, none.
 ") Resource;
 		opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
@@ -6878,7 +6863,7 @@ int
 
 Description
 -----------
-Returns a case number, specific of each recognized type here, undefined and free format entities have the number 1.
+Returns a Case Number, specific of each recognized Type Here, Undefined and Free Format Entities have the Number 1.
 ") TypeNumber;
 		Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
@@ -6891,7 +6876,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Creates a new unknown entity for iges (undefinedentity).
+Creates a new Unknown Entity for IGES (UndefinedEntity).
 ") UnknownEntity;
 		opencascade::handle<Standard_Transient> UnknownEntity();
 
@@ -6927,7 +6912,7 @@ int
 
 Description
 -----------
-Defines case numbers corresponding to the entity types taken into account by a sub-class of readwritemodule (hence, each sub-class of readwritemodule has to redefine this method) called by casenum. its result will then be used to call read, etc ...
+Defines Case Numbers corresponding to the Entity Types taken into account by a sub-class of ReadWriteModule (hence, each sub-class of ReadWriteModule has to redefine this method) Called by CaseNum. Its result will then be used to call Read, etc ...
 ") CaseIGES;
 		virtual Standard_Integer CaseIGES(const Standard_Integer typenum, const Standard_Integer formnum);
 
@@ -6946,7 +6931,7 @@ int
 
 Description
 -----------
-Translates the type of record <num> in <data> to a positive case number, or 0 if failed. works with igesreaderdata which provides type & form numbers, and calls caseiges (see below).
+Translates the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with IGESReaderData which provides Type & Form Numbers, and calls CaseIGES (see below).
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
 
@@ -6968,7 +6953,7 @@ None
 
 Description
 -----------
-General read function. see igesreadertool for more info.
+General Read Function. See IGESReaderTool for more info.
 ") Read;
 		void Read(const Standard_Integer CN, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
@@ -6989,7 +6974,7 @@ None
 
 Description
 -----------
-Reads own parameters from file for an entity; <pr> gives access to them, <ir> detains parameter types and values for each class, there must be a specific action provided note that properties and associativities lists are read by specific methods (see below), they are called under control of reading process (only one call) according stage recorded in paramreader.
+Reads own parameters from file for an Entity; <PR> gives access to them, <IR> detains parameter types and values For each class, there must be a specific action provided Note that Properties and Associativities Lists are Read by specific methods (see below), they are called under control of reading process (only one call) according Stage recorded in ParamReader.
 ") ReadOwnParams;
 		virtual void ReadOwnParams(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
@@ -7009,7 +6994,7 @@ None
 
 Description
 -----------
-Writes own parameters to igeswriter; defined for each class (to be redefined for other iges readwritemodules) warning: properties and associativities are directly managed by writeiges, must not be sent by this method.
+Writes own parameters to IGESWriter; defined for each class (to be redefined for other IGES ReadWriteModules) Warning: Properties and Associativities are directly managed by WriteIGES, must not be sent by this method.
 ") WriteOwnParams;
 		virtual void WriteOwnParams(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, IGESData_IGESWriter & IW);
 
@@ -7043,7 +7028,7 @@ None
 
 Description
 -----------
-Creates a library which complies with a protocol, that is: same class (criterium isinstance) this creation gets the modules from the global set, those which are bound to the given protocol and its resources.
+Creates a Library which complies with a Protocol, that is: Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources.
 ") IGESData_SpecificLib;
 		 IGESData_SpecificLib(const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -7056,7 +7041,7 @@ None
 
 Description
 -----------
-Creates an empty library: it will later by filled by method addprotocol.
+Creates an empty Library: it will later by filled by method AddProtocol.
 ") IGESData_SpecificLib;
 		 IGESData_SpecificLib();
 
@@ -7074,7 +7059,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) to the library, given the class of a protocol. takes resources into account. (if <aprotocol> is not of type theprotocol, it is not added).
+Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added).
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -7087,7 +7072,7 @@ None
 
 Description
 -----------
-Clears the list of modules of a library (can be used to redefine the order of modules before action: clear then refill the library by calls to addprotocol).
+Clears the list of Modules of a library (can be used to redefine the order of Modules before action: Clear then refill the Library by calls to AddProtocol).
 ") Clear;
 		void Clear();
 
@@ -7100,7 +7085,7 @@ opencascade::handle<IGESData_SpecificModule>
 
 Description
 -----------
-Returns the current module in the iteration.
+Returns the current Module in the Iteration.
 ") Module;
 		const opencascade::handle<IGESData_SpecificModule> & Module();
 
@@ -7113,7 +7098,7 @@ bool
 
 Description
 -----------
-Returns true if there are more modules to iterate on.
+Returns True if there are more Modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
@@ -7126,7 +7111,7 @@ None
 
 Description
 -----------
-Iterates by getting the next module in the list if there is none, the exception will be raised by value.
+Iterates by getting the next Module in the list If there is none, the exception will be raised by Value.
 ") Next;
 		void Next();
 
@@ -7139,7 +7124,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the current protocol in the iteration.
+Returns the current Protocol in the Iteration.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -7158,7 +7143,7 @@ CN: int
 
 Description
 -----------
-Selects a module from the library, given an object. returns true if select has succeeded, false else. also returns (as arguments) the selected module and the case number determined by the associated protocol. if select has failed, <module> is null handle and cn is zero. (select can work on any criterium, such as object dynamictype).
+Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_SpecificModule> & module, Standard_Integer &OutValue);
 
@@ -7171,7 +7156,7 @@ None
 
 Description
 -----------
-Sets a library to be defined with the complete global list (all the couples protocol/modules recorded in it).
+Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it).
 ") SetComplete;
 		void SetComplete();
 
@@ -7190,7 +7175,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) into the global definition set for this class of library.
+Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<IGESData_SpecificModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -7203,7 +7188,7 @@ None
 
 Description
 -----------
-Starts iteration on the modules (sets it on the first one).
+Starts Iteration on the Modules (sets it on the first one).
 ") Start;
 		void Start();
 
@@ -7237,7 +7222,7 @@ bool
 
 Description
 -----------
-Specific automatic correction on own parameters of an entity. it works by setting in accordance redundant data, if there are when there is no ambiguity (else, it does nothing). remark that classic corrections on directory entry (to set void data) are taken into account alsewhere. //! for instance, many 'associativity entities' have a number of properties which must have a fixed value. or, a conicalarc has its form number which records the kind of conic, also determined from its coefficients but, a circulararc of which distances (center-start) and (center-end) are not equal cannot be corrected ... //! returns true if something has been corrected in <ent> by default, does nothing. if at least one of the types processed by a sub-class of specificmodule has a correct procedure attached, this method can be redefined.
+Specific Automatic Correction on own Parameters of an Entity. It works by setting in accordance redundant data, if there are when there is no ambiguity (else, it does nothing). Remark that classic Corrections on Directory Entry (to set void data) are taken into account alsewhere. //! For instance, many 'Associativity Entities' have a Number of Properties which must have a fixed value. Or, a ConicalArc has its Form Number which records the kind of Conic, also determined from its coefficients But, a CircularArc of which Distances (Center-Start) and (Center-End) are not equal cannot be corrected ... //! Returns True if something has been corrected in <ent> By default, does nothing. If at least one of the Types processed by a sub-class of SpecificModule has a Correct procedure attached, this method can be redefined.
 ") OwnCorrect;
 		virtual Standard_Boolean OwnCorrect(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7258,7 +7243,7 @@ S: Standard_OStream
 
 Description
 -----------
-Specific dump for each type of iges entity: it concerns only own parameters, the general data (directory part, lists) are taken into account by the igesdumper see class igesdumper for the rules to follow for <own> and <attached> level.
+Specific Dump for each type of IGES Entity: it concerns only own parameters, the general data (Directory Part, Lists) are taken into account by the IGESDumper See class IGESDumper for the rules to follow for <own> and <attached> level.
 ") OwnDump;
 		virtual void OwnDump(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const Standard_Integer own);
 
@@ -7293,7 +7278,7 @@ None
 
 Description
 -----------
-Creates a toollocation on a given model, filled with the help of a protocol (which allows to known entities referenced by other ones).
+Creates a ToolLocation on a given Model, filled with the help of a Protocol (which allows to known Entities referenced by other ones).
 ") IGESData_ToolLocation;
 		 IGESData_ToolLocation(const opencascade::handle<IGESData_IGESModel> & amodel, const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -7312,7 +7297,7 @@ bool
 
 Description
 -----------
-Analysis a location given as a gtrsf, by trying to convert it to a trsf (i.e. to a true location of which effect is described by an isometry or a similarity) works with the precision given by default or by setprecision calls convertlocation (see below).
+Analysis a Location given as a GTrsf, by trying to convert it to a Trsf (i.e. to a True Location of which effect is described by an Isometry or a Similarity) Works with the Precision given by default or by SetPrecision Calls ConvertLocation (see below).
 ") AnalyseLocation;
 		Standard_Boolean AnalyseLocation(const gp_GTrsf & loc, gp_Trsf & result);
 
@@ -7333,7 +7318,7 @@ bool
 
 Description
 -----------
-Conversion of a location, from gtrsf form to trsf form works with a precision given as argument. returns true if the conversion is possible, (hence, <result> contains the converted location), false else <unit>, if given, indicates the unit in which <loc> is defined in meters. it concerns the translation part (to be converted. //! as a class method, it can be called separately.
+Conversion of a Location, from GTrsf form to Trsf form Works with a precision given as argument. Returns True if the Conversion is possible, (hence, <result> contains the converted location), False else <unit>, if given, indicates the unit in which <loc> is defined in meters. It concerns the translation part (to be converted. //! As a class method, it can be called separately.
 ") ConvertLocation;
 		static Standard_Boolean ConvertLocation(const Standard_Real prec, const gp_GTrsf & loc, gp_Trsf & result, const Standard_Real uni = 1);
 
@@ -7351,7 +7336,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns the effective location of an entity, i.e. the composition of its proper transformation matrix (returned by transf) and its parent's location (returned by parentlocation).
+Returns the effective Location of an Entity, i.e. the composition of its proper Transformation Matrix (returned by Transf) and its Parent's Location (returned by ParentLocation).
 ") EffectiveLocation;
 		gp_GTrsf EffectiveLocation(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7369,7 +7354,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns the explicit location defined by the transformation matrix of <ent>. identity if there is none.
+Returns the Explicit Location defined by the Transformation Matrix of <ent>. Identity if there is none.
 ") ExplicitLocation;
 		gp_GTrsf ExplicitLocation(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7387,7 +7372,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is dependent from one and only one other entity, either by reference or by associativity.
+Returns True if <ent> is dependent from one and only one other Entity, either by Reference or by Associativity.
 ") HasParent;
 		Standard_Boolean HasParent(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7405,7 +7390,7 @@ bool
 
 Description
 -----------
-Returns true if the parent, if there is one, is defined by a singleparententity associativity else, if hasparent is true, it is by reference.
+Returns True if the Parent, if there is one, is defined by a SingleParentEntity Associativity Else, if HasParent is True, it is by Reference.
 ") HasParentByAssociativity;
 		Standard_Boolean HasParentByAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7423,7 +7408,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> has a transformation matrix in proper (referenced from its directory part).
+Returns True if <ent> has a Transformation Matrix in proper (referenced from its Directory Part).
 ") HasTransf;
 		Standard_Boolean HasTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7441,7 +7426,7 @@ bool
 
 Description
 -----------
-Returns true if more than one parent has been determined for <ent>, by adding direct references and associativities.
+Returns True if more than one Parent has been determined for <ent>, by adding direct References and Associativities.
 ") IsAmbiguous;
 		Standard_Boolean IsAmbiguous(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7459,7 +7444,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is an associativity (iges type 402). then, location does not apply.
+Returns True if <ent> is an Associativity (IGES Type 402). Then, Location does not apply.
 ") IsAssociativity;
 		Standard_Boolean IsAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7477,7 +7462,7 @@ bool
 
 Description
 -----------
-Returns true if <ent> is kind of transfentity. then, it has no location, while it can be used to define a location).
+Returns True if <ent> is kind of TransfEntity. Then, it has no location, while it can be used to define a Location).
 ") IsTransf;
 		Standard_Boolean IsTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7490,7 +7475,7 @@ None
 
 Description
 -----------
-Does the effective work of determining locations of entities.
+Does the effective work of determining Locations of Entities.
 ") Load;
 		void Load();
 
@@ -7508,7 +7493,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the unique parent recorded for <ent>. returns a null handle if there is none.
+Returns the unique Parent recorded for <ent>. Returns a Null Handle if there is none.
 ") Parent;
 		opencascade::handle<IGESData_IGESEntity> Parent(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7526,7 +7511,7 @@ gp_GTrsf
 
 Description
 -----------
-Returns the effective location of the parent of <ent>, if there is one: this location is itself given as compound according dependences on the parent, if there are some. returns an identity transformation if no parent is recorded.
+Returns the effective Location of the Parent of <ent>, if there is one: this Location is itself given as compound according dependences on the Parent, if there are some. Returns an Identity Transformation if no Parent is recorded.
 ") ParentLocation;
 		gp_GTrsf ParentLocation(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7562,7 +7547,7 @@ None
 
 Description
 -----------
-Unitary action which defines entities referenced by <ent> (except those in directory part and associativities list) as dependent (their locations are related to that of <ent>).
+Unitary action which defines Entities referenced by <ent> (except those in Directory Part and Associativities List) as Dependent (their Locations are related to that of <ent>).
 ") SetOwnAsDependent;
 		void SetOwnAsDependent(const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7581,7 +7566,7 @@ None
 
 Description
 -----------
-Sets the 'associativity' information for <child> as being <parent> (it must be the parent itself, not the associativity).
+Sets the 'Associativity' information for <child> as being <parent> (it must be the Parent itself, not the Associativity).
 ") SetParentAssoc;
 		void SetParentAssoc(const opencascade::handle<IGESData_IGESEntity> & parent, const opencascade::handle<IGESData_IGESEntity> & child);
 
@@ -7599,7 +7584,7 @@ None
 
 Description
 -----------
-Sets a precision for the analysis of locations (default by constructor is 1.e-05).
+Sets a precision for the Analysis of Locations (default by constructor is 1.E-05).
 ") SetPrecision;
 		void SetPrecision(const Standard_Real prec);
 
@@ -7618,7 +7603,7 @@ None
 
 Description
 -----------
-Sets the 'reference' information for <child> as being <parent> sets an error status if already set (see method isambiguous).
+Sets the 'Reference' information for <child> as being <parent> Sets an Error Status if already set (see method IsAmbiguous).
 ") SetReference;
 		void SetReference(const opencascade::handle<IGESData_IGESEntity> & parent, const opencascade::handle<IGESData_IGESEntity> & child);
 
@@ -7652,7 +7637,7 @@ None
 
 Description
 -----------
-Creates a library which complies with a protocol, that is: same class (criterium isinstance) this creation gets the modules from the global set, those which are bound to the given protocol and its resources.
+Creates a Library which complies with a Protocol, that is: Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources.
 ") IGESData_WriterLib;
 		 IGESData_WriterLib(const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -7665,7 +7650,7 @@ None
 
 Description
 -----------
-Creates an empty library: it will later by filled by method addprotocol.
+Creates an empty Library: it will later by filled by method AddProtocol.
 ") IGESData_WriterLib;
 		 IGESData_WriterLib();
 
@@ -7683,7 +7668,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) to the library, given the class of a protocol. takes resources into account. (if <aprotocol> is not of type theprotocol, it is not added).
+Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added).
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -7696,7 +7681,7 @@ None
 
 Description
 -----------
-Clears the list of modules of a library (can be used to redefine the order of modules before action: clear then refill the library by calls to addprotocol).
+Clears the list of Modules of a library (can be used to redefine the order of Modules before action: Clear then refill the Library by calls to AddProtocol).
 ") Clear;
 		void Clear();
 
@@ -7709,7 +7694,7 @@ opencascade::handle<IGESData_ReadWriteModule>
 
 Description
 -----------
-Returns the current module in the iteration.
+Returns the current Module in the Iteration.
 ") Module;
 		const opencascade::handle<IGESData_ReadWriteModule> & Module();
 
@@ -7722,7 +7707,7 @@ bool
 
 Description
 -----------
-Returns true if there are more modules to iterate on.
+Returns True if there are more Modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
@@ -7735,7 +7720,7 @@ None
 
 Description
 -----------
-Iterates by getting the next module in the list if there is none, the exception will be raised by value.
+Iterates by getting the next Module in the list If there is none, the exception will be raised by Value.
 ") Next;
 		void Next();
 
@@ -7748,7 +7733,7 @@ opencascade::handle<IGESData_Protocol>
 
 Description
 -----------
-Returns the current protocol in the iteration.
+Returns the current Protocol in the Iteration.
 ") Protocol;
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
@@ -7767,7 +7752,7 @@ CN: int
 
 Description
 -----------
-Selects a module from the library, given an object. returns true if select has succeeded, false else. also returns (as arguments) the selected module and the case number determined by the associated protocol. if select has failed, <module> is null handle and cn is zero. (select can work on any criterium, such as object dynamictype).
+Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_ReadWriteModule> & module, Standard_Integer &OutValue);
 
@@ -7780,7 +7765,7 @@ None
 
 Description
 -----------
-Sets a library to be defined with the complete global list (all the couples protocol/modules recorded in it).
+Sets a library to be defined with the complete Global list (all the couples Protocol/Modules recorded in it).
 ") SetComplete;
 		void SetComplete();
 
@@ -7799,7 +7784,7 @@ None
 
 Description
 -----------
-Adds a couple (module-protocol) into the global definition set for this class of library.
+Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<IGESData_ReadWriteModule> & amodule, const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -7812,7 +7797,7 @@ None
 
 Description
 -----------
-Starts iteration on the modules (sets it on the first one).
+Starts Iteration on the Modules (sets it on the first one).
 ") Start;
 		void Start();
 
@@ -7855,7 +7840,7 @@ None
 
 Description
 -----------
-Creates a defaultgeneral and puts it into generallib, bound with a protocol from igesdata.
+Creates a DefaultGeneral and puts it into GeneralLib, bound with a Protocol from IGESData.
 ") IGESData_DefaultGeneral;
 		 IGESData_DefaultGeneral();
 
@@ -7874,7 +7859,7 @@ IGESData_DirChecker
 
 Description
 -----------
-Returns a dirchecker, specific for each type of entity here, returns an empty dirchecker (no constraint to check).
+Returns a DirChecker, specific for each type of Entity Here, Returns an empty DirChecker (no constraint to check).
 ") DirChecker;
 		IGESData_DirChecker DirChecker(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -7893,7 +7878,7 @@ bool
 
 Description
 -----------
-Specific creation of a new void entity (undefinedentity only).
+Specific creation of a new void entity (UndefinedEntity only).
 ") NewVoid;
 		Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
 
@@ -7914,7 +7899,7 @@ None
 
 Description
 -----------
-Performs specific semantic check for each type of entity here, does nothing (no constraint to check).
+Performs Specific Semantic Check for each type of Entity Here, does nothing (no constraint to check).
 ") OwnCheckCase;
 		void OwnCheckCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
@@ -7935,7 +7920,7 @@ None
 
 Description
 -----------
-Copies parameters which are specific of each type of entity.
+Copies parameters which are specific of each Type of Entity.
 ") OwnCopyCase;
 		void OwnCopyCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
 
@@ -7955,7 +7940,7 @@ None
 
 Description
 -----------
-Lists the entities shared by an igesentity, which must be an undefinedentity.
+Lists the Entities shared by an IGESEntity, which must be an UndefinedEntity.
 ") OwnSharedCase;
 		void OwnSharedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
@@ -7984,7 +7969,7 @@ None
 
 Description
 -----------
-Creates a defaultspecific and puts it into specificlib.
+Creates a DefaultSpecific and puts it into SpecificLib.
 ") IGESData_DefaultSpecific;
 		 IGESData_DefaultSpecific();
 
@@ -8005,7 +7990,7 @@ S: Standard_OStream
 
 Description
 -----------
-Specific dump for undefinedentity: it concerns only own parameters, the general data (directory part, lists) are taken into account by the igesdumper.
+Specific Dump for UndefinedEntity: it concerns only own parameters, the general data (Directory Part, Lists) are taken into account by the IGESDumper.
 ") OwnDump;
 		void OwnDump(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const Standard_Integer own);
 
@@ -8034,7 +8019,7 @@ None
 
 Description
 -----------
-Returns an empty fileprotocol.
+Returns an empty FileProtocol.
 ") IGESData_FileProtocol;
 		 IGESData_FileProtocol();
 
@@ -8065,7 +8050,7 @@ int
 
 Description
 -----------
-Gives the count of resources: the count of added protocols.
+Gives the count of Resources: the count of Added Protocols.
 ") NbResources;
 		virtual Standard_Integer NbResources();
 
@@ -8083,7 +8068,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given a rank (rank of call to add).
+Returns a Resource, given a rank (rank of call to Add).
 ") Resource;
 		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
@@ -8134,7 +8119,7 @@ bool
 
 Description
 -----------
-Returns true if <level> is in the list.
+returns True if <level> is in the list.
 ") HasLevelNumber;
 		Standard_Boolean HasLevelNumber(const Standard_Integer level);
 
@@ -8152,7 +8137,7 @@ int
 
 Description
 -----------
-Returns the level number of <self>, indicated by <num> raises an exception if num is out of range.
+returns the Level Number of <self>, indicated by <num> raises an exception if num is out of range.
 ") LevelNumber;
 		virtual Standard_Integer LevelNumber(const Standard_Integer num);
 
@@ -8211,7 +8196,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Retyrns the alphanumeric value of the name, to be defined.
+Retyrns the alphanumeric value of the Name, to be defined.
 ") Value;
 		virtual opencascade::handle<TCollection_HAsciiString> Value();
 
@@ -8246,7 +8231,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns a child given its rank.
+Returns a Child given its rank.
 ") Child;
 		virtual opencascade::handle<IGESData_IGESEntity> Child(const Standard_Integer num);
 
@@ -8259,7 +8244,7 @@ int
 
 Description
 -----------
-Returns the count of entities designated as children.
+Returns the count of Entities designated as children.
 ") NbChildren;
 		virtual Standard_Integer NbChildren();
 
@@ -8272,7 +8257,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns the parent designated by the entity, if only one !.
+Returns the parent designated by the Entity, if only one !.
 ") SingleParent;
 		virtual opencascade::handle<IGESData_IGESEntity> SingleParent();
 
@@ -8302,7 +8287,7 @@ gp_GTrsf
 
 Description
 -----------
-Gives value of the transformation, as a gtrsf to be defined by an effective class of transformation entity warning: must take in account composition: if a transfentity has in its directory part, a transf, this means that it is compound, value must return the global result.
+gives value of the transformation, as a GTrsf To be defined by an effective class of Transformation Entity Warning: Must take in account Composition: if a TransfEntity has in its Directory Part, a Transf, this means that it is Compound, Value must return the global result.
 ") Value;
 		virtual gp_GTrsf Value();
 
@@ -8331,7 +8316,7 @@ None
 
 Description
 -----------
-Creates an unknown entity.
+creates an unknown entity.
 ") IGESData_UndefinedEntity;
 		 IGESData_UndefinedEntity();
 
@@ -8344,7 +8329,7 @@ opencascade::handle<Interface_UndefinedContent>
 
 Description
 -----------
-Returns own data as an undefinedcontent, in order to touch it.
+Returns own data as an UndefinedContent, in order to touch it.
 ") ChangeableContent;
 		opencascade::handle<Interface_UndefinedContent> ChangeableContent();
 
@@ -8357,7 +8342,7 @@ IGESData_DefType
 
 Description
 -----------
-Returns error status if necessary, else calls original method.
+returns Error status if necessary, else calls original method.
 ") DefColor;
 		virtual IGESData_DefType DefColor();
 
@@ -8370,7 +8355,7 @@ IGESData_DefList
 
 Description
 -----------
-Returns error status if necessary, else calls original method.
+returns Error status if necessary, else calls original method.
 ") DefLevel;
 		virtual IGESData_DefList DefLevel();
 
@@ -8383,7 +8368,7 @@ IGESData_DefType
 
 Description
 -----------
-Returns error status if necessary, else calls original method.
+returns Error status if necessary, else calls original method.
 ") DefLineFont;
 		virtual IGESData_DefType DefLineFont();
 
@@ -8396,7 +8381,7 @@ IGESData_DefList
 
 Description
 -----------
-Returns error status if necessary, else calls original method.
+returns Error status if necessary, else calls original method.
 ") DefView;
 		virtual IGESData_DefList DefView();
 
@@ -8409,7 +8394,7 @@ int
 
 Description
 -----------
-Returns directory error status (used for copy).
+returns Directory Error Status (used for Copy).
 ") DirStatus;
 		Standard_Integer DirStatus();
 
@@ -8422,7 +8407,7 @@ bool
 
 Description
 -----------
-Returns error status if necessary, else calls original method (that is, if subscript field is not blank or positive integer).
+returns Error status if necessary, else calls original method (that is, if SubScript field is not blank or positive integer).
 ") HasSubScriptNumber;
 		virtual Standard_Boolean HasSubScriptNumber();
 
@@ -8435,7 +8420,7 @@ bool
 
 Description
 -----------
-Says if dirpart is ok or not (if not, it is erroneous) note that if it is not, def* methods can return error status.
+says if DirPart is OK or not (if not, it is erroneous) Note that if it is not, Def* methods can return Error status.
 ") IsOKDirPart;
 		Standard_Boolean IsOKDirPart();
 
@@ -8455,7 +8440,7 @@ bool
 
 Description
 -----------
-Computes the directory error status, to be called before standard readdir from igesreadertool returns true if ok (hence, directory can be loaded), else returns false and the dirpart <dp> is modified (hence, directory error status is non null; and standard read will work with an acceptable directorypart).
+Computes the Directory Error Status, to be called before standard ReadDir from IGESReaderTool Returns True if OK (hence, Directory can be loaded), Else returns False and the DirPart <DP> is modified (hence, Directory Error Status is non null; and standard Read will work with an acceptable DirectoryPart).
 ") ReadDir;
 		virtual Standard_Boolean ReadDir(const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_DirPart & DP, opencascade::handle<Interface_Check> & ach);
 
@@ -8474,7 +8459,7 @@ None
 
 Description
 -----------
-Reads own parameters from file; pr gives access to them, ir detains parameter types and values here, reads all parameters, integers are considered as entity reference unless they cannot be; no list interpretation no property or associativity list is managed.
+reads own parameters from file; PR gives access to them, IR detains parameter types and values Here, reads all parameters, integers are considered as entity reference unless they cannot be; no list interpretation No property or associativity list is managed.
 ") ReadOwnParams;
 		virtual void ReadOwnParams(const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
@@ -8492,7 +8477,7 @@ None
 
 Description
 -----------
-Redefines a completely new undefinedcontent used by a copy which begins by shallowcopy, for instance.
+Redefines a completely new UndefinedContent Used by a Copy which begins by ShallowCopy, for instance.
 ") SetNewContent;
 		void SetNewContent(const opencascade::handle<Interface_UndefinedContent> & cont);
 
@@ -8505,7 +8490,7 @@ None
 
 Description
 -----------
-Erases the directory error status warning: be sure that data are consistent to call this method ...
+Erases the Directory Error Status Warning: Be sure that data are consistent to call this method ...
 ") SetOKDirPart;
 		void SetOKDirPart();
 
@@ -8518,7 +8503,7 @@ opencascade::handle<Interface_UndefinedContent>
 
 Description
 -----------
-Returns own data as an undefinedcontent.
+Returns own data as an UndefinedContent.
 ") UndefinedContent;
 		opencascade::handle<Interface_UndefinedContent> UndefinedContent();
 
@@ -8536,7 +8521,7 @@ None
 
 Description
 -----------
-Writes parameters to igeswriter, taken from undefinedcontent.
+writes parameters to IGESWriter, taken from UndefinedContent.
 ") WriteOwnParams;
 		virtual void WriteOwnParams(IGESData_IGESWriter & IW);
 
@@ -8566,7 +8551,7 @@ bool
 
 Description
 -----------
-Says if 'me' is a single view (true) or a list of views (false).
+says if 'me' is a Single View (True) or a List of Views (False).
 ") IsSingle;
 		virtual Standard_Boolean IsSingle();
 
@@ -8579,7 +8564,7 @@ int
 
 Description
 -----------
-Returns the count of views for a list of views. for a single view, may return simply 1.
+Returns the count of Views for a List of Views. For a Single View, may return simply 1.
 ") NbViews;
 		virtual Standard_Integer NbViews();
 
@@ -8597,7 +8582,7 @@ opencascade::handle<IGESData_ViewKindEntity>
 
 Description
 -----------
-Returns the view n0. <num> for a list of views. for a single views, may return <self> itself.
+Returns the View n0. <num> for a List of Views. For a Single Views, may return <self> itself.
 ") ViewItem;
 		virtual opencascade::handle<IGESData_ViewKindEntity> ViewItem(const Standard_Integer num);
 
@@ -8626,7 +8611,7 @@ None
 
 Description
 -----------
-Creates a completely empty freeformatentity.
+Creates a completely empty FreeFormatEntity.
 ") IGESData_FreeFormatEntity;
 		 IGESData_FreeFormatEntity();
 
@@ -8644,7 +8629,7 @@ None
 
 Description
 -----------
-Adds a set of entities, given as a harray1ofigesentity causes creation of: an integer parameter which gives count of entities, then the list of entities of the array error if an entity is not an igesentity all these entities will be interpreted as 'positive pointers' by igeswriter.
+Adds a set of Entities, given as a HArray1OfIGESEntity Causes creation of: an Integer Parameter which gives count of Entities, then the list of Entities of the Array Error if an Entity is not an IGESEntity All these Entities will be interpreted as 'Positive Pointers' by IGESWriter.
 ") AddEntities;
 		void AddEntities(const opencascade::handle<IGESData_HArray1OfIGESEntity> & ents);
 
@@ -8664,7 +8649,7 @@ None
 
 Description
 -----------
-Adds a parameter which references an entity. if the entity is null, the added parameter will define a 'null pointer' (0) if <negative> is given true, this will command sending to file (see igeswriter) to produce a 'negative pointer' (default is false).
+Adds a Parameter which references an Entity. If the Entity is Null, the added parameter will define a 'Null Pointer' (0) If <negative> is given True, this will command Sending to File (see IGESWriter) to produce a 'Negative Pointer' (Default is False).
 ") AddEntity;
 		void AddEntity(const Interface_ParamType ptype, const opencascade::handle<IGESData_IGESEntity> & ent, const Standard_Boolean negative = Standard_False);
 
@@ -8683,7 +8668,7 @@ None
 
 Description
 -----------
-Adds a literal parameter to the list (as such).
+Adds a literal Parameter to the list (as such).
 ") AddLiteral;
 		void AddLiteral(const Interface_ParamType ptype, const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -8702,7 +8687,7 @@ None
 
 Description
 -----------
-Adds a literal parameter to the list (builds an hasciistring).
+Adds a literal Parameter to the list (builds an HAsciiString).
 ") AddLiteral;
 		void AddLiteral(const Interface_ParamType ptype, Standard_CString val);
 
@@ -8720,7 +8705,7 @@ None
 
 Description
 -----------
-Adds a list of ranks of parameters to be noted as negative pointers (this will be taken into account for parameters which are entities).
+Adds a list of Ranks of Parameters to be noted as Negative Pointers (this will be taken into account for Parameters which are Entities).
 ") AddNegativePointers;
 		void AddNegativePointers(const opencascade::handle<TColStd_HSequenceOfInteger> & list);
 
@@ -8733,7 +8718,7 @@ None
 
 Description
 -----------
-Clears all information about negative pointers, hence every entity kind parameter will be sent normally, as positive.
+Clears all information about Negative Pointers, hence every Entity kind Parameter will be sent normally, as Positive.
 ") ClearNegativePointers;
 		void ClearNegativePointers();
 
@@ -8751,7 +8736,7 @@ bool
 
 Description
 -----------
-Returns true if <num> is noted as for a 'negative pointer' (see addentity for details). senseful only if isparamentity answers true for <num>, else returns false.
+Returns True if <num> is noted as for a 'Negative Pointer' (see AddEntity for details). Senseful only if IsParamEntity answers True for <num>, else returns False.
 ") IsNegativePointer;
 		Standard_Boolean IsNegativePointer(const Standard_Integer num);
 
@@ -8769,7 +8754,7 @@ bool
 
 Description
 -----------
-Returns true if a parameter is recorded as an entity error if num is not between 1 and nbparams.
+Returns True if a Parameter is recorded as an entity Error if num is not between 1 and NbParams.
 ") IsParamEntity;
 		Standard_Boolean IsParamEntity(const Standard_Integer num);
 
@@ -8795,7 +8780,7 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
-Returns the complete list of ramks of parameters which have been noted as negative pointers warning: it is returned as a null handle if none was noted.
+Returns the complete list of Ramks of Parameters which have been noted as Negative Pointers Warning: It is returned as a Null Handle if none was noted.
 ") NegativePointers;
 		opencascade::handle<TColStd_HSequenceOfInteger> NegativePointers();
 
@@ -8815,7 +8800,7 @@ val: TCollection_HAsciiString
 
 Description
 -----------
-Returns data of a parameter: its type, and the entity if it designates en entity ('ent') or its literal value else ('str') returned value (boolean): true if it is an entity, false else.
+Returns data of a Parameter: its type, and the entity if it designates en entity ('ent') or its literal value else ('str') Returned value (Boolean): True if it is an Entity, False else.
 ") ParamData;
 		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
@@ -8833,7 +8818,7 @@ opencascade::handle<IGESData_IGESEntity>
 
 Description
 -----------
-Returns entity corresponding to a param, given its rank error if out of range or if param num does not designate an entity.
+Returns Entity corresponding to a Param, given its rank Error if out of range or if Param num does not designate an Entity.
 ") ParamEntity;
 		opencascade::handle<IGESData_IGESEntity> ParamEntity(const Standard_Integer num);
 
@@ -8851,7 +8836,7 @@ Interface_ParamType
 
 Description
 -----------
-Returns the paramtype of a param, given its rank error if num is not between 1 and nbparams.
+Returns the ParamType of a Param, given its rank Error if num is not between 1 and NbParams.
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num);
 
@@ -8869,7 +8854,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns literal value of a parameter, given its rank error if num is out of range, or if parameter is not literal.
+Returns literal value of a Parameter, given its rank Error if num is out of range, or if Parameter is not literal.
 ") ParamValue;
 		opencascade::handle<TCollection_HAsciiString> ParamValue(const Standard_Integer num);
 
@@ -8887,7 +8872,7 @@ None
 
 Description
 -----------
-Sets form number to a new value (to called after settypenumber).
+Sets Form Number to a new Value (to called after SetTypeNumber).
 ") SetFormNumber;
 		void SetFormNumber(const Standard_Integer formnum);
 
@@ -8905,7 +8890,7 @@ None
 
 Description
 -----------
-Sets type number to a new value, and form number to zero.
+Sets Type Number to a new Value, and Form Number to Zero.
 ") SetTypeNumber;
 		void SetTypeNumber(const Standard_Integer typenum);
 
@@ -8923,7 +8908,7 @@ None
 
 Description
 -----------
-Writeownparams is redefined for freeformatentity to take into account the supplementary information 'negative pointer'.
+WriteOwnParams is redefined for FreeFormatEntity to take into account the supplementary information 'Negative Pointer'.
 ") WriteOwnParams;
 		virtual void WriteOwnParams(IGESData_IGESWriter & IW);
 
@@ -8972,6 +8957,10 @@ def IGESData_BasicEditor_DraftingMax(*args):
 @deprecated
 def IGESData_BasicEditor_DraftingName(*args):
 	return IGESData_BasicEditor.DraftingName(*args)
+
+@deprecated
+def IGESData_BasicEditor_GetFlagByValue(*args):
+	return IGESData_BasicEditor.GetFlagByValue(*args)
 
 @deprecated
 def IGESData_BasicEditor_IGESVersionMax(*args):

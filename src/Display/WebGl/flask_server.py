@@ -1,4 +1,4 @@
-""" A flask webserver. """
+"""A flask webserver."""
 
 import sys
 import uuid

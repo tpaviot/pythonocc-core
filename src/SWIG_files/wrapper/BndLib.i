@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BNDLIBDOCSTRING
 "BndLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bndlib.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bndlib.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 
@@ -110,7 +110,7 @@ None
 
 Description
 -----------
-Bounding box for a surface trimmed or not adds the segment of the line l limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. tol is the tolerance value to enlarge the minimum and maximum dimension p1 and p2 may represent infinite values. exceptions standard_failure if p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Bounding box for a surface trimmed or not Adds the segment of the line L limited by the two parameter values P1 and P2, to the bounding box B, and then enlarges B by the tolerance value Tol. Tol is the tolerance value to enlarge the minimum and maximum dimension P1 and P2 may represent infinite values. Exceptions Standard_Failure if P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const gp_Lin & L, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -174,7 +174,7 @@ None
 
 Description
 -----------
-P2-p1 can be in [0,2*pi].
+P2-P1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Circ & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -216,7 +216,7 @@ None
 
 Description
 -----------
-Adds the circle c, or the arc of the circle c limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. p2-p1 can be in [0,2*pi].
+Adds the circle C, or the arc of the circle C limited by the two parameter values P1 and P2, to the bounding box B, and then enlarges B by the tolerance value Tol. P2-P1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Circ2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -258,7 +258,7 @@ None
 
 Description
 -----------
-P2-p1 can be in [0,2*pi].
+P2-P1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Elips & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -300,7 +300,7 @@ None
 
 Description
 -----------
-Adds the ellipse e, or the arc of the ellipse e limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. p2-p1 can be in [0,2*pi].
+Adds the ellipse E, or the arc of the ellipse E limited by the two parameter values P1 and P2, to the bounding box B, and then enlarges B by the tolerance value Tol. P2-P1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Elips2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -344,7 +344,7 @@ None
 
 Description
 -----------
-Adds the arc of the parabola p limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. p1 and p2 may represent infinite values. exceptions standard_failure if p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds the arc of the parabola P limited by the two parameter values P1 and P2, to the bounding box B, and then enlarges B by the tolerance value Tol. P1 and P2 may represent infinite values. Exceptions Standard_Failure if P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const gp_Parab2d & P, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -388,7 +388,7 @@ None
 
 Description
 -----------
-Adds the arc of the branch of hyperbola h limited by the two parameter values p1 and p2, to the bounding box b, and then enlarges b by the tolerance value tol. p1 and p2 may represent infinite values. exceptions standard_failure if p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds the arc of the branch of hyperbola H limited by the two parameter values P1 and P2, to the bounding box B, and then enlarges B by the tolerance value Tol. P1 and P2 may represent infinite values. Exceptions Standard_Failure if P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const gp_Hypr2d & H, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -412,7 +412,7 @@ None
 
 Description
 -----------
-Umax -umin can be in [0,2*pi].
+UMax -UMin can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -434,7 +434,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b, the patch of the cylinder s limited - in the v parametric direction, by the two parameter values vmin and vmax - and optionally in the u parametric direction, by the two parameter values umin and umax. b is then enlarged by the tolerance value tol. vmin and vmax may represent infinite values. exceptions standard_failure if vmin and vmax are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box B, the patch of the cylinder S limited - in the v parametric direction, by the two parameter values VMin and VMax - and optionally in the u parametric direction, by the two parameter values UMin and UMax. B is then enlarged by the tolerance value Tol. VMin and VMax may represent infinite values. Exceptions Standard_Failure if VMin and VMax are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -458,7 +458,7 @@ None
 
 Description
 -----------
-Umax-umin can be in [0,2*pi].
+UMax-UMin can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -480,7 +480,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b, the patch of the cone s limited - in the v parametric direction, by the two parameter values vmin and vmax - and optionally in the u parametric direction, by the two parameter values umin and umax, b is then enlarged by the tolerance value tol. vmin and vmax may represent infinite values. exceptions standard_failure if vmin and vmax are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box B, the patch of the cone S limited - in the v parametric direction, by the two parameter values VMin and VMax - and optionally in the u parametric direction, by the two parameter values UMin and UMax, B is then enlarged by the tolerance value Tol. VMin and VMax may represent infinite values. Exceptions Standard_Failure if VMin and VMax are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -524,7 +524,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the sphere s, or - the patch of the sphere s, limited in the u parametric direction, by the two parameter values umin and umax, and in the v parametric direction, by the two parameter values vmin and vmax. b is then enlarged by the tolerance value tol. umax-umin can be in [0,2*pi] vmin,vmax can be [-pi/2,pi/2].
+Adds to the bounding box B the sphere S, or - the patch of the sphere S, limited in the u parametric direction, by the two parameter values UMin and UMax, and in the v parametric direction, by the two parameter values VMin and VMax. B is then enlarged by the tolerance value Tol. UMax-UMin can be in [0,2*pi] VMin,VMax can be [-pi/2,pi/2].
 ") Add;
 		static void Add(const gp_Sphere & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -568,7 +568,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b - the torus s, or - the patch of the torus s, limited in the u parametric direction, by the two parameter values umin and umax, and in the v parametric direction, by the two parameter values vmin and vmax. b is then enlarged by the tolerance value tol. umax-umin can be in [0,2*pi], vmin,vmax can be [-pi/2,pi/2].
+Adds to the bounding box B - the torus S, or - the patch of the torus S, limited in the u parametric direction, by the two parameter values UMin and UMax, and in the v parametric direction, by the two parameter values VMin and VMax. B is then enlarged by the tolerance value Tol. UMax-UMin can be in [0,2*pi], VMin,VMax can be [-pi/2,pi/2].
 ") Add;
 		static void Add(const gp_Torus & P, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -602,7 +602,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c b is then enlarged by the tolerance value tol. note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c. warning c is an adapted curve, that is, an object which is an interface between: - the services provided by a 2d curve from the package geom2d - and those required of the curve by the computation algorithm. the adapted curve is created in the following way: opencascade::handle<geom2d_curve> mycurve = ... ; geom2dadaptor_curve c(mycurve); the bounding box b is then enlarged by adding it: bnd_box2d b; // ... standard_real tol = ... ; add2dcurve::add ( c, tol, b ); exceptions standard_failure if the curve is built from: - a geom_line, or - a geom_parabola, or - a geom_hyperbola, and p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box B the curve C B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C. Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by a 2D curve from the package Geom2d - and those required of the curve by the computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve C(mycurve); The bounding box B is then enlarged by adding it: Bnd_Box2d B; // ... Standard_Real Tol = ... ; Add2dCurve::Add ( C, Tol, B ); Exceptions Standard_Failure if the curve is built from: - a Geom_Line, or - a Geom_Parabola, or - a Geom_Hyperbola, and P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -624,7 +624,7 @@ None
 
 Description
 -----------
-Adds to the bounding box bthe arc of the curve c limited by the two parameter values p1 and p2. b is then enlarged by the tolerance value tol. note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c. warning c is an adapted curve, that is, an object which is an interface between: - the services provided by a 2d curve from the package geom2d - and those required of the curve by the computation algorithm. the adapted curve is created in the following way: opencascade::handle<geom2d_curve> mycurve = ... ; geom2dadaptor_curve c(mycurve); the bounding box b is then enlarged by adding it: bnd_box2d b; // ... standard_real tol = ... ; add2dcurve::add ( c, tol, b ); exceptions standard_failure if the curve is built from: - a geom_line, or - a geom_parabola, or - a geom_hyperbola, and p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box Bthe arc of the curve C limited by the two parameter values P1 and P2. B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C. Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by a 2D curve from the package Geom2d - and those required of the curve by the computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom2d_Curve> mycurve = ... ; Geom2dAdaptor_Curve C(mycurve); The bounding box B is then enlarged by adding it: Bnd_Box2d B; // ... Standard_Real Tol = ... ; Add2dCurve::Add ( C, Tol, B ); Exceptions Standard_Failure if the curve is built from: - a Geom_Line, or - a Geom_Parabola, or - a Geom_Hyperbola, and P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -644,7 +644,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c b is then enlarged by the tolerance value tol. note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c.
+Adds to the bounding box B the curve C B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C.
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real Tol, Bnd_Box2d & Box);
 
@@ -666,7 +666,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to compute the bounding box; note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, - if not, the points of an approximation of the curve c.
+Adds to the bounding box B the part of curve C B is then enlarged by the tolerance value Tol. U1, U2 - the parametric range to compute the bounding box; Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, - if not, the points of an approximation of the curve C.
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -688,7 +688,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the part of curve c b is then enlarged by the tolerance value tol. u1, u2 - the parametric range to compute the bounding box; note: depending on the type of curve, one of the following algorithms is used to include it in the bounding box b: - an exact analytical if c is built from a line, a circle or a conic curve, - numerical calculation of bounding box sizes, based on minimization algorithm, for other types of curve if tol = < precision::pconfusion(), precision::pconfusion is used as tolerance for calculation.
+Adds to the bounding box B the part of curve C B is then enlarged by the tolerance value Tol. U1, U2 - the parametric range to compute the bounding box; Note: depending on the type of curve, one of the following algorithms is used to include it in the bounding box B: - an exact analytical if C is built from a line, a circle or a conic curve, - numerical calculation of bounding box sizes, based on minimization algorithm, for other types of curve If Tol = < Precision::PConfusion(), Precision::PConfusion is used as tolerance for calculation.
 ") AddOptimal;
 		static void AddOptimal(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
@@ -722,7 +722,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c b is then enlarged by the tolerance value tol. note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, if not, the points of an approximation of the curve c. warning c is an adapted curve, that is, an object which is an interface between: - the services provided by a 3d curve from the package geom - and those required of the curve by the computation algorithm. the adapted curve is created in the following way: opencascade::handle<geom_curve> mycurve = ... ; geomadaptor_curve c(mycurve); the bounding box b is then enlarged by adding it: bnd_box b; // ... standard_real tol = ... ; add3dcurve::add ( c, tol, b ); exceptions standard_failure if the curve is built from: - a geom_line, or - a geom_parabola, or - a geom_hyperbola, and p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box B the curve C B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, if not, the points of an approximation of the curve C. Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by a 3D curve from the package Geom - and those required of the curve by the computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom_Curve> mycurve = ... ; GeomAdaptor_Curve C(mycurve); The bounding box B is then enlarged by adding it: Bnd_Box B; // ... Standard_Real Tol = ... ; Add3dCurve::Add ( C, Tol, B ); Exceptions Standard_Failure if the curve is built from: - a Geom_Line, or - a Geom_Parabola, or - a Geom_Hyperbola, and P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -744,7 +744,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c the arc of the curve c limited by the two parameter values p1 and p2. note: depending on the type of curve, one of the following representations of the curve c is used to include it in the bounding box b: - an exact representation if c is built from a line, a circle or a conic curve, - the poles of the curve if c is built from a bezier curve or a bspline curve, if not, the points of an approximation of the curve c. warning c is an adapted curve, that is, an object which is an interface between: - the services provided by a 3d curve from the package geom - and those required of the curve by the computation algorithm. the adapted curve is created in the following way: opencascade::handle<geom_curve> mycurve = ... ; geomadaptor_curve c(mycurve); the bounding box b is then enlarged by adding it: bnd_box b; // ... standard_real tol = ... ; add3dcurve::add ( c, tol, b ); exceptions standard_failure if the curve is built from: - a geom_line, or - a geom_parabola, or - a geom_hyperbola, and p1 and p2 are either two negative infinite real numbers, or two positive infinite real numbers.
+Adds to the bounding box B the curve C the arc of the curve C limited by the two parameter values P1 and P2. Note: depending on the type of curve, one of the following representations of the curve C is used to include it in the bounding box B: - an exact representation if C is built from a line, a circle or a conic curve, - the poles of the curve if C is built from a Bezier curve or a BSpline curve, if not, the points of an approximation of the curve C. Warning C is an adapted curve, that is, an object which is an interface between: - the services provided by a 3D curve from the package Geom - and those required of the curve by the computation algorithm. The adapted curve is created in the following way: opencascade::handle<Geom_Curve> mycurve = ... ; GeomAdaptor_Curve C(mycurve); The bounding box B is then enlarged by adding it: Bnd_Box B; // ... Standard_Real Tol = ... ; Add3dCurve::Add ( C, Tol, B ); Exceptions Standard_Failure if the curve is built from: - a Geom_Line, or - a Geom_Parabola, or - a Geom_Hyperbola, and P1 and P2 are either two negative infinite real numbers, or two positive infinite real numbers.
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box & B);
 
@@ -766,7 +766,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c using numerical minimization algorithms this method is used in addoptimal for not analytical curves. if tol < precision::confusion(), precision:;confusion is used as computation tolerance.
+Adds to the bounding box B the curve C using numerical minimization algorithms This method is used in AddOptimal for not analytical curves. if Tol < Precision::Confusion(), Precision:;Confusion is used as computation tolerance.
 ") AddGenCurv;
 		static void AddGenCurv(const Adaptor3d_Curve & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -786,7 +786,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the curve c these methods use more precise algorithms for building bnd box then methods add(...).
+Adds to the bounding box B the curve C These methods use more precise algorithms for building bnd box then methods Add(...).
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
@@ -842,7 +842,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the surface s b is then enlarged by the tolerance value tol. note: depending on the type of curve, one of the following representations of the surface s is used to include it in the bounding box b: - an exact representation if s is built from a plane, a cylinder, a cone, a sphere or a torus, - the poles of the surface if s is built from a bezier surface or a bspline surface, - the points of an approximation of the surface s in cases other than offset surfaces; - in the case of an offset surface, the basis surface is first included according to the previous rules; then the bounding box is enlarged by the offset value. warning do not use these functions to add a non-finite surface to the bounding box b. if umin, umax, vmin or vmax is an infinite value b will become wholespace. s is an adapted surface, that is, an object which is an interface between: - the services provided by a surface from the package geom - and those required of the surface by the computation algorithm. the adapted surface is created in the following way: opencascade::handle<geom_surface> mysurface = ... ; geomadaptor_surface s(mysurface); the bounding box b is then enlarged by adding this surface: bnd_box b; // ... standard_real tol = ... ; addsurface::add ( s, tol, b );.
+Adds to the bounding box B the surface S B is then enlarged by the tolerance value Tol. Note: depending on the type of curve, one of the following representations of the surface S is used to include it in the bounding box B: - an exact representation if S is built from a plane, a cylinder, a cone, a sphere or a torus, - the poles of the surface if S is built from a Bezier surface or a BSpline surface, - the points of an approximation of the surface S in cases other than offset surfaces; - in the case of an offset surface, the basis surface is first included according to the previous rules; then the bounding box is enlarged by the offset value. Warning Do not use these functions to add a non-finite surface to the bounding box B. If UMin, UMax, VMin or VMax is an infinite value B will become WholeSpace. S is an adapted surface, that is, an object which is an interface between: - the services provided by a surface from the package Geom - and those required of the surface by the computation algorithm. The adapted surface is created in the following way: opencascade::handle<Geom_Surface> mysurface = ... ; GeomAdaptor_Surface S(mysurface); The bounding box B is then enlarged by adding this surface: Bnd_Box B; // ... Standard_Real Tol = ... ; AddSurface::Add ( S, Tol, B );.
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real Tol, Bnd_Box & B);
 
@@ -866,7 +866,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the surface s the patch of the surface s limited in the u parametric direction by the two parameter values umin, umax, and in the v parametric direction by the two parameter values vmin, vmax. note: depending on the type of curve, one of the following representations of the surface s is used to include it in the bounding box b: - an exact representation if s is built from a plane, a cylinder, a cone, a sphere or a torus, - the poles of the surface if s is built from a bezier surface or a bspline surface, - the points of an approximation of the surface s in cases other than offset surfaces; - in the case of an offset surface, the basis surface is first included according to the previous rules; then the bounding box is enlarged by the offset value. warning do not use these functions to add a non-finite surface to the bounding box b. if umin, umax, vmin or vmax is an infinite value b will become wholespace. s is an adapted surface, that is, an object which is an interface between: - the services provided by a surface from the package geom - and those required of the surface by the computation algorithm. the adapted surface is created in the following way: opencascade::handle<geom_surface> mysurface = ... ; geomadaptor_surface s(mysurface); the bounding box b is then enlarged by adding this surface: bnd_box b; // ... standard_real tol = ... ; addsurface::add ( s, tol, b );.
+Adds to the bounding box B the surface S the patch of the surface S limited in the u parametric direction by the two parameter values UMin, UMax, and in the v parametric direction by the two parameter values VMin, VMax. Note: depending on the type of curve, one of the following representations of the surface S is used to include it in the bounding box B: - an exact representation if S is built from a plane, a cylinder, a cone, a sphere or a torus, - the poles of the surface if S is built from a Bezier surface or a BSpline surface, - the points of an approximation of the surface S in cases other than offset surfaces; - in the case of an offset surface, the basis surface is first included according to the previous rules; then the bounding box is enlarged by the offset value. Warning Do not use these functions to add a non-finite surface to the bounding box B. If UMin, UMax, VMin or VMax is an infinite value B will become WholeSpace. S is an adapted surface, that is, an object which is an interface between: - the services provided by a surface from the package Geom - and those required of the surface by the computation algorithm. The adapted surface is created in the following way: opencascade::handle<Geom_Surface> mysurface = ... ; GeomAdaptor_Surface S(mysurface); The bounding box B is then enlarged by adding this surface: Bnd_Box B; // ... Standard_Real Tol = ... ; AddSurface::Add ( S, Tol, B );.
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
@@ -890,7 +890,7 @@ None
 
 Description
 -----------
-Adds to the bounding box b the surface s using numerical minimization algorithms this method is used in addoptimal for not analytical surfaces and torus. if tol < precision::confusion(), precision::confusion is used as computation tolerance.
+Adds to the bounding box B the surface S using numerical minimization algorithms This method is used in AddOptimal for not analytical surfaces and torus. if Tol < Precision::Confusion(), Precision::Confusion is used as computation tolerance.
 ") AddGenSurf;
 		static void AddGenSurf(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 

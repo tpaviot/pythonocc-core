@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSMETHODSDOCSTRING
 "UnitsMethods module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_unitsmethods.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_unitsmethods.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSMETHODSDOCSTRING) UnitsMethods
 
@@ -151,7 +151,7 @@ str
 
 Description
 -----------
-Returns string for the given value of lengthunit.
+Returns string for the given value of LengthUnit.
 ") DumpLengthUnit;
 		static Standard_CString DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
 
@@ -169,7 +169,7 @@ float
 
 Description
 -----------
-Returns value of current internal unit for cascade in millemeters by default.
+Returns value of current internal unit for CASCADE in millemeters by default.
 ") GetCasCadeLengthUnit;
 		static Standard_Real GetCasCadeLengthUnit(const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
@@ -187,7 +187,7 @@ float
 
 Description
 -----------
-Returns value of unit encoded by parameter theunit (integer value denoting unit, as described in iges standard) in millimeters by default.
+Returns value of unit encoded by parameter theUnit (integer value denoting unit, as described in IGES standard) in millimeters by default.
 ") GetLengthFactorValue;
 		static Standard_Real GetLengthFactorValue(const Standard_Integer theUnit);
 
@@ -244,7 +244,7 @@ UnitsMethods_LengthUnit
 
 Description
 -----------
-Make conversion of given string to value of lengthunit.
+Make conversion of given string to value of LengthUnit.
 ") LengthUnitFromString;
 		static UnitsMethods_LengthUnit LengthUnitFromString(Standard_CString theStr, const Standard_Boolean theCaseSensitive);
 
@@ -263,7 +263,7 @@ None
 
 Description
 -----------
-Sets value of current internal unit for cascade.
+Sets value of current internal unit for CASCADE.
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
@@ -281,7 +281,7 @@ None
 
 Description
 -----------
-Sets value of current internal unit for cascade by parameter theunit (integer value denoting unit, as described in iges standard).
+Sets value of current internal unit for CASCADE by parameter theUnit (integer value denoting unit, as described in IGES standard).
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Integer theUnit);
 

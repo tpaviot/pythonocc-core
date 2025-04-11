@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEBUILDDOCSTRING
 "ShapeBuild module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapebuild.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapebuild.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEBUILDDOCSTRING) ShapeBuild
 
@@ -115,7 +115,7 @@ opencascade::handle<Geom_Plane>
 
 Description
 -----------
-Rebuilds a shape with substitution of some components returns a geom_surface which is the plane xoy (z positive) this allows to consider an uv space homologous to a 3d space, with this support surface.
+Rebuilds a shape with substitution of some components Returns a Geom_Surface which is the Plane XOY (Z positive) This allows to consider an UV space homologous to a 3D space, with this support surface.
 ") PlaneXOY;
 		static opencascade::handle<Geom_Plane> PlaneXOY();
 
@@ -147,7 +147,7 @@ bool
 
 Description
 -----------
-Calls breptools::buildcurve3d.
+Calls BRepTools::BuildCurve3D.
 ") BuildCurve3d;
 		Standard_Boolean BuildCurve3d(const TopoDS_Edge & edge);
 
@@ -166,7 +166,7 @@ TopoDS_Edge
 
 Description
 -----------
-Make a copy of <edge> by call to copyreplacevertices() (i.e. construct new tedge with the same pcurves and vertices). if <sharepcurves> is false, pcurves are also replaced by their copies with help of method copypcurves.
+Make a copy of <edge> by call to CopyReplaceVertices() (i.e. construct new TEdge with the same pcurves and vertices). If <sharepcurves> is False, pcurves are also replaced by their copies with help of method CopyPCurves.
 ") Copy;
 		TopoDS_Edge Copy(const TopoDS_Edge & edge, const Standard_Boolean sharepcurves = Standard_True);
 
@@ -185,7 +185,7 @@ None
 
 Description
 -----------
-Makes a copy of pcurves from edge <fromedge> into edge <toedge>. pcurves which are already present in <toedge>, are replaced by copies, other are copied. ranges are also copied.
+Makes a copy of pcurves from edge <fromedge> into edge <toedge>. Pcurves which are already present in <toedge>, are replaced by copies, other are copied. Ranges are also copied.
 ") CopyPCurves;
 		void CopyPCurves(const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge);
 
@@ -226,7 +226,7 @@ TopoDS_Edge
 
 Description
 -----------
-Copy edge and replace one or both its vertices to a given one(s). vertex v1 replaces forward vertex, and v2 - reversed, as they are found by topods_iterator. if v1 or v2 is null, the original vertex is taken.
+Copy edge and replace one or both its vertices to a given one(s). Vertex V1 replaces FORWARD vertex, and V2 - REVERSED, as they are found by TopoDS_Iterator. If V1 or V2 is NULL, the original vertex is taken.
 ") CopyReplaceVertices;
 		TopoDS_Edge CopyReplaceVertices(const TopoDS_Edge & edge, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
@@ -374,7 +374,7 @@ bool
 
 Description
 -----------
-Reassign edge pcurve lying on face <old> to another face <sub>. if edge has two pcurves on <old> face, only one of them will be reassigned, and other will left alone. similarly, if edge already had a pcurve on face <sub>, it will have two pcurves on it. returns true if succeeded, false if no pcurve lying on <old> found.
+Reassign edge pcurve lying on face <old> to another face <sub>. If edge has two pcurves on <old> face, only one of them will be reassigned, and other will left alone. Similarly, if edge already had a pcurve on face <sub>, it will have two pcurves on it. Returns True if succeeded, False if no pcurve lying on <old> found.
 ") ReassignPCurve;
 		Standard_Boolean ReassignPCurve(const TopoDS_Edge & edge, const TopoDS_Face & old, const TopoDS_Face & sub);
 
@@ -392,7 +392,7 @@ None
 
 Description
 -----------
-Removes the curve3d recorded in an edge.
+Removes the Curve3D recorded in an Edge.
 ") RemoveCurve3d;
 		void RemoveCurve3d(const TopoDS_Edge & edge);
 
@@ -411,7 +411,7 @@ None
 
 Description
 -----------
-Removes the pcurve(s) which could be recorded in an edge for the given face.
+Removes the PCurve(s) which could be recorded in an Edge for the given Face.
 ") RemovePCurve;
 		void RemovePCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
@@ -430,7 +430,7 @@ None
 
 Description
 -----------
-Removes the pcurve(s) which could be recorded in an edge for the given surface.
+Removes the PCurve(s) which could be recorded in an Edge for the given Surface.
 ") RemovePCurve;
 		void RemovePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surf);
 
@@ -450,7 +450,7 @@ None
 
 Description
 -----------
-Removes the pcurve(s) which could be recorded in an edge for the given surface, with given location.
+Removes the PCurve(s) which could be recorded in an Edge for the given Surface, with given Location.
 ") RemovePCurve;
 		void RemovePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surf, const TopLoc_Location & loc);
 
@@ -470,7 +470,7 @@ None
 
 Description
 -----------
-Replace the pcurve in an edge for the given face in case if edge is seam, i.e. has 2 pcurves on that face, only pcurve corresponding to the orientation of the edge is replaced.
+Replace the PCurve in an Edge for the given Face In case if edge is seam, i.e. has 2 pcurves on that face, only pcurve corresponding to the orientation of the edge is replaced.
 ") ReplacePCurve;
 		void ReplacePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const TopoDS_Face & face);
 
@@ -511,7 +511,7 @@ aLast: float
 
 Description
 -----------
-Transforms the pcurve with given matrix and affinity u factor.
+Transforms the PCurve with given matrix and affinity U factor.
 ") TransformPCurve;
 		opencascade::handle<Geom2d_Curve> TransformPCurve(const opencascade::handle<Geom2d_Curve> & pcurve, const gp_Trsf2d & trans, const Standard_Real uFact, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -538,7 +538,7 @@ None
 
 Description
 -----------
-Returns an empty reshape.
+Returns an empty Reshape.
 ") ShapeBuild_ReShape;
 		 ShapeBuild_ReShape();
 
@@ -558,7 +558,7 @@ TopoDS_Shape
 
 Description
 -----------
-Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. for subshapes of the type <until> no rebuild and further exploring are done. actually, not implemented below topabs_face //! <buildmode> says how to do on a solid,shell ... if one of its sub-shapes has been changed: 0: at least one replace or remove -> compound, else as such 1: at least one remove (replace are ignored) -> compound 2: replace and remove are both ignored if replace/remove are ignored or absent, the result as same type as the starting shape.
+Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and further exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE //! <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape.
 ") Apply;
 		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until, const Standard_Integer buildmode);
 
@@ -577,7 +577,7 @@ TopoDS_Shape
 
 Description
 -----------
-Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. for subshapes of the type <until> no rebuild and further exploring are done. //! note: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, topods_edge can be replaced by topods_edge, topods_wire or topods_compound containing topods_edges). if incompatible shape type is encountered, it is ignored and flag fail1 is set in status.
+Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and further exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
 ") Apply;
 		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
 
@@ -597,7 +597,7 @@ int
 
 Description
 -----------
-Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is null > 0: to be replaced, <newsh> is a new item if <last> is false, returns status and new shape recorded in the map directly for the shape, if true and status > 0 then recursively searches for the last status and new shape.
+Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 ") Status;
 		virtual Standard_Integer Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const Standard_Boolean last = Standard_False);
 
@@ -615,7 +615,7 @@ bool
 
 Description
 -----------
-Queries the status of last call to apply(shape,enum) ok: no (sub)shapes replaced or removed done1: source (starting) shape replaced done2: source (starting) shape removed done3: some subshapes replaced done4: some subshapes removed fail1: some replacements not done because of bad type of subshape.
+Queries the status of last call to Apply(shape,enum) OK: no (sub)shapes replaced or removed DONE1: source (starting) shape replaced DONE2: source (starting) shape removed DONE3: some subshapes replaced DONE4: some subshapes removed FAIL1: some replacements not done because of bad type of subshape.
 ") Status;
 		virtual Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -651,7 +651,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Combines new vertex from two others. this new one is the smallest vertex which comprises both of the source vertices. the function takes into account the positions and tolerances of the source vertices. the tolerance of the new vertex will be equal to the minimal tolerance that is required to comprise source vertices multiplied by tolfactor (in order to avoid errors because of discreteness of calculations).
+Combines new vertex from two others. This new one is the smallest vertex which comprises both of the source vertices. The function takes into account the positions and tolerances of the source vertices. The tolerance of the new vertex will be equal to the minimal tolerance that is required to comprise source vertices multiplied by tolFactor (in order to avoid errors because of discreteness of calculations).
 ") CombineVertex;
 		TopoDS_Vertex CombineVertex(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real tolFactor = 1.0001);
 

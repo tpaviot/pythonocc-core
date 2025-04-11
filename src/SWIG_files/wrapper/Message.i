@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MESSAGEDOCSTRING
 "Message module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_message.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_message.html"
 %enddef
 %module (package="OCC.Core", docstring=MESSAGEDOCSTRING) Message
 
@@ -646,7 +646,7 @@ opencascade::handle<Message_Messenger>
 
 Description
 -----------
-Defines default messenger for occt applications. this is global static instance of the messenger. by default, it contains single printer directed to std::cout. it can be customized according to the application needs. //! the following syntax can be used to print messages: @code message::defaultmessenger()->send ('my warning', message_warning); message::sendwarning ('my warning'); // short-cut for message_warning message::sendwarning() << 'my warning with ' << thecounter << ' arguments'; message::sendfail ('my failure'); // short-cut for message_fail @endcode.
+Defines default messenger for OCCT applications. This is global static instance of the messenger. By default, it contains single printer directed to std::cout. It can be customized according to the application needs. //! The following syntax can be used to print messages: @code Message::DefaultMessenger()->Send ('My Warning', Message_Warning); Message::SendWarning ('My Warning'); // short-cut for Message_Warning Message::SendWarning() << 'My Warning with ' << theCounter << ' arguments'; Message::SendFail ('My Failure'); // short-cut for Message_Fail @endcode.
 ") DefaultMessenger;
 		static const opencascade::handle<Message_Messenger> & DefaultMessenger();
 
@@ -664,7 +664,7 @@ opencascade::handle<Message_Report>
 
 Description
 -----------
-Returns the only one instance of report when thetocreate is true - automatically creates message report when not exist.
+returns the only one instance of Report When theToCreate is true - automatically creates message report when not exist.
 ") DefaultReport;
 		static const opencascade::handle<Message_Report> & DefaultReport(const Standard_Boolean theToCreate = Standard_False);
 
@@ -684,7 +684,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the string filled with values of hours, minutes and seconds. example: 1. (5, 12, 26.3345) returns '05h:12m:26.33s', 2. (0, 6, 34.496 ) returns '06m:34.50s', 3. (0, 0, 4.5 ) returns '4.50s'.
+Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns '05h:12m:26.33s', 2. (0, 6, 34.496 ) returns '06m:34.50s', 3. (0, 0, 4.5 ) returns '4.50s'.
 ") FillTime;
 		static TCollection_AsciiString FillTime(const Standard_Integer Hour, const Standard_Integer Minute, const Standard_Real Second);
 
@@ -702,7 +702,10 @@ theType: Message_MetricType
 
 Description
 -----------
-Determines the metric from the given string identifier. @param thestring string identifier @param thetype detected type of metric return true if string identifier is known.
+Determines the metric from the given string identifier. 
+Parameter theString string identifier 
+Parameter theType detected type of metric 
+Return: True if string identifier is known.
 ") MetricFromString;
 		static Standard_Boolean MetricFromString(Standard_CString theString, Message_MetricType &OutValue);
 
@@ -720,7 +723,9 @@ Message_MetricType
 
 Description
 -----------
-Returns the metric type from the given string identifier. @param thestring string identifier return metric type or message_metrictype_none if string identifier is invalid.
+Returns the metric type from the given string identifier. 
+Parameter theString string identifier 
+Return: metric type or Message_MetricType_None if string identifier is invalid.
 ") MetricFromString;
 		static Message_MetricType MetricFromString(Standard_CString theString);
 
@@ -738,7 +743,9 @@ str
 
 Description
 -----------
-Returns the string name for a given metric type. @param thetype metric type return string identifier from the list of message_metrictype.
+Returns the string name for a given metric type. 
+Parameter theType metric type 
+Return: string identifier from the list of Message_MetricType.
 ") MetricToString;
 		static Standard_CString MetricToString(const Message_MetricType theType);
 
@@ -756,7 +763,9 @@ theMetric: Message_MetricType
 
 Description
 -----------
-Converts osd memory info type to message metric. @param thememinfo [int] memory info type @param themetric [out] filled message metric return true if converted.
+Converts OSD memory info type to message metric. 
+Parameter theMemInfo [int] memory info type @param[out] theMetric filled message metric 
+Return: true if converted.
 ") ToMessageMetric;
 		static Standard_Boolean ToMessageMetric(const OSD_MemInfo::Counter theMemInfo, Message_MetricType &OutValue);
 
@@ -775,7 +784,9 @@ bool
 
 Description
 -----------
-Converts message metric to osd memory info type. @param themetric [in] message metric @param thememinfo [out] filled memory info type return true if converted.
+Converts message metric to OSD memory info type. 
+Input parameter: theMetric message metric @param[out] theMemInfo filled memory info type 
+Return: true if converted.
 ") ToOSDMetric;
 		static Standard_Boolean ToOSDMetric(const Message_MetricType theMetric, OSD_MemInfo::Counter & theMemInfo);
 
@@ -847,7 +858,7 @@ str
 
 Description
 -----------
-Return a c string to be used as a key for generating text user messages describing this alert. the messages are generated with help of message_msg class, in message_report::dump(). base implementation returns dynamic type name of the instance.
+Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
 		virtual Standard_CString GetMessageKey();
 
@@ -865,7 +876,8 @@ bool
 
 Description
 -----------
-If possible, merge data contained in this alert to thetarget. return true if merged. base implementation always returns true.
+If possible, merge data contained in this alert to theTarget. 
+Return: True if merged. Base implementation always returns true.
 ") Merge;
 		virtual Standard_Boolean Merge(const opencascade::handle<Message_Alert> & theTarget);
 
@@ -878,7 +890,7 @@ bool
 
 Description
 -----------
-Return true if this type of alert can be merged with other of the same type to avoid duplication. basis implementation returns true.
+Return true if this type of alert can be merged with other of the same type to avoid duplication. Basis implementation returns true.
 ") SupportsMerge;
 		virtual Standard_Boolean SupportsMerge();
 
@@ -944,7 +956,7 @@ None
 
 Description
 -----------
-Add statuses to this algorithm from other algorithm, but only those items are moved that correspond to statuses set in thestatus.
+Add statuses to this algorithm from other algorithm, but only those items are moved that correspond to statuses set in theStatus.
 ") AddStatus;
 		void AddStatus(const Message_ExecStatus & theStatus, const opencascade::handle<Message_Algorithm> & theOther);
 
@@ -988,7 +1000,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 
 Description
 -----------
-Return the numbers associated with the indicated status; null handle if no such status or no numbers associated with it.
+Return the numbers associated with the indicated status; Null handle if no such status or no numbers associated with it.
 ") GetMessageNumbers;
 		opencascade::handle<TColStd_HPackedMapOfInteger> GetMessageNumbers(const Message_Status & theStatus);
 
@@ -1006,7 +1018,7 @@ opencascade::handle<TColStd_HSequenceOfHExtendedString>
 
 Description
 -----------
-Return the strings associated with the indicated status; null handle if no such status or no strings associated with it.
+Return the strings associated with the indicated status; Null handle if no such status or no strings associated with it.
 ") GetMessageStrings;
 		opencascade::handle<TColStd_HSequenceOfHExtendedString> GetMessageStrings(const Message_Status & theStatus);
 
@@ -1019,7 +1031,7 @@ opencascade::handle<Message_Messenger>
 
 Description
 -----------
-Returns messenger of algorithm. the returned handle is always non-null and can be used for sending messages.
+Returns messenger of algorithm. The returned handle is always non-null and can be used for sending messages.
 ") GetMessenger;
 		opencascade::handle<Message_Messenger> GetMessenger();
 
@@ -1051,7 +1063,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Prepares a string containing a list of integers contained in theerror map, but not more than themaxcount.
+Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount.
 ") PrepareReport;
 		static TCollection_ExtendedString PrepareReport(const opencascade::handle<TColStd_HPackedMapOfInteger> & theError, const Standard_Integer theMaxCount);
 
@@ -1070,7 +1082,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Prepares a string containing a list of names contained in thereportseq sequence, but not more than themaxcount.
+Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount.
 ") PrepareReport;
 		static TCollection_ExtendedString PrepareReport(const TColStd_SequenceOfHExtendedString & theReportSeq, const Standard_Integer theMaxCount);
 
@@ -1089,7 +1101,7 @@ None
 
 Description
 -----------
-Convenient variant of sendstatusmessages() with thefilter having defined all warn, alarm, and fail (but not done) status flags.
+Convenient variant of SendStatusMessages() with theFilter having defined all WARN, ALARM, and FAIL (but not DONE) status flags.
 ") SendMessages;
 		void SendMessages(const Message_Gravity theTraceLevel = Message_Warning, const Standard_Integer theMaxCount = 20);
 
@@ -1109,7 +1121,7 @@ None
 
 Description
 -----------
-Print messages for all status flags that have been set during algorithm execution, excluding statuses that are not set in thefilter. //! the messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'message_algorithm.fail5'. if message is not found in resources for this class and all its base types, surrogate text is printed. //! for the statuses having number or string parameters, themaxcount defines maximal number of numbers or strings to be included in the message //! note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms).
+Print messages for all status flags that have been set during algorithm execution, excluding statuses that are NOT set in theFilter. //! The messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'Message_Algorithm.Fail5'. If message is not found in resources for this class and all its base types, surrogate text is printed. //! For the statuses having number or string parameters, theMaxCount defines maximal number of numbers or strings to be included in the message //! Note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms).
 ") SendStatusMessages;
 		virtual void SendStatusMessages(const Message_ExecStatus & theFilter, const Message_Gravity theTraceLevel = Message_Warning, const Standard_Integer theMaxCount = 20);
 
@@ -1184,7 +1196,7 @@ None
 
 Description
 -----------
-Sets status with string parameter. if norepetitions is true, the parameter will be added only if it has not been yet recorded for the same status flag.
+Sets status with string parameter. If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, Standard_CString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
@@ -1204,7 +1216,7 @@ None
 
 Description
 -----------
-Sets status with string parameter if norepetitions is true, the parameter will be added only if it has not been yet recorded for the same status flag.
+Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, TCollection_AsciiString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
@@ -1224,7 +1236,7 @@ None
 
 Description
 -----------
-Sets status with string parameter if norepetitions is true, the parameter will be added only if it has not been yet recorded for the same status flag.
+Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HAsciiString> & theStr, const Standard_Boolean noRepetitions = Standard_True);
 
@@ -1244,7 +1256,7 @@ None
 
 Description
 -----------
-Sets status with string parameter if norepetitions is true, the parameter will be added only if it has not been yet recorded for the same status flag.
+Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, TCollection_ExtendedString theStr, const Standard_Boolean noRepetitions = Standard_True);
 
@@ -1264,7 +1276,7 @@ None
 
 Description
 -----------
-Sets status with string parameter if norepetitions is true, the parameter will be added only if it has not been yet recorded for the same status flag.
+Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HExtendedString> & theStr, const Standard_Boolean noRepetitions = Standard_True);
 
@@ -1283,7 +1295,7 @@ None
 
 Description
 -----------
-Sets status with preformatted message. this message will be used directly to report the status; automatic generation of status messages will be disabled for it.
+Sets status with preformatted message. This message will be used directly to report the status; automatic generation of status messages will be disabled for it.
 ") SetStatus;
 		void SetStatus(const Message_Status & theStat, const Message_Msg & theMsg);
 
@@ -1351,7 +1363,7 @@ str
 
 Description
 -----------
-Return a c string to be used as a key for generating text user messages describing this alert. the messages are generated with help of message_msg class, in message_report::dump(). base implementation returns dynamic type name of the instance.
+Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
 		virtual Standard_CString GetMessageKey();
 
@@ -1364,7 +1376,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns custom name of alert if it is set return alert name.
+Returns custom name of alert if it is set 
+Return: alert name.
 ") GetName;
 		const TCollection_AsciiString & GetName();
 
@@ -1382,7 +1395,8 @@ None
 
 Description
 -----------
-Sets the custom name of alert @param thename a name for the alert.
+Sets the custom name of alert 
+Parameter theName a name for the alert.
 ") SetName;
 		void SetName(TCollection_AsciiString theName);
 
@@ -1430,7 +1444,10 @@ bool
 
 Description
 -----------
-Add alert with specified gravity. if the alert supports merge it will be merged. @param thegravity an alert gravity @param thealert an alert to be added as a child alert return true if the alert is added or merged.
+Add alert with specified gravity. If the alert supports merge it will be merged. 
+Parameter theGravity an alert gravity 
+Parameter theAlert an alert to be added as a child alert 
+Return: true if the alert is added or merged.
 ") AddAlert;
 		Standard_Boolean AddAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
@@ -1479,7 +1496,8 @@ None
 
 Description
 -----------
-Clears collected alerts with specified gravity @param thegravity an alert gravity.
+Clears collected alerts with specified gravity 
+Parameter theGravity an alert gravity.
 ") Clear;
 		void Clear(Message_Gravity theGravity);
 
@@ -1497,7 +1515,8 @@ None
 
 Description
 -----------
-Clears collected alerts with specified type @param thetype an alert type.
+Clears collected alerts with specified type 
+Parameter theType an alert type.
 ") Clear;
 		void Clear(const opencascade::handle<Standard_Type> & theType);
 
@@ -1536,7 +1555,9 @@ bool
 
 Description
 -----------
-Returns true if the alert belong the list of the child alerts. @param thealert an alert to be checked as a child alert return true if the alert is found in a container of children.
+Returns true if the alert belong the list of the child alerts. 
+Parameter theAlert an alert to be checked as a child alert 
+Return: true if the alert is found in a container of children.
 ") HasAlert;
 		Standard_Boolean HasAlert(const opencascade::handle<Message_Alert> & theAlert);
 
@@ -1555,7 +1576,10 @@ bool
 
 Description
 -----------
-Returns true if specific type of alert is recorded with specified gravity @param thetype an alert type @param thegravity an alert gravity return true if the alert is found in a container of children.
+Returns true if specific type of alert is recorded with specified gravity 
+Parameter theType an alert type 
+Parameter theGravity an alert gravity 
+Return: true if the alert is found in a container of children.
 ") HasAlert;
 		Standard_Boolean HasAlert(const opencascade::handle<Standard_Type> & theType, Message_Gravity theGravity);
 
@@ -1574,7 +1598,10 @@ bool
 
 Description
 -----------
-Removes alert with specified gravity. @param thegravity an alert gravity @param thealert an alert to be removed from the children return true if the alert is removed.
+Removes alert with specified gravity. 
+Parameter theGravity an alert gravity 
+Parameter theAlert an alert to be removed from the children 
+Return: true if the alert is removed.
 ") RemoveAlert;
 		Standard_Boolean RemoveAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
@@ -1664,7 +1691,7 @@ None
 
 Description
 -----------
-Add statuses to me from theother execution status.
+Add statuses to me from theOther execution status.
 ") Add;
 		void Add(const Message_ExecStatus & theOther);
 
@@ -1682,7 +1709,7 @@ None
 
 Description
 -----------
-Leave only the statuses common with theother.
+Leave only the statuses common with theOther.
 ") And;
 		void And(const Message_ExecStatus & theOther);
 
@@ -1739,7 +1766,7 @@ None
 
 Description
 -----------
-Clear all statuses of each type .
+Clear all statuses of each type.
 ") ClearAllDone;
 		void ClearAllDone();
 
@@ -1853,7 +1880,7 @@ int
 
 Description
 -----------
-Returns index of status inside type of status (done or warn or, etc) in range [1, statusespertype].
+Returns index of status inside type of status (Done or Warn or, etc) in range [1, StatusesPerType].
 ") LocalStatusIndex;
 		static Standard_Integer LocalStatusIndex(Message_Status theStatus);
 
@@ -1941,7 +1968,7 @@ Message_Status
 
 Description
 -----------
-Returns status with index theindex in whole range [firststatus, laststatus].
+Returns status with index theIndex in whole range [FirstStatus, LastStatus].
 ") StatusByIndex;
 		static Message_Status StatusByIndex(const Standard_Integer theIndex);
 
@@ -1959,7 +1986,7 @@ int
 
 Description
 -----------
-Returns index of status in whole range [firststatus, laststatus].
+Returns index of status in whole range [FirstStatus, LastStatus].
 ") StatusIndex;
 		static Standard_Integer StatusIndex(Message_Status theStatus);
 
@@ -1977,7 +2004,7 @@ Message_StatusType
 
 Description
 -----------
-Returns status type (done, warn, alarm, or fail) .
+Returns status type (DONE, WARN, ALARM, or FAIL).
 ") TypeOfStatus;
 		static Message_StatusType TypeOfStatus(Message_Status theStatus);
 
@@ -2009,7 +2036,7 @@ None
 
 Description
 -----------
-Constructor. one string key is used for all alert meters. the perf meter is not started automatically, it will be done in addalert() method.
+Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method.
 ") Message_Level;
 		 Message_Level(TCollection_AsciiString theName = TCollection_AsciiString());
 
@@ -2028,7 +2055,10 @@ bool
 
 Description
 -----------
-Adds new alert on the level. stops the last alert metric, appends the alert and starts the alert metrics collecting. sets root alert beforehand this method using, if the root is null, it does nothing. @param thegravity an alert gravity @param thealert an alert return true if alert is added.
+Adds new alert on the level. Stops the last alert metric, appends the alert and starts the alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL, it does nothing. 
+Parameter theGravity an alert gravity 
+Parameter theAlert an alert 
+Return: true if alert is added.
 ") AddAlert;
 		Standard_Boolean AddAlert(const Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
@@ -2041,7 +2071,8 @@ opencascade::handle<Message_AlertExtended>
 
 Description
 -----------
-Returns root alert of the level return alert instance or null.
+Returns root alert of the level 
+Return: alert instance or NULL.
 ") RootAlert;
 		const opencascade::handle<Message_AlertExtended> & RootAlert();
 
@@ -2060,7 +2091,8 @@ None
 
 Description
 -----------
-Sets the root alert. starts collects alert metrics if active. @param thealert an alert .
+Sets the root alert. Starts collects alert metrics if active. 
+Parameter theAlert an alert.
 ") SetRootAlert;
 		void SetRootAlert(const opencascade::handle<Message_AlertExtended> & theAlert, const Standard_Boolean isRequiredToStart);
 
@@ -2088,7 +2120,7 @@ None
 
 Description
 -----------
-Empty constructor; initializes by single printer directed to std::cout. note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. if printing to cout is not needed, clear messenger by getprinters().clear().
+Empty constructor; initializes by single printer directed to std::cout. Note: the default messenger is not empty but directed to cout in order to protect against possibility to forget defining printers. If printing to cout is not needed, clear messenger by GetPrinters().Clear().
 ") Message_Messenger;
 		 Message_Messenger();
 
@@ -2124,7 +2156,7 @@ bool
 
 Description
 -----------
-Add a printer to the messenger. the printer will be added only if it is not yet in the list. returns true if printer has been added.
+Add a printer to the messenger. The printer will be added only if it is not yet in the list. Returns True if printer has been added.
 ") AddPrinter;
 		Standard_Boolean AddPrinter(const opencascade::handle<Message_Printer> & thePrinter);
 
@@ -2137,7 +2169,7 @@ Message_SequenceOfPrinters
 
 Description
 -----------
-Returns sequence of printers the sequence can be modified.
+Returns sequence of printers The sequence can be modified.
 ") ChangePrinters;
 		Message_SequenceOfPrinters & ChangePrinters();
 
@@ -2189,7 +2221,7 @@ bool
 
 Description
 -----------
-Removes specified printer from the messenger. returns true if this printer has been found in the list and removed.
+Removes specified printer from the messenger. Returns True if this printer has been found in the list and removed.
 ") RemovePrinter;
 		Standard_Boolean RemovePrinter(const opencascade::handle<Message_Printer> & thePrinter);
 
@@ -2207,7 +2239,7 @@ int
 
 Description
 -----------
-Removes printers of specified type (including derived classes) from the messenger. returns number of removed printers.
+Removes printers of specified type (including derived classes) from the messenger. Returns number of removed printers.
 ") RemovePrinters;
 		Standard_Integer RemovePrinters(const opencascade::handle<Standard_Type> & theType);
 
@@ -2296,7 +2328,7 @@ None
 
 Description
 -----------
-Create a message using a corresponding entry in message_msgfile.
+Create a message using a corresponding entry in Message_MsgFile.
 ") Message_Msg;
 		 Message_Msg(Standard_CString theKey);
 
@@ -2314,7 +2346,7 @@ None
 
 Description
 -----------
-Create a message using a corresponding entry in message_msgfile.
+Create a message using a corresponding entry in Message_MsgFile.
 ") Message_Msg;
 		 Message_Msg(TCollection_ExtendedString theKey);
 
@@ -2422,7 +2454,7 @@ Message_Msg
 
 Description
 -----------
-Set a value for %..d, %..i, %..o, %..u, %..x or %..x conversion.
+Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion.
 ") Arg;
 		Message_Msg & Arg(const Standard_Integer theInt);
 
@@ -2440,7 +2472,7 @@ Message_Msg
 
 Description
 -----------
-Set a value for %..f, %..e, %..e, %..g or %..g conversion.
+Set a value for %..f, %..e, %..E, %..g or %..G conversion.
 ") Arg;
 		Message_Msg & Arg(const Standard_Real theReal);
 
@@ -2453,7 +2485,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Return the resulting message string with all parameters filled. if some parameters were not yet filled by calls to methods arg (or <<), these parameters are filled by the word unknown.
+Return the resulting message string with all parameters filled. If some parameters were not yet filled by calls to methods Arg (or <<), these parameters are filled by the word UNKNOWN.
 ") Get;
 		const TCollection_ExtendedString & Get();
 
@@ -2466,7 +2498,7 @@ bool
 
 Description
 -----------
-Tells if value differs from original.
+Tells if Value differs from Original.
 ") IsEdited;
 		Standard_Boolean IsEdited();
 
@@ -2561,7 +2593,7 @@ bool
 
 Description
 -----------
-Adds new message to the map. parameter <key> gives the key of the message, <text> defines the message itself. if there already was defined the message identified by the same keyword, it is replaced with the new one.
+Adds new message to the map. Parameter <key> gives the key of the message, <text> defines the message itself. If there already was defined the message identified by the same keyword, it is replaced with the new one.
 ") AddMsg;
 		static Standard_Boolean AddMsg(TCollection_AsciiString key, TCollection_ExtendedString text);
 
@@ -2579,7 +2611,7 @@ bool
 
 Description
 -----------
-Returns true if message with specified keyword is registered.
+Returns True if message with specified keyword is registered.
 ") HasMsg;
 		static Standard_Boolean HasMsg(TCollection_AsciiString key);
 
@@ -2598,7 +2630,7 @@ bool
 
 Description
 -----------
-Load message file <thefilename> from directory <thedirname> or its sub-directory.
+Load message file <theFileName> from directory <theDirName> or its sub-directory.
 ") Load;
 		static Standard_Boolean Load(Standard_CString theDirName, Standard_CString theFileName);
 
@@ -2616,7 +2648,7 @@ bool
 
 Description
 -----------
-Load the messages from the given file, additive to any previously loaded messages. messages with same keywords, if already present, are replaced with the new ones.
+Load the messages from the given file, additive to any previously loaded messages. Messages with same keywords, if already present, are replaced with the new ones.
 ") LoadFile;
 		static Standard_Boolean LoadFile(Standard_CString theFName);
 
@@ -2636,7 +2668,8 @@ bool
 
 Description
 -----------
-Loads the messages from the file with name (without extension) given by environment variable. extension of the file name is given separately. if its not defined, it is taken: - by default from environment csf_language, - if not defined either, as 'us'. @name theenvname environment variable name @name thefilename file name without language suffix @name thelangext language file name extension return true on success.
+Loads the messages from the file with name (without extension) given by environment variable. Extension of the file name is given separately. If its not defined, it is taken: - by default from environment CSF_LANGUAGE, - if not defined either, as 'us'. @name theEnvName environment variable name @name theFileName file name without language suffix @name theLangExt language file name extension 
+Return: True on success.
 ") LoadFromEnv;
 		static Standard_Boolean LoadFromEnv(Standard_CString theEnvName, Standard_CString theFileName, Standard_CString theLangExt = "");
 
@@ -2655,7 +2688,9 @@ bool
 
 Description
 -----------
-Loads the messages from the given text buffer. @param thecontent string containing the messages @param thelength length of the buffer;  when -1 specified - thecontent will be considered as null-terminated string.
+Loads the messages from the given text buffer. 
+Parameter theContent string containing the messages 
+Parameter theLength length of the buffer;  when -1 specified - theContent will be considered as NULL-terminated string.
 ") LoadFromString;
 		static Standard_Boolean LoadFromString(Standard_CString theContent, const Standard_Integer theLength = -1);
 
@@ -2691,7 +2726,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Gives the text for the message identified by the keyword <key>. if there are no messages with such keyword defined, the error message is returned. in that case reference to static string is returned, it can be changed with next call(s) to msg(). note: the error message is constructed like 'unknown message: <key>', and can itself be customized by defining message with key message_msg_badkeyword.
+Gives the text for the message identified by the keyword <key>. If there are no messages with such keyword defined, the error message is returned. In that case reference to static string is returned, it can be changed with next call(s) to Msg(). Note: The error message is constructed like 'Unknown message: <key>', and can itself be customized by defining message with key Message_Msg_BadKeyword.
 ") Msg;
 		static const TCollection_ExtendedString & Msg(TCollection_AsciiString key);
 
@@ -2738,7 +2773,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. the last boolean argument is deprecated and unused. default implementation redirects to send().
+Send a string message with specified trace level. The last Boolean argument is deprecated and unused. Default implementation redirects to send().
 ") Send;
 		virtual void Send(TCollection_ExtendedString theString, const Message_Gravity theGravity);
 
@@ -2757,7 +2792,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. the last boolean argument is deprecated and unused. default implementation redirects to send().
+Send a string message with specified trace level. The last Boolean argument is deprecated and unused. Default implementation redirects to send().
 ") Send;
 		virtual void Send(Standard_CString theString, const Message_Gravity theGravity);
 
@@ -2776,7 +2811,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. the last boolean argument is deprecated and unused. default implementation redirects to send().
+Send a string message with specified trace level. The last Boolean argument is deprecated and unused. Default implementation redirects to send().
 ") Send;
 		virtual void Send(TCollection_AsciiString theString, const Message_Gravity theGravity);
 
@@ -2795,7 +2830,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. the object is converted to string in format: <object kind>: <object pointer>. default implementation calls first method send().
+Send a string message with specified trace level. The object is converted to string in format: <object kind>: <object pointer>. Default implementation calls first method Send().
 ") SendObject;
 		virtual void SendObject(const opencascade::handle<Standard_Transient> & theObject, const Message_Gravity theGravity);
 
@@ -2814,7 +2849,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. stream is converted to string value. default implementation calls first method send().
+Send a string message with specified trace level. Stream is converted to string value. Default implementation calls first method Send().
 ") SendStringStream;
 		virtual void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
 
@@ -2832,7 +2867,7 @@ None
 
 Description
 -----------
-Set trace level used for filtering messages. by default, trace level is message_info, so that all messages are output.
+Set trace level used for filtering messages. By default, trace level is Message_Info, so that all messages are output.
 ") SetTraceLevel;
 		void SetTraceLevel(const Message_Gravity theTraceLevel);
 
@@ -2862,7 +2897,7 @@ float
 
 Description
 -----------
-Returns total progress position ranged from 0 to 1. should not be called concurrently while the progress is advancing, except from implementation of method show().
+Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show().
 ") GetPosition;
 		Standard_Real GetPosition();
 
@@ -2875,7 +2910,7 @@ Message_ProgressRange
 
 Description
 -----------
-Resets the indicator to zero, calls reset(), and returns the range. this range refers to the scope that has no name and is initialized with max value 1 and step 1. use this method to get the top level range for progress indication.
+Resets the indicator to zero, calls Reset(), and returns the range. This range refers to the scope that has no name and is initialized with max value 1 and step 1. Use this method to get the top level range for progress indication.
 ") Start;
 		Message_ProgressRange Start();
 
@@ -2893,7 +2928,7 @@ Message_ProgressRange
 
 Description
 -----------
-If argument is non-null handle, returns theprogress->start(). otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator.
+If argument is non-null handle, returns theProgress->Start(). Otherwise, returns dummy range that can be safely used in the algorithms but not bound to progress indicator.
 ") Start;
 		static Message_ProgressRange Start(const opencascade::handle<Message_ProgressIndicator> & theProgress);
 
@@ -2979,7 +3014,7 @@ bool
 
 Description
 -----------
-Returns false if progressindicator signals userbreak.
+Returns false if ProgressIndicator signals UserBreak.
 ") More;
 		Standard_Boolean More();
 
@@ -2992,7 +3027,7 @@ bool
 
 Description
 -----------
-Returns true if progressindicator signals userbreak.
+Returns true if ProgressIndicator signals UserBreak.
 ") UserBreak;
 		Standard_Boolean UserBreak();
 
@@ -3041,7 +3076,9 @@ None
 
 Description
 -----------
-Creates an instance of message_printertoreport with the current report and register it in messenger @param toactivate if true, activated else deactivated @param themessenger the messenger. if it's null, the default messenger is used.
+Creates an instance of Message_PrinterToReport with the current report and register it in messenger 
+Parameter toActivate if true, activated else deactivated 
+Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") ActivateInMessenger;
 		void ActivateInMessenger(const Standard_Boolean toActivate, const opencascade::handle<Message_Messenger> & theMessenger = NULL);
 
@@ -3073,7 +3110,7 @@ None
 
 Description
 -----------
-Add alert with specified gravity. this method is thread-safe, i.e. alerts can be added from parallel threads safely.
+Add alert with specified gravity. This method is thread-safe, i.e. alerts can be added from parallel threads safely.
 ") AddAlert;
 		void AddAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
@@ -3092,7 +3129,8 @@ None
 
 Description
 -----------
-Add new level of alerts @param thelevel a level .
+Add new level of alerts 
+Parameter theLevel a level.
 ") AddLevel;
 		void AddLevel(Message_Level * theLevel, TCollection_AsciiString theName);
 
@@ -3283,7 +3321,8 @@ bool
 
 Description
 -----------
-Returns true if a report printer for the current report is registered in the messenger @param themessenger the messenger. if it's null, the default messenger is used.
+Returns true if a report printer for the current report is registered in the messenger 
+Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") IsActiveInMessenger;
 		Standard_Boolean IsActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = NULL);
 
@@ -3296,7 +3335,8 @@ int
 
 Description
 -----------
-Returns maximum number of collecting alerts. if the limit is achieved, first alert is removed, the new alert is added in the container. return the limit value.
+Returns maximum number of collecting alerts. If the limit is achieved, first alert is removed, the new alert is added in the container. 
+Return: the limit value.
 ") Limit;
 		Standard_Integer Limit();
 
@@ -3314,7 +3354,7 @@ None
 
 Description
 -----------
-Merges data from theother report into this.
+Merges data from theOther report into this.
 ") Merge;
 		void Merge(const opencascade::handle<Message_Report> & theOther);
 
@@ -3333,7 +3373,7 @@ None
 
 Description
 -----------
-Merges alerts with specified gravity from theother report into this.
+Merges alerts with specified gravity from theOther report into this.
 ") Merge;
 		void Merge(const opencascade::handle<Message_Report> & theOther, Message_Gravity theGravity);
 
@@ -3388,7 +3428,7 @@ None
 
 Description
 -----------
-Dumps collected alerts with specified gravity to messenger. default implementation creates message_msg object with a message key returned by alert, and sends it in the messenger.
+Dumps collected alerts with specified gravity to messenger. Default implementation creates Message_Msg object with a message key returned by alert, and sends it in the messenger.
 ") SendMessages;
 		virtual void SendMessages(const opencascade::handle<Message_Messenger> & theMessenger, Message_Gravity theGravity);
 
@@ -3407,7 +3447,8 @@ None
 
 Description
 -----------
-Sets metrics to compute when alerts are performed @param themetrics container of metrics.
+Sets metrics to compute when alerts are performed 
+Parameter theMetrics container of metrics.
 ") SetActiveMetric;
 		void SetActiveMetric(const Message_MetricType theMetricType, const Standard_Boolean theActivate);
 
@@ -3425,7 +3466,8 @@ None
 
 Description
 -----------
-Sets maximum number of collecting alerts. @param thelimit limit value.
+Sets maximum number of collecting alerts. 
+Parameter theLimit limit value.
 ") SetLimit;
 		void SetLimit(const Standard_Integer theLimit);
 
@@ -3443,7 +3485,8 @@ None
 
 Description
 -----------
-Updates internal flag isactiveinmessenger. it becomes true if messenger contains at least one instance of message_printertoreport. @param themessenger the messenger. if it's null, the default messenger is used.
+Updates internal flag IsActiveInMessenger. It becomes true if messenger contains at least one instance of Message_PrinterToReport. 
+Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") UpdateActiveInMessenger;
 		void UpdateActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = NULL);
 
@@ -3492,7 +3535,10 @@ opencascade::handle<Message_Alert>
 
 Description
 -----------
-Creates new instance of the alert and put it into report with message_info gravity. it does nothing if such kind of gravity is not active in the report @param thereport the message report where new alert is placed @param theattribute container of additional values of the alert return created alert or null if message_info is not active in report.
+Creates new instance of the alert and put it into report with Message_Info gravity. It does nothing if such kind of gravity is not active in the report 
+Parameter theReport the message report where new alert is placed 
+Parameter theAttribute container of additional values of the alert 
+Return: created alert or NULL if Message_Info is not active in report.
 ") AddAlert;
 		static opencascade::handle<Message_Alert> AddAlert(const opencascade::handle<Message_Report> & theReport, const opencascade::handle<Message_Attribute> & theAttribute, const Message_Gravity theGravity);
 
@@ -3523,7 +3569,9 @@ opencascade::handle<Message_CompositeAlerts>
 
 Description
 -----------
-Returns class provided hierarchy of alerts if created or create if the parameter is true @param thetocreate if composite alert has not been created for this alert, it should be created return instance or null.
+Returns class provided hierarchy of alerts if created or create if the parameter is true 
+Parameter theToCreate if composite alert has not been created for this alert, it should be created 
+Return: instance or NULL.
 ") CompositeAlerts;
 		opencascade::handle<Message_CompositeAlerts> CompositeAlerts(const Standard_Boolean theToCreate = Standard_False);
 
@@ -3557,7 +3605,7 @@ str
 
 Description
 -----------
-Return a c string to be used as a key for generating text user messages describing this alert. the messages are generated with help of message_msg class, in message_report::dump(). base implementation returns dynamic type name of the instance.
+Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
 		virtual Standard_CString GetMessageKey();
 
@@ -3575,7 +3623,8 @@ bool
 
 Description
 -----------
-If possible, merge data contained in this alert to thetarget. base implementation always returns false. return true if merged.
+If possible, merge data contained in this alert to theTarget. Base implementation always returns false. 
+Return: True if merged.
 ") Merge;
 		virtual Standard_Boolean Merge(const opencascade::handle<Message_Alert> & theTarget);
 
@@ -3593,7 +3642,8 @@ None
 
 Description
 -----------
-Sets container of the alert attributes @param theattributes an attribute values.
+Sets container of the alert attributes 
+Parameter theAttributes an attribute values.
 ") SetAttribute;
 		void SetAttribute(const opencascade::handle<Message_Attribute> & theAttribute);
 
@@ -3606,7 +3656,7 @@ bool
 
 Description
 -----------
-Return true if this type of alert can be merged with other of the same type to avoid duplication. hierarchical alerts can not be merged basis implementation returns true.
+Return true if this type of alert can be merged with other of the same type to avoid duplication. Hierarchical alerts can not be merged Basis implementation returns true.
 ") SupportsMerge;
 		virtual Standard_Boolean SupportsMerge();
 
@@ -3679,7 +3729,9 @@ bool
 
 Description
 -----------
-Checks whether the attribute has values for the metric @param themetric [in] metric type return true if the metric values exist in the attribute.
+Checks whether the attribute has values for the metric 
+Input parameter: theMetric metric type 
+Return: true if the metric values exist in the attribute.
 ") HasMetric;
 		Standard_Boolean HasMetric(const Message_MetricType & theMetric);
 
@@ -3697,7 +3749,9 @@ bool
 
 Description
 -----------
-Returns true when both values of the metric are set. @param themetric [in] metric type return true if metric values are valid.
+Returns true when both values of the metric are set. 
+Input parameter: theMetric metric type 
+Return: true if metric values are valid.
 ") IsMetricValid;
 		Standard_Boolean IsMetricValid(const Message_MetricType & theMetric);
 
@@ -3716,7 +3770,9 @@ None
 
 Description
 -----------
-Sets current values of default report metrics into the alert. processed only alert with message_attributemeter attribute @param thealert an alert @param thestartvalue flag, if true, the start value is collected otherwise stop.
+Sets current values of default report metrics into the alert. Processed only alert with Message_AttributeMeter attribute 
+Parameter theAlert an alert 
+Parameter theStartValue flag, if true, the start value is collected otherwise stop.
 ") SetAlertMetrics;
 		static void SetAlertMetrics(const opencascade::handle<Message_AlertExtended> & theAlert, const Standard_Boolean theStartValue);
 
@@ -3735,7 +3791,8 @@ None
 
 Description
 -----------
-Sets start values for the metric @param themetric [in] metric type.
+Sets start values for the metric 
+Input parameter: theMetric metric type.
 ") SetStartValue;
 		void SetStartValue(const Message_MetricType & theMetric, const Standard_Real theValue);
 
@@ -3754,7 +3811,8 @@ None
 
 Description
 -----------
-Sets stop values for the metric @param themetric [in] metric type.
+Sets stop values for the metric 
+Input parameter: theMetric metric type.
 ") SetStopValue;
 		void SetStopValue(const Message_MetricType & theMetric, const Standard_Real theValue);
 
@@ -3772,7 +3830,8 @@ None
 
 Description
 -----------
-Sets start values of default report metrics into the alert @param thealert an alert .
+Sets start values of default report metrics into the alert 
+Parameter theAlert an alert.
 ") StartAlert;
 		static void StartAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
@@ -3790,7 +3849,9 @@ float
 
 Description
 -----------
-Returns start value for the metric @param themetric [in] metric type return real value.
+Returns start value for the metric 
+Input parameter: theMetric metric type 
+Return: real value.
 ") StartValue;
 		Standard_Real StartValue(const Message_MetricType & theMetric);
 
@@ -3808,7 +3869,8 @@ None
 
 Description
 -----------
-Sets stop values of default report metrics into the alert @param thealert an alert .
+Sets stop values of default report metrics into the alert 
+Parameter theAlert an alert.
 ") StopAlert;
 		static void StopAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
@@ -3826,7 +3888,9 @@ float
 
 Description
 -----------
-Returns stop value for the metric @param themetric [in] metric type return real value.
+Returns stop value for the metric 
+Input parameter: theMetric metric type 
+Return: real value.
 ") StopValue;
 		Standard_Real StopValue(const Message_MetricType & theMetric);
 
@@ -3839,7 +3903,8 @@ float
 
 Description
 -----------
-Returns default value of the metric when it is not defined return undefined value.
+Returns default value of the metric when it is not defined 
+Return: undefined value.
 ") UndefinedMetricValue;
 		static Standard_Real UndefinedMetricValue();
 
@@ -3908,7 +3973,8 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns object return the object instance.
+Returns object 
+Return: the object instance.
 ") Object;
 		const opencascade::handle<Standard_Transient> & Object();
 
@@ -3926,7 +3992,8 @@ None
 
 Description
 -----------
-Sets the object @param theobject an instance.
+Sets the object 
+Parameter theObject an instance.
 ") SetObject;
 		void SetObject(const opencascade::handle<Standard_Transient> & theObject);
 
@@ -4070,7 +4137,7 @@ None
 
 Description
 -----------
-Create printer for output to a specified file. the option thedoappend specifies whether file should be appended or rewritten. for specific file names (cout, cerr) standard streams are used.
+Create printer for output to a specified file. The option theDoAppend specifies whether file should be appended or rewritten. For specific file names (cout, cerr) standard streams are used.
 ") Message_PrinterOStream;
 		 Message_PrinterOStream(Standard_CString theFileName, const Standard_Boolean theDoAppend, const Message_Gravity theTraceLevel = Message_Info);
 
@@ -4083,7 +4150,7 @@ None
 
 Description
 -----------
-Flushes the output stream and destroys it if it has been specified externally with option dofree (or if it is internal file stream).
+Flushes the output stream and destroys it if it has been specified externally with option doFree (or if it is internal file stream).
 ") Close;
 		void Close();
 
@@ -4116,7 +4183,7 @@ None
 
 Description
 -----------
-Setup console text color. //! on windows, this would affect active terminal color output. on other systems, this would put special terminal codes; the terminal should support these codes or them will appear in text otherwise. the same will happen when stream is redirected into text file. //! beware that within multi-threaded environment inducing console colors might lead to colored text mixture due to concurrency.
+Setup console text color. //! On Windows, this would affect active terminal color output. On other systems, this would put special terminal codes; the terminal should support these codes or them will appear in text otherwise. The same will happen when stream is redirected into text file. //! Beware that within multi-threaded environment inducing console colors might lead to colored text mixture due to concurrency.
 ") SetConsoleTextColor;
 		static void SetConsoleTextColor(Standard_OStream * theOStream, Message_ConsoleColor theTextColor, bool theIsIntenseText = false);
 
@@ -4147,7 +4214,7 @@ bool
 
 Description
 -----------
-Returns true if text output into console should be colorized depending on message gravity; true by default.
+Returns True if text output into console should be colorized depending on message gravity; True by default.
 ") ToColorize;
 		Standard_Boolean ToColorize();
 
@@ -4243,7 +4310,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. the object is converted to string in format: <object kind>: <object pointer>. the parameter thetoputeol specified whether end-of-line should be added to the end of the message. default implementation calls first method send().
+Send a string message with specified trace level. The object is converted to string in format: <object kind>: <object pointer>. The parameter theToPutEol specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 ") SendObject;
 		virtual void SendObject(const opencascade::handle<Standard_Transient> & theObject, const Message_Gravity theGravity);
 
@@ -4262,7 +4329,7 @@ None
 
 Description
 -----------
-Send a string message with specified trace level. stream is converted to string value. default implementation calls first method send().
+Send a string message with specified trace level. Stream is converted to string value. Default implementation calls first method Send().
 ") SendStringStream;
 		virtual void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
 
@@ -4280,7 +4347,8 @@ None
 
 Description
 -----------
-Sets the printer report @param thereport report for messages processing, if null, the default report is used.
+Sets the printer report 
+Parameter theReport report for messages processing, if NULL, the default report is used.
 ") SetReport;
 		void SetReport(const opencascade::handle<Message_Report> & theReport);
 
@@ -4320,7 +4388,7 @@ None
 
 Description
 -----------
-Deprecated constructor, message_progressscope should be created instead.
+Deprecated constructor, Message_ProgressScope should be created instead.
 ") Message_ProgressSentry;
 		 Message_ProgressSentry(const Message_ProgressRange & theRange, Standard_CString theName, const Standard_Real theMin, const Standard_Real theMax, const Standard_Real theStep, const Standard_Boolean theIsInf = Standard_False, const Standard_Real theNewScopeSpan = 0.0);
 
@@ -4333,7 +4401,7 @@ None
 
 Description
 -----------
-Method relieve() was replaced by close() in message_progressscope.
+Method Relieve() was replaced by Close() in Message_ProgressScope.
 ") Relieve;
 		void Relieve();
 

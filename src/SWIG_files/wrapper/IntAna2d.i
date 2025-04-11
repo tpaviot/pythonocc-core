@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTANA2DDOCSTRING
 "IntAna2d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intana2d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana2d.html"
 %enddef
 %module (package="OCC.Core", docstring=INTANA2DDOCSTRING) IntAna2d
 
@@ -90,7 +90,7 @@ None
 
 Description
 -----------
-Empty constructor. isdone returns false.
+Empty constructor. IsDone returns False.
 ") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection();
 
@@ -255,7 +255,7 @@ bool
 
 Description
 -----------
-For the intersection between an element of gp and a conic known by an implicit equation, the result will be true if the element of gp verifies the implicit equation. for the intersection between two lin2d or two circ2d, the result will be true if the elements are identical. the function returns false in all the other cases.
+For the intersection between an element of gp and a conic known by an implicit equation, the result will be True if the element of gp verifies the implicit equation. For the intersection between two Lin2d or two Circ2d, the result will be True if the elements are identical. The function returns False in all the other cases.
 ") IdenticalElements;
 		Standard_Boolean IdenticalElements();
 
@@ -268,7 +268,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful.
+Returns True if the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -281,7 +281,7 @@ bool
 
 Description
 -----------
-Returns true when there is no intersection, i-e - no intersection point - the elements are not identical. the element may be parallel in this case.
+Returns True when there is no intersection, i-e - no intersection point - the elements are not identical. The element may be parallel in this case.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -294,7 +294,7 @@ int
 
 Description
 -----------
-Returns the number of intpoint between the 2 curves.
+returns the number of IntPoint between the 2 curves.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -307,7 +307,7 @@ bool
 
 Description
 -----------
-For the intersection between two lin2d or two circ2d, the function returns true if the elements are parallel. the function returns false in all the other cases.
+For the intersection between two Lin2d or two Circ2d, the function returns True if the elements are parallel. The function returns False in all the other cases.
 ") ParallelElements;
 		Standard_Boolean ParallelElements();
 
@@ -477,7 +477,7 @@ IntAna2d_IntPoint
 
 Description
 -----------
-Returns the intersection point of range n; if (n<=0) or (n>nbpoints), an exception is raised.
+returns the intersection point of range N; If (N<=0) or (N>NbPoints), an exception is raised.
 ") Point;
 		const IntAna2d_IntPoint & Point(const Standard_Integer N);
 
@@ -603,7 +603,7 @@ F: float
 
 Description
 -----------
-Returns the coefficients of the polynomial equation which defines the conic: a.x**2 + b.y**2 + 2.c.x*y + 2.d.x + 2.e.y + f = 0.
+returns the coefficients of the polynomial equation which defines the conic: A.X**2 + B.Y**2 + 2.C.X*Y + 2.D.X + 2.E.Y + F = 0.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -622,7 +622,7 @@ gp_XY
 
 Description
 -----------
-Returns the value of the gradient of f at the point x,y.
+returns the value of the gradient of F at the point X,Y.
 ") Grad;
 		gp_XY Grad(const Standard_Real X, const Standard_Real Y);
 
@@ -645,7 +645,7 @@ F: float
 
 Description
 -----------
-Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) a x x + b y y + 2 c x y + 2 d x + 2 e y + f in the local coordinates system defined by axis.
+Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) A x x + B y y + 2 C x y + 2 D x + 2 E y + F in the local coordinates system defined by Axis.
 ") NewCoefficients;
 		void NewCoefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const gp_Ax2d & Axis);
 
@@ -665,7 +665,7 @@ Val: float
 
 Description
 -----------
-Returns the value of the function and its gradient at the point x,y.
+Returns the value of the function and its gradient at the point X,Y.
 ") ValAndGrad;
 		void ValAndGrad(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, gp_XY & Grd);
 
@@ -684,7 +684,7 @@ float
 
 Description
 -----------
-Value of the function f at the point x,y.
+value of the function F at the point X,Y.
 ") Value;
 		Standard_Real Value(const Standard_Real X, const Standard_Real Y);
 
@@ -719,7 +719,7 @@ None
 
 Description
 -----------
-Create an intersection point between 2 parametric 2d lines. x,y are the coordinate of the point. u1 is the parameter on the first element, u2 the parameter on the second one.
+Create an intersection point between 2 parametric 2d lines. X,Y are the coordinate of the point. U1 is the parameter on the first element, U2 the parameter on the second one.
 ") IntAna2d_IntPoint;
 		 IntAna2d_IntPoint(const Standard_Real X, const Standard_Real Y, const Standard_Real U1, const Standard_Real U2);
 
@@ -739,7 +739,7 @@ None
 
 Description
 -----------
-Create an intersection point between a parametric 2d line, and a line given by an implicit equation (implicitcurve). x,y are the coordinate of the point. u1 is the parameter on the parametric element. empty constructor. it's necessary to use one of the setvalue method after this one.
+Create an intersection point between a parametric 2d line, and a line given by an implicit equation (ImplicitCurve). X,Y are the coordinate of the point. U1 is the parameter on the parametric element. Empty constructor. It's necessary to use one of the SetValue method after this one.
 ") IntAna2d_IntPoint;
 		 IntAna2d_IntPoint(const Standard_Real X, const Standard_Real Y, const Standard_Real U1);
 
@@ -778,7 +778,7 @@ float
 
 Description
 -----------
-Returns the parameter on the second element. if the second element is an implicit curve, an exception is raised.
+Returns the parameter on the second element. If the second element is an implicit curve, an exception is raised.
 ") ParamOnSecond;
 		Standard_Real ParamOnSecond();
 
@@ -791,7 +791,7 @@ bool
 
 Description
 -----------
-Returns true if the second curve is implicit.
+Returns True if the second curve is implicit.
 ") SecondIsImplicit;
 		Standard_Boolean SecondIsImplicit();
 

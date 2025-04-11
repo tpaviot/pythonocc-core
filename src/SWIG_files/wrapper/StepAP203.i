@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPAP203DOCSTRING
 "StepAP203 module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepap203.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepap203.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPAP203DOCSTRING) StepAP203
 
@@ -183,7 +183,7 @@ int
 
 Description
 -----------
-Recognizes a kind of approveditem select type 1 -> productdefinitionformation from stepbasic 2 -> productdefinition from stepbasic 3 -> configurationeffectivity from steprepr 4 -> configurationitem from steprepr 5 -> securityclassification from stepbasic 6 -> changerequest from stepap203 7 -> change from stepap203 8 -> startrequest from stepap203 9 -> startwork from stepap203 10 -> certification from stepbasic 11 -> contract from stepbasic 0 else.
+Recognizes a kind of ApprovedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ConfigurationEffectivity from StepRepr 4 -> ConfigurationItem from StepRepr 5 -> SecurityClassification from StepBasic 6 -> ChangeRequest from StepAP203 7 -> Change from StepAP203 8 -> StartRequest from StepAP203 9 -> StartWork from StepAP203 10 -> Certification from StepBasic 11 -> Contract from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -196,7 +196,7 @@ opencascade::handle<StepBasic_Certification>
 
 Description
 -----------
-Returns value as certification (or null if another type).
+Returns Value as Certification (or Null if another type).
 ") Certification;
 		opencascade::handle<StepBasic_Certification> Certification();
 
@@ -209,7 +209,7 @@ opencascade::handle<StepAP203_Change>
 
 Description
 -----------
-Returns value as change (or null if another type).
+Returns Value as Change (or Null if another type).
 ") Change;
 		opencascade::handle<StepAP203_Change> Change();
 
@@ -222,7 +222,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 
 Description
 -----------
-Returns value as changerequest (or null if another type).
+Returns Value as ChangeRequest (or Null if another type).
 ") ChangeRequest;
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
@@ -235,7 +235,7 @@ opencascade::handle<StepRepr_ConfigurationEffectivity>
 
 Description
 -----------
-Returns value as configurationeffectivity (or null if another type).
+Returns Value as ConfigurationEffectivity (or Null if another type).
 ") ConfigurationEffectivity;
 		opencascade::handle<StepRepr_ConfigurationEffectivity> ConfigurationEffectivity();
 
@@ -248,7 +248,7 @@ opencascade::handle<StepRepr_ConfigurationItem>
 
 Description
 -----------
-Returns value as configurationitem (or null if another type).
+Returns Value as ConfigurationItem (or Null if another type).
 ") ConfigurationItem;
 		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem();
 
@@ -261,7 +261,7 @@ opencascade::handle<StepBasic_Contract>
 
 Description
 -----------
-Returns value as contract (or null if another type).
+Returns Value as Contract (or Null if another type).
 ") Contract;
 		opencascade::handle<StepBasic_Contract> Contract();
 
@@ -274,7 +274,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -287,7 +287,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -300,7 +300,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 
 Description
 -----------
-Returns value as securityclassification (or null if another type).
+Returns Value as SecurityClassification (or Null if another type).
 ") SecurityClassification;
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
@@ -313,7 +313,7 @@ opencascade::handle<StepAP203_StartRequest>
 
 Description
 -----------
-Returns value as startrequest (or null if another type).
+Returns Value as StartRequest (or Null if another type).
 ") StartRequest;
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
@@ -326,7 +326,7 @@ opencascade::handle<StepAP203_StartWork>
 
 Description
 -----------
-Returns value as startwork (or null if another type).
+Returns Value as StartWork (or Null if another type).
 ") StartWork;
 		opencascade::handle<StepAP203_StartWork> StartWork();
 
@@ -385,7 +385,7 @@ opencascade::handle<StepAP203_HArray1OfApprovedItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfApprovedItem> Items();
 
@@ -403,7 +403,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfApprovedItem> & Items);
 
@@ -464,7 +464,7 @@ opencascade::handle<StepAP203_HArray1OfCertifiedItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfCertifiedItem> Items();
 
@@ -482,7 +482,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & Items);
 
@@ -543,7 +543,7 @@ opencascade::handle<StepAP203_HArray1OfContractedItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfContractedItem> Items();
 
@@ -561,7 +561,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfContractedItem> & Items);
 
@@ -623,7 +623,7 @@ opencascade::handle<StepAP203_HArray1OfDateTimeItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfDateTimeItem> Items();
 
@@ -641,7 +641,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & Items);
 
@@ -703,7 +703,7 @@ opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> Items();
 
@@ -721,7 +721,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & Items);
 
@@ -782,7 +782,7 @@ opencascade::handle<StepAP203_HArray1OfClassifiedItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfClassifiedItem> Items();
 
@@ -800,7 +800,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & Items);
 
@@ -862,7 +862,7 @@ opencascade::handle<StepAP203_HArray1OfSpecifiedItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfSpecifiedItem> Items();
 
@@ -880,7 +880,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & Items);
 
@@ -927,7 +927,7 @@ int
 
 Description
 -----------
-Recognizes a kind of certifieditem select type 1 -> suppliedpartrelationship from steprepr 0 else.
+Recognizes a kind of CertifiedItem select type 1 -> SuppliedPartRelationship from StepRepr 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -940,7 +940,7 @@ opencascade::handle<StepRepr_SuppliedPartRelationship>
 
 Description
 -----------
-Returns value as suppliedpartrelationship (or null if another type).
+Returns Value as SuppliedPartRelationship (or Null if another type).
 ") SuppliedPartRelationship;
 		opencascade::handle<StepRepr_SuppliedPartRelationship> SuppliedPartRelationship();
 
@@ -999,7 +999,7 @@ opencascade::handle<StepAP203_HArray1OfWorkItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
 
@@ -1017,7 +1017,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
 
@@ -1078,7 +1078,7 @@ opencascade::handle<StepAP203_HArray1OfChangeRequestItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfChangeRequestItem> Items();
 
@@ -1096,7 +1096,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & Items);
 
@@ -1143,7 +1143,7 @@ int
 
 Description
 -----------
-Recognizes a kind of changerequestitem select type 1 -> productdefinitionformation from stepbasic 0 else.
+Recognizes a kind of ChangeRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1156,7 +1156,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1196,7 +1196,7 @@ opencascade::handle<StepRepr_AssemblyComponentUsage>
 
 Description
 -----------
-Returns value as assemblycomponentusage (or null if another type).
+Returns Value as AssemblyComponentUsage (or Null if another type).
 ") AssemblyComponentUsage;
 		opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage();
 
@@ -1214,7 +1214,7 @@ int
 
 Description
 -----------
-Recognizes a kind of classifieditem select type 1 -> productdefinitionformation from stepbasic 2 -> assemblycomponentusage from steprepr 0 else.
+Recognizes a kind of ClassifiedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> AssemblyComponentUsage from StepRepr 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1227,7 +1227,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1272,7 +1272,7 @@ int
 
 Description
 -----------
-Recognizes a kind of contracteditem select type 1 -> productdefinitionformation from stepbasic 0 else.
+Recognizes a kind of ContractedItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1285,7 +1285,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1325,7 +1325,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 
 Description
 -----------
-Returns value as approvalpersonorganization (or null if another type).
+Returns Value as ApprovalPersonOrganization (or Null if another type).
 ") ApprovalPersonOrganization;
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
@@ -1343,7 +1343,7 @@ int
 
 Description
 -----------
-Recognizes a kind of datetimeitem select type 1 -> productdefinition from stepbasic 2 -> changerequest from stepap203 3 -> startrequest from stepap203 4 -> change from stepap203 5 -> startwork from stepap203 6 -> approvalpersonorganization from stepbasic 7 -> contract from stepbasic 8 -> securityclassification from stepbasic 9 -> certification from stepbasic 0 else.
+Recognizes a kind of DateTimeItem select type 1 -> ProductDefinition from StepBasic 2 -> ChangeRequest from StepAP203 3 -> StartRequest from StepAP203 4 -> Change from StepAP203 5 -> StartWork from StepAP203 6 -> ApprovalPersonOrganization from StepBasic 7 -> Contract from StepBasic 8 -> SecurityClassification from StepBasic 9 -> Certification from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1356,7 +1356,7 @@ opencascade::handle<StepBasic_Certification>
 
 Description
 -----------
-Returns value as certification (or null if another type).
+Returns Value as Certification (or Null if another type).
 ") Certification;
 		opencascade::handle<StepBasic_Certification> Certification();
 
@@ -1369,7 +1369,7 @@ opencascade::handle<StepAP203_Change>
 
 Description
 -----------
-Returns value as change (or null if another type).
+Returns Value as Change (or Null if another type).
 ") Change;
 		opencascade::handle<StepAP203_Change> Change();
 
@@ -1382,7 +1382,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 
 Description
 -----------
-Returns value as changerequest (or null if another type).
+Returns Value as ChangeRequest (or Null if another type).
 ") ChangeRequest;
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
@@ -1395,7 +1395,7 @@ opencascade::handle<StepBasic_Contract>
 
 Description
 -----------
-Returns value as contract (or null if another type).
+Returns Value as Contract (or Null if another type).
 ") Contract;
 		opencascade::handle<StepBasic_Contract> Contract();
 
@@ -1408,7 +1408,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -1421,7 +1421,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 
 Description
 -----------
-Returns value as securityclassification (or null if another type).
+Returns Value as SecurityClassification (or Null if another type).
 ") SecurityClassification;
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
@@ -1434,7 +1434,7 @@ opencascade::handle<StepAP203_StartRequest>
 
 Description
 -----------
-Returns value as startrequest (or null if another type).
+Returns Value as StartRequest (or Null if another type).
 ") StartRequest;
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
@@ -1447,7 +1447,7 @@ opencascade::handle<StepAP203_StartWork>
 
 Description
 -----------
-Returns value as startwork (or null if another type).
+Returns Value as StartWork (or Null if another type).
 ") StartWork;
 		opencascade::handle<StepAP203_StartWork> StartWork();
 
@@ -1492,7 +1492,7 @@ int
 
 Description
 -----------
-Recognizes a kind of personorganizationitem select type 1 -> change from stepap203 2 -> startwork from stepap203 3 -> changerequest from stepap203 4 -> startrequest from stepap203 5 -> configurationitem from steprepr 6 -> product from stepbasic 7 -> productdefinitionformation from stepbasic 8 -> productdefinition from stepbasic 9 -> contract from stepbasic 10 -> securityclassification from stepbasic 0 else.
+Recognizes a kind of PersonOrganizationItem select type 1 -> Change from StepAP203 2 -> StartWork from StepAP203 3 -> ChangeRequest from StepAP203 4 -> StartRequest from StepAP203 5 -> ConfigurationItem from StepRepr 6 -> Product from StepBasic 7 -> ProductDefinitionFormation from StepBasic 8 -> ProductDefinition from StepBasic 9 -> Contract from StepBasic 10 -> SecurityClassification from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1505,7 +1505,7 @@ opencascade::handle<StepAP203_Change>
 
 Description
 -----------
-Returns value as change (or null if another type).
+Returns Value as Change (or Null if another type).
 ") Change;
 		opencascade::handle<StepAP203_Change> Change();
 
@@ -1518,7 +1518,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 
 Description
 -----------
-Returns value as changerequest (or null if another type).
+Returns Value as ChangeRequest (or Null if another type).
 ") ChangeRequest;
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
@@ -1531,7 +1531,7 @@ opencascade::handle<StepRepr_ConfigurationItem>
 
 Description
 -----------
-Returns value as configurationitem (or null if another type).
+Returns Value as ConfigurationItem (or Null if another type).
 ") ConfigurationItem;
 		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem();
 
@@ -1544,7 +1544,7 @@ opencascade::handle<StepBasic_Contract>
 
 Description
 -----------
-Returns value as contract (or null if another type).
+Returns Value as Contract (or Null if another type).
 ") Contract;
 		opencascade::handle<StepBasic_Contract> Contract();
 
@@ -1557,7 +1557,7 @@ opencascade::handle<StepBasic_Product>
 
 Description
 -----------
-Returns value as product (or null if another type).
+Returns Value as Product (or Null if another type).
 ") Product;
 		opencascade::handle<StepBasic_Product> Product();
 
@@ -1570,7 +1570,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -1583,7 +1583,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1596,7 +1596,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 
 Description
 -----------
-Returns value as securityclassification (or null if another type).
+Returns Value as SecurityClassification (or Null if another type).
 ") SecurityClassification;
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
@@ -1609,7 +1609,7 @@ opencascade::handle<StepAP203_StartRequest>
 
 Description
 -----------
-Returns value as startrequest (or null if another type).
+Returns Value as StartRequest (or Null if another type).
 ") StartRequest;
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
@@ -1622,7 +1622,7 @@ opencascade::handle<StepAP203_StartWork>
 
 Description
 -----------
-Returns value as startwork (or null if another type).
+Returns Value as StartWork (or Null if another type).
 ") StartWork;
 		opencascade::handle<StepAP203_StartWork> StartWork();
 
@@ -1667,7 +1667,7 @@ int
 
 Description
 -----------
-Recognizes a kind of specifieditem select type 1 -> productdefinition from stepbasic 2 -> shapeaspect from steprepr 0 else.
+Recognizes a kind of SpecifiedItem select type 1 -> ProductDefinition from StepBasic 2 -> ShapeAspect from StepRepr 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1680,7 +1680,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -1693,7 +1693,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as shapeaspect (or null if another type).
+Returns Value as ShapeAspect (or Null if another type).
 ") ShapeAspect;
 		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -1752,7 +1752,7 @@ opencascade::handle<StepAP203_HArray1OfStartRequestItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfStartRequestItem> Items();
 
@@ -1770,7 +1770,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & Items);
 
@@ -1817,7 +1817,7 @@ int
 
 Description
 -----------
-Recognizes a kind of startrequestitem select type 1 -> productdefinitionformation from stepbasic 0 else.
+Recognizes a kind of StartRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1830,7 +1830,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1889,7 +1889,7 @@ opencascade::handle<StepAP203_HArray1OfWorkItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
 
@@ -1907,7 +1907,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
 
@@ -1954,7 +1954,7 @@ int
 
 Description
 -----------
-Recognizes a kind of workitem select type 1 -> productdefinitionformation from stepbasic 0 else.
+Recognizes a kind of WorkItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1967,7 +1967,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as productdefinitionformation (or null if another type).
+Returns Value as ProductDefinitionFormation (or Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 

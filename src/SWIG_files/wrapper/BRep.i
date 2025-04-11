@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPDOCSTRING
 "BRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brep.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brep.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPDOCSTRING) BRep
 
@@ -198,7 +198,7 @@ None
 
 Description
 -----------
-Sets the degenerated flag for the edge <e>.
+Sets the degenerated flag for the edge <E>.
 ") Degenerated;
 		void Degenerated(const TopoDS_Edge & E, const Standard_Boolean D);
 
@@ -216,7 +216,7 @@ None
 
 Description
 -----------
-Makes an undefined edge (no geometry).
+Makes an undefined Edge (no geometry).
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E);
 
@@ -236,7 +236,7 @@ None
 
 Description
 -----------
-Makes an edge with a curve.
+Makes an Edge with a curve.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
 
@@ -257,7 +257,7 @@ None
 
 Description
 -----------
-Makes an edge with a curve and a location.
+Makes an Edge with a curve and a location.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -276,7 +276,7 @@ None
 
 Description
 -----------
-Makes an edge with a polygon 3d.
+Makes an Edge with a polygon 3d.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P);
 
@@ -296,7 +296,7 @@ None
 
 Description
 -----------
-Makes an edge polygon on triangulation.
+makes an Edge polygon on Triangulation.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T);
 
@@ -317,7 +317,7 @@ None
 
 Description
 -----------
-Makes an edge polygon on triangulation.
+makes an Edge polygon on Triangulation.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -335,7 +335,7 @@ None
 
 Description
 -----------
-Makes an undefined face.
+Makes an undefined Face.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F);
 
@@ -355,7 +355,7 @@ None
 
 Description
 -----------
-Makes a face with a surface.
+Makes a Face with a surface.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol);
 
@@ -376,7 +376,7 @@ None
 
 Description
 -----------
-Makes a face with a surface and a location.
+Makes a Face with a surface and a location.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -395,7 +395,7 @@ None
 
 Description
 -----------
-Makes a theface with a single triangulation. the triangulation is in the same reference system than the tface.
+Makes a theFace with a single triangulation. The triangulation is in the same reference system than the TFace.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -415,7 +415,7 @@ None
 
 Description
 -----------
-Makes a face with a list of triangulations and active one. use null active triangulation to set the first triangulation in list as active. the triangulations is in the same reference system than the tface.
+Makes a Face with a list of triangulations and active one. Use NULL active triangulation to set the first triangulation in list as active. The triangulations is in the same reference system than the TFace.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & theFace, const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation = opencascade::handle<Poly_Triangulation>());
 
@@ -453,7 +453,7 @@ None
 
 Description
 -----------
-Makes a vertex from a 3d point.
+Makes a vertex from a 3D point.
 ") MakeVertex;
 		void MakeVertex(TopoDS_Vertex & V, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -472,7 +472,7 @@ None
 
 Description
 -----------
-Sets the naturalrestriction flag of the face.
+Sets the NaturalRestriction flag of the face.
 ") NaturalRestriction;
 		void NaturalRestriction(const TopoDS_Face & F, const Standard_Boolean N);
 
@@ -493,7 +493,7 @@ None
 
 Description
 -----------
-Sets the range of the 3d curve if only3d=true, otherwise sets the range to all the representations.
+Sets the range of the 3d curve if Only3d=True, otherwise sets the range to all the representations.
 ") Range;
 		void Range(const TopoDS_Edge & E, const Standard_Real First, const Standard_Real Last, const Standard_Boolean Only3d = Standard_False);
 
@@ -555,7 +555,7 @@ None
 
 Description
 -----------
-Sets the same parameter flag for the edge <e>.
+Sets the same parameter flag for the edge <E>.
 ") SameParameter;
 		void SameParameter(const TopoDS_Edge & E, const Standard_Boolean S);
 
@@ -574,7 +574,7 @@ None
 
 Description
 -----------
-Sets the same range flag for the edge <e>.
+Sets the same range flag for the edge <E>.
 ") SameRange;
 		void SameRange(const TopoDS_Edge & E, const Standard_Boolean S);
 
@@ -593,7 +593,7 @@ None
 
 Description
 -----------
-Add to <eout> the geometric representations of <ein>.
+Add to <Eout> the geometric representations of <Ein>.
 ") Transfert;
 		void Transfert(const TopoDS_Edge & Ein, const TopoDS_Edge & Eout);
 
@@ -614,7 +614,7 @@ None
 
 Description
 -----------
-Transfert the parameters of vin on ein as the parameter of vout on eout.
+Transfert the parameters of Vin on Ein as the parameter of Vout on Eout.
 ") Transfert;
 		void Transfert(const TopoDS_Edge & Ein, const TopoDS_Edge & Eout, const TopoDS_Vertex & Vin, const TopoDS_Vertex & Vout);
 
@@ -634,7 +634,7 @@ None
 
 Description
 -----------
-Sets a 3d curve for the edge. if <c> is a null handle, remove any existing 3d curve.
+Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
 
@@ -655,7 +655,7 @@ None
 
 Description
 -----------
-Sets a 3d curve for the edge. if <c> is a null handle, remove any existing 3d curve.
+Sets a 3D curve for the edge. If <C> is a null handle, remove any existing 3d curve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -676,7 +676,7 @@ None
 
 Description
 -----------
-Sets a pcurve for the edge on the face. if <c> is a null handle, remove any existing pcurve.
+Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const TopoDS_Face & F, const Standard_Real Tol);
 
@@ -698,7 +698,7 @@ None
 
 Description
 -----------
-Sets pcurves for the edge on the closed face. if <c1> or <c2> is a null handle, remove any existing pcurve.
+Sets pcurves for the edge on the closed face. If <C1> or <C2> is a null handle, remove any existing pcurve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const TopoDS_Face & F, const Standard_Real Tol);
 
@@ -720,7 +720,7 @@ None
 
 Description
 -----------
-Sets a pcurve for the edge on the face. if <c> is a null handle, remove any existing pcurve.
+Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -744,7 +744,7 @@ None
 
 Description
 -----------
-Sets a pcurve for the edge on the face. if <c> is a null handle, remove any existing pcurve. sets uv bounds for curve repsentation.
+Sets a pcurve for the edge on the face. If <C> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol, const gp_Pnt2d & Pf, const gp_Pnt2d & Pl);
 
@@ -767,7 +767,7 @@ None
 
 Description
 -----------
-Sets pcurves for the edge on the closed surface. <c1> or <c2> is a null handle, remove any existing pcurve.
+Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -792,7 +792,7 @@ None
 
 Description
 -----------
-Sets pcurves for the edge on the closed surface. <c1> or <c2> is a null handle, remove any existing pcurve. sets uv bounds for curve repsentation.
+Sets pcurves for the edge on the closed surface. <C1> or <C2> is a null handle, remove any existing pcurve. Sets UV bounds for curve repsentation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol, const gp_Pnt2d & Pf, const gp_Pnt2d & Pl);
 
@@ -811,7 +811,7 @@ None
 
 Description
 -----------
-Changes an edge 3d polygon. a null polygon removes the 3d polygon.
+Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P);
 
@@ -831,7 +831,7 @@ None
 
 Description
 -----------
-Changes an edge 3d polygon. a null polygon removes the 3d polygon.
+Changes an Edge 3D polygon. A null Polygon removes the 3d Polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P, const TopLoc_Location & L);
 
@@ -851,7 +851,7 @@ None
 
 Description
 -----------
-Changes an edge polygon on triangulation.
+Changes an Edge polygon on Triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T);
 
@@ -872,7 +872,7 @@ None
 
 Description
 -----------
-Changes an edge polygon on triangulation.
+Changes an Edge polygon on Triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -893,7 +893,7 @@ None
 
 Description
 -----------
-Changes an edge polygon on triangulation.
+Changes an Edge polygon on Triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N1, const opencascade::handle<Poly_PolygonOnTriangulation> & N2, const opencascade::handle<Poly_Triangulation> & T);
 
@@ -915,7 +915,7 @@ None
 
 Description
 -----------
-Changes an edge polygon on triangulation.
+Changes an Edge polygon on Triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N1, const opencascade::handle<Poly_PolygonOnTriangulation> & N2, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -935,7 +935,7 @@ None
 
 Description
 -----------
-Changes edge polygon on a face.
+Changes Edge polygon on a face.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P, const TopoDS_Face & S);
 
@@ -956,7 +956,7 @@ None
 
 Description
 -----------
-Changes edge polygon on a face.
+Changes Edge polygon on a face.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & T);
 
@@ -977,7 +977,7 @@ None
 
 Description
 -----------
-Changes edge polygons on a face. //! a null polygon removes the 2d polygon.
+Changes Edge polygons on a face. //! A null Polygon removes the 2d Polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P1, const opencascade::handle<Poly_Polygon2D> & P2, const TopoDS_Face & S);
 
@@ -999,7 +999,7 @@ None
 
 Description
 -----------
-Changes edge polygons on a face. //! a null polygon removes the 2d polygon.
+Changes Edge polygons on a face. //! A null Polygon removes the 2d Polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P1, const opencascade::handle<Poly_Polygon2D> & P2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -1039,7 +1039,7 @@ None
 
 Description
 -----------
-Updates the face f using the tolerance value tol, surface s and location location.
+Updates the face F using the tolerance value Tol, surface S and location Location.
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
@@ -1059,7 +1059,7 @@ None
 
 Description
 -----------
-Changes a face triangulation. a null thetriangulation removes face triangulations. if thetoreset is true face triangulations will be reset to new list with only one input triangulation that will be active. else if thetriangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to thetriangulation one.
+Changes a face triangulation. A NULL theTriangulation removes face triangulations. If theToReset is True face triangulations will be reset to new list with only one input triangulation that will be active. Else if theTriangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to theTriangulation one.
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
 
@@ -1078,7 +1078,7 @@ None
 
 Description
 -----------
-Updates the face tolerance.
+Updates the face Tolerance.
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & F, const Standard_Real Tol);
 
@@ -1098,7 +1098,7 @@ None
 
 Description
 -----------
-Sets a 3d point on the vertex.
+Sets a 3D point on the vertex.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & V, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -1235,7 +1235,7 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity();
+		virtual const GeomAbs_Shape  Continuity();
 
 		/****** BRep_CurveRepresentation::Continuity ******/
 		/****** md5 signature: 78d8ca8e106bd2f55e42d4dc5945fc32 ******/
@@ -1329,7 +1329,7 @@ bool
 
 Description
 -----------
-A 3d curve representation.
+A 3D curve representation.
 ") IsCurve3D;
 		virtual Standard_Boolean IsCurve3D();
 
@@ -1374,7 +1374,7 @@ bool
 
 Description
 -----------
-Is it a curve in the parametric space of <s> with location <l>.
+Is it a curve in the parametric space of <S> with location <L>.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -1387,7 +1387,7 @@ bool
 
 Description
 -----------
-A 3d polygon representation.
+A 3D polygon representation.
 ") IsPolygon3D;
 		virtual Standard_Boolean IsPolygon3D();
 
@@ -1400,7 +1400,7 @@ bool
 
 Description
 -----------
-Two 2d polygon representations in the parametric space of a surface.
+Two 2D polygon representations in the parametric space of a surface.
 ") IsPolygonOnClosedSurface;
 		virtual Standard_Boolean IsPolygonOnClosedSurface();
 
@@ -1445,7 +1445,7 @@ bool
 
 Description
 -----------
-Is it a polygon in the parametric space of <s> with location <l>.
+Is it a polygon in the parametric space of <S> with location <L>.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -1477,7 +1477,7 @@ bool
 
 Description
 -----------
-Is it a polygon in the definition of <t> with location <l>.
+Is it a polygon in the definition of <T> with location <L>.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation(const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -1511,7 +1511,7 @@ bool
 
 Description
 -----------
-Is it a regularity between <s1> and <s2> with location <l1> and <l2>.
+Is it a regularity between <S1> and <S2> with location <L1> and <L2>.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
@@ -1912,7 +1912,7 @@ bool
 
 Description
 -----------
-A point on the curve <c>.
+A point on the curve <C>.
 ") IsPointOnCurve;
 		virtual Standard_Boolean IsPointOnCurve(const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L);
 
@@ -1945,7 +1945,7 @@ bool
 
 Description
 -----------
-A point on the 2d curve <pc> on the surface <s>.
+A point on the 2d curve <PC> on the surface <S>.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface(const opencascade::handle<Geom2d_Curve> & PC, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -1977,7 +1977,7 @@ bool
 
 Description
 -----------
-A point on the surface <s>.
+A point on the surface <S>.
 ") IsPointOnSurface;
 		virtual Standard_Boolean IsPointOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -2161,7 +2161,7 @@ None
 
 Description
 -----------
-Creates an empty tedge.
+Creates an empty TEdge.
 ") BRep_TEdge;
 		 BRep_TEdge();
 
@@ -2252,7 +2252,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns a copy of the tshape with no sub-shapes.
+Returns a copy of the TShape with no sub-shapes.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2363,7 +2363,7 @@ None
 
 Description
 -----------
-Sets the tolerance to the max of <t> and the current tolerance.
+Sets the tolerance to the max of <T> and the current tolerance.
 ") UpdateTolerance;
 		void UpdateTolerance(const Standard_Real T);
 
@@ -2392,7 +2392,7 @@ None
 
 Description
 -----------
-Creates an empty tface.
+Creates an empty TFace.
 ") BRep_TFace;
 		 BRep_TFace();
 
@@ -2439,7 +2439,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns a copy of the tshape with no sub-shapes. the new face has no triangulation.
+Returns a copy of the TShape with no sub-shapes. The new Face has no triangulation.
 ") EmptyCopy;
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2483,7 +2483,7 @@ bool
 
 Description
 -----------
-Returns true if the boundary of this face is known to be the parametric space (umin, umax, vmin, vmax).
+Returns True if the boundary of this face is known to be the parametric space (Umin, UMax, VMin, VMax).
 ") NaturalRestriction;
 		Standard_Boolean NaturalRestriction();
 
@@ -2501,7 +2501,7 @@ None
 
 Description
 -----------
-Sets the flag that is true if the boundary of this face is known to be the parametric space.
+Sets the flag that is True if the boundary of this face is known to be the parametric space.
 ") NaturalRestriction;
 		void NaturalRestriction(const Standard_Boolean theRestriction);
 
@@ -2594,7 +2594,9 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Returns the triangulation of this face according to the mesh purpose. @param[in] thepurpose a mesh purpose to find appropriate triangulation (none by default). return an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
+Returns the triangulation of this face according to the mesh purpose. 
+Input parameter: thePurpose a mesh purpose to find appropriate triangulation (NONE by default). 
+Return: an active triangulation in case of NONE purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is AnyFallback or null handle if there is no any suitable triangulation.
 ") Triangulation;
 		const opencascade::handle<Poly_Triangulation> & Triangulation(const Poly_MeshPurpose thePurpose = Poly_MeshPurpose_NONE);
 
@@ -2613,7 +2615,9 @@ None
 
 Description
 -----------
-Sets input triangulation for this face. @param thetriangulation [in] triangulation to be set @param thetoreset [in] flag to reset triangulations list to new list with only one input triangulation. if thetriangulation is null internal list of triangulations will be cleared and active triangulation will be nullified. if thetoreset is true internal list of triangulations will be reset to new list with only one input triangulation that will be active. else if input triangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to input one.
+Sets input triangulation for this face. 
+Input parameter: theTriangulation triangulation to be set 
+Input parameter: theToReset flag to reset triangulations list to new list with only one input triangulation. If theTriangulation is NULL internal list of triangulations will be cleared and active triangulation will be nullified. If theToReset is True internal list of triangulations will be reset to new list with only one input triangulation that will be active. Else if input triangulation is contained in internal triangulations list it will be made active, else the active triangulation will be replaced to input one.
 ") Triangulation;
 		void Triangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
 
@@ -2645,7 +2649,7 @@ None
 
 Description
 -----------
-Sets input list of triangulations and currently active triangulation for this face. if list is empty internal list of triangulations will be cleared and active triangulation will be nullified. else this list will be saved and the input active triangulation be saved as active. use null active triangulation to set the first triangulation in list as active. note: the method throws exception if there is any null triangulation in input list or if this list doesn't contain input active triangulation.
+Sets input list of triangulations and currently active triangulation for this face. If list is empty internal list of triangulations will be cleared and active triangulation will be nullified. Else this list will be saved and the input active triangulation be saved as active. Use NULL active triangulation to set the first triangulation in list as active. Note: the method throws exception if there is any NULL triangulation in input list or if this list doesn't contain input active triangulation.
 ") Triangulations;
 		void Triangulations(const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation);
 
@@ -2721,7 +2725,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns a copy of the tshape with no sub-shapes.
+Returns a copy of the TShape with no sub-shapes.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2814,7 +2818,7 @@ None
 
 Description
 -----------
-Sets the tolerance to the max of <t> and the current tolerance.
+Sets the tolerance to the max of <T> and the current tolerance.
 ") UpdateTolerance;
 		void UpdateTolerance(const Standard_Real T);
 
@@ -2892,7 +2896,7 @@ Last: float
 
 Description
 -----------
-Returns the 3d curve of the edge. may be a null handle. returns in <l> the location for the curve. in <first> and <last> the parameter range.
+Returns the 3D curve of the edge. May be a Null handle. Returns in <L> the location for the curve. In <First> and <Last> the parameter range.
 ") Curve;
 		static const opencascade::handle<Geom_Curve> & Curve(const TopoDS_Edge & E, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2911,7 +2915,7 @@ Last: float
 
 Description
 -----------
-Returns the 3d curve of the edge. may be a null handle. in <first> and <last> the parameter range. it can be a copy if there is a location.
+Returns the 3D curve of the edge. May be a Null handle. In <First> and <Last> the parameter range. It can be a copy if there is a Location.
 ") Curve;
 		static opencascade::handle<Geom_Curve> Curve(const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2932,7 +2936,7 @@ Last: float
 
 Description
 -----------
-For the planar surface builds the 2d curve for the edge by projection of the edge on plane. returns a null handle if the surface is not planar or the projection failed.
+For the planar surface builds the 2d curve for the edge by projection of the edge on plane. Returns a NULL handle if the surface is not planar or the projection failed.
 ") CurveOnPlane;
 		static opencascade::handle<Geom2d_Curve> CurveOnPlane(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2953,7 +2957,7 @@ Last: float
 
 Description
 -----------
-Returns the curve associated to the edge in the parametric space of the face. returns a null handle if this curve does not exist. returns in <first> and <last> the parameter range. if the surface is a plane the curve can be not stored but created a new each time. the flag pointed by <theisstored> serves to indicate storage status. it is valued if the pointer is non-null.
+Returns the curve associated to the edge in the parametric space of the face. Returns a NULL handle if this curve does not exist. Returns in <First> and <Last> the parameter range. If the surface is a plane the curve can be not stored but created a new each time. The flag pointed by <theIsStored> serves to indicate storage status. It is valued if the pointer is non-null.
 ") CurveOnSurface;
 		static opencascade::handle<Geom2d_Curve> CurveOnSurface(const TopoDS_Edge & E, const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean * theIsStored = NULL);
 
@@ -2975,7 +2979,7 @@ Last: float
 
 Description
 -----------
-Returns the curve associated to the edge in the parametric space of the surface. returns a null handle if this curve does not exist. returns in <first> and <last> the parameter range. if the surface is a plane the curve can be not stored but created a new each time. the flag pointed by <theisstored> serves to indicate storage status. it is valued if the pointer is non-null.
+Returns the curve associated to the edge in the parametric space of the surface. Returns a NULL handle if this curve does not exist. Returns in <First> and <Last> the parameter range. If the surface is a plane the curve can be not stored but created a new each time. The flag pointed by <theIsStored> serves to indicate storage status. It is valued if the pointer is non-null.
 ") CurveOnSurface;
 		static opencascade::handle<Geom2d_Curve> CurveOnSurface(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean * theIsStored = NULL);
 
@@ -2997,7 +3001,7 @@ Last: float
 
 Description
 -----------
-Returns in <c>, <s>, <l> a 2d curve, a surface and a location for the edge <e>. <c> and <s> are null if the edge has no curve on surface. returns in <first> and <last> the parameter range.
+Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S> are null if the edge has no curve on surface. Returns in <First> and <Last> the parameter range.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & E, opencascade::handle<Geom2d_Curve> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3020,7 +3024,7 @@ Last: float
 
 Description
 -----------
-Returns in <c>, <s>, <l> the 2d curve, the surface and the location for the edge <e> of rank <index>. <c> and <s> are null if the index is out of range. returns in <first> and <last> the parameter range.
+Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range. Returns in <First> and <Last> the parameter range.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & E, opencascade::handle<Geom2d_Curve> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Integer Index);
 
@@ -3038,7 +3042,7 @@ bool
 
 Description
 -----------
-Returns true if the edge is degenerated.
+Returns True if the edge is degenerated.
 ") Degenerated;
 		static Standard_Boolean Degenerated(const TopoDS_Edge & E);
 
@@ -3058,7 +3062,7 @@ bool
 
 Description
 -----------
-Returns true if the edge is on the surfaces of the two faces.
+Returns True if the edge is on the surfaces of the two faces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
@@ -3080,7 +3084,7 @@ bool
 
 Description
 -----------
-Returns true if the edge is on the surfaces.
+Returns True if the edge is on the surfaces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
@@ -3098,7 +3102,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has regularity on some two surfaces.
+Returns True if the edge has regularity on some two surfaces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E);
 
@@ -3116,7 +3120,7 @@ bool
 
 Description
 -----------
-If s is shell, returns true if it has no free boundaries (edges). if s is wire, returns true if it has no free ends (vertices). (internal and external sub-shepes are ignored in these checks) if s is edge, returns true if its vertices are the same. for other shape types returns s.closed().
+If S is Shell, returns True if it has no free boundaries (edges). If S is Wire, returns True if it has no free ends (vertices). (Internal and External sub-shepes are ignored in these checks) If S is Edge, returns True if its vertices are the same. For other shape types returns S.Closed().
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Shape & S);
 
@@ -3135,7 +3139,7 @@ bool
 
 Description
 -----------
-Returns true if <e> has two pcurves in the parametric space of <f>. i.e. <f> is on a closed surface and <e> is on the closing curve.
+Returns True if <E> has two PCurves in the parametric space of <F>. i.e. <F> is on a closed surface and <E> is on the closing curve.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -3155,7 +3159,7 @@ bool
 
 Description
 -----------
-Returns true if <e> has two pcurves in the parametric space of <s>. i.e. <s> is a closed surface and <e> is on the closing curve.
+Returns True if <E> has two PCurves in the parametric space of <S>. i.e. <S> is a closed surface and <E> is on the closing curve.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -3175,7 +3179,7 @@ bool
 
 Description
 -----------
-Returns true if <e> has two arrays of indices in the triangulation <t>.
+Returns True if <E> has two arrays of indices in the triangulation <T>.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -3193,7 +3197,7 @@ bool
 
 Description
 -----------
-Returns true if <f> has a surface, false otherwise.
+Returns True if <F> has a surface, false otherwise.
 ") IsGeometric;
 		static Standard_Boolean IsGeometric(const TopoDS_Face & F);
 
@@ -3211,7 +3215,7 @@ bool
 
 Description
 -----------
-Returns true if <e> is a 3d curve or a curve on surface.
+Returns True if <E> is a 3d curve or a curve on surface.
 ") IsGeometric;
 		static Standard_Boolean IsGeometric(const TopoDS_Edge & E);
 
@@ -3229,7 +3233,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the max continuity of edge between some surfaces or geomabs_c0 if there no such surfaces.
+Returns the max continuity of edge between some surfaces or GeomAbs_C0 if there no such surfaces.
 ") MaxContinuity;
 		static GeomAbs_Shape MaxContinuity(const TopoDS_Edge & theEdge);
 
@@ -3266,7 +3270,7 @@ bool
 
 Description
 -----------
-Returns the naturalrestriction flag of the face.
+Returns the NaturalRestriction flag of the face.
 ") NaturalRestriction;
 		static Standard_Boolean NaturalRestriction(const TopoDS_Face & F);
 
@@ -3285,7 +3289,10 @@ theParam: float
 
 Description
 -----------
-Finds the parameter of <thev> on <thee>. @param thev [in] input vertex @param thee [in] input edge @param theparam [out] calculated parameter on the curve return true if done.
+Finds the parameter of <theV> on <theE>. 
+Input parameter: theV input vertex 
+Input parameter: theE input edge @param[out] theParam calculated parameter on the curve 
+Return: True if done.
 ") Parameter;
 		static Standard_Boolean Parameter(const TopoDS_Vertex & theV, const TopoDS_Edge & theE, Standard_Real &OutValue);
 
@@ -3304,7 +3311,7 @@ float
 
 Description
 -----------
-Returns the parameter of <v> on <e>. throws standard_nosuchobject if no parameter on edge.
+Returns the parameter of <V> on <E>. Throws Standard_NoSuchObject if no parameter on edge.
 ") Parameter;
 		static Standard_Real Parameter(const TopoDS_Vertex & V, const TopoDS_Edge & E);
 
@@ -3401,7 +3408,7 @@ opencascade::handle<Poly_Polygon3D>
 
 Description
 -----------
-Returns the 3d polygon of the edge. may be a null handle. returns in <l> the location for the polygon.
+Returns the 3D polygon of the edge. May be a Null handle. Returns in <L> the location for the polygon.
 ") Polygon3D;
 		static const opencascade::handle<Poly_Polygon3D> & Polygon3D(const TopoDS_Edge & E, TopLoc_Location & L);
 
@@ -3420,7 +3427,7 @@ opencascade::handle<Poly_Polygon2D>
 
 Description
 -----------
-Returns the polygon associated to the edge in the parametric space of the face. returns a null handle if this polygon does not exist.
+Returns the polygon associated to the edge in the parametric space of the face. Returns a NULL handle if this polygon does not exist.
 ") PolygonOnSurface;
 		static opencascade::handle<Poly_Polygon2D> PolygonOnSurface(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -3440,7 +3447,7 @@ opencascade::handle<Poly_Polygon2D>
 
 Description
 -----------
-Returns the polygon associated to the edge in the parametric space of the surface. returns a null handle if this polygon does not exist.
+Returns the polygon associated to the edge in the parametric space of the surface. Returns a NULL handle if this polygon does not exist.
 ") PolygonOnSurface;
 		static opencascade::handle<Poly_Polygon2D> PolygonOnSurface(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -3461,7 +3468,7 @@ None
 
 Description
 -----------
-Returns in <c>, <s>, <l> a 2d curve, a surface and a location for the edge <e>. <c> and <s> are null if the edge has no polygon on surface.
+Returns in <C>, <S>, <L> a 2d curve, a surface and a location for the edge <E>. <C> and <S> are null if the edge has no polygon on surface.
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L);
 
@@ -3483,7 +3490,7 @@ None
 
 Description
 -----------
-Returns in <c>, <s>, <l> the 2d curve, the surface and the location for the edge <e> of rank <index>. <c> and <s> are null if the index is out of range.
+Returns in <C>, <S>, <L> the 2d curve, the surface and the location for the edge <E> of rank <Index>. <C> and <S> are null if the index is out of range.
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, const Standard_Integer Index);
 
@@ -3503,7 +3510,7 @@ opencascade::handle<Poly_PolygonOnTriangulation>
 
 Description
 -----------
-Returns the polygon associated to the edge in the parametric space of the face. returns a null handle if this polygon does not exist.
+Returns the polygon associated to the edge in the parametric space of the face. Returns a NULL handle if this polygon does not exist.
 ") PolygonOnTriangulation;
 		static const opencascade::handle<Poly_PolygonOnTriangulation> & PolygonOnTriangulation(const TopoDS_Edge & E, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -3524,7 +3531,7 @@ None
 
 Description
 -----------
-Returns in <p>, <t>, <l> a polygon on triangulation, a triangulation and a location for the edge <e>. <p> and <t> are null if the edge has no polygon on triangulation.
+Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E>. <P> and <T> are null if the edge has no polygon on triangulation.
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L);
 
@@ -3546,7 +3553,7 @@ None
 
 Description
 -----------
-Returns in <p>, <t>, <l> a polygon on triangulation, a triangulation and a location for the edge <e> for the range index. <c> and <s> are null if the edge has no polygon on triangulation.
+Returns in <P>, <T>, <L> a polygon on triangulation, a triangulation and a location for the edge <E> for the range index. <C> and <S> are null if the edge has no polygon on triangulation.
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L, const Standard_Integer Index);
 
@@ -3624,7 +3631,7 @@ bool
 
 Description
 -----------
-Returns the sameparameter flag for the edge.
+Returns the SameParameter flag for the edge.
 ") SameParameter;
 		static Standard_Boolean SameParameter(const TopoDS_Edge & E);
 
@@ -3642,7 +3649,7 @@ bool
 
 Description
 -----------
-Returns the samerange flag for the edge.
+Returns the SameRange flag for the edge.
 ") SameRange;
 		static Standard_Boolean SameRange(const TopoDS_Edge & E);
 
@@ -3664,7 +3671,7 @@ None
 
 Description
 -----------
-Sets the uv locations of the extremities of the edge.
+Sets the UV locations of the extremities of the edge.
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
@@ -3685,7 +3692,7 @@ None
 
 Description
 -----------
-Sets the uv locations of the extremities of the edge.
+Sets the UV locations of the extremities of the edge.
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const TopoDS_Face & F, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
@@ -3704,7 +3711,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the geometric surface of the face. returns in <l> the location for the surface.
+Returns the geometric surface of the face. Returns in <L> the location for the surface.
 ") Surface;
 		static const opencascade::handle<Geom_Surface> & Surface(const TopoDS_Face & F, TopLoc_Location & L);
 
@@ -3722,7 +3729,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the geometric surface of the face. it can be a copy if there is a location.
+Returns the geometric surface of the face. It can be a copy if there is a Location.
 ") Surface;
 		static opencascade::handle<Geom_Surface> Surface(const TopoDS_Face & F);
 
@@ -3758,7 +3765,7 @@ float
 
 Description
 -----------
-Returns the tolerance for <e>.
+Returns the tolerance for <E>.
 ") Tolerance;
 		static Standard_Real Tolerance(const TopoDS_Edge & E);
 
@@ -3796,7 +3803,10 @@ opencascade::handle<Poly_Triangulation>
 
 Description
 -----------
-Returns the triangulation of the face according to the mesh purpose. @param theface [in] the input face to find triangulation. @param thelocation [out] the face location. @param themeshpurpose [in] a mesh purpose to find appropriate triangulation (none by default). return an active triangulation in case of none purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is anyfallback or null handle if there is no any suitable triangulation.
+Returns the triangulation of the face according to the mesh purpose. 
+Input parameter: theFace the input face to find triangulation. @param[out] theLocation the face location. 
+Input parameter: theMeshPurpose a mesh purpose to find appropriate triangulation (NONE by default). 
+Return: an active triangulation in case of NONE purpose, the first triangulation appropriate for the input purpose, just the first triangulation if none matching other criteria and input purpose is AnyFallback or null handle if there is no any suitable triangulation.
 ") Triangulation;
 		static const opencascade::handle<Poly_Triangulation> & Triangulation(const TopoDS_Face & theFace, TopLoc_Location & theLocation, const Poly_MeshPurpose theMeshPurpose = Poly_MeshPurpose_NONE);
 
@@ -3815,7 +3825,9 @@ Poly_ListOfTriangulation
 
 Description
 -----------
-Returns all triangulations of the face. @param theface [in] the input face. @param thelocation [out] the face location. return list of all available face triangulations.
+Returns all triangulations of the face. 
+Input parameter: theFace the input face. @param[out] theLocation the face location. 
+Return: list of all available face triangulations.
 ") Triangulations;
 		static const Poly_ListOfTriangulation & Triangulations(const TopoDS_Face & theFace, TopLoc_Location & theLocation);
 
@@ -3837,7 +3849,7 @@ None
 
 Description
 -----------
-Gets the uv locations of the extremities of the edge.
+Gets the UV locations of the extremities of the edge.
 ") UVPoints;
 		static void UVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, gp_Pnt2d & PFirst, gp_Pnt2d & PLast);
 
@@ -3858,7 +3870,7 @@ None
 
 Description
 -----------
-Gets the uv locations of the extremities of the edge.
+Gets the UV locations of the extremities of the edge.
 ") UVPoints;
 		static void UVPoints(const TopoDS_Edge & E, const TopoDS_Face & F, gp_Pnt2d & PFirst, gp_Pnt2d & PLast);
 
@@ -3909,7 +3921,7 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity();
+		virtual const GeomAbs_Shape  Continuity();
 
 		/****** BRep_CurveOn2Surfaces::Continuity ******/
 		/****** md5 signature: 7efede569c5d15316e14f5232ee3a296 ******/
@@ -3991,7 +4003,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity();
 
@@ -4087,7 +4099,7 @@ None
 
 Description
 -----------
-Computes the point at parameter u.
+Computes the point at parameter U.
 ") D0;
 		virtual void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -4220,7 +4232,7 @@ None
 
 Description
 -----------
-Recomputes any derived data after a modification. this is called when the range is modified.
+Recomputes any derived data after a modification. This is called when the range is modified.
 ") Update;
 		virtual void Update();
 
@@ -4321,7 +4333,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsPointOnCurve;
 		virtual Standard_Boolean IsPointOnCurve();
 
@@ -4491,7 +4503,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsPolygon3D;
 		virtual Standard_Boolean IsPolygon3D();
 
@@ -4605,7 +4617,7 @@ bool
 
 Description
 -----------
-A 2d polygon representation in the parametric space of a surface.
+A 2D polygon representation in the parametric space of a surface.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface();
 
@@ -4624,7 +4636,7 @@ bool
 
 Description
 -----------
-A 2d polygon representation in the parametric space of a surface.
+A 2D polygon representation in the parametric space of a surface.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
@@ -4751,7 +4763,7 @@ bool
 
 Description
 -----------
-Returns true.
+returns True.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation();
 
@@ -4770,7 +4782,7 @@ bool
 
 Description
 -----------
-Is it a polygon in the definition of <t> with location <l>.
+Is it a polygon in the definition of <T> with location <L>.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation(const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
@@ -4788,7 +4800,7 @@ None
 
 Description
 -----------
-Returns true.
+returns True.
 ") PolygonOnTriangulation;
 		virtual void PolygonOnTriangulation(const opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
@@ -4912,7 +4924,7 @@ None
 
 Description
 -----------
-Computes the point at parameter u.
+Computes the point at parameter U.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -4946,7 +4958,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsCurve3D;
 		virtual Standard_Boolean IsCurve3D();
 
@@ -5014,7 +5026,7 @@ None
 
 Description
 -----------
-Computes the point at parameter u.
+Computes the point at parameter U.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
@@ -5048,7 +5060,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface();
 
@@ -5162,7 +5174,7 @@ None
 
 Description
 -----------
-Recomputes any derived data after a modification. this is called when the range is modified.
+Recomputes any derived data after a modification. This is called when the range is modified.
 ") Update;
 		virtual void Update();
 
@@ -5233,7 +5245,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface();
 
@@ -5468,7 +5480,7 @@ bool
 
 Description
 -----------
-Returns true.
+returns True.
 ") IsPolygonOnClosedSurface;
 		virtual Standard_Boolean IsPolygonOnClosedSurface();
 
@@ -5583,7 +5595,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsPolygonOnClosedTriangulation;
 		virtual Standard_Boolean IsPolygonOnClosedTriangulation();
 
@@ -5667,7 +5679,7 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		virtual const GeomAbs_Shape & Continuity();
+		virtual const GeomAbs_Shape  Continuity();
 
 		/****** BRep_CurveOnClosedSurface::Continuity ******/
 		/****** md5 signature: 7efede569c5d15316e14f5232ee3a296 ******/
@@ -5730,7 +5742,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsCurveOnClosedSurface;
 		virtual Standard_Boolean IsCurveOnClosedSurface();
 
@@ -5743,7 +5755,7 @@ bool
 
 Description
 -----------
-Returns true.
+Returns True.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity();
 
@@ -5777,7 +5789,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns location().
+Returns Location().
 ") Location2;
 		virtual const TopLoc_Location & Location2();
 
@@ -5840,7 +5852,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns surface().
+Returns Surface().
 ") Surface2;
 		virtual const opencascade::handle<Geom_Surface> & Surface2();
 
@@ -5872,7 +5884,7 @@ None
 
 Description
 -----------
-Recomputes any derived data after a modification. this is called when the range is modified.
+Recomputes any derived data after a modification. This is called when the range is modified.
 ") Update;
 		virtual void Update();
 

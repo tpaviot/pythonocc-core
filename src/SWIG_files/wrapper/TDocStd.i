@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDOCSTDDOCSTRING
 "TDocStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tdocstd.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdocstd.html"
 %enddef
 %module (package="OCC.Core", docstring=TDOCSTDDOCSTRING) TDocStd
 
@@ -187,7 +187,7 @@ None
 
 Description
 -----------
-Specific guid of this package ============================= appends to <anidlist> the list of the attributes ids of this package. caution: <anidlist> is not cleared before use.
+specific GUID of this package ============================= Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -214,7 +214,7 @@ None
 
 Description
 -----------
-Constructs the new instance and registers it in cdm_session.
+Constructs the new instance and registers it in CDM_Session.
 ") TDocStd_Application;
 		 TDocStd_Application();
 
@@ -254,7 +254,12 @@ None
 
 Description
 -----------
-Sets up resources and registers read and storage drivers for the specified format. @param theformat - unique name for the format, used to identify it. @param thedescription - textual description of the format. @param theextension - extension of the files in that format. the same extension can be used by several formats. @param thereader - instance of the read driver for the format.  null value is allowed (no possibility to read). @param thewriter - instance of the write driver for the format.  null value is allowed (no possibility to write).
+Sets up resources and registers read and storage drivers for the specified format. //! 
+Parameter theFormat - unique name for the format, used to identify it. 
+Parameter theDescription - textual description of the format. 
+Parameter theExtension - extension of the files in that format.  The same extension can be used by several formats. 
+Parameter theReader - instance of the read driver for the format.  Null value is allowed (no possibility to read). 
+Parameter theWriter - instance of the write driver for the format.  Null value is allowed (no possibility to write).
 ") DefineFormat;
 		void DefineFormat(TCollection_AsciiString theFormat, TCollection_AsciiString theDescription, TCollection_AsciiString theExtension, const opencascade::handle<PCDM_RetrievalDriver> & theReader, const opencascade::handle<PCDM_StorageDriver> & theWriter);
 
@@ -294,7 +299,7 @@ None
 
 Description
 -----------
-Constructs the new document adoc. adoc is identified by the index index which is any integer between 1 and n where n is the number of documents returned by nbdocument. example opencascade::handle<tdocstd_application> anapp; if (!caftest::find(a)) return 1; opencascade::handle<tdocstd> adoc; standard_integer nbdoc = anapp->nbdocuments(); for (standard_integer i = 1; i <= nbdoc; i++) { aapp->getdocument(i,adoc);.
+Constructs the new document aDoc. aDoc is identified by the index index which is any integer between 1 and n where n is the number of documents returned by NbDocument. Example opencascade::handle<TDocStd_Application> anApp; if (!CafTest::Find(A)) return 1; opencascade::handle<TDocStd> aDoc; Standard_Integer nbdoc = anApp->NbDocuments(); for (Standard_Integer i = 1; i <= nbdoc; i++) { aApp->GetDocument(i,aDoc);.
 ") GetDocument;
 		void GetDocument(const Standard_Integer index, opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -312,7 +317,7 @@ None
 
 Description
 -----------
-Initialize the document adoc for the applicative session. this virtual function is called by newdocument and is to be redefined for each specific application. modified flag (different of disk version) ============= to open/save a document =======================.
+Initialize the document aDoc for the applicative session. This virtual function is called by NewDocument and is to be redefined for each specific application. Modified flag (different of disk version) ============= to open/save a document =======================.
 ") InitDocument;
 		virtual void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
 
@@ -343,7 +348,7 @@ int
 
 Description
 -----------
-Returns an index for the document found in the path path in this applicative session. if the returned value is 0, the document is not present in the applicative session. this method can be used for the interactive part of an application. for instance, on a call to open, the document to be opened may already be in memory. isinsession checks to see if this is the case. open can be made to depend on the value of the index returned: if isinsession returns 0, the document is opened; if it returns another value, a message is displayed asking the user if he wants to override the version of the document in memory. example: standard_integer insession = a->isinsession(adoc); if (insession > 0) { std::cout << 'document ' << insession << ' is already in session' << std::endl; return 0; }.
+Returns an index for the document found in the path path in this applicative session. If the returned value is 0, the document is not present in the applicative session. This method can be used for the interactive part of an application. For instance, on a call to Open, the document to be opened may already be in memory. IsInSession checks to see if this is the case. Open can be made to depend on the value of the index returned: if IsInSession returns 0, the document is opened; if it returns another value, a message is displayed asking the user if he wants to override the version of the document in memory. Example: Standard_Integer insession = A->IsInSession(aDoc); if (insession > 0) { std::cout << 'document ' << insession << ' is already in session' << std::endl; return 0; }.
 ") IsInSession;
 		Standard_Integer IsInSession(TCollection_ExtendedString path);
 
@@ -356,7 +361,7 @@ int
 
 Description
 -----------
-Returns the number of documents handled by the current applicative session.
+returns the number of documents handled by the current applicative session.
 ") NbDocuments;
 		Standard_Integer NbDocuments();
 
@@ -375,7 +380,7 @@ None
 
 Description
 -----------
-Constructs the empty new document adoc. this document will have the format format. if initdocument is redefined for a specific application, the new document is handled by the applicative session.
+Constructs the empty new document aDoc. This document will have the format format. If InitDocument is redefined for a specific application, the new document is handled by the applicative session.
 ") NewDocument;
 		virtual void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
 
@@ -394,7 +399,7 @@ None
 
 Description
 -----------
-A non-virtual method taking a tdocstd_documment object as an input. internally it calls a virtual method newdocument() with cdm_document object.
+A non-virtual method taking a TDocStd_Documment object as an input. Internally it calls a virtual method NewDocument() with CDM_Document object.
 ") NewDocument;
 		void NewDocument(TCollection_ExtendedString format, opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -412,7 +417,7 @@ None
 
 Description
 -----------
-Notification that is fired at each aborttransaction event.
+Notification that is fired at each AbortTransaction event.
 ") OnAbortTransaction;
 		virtual void OnAbortTransaction(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -430,7 +435,7 @@ None
 
 Description
 -----------
-Notification that is fired at each committransaction event.
+Notification that is fired at each CommitTransaction event.
 ") OnCommitTransaction;
 		virtual void OnCommitTransaction(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -448,7 +453,7 @@ None
 
 Description
 -----------
-Notification that is fired at each opentransaction event.
+Notification that is fired at each OpenTransaction event.
 ") OnOpenTransaction;
 		virtual void OnOpenTransaction(const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -469,7 +474,11 @@ PCDM_ReaderStatus
 
 Description
 -----------
-Retrieves the document from specified file. in order not to override a version of the document which is already in memory, this method can be made to depend on the value returned by isinsession. @param[in] thepath file path to open @param[out] thedoc result document @param[in] thefilter optional filter to skip attributes or parts of the retrieved tree @param[in] therange optional progress indicator return reading status.
+Retrieves the document from specified file. In order not to override a version of the document which is already in memory, this method can be made to depend on the value returned by IsInSession. 
+Input parameter: thePath file path to open @param[out] theDoc result document 
+Input parameter: theFilter optional filter to skip attributes or parts of the retrieved tree 
+Input parameter: theRange optional progress indicator 
+Return: reading status.
 ") Open;
 		PCDM_ReaderStatus Open(TCollection_ExtendedString thePath, opencascade::handle<TDocStd_Document> & theDoc, const opencascade::handle<PCDM_ReaderFilter> & theFilter, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -489,7 +498,10 @@ PCDM_ReaderStatus
 
 Description
 -----------
-Retrieves the document from specified file. in order not to override a version of the document which is already in memory, this method can be made to depend on the value returned by isinsession. @param[in] thepath file path to open @param[out] thedoc result document @param[in] therange optional progress indicator return reading status.
+Retrieves the document from specified file. In order not to override a version of the document which is already in memory, this method can be made to depend on the value returned by IsInSession. 
+Input parameter: thePath file path to open @param[out] theDoc result document 
+Input parameter: theRange optional progress indicator 
+Return: reading status.
 ") Open;
 		PCDM_ReaderStatus Open(TCollection_ExtendedString thePath, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -510,7 +522,10 @@ PCDM_ReaderStatus
 
 Description
 -----------
-Retrieves document from standard stream. @param[in,out] theistream input seekable stream @param[out] thedoc result document @param[in] thefilter optional filter to skip attributes or parts of the retrieved tree @param[in] therange optional progress indicator return reading status.
+Retrieves document from standard stream. @param[in,out] theIStream input seekable stream @param[out] theDoc result document 
+Input parameter: theFilter optional filter to skip attributes or parts of the retrieved tree 
+Input parameter: theRange optional progress indicator 
+Return: reading status.
 ") Open;
 		PCDM_ReaderStatus Open(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theDoc, const opencascade::handle<PCDM_ReaderFilter> & theFilter, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -530,7 +545,9 @@ PCDM_ReaderStatus
 
 Description
 -----------
-Retrieves document from standard stream. @param[in,out] theistream input seekable stream @param[out] thedoc result document @param[in] therange optional progress indicator return reading status.
+Retrieves document from standard stream. @param[in,out] theIStream input seekable stream @param[out] theDoc result document 
+Input parameter: theRange optional progress indicator 
+Return: reading status.
 ") Open;
 		PCDM_ReaderStatus Open(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -548,7 +565,8 @@ None
 
 Description
 -----------
-Returns the sequence of reading formats supported by the application. //! @param theformats - sequence of reading formats. output parameter.
+Returns the sequence of reading formats supported by the application. //! 
+Parameter theFormats - sequence of reading formats. Output parameter.
 ") ReadingFormats;
 		void ReadingFormats(TColStd_SequenceOfAsciiString & theFormats);
 
@@ -561,7 +579,7 @@ opencascade::handle<Resource_Manager>
 
 Description
 -----------
-Returns resource manager defining supported persistent formats. //! default implementation loads resource file with name resourcesname(), unless field myresources is already initialized (either by previous call or in any other way). //! the resource manager should define: //! * format name for each file extension supported: - [extension].fileformat: [format] //! * for each format supported (as returned by formats()), its extension, description string, and (when applicable) guids of storage and retrieval plugins: - [format].description: [description] - [format].fileextension: [extension] - [format].retrievalplugin: [guid] (optional) - [format].storageplugin: [guid] (optional).
+Returns resource manager defining supported persistent formats. //! Default implementation loads resource file with name ResourcesName(), unless field myResources is already initialized (either by previous call or in any other way). //! The resource manager should define: //! * Format name for each file extension supported: - [Extension].FileFormat: [Format] //! * For each format supported (as returned by Formats()), its extension, description string, and (when applicable) GUIDs of storage and retrieval plugins: - [Format].Description: [Description] - [Format].FileExtension: [Extension] - [Format].RetrievalPlugin: [GUID] (optional) - [Format].StoragePlugin: [GUID] (optional).
 ") Resources;
 		virtual opencascade::handle<Resource_Manager> Resources();
 
@@ -574,7 +592,7 @@ str
 
 Description
 -----------
-Returns the name of the file containing the resources of this application, for support of legacy method of loading formats data from resource files. //! method defineformat() can be used to define all necessary parameters explicitly without actually using resource files. //! in a resource file, the application associates the schema name of the document with the storage and retrieval plug-ins that are to be loaded for each document. on retrieval, the application reads the schema name in the heading of the csf file and loads the plug-in indicated in the resource file. this plug-in instantiates the actual driver for transient-persistent conversion. your application can bring this process into play by defining a class which inherits cdf_application and redefines the function which returns the appropriate resources file. at this point, the function retrieve and the class cdf_store can be called. this allows you to deal with storage and retrieval of - as well as copying and pasting - documents. to implement a class like this, several virtual functions should be redefined. in particular, you must redefine the abstract function resources inherited from the superclass cdm_application. //! default implementation returns empty string.
+Returns the name of the file containing the resources of this application, for support of legacy method of loading formats data from resource files. //! Method DefineFormat() can be used to define all necessary parameters explicitly without actually using resource files. //! In a resource file, the application associates the schema name of the document with the storage and retrieval plug-ins that are to be loaded for each document. On retrieval, the application reads the schema name in the heading of the CSF file and loads the plug-in indicated in the resource file. This plug-in instantiates the actual driver for transient-persistent conversion. Your application can bring this process into play by defining a class which inherits CDF_Application and redefines the function which returns the appropriate resources file. At this point, the function Retrieve and the class CDF_Store can be called. This allows you to deal with storage and retrieval of - as well as copying and pasting - documents. To implement a class like this, several virtual functions should be redefined. In particular, you must redefine the abstract function Resources inherited from the superclass CDM_Application. //! Default implementation returns empty string.
 ") ResourcesName;
 		virtual Standard_CString ResourcesName();
 
@@ -593,7 +611,7 @@ PCDM_StoreStatus
 
 Description
 -----------
-Save adoc active document. exceptions: standard_notimplemented if the document was not retrieved in the applicative session by using open.
+Save aDoc active document. Exceptions: Standard_NotImplemented if the document was not retrieved in the applicative session by using Open.
 ") Save;
 		PCDM_StoreStatus Save(const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -652,7 +670,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Save thedoc to standard seekable stream theostream. the stream should support seek functionality.
+Save theDoc to standard SEEKABLE stream theOStream. the stream should support SEEK functionality.
 ") SaveAs;
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -693,7 +711,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Save thedoc to standard seekable stream theostream. the stream should support seek functionality.
+Save theDoc TO standard SEEKABLE stream theOStream. the stream should support SEEK functionality.
 ") SaveAs;
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, std::ostream &OutValue, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -711,7 +729,8 @@ None
 
 Description
 -----------
-Returns the sequence of writing formats supported by the application. //! @param theformats - sequence of writing formats. output parameter.
+Returns the sequence of writing formats supported by the application. //! 
+Parameter theFormats - sequence of writing formats. Output parameter.
 ") WritingFormats;
 		void WritingFormats(TColStd_SequenceOfAsciiString & theFormats);
 
@@ -830,7 +849,7 @@ None
 
 Description
 -----------
-Creates a compound delta. validates <self> at <abegintime>. if applied, it restores the tdf_data in the state it was at <anendtime>. reserved to tdf_data.
+Creates a compound delta. Validates <self> at <aBeginTime>. If applied, it restores the TDF_Data in the state it was at <anEndTime>. Reserved to TDF_Data.
 ") TDocStd_CompoundDelta;
 		 TDocStd_CompoundDelta();
 
@@ -922,7 +941,7 @@ None
 
 Description
 -----------
-Constructs a document object defined by the string astorageformat. if a document is created outside of an application using this constructor, it must be managed by a handle. otherwise memory problems could appear: call of tdocstd_owner::getdocument creates a opencascade::handle<tdocstd_document>, so, releasing it will produce a crash.
+Constructs a document object defined by the string astorageformat. If a document is created outside of an application using this constructor, it must be managed by a Handle. Otherwise memory problems could appear: call of TDocStd_Owner::GetDocument creates a opencascade::handle<TDocStd_Document>, so, releasing it will produce a crash.
 ") TDocStd_Document;
 		 TDocStd_Document(TCollection_ExtendedString astorageformat);
 
@@ -935,7 +954,7 @@ None
 
 Description
 -----------
-Abort the command transaction. does nothing if there is no command transaction open.
+Abort the Command transaction. Does nothing If there is no Command transaction open.
 ") AbortCommand;
 		void AbortCommand();
 
@@ -966,7 +985,7 @@ None
 
 Description
 -----------
-Methods for the nested transaction mode.
+methods for the nested transaction mode.
 ") ChangeStorageFormat;
 		virtual void ChangeStorageFormat(TCollection_ExtendedString newStorageFormat);
 
@@ -997,7 +1016,7 @@ None
 
 Description
 -----------
-Remove all stored redos.
+Remove all stored Redos.
 ") ClearRedos;
 		void ClearRedos();
 
@@ -1010,7 +1029,7 @@ None
 
 Description
 -----------
-Remove all stored undos and redos.
+Remove all stored Undos and Redos.
 ") ClearUndos;
 		void ClearUndos();
 
@@ -1023,7 +1042,7 @@ bool
 
 Description
 -----------
-Commits documents transactions and fills the transaction manager with documents that have been changed during the transaction. if no command transaction is open, nothing is done. returns true if a new delta has been added to myundos.
+Commits documents transactions and fills the transaction manager with documents that have been changed during the transaction. If no command transaction is open, nothing is done. Returns True if a new delta has been added to myUndos.
 ") CommitCommand;
 		Standard_Boolean CommitCommand();
 
@@ -1088,7 +1107,7 @@ opencascade::handle<TDocStd_Document>
 
 Description
 -----------
-Will abort any execution, clear fields returns the document which contains <l>. raises an exception if the document is not found.
+Will Abort any execution, clear fields returns the document which contains <L>. raises an exception if the document is not found.
 ") Get;
 		static opencascade::handle<TDocStd_Document> Get(const TDF_Label & L);
 
@@ -1101,7 +1120,7 @@ int
 
 Description
 -----------
-Returns the number of redos stored in this document. if this figure is greater than 0, the method redo can be used.
+Returns the number of redos stored in this document. If this figure is greater than 0, the method Redo can be used.
 ") GetAvailableRedos;
 		Standard_Integer GetAvailableRedos();
 
@@ -1114,7 +1133,7 @@ int
 
 Description
 -----------
-Returns the number of undos stored in this document. if this figure is greater than 0, the method undo can be used.
+Returns the number of undos stored in this document. If this figure is greater than 0, the method Undo can be used.
 ") GetAvailableUndos;
 		Standard_Integer GetAvailableUndos();
 
@@ -1153,7 +1172,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Raise if <self> is not saved.
+raise if <self> is not saved.
 ") GetName;
 		TCollection_ExtendedString GetName();
 
@@ -1166,7 +1185,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Returns the os path of the file, in which one <self> is saved. raise an exception if <self> is not saved.
+returns the OS path of the file, in which one <self> is saved. Raise an exception if <self> is not saved.
 ") GetPath;
 		TCollection_ExtendedString GetPath();
 
@@ -1192,7 +1211,7 @@ int
 
 Description
 -----------
-Returns value of <mysavedtime> to be used later in setsavedtime().
+Returns value of <mySavedTime> to be used later in SetSavedTime().
 ") GetSavedTime;
 		Standard_Integer GetSavedTime();
 
@@ -1231,7 +1250,7 @@ bool
 
 Description
 -----------
-Returns true if a command transaction is open in the curret .
+returns True if a Command transaction is open in the current .
 ") HasOpenCommand;
 		Standard_Boolean HasOpenCommand();
 
@@ -1244,7 +1263,7 @@ bool
 
 Description
 -----------
-Initializes the procedure of delta compaction returns false if there is no delta to compact marks the last delta as a 'from' delta.
+Initializes the procedure of delta compaction Returns false if there is no delta to compact Marks the last delta as a 'from' delta.
 ") InitDeltaCompaction;
 		Standard_Boolean InitDeltaCompaction();
 
@@ -1257,7 +1276,7 @@ bool
 
 Description
 -----------
-Returns true if document differs from the state of last saving. this method have to be called only working in the transaction mode.
+returns True if document differs from the state of last saving. this method have to be called only working in the transaction mode.
 ") IsChanged;
 		Standard_Boolean IsChanged();
 
@@ -1270,7 +1289,7 @@ bool
 
 Description
 -----------
-Returns true if the main label has no attributes.
+Returns True if the main label has no attributes.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -1283,7 +1302,7 @@ bool
 
 Description
 -----------
-Returns standard_true if mode is set.
+Returns Standard_True if mode is set.
 ") IsNestedTransactionMode;
 		Standard_Boolean IsNestedTransactionMode();
 
@@ -1296,7 +1315,7 @@ bool
 
 Description
 -----------
-The document is saved in a file.
+the document is saved in a file.
 ") IsSaved;
 		Standard_Boolean IsSaved();
 
@@ -1309,7 +1328,7 @@ bool
 
 Description
 -----------
-Returns false if the document has been modified but not recomputed.
+Returns False if the document has been modified but not recomputed.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -1322,7 +1341,7 @@ TDF_Label
 
 Description
 -----------
-Returns the main label in this data framework. by definition, this is the label with the entry 0:1.
+Returns the main label in this data framework. By definition, this is the label with the entry 0:1.
 ") Main;
 		TDF_Label Main();
 
@@ -1335,7 +1354,7 @@ bool
 
 Description
 -----------
-Returns true if changes allowed only inside transactions.
+returns True if changes allowed only inside transactions.
 ") ModificationMode;
 		Standard_Boolean ModificationMode();
 
@@ -1348,7 +1367,7 @@ None
 
 Description
 -----------
-Launches a new command. this command may be undone.
+Launches a new command. This command may be undone.
 ") NewCommand;
 		void NewCommand();
 
@@ -1361,7 +1380,7 @@ None
 
 Description
 -----------
-Opens a new command transaction in this document. you can use hasopencommand to see whether a command is already open. exceptions standard_domainerror if a command is already open in this document.
+Opens a new command transaction in this document. You can use HasOpenCommand to see whether a command is already open. Exceptions Standard_DomainError if a command is already open in this document.
 ") OpenCommand;
 		void OpenCommand();
 
@@ -1374,7 +1393,7 @@ bool
 
 Description
 -----------
-Performs the procedure of delta compaction makes all deltas starting from 'from' delta till the last one to be one delta.
+Performs the procedure of delta compaction Makes all deltas starting from 'from' delta till the last one to be one delta.
 ") PerformDeltaCompaction;
 		Standard_Boolean PerformDeltaCompaction();
 
@@ -1387,7 +1406,7 @@ None
 
 Description
 -----------
-Remove all modifications. after this call the document becomesagain valid.
+Remove all modifications. After this call The document becomesagain Valid.
 ") PurgeModified;
 		void PurgeModified();
 
@@ -1400,7 +1419,7 @@ None
 
 Description
 -----------
-Recompute if the document was not valid and propagate the reccorded modification.
+Recompute if the document was not valid and propagate the recorded modification.
 ") Recompute;
 		void Recompute();
 
@@ -1413,7 +1432,7 @@ bool
 
 Description
 -----------
-Will redo one step, returns false if no redo was done (redos == 0). otherwise, true is returned, and one step in the list of redoes is done again.
+Will REDO one step, returns False if no redo was done (Redos == 0). Otherwise, true is returned, and one step in the list of redoes is done again.
 ") Redo;
 		Standard_Boolean Redo();
 
@@ -1426,7 +1445,7 @@ None
 
 Description
 -----------
-Removes the first undo in the list of document undos. it is used in the application when the undo limit is exceed.
+Removes the first undo in the list of document undos. It is used in the application when the undo limit is exceed.
 ") RemoveFirstUndo;
 		void RemoveFirstUndo();
 
@@ -1462,7 +1481,7 @@ None
 
 Description
 -----------
-Sets saving mode for empty labels. if standard_true, empty labels will be saved.
+Sets saving mode for empty labels. If Standard_True, empty labels will be saved.
 ") SetEmptyLabelsSavingMode;
 		void SetEmptyLabelsSavingMode(const Standard_Boolean isAllowed);
 
@@ -1480,7 +1499,7 @@ None
 
 Description
 -----------
-If thetransactiononly is true changes is denied outside transactions.
+if theTransactionOnly is True changes is denied outside transactions.
 ") SetModificationMode;
 		void SetModificationMode(const Standard_Boolean theTransactionOnly);
 
@@ -1498,7 +1517,7 @@ None
 
 Description
 -----------
-Notify the label as modified, the document becomes unvalid. returns true if <l> has been notified as modified.
+Notify the label as modified, the Document becomes UnValid. returns True if <L> has been notified as modified.
 ") SetModified;
 		void SetModified(const TDF_Label & L);
 
@@ -1516,7 +1535,7 @@ None
 
 Description
 -----------
-Sets nested transaction mode if isallowed == standard_true.
+Sets nested transaction mode if isAllowed == Standard_True.
 ") SetNestedTransactionMode;
 		void SetNestedTransactionMode(const Standard_Boolean isAllowed = Standard_True);
 
@@ -1547,7 +1566,7 @@ None
 
 Description
 -----------
-Say to document what it is not saved. use value, returned earlier by getsavedtime().
+Say to document what it is not saved. Use value, returned earlier by GetSavedTime().
 ") SetSavedTime;
 		void SetSavedTime(const Standard_Integer theTime);
 
@@ -1565,7 +1584,7 @@ None
 
 Description
 -----------
-Set the limit on the number of undo delta stored 0 will disable undo on the document a negative value means no limit. note that by default undo is disabled. enabling it will take effect with the next call to newcommand. of course this limit is the same for redo.
+Set the limit on the number of Undo Delta stored 0 will disable Undo on the document A negative value means no limit. Note that by default Undo is disabled. Enabling it will take effect with the next call to NewCommand. Of course this limit is the same for Redo.
 ") SetUndoLimit;
 		void SetUndoLimit(const Standard_Integer L);
 
@@ -1604,7 +1623,7 @@ bool
 
 Description
 -----------
-Will undo one step, returns false if no undo was done (undos == 0). otherwise, true is returned and one step in the list of undoes is undone.
+Will UNDO one step, returns False if no undo was done (Undos == 0). Otherwise, true is returned and one step in the list of undoes is undone.
 ") Undo;
 		Standard_Boolean Undo();
 
@@ -1624,7 +1643,7 @@ None
 
 Description
 -----------
-This method update will be called to signal the end of the modified references list. the document should be recomputed and updatefromdocuments should be called. update should returns true in case of success, false otherwise. in case of failure, additional information can be given in errorstring. update the document by propagation ================================== update the document from internal stored modifications. if you want to undoing this operation, please call newcommand before. to change format (advanced programming) ================.
+This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString. Update the document by propagation ================================== Update the document from internal stored modifications. If you want to undoing this operation, please call NewCommand before. to change format (advanced programming) ================.
 ") Update;
 		virtual void Update(const opencascade::handle<CDM_Document> & aToDocument, const Standard_Integer aReferenceIdentifier, const Standard_Address aModifContext);
 
@@ -1642,7 +1661,7 @@ None
 
 Description
 -----------
-Set modifications on labels impacted by external references to the entry. the document becomes invalid and must be recomputed.
+Set modifications on labels impacted by external references to the entry. The document becomes invalid and must be recomputed.
 ") UpdateReferences;
 		void UpdateReferences(TCollection_AsciiString aDocEntry);
 
@@ -1707,7 +1726,7 @@ bool
 
 Description
 -----------
-Add <l> as modified.
+add <L> as modified.
 ") AddLabel;
 		Standard_Boolean AddLabel(const TDF_Label & L);
 
@@ -1725,7 +1744,7 @@ None
 
 Description
 -----------
-Remove all modified labels. becomes empty.
+remove all modified labels. becomes empty.
 ") Clear;
 		static void Clear(const TDF_Label & access);
 
@@ -1791,7 +1810,7 @@ TDF_LabelMap
 
 Description
 -----------
-If <isempty> raise an exception.
+if <IsEmpty> raise an exception.
 ") Get;
 		static const TDF_LabelMap & Get(const TDF_Label & access);
 
@@ -1804,7 +1823,7 @@ TDF_LabelMap
 
 Description
 -----------
-Returns modified label map.
+returns modified label map.
 ") Get;
 		const TDF_LabelMap & Get();
 
@@ -1848,7 +1867,7 @@ bool
 
 Description
 -----------
-Api class methods =================.
+API class methods =================.
 ") IsEmpty;
 		static Standard_Boolean IsEmpty(const TDF_Label & access);
 
@@ -1929,7 +1948,7 @@ bool
 
 Description
 -----------
-Remove <l> as modified.
+remove <L> as modified.
 ") RemoveLabel;
 		Standard_Boolean RemoveLabel(const TDF_Label & L);
 
@@ -2046,7 +2065,7 @@ bool
 
 Description
 -----------
-Commits transaction in all documents and fills the transaction manager with the documents that have been changed during the transaction. returns true if new data has been added to myundos. note: all nested transactions in the documents will be committed.
+Commits transaction in all documents and fills the transaction manager with the documents that have been changed during the transaction. Returns True if new data has been added to myUndos. NOTE: All nested transactions in the documents will be committed.
 ") CommitCommand;
 		Standard_Boolean CommitCommand();
 
@@ -2064,7 +2083,7 @@ bool
 
 Description
 -----------
-Makes the same steps as the previous function but defines the name for transaction. returns true if new data has been added to myundos.
+Makes the same steps as the previous function but defines the name for transaction. Returns True if new data has been added to myUndos.
 ") CommitCommand;
 		Standard_Boolean CommitCommand(TCollection_ExtendedString theName);
 
@@ -2159,7 +2178,7 @@ bool
 
 Description
 -----------
-Returns standard_true if nestedtransaction mode is set. methods for protection of changes outside transactions.
+Returns Standard_True if NestedTransaction mode is set. Methods for protection of changes outside transactions.
 ") IsNestedTransactionMode;
 		Standard_Boolean IsNestedTransactionMode();
 
@@ -2172,7 +2191,7 @@ bool
 
 Description
 -----------
-Returns true if changes are allowed only inside transactions.
+Returns True if changes are allowed only inside transactions.
 ") ModificationMode;
 		Standard_Boolean ModificationMode();
 
@@ -2185,7 +2204,7 @@ None
 
 Description
 -----------
-Opens transaction in each document and sets the flag that transaction is opened. if there are already opened transactions in the documents, these transactions will be aborted before opening new ones.
+Opens transaction in each document and sets the flag that transaction is opened. If there are already opened transactions in the documents, these transactions will be aborted before opening new ones.
 ") OpenCommand;
 		void OpenCommand();
 
@@ -2198,7 +2217,7 @@ None
 
 Description
 -----------
-Redoes the current transaction of the application. it calls the redo () method of the document being on top of the manager list of redos (list.first()) and moves the list item to the top of the list of manager undos (list.prepend(item)).
+Redoes the current transaction of the application. It calls the Redo () method of the document being on top of the manager list of redos (list.First()) and moves the list item to the top of the list of manager undos (list.Prepend(item)).
 ") Redo;
 		void Redo();
 
@@ -2247,7 +2266,7 @@ None
 
 Description
 -----------
-If thetransactiononly is true, denies all changes outside transactions.
+If theTransactionOnly is True, denies all changes outside transactions.
 ") SetModificationMode;
 		void SetModificationMode(const Standard_Boolean theTransactionOnly);
 
@@ -2265,7 +2284,7 @@ None
 
 Description
 -----------
-Sets nested transaction mode if isallowed == standard_true note: field myisnestedtransactionmode exists only for synchronization between several documents and has no effect on transactions of multitransaction manager.
+Sets nested transaction mode if isAllowed == Standard_True NOTE: field myIsNestedTransactionMode exists only for synchronization between several documents and has no effect on transactions of multitransaction manager.
 ") SetNestedTransactionMode;
 		void SetNestedTransactionMode(const Standard_Boolean isAllowed = Standard_True);
 
@@ -2296,7 +2315,7 @@ None
 
 Description
 -----------
-Undoes the current transaction of the manager. it calls the undo () method of the document being on top of the manager list of undos (list.first()) and moves the list item to the top of the list of manager redos (list.prepend(item)).
+Undoes the current transaction of the manager. It calls the Undo () method of the document being on top of the manager list of undos (list.First()) and moves the list item to the top of the list of manager redos (list.Prepend(item)).
 ") Undo;
 		void Undo();
 
@@ -2407,7 +2426,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2696,7 +2715,7 @@ None
 
 Description
 -----------
-Updates the xlinkroot attribute by adding <self> to its list.
+Updates the XLinkRoot attribute by adding <self> to its list.
 ") AfterAddition;
 		void AfterAddition();
 
@@ -2715,7 +2734,7 @@ bool
 
 Description
 -----------
-Something to do after applying <anattdelta>.
+Something to do after applying <anAttDelta>.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -2728,7 +2747,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns a null handle. raise always for it is nonsense to use this method.
+Returns a null handle. Raise always for it is nonsense to use this method.
 ") BackupCopy;
 		opencascade::handle<TDF_Attribute> BackupCopy();
 
@@ -2741,7 +2760,7 @@ None
 
 Description
 -----------
-Updates the xlinkroot attribute by removing <self> from its list.
+Updates the XLinkRoot attribute by removing <self> from its list.
 ") BeforeRemoval;
 		void BeforeRemoval();
 
@@ -2760,7 +2779,7 @@ bool
 
 Description
 -----------
-Something to do before applying <anattdelta>.
+Something to do before applying <anAttDelta>.
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -2778,7 +2797,7 @@ None
 
 Description
 -----------
-Sets the name adocentry for the external document in this external link attribute.
+Sets the name aDocEntry for the external document in this external link attribute.
 ") DocumentEntry;
 		void DocumentEntry(TCollection_AsciiString aDocEntry);
 
@@ -2791,7 +2810,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the contents of the document identified by adocentry. adocentry provides external data to this external link attribute.
+Returns the contents of the document identified by aDocEntry. aDocEntry provides external data to this external link attribute.
 ") DocumentEntry;
 		const TCollection_AsciiString & DocumentEntry();
 
@@ -2808,7 +2827,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the attribute on <astream>.
+Dumps the attribute on <aStream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -2821,7 +2840,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for external links.
+Returns the GUID for external links.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2834,7 +2853,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2852,7 +2871,7 @@ None
 
 Description
 -----------
-Sets the label entry for this external link attribute with the label alabel. alabel pilots the importation of data from the document entry.
+Sets the label entry for this external link attribute with the label aLabel. aLabel pilots the importation of data from the document entry.
 ") LabelEntry;
 		void LabelEntry(const TDF_Label & aLabel);
 
@@ -2870,7 +2889,7 @@ None
 
 Description
 -----------
-Sets the label entry for this external link attribute as a document identified by alabentry.
+Sets the label entry for this external link attribute as a document identified by aLabEntry.
 ") LabelEntry;
 		void LabelEntry(TCollection_AsciiString aLabEntry);
 
@@ -2883,7 +2902,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the contents of the field <mylabelentry>.
+Returns the contents of the field <myLabelEntry>.
 ") LabelEntry;
 		const TCollection_AsciiString & LabelEntry();
 
@@ -2951,7 +2970,7 @@ opencascade::handle<TDocStd_XLink>
 
 Description
 -----------
-Sets an empty external reference, at the label alabel.
+Sets an empty external reference, at the label aLabel.
 ") Set;
 		static opencascade::handle<TDocStd_XLink> Set(const TDF_Label & atLabel);
 
@@ -3011,7 +3030,7 @@ None
 
 Description
 -----------
-Creates an iterator on reference of <d>.
+Creates an iterator on Reference of <D>.
 ") TDocStd_XLinkIterator;
 		 TDocStd_XLinkIterator(const opencascade::handle<TDocStd_Document> & D);
 
@@ -3029,7 +3048,7 @@ None
 
 Description
 -----------
-Restarts an iteration with <d>.
+Restarts an iteration with <D>.
 ") Initialize;
 		void Initialize(const opencascade::handle<TDocStd_Document> & D);
 
@@ -3042,7 +3061,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -3113,7 +3132,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the attribute on <astream>.
+Dumps the attribute on <aStream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -3126,7 +3145,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id: 2a96b61d-ec8b-11d0-bee7-080009dc3333.
+Returns the ID: 2a96b61d-ec8b-11d0-bee7-080009dc3333.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -3139,7 +3158,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -3157,7 +3176,7 @@ None
 
 Description
 -----------
-Inserts <anxlinkptr> at the beginning of the xlink chain.
+Inserts <anXLinkPtr> at the beginning of the XLink chain.
 ") Insert;
 		static void Insert(const TDocStd_XLinkPtr & anXLinkPtr);
 
@@ -3207,7 +3226,7 @@ None
 
 Description
 -----------
-Removes <anxlinkptr> from the xlink chain, if it exists.
+Removes <anXLinkPtr> from the XLink chain, if it exists.
 ") Remove;
 		static void Remove(const TDocStd_XLinkPtr & anXLinkPtr);
 
@@ -3243,7 +3262,7 @@ opencascade::handle<TDocStd_XLinkRoot>
 
 Description
 -----------
-Sets an empty xlinkroot to root or gets the existing one. only one attribute per tdf_data.
+Sets an empty XLinkRoot to Root or gets the existing one. Only one attribute per TDF_Data.
 ") Set;
 		static opencascade::handle<TDocStd_XLinkRoot> Set(const opencascade::handle<TDF_Data> & aDF);
 
@@ -3291,7 +3310,7 @@ None
 
 Description
 -----------
-Copy the content of <fromsource> under <intarget>. no link is registered. no check is done. example opencascade::handle<tdocstd_document> doc, xdoc; tdf_label l, xl; tdocstd_xlinktool xlinktool; xlinktool.copy(l,xl); exceptions: standard_domainerror if the contents of fromsource are not entirely in the scope of this label, in other words, are not self-contained. !!! ==> warning: if the document manages shapes use the next way: tdocstd_xlinktool xlinktool; xlinktool.copy(l,xl); toptools_datamapofshapeshape m; tnaming::changeshapes(target,m);.
+Copy the content of <fromsource> under <intarget>. No link is registered. No check is done. Example opencascade::handle<TDocStd_Document> DOC, XDOC; TDF_Label L, XL; TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); Exceptions: Standard_DomainError if the contents of fromsource are not entirely in the scope of this label, in other words, are not self-contained. !!! ==> Warning: If the document manages shapes use the next way: TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); TopTools_DataMapOfShapeShape M; TNaming::ChangeShapes(target,M);.
 ") Copy;
 		virtual void Copy(const TDF_Label & intarget, const TDF_Label & fromsource);
 
@@ -3310,7 +3329,7 @@ None
 
 Description
 -----------
-Copies the content of the label <fromsource> to the label <intarget>. the link is registered with an xlink attribute by <intarget> label. if the content of <fromsource> is not self-contained, and/or <intarget> has already an xlink attribute, an exception is raised.
+Copies the content of the label <fromsource> to the label <intarget>. The link is registered with an XLink attribute by <intarget> label. if the content of <fromsource> is not self-contained, and/or <intarget> has already an XLink attribute, an exception is raised.
 ") CopyWithLink;
 		void CopyWithLink(const TDF_Label & intarget, const TDF_Label & fromsource);
 
@@ -3367,7 +3386,7 @@ None
 
 Description
 -----------
-Update the external reference set at <l>. example opencascade::handle<tdocstd_document> adoc; if (!ocaftest::getdocument(1,adoc)) return 1; opencascade::handle<tdatastd_reference> aref; tdocstd_xlinktool xlinktool; if (!ocaftest::find(adoc,2),tdatastd_reference::getid(),aref) return 1; xlinktool.updatelink(aref->label()); exceptions standard_domainerror if <l> has no xlink attribute.
+Update the external reference set at <L>. Example opencascade::handle<TDocStd_Document> aDoc; if (!OCAFTest::GetDocument(1,aDoc)) return 1; opencascade::handle<TDataStd_Reference> aRef; TDocStd_XLinkTool xlinktool; if (!OCAFTest::Find(aDoc,2),TDataStd_Reference::GetID(),aRef) return 1; xlinktool.UpdateLink(aRef->Label()); Exceptions Standard_DomainError if <L> has no XLink attribute.
 ") UpdateLink;
 		void UpdateLink(const TDF_Label & L);
 

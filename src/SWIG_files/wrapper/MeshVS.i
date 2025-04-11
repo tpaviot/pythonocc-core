@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MESHVSDOCSTRING
 "MeshVS module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_meshvs.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_meshvs.html"
 %enddef
 %module (package="OCC.Core", docstring=MESHVSDOCSTRING) MeshVS
 
@@ -610,7 +610,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of the triangulation. if location transformation is set, it will be applied.
+Returns bounding box of the triangulation. If location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
@@ -628,7 +628,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of sub-entity with index theidx in sub-entity list.
+Returns bounding box of sub-entity with index theIdx in sub-entity list.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
@@ -647,7 +647,7 @@ float
 
 Description
 -----------
-Returns geometry center of sensitive entity index theidx along the given axis theaxis.
+Returns geometry center of sensitive entity index theIdx along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
@@ -718,7 +718,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2.
+Swaps items with indexes theIdx1 and theIdx2.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -754,7 +754,7 @@ NbNodes: int
 
 Description
 -----------
-This method returns topology information about 3d-element returns false if element with id isn't 3d or because other troubles.
+This method returns topology information about 3D-element Returns false if element with ID isn't 3D or because other troubles.
 ") Get3DGeom;
 		virtual Standard_Boolean Get3DGeom(const Standard_Integer ID, Standard_Integer &OutValue, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & Data);
 
@@ -773,7 +773,7 @@ Standard_Address
 
 Description
 -----------
-This method returns pointer which represents element or node data structure. this address will be saved in meshvs_meshentityowner, so that you can access to data structure fast by the method owner(). in the redefined method you can return null. id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ).
+This method returns pointer which represents element or node data structure. This address will be saved in MeshVS_MeshEntityOwner, so that you can access to data structure fast by the method Owner(). In the redefined method you can return NULL. ID is the numerical identificator of node or element IsElement indicates this ID describe node ( if Standard_False ) or element ( if Standard_True ).
 ") GetAddr;
 		virtual Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement);
 
@@ -830,7 +830,7 @@ Bnd_Box
 
 Description
 -----------
-Returns the bounding box of the whole mesh. it is used in advanced selection mode to define roughly the sensitive area of the mesh. it can be redefined to get access to a box computed in advance.
+Returns the bounding box of the whole mesh. It is used in advanced selection mode to define roughly the sensitive area of the mesh. It can be redefined to get access to a box computed in advance.
 ") GetBoundingBox;
 		virtual Bnd_Box GetBoundingBox();
 
@@ -853,7 +853,7 @@ DMin: float
 
 Description
 -----------
-Returns maps of entities (nodes and elements) detected by mouse click at the point (x,y) on the current view plane, with the tolerance atol. dmin - is out argument should return actual detection tolerance. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+Returns maps of entities (nodes and elements) detected by mouse click at the point (X,Y) on the current view plane, with the tolerance aTol. DMin - is out argument should return actual detection tolerance. Returns True if something is detected. It should be redefined if the advanced mesh selection is activated. Default implementation returns False.
 ") GetDetectedEntities;
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const Standard_Real X, const Standard_Real Y, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements, Standard_Real &OutValue);
 
@@ -878,7 +878,7 @@ bool
 
 Description
 -----------
-Returns maps of entities (nodes and elements) detected by mouse selection with rectangular box (xmin, ymin, xmax, ymax) on the current view plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+Returns maps of entities (nodes and elements) detected by mouse selection with rectangular box (XMin, YMin, XMax, YMax) on the current view plane, with the tolerance aTol. Returns True if something is detected. It should be redefined if the advanced mesh selection is activated. Default implementation returns False.
 ") GetDetectedEntities;
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
@@ -901,7 +901,7 @@ bool
 
 Description
 -----------
-Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <polyline> on the current view plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <Polyline> on the current view plane, with the tolerance aTol. Returns True if something is detected. It should be redefined if the advanced mesh selection is activated. Default implementation returns False.
 ") GetDetectedEntities;
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const TColgp_Array1OfPnt2d & Polyline, const Bnd_Box2d & aBox, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
@@ -921,7 +921,7 @@ bool
 
 Description
 -----------
-Filter out the maps of mesh entities so as to keep only the entities that are allowed to be selected according to the current context. returns true if any of the maps has been changed. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
+Filter out the maps of mesh entities so as to keep only the entities that are allowed to be selected according to the current context. Returns True if any of the maps has been changed. It should be redefined if the advanced mesh selection is activated. Default implementation returns False.
 ") GetDetectedEntities;
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
@@ -942,7 +942,7 @@ Type: MeshVS_EntityType
 
 Description
 -----------
-Returns geometry information about node or element id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ) coords is an array of coordinates of node(s). for node it is only 3 numbers: x, y, z in the strict order for element it is 3*n numbers, where n is number of this element vertices the order is strict also: x1, y1, z1, x2,...., where xi, yi, zi are coordinates of vertices nbnodes is number of nodes. it is recommended this parameter to be set to 1 for node. type is type of node or element (from enumeration). it is recommended this parameter to be set to meshvs_et_node for node.
+Returns geometry information about node or element ID is the numerical identificator of node or element IsElement indicates this ID describe node ( if Standard_False ) or element ( if Standard_True ) Coords is an array of coordinates of node(s). For node it is only 3 numbers: X, Y, Z in the strict order For element it is 3*n numbers, where n is number of this element vertices The order is strict also: X1, Y1, Z1, X2,...., where Xi, Yi, Zi are coordinates of vertices NbNodes is number of nodes. It is recommended this parameter to be set to 1 for node. Type is type of node or element (from enumeration). It is recommended this parameter to be set to MeshVS_ET_Node for node.
 ") GetGeom;
 		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
 
@@ -961,7 +961,7 @@ Type: MeshVS_EntityType
 
 Description
 -----------
-This method is similar to getgeom, but returns only element or node type.
+This method is similar to GetGeom, but returns only element or node type.
 ") GetGeomType;
 		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType &OutValue);
 
@@ -998,7 +998,7 @@ Standard_Address
 
 Description
 -----------
-This method returns pointer which represents group data structure. this address will be saved in meshvs_meshowner, so that you can access to data structure fast by the method owner(). in the redefined method you can return null. id is the numerical identificator of group.
+This method returns pointer which represents group data structure. This address will be saved in MeshVS_MeshOwner, so that you can access to data structure fast by the method Owner(). In the redefined method you can return NULL. ID is the numerical identificator of group.
 ") GetGroupAddr;
 		virtual Standard_Address GetGroupAddr(const Standard_Integer ID);
 
@@ -1019,7 +1019,7 @@ nz: float
 
 Description
 -----------
-This method return normal of node ranknode of face id, which is using for smooth shading presentation. returns false if normal isn't defined.
+This method return normal of node ranknode of face Id, which is using for smooth shading presentation. Returns false if normal isn't defined.
 ") GetNodeNormal;
 		virtual Standard_Boolean GetNodeNormal(const Standard_Integer ranknode, const Standard_Integer ElementId, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1038,7 +1038,7 @@ NbNodes: int
 
 Description
 -----------
-This method returns information about nodes this element consist of. id is the numerical identificator of element. nodeids is the output array of nodes ids in correct order, the same as coordinates returned by getgeom(). nbnodes is number of nodes (number of items set in nodeids). returns false if element does not exist.
+This method returns information about nodes this element consist of. ID is the numerical identificator of element. NodeIDs is the output array of nodes IDs in correct order, the same as coordinates returned by GetGeom(). NbNodes is number of nodes (number of items set in NodeIDs). Returns False if element does not exist.
 ") GetNodesByElement;
 		virtual Standard_Boolean GetNodesByElement(const Standard_Integer ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
 
@@ -1059,7 +1059,7 @@ nz: float
 
 Description
 -----------
-This method calculates normal of face, which is using for correct reflection presentation. there is default method, for advance reflection this method can be redefined. id is the numerical identificator of only element! max is maximal number of nodes an element can consist of nx, ny, nz are values whose represent coordinates of normal (will be returned) in the redefined method you can return normal with length more then 1, but in this case the appearance of element will be more bright than usual. for ordinary brightness you must return normal with length 1.
+This method calculates normal of face, which is using for correct reflection presentation. There is default method, for advance reflection this method can be redefined. Id is the numerical identificator of only element! Max is maximal number of nodes an element can consist of nx, ny, nz are values whose represent coordinates of normal (will be returned) In the redefined method you can return normal with length more then 1, but in this case the appearance of element will be more bright than usual. For ordinary brightness you must return normal with length 1.
 ") GetNormal;
 		virtual Standard_Boolean GetNormal(const Standard_Integer Id, const Standard_Integer Max, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1080,7 +1080,7 @@ bool
 
 Description
 -----------
-This method puts components of normal vectors at each node of a mesh face (at each face of a mesh volume) into the output array. returns false if some problem was detected during calculation of normals. id is an identifier of the mesh element. isnodal, when true, means that normals at mesh element nodes are needed. if nodal normals are not available, or isnodal is false, or the mesh element is a volume, then the output array contents depend on the element type: face: a normal calculated by getnormal() is duplicated for each node of the face; volume: normals to all faces of the volume are computed (not for each node!). maxnodes is maximal number of nodes an element can consist of. normals contains the result.
+This method puts components of normal vectors at each node of a mesh face (at each face of a mesh volume) into the output array. Returns false if some problem was detected during calculation of normals. Id is an identifier of the mesh element. IsNodal, when true, means that normals at mesh element nodes are needed. If nodal normals are not available, or IsNodal is false, or the mesh element is a volume, then the output array contents depend on the element type: face: a normal calculated by GetNormal() is duplicated for each node of the face; volume: normals to all faces of the volume are computed (not for each node!). MaxNodes is maximal number of nodes an element can consist of. Normals contains the result.
 ") GetNormalsByElement;
 		virtual Standard_Boolean GetNormalsByElement(const Standard_Integer Id, const Standard_Boolean IsNodal, const Standard_Integer MaxNodes, opencascade::handle<TColStd_HArray1OfReal> & Normals);
 
@@ -1093,7 +1093,7 @@ bool
 
 Description
 -----------
-Returns true if advanced mesh selection is enabled. default implementation returns false. it should be redefined to return true for advanced mesh selection activation.
+Returns True if advanced mesh selection is enabled. Default implementation returns False. It should be redefined to return True for advanced mesh selection activation.
 ") IsAdvancedSelectionEnabled;
 		virtual Standard_Boolean IsAdvancedSelectionEnabled();
 
@@ -1651,7 +1651,7 @@ None
 
 Description
 -----------
-Constructor. theisallowoverlapped is standard_true, if it is allowed to draw edges overlapped with beams its value is stored in drawer.
+Constructor. theIsAllowOverlapped is Standard_True, if it is allowed to draw edges overlapped with beams Its value is stored in drawer.
 ") MeshVS_Mesh;
 		 MeshVS_Mesh(const Standard_Boolean theIsAllowOverlapped = Standard_False);
 
@@ -1688,7 +1688,7 @@ None
 
 Description
 -----------
-Adds builder to tale of sequence. prsbuilder is builder to be added if treatashilighter is true, meshvs_mesh will use this builder to create presentation of hilighted and selected owners. only one builder can be hilighter, so that if you call this method with treatashilighter = standard_true some times, only last builder will be hilighter warning: as minimum one builder must be added as hilighter, otherwise selection cannot be computed.
+Adds builder to tale of sequence. PrsBuilder is builder to be added If TreatAsHilighter is true, MeshVS_Mesh will use this builder to create presentation of hilighted and selected owners. Only one builder can be hilighter, so that if you call this method with TreatAsHilighter = Standard_True some times, only last builder will be hilighter WARNING: As minimum one builder must be added as hilighter, otherwise selection cannot be computed.
 ") AddBuilder;
 		void AddBuilder(const opencascade::handle<MeshVS_PrsBuilder> & Builder, const Standard_Boolean TreatAsHilighter = Standard_False);
 
@@ -1721,7 +1721,7 @@ None
 
 Description
 -----------
-Computes presentation using builders added to sequence. each builder computes own part of mesh presentation according to its type.
+Computes presentation using builders added to sequence. Each builder computes own part of mesh presentation according to its type.
 ") Compute;
 		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Presentation> & thePrs, const Standard_Integer theDispMode);
 
@@ -1740,7 +1740,7 @@ None
 
 Description
 -----------
-Computes selection according to selectmode.
+Computes selection according to SelectMode.
 ") ComputeSelection;
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSel, const Standard_Integer theSelMode);
 
@@ -1761,6 +1761,24 @@ Description
 Finds builder by its type the string represents.
 ") FindBuilder;
 		opencascade::handle<MeshVS_PrsBuilder> FindBuilder(Standard_CString TypeString);
+
+		/****** MeshVS_Mesh::FindBuilder ******/
+		/****** md5 signature: 025d5ba783adc5c2f27acee9e9142ea4 ******/
+		%feature("compactdefaultargs") FindBuilder;
+		%feature("autodoc", "
+Parameters
+----------
+TypeString: Standard_Type
+
+Return
+-------
+opencascade::handle<MeshVS_PrsBuilder>
+
+Description
+-----------
+Finds builder by its type the type represents.
+") FindBuilder;
+		opencascade::handle<MeshVS_PrsBuilder> FindBuilder(const opencascade::handle<Standard_Type> & TypeString);
 
 		/****** MeshVS_Mesh::GetBuilder ******/
 		/****** md5 signature: 4c9607e94ac7aa236064857b9e1b7e7b ******/
@@ -1794,7 +1812,7 @@ opencascade::handle<MeshVS_PrsBuilder>
 
 Description
 -----------
-Returns builder by its id.
+Returns builder by its ID.
 ") GetBuilderById;
 		opencascade::handle<MeshVS_PrsBuilder> GetBuilderById(const Standard_Integer Id);
 
@@ -1846,7 +1864,7 @@ int
 
 Description
 -----------
-Returns the smallest positive id, not occupied by any builder. this method using when builder is created with id = -1.
+Returns the smallest positive ID, not occupied by any builder. This method using when builder is created with ID = -1.
 ") GetFreeId;
 		Standard_Integer GetFreeId();
 
@@ -1898,7 +1916,7 @@ MeshVS_MeshSelectionMethod
 
 Description
 -----------
-Returns set mesh selection method (see meshvs.cdl).
+Returns set mesh selection method (see MeshVS.cdl).
 ") GetMeshSelMethod;
 		MeshVS_MeshSelectionMethod GetMeshSelMethod();
 
@@ -1986,7 +2004,7 @@ bool
 
 Description
 -----------
-Returns true if specified element is hidden by default no elements are hidden.
+Returns True if specified element is hidden By default no elements are hidden.
 ") IsHiddenElem;
 		Standard_Boolean IsHiddenElem(const Standard_Integer ID);
 
@@ -2004,7 +2022,7 @@ bool
 
 Description
 -----------
-Returns true if specified node is hidden. by default all nodes are hidden.
+Returns True if specified node is hidden. By default all nodes are hidden.
 ") IsHiddenNode;
 		Standard_Boolean IsHiddenNode(const Standard_Integer ID);
 
@@ -2022,7 +2040,7 @@ bool
 
 Description
 -----------
-Returns true if specified element is not hidden.
+Returns True if specified element is not hidden.
 ") IsSelectableElem;
 		Standard_Boolean IsSelectableElem(const Standard_Integer ID);
 
@@ -2040,7 +2058,7 @@ bool
 
 Description
 -----------
-Returns true if specified node is specified as selectable.
+Returns True if specified node is specified as selectable.
 ") IsSelectableNode;
 		Standard_Boolean IsSelectableNode(const Standard_Integer ID);
 
@@ -2058,7 +2076,7 @@ bool
 
 Description
 -----------
-Returns true if the given owner represents a whole mesh.
+Returns True if the given owner represents a whole mesh.
 ") IsWholeMeshOwner;
 		virtual Standard_Boolean IsWholeMeshOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -2076,7 +2094,7 @@ None
 
 Description
 -----------
-Removes builder from sequence. if it is hilighter, hilighter will be null ( don't remember to set it to other after!!! ).
+Removes builder from sequence. If it is hilighter, hilighter will be NULL ( Don't remember to set it to other after!!! ).
 ") RemoveBuilder;
 		void RemoveBuilder(const Standard_Integer Index);
 
@@ -2094,7 +2112,7 @@ None
 
 Description
 -----------
-Removes builder with identificator id.
+Removes builder with identificator Id.
 ") RemoveBuilderById;
 		void RemoveBuilderById(const Standard_Integer Id);
 
@@ -2166,7 +2184,7 @@ None
 
 Description
 -----------
-Sets map of hidden nodes, which shall not be displayed individually. if nodes shared by some elements shall not be drawn, they should be included into that map.
+Sets map of hidden nodes, which shall not be displayed individually. If nodes shared by some elements shall not be drawn, they should be included into that map.
 ") SetHiddenNodes;
 		void SetHiddenNodes(const opencascade::handle<TColStd_HPackedMapOfInteger> & Ids);
 
@@ -2202,7 +2220,7 @@ bool
 
 Description
 -----------
-Sets builder with sequence index 'index' as hilighter.
+Sets builder with sequence index 'Index' as hilighter.
 ") SetHilighter;
 		Standard_Boolean SetHilighter(const Standard_Integer Index);
 
@@ -2220,7 +2238,7 @@ bool
 
 Description
 -----------
-Sets builder with identificator 'id' as hilighter.
+Sets builder with identificator 'Id' as hilighter.
 ") SetHilighterById;
 		Standard_Boolean SetHilighterById(const Standard_Integer Id);
 
@@ -2238,7 +2256,7 @@ None
 
 Description
 -----------
-Sets mesh selection method (see meshvs.cdl).
+Sets mesh selection method (see MeshVS.cdl).
 ") SetMeshSelMethod;
 		void SetMeshSelMethod(const MeshVS_MeshSelectionMethod M);
 
@@ -2269,7 +2287,7 @@ None
 
 Description
 -----------
-Automatically computes selectable nodes; the node is considered as being selectable if it is either not hidden, or is hidden but referred by at least one non-hidden element. thus all nodes that are visible (either individually, or as ends or corners of elements) are selectable by default.
+Automatically computes selectable nodes; the node is considered as being selectable if it is either not hidden, or is hidden but referred by at least one non-hidden element. Thus all nodes that are visible (either individually, or as ends or corners of elements) are selectable by default.
 ") UpdateSelectableNodes;
 		void UpdateSelectableNodes();
 
@@ -2360,7 +2378,7 @@ int
 
 Description
 -----------
-Returns id of element or node data structure.
+Returns ID of element or node data structure.
 ") ID;
 		Standard_Integer ID();
 
@@ -2680,7 +2698,7 @@ None
 
 Description
 -----------
-Builds presentation of certain type of data. prs is presentation object which this method constructs. ids is set of numeric identificators forming object appearance. idstoexclude is set of ids to exclude from processing. if some entity has been excluded, it is not processed by other builders. iselement indicates, ids is identificators of nodes or elements. displaymode is numeric constant describing display mode (see meshvs_displaymodeflags.hxx).
+Builds presentation of certain type of data. Prs is presentation object which this method constructs. IDs is set of numeric identificators forming object appearance. IDsToExclude is set of IDs to exclude from processing. If some entity has been excluded, it is not processed by other builders. IsElement indicates, IDs is identificators of nodes or elements. DisplayMode is numeric constant describing display mode (see MeshVS_DisplayModeFlags.hxx).
 ") Build;
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode);
 
@@ -2701,7 +2719,7 @@ None
 
 Description
 -----------
-This method is called to build presentation of custom elements (they have meshvs_et_0d type). ids is set of numeric identificators of elements for custom building. idstoexclude is set of ids to exclude from processing. if some entity has been excluded, it is not processed by other builders. displaymode is numeric constant describing display mode (see meshvs_displaymodeflags.hxx).
+This method is called to build presentation of custom elements (they have MeshVS_ET_0D type). IDs is set of numeric identificators of elements for custom building. IDsToExclude is set of IDs to exclude from processing. If some entity has been excluded, it is not processed by other builders. DisplayMode is numeric constant describing display mode (see MeshVS_DisplayModeFlags.hxx).
 ") CustomBuild;
 		virtual void CustomBuild(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Integer DisplayMode);
 
@@ -2720,7 +2738,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 
 Description
 -----------
-This method is called to build sensitive of custom elements ( they have meshvs_et_0d type ).
+This method is called to build sensitive of custom elements ( they have MeshVS_ET_0D type ).
 ") CustomSensitiveEntity;
 		virtual opencascade::handle<Select3D_SensitiveEntity> CustomSensitiveEntity(const opencascade::handle<SelectMgr_EntityOwner> & Owner, const Standard_Integer SelectMode);
 
@@ -2733,7 +2751,7 @@ opencascade::handle<MeshVS_DataSource>
 
 Description
 -----------
-Returns custom data source or default ( from meshvs_mesh ) if custom is null.
+Returns custom data source or default ( from MeshVS_Mesh ) if custom is NULL.
 ") GetDataSource;
 		opencascade::handle<MeshVS_DataSource> GetDataSource();
 
@@ -2746,7 +2764,7 @@ opencascade::handle<MeshVS_Drawer>
 
 Description
 -----------
-Returns custom drawer or default ( from meshvs_mesh ) if custom is null.
+Returns custom drawer or default ( from MeshVS_Mesh ) if custom is NULL.
 ") GetDrawer;
 		opencascade::handle<MeshVS_Drawer> GetDrawer();
 
@@ -2772,7 +2790,7 @@ int
 
 Description
 -----------
-Returns builder id.
+Returns builder ID.
 ") GetId;
 		Standard_Integer GetId();
 
@@ -2865,7 +2883,7 @@ None
 
 Description
 -----------
-Set excluding state. if it is standard_true, the nodes or elements, processed by current builder will be noted and next builder won't process its.
+Set excluding state. If it is Standard_True, the nodes or elements, processed by current builder will be noted and next builder won't process its.
 ") SetExcluding;
 		void SetExcluding(const Standard_Boolean state);
 
@@ -2901,7 +2919,7 @@ bool
 
 Description
 -----------
-Test whether display mode has flags assigned with this builder. this method has default implementation and can be redefined for advance behavior returns standard_true only if display mode is appropriate for this builder.
+Test whether display mode has flags assigned with this builder. This method has default implementation and can be redefined for advance behavior Returns Standard_True only if display mode is appropriate for this builder.
 ") TestFlags;
 		virtual Standard_Boolean TestFlags(const Standard_Integer DisplayMode);
 
@@ -3376,7 +3394,7 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 
 Description
 -----------
-Creates fill area aspect with values from drawer according to keys from drawerattribute.
+Creates fill area aspect with values from Drawer according to keys from DrawerAttribute.
 ") CreateAspectFillArea3d;
 		static opencascade::handle<Graphic3d_AspectFillArea3d> CreateAspectFillArea3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
@@ -3396,7 +3414,7 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 
 Description
 -----------
-Creates fill aspect with values from drawer according to keys from drawerattribute and specific material aspect.
+Creates fill aspect with values from Drawer according to keys from DrawerAttribute and specific material aspect.
 ") CreateAspectFillArea3d;
 		static opencascade::handle<Graphic3d_AspectFillArea3d> CreateAspectFillArea3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Graphic3d_MaterialAspect & Mat, const Standard_Boolean UseDefaults = Standard_True);
 
@@ -3415,7 +3433,7 @@ opencascade::handle<Graphic3d_AspectLine3d>
 
 Description
 -----------
-Creates line aspect with values from drawer according to keys from drawerattribute.
+Creates line aspect with values from Drawer according to keys from DrawerAttribute.
 ") CreateAspectLine3d;
 		static opencascade::handle<Graphic3d_AspectLine3d> CreateAspectLine3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
@@ -3434,7 +3452,7 @@ opencascade::handle<Graphic3d_AspectMarker3d>
 
 Description
 -----------
-Creates marker aspect with values from drawer according to keys from drawerattribute.
+Creates marker aspect with values from Drawer according to keys from DrawerAttribute.
 ") CreateAspectMarker3d;
 		static opencascade::handle<Graphic3d_AspectMarker3d> CreateAspectMarker3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
@@ -3453,7 +3471,7 @@ opencascade::handle<Graphic3d_AspectText3d>
 
 Description
 -----------
-Creates text aspect with values from drawer according to keys from drawerattribute.
+Creates text aspect with values from Drawer according to keys from DrawerAttribute.
 ") CreateAspectText3d;
 		static opencascade::handle<Graphic3d_AspectText3d> CreateAspectText3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
@@ -3472,7 +3490,7 @@ bool
 
 Description
 -----------
-Get an average of normals to non-planar polygon described by these points or compute normal of planar polygon. if the polygon isn't planar, function returns false.
+Get an average of normals to non-planar polygon described by these points or compute normal of planar polygon. If the polygon isn't planar, function returns false.
 ") GetAverageNormal;
 		static Standard_Boolean GetAverageNormal(const TColStd_Array1OfReal & Nodes, gp_Vec & Norm);
 
@@ -3491,7 +3509,7 @@ bool
 
 Description
 -----------
-Get one of normals to polygon described by these points. if the polygon isn't planar, function returns false.
+Get one of normals to polygon described by these points. If the polygon isn't planar, function returns false.
 ") GetNormal;
 		static Standard_Boolean GetNormal(const TColStd_Array1OfReal & Nodes, gp_Vec & Norm);
 
@@ -3509,12 +3527,6 @@ Get one of normals to polygon described by these points. if the polygon isn't pl
 *************************/
 class MeshVS_TwoColors {
 	public:
-		unsigned int r1;
-		unsigned int g1;
-		unsigned int b1;
-		unsigned int r2;
-		unsigned int g2;
-		unsigned int b2;
 
 %extend{
     bool __eq_wrapper__(const MeshVS_TwoColors other) {
@@ -3543,8 +3555,6 @@ def __eq__(self, right):
 ************************/
 class MeshVS_TwoNodes {
 	public:
-		int First;
-		int Second;
 		/****** MeshVS_TwoNodes::MeshVS_TwoNodes ******/
 		/****** md5 signature: 2b6bd8f3a56b7ff4d11d86701a1067ce ******/
 		%feature("compactdefaultargs") MeshVS_TwoNodes;
@@ -3702,7 +3712,7 @@ None
 
 Description
 -----------
-Constructor thenondeformds is canonical non-deformed data source, by which we are able to calculate deformed mesh geometry themagnify is coefficient of displacement magnify.
+Constructor theNonDeformDS is canonical non-deformed data source, by which we are able to calculate deformed mesh geometry theMagnify is coefficient of displacement magnify.
 ") MeshVS_DeformedDataSource;
 		 MeshVS_DeformedDataSource(const opencascade::handle<MeshVS_DataSource> & theNonDeformDS, const Standard_Real theMagnify);
 
@@ -3870,7 +3880,7 @@ bool
 
 Description
 -----------
-This method returns vector ( vect ) assigned to node number id.
+This method returns vector ( Vect ) assigned to node number ID.
 ") GetVector;
 		Standard_Boolean GetVector(const Standard_Integer ID, gp_Vec & Vect);
 
@@ -3938,7 +3948,7 @@ None
 
 Description
 -----------
-This method sets vector ( vect ) assigned to node number id.
+This method sets vector ( Vect ) assigned to node number ID.
 ") SetVector;
 		void SetVector(const Standard_Integer ID, const gp_Vec & Vect);
 
@@ -3956,7 +3966,7 @@ None
 
 Description
 -----------
-This method sets map of nodal displacement vectors (map).
+This method sets map of nodal displacement vectors (Map).
 ") SetVectors;
 		void SetVectors(const MeshVS_DataMapOfIntegerVector & Map);
 
@@ -4035,7 +4045,7 @@ bool
 
 Description
 -----------
-Returns color assigned with element number id.
+Returns color assigned with element number ID.
 ") GetColor1;
 		Standard_Boolean GetColor1(const Standard_Integer ID, Quantity_Color & theColor);
 
@@ -4054,7 +4064,7 @@ bool
 
 Description
 -----------
-Returns colors assigned with element number id.
+Returns colors assigned with element number ID.
 ") GetColor2;
 		Standard_Boolean GetColor2(const Standard_Integer ID, MeshVS_TwoColors & theColor);
 
@@ -4074,7 +4084,7 @@ bool
 
 Description
 -----------
-Returns colors assigned with element number id thecolor1 is the front element color thecolor2 is the back element color.
+Returns colors assigned with element number ID theColor1 is the front element color theColor2 is the back element color.
 ") GetColor2;
 		Standard_Boolean GetColor2(const Standard_Integer ID, Quantity_Color & theColor1, Quantity_Color & theColor2);
 
@@ -4145,7 +4155,7 @@ None
 
 Description
 -----------
-Sets color assigned with element number id.
+Sets color assigned with element number ID.
 ") SetColor1;
 		void SetColor1(const Standard_Integer ID, const Quantity_Color & theColor);
 
@@ -4164,7 +4174,7 @@ None
 
 Description
 -----------
-Sets colors assigned with element number id.
+Sets colors assigned with element number ID.
 ") SetColor2;
 		void SetColor2(const Standard_Integer ID, const MeshVS_TwoColors & theTwoColors);
 
@@ -4184,7 +4194,7 @@ None
 
 Description
 -----------
-Sets color assigned with element number id thecolor1 is the front element color thecolor2 is the back element color.
+Sets color assigned with element number ID theColor1 is the front element color theColor2 is the back element color.
 ") SetColor2;
 		void SetColor2(const Standard_Integer ID, const Quantity_Color & theColor1, const Quantity_Color & theColor2);
 
@@ -4258,7 +4268,7 @@ None
 
 Description
 -----------
-Creates builder with certain display mode flags, data source, id and priority.
+Creates builder with certain display mode flags, data source, ID and priority.
 ") MeshVS_MeshPrsBuilder;
 		 MeshVS_MeshPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, int Flags = MeshVS_DMF_OCCMask, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_Mesh);
 
@@ -4550,7 +4560,7 @@ float
 
 Description
 -----------
-Return correspondence between node ids and texture coordinate (range [0, 1]).
+Return correspondence between node IDs and texture coordinate (range [0, 1]).
 ") GetTextureCoord;
 		Standard_Real GetTextureCoord(const Standard_Integer theID);
 
@@ -4563,7 +4573,7 @@ TColStd_DataMapOfIntegerReal
 
 Description
 -----------
-Get correspondence between node ids and texture coordinates (range [0, 1]).
+Get correspondence between node IDs and texture coordinates (range [0, 1]).
 ") GetTextureCoords;
 		const TColStd_DataMapOfIntegerReal & GetTextureCoords();
 
@@ -4626,7 +4636,7 @@ None
 
 Description
 -----------
-Set colors to be used for texrture presentation thecolors - colors for valid coordinates (laying in range [0, 1]).
+Set colors to be used for texrture presentation theColors - colors for valid coordinates (laying in range [0, 1]).
 ") SetColorMap;
 		void SetColorMap(const Aspect_SequenceOfColor & theColors);
 
@@ -4681,7 +4691,7 @@ None
 
 Description
 -----------
-Specify correspondence between node id and texture coordinate (range [0, 1]).
+Specify correspondence between node ID and texture coordinate (range [0, 1]).
 ") SetTextureCoord;
 		void SetTextureCoord(const Standard_Integer theID, const Standard_Real theCoord);
 
@@ -4699,7 +4709,7 @@ None
 
 Description
 -----------
-Specify correspondence between node ids and texture coordinates (range [0, 1]).
+Specify correspondence between node IDs and texture coordinates (range [0, 1]).
 ") SetTextureCoords;
 		void SetTextureCoords(const TColStd_DataMapOfIntegerReal & theMap);
 
@@ -4817,7 +4827,7 @@ MeshVS_DataMapOfIntegerAsciiString
 
 Description
 -----------
-Returns map of text assigned with nodes ( iselement = false ) or elements ( iselement = true ).
+Returns map of text assigned with nodes ( IsElement = False ) or elements ( IsElement = True ).
 ") GetTexts;
 		const MeshVS_DataMapOfIntegerAsciiString & GetTexts(const Standard_Boolean IsElement);
 
@@ -4835,7 +4845,7 @@ bool
 
 Description
 -----------
-Returns true if map isn't empty.
+Returns True if map isn't empty.
 ") HasTexts;
 		Standard_Boolean HasTexts(const Standard_Boolean IsElement);
 
@@ -4980,7 +4990,7 @@ MaxValue: float
 
 Description
 -----------
-Calculates minimal and maximal length of vectors in map ( nodal, if iselement = false or elemental, if iselement = true ).
+Calculates minimal and maximal length of vectors in map ( nodal, if IsElement = False or elemental, if IsElement = True ).
 ") GetMinMaxVectorValue;
 		void GetMinMaxVectorValue(const Standard_Boolean IsElement, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5054,7 +5064,7 @@ None
 
 Description
 -----------
-Sets flag that indicates is simple vector arrow mode uses or not default value is false.
+Sets flag that indicates is simple vector arrow mode uses or not default value is False.
 ") SetSimplePrsMode;
 		void SetSimplePrsMode(const Standard_Boolean IsSimpleArrow);
 
@@ -5074,7 +5084,7 @@ None
 
 Description
 -----------
-Sets parameters of simple vector arrwo presentation thelinewidthparam - coefficient of vector line width (to draw line instead of arrow) thestartparam and theendparam parameters of start and end of thickened ends position of thickening calculates according to parameters and maximum vector length default values are: thelinewidthparam = 2.5 thestartparam = 0.85 theendparam = 0.95.
+Sets parameters of simple vector arrwo presentation theLineWidthParam - coefficient of vector line width (to draw line instead of arrow) theStartParam and theEndParam parameters of start and end of thickened ends position of thickening calculates according to parameters and maximum vector length default values are: theLineWidthParam = 2.5 theStartParam = 0.85 theEndParam = 0.95.
 ") SetSimplePrsParams;
 		void SetSimplePrsParams(const Standard_Real theLineWidthParam, const Standard_Real theStartParam, const Standard_Real theEndParam);
 

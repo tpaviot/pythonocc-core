@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGOAPIDOCSTRING
 "BRepAlgoAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepalgoapi.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgoapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGOAPIDOCSTRING) BRepAlgoAPI
 
@@ -147,7 +147,11 @@ None
 
 Description
 -----------
-Constructor for checking single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true; @param therange [in] - parameter to use progress indicator.
+Constructor for checking single shape. //! 
+Input parameter: theS - the shape to check; 
+Input parameter: bTestSE - flag which specifies whether to check the shape  on small edges or not; by default it is set to True; 
+Input parameter: bTestSI - flag which specifies whether to check the shape  on self-interference or not; by default it is set to True; 
+Input parameter: theRange - parameter to use progress indicator.
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -170,7 +174,13 @@ None
 
 Description
 -----------
-Constructor for checking the couple of shapes. additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for boolean operation of given type. //! @param thes1 [in] - the first shape to check; @param thes2 [in] - the second shape to check; @param theop [in] - the type of boolean operation for which the validity of given shapes should be checked. @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true; @param therange [in] - parameter to use progress indicator.
+Constructor for checking the couple of shapes. Additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for Boolean operation of given type. //! 
+Input parameter: theS1 - the first shape to check; 
+Input parameter: theS2 - the second shape to check; 
+Input parameter: theOp - the type of Boolean Operation for which the validity of given shapes should be checked. 
+Input parameter: bTestSE - flag which specifies whether to check the shape  on small edges or not; by default it is set to True; 
+Input parameter: bTestSI - flag which specifies whether to check the shape  on self-interference or not; by default it is set to True; 
+Input parameter: theRange - parameter to use progress indicator.
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -234,7 +244,10 @@ None
 
 Description
 -----------
-Initializes the algorithm with single shape. //! @param thes [in] - the shape to check; @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
+Initializes the algorithm with single shape. //! 
+Input parameter: theS - the shape to check; 
+Input parameter: bTestSE - flag which specifies whether to check the shape  on small edges or not; by default it is set to True; 
+Input parameter: bTestSI - flag which specifies whether to check the shape  on self-interference or not; by default it is set to True;.
 ") SetData;
 		void SetData(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True);
 
@@ -256,7 +269,12 @@ None
 
 Description
 -----------
-Initializes the algorithm with couple of shapes. additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for boolean operation of given type. //! @param thes1 [in] - the first shape to check; @param thes2 [in] - the second shape to check; @param theop [in] - the type of boolean operation for which the validity of given shapes should be checked. @param btestse [in] - flag which specifies whether to check the shape  on small edges or not; by default it is set to true; @param btestsi [in] - flag which specifies whether to check the shape  on self-interference or not; by default it is set to true;.
+Initializes the algorithm with couple of shapes. Additionally to the validity checks of each given shape, the types of the given shapes will be checked on validity for Boolean operation of given type. //! 
+Input parameter: theS1 - the first shape to check; 
+Input parameter: theS2 - the second shape to check; 
+Input parameter: theOp - the type of Boolean Operation for which the validity of given shapes should be checked. 
+Input parameter: bTestSE - flag which specifies whether to check the shape  on small edges or not; by default it is set to True; 
+Input parameter: bTestSI - flag which specifies whether to check the shape  on self-interference or not; by default it is set to True;.
 ") SetData;
 		void SetData(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True);
 
@@ -285,7 +303,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape built by the shape construction algorithm. does not check if the shape is built.
+Returns a shape built by the shape construction algorithm. Does not check if the shape is built.
 ") Shape;
 		virtual const TopoDS_Shape Shape();
 
@@ -330,7 +348,7 @@ None
 
 Description
 -----------
-Constructor with prepared filler object.
+Constructor with prepared Filler object.
 ") BRepAlgoAPI_BuilderAlgo;
 		 BRepAlgoAPI_BuilderAlgo(const BOPAlgo_PaveFiller & thePF);
 
@@ -374,7 +392,7 @@ BOPAlgo_PBuilder
 
 Description
 -----------
-Returns the building tool.
+Returns the Building tool.
 ") Builder;
 		const BOPAlgo_PBuilder & Builder();
 
@@ -400,7 +418,7 @@ BOPAlgo_PPaveFiller
 
 Description
 -----------
-Returns the intersection tool.
+Returns the Intersection tool.
 ") DSFiller;
 		const BOPAlgo_PPaveFiller & DSFiller();
 
@@ -418,7 +436,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <thes>. in frames of boolean operations algorithms only edges and faces could have generated elements, as only they produce new elements during intersection: - edges can generate new vertices; - faces can generate new edges and vertices.
+Returns the list of shapes generated from the shape <theS>. In frames of Boolean Operations algorithms only Edges and Faces could have Generated elements, as only they produce new elements during intersection: - Edges can generate new vertices; - Faces can generate new edges and vertices.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
@@ -444,7 +462,7 @@ bool
 
 Description
 -----------
-Returns true if any of the input shapes has been deleted during operation. normally, general fuse operation should not have deleted elements, but all derived operation can have.
+Returns true if any of the input shapes has been deleted during operation. Normally, General Fuse operation should not have Deleted elements, but all derived operation can have.
 ") HasDeleted;
 		virtual Standard_Boolean HasDeleted();
 
@@ -514,7 +532,7 @@ bool
 
 Description
 -----------
-Checks if the shape <thes> has been completely removed from the result, i.e. the result does not contain the shape itself and any of its splits. returns true if the shape has been deleted.
+Checks if the shape <theS> has been completely removed from the result, i.e. the result does not contain the shape itself and any of its splits. Returns True if the shape has been deleted.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & aS);
 
@@ -532,7 +550,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes modified from the shape <thes>. if any, the list will contain only those splits of the given shape, contained in the result.
+Returns the shapes modified from the shape <theS>. If any, the list will contain only those splits of the given shape, contained in the result.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
@@ -545,7 +563,7 @@ bool
 
 Description
 -----------
-Returns the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
 ") NonDestructive;
 		Standard_Boolean NonDestructive();
 
@@ -558,7 +576,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a list of section edges. the edges represent the result of intersection between arguments of operation.
+Returns a list of section edges. The edges represent the result of intersection between arguments of operation.
 ") SectionEdges;
 		const TopTools_ListOfShape & SectionEdges();
 
@@ -594,7 +612,7 @@ None
 
 Description
 -----------
-Enables/disables the check of the input solids for inverted status.
+Enables/Disables the check of the input solids for inverted status.
 ") SetCheckInverted;
 		void SetCheckInverted(const Standard_Boolean theCheck);
 
@@ -630,7 +648,7 @@ None
 
 Description
 -----------
-Sets the flag that defines the mode of treatment. in non-destructive mode the argument shapes are not modified. instead a copy of a sub-shape is created in the result if it is needed to be updated.
+Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
 ") SetNonDestructive;
 		void SetNonDestructive(const Standard_Boolean theFlag);
 
@@ -668,7 +686,10 @@ None
 
 Description
 -----------
-Simplification of the result shape is performed by the means of *shapeupgrade_unifysamedomain* algorithm. the result of the operation will be overwritten with the simplified result. //! the simplification is performed without creation of the internal shapes, i.e. shapes connections will never be broken. //! simplification is performed on the whole result shape. thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. //! after simplification, the history of result simplification is merged into the main history of operation. so, it is taken into account when asking for modified, generated and deleted shapes. //! some options of the main operation are passed into the unifier: - fuzzy tolerance of the operation is given to the unifier as the linear tolerance. - non destructive mode here controls the safe input mode in unifier. //! @param theunifyedges controls the edges unification. true by default. @param theunifyfaces controls the faces unification. true by default. @param theangulartol angular criteria for tangency of edges and faces.  precision::angular() by default.
+Simplification of the result shape is performed by the means of *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will be overwritten with the simplified result. //! The simplification is performed without creation of the Internal shapes, i.e. shapes connections will never be broken. //! Simplification is performed on the whole result shape. Thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. //! After simplification, the History of result simplification is merged into the main history of operation. So, it is taken into account when asking for Modified, Generated and Deleted shapes. //! Some options of the main operation are passed into the Unifier: - Fuzzy tolerance of the operation is given to the Unifier as the linear tolerance. - Non destructive mode here controls the safe input mode in Unifier. //! 
+Parameter theUnifyEdges Controls the edges unification. True by default. 
+Parameter theUnifyFaces Controls the faces unification. True by default. 
+Parameter theAngularTol Angular criteria for tangency of edges and faces.  Precision::Angular() by default.
 ") SimplifyResult;
 		void SimplifyResult(const Standard_Boolean theUnifyEdges = Standard_True, const Standard_Boolean theUnifyFaces = Standard_True, const Standard_Real theAngularTol = Precision::Angular());
 
@@ -713,7 +734,8 @@ None
 
 Description
 -----------
-Adds the features to remove from the input shape. @param theface [in] the shape to extract the faces for removal.
+Adds the features to remove from the input shape. 
+Input parameter: theFace The shape to extract the faces for removal.
 ") AddFaceToRemove;
 		void AddFaceToRemove(const TopoDS_Shape & theFace);
 
@@ -731,7 +753,8 @@ None
 
 Description
 -----------
-Adds the faces to remove from the input shape. @param thefaces [in] the list of shapes to extract the faces for removal.
+Adds the faces to remove from the input shape. 
+Input parameter: theFaces The list of shapes to extract the faces for removal.
 ") AddFacesToRemove;
 		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
@@ -780,7 +803,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <thes> during the operation.
+Returns the list of shapes generated from the shape <theS> during the operation.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
@@ -845,7 +868,7 @@ opencascade::handle<BRepTools_History>
 
 Description
 -----------
-Returns the history of shapes modifications.
+Returns the History of shapes modifications.
 ") History;
 		opencascade::handle<BRepTools_History> History();
 
@@ -876,7 +899,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <thes> has been deleted during the operation. it means that the shape has no any trace in the result. otherwise it returns false.
+Returns true if the shape <theS> has been deleted during the operation. It means that the shape has no any trace in the result. Otherwise it returns false.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & theS);
 
@@ -894,7 +917,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes modified from the shape <thes> during the operation.
+Returns the list of shapes modified from the shape <theS> during the operation.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
@@ -912,7 +935,8 @@ None
 
 Description
 -----------
-Sets the shape for processing. @param theshape [in] the shape to remove the features from.  it should either be the solid, compsolid or compound of solids.
+Sets the shape for processing. 
+Input parameter: theShape The shape to remove the features from.  It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theShape);
 
@@ -993,7 +1017,7 @@ None
 
 Description
 -----------
-Performs the boolean operation.
+Performs the Boolean operation.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1006,7 +1030,7 @@ BOPAlgo_Operation
 
 Description
 -----------
-Returns the type of boolean operation.
+Returns the type of Boolean Operation.
 ") Operation;
 		BOPAlgo_Operation Operation();
 
@@ -1024,7 +1048,7 @@ None
 
 Description
 -----------
-Sets the type of boolean operation.
+Sets the type of Boolean operation.
 ") SetOperation;
 		void SetOperation(const BOPAlgo_Operation theBOP);
 
@@ -1042,7 +1066,7 @@ None
 
 Description
 -----------
-Sets the tool arguments.
+Sets the Tool arguments.
 ") SetTools;
 		void SetTools(const TopTools_ListOfShape & theLS);
 
@@ -1055,7 +1079,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the first argument involved in this boolean operation. obsolete.
+Returns the first argument involved in this Boolean operation. Obsolete.
 ") Shape1;
 		const TopoDS_Shape Shape1();
 
@@ -1068,7 +1092,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the second argument involved in this boolean operation. obsolete.
+Returns the second argument involved in this Boolean operation. Obsolete.
 ") Shape2;
 		const TopoDS_Shape Shape2();
 
@@ -1081,7 +1105,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the tools arguments.
+Returns the Tools arguments.
 ") Tools;
 		const TopTools_ListOfShape & Tools();
 
@@ -1126,7 +1150,7 @@ None
 
 Description
 -----------
-Constructor with already prepared intersection tool - pavefiller.
+Constructor with already prepared intersection tool - PaveFiller.
 ") BRepAlgoAPI_Splitter;
 		 BRepAlgoAPI_Splitter(const BOPAlgo_PaveFiller & thePF);
 
@@ -1144,7 +1168,7 @@ None
 
 Description
 -----------
-Performs the split operation. performs the intersection of the argument shapes (both objects and tools) and splits objects by the tools.
+Performs the Split operation. Performs the intersection of the argument shapes (both objects and tools) and splits objects by the tools.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1162,7 +1186,7 @@ None
 
 Description
 -----------
-Sets the tool arguments.
+Sets the Tool arguments.
 ") SetTools;
 		void SetTools(const TopTools_ListOfShape & theLS);
 
@@ -1175,7 +1199,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the tool arguments.
+Returns the Tool arguments.
 ") Tools;
 		const TopTools_ListOfShape & Tools();
 
@@ -1220,7 +1244,7 @@ None
 
 Description
 -----------
-Empty constructor <pf> - pavefiller object that is carried out.
+Empty constructor <PF> - PaveFiller object that is carried out.
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common(const BOPAlgo_PaveFiller & PF);
 
@@ -1240,7 +1264,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation Obsolete.
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1261,7 +1285,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete.
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & PF, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1306,7 +1330,7 @@ None
 
 Description
 -----------
-Empty constructor <pf> - pavefiller object that is carried out.
+Empty constructor <PF> - PaveFiller object that is carried out.
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut(const BOPAlgo_PaveFiller & PF);
 
@@ -1326,7 +1350,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation Obsolete.
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1348,7 +1372,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete.
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Standard_Boolean bFWD = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1393,7 +1417,7 @@ None
 
 Description
 -----------
-Empty constructor <pf> - pavefiller object that is carried out.
+Empty constructor <PF> - PaveFiller object that is carried out.
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse(const BOPAlgo_PaveFiller & PF);
 
@@ -1413,7 +1437,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation Obsolete.
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1434,7 +1458,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type of the operation <pf> - pavefiller object that is carried out obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <anOperation> - the type of the operation <PF> - PaveFiller object that is carried out Obsolete.
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1479,7 +1503,7 @@ None
 
 Description
 -----------
-Empty constructor <pf> - pavefiller object that is carried out.
+Empty constructor <PF> - PaveFiller object that is carried out.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const BOPAlgo_PaveFiller & PF);
 
@@ -1499,7 +1523,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1520,7 +1544,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> -argument <s2> -tool <pf> - pavefiller object that is carried out <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <S1> -argument <S2> -tool <PF> - PaveFiller object that is carried out <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1540,7 +1564,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> - argument <pl> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <S1> - argument <Pl> - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const gp_Pln & Pl, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1560,7 +1584,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <s1> - argument <sf> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <S1> - argument <Sf> - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const opencascade::handle<Geom_Surface> & Sf, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1580,7 +1604,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <sf> - argument <s2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <Sf> - argument <S2> - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const opencascade::handle<Geom_Surface> & Sf, const TopoDS_Shape & S2, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1600,7 +1624,7 @@ None
 
 Description
 -----------
-Constructor with two shapes <sf1> - argument <sf2> - tool <performnow> - the flag: if <performnow>=true - the algorithm is performed immediately obsolete.
+Constructor with two shapes <Sf1> - argument <Sf2> - tool <PerformNow> - the flag: if <PerformNow>=True - the algorithm is performed immediately Obsolete.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const opencascade::handle<Geom_Surface> & Sf1, const opencascade::handle<Geom_Surface> & Sf2, const Standard_Boolean PerformNow = Standard_True);
 
@@ -1636,7 +1660,7 @@ None
 
 Description
 -----------
-Performs the algorithm filling interference data structure (if it is necessary) building the result of the operation.
+Performs the algorithm Filling interference Data Structure (if it is necessary) Building the result of the operation.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1654,7 +1678,7 @@ None
 
 Description
 -----------
-Indicates whether the p-curve should be (or not) performed on the argument. by default, no parametric 2d curve (pcurve) is defined for the edges of the result. if computepcurve1 equals true, further computations performed to attach an p-curve in the parametric space of the argument to the constructed edges. obsolete.
+Indicates whether the P-Curve should be (or not) performed on the argument. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the argument to the constructed edges. Obsolete.
 ") ComputePCurveOn1;
 		void ComputePCurveOn1(const Standard_Boolean B);
 
@@ -1672,7 +1696,7 @@ None
 
 Description
 -----------
-Indicates whether the p-curve should be (or not) performed on the tool. by default, no parametric 2d curve (pcurve) is defined for the edges of the result. if computepcurve1 equals true, further computations performed to attach an p-curve in the parametric space of the tool to the constructed edges. obsolete.
+Indicates whether the P-Curve should be (or not) performed on the tool. By default, no parametric 2D curve (pcurve) is defined for the edges of the result. If ComputePCurve1 equals true, further computations performed to attach an P-Curve in the parametric space of the tool to the constructed edges. Obsolete.
 ") ComputePCurveOn2;
 		void ComputePCurveOn2(const Standard_Boolean B);
 
@@ -1691,7 +1715,7 @@ bool
 
 Description
 -----------
-Get the face of the first part giving section edge <e>. returns true on the 3 following conditions: 1/ <e> is an edge returned by the shape() metwod. 2/ first part of section performed is a shape. 3/ <e> is built on a intersection curve (i.e <e> is not the result of common edges) when false, f remains untouched. obsolete.
+get the face of the first part giving section edge <E>. Returns True on the 3 following conditions: 1/ <E> is an edge returned by the Shape() metwod. 2/ First part of section performed is a shape. 3/ <E> is built on a intersection curve (i.e <E> is not the result of common edges) When False, F remains untouched. Obsolete.
 ") HasAncestorFaceOn1;
 		Standard_Boolean HasAncestorFaceOn1(const TopoDS_Shape & E, TopoDS_Shape & F);
 
@@ -1710,7 +1734,7 @@ bool
 
 Description
 -----------
-Identifies the ancestor faces of the intersection edge e resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge e lies: - hasancestorfaceon1 gives the ancestor face in the first shape, and - hasancestorfaceon2 gives the ancestor face in the second shape. these functions return true if an ancestor face f is found, or false if not. an ancestor face is identifiable for the edge e if the following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the init1 function, - e is one of the elementary edges built by the last computation of this section algorithm. to use these functions properly, you have to test the returned boolean value before using the ancestor face: f is significant only if the returned boolean value equals true. obsolete.
+Identifies the ancestor faces of the intersection edge E resulting from the last computation performed in this framework, that is, the faces of the two original shapes on which the edge E lies: - HasAncestorFaceOn1 gives the ancestor face in the first shape, and - HasAncestorFaceOn2 gives the ancestor face in the second shape. These functions return true if an ancestor face F is found, or false if not. An ancestor face is identifiable for the edge E if the following conditions are satisfied: - the first part on which this algorithm performed its last computation is a shape, that is, it was not given as a surface or a plane at the time of construction of this algorithm or at a later time by the Init1 function, - E is one of the elementary edges built by the last computation of this section algorithm. To use these functions properly, you have to test the returned Boolean value before using the ancestor face: F is significant only if the returned Boolean value equals true. Obsolete.
 ") HasAncestorFaceOn2;
 		Standard_Boolean HasAncestorFaceOn2(const TopoDS_Shape & E, TopoDS_Shape & F);
 
@@ -1728,7 +1752,7 @@ None
 
 Description
 -----------
-Initialize the argument <s1> - argument obsolete.
+initialize the argument <S1> - argument Obsolete.
 ") Init1;
 		void Init1(const TopoDS_Shape & S1);
 
@@ -1746,7 +1770,7 @@ None
 
 Description
 -----------
-Initialize the argument <pl> - argument obsolete.
+initialize the argument <Pl> - argument Obsolete.
 ") Init1;
 		void Init1(const gp_Pln & Pl);
 
@@ -1764,7 +1788,7 @@ None
 
 Description
 -----------
-Initialize the argument <sf> - argument obsolete.
+initialize the argument <Sf> - argument Obsolete.
 ") Init1;
 		void Init1(const opencascade::handle<Geom_Surface> & Sf);
 
@@ -1782,7 +1806,7 @@ None
 
 Description
 -----------
-Initialize the tool <s2> - tool obsolete.
+initialize the tool <S2> - tool Obsolete.
 ") Init2;
 		void Init2(const TopoDS_Shape & S2);
 
@@ -1800,7 +1824,7 @@ None
 
 Description
 -----------
-Initialize the tool <pl> - tool obsolete.
+initialize the tool <Pl> - tool Obsolete.
 ") Init2;
 		void Init2(const gp_Pln & Pl);
 
@@ -1818,7 +1842,7 @@ None
 
 Description
 -----------
-Initialize the tool <sf> - tool obsolete.
+initialize the tool <Sf> - tool Obsolete.
 ") Init2;
 		void Init2(const opencascade::handle<Geom_Surface> & Sf);
 

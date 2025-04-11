@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPECONSTRUCTDOCSTRING
 "ShapeConstruct module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeconstruct.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeconstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
@@ -221,7 +221,7 @@ isRev2: bool
 
 Description
 -----------
-Method for joininig curves 3d. parameters: c3d1,ac3d2 - initial curves orient1, orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dout - result curve isrev1,isrev2 - out parameters indicative on possible errors. return value: true - if curves were joined successfully, else - false.
+Method for joininig curves 3D. Parameters: c3d1,ac3d2 - initial curves Orient1, Orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dOut - result curve isRev1,isRev2 - out parameters indicative on possible errors. Return value: True - if curves were joined successfully, else - False.
 ") JoinCurves;
 		static Standard_Boolean JoinCurves(const opencascade::handle<Geom_Curve> & c3d1, const opencascade::handle<Geom_Curve> & ac3d2, const TopAbs_Orientation Orient1, const TopAbs_Orientation Orient2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, opencascade::handle<Geom_Curve> & c3dOut, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -249,7 +249,7 @@ isRev2: bool
 
 Description
 -----------
-Method for joininig curves 3d. parameters: c3d1,ac3d2 - initial curves orient1, orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dout - result curve isrev1,isrev2 - out parameters indicative on possible errors. iserror - input parameter indicative possible errors due to that one from edges have one vertex return value: true - if curves were joined successfully, else - false.
+Method for joininig curves 3D. Parameters: c3d1,ac3d2 - initial curves Orient1, Orient2 - initial edges orientations. first1,last1,first2,last2 - parameters for trimming curves (re-calculate with account of orientation edges) c3dOut - result curve isRev1,isRev2 - out parameters indicative on possible errors. isError - input parameter indicative possible errors due to that one from edges have one vertex Return value: True - if curves were joined successfully, else - False.
 ") JoinCurves;
 		static Standard_Boolean JoinCurves(const opencascade::handle<Geom2d_Curve> & c2d1, const opencascade::handle<Geom2d_Curve> & ac2d2, const TopAbs_Orientation Orient1, const TopAbs_Orientation Orient2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, opencascade::handle<Geom2d_Curve> & c2dOut, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const Standard_Boolean isError = Standard_False);
 
@@ -269,7 +269,7 @@ bool
 
 Description
 -----------
-Join pcurves of the <theedge> on the <theface> try to use pcurves from originas edges <theedges> returns false if cannot join pcurves.
+join pcurves of the <theEdge> on the <theFace> try to use pcurves from originas edges <theEdges> Returns false if cannot join pcurves.
 ") JoinPCurves;
 		static Standard_Boolean JoinPCurves(const opencascade::handle<TopTools_HSequenceOfShape> & theEdges, const TopoDS_Face & theFace, TopoDS_Edge & theEdge);
 
@@ -305,7 +305,7 @@ bool
 
 Description
 -----------
-Modifies a curve in order to make its bounds confused with given points. works only on lines and b-splines, returns true in this case, else returns false. for line considers both bounding points, for b-splines only specified. //! warning: does not check if curve should be reversed.
+Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. For line considers both bounding points, for B-Splines only specified. //! Warning: Does not check if curve should be reversed.
 ") AdjustCurve;
 		Standard_Boolean AdjustCurve(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean take1 = Standard_True, const Standard_Boolean take2 = Standard_True);
 
@@ -327,7 +327,7 @@ bool
 
 Description
 -----------
-Modifies a curve in order to make its bounds confused with given points. works only on lines and b-splines, returns true in this case, else returns false. //! for line considers both bounding points, for b-splines only specified. //! warning: does not check if curve should be reversed.
+Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines, returns True in this case, else returns False. //! For line considers both bounding points, for B-Splines only specified. //! Warning: Does not check if curve should be reversed.
 ") AdjustCurve2d;
 		Standard_Boolean AdjustCurve2d(const opencascade::handle<Geom2d_Curve> & C2D, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean take1 = Standard_True, const Standard_Boolean take2 = Standard_True);
 
@@ -349,7 +349,7 @@ bool
 
 Description
 -----------
-Modifies a curve in order to make its bounds confused with given points. works only on lines and b-splines. //! for lines works as previous method, b-splines are segmented at the given values and then are adjusted to the points.
+Modifies a curve in order to make its bounds confused with given points. Works only on lines and B-Splines. //! For lines works as previous method, B-Splines are segmented at the given values and then are adjusted to the points.
 ") AdjustCurveSegment;
 		Standard_Boolean AdjustCurveSegment(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real U1, const Standard_Real U2);
 
@@ -370,7 +370,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Converts a curve of any type (only part from first to last) to bspline. the method of conversion depends on the type of original curve: bspline -> c.segment(first,last) bezier and line -> geomconvert::curvetobsplinecurve(c).segment(first,last) conic and other -> approx_curve3d(c[first,last],prec,c1,9,1000).
+Converts a curve of any type (only part from first to last) to bspline. The method of conversion depends on the type of original curve: BSpline -> C.Segment(first,last) Bezier and Line -> GeomConvert::CurveToBSplineCurve(C).Segment(first,last) Conic and Other -> Approx_Curve3d(C[first,last],prec,C1,9,1000).
 ") ConvertToBSpline;
 		opencascade::handle<Geom_BSplineCurve> ConvertToBSpline(const opencascade::handle<Geom_Curve> & C, const Standard_Real first, const Standard_Real last, const Standard_Real prec);
 
@@ -391,7 +391,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Converts a curve of any type (only part from first to last) to bspline. the method of conversion depends on the type of original curve: bspline -> c.segment(first,last) bezier and line -> geomconvert::curvetobsplinecurve(c).segment(first,last) conic and other -> approx_curve2d(c[first,last],prec,c1,9,1000).
+Converts a curve of any type (only part from first to last) to bspline. The method of conversion depends on the type of original curve: BSpline -> C.Segment(first,last) Bezier and Line -> GeomConvert::CurveToBSplineCurve(C).Segment(first,last) Conic and Other -> Approx_Curve2d(C[first,last],prec,C1,9,1000).
 ") ConvertToBSpline;
 		opencascade::handle<Geom2d_BSplineCurve> ConvertToBSpline(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real first, const Standard_Real last, const Standard_Real prec);
 
@@ -427,7 +427,7 @@ bool
 
 Description
 -----------
-Fix bspline knots to ensure that there is enough gap between neighbouring values returns true if something fixed (by shifting knot).
+Fix bspline knots to ensure that there is enough gap between neighbouring values Returns True if something fixed (by shifting knot).
 ") FixKnots;
 		static Standard_Boolean FixKnots(TColStd_Array1OfReal & knots);
 
@@ -624,7 +624,7 @@ bool
 
 Description
 -----------
-Computes the projection of 3d curve onto a surface using the specialized algorithm. returns false if projector fails, otherwise, if pcurve computed successfully, returns true. the output curve 2d is guaranteed to be same-parameter with input curve 3d on the interval [first, last]. if the output curve lies on a direct line the infinite line is returned, in the case same-parameter condition is satisfied. tolfirst and tollast are the tolerances at the ends of input curve 3d.
+Computes the projection of 3d curve onto a surface using the specialized algorithm. Returns False if projector fails, otherwise, if pcurve computed successfully, returns True. The output curve 2D is guaranteed to be same-parameter with input curve 3D on the interval [First, Last]. If the output curve lies on a direct line the infinite line is returned, in the case same-parameter condition is satisfied. TolFirst and TolLast are the tolerances at the ends of input curve 3D.
 ") Perform;
 		virtual Standard_Boolean Perform(opencascade::handle<Geom_Curve> & c3d, const Standard_Real First, const Standard_Real Last, opencascade::handle<Geom2d_Curve> & c2d, const Standard_Real TolFirst = -1, const Standard_Real TolLast = -1);
 
@@ -648,7 +648,7 @@ bool
 
 Description
 -----------
-Computes the projection of 3d curve onto a surface using the standard algorithm from projlib. returns false if standard projector fails or raises an exception or cuts the curve by parametrical bounds of the surface. else, if pcurve computed successfully, returns true. the continuity, maxdeg and nbinterval are parameters of call to approx_curveonsurface. if nbinterval is equal to -1 (default), this value is computed depending on source 3d curve and surface.
+Computes the projection of 3d curve onto a surface using the standard algorithm from ProjLib. Returns False if standard projector fails or raises an exception or cuts the curve by parametrical bounds of the surface. Else, if pcurve computed successfully, returns True. The continuity, maxdeg and nbinterval are parameters of call to Approx_CurveOnSurface. If nbinterval is equal to -1 (default), this value is computed depending on source 3d curve and surface.
 ") PerformByProjLib;
 		Standard_Boolean PerformByProjLib(opencascade::handle<Geom_Curve> & c3d, const Standard_Real First, const Standard_Real Last, opencascade::handle<Geom2d_Curve> & c2d, const GeomAbs_Shape continuity = GeomAbs_C1, const Standard_Integer maxdeg = 12, const Standard_Integer nbinterval = -1);
 
@@ -684,7 +684,7 @@ None
 
 Description
 -----------
-Loads a surface (in the form of geom_surface) to project on.
+Loads a surface (in the form of Geom_Surface) to project on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Geom_Surface> & surf);
 
@@ -702,7 +702,7 @@ None
 
 Description
 -----------
-Loads a surface (in the form of shapeanalysis_surface) to project on.
+Loads a surface (in the form of ShapeAnalysis_Surface) to project on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<ShapeAnalysis_Surface> & surf);
 
@@ -720,7 +720,7 @@ bool
 
 Description
 -----------
-Returns the status of last perform.
+Returns the status of last Perform.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status theStatus);
 

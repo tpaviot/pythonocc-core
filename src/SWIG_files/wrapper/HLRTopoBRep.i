@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRTOPOBREPDOCSTRING
 "HLRTopoBRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_hlrtopobrep.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 
@@ -140,7 +140,7 @@ None
 
 Description
 -----------
-Stores in <ds> the outlines of <s> using the current outliner and stores the isolines in <ds> using a hatcher.
+Stores in <DS> the outlines of <S> using the current outliner and stores the isolines in <DS> using a Hatcher.
 ") Insert;
 		static void Insert(const TopoDS_Shape & S, Contap_Contour & FO, HLRTopoBRep_Data & DS, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso);
 
@@ -370,7 +370,7 @@ bool
 
 Description
 -----------
-Returns true if the edge is split.
+Returns True if the Edge is split.
 ") EdgeHasSplE;
 		Standard_Boolean EdgeHasSplE(const TopoDS_Edge & E);
 
@@ -406,7 +406,7 @@ bool
 
 Description
 -----------
-Returns true if the face has internal outline.
+Returns True if the Face has internal outline.
 ") FaceHasIntL;
 		Standard_Boolean FaceHasIntL(const TopoDS_Face & F);
 
@@ -424,7 +424,7 @@ bool
 
 Description
 -----------
-Returns true if the face has isolines.
+Returns True if the Face has isolines.
 ") FaceHasIsoL;
 		Standard_Boolean FaceHasIsoL(const TopoDS_Face & F);
 
@@ -442,7 +442,7 @@ bool
 
 Description
 -----------
-Returns true if the face has outlines on restriction.
+Returns True if the Face has outlines on restriction.
 ") FaceHasOutL;
 		Standard_Boolean FaceHasOutL(const TopoDS_Face & F);
 
@@ -460,7 +460,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of the internal outlines.
+Returns the list of the internal OutLines.
 ") FaceIntL;
 		const TopTools_ListOfShape & FaceIntL(const TopoDS_Face & F);
 
@@ -478,7 +478,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of the isolines.
+Returns the list of the IsoLines.
 ") FaceIsoL;
 		const TopTools_ListOfShape & FaceIsoL(const TopoDS_Face & F);
 
@@ -496,7 +496,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of the outlines on restriction.
+Returns the list of the OutLines on restriction.
 ") FaceOutL;
 		const TopTools_ListOfShape & FaceOutL(const TopoDS_Face & F);
 
@@ -527,7 +527,7 @@ None
 
 Description
 -----------
-Start an iteration on the vertices of e.
+Start an iteration on the vertices of E.
 ") InitVertex;
 		void InitVertex(const TopoDS_Edge & E);
 
@@ -583,7 +583,7 @@ bool
 
 Description
 -----------
-Returns true if v is an internal outline vertex.
+Returns True if V is an internal outline vertex.
 ") IsIntV;
 		Standard_Boolean IsIntV(const TopoDS_Vertex & V);
 
@@ -639,7 +639,7 @@ bool
 
 Description
 -----------
-Returns true if v is an outline vertex on a restriction.
+Returns True if V is an outline vertex on a restriction.
 ") IsOutV;
 		Standard_Boolean IsOutV(const TopoDS_Vertex & V);
 

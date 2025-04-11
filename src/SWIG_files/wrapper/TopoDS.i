@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPODSDOCSTRING
 "TopoDS module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topods.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topods.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPODSDOCSTRING) TopoDS
 
@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topods.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+using namespace TopoDS;
 %};
 %import Standard.i
 %import NCollection.i
@@ -74,6 +75,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TopoDS_AlertAttribute)
+%wrap_handle(TopoDS_AlertWithShape)
 %wrap_handle(TopoDS_HShape)
 %wrap_handle(TopoDS_TShape)
 %wrap_handle(TopoDS_TCompSolid)
@@ -91,309 +94,6 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 /* end typedefs declaration */
-
-/***************
-* class TopoDS *
-***************/
-%rename(topods) TopoDS;
-class TopoDS {
-	public:
-		/****** TopoDS::CompSolid ******/
-		/****** md5 signature: 77482fb5305a905f39420d63ffae3ba2 ******/
-		%feature("compactdefaultargs") CompSolid;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_CompSolid
-
-Description
------------
-Casts shape s to the more specialized return type, compsolid. exceptions standard_typemismatch if s cannot be cast to this return type.
-") CompSolid;
-		static const TopoDS_CompSolid CompSolid(const TopoDS_Shape & S);
-
-		/****** TopoDS::CompSolid ******/
-		/****** md5 signature: acac3e26b4f9eaee939ae767dc905732 ******/
-		%feature("compactdefaultargs") CompSolid;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_CompSolid
-
-Description
------------
-No available documentation.
-") CompSolid;
-		static TopoDS_CompSolid CompSolid(TopoDS_Shape &);
-
-		/****** TopoDS::Compound ******/
-		/****** md5 signature: c17cf0d09b6ccab9c17dc865a09c7150 ******/
-		%feature("compactdefaultargs") Compound;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Compound
-
-Description
------------
-Casts shape s to the more specialized return type, compound. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Compound;
-		static const TopoDS_Compound Compound(const TopoDS_Shape & S);
-
-		/****** TopoDS::Compound ******/
-		/****** md5 signature: bbe6e136825d27af4ce8ba843aa4a44e ******/
-		%feature("compactdefaultargs") Compound;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Compound
-
-Description
------------
-No available documentation.
-") Compound;
-		static TopoDS_Compound Compound(TopoDS_Shape &);
-
-		/****** TopoDS::Edge ******/
-		/****** md5 signature: 2efe03945bfb23dc595529d700df79fe ******/
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Edge
-
-Description
------------
-Casts shape s to the more specialized return type, edge exceptions standard_typemismatch if s cannot be cast to this return type.
-") Edge;
-		static const TopoDS_Edge Edge(const TopoDS_Shape & S);
-
-		/****** TopoDS::Edge ******/
-		/****** md5 signature: 605fbe185d4371720726023645d12b9e ******/
-		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Edge
-
-Description
------------
-No available documentation.
-") Edge;
-		static TopoDS_Edge Edge(TopoDS_Shape &);
-
-		/****** TopoDS::Face ******/
-		/****** md5 signature: fc38e2ff501b643c83b607450ae60258 ******/
-		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Face
-
-Description
------------
-Casts shape s to the more specialized return type, face. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Face;
-		static const TopoDS_Face Face(const TopoDS_Shape & S);
-
-		/****** TopoDS::Face ******/
-		/****** md5 signature: 97d264774f3d915b324d2b5d62bfb31e ******/
-		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Face
-
-Description
------------
-No available documentation.
-") Face;
-		static TopoDS_Face Face(TopoDS_Shape &);
-
-		/****** TopoDS::Shell ******/
-		/****** md5 signature: dfadc1f5af3f5b4c35af960076bc47d2 ******/
-		%feature("compactdefaultargs") Shell;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Shell
-
-Description
------------
-Casts shape s to the more specialized return type, shell. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Shell;
-		static const TopoDS_Shell Shell(const TopoDS_Shape & S);
-
-		/****** TopoDS::Shell ******/
-		/****** md5 signature: 5d7348478377e29d3d007b81777cc236 ******/
-		%feature("compactdefaultargs") Shell;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Shell
-
-Description
------------
-No available documentation.
-") Shell;
-		static TopoDS_Shell Shell(TopoDS_Shape &);
-
-		/****** TopoDS::Solid ******/
-		/****** md5 signature: 53ff4c77d3412e4bb8f19ba5e83f838c ******/
-		%feature("compactdefaultargs") Solid;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Solid
-
-Description
------------
-Casts shape s to the more specialized return type, solid. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Solid;
-		static const TopoDS_Solid Solid(const TopoDS_Shape & S);
-
-		/****** TopoDS::Solid ******/
-		/****** md5 signature: e47476ce6c435c36e53fa880bf6bb8e3 ******/
-		%feature("compactdefaultargs") Solid;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Solid
-
-Description
------------
-No available documentation.
-") Solid;
-		static TopoDS_Solid Solid(TopoDS_Shape &);
-
-		/****** TopoDS::Vertex ******/
-		/****** md5 signature: 21ffb745f1245cff3cbd88e6c40f3c0b ******/
-		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Vertex
-
-Description
------------
-Basic tool to access the data structure. casts shape s to the more specialized return type, vertex. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Vertex;
-		static const TopoDS_Vertex Vertex(const TopoDS_Shape & S);
-
-		/****** TopoDS::Vertex ******/
-		/****** md5 signature: 80abea55e3497029b89e57d1c21c315c ******/
-		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Vertex
-
-Description
------------
-No available documentation.
-") Vertex;
-		static TopoDS_Vertex Vertex(TopoDS_Shape &);
-
-		/****** TopoDS::Wire ******/
-		/****** md5 signature: 108068a348cc0d726ab22196f451f319 ******/
-		%feature("compactdefaultargs") Wire;
-		%feature("autodoc", "
-Parameters
-----------
-S: TopoDS_Shape
-
-Return
--------
-TopoDS_Wire
-
-Description
------------
-Casts shape s to the more specialized return type, wire. exceptions standard_typemismatch if s cannot be cast to this return type.
-") Wire;
-		static const TopoDS_Wire Wire(const TopoDS_Shape & S);
-
-		/****** TopoDS::Wire ******/
-		/****** md5 signature: 0f0c46a4e1cce27ede9c36f04aa5032d ******/
-		%feature("compactdefaultargs") Wire;
-		%feature("autodoc", "
-Parameters
-----------
-&: TopoDS_Shape
-
-Return
--------
-TopoDS_Wire
-
-Description
------------
-No available documentation.
-") Wire;
-		static TopoDS_Wire Wire(TopoDS_Shape &);
-
-};
-
-
-%extend TopoDS {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 
 /******************************
 * class TopoDS_AlertAttribute *
@@ -474,6 +174,8 @@ Push shape information into messenger.
 
 };
 
+
+%make_alias(TopoDS_AlertAttribute)
 
 %extend TopoDS_AlertAttribute {
 	%pythoncode {
@@ -569,6 +271,8 @@ Returns false.
 };
 
 
+%make_alias(TopoDS_AlertWithShape)
+
 %extend TopoDS_AlertWithShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -595,7 +299,7 @@ None
 
 Description
 -----------
-Add the shape c in the shape s. exceptions - topods_frozenshape if s is not free and cannot be modified. - topods__uncompatibleshapes if s and c are not compatible.
+Add the Shape C in the Shape S. Exceptions - TopoDS_FrozenShape if S is not free and cannot be modified. - TopoDS__UnCompatibleShapes if S and C are not compatible.
 ") Add;
 		void Add(TopoDS_Shape & S, const TopoDS_Shape & C);
 
@@ -613,7 +317,7 @@ None
 
 Description
 -----------
-Make an empty composite solid.
+Make an empty Composite Solid.
 ") MakeCompSolid;
 		void MakeCompSolid(TopoDS_CompSolid & C);
 
@@ -631,7 +335,7 @@ None
 
 Description
 -----------
-Make an empty compound.
+Make an empty Compound.
 ") MakeCompound;
 		void MakeCompound(TopoDS_Compound & C);
 
@@ -649,7 +353,7 @@ None
 
 Description
 -----------
-Make an empty shell.
+Make an empty Shell.
 ") MakeShell;
 		void MakeShell(TopoDS_Shell & S);
 
@@ -667,7 +371,7 @@ None
 
 Description
 -----------
-Make a solid covering the whole 3d space.
+Make a Solid covering the whole 3D space.
 ") MakeSolid;
 		void MakeSolid(TopoDS_Solid & S);
 
@@ -685,7 +389,7 @@ None
 
 Description
 -----------
-Make an empty wire.
+Make an empty Wire.
 ") MakeWire;
 		void MakeWire(TopoDS_Wire & W);
 
@@ -704,7 +408,7 @@ None
 
 Description
 -----------
-Remove the shape c from the shape s. exceptions topods_frozenshape if s is frozen and cannot be modified.
+Remove the Shape C from the Shape S. Exceptions TopoDS_FrozenShape if S is frozen and cannot be modified.
 ") Remove;
 		void Remove(TopoDS_Shape & S, const TopoDS_Shape & C);
 
@@ -749,7 +453,7 @@ None
 
 Description
 -----------
-Constructs a shape object defined by the shape ashape.
+Constructs a shape object defined by the shape aShape.
 ") TopoDS_HShape;
 		 TopoDS_HShape(const TopoDS_Shape & aShape);
 
@@ -762,7 +466,7 @@ TopoDS_Shape
 
 Description
 -----------
-Exchanges the topods_shape object defining this shape for another one referencing the same underlying shape accesses the list of shapes within the underlying shape referenced by the topods_shape object. returns a reference to a topods_shape based on this shape. the topods_shape can be modified.
+Exchanges the TopoDS_Shape object defining this shape for another one referencing the same underlying shape Accesses the list of shapes within the underlying shape referenced by the TopoDS_Shape object. Returns a reference to a TopoDS_Shape based on this shape. The TopoDS_Shape can be modified.
 ") ChangeShape;
 		TopoDS_Shape ChangeShape();
 
@@ -780,7 +484,7 @@ None
 
 Description
 -----------
-Loads this shape with the shape ashape.
+Loads this shape with the shape aShape.
 ") Shape;
 		void Shape(const TopoDS_Shape & aShape);
 
@@ -793,7 +497,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a reference to a constant topods_shape based on this shape.
+Returns a reference to a constant TopoDS_Shape based on this shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -822,7 +526,7 @@ None
 
 Description
 -----------
-Creates an empty iterator.
+Creates an empty Iterator.
 ") TopoDS_Iterator;
 		 TopoDS_Iterator();
 
@@ -842,7 +546,7 @@ None
 
 Description
 -----------
-Creates an iterator on <s> sub-shapes. note: - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
+Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") TopoDS_Iterator;
 		 TopoDS_Iterator(const TopoDS_Shape & S, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -862,7 +566,7 @@ None
 
 Description
 -----------
-Initializes this iterator with shape s. note: - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
+Initializes this iterator with shape S. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") Initialize;
 		void Initialize(const TopoDS_Shape & S, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -888,7 +592,7 @@ None
 
 Description
 -----------
-Moves on to the next sub-shape in the shape which this iterator is scanning. exceptions standard_nomoreobject if there are no more sub-shapes in the shape.
+Moves on to the next sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoMoreObject if there are no more sub-shapes in the shape.
 ") Next;
 		void Next();
 
@@ -901,7 +605,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current sub-shape in the shape which this iterator is scanning. exceptions standard_nosuchobject if there is no current sub-shape.
+Returns the current sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoSuchObject if there is no current sub-shape.
 ") Value;
 		const TopoDS_Shape Value();
 
@@ -930,7 +634,7 @@ None
 
 Description
 -----------
-Creates a null shape referring to nothing.
+Creates a NULL Shape referring to nothing.
 ") TopoDS_Shape;
 		 TopoDS_Shape();
 
@@ -1005,7 +709,7 @@ None
 
 Description
 -----------
-Complements the orientation, using the complement method from the topabs package.
+Complements the orientation, using the Complement method from the TopAbs package.
 ") Complement;
 		void Complement();
 
@@ -1018,7 +722,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with the orientation complemented, using the complement method from the topabs package.
+Returns a shape similar to <self> with the orientation complemented, using the Complement method from the TopAbs package.
 ") Complemented;
 		TopoDS_Shape Complemented();
 
@@ -1036,7 +740,7 @@ None
 
 Description
 -----------
-Updates the shape orientation by composition with theorient, using the compose method from the topabs package.
+Updates the Shape Orientation by composition with theOrient, using the Compose method from the TopAbs package.
 ") Compose;
 		void Compose(TopAbs_Orientation theOrient);
 
@@ -1054,7 +758,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with the orientation composed with theorient, using the compose method from the topabs package.
+Returns a shape similar to <self> with the orientation composed with theOrient, using the Compose method from the TopAbs package.
 ") Composed;
 		TopoDS_Shape Composed(TopAbs_Orientation theOrient);
 
@@ -1119,7 +823,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a new shape with the same orientation and location and a new tshape with the same geometry and no sub-shapes.
+Returns a new Shape with the same Orientation and Location and a new TShape with the same geometry and no sub-shapes.
 ") EmptyCopied;
 		TopoDS_Shape EmptyCopied();
 
@@ -1132,7 +836,7 @@ None
 
 Description
 -----------
-Replace <self> by a new shape with the same orientation and location and a new tshape with the same geometry and no sub-shapes.
+Replace <self> by a new Shape with the same Orientation and Location and a new TShape with the same geometry and no sub-shapes.
 ") EmptyCopy;
 		void EmptyCopy();
 
@@ -1212,7 +916,7 @@ bool
 
 Description
 -----------
-Returns true if two shapes are equal, i.e. if they share the same tshape with the same locations and orientations.
+Returns True if two shapes are equal, i.e. if they share the same TShape with the same Locations and Orientations.
 ") IsEqual;
 		Standard_Boolean IsEqual(const TopoDS_Shape & theOther);
 
@@ -1230,7 +934,7 @@ bool
 
 Description
 -----------
-Negation of the isequal method.
+Negation of the IsEqual method.
 ") IsNotEqual;
 		Standard_Boolean IsNotEqual(const TopoDS_Shape & theOther);
 
@@ -1243,7 +947,7 @@ bool
 
 Description
 -----------
-Returns true if this shape is null. in other words, it references no underlying shape with the potential to be given a location and an orientation.
+Returns true if this shape is null. In other words, it references no underlying shape with the potential to be given a location and an orientation.
 ") IsNull;
 		Standard_Boolean IsNull();
 
@@ -1261,7 +965,7 @@ bool
 
 Description
 -----------
-Returns true if two shapes are partners, i.e. if they share the same tshape. locations and orientations may differ.
+Returns True if two shapes are partners, i.e. if they share the same TShape. Locations and Orientations may differ.
 ") IsPartner;
 		Standard_Boolean IsPartner(const TopoDS_Shape & theOther);
 
@@ -1279,18 +983,18 @@ bool
 
 Description
 -----------
-Returns true if two shapes are same, i.e. if they share the same tshape with the same locations. orientations may differ.
+Returns True if two shapes are same, i.e. if they share the same TShape with the same Locations. Orientations may differ.
 ") IsSame;
 		Standard_Boolean IsSame(const TopoDS_Shape & theOther);
 
 		/****** TopoDS_Shape::Located ******/
-		/****** md5 signature: 3f8cd1598c3eb01b43ca976d06905f6f ******/
+		/****** md5 signature: 8ef42edc60c357e41b80cae67c6dcda1 ******/
 		%feature("compactdefaultargs") Located;
 		%feature("autodoc", "
 Parameters
 ----------
 theLoc: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_True)
+theRaiseExc: bool (optional, default to Standard_False)
 
 Return
 -------
@@ -1298,9 +1002,12 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with the local coordinate system set to <loc>.
+Returns a shape similar to <self> with the local coordinate system set to <Loc>. 
+Parameter theLoc the new local coordinate system. 
+Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative. 
+Return: the located shape.
 ") Located;
-		TopoDS_Shape Located(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_True);
+		TopoDS_Shape Located(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_False);
 
 		/****** TopoDS_Shape::Location ******/
 		/****** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ******/
@@ -1316,13 +1023,13 @@ Returns the shape local coordinate system.
 		const TopLoc_Location & Location();
 
 		/****** TopoDS_Shape::Location ******/
-		/****** md5 signature: 9dfc75484b9577a6acde91d32790727b ******/
+		/****** md5 signature: 463805b1fab502689e296230f94e53a5 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
 ----------
 theLoc: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_True)
+theRaiseExc: bool (optional, default to Standard_False)
 
 Return
 -------
@@ -1330,9 +1037,11 @@ None
 
 Description
 -----------
-Sets the shape local coordinate system.
+Sets the shape local coordinate system. 
+Parameter theLoc the new local coordinate system. 
+Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative.
 ") Location;
-		void Location(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_True);
+		void Location(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_False);
 
 		/****** TopoDS_Shape::Locked ******/
 		/****** md5 signature: a47aa902e0d0df6fdbe782c3c7f2d1b5 ******/
@@ -1397,13 +1106,13 @@ Sets the modification flag.
 		void Modified(Standard_Boolean theIsModified);
 
 		/****** TopoDS_Shape::Move ******/
-		/****** md5 signature: d7624253a8bf526c57d80a382d92f068 ******/
+		/****** md5 signature: 6b8a6067d69809a7e1a338e57303b45c ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_True)
+theRaiseExc: bool (optional, default to Standard_False)
 
 Return
 -------
@@ -1411,18 +1120,20 @@ None
 
 Description
 -----------
-Multiplies the shape location by theposition.
+Multiplies the Shape location by thePosition. 
+Parameter thePosition the transformation to apply. 
+Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative.
 ") Move;
-		void Move(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_True);
+		void Move(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_False);
 
 		/****** TopoDS_Shape::Moved ******/
-		/****** md5 signature: 2c1c929bc14809beff6d7542a5f68efe ******/
+		/****** md5 signature: ad19479b4be0d785dd4bb892860d9615 ******/
 		%feature("compactdefaultargs") Moved;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_True)
+theRaiseExc: bool (optional, default to Standard_False)
 
 Return
 -------
@@ -1430,9 +1141,12 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with a location multiplied by theposition.
+Returns a shape similar to <self> with a location multiplied by thePosition. 
+Parameter thePosition the transformation to apply. 
+Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative. 
+Return: the moved shape.
 ") Moved;
-		TopoDS_Shape Moved(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_True);
+		TopoDS_Shape Moved(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_False);
 
 		/****** TopoDS_Shape::NbChildren ******/
 		/****** md5 signature: 112820d06ee986e20c4479ba5bfe3404 ******/
@@ -1443,7 +1157,8 @@ int
 
 Description
 -----------
-Returns the number of direct sub-shapes (children). @sa topods_iterator for accessing sub-shapes.
+Returns the number of direct sub-shapes (children). 
+See also: TopoDS_Iterator for accessing sub-shapes.
 ") NbChildren;
 		Standard_Integer NbChildren();
 
@@ -1456,7 +1171,7 @@ None
 
 Description
 -----------
-Destroys the reference to the underlying shape stored in this shape. as a result, this shape becomes null.
+Destroys the reference to the underlying shape stored in this shape. As a result, this shape becomes null.
 ") Nullify;
 		void Nullify();
 
@@ -1536,7 +1251,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with the orientation set to <or>.
+Returns a shape similar to <self> with the orientation set to <Or>.
 ") Oriented;
 		TopoDS_Shape Oriented(TopAbs_Orientation theOrient);
 
@@ -1549,7 +1264,7 @@ None
 
 Description
 -----------
-Reverses the orientation, using the reverse method from the topabs package.
+Reverses the orientation, using the Reverse method from the TopAbs package.
 ") Reverse;
 		void Reverse();
 
@@ -1562,7 +1277,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape similar to <self> with the orientation reversed, using the reverse method from the topabs package.
+Returns a shape similar to <self> with the orientation reversed, using the Reverse method from the TopAbs package.
 ") Reversed;
 		TopoDS_Shape Reversed();
 
@@ -1575,7 +1290,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the value of the topabs_shapeenum enumeration that corresponds to this shape, for example vertex, edge, and so on. exceptions standard_nullobject if this shape is null.
+Returns the value of the TopAbs_ShapeEnum enumeration that corresponds to this shape, for example VERTEX, EDGE, and so on. Exceptions Standard_NullObject if this shape is null.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -1797,7 +1512,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns a copy of the tshape with no sub-shapes.
+Returns a copy of the TShape with no sub-shapes.
 ") EmptyCopy;
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -1934,7 +1649,8 @@ int
 
 Description
 -----------
-Returns the number of direct sub-shapes (children). @sa topods_iterator for accessing sub-shapes.
+Returns the number of direct sub-shapes (children). 
+See also: TopoDS_Iterator for accessing sub-shapes.
 ") NbChildren;
 		Standard_Integer NbChildren();
 
@@ -1978,7 +1694,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type as a term of the shapeenum enum: vertex, edge, wire, face, ....
+Returns the type as a term of the ShapeEnum enum: VERTEX, EDGE, WIRE, FACE, ....
 ") ShapeType;
 		virtual TopAbs_ShapeEnum ShapeType();
 
@@ -2034,7 +1750,7 @@ None
 
 Description
 -----------
-Constructs an undefined compsolid.
+Constructs an Undefined CompSolid.
 ") TopoDS_CompSolid;
 		 TopoDS_CompSolid();
 
@@ -2061,7 +1777,7 @@ None
 
 Description
 -----------
-Constructs an undefined compound.
+Constructs an Undefined Compound.
 ") TopoDS_Compound;
 		 TopoDS_Compound();
 
@@ -2088,7 +1804,7 @@ None
 
 Description
 -----------
-Undefined edge.
+Undefined Edge.
 ") TopoDS_Edge;
 		 TopoDS_Edge();
 
@@ -2115,7 +1831,7 @@ None
 
 Description
 -----------
-Undefined face.
+Undefined Face.
 ") TopoDS_Face;
 		 TopoDS_Face();
 
@@ -2142,7 +1858,7 @@ None
 
 Description
 -----------
-Constructs an undefined shell.
+Constructs an Undefined Shell.
 ") TopoDS_Shell;
 		 TopoDS_Shell();
 
@@ -2169,7 +1885,7 @@ None
 
 Description
 -----------
-Constructs an undefined solid.
+Constructs an Undefined Solid.
 ") TopoDS_Solid;
 		 TopoDS_Solid();
 
@@ -2188,7 +1904,7 @@ Constructs an undefined solid.
 class TopoDS_TCompSolid : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TCompSolid::TopoDS_TCompSolid ******/
-		/****** md5 signature: dde6fde09a50aec4102650f73db08af1 ******/
+		/****** md5 signature: 2c6aef197995b066ad53dd4406c73a96 ******/
 		%feature("compactdefaultargs") TopoDS_TCompSolid;
 		%feature("autodoc", "Return
 -------
@@ -2196,7 +1912,7 @@ None
 
 Description
 -----------
-Creates an empty tcompsolid.
+Creates an empty TCompSolid.
 ") TopoDS_TCompSolid;
 		 TopoDS_TCompSolid();
 
@@ -2209,7 +1925,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty tcompsolid.
+Returns an empty TCompSolid.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2222,7 +1938,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns compsolid.
+returns COMPSOLID.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2243,7 +1959,7 @@ Returns compsolid.
 class TopoDS_TCompound : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TCompound::TopoDS_TCompound ******/
-		/****** md5 signature: c02912086778405962c4faf51a73b978 ******/
+		/****** md5 signature: 0afdbad68c65e59228b1e6d95aa9b94a ******/
 		%feature("compactdefaultargs") TopoDS_TCompound;
 		%feature("autodoc", "Return
 -------
@@ -2251,7 +1967,7 @@ None
 
 Description
 -----------
-Creates an empty tcompound.
+Creates an empty TCompound.
 ") TopoDS_TCompound;
 		 TopoDS_TCompound();
 
@@ -2264,7 +1980,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty tcompound.
+Returns an empty TCompound.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2277,7 +1993,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns compound.
+Returns COMPOUND.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2307,7 +2023,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns edge.
+Returns EDGE.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2328,7 +2044,7 @@ Returns edge.
 class TopoDS_TFace : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TFace::TopoDS_TFace ******/
-		/****** md5 signature: 242b056e1964f0687fd9eb7d915dc8a2 ******/
+		/****** md5 signature: a2ec3649ce3b7a39f039babb04a084b6 ******/
 		%feature("compactdefaultargs") TopoDS_TFace;
 		%feature("autodoc", "Return
 -------
@@ -2336,7 +2052,7 @@ None
 
 Description
 -----------
-Creates an empty tface.
+Creates an empty TFace.
 ") TopoDS_TFace;
 		 TopoDS_TFace();
 
@@ -2349,7 +2065,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty tface.
+Returns an empty TFace.
 ") EmptyCopy;
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2362,7 +2078,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns face.
+returns FACE.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2383,7 +2099,7 @@ Returns face.
 class TopoDS_TShell : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TShell::TopoDS_TShell ******/
-		/****** md5 signature: 96a92473ca9512bdd0b350ad3919d8bc ******/
+		/****** md5 signature: 87f82558f35aa161593907ae5110e83a ******/
 		%feature("compactdefaultargs") TopoDS_TShell;
 		%feature("autodoc", "Return
 -------
@@ -2391,7 +2107,7 @@ None
 
 Description
 -----------
-Creates an empty tshell.
+Creates an empty TShell.
 ") TopoDS_TShell;
 		 TopoDS_TShell();
 
@@ -2404,7 +2120,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty tshell.
+Returns an empty TShell.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2417,7 +2133,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns shell.
+Returns SHELL.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2438,7 +2154,7 @@ Returns shell.
 class TopoDS_TSolid : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TSolid::TopoDS_TSolid ******/
-		/****** md5 signature: f5858256cfaf5be35c46e46aff7ef278 ******/
+		/****** md5 signature: 51d2465d84c236aa0896e37a0a4a6285 ******/
 		%feature("compactdefaultargs") TopoDS_TSolid;
 		%feature("autodoc", "Return
 -------
@@ -2446,7 +2162,7 @@ None
 
 Description
 -----------
-Creates an empty tsolid.
+Creates an empty TSolid.
 ") TopoDS_TSolid;
 		 TopoDS_TSolid();
 
@@ -2459,7 +2175,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty tsolid.
+Returns an empty TSolid.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2472,7 +2188,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns solid.
+returns SOLID.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2502,7 +2218,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns vertex.
+Returns VERTEX.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2523,7 +2239,7 @@ Returns vertex.
 class TopoDS_TWire : public TopoDS_TShape {
 	public:
 		/****** TopoDS_TWire::TopoDS_TWire ******/
-		/****** md5 signature: bd363cb3b3685f54b42b32d114bf96b9 ******/
+		/****** md5 signature: cb34959baa73453333bacc7501e34963 ******/
 		%feature("compactdefaultargs") TopoDS_TWire;
 		%feature("autodoc", "Return
 -------
@@ -2531,7 +2247,7 @@ None
 
 Description
 -----------
-Creates an empty twire.
+Creates an empty TWire.
 ") TopoDS_TWire;
 		 TopoDS_TWire();
 
@@ -2544,7 +2260,7 @@ opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns an empty twire.
+Returns an empty TWire.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
@@ -2557,7 +2273,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns wire.
+Returns WIRE.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
@@ -2588,7 +2304,7 @@ None
 
 Description
 -----------
-Undefined vertex.
+Undefined Vertex.
 ") TopoDS_Vertex;
 		 TopoDS_Vertex();
 
@@ -2615,7 +2331,7 @@ None
 
 Description
 -----------
-Undefined wire.
+Undefined Wire.
 ") TopoDS_Wire;
 		 TopoDS_Wire();
 
@@ -2637,71 +2353,363 @@ Undefined wire.
 /* deprecated methods */
 %pythoncode {
 @deprecated
-def topods_CompSolid(*args):
-	return topods.CompSolid(*args)
-
-@deprecated
-def topods_CompSolid(*args):
-	return topods.CompSolid(*args)
-
-@deprecated
-def topods_Compound(*args):
-	return topods.Compound(*args)
-
-@deprecated
-def topods_Compound(*args):
-	return topods.Compound(*args)
-
-@deprecated
-def topods_Edge(*args):
-	return topods.Edge(*args)
-
-@deprecated
-def topods_Edge(*args):
-	return topods.Edge(*args)
-
-@deprecated
-def topods_Face(*args):
-	return topods.Face(*args)
-
-@deprecated
-def topods_Face(*args):
-	return topods.Face(*args)
-
-@deprecated
-def topods_Shell(*args):
-	return topods.Shell(*args)
-
-@deprecated
-def topods_Shell(*args):
-	return topods.Shell(*args)
-
-@deprecated
-def topods_Solid(*args):
-	return topods.Solid(*args)
-
-@deprecated
-def topods_Solid(*args):
-	return topods.Solid(*args)
-
-@deprecated
-def topods_Vertex(*args):
-	return topods.Vertex(*args)
-
-@deprecated
-def topods_Vertex(*args):
-	return topods.Vertex(*args)
-
-@deprecated
-def topods_Wire(*args):
-	return topods.Wire(*args)
-
-@deprecated
-def topods_Wire(*args):
-	return topods.Wire(*args)
-
-@deprecated
 def TopoDS_AlertAttribute_Send(*args):
 	return TopoDS_AlertAttribute.Send(*args)
 
 }
+		/****** ::CompSolid ******/
+		/****** md5 signature: 4a2655da6406b040e0a2c2e3c4f739e1 ******/
+		%feature("compactdefaultargs") CompSolid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_CompSolid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, CompSolid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") CompSolid;
+		const TopoDS_CompSolid CompSolid(const TopoDS_Shape & theShape);
+
+		/****** ::CompSolid ******/
+		/****** md5 signature: cef945e4e37ec1eaf35f7e3a1a4dfe3a ******/
+		%feature("compactdefaultargs") CompSolid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_CompSolid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, CompSolid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_CompSolid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") CompSolid;
+		TopoDS_CompSolid CompSolid(TopoDS_Shape & theShape);
+
+		/****** ::Compound ******/
+		/****** md5 signature: fcd75bfe2b9ab2a8a8b2434cfa35fa5b ******/
+		%feature("compactdefaultargs") Compound;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Compound
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Compound. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Compound;
+		const TopoDS_Compound Compound(const TopoDS_Shape & theShape);
+
+		/****** ::Compound ******/
+		/****** md5 signature: 332fa7b089ddda979e1fd524ea4999da ******/
+		%feature("compactdefaultargs") Compound;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Compound
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Compound. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Compound @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Compound;
+		TopoDS_Compound Compound(TopoDS_Shape & theShape);
+
+		/****** ::Edge ******/
+		/****** md5 signature: d3bac77647c74c4270b0027bc4118f38 ******/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Edge
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Edge. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Edge;
+		const TopoDS_Edge Edge(const TopoDS_Shape & theShape);
+
+		/****** ::Edge ******/
+		/****** md5 signature: 7cc0008961d0a25367ce2c4038b001b7 ******/
+		%feature("compactdefaultargs") Edge;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Edge
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Edge. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Edge @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Edge;
+		TopoDS_Edge Edge(TopoDS_Shape & theShape);
+
+		/****** ::Face ******/
+		/****** md5 signature: b45c85443c02976f8c3324fea8274a65 ******/
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Face
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Face. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Face;
+		const TopoDS_Face Face(const TopoDS_Shape & theShape);
+
+		/****** ::Face ******/
+		/****** md5 signature: c6a564aca516c8652b36c1b5431e5853 ******/
+		%feature("compactdefaultargs") Face;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Face
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Face. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Face @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Face;
+		TopoDS_Face Face(TopoDS_Shape & theShape);
+
+		/****** ::Shell ******/
+		/****** md5 signature: e113eac68d8e755dd92eb3924a442012 ******/
+		%feature("compactdefaultargs") Shell;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Shell
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Shell. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Shell;
+		const TopoDS_Shell Shell(const TopoDS_Shape & theShape);
+
+		/****** ::Shell ******/
+		/****** md5 signature: 8a95a058dc5a10ea52ab9cbbc7a8435c ******/
+		%feature("compactdefaultargs") Shell;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Shell
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Shell. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Shell @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Shell;
+		TopoDS_Shell Shell(TopoDS_Shape & theShape);
+
+		/****** ::Solid ******/
+		/****** md5 signature: 6063d53d8a5d5e48091efc9fd1d43e95 ******/
+		%feature("compactdefaultargs") Solid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Solid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Solid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Solid;
+		const TopoDS_Solid Solid(const TopoDS_Shape & theShape);
+
+		/****** ::Solid ******/
+		/****** md5 signature: 3c7fb3c5be37c881b0bc00c8729d4da8 ******/
+		%feature("compactdefaultargs") Solid;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Solid
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Solid. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Solid @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Solid;
+		TopoDS_Solid Solid(TopoDS_Shape & theShape);
+
+		/****** ::Vertex ******/
+		/****** md5 signature: 85bab54dcf0547cdc22d5d5fc38847d4 ******/
+		%feature("compactdefaultargs") Vertex;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Vertex
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Vertex. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Vertex;
+		const TopoDS_Vertex Vertex(const TopoDS_Shape & theShape);
+
+		/****** ::Vertex ******/
+		/****** md5 signature: 711f96bcc02e81e73bb9e58c5da60724 ******/
+		%feature("compactdefaultargs") Vertex;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Vertex
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Vertex. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Vertex @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Vertex;
+		TopoDS_Vertex Vertex(TopoDS_Shape & theShape);
+
+		/****** ::Wire ******/
+		/****** md5 signature: 7ba0e407343c7bcef409bfc75cd9bed9 ******/
+		%feature("compactdefaultargs") Wire;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Wire
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Wire. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Wire;
+		const TopoDS_Wire Wire(const TopoDS_Shape & theShape);
+
+		/****** ::Wire ******/
+		/****** md5 signature: 3e9a9a7f5c3a616933fee92569082d85 ******/
+		%feature("compactdefaultargs") Wire;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Wire
+
+Description
+-----------
+Casts shape theShape to the more specialized return type, Wire. 
+Parameter theShape the shape to be cast 
+Return: the casted shape as TopoDS_Wire @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+") Wire;
+		TopoDS_Wire Wire(TopoDS_Shape & theShape);
+
+
+%pythoncode {
+class topods:
+    @staticmethod
+    def Edge(*args, **kwargs):
+        return Edge(*args, **kwargs)
+
+    @staticmethod
+    def Vertex(*args, **kwargs):
+        return Vertex(*args, **kwargs)
+
+    @staticmethod
+    def Face(*args, **kwargs):
+        return Face(*args, **kwargs)
+
+    @staticmethod
+    def Wire(*args, **kwargs):
+        return Wire(*args, **kwargs)
+
+    @staticmethod
+    def Shell(*args, **kwargs):
+        return Shell(*args, **kwargs)
+
+    @staticmethod
+    def Solid(*args, **kwargs):
+        return Solid(*args, **kwargs)
+
+    @staticmethod
+    def CompSolid(*args, **kwargs):
+        return CompSolid(*args, **kwargs)
+
+    @staticmethod
+    def Compound(*args, **kwargs):
+        return Compound(*args, **kwargs)
+};
+

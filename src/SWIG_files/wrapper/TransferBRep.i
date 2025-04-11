@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERBREPDOCSTRING
 "TransferBRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transferbrep.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transferbrep.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERBREPDOCSTRING) TransferBRep
 
@@ -53,6 +53,16 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transferbrep.html
 #include<TopAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<MoniTool_module.hxx>
+#include<TDF_module.hxx>
+#include<IFSelect_module.hxx>
+#include<TDocStd_module.hxx>
+#include<XSControl_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<Geom_module.hxx>
+#include<gp_module.hxx>
+#include<Geom2d_module.hxx>
+#include<DE_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -126,7 +136,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check-list bound to a given object, generally none (if ok) or one check. <obj> can be, either a true transient object or entity, or a shapemapper, in that case the shape is considered.
+Returns the check-list bound to a given object, generally none (if OK) or one check. <obj> can be, either a true Transient object or entity, or a ShapeMapper, in that case the Shape is considered.
 ") CheckObject;
 		static Interface_CheckIterator CheckObject(const Interface_CheckIterator & chl, const opencascade::handle<Standard_Transient> & obj);
 
@@ -145,7 +155,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of objects to which a non-empty check is bound in a check-list. objects are transients, they can then be either imagine objects entities for an interface norm. <alsoshapes> commands shapes to be returned too (as shapemapper), see also checkedshapes.
+Returns the list of objects to which a non-empty Check is bound in a check-list. Objects are transients, they can then be either Imagine objects entities for an Interface Norm. <alsoshapes> commands Shapes to be returned too (as ShapeMapper), see also CheckedShapes.
 ") Checked;
 		static opencascade::handle<TColStd_HSequenceOfTransient> Checked(const Interface_CheckIterator & chl, const Standard_Boolean alsoshapes = Standard_False);
 
@@ -163,7 +173,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Returns the list of shapes to which a non-empty check is bound in a check-list.
+Returns the list of shapes to which a non-empty Check is bound in a check-list.
 ") CheckedShapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> CheckedShapes(const Interface_CheckIterator & chl);
 
@@ -204,7 +214,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Takes a starting checkiterator which brings checks bound with starting objects (shapes, transient from an imagine appli ...) and converts it to a checkiterator in which checks are bound with results in an interfacemodel mapping is recorded in the finderprocess starting objects for which no individual result is recorded remain in their state.
+Takes a starting CheckIterator which brings checks bound with starting objects (Shapes, Transient from an Imagine appli ...) and converts it to a CheckIterator in which checks are bound with results in an InterfaceModel Mapping is recorded in the FinderProcess Starting objects for which no individual result is recorded remain in their state.
 ") ResultCheckList;
 		static Interface_CheckIterator ResultCheckList(const Interface_CheckIterator & chl, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -223,7 +233,7 @@ opencascade::handle<Transfer_Binder>
 
 Description
 -----------
-Returns the result (as a binder) attached to a given shape null if none.
+Returns the result (as a Binder) attached to a given Shape Null if none.
 ") ResultFromShape;
 		static opencascade::handle<Transfer_Binder> ResultFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
@@ -243,7 +253,7 @@ None
 
 Description
 -----------
-Sets a shape as a result for a starting entity <ent> (reverse of shaperesult) it simply creates a shapebinder then binds it to the entity.
+Sets a Shape as a result for a starting entity <ent> (reverse of ShapeResult) It simply creates a ShapeBinder then binds it to the entity.
 ") SetShapeResult;
 		static void SetShapeResult(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent, const TopoDS_Shape & result);
 
@@ -263,7 +273,7 @@ None
 
 Description
 -----------
-Binds a transient result to a shape in a finderprocess (as first result if multiple: does not add it to existing one).
+Binds a Transient Result to a Shape in a FinderProcess (as first result if multiple: does not add it to existing one).
 ") SetTransientFromShape;
 		static void SetTransientFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape, const opencascade::handle<Standard_Transient> & result);
 
@@ -282,7 +292,7 @@ opencascade::handle<TransferBRep_ShapeMapper>
 
 Description
 -----------
-Returns a shapemapper for a given shape (location included) either <shape> is already mapped, then its mapper is returned or it is not, then a new one is created then returned, but it is not mapped here (use bind or findelsebind to do this).
+Returns a ShapeMapper for a given Shape (location included) Either <shape> is already mapped, then its Mapper is returned Or it is not, then a new one is created then returned, BUT it is not mapped here (use Bind or FindElseBind to do this).
 ") ShapeMapper;
 		static opencascade::handle<TransferBRep_ShapeMapper> ShapeMapper(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
@@ -300,7 +310,7 @@ TopoDS_Shape
 
 Description
 -----------
-Get the shape recorded in a binder if the binder brings a multiple result, search for the shape.
+Get the Shape recorded in a Binder If the Binder brings a multiple result, search for the Shape.
 ") ShapeResult;
 		static TopoDS_Shape ShapeResult(const opencascade::handle<Transfer_Binder> & binder);
 
@@ -319,7 +329,7 @@ TopoDS_Shape
 
 Description
 -----------
-Get the shape recorded in a transientprocess as result of the transfer of an entity. i.e. in the binder bound to that entity if no result or result not a single shape, returns a null shape.
+Get the Shape recorded in a TransientProcess as result of the Transfer of an entity. I.E. in the binder bound to that Entity If no result or result not a single Shape, returns a Null Shape.
 ") ShapeResult;
 		static TopoDS_Shape ShapeResult(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent);
 
@@ -338,7 +348,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns a status regarding a shape in a finderprocess - forward means bound with same orientation - reversed means bound with reverse orientation - external means not bound - internal is not used.
+Returns a Status regarding a Shape in a FinderProcess - FORWARD means bound with SAME Orientation - REVERSED means bound with REVERSE Orientation - EXTERNAL means NOT BOUND - INTERNAL is not used.
 ") ShapeState;
 		static TopAbs_Orientation ShapeState(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
@@ -357,7 +367,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Gets the shapes recorded in a transientprocess as result of a transfer, considers roots only or all results according <rootsonly>, returns them as a hsequence.
+Gets the Shapes recorded in a TransientProcess as result of a Transfer, considers roots only or all results according <rootsonly>, returns them as a HSequence.
 ") Shapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const Standard_Boolean rootsonly = Standard_True);
 
@@ -376,7 +386,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Gets the shapes recorded in a transientprocess as result of a transfer, for a given list of starting entities, returns the shapes as a hsequence.
+Gets the Shapes recorded in a TransientProcess as result of a Transfer, for a given list of starting entities, returns the shapes as a HSequence.
 ") Shapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -396,7 +406,7 @@ None
 
 Description
 -----------
-Fills sequence of transferresultinfo for each type of entity given in the entitytypes (entity are given as objects). method iskind applied to the entities in tp is used to compare with entities in entitytypes. topabs_shapeenum).
+Fills sequence of TransferResultInfo for each type of entity given in the EntityTypes (entity are given as objects). Method IsKind applied to the entities in TP is used to compare with entities in EntityTypes. TopAbs_ShapeEnum).
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & EntityTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
@@ -416,7 +426,7 @@ None
 
 Description
 -----------
-Fills sequence of transferresultinfo for each type of shape given in the shapetypes (which are in fact considered as topabs_shapeenum). the finders in the fp are considered as shapemappers.
+Fills sequence of TransferResultInfo for each type of shape given in the ShapeTypes (which are in fact considered as TopAbs_ShapeEnum). The Finders in the FP are considered as ShapeMappers.
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
@@ -435,7 +445,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the result as pure transient attached to a shape first one if multiple result.
+Returns the result as pure Transient attached to a Shape first one if multiple result.
 ") TransientFromShape;
 		static opencascade::handle<Standard_Transient> TransientFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
@@ -466,7 +476,7 @@ None
 
 Description
 -----------
-Normal standard constructor, creates an empty binderofshape.
+normal standard constructor, creates an empty BinderOfShape.
 ") TransferBRep_BinderOfShape;
 		 TransferBRep_BinderOfShape();
 
@@ -484,7 +494,7 @@ None
 
 Description
 -----------
-Constructor which in the same time defines the result returns true if a starting object is bound with several results: here, returns always false but it can have next results.
+constructor which in the same time defines the result Returns True if a starting object is bound with SEVERAL results: Here, returns always False But it can have next results.
 ") TransferBRep_BinderOfShape;
 		 TransferBRep_BinderOfShape(const TopoDS_Shape & res);
 
@@ -497,7 +507,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the defined result, if there is one, and allows to change it (avoids result + setresult). admits that result can be not yet defined warning: a call to cresult causes result to be known as defined.
+Returns the defined Result, if there is one, and allows to change it (avoids Result + SetResult). Admits that Result can be not yet defined Warning: a call to CResult causes Result to be known as defined.
 ") CResult;
 		TopoDS_Shape CResult();
 
@@ -510,7 +520,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the defined result, if there is one.
+Returns the defined Result, if there is one.
 ") Result;
 		const TopoDS_Shape Result();
 
@@ -523,7 +533,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type permitted for the result, i.e. the type of the parameter class <shape from topods> (statically defined).
+Returns the Type permitted for the Result, i.e. the Type of the Parameter Class <Shape from TopoDS> (statically defined).
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
@@ -536,7 +546,7 @@ str
 
 Description
 -----------
-Returns the type name computed for the result (dynamic).
+Returns the Type Name computed for the Result (dynamic).
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
@@ -554,7 +564,7 @@ None
 
 Description
 -----------
-Defines the result.
+Defines the Result.
 ") SetResult;
 		void SetResult(const TopoDS_Shape & res);
 
@@ -583,7 +593,7 @@ None
 
 Description
 -----------
-Initializes a non-specialised reader. typically, for each norm or protocol, is will be required to define a specific create to load a file and transfer it.
+Initializes a non-specialised Reader. Typically, for each norm or protocol, is will be required to define a specific Create to load a file and transfer it.
 ") TransferBRep_Reader;
 		 TransferBRep_Reader();
 
@@ -596,7 +606,7 @@ opencascade::handle<Transfer_ActorOfTransientProcess>
 
 Description
 -----------
-Returns the recorded actor.
+Returns the recorded Actor.
 ") Actor;
 		virtual opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
@@ -609,7 +619,7 @@ bool
 
 Description
 -----------
-Initializes the reader for a transfer (one,roots, or list) also calls preparetransfer returns true when done, false if could not be done.
+Initializes the Reader for a Transfer (one,roots, or list) Also calls PrepareTransfer Returns True when done, False if could not be done.
 ") BeginTransfer;
 		Standard_Boolean BeginTransfer();
 
@@ -622,7 +632,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Checks the model (complete: syntax + semantic) and returns the produced check list.
+Checks the Model (complete: syntax + semantic) and returns the produced Check List.
 ") CheckListModel;
 		Interface_CheckIterator CheckListModel();
 
@@ -635,7 +645,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Checks the result of last transfer (individual or roots, no cumulation on several transfers) and returns the produced list.
+Checks the Result of last Transfer (individual or roots, no cumulation on several transfers) and returns the produced list.
 ") CheckListResult;
 		Interface_CheckIterator CheckListResult();
 
@@ -653,7 +663,7 @@ bool
 
 Description
 -----------
-Checks the model. returns true if there is no fail at all (regardless warnings) if <withprint> is true, also sends checks on standard output.
+Checks the Model. Returns True if there is NO FAIL at all (regardless Warnings) If <withprint> is True, also sends Checks on standard output.
 ") CheckStatusModel;
 		Standard_Boolean CheckStatusModel(const Standard_Boolean withprint);
 
@@ -671,7 +681,7 @@ bool
 
 Description
 -----------
-Checks the result of last transfer (individual or roots, no cumulation on several transfers). returns true if no fail occurred during transfer (queries the transientprocess).
+Checks the Result of last Transfer (individual or roots, no cumulation on several transfers). Returns True if NO fail occurred during Transfer (queries the TransientProcess).
 ") CheckStatusResult;
 		Standard_Boolean CheckStatusResult(const Standard_Boolean withprints);
 
@@ -684,7 +694,7 @@ None
 
 Description
 -----------
-Clears the result and done status. but not the model.
+clears the result and Done status. But not the Model.
 ") Clear;
 		void Clear();
 
@@ -697,7 +707,7 @@ None
 
 Description
 -----------
-Ebds a transfer (one, roots or list) by recording its result.
+Ebds a Transfer (one, roots or list) by recording its result.
 ") EndTransfer;
 		void EndTransfer();
 
@@ -710,7 +720,7 @@ bool
 
 Description
 -----------
-Returns true if filestatus is for filenotfound.
+Returns True if FileStatus is for FileNotFound.
 ") FileNotFound;
 		Standard_Boolean FileNotFound();
 
@@ -723,7 +733,7 @@ int
 
 Description
 -----------
-Returns the file status.
+Returns the File Status.
 ") FileStatus;
 		Standard_Integer FileStatus();
 
@@ -736,7 +746,7 @@ bool
 
 Description
 -----------
-Returns true if the last transfer/transferroots was a success.
+Returns True if the LAST Transfer/TransferRoots was a success.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -762,7 +772,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model to be worked on.
+Returns the Model to be worked on.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -775,7 +785,7 @@ int
 
 Description
 -----------
-Returns the count of produced shapes (roots).
+Returns the count of produced Shapes (roots).
 ") NbShapes;
 		Standard_Integer NbShapes();
 
@@ -788,7 +798,7 @@ int
 
 Description
 -----------
-Returns the count of produced transient results (roots).
+Returns the count of produced Transient Results (roots).
 ") NbTransients;
 		Standard_Integer NbTransients();
 
@@ -801,7 +811,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a unique shape for the result: - a void shape (type = shape) if result is empty - a simple shape if result has only one: returns this one - a compound if result has more than one shape.
+Returns a unique Shape for the result: - a void Shape (type = SHAPE) if result is empty - a simple Shape if result has only one: returns this one - a Compound if result has more than one Shape.
 ") OneShape;
 		TopoDS_Shape OneShape();
 
@@ -814,7 +824,7 @@ None
 
 Description
 -----------
-Prepares the transfer. also can act on the actor or change the transientprocess if required. should not set the actor into the transientprocess, it is done by caller. the provided default does nothing.
+Prepares the Transfer. Also can act on the Actor or change the TransientProcess if required. Should not set the Actor into the TransientProcess, it is done by caller. The provided default does nothing.
 ") PrepareTransfer;
 		virtual void PrepareTransfer();
 
@@ -827,7 +837,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the recorded protocol.
+Returns the recorded Protocol.
 ") Protocol;
 		virtual opencascade::handle<Interface_Protocol> Protocol();
 
@@ -863,7 +873,7 @@ None
 
 Description
 -----------
-Sets file status to be interpreted as follows: = 0 ok < 0 file not found > 0 read error, no model could be created.
+Sets File Status to be interpreted as follows: = 0 OK < 0 file not found > 0 read error, no Model could be created.
 ") SetFileStatus;
 		void SetFileStatus(const Standard_Integer status);
 
@@ -881,7 +891,7 @@ None
 
 Description
 -----------
-Specifies a model to work on also clears the result and done status.
+Specifies a Model to work on Also clears the result and Done status.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -917,7 +927,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape given its rank, by default the first one.
+Returns a Shape given its rank, by default the first one.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer num = 1);
 
@@ -935,7 +945,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a shape produced from a given entity (if it was individually transferred or if an intermediate result is known). if no shape is bound with <ent>, returns a null shape warning: runs on the last call to transfer,transferroots,transferlist.
+Returns a Shape produced from a given entity (if it was individually transferred or if an intermediate result is known). If no Shape is bound with <ent>, returns a Null Shape Warning: Runs on the last call to Transfer,TransferRoots,TransferList.
 ") ShapeResult;
 		TopoDS_Shape ShapeResult(const opencascade::handle<Standard_Transient> & ent);
 
@@ -948,7 +958,7 @@ opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
-Returns the complete list of produced shapes.
+Returns the complete list of produced Shapes.
 ") Shapes;
 		opencascade::handle<TopTools_HSequenceOfShape> Shapes();
 
@@ -961,7 +971,7 @@ bool
 
 Description
 -----------
-Returns true if filestatus is for error during read (major error; for local error, see checkmodel).
+Returns True if FileStatus is for Error during read (major error; for local error, see CheckModel).
 ") SyntaxError;
 		Standard_Boolean SyntaxError();
 
@@ -980,7 +990,7 @@ bool
 
 Description
 -----------
-Transfers an entity given its rank in the model (root or not) returns true if it is recognized as geom-topol. (but it can have failed: see isdone).
+Transfers an Entity given its rank in the Model (Root or not) Returns True if it is recognized as Geom-Topol. (But it can have failed: see IsDone).
 ") Transfer;
 		virtual Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -999,7 +1009,7 @@ None
 
 Description
 -----------
-Transfers a list of entities (only the ones also in the model) remark: former result is cleared.
+Transfers a list of Entities (only the ones also in the Model) Remark: former result is cleared.
 ") TransferList;
 		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1017,7 +1027,7 @@ None
 
 Description
 -----------
-Transfers all root entities which are recognized as geom-topol the result will be a list of shapes. this method calls user redefinable preparetransfer remark: former result is cleared.
+Transfers all Root Entities which are recognized as Geom-Topol The result will be a list of Shapes. This method calls user redefinable PrepareTransfer Remark: former result is cleared.
 ") TransferRoots;
 		virtual void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1035,7 +1045,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a transient root result, given its rank (by default the first one).
+Returns a Transient Root Result, given its rank (by default the first one).
 ") Transient;
 		opencascade::handle<Standard_Transient> Transient(const Standard_Integer num = 1);
 
@@ -1048,7 +1058,7 @@ opencascade::handle<Transfer_TransientProcess>
 
 Description
 -----------
-Returns the transientprocess. it records information about the very last transfer done. null if no transfer yet done. can be used for queries more accurate than the default ones.
+Returns the TransientProcess. It records information about the very last transfer done. Null if no transfer yet done. Can be used for queries more accurate than the default ones.
 ") TransientProcess;
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
@@ -1061,7 +1071,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the complete list of produced transient results.
+Returns the complete list of produced Transient Results.
 ") Transients;
 		opencascade::handle<TColStd_HSequenceOfTransient> Transients();
 
@@ -1093,7 +1103,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type attached to an object here, tshape (shape has no dynamic type).
+Returns the Type attached to an object Here, TShape (Shape has no Dynamic Type).
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const TopoDS_Shape & ent);
 
@@ -1111,7 +1121,7 @@ str
 
 Description
 -----------
-Returns type name (string) here, the true name of the type of a shape.
+Returns Type Name (string) Here, the true name of the Type of a Shape.
 ") TypeName;
 		static Standard_CString TypeName(const TopoDS_Shape & ent);
 
@@ -1472,7 +1482,7 @@ None
 
 Description
 -----------
-Creates a mapper with a value. this value can then not be changed. it is used by the hasher to compute the hashcode, which will then be stored for an immediate reading.
+Creates a Mapper with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 ") TransferBRep_ShapeMapper;
 		 TransferBRep_ShapeMapper(const TopoDS_Shape & akey);
 
@@ -1490,7 +1500,7 @@ bool
 
 Description
 -----------
-Specific testof equality: defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+Specific testof equality: defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==).
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
@@ -1516,7 +1526,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
+Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
@@ -1529,7 +1539,7 @@ str
 
 Description
 -----------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
+Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
 		virtual Standard_CString ValueTypeName();
 
@@ -1704,7 +1714,7 @@ None
 
 Description
 -----------
-Creates an empty shapebinder.
+Creates an empty ShapeBinder.
 ") TransferBRep_ShapeBinder;
 		 TransferBRep_ShapeBinder();
 
@@ -1722,7 +1732,7 @@ None
 
 Description
 -----------
-Creates a shapebinder with a result.
+Creates a ShapeBinder with a result.
 ") TransferBRep_ShapeBinder;
 		 TransferBRep_ShapeBinder(const TopoDS_Shape & res);
 
@@ -1787,7 +1797,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type of the shape result (under topabs form).
+Returns the Type of the Shape Result (under TopAbs form).
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 

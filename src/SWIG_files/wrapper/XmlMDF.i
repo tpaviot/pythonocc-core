@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMDFDOCSTRING
 "XmlMDF module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlmdf.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlmdf.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDFDOCSTRING) XmlMDF
 
@@ -115,7 +115,7 @@ None
 
 Description
 -----------
-Adds the attribute storage drivers to <adriverseq>.
+Adds the attribute storage drivers to <aDriverSeq>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -137,7 +137,7 @@ None
 
 Description
 -----------
-Translates a transient <asource> into a persistent <atarget>.
+Translates a transient <aSource> into a persistent <aTarget>.
 ") FromTo;
 		static void FromTo(const opencascade::handle<TDF_Data> & aSource, XmlObjMgt_Element & aTarget, XmlObjMgt_SRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -159,7 +159,7 @@ bool
 
 Description
 -----------
-Translates a persistent <asource> into a transient <atarget>. returns true if completed successfully (false on error).
+Translates a persistent <aSource> into a transient <aTarget>. Returns True if completed successfully (False on error).
 ") FromTo;
 		static Standard_Boolean FromTo(const XmlObjMgt_Element & aSource, opencascade::handle<TDF_Data> & aTarget, XmlObjMgt_RRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -213,7 +213,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Creates a new attribute from tdf.
+Creates a new attribute from TDF.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -233,7 +233,7 @@ bool
 
 Description
 -----------
-Translate the contents of <asource> and put it into <atarget>, using the relocation table <areloctable> to keep the sharings.
+Translate the contents of <aSource> and put it into <aTarget>, using the relocation table <aRelocTable> to keep the sharings.
 ") Paste;
 		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & aSource, const opencascade::handle<TDF_Attribute> & aTarget, XmlObjMgt_RRelocationTable & aRelocTable);
 
@@ -253,7 +253,7 @@ None
 
 Description
 -----------
-Translate the contents of <asource> and put it into <atarget>, using the relocation table <areloctable> to keep the sharings.
+Translate the contents of <aSource> and put it into <aTarget>, using the relocation table <aRelocTable> to keep the sharings.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & aSource, XmlObjMgt_Persistent & aTarget, XmlObjMgt_SRelocationTable & aRelocTable);
 
@@ -266,7 +266,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of source object, inheriting from attribute from tdf.
+Returns the type of source object, inheriting from Attribute from TDF.
 ") SourceType;
 		virtual opencascade::handle<Standard_Type> SourceType();
 
@@ -279,7 +279,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the full xml tag name (including ns prefix).
+Returns the full XML tag name (including NS prefix).
 ") TypeName;
 		const TCollection_AsciiString & TypeName();
 
@@ -321,7 +321,7 @@ None
 
 Description
 -----------
-Creates a mutable adrivertable from xmlmdf.
+Creates a mutable ADriverTable from XmlMDF.
 ") XmlMDF_ADriverTable;
 		 XmlMDF_ADriverTable();
 
@@ -339,7 +339,8 @@ None
 
 Description
 -----------
-Adds a translation driver for the derived attribute. the base driver must be already added. @param theinstance is newly created attribute, detached from any label.
+Adds a translation driver for the derived attribute. The base driver must be already added. 
+Parameter theInstance is newly created attribute, detached from any label.
 ") AddDerivedDriver;
 		void AddDerivedDriver(const opencascade::handle<TDF_Attribute> & theInstance);
 
@@ -357,7 +358,8 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Adds a translation driver for the derived attribute. the base driver must be already added. @param thederivedtype is registered attribute type using implement_derived_attribute macro.
+Adds a translation driver for the derived attribute. The base driver must be already added. 
+Parameter theDerivedType is registered attribute type using IMPLEMENT_DERIVED_ATTRIBUTE macro.
 ") AddDerivedDriver;
 		const opencascade::handle<Standard_Type> & AddDerivedDriver(Standard_CString theDerivedType);
 
@@ -375,7 +377,7 @@ None
 
 Description
 -----------
-Sets a translation driver: <adriver>.
+Sets a translation driver: <aDriver>.
 ") AddDriver;
 		void AddDriver(const opencascade::handle<XmlMDF_ADriver> & anHDriver);
 
@@ -412,7 +414,7 @@ bool
 
 Description
 -----------
-Gets a driver <adriver> according to <atype> //! returns true if a driver is found; false otherwise.
+Gets a driver <aDriver> according to <aType> //! Returns True if a driver is found; false otherwise.
 ") GetDriver;
 		Standard_Boolean GetDriver(const opencascade::handle<Standard_Type> & theType, opencascade::handle<XmlMDF_ADriver> & theDriver);
 
@@ -447,7 +449,9 @@ None
 
 Description
 -----------
-Creates a derivative persistence driver for thederivative attribute by reusage of thebasedriver @param thederivative an instance of the attribute, just created, detached from any label @param thebasedriver a driver of the base attribute, called by paste methods.
+Creates a derivative persistence driver for theDerivative attribute by reusage of theBaseDriver 
+Parameter theDerivative an instance of the attribute, just created, detached from any label 
+Parameter theBaseDriver a driver of the base attribute, called by Paste methods.
 ") XmlMDF_DerivedDriver;
 		 XmlMDF_DerivedDriver(const opencascade::handle<TDF_Attribute> & theDerivative, const opencascade::handle<XmlMDF_ADriver> & theBaseDriver);
 
@@ -513,7 +517,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the full xml tag name (including ns prefix).
+Returns the full XML tag name (including NS prefix).
 ") TypeName;
 		const TCollection_AsciiString & TypeName();
 

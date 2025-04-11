@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTPOLYHDOCSTRING
 "IntPolyh module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intpolyh.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpolyh.html"
 %enddef
 %module (package="OCC.Core", docstring=INTPOLYHDOCSTRING) IntPolyh
 
@@ -204,7 +204,7 @@ bool
 
 Description
 -----------
-Returns true if the couple has been analyzed.
+Returns True if the couple has been analyzed.
 ") IsAnalyzed;
 		Standard_Boolean IsAnalyzed();
 
@@ -222,7 +222,7 @@ bool
 
 Description
 -----------
-Returns true if the couple is equal to <theother>.
+Returns true if the Couple is equal to <theOther>.
 ") IsEqual;
 		Standard_Boolean IsEqual(const IntPolyh_Couple & theOther);
 
@@ -527,7 +527,7 @@ None
 
 Description
 -----------
-Constructor for intersection of two surfaces with default parameters. performs intersection.
+Constructor for intersection of two surfaces with default parameters. Performs intersection.
 ") IntPolyh_Intersection;
 		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2);
 
@@ -550,7 +550,7 @@ None
 
 Description
 -----------
-Constructor for intersection of two surfaces with the given size of the sampling nets: - <thenbsu1> x <thenbsv1> - for the first surface <thes1>; - <thenbsu2> x <thenbsv2> - for the second surface <thes2>. performs intersection.
+Constructor for intersection of two surfaces with the given size of the sampling nets: - <theNbSU1> x <theNbSV1> - for the first surface <theS1>; - <theNbSU2> x <theNbSV2> - for the second surface <theS2>. Performs intersection.
 ") IntPolyh_Intersection;
 		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const Standard_Integer theNbSU1, const Standard_Integer theNbSV1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Integer theNbSU2, const Standard_Integer theNbSV2);
 
@@ -573,7 +573,7 @@ None
 
 Description
 -----------
-Constructor for intersection of two surfaces with the precomputed sampling. performs intersection.
+Constructor for intersection of two surfaces with the precomputed sampling. Performs intersection.
 ") IntPolyh_Intersection;
 		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const TColStd_Array1OfReal & theUPars1, const TColStd_Array1OfReal & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const TColStd_Array1OfReal & theUPars2, const TColStd_Array1OfReal & theVPars2);
 
@@ -901,7 +901,7 @@ None
 
 Description
 -----------
-Creates middle point from p1 and p2 and stores it to this.
+Creates middle point from P1 and P2 and stores it to this.
 ") Middle;
 		void Middle(const opencascade::handle<Adaptor3d_Surface> & MySurface, const IntPolyh_Point & P1, const IntPolyh_Point & P2);
 
@@ -1009,7 +1009,7 @@ None
 
 Description
 -----------
-Sets the u coordinate for the 2d point.
+Sets the U coordinate for the 2D point.
 ") SetU;
 		void SetU(const Standard_Real u);
 
@@ -1027,7 +1027,7 @@ None
 
 Description
 -----------
-Sets the v coordinate for the 2d point.
+Sets the V coordinate for the 2D point.
 ") SetV;
 		void SetV(const Standard_Real v);
 
@@ -1045,7 +1045,7 @@ None
 
 Description
 -----------
-Sets the x coordinate for the 3d point.
+Sets the X coordinate for the 3D point.
 ") SetX;
 		void SetX(const Standard_Real x);
 
@@ -1063,7 +1063,7 @@ None
 
 Description
 -----------
-Sets the y coordinate for the 3d point.
+Sets the Y coordinate for the 3D point.
 ") SetY;
 		void SetY(const Standard_Real y);
 
@@ -1081,7 +1081,7 @@ None
 
 Description
 -----------
-Sets the z coordinate for the 3d point.
+Sets the Z coordinate for the 3D point.
 ") SetZ;
 		void SetZ(const Standard_Real z);
 
@@ -1143,7 +1143,7 @@ float
 
 Description
 -----------
-Returns the u coordinate of the 2d point.
+Returns the U coordinate of the 2D point.
 ") U;
 		Standard_Real U();
 
@@ -1156,7 +1156,7 @@ float
 
 Description
 -----------
-Returns the v coordinate of the 2d point.
+Returns the V coordinate of the 2D point.
 ") V;
 		Standard_Real V();
 
@@ -1169,7 +1169,7 @@ float
 
 Description
 -----------
-Returns x coordinate of the 3d point.
+Returns X coordinate of the 3D point.
 ") X;
 		Standard_Real X();
 
@@ -1182,7 +1182,7 @@ float
 
 Description
 -----------
-Returns y coordinate of the 3d point.
+Returns Y coordinate of the 3D point.
 ") Y;
 		Standard_Real Y();
 
@@ -1195,7 +1195,7 @@ float
 
 Description
 -----------
-Returns the z coordinate of the 3d point.
+Returns the Z coordinate of the 3D point.
 ") Z;
 		Standard_Real Z();
 
@@ -1285,8 +1285,6 @@ No available documentation.
 *****************************/
 class IntPolyh_PointNormal {
 	public:
-		gp_Pnt Point;
-		gp_Vec Normal;
 };
 
 
@@ -2063,7 +2061,7 @@ None
 
 Description
 -----------
-Fills the array <thepoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
+Fills the array <thePoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
 ") FillArrayOfPointNormal;
 		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
 
@@ -2082,7 +2080,7 @@ theVEnlarge: bool
 
 Description
 -----------
-Checks if the surface can be enlarged in u or v direction.
+Checks if the surface can be enlarged in U or V direction.
 ") IsEnlargePossible;
 		static void IsEnlargePossible(const opencascade::handle<Adaptor3d_Surface> & theSurf, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -2105,7 +2103,7 @@ None
 
 Description
 -----------
-Makes the sampling of the given surface <thesurf> making the net of <thenbsu> x <thenbsv> sampling points. the flag <theenlargezone> controls the enlargement of the sampling zone on the surface. the parameters of the sampling points are stored into <theupars> and <thevpars> arrays.
+Makes the sampling of the given surface <theSurf> making the net of <theNbSU> x <theNbSV> sampling points. The flag <theEnlargeZone> controls the enlargement of the sampling zone on the surface. The parameters of the sampling points are stored into <theUPars> and <theVPars> arrays.
 ") MakeSampling;
 		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Integer theNbSU, const Standard_Integer theNbSV, const Standard_Boolean theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
 
@@ -2341,7 +2339,7 @@ bool
 
 Description
 -----------
-Returns the degenerated flag.
+Returns the Degenerated flag.
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated();
 

@@ -9,9 +9,6 @@ from OCC.Core.ChFiDS import *
 from OCC.Core.Adaptor3d import *
 from OCC.Core.TopAbs import *
 from OCC.Core.gp import *
-from OCC.Core.Geom import *
-from OCC.Core.Geom2d import *
-from OCC.Core.GeomAdaptor import *
 
 
 class ChFiKPart_ComputeData:

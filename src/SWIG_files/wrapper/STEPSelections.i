@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPSELECTIONSDOCSTRING
 "STEPSelections module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepselections.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepselections.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPSELECTIONSDOCSTRING) STEPSelections
 
@@ -64,6 +64,11 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepselections.ht
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Resource_module.hxx>
+#include<TDF_module.hxx>
+#include<TDocStd_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<DE_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -764,7 +769,7 @@ bool
 
 Description
 -----------
-Explores an entity, to take its faces works recursively.
+Explores an entity, to take its faces Works recursively.
 ") Explore;
 		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
@@ -777,7 +782,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'assembly structures'.
+Returns a text defining the criterium: 'Assembly structures'.
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -877,7 +882,7 @@ bool
 
 Description
 -----------
-Explores an entity, to take its faces works recursively.
+Explores an entity, to take its faces Works recursively.
 ") Explore;
 		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
@@ -890,7 +895,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'faces'.
+Returns a text defining the criterium: 'Faces'.
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -1018,7 +1023,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'curves'.
+Returns a text defining the criterium: 'Curves'.
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -1081,7 +1086,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'instances'.
+Returns a text defining the criterium: 'Instances'.
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 

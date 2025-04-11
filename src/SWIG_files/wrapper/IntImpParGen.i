@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTIMPPARGENDOCSTRING
 "IntImpParGen module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intimppargen.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intimppargen.html"
 %enddef
 %module (package="OCC.Core", docstring=INTIMPPARGENDOCSTRING) IntImpParGen
 
@@ -127,7 +127,7 @@ None
 
 Description
 -----------
-Template class for an implicit curve. math function, instantiated inside the intersector. tool used by the package intcurve and intimppargen.
+Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen.
 ") DetermineTransition;
 		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 

@@ -38,6 +38,26 @@ def test_tessellate_box():
     assert tess.ObjGetNormalCount() == 24
 
 
+def test_tessellate_sphere_deviation():
+    """Set deviation to control the number of triangles"""
+    a_sphere = BRepPrimAPI_MakeSphere(17.12).Shape()
+    tess = ShapeTesselator(a_sphere)
+    tess.Compute()
+    triangle_count_before = tess.ObjGetTriangleCount()
+    normal_count_before = tess.ObjGetNormalCount()
+    deviation_before = tess.GetDeviation()
+
+    new_tess = ShapeTesselator(a_sphere)
+    new_deviation = deviation_before / 10  # smaller deviation, more triangles
+    new_tess.SetDeviation(new_deviation)
+    assert round(new_tess.GetDeviation(), 8) == round(new_deviation, 8)
+    new_tess.Compute()  # recompute
+    triangle_count_after = new_tess.ObjGetTriangleCount()
+    normal_count_after = new_tess.ObjGetNormalCount()
+    assert triangle_count_after > triangle_count_before
+    assert normal_count_after > normal_count_before
+
+
 def test_tessellate_torus():
     """2nd test : tessellation of a torus"""
     a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()

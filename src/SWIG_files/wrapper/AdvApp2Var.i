@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ADVAPP2VARDOCSTRING
 "AdvApp2Var module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_advapp2var.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapp2var.html"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
@@ -145,7 +145,6 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 /* end templates declaration */
 
 /* typedefs */
-typedef int ( * S_fp ) ( );
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> AdvApp2Var_SequenceOfNode;
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
 typedef NCollection_Sequence<AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
@@ -274,7 +273,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the average errors.
+returns the average errors.
 ") AverageError;
 		opencascade::handle<TColStd_HArray1OfReal> AverageError(const Standard_Integer Dimension);
 
@@ -293,7 +292,7 @@ float
 
 Description
 -----------
-Returns the average error of the bsplinesurface of range index.
+returns the average error of the BSplineSurface of range Index.
 ") AverageError;
 		Standard_Real AverageError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -342,7 +341,7 @@ bool
 
 Description
 -----------
-True if the approximation did come out with a result that is not necessarely within the required tolerance or a result that is not recognized with the wished continuities.
+True if the approximation did come out with a result that is not NECESSARELY within the required tolerance or a result that is not recognized with the wished continuities.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -373,7 +372,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the errors max.
+returns the errors max.
 ") MaxError;
 		opencascade::handle<TColStd_HArray1OfReal> MaxError(const Standard_Integer Dimension);
 
@@ -392,7 +391,7 @@ float
 
 Description
 -----------
-Returns the error max of the bsplinesurface of range index.
+returns the error max of the BSplineSurface of range Index.
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -428,7 +427,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the bsplinesurface of range index.
+returns the BSplineSurface of range Index.
 ") Surface;
 		opencascade::handle<Geom_BSplineSurface> Surface(const Standard_Integer Index);
 
@@ -459,7 +458,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the errors max on ufrontiers warning: dimension must be equal to 3.
+returns the errors max on UFrontiers Warning: Dimension must be equal to 3.
 ") UFrontError;
 		opencascade::handle<TColStd_HArray1OfReal> UFrontError(const Standard_Integer Dimension);
 
@@ -478,7 +477,7 @@ float
 
 Description
 -----------
-Returns the error max of the bsplinesurface of range index on a ufrontier.
+returns the error max of the BSplineSurface of range Index on a UFrontier.
 ") UFrontError;
 		Standard_Real UFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -509,7 +508,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the errors max on vfrontiers warning: dimension must be equal to 3.
+returns the errors max on VFrontiers Warning: Dimension must be equal to 3.
 ") VFrontError;
 		opencascade::handle<TColStd_HArray1OfReal> VFrontError(const Standard_Integer Dimension);
 
@@ -528,7 +527,7 @@ float
 
 Description
 -----------
-Returns the error max of the bsplinesurface of range index on a vfrontier.
+returns the error max of the BSplineSurface of range Index on a VFrontier.
 ") VFrontError;
 		Standard_Real VFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -1579,7 +1578,7 @@ IndexStrip: int
 
 Description
 -----------
-Search the index of the first iso not approximated, if all isos are approximated null is returned.
+search the Index of the first Iso not approximated, if all Isos are approximated NULL is returned.
 ") FirstNotApprox;
 		opencascade::handle<AdvApp2Var_Iso> FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -1810,7 +1809,7 @@ int
 
 Description
 -----------
-///.
+No available documentation.
 ") mmapcmp_;
 		static int mmapcmp_(integer * , integer * , integer * , double * , double * );
 
@@ -1932,7 +1931,7 @@ int
 
 Description
 -----------
-///.
+No available documentation.
 ") mmcglc1_;
 		static int mmcglc1_(integer * ndimax, integer * ndimen, integer * ncoeff, doublereal * courbe, doublereal * tdebut, doublereal * tfinal, doublereal * epsiln, doublereal * xlongc, doublereal * erreur, integer * iercod);
 
@@ -2736,7 +2735,7 @@ Index: int
 
 Description
 -----------
-Search the index of the first patch not approximated, if all patches are approximated standard_false is returned.
+search the Index of the first Patch not approximated, if all Patches are approximated Standard_False is returned.
 ") FirstNotApprox;
 		Standard_Boolean FirstNotApprox(Standard_Integer &OutValue);
 
@@ -2965,7 +2964,7 @@ gp_XY
 
 Description
 -----------
-Returns the coordinates (u,v) of the node.
+Returns the coordinates (U,V) of the node.
 ") Coord;
 		const gp_XY Coord();
 
@@ -2984,7 +2983,7 @@ float
 
 Description
 -----------
-Returns the error between f(u,v) and its approximation.
+returns the error between F(U,V) and its approximation.
 ") Error;
 		Standard_Real Error(const Standard_Integer iu, const Standard_Integer iv);
 
@@ -3003,7 +3002,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the value f(u,v) or its derivates on the node (u,v).
+returns the value F(U,V) or its derivates on the node (U,V).
 ") Point;
 		const gp_Pnt Point(const Standard_Integer iu, const Standard_Integer iv);
 
@@ -3022,7 +3021,7 @@ None
 
 Description
 -----------
-Changes the coordinates (u,v) to (x1,x2).
+changes the coordinates (U,V) to (x1,x2).
 ") SetCoord;
 		void SetCoord(const Standard_Real x1, const Standard_Real x2);
 
@@ -3042,7 +3041,7 @@ None
 
 Description
 -----------
-Affects the error between f(u,v) and its approximation.
+affects the error between F(U,V) and its approximation.
 ") SetError;
 		void SetError(const Standard_Integer iu, const Standard_Integer iv, const Standard_Real error);
 
@@ -3062,7 +3061,7 @@ None
 
 Description
 -----------
-Affects the value f(u,v) or its derivates on the node (u,v).
+affects the value F(U,V) or its derivates on the node (U,V).
 ") SetPoint;
 		void SetPoint(const Standard_Integer iu, const Standard_Integer iv, const gp_Pnt & Pt);
 
@@ -3075,7 +3074,7 @@ int
 
 Description
 -----------
-Returns the continuity order in u of the node.
+returns the continuity order in U of the node.
 ") UOrder;
 		Standard_Integer UOrder();
 
@@ -3088,7 +3087,7 @@ int
 
 Description
 -----------
-Returns the continuity order in v of the node.
+returns the continuity order in V of the node.
 ") VOrder;
 		Standard_Integer VOrder();
 

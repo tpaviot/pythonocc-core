@@ -15,14 +15,6 @@ from OCC.Core.Adaptor3d import *
 from OCC.Core.math import *
 from OCC.Core.Law import *
 from OCC.Core.gp import *
-from OCC.Core.GeomAdaptor import *
-from OCC.Core.TopOpeBRepDS import *
-from OCC.Core.Geom2d import *
-from OCC.Core.TColStd import *
-from OCC.Core.Bnd import *
-from OCC.Core.BRepBlend import *
-from OCC.Core.IntSurf import *
-from OCC.Core.GeomFill import *
 
 
 class ChFi3d_FilletShape(IntEnum):
@@ -36,17 +28,17 @@ ChFi3d_Polynomial = ChFi3d_FilletShape.ChFi3d_Polynomial
 
 class chfi3d:
     @staticmethod
-    def ConcaveSide(S1: BRepAdaptor_Surface, S2: BRepAdaptor_Surface, E: TopoDS_Edge, Or1: TopAbs_Orientation, Or2: TopAbs_Orientation) -> int: ...
+    def ConcaveSide(S1: BRepAdaptor_Surface, S2: BRepAdaptor_Surface, E: TopoDS_Edge) -> Tuple[int, TopAbs_Orientation, TopAbs_Orientation]: ...
     @staticmethod
     def DefineConnectType(E: TopoDS_Edge, F1: TopoDS_Face, F2: TopoDS_Face, SinTol: float, CorrectPoint: bool) -> ChFiDS_TypeOfConcavity: ...
     @staticmethod
     def IsTangentFaces(theEdge: TopoDS_Edge, theFace1: TopoDS_Face, theFace2: TopoDS_Face, Order: Optional[GeomAbs_Shape] = GeomAbs_G1) -> bool: ...
     @overload
     @staticmethod
-    def NextSide(Or1: TopAbs_Orientation, Or2: TopAbs_Orientation, OrSave1: TopAbs_Orientation, OrSave2: TopAbs_Orientation, ChoixSauv: int) -> int: ...
+    def NextSide(OrSave1: TopAbs_Orientation, OrSave2: TopAbs_Orientation, ChoixSauv: int) -> Tuple[int, TopAbs_Orientation, TopAbs_Orientation]: ...
     @overload
     @staticmethod
-    def NextSide(Or: TopAbs_Orientation, OrSave: TopAbs_Orientation, OrFace: TopAbs_Orientation) -> None: ...
+    def NextSide(OrSave: TopAbs_Orientation, OrFace: TopAbs_Orientation) -> TopAbs_Orientation: ...
     @staticmethod
     def SameSide(Or: TopAbs_Orientation, OrSave1: TopAbs_Orientation, OrSave2: TopAbs_Orientation, OrFace1: TopAbs_Orientation, OrFace2: TopAbs_Orientation) -> bool: ...
 

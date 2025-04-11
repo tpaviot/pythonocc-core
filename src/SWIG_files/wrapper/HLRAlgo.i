@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRALGODOCSTRING
 "HLRAlgo module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_hlralgo.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlralgo.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRALGODOCSTRING) HLRAlgo
 
@@ -339,7 +339,7 @@ None
 
 Description
 -----------
-Iterator on the visible or hidden parts of an edgestatus.
+Iterator on the visible or hidden parts of an EdgeStatus.
 ") UpdateMinMax;
 		static void UpdateMinMax(const Standard_Real x, const Standard_Real y, const Standard_Real z, Standard_Real Min[16], Standard_Real Max[16]);
 
@@ -892,7 +892,7 @@ TolEnd: float
 
 Description
 -----------
-Returns the bounds and the tolerances of the current hidden interval.
+Returns the bounds and the tolerances of the current Hidden Interval.
 ") Hidden;
 		void Hidden(Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
@@ -1000,7 +1000,7 @@ TolEnd: float
 
 Description
 -----------
-Returns the bounds and the tolerances of the current visible interval.
+Returns the bounds and the tolerances of the current Visible Interval.
 ") Visible;
 		void Visible(Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
@@ -1048,7 +1048,7 @@ None
 
 Description
 -----------
-Creates a new edgestatus. default visible. the edge is bounded by the interval <start>, <end> with the tolerances <tolstart>, <tolend>.
+Creates a new EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 ") HLRAlgo_EdgeStatus;
 		 HLRAlgo_EdgeStatus(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
 
@@ -1153,7 +1153,7 @@ None
 
 Description
 -----------
-Hides the interval <start>, <end> with the tolerances <tolstart>, <tolend>. this interval is subtracted from the visible parts. if the hidden part is on ( or under ) the face the flag <onface> is true ( or false ). if the hidden part is on ( or inside ) the boundary of the face the flag <onboundary> is true ( or false ).
+Hides the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>. This interval is subtracted from the visible parts. If the hidden part is on ( or under ) the face the flag <OnFace> is True ( or False ). If the hidden part is on ( or inside ) the boundary of the face the flag <OnBoundary> is True ( or False ).
 ") Hide;
 		void Hide(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd, const Standard_Boolean OnFace, const Standard_Boolean OnBoundary);
 
@@ -1166,7 +1166,7 @@ None
 
 Description
 -----------
-Hide the whole edge.
+Hide the whole Edge.
 ") HideAll;
 		void HideAll();
 
@@ -1187,7 +1187,7 @@ None
 
 Description
 -----------
-Initialize an edgestatus. default visible. the edge is bounded by the interval <start>, <end> with the tolerances <tolstart>, <tolend>.
+Initialize an EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 ") Initialize;
 		void Initialize(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
 
@@ -1213,7 +1213,7 @@ None
 
 Description
 -----------
-Show the whole edge.
+Show the whole Edge.
 ") ShowAll;
 		void ShowAll();
 
@@ -1267,7 +1267,7 @@ None
 
 Description
 -----------
-Create a block of edges for a wire.
+Create a Block of Edges for a wire.
 ") HLRAlgo_EdgesBlock;
 		 HLRAlgo_EdgesBlock(const Standard_Integer NbEdges);
 
@@ -2094,7 +2094,7 @@ intl: bool
 
 Description
 -----------
-Process hiding between <pt1> and <pt2>.
+process hiding between <Pt1> and <Pt2>.
 ") Hide;
 		HLRAlgo_BiPoint::PointsT & Hide(HLRAlgo_EdgeStatus & status, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -2224,7 +2224,7 @@ intl: bool
 
 Description
 -----------
-Process hiding between <pt1> and <pt2>.
+process hiding between <Pt1> and <Pt2>.
 ") Show;
 		HLRAlgo_BiPoint::PointsT & Show(Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -2992,7 +2992,7 @@ None
 
 Description
 -----------
-Creates an axonometric projector. <cs> is the viewing coordinate system.
+Creates an axonometric projector. <CS> is the viewing coordinate system.
 ") HLRAlgo_Projector;
 		 HLRAlgo_Projector(const gp_Ax2 & CS);
 
@@ -3011,7 +3011,7 @@ None
 
 Description
 -----------
-Creates a perspective projector. <cs> is the viewing coordinate system.
+Creates a perspective projector. <CS> is the viewing coordinate system.
 ") HLRAlgo_Projector;
 		 HLRAlgo_Projector(const gp_Ax2 & CS, const Standard_Real Focus);
 
@@ -3031,7 +3031,7 @@ None
 
 Description
 -----------
-Build a projector with automatic minmax directions.
+build a Projector with automatic minmax directions.
 ") HLRAlgo_Projector;
 		 HLRAlgo_Projector(const gp_Trsf & T, const Standard_Boolean Persp, const Standard_Real Focus);
 
@@ -3054,7 +3054,7 @@ None
 
 Description
 -----------
-Build a projector with given minmax directions.
+build a Projector with given minmax directions.
 ") HLRAlgo_Projector;
 		 HLRAlgo_Projector(const gp_Trsf & T, const Standard_Boolean Persp, const Standard_Real Focus, const gp_Vec2d & v1, const gp_Vec2d & v2, const gp_Vec2d & v3);
 
@@ -3126,7 +3126,7 @@ bool
 
 Description
 -----------
-Returns true if there is a perspective transformation.
+Returns True if there is a perspective transformation.
 ") Perspective;
 		Standard_Boolean Perspective();
 
@@ -3204,7 +3204,7 @@ None
 
 Description
 -----------
-To compute with the given scale and translation.
+to compute with the given scale and translation.
 ") Scaled;
 		void Scaled(const Standard_Boolean On = Standard_False);
 
@@ -3243,7 +3243,7 @@ gp_Lin
 
 Description
 -----------
-Return a line going through the eye towards the 2d point <x,y>.
+return a line going through the eye towards the 2d point <X,Y>.
 ") Shoot;
 		gp_Lin Shoot(const Standard_Real X, const Standard_Real Y);
 
@@ -3327,7 +3327,7 @@ None
 
 Description
 -----------
-Create a block of blocks.
+Create a Block of Blocks.
 ") HLRAlgo_WiresBlock;
 		 HLRAlgo_WiresBlock(const Standard_Integer NbWires);
 

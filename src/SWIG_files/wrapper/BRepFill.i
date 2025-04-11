@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPFILLDOCSTRING
 "BRepFill module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepfill.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPFILLDOCSTRING) BRepFill
 
@@ -271,7 +271,7 @@ ProfOnSpine: bool
 
 Description
 -----------
-Computes <axeprof> as follow. <location> is the position of the nearest vertex v of <profile> to <spine>.<xdirection> is confused with the tangent to <spine> at the projected point of v on the spine. <direction> is normal to <spine>. <spine> is a plane wire or a plane face.
+Computes <AxeProf> as Follow. <Location> is the Position of the nearest vertex V of <Profile> to <Spine>.<XDirection> is confused with the tangent to <Spine> at the projected point of V on the Spine. <Direction> is normal to <Spine>. <Spine> is a plane wire or a plane face.
 ") Axe;
 		static void Axe(const TopoDS_Shape & Spine, const TopoDS_Wire & Profile, gp_Ax3 & AxeProf, Standard_Boolean &OutValue, const Standard_Real Tol);
 
@@ -290,7 +290,7 @@ None
 
 Description
 -----------
-Compute acr on a wire.
+Compute ACR on a wire.
 ") ComputeACR;
 		static void ComputeACR(const TopoDS_Wire & wire, TColStd_Array1OfReal & ACR);
 
@@ -329,7 +329,7 @@ TopoDS_Wire
 
 Description
 -----------
-Insert acr on a wire.
+Insert ACR on a wire.
 ") InsertACR;
 		static TopoDS_Wire InsertACR(const TopoDS_Wire & wire, const TColStd_Array1OfReal & ACRcuts, const Standard_Real prec);
 
@@ -348,7 +348,7 @@ TopoDS_Shell
 
 Description
 -----------
-Computes a ruled surface between two wires. the wires must have the same number of edges.
+Computes a ruled surface between two wires. The wires must have the same number of edges.
 ") Shell;
 		static TopoDS_Shell Shell(const TopoDS_Wire & Wire1, const TopoDS_Wire & Wire2);
 
@@ -432,7 +432,7 @@ None
 
 Description
 -----------
-Sets/unsets computation in parallel mode.
+Sets/Unsets computation in parallel mode.
 ") SetParallelMode;
 		void SetParallelMode(const Standard_Boolean theVal);
 
@@ -463,7 +463,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the resulting shape.
+returns the resulting shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -521,7 +521,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the approximation of the 3d curve.
+returns the approximation of the 3d Curve.
 ") Curve;
 		const opencascade::handle<Geom_Curve> & Curve();
 
@@ -534,7 +534,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the approximation of the pcurve on the first face of the multiline.
+returns the approximation of the PCurve on the first face of the MultiLine.
 ") CurveOnF1;
 		const opencascade::handle<Geom2d_Curve> & CurveOnF1();
 
@@ -547,7 +547,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the approximation of the pcurve on the first face of the multiline.
+returns the approximation of the PCurve on the first face of the MultiLine.
 ") CurveOnF2;
 		const opencascade::handle<Geom2d_Curve> & CurveOnF2();
 
@@ -654,7 +654,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes created from a subshape <subsection> of a section.
+Returns the shapes created from a subshape <SubSection> of a section.
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Edge & SubSection);
 
@@ -742,7 +742,7 @@ None
 
 Description
 -----------
-Performs compatiblewires according to the orientation and the origin of each other.
+Performs CompatibleWires According to the orientation and the origin of each other.
 ") Perform;
 		void Perform(const Standard_Boolean WithRotation = Standard_True);
 
@@ -773,7 +773,7 @@ TopTools_SequenceOfShape
 
 Description
 -----------
-Returns the generated sequence.
+returns the generated sequence.
 ") Shape;
 		const TopTools_SequenceOfShape & Shape();
 
@@ -812,7 +812,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 ") BRepFill_ComputeCLine;
 		 BRepFill_ComputeCLine(const BRepFill_MultiLine & Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
@@ -855,7 +855,7 @@ tol2d: float
 
 Description
 -----------
-Returns the tolerances 2d and 3d of the <index> multicurve.
+returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -868,7 +868,7 @@ bool
 
 Description
 -----------
-Returns false if at a moment of the approximation, the status noapproximation has been sent by the user when more points were needed.
+returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
@@ -881,7 +881,7 @@ bool
 
 Description
 -----------
-Returns false if the status nopointsadded has been sent.
+returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
@@ -894,7 +894,7 @@ int
 
 Description
 -----------
-Returns the number of multicurve doing the approximation of the multiline.
+Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
@@ -931,7 +931,7 @@ None
 
 Description
 -----------
-Runs the algorithm after having initialized the fields.
+runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const BRepFill_MultiLine & Line);
 
@@ -969,7 +969,7 @@ None
 
 Description
 -----------
-Changes the degrees of the approximation.
+changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
@@ -987,7 +987,7 @@ None
 
 Description
 -----------
-Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. by default hang checking is used.
+Set value of hang checking flag if this flag = true, possible hang of algorithm is checked and algorithm is forced to stop. By default hang checking is used.
 ") SetHangChecking;
 		void SetHangChecking(const Standard_Boolean theHangChecking);
 
@@ -1005,7 +1005,7 @@ None
 
 Description
 -----------
-Set inverse order of degree selection: if theinvordr = true, current degree is chosen by inverse order - from maxdegree to mindegree. by default inverse order is used.
+Set inverse order of degree selection: if theInvOrdr = true, current degree is chosen by inverse order - from maxdegree to mindegree. By default inverse order is used.
 ") SetInvOrder;
 		void SetInvOrder(const Standard_Boolean theInvOrder);
 
@@ -1060,7 +1060,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the approximation multicurve of range <index>.
+returns the approximation MultiCurve of range <Index>.
 ") Value;
 		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
@@ -1097,7 +1097,7 @@ None
 
 Description
 -----------
-Create a constraint order is the order of the constraint. the possible values for order are -1,0,1,2. order i means constraints gi npt is the number of points associated with the constraint. toldist is the maximum error to satisfy for g0 constraints tolang is the maximum error to satisfy for g1 constraints tolcurv is the maximum error to satisfy for g2 constraints these errors can be replaced by laws of criterion.
+Create a constraint Order is the order of the constraint. The possible values for order are -1,0,1,2. Order i means constraints Gi Npt is the number of points associated with the constraint. TolDist is the maximum error to satisfy for G0 constraints TolAng is the maximum error to satisfy for G1 constraints TolCurv is the maximum error to satisfy for G2 constraints These errors can be replaced by laws of criterion.
 ") BRepFill_CurveConstraint;
 		 BRepFill_CurveConstraint(const opencascade::handle<Adaptor3d_CurveOnSurface> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
@@ -1172,7 +1172,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1305,7 +1305,7 @@ TopoDS_Shell
 
 Description
 -----------
-Returns the draft surface to have the complete shape you have to use the shape() methode.
+Returns the draft surface To have the complete shape you have to use the Shape() methode.
 ") Shell;
 		TopoDS_Shell Shell();
 
@@ -1401,7 +1401,7 @@ None
 
 Description
 -----------
-Creates an evolved shape by sweeping the <profile> along the <spine>. <axeprof> is used to set the position of <profile> along <spine> as follows: <axeprof> slides on the profile with direction colinear to the normal to <spine>, and its <xdirection> mixed with the tangent to <spine>.
+Creates an evolved shape by sweeping the <Profile> along the <Spine>. <AxeProf> is used to set the position of <Profile> along <Spine> as follows: <AxeProf> slides on the profile with direction colinear to the normal to <Spine>, and its <XDirection> mixed with the tangent to <Spine>.
 ") BRepFill_Evolved;
 		 BRepFill_Evolved(const TopoDS_Wire & Spine, const TopoDS_Wire & Profile, const gp_Ax3 & AxeProf, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Solid = Standard_False);
 
@@ -1423,7 +1423,7 @@ None
 
 Description
 -----------
-Creates an evolved shape by sweeping the <profile> along the <spine>.
+Creates an evolved shape by sweeping the <Profile> along the <Spine>.
 ") BRepFill_Evolved;
 		 BRepFill_Evolved(const TopoDS_Face & Spine, const TopoDS_Wire & Profile, const gp_Ax3 & AxeProf, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Solid = Standard_False);
 
@@ -1436,7 +1436,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the face bottom if <solid> is true in the constructor.
+Return the face Bottom if <Solid> is True in the constructor.
 ") Bottom;
 		const TopoDS_Shape Bottom();
 
@@ -1455,7 +1455,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes created from a subshape <spineshape> of the spine and a subshape <profshape> on the profile.
+Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
 
@@ -1503,7 +1503,7 @@ None
 
 Description
 -----------
-Performs an evolved shape by sweeping the <profile> along the <spine>.
+Performs an evolved shape by sweeping the <Profile> along the <Spine>.
 ") Perform;
 		void Perform(const TopoDS_Wire & Spine, const TopoDS_Wire & Profile, const gp_Ax3 & AxeProf, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Solid = Standard_False);
 
@@ -1525,7 +1525,7 @@ None
 
 Description
 -----------
-Performs an evolved shape by sweeping the <profile> along the <spine>.
+Performs an evolved shape by sweeping the <Profile> along the <Spine>.
 ") Perform;
 		void Perform(const TopoDS_Face & Spine, const TopoDS_Wire & Profile, const gp_Ax3 & AxeProf, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean Solid = Standard_False);
 
@@ -1538,7 +1538,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the generated shape.
+returns the generated shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -1551,7 +1551,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the face top if <solid> is true in the constructor.
+Return the face Top if <Solid> is True in the constructor.
 ") Top;
 		const TopoDS_Shape Top();
 
@@ -1658,7 +1658,7 @@ int
 
 Description
 -----------
-Adds a new constraint which also defines an edge of the wire of the face order: order of the constraint: geomabs_c0: the surface has to pass by 3d representation of the edge geomabs_g1: the surface has to pass by 3d representation of the edge and to respect tangency with the first face of the edge geomabs_g2: the surface has to pass by 3d representation of the edge and to respect tangency and curvature with the first face of the edge.
+Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the first face of the edge GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the first face of the edge.
 ") Add;
 		Standard_Integer Add(const TopoDS_Edge & anEdge, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
 
@@ -1679,7 +1679,7 @@ int
 
 Description
 -----------
-Adds a new constraint which also defines an edge of the wire of the face order: order of the constraint: geomabs_c0: the surface has to pass by 3d representation of the edge geomabs_g1: the surface has to pass by 3d representation of the edge and to respect tangency with the given face geomabs_g2: the surface has to pass by 3d representation of the edge and to respect tangency and curvature with the given face.
+Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the given face GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the given face.
 ") Add;
 		Standard_Integer Add(const TopoDS_Edge & anEdge, const TopoDS_Face & Support, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
 
@@ -1698,7 +1698,7 @@ int
 
 Description
 -----------
-Adds a free constraint on a face. the corresponding edge has to be automatically recomputed. it is always a bound.
+Adds a free constraint on a face. The corresponding edge has to be automatically recomputed. It is always a bound.
 ") Add;
 		Standard_Integer Add(const TopoDS_Face & Support, const GeomAbs_Shape Order);
 
@@ -1874,7 +1874,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1905,7 +1905,7 @@ None
 
 Description
 -----------
-Loads the initial surface the initial surface must have orthogonal local coordinates, i.e. partial derivatives ds/du and ds/dv must be orthogonal at each point of surface. if this condition breaks, distortions of resulting surface are possible.
+Loads the initial Surface The initial surface must have orthogonal local coordinates, i.e. partial derivatives dS/du and dS/dv must be orthogonal at each point of surface. If this condition breaks, distortions of resulting surface are possible.
 ") LoadInitSurface;
 		void LoadInitSurface(const TopoDS_Face & aFace);
 
@@ -1945,7 +1945,7 @@ None
 
 Description
 -----------
-Sets the values of tolerances used to control the constraint. tol2d: tol3d: it is the maximum distance allowed between the support surface and the constraints tolang: it is the maximum angle allowed between the normal of the surface and the constraints tolcurv: it is the maximum difference of curvature allowed between the surface and the constraint.
+Sets the values of Tolerances used to control the constraint. Tol2d: Tol3d: it is the maximum distance allowed between the support surface and the constraints TolAng: it is the maximum angle allowed between the normal of the surface and the constraints TolCurv: it is the maximum difference of curvature allowed between the surface and the constraint.
 ") SetConstrParam;
 		void SetConstrParam(const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
 
@@ -1966,7 +1966,7 @@ None
 
 Description
 -----------
-Sets the parameters used for resolution. the default values of these parameters have been chosen for a good ratio quality/performance. degree: it is the order of energy criterion to minimize for computing the deformation of the surface. the default value is 3 the recommended value is i+2 where i is the maximum order of the constraints. nbptsoncur: it is the average number of points for discretisation of the edges. nbiter: it is the maximum number of iterations of the process. for each iteration the number of discretisation points is increased. anisotropie:.
+Sets the parameters used for resolution. The default values of these parameters have been chosen for a good ratio quality/performance. Degree: it is the order of energy criterion to minimize for computing the deformation of the surface. The default value is 3 The recommended value is i+2 where i is the maximum order of the constraints. NbPtsOnCur: it is the average number of points for discretisation of the edges. NbIter: it is the maximum number of iterations of the process. For each iteration the number of discretisation points is increased. Anisotropie:.
 ") SetResolParam;
 		void SetResolParam(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False);
 
@@ -2042,7 +2042,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes created from a subshape <ssection> of a section.
+Returns the shapes created from a subshape <SSection> of a section.
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SSection);
 
@@ -2099,7 +2099,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a modified shape in the constructed shell, if shape is not changed (replaced) during operation => returns the same shape.
+Returns a modified shape in the constructed shell, If shape is not changed (replaced) during operation => returns the same shape.
 ") ResultShape;
 		TopoDS_Shape ResultShape(const TopoDS_Shape & theShape);
 
@@ -2117,7 +2117,7 @@ None
 
 Description
 -----------
-Sets the mutable input state if true then the input profile can be modified inside the operation. default value is true.
+Sets the mutable input state If true then the input profile can be modified inside the operation. Default value is true.
 ") SetMutableInput;
 		void SetMutableInput(const Standard_Boolean theIsMutableInput);
 
@@ -2163,7 +2163,7 @@ float
 
 Description
 -----------
-Return the curvilinear abscissa corresponding to a point of the path, defined by <index> of edge and a parameter on the edge.
+Return the curvilinear abscissa corresponding to a point of the path, defined by <Index> of Edge and a parameter on the edge.
 ") Abscissa;
 		Standard_Real Abscissa(const Standard_Integer Index, const Standard_Real Param);
 
@@ -2182,7 +2182,7 @@ Last: float
 
 Description
 -----------
-Return the curvilinear bounds of the <index> law.
+Return the Curvilinear Bounds of the <Index> Law.
 ") CurvilinearBounds;
 		void CurvilinearBounds(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2201,7 +2201,7 @@ None
 
 Description
 -----------
-Apply the law to a shape, for a given curvilinear abscissa.
+Apply the Law to a shape, for a given Curvilinear abscissa.
 ") D0;
 		void D0(const Standard_Real Abscissa, TopoDS_Shape & Section);
 
@@ -2232,7 +2232,7 @@ TopoDS_Edge
 
 Description
 -----------
-Return the edge of rank <index> in the path <index> have to be in [1, nblaw()].
+Return the Edge of rank <Index> in the path <Index> have to be in [1, NbLaw()].
 ") Edge;
 		const TopoDS_Edge Edge(const Standard_Integer Index);
 
@@ -2245,7 +2245,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Return a error status, if the status is not pipeok then it exist a parameter tlike the law is not valuable for t.
+Return a error status, if the status is not PipeOk then it exist a parameter tlike the law is not valuable for t.
 ") GetStatus;
 		GeomFill_PipeError GetStatus();
 
@@ -2296,7 +2296,7 @@ int
 
 Description
 -----------
-Compute the law's continuity between 2 edges of the path the result can be: -1: case not connex 0: it is connex (g0) 1: it is tangent (g1).
+Compute the Law's continuity between 2 edges of the path The result can be: -1: Case Not connex 0: It is connex (G0) 1: It is tangent (G1).
 ") IsG1;
 		Standard_Integer IsG1(const Standard_Integer Index, const Standard_Real SpatialTolerance = 1.0e-7, const Standard_Real AngularTolerance = 1.0e-4);
 
@@ -2314,7 +2314,7 @@ opencascade::handle<GeomFill_LocationLaw>
 
 Description
 -----------
-Return the elementary law of rank <index> <index> have to be in [1, nblaw()].
+Return the elementary Law of rank <Index> <Index> have to be in [1, NbLaw()].
 ") Law;
 		const opencascade::handle<GeomFill_LocationLaw> & Law(const Standard_Integer Index);
 
@@ -2345,7 +2345,7 @@ int
 
 Description
 -----------
-Return the number of elementary law.
+Return the number of elementary Law.
 ") NbLaw;
 		Standard_Integer NbLaw();
 
@@ -2364,7 +2364,7 @@ Param: float
 
 Description
 -----------
-Find the index law and the parameter, for a given curvilinear abscissa.
+Find the index Law and the parameter, for a given Curvilinear abscissa.
 ") Parameter;
 		void Parameter(const Standard_Real Abscissa, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -2386,7 +2386,7 @@ None
 
 Description
 -----------
-Compute <outputvertex> like a transformation of <inputvertex> the transformation is given by evaluation of the location law in the vertex of rank <index>. <location> is used to manage discontinuities: - -1: the law before the vertex is used. - 1: the law after the vertex is used. - 0: average of the both laws is used.
+Compute <OutputVertex> like a transformation of <InputVertex> the transformation is given by evaluation of the location law in the vertex of rank <Index>. <Location> is used to manage discontinuities: - -1: The law before the vertex is used. - 1: The law after the vertex is used. - 0: Average of the both laws is used.
 ") PerformVertex;
 		void PerformVertex(const Standard_Integer Index, const TopoDS_Vertex & InputVertex, const Standard_Real TolMin, TopoDS_Vertex & OutputVertex, const Standard_Integer Location = 0);
 
@@ -2435,7 +2435,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Return the vertex of rank <index> in the path <index> have to be in [0, nblaw()].
+Return the vertex of rank <Index> in the path <Index> have to be in [0, NbLaw()].
 ") Vertex;
 		TopoDS_Vertex Vertex(const Standard_Integer Index);
 
@@ -2448,7 +2448,7 @@ TopoDS_Wire
 
 Description
 -----------
-Return the path.
+return the path.
 ") Wire;
 		const TopoDS_Wire Wire();
 
@@ -2514,7 +2514,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity betwwen the two faces seshape from geomabsparated by mybis.
+Returns the continuity between the two faces seShape from GeomAbsparated by myBis.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -2534,7 +2534,7 @@ None
 
 Description
 -----------
-Raises if isparticularcase is <false>.
+raises if IsParticularCase is <False>.
 ") Curves;
 		void Curves(opencascade::handle<Geom_Curve> & Curve, opencascade::handle<Geom2d_Curve> & PCurve1, opencascade::handle<Geom2d_Curve> & PCurve2);
 
@@ -2554,7 +2554,7 @@ bool
 
 Description
 -----------
-Returns the derivative at parameter <theu>.
+Returns the derivative at parameter <theU>.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
 
@@ -2567,7 +2567,7 @@ float
 
 Description
 -----------
-Returns the first parameter of the bissectrice.
+returns the first parameter of the Bissectrice.
 ") FirstParameter;
 		virtual Standard_Real FirstParameter();
 
@@ -2580,7 +2580,7 @@ bool
 
 Description
 -----------
-Search if the projection of the bissectrice on the faces needs an approximation or not. returns true if the approximation is not needed.
+Search if the Projection of the Bissectrice on the faces needs an approximation or not. Returns true if the approximation is not needed.
 ") IsParticularCase;
 		Standard_Boolean IsParticularCase();
 
@@ -2593,7 +2593,7 @@ float
 
 Description
 -----------
-Returns the last parameter of the bissectrice.
+returns the last parameter of the Bissectrice.
 ") LastParameter;
 		virtual Standard_Real LastParameter();
 
@@ -2631,7 +2631,7 @@ bool
 
 Description
 -----------
-Returns the point at parameter <theu>.
+Returns the point at parameter <theU>.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
 
@@ -2670,7 +2670,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the current point on the pcurve of the first face.
+returns the current point on the PCurve of the first face.
 ") ValueOnF1;
 		gp_Pnt2d ValueOnF1(const Standard_Real U);
 
@@ -2688,7 +2688,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the current point on the pcurve of the first face.
+returns the current point on the PCurve of the first face.
 ") ValueOnF2;
 		gp_Pnt2d ValueOnF2(const Standard_Real U);
 
@@ -2751,7 +2751,7 @@ TopoDS_Shape
 
 Description
 -----------
-May return a null shape if s1 is not a subshape of <paral>; if perform is not done.
+may return a Null Shape if S1 is not a subShape of <Paral>; if Perform is not done.
 ") Ancestor;
 		const TopoDS_Shape Ancestor(const TopoDS_Edge & S1);
 
@@ -2865,7 +2865,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the shapes created from a subshape <spineshape> of the spine. returns the last computed offset.
+Returns the shapes created from a subshape <SpineShape> of the spine. Returns the last computed Offset.
 ") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape);
 
@@ -2885,7 +2885,7 @@ None
 
 Description
 -----------
-Initialize the evaluation of offsetting.
+Initialize the evaluation of Offsetting.
 ") Init;
 		void Init(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
@@ -2930,7 +2930,7 @@ None
 
 Description
 -----------
-Performs an offsetwire at an altitude <alt> from the face ( according to the orientation of the face).
+Performs an OffsetWire at an altitude <Alt> from the face ( According to the orientation of the face).
 ") Perform;
 		void Perform(const Standard_Real Offset, const Standard_Real Alt = 0.0);
 
@@ -2953,7 +2953,7 @@ None
 
 Description
 -----------
-Performs an offsetwire.
+Performs an OffsetWire.
 ") PerformWithBiLo;
 		void PerformWithBiLo(const TopoDS_Face & WSP, const Standard_Real Offset, const BRepMAT2d_BisectingLocus & Locus, BRepMAT2d_LinkTopoBilo & Link, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Real Alt = 0.0);
 
@@ -2966,7 +2966,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the generated shape.
+returns the generated shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -3111,7 +3111,7 @@ None
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		void Generated(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
@@ -3162,7 +3162,7 @@ TopoDS_Wire
 
 Description
 -----------
-Create a wire by sweeping the point along the <spine> if the <spine> is undefined.
+Create a Wire by sweeping the Point along the <spine> if the <Spine> is undefined.
 ") PipeLine;
 		TopoDS_Wire PipeLine(const gp_Pnt & Point);
 
@@ -3193,7 +3193,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape created from the profile at the position of the vertex vspine. if the vertex is not in the spine.
+Returns the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine.
 ") Section;
 		TopoDS_Shape Section(const TopoDS_Vertex & VSpine);
 
@@ -3251,7 +3251,7 @@ None
 
 Description
 -----------
-Set an sweep's mode if no mode are set, the mode used in makepipe is used.
+Set an sweep's mode If no mode are set, the mode used in MakePipe is used.
 ") BRepFill_PipeShell;
 		 BRepFill_PipeShell(const TopoDS_Wire & Spine);
 
@@ -3271,7 +3271,7 @@ None
 
 Description
 -----------
-Set an section. the correspondence with the spine, will be automatically performed.
+Set an section. The correspondence with the spine, will be automatically performed.
 ") Add;
 		void Add(const TopoDS_Shape & Profile, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -3292,7 +3292,7 @@ None
 
 Description
 -----------
-Set an section. the correspondence with the spine, is given by location.
+Set an section. The correspondence with the spine, is given by Location.
 ") Add;
 		void Add(const TopoDS_Shape & Profile, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -3305,7 +3305,7 @@ bool
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		Standard_Boolean Build();
 
@@ -3349,7 +3349,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the sweep.
+Returns the TopoDS Shape of the bottom of the sweep.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
@@ -3368,7 +3368,7 @@ None
 
 Description
 -----------
-Returns the list of shapes generated from the shape <s>.
+Returns the list of shapes generated from the shape <S>.
 ") Generated;
 		void Generated(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
@@ -3381,7 +3381,7 @@ GeomFill_PipeError
 
 Description
 -----------
-Get a status, when simulate or build failed.
+Get a status, when Simulate or Build failed.
 ") GetStatus;
 		GeomFill_PipeError GetStatus();
 
@@ -3394,7 +3394,7 @@ bool
 
 Description
 -----------
-Say if <self> is ready to build the shape return false if <self> do not have section definition.
+Say if <self> is ready to build the shape return False if <self> do not have section definition.
 ") IsReady;
 		Standard_Boolean IsReady();
 
@@ -3407,7 +3407,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the sweep.
+Returns the TopoDS Shape of the top of the sweep.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
@@ -3420,7 +3420,7 @@ bool
 
 Description
 -----------
-Transform the sweeping shell in solid. if the section are not closed returns false.
+Transform the sweeping Shell in Solid. If the section are not closed returns False.
 ") MakeSolid;
 		Standard_Boolean MakeSolid();
 
@@ -3456,7 +3456,7 @@ None
 
 Description
 -----------
-Set an frenet or an correctedfrenet trihedron to perform the sweeping.
+Set an Frenet or an CorrectedFrenet trihedron to perform the sweeping.
 ") Set;
 		void Set(const Standard_Boolean Frenet = Standard_False);
 
@@ -3492,7 +3492,7 @@ None
 
 Description
 -----------
-Set an fixed binormal direction to perform the sweeping.
+Set an fixed BiNormal direction to perform the sweeping.
 ") Set;
 		void Set(const gp_Dir & BiNormal);
 
@@ -3510,7 +3510,7 @@ bool
 
 Description
 -----------
-Set support to the spine to define the binormal at the spine, like the normal the surfaces. warning: to be effective, each edge of the <spine> must have an representation on one face of<spinesupport>.
+Set support to the spine to define the BiNormal at the spine, like the normal the surfaces. Warning: To be effective, Each edge of the <spine> must have an representation on one face of<SpineSupport>.
 ") Set;
 		Standard_Boolean Set(const TopoDS_Shape & SpineSupport);
 
@@ -3530,7 +3530,7 @@ None
 
 Description
 -----------
-Set an auxiliary spine to define the normal for each point of the spine p, an point q is evalued on <auxiliaryspine> if <curvilinearequivalence> q split <auxiliaryspine> with the same length ratio than p split <spline>. else the plan define by p and the tangent to the <spine> intersect <auxiliaryspine> in q. if <keepcontact> equals brepfill_nocontact: the normal is defined by the vector pq. if <keepcontact> equals brepfill_contact: the normal is defined to achieve that the sweeped section is in contact to the auxiliaryspine. the width of section is constant all along the path. in other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. however, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. if <keepcontact> equals brepfill_contactonborder: the auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path.
+Set an auxiliary spine to define the Normal For each Point of the Spine P, an Point Q is evalued on <AuxiliarySpine> If <CurvilinearEquivalence> Q split <AuxiliarySpine> with the same length ratio than P split <Spline>. Else the plan define by P and the tangent to the <Spine> intersect <AuxiliarySpine> in Q. If <KeepContact> equals BRepFill_NoContact: The Normal is defined by the vector PQ. If <KeepContact> equals BRepFill_Contact: The Normal is defined to achieve that the sweeped section is in contact to the auxiliarySpine. The width of section is constant all along the path. In other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. However, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path.
 ") Set;
 		void Set(const TopoDS_Wire & AuxiliarySpine, const Standard_Boolean CurvilinearEquivalence = Standard_True, const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact);
 
@@ -3543,7 +3543,7 @@ None
 
 Description
 -----------
-Set a discrete trihedron to perform the sweeping.
+Set a Discrete trihedron to perform the sweeping.
 ") SetDiscrete;
 		void SetDiscrete();
 
@@ -3561,7 +3561,7 @@ None
 
 Description
 -----------
-Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0. give section to sweep. possibilities are: - give one or sevral profile - give one profile and an homotetic law. - automatic compute of correspondence between profile, and section on the sweeped shape - correspondence between profile, and section on the sweeped shape defined by a vertex of the spine.
+Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0. Give section to sweep. Possibilities are: - Give one or several profile - Give one profile and an homotetic law. - Automatic compute of correspondence between profile, and section on the sweeped shape - correspondence between profile, and section on the sweeped shape defined by a vertex of the spine.
 ") SetForceApproxC1;
 		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
 
@@ -3582,7 +3582,7 @@ None
 
 Description
 -----------
-Set an section and an homotetic law. the homotetie's centers is given by point on the <spine>.
+Set an section and an homotetic law. The homotetie's centers is given by point on the <Spine>.
 ") SetLaw;
 		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -3604,7 +3604,7 @@ None
 
 Description
 -----------
-Set an section and an homotetic law. the homotetie center is given by point on the <spine>.
+Set an section and an homotetic law. The homotetie center is given by point on the <Spine>.
 ") SetLaw;
 		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
 
@@ -3622,7 +3622,7 @@ None
 
 Description
 -----------
-Define the maximum v degree of resulting surface.
+Define the maximum V degree of resulting surface.
 ") SetMaxDegree;
 		void SetMaxDegree(const Standard_Integer NewMaxDegree);
 
@@ -3640,7 +3640,7 @@ None
 
 Description
 -----------
-Define the maximum number of spans in v-direction on resulting surface.
+Define the maximum number of spans in V-direction on resulting surface.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer NewMaxSegments);
 
@@ -3680,7 +3680,7 @@ None
 
 Description
 -----------
-Set the transition mode to manage discontinuities on the sweep.
+Set the Transition Mode to manage discontinuities on the sweep.
 ") SetTransition;
 		void SetTransition(const BRepFill_TransitionStyle Mode = BRepFill_Modified, const Standard_Real Angmin = 1.0e-2, const Standard_Real Angmax = 6.0);
 
@@ -3693,7 +3693,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the result shape.
+Returns the result Shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -3712,7 +3712,7 @@ None
 
 Description
 -----------
-Perform simulation of the sweep: somes section are returned.
+Perform simulation of the sweep: Some Section are returned.
 ") Simulate;
 		void Simulate(const Standard_Integer NumberOfSection, TopTools_ListOfShape & Sections);
 
@@ -4295,7 +4295,7 @@ None
 
 Description
 -----------
-Build the sweep surface transition define transition strategy approx define approximation strategy - geomfill_section: the composed function location x section is directly approximated. - geomfill_location: the location law is approximated, and the sweepsurface is bulid algebric composition of approximated location law and section law this option is ok, if section.surface() methode is effective. continuity: the continuity in v waiting on the surface degmax: the maximum degree in v required on the surface segmax: the maximum number of span in v required on the surface.
+Build the Sweep Surface Transition define Transition strategy Approx define Approximation Strategy - GeomFill_Section: The composed Function Location X Section is directly approximated. - GeomFill_Location: The location law is approximated, and the SweepSurface builds an algebraic composition of approximated location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity: The continuity in v waiting on the surface Degmax: The maximum degree in v required on the surface Segmax: The maximum number of span in v required on the surface.
 ") Build;
 		void Build(TopTools_MapOfShape & ReversedEdges, BRepFill_DataMapOfShapeHArray2OfShape & Tapes, BRepFill_DataMapOfShapeHArray2OfShape & Rails, const BRepFill_TransitionStyle Transition = BRepFill_Modified, const GeomAbs_Shape Continuity = GeomAbs_C2, const GeomFill_ApproxStyle Approx = GeomFill_Location, const Standard_Integer Degmax = 11, const Standard_Integer Segmax = 30);
 
@@ -4308,7 +4308,7 @@ float
 
 Description
 -----------
-Get the approximation error.
+Get the Approximation error.
 ") ErrorOnSurface;
 		Standard_Real ErrorOnSurface();
 
@@ -4334,7 +4334,7 @@ bool
 
 Description
 -----------
-Say if the shape is build.
+Say if the Shape is Build.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4366,7 +4366,7 @@ None
 
 Description
 -----------
-Tolerance to controle corner management. //! if the discontinuity is lesser than <anglemin> in radian the transition performed will be alway 'modified'.
+Tolerance To controle Corner management. //! If the discontinuity is lesser than <AngleMin> in radian The Transition Performed will be always 'Modified'.
 ") SetAngularControl;
 		void SetAngularControl(const Standard_Real AngleMin = 0.01, const Standard_Real AngleMax = 6.0);
 
@@ -4403,7 +4403,7 @@ None
 
 Description
 -----------
-Set the flag that indicates attempt to approximate a c1-continuous surface if a swept surface proved to be c0.
+Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") SetForceApproxC1;
 		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
 
@@ -4424,7 +4424,7 @@ None
 
 Description
 -----------
-Set approximation tolerance tol3d: tolerance to surface approximation tol2d: tolerance used to perform curve approximation normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large tol2d is used. tolangular: tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
+Set Approximation Tolerance Tol3d: Tolerance to surface approximation Tol2d: Tolerance used to perform curve approximation Normally the 2d curve are approximated with a tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used. TolAngular: Tolerance (in radian) to control the angle between tangents on the section law and tangent of iso-v on approximated surface.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Tol3d, const Standard_Real BoundTol = 1.0, const Standard_Real Tol2d = 1.0e-5, const Standard_Real TolAngular = 1.0e-2);
 
@@ -4437,7 +4437,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the sweeping shape.
+returns the Sweeping Shape.
 ") Shape;
 		TopoDS_Shape Shape();
 
@@ -4468,7 +4468,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the tape corresponding to index-th edge of section.
+returns the Tape corresponding to Index-th edge of section.
 ") Tape;
 		TopoDS_Shape Tape(const Standard_Integer Index);
 
@@ -4616,7 +4616,7 @@ None
 
 Description
 -----------
-Constructor: takes faces to intersect, type of transition (it can be rightcorner or roundcorner) and axis of bisector plane theintersectpointcrossdirection: prev path direction at the origin point of theaxeofbisplane cross next path direction at the origin point of theaxeofbisplane. used when ee has more than one vertices.
+Constructor: takes faces to intersect, type of transition (it can be RightCorner or RoundCorner) and axis of bisector plane theIntersectPointCrossDirection: prev path direction at the origin point of theAxeOfBisPlane cross next path direction at the origin point of theAxeOfBisPlane. used when EE has more than one vertices.
 ") BRepFill_TrimShellCorner;
 		 BRepFill_TrimShellCorner(const opencascade::handle<TopTools_HArray2OfShape> & theFaces, const BRepFill_TransitionStyle theTransition, const gp_Ax2 & theAxeOfBisPlane, const gp_Vec & theIntPointCrossDir);
 
@@ -4787,7 +4787,7 @@ None
 
 Description
 -----------
-Intersect <bis> with the projection of the edges <edgeonfi> and returns the intersecting parameters on bis and on the edges p.x(): parameter on bis p.y(): parameter on edgeonf1 p.z(): parameter on edgeonf2 raises if <edge> is not a edge of face1 or face2.
+Intersect <Bis> with the projection of the edges <EdgeOnFi> and returns the intersecting parameters on Bis and on the edges P.X(): Parameter on Bis P.Y(): Parameter on EdgeOnF1 P.Z(): Parameter on EdgeOnF2 raises if <Edge> is not a edge of Face1 or Face2.
 ") IntersectWith;
 		void IntersectWith(const TopoDS_Edge & EdgeOnF1, const TopoDS_Edge & EdgeOnF2, TColgp_SequenceOfPnt & Points);
 
@@ -4805,7 +4805,7 @@ bool
 
 Description
 -----------
-Returns true if the line (p, dz) intersect the faces.
+returns True if the Line (P, DZ) intersect the Faces.
 ") IsOnFace;
 		Standard_Boolean IsOnFace(const gp_Pnt2d & Point);
 
@@ -4824,7 +4824,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point <point> on the edge <edge>, assuming that the point is on the edge.
+returns the parameter of the point <Point> on the Edge <Edge>, assuming that the point is on the edge.
 ") ProjOn;
 		Standard_Real ProjOn(const gp_Pnt2d & Point, const TopoDS_Edge & Edge);
 
@@ -4839,17 +4839,16 @@ U2: float
 Curve: Geom_Curve
 PCurve1: Geom2d_Curve
 PCurve2: Geom2d_Curve
-myCont: GeomAbs_Shape
 
 Return
 -------
-None
+myCont: GeomAbs_Shape
 
 Description
 -----------
 No available documentation.
 ") Project;
-		void Project(const Standard_Real U1, const Standard_Real U2, opencascade::handle<Geom_Curve> & Curve, opencascade::handle<Geom2d_Curve> & PCurve1, opencascade::handle<Geom2d_Curve> & PCurve2, GeomAbs_Shape & myCont);
+		void Project(const Standard_Real U1, const Standard_Real U2, opencascade::handle<Geom_Curve> & Curve, opencascade::handle<Geom2d_Curve> & PCurve1, opencascade::handle<Geom2d_Curve> & PCurve2, GeomAbs_Shape &OutValue);
 
 };
 
@@ -4963,7 +4962,7 @@ bool
 
 Description
 -----------
-Returns <false> if one edge of <path> do not have representation on <surf>. in this case it is impossible to use this object.
+returns <False> if one Edge of <Path> do not have representation on <Surf>. In this case it is impossible to use this object.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -5085,7 +5084,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the Law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
@@ -5171,7 +5170,7 @@ None
 
 Description
 -----------
-Construct an constant law.
+Construct an constant Law.
 ") BRepFill_ShapeLaw;
 		 BRepFill_ShapeLaw(const TopoDS_Vertex & V, const Standard_Boolean Build = Standard_True);
 
@@ -5190,7 +5189,7 @@ None
 
 Description
 -----------
-Construct an constant law.
+Construct an constant Law.
 ") BRepFill_ShapeLaw;
 		 BRepFill_ShapeLaw(const TopoDS_Wire & W, const Standard_Boolean Build = Standard_True);
 
@@ -5210,7 +5209,7 @@ None
 
 Description
 -----------
-Construct an evolutive law.
+Construct an evolutive Law.
 ") BRepFill_ShapeLaw;
 		 BRepFill_ShapeLaw(const TopoDS_Wire & W, const opencascade::handle<Law_Function> & L, const Standard_Boolean Build = Standard_True);
 
@@ -5292,7 +5291,7 @@ bool
 
 Description
 -----------
-Say if the law is constant.
+Say if the Law is Constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWGLTFDOCSTRING
 "RWGltf module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwgltf.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwgltf.html"
 %enddef
 %module (package="OCC.Core", docstring=RWGLTFDOCSTRING) RWGltf
 
@@ -51,16 +51,10 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwgltf.html"
 #include<TDF_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
-#include<DE_module.hxx>
 #include<Quantity_module.hxx>
 #include<Poly_module.hxx>
 #include<XCAFDoc_module.hxx>
 #include<Image_module.hxx>
-#include<XSControl_module.hxx>
-#include<TopoDS_module.hxx>
-#include<TopTools_module.hxx>
-#include<TopLoc_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -115,16 +109,10 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwgltf.html"
 %import TDF.i
 %import TColStd.i
 %import Message.i
-%import DE.i
 %import Quantity.i
 %import Poly.i
 %import XCAFDoc.i
 %import Image.i
-%import XSControl.i
-%import TopoDS.i
-%import TopTools.i
-%import TopLoc.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -415,7 +403,7 @@ bool
 
 Description
 -----------
-Return flag to fill in triangulation using double or single precision; false by default.
+Return flag to fill in triangulation using double or single precision; False by default.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -451,7 +439,7 @@ None
 
 Description
 -----------
-Set flag to flag to load all scenes in the document, false by default which means only main (default) scene will be loaded.
+Set flag to flag to load all scenes in the document, False by default which means only main (default) scene will be loaded.
 ") SetLoadAllScenes;
 		void SetLoadAllScenes(bool theToLoadAll);
 
@@ -469,7 +457,7 @@ None
 
 Description
 -----------
-Set flag to use mesh name in case if node name is empty.
+Set flag to use Mesh name in case if Node name is empty.
 ") SetMeshNameAsFallback;
 		void SetMeshNameAsFallback(bool theToFallback);
 
@@ -505,7 +493,7 @@ None
 
 Description
 -----------
-Set flag to ignore nodes without geometry.
+Set flag to ignore nodes without Geometry.
 ") SetSkipEmptyNodes;
 		void SetSkipEmptyNodes(bool theToSkip);
 
@@ -572,7 +560,7 @@ bool
 
 Description
 -----------
-Returns true if data should be loaded into itself without its transfering to new structure. it allows to keep information about deferred storage to load/unload this data later. true by default.
+Returns True if data should be loaded into itself without its transferring to new structure. It allows to keep information about deferred storage to load/unload this data later. True by default.
 ") ToKeepLateData;
 		bool ToKeepLateData();
 
@@ -585,7 +573,7 @@ bool
 
 Description
 -----------
-Return true if all scenes in the document should be loaded, false by default which means only main (default) scene will be loaded.
+Return True if all scenes in the document should be loaded, False by default which means only main (default) scene will be loaded.
 ") ToLoadAllScenes;
 		bool ToLoadAllScenes();
 
@@ -598,7 +586,7 @@ bool
 
 Description
 -----------
-Return true if multithreaded optimizations are allowed; false by default.
+Return True if multithreaded optimizations are allowed; False by default.
 ") ToParallel;
 		bool ToParallel();
 
@@ -611,7 +599,7 @@ bool
 
 Description
 -----------
-Returns true if additional debug information should be print; false by default.
+Returns True if additional debug information should be print; False by default.
 ") ToPrintDebugMessages;
 		bool ToPrintDebugMessages();
 
@@ -624,7 +612,7 @@ bool
 
 Description
 -----------
-Return true if nodes without geometry should be ignored, true by default.
+Return True if Nodes without Geometry should be ignored, True by default.
 ") ToSkipEmptyNodes;
 		bool ToSkipEmptyNodes();
 
@@ -637,7 +625,7 @@ bool
 
 Description
 -----------
-Returns true if data loading should be skipped and can be performed later; false by default.
+Returns True if data loading should be skipped and can be performed later; False by default.
 ") ToSkipLateDataLoading;
 		bool ToSkipLateDataLoading();
 
@@ -650,7 +638,7 @@ bool
 
 Description
 -----------
-Set flag to use mesh name in case if node name is empty, true by default.
+Set flag to use Mesh name in case if Node name is empty, True by default.
 ") ToUseMeshNameAsFallback;
 		bool ToUseMeshNameAsFallback();
 
@@ -686,7 +674,9 @@ None
 
 Description
 -----------
-Main constructor. @param thefile [in] path to output gltf file @param theisbinary [in] flag to write into binary gltf format (.glb).
+Main constructor. 
+Input parameter: theFile path to output glTF file 
+Input parameter: theIsBinary flag to write into binary glTF format (.glb).
 ") RWGltf_CafWriter;
 		 RWGltf_CafWriter(TCollection_AsciiString theFile, Standard_Boolean theIsBinary);
 
@@ -699,7 +689,7 @@ RWMesh_CoordinateSystemConverter
 
 Description
 -----------
-Return transformation from occt to gltf coordinate system.
+Return transformation from OCCT to glTF coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
@@ -712,7 +702,7 @@ RWGltf_DracoParameters
 
 Description
 -----------
-Return draco parameters.
+Return Draco parameters.
 ") CompressionParameters;
 		const RWGltf_DracoParameters & CompressionParameters();
 
@@ -725,7 +715,7 @@ RWMesh_CoordinateSystemConverter
 
 Description
 -----------
-Return transformation from occt to gltf coordinate system.
+Return transformation from OCCT to glTF coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
@@ -751,7 +741,7 @@ bool
 
 Description
 -----------
-Return flag to write into binary gltf format (.glb), specified within class constructor.
+Return flag to write into binary glTF format (.glb), specified within class constructor.
 ") IsBinary;
 		bool IsBinary();
 
@@ -764,7 +754,7 @@ bool
 
 Description
 -----------
-Return true to export uv coordinates even if there are no mapped texture; false by default.
+Return True to export UV coordinates even if there are no mapped texture; False by default.
 ") IsForcedUVExport;
 		bool IsForcedUVExport();
 
@@ -777,7 +767,7 @@ RWMesh_NameFormat
 
 Description
 -----------
-Return name format for exporting meshes; rwmesh_nameformat_product by default.
+Return name format for exporting Meshes; RWMesh_NameFormat_Product by default.
 ") MeshNameFormat;
 		RWMesh_NameFormat MeshNameFormat();
 
@@ -790,7 +780,7 @@ RWMesh_NameFormat
 
 Description
 -----------
-Return name format for exporting nodes; rwmesh_nameformat_instanceorproduct by default.
+Return name format for exporting Nodes; RWMesh_NameFormat_InstanceOrProduct by default.
 ") NodeNameFormat;
 		RWMesh_NameFormat NodeNameFormat();
 
@@ -812,7 +802,13 @@ bool
 
 Description
 -----------
-Write gltf file and associated binary file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param therootlabels [in] list of root shapes to export @param thelabelfilter [in] optional filter with document nodes to export,  with keys defined by xcafprs_documentexplorer::definechildid() and filled recursively  (leaves and parent assembly nodes at all levels);  when not null, all nodes not included into the map will be ignored @param thefileinfo [in] map with file metadata to put into gltf header section @param theprogress [in] optional progress indicator return false on file writing failure.
+Write glTF file and associated binary file. Triangulation data should be precomputed within shapes! 
+Input parameter: theDocument input document 
+Input parameter: theRootLabels list of root shapes to export 
+Input parameter: theLabelFilter optional filter with document nodes to export,  with keys defined by XCAFPrs_DocumentExplorer::DefineChildId() and  filled recursively (leaves and parent assembly nodes at all  levels); when not NULL, all nodes not included into the map will be  ignored 
+Input parameter: theFileInfo map with file metadata to put into glTF header section 
+Input parameter: theProgress optional progress indicator 
+Return: False on file writing failure.
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
@@ -832,7 +828,11 @@ bool
 
 Description
 -----------
-Write gltf file and associated binary file. triangulation data should be precomputed within shapes! @param thedocument [in] input document @param thefileinfo [in] map with file metadata to put into gltf header section @param theprogress [in] optional progress indicator return false on file writing failure.
+Write glTF file and associated binary file. Triangulation data should be precomputed within shapes! 
+Input parameter: theDocument input document 
+Input parameter: theFileInfo map with file metadata to put into glTF header section 
+Input parameter: theProgress optional progress indicator 
+Return: False on file writing failure.
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
@@ -850,7 +850,7 @@ None
 
 Description
 -----------
-Set draco parameters.
+Set Draco parameters.
 ") SetCompressionParameters;
 		void SetCompressionParameters(const RWGltf_DracoParameters & theDracoParameters);
 
@@ -868,7 +868,7 @@ None
 
 Description
 -----------
-Set transformation from occt to gltf coordinate system.
+Set transformation from OCCT to glTF coordinate system.
 ") SetCoordinateSystemConverter;
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
@@ -904,7 +904,7 @@ None
 
 Description
 -----------
-Set flag to export uv coordinates even if there are no mapped texture; false by default.
+Set flag to export UV coordinates even if there are no mapped texture; False by default.
 ") SetForcedUVExport;
 		void SetForcedUVExport(bool theToForce);
 
@@ -922,7 +922,7 @@ None
 
 Description
 -----------
-Set flag to merge faces within a single part. may reduce json size thanks to smaller number of primitive arrays.
+Set flag to merge faces within a single part. May reduce JSON size thanks to smaller number of primitive arrays.
 ") SetMergeFaces;
 		void SetMergeFaces(bool theToMerge);
 
@@ -940,7 +940,7 @@ None
 
 Description
 -----------
-Set name format for exporting meshes.
+Set name format for exporting Meshes.
 ") SetMeshNameFormat;
 		void SetMeshNameFormat(RWMesh_NameFormat theFormat);
 
@@ -958,7 +958,7 @@ None
 
 Description
 -----------
-Set name format for exporting nodes.
+Set name format for exporting Nodes.
 ") SetNodeNameFormat;
 		void SetNodeNameFormat(RWMesh_NameFormat theFormat);
 
@@ -994,7 +994,7 @@ None
 
 Description
 -----------
-Set flag to prefer keeping 16-bit indexes while merging face. has effect only with tomergefaces() option turned on. may reduce binary data size thanks to smaller triangle indexes.
+Set flag to prefer keeping 16-bit indexes while merging face. Has effect only with ToMergeFaces() option turned ON. May reduce binary data size thanks to smaller triangle indexes.
 ") SetSplitIndices16;
 		void SetSplitIndices16(bool theToSplit);
 
@@ -1012,7 +1012,7 @@ None
 
 Description
 -----------
-Set flag to write image textures into glb file (binary gltf export).
+Set flag to write image textures into GLB file (binary gltf export).
 ") SetToEmbedTexturesInGlb;
 		void SetToEmbedTexturesInGlb(Standard_Boolean theToEmbedTexturesInGlb);
 
@@ -1030,7 +1030,7 @@ None
 
 Description
 -----------
-Set preferred transformation format for writing into gltf file.
+Set preferred transformation format for writing into glTF file.
 ") SetTransformationFormat;
 		void SetTransformationFormat(RWGltf_WriterTrsfFormat theFormat);
 
@@ -1043,7 +1043,7 @@ bool
 
 Description
 -----------
-Return flag to write image textures into glb file (binary gltf export); true by default. when set to false, texture images will be written as separate files. has no effect on writing into non-binary format.
+Return flag to write image textures into GLB file (binary gltf export); True by default. When set to False, texture images will be written as separate files. Has no effect on writing into non-binary format.
 ") ToEmbedTexturesInGlb;
 		Standard_Boolean ToEmbedTexturesInGlb();
 
@@ -1056,7 +1056,7 @@ bool
 
 Description
 -----------
-Return flag to merge faces within a single part; false by default.
+Return flag to merge faces within a single part; False by default.
 ") ToMergeFaces;
 		bool ToMergeFaces();
 
@@ -1069,7 +1069,7 @@ bool
 
 Description
 -----------
-Return true if multithreaded optimizations are allowed; false by default.
+Return True if multithreaded optimizations are allowed; False by default.
 ") ToParallel;
 		bool ToParallel();
 
@@ -1082,7 +1082,7 @@ bool
 
 Description
 -----------
-Return flag to prefer keeping 16-bit indexes while merging face; false by default.
+Return flag to prefer keeping 16-bit indexes while merging face; False by default.
 ") ToSplitIndices16;
 		bool ToSplitIndices16();
 
@@ -1095,7 +1095,7 @@ RWGltf_WriterTrsfFormat
 
 Description
 -----------
-Return preferred transformation format for writing into gltf file; rwgltf_writertrsfformat_compact by default.
+Return preferred transformation format for writing into glTF file; RWGltf_WriterTrsfFormat_Compact by default.
 ") TransformationFormat;
 		RWGltf_WriterTrsfFormat TransformationFormat();
 
@@ -1110,188 +1110,11 @@ Return preferred transformation format for writing into gltf file; rwgltf_writer
 	}
 };
 
-/*********************************
-* class RWGltf_ConfigurationNode *
-*********************************/
-class RWGltf_ConfigurationNode : public DE_ConfigurationNode {
-	public:
-		class RWGltf_InternalSection {};
-		RWGltf_InternalSection InternalParameters;
-		/****** RWGltf_ConfigurationNode::RWGltf_ConfigurationNode ******/
-		/****** md5 signature: 14e887512a71c60f441f6ed16bddc421 ******/
-		%feature("compactdefaultargs") RWGltf_ConfigurationNode;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Initializes all field by default.
-") RWGltf_ConfigurationNode;
-		 RWGltf_ConfigurationNode();
-
-		/****** RWGltf_ConfigurationNode::RWGltf_ConfigurationNode ******/
-		/****** md5 signature: 4ddc7b467952767fb2dd4acd9f0e95e2 ******/
-		%feature("compactdefaultargs") RWGltf_ConfigurationNode;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: RWGltf_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Copies values of all fields @param[in] thenode object to copy.
-") RWGltf_ConfigurationNode;
-		 RWGltf_ConfigurationNode(const opencascade::handle<RWGltf_ConfigurationNode> & theNode);
-
-		/****** RWGltf_ConfigurationNode::BuildProvider ******/
-		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
-		%feature("compactdefaultargs") BuildProvider;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_Provider>
-
-Description
------------
-Creates new provider for the own format return new created provider.
-") BuildProvider;
-		virtual opencascade::handle<DE_Provider> BuildProvider();
-
-		/****** RWGltf_ConfigurationNode::Copy ******/
-		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_ConfigurationNode>
-
-Description
------------
-Copies values of all fields return new object with the same field values.
-") Copy;
-		virtual opencascade::handle<DE_ConfigurationNode> Copy();
-
-		/****** RWGltf_ConfigurationNode::GetExtensions ******/
-		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
-		%feature("compactdefaultargs") GetExtensions;
-		%feature("autodoc", "Return
--------
-TColStd_ListOfAsciiString
-
-Description
------------
-Gets list of supported file extensions return list of extensions.
-") GetExtensions;
-		virtual TColStd_ListOfAsciiString GetExtensions();
-
-		/****** RWGltf_ConfigurationNode::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** RWGltf_ConfigurationNode::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** RWGltf_ConfigurationNode::IsExportSupported ******/
-		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
-		%feature("compactdefaultargs") IsExportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the export supporting return true if export is supported.
-") IsExportSupported;
-		virtual bool IsExportSupported();
-
-		/****** RWGltf_ConfigurationNode::IsImportSupported ******/
-		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
-		%feature("compactdefaultargs") IsImportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the import supporting return true if import is supported.
-") IsImportSupported;
-		virtual bool IsImportSupported();
-
-		/****** RWGltf_ConfigurationNode::Load ******/
-		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "
-Parameters
-----------
-theResource: DE_ConfigurationContext
-
-Return
--------
-bool
-
-Description
------------
-Updates values according the resource @param[in] theresource input resource to use return true if theresource loading has ended correctly.
-") Load;
-		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
-
-		/****** RWGltf_ConfigurationNode::Save ******/
-		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
-		%feature("compactdefaultargs") Save;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Writes configuration to the string return result resource string.
-") Save;
-		virtual TCollection_AsciiString Save();
-
-};
-
-
-%extend RWGltf_ConfigurationNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*******************************
 * class RWGltf_DracoParameters *
 *******************************/
 class RWGltf_DracoParameters {
 	public:
-		bool DracoCompression;
-		int CompressionLevel;
-		int QuantizePositionBits;
-		int QuantizeNormalBits;
-		int QuantizeTexcoordBits;
-		int QuantizeColorBits;
-		int QuantizeGenericBits;
-		bool UnifiedQuantization;
 		/****** RWGltf_DracoParameters::RWGltf_DracoParameters ******/
 		/****** md5 signature: d5dfa6304b51c9885dba464f263b6e30 ******/
 		%feature("compactdefaultargs") RWGltf_DracoParameters;
@@ -1319,14 +1142,6 @@ No available documentation.
 ****************************/
 class RWGltf_GltfAccessor {
 	public:
-		int Id;
-		int64_t ByteOffset;
-		int64_t Count;
-		int32_t ByteStride;
-		RWGltf_GltfAccessorLayout Type;
-		RWGltf_GltfAccessorCompType ComponentType;
-		Graphic3d_BndBox3d BndBox;
-		bool IsCompressed;
 		/****** RWGltf_GltfAccessor::RWGltf_GltfAccessor ******/
 		/****** md5 signature: 1ac0c993d4339614409d9c5e0ac9bdc9 ******/
 		%feature("compactdefaultargs") RWGltf_GltfAccessor;
@@ -1354,11 +1169,6 @@ Empty constructor.
 ******************************/
 class RWGltf_GltfBufferView {
 	public:
-		int Id;
-		int64_t ByteOffset;
-		int64_t ByteLength;
-		int32_t ByteStride;
-		RWGltf_GltfBufferViewTarget Target;
 		/****** RWGltf_GltfBufferView::RWGltf_GltfBufferView ******/
 		/****** md5 signature: 7f05f05ddf9d2f909355f94a9fbcef5d ******/
 		%feature("compactdefaultargs") RWGltf_GltfBufferView;
@@ -1386,13 +1196,6 @@ No available documentation.
 ************************/
 class RWGltf_GltfFace : public Standard_Transient {
 	public:
-		RWGltf_GltfAccessor NodePos;
-		RWGltf_GltfAccessor NodeNorm;
-		RWGltf_GltfAccessor NodeUV;
-		RWGltf_GltfAccessor Indices;
-		TopoDS_Shape Shape;
-		XCAFPrs_Style Style;
-		int NbIndexedNodes;
 		/****** RWGltf_GltfFace::RWGltf_GltfFace ******/
 		/****** md5 signature: f1d3a933cb06de89e0a1c4e714a35b6f ******/
 		%feature("compactdefaultargs") RWGltf_GltfFace;
@@ -1494,7 +1297,7 @@ bool
 
 Description
 -----------
-Return true if there is deferred storage and some triangulation data that can be loaded using loaddeferreddata().
+Return True if there is deferred storage and some triangulation data that can be loaded using LoadDeferredData().
 ") HasDeferredData;
 		virtual Standard_Boolean HasDeferredData();
 
@@ -1559,7 +1362,7 @@ opencascade::handle<RWGltf_MaterialMetallicRoughness>
 
 Description
 -----------
-Return pbr material definition.
+Return PBR material definition.
 ") MaterialPbr;
 		const opencascade::handle<RWGltf_MaterialMetallicRoughness> & MaterialPbr();
 
@@ -1621,7 +1424,7 @@ None
 
 Description
 -----------
-Set pbr material definition.
+Set PBR material definition.
 ") SetMaterialPbr;
 		void SetMaterialPbr(const opencascade::handle<RWGltf_MaterialMetallicRoughness> & theMat);
 
@@ -1708,7 +1511,9 @@ theBinFile: std::ostream
 
 Description
 -----------
-Add material images into glb stream. @param thebinfile [in] [out] output file stream @param thestyle [in] material images to add.
+Add material images into GLB stream. 
+Input parameter:[out] theBinFile output file stream 
+Input parameter: theStyle material images to add.
 ") AddGlbImages;
 		void AddGlbImages(std::ostream &OutValue, const XCAFPrs_Style & theStyle);
 
@@ -1727,7 +1532,7 @@ theIsStarted: bool
 
 Description
 -----------
-Add material images in case of non-glb file (an alternative to addimagestoglb() + flushbufferviews() + flushimagesglb()).
+Add material images in case of non-GLB file (an alternative to AddImagesToGlb() + FlushBufferViews() + FlushImagesGlb()).
 ") AddImages;
 		void AddImages(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
 
@@ -1784,7 +1589,7 @@ theBuffViewId: int
 
 Description
 -----------
-Add bufferview's into rwgltf_gltfrootelement_bufferviews section with images collected by addimagestoglb().
+Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by AddImagesToGlb().
 ") FlushGlbBufferViews;
 		void FlushGlbBufferViews(RWGltf_GltfOStreamWriter * theWriter, const Standard_Integer theBinDataBufferId, Standard_Integer &OutValue);
 
@@ -1802,7 +1607,7 @@ None
 
 Description
 -----------
-Write rwgltf_gltfrootelement_images section with images collected by addimagestoglb().
+Write RWGltf_GltfRootElement_Images section with images collected by AddImagesToGlb().
 ") FlushGlbImages;
 		void FlushGlbImages(RWGltf_GltfOStreamWriter * theWriter);
 
@@ -1896,12 +1701,6 @@ Main constructor.
 *********************************/
 class RWGltf_GltfPrimArrayData {
 	public:
-		opencascade::handle<NCollection_Buffer > StreamData;
-		TCollection_AsciiString StreamUri;
-		int64_t StreamOffset;
-		int64_t StreamLength;
-		RWGltf_GltfAccessor Accessor;
-		RWGltf_GltfArrayType Type;
 		/****** RWGltf_GltfPrimArrayData::RWGltf_GltfPrimArrayData ******/
 		/****** md5 signature: 082773010cd7514b9dd09e3d44d4bec5 ******/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
@@ -1992,17 +1791,6 @@ Find index from document node string identifier.
 ******************************/
 class RWGltf_MaterialCommon : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture > AmbientTexture;
-		opencascade::handle<Image_Texture > DiffuseTexture;
-		opencascade::handle<Image_Texture > SpecularTexture;
-		TCollection_AsciiString Id;
-		TCollection_AsciiString Name;
-		Quantity_Color AmbientColor;
-		Quantity_Color DiffuseColor;
-		Quantity_Color SpecularColor;
-		Quantity_Color EmissiveColor;
-		float Shininess;
-		float Transparency;
 		/****** RWGltf_MaterialCommon::RWGltf_MaterialCommon ******/
 		/****** md5 signature: 5f7db091e0ba1d4aaa046ad813cbb86f ******/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
@@ -2032,20 +1820,6 @@ No available documentation.
 *****************************************/
 class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture > BaseColorTexture;
-		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
-		opencascade::handle<Image_Texture > EmissiveTexture;
-		opencascade::handle<Image_Texture > OcclusionTexture;
-		opencascade::handle<Image_Texture > NormalTexture;
-		TCollection_AsciiString Id;
-		TCollection_AsciiString Name;
-		Quantity_ColorRGBA BaseColor;
-		Graphic3d_Vec3 EmissiveFactor;
-		float Metallic;
-		float Roughness;
-		float AlphaCutOff;
-		RWGltf_GltfAlphaMode AlphaMode;
-		bool IsDoubleSided;
 		/****** RWGltf_MaterialMetallicRoughness::RWGltf_MaterialMetallicRoughness ******/
 		/****** md5 signature: 3e7e7f6dcac2ab520e773c1e52d06831 ******/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;
@@ -2065,241 +1839,6 @@ No available documentation.
 %make_alias(RWGltf_MaterialMetallicRoughness)
 
 %extend RWGltf_MaterialMetallicRoughness {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class RWGltf_Provider *
-************************/
-class RWGltf_Provider : public DE_Provider {
-	public:
-		/****** RWGltf_Provider::RWGltf_Provider ******/
-		/****** md5 signature: d33a24325ebd5722c4be1e067b191549 ******/
-		%feature("compactdefaultargs") RWGltf_Provider;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Default constructor configure translation process with global configuration.
-") RWGltf_Provider;
-		 RWGltf_Provider();
-
-		/****** RWGltf_Provider::RWGltf_Provider ******/
-		/****** md5 signature: 7b018d854a0f1e613fd1cd054123f0a3 ******/
-		%feature("compactdefaultargs") RWGltf_Provider;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: DE_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Configure translation process @param[in] thenode object to copy.
-") RWGltf_Provider;
-		 RWGltf_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
-
-		/****** RWGltf_Provider::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** RWGltf_Provider::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** RWGltf_Provider::Read ******/
-		/****** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Read ******/
-		/****** md5 signature: ec9914af037216c0502c72d0c8784072 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Read ******/
-		/****** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Read ******/
-		/****** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Write ******/
-		/****** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Write ******/
-		/****** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Write ******/
-		/****** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWGltf_Provider::Write ******/
-		/****** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-};
-
-
-%extend RWGltf_Provider {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2338,7 +1877,7 @@ bool
 
 Description
 -----------
-Loads only primitive arrays saved as stream buffer (it is primarily gltf data encoded in base64 saved to temporary buffer during gltf file reading).
+Loads only primitive arrays saved as stream buffer (it is primarily glTF data encoded in base64 saved to temporary buffer during glTF file reading).
 ") LoadStreamData;
 		bool LoadStreamData(const opencascade::handle<RWMesh_TriangulationSource> & theSourceMesh, const opencascade::handle<Poly_Triangulation> & theDestMesh);
 

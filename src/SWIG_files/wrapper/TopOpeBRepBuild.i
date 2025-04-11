@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPOPEBREPBUILDDOCSTRING
 "TopOpeBRepBuild module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topopebrepbuild.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepbuild.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPBUILDDOCSTRING) TopOpeBRepBuild
 
@@ -208,7 +208,7 @@ None
 
 Description
 -----------
-Creates a areabuilder to build the areas on the shapes described by <ls> using the classifier <lc>.
+Creates a AreaBuilder to build the areas on the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_AreaBuilder;
 		 TopOpeBRepBuild_AreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -283,7 +283,7 @@ None
 
 Description
 -----------
-Sets a areabuilder to find the areas on the shapes described by <ls> using the classifier <lc>.
+Sets a AreaBuilder to find the areas on the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
 		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -296,7 +296,7 @@ int
 
 Description
 -----------
-Initialize iteration on loops of current area.
+Initialize iteration on loops of current Area.
 ") InitLoop;
 		Standard_Integer InitLoop();
 
@@ -309,7 +309,7 @@ opencascade::handle<TopOpeBRepBuild_Loop>
 
 Description
 -----------
-Returns the current loop in the current area.
+Returns the current Loop in the current area.
 ") Loop;
 		const opencascade::handle<TopOpeBRepBuild_Loop> & Loop();
 
@@ -488,7 +488,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current element of <bi>.
+Returns the current element of <BI>.
 ") Element;
 		const TopoDS_Shape Element(const TopOpeBRepBuild_BlockIterator & BI);
 
@@ -835,7 +835,7 @@ None
 
 Description
 -----------
-Update the ds by creating new geometries. create shapes from the new geometries.
+update the DS by creating new geometries. create shapes from the new geometries.
 ") BuildEdges;
 		void BuildEdges(const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
@@ -866,7 +866,7 @@ None
 
 Description
 -----------
-Update the ds by creating new geometries. create vertices on ds points.
+update the DS by creating new geometries. create vertices on DS points.
 ") BuildVertices;
 		void BuildVertices(const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
@@ -934,7 +934,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns a ref.on the list of shapes connected to <s> as <tb> split parts of <s>. mark <s> as split in <tb> parts.
+Returns a ref.on the list of shapes connected to <S> as <TB> split parts of <S>. Mark <S> as split in <TB> parts.
 ") ChangeSplit;
 		TopTools_ListOfShape & ChangeSplit(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -960,7 +960,7 @@ None
 
 Description
 -----------
-Removes all splits and merges already performed. does not clear the handled ds.
+Removes all splits and merges already performed. Does NOT clear the handled DS.
 ") Clear;
 		virtual void Clear();
 
@@ -1005,7 +1005,7 @@ opencascade::handle<TopOpeBRepDS_HDataStructure>
 
 Description
 -----------
-Returns the ds handled by this builder.
+returns the DS handled by this builder.
 ") DataStructure;
 		opencascade::handle<TopOpeBRepDS_HDataStructure> DataStructure();
 
@@ -1058,7 +1058,7 @@ None
 
 Description
 -----------
-Fills anancmap with pairs (edge,ancestor edge) for each split from the map amapon for the shape object identified by shaperank.
+Fills anAncMap with pairs (edge,ancestor edge) for each split from the map aMapON for the shape object identified by ShapeRank.
 ") FillSecEdgeAncestorMap;
 		void FillSecEdgeAncestorMap(const Standard_Integer aShapeRank, const TopTools_MapOfShape & aMapON, TopTools_DataMapOfShapeShape & anAncMap);
 
@@ -1808,17 +1808,16 @@ Parameters
 S: TopoDS_Shape
 Lref: TopTools_ListOfShape
 T: TopAbs_State
-pos: TopAbs_State
 
 Return
 -------
-bool
+pos: TopAbs_State
 
 Description
 -----------
-Return true if s is classified <t> / lref shapes.
+return True if S is classified <T> / Lref shapes.
 ") GKeepShape1;
-		Standard_Boolean GKeepShape1(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T, TopAbs_State & pos);
+		Standard_Boolean GKeepShape1(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::GKeepShapes ******/
 		/****** md5 signature: d7615d0c7d4afa2e48a8e2f64c8a8673 ******/
@@ -1838,7 +1837,7 @@ None
 
 Description
 -----------
-Add to lou the shapes of lin classified <t> / lref shapes. lou is not cleared. (s is a dummy trace argument).
+add to Lou the shapes of Lin classified <T> / Lref shapes. Lou is not cleared. (S is a dummy trace argument).
 ") GKeepShapes;
 		void GKeepShapes(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T, const TopTools_ListOfShape & Lin, TopTools_ListOfShape & Lou);
 
@@ -2699,7 +2698,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <s> has been merged.
+Returns True if the shape <S> has been merged.
 ") IsMerged;
 		Standard_Boolean IsMerged(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -2737,7 +2736,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <s> has been split.
+Returns True if the shape <S> has been split.
 ") IsSplit;
 		Standard_Boolean IsSplit(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -2878,18 +2877,17 @@ Parameters
 ----------
 F1: TopoDS_Shape
 F2: TopoDS_Shape
-T1: TopAbs_State
-T2: TopAbs_State
 
 Return
 -------
-None
+T1: TopAbs_State
+T2: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") KPclassFF;
-		void KPclassFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State & T1, TopAbs_State & T2);
+		void KPclassFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPisdisj ******/
 		/****** md5 signature: 1b0e050b16c6b351717414369d193c2c ******/
@@ -2995,18 +2993,17 @@ Parameters
 ----------
 F1: TopoDS_Shape
 F2: TopoDS_Shape
-T1: TopAbs_State
-T2: TopAbs_State
 
 Return
 -------
-bool
+T1: TopAbs_State
+T2: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") KPiskoleFF;
-		Standard_Boolean KPiskoleFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State & T1, TopAbs_State & T2);
+		Standard_Boolean KPiskoleFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPiskoleanalyse ******/
 		/****** md5 signature: 34c79a8fadaeffdca85f891fb32e8a62 ******/
@@ -3448,7 +3445,7 @@ None
 
 Description
 -----------
-Merges the two edges <s1> and <s2> keeping the parts in each edge of states <tb1> and <tb2>. booleans ona, onb, onab indicate whether parts of edges found as state on respectively on first, second, and both shapes must be (or not) built.
+Merges the two edges <S1> and <S2> keeping the parts in each edge of states <TB1> and <TB2>. Booleans onA, onB, onAB indicate whether parts of edges found as state ON respectively on first, second, and both shapes must be (or not) built.
 ") MergeEdges;
 		void MergeEdges(const TopTools_ListOfShape & L1, const TopAbs_State TB1, const TopTools_ListOfShape & L2, const TopAbs_State TB2, const Standard_Boolean onA = Standard_False, const Standard_Boolean onB = Standard_False, const Standard_Boolean onAB = Standard_False);
 
@@ -3472,7 +3469,7 @@ None
 
 Description
 -----------
-Merges the two faces <s1> and <s2> keeping the parts in each face of states <tb1> and <tb2>.
+Merges the two faces <S1> and <S2> keeping the parts in each face of states <TB1> and <TB2>.
 ") MergeFaces;
 		void MergeFaces(const TopTools_ListOfShape & S1, const TopAbs_State TB1, const TopTools_ListOfShape & S2, const TopAbs_State TB2, const Standard_Boolean onA = Standard_False, const Standard_Boolean onB = Standard_False, const Standard_Boolean onAB = Standard_False);
 
@@ -3590,7 +3587,7 @@ None
 
 Description
 -----------
-Merges the two shapes <s1> and <s2> keeping the parts of states <tb1>,<tb2> in <s1>,<s2>.
+Merges the two shapes <S1> and <S2> keeping the parts of states <TB1>,<TB2> in <S1>,<S2>.
 ") MergeShapes;
 		void MergeShapes(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
@@ -3609,7 +3606,7 @@ None
 
 Description
 -----------
-Merges the solid <s> keeping the parts of state <tb>.
+Merges the solid <S> keeping the parts of state <TB>.
 ") MergeSolid;
 		void MergeSolid(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -3630,7 +3627,7 @@ None
 
 Description
 -----------
-Merges the two solids <s1> and <s2> keeping the parts in each solid of states <tb1> and <tb2>.
+Merges the two solids <S1> and <S2> keeping the parts in each solid of states <TB1> and <TB2>.
 ") MergeSolids;
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
@@ -3649,7 +3646,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the merged parts <tb> of shape <s>.
+Returns the merged parts <TB> of shape <S>.
 ") Merged;
 		const TopTools_ListOfShape & Merged(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -3667,7 +3664,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the edges created on curve <i>.
+Returns the edges created on curve <I>.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const Standard_Integer I);
 
@@ -3685,7 +3682,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the faces created on surface <i>.
+Returns the faces created on surface <I>.
 ") NewFaces;
 		const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
 
@@ -3703,7 +3700,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the vertex created on point <i>.
+Returns the vertex created on point <I>.
 ") NewVertex;
 		const TopoDS_Shape NewVertex(const Standard_Integer I);
 
@@ -3792,7 +3789,7 @@ None
 
 Description
 -----------
-Stores the data structure <hds>, create shapes from the new geometries.
+Stores the data structure <HDS>, Create shapes from the new geometries.
 ") Perform;
 		virtual void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -3812,7 +3809,7 @@ None
 
 Description
 -----------
-Stores the data structure <hds>, create shapes from the new geometries, evaluates if an operation performed on shapes s1,s2 is a particular case.
+Stores the data structure <HDS>, Create shapes from the new geometries, Evaluates if an operation performed on shapes S1,S2 is a particular case.
 ") Perform;
 		virtual void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -4019,7 +4016,7 @@ None
 
 Description
 -----------
-Return all section edges.
+return all section edges.
 ") Section;
 		void Section(TopTools_ListOfShape & L);
 
@@ -4050,7 +4047,7 @@ None
 
 Description
 -----------
-Return the section edges built on new curves.
+return the section edges built on new curves.
 ") SectionCurves;
 		void SectionCurves(TopTools_ListOfShape & L);
 
@@ -4068,7 +4065,7 @@ None
 
 Description
 -----------
-Return the parts of edges found on the boundary of the two arguments s1,s2 of perform().
+return the parts of edges found ON the boundary of the two arguments S1,S2 of Perform().
 ") SectionEdges;
 		void SectionEdges(TopTools_ListOfShape & L);
 
@@ -4136,7 +4133,7 @@ None
 
 Description
 -----------
-Create parts on solid of section edges.
+create parts ON solid of section edges.
 ") SplitSectionEdge;
 		virtual void SplitSectionEdge(const TopoDS_Shape & E);
 
@@ -4149,7 +4146,7 @@ None
 
 Description
 -----------
-Create parts on solid of section edges.
+create parts ON solid of section edges.
 ") SplitSectionEdges;
 		void SplitSectionEdges();
 
@@ -4168,7 +4165,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the split parts <tb> of shape <s>.
+Returns the split parts <TB> of shape <S>.
 ") Splits;
 		const TopTools_ListOfShape & Splits(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -4601,7 +4598,7 @@ None
 
 Description
 -----------
-Create a facebuilder to build the faces on the shapes (wires, blocks of edge) described by <ls>.
+Create a FaceBuilder to build the faces on the shapes (wires, blocks of edge) described by <LS>.
 ") TopOpeBRepBuild_FaceBuilder;
 		 TopOpeBRepBuild_FaceBuilder(TopOpeBRepBuild_WireEdgeSet & ES, const TopoDS_Shape & F, const Standard_Boolean ForceClass = Standard_False);
 
@@ -4657,7 +4654,7 @@ None
 
 Description
 -----------
-Removes edges appearing twice (forward,reversed) with a bounding vertex not connected to any other edge. mape contains edges found. modifies myblockbuilder.
+Removes edges appearing twice (FORWARD,REVERSED) with a bounding vertex not connected to any other edge. mapE contains edges found. modifies myBlockBuilder.
 ") DetectPseudoInternalEdge;
 		void DetectPseudoInternalEdge(TopTools_IndexedMapOfShape & mapE);
 
@@ -4676,7 +4673,7 @@ None
 
 Description
 -----------
-Removes are non 3d-closed wires. fills up maps <mapvvsameg> and <mapvon1edge>, in order to correct 3d-closed but unclosed (topologic connexity) wires. modifies myblockbuilder.
+Removes are non 3d-closed wires. Fills up maps <mapVVsameG> and <mapVon1Edge>, in order to correct 3d-closed but unclosed (topologic connexity) wires. modifies myBlockBuilder.
 ") DetectUnclosedWire;
 		void DetectUnclosedWire(TopTools_IndexedDataMapOfShapeShape & mapVVsameG, TopTools_IndexedDataMapOfShapeShape & mapVon1Edge);
 
@@ -4720,7 +4717,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return myface.
+return myFace.
 ") Face;
 		const TopoDS_Shape Face();
 
@@ -4733,7 +4730,7 @@ None
 
 Description
 -----------
-Iterates on myblockiterator until finding a valid element.
+Iterates on myBlockIterator until finding a valid element.
 ") FindNextValidElement;
 		void FindNextValidElement();
 
@@ -4896,7 +4893,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns current wire this wire may be: * an old wire oldwire(), which has not been reconstructed; * a new wire made of edges described by ...newedge() methods.
+Returns current wire This wire may be: * an old wire OldWire(), which has not been reconstructed; * a new wire made of edges described by ...NewEdge() methods.
 ") OldWire;
 		const TopoDS_Shape OldWire();
 
@@ -5187,18 +5184,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-s1: TopAbs_State
-s2: TopAbs_State
 
 Return
 -------
-None
+s1: TopAbs_State
+s2: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") Current;
-		void Current(TopAbs_State & s1, TopAbs_State & s2);
+		void Current(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_GIter::Dump ******/
 		/****** md5 signature: e60d722f65a7811be636699da7600e78 ******/
@@ -5881,18 +5877,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-s1: TopAbs_State
-s2: TopAbs_State
 
 Return
 -------
-None
+s1: TopAbs_State
+s2: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") StatesON;
-		void StatesON(TopAbs_State & s1, TopAbs_State & s2);
+		void StatesON(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_GTopo::Type ******/
 		/****** md5 signature: b633f41f768e9f9c4f3d7b446ad113bf ******/
@@ -5900,18 +5895,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-t1: TopAbs_ShapeEnum
-t2: TopAbs_ShapeEnum
 
 Return
 -------
-None
+t1: TopAbs_ShapeEnum
+t2: TopAbs_ShapeEnum
 
 Description
 -----------
 No available documentation.
 ") Type;
-		void Type(TopAbs_ShapeEnum & t1, TopAbs_ShapeEnum & t2);
+		void Type(TopAbs_ShapeEnum &OutValue, TopAbs_ShapeEnum &OutValue);
 
 		/****** TopOpeBRepBuild_GTopo::Value ******/
 		/****** md5 signature: b540e3f24fd7559697bc1e352720e2a3 ******/
@@ -6054,7 +6048,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the edges created on curve <i>.
+Returns the edges created on curve <I>.
 ") ChangeNewEdges;
 		TopTools_ListOfShape & ChangeNewEdges(const Standard_Integer I);
 
@@ -6067,7 +6061,7 @@ None
 
 Description
 -----------
-Removes all split and merge already performed. does not clear the handled ds.
+Removes all split and merge already performed. Does NOT clear the handled DS.
 ") Clear;
 		void Clear();
 
@@ -6093,7 +6087,7 @@ opencascade::handle<TopOpeBRepDS_HDataStructure>
 
 Description
 -----------
-Returns the ds handled by this builder.
+returns the DS handled by this builder.
 ") DataStructure;
 		opencascade::handle<TopOpeBRepDS_HDataStructure> DataStructure();
 
@@ -6113,7 +6107,7 @@ IC: int
 
 Description
 -----------
-Search for the couple of face f1,f2 (from arguments of supra perform(s1,s2,hds)) method which intersection gives section edge e built on an intersection curve. returns true if f1,f2 have been valued. returns false if e is not a section edge built on intersection curve ic.
+search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on an intersection curve. returns True if F1,F2 have been valued. returns False if E is not a section edge built on intersection curve IC.
 ") EdgeCurveAncestors;
 		Standard_Boolean EdgeCurveAncestors(const TopoDS_Shape & E, TopoDS_Shape & F1, TopoDS_Shape & F2, Standard_Integer &OutValue);
 
@@ -6135,7 +6129,7 @@ bool
 
 Description
 -----------
-Search for the couple of face f1,f2 (from arguments of supra perform(s1,s2,hds)) method which intersection gives section edge e built on at least one edge . returns true if f1,f2 have been valued. returns false if e is not a section edge built on at least one edge of s1 and/or s2. le1,le2 are edges of s1,s2 which common part is edge e. le1 or le2 may be empty() but not both.
+search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on at least one edge . returns True if F1,F2 have been valued. returns False if E is not a section edge built on at least one edge of S1 and/or S2. LE1,LE2 are edges of S1,S2 which common part is edge E. LE1 or LE2 may be empty() but not both.
 ") EdgeSectionAncestors;
 		Standard_Boolean EdgeSectionAncestors(const TopoDS_Shape & E, TopTools_ListOfShape & LF1, TopTools_ListOfShape & LF2, TopTools_ListOfShape & LE1, TopTools_ListOfShape & LE2);
 
@@ -6296,7 +6290,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <s> has been merged.
+Returns True if the shape <S> has been merged.
 ") IsMerged;
 		Standard_Boolean IsMerged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
@@ -6315,7 +6309,7 @@ bool
 
 Description
 -----------
-Returns true if the shape <s> has been split.
+Returns True if the shape <S> has been split.
 ") IsSplit;
 		Standard_Boolean IsSplit(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
@@ -6355,7 +6349,7 @@ None
 
 Description
 -----------
-Merges the two shapes <s1> and <s2> keeping the parts of states <tb1>,<tb2> in <s1>,<s2>.
+Merges the two shapes <S1> and <S2> keeping the parts of states <TB1>,<TB2> in <S1>,<S2>.
 ") MergeShapes;
 		void MergeShapes(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
@@ -6374,7 +6368,7 @@ None
 
 Description
 -----------
-Merges the solid <s> keeping the parts of state <tb>.
+Merges the solid <S> keeping the parts of state <TB>.
 ") MergeSolid;
 		void MergeSolid(const TopoDS_Shape & S, const TopAbs_State TB);
 
@@ -6395,7 +6389,7 @@ None
 
 Description
 -----------
-Merges the two solids <s1> and <s2> keeping the parts in each solid of states <tb1> and <tb2>.
+Merges the two solids <S1> and <S2> keeping the parts in each solid of states <TB1> and <TB2>.
 ") MergeSolids;
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
@@ -6414,7 +6408,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the merged parts <tobuild> of shape <s>.
+Returns the merged parts <ToBuild> of shape <S>.
 ") Merged;
 		const TopTools_ListOfShape & Merged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
@@ -6445,7 +6439,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the edges created on curve <i>.
+Returns the edges created on curve <I>.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const Standard_Integer I);
 
@@ -6463,7 +6457,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the faces created on surface <i>.
+Returns the faces created on surface <I>.
 ") NewFaces;
 		const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
 
@@ -6481,7 +6475,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the vertex created on point <i>.
+Returns the vertex created on point <I>.
 ") NewVertex;
 		const TopoDS_Shape NewVertex(const Standard_Integer I);
 
@@ -6512,7 +6506,7 @@ None
 
 Description
 -----------
-Stores the data structure <hds>, create shapes from the new geometries described in <hds>.
+Stores the data structure <HDS>, Create shapes from the new geometries described in <HDS>.
 ") Perform;
 		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -6532,7 +6526,7 @@ None
 
 Description
 -----------
-Same as previous + evaluates if an operation performed on shapes s1,s2 is a particular case.
+Same as previous + evaluates if an operation performed on shapes S1,S2 is a particular case.
 ") Perform;
 		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -6564,7 +6558,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the split parts <tobuild> of shape <s>.
+Returns the split parts <ToBuild> of shape <S>.
 ") Splits;
 		const TopTools_ListOfShape & Splits(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
@@ -6704,7 +6698,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of loop <l1> compared with loop <l2>.
+Returns the state of loop <L1> compared with loop <L2>.
 ") Compare;
 		virtual TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -6945,7 +6939,7 @@ None
 
 Description
 -----------
-Creates a shapeset in order to build shapes connected by <subshapetype> shapes. <checkshape>:check (or not) the shapes, startelements, elements added.
+Creates a ShapeSet in order to build shapes connected by <SubShapeType> shapes. <checkshape>:check (or not) the shapes, startelements, elements added.
 ") TopOpeBRepBuild_ShapeSet;
 		 TopOpeBRepBuild_ShapeSet(const TopAbs_ShapeEnum SubShapeType, const Standard_Boolean checkshape = Standard_True);
 
@@ -6963,7 +6957,7 @@ None
 
 Description
 -----------
-For each subshape se of s of type mysubshapetype - add subshapes of s to the map of subshapes (mysubshapemap) - add s to the list of shape incident to subshapes of s.
+for each subshape SE of S of type mySubShapeType - Add subshapes of S to the map of subshapes (mySubShapeMap) - Add S to the list of shape incident to subshapes of S.
 ") AddElement;
 		virtual void AddElement(const TopoDS_Shape & S);
 
@@ -6981,7 +6975,7 @@ None
 
 Description
 -----------
-Adds <s> to the list of shapes. (wires or shells).
+Adds <S> to the list of shapes. (wires or shells).
 ") AddShape;
 		virtual void AddShape(const TopoDS_Shape & S);
 
@@ -6999,7 +6993,7 @@ None
 
 Description
 -----------
-(s is a face or edge) add s to the list of starting shapes used for reconstructions. apply addelement(s).
+(S is a face or edge) Add S to the list of starting shapes used for reconstructions. apply AddElement(S).
 ") AddStartElement;
 		virtual void AddStartElement(const TopoDS_Shape & S);
 
@@ -7201,7 +7195,7 @@ None
 
 Description
 -----------
-Build the list of neighbour shapes of mycurrentshape (neighbour shapes and mycurrentshapes are of type t) initialize myincidentshapesiter on neighbour shapes.
+Build the list of neighbour shapes of myCurrentShape (neighbour shapes and myCurrentShapes are of type t) Initialize myIncidentShapesIter on neighbour shapes.
 ") FindNeighbours;
 		virtual void FindNeighbours();
 
@@ -7492,7 +7486,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Return a reference on mystartshapes.
+return a reference on myStartShapes.
 ") StartElements;
 		const TopTools_ListOfShape & StartElements();
 
@@ -7615,7 +7609,7 @@ None
 
 Description
 -----------
-Create a solidbuilder to build the areas on the shapes (shells, blocks of faces) described by <ls>.
+Create a SolidBuilder to build the areas on the shapes (shells, blocks of faces) described by <LS>.
 ") TopOpeBRepBuild_SolidBuilder;
 		 TopOpeBRepBuild_SolidBuilder(TopOpeBRepBuild_ShellFaceSet & FS, const Standard_Boolean ForceClass = Standard_False);
 
@@ -7790,7 +7784,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns current shell this shell may be: * an old shell oldshell(), which has not been reconstructed; * a new shell made of faces described by ...newface() methods.
+Returns current shell This shell may be: * an old shell OldShell(), which has not been reconstructed; * a new shell made of faces described by ...NewFace() methods.
 ") OldShell;
 		const TopoDS_Shape OldShell();
 
@@ -7822,7 +7816,7 @@ bool
 
 Description
 -----------
-Checks if <theface> has the properly closed in 2d boundary(ies).
+Checks if <theFace> has the properly closed in 2D boundary(ies).
 ") CheckFaceClosed2d;
 		static Standard_Boolean CheckFaceClosed2d(const TopoDS_Face & theFace);
 
@@ -7862,7 +7856,7 @@ None
 
 Description
 -----------
-Test if uv representation of <oldface> is good (i.e. face is closed in 2d). if face is not closed , this method will try to close such face and will return corrected edges in the <amapofcorrect2dedges>. parameter <asourceshapes> used to fix the edge (or wires) which should be correct (corrector used it as a start shapes). note: parameter corrface doesn't mean anything. if you want to use this method , rebuild resulting face after by yourself using corrected edges.
+test if UV representation of <oldFace> is good (i.e. face is closed in 2d). if face is not closed , this method will try to close such face and will return corrected edges in the <aMapOfCorrect2dEdges>. Parameter <aSourceShapes> used to fix the edge (or wires) which should be correct (Corrector used it as a start shapes). NOTE: Parameter corrFace doesn't mean anything. If you want to use this method , rebuild resulting face after by yourself using corrected edges.
 ") CorrectFace2d;
 		static void CorrectFace2d(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace, const TopTools_IndexedMapOfOrientedShape & aSourceShapes, TopTools_IndexedDataMapOfShapeShape & aMapOfCorrect2dEdges);
 
@@ -8029,7 +8023,7 @@ None
 
 Description
 -----------
-This function used to compute normal in point which is located near the point with param uv (used for computation of normals where the normal in the point uv equal to zero).
+This function used to compute normal in point which is located near the point with param UV (used for computation of normals where the normal in the point UV equal to zero).
 ") GetNormalInNearestPoint;
 		static void GetNormalInNearestPoint(const TopoDS_Face & aFace, const TopoDS_Edge & anEdge, gp_Vec & aNormal);
 
@@ -8127,7 +8121,7 @@ None
 
 Description
 -----------
-Test if <oldface> does not contain internal or external edges and remove such edges in case of its presence. the result is stored in <corrface>.
+test if <oldFace> does not contain INTERNAL or EXTERNAL edges and remove such edges in case of its presence. The result is stored in <corrFace>.
 ") NormalizeFace;
 		static void NormalizeFace(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace);
 
@@ -8210,7 +8204,7 @@ None
 
 Description
 -----------
-Recompute pcurve of the edge on the newface.
+recompute PCurve of the edge on the NewFace.
 ") UpdateEdgeOnFace;
 		static void UpdateEdgeOnFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -8230,7 +8224,7 @@ None
 
 Description
 -----------
-Recompute pcurves of the closing (sim , with 2 pcurves) edge on the newface.
+recompute PCurves of the closing (SIM , with 2 PCurves) edge on the NewFace.
 ") UpdateEdgeOnPeriodicalFace;
 		static void UpdateEdgeOnPeriodicalFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -8250,7 +8244,7 @@ None
 
 Description
 -----------
-Recompute pcurves of the all edges from the wire on the <toface>.
+Recompute PCurves of the all edges from the wire on the <toFace>.
 ") UpdatePCurves;
 		static void UpdatePCurves(const TopoDS_Wire & aWire, const TopoDS_Face & fromFace, const TopoDS_Face & toFace);
 
@@ -8740,7 +8734,7 @@ None
 
 Description
 -----------
-Creates a area1dbuilder to find the areas of the shapes described by <ls> using the classifier <lc>.
+Creates a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_Area1dBuilder;
 		 TopOpeBRepBuild_Area1dBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -8820,7 +8814,7 @@ None
 
 Description
 -----------
-Sets a area1dbuilder to find the areas of the shapes described by <ls> using the classifier <lc>.
+Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
 		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -8887,7 +8881,7 @@ None
 
 Description
 -----------
-Creates a area2dbuilder to build faces on the (wires,blocks of edge) of <ls>, using the classifier <lc>.
+Creates a Area2dBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_Area2dBuilder;
 		 TopOpeBRepBuild_Area2dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -8907,7 +8901,7 @@ None
 
 Description
 -----------
-Sets a area1dbuilder to find the areas of the shapes described by <ls> using the classifier <lc>.
+Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
 		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -8954,7 +8948,7 @@ None
 
 Description
 -----------
-Creates a area3dbuilder to build solids on the (shells,blocks of face) of <ls>, using the classifier <lc>.
+Creates a Area3dBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_Area3dBuilder;
 		 TopOpeBRepBuild_Area3dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -8974,7 +8968,7 @@ None
 
 Description
 -----------
-Sets a area1dbuilder to find the areas of the shapes described by <ls> using the classifier <lc>.
+Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
 		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -9019,7 +9013,7 @@ None
 
 Description
 -----------
-Removes all splits and merges already performed. does not clear the handled ds (except shapewithstatesmaps).
+Removes all splits and merges already performed. Does NOT clear the handled DS (except ShapeWithStatesMaps).
 ") Clear;
 		virtual void Clear();
 
@@ -9480,7 +9474,7 @@ bool
 
 Description
 -----------
-Add element <e> in the set of elements used in classification. returns false if the element <e> has been already added to the set of elements, otherwise returns true.
+Add element <E> in the set of elements used in classification. Returns False if the element <E> has been already added to the set of elements, otherwise returns True.
 ") CompareElement;
 		virtual Standard_Boolean CompareElement(const TopoDS_Shape & E);
 
@@ -9499,7 +9493,7 @@ TopAbs_State
 
 Description
 -----------
-Classify element <e> with shape <b>.
+classify element <E> with shape <B>.
 ") CompareElementToShape;
 		virtual TopAbs_State CompareElementToShape(const TopoDS_Shape & E, const TopoDS_Shape & B);
 
@@ -9518,7 +9512,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape <b1> with shape <b2>.
+classify shape <B1> with shape <B2>.
 ") CompareShapes;
 		virtual TopAbs_State CompareShapes(const TopoDS_Shape & B1, const TopoDS_Shape & B2);
 
@@ -9536,7 +9530,7 @@ None
 
 Description
 -----------
-Prepare classification involving element <e>.
+prepare classification involving element <E>.
 ") ResetElement;
 		virtual void ResetElement(const TopoDS_Shape & E);
 
@@ -9554,7 +9548,7 @@ None
 
 Description
 -----------
-Prepare classification involving shape <b> calls resetelement on first element of <b>.
+prepare classification involving shape <B> calls ResetElement on first element of <B>.
 ") ResetShape;
 		virtual void ResetShape(const TopoDS_Shape & B);
 
@@ -9567,7 +9561,7 @@ TopAbs_State
 
 Description
 -----------
-Returns state of classification of 2d point, defined by resetelement, with the current set of elements, defined by compare.
+Returns state of classification of 2D point, defined by ResetElement, with the current set of elements, defined by Compare.
 ") State;
 		virtual TopAbs_State State();
 
@@ -9601,7 +9595,7 @@ None
 
 Description
 -----------
-V = vertex, p = parameter of vertex <v> bound = true if <v> is an old vertex bound = false if <v> is a new vertex.
+V = vertex, P = parameter of vertex <V> bound = True if <V> is an old vertex bound = False if <V> is a new vertex.
 ") TopOpeBRepBuild_Pave;
 		 TopOpeBRepBuild_Pave(const TopoDS_Shape & V, const Standard_Real P, const Standard_Boolean bound);
 
@@ -9806,7 +9800,7 @@ None
 
 Description
 -----------
-Create a pave classifier to compare vertices on edge <e>.
+Create a Pave classifier to compare vertices on edge <E>.
 ") TopOpeBRepBuild_PaveClassifier;
 		 TopOpeBRepBuild_PaveClassifier(const TopoDS_Shape & E);
 
@@ -9865,7 +9859,7 @@ TopAbs_State
 
 Description
 -----------
-Returns state of vertex <l1> compared with <l2>.
+Returns state of vertex <L1> compared with <L2>.
 ") Compare;
 		TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -9915,7 +9909,7 @@ None
 
 Description
 -----------
-Create a pave set on edge <e>. it contains <e> vertices.
+Create a Pave set on edge <E>. It contains <E> vertices.
 ") TopOpeBRepBuild_PaveSet;
 		 TopOpeBRepBuild_PaveSet(const TopoDS_Shape & E);
 
@@ -9933,7 +9927,7 @@ None
 
 Description
 -----------
-Add <pv> in the pave set.
+Add <PV> in the Pave set.
 ") Append;
 		void Append(const opencascade::handle<TopOpeBRepBuild_Pave> & PV);
 
@@ -10101,7 +10095,7 @@ None
 
 Description
 -----------
-Creates a shellfaceset to build blocks of faces connected by edges.
+Creates a ShellFaceSet to build blocks of faces connected by edges.
 ") TopOpeBRepBuild_ShellFaceSet;
 		 TopOpeBRepBuild_ShellFaceSet();
 
@@ -10120,7 +10114,7 @@ None
 
 Description
 -----------
-Creates a shellfaceset to build blocks of faces connected by edges.
+Creates a ShellFaceSet to build blocks of faces connected by edges.
 ") TopOpeBRepBuild_ShellFaceSet;
 		 TopOpeBRepBuild_ShellFaceSet(const TopoDS_Shape & S, const Standard_Address Addr = NULL);
 
@@ -10313,7 +10307,7 @@ None
 
 Description
 -----------
-Creates a wireedgeset to build edges connected by vertices on face f. edges of the wireedgeset must have a representation on surface of face f.
+Creates a WireEdgeSet to build edges connected by vertices on face F. Edges of the WireEdgeSet must have a representation on surface of face F.
 ") TopOpeBRepBuild_WireEdgeSet;
 		 TopOpeBRepBuild_WireEdgeSet(const TopoDS_Shape & F, const Standard_Address Addr = NULL);
 
@@ -10393,7 +10387,7 @@ TopoDS_Face
 
 Description
 -----------
-Value of field myface.
+value of field myFace.
 ") Face;
 		const TopoDS_Face Face();
 
@@ -10406,7 +10400,7 @@ None
 
 Description
 -----------
-Build the list of neighbour edges of edge mycurrentshape initialize iterator of neighbour edges to edge mycurrentshape.
+Build the list of neighbour edges of edge myCurrentShape Initialize iterator of neighbour edges to edge myCurrentShape.
 ") FindNeighbours;
 		virtual void FindNeighbours();
 
@@ -10590,7 +10584,7 @@ None
 
 Description
 -----------
-Creates a edgebuilder to find the areas of the shapes described by <ls> using the classifier <lc>.
+Creates a EdgeBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_EdgeBuilder;
 		 TopOpeBRepBuild_EdgeBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -10761,7 +10755,7 @@ None
 
 Description
 -----------
-Creates a faceareabuilder to build faces on the (wires,blocks of edge) of <ls>, using the classifier <lc>.
+Creates a FaceAreaBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_FaceAreaBuilder;
 		 TopOpeBRepBuild_FaceAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -10813,7 +10807,7 @@ None
 
 Description
 -----------
-Creates a classifier in 3d space, to compare: a face with a set of faces a shell with a set of faces a shell with a shell.
+Creates a classifier in 3D space, to compare: a face with a set of faces a shell with a set of faces a shell with a shell.
 ") TopOpeBRepBuild_ShellFaceClassifier;
 		 TopOpeBRepBuild_ShellFaceClassifier(const TopOpeBRepBuild_BlockBuilder & BB);
 
@@ -10844,7 +10838,7 @@ bool
 
 Description
 -----------
-Add the face <f> in the set of faces used in 3d point classification. returns false if the face <f> has been already added to the set of faces, otherwise returns true.
+Add the face <F> in the set of faces used in 3D point classification. Returns False if the face <F> has been already added to the set of faces, otherwise returns True.
 ") CompareElement;
 		Standard_Boolean CompareElement(const TopoDS_Shape & F);
 
@@ -10863,7 +10857,7 @@ TopAbs_State
 
 Description
 -----------
-Classify face <f> with shell <s>.
+classify face <F> with shell <S>.
 ") CompareElementToShape;
 		TopAbs_State CompareElementToShape(const TopoDS_Shape & F, const TopoDS_Shape & S);
 
@@ -10882,7 +10876,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shell <b1> with shell <b2>.
+classify shell <B1> with shell <B2>.
 ") CompareShapes;
 		TopAbs_State CompareShapes(const TopoDS_Shape & B1, const TopoDS_Shape & B2);
 
@@ -10900,7 +10894,7 @@ None
 
 Description
 -----------
-Prepare classification involving face <f> define 3d point (later used in compare()) on first vertex of face <f>.
+prepare classification involving face <F> define 3D point (later used in Compare()) on first vertex of face <F>.
 ") ResetElement;
 		void ResetElement(const TopoDS_Shape & F);
 
@@ -10918,7 +10912,7 @@ None
 
 Description
 -----------
-Prepare classification involving shell <s> calls resetelement on first face of <s>.
+prepare classification involving shell <S> calls ResetElement on first face of <S>.
 ") ResetShape;
 		void ResetShape(const TopoDS_Shape & S);
 
@@ -10931,7 +10925,7 @@ TopAbs_State
 
 Description
 -----------
-Returns state of classification of 3d point, defined by resetelement, with the current set of faces, defined by compare.
+Returns state of classification of 3D point, defined by ResetElement, with the current set of faces, defined by Compare.
 ") State;
 		TopAbs_State State();
 
@@ -10978,7 +10972,7 @@ None
 
 Description
 -----------
-Creates a solidareabuilder to build solids on the (shells,blocks of face) of <ls>, using the classifier <lc>.
+Creates a SolidAreaBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_SolidAreaBuilder;
 		 TopOpeBRepBuild_SolidAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
 
@@ -11031,7 +11025,7 @@ None
 
 Description
 -----------
-Creates a classifier on edge <f>. used to compare edges and wires on the edge <f>.
+Creates a classifier on edge <F>. Used to compare edges and wires on the edge <F>.
 ") TopOpeBRepBuild_WireEdgeClassifier;
 		 TopOpeBRepBuild_WireEdgeClassifier(const TopoDS_Shape & F, const TopOpeBRepBuild_BlockBuilder & BB);
 
@@ -11068,7 +11062,7 @@ bool
 
 Description
 -----------
-Add the edge <e> in the set of edges used in 2d point classification.
+Add the edge <E> in the set of edges used in 2D point classification.
 ") CompareElement;
 		Standard_Boolean CompareElement(const TopoDS_Shape & E);
 
@@ -11087,7 +11081,7 @@ TopAbs_State
 
 Description
 -----------
-Classify edge <e> with wire <b>.
+classify edge <E> with wire <B>.
 ") CompareElementToShape;
 		TopAbs_State CompareElementToShape(const TopoDS_Shape & E, const TopoDS_Shape & B);
 
@@ -11106,7 +11100,7 @@ TopAbs_State
 
 Description
 -----------
-Classify wire <b1> with wire <b2>.
+classify wire <B1> with wire <B2>.
 ") CompareShapes;
 		TopAbs_State CompareShapes(const TopoDS_Shape & B1, const TopoDS_Shape & B2);
 
@@ -11142,7 +11136,7 @@ None
 
 Description
 -----------
-Prepare classification involving edge <e> define 2d point (later used in compare()) on first vertex of edge <e>.
+prepare classification involving edge <E> define 2D point (later used in Compare()) on first vertex of edge <E>.
 ") ResetElement;
 		void ResetElement(const TopoDS_Shape & E);
 
@@ -11160,7 +11154,7 @@ None
 
 Description
 -----------
-Prepare classification involving wire <b> calls resetelement on first edge of <b>.
+prepare classification involving wire <B> calls ResetElement on first edge of <B>.
 ") ResetShape;
 		void ResetShape(const TopoDS_Shape & B);
 
@@ -11173,7 +11167,7 @@ TopAbs_State
 
 Description
 -----------
-Returns state of classification of 2d point, defined by resetelement, with the current set of edges, defined by compare.
+Returns state of classification of 2D point, defined by ResetElement, with the current set of edges, defined by Compare.
 ") State;
 		TopAbs_State State();
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLTOBJDRIVERSDOCSTRING
 "XmlTObjDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmltobjdrivers.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmltobjdrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLTOBJDRIVERSDOCSTRING) XmlTObjDrivers
 
@@ -137,7 +137,7 @@ None
 
 Description
 -----------
-Defines format 'tobjxml' and registers its read and write drivers in the specified application.
+Defines format 'TObjXml' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
@@ -155,7 +155,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a driver corresponding to <aguid>. used for plugin.
+Returns a driver corresponding to <aGUID>. Used for plugin.
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & aGUID);
 

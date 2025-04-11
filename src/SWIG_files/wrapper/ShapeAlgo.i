@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEALGODOCSTRING
 "ShapeAlgo module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapealgo.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapealgo.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEALGODOCSTRING) ShapeAlgo
 
@@ -113,7 +113,7 @@ opencascade::handle<ShapeAlgo_AlgoContainer>
 
 Description
 -----------
-Returns default algocontainer.
+Returns default AlgoContainer.
 ") AlgoContainer;
 		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer();
 
@@ -126,7 +126,7 @@ None
 
 Description
 -----------
-Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
+Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
 ") Init;
 		static void Init();
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Sets default algocontainer.
+Sets default AlgoContainer.
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 
@@ -187,7 +187,7 @@ opencascade::handle<ShapeFix_EdgeProjAux>
 
 Description
 -----------
-Returns shapefix_edgeprojaux.
+Returns ShapeFix_EdgeProjAux.
 ") EdgeProjAux;
 		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux();
 
@@ -200,7 +200,7 @@ opencascade::handle<ShapeFix_Shape>
 
 Description
 -----------
-Returns shapefix_shape.
+Returns ShapeFix_Shape.
 ") FixShape;
 		virtual opencascade::handle<ShapeFix_Shape> FixShape();
 

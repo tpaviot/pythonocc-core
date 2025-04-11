@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXINTDOCSTRING
 "ApproxInt module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_approxint.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approxint.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXINTDOCSTRING) ApproxInt
 
@@ -143,7 +143,16 @@ None
 
 Description
 -----------
-Main function to build optimal knot sequence. at least one set from (thepntsxyz, thepntsu1v1, thepntsu2v2) should exist. @param thepntsxyz - set of 3d points. @param thepntsu1v1 - set of 2d points. @param thepntsu2v2 - set of 2d points. @param thepars - expected parameters associated with set. @param theapproxxyz - flag, existence of 3d set. @param theapproxu1v1 - flag existence of first 2d set. @param theapproxu2v2 - flag existence of second 2d set. @param theminnbpnts - minimal number of points per knot interval. @param theknots - output knots sequence.
+Main function to build optimal knot sequence. At least one set from (thePntsXYZ, thePntsU1V1, thePntsU2V2) should exist. 
+Parameter thePntsXYZ - Set of 3d points. 
+Parameter thePntsU1V1 - Set of 2d points. 
+Parameter thePntsU2V2 - Set of 2d points. 
+Parameter thePars - Expected parameters associated with set. 
+Parameter theApproxXYZ - Flag, existence of 3d set. 
+Parameter theApproxU1V1 - Flag existence of first 2d set. 
+Parameter theApproxU2V2 - Flag existence of second 2d set. 
+Parameter theMinNbPnts - Minimal number of points per knot interval. 
+Parameter theKnots - output knots sequence.
 ") BuildKnots;
 		static void BuildKnots(const TColgp_Array1OfPnt & thePntsXYZ, const TColgp_Array1OfPnt2d & thePntsU1V1, const TColgp_Array1OfPnt2d & thePntsU2V2, const math_Vector & thePars, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2, const Standard_Integer theMinNbPnts, NCollection_Vector<Standard_Integer> & theKnots);
 
@@ -166,7 +175,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Defines preferable parametrization type for thewl .
+Defines preferable parametrization type for theWL.
 ") DefineParType;
 		static Approx_ParametrizationType DefineParType(const opencascade::handle<IntPatch_WLine> & theWL, const Standard_Integer theFpar, const Standard_Integer theLpar, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2);
 
@@ -205,7 +214,7 @@ v2: float
 
 Description
 -----------
-Returns true if tg,tguv1 tguv2 can be computed.
+returns True if Tg,Tguv1 Tguv2 can be computed.
 ") Compute;
 		virtual Standard_Boolean Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
 
@@ -262,7 +271,7 @@ bool
 
 Description
 -----------
-Computes point on curve and parameters on the surfaces.
+computes point on curve and parameters on the surfaces.
 ") SeekPoint;
 		virtual Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
 

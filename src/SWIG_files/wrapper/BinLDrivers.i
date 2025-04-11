@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINLDRIVERSDOCSTRING
 "BinLDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_binldrivers.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binldrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINLDRIVERSDOCSTRING) BinLDrivers
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Defines format 'binlocaf' and registers its read and write drivers in the specified application.
+Defines format 'BinLOcaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
@@ -229,7 +229,7 @@ None
 
 Description
 -----------
-Retrieves the content of the file into a new document.
+retrieves the content of the file into a new Document.
 ") Read;
 		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -313,7 +313,7 @@ bool
 
 Description
 -----------
-Query the status: if the section should be read after ocaf; false means that the section is read before starting to read ocaf data.
+Query the status: if the Section should be read after OCAF; False means that the Section is read before starting to read OCAF data.
 ") IsPostRead;
 		Standard_Boolean IsPostRead();
 
@@ -372,7 +372,7 @@ bool
 
 Description
 -----------
-Fill a documentsection instance from the data that are read from toc. returns false in case of the stream reading problem.
+Fill a DocumentSection instance from the data that are read from TOC. Returns false in case of the stream reading problem.
 ") ReadTOC;
 		static Standard_Boolean ReadTOC(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const TDocStd_FormatVersion theDocFormatVersion);
 
@@ -427,7 +427,7 @@ theOS: Standard_OStream
 
 Description
 -----------
-Save offset and length data into the section entry in the document toc (list of sections).
+Save Offset and Length data into the Section entry in the Document TOC (list of sections).
 ") Write;
 		void Write(std::ostream &OutValue, const uint64_t theOffset, const TDocStd_FormatVersion theDocFormatVersion);
 
@@ -445,7 +445,7 @@ theOS: Standard_OStream
 
 Description
 -----------
-Create a section entry in the document toc (list of sections).
+Create a Section entry in the Document TOC (list of sections).
 ") WriteTOC;
 		void WriteTOC(std::ostream &OutValue, const TDocStd_FormatVersion theDocFormatVersion);
 
@@ -491,7 +491,7 @@ None
 
 Description
 -----------
-Create a section that should be written after the ocaf data.
+Create a section that should be written after the OCAF data.
 ") AddSection;
 		void AddSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead = Standard_True);
 
@@ -547,7 +547,7 @@ None
 
 Description
 -----------
-Write <thedocument> to the binary file <thefilename>.
+Write <theDocument> to the binary file <theFileName>.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -566,7 +566,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Write <thedocument> to theostream.
+Write <theDocument> to theOStream.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 

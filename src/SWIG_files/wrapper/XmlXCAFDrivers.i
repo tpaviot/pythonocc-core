@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLXCAFDRIVERSDOCSTRING
 "XmlXCAFDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlxcafdrivers.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlxcafdrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLXCAFDRIVERSDOCSTRING) XmlXCAFDrivers
 
@@ -110,7 +110,7 @@ None
 
 Description
 -----------
-Defines format 'xmlxcaf' and registers its read and write drivers in the specified application.
+Defines format 'XmlXCAF' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
@@ -128,7 +128,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Depending from the id, returns a list of storage or retrieval attribute drivers. used for plugin. //! standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 transient-persistent 47b0b827-d931-11d1-b5da-00a0c9064368 persistent-transient //! xcaf data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b transient-persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b persistent-transient ed8793fa-3142-11d4-b9b5-0060b0ee281b xcafschema.
+Depending from the ID, returns a list of storage or retrieval attribute drivers. Used for plugin. //! Standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent 47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient //! XCAF data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema.
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & aGUID);
 

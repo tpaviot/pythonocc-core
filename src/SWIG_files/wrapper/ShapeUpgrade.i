@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEUPGRADEDOCSTRING
 "ShapeUpgrade module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeupgrade.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeupgrade.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEUPGRADEDOCSTRING) ShapeUpgrade
 
@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeupgrade.html
 #include<TColGeom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TColGeom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
 #include<ShapeBuild_module.hxx>
@@ -55,7 +56,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeupgrade.html
 #include<Message_module.hxx>
 #include<TColStd_module.hxx>
 #include<BRepTools_module.hxx>
-#include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<ShapeAnalysis_module.hxx>
 #include<TopLoc_module.hxx>
@@ -84,6 +84,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeupgrade.html
 %import TColGeom.i
 %import Geom2d.i
 %import TColGeom2d.i
+%import TopTools.i
 %import TopoDS.i
 %import TopAbs.i
 %import ShapeBuild.i
@@ -91,7 +92,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeupgrade.html
 %import Message.i
 %import TColStd.i
 %import BRepTools.i
-%import TopTools.i
 %import GeomAbs.i
 %import ShapeAnalysis.i
 %import TopLoc.i
@@ -182,7 +182,7 @@ bool
 
 Description
 -----------
-Converts c0 b-spline curve into sequence of c1 b-spline curves. this method splits b-spline at the knots with multiplicities equal to degree, i.e. unlike method geomconvert::c0bsplinetoarrayofc1bsplinecurve this one does not use any tolerance and therefore does not change the geometry of b-spline. returns true if c0 b-spline was successfully split, else returns false (if bs is c1 b-spline).
+Converts C0 B-Spline curve into sequence of C1 B-Spline curves. This method splits B-Spline at the knots with multiplicities equal to degree, i.e. unlike method GeomConvert::C0BSplineToArrayOfC1BSplineCurve this one does not use any tolerance and therefore does not change the geometry of B-Spline. Returns True if C0 B-Spline was successfully split, else returns False (if BS is C1 B-Spline).
 ") C0BSplineToSequenceOfC1BSplineCurve;
 		static Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> & seqBS);
 
@@ -212,6 +212,19 @@ Description
 Empty constructor.
 ") ShapeUpgrade_RemoveLocations;
 		 ShapeUpgrade_RemoveLocations();
+
+		/****** ShapeUpgrade_RemoveLocations::GetModifiedShapesMap ******/
+		/****** md5 signature: 07c478fd6fe912829b8598bbec832ae9 ******/
+		%feature("compactdefaultargs") GetModifiedShapesMap;
+		%feature("autodoc", "Return
+-------
+TopTools_DataMapOfShapeShape
+
+Description
+-----------
+Returns map of modified shapes.
+") GetModifiedShapesMap;
+		const TopTools_DataMapOfShapeShape & GetModifiedShapesMap();
 
 		/****** ShapeUpgrade_RemoveLocations::GetResult ******/
 		/****** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ******/
@@ -258,7 +271,7 @@ bool
 
 Description
 -----------
-Removes all location correspodingly to removelevel.
+Removes all location correspondingly to RemoveLevel.
 ") Remove;
 		Standard_Boolean Remove(const TopoDS_Shape & theShape);
 
@@ -271,7 +284,7 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Sets level starting with that location will be removed.value of level can be set to topabs_shape,topabs_compound,topabs_solid,topabs_shell,topabs_face.by default topabs_shape. in this case location will be removed for all shape types for exception of compound.
+sets level starting with that location will be removed.Value of level can be set to TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE. In this case location will be removed for all shape types for exception of compound.
 ") RemoveLevel;
 		TopAbs_ShapeEnum RemoveLevel();
 
@@ -289,7 +302,7 @@ None
 
 Description
 -----------
-Sets level starting with that location will be removed, by default topabs_shape. in this case locations will be kept for specified shape and if specified shape is topabs_compound for sub-shapes of first level.
+sets level starting with that location will be removed, by default TopAbs_SHAPE. In this case locations will be kept for specified shape and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
 ") SetRemoveLevel;
 		void SetRemoveLevel(const TopAbs_ShapeEnum theLevel);
 
@@ -336,7 +349,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivide;
 		 ShapeUpgrade_ShapeDivide(const TopoDS_Shape & S);
 
@@ -349,7 +362,7 @@ opencascade::handle<ShapeBuild_ReShape>
 
 Description
 -----------
-Returns context with all the modifications made during last call(s) to perform() recorded.
+Returns context with all the modifications made during last call(s) to Perform() recorded.
 ") GetContext;
 		opencascade::handle<ShapeBuild_ReShape> GetContext();
 
@@ -367,7 +380,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -398,7 +411,7 @@ bool
 
 Description
 -----------
-Performs splitting and computes the resulting shape if newcontext is true (default), the internal context will be cleared at start, else previous substitutions will be acting.
+Performs splitting and computes the resulting shape If newContext is True (default), the internal context will be cleared at start, else previous substitutions will be acting.
 ") Perform;
 		virtual Standard_Boolean Perform(const Standard_Boolean newContext = Standard_True);
 
@@ -411,7 +424,7 @@ TopoDS_Shape
 
 Description
 -----------
-Gives the resulting shape, or null shape if not done.
+Gives the resulting Shape, or Null shape if not done.
 ") Result;
 		TopoDS_Shape Result();
 
@@ -431,7 +444,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the shape. calls corresponding message of message registrator.
+Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 ") SendMsg;
 		void SendMsg(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity = Message_Info);
 
@@ -449,7 +462,7 @@ None
 
 Description
 -----------
-Sets context with recorded modifications to be applied during next call(s) to perform(shape,standard_false).
+Sets context with recorded modifications to be applied during next call(s) to Perform(shape,Standard_False).
 ") SetContext;
 		void SetContext(const opencascade::handle<ShapeBuild_ReShape> & context);
 
@@ -575,7 +588,7 @@ None
 
 Description
 -----------
-Purpose sets mode for trimming (segment) surface by wire uv bounds.
+Purpose sets mode for trimming (segment) surface by wire UV bounds.
 ") SetSurfaceSegmentMode;
 		void SetSurfaceSegmentMode(const Standard_Boolean Segment);
 
@@ -593,7 +606,7 @@ bool
 
 Description
 -----------
-Queries the status of last call to perform ok: no splitting was done (or no call to perform) done1: some edges were split done2: surface was split fail1: some errors occurred.
+Queries the status of last call to Perform OK: no splitting was done (or no call to Perform) DONE1: some edges were split DONE2: surface was split FAIL1: some errors occurred.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -620,7 +633,7 @@ None
 
 Description
 -----------
-Creates a shellsewing, empty.
+Creates a ShellSewing, empty.
 ") ShapeUpgrade_ShellSewing;
 		 ShapeUpgrade_ShellSewing();
 
@@ -639,7 +652,7 @@ TopoDS_Shape
 
 Description
 -----------
-Builds a new shape from a former one, by calling sewing from brepbuilderapi. rebuilt solids are oriented to be 'not infinite' //! if <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! if no shell has been sewed, this method returns the input shape.
+Builds a new shape from a former one, by calling Sewing from BRepBuilderAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape.
 ") ApplySewing;
 		TopoDS_Shape ApplySewing(const TopoDS_Shape & shape, const Standard_Real tol = 0.0);
 
@@ -684,7 +697,7 @@ None
 
 Description
 -----------
-If segment is true, the result is composed with segments of the curve bounded by the splitvalues. if segment is false, the result is composed with trimmed curves all based on the same complete curve.
+If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -734,7 +747,7 @@ None
 
 Description
 -----------
-Performs correction/splitting of the curve. first defines splitting values by method compute(), then calls method build().
+Performs correction/splitting of the curve. First defines splitting values by method Compute(), then calls method Build().
 ") Perform;
 		void Perform(const Standard_Boolean Segment = Standard_True);
 
@@ -765,7 +778,7 @@ opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
-Returns all the splitting values including the first and last parameters of the input curve merges input split values and new ones into myglobalknots.
+returns all the splitting values including the First and Last parameters of the input curve Merges input split values and new ones into myGlobalKnots.
 ") SplitValues;
 		const opencascade::handle<TColStd_HSequenceOfReal> & SplitValues();
 
@@ -783,7 +796,7 @@ bool
 
 Description
 -----------
-Returns the status ok - no splitting is needed done1 - splitting required and gives more than one segment done2 - splitting is required, but gives only one segment (initial) done3 - geometric form of the curve or parametrisation is modified.
+Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one segment DONE2 - splitting is required, but gives only one segment (initial) DONE3 - geometric form of the curve or parametrisation is modified.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -830,7 +843,7 @@ None
 
 Description
 -----------
-Performs splitting of the supporting surface. if resulting surface is b-spline and segment is true, the result is composed with segments of the surface bounded by the u and v splitvalues (method geom_bsplinesurface::segment is used). if segment is false, the result is composed with geom_rectangulartrimmedsurface all based on the same complete surface. fields mynbresultingrow and mynbresultingcol must be set to specify the size of resulting grid of surfaces.
+Performs splitting of the supporting surface. If resulting surface is B-Spline and Segment is True, the result is composed with segments of the surface bounded by the U and V SplitValues (method Geom_BSplineSurface::Segment is used). If Segment is False, the result is composed with Geom_RectangularTrimmedSurface all based on the same complete surface. Fields myNbResultingRow and myNbResultingCol must be set to specify the size of resulting grid of surfaces.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -907,7 +920,7 @@ None
 
 Description
 -----------
-Performs correction/splitting of the surface. first defines splitting values by method compute(), then calls method build().
+Performs correction/splitting of the surface. First defines splitting values by method Compute(), then calls method Build().
 ") Perform;
 		void Perform(const Standard_Boolean Segment = Standard_True);
 
@@ -920,7 +933,7 @@ opencascade::handle<ShapeExtend_CompositeSurface>
 
 Description
 -----------
-Returns obtained surfaces after splitting as compositesurface.
+Returns obtained surfaces after splitting as CompositeSurface.
 ") ResSurfaces;
 		const opencascade::handle<ShapeExtend_CompositeSurface> & ResSurfaces();
 
@@ -938,7 +951,7 @@ None
 
 Description
 -----------
-Sets u parameters where splitting has to be done.
+Sets U parameters where splitting has to be done.
 ") SetUSplitValues;
 		void SetUSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & UValues);
 
@@ -956,7 +969,7 @@ None
 
 Description
 -----------
-Sets v parameters where splitting has to be done.
+Sets V parameters where splitting has to be done.
 ") SetVSplitValues;
 		void SetVSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & VValues);
 
@@ -974,7 +987,7 @@ bool
 
 Description
 -----------
-Returns the status ok - no splitting is needed done1 - splitting required and gives more than one patch done2 - splitting is required, but gives only single patch (initial) done3 - geometric form of the surface or parametrisation is modified.
+Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one patch DONE2 - splitting is required, but gives only single patch (initial) DONE3 - geometric form of the surface or parametrisation is modified.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -987,7 +1000,7 @@ opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
-Returns all the u splitting values including the first and last parameters of the input surface.
+returns all the U splitting values including the First and Last parameters of the input surface.
 ") USplitValues;
 		const opencascade::handle<TColStd_HSequenceOfReal> & USplitValues();
 
@@ -1000,7 +1013,7 @@ opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
-Returns all the splitting v values including the first and last parameters of the input surface.
+returns all the splitting V values including the First and Last parameters of the input surface.
 ") VSplitValues;
 		const opencascade::handle<TColStd_HSequenceOfReal> & VSplitValues();
 
@@ -1060,7 +1073,7 @@ float
 
 Description
 -----------
-Returns tolerance limited by [mymintol,mymaxtol].
+Returns tolerance limited by [myMinTol,myMaxTol].
 ") LimitTolerance;
 		Standard_Real LimitTolerance(const Standard_Real toler);
 
@@ -1117,7 +1130,7 @@ None
 
 Description
 -----------
-Copy all fields from another root object.
+Copy all fields from another Root object.
 ") Set;
 		void Set(const opencascade::handle<ShapeUpgrade_Tool> & tool);
 
@@ -1241,7 +1254,7 @@ None
 
 Description
 -----------
-Constructor defining input shape and necessary flags. it does not perform unification.
+Constructor defining input shape and necessary flags. It does not perform unification.
 ") ShapeUpgrade_UnifySameDomain;
 		 ShapeUpgrade_UnifySameDomain(const TopoDS_Shape & aShape, const Standard_Boolean UnifyEdges = Standard_True, const Standard_Boolean UnifyFaces = Standard_True, const Standard_Boolean ConcatBSplines = Standard_False);
 
@@ -1259,7 +1272,7 @@ None
 
 Description
 -----------
-Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. without this flag merging through multi connected edge is forbidden. default value is false.
+Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
 ") AllowInternalEdges;
 		void AllowInternalEdges(const Standard_Boolean theValue);
 
@@ -1319,7 +1332,7 @@ None
 
 Description
 -----------
-Initializes with a shape and necessary flags. it does not perform unification. if you intend to nullify the history place holder do it after initialization.
+Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization.
 ") Initialize;
 		void Initialize(const TopoDS_Shape & aShape, const Standard_Boolean UnifyEdges = Standard_True, const Standard_Boolean UnifyFaces = Standard_True, const Standard_Boolean ConcatBSplines = Standard_False);
 
@@ -1337,7 +1350,7 @@ None
 
 Description
 -----------
-Sets the shape for avoid merging of the faces/edges. this shape can be vertex or edge. if the shape is a vertex it forbids merging of connected edges. if the shape is a edge it forbids merging of connected faces. this method can be called several times to keep several shapes.
+Sets the shape for avoid merging of the faces/edges. This shape can be vertex or edge. If the shape is a vertex it forbids merging of connected edges. If the shape is a edge it forbids merging of connected faces. This method can be called several times to keep several shapes.
 ") KeepShape;
 		void KeepShape(const TopoDS_Shape & theShape);
 
@@ -1355,7 +1368,7 @@ None
 
 Description
 -----------
-Sets the map of shapes for avoid merging of the faces/edges. it allows passing a ready to use map instead of calling many times the method keepshape.
+Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape.
 ") KeepShapes;
 		void KeepShapes(const TopTools_MapOfShape & theShapes);
 
@@ -1373,7 +1386,7 @@ None
 
 Description
 -----------
-Sets the angular tolerance. if two shapes form a connection angle greater than this value they will not be merged. default value is precision::angular().
+Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular().
 ") SetAngularTolerance;
 		void SetAngularTolerance(const Standard_Real theValue);
 
@@ -1391,7 +1404,7 @@ None
 
 Description
 -----------
-Sets the linear tolerance. it plays the role of chord error when taking decision about merging of shapes. default value is precision::confusion().
+Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion().
 ") SetLinearTolerance;
 		void SetLinearTolerance(const Standard_Real theValue);
 
@@ -1409,7 +1422,7 @@ None
 
 Description
 -----------
-Sets the flag defining the behavior of the algorithm regarding modification of input shape. if this flag is equal to true then the input (original) shape can't be modified during modification process. default value is true.
+Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
 ") SetSafeInputMode;
 		void SetSafeInputMode(Standard_Boolean theValue);
 
@@ -1469,7 +1482,7 @@ None
 
 Description
 -----------
-Splits a list of beziers computed by compute method according the split values and splitting parameters.
+Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -1500,7 +1513,7 @@ bool
 
 Description
 -----------
-Returns the geom_bsplinesurface conversion mode.
+Returns the Geom_BSplineSurface conversion mode.
 ") GetBSplineMode;
 		Standard_Boolean GetBSplineMode();
 
@@ -1513,7 +1526,7 @@ bool
 
 Description
 -----------
-Returns the geom_surfaceoflinearextrusion conversion mode.
+Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
 ") GetExtrusionMode;
 		Standard_Boolean GetExtrusionMode();
 
@@ -1526,7 +1539,7 @@ bool
 
 Description
 -----------
-Returns the geom_pline conversion mode.
+Returns the Geom_Pline conversion mode.
 ") GetPlaneMode;
 		Standard_Boolean GetPlaneMode();
 
@@ -1539,7 +1552,7 @@ bool
 
 Description
 -----------
-Returns the geom_surfaceofrevolution conversion mode.
+Returns the Geom_SurfaceOfRevolution conversion mode.
 ") GetRevolutionMode;
 		Standard_Boolean GetRevolutionMode();
 
@@ -1570,7 +1583,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_bsplinesurface to bezier.
+Sets mode for conversion Geom_BSplineSurface to Bezier.
 ") SetBSplineMode;
 		void SetBSplineMode(const Standard_Boolean mode);
 
@@ -1588,7 +1601,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_surfaceoflinearextrusion to bezier.
+Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier.
 ") SetExtrusionMode;
 		void SetExtrusionMode(const Standard_Boolean mode);
 
@@ -1606,7 +1619,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_plane to bezier.
+Sets mode for conversion Geom_Plane to Bezier.
 ") SetPlaneMode;
 		void SetPlaneMode(const Standard_Boolean mode);
 
@@ -1624,7 +1637,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_surfaceofrevolution to bezier.
+Sets mode for conversion Geom_SurfaceOfRevolution to Bezier.
 ") SetRevolutionMode;
 		void SetRevolutionMode(const Standard_Boolean mode);
 
@@ -1710,7 +1723,7 @@ opencascade::handle<ShapeUpgrade_SplitCurve3d>
 
 Description
 -----------
-Returns the tool for splitting 3d curves.
+Returns the tool for splitting 3D curves.
 ") GetSplitCurve3dTool;
 		virtual opencascade::handle<ShapeUpgrade_SplitCurve3d> GetSplitCurve3dTool();
 
@@ -1816,7 +1829,7 @@ None
 
 Description
 -----------
-Sets the tool for splitting 3d curves.
+Sets the tool for splitting 3D curves.
 ") SetSplitCurve3dTool;
 		void SetSplitCurve3dTool(const opencascade::handle<ShapeUpgrade_SplitCurve3d> & splitCurve3dTool);
 
@@ -1863,7 +1876,7 @@ None
 
 Description
 -----------
-Initialize by a face.
+Initialize by a Face.
 ") ShapeUpgrade_FaceDivide;
 		 ShapeUpgrade_FaceDivide(const TopoDS_Face & F);
 
@@ -1876,7 +1889,7 @@ opencascade::handle<ShapeUpgrade_SplitSurface>
 
 Description
 -----------
-Returns the tool for splitting surfaces. this tool must be already initialized.
+Returns the tool for splitting surfaces. This tool must be already initialized.
 ") GetSplitSurfaceTool;
 		virtual opencascade::handle<ShapeUpgrade_SplitSurface> GetSplitSurfaceTool();
 
@@ -1889,7 +1902,7 @@ opencascade::handle<ShapeUpgrade_WireDivide>
 
 Description
 -----------
-Returns the tool for dividing edges on face. this tool must be already initialized.
+Returns the tool for dividing edges on Face. This tool must be already initialized.
 ") GetWireDivideTool;
 		virtual opencascade::handle<ShapeUpgrade_WireDivide> GetWireDivideTool();
 
@@ -1907,7 +1920,7 @@ None
 
 Description
 -----------
-Initialize by a face.
+Initialize by a Face.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
@@ -1925,7 +1938,7 @@ bool
 
 Description
 -----------
-Performs splitting and computes the resulting shell the context is used to keep track of former splittings in order to keep sharings. it is updated according to modifications made. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
+Performs splitting and computes the resulting shell The context is used to keep track of former splittings in order to keep sharings. It is updated according to modifications made. The optional argument <theArea> is used to initialize the tool for splitting surface in the case of splitting into N parts where N is user-defined.
 ") Perform;
 		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
 
@@ -1938,7 +1951,7 @@ TopoDS_Shape
 
 Description
 -----------
-Gives the resulting shell, or face, or null shape if not done.
+Gives the resulting Shell, or Face, or Null shape if not done.
 ") Result;
 		TopoDS_Shape Result();
 
@@ -1974,7 +1987,7 @@ None
 
 Description
 -----------
-Purpose sets mode for trimming (segment) surface by wire uv bounds.
+Purpose sets mode for trimming (segment) surface by wire UV bounds.
 ") SetSurfaceSegmentMode;
 		void SetSurfaceSegmentMode(const Standard_Boolean Segment);
 
@@ -1992,7 +2005,7 @@ None
 
 Description
 -----------
-Sets the tool for dividing edges on face.
+Sets the tool for dividing edges on Face.
 ") SetWireDivideTool;
 		void SetWireDivideTool(const opencascade::handle<ShapeUpgrade_WireDivide> & wireDivideTool);
 
@@ -2023,7 +2036,7 @@ bool
 
 Description
 -----------
-Performs splitting of surface and computes the shell from source face. the optional argument <thearea> is used to initialize the tool for splitting surface in the case of splitting into n parts where n is user-defined.
+Performs splitting of surface and computes the shell from source face. The optional argument <theArea> is used to initialize the tool for splitting surface in the case of splitting into N parts where N is user-defined.
 ") SplitSurface;
 		virtual Standard_Boolean SplitSurface(const Standard_Real theArea = 0);
 
@@ -2041,7 +2054,7 @@ bool
 
 Description
 -----------
-Queries the status of last call to perform ok: no splitting was done (or no call to perform) done1: some edges were split done2: surface was split done3: surface was modified without splitting fail1: some fails encountered during splitting wires fail2: face cannot be split.
+Queries the status of last call to Perform OK: no splitting was done (or no call to Perform) DONE1: some edges were split DONE2: surface was split DONE3: surface was modified without splitting FAIL1: some fails encountered during splitting wires FAIL2: face cannot be split.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -2146,7 +2159,7 @@ None
 
 Description
 -----------
-Sets the tool for splitting 3d curves.
+Sets the tool for splitting 3D curves.
 ") SetSplitCurve3dTool;
 		void SetSplitCurve3dTool(const opencascade::handle<ShapeUpgrade_SplitCurve3d> & splitCurve3dTool);
 
@@ -2164,7 +2177,7 @@ bool
 
 Description
 -----------
-Queries the status of last call to perform ok: done1: done2: fail1:.
+Queries the status of last call to Perform OK: DONE1: DONE2: FAIL1:.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -2242,7 +2255,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") Init;
 		void Init(const TopoDS_Shape & theShape);
 
@@ -2343,7 +2356,7 @@ bool
 
 Description
 -----------
-Queries status of last call to perform(): ok - nothing was done :done1 - internal wires were removed :done2 - small faces were removed. :fail1 - initial shape is not specified :fail2 - specified sub-shape is not belonged to inotial shape.
+Queries status of last call to Perform(): OK - nothing was done :DONE1 - internal wires were removed :DONE2 - small faces were removed. :FAIL1 - initial shape is not specified :FAIL2 - specified sub-shape is not belonged to inotial shape.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status theStatus);
 
@@ -2390,7 +2403,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") ShapeUpgrade_ShapeConvertToBezier;
 		 ShapeUpgrade_ShapeConvertToBezier(const TopoDS_Shape & S);
 
@@ -2403,7 +2416,7 @@ bool
 
 Description
 -----------
-Returns the 2d conversion mode.
+Returns the 2D conversion mode.
 ") Get2dConversion;
 		Standard_Boolean Get2dConversion();
 
@@ -2416,7 +2429,7 @@ bool
 
 Description
 -----------
-Returns the geom_circle conversion mode.
+Returns the Geom_Circle conversion mode.
 ") Get3dCircleConversion;
 		Standard_Boolean Get3dCircleConversion();
 
@@ -2429,7 +2442,7 @@ bool
 
 Description
 -----------
-Returns the geom_conic conversion mode.
+Returns the Geom_Conic conversion mode.
 ") Get3dConicConversion;
 		Standard_Boolean Get3dConicConversion();
 
@@ -2442,7 +2455,7 @@ bool
 
 Description
 -----------
-Returns the 3d conversion mode.
+Returns the 3D conversion mode.
 ") Get3dConversion;
 		Standard_Boolean Get3dConversion();
 
@@ -2455,7 +2468,7 @@ bool
 
 Description
 -----------
-Returns the geom_line conversion mode.
+Returns the Geom_Line conversion mode.
 ") Get3dLineConversion;
 		Standard_Boolean Get3dLineConversion();
 
@@ -2468,7 +2481,7 @@ bool
 
 Description
 -----------
-Returns the geom_bsplinesurface conversion mode.
+Returns the Geom_BSplineSurface conversion mode.
 ") GetBSplineMode;
 		Standard_Boolean GetBSplineMode();
 
@@ -2481,7 +2494,7 @@ bool
 
 Description
 -----------
-Returns the geom_surfaceoflinearextrusion conversion mode.
+Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
 ") GetExtrusionMode;
 		Standard_Boolean GetExtrusionMode();
 
@@ -2494,7 +2507,7 @@ bool
 
 Description
 -----------
-Returns the geom_pline conversion mode.
+Returns the Geom_Pline conversion mode.
 ") GetPlaneMode;
 		Standard_Boolean GetPlaneMode();
 
@@ -2507,7 +2520,7 @@ bool
 
 Description
 -----------
-Returns the geom_surfaceofrevolution conversion mode.
+Returns the Geom_SurfaceOfRevolution conversion mode.
 ") GetRevolutionMode;
 		Standard_Boolean GetRevolutionMode();
 
@@ -2556,7 +2569,7 @@ None
 
 Description
 -----------
-Sets mode for conversion 2d curves to bezier.
+Sets mode for conversion 2D curves to bezier.
 ") Set2dConversion;
 		void Set2dConversion(const Standard_Boolean mode);
 
@@ -2574,7 +2587,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_circle to bezier.
+Sets mode for conversion Geom_Circle to bezier.
 ") Set3dCircleConversion;
 		void Set3dCircleConversion(const Standard_Boolean mode);
 
@@ -2592,7 +2605,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_conic to bezier.
+Sets mode for conversion Geom_Conic to bezier.
 ") Set3dConicConversion;
 		void Set3dConicConversion(const Standard_Boolean mode);
 
@@ -2628,7 +2641,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_line to bezier.
+Sets mode for conversion Geom_Line to bezier.
 ") Set3dLineConversion;
 		void Set3dLineConversion(const Standard_Boolean mode);
 
@@ -2646,7 +2659,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_bsplinesurface to bezier.
+Sets mode for conversion Geom_BSplineSurface to Bezier.
 ") SetBSplineMode;
 		void SetBSplineMode(const Standard_Boolean mode);
 
@@ -2664,7 +2677,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_surfaceoflinearextrusion to bezier.
+Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier.
 ") SetExtrusionMode;
 		void SetExtrusionMode(const Standard_Boolean mode);
 
@@ -2682,7 +2695,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_plane to bezier.
+Sets mode for conversion Geom_Plane to Bezier.
 ") SetPlaneMode;
 		void SetPlaneMode(const Standard_Boolean mode);
 
@@ -2700,7 +2713,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_surfaceofrevolution to bezier.
+Sets mode for conversion Geom_SurfaceOfRevolution to Bezier.
 ") SetRevolutionMode;
 		void SetRevolutionMode(const Standard_Boolean mode);
 
@@ -2769,7 +2782,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivideAngle;
 		 ShapeUpgrade_ShapeDivideAngle(const Standard_Real MaxAngle, const TopoDS_Shape & S);
 
@@ -2818,7 +2831,7 @@ None
 
 Description
 -----------
-Set maximal angle (calls inittool).
+Set maximal angle (calls InitTool).
 ") SetMaxAngle;
 		void SetMaxAngle(const Standard_Real MaxAngle);
 
@@ -2863,7 +2876,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivideArea;
 		 ShapeUpgrade_ShapeDivideArea(const TopoDS_Shape & S);
 
@@ -2908,7 +2921,7 @@ None
 
 Description
 -----------
-Set fixed numbers of splits in u and v directions. only for 'splitting by numbers' mode.
+Set fixed numbers of splits in U and V directions. Only for 'Splitting By Numbers' mode.
 ") SetNumbersUVSplits;
 		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
 
@@ -2926,7 +2939,7 @@ None
 
 Description
 -----------
-Set splitting mode if the mode is 'splitting by number', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+Set splitting mode If the mode is 'splitting by number', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingByNumber;
 		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
 
@@ -2976,7 +2989,7 @@ None
 
 Description
 -----------
-Sets the number of cuts applied to divide closed faces. the number of resulting faces will be num+1.
+Sets the number of cuts applied to divide closed faces. The number of resulting faces will be num+1.
 ") SetNbSplitPoints;
 		void SetNbSplitPoints(const Standard_Integer num);
 
@@ -3026,7 +3039,7 @@ None
 
 Description
 -----------
-Sets the number of cuts applied to divide closed edges. the number of resulting faces will be num+1.
+Sets the number of cuts applied to divide closed edges. The number of resulting faces will be num+1.
 ") SetNbSplitPoints;
 		void SetNbSplitPoints(const Standard_Integer num);
 
@@ -3071,7 +3084,7 @@ None
 
 Description
 -----------
-Initialize by a shape.
+Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivideContinuity;
 		 ShapeUpgrade_ShapeDivideContinuity(const TopoDS_Shape & S);
 
@@ -3089,7 +3102,7 @@ None
 
 Description
 -----------
-Defines a criterion of continuity for the boundary (all the wires) //! the possible values are c0, g1, c1, g2, c2, c3, cn the default is c1 to respect the cas.cade shape validity. g1 and g2 are not authorized.
+Defines a criterion of continuity for the boundary (all the Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 ") SetBoundaryCriterion;
 		void SetBoundaryCriterion(const GeomAbs_Shape Criterion = GeomAbs_C1);
 
@@ -3107,7 +3120,7 @@ None
 
 Description
 -----------
-Defines a criterion of continuity for the boundary (all the pcurves of wires) //! the possible values are c0, g1, c1, g2, c2, c3, cn the default is c1 to respect the cas.cade shape validity. g1 and g2 are not authorized.
+Defines a criterion of continuity for the boundary (all the pcurves of Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 ") SetPCurveCriterion;
 		void SetPCurveCriterion(const GeomAbs_Shape Criterion = GeomAbs_C1);
 
@@ -3125,7 +3138,7 @@ None
 
 Description
 -----------
-Defines a criterion of continuity for the boundary (all the wires) //! the possible values are c0, g1, c1, g2, c2, c3, cn the default is c1 to respect the cas.cade shape validity. g1 and g2 are not authorized.
+Defines a criterion of continuity for the boundary (all the Wires) //! The possible values are C0, G1, C1, G2, C2, C3, CN The default is C1 to respect the Cas.Cade Shape Validity. G1 and G2 are not authorized.
 ") SetSurfaceCriterion;
 		void SetSurfaceCriterion(const GeomAbs_Shape Criterion = GeomAbs_C1);
 
@@ -3206,7 +3219,7 @@ None
 
 Description
 -----------
-If segment is true, the result is composed with segments of the curve bounded by the splitvalues. if segment is false, the result is composed with trimmed curves all based on the same complete curve.
+If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -3304,7 +3317,7 @@ None
 
 Description
 -----------
-If segment is true, the result is composed with segments of the curve bounded by the splitvalues. if segment is false, the result is composed with trimmed curves all based on the same complete curve.
+If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -3407,7 +3420,7 @@ None
 
 Description
 -----------
-Performs splitting of the supporting surface(s). first defines splitting values, then calls inherited method.
+Performs splitting of the supporting surface(s). First defines splitting values, then calls inherited method.
 ") Compute;
 		virtual void Compute(const Standard_Boolean Segment);
 
@@ -3517,7 +3530,7 @@ None
 
 Description
 -----------
-Set fixed numbers of splits in u and v directions. only for 'splitting into squares' mode.
+Set fixed numbers of splits in U and V directions. Only for 'Splitting Into Squares' mode.
 ") SetNumbersUVSplits;
 		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
 
@@ -3535,7 +3548,7 @@ None
 
 Description
 -----------
-Set splitting mode if the mode is 'splitting into squares', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+Set splitting mode If the mode is 'splitting into squares', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingIntoSquares;
 		void SetSplittingIntoSquares(const Standard_Boolean theIsSplittingIntoSquares);
 
@@ -3660,7 +3673,7 @@ opencascade::handle<ShapeUpgrade_EdgeDivide>
 
 Description
 -----------
-Returns tool for splitting edges.
+returns tool for splitting edges.
 ") GetEdgeDivideTool;
 		virtual opencascade::handle<ShapeUpgrade_EdgeDivide> GetEdgeDivideTool();
 
@@ -3686,7 +3699,7 @@ opencascade::handle<ShapeAnalysis_TransferParameters>
 
 Description
 -----------
-Returns the tool for transfer of parameters.
+Returns the tool for Transfer of parameters.
 ") GetTransferParamTool;
 		virtual opencascade::handle<ShapeAnalysis_TransferParameters> GetTransferParamTool();
 
@@ -3760,7 +3773,7 @@ None
 
 Description
 -----------
-Creates wire of one edge and calls load for wire.
+Creates wire of one edge and calls Load for wire.
 ") Load;
 		void Load(const TopoDS_Edge & E);
 
@@ -3773,7 +3786,7 @@ None
 
 Description
 -----------
-Computes the resulting wire by splitting all the edges according to splitting criteria. all the modifications made are recorded in context (shapebuild_reshape). this tool is applied to all edges before splitting them in order to keep sharings. if no supporting face or surface is defined, only 3d splitting criteria are used.
+Computes the resulting wire by splitting all the edges according to splitting criteria. All the modifications made are recorded in context (ShapeBuild_ReShape). This tool is applied to all edges before splitting them in order to keep sharings. If no supporting face or surface is defined, only 3d splitting criteria are used.
 ") Perform;
 		virtual void Perform();
 
@@ -3881,7 +3894,7 @@ None
 
 Description
 -----------
-Sets the tool for splitting 3d curves.
+Sets the tool for splitting 3D curves.
 ") SetSplitCurve3dTool;
 		void SetSplitCurve3dTool(const opencascade::handle<ShapeUpgrade_SplitCurve3d> & splitCurve3dTool);
 
@@ -3936,7 +3949,7 @@ None
 
 Description
 -----------
-Sets the tool for transfer parameters between curves and pcurves.
+Sets the tool for Transfer parameters between curves and pcurves.
 ") SetTransferParamTool;
 		void SetTransferParamTool(const opencascade::handle<ShapeAnalysis_TransferParameters> & TransferParam);
 
@@ -3954,7 +3967,7 @@ bool
 
 Description
 -----------
-Queries status of last call to perform() ok - no edges were split, wire left untouched done1 - some edges were split fail1 - some edges have no 3d curve (skipped) fail2 - some edges have no pcurve (skipped).
+Queries status of last call to Perform() OK - no edges were split, wire left untouched DONE1 - some edges were split FAIL1 - some edges have no 3d curve (skipped) FAIL2 - some edges have no pcurve (skipped).
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -3967,7 +3980,7 @@ TopoDS_Wire
 
 Description
 -----------
-Gives the resulting wire (equal to initial one if not done or null if not loaded).
+Gives the resulting Wire (equal to initial one if not done or Null if not loaded).
 ") Wire;
 		const TopoDS_Wire Wire();
 
@@ -4061,7 +4074,7 @@ None
 
 Description
 -----------
-Initialize by a face.
+Initialize by a Face.
 ") ShapeUpgrade_ClosedFaceDivide;
 		 ShapeUpgrade_ClosedFaceDivide(const TopoDS_Face & F);
 
@@ -4092,7 +4105,7 @@ None
 
 Description
 -----------
-Sets the number of cutting lines by which closed face will be split. the resulting faces will be num+1.
+Sets the number of cutting lines by which closed face will be split. The resulting faces will be num+1.
 ") SetNbSplitPoints;
 		void SetNbSplitPoints(const Standard_Integer num);
 
@@ -4157,7 +4170,7 @@ None
 
 Description
 -----------
-Splits a list of beziers computed by compute method according the split values and splitting parameters.
+Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -4230,7 +4243,7 @@ None
 
 Description
 -----------
-Splits a list of beziers computed by compute method according the split values and splitting parameters.
+Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
 		virtual void Build(const Standard_Boolean Segment);
 
@@ -4256,7 +4269,7 @@ bool
 
 Description
 -----------
-Returns the geom_circle conversion mode.
+Returns the Geom_Circle conversion mode.
 ") GetCircleMode;
 		Standard_Boolean GetCircleMode();
 
@@ -4282,7 +4295,7 @@ bool
 
 Description
 -----------
-Returns the geom_line conversion mode.
+Returns the Geom_Line conversion mode.
 ") GetLineMode;
 		Standard_Boolean GetLineMode();
 
@@ -4300,7 +4313,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_circle to bezier.
+Sets mode for conversion Geom_Circle to bezier.
 ") SetCircleMode;
 		void SetCircleMode(const Standard_Boolean mode);
 
@@ -4318,7 +4331,7 @@ None
 
 Description
 -----------
-Returns the geom_conic conversion mode.
+Returns the Geom_Conic conversion mode.
 ") SetConicMode;
 		void SetConicMode(const Standard_Boolean mode);
 
@@ -4336,7 +4349,7 @@ None
 
 Description
 -----------
-Sets mode for conversion geom_line to bezier.
+Sets mode for conversion Geom_Line to bezier.
 ") SetLineMode;
 		void SetLineMode(const Standard_Boolean mode);
 
@@ -4440,7 +4453,7 @@ bool
 
 Description
 -----------
-Performs splitting and computes the resulting shell the context is used to keep track of former splittings.
+Performs splitting and computes the resulting shell The context is used to keep track of former splittings.
 ") Perform;
 		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
 
@@ -4459,7 +4472,7 @@ None
 
 Description
 -----------
-Set fixed numbers of splits in u and v directions. only for 'splitting by numbers' mode.
+Set fixed numbers of splits in U and V directions. Only for 'Splitting By Numbers' mode.
 ") SetNumbersUVSplits;
 		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
 
@@ -4477,7 +4490,7 @@ None
 
 Description
 -----------
-Set splitting mode if the mode is 'splitting by number', the face is splitted approximately into <mynbparts> parts, the parts are similar to squares in 2d.
+Set splitting mode If the mode is 'splitting by number', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingByNumber;
 		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCPNTSDOCSTRING
 "GCPnts module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gcpnts.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gcpnts.html"
 %enddef
 %module (package="OCC.Core", docstring=GCPNTSDOCSTRING) GCPnts
 
@@ -152,7 +152,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
@@ -173,7 +173,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0 with the given tolerance.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0 with the given tolerance.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Standard_Real theTol, const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
@@ -194,7 +194,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0 with the given tolerance.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0 with the given tolerance.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Standard_Real theTol, const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
@@ -214,7 +214,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0);
 
@@ -235,7 +235,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0. theUi is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi);
 
@@ -256,7 +256,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be closed to the final solution.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0. theUi is the starting value used in the iterative process which find the solution, it must be closed to the final solution.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi);
 
@@ -278,7 +278,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0. theUi is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi, const Standard_Real theTol);
 
@@ -300,7 +300,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve at the distance theabscissa from the point of parameter theu0. theui is the starting value used in the iterative process which find the solution, it must be close to the final solution.
+The algorithm computes a point on a curve at the distance theAbscissa from the point of parameter theU0. theUi is the starting value used in the iterative process which find the solution, it must be close to the final solution.
 ") GCPnts_AbscissaPoint;
 		 GCPnts_AbscissaPoint(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU0, const Standard_Real theUi, const Standard_Real theTol);
 
@@ -313,7 +313,7 @@ bool
 
 Description
 -----------
-True if the computation was successful, false otherwise. isdone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+True if the computation was successful, False otherwise. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -331,7 +331,7 @@ float
 
 Description
 -----------
-Computes the length of the 3d curve.
+Computes the length of the 3D Curve.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & theC);
 
@@ -349,7 +349,7 @@ float
 
 Description
 -----------
-Computes the length of the 2d curve.
+Computes the length of the 2D Curve.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & theC);
 
@@ -368,7 +368,7 @@ float
 
 Description
 -----------
-Computes the length of the 3d curve with the given tolerance.
+Computes the length of the 3D Curve with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theTol);
 
@@ -387,7 +387,7 @@ float
 
 Description
 -----------
-Computes the length of the 2d curve with the given tolerance.
+Computes the length of the 2D Curve with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theTol);
 
@@ -407,7 +407,7 @@ float
 
 Description
 -----------
-Computes the length of the 3d curve.
+Computes the length of the 3D Curve.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -427,7 +427,7 @@ float
 
 Description
 -----------
-Computes the length of the 2d curve.
+Computes the length of the 2D Curve.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -448,7 +448,7 @@ float
 
 Description
 -----------
-Computes the length of the 3d curve with the given tolerance.
+Computes the length of the 3D Curve with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & theC, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theTol);
 
@@ -469,7 +469,7 @@ float
 
 Description
 -----------
-Computes the length of the curve with the given tolerance.
+Computes the length of the Curve with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & theC, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theTol);
 
@@ -482,7 +482,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve of the point solution of this algorithm. exceptions stdfail_notdone if the computation was not successful, or was not done.
+Returns the parameter on the curve of the point solution of this algorithm. Exceptions StdFail_NotDone if the computation was not successful, or was not done.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -641,7 +641,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm. to define the problem to be solved, use the function initialize.
+Constructs an empty algorithm. To define the problem to be solved, use the function Initialize.
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa();
 
@@ -660,7 +660,7 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points - on the curve where abscissa is the curvilinear distance between two consecutive points of the distribution.
+Computes a uniform abscissa distribution of points - on the curve where Abscissa is the curvilinear distance between two consecutive points of the distribution.
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints);
 
@@ -681,7 +681,11 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the part of curve limited by the two parameter values theu1 and theu2, where abscissa is the curvilinear distance between two consecutive points of the distribution. the first point of the distribution is either the origin of curve or the point of parameter theu1. the following points are computed such that the curvilinear distance between two consecutive points is equal to abscissa. the last point of the distribution is either the end point of curve or the point of parameter theu2. however the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to abscissa. use the function isdone() to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning the roles of theu1 and theu2 are inverted if theu1 > theu2. warning thec is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
+Computes a uniform abscissa distribution of points on the part of curve limited by the two parameter values theU1 and theU2, where Abscissa is the curvilinear distance between two consecutive points of the distribution. The first point of the distribution is either the origin of curve or the point of parameter theU1. The following points are computed such that the curvilinear distance between two consecutive points is equal to Abscissa. The last point of the distribution is either the end point of curve or the point of parameter theU2. However the curvilinear distance between this last point and the point just preceding it in the distribution is, of course, generally not equal to Abscissa. Use the function IsDone() to verify that the computation was successful, the function NbPoints() to obtain the number of points of the computed distribution, and the function Parameter() to read the parameter of each point. //! Warning The roles of theU1 and theU2 are inverted if theU1 > theU2. Warning theC is an adapted curve, that is, an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm. 
+Input parameter: theC input 3D curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve.
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -700,7 +704,9 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points.
+Computes a uniform abscissa distribution of points on the 2D curve. 
+Input parameter: theC input 2D curve 
+Input parameter: theNbPoints defines the number of desired points.
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints);
 
@@ -721,7 +727,11 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
+Computes a Uniform abscissa distribution of points on a part of the 2D curve. 
+Input parameter: theC input 2D curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve.
 ") GCPnts_QuasiUniformAbscissa;
 		 GCPnts_QuasiUniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -740,7 +750,9 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve and target number of points. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points.
+Initialize the algorithms with 3D curve and target number of points. 
+Input parameter: theC input 3D curve 
+Input parameter: theNbPoints defines the number of desired points.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints);
 
@@ -761,7 +773,11 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, target number of points and curve parameter range. @param thec [in] input 3d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
+Initialize the algorithms with 3D curve, target number of points and curve parameter range. 
+Input parameter: theC input 3D curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -780,7 +796,9 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve and target number of points. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points.
+Initialize the algorithms with 2D curve and target number of points. 
+Input parameter: theC input 2D curve 
+Input parameter: theNbPoints defines the number of desired points.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints);
 
@@ -801,7 +819,11 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve, target number of points and curve parameter range. @param thec [in] input 2d curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve.
+Initialize the algorithms with 2D curve, target number of points and curve parameter range. 
+Input parameter: theC input 2D curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2);
 
@@ -814,7 +836,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful. isdone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -827,7 +849,7 @@ int
 
 Description
 -----------
-Returns the number of points of the distribution computed by this algorithm. this value is either: - the one imposed on the algorithm at the time of construction (or initialization), or - the one computed by the algorithm when the curvilinear distance between two consecutive points of the distribution is imposed on the algorithm at the time of construction (or initialization). exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the number of points of the distribution computed by this algorithm. This value is either: - the one imposed on the algorithm at the time of construction (or initialization), or - the one computed by the algorithm when the curvilinear distance between two consecutive points of the distribution is imposed on the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -845,7 +867,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point of index index in the distribution computed by this algorithm. warning index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. however, pay particular attention as this condition is not checked by this function. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
@@ -872,7 +894,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm. to define the problem to be solved, use the function initialize().
+Constructs an empty algorithm. To define the problem to be solved, use the function Initialize().
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection();
 
@@ -892,7 +914,7 @@ None
 
 Description
 -----------
-Computes a quasiuniform deflection distribution of points on the curve.
+Computes a QuasiUniform Deflection distribution of points on the Curve.
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -912,7 +934,7 @@ None
 
 Description
 -----------
-Computes a quasiuniform deflection distribution of points on the curve.
+Computes a QuasiUniform Deflection distribution of points on the Curve.
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -934,7 +956,7 @@ None
 
 Description
 -----------
-Computes a quasiuniform deflection distribution of points on a part of the curve.
+Computes a QuasiUniform Deflection distribution of points on a part of the Curve.
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -956,7 +978,7 @@ None
 
 Description
 -----------
-Computes a quasiuniform deflection distribution of points on a part of the curve. this and the above algorithms compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the deflection resulting from the distributed points is not greater than thedeflection. //! the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. //! intermediate points of the distribution are built such that the deflection is not greater than thedeflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve thec). thecontinuity, defaulted to geomabs_c1, gives the degree of continuity of the curve thec. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone() to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning - the roles of theu1 and theu2 are inverted if theu1 > theu2. - derivative functions on the curve are called according to thecontinuity. an error may occur if thecontinuity is greater than the real degree of continuity of the curve. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
+Computes a QuasiUniform Deflection distribution of points on a part of the Curve. This and the above algorithms compute a distribution of points: - on the curve theC, or - on the part of curve theC limited by the two parameter values theU1 and theU2, where the deflection resulting from the distributed points is not greater than theDeflection. //! The first point of the distribution is either the origin of curve theC or the point of parameter theU1. The last point of the distribution is either the end point of curve theC or the point of parameter theU2. //! Intermediate points of the distribution are built such that the deflection is not greater than theDeflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve theC). theContinuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve theC. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone() to verify that the computation was successful, the function NbPoints() to obtain the number of points of the computed distribution, and the function Parameter() to read the parameter of each point. //! Warning - The roles of theU1 and theU2 are inverted if theU1 > theU2. - Derivative functions on the curve are called according to theContinuity. An error may occur if theContinuity is greater than the real degree of continuity of the curve. //! Warning theC is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.
 ") GCPnts_QuasiUniformDeflection;
 		 GCPnts_QuasiUniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -969,7 +991,7 @@ float
 
 Description
 -----------
-Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. this is the value given to the algorithm at the time of construction (or initialization). exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This is the value given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Deflection;
 		Standard_Real Deflection();
 
@@ -989,7 +1011,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve and deflection.
+Initialize the algorithms with 3D curve and deflection.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -1009,7 +1031,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve and deflection.
+Initialize the algorithms with 2D curve and deflection.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -1031,7 +1053,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, deflection and parameter range.
+Initialize the algorithms with 3D curve, deflection and parameter range.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -1053,7 +1075,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with thec, thedeflection, theu1, theu2. this and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the deflection resulting from the distributed points is not greater than thedeflection. //! the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. //! intermediate points of the distribution are built in such a way that the deflection is not greater than thedeflection. using the following evaluation of the deflection: if pi and pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of pi and pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve thec). thecontinuity, defaulted to geomabs_c1, gives the degree of continuity of the curve thec. (note that c is an adaptor3d_curve or an adaptor2d_curve2d object, and does not know the degree of continuity of the underlying curve). use the function isdone to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter() to read the parameter of each point. //! warning - the roles of theu1 and theu2 are inverted if theu1 > theu2. - derivative functions on the curve are called according to thecontinuity. an error may occur if thecontinuity is greater than the real degree of continuity of the curve. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), and those required on the curve by the computation algorithm.
+Initialize the algorithms with theC, theDeflection, theU1, theU2. This and the above algorithms initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve theC, or - on the part of curve theC limited by the two parameter values theU1 and theU2, where the deflection resulting from the distributed points is not greater than theDeflection. //! The first point of the distribution is either the origin of curve theC or the point of parameter theU1. The last point of the distribution is either the end point of curve theC or the point of parameter theU2. //! Intermediate points of the distribution are built in such a way that the deflection is not greater than theDeflection. Using the following evaluation of the deflection: if Pi and Pj are two consecutive points of the distribution, respectively of parameter ui and uj on the curve, the deflection is the distance between: - the mid-point of Pi and Pj (the center of the chord joining these two points) - and the point of mid-parameter of these two points (the point of parameter [(ui+uj) / 2] on curve theC). theContinuity, defaulted to GeomAbs_C1, gives the degree of continuity of the curve theC. (Note that C is an Adaptor3d_Curve or an Adaptor2d_Curve2d object, and does not know the degree of continuity of the underlying curve). Use the function IsDone to verify that the computation was successful, the function NbPoints() to obtain the number of points of the computed distribution, and the function Parameter() to read the parameter of each point. //! Warning - The roles of theU1 and theU2 are inverted if theU1 > theU2. - Derivative functions on the curve are called according to theContinuity. An error may occur if theContinuity is greater than the real degree of continuity of the curve. //! Warning theC is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), and those required on the curve by the computation algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const GeomAbs_Shape theContinuity = GeomAbs_C1);
 
@@ -1066,7 +1088,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful. isdone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1079,7 +1101,7 @@ int
 
 Description
 -----------
-Returns the number of points of the distribution computed by this algorithm. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -1097,7 +1119,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point of index index in the distribution computed by this algorithm. warning index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. however, pay particular attention as this condition is not checked by this function. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
@@ -1115,7 +1137,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of index index in the distribution computed by this algorithm. warning index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. however, pay particular attention as this condition is not checked by this function. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Value;
 		gp_Pnt Value(const Standard_Integer Index);
 
@@ -1183,7 +1205,8 @@ None
 
 Description
 -----------
-Empty constructor. @sa initialize().
+Empty constructor. 
+See also: Initialize().
 ") GCPnts_TangentialDeflection;
 		 GCPnts_TangentialDeflection();
 
@@ -1206,7 +1229,13 @@ None
 
 Description
 -----------
-Constructor for 3d curve. @param thec [in] 3d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Constructor for 3D curve. 
+Input parameter: theC 3d curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") GCPnts_TangentialDeflection;
 		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1231,7 +1260,15 @@ None
 
 Description
 -----------
-Constructor for 3d curve with restricted range. @param thec [in] 3d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theuto l [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Constructor for 3D curve with restricted range. 
+Input parameter: theC 3d curve 
+Input parameter: theFirstParameter first parameter on curve 
+Input parameter: theLastParameter last parameter on curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Parameter theUTo l[in] tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") GCPnts_TangentialDeflection;
 		 GCPnts_TangentialDeflection(const Adaptor3d_Curve & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1254,7 +1291,13 @@ None
 
 Description
 -----------
-Constructor for 2d curve. @param thec [in] 2d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Constructor for 2D curve. 
+Input parameter: theC 2d curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") GCPnts_TangentialDeflection;
 		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1279,7 +1322,15 @@ None
 
 Description
 -----------
-Constructor for 2d curve with restricted range. @param thec [in] 2d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Constructor for 2D curve with restricted range. 
+Input parameter: theC 2d curve 
+Input parameter: theFirstParameter first parameter on curve 
+Input parameter: theLastParameter last parameter on curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") GCPnts_TangentialDeflection;
 		 GCPnts_TangentialDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1299,7 +1350,7 @@ int
 
 Description
 -----------
-Add point to already calculated points (or replace existing) returns index of new added point or founded with parametric tolerance (replaced if theisreplace is true).
+Add point to already calculated points (or replace existing) Returns index of new added point or founded with parametric tolerance (replaced if theIsReplace is true).
 ") AddPoint;
 		Standard_Integer AddPoint(const gp_Pnt & thePnt, const Standard_Real theParam, const Standard_Boolean theIsReplace = Standard_True);
 
@@ -1343,7 +1394,13 @@ None
 
 Description
 -----------
-Initialize algorithm for 3d curve. @param thec [in] 3d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Initialize algorithm for 3D curve. 
+Input parameter: theC 3d curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1368,7 +1425,15 @@ None
 
 Description
 -----------
-Initialize algorithm for 3d curve with restricted range. @param thec [in] 3d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Initialize algorithm for 3D curve with restricted range. 
+Input parameter: theC 3d curve 
+Input parameter: theFirstParameter first parameter on curve 
+Input parameter: theLastParameter last parameter on curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1391,7 +1456,13 @@ None
 
 Description
 -----------
-Initialize algorithm for 2d curve. @param thec [in] 2d curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Initialize algorithm for 2D curve. 
+Input parameter: theC 2d curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1416,7 +1487,15 @@ None
 
 Description
 -----------
-Initialize algorithm for 2d curve with restricted range. @param thec [in] 2d curve @param thefirstparameter [in] first parameter on curve @param thelastparameter [in] last parameter on curve @param theangulardeflection [in] angular deflection in radians @param thecurvaturedeflection [in] linear deflection @param theminimumofpoints [in] minimum number of points @param theutol [in] tolerance in curve parametric scope @param theminlen [in] minimal length.
+Initialize algorithm for 2D curve with restricted range. 
+Input parameter: theC 2d curve 
+Input parameter: theFirstParameter first parameter on curve 
+Input parameter: theLastParameter last parameter on curve 
+Input parameter: theAngularDeflection angular deflection in radians 
+Input parameter: theCurvatureDeflection linear deflection 
+Input parameter: theMinimumOfPoints minimum number of points 
+Input parameter: theUTol tolerance in curve parametric scope 
+Input parameter: theMinLen minimal length.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theFirstParameter, const Standard_Real theLastParameter, const Standard_Real theAngularDeflection, const Standard_Real theCurvatureDeflection, const Standard_Integer theMinimumOfPoints = 2, const Standard_Real theUTol = 1.0e-9, const Standard_Real theMinLen = 1.0e-7);
 
@@ -1492,7 +1571,7 @@ None
 
 Description
 -----------
-Creation of a indefinite uniformabscissa.
+creation of a indefinite UniformAbscissa.
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa();
 
@@ -1512,7 +1591,10 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the 3d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a uniform abscissa distribution of points on the 3D curve. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
@@ -1534,7 +1616,12 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on a part of the 3d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a Uniform abscissa distribution of points on a part of the 3D Curve. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1554,7 +1641,10 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the 3d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a uniform abscissa distribution of points on the 3D Curve. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
@@ -1576,7 +1666,12 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on a part of the 3d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a Uniform abscissa distribution of points on a part of the 3D Curve. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1596,7 +1691,10 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a uniform abscissa distribution of points on the 2D curve. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
@@ -1618,7 +1716,12 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a Uniform abscissa distribution of points on a part of the 2D Curve. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1638,7 +1741,10 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on the 2d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a uniform abscissa distribution of points on the 2D Curve. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
@@ -1660,7 +1766,12 @@ None
 
 Description
 -----------
-Computes a uniform abscissa distribution of points on a part of the 2d curve. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Computes a Uniform abscissa distribution of points on a part of the 2D Curve. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") GCPnts_UniformAbscissa;
 		 GCPnts_UniformAbscissa(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1693,7 +1804,10 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, abscissa, and tolerance. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 3D curve, Abscissa, and Tolerance. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
@@ -1715,7 +1829,12 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, abscissa, tolerance, and parameter range. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 3D curve, Abscissa, Tolerance, and parameter range. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1735,7 +1854,10 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, number of points, and tolerance. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 3D curve, number of points, and Tolerance. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
@@ -1757,7 +1879,12 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, number of points, tolerance, and parameter range. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 3D curve, number of points, Tolerance, and parameter range. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1777,7 +1904,10 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve, abscissa, and tolerance. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 2D curve, Abscissa, and Tolerance. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theToler = -1);
 
@@ -1799,7 +1929,12 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve, abscissa, tolerance, and parameter range. @param thec [in] input curve @param theabscissa [in] abscissa (distance between two consecutive points) @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 2D curve, Abscissa, Tolerance, and parameter range. 
+Input parameter: theC input curve 
+Input parameter: theAbscissa abscissa (distance between two consecutive points) 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theAbscissa, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1819,7 +1954,10 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve, number of points, and tolerance. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 2D curve, number of points, and Tolerance. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theToler = -1);
 
@@ -1841,7 +1979,12 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve, number of points, tolerance, and parameter range. @param thec [in] input curve @param thenbpoints [in] defines the number of desired points @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thetoler [in] used for more precise calculation of curve length  (precision::confusion() by default).
+Initialize the algorithms with 2D curve, number of points, Tolerance, and parameter range. 
+Input parameter: theC input curve 
+Input parameter: theNbPoints defines the number of desired points 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theToler used for more precise calculation of curve length  (Precision::Confusion() by default).
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Integer theNbPoints, const Standard_Real theU1, const Standard_Real theU2, const Standard_Real theToler = -1);
 
@@ -1885,7 +2028,7 @@ float
 
 Description
 -----------
-Returns the computed parameter of index <index>.
+returns the computed Parameter of index <Index>.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
@@ -1912,7 +2055,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm. to define the problem to be solved, use the function initialize.
+Constructs an empty algorithm. To define the problem to be solved, use the function Initialize.
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection();
 
@@ -1932,7 +2075,10 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on the curve. @param thec [in] input 3d curve @param thedeflection [in] target deflection @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
+Computes a uniform Deflection distribution of points on the curve. 
+Input parameter: theC input 3D curve 
+Input parameter: theDeflection target deflection 
+Input parameter: theWithControl when True, the algorithm controls the estimate deflection.
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
@@ -1952,7 +2098,10 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on the curve. @param thec [in] input 2d curve @param thedeflection [in] target deflection @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
+Computes a uniform Deflection distribution of points on the curve. 
+Input parameter: theC input 2D curve 
+Input parameter: theDeflection target deflection 
+Input parameter: theWithControl when True, the algorithm controls the estimate deflection.
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
@@ -1974,7 +2123,12 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on a part of the curve. @param thec [in] input 3d curve @param thedeflection [in] target deflection @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
+Computes a Uniform Deflection distribution of points on a part of the curve. 
+Input parameter: theC input 3D curve 
+Input parameter: theDeflection target deflection 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theWithControl when True, the algorithm controls the estimate deflection.
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
@@ -1996,7 +2150,12 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on a part of the curve. @param thec [in] input 2d curve @param thedeflection [in] target deflection @param theu1 [in] first parameter on curve @param theu2 [in] last parameter on curve @param thewithcontrol [in] when true, the algorithm controls the estimate deflection.
+Computes a Uniform Deflection distribution of points on a part of the curve. 
+Input parameter: theC input 2D curve 
+Input parameter: theDeflection target deflection 
+Input parameter: theU1 first parameter on curve 
+Input parameter: theU2 last parameter on curve 
+Input parameter: theWithControl when True, the algorithm controls the estimate deflection.
 ") GCPnts_UniformDeflection;
 		 GCPnts_UniformDeflection(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
@@ -2009,7 +2168,7 @@ float
 
 Description
 -----------
-Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. this value is the one given to the algorithm at the time of construction (or initialization). exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the deflection between the curve and the polygon resulting from the points of the distribution computed by this algorithm. This value is the one given to the algorithm at the time of construction (or initialization). Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Deflection;
 		Standard_Real Deflection();
 
@@ -2029,7 +2188,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve and deflection.
+Initialize the algorithms with 3D curve and deflection.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
@@ -2049,7 +2208,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 2d curve and deflection.
+Initialize the algorithms with 2D curve and deflection.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Boolean theWithControl = Standard_True);
 
@@ -2071,7 +2230,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with 3d curve, deflection, parameter range.
+Initialize the algorithms with 3D curve, deflection, parameter range.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
@@ -2093,7 +2252,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with curve, deflection, parameter range. this and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve thec, or - on the part of curve thec limited by the two parameter values theu1 and theu2, where the maximum distance between thec and the polygon that results from the points of the distribution is not greater than thedeflection. the first point of the distribution is either the origin of curve thec or the point of parameter theu1. the last point of the distribution is either the end point of curve thec or the point of parameter theu2. intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. the construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to thedeflection. however, it does not ensure that the chordal deviation for the curve itself is less than or equal to thedeflection. to do this a check is necessary, which may generate (second step) additional intermediate points. this check is time consuming, and can be avoided by setting thewithcontrol to false. note that by default thewithcontrol is true and check is performed. use the function isdone to verify that the computation was successful, the function nbpoints() to obtain the number of points of the computed distribution, and the function parameter to read the parameter of each point. //! warning - thec is necessary, 'c2' continuous. this property is not checked at construction time. - the roles of theu1 and theu2 are inverted if theu1 > theu2. //! warning thec is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2d curve from the package geom2d (in the case of an adaptor2d_curve2d curve) or a 3d curve from the package geom (in the case of an adaptor3d_curve curve), - and those required on the curve by the computation algorithm.
+Initialize the algorithms with curve, deflection, parameter range. This and the above methods initialize (or reinitialize) this algorithm and compute a distribution of points: - on the curve theC, or - on the part of curve theC limited by the two parameter values theU1 and theU2, where the maximum distance between theC and the polygon that results from the points of the distribution is not greater than theDeflection. The first point of the distribution is either the origin of curve theC or the point of parameter theU1. The last point of the distribution is either the end point of curve theC or the point of parameter theU2. Intermediate points of the distribution are built using interpolations of segments of the curve limited at the 2nd degree. The construction ensures, in a first step, that the chordal deviation for this interpolation of the curve is less than or equal to theDeflection. However, it does not ensure that the chordal deviation for the curve itself is less than or equal to theDeflection. To do this a check is necessary, which may generate (second step) additional intermediate points. This check is time consuming, and can be avoided by setting theWithControl to false. Note that by default theWithControl is true and check is performed. Use the function IsDone to verify that the computation was successful, the function NbPoints() to obtain the number of points of the computed distribution, and the function Parameter to read the parameter of each point. //! Warning - theC is necessary, 'C2' continuous. This property is not checked at construction time. - The roles of theU1 and theU2 are inverted if theU1 > theU2. //! Warning theC is an adapted curve, i.e. an object which is an interface between: - the services provided by either a 2D curve from the package Geom2d (in the case of an Adaptor2d_Curve2d curve) or a 3D curve from the package Geom (in the case of an Adaptor3d_Curve curve), - and those required on the curve by the computation algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & theC, const Standard_Real theDeflection, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theWithControl = Standard_True);
 
@@ -2106,7 +2265,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful. isdone is a protection against: - non-convergence of the algorithm - querying the results before computation.
+Returns true if the computation was successful. IsDone is a protection against: - non-convergence of the algorithm - querying the results before computation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2119,7 +2278,7 @@ int
 
 Description
 -----------
-Returns the number of points of the distribution computed by this algorithm. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the number of points of the distribution computed by this algorithm. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -2137,7 +2296,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point of index index in the distribution computed by this algorithm. warning index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. however, pay particular attention as this condition is not checked by this function. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the parameter of the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFail_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
@@ -2155,7 +2314,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of index index in the distribution computed by this algorithm. warning index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. however, pay particular attention as this condition is not checked by this function. exceptions stdfail_notdone if this algorithm has not been initialized, or if the computation was not successful.
+Returns the point of index Index in the distribution computed by this algorithm. Warning Index must be greater than or equal to 1, and less than or equal to the number of points of the distribution. However, pay particular attention as this condition is not checked by this function. Exceptions StdFAil_NotDone if this algorithm has not been initialized, or if the computation was not successful.
 ") Value;
 		gp_Pnt Value(const Standard_Integer Index);
 

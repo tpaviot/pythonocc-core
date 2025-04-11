@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPRIMAPIDOCSTRING
 "BRepPrimAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepprimapi.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepprimapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPRIMAPIDOCSTRING) BRepPrimAPI
 
@@ -153,7 +153,7 @@ None
 
 Description
 -----------
-Make a box with a corner at p and size dx, dy, dz.
+Make a box with a corner at P and size dx, dy, dz.
 ") BRepPrimAPI_MakeBox;
 		 BRepPrimAPI_MakeBox(const gp_Pnt & P, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
 
@@ -172,7 +172,7 @@ None
 
 Description
 -----------
-Make a box with corners p1,p2.
+Make a box with corners P1,P2.
 ") BRepPrimAPI_MakeBox;
 		 BRepPrimAPI_MakeBox(const gp_Pnt & P1, const gp_Pnt & P2);
 
@@ -193,7 +193,7 @@ None
 
 Description
 -----------
-Make a box with ax2 (the left corner and the axis) and size dx, dy, dz.
+Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz.
 ") BRepPrimAPI_MakeBox;
 		 BRepPrimAPI_MakeBox(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
 
@@ -206,7 +206,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns xmin face.
+Returns XMin face.
 ") BackFace;
 		const TopoDS_Face BackFace();
 
@@ -219,7 +219,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns zmin face.
+Returns ZMin face.
 ") BottomFace;
 		const TopoDS_Face BottomFace();
 
@@ -237,7 +237,7 @@ None
 
 Description
 -----------
-Stores the solid in myshape.
+Stores the solid in myShape.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -250,7 +250,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns xmax face.
+Returns XMax face.
 ") FrontFace;
 		const TopoDS_Face FrontFace();
 
@@ -270,7 +270,7 @@ None
 
 Description
 -----------
-Init a box with a corner at 0,0,0 and the other thedx, thedy, thedz.
+Init a box with a corner at 0,0,0 and the other theDX, theDY, theDZ.
 ") Init;
 		void Init(const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
 
@@ -291,7 +291,7 @@ None
 
 Description
 -----------
-Init a box with a corner at thepnt and size thedx, thedy, thedz.
+Init a box with a corner at thePnt and size theDX, theDY, theDZ.
 ") Init;
 		void Init(const gp_Pnt & thePnt, const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
 
@@ -310,7 +310,7 @@ None
 
 Description
 -----------
-Init a box with corners thepnt1, thepnt2.
+Init a box with corners thePnt1, thePnt2.
 ") Init;
 		void Init(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2);
 
@@ -331,7 +331,7 @@ None
 
 Description
 -----------
-Init a box with ax2 (the left corner and the theaxes) and size thedx, thedy, thedz.
+Init a box with Ax2 (the left corner and the theAxes) and size theDX, theDY, theDZ.
 ") Init;
 		void Init(const gp_Ax2 & theAxes, const Standard_Real theDX, const Standard_Real theDY, const Standard_Real theDZ);
 
@@ -344,7 +344,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns ymin face.
+Returns YMin face.
 ") LeftFace;
 		const TopoDS_Face LeftFace();
 
@@ -357,7 +357,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns ymax face.
+Returns YMax face.
 ") RightFace;
 		const TopoDS_Face RightFace();
 
@@ -396,7 +396,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns zmax face.
+Returns ZMax face.
 ") TopFace;
 		const TopoDS_Face TopFace();
 
@@ -442,7 +442,7 @@ None
 
 Description
 -----------
-Make a halfspace defined with a face and a point.
+Make a HalfSpace defined with a Face and a Point.
 ") BRepPrimAPI_MakeHalfSpace;
 		 BRepPrimAPI_MakeHalfSpace(const TopoDS_Face & Face, const gp_Pnt & RefPnt);
 
@@ -461,7 +461,7 @@ None
 
 Description
 -----------
-Make a halfspace defined with a shell and a point.
+Make a HalfSpace defined with a Shell and a Point.
 ") BRepPrimAPI_MakeHalfSpace;
 		 BRepPrimAPI_MakeHalfSpace(const TopoDS_Shell & Shell, const gp_Pnt & RefPnt);
 
@@ -507,7 +507,7 @@ None
 
 Description
 -----------
-Stores the solid in myshape.
+Stores the solid in myShape.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -533,7 +533,7 @@ Standard_Address
 
 Description
 -----------
-The inherited commands should provide the algorithm. returned as a pointer.
+The inherited commands should provide the algorithm. Returned as a pointer.
 ") OneAxis;
 		virtual Standard_Address OneAxis();
 
@@ -587,7 +587,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the sweep.
+Returns the TopoDS Shape of the bottom of the sweep.
 ") FirstShape;
 		virtual TopoDS_Shape FirstShape();
 
@@ -600,7 +600,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the sweep.
+Returns the TopoDS Shape of the top of the sweep.
 ") LastShape;
 		virtual TopoDS_Shape LastShape();
 
@@ -635,7 +635,7 @@ None
 
 Description
 -----------
-Make a step right angular wedge. (ltx >= 0).
+Make a STEP right angular wedge. (ltx >= 0).
 ") BRepPrimAPI_MakeWedge;
 		 BRepPrimAPI_MakeWedge(const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
 
@@ -657,7 +657,7 @@ None
 
 Description
 -----------
-Make a step right angular wedge. (ltx >= 0).
+Make a STEP right angular wedge. (ltx >= 0).
 ") BRepPrimAPI_MakeWedge;
 		 BRepPrimAPI_MakeWedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
 
@@ -681,7 +681,7 @@ None
 
 Description
 -----------
-Make a wedge. the face at dy is xmin,zmin xmax,zmax.
+Make a wedge. The face at dy is xmin,zmin xmax,zmax.
 ") BRepPrimAPI_MakeWedge;
 		 BRepPrimAPI_MakeWedge(const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real xmin, const Standard_Real zmin, const Standard_Real xmax, const Standard_Real zmax);
 
@@ -706,7 +706,7 @@ None
 
 Description
 -----------
-Make a wedge. the face at dy is xmin,zmin xmax,zmax.
+Make a wedge. The face at dy is xmin,zmin xmax,zmax.
 ") BRepPrimAPI_MakeWedge;
 		 BRepPrimAPI_MakeWedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real xmin, const Standard_Real zmin, const Standard_Real xmax, const Standard_Real zmax);
 
@@ -724,7 +724,7 @@ None
 
 Description
 -----------
-Stores the solid in myshape.
+Stores the solid in myShape.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -797,7 +797,10 @@ None
 
 Description
 -----------
-Make a cone. @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height.
+Make a cone. 
+Input parameter: R1 cone bottom radius, may be null (z = 0) 
+Input parameter: R2 cone top radius, may be null (z = H) 
+Input parameter: H cone height.
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
 
@@ -818,7 +821,11 @@ None
 
 Description
 -----------
-Make a cone. @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height @param angle [in] angle to create a part cone.
+Make a cone. 
+Input parameter: R1 cone bottom radius, may be null (z = 0) 
+Input parameter: R2 cone top radius, may be null (z = H) 
+Input parameter: H cone height 
+Input parameter: angle angle to create a part cone.
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H, const Standard_Real angle);
 
@@ -839,7 +846,11 @@ None
 
 Description
 -----------
-Make a cone. @param axes [in] coordinate system for the construction of the cone @param r1 [in] cone bottom radius, may be null (z = 0) @param r2 [in] cone top radius, may be null (z = h) @param h [in] cone height.
+Make a cone. 
+Input parameter: axes coordinate system for the construction of the cone 
+Input parameter: R1 cone bottom radius, may be null (z = 0) 
+Input parameter: R2 cone top radius, may be null (z = H) 
+Input parameter: H cone height.
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
 
@@ -861,7 +872,7 @@ None
 
 Description
 -----------
-Make a cone of height h radius r1 in the plane z = 0, r2 in the plane z = h. r1 and r2 may be null. take a section of <angle> constructs a cone, or a portion of a cone, of height h, and radius r1 in the plane z = 0 and r2 in the plane z = h. the result is a sharp cone if r1 or r2 is equal to 0. the cone is constructed about the 'z axis' of either: - the global coordinate system, or - the local coordinate system axes. it is limited in these coordinate systems as follows: - in the v parametric direction (the z coordinate), by the two parameter values 0 and h, - and in the u parametric direction (defined by the angle of rotation around the z axis), in the case of a portion of a cone, by the two parameter values 0 and angle. angle is given in radians. the resulting shape is composed of: - a lateral conical face - two planar faces in the planes z = 0 and z = h, or only one planar face in one of these two planes if a radius value is null (in the case of a complete cone, these faces are circles), and - and in the case of a portion of a cone, two planar faces to close the shape. (either two parallelograms or two triangles, in the planes u = 0 and u = angle). exceptions standard_domainerror if: - h is less than or equal to precision::confusion(), or - the half-angle at the apex of the cone, defined by r1, r2 and h, is less than precision::confusion()/h, or greater than (pi/2)-precision::confusion()/h.f.
+Make a cone of height H radius R1 in the plane z = 0, R2 in the plane Z = H. R1 and R2 may be null. Take a section of <angle> Constructs a cone, or a portion of a cone, of height H, and radius R1 in the plane z = 0 and R2 in the plane z = H. The result is a sharp cone if R1 or R2 is equal to 0. The cone is constructed about the 'Z Axis' of either: - the global coordinate system, or - the local coordinate system Axes. It is limited in these coordinate systems as follows: - in the v parametric direction (the Z coordinate), by the two parameter values 0 and H, - and in the u parametric direction (defined by the angle of rotation around the Z axis), in the case of a portion of a cone, by the two parameter values 0 and angle. Angle is given in radians. The resulting shape is composed of: - a lateral conical face - two planar faces in the planes z = 0 and z = H, or only one planar face in one of these two planes if a radius value is null (in the case of a complete cone, these faces are circles), and - and in the case of a portion of a cone, two planar faces to close the shape. (either two parallelograms or two triangles, in the planes u = 0 and u = angle). Exceptions Standard_DomainError if: - H is less than or equal to Precision::Confusion(), or - the half-angle at the apex of the cone, defined by R1, R2 and H, is less than Precision::Confusion()/H, or greater than (Pi/2)-Precision::Confusion()/H.f.
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H, const Standard_Real angle);
 
@@ -920,7 +931,9 @@ None
 
 Description
 -----------
-Make a cylinder. @param r [in] cylinder radius @param h [in] cylinder height.
+Make a cylinder. 
+Input parameter: R cylinder radius 
+Input parameter: H cylinder height.
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder(const Standard_Real R, const Standard_Real H);
 
@@ -940,7 +953,10 @@ None
 
 Description
 -----------
-Make a cylinder (part cylinder). @param r [in] cylinder radius @param h [in] cylinder height @param angle [in] defines the missing portion of the cylinder.
+Make a cylinder (part cylinder). 
+Input parameter: R cylinder radius 
+Input parameter: H cylinder height 
+Input parameter: Angle defines the missing portion of the cylinder.
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder(const Standard_Real R, const Standard_Real H, const Standard_Real Angle);
 
@@ -960,7 +976,10 @@ None
 
 Description
 -----------
-Make a cylinder of radius r and length h. @param axes [in] coordinate system for the construction of the cylinder @param r [in] cylinder radius @param h [in] cylinder height.
+Make a cylinder of radius R and length H. 
+Input parameter: Axes coordinate system for the construction of the cylinder 
+Input parameter: R cylinder radius 
+Input parameter: H cylinder height.
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder(const gp_Ax2 & Axes, const Standard_Real R, const Standard_Real H);
 
@@ -981,7 +1000,7 @@ None
 
 Description
 -----------
-Make a cylinder of radius r and length h with angle h. constructs - a cylinder of radius r and height h, or - a portion of cylinder of radius r and height h, and of the angle angle defining the missing portion of the cylinder. the cylinder is constructed about the 'z axis' of either: - the global coordinate system, or - the local coordinate system axes. it is limited in this coordinate system as follows: - in the v parametric direction (the z axis), by the two parameter values 0 and h, - and in the u parametric direction (the rotation angle around the z axis), in the case of a portion of a cylinder, by the two parameter values 0 and angle. angle is given in radians. the resulting shape is composed of: - a lateral cylindrical face, - two planar faces in the planes z = 0 and z = h (in the case of a complete cylinder, these faces are circles), and - in case of a portion of a cylinder, two additional planar faces to close the shape.(two rectangles in the planes u = 0 and u = angle). exceptions standard_domainerror if: - r is less than or equal to precision::confusion(), or - h is less than or equal to precision::confusion().
+Make a cylinder of radius R and length H with angle H. Constructs - a cylinder of radius R and height H, or - a portion of cylinder of radius R and height H, and of the angle Angle defining the missing portion of the cylinder. The cylinder is constructed about the 'Z Axis' of either: - the global coordinate system, or - the local coordinate system Axes. It is limited in this coordinate system as follows: - in the v parametric direction (the Z axis), by the two parameter values 0 and H, - and in the u parametric direction (the rotation angle around the Z Axis), in the case of a portion of a cylinder, by the two parameter values 0 and Angle. Angle is given in radians. The resulting shape is composed of: - a lateral cylindrical face, - two planar faces in the planes z = 0 and z = H (in the case of a complete cylinder, these faces are circles), and - in case of a portion of a cylinder, two additional planar faces to close the shape.(two rectangles in the planes u = 0 and u = Angle). Exceptions Standard_DomainError if: - R is less than or equal to Precision::Confusion(), or - H is less than or equal to Precision::Confusion().
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder(const gp_Ax2 & Axes, const Standard_Real R, const Standard_Real H, const Standard_Real Angle);
 
@@ -1042,7 +1061,7 @@ None
 
 Description
 -----------
-Builds the prism of base s and vector v. if c is true, s is copied. if canonize is true then generated surfaces are attempted to be canonized in simple types.
+Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types.
 ") BRepPrimAPI_MakePrism;
 		 BRepPrimAPI_MakePrism(const TopoDS_Shape & S, const gp_Vec & V, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
 
@@ -1064,7 +1083,7 @@ None
 
 Description
 -----------
-Builds a semi-infinite or an infinite prism of base s. if inf is true the prism is infinite, if inf is false the prism is semi-infinite (in the direction d). if c is true s is copied (for semi-infinite prisms). if canonize is true then generated surfaces are attempted to be canonized in simple types.
+Builds a semi-infinite or an infinite prism of base S. If Inf is true the prism is infinite, if Inf is false the prism is semi-infinite (in the direction D). If C is true S is copied (for semi-infinite prisms). If Canonize is true then generated surfaces are attempted to be canonized in simple types.
 ") BRepPrimAPI_MakePrism;
 		 BRepPrimAPI_MakePrism(const TopoDS_Shape & S, const gp_Dir & D, const Standard_Boolean Inf = Standard_True, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
 
@@ -1082,7 +1101,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1095,7 +1114,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the prism.
+Returns the TopoDS Shape of the bottom of the prism.
 ") FirstShape;
 		TopoDS_Shape FirstShape();
 
@@ -1113,7 +1132,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the bottom of the prism. generated with theshape (subshape of the generating shape).
+Returns the TopoDS Shape of the bottom of the prism. generated with theShape (subShape of the generating shape).
 ") FirstShape;
 		TopoDS_Shape FirstShape(const TopoDS_Shape & theShape);
 
@@ -1131,7 +1150,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns listofshape from toptools.
+Returns ListOfShape from TopTools.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1149,7 +1168,7 @@ bool
 
 Description
 -----------
-Returns true if the shape s has been deleted.
+Returns true if the shape S has been deleted.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
 
@@ -1162,7 +1181,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the prism. in the case of a finite prism, firstshape returns the basis of the prism, in other words, s if copy is false; otherwise, the copy of s belonging to the prism. lastshape returns the copy of s translated by v at the time of construction.
+Returns the TopoDS Shape of the top of the prism. In the case of a finite prism, FirstShape returns the basis of the prism, in other words, S if Copy is false; otherwise, the copy of S belonging to the prism. LastShape returns the copy of S translated by V at the time of construction.
 ") LastShape;
 		TopoDS_Shape LastShape();
 
@@ -1180,7 +1199,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the top of the prism. generated with theshape (subshape of the generating shape).
+Returns the TopoDS Shape of the top of the prism. generated with theShape (subShape of the generating shape).
 ") LastShape;
 		TopoDS_Shape LastShape(const TopoDS_Shape & theShape);
 
@@ -1228,7 +1247,7 @@ None
 
 Description
 -----------
-Builds the revol of base s, axis a and angle d. if c is true, s is copied.
+Builds the Revol of base S, axis A and angle D. If C is true, S is copied.
 ") BRepPrimAPI_MakeRevol;
 		 BRepPrimAPI_MakeRevol(const TopoDS_Shape & S, const gp_Ax1 & A, const Standard_Real D, const Standard_Boolean Copy = Standard_False);
 
@@ -1248,7 +1267,7 @@ None
 
 Description
 -----------
-Builds the revol of base s, axis a and angle 2*pi. if c is true, s is copied.
+Builds the Revol of base S, axis A and angle 2*Pi. If C is true, S is copied.
 ") BRepPrimAPI_MakeRevol;
 		 BRepPrimAPI_MakeRevol(const TopoDS_Shape & S, const gp_Ax1 & A, const Standard_Boolean Copy = Standard_False);
 
@@ -1266,7 +1285,7 @@ None
 
 Description
 -----------
-Builds the resulting shape (redefined from makeshape).
+Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1310,7 +1329,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the beginning of the revolution, generated with theshape (subshape of the generating shape).
+Returns the TopoDS Shape of the beginning of the revolution, generated with theShape (subShape of the generating shape).
 ") FirstShape;
 		TopoDS_Shape FirstShape(const TopoDS_Shape & theShape);
 
@@ -1328,7 +1347,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns list of shape generated from shape s warning: shape s must be shape of type vertex, edge, face, solid. for shapes of other types method always returns empty list.
+Returns list of shape generated from shape S Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID. For shapes of other types method always returns empty list.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
@@ -1359,7 +1378,7 @@ bool
 
 Description
 -----------
-Returns true if the shape s has been deleted.
+Returns true if the shape S has been deleted.
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
 
@@ -1372,7 +1391,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the end of the revol.
+Returns the TopoDS Shape of the end of the revol.
 ") LastShape;
 		TopoDS_Shape LastShape();
 
@@ -1390,7 +1409,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the topods shape of the end of the revolution, generated with theshape (subshape of the generating shape).
+Returns the TopoDS Shape of the end of the revolution, generated with theShape (subShape of the generating shape).
 ") LastShape;
 		TopoDS_Shape LastShape(const TopoDS_Shape & theShape);
 
@@ -1435,7 +1454,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const opencascade::handle<Geom_Curve> & Meridian);
 
@@ -1454,7 +1473,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real angle);
 
@@ -1474,7 +1493,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real VMin, const Standard_Real VMax);
 
@@ -1495,7 +1514,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real angle);
 
@@ -1514,7 +1533,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const gp_Ax2 & Axes, const opencascade::handle<Geom_Curve> & Meridian);
 
@@ -1534,7 +1553,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const gp_Ax2 & Axes, const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real angle);
 
@@ -1555,7 +1574,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z.
+Make a revolution body by rotating a curve around Z.
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const gp_Ax2 & Axes, const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real VMin, const Standard_Real VMax);
 
@@ -1577,7 +1596,7 @@ None
 
 Description
 -----------
-Make a revolution body by rotating a curve around z. for all algorithms the resulting shape is composed of - a lateral revolved face, - two planar faces in planes parallel to the plane z = 0, and passing by the extremities of the revolved portion of meridian, if these points are not on the z axis (in case of a complete revolved shape, these faces are circles), - and in the case of a portion of a revolved shape, two planar faces to close the shape (in the planes u = 0 and u = angle).
+Make a revolution body by rotating a curve around Z. For all algorithms the resulting shape is composed of - a lateral revolved face, - two planar faces in planes parallel to the plane z = 0, and passing by the extremities of the revolved portion of Meridian, if these points are not on the Z axis (in case of a complete revolved shape, these faces are circles), - and in the case of a portion of a revolved shape, two planar faces to close the shape (in the planes u = 0 and u = angle).
 ") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution(const gp_Ax2 & Axes, const opencascade::handle<Geom_Curve> & Meridian, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real angle);
 
@@ -1635,7 +1654,8 @@ None
 
 Description
 -----------
-Make a sphere. @param r [in] sphere radius.
+Make a sphere. 
+Input parameter: R sphere radius.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const Standard_Real R);
 
@@ -1654,7 +1674,9 @@ None
 
 Description
 -----------
-Make a sphere (spherical wedge). @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
+Make a sphere (spherical wedge). 
+Input parameter: R sphere radius 
+Input parameter: angle angle between the radii lying within the bounding semidisks.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle);
 
@@ -1674,7 +1696,10 @@ None
 
 Description
 -----------
-Make a sphere (spherical segment). @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
+Make a sphere (spherical segment). 
+Input parameter: R sphere radius 
+Input parameter: angle1 first angle defining a spherical segment 
+Input parameter: angle2 second angle defining a spherical segment.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
 
@@ -1695,7 +1720,11 @@ None
 
 Description
 -----------
-Make a sphere (spherical segment). @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment @param angle3 [in] angle between the radii lying within the bounding semidisks.
+Make a sphere (spherical segment). 
+Input parameter: R sphere radius 
+Input parameter: angle1 first angle defining a spherical segment 
+Input parameter: angle2 second angle defining a spherical segment 
+Input parameter: angle3 angle between the radii lying within the bounding semidisks.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
 
@@ -1714,7 +1743,9 @@ None
 
 Description
 -----------
-Make a sphere. @param center [in] sphere center coordinates @param r [in] sphere radius.
+Make a sphere. 
+Input parameter: Center sphere center coordinates 
+Input parameter: R sphere radius.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Pnt & Center, const Standard_Real R);
 
@@ -1734,7 +1765,10 @@ None
 
 Description
 -----------
-Make a sphere (spherical wedge). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
+Make a sphere (spherical wedge). 
+Input parameter: Center sphere center coordinates 
+Input parameter: R sphere radius 
+Input parameter: angle angle between the radii lying within the bounding semidisks.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Pnt & Center, const Standard_Real R, const Standard_Real angle);
 
@@ -1755,7 +1789,11 @@ None
 
 Description
 -----------
-Make a sphere (spherical segment). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
+Make a sphere (spherical segment). 
+Input parameter: Center sphere center coordinates 
+Input parameter: R sphere radius 
+Input parameter: angle1 first angle defining a spherical segment 
+Input parameter: angle2 second angle defining a spherical segment.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Pnt & Center, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
 
@@ -1777,7 +1815,12 @@ None
 
 Description
 -----------
-Make a sphere (spherical segment). @param center [in] sphere center coordinates @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment @param angle3 [in] angle between the radii lying within the bounding semidisks.
+Make a sphere (spherical segment). 
+Input parameter: Center sphere center coordinates 
+Input parameter: R sphere radius 
+Input parameter: angle1 first angle defining a spherical segment 
+Input parameter: angle2 second angle defining a spherical segment 
+Input parameter: angle3 angle between the radii lying within the bounding semidisks.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Pnt & Center, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
 
@@ -1796,7 +1839,9 @@ None
 
 Description
 -----------
-Make a sphere. @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius.
+Make a sphere. 
+Input parameter: Axis coordinate system for the construction of the sphere 
+Input parameter: R sphere radius.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Ax2 & Axis, const Standard_Real R);
 
@@ -1816,7 +1861,10 @@ None
 
 Description
 -----------
-Make a sphere (spherical wedge). @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius @param angle [in] angle between the radii lying within the bounding semidisks.
+Make a sphere (spherical wedge). 
+Input parameter: Axis coordinate system for the construction of the sphere 
+Input parameter: R sphere radius 
+Input parameter: angle angle between the radii lying within the bounding semidisks.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Ax2 & Axis, const Standard_Real R, const Standard_Real angle);
 
@@ -1837,7 +1885,11 @@ None
 
 Description
 -----------
-Make a sphere (spherical segment). @param axis [in] coordinate system for the construction of the sphere @param r [in] sphere radius @param angle1 [in] first angle defining a spherical segment @param angle2 [in] second angle defining a spherical segment.
+Make a sphere (spherical segment). 
+Input parameter: Axis coordinate system for the construction of the sphere 
+Input parameter: R sphere radius 
+Input parameter: angle1 first angle defining a spherical segment 
+Input parameter: angle2 second angle defining a spherical segment.
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Ax2 & Axis, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2);
 
@@ -1859,7 +1911,7 @@ None
 
 Description
 -----------
-Make a sphere of radius r. for all algorithms the resulting shape is composed of - a lateral spherical face, - two planar faces parallel to the plane z = 0 if the sphere is truncated in the v parametric direction, or only one planar face if angle1 is equal to -p/2 or if angle2 is equal to p/2 (these faces are circles in case of a complete truncated sphere), - and in case of a portion of sphere, two planar faces to shut the shape.(in the planes u = 0 and u = angle).
+Make a sphere of radius R. For all algorithms The resulting shape is composed of - a lateral spherical face, - two planar faces parallel to the plane z = 0 if the sphere is truncated in the v parametric direction, or only one planar face if angle1 is equal to -p/2 or if angle2 is equal to p/2 (these faces are circles in case of a complete truncated sphere), - and in case of a portion of sphere, two planar faces to shut the shape.(in the planes u = 0 and u = angle).
 ") BRepPrimAPI_MakeSphere;
 		 BRepPrimAPI_MakeSphere(const gp_Ax2 & Axis, const Standard_Real R, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle3);
 
@@ -1918,7 +1970,9 @@ None
 
 Description
 -----------
-Make a torus. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe.
+Make a torus. 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const Standard_Real R1, const Standard_Real R2);
 
@@ -1938,7 +1992,10 @@ None
 
 Description
 -----------
-Make a section of a torus. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle [in] angle to create a torus pipe segment.
+Make a section of a torus. 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe 
+Input parameter: angle angle to create a torus pipe segment.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const Standard_Real R1, const Standard_Real R2, const Standard_Real angle);
 
@@ -1959,7 +2016,11 @@ None
 
 Description
 -----------
-Make a torus with angles on the small circle. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment.
+Make a torus with angles on the small circle. 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe 
+Input parameter: angle1 first angle to create a torus ring segment 
+Input parameter: angle2 second angle to create a torus ring segment.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const Standard_Real R1, const Standard_Real R2, const Standard_Real angle1, const Standard_Real angle2);
 
@@ -1981,7 +2042,12 @@ None
 
 Description
 -----------
-Make a torus with angles on the small circle. @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment @param angle [in] angle to create a torus pipe segment.
+Make a torus with angles on the small circle. 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe 
+Input parameter: angle1 first angle to create a torus ring segment 
+Input parameter: angle2 second angle to create a torus ring segment 
+Input parameter: angle angle to create a torus pipe segment.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const Standard_Real R1, const Standard_Real R2, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle);
 
@@ -2001,7 +2067,10 @@ None
 
 Description
 -----------
-Make a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe.
+Make a torus. 
+Input parameter: Axes coordinate system for the construction of the sphere 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2);
 
@@ -2022,7 +2091,11 @@ None
 
 Description
 -----------
-Make a section of a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle [in] angle to create a torus pipe segment.
+Make a section of a torus. 
+Input parameter: Axes coordinate system for the construction of the sphere 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe 
+Input parameter: angle angle to create a torus pipe segment.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real angle);
 
@@ -2044,7 +2117,12 @@ None
 
 Description
 -----------
-Make a torus. @param axes [in] coordinate system for the construction of the sphere @param r1 [in] distance from the center of the pipe to the center of the torus @param r2 [in] radius of the pipe @param angle1 [in] first angle to create a torus ring segment @param angle2 [in] second angle to create a torus ring segment.
+Make a torus. 
+Input parameter: Axes coordinate system for the construction of the sphere 
+Input parameter: R1 distance from the center of the pipe to the center of the torus 
+Input parameter: R2 radius of the pipe 
+Input parameter: angle1 first angle to create a torus ring segment 
+Input parameter: angle2 second angle to create a torus ring segment.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real angle1, const Standard_Real angle2);
 
@@ -2067,7 +2145,7 @@ None
 
 Description
 -----------
-Make a section of a torus of radii r1 r2. for all algorithms the resulting shape is composed of - a lateral toroidal face, - two conical faces (defined by the equation v = angle1 and v = angle2) if the sphere is truncated in the v parametric direction (they may be cylindrical faces in some particular conditions), and in case of a portion of torus, two planar faces to close the shape.(in the planes u = 0 and u = angle). notes: - the u parameter corresponds to a rotation angle around the z axis. - the circle whose radius is equal to the minor radius, located in the plane defined by the x axis and the z axis, centered on the x axis, on its positive side, and positioned at a distance from the origin equal to the major radius, is the reference circle of the torus. the rotation around an axis parallel to the y axis and passing through the center of the reference circle gives the v parameter on the reference circle. the x axis gives the origin of the v parameter. near 0, as v increases, the z coordinate decreases.
+Make a section of a torus of radii R1 R2. For all algorithms The resulting shape is composed of - a lateral toroidal face, - two conical faces (defined by the equation v = angle1 and v = angle2) if the sphere is truncated in the v parametric direction (they may be cylindrical faces in some particular conditions), and in case of a portion of torus, two planar faces to close the shape.(in the planes u = 0 and u = angle). Notes: - The u parameter corresponds to a rotation angle around the Z axis. - The circle whose radius is equal to the minor radius, located in the plane defined by the X axis and the Z axis, centered on the X axis, on its positive side, and positioned at a distance from the origin equal to the major radius, is the reference circle of the torus. The rotation around an axis parallel to the Y axis and passing through the center of the reference circle gives the v parameter on the reference circle. The X axis gives the origin of the v parameter. Near 0, as v increases, the Z coordinate decreases.
 ") BRepPrimAPI_MakeTorus;
 		 BRepPrimAPI_MakeTorus(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real angle1, const Standard_Real angle2, const Standard_Real angle);
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINMXCAFDOCDOCSTRING
 "BinMXCAFDoc module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_binmxcafdoc.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmxcafdoc.html"
 %enddef
 %module (package="OCC.Core", docstring=BINMXCAFDOCDOCSTRING) BinMXCAFDoc
 
@@ -128,7 +128,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <thedrivertable>.
+Adds the attribute drivers to <theDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & theMsgDrv);
 
@@ -1071,7 +1071,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterial.
+Create new instance of XCAFDoc_VisMaterial.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -1158,7 +1158,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterialtool.
+Create new instance of XCAFDoc_VisMaterialTool.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 

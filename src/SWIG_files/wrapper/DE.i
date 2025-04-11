@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define DEDOCSTRING
 "DE module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_de.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 %enddef
 %module (package="OCC.Core", docstring=DEDOCSTRING) DE
 
@@ -140,7 +140,11 @@ bool
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[in] thedefvalue value by default if param is not found or has wrong type @param[in] thescope base parameter name return specific type value.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name 
+Input parameter: theDefValue value by default if param is not found or has wrong type 
+Input parameter: theScope base parameter name 
+Return: specific type value.
 ") BooleanVal;
 		Standard_Boolean BooleanVal(TCollection_AsciiString theParam, const Standard_Boolean theDefValue, TCollection_AsciiString theScope = "");
 
@@ -159,7 +163,10 @@ theValue: bool
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[out] thevalue value to get by parameter @param[in] thescope base parameter name return standard_false if parameter is not defined or has a wrong type.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
+Input parameter: theScope base parameter name 
+Return: Standard_False if parameter is not defined or has a wrong type.
 ") GetBoolean;
 		Standard_Boolean GetBoolean(TCollection_AsciiString theParam, Standard_Boolean &OutValue, TCollection_AsciiString theScope = "");
 
@@ -178,7 +185,10 @@ theValue: int
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[out] thevalue value to get by parameter @param[in] thescope base parameter name return standard_false if parameter is not defined or has a wrong type.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
+Input parameter: theScope base parameter name 
+Return: Standard_False if parameter is not defined or has a wrong type.
 ") GetInteger;
 		Standard_Boolean GetInteger(TCollection_AsciiString theParam, Standard_Integer &OutValue, TCollection_AsciiString theScope = "");
 
@@ -191,7 +201,8 @@ DE_ResourceMap
 
 Description
 -----------
-Gets internal resource map return map with resource value.
+Gets internal resource map 
+Return: map with resource value.
 ") GetInternalMap;
 		const DE_ResourceMap & GetInternalMap();
 
@@ -210,7 +221,10 @@ theValue: float
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[out] thevalue value to get by parameter @param[in] thescope base parameter name return standard_false if parameter is not defined or has a wrong type.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
+Input parameter: theScope base parameter name 
+Return: Standard_False if parameter is not defined or has a wrong type.
 ") GetReal;
 		Standard_Boolean GetReal(TCollection_AsciiString theParam, Standard_Real &OutValue, TCollection_AsciiString theScope = "");
 
@@ -230,7 +244,10 @@ bool
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[out] thevalue value to get by parameter @param[in] thescope base parameter name return standard_false if parameter is not defined or has a wrong type.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
+Input parameter: theScope base parameter name 
+Return: Standard_False if parameter is not defined or has a wrong type.
 ") GetString;
 		Standard_Boolean GetString(TCollection_AsciiString theParam, TCollection_AsciiString & theValue, TCollection_AsciiString theScope = "");
 
@@ -250,7 +267,10 @@ bool
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[out] thevalue value to get by parameter @param[in] thescope base parameter name return standard_false if parameter is not defined or has a wrong type.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
+Input parameter: theScope base parameter name 
+Return: Standard_False if parameter is not defined or has a wrong type.
 ") GetStringSeq;
 		Standard_Boolean GetStringSeq(TCollection_AsciiString theParam, TColStd_ListOfAsciiString & theValue, TCollection_AsciiString theScope = "");
 
@@ -270,7 +290,11 @@ int
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[in] thedefvalue value by default if param is not found or has wrong type @param[in] thescope base parameter name return specific type value.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name 
+Input parameter: theDefValue value by default if param is not found or has wrong type 
+Input parameter: theScope base parameter name 
+Return: specific type value.
 ") IntegerVal;
 		Standard_Integer IntegerVal(TCollection_AsciiString theParam, const Standard_Integer theDefValue, TCollection_AsciiString theScope = "");
 
@@ -289,7 +313,10 @@ bool
 
 Description
 -----------
-Checks for existing the parameter name @param[in] theparam complex parameter name @param[in] thescope base parameter name return standard_true if parameter is defined in the resource file.
+Checks for existing the parameter name 
+Input parameter: theParam complex parameter name 
+Input parameter: theScope base parameter name 
+Return: Standard_True if parameter is defined in the resource file.
 ") IsParamSet;
 		Standard_Boolean IsParamSet(TCollection_AsciiString theParam, TCollection_AsciiString theScope = "");
 
@@ -307,7 +334,9 @@ bool
 
 Description
 -----------
-Import the custom configuration save all parameters with their values. @param[in] theconfiguration path to configuration file or string value return true in case of success, false otherwise.
+Import the custom configuration Save all parameters with their values. 
+Input parameter: theConfiguration path to configuration file or string value 
+Return: true in case of success, false otherwise.
 ") Load;
 		Standard_Boolean Load(TCollection_AsciiString theConfiguration);
 
@@ -325,7 +354,9 @@ bool
 
 Description
 -----------
-Import the resource file. save all parameters with their values. @param[in] thefile path to the resource file return true in case of success, false otherwise.
+Import the resource file. Save all parameters with their values. 
+Input parameter: theFile path to the resource file 
+Return: true in case of success, false otherwise.
 ") LoadFile;
 		Standard_Boolean LoadFile(TCollection_AsciiString theFile);
 
@@ -343,7 +374,9 @@ bool
 
 Description
 -----------
-Import the resource string. save all parameters with their values. @param[in] theresource string with resource content return true in case of success, false otherwise.
+Import the resource string. Save all parameters with their values. 
+Input parameter: theResource string with resource content 
+Return: true in case of success, false otherwise.
 ") LoadStr;
 		Standard_Boolean LoadStr(TCollection_AsciiString theResource);
 
@@ -363,7 +396,11 @@ float
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[in] thedefvalue value by default if param is not found or has wrong type @param[in] thescope base parameter name return specific type value.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name 
+Input parameter: theDefValue value by default if param is not found or has wrong type 
+Input parameter: theScope base parameter name 
+Return: specific type value.
 ") RealVal;
 		Standard_Real RealVal(TCollection_AsciiString theParam, const Standard_Real theDefValue, TCollection_AsciiString theScope = "");
 
@@ -383,7 +420,11 @@ TCollection_AsciiString
 
 Description
 -----------
-Gets value of parameter as being of specific type @param[in] theparam complex parameter name @param[in] thedefvalue value by default if param is not found or has wrong type @param[in] thescope base parameter name return specific type value.
+Gets value of parameter as being of specific type 
+Input parameter: theParam complex parameter name 
+Input parameter: theDefValue value by default if param is not found or has wrong type 
+Input parameter: theScope base parameter name 
+Return: specific type value.
 ") StringVal;
 		TCollection_AsciiString StringVal(TCollection_AsciiString theParam, TCollection_AsciiString theDefValue, TCollection_AsciiString theScope = "");
 
@@ -405,7 +446,6 @@ Gets value of parameter as being of specific type @param[in] theparam complex pa
 class DE_ConfigurationNode : public Standard_Transient {
 	public:
 		class DE_SectionGlobal {};
-		DE_SectionGlobal GlobalParameters;
 		/****** DE_ConfigurationNode::BuildProvider ******/
 		/****** md5 signature: 36ab78b32f0a19a9158d4d9237830452 ******/
 		%feature("compactdefaultargs") BuildProvider;
@@ -415,7 +455,8 @@ opencascade::handle<DE_Provider>
 
 Description
 -----------
-Creates new provider for the own format return new created provider.
+Creates new provider for the own format 
+Return: new created provider.
 ") BuildProvider;
 		virtual opencascade::handle<DE_Provider> BuildProvider();
 
@@ -433,7 +474,9 @@ bool
 
 Description
 -----------
-Checks the file content to verify a format @param[in] thebuffer read stream buffer to check content return standard_true if file is supported by a current provider.
+Checks the file content to verify a format 
+Input parameter: theBuffer read stream buffer to check content 
+Return: Standard_True if file is supported by a current provider.
 ") CheckContent;
 		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
 
@@ -451,7 +494,9 @@ bool
 
 Description
 -----------
-Checks the file extension to verify a format @param[in] theextension input file extension return standard_true if file is supported by a current provider.
+Checks the file extension to verify a format 
+Input parameter: theExtension input file extension 
+Return: Standard_True if file is supported by a current provider.
 ") CheckExtension;
 		virtual bool CheckExtension(TCollection_AsciiString theExtension);
 
@@ -464,9 +509,28 @@ opencascade::handle<DE_ConfigurationNode>
 
 Description
 -----------
-Copies values of all fields return new object with the same field values.
+Copies values of all fields 
+Return: new object with the same field values.
 ") Copy;
 		virtual opencascade::handle<DE_ConfigurationNode> Copy();
+
+		/****** DE_ConfigurationNode::CustomActivation ******/
+		/****** md5 signature: aefc913885bf6690f801021e14c05c82 ******/
+		%feature("compactdefaultargs") CustomActivation;
+		%feature("autodoc", "
+Parameters
+----------
+&: TColStd_ListOfAsciiString
+
+Return
+-------
+None
+
+Description
+-----------
+Custom function to activate commercial DE component. The input is special sequence of values that described in specific component documentation. Order is important. Each component can have own way of activation. //! The main goal - real-time loading plug-in activation. OpenSource components don't need to have activation process.
+") CustomActivation;
+		virtual void CustomActivation(const TColStd_ListOfAsciiString &);
 
 		/****** DE_ConfigurationNode::GetExtensions ******/
 		/****** md5 signature: 6817e63aa129d8a185e6f5a2ec2a2914 ******/
@@ -477,7 +541,8 @@ TColStd_ListOfAsciiString
 
 Description
 -----------
-Gets list of supported file extensions return list of extensions.
+Gets list of supported file extensions 
+Return: list of extensions.
 ") GetExtensions;
 		virtual TColStd_ListOfAsciiString GetExtensions();
 
@@ -490,7 +555,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Gets cad format name of associated provider return provider cad format.
+Gets CAD format name of associated provider 
+Return: provider CAD format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
@@ -503,7 +569,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Gets provider's vendor name of associated provider return provider's vendor name.
+Gets provider's vendor name of associated provider 
+Return: provider's vendor name.
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
@@ -516,7 +583,8 @@ bool
 
 Description
 -----------
-Gets the provider loading status return standard_true if the load is correct.
+Gets the provider loading status 
+Return: Standard_True if the load is correct.
 ") IsEnabled;
 		Standard_Boolean IsEnabled();
 
@@ -529,7 +597,8 @@ bool
 
 Description
 -----------
-Checks the export supporting return standard_true if export is support.
+Checks the export supporting 
+Return: Standard_True if export is support.
 ") IsExportSupported;
 		virtual bool IsExportSupported();
 
@@ -542,7 +611,8 @@ bool
 
 Description
 -----------
-Checks the import supporting return standard_true if import is support.
+Checks the import supporting 
+Return: Standard_True if import is support.
 ") IsImportSupported;
 		virtual bool IsImportSupported();
 
@@ -560,7 +630,9 @@ bool
 
 Description
 -----------
-Updates values according the resource file @param[in] theresourcepath file path to resource return true if load was successful.
+Updates values according the resource file 
+Input parameter: theResourcePath file path to resource 
+Return: True if Load was successful.
 ") Load;
 		virtual bool Load(TCollection_AsciiString theResourcePath = "");
 
@@ -578,7 +650,9 @@ bool
 
 Description
 -----------
-Updates values according the resource @param[in] theresource input resource to use return true if load was successful.
+Updates values according the resource 
+Input parameter: theResource input resource to use 
+Return: True if Load was successful.
 ") Load;
 		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
 
@@ -596,7 +670,9 @@ bool
 
 Description
 -----------
-Writes configuration to the resource file @param[in] theresourcepath file path to resource return true if save was successful.
+Writes configuration to the resource file 
+Input parameter: theResourcePath file path to resource 
+Return: True if Save was successful.
 ") Save;
 		bool Save(TCollection_AsciiString theResourcePath);
 
@@ -609,7 +685,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Writes configuration to the string return result resource string.
+Writes configuration to the string 
+Return: result resource string.
 ") Save;
 		virtual TCollection_AsciiString Save();
 
@@ -627,7 +704,8 @@ None
 
 Description
 -----------
-Sets the provider loading status @param[in] theisloaded input load status.
+Sets the provider loading status 
+Input parameter: theIsLoaded input load status.
 ") SetEnabled;
 		void SetEnabled(const Standard_Boolean theIsLoaded);
 
@@ -646,7 +724,10 @@ bool
 
 Description
 -----------
-Update loading status. checking for the ability to read and write. @param[in] thetoimport flag to updates for import. standard_true-import, standard_false-export @param[in] thetokeep flag to save update result return standard_true, if node can be used.
+Update loading status. Checking for the ability to read and write. 
+Input parameter: theToImport flag to updates for import. Standard_True-import, Standard_False-export 
+Input parameter: theToKeep flag to save update result 
+Return: Standard_True, if node can be used.
 ") UpdateLoad;
 		virtual bool UpdateLoad(const Standard_Boolean theToImport, const Standard_Boolean theToKeep);
 
@@ -679,7 +760,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Gets cad format name of associated provider return provider cad format.
+Gets CAD format name of associated provider 
+Return: provider CAD format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
@@ -692,7 +774,8 @@ opencascade::handle<DE_ConfigurationNode>
 
 Description
 -----------
-Gets internal configuration node return configuration node object.
+Gets internal configuration node 
+Return: configuration node object.
 ") GetNode;
 		opencascade::handle<DE_ConfigurationNode> GetNode();
 
@@ -705,7 +788,8 @@ TCollection_AsciiString
 
 Description
 -----------
-Gets provider's vendor name of associated provider return provider's vendor name.
+Gets provider's vendor name of associated provider 
+Return: provider's vendor name.
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
@@ -726,7 +810,11 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read was successful.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: True if Read was successful.
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -746,7 +834,10 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator return true if read was successful.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
+Input parameter: theProgress progress indicator 
+Return: True if Read was successful.
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -767,7 +858,11 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read was successful.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: True if Read was successful.
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -787,7 +882,10 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator return true if read was successful.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
+Input parameter: theProgress progress indicator 
+Return: True if Read was successful.
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -805,7 +903,8 @@ None
 
 Description
 -----------
-Sets internal configuration node @param[in] thenode configuration node to set.
+Sets internal configuration node 
+Input parameter: theNode configuration node to set.
 ") SetNode;
 		void SetNode(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
@@ -826,7 +925,11 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write was successful.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: True if Write was successful.
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -846,7 +949,10 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator return true if write was successful.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
+Input parameter: theProgress progress indicator 
+Return: True if Write was successful.
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -867,7 +973,11 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write was successful.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: True if Write was successful.
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -887,7 +997,10 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator return true if write was successful.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
+Input parameter: theProgress progress indicator 
+Return: True if Write was successful.
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -902,12 +1015,14 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 	}
 };
 
+/******************************
+* class DE_ShapeFixParameters *
+******************************/
 /*******************
 * class DE_Wrapper *
 *******************/
 class DE_Wrapper : public Standard_Transient {
 	public:
-		DE_ConfigurationNode::DE_SectionGlobal GlobalParameters;
 		/****** DE_Wrapper::DE_Wrapper ******/
 		/****** md5 signature: cab56560ee66ff0a167a8682110f3c23 ******/
 		%feature("compactdefaultargs") DE_Wrapper;
@@ -935,7 +1050,8 @@ None
 
 Description
 -----------
-Copies values of all fields @param[in] thewrapper object to copy.
+Copies values of all fields 
+Input parameter: theWrapper object to copy.
 ") DE_Wrapper;
 		 DE_Wrapper(const opencascade::handle<DE_Wrapper> & theWrapper);
 
@@ -953,7 +1069,9 @@ bool
 
 Description
 -----------
-Creates new node copy and adds to the map @param[in] thenode input node to copy return standard_true if binded.
+Creates new node copy and adds to the map 
+Input parameter: theNode input node to copy 
+Return: Standard_True if binded.
 ") Bind;
 		Standard_Boolean Bind(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
@@ -973,7 +1091,10 @@ None
 
 Description
 -----------
-Changes provider priority to one format if it exists @param[in] theformat input node cad format @param[in] thevendorpriority priority of work with vendors @param[in] thetodisable flag for disabling nodes that are not included in the priority.
+Changes provider priority to one format if it exists 
+Input parameter: theFormat input node CAD format 
+Input parameter: theVendorPriority priority of work with vendors 
+Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
 		void ChangePriority(TCollection_AsciiString theFormat, const TColStd_ListOfAsciiString & theVendorPriority, const Standard_Boolean theToDisable = Standard_False);
 
@@ -992,7 +1113,9 @@ None
 
 Description
 -----------
-Changes provider priority to all loaded nodes @param[in] thevendorpriority priority of work with vendors @param[in] thetodisable flag for disabling nodes that are not included in the priority.
+Changes provider priority to all loaded nodes 
+Input parameter: theVendorPriority priority of work with vendors 
+Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
 		void ChangePriority(const TColStd_ListOfAsciiString & theVendorPriority, const Standard_Boolean theToDisable = Standard_False);
 
@@ -1005,7 +1128,8 @@ opencascade::handle<DE_Wrapper>
 
 Description
 -----------
-Copies values of all fields return new object with the same field values.
+Copies values of all fields 
+Return: new object with the same field values.
 ") Copy;
 		virtual opencascade::handle<DE_Wrapper> Copy();
 
@@ -1025,7 +1149,10 @@ bool
 
 Description
 -----------
-Finds a node associated with input format and vendor @param[in] theformat input node cad format @param[in] thevendor input node vendor name @param[out] thenode output node return standard_true if the node is found.
+Finds a node associated with input format and vendor 
+Input parameter: theFormat input node CAD format 
+Input parameter: theVendor input node vendor name @param[out] theNode output node 
+Return: Standard_True if the node is found.
 ") Find;
 		Standard_Boolean Find(TCollection_AsciiString theFormat, TCollection_AsciiString theVendor, opencascade::handle<DE_ConfigurationNode> & theNode);
 
@@ -1045,7 +1172,10 @@ bool
 
 Description
 -----------
-Find available provider from the configuration. if there are several providers, choose the one with the highest priority. @param[in] thepath path to the cad file @param[in] thetoimport flag to finds for import. standard_true-import, standard_false-export @param[out] theprovider created new provider return standard_true if provider found and created.
+Find available provider from the configuration. If there are several providers, choose the one with the highest priority. 
+Input parameter: thePath path to the CAD file 
+Input parameter: theToImport flag to finds for import. Standard_True-import, Standard_False-export @param[out] theProvider created new provider 
+Return: Standard_True if provider found and created.
 ") FindProvider;
 		virtual Standard_Boolean FindProvider(TCollection_AsciiString thePath, const Standard_Boolean theToImport, opencascade::handle<DE_Provider> & theProvider);
 
@@ -1071,7 +1201,8 @@ opencascade::handle<DE_Wrapper>
 
 Description
 -----------
-Gets global configuration singleton. if wrapper is not set, create it by default as base class object. return point to global configuration.
+Gets global configuration singleton. If wrapper is not set, create it by default as base class object. 
+Return: point to global configuration.
 ") GlobalWrapper;
 		static const opencascade::handle<DE_Wrapper> & GlobalWrapper();
 
@@ -1103,7 +1234,10 @@ bool
 
 Description
 -----------
-Updates values according the resource file @param[in] theresource file path to resource or resource value @param[in] theisrecursive flag to update all nodes return true if theresource has loaded correctly.
+Updates values according the resource file 
+Input parameter: theResource file path to resource or resource value 
+Input parameter: theIsRecursive flag to update all nodes 
+Return: true if theResource has loaded correctly.
 ") Load;
 		Standard_Boolean Load(TCollection_AsciiString theResource = "", const Standard_Boolean theIsRecursive = Standard_True);
 
@@ -1122,7 +1256,10 @@ bool
 
 Description
 -----------
-Updates values according the resource @param[in] theresource input resource to use @param[in] theisrecursive flag to update all nodes return true if theresource has loaded correctly.
+Updates values according the resource 
+Input parameter: theResource input resource to use 
+Input parameter: theIsRecursive flag to update all nodes 
+Return: true if theResource has loaded correctly.
 ") Load;
 		Standard_Boolean Load(const opencascade::handle<DE_ConfigurationContext> & theResource, const Standard_Boolean theIsRecursive = Standard_True);
 
@@ -1135,7 +1272,8 @@ DE_ConfigurationFormatMap
 
 Description
 -----------
-Gets format map, contains vendor map with nodes return internal map of formats.
+Gets format map, contains vendor map with nodes 
+Return: internal map of formats.
 ") Nodes;
 		const DE_ConfigurationFormatMap & Nodes();
 
@@ -1156,7 +1294,11 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
 ") Read;
 		Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1176,7 +1318,10 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
 ") Read;
 		Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1197,7 +1342,11 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
 ") Read;
 		Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1217,7 +1366,10 @@ bool
 
 Description
 -----------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
+Reads a CAD file, according internal configuration 
+Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
 ") Read;
 		Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1238,7 +1390,12 @@ bool
 
 Description
 -----------
-Writes configuration to the resource file @param[in] theresourcepath file path to resource @param[in] theisrecursive flag to write values of all nodes @param[in] theformats list of formats to save. if empty, saves all available @param[in] thevendors list of providers to save. if empty, saves all available return true if the configuration has saved correctly.
+Writes configuration to the resource file 
+Input parameter: theResourcePath file path to resource 
+Input parameter: theIsRecursive flag to write values of all nodes 
+Input parameter: theFormats list of formats to save. If empty, saves all available 
+Input parameter: theVendors list of providers to save. If empty, saves all available 
+Return: true if the Configuration has saved correctly.
 ") Save;
 		Standard_Boolean Save(TCollection_AsciiString theResourcePath, const Standard_Boolean theIsRecursive = Standard_True, const TColStd_ListOfAsciiString & theFormats = TColStd_ListOfAsciiString(), const TColStd_ListOfAsciiString & theVendors = TColStd_ListOfAsciiString());
 
@@ -1258,7 +1415,11 @@ TCollection_AsciiString
 
 Description
 -----------
-Writes configuration to the string @param[in] theisrecursive flag to write values of all nodes @param[in] theformats list of formats to save. if empty, saves all available @param[in] thevendors list of providers to save. if empty, saves all available return result resource string.
+Writes configuration to the string 
+Input parameter: theIsRecursive flag to write values of all nodes 
+Input parameter: theFormats list of formats to save. If empty, saves all available 
+Input parameter: theVendors list of providers to save. If empty, saves all available 
+Return: result resource string.
 ") Save;
 		TCollection_AsciiString Save(const Standard_Boolean theIsRecursive = Standard_True, const TColStd_ListOfAsciiString & theFormats = TColStd_ListOfAsciiString(), const TColStd_ListOfAsciiString & theVendors = TColStd_ListOfAsciiString());
 
@@ -1276,7 +1437,8 @@ None
 
 Description
 -----------
-Sets global configuration singleton @param[in] thewrapper object to set as global configuration.
+Sets global configuration singleton 
+Input parameter: theWrapper object to set as global configuration.
 ") SetGlobalWrapper;
 		static void SetGlobalWrapper(const opencascade::handle<DE_Wrapper> & theWrapper);
 
@@ -1312,7 +1474,9 @@ bool
 
 Description
 -----------
-Removes node with the same type from the map @param[in] thenode input node to remove the same return standard_true if removed.
+Removes node with the same type from the map 
+Input parameter: theNode input node to remove the same 
+Return: Standard_True if removed.
 ") UnBind;
 		Standard_Boolean UnBind(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
@@ -1330,7 +1494,8 @@ None
 
 Description
 -----------
-Updates all registered nodes, all changes will be saved in nodes @param[in] thetoforceupdate flag that turns on/of nodes, according to updated ability to import/export.
+Updates all registered nodes, all changes will be saved in nodes 
+Input parameter: theToForceUpdate flag that turns on/of nodes, according to updated ability to import/export.
 ") UpdateLoad;
 		void UpdateLoad(const Standard_Boolean theToForceUpdate = Standard_False);
 
@@ -1351,7 +1516,11 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
 ") Write;
 		Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1371,7 +1540,10 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
 ") Write;
 		Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1392,7 +1564,11 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
 ") Write;
 		Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1412,7 +1588,10 @@ bool
 
 Description
 -----------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
+Writes a CAD file, according internal configuration 
+Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
 ") Write;
 		Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1427,10 +1606,21 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 	}
 };
 
+/*************************************
+* class DE_ShapeFixConfigurationNode *
+*************************************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
 class DE_PluginHolder:
+	pass
+
+@classnotwrapped
+class DE_ShapeFixConfigurationNode:
+	pass
+
+@classnotwrapped
+class DE_ShapeFixParameters:
 	pass
 
 }

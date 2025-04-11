@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECTMGRDOCSTRING
 "SelectMgr module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_selectmgr.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECTMGRDOCSTRING) SelectMgr
 
@@ -383,7 +383,7 @@ None
 
 Description
 -----------
-Queue a sensitive entity to build its bvh.
+Queue a sensitive entity to build its BVH.
 ") AddEntity;
 		void AddEntity(const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
 
@@ -469,6 +469,25 @@ Return camera definition.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/****** SelectMgr_BaseIntersector::CopyWithBuilder ******/
+		/****** md5 signature: 4203d7a6d37f33ee5e58c6994fdc2e7a ******/
+		%feature("compactdefaultargs") CopyWithBuilder;
+		%feature("autodoc", "
+Parameters
+----------
+theBuilder: SelectMgr_FrustumBuilder
+
+Return
+-------
+opencascade::handle<SelectMgr_BaseIntersector>
+
+Description
+-----------
+Input parameter: theBuilder argument that represents corresponding settings for re-constructing transformed frustum from scratch; should NOT be NULL. 
+Return: a copy of the frustum with the input builder assigned.
+") CopyWithBuilder;
+		virtual opencascade::handle<SelectMgr_BaseIntersector> CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+
 		/****** SelectMgr_BaseIntersector::DetectedPoint ******/
 		/****** md5 signature: 6c6688b42e6b7c576329ada82a48bca7 ******/
 		%feature("compactdefaultargs") DetectedPoint;
@@ -483,7 +502,7 @@ gp_Pnt
 
 Description
 -----------
-Calculates the point on a view ray that was detected during the run of selection algo by given depth. it makes sense only for intersectors built on a single point. this method returns infinite point for the base class.
+Calculates the point on a view ray that was detected during the run of selection algo by given depth. It makes sense only for intersectors built on a single point. This method returns infinite point for the base class.
 ") DetectedPoint;
 		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
 
@@ -501,7 +520,7 @@ float
 
 Description
 -----------
-Measures distance between 3d projection of user-picked screen point and given point thecog. it makes sense only for intersectors built on a single point. this method returns infinite value for the base class.
+Measures distance between 3d projection of user-picked screen point and given point theCOG. It makes sense only for intersectors built on a single point. This method returns infinite value for the base class.
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
@@ -535,7 +554,7 @@ gp_Pnt
 
 Description
 -----------
-Returns far point of intersector. this method returns zero point for the base class.
+Returns far point of intersector. This method returns zero point for the base class.
 ") GetFarPnt;
 		virtual const gp_Pnt GetFarPnt();
 
@@ -548,7 +567,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns current mouse coordinates. this method returns infinite point for the base class.
+Returns current mouse coordinates. This method returns infinite point for the base class.
 ") GetMousePosition;
 		virtual const gp_Pnt2d GetMousePosition();
 
@@ -561,7 +580,7 @@ gp_Pnt
 
 Description
 -----------
-Returns near point of intersector. this method returns zero point for the base class.
+Returns near point of intersector. This method returns zero point for the base class.
 ") GetNearPnt;
 		virtual const gp_Pnt GetNearPnt();
 
@@ -579,7 +598,7 @@ None
 
 Description
 -----------
-Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector. this method only clears input vector for the base class.
+Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector. This method only clears input vector for the base class.
 ") GetPlanes;
 		virtual void GetPlanes(NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
 
@@ -605,7 +624,7 @@ gp_Dir
 
 Description
 -----------
-Returns direction ray of intersector. this method returns zero direction for the base class.
+Returns direction ray of intersector. This method returns zero direction for the base class.
 ") GetViewRayDirection;
 		virtual const gp_Dir GetViewRayDirection();
 
@@ -639,7 +658,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given axis-aligned box.
+SAT intersection test between defined volume and given axis-aligned box.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -659,7 +678,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
 
@@ -681,7 +700,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -702,7 +721,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
 
@@ -726,7 +745,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -749,7 +768,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
@@ -787,7 +806,7 @@ bool
 
 Description
 -----------
-Intersection test between defined volume and given point does not perform depth calculation, so this method is defined as helper function for inclusion test. therefore, its implementation makes sense only for rectangular frustum with box selection mode activated.
+Intersection test between defined volume and given point Does not perform depth calculation, so this method is defined as helper function for inclusion test. Therefore, its implementation makes sense only for rectangular frustum with box selection mode activated.
 ") OverlapsPoint;
 		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
 
@@ -808,7 +827,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
+SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
 		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -849,7 +868,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
 
@@ -870,7 +889,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by sphere with center thecenter and radius theradius.
+Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -893,7 +912,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
+SAT intersection test between defined volume and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
 		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -914,7 +933,11 @@ theTime: float
 
 Description
 -----------
-Checks whether the ray that starts at the point theloc and directs with the direction theraydir intersects with the circle @param[in] theradius the circle radius @param[in] theloc the location of the ray @param[in] theraydir the ray direction @param[in] theisfilled true if it's a circle, false if it's a circle outline @param[out] thetime the intersection.
+Checks whether the ray that starts at the point theLoc and directs with the direction theRayDir intersects with the circle 
+Input parameter: theRadius the circle radius 
+Input parameter: theLoc the location of the ray 
+Input parameter: theRayDir the ray direction 
+Input parameter: theIsFilled true if it's a circle, false if it's a circle outline @param[out] theTime the intersection.
 ") RayCircleIntersection;
 		virtual Standard_Boolean RayCircleIntersection(const Standard_Real theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const Standard_Boolean theIsFilled, Standard_Real &OutValue);
 
@@ -938,7 +961,13 @@ theTimeLeave: float
 
 Description
 -----------
-Checks whether the ray that starts at the point theloc and directs with the direction theraydir intersects with the hollow cylinder (or cone) @param[in] thebottomradius the bottom cylinder radius @param[in] thetopradius the top cylinder radius @param[in] theheight the cylinder height @param[in] theloc the location of the ray @param[in] theraydir the ray direction @param[in] theishollow true if the cylinder is hollow @param[out] thetimeenter the entering the intersection @param[out] thetimeleave the leaving the intersection.
+Checks whether the ray that starts at the point theLoc and directs with the direction theRayDir intersects with the hollow cylinder (or cone) 
+Input parameter: theBottomRadius the bottom cylinder radius 
+Input parameter: theTopRadius the top cylinder radius 
+Input parameter: theHeight the cylinder height 
+Input parameter: theLoc the location of the ray 
+Input parameter: theRayDir the ray direction 
+Input parameter: theIsHollow true if the cylinder is hollow @param[out] theTimeEnter the entering the intersection @param[out] theTimeLeave the leaving the intersection.
 ") RayCylinderIntersection;
 		virtual Standard_Boolean RayCylinderIntersection(const Standard_Real theBottomRadius, const Standard_Real theTopRadius, const Standard_Real theHeight, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const Standard_Boolean theIsHollow, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -960,7 +989,7 @@ theTimeLeave: float
 
 Description
 -----------
-Checks whether the ray that starts at the point theloc and directs with the direction theraydir intersects with the sphere with center at thecenter and radius theradius.
+Checks whether the ray that starts at the point theLoc and directs with the direction theRayDir intersects with the sphere with center at theCenter and radius TheRadius.
 ") RaySphereIntersection;
 		virtual Standard_Boolean RaySphereIntersection(const gp_Pnt & theCenter, const Standard_Real theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -980,7 +1009,11 @@ opencascade::handle<SelectMgr_BaseIntersector>
 
 Description
 -----------
-Note that this method does not perform any checks on type of the frustum. @param thescalefactor [in] scale factor for new intersector or negative value if undefined;  important: scaling makes sense only for scalable ::isscalable() intersectors (built on a single point)! @param thetrsf [in] transformation for new intersector or gp_identity if undefined @param thebuilder [in] an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch; could be null if reconstruction is not expected furthermore return a copy of the frustum resized according to the scale factor given and transforms it using the matrix given.
+Note that this method does not perform any checks on type of the frustum. 
+Input parameter: theScaleFactor scale factor for new intersector or negative value if undefined;  IMPORTANT: scaling makes sense only for scalable ::IsScalable()  intersectors (built on a single point)! 
+Input parameter: theTrsf transformation for new intersector or gp_Identity if undefined 
+Input parameter: theBuilder an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch; could be NULL if reconstruction is not expected furthermore 
+Return: a copy of the frustum resized according to the scale factor given and transforms it using the matrix given.
 ") ScaleAndTransform;
 		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
@@ -1016,7 +1049,7 @@ None
 
 Description
 -----------
-Sets pixel tolerance. it makes sense only for scalable intersectors (built on a single point). this method does nothing for the base class.
+Sets pixel tolerance. It makes sense only for scalable intersectors (built on a single point). This method does nothing for the base class.
 ") SetPixelTolerance;
 		virtual void SetPixelTolerance(const Standard_Integer theTol);
 
@@ -1037,7 +1070,7 @@ None
 
 Description
 -----------
-Sets viewport parameters. this method does nothing for the base class.
+Sets viewport parameters. This method does nothing for the base class.
 ") SetViewport;
 		virtual void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
 
@@ -1056,7 +1089,7 @@ None
 
 Description
 -----------
-Sets current window size. this method does nothing for the base class.
+Sets current window size. This method does nothing for the base class.
 ") SetWindowSize;
 		virtual void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
 
@@ -1074,7 +1107,7 @@ theHeight: int
 
 Description
 -----------
-Returns current window size. this method doesn't set any output values for the base class.
+Returns current window size. This method doesn't set any output values for the base class.
 ") WindowSize;
 		virtual void WindowSize(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -1108,7 +1141,7 @@ None
 
 Description
 -----------
-Initializes the selection priority apriority.
+Initializes the selection priority aPriority.
 ") SelectMgr_EntityOwner;
 		 SelectMgr_EntityOwner(const Standard_Integer aPriority = 0);
 
@@ -1127,7 +1160,7 @@ None
 
 Description
 -----------
-Constructs a framework with the selectable object anso being attributed the selection priority apriority.
+Constructs a framework with the selectable object anSO being attributed the selection priority aPriority.
 ") SelectMgr_EntityOwner;
 		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_SelectableObject> & aSO, const Standard_Integer aPriority = 0);
 
@@ -1146,7 +1179,7 @@ None
 
 Description
 -----------
-Constructs a framework from existing one anso being attributed the selection priority apriority.
+Constructs a framework from existing one anSO being attributed the selection priority aPriority.
 ") SelectMgr_EntityOwner;
 		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Standard_Integer aPriority = 0);
 
@@ -1165,7 +1198,7 @@ None
 
 Description
 -----------
-Clears the owners matching the value of the selection mode amode from the presentation manager object apm.
+Clears the owners matching the value of the selection mode aMode from the presentation manager object aPM.
 ") Clear;
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const Standard_Integer theMode = 0);
 
@@ -1178,7 +1211,7 @@ bool
 
 Description
 -----------
-Returns true if this owner points to a part of object and false for entire object.
+Returns True if this owner points to a part of object and False for entire object.
 ") ComesFromDecomposition;
 		Standard_Boolean ComesFromDecomposition();
 
@@ -1220,7 +1253,12 @@ bool
 
 Description
 -----------
-Handle mouse button click event. does nothing by default and returns false. @param thepoint mouse cursor position @param thebutton clicked button @param themodifiers key modifiers @param theisdoubleclick flag indicating double mouse click return true if object handled click.
+Handle mouse button click event. Does nothing by default and returns False. 
+Parameter thePoint mouse cursor position 
+Parameter theButton clicked button 
+Parameter theModifiers key modifiers 
+Parameter theIsDoubleClick flag indicating double mouse click 
+Return: True if object handled click.
 ") HandleMouseClick;
 		virtual Standard_Boolean HandleMouseClick(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
 
@@ -1233,7 +1271,7 @@ bool
 
 Description
 -----------
-Returns true if selectable has transformation.
+Returns True if selectable has transformation.
 ") HasLocation;
 		virtual Standard_Boolean HasLocation();
 
@@ -1266,7 +1304,7 @@ None
 
 Description
 -----------
-Highlights selectable object's presentation with display mode in presentation manager with given highlight style. also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to selectmgr_selectableobject::hilightownerwithcolor method.
+Highlights selectable object's presentation with display mode in presentation manager with given highlight style. Also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to SelectMgr_SelectableObject::HilightOwnerWithColor method.
 ") HilightWithColor;
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
 
@@ -1279,7 +1317,7 @@ bool
 
 Description
 -----------
-If owner is not auto hilighted, for group contains many such owners will be called one method hilightselected of selectableobject.
+if owner is not auto hilighted, for group contains many such owners will be called one method HilightSelected of SelectableObject.
 ") IsAutoHilight;
 		virtual Standard_Boolean IsAutoHilight();
 
@@ -1292,7 +1330,7 @@ bool
 
 Description
 -----------
-If this method returns true the owner will always call method hilight for selectableobject when the owner is detected. by default it always return false.
+if this method returns True the owner will always call method Hilight for SelectableObject when the owner is detected. By default it always return False.
 ") IsForcedHilight;
 		virtual Standard_Boolean IsForcedHilight();
 
@@ -1342,7 +1380,7 @@ bool
 
 Description
 -----------
-Return standard_true if the owner is selected.
+Return: Standard_True if the owner is selected.
 ") IsSelected;
 		Standard_Boolean IsSelected();
 
@@ -1368,7 +1406,7 @@ int
 
 Description
 -----------
-Return selection priority (within range [0-9]) for results with the same depth; 0 by default. example - selection of shapes: the owners are selectable objects (presentations) a user can give vertex priority [3], edges [2] faces [1] shape [0], so that if during selection one vertex one edge and one face are simultaneously detected, the vertex will only be hilighted.
+Return selection priority (within range [0-9]) for results with the same depth; 0 by default. Example - selection of shapes: the owners are selectable objects (presentations) a user can give vertex priority [3], edges [2] faces [1] shape [0], so that if during selection one vertex one edge and one face are simultaneously detected, the vertex will only be hilighted.
 ") Priority;
 		Standard_Integer Priority();
 
@@ -1399,7 +1437,7 @@ None
 
 Description
 -----------
-Sets the selectable object.
+No available documentation.
 ") Set;
 		void Set(const opencascade::handle<SelectMgr_SelectableObject> & theSelObj);
 
@@ -1417,7 +1455,7 @@ None
 
 Description
 -----------
-Sets the selectable priority of the owner.
+No available documentation.
 ") Set;
 		void Set(const Standard_Integer thePriority);
 
@@ -1435,7 +1473,7 @@ None
 
 Description
 -----------
-Sets flag indicating this owner points to a part of object (true) or to entire object (false).
+Sets flag indicating this owner points to a part of object (True) or to entire object (False).
 ") SetComesFromDecomposition;
 		void SetComesFromDecomposition(const Standard_Boolean theIsFromDecomposition);
 
@@ -1507,7 +1545,8 @@ None
 
 Description
 -----------
-Set the state of the owner. @param theisselected [in] shows if owner is selected.
+Set the state of the owner. 
+Input parameter: theIsSelected shows if owner is selected.
 ") SetSelected;
 		void SetSelected(const Standard_Boolean theIsSelected);
 
@@ -1525,7 +1564,7 @@ None
 
 Description
 -----------
-Set z layer id and update all presentations.
+Set Z layer ID and update all presentations.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayerId);
 
@@ -1538,7 +1577,7 @@ int
 
 Description
 -----------
-Returns selection state.
+No available documentation.
 ") State;
 		Standard_Integer State();
 
@@ -1556,7 +1595,7 @@ None
 
 Description
 -----------
-Set the state of the owner. the method is deprecated. use setselected() instead.
+Set the state of the owner. The method is deprecated. Use SetSelected() instead.
 ") State;
 		void State(const Standard_Integer theStatus);
 
@@ -1575,7 +1614,9 @@ None
 
 Description
 -----------
-Removes highlighting from the owner of a detected selectable object in the presentation manager. this object could be the owner of a sensitive primitive. @param theprsmgr presentation manager @param themode obsolete argument for compatibility, should be ignored by implementations.
+Removes highlighting from the owner of a detected selectable object in the presentation manager. This object could be the owner of a sensitive primitive. 
+Parameter thePrsMgr presentation manager 
+Parameter theMode obsolete argument for compatibility, should be ignored by implementations.
 ") Unhilight;
 		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const Standard_Integer theMode = 0);
 
@@ -1634,7 +1675,7 @@ bool
 
 Description
 -----------
-Returns true in an ais local context, if this filter operates on a type of subshape defined in a filter class inheriting this framework. this function completes isok in an ais local context.
+Returns true in an AIS local context, if this filter operates on a type of subshape defined in a filter class inheriting this framework. This function completes IsOk in an AIS local context.
 ") ActsOn;
 		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
@@ -1652,7 +1693,7 @@ bool
 
 Description
 -----------
-Indicates that the selected interactive object passes the filter. the owner, anobj, can be either direct or user. a direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. when an object is detected by the mouse - in ais, this is done through a context selector - its owner is passed to the filter as an argument. if the object returns standard_true, it is kept; if not, it is rejected. if you are creating a filter class inheriting this framework, and the daughter class is to be used in an ais local context, you will need to implement the virtual function actson.
+Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. When an object is detected by the mouse - in AIS, this is done through a context selector - its owner is passed to the filter as an argument. If the object returns Standard_True, it is kept; if not, it is rejected. If you are creating a filter class inheriting this framework, and the daughter class is to be used in an AIS local context, you will need to implement the virtual function ActsOn.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
@@ -1727,7 +1768,7 @@ gp_Pnt
 
 Description
 -----------
-Projects 2d screen point onto view frustum plane: thez = 0 - near plane, thez = 1 - far plane.
+Projects 2d screen point onto view frustum plane: theZ = 0 - near plane, theZ = 1 - far plane.
 ") ProjectPntOnViewPlane;
 		gp_Pnt ProjectPntOnViewPlane(const Standard_Real & theX, const Standard_Real & theY, const Standard_Real & theZ);
 
@@ -1804,7 +1845,7 @@ float
 
 Description
 -----------
-Calculates signed distance between plane with equation theeq and point thepnt.
+Calculates signed distance between plane with equation theEq and point thePnt.
 ") SignedPlanePntDist;
 		Standard_Real SignedPlanePntDist(const SelectMgr_Vec3 & theEq, const SelectMgr_Vec3 & thePnt);
 
@@ -1852,7 +1893,7 @@ bool
 
 Description
 -----------
-Informs the graphic context that the interactive object may be decomposed into sub-shapes for dynamic selection. the most used interactive object is ais_shape.
+Informs the graphic context that the interactive Object may be decomposed into sub-shapes for dynamic selection. The most used Interactive Object is AIS_Shape.
 ") AcceptShapeDecomposition;
 		virtual Standard_Boolean AcceptShapeDecomposition();
 
@@ -1871,7 +1912,7 @@ None
 
 Description
 -----------
-Adds the selection aselection with the selection mode index amode to this framework.
+Adds the selection aSelection with the selection mode index aMode to this framework.
 ") AddSelection;
 		void AddSelection(const opencascade::handle<SelectMgr_Selection> & aSelection, const Standard_Integer aMode);
 
@@ -1907,7 +1948,7 @@ None
 
 Description
 -----------
-Method that needs to be implemented when the object manages selection and dynamic highlighting on its own. clears or invalidates dynamic highlight presentation. by default it clears immediate draw of given presentation manager.
+Method that needs to be implemented when the object manages selection and dynamic highlighting on its own. Clears or invalidates dynamic highlight presentation. By default it clears immediate draw of given presentation manager.
 ") ClearDynamicHighlight;
 		virtual void ClearDynamicHighlight(const opencascade::handle<PrsMgr_PresentationManager> & theMgr);
 
@@ -1938,7 +1979,7 @@ None
 
 Description
 -----------
-Empties all the selections in the selectableobject <update> parameter defines whether all object's selections should be flagged for further update or not. this improved method can be used to recompute an object's selection (without redisplaying the object completely) when some selection mode is activated not for the first time.
+Empties all the selections in the SelectableObject <update> parameter defines whether all object's selections should be flagged for further update or not. This improved method can be used to recompute an object's selection (without redisplaying the object completely) when some selection mode is activated not for the first time.
 ") ClearSelections;
 		void ClearSelections(const Standard_Boolean update = Standard_False);
 
@@ -1957,7 +1998,9 @@ None
 
 Description
 -----------
-Computes sensitive primitives for the given selection mode - key interface method of selectable object. @param theselection selection to fill @param themode selection mode to create sensitive primitives.
+Computes sensitive primitives for the given selection mode - key interface method of Selectable Object. 
+Parameter theSelection selection to fill 
+Parameter theMode selection mode to create sensitive primitives.
 ") ComputeSelection;
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
 
@@ -1996,7 +2039,7 @@ None
 
 Description
 -----------
-Removes presentations returned by gethilightpresentation() and getselectpresentation().
+Removes presentations returned by GetHilightPresentation() and GetSelectPresentation().
 ") ErasePresentations;
 		virtual void ErasePresentations(Standard_Boolean theToRemove);
 
@@ -2027,7 +2070,9 @@ opencascade::handle<Prs3d_Presentation>
 
 Description
 -----------
-Creates or returns existing presentation for highlighting detected object. @param theprsmgr presentation manager to create new presentation return existing or newly created presentation (when theprsmgr is not null).
+Creates or returns existing presentation for highlighting detected object. 
+Parameter thePrsMgr presentation manager to create new presentation 
+Return: existing or newly created presentation (when thePrsMgr is not NULL).
 ") GetHilightPresentation;
 		opencascade::handle<Prs3d_Presentation> GetHilightPresentation(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr);
 
@@ -2045,7 +2090,9 @@ opencascade::handle<Prs3d_Presentation>
 
 Description
 -----------
-Creates or returns existing presentation for highlighting selected object. @param theprsmgr presentation manager to create new presentation return existing or newly created presentation (when theprsmgr is not null).
+Creates or returns existing presentation for highlighting selected object. 
+Parameter thePrsMgr presentation manager to create new presentation 
+Return: existing or newly created presentation (when thePrsMgr is not NULL).
 ") GetSelectPresentation;
 		opencascade::handle<Prs3d_Presentation> GetSelectPresentation(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr);
 
@@ -2089,7 +2136,7 @@ bool
 
 Description
 -----------
-Returns true if a selection corresponding to the selection mode themode was computed for this object.
+Returns true if a selection corresponding to the selection mode theMode was computed for this object.
 ") HasSelection;
 		Standard_Boolean HasSelection(const Standard_Integer theMode);
 
@@ -2141,7 +2188,7 @@ bool
 
 Description
 -----------
-If returns true, the old mechanism for highlighting selected objects is used (hilightselected method may be empty). if returns false, the hilightselected method will be fully responsible for highlighting selected entity owners belonging to this selectable object.
+If returns True, the old mechanism for highlighting selected objects is used (HilightSelected Method may be empty). If returns False, the HilightSelected method will be fully responsible for highlighting selected entity owners belonging to this selectable object.
 ") IsAutoHilight;
 		virtual Standard_Boolean IsAutoHilight();
 
@@ -2154,7 +2201,7 @@ None
 
 Description
 -----------
-Re-computes the sensitive primitives for all modes. important: do not use this method to update selection primitives except implementing custom selection manager! this method does not take into account necessary bvh updates, but may invalidate the pointers it refers to. to update selection properly from outside classes, use method updateselection.
+Re-computes the sensitive primitives for all modes. IMPORTANT: Do not use this method to update selection primitives except implementing custom selection manager! This method does not take into account necessary BVH updates, but may invalidate the pointers it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
 ") RecomputePrimitives;
 		void RecomputePrimitives();
 
@@ -2172,7 +2219,7 @@ None
 
 Description
 -----------
-Re-computes the sensitive primitives which correspond to the <themode>th selection mode. important: do not use this method to update selection primitives except implementing custom selection manager! selection manager! this method does not take into account necessary bvh updates, but may invalidate the pointers it refers to. to update selection properly from outside classes, use method updateselection.
+Re-computes the sensitive primitives which correspond to the <theMode>th selection mode. IMPORTANT: Do not use this method to update selection primitives except implementing custom selection manager! selection manager! This method does not take into account necessary BVH updates, but may invalidate the pointers it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
 ") RecomputePrimitives;
 		void RecomputePrimitives(const Standard_Integer theMode);
 
@@ -2203,7 +2250,7 @@ opencascade::handle<SelectMgr_Selection>
 
 Description
 -----------
-Returns the selection having specified selection mode or null.
+Returns the selection having specified selection mode or NULL.
 ") Selection;
 		const opencascade::handle<SelectMgr_Selection> & Selection(const Standard_Integer theMode);
 
@@ -2253,7 +2300,7 @@ None
 
 Description
 -----------
-Set autohilight property to true or false.
+Set AutoHilight property to true or false.
 ") SetAutoHilight;
 		virtual void SetAutoHilight(const Standard_Boolean theAutoHilight);
 
@@ -2271,7 +2318,7 @@ None
 
 Description
 -----------
-Set z layer id and update all presentations of the selectable object. the layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
+Set Z layer ID and update all presentations of the selectable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayerId);
 
@@ -2289,7 +2336,7 @@ None
 
 Description
 -----------
-Sets update status full to selections of the object. must be used as the only method of updateselection from outer classes to prevent bvh structures from being outdated.
+Sets update status FULL to selections of the object. Must be used as the only method of UpdateSelection from outer classes to prevent BVH structures from being outdated.
 ") UpdateSelection;
 		void UpdateSelection(const Standard_Integer theMode = -1);
 
@@ -2302,7 +2349,7 @@ None
 
 Description
 -----------
-Recomputes the location of the selection aselection.
+Recomputes the location of the selection aSelection.
 ") UpdateTransformation;
 		virtual void UpdateTransformation();
 
@@ -2320,7 +2367,7 @@ None
 
 Description
 -----------
-Updates locations in all sensitive entities from <aselection> and in corresponding entity owners.
+Updates locations in all sensitive entities from <aSelection> and in corresponding entity owners.
 ") UpdateTransformations;
 		virtual void UpdateTransformations(const opencascade::handle<SelectMgr_Selection> & aSelection);
 
@@ -2346,7 +2393,9 @@ enum BVHSubset {
 	BVHSubset_3d = 0,
 	BVHSubset_3dPersistent = 1,
 	BVHSubset_2dPersistent = 2,
-	BVHSubsetNb = 3,
+	BVHSubset_ortho3dPersistent = 3,
+	BVHSubset_ortho2dPersistent = 4,
+	BVHSubsetNb = 5,
 };
 
 /* end public enums declaration */
@@ -2358,10 +2407,14 @@ class BVHSubset(IntEnum):
 	BVHSubset_3d = 0
 	BVHSubset_3dPersistent = 1
 	BVHSubset_2dPersistent = 2
-	BVHSubsetNb = 3
+	BVHSubset_ortho3dPersistent = 3
+	BVHSubset_ortho2dPersistent = 4
+	BVHSubsetNb = 5
 BVHSubset_3d = BVHSubset.BVHSubset_3d
 BVHSubset_3dPersistent = BVHSubset.BVHSubset_3dPersistent
 BVHSubset_2dPersistent = BVHSubset.BVHSubset_2dPersistent
+BVHSubset_ortho3dPersistent = BVHSubset.BVHSubset_ortho3dPersistent
+BVHSubset_ortho2dPersistent = BVHSubset.BVHSubset_ortho2dPersistent
 BVHSubsetNb = BVHSubset.BVHSubsetNb
 };
 /* end python proxy for enums */
@@ -2375,7 +2428,7 @@ None
 
 Description
 -----------
-Creates new empty objects set and initializes bvh tree builders for each subset.
+Creates new empty objects set and initializes BVH tree builders for each subset.
 ") SelectMgr_SelectableObjectSet;
 		 SelectMgr_SelectableObjectSet();
 
@@ -2393,7 +2446,8 @@ bool
 
 Description
 -----------
-Adds the new selectable object to the set. the selectable object is placed into one of the predefined subsets depending on its persistence type. after adding an object, this method marks the corresponding bvh tree for rebuild. return true if selectable object is added, otherwise returns false (selectable object is already in the set).
+Adds the new selectable object to the set. The selectable object is placed into one of the predefined subsets depending on its persistence type. After adding an object, this method marks the corresponding BVH tree for rebuild. 
+Return: true if selectable object is added, otherwise returns false (selectable object is already in the set).
 ") Append;
 		Standard_Boolean Append(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -2411,7 +2465,7 @@ opencascade::handle<BVH_Tree<float, 3>>
 
 Description
 -----------
-Returns computed bvh for the thesubset given.
+Returns computed BVH for the theSubset given.
 ") BVH;
 		const opencascade::handle<BVH_Tree<Standard_Real, 3>> & BVH(BVHSubset theSubset);
 
@@ -2429,7 +2483,7 @@ None
 
 Description
 -----------
-Performs necessary updates when object's persistence types changes. this method should be called right after changing transformation persistence flags of the objects and before updating bvh tree - to provide up-to-date state of the object set.
+Performs necessary updates when object's persistence types changes. This method should be called right after changing transformation persistence flags of the objects and before updating BVH tree - to provide up-to-date state of the object set.
 ") ChangeSubset;
 		void ChangeSubset(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -2447,7 +2501,7 @@ bool
 
 Description
 -----------
-Returns true if this objects set contains theobject given.
+Returns true if this objects set contains theObject given.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -2487,7 +2541,7 @@ opencascade::handle<SelectMgr_SelectableObject>
 
 Description
 -----------
-Returns object from subset thesubset by theindex given. the method allows to get selectable object referred by the index of an element of the subset's bvh tree.
+Returns object from subset theSubset by theIndex given. The method allows to get selectable object referred by the index of an element of the subset's BVH tree.
 ") GetObjectById;
 		const opencascade::handle<SelectMgr_SelectableObject> & GetObjectById(BVHSubset theSubset, const Standard_Integer theIndex);
 
@@ -2531,7 +2585,7 @@ None
 
 Description
 -----------
-Marks every bvh subset for update.
+Marks every BVH subset for update.
 ") MarkDirty;
 		void MarkDirty();
 
@@ -2549,7 +2603,8 @@ bool
 
 Description
 -----------
-Removes the selectable object from the set. the selectable object is removed from the subset it has been placed into. after removing an object, this method marks the corresponding bvh tree for rebuild. return true if selectable object is removed, otherwise returns false (selectable object is not in the set).
+Removes the selectable object from the set. The selectable object is removed from the subset it has been placed into. After removing an object, this method marks the corresponding BVH tree for rebuild. 
+Return: true if selectable object is removed, otherwise returns false (selectable object is not in the set).
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -2568,7 +2623,7 @@ None
 
 Description
 -----------
-Updates outdated bvh trees and remembers the last state of the camera view-projection matrices and viewport (window) dimensions.
+Updates outdated BVH trees and remembers the last state of the camera view-projection matrices and viewport (window) dimensions.
 ") UpdateBVH;
 		void UpdateBVH(const opencascade::handle<Graphic3d_Camera> & theCam, const Graphic3d_Vec2i & theWinSize);
 
@@ -2608,7 +2663,7 @@ opencascade::handle<SelectMgr_BaseIntersector>
 
 Description
 -----------
-Returns active selecting volume that was built during last run of occt selection mechanism.
+Returns active selecting volume that was built during last run of OCCT selection mechanism.
 ") ActiveVolume;
 		const opencascade::handle<SelectMgr_BaseIntersector> & ActiveVolume();
 
@@ -2626,7 +2681,7 @@ None
 
 Description
 -----------
-If theistoallow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
+If theIsToAllow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
 ") AllowOverlapDetection;
 		virtual void AllowOverlapDetection(const Standard_Boolean theIsToAllow);
 
@@ -2711,6 +2766,24 @@ Returns current camera definition.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/****** SelectMgr_SelectingVolumeManager::CopyWithBuilder ******/
+		/****** md5 signature: 2914cc86267e3fe7e35ac82856379325 ******/
+		%feature("compactdefaultargs") CopyWithBuilder;
+		%feature("autodoc", "
+Parameters
+----------
+theBuilder: SelectMgr_FrustumBuilder
+
+Return
+-------
+SelectMgr_SelectingVolumeManager
+
+Description
+-----------
+Returns a copy of the selecting volume manager and its active frustum re-constructed using the passed builder. Builder is an argument that represents corresponding settings for re-constructing transformed frustum from scratch.
+") CopyWithBuilder;
+		virtual SelectMgr_SelectingVolumeManager CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+
 		/****** SelectMgr_SelectingVolumeManager::DetectedPoint ******/
 		/****** md5 signature: f5119614d059d473f2e98823f778528f ******/
 		%feature("compactdefaultargs") DetectedPoint;
@@ -2725,7 +2798,7 @@ gp_Pnt
 
 Description
 -----------
-Calculates the point on a view ray that was detected during the run of selection algo by given depth. throws exception if active selection type is not point.
+Calculates the point on a view ray that was detected during the run of selection algo by given depth. Throws exception if active selection type is not Point.
 ") DetectedPoint;
 		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
 
@@ -2743,7 +2816,7 @@ float
 
 Description
 -----------
-Measures distance between 3d projection of user-picked screen point and given point thecog.
+Measures distance between 3d projection of user-picked screen point and given point theCOG.
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
@@ -2790,7 +2863,7 @@ gp_Pnt
 
 Description
 -----------
-Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
+Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
 ") GetFarPickedPnt;
 		virtual gp_Pnt GetFarPickedPnt();
 
@@ -2803,7 +2876,8 @@ gp_Pnt2d
 
 Description
 -----------
-Returns mouse coordinates for point selection mode. return infinite point in case of unsupport of mouse position for this active selection volume.
+Returns mouse coordinates for Point selection mode. 
+Return: infinite point in case of unsupport of mouse position for this active selection volume.
 ") GetMousePosition;
 		virtual gp_Pnt2d GetMousePosition();
 
@@ -2816,7 +2890,7 @@ gp_Pnt
 
 Description
 -----------
-Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
+Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
 ") GetNearPickedPnt;
 		virtual gp_Pnt GetNearPickedPnt();
 
@@ -2834,7 +2908,7 @@ None
 
 Description
 -----------
-Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector.
+Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector.
 ") GetPlanes;
 		virtual void GetPlanes(NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
 
@@ -2860,7 +2934,7 @@ gp_Dir
 
 Description
 -----------
-Valid only for point and rectangular selection. returns view ray direction.
+Valid only for point and rectangular selection. Returns view ray direction.
 ") GetViewRayDirection;
 		virtual gp_Dir GetViewRayDirection();
 
@@ -3010,7 +3084,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given axis-aligned box.
+SAT intersection test between defined volume and given axis-aligned box.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, SelectBasics_PickResult & thePickResult);
 
@@ -3030,7 +3104,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
 
@@ -3051,7 +3125,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, SelectBasics_PickResult & thePickResult);
 
@@ -3072,7 +3146,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
 
@@ -3095,7 +3169,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, SelectBasics_PickResult & thePickResult);
 
@@ -3118,7 +3192,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
@@ -3175,7 +3249,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
+SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
 		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
@@ -3257,7 +3331,7 @@ bool
 
 Description
 -----------
-Sat intersection test between defined volume and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
+SAT intersection test between defined volume and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
 		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
@@ -3277,7 +3351,7 @@ SelectMgr_SelectingVolumeManager
 
 Description
 -----------
-Important: scaling makes sense only for frustum built on a single point! note that this method does not perform any checks on type of the frustum. //! returns a copy of the frustum resized according to the scale factor given and transforms it using the matrix given. there are no default parameters, but in case if: - transformation only is needed: @thescalefactor must be initialized as any negative value; - scale only is needed: @thetrsf must be set to gp_identity. builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. can be null if reconstruction is not expected furthermore.
+IMPORTANT: Scaling makes sense only for frustum built on a single point! Note that this method does not perform any checks on type of the frustum. //! Returns a copy of the frustum resized according to the scale factor given and transforms it using the matrix given. There are no default parameters, but in case if: - transformation only is needed: @theScaleFactor must be initialized as any negative value; - scale only is needed: @theTrsf must be set to gp_Identity. Builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. Can be null if reconstruction is not expected furthermore.
 ") ScaleAndTransform;
 		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
@@ -3295,7 +3369,7 @@ None
 
 Description
 -----------
-Updates camera projection and orientation matrices in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
+Updates camera projection and orientation matrices in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetCamera;
 		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -3313,7 +3387,7 @@ None
 
 Description
 -----------
-Updates pixel tolerance in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
+Updates pixel tolerance in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetPixelTolerance;
 		void SetPixelTolerance(const Standard_Integer theTolerance);
 
@@ -3351,7 +3425,10 @@ None
 
 Description
 -----------
-Valid for point selection only! computes depth range for clipping planes. @param theviewplanes [in] global view planes @param theobjplanes [in] object planes @param theworldselmgr [in] selection volume in world space for computing clipping plane ranges.
+Valid for point selection only! Computes depth range for clipping planes. 
+Input parameter: theViewPlanes global view planes 
+Input parameter: theObjPlanes object planes 
+Input parameter: theWorldSelMgr selection volume in world space for computing clipping plane ranges.
 ") SetViewClipping;
 		void SetViewClipping(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theViewPlanes, const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theObjPlanes, const SelectMgr_SelectingVolumeManager * theWorldSelMgr);
 
@@ -3390,7 +3467,7 @@ None
 
 Description
 -----------
-Updates viewport in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
+Updates viewport in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetViewport;
 		void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
 
@@ -3409,7 +3486,7 @@ None
 
 Description
 -----------
-Updates window size in all selecting volumes note: this method should be called after selection volume building else exception will be thrown.
+Updates window size in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetWindowSize;
 		void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
 
@@ -3485,7 +3562,7 @@ None
 
 Description
 -----------
-Constructs a selection object defined by the selection mode idmode. the default setting 0 is the selection mode for a shape in its entirety.
+Constructs a selection object defined by the selection mode IdMode. The default setting 0 is the selection mode for a shape in its entirety.
 ") SelectMgr_Selection;
 		 SelectMgr_Selection(const Standard_Integer theModeIdx = 0);
 
@@ -3503,7 +3580,7 @@ None
 
 Description
 -----------
-Adds the sensitive primitive to the list of stored entities in this object. raises nullobject if the primitive is a null handle.
+Adds the sensitive primitive to the list of stored entities in this object. Raises NullObject if the primitive is a null handle.
 ") Add;
 		void Add(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -3542,7 +3619,7 @@ None
 
 Description
 -----------
-Empties the selection from all the stored entities.
+empties the selection from all the stored entities.
 ") Clear;
 		void Clear();
 
@@ -3615,7 +3692,7 @@ bool
 
 Description
 -----------
-Returns true if no sensitive entity is stored.
+returns true if no sensitive entity is stored.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -3628,7 +3705,7 @@ int
 
 Description
 -----------
-Returns the selection mode represented by this selection.
+returns the selection mode represented by this selection.
 ") Mode;
 		Standard_Integer Mode();
 
@@ -3677,7 +3754,7 @@ None
 
 Description
 -----------
-Changes sensitivity of the selection and all its entities to the given value. important: this method does not update any outer selection structures, so for proper updates use selectmgr_selectionmanager::setselectionsensitivity method.
+Changes sensitivity of the selection and all its entities to the given value. IMPORTANT: This method does not update any outer selection structures, so for proper updates use SelectMgr_SelectionManager::SetSelectionSensitivity method.
 ") SetSensitivity;
 		void SetSensitivity(const Standard_Integer theNewSens);
 
@@ -3708,7 +3785,7 @@ SelectMgr_TypeOfUpdate
 
 Description
 -----------
-Returns the flag updateflag. this flage gives the update status of this framework in a viewerselector object: - full - partial, or - none.
+Returns the flag UpdateFlag. This flag gives the update status of this framework in a ViewerSelector object: - full - partial, or - none.
 ") UpdateStatus;
 		SelectMgr_TypeOfUpdate UpdateStatus();
 
@@ -3833,7 +3910,7 @@ None
 
 Description
 -----------
-Activates the selection mode themode in the selector theselector for the selectable object anobject. by default, themode is equal to 0. if theselector is set to default (null), the selection with the mode themode will be activated in all the viewers available.
+Activates the selection mode theMode in the selector theSelector for the selectable object anObject. By default, theMode is equal to 0. If theSelector is set to default (NULL), the selection with the mode theMode will be activated in all the viewers available.
 ") Activate;
 		void Activate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = 0);
 
@@ -3852,7 +3929,7 @@ None
 
 Description
 -----------
-Removes sensitive entities from all viewer selectors after method clear() was called to the selection they belonged to or it was recomputed somehow.
+Removes sensitive entities from all viewer selectors after method Clear() was called to the selection they belonged to or it was recomputed somehow.
 ") ClearSelectionStructures;
 		void ClearSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const Standard_Integer theMode = -1);
 
@@ -3870,7 +3947,7 @@ bool
 
 Description
 -----------
-Returns true if the manager contains the selectable object theobject.
+Returns true if the manager contains the selectable object theObject.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -3889,7 +3966,7 @@ None
 
 Description
 -----------
-Deactivates mode themode of theobject in theselector. if themode value is set to default (-1), all active selection modes will be deactivated. likewise, if theselector value is set to default (null), themode will be deactivated in all viewer selectors.
+Deactivates mode theMode of theObject in theSelector. If theMode value is set to default (-1), all active selection modes will be deactivated. Likewise, if theSelector value is set to default (NULL), theMode will be deactivated in all viewer selectors.
 ") Deactivate;
 		void Deactivate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
 
@@ -3908,7 +3985,7 @@ bool
 
 Description
 -----------
-Returns true if the selection with themode is active for the selectable object theobject and selector theselector. if all parameters are set to default values, it returns it there is any active selection in any known viewer selector for object theobject.
+Returns true if the selection with theMode is active for the selectable object theObject and selector theSelector. If all parameters are set to default values, it returns it there is any active selection in any known viewer selector for object theObject.
 ") IsActivated;
 		Standard_Boolean IsActivated(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
 
@@ -3927,7 +4004,7 @@ None
 
 Description
 -----------
-Loads and computes selection mode themode (if it is not equal to -1) in global context and adds selectable object to bvh tree. if the object theobject has an already calculated selection with mode themode and it was removed, the selection will be recalculated.
+Loads and computes selection mode theMode (if it is not equal to -1) in global context and adds selectable object to BVH tree. If the object theObject has an already calculated selection with mode theMode and it was removed, the selection will be recalculated.
 ") Load;
 		void Load(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
 
@@ -3947,7 +4024,7 @@ None
 
 Description
 -----------
-Recomputes activated selections of theobject for all known viewer selectors according to themode specified. if themode is set to default (-1), then all activated selections will be recomputed. if theisforce is set to true, then selection mode themode for object theobject will be recomputed regardless of its activation status.
+Recomputes activated selections of theObject for all known viewer selectors according to theMode specified. If theMode is set to default (-1), then all activated selections will be recomputed. If theIsForce is set to true, then selection mode theMode for object theObject will be recomputed regardless of its activation status.
 ") RecomputeSelection;
 		void RecomputeSelection(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_False, const Standard_Integer theMode = -1);
 
@@ -3965,7 +4042,7 @@ None
 
 Description
 -----------
-Removes selectable object theobject from all viewer selectors it was added to previously, removes it from all contexts and clears all computed selections of theobject.
+Removes selectable object theObject from all viewer selectors it was added to previously, removes it from all contexts and clears all computed selections of theObject.
 ") Remove;
 		void Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -3984,7 +4061,7 @@ None
 
 Description
 -----------
-Re-adds newly calculated sensitive entities of recomputed selection defined by mode themode to all viewer selectors contained that selection.
+Re-adds newly calculated sensitive entities of recomputed selection defined by mode theMode to all viewer selectors contained that selection.
 ") RestoreSelectionStructures;
 		void RestoreSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const Standard_Integer theMode = -1);
 
@@ -3997,7 +4074,7 @@ opencascade::handle<SelectMgr_ViewerSelector>
 
 Description
 -----------
-Return the selector.
+Return the Selector.
 ") Selector;
 		const opencascade::handle<SelectMgr_ViewerSelector> & Selector();
 
@@ -4017,7 +4094,7 @@ None
 
 Description
 -----------
-Allows to manage sensitivity of a particular selection of interactive object theobject and changes previous sensitivity value of all sensitive entities in selection with themode to the given thenewsensitivity.
+Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
 ") SetSelectionSensitivity;
 		void SetSelectionSensitivity(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode, const Standard_Integer theNewSens);
 
@@ -4036,7 +4113,7 @@ None
 
 Description
 -----------
-Sets type of update of all selections of theobject to the given thetype.
+Sets type of update of all selections of theObject to the given theType.
 ") SetUpdateMode;
 		void SetUpdateMode(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const SelectMgr_TypeOfUpdate theType);
 
@@ -4056,7 +4133,7 @@ None
 
 Description
 -----------
-Sets type of update of selection with themode of theobject to the given thetype.
+Sets type of update of selection with theMode of theObject to the given theType.
 ") SetUpdateMode;
 		void SetUpdateMode(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode, const SelectMgr_TypeOfUpdate theType);
 
@@ -4075,7 +4152,7 @@ None
 
 Description
 -----------
-Updates all selections of theobject in all viewer selectors according to its current update status. if theisforce is set to true, the call is equal to recomputation.
+Updates all selections of theObject in all viewer selectors according to its current update status. If theIsForce is set to true, the call is equal to recomputation.
 ") Update;
 		void Update(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_True);
 
@@ -4093,7 +4170,7 @@ None
 
 Description
 -----------
-Re-adds selectable object in bvhs in all viewer selectors.
+Re-adds selectable object in BVHs in all viewer selectors.
 ") UpdateSelection;
 		void UpdateSelection(const opencascade::handle<SelectMgr_SelectableObject> & theObj);
 
@@ -4127,7 +4204,7 @@ None
 
 Description
 -----------
-Creates new inactive for selection object with base entity theentity.
+Creates new inactive for selection object with base entity theEntity.
 ") SelectMgr_SensitiveEntity;
 		 SelectMgr_SensitiveEntity(const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
 
@@ -4140,7 +4217,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 
 Description
 -----------
-Returns related instance of selectbasics class.
+Returns related instance of SelectBasics class.
 ") BaseSensitive;
 		const opencascade::handle<Select3D_SensitiveEntity> & BaseSensitive();
 
@@ -4265,7 +4342,7 @@ None
 
 Description
 -----------
-Adds new entity to the set and marks bvh tree for rebuild.
+Adds new entity to the set and marks BVH tree for rebuild.
 ") Append;
 		void Append(const opencascade::handle<SelectMgr_SensitiveEntity> & theEntity);
 
@@ -4283,7 +4360,7 @@ None
 
 Description
 -----------
-Adds every entity of selection theselection to the set and marks bvh tree for rebuild.
+Adds every entity of selection theSelection to the set and marks BVH tree for rebuild.
 ") Append;
 		void Append(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -4301,7 +4378,7 @@ Select3D_BndBox3d
 
 Description
 -----------
-Returns bounding box of entity with index theidx.
+Returns bounding box of entity with index theIdx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIndex);
 
@@ -4320,7 +4397,7 @@ float
 
 Description
 -----------
-Returns geometry center of sensitive entity index theidx along the given axis theaxis.
+Returns geometry center of sensitive entity index theIdx along the given axis theAxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIndex, const Standard_Integer theAxis);
 
@@ -4338,7 +4415,7 @@ opencascade::handle<SelectMgr_SensitiveEntity>
 
 Description
 -----------
-Returns the entity with index theindex in the set.
+Returns the entity with index theIndex in the set.
 ") GetSensitiveById;
 		const opencascade::handle<SelectMgr_SensitiveEntity> & GetSensitiveById(const Standard_Integer theIndex);
 
@@ -4382,7 +4459,7 @@ None
 
 Description
 -----------
-Removes every entity of selection theselection from the set and marks bvh tree for rebuild.
+Removes every entity of selection theSelection from the set and marks BVH tree for rebuild.
 ") Remove;
 		void Remove(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -4427,7 +4504,7 @@ None
 
 Description
 -----------
-Swaps items with indexes theidx1 and theidx2.
+Swaps items with indexes theIdx1 and theIdx2.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
 
@@ -4445,15 +4522,6 @@ Swaps items with indexes theidx1 and theidx2.
 ********************************/
 class SelectMgr_SortCriterion {
 	public:
-		opencascade::handle<Select3D_SensitiveEntity > Entity;
-		gp_Pnt Point;
-		Graphic3d_Vec3 Normal;
-		float Depth;
-		float MinDist;
-		float Tolerance;
-		int Priority;
-		int ZLayerPosition;
-		int NbOwnerMatches;
 		/****** SelectMgr_SortCriterion::SelectMgr_SortCriterion ******/
 		/****** md5 signature: 7c43477619c7a9df7500d7db5ac6145a ******/
 		%feature("compactdefaultargs") SelectMgr_SortCriterion;
@@ -4481,7 +4549,7 @@ bool
 
 Description
 -----------
-Compare with another item by depth, priority and mindist.
+Compare with another item by depth, priority and minDist.
 ") IsCloserDepth;
 		bool IsCloserDepth(const SelectMgr_SortCriterion & theOther);
 
@@ -4499,7 +4567,7 @@ bool
 
 Description
 -----------
-Compare with another item using old logic (occt version <= 6.3.1) with priority considered preceding depth.
+Compare with another item using old logic (OCCT version <= 6.3.1) with priority considered preceding depth.
 ") IsHigherPriority;
 		bool IsHigherPriority(const SelectMgr_SortCriterion & theOther);
 
@@ -4544,7 +4612,7 @@ None
 
 Description
 -----------
-Adds the value given to map, checks if the current tolerance value should be replaced by thetolerance.
+Adds the value given to map, checks if the current tolerance value should be replaced by theTolerance.
 ") Add;
 		void Add(const Standard_Integer & theTolerance);
 
@@ -4696,7 +4764,7 @@ None
 
 Description
 -----------
-Add clipping planes. planes and picking ray should be defined in the same coordinate system.
+Add clipping planes. Planes and picking ray should be defined in the same coordinate system.
 ") AddClippingPlanes;
 		void AddClippingPlanes(const Graphic3d_SequenceOfHClipPlane & thePlanes, const gp_Ax1 & thePickRay);
 
@@ -4748,7 +4816,7 @@ theDepth: float
 
 Description
 -----------
-Calculates the min not clipped value from the range. returns false if the whole range is clipped.
+Calculates the min not clipped value from the range. Returns False if the whole range is clipped.
 ") GetNearestDepth;
 		Standard_Boolean GetNearestDepth(const Bnd_Range & theRange, Standard_Real &OutValue);
 
@@ -4766,7 +4834,7 @@ bool
 
 Description
 -----------
-Check if the given depth is not within clipping range(s), e.g. true means depth is clipped.
+Check if the given depth is not within clipping range(s), e.g. True means depth is clipped.
 ") IsClipped;
 		Standard_Boolean IsClipped(const Standard_Real theDepth);
 
@@ -4861,7 +4929,7 @@ None
 
 Description
 -----------
-Adds new selection to the object and builds its bvh tree.
+Adds new selection to the object and builds its BVH tree.
 ") AddSelectionToObject;
 		void AddSelectionToObject(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -4879,7 +4947,7 @@ None
 
 Description
 -----------
-Is used for rectangular selection only if theistoallow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
+Is used for rectangular selection only If theIsToAllow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
 ") AllowOverlapDetection;
 		void AllowOverlapDetection(const Standard_Boolean theIsToAllow);
 
@@ -4980,7 +5048,7 @@ SelectMgr_TypeOfDepthTolerance
 
 Description
 -----------
-Return the type of tolerance for considering two entities having a similar depth (distance from eye to entity); selectmgr_typeofdepthtolerance_sensitivityfactor by default.
+Return the type of tolerance for considering two entities having a similar depth (distance from eye to entity); SelectMgr_TypeOfDepthTolerance_SensitivityFactor by default.
 ") DepthToleranceType;
 		SelectMgr_TypeOfDepthTolerance DepthToleranceType();
 
@@ -4998,7 +5066,7 @@ None
 
 Description
 -----------
-Displays sensitives in view <theview>.
+Displays sensitives in view <theView>.
 ") DisplaySensitive;
 		void DisplaySensitive(const opencascade::handle<V3d_View> & theView);
 
@@ -5053,7 +5121,7 @@ opencascade::handle<Select3D_BVHBuilder3d>
 
 Description
 -----------
-Returns the default builder used to construct bvh of entity set.
+Returns the default builder used to construct BVH of entity set.
 ") EntitySetBuilder;
 		const opencascade::handle<Select3D_BVHBuilder3d> EntitySetBuilder();
 
@@ -5085,7 +5153,7 @@ bool
 
 Description
 -----------
-Returns true if the selectable object aselectableobject having the selection mode amode is active in this selector.
+Returns true if the selectable object aSelectableObject having the selection mode aMode is active in this selector.
 ") IsActive;
 		Standard_Boolean IsActive(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const Standard_Integer theMode);
 
@@ -5104,7 +5172,7 @@ bool
 
 Description
 -----------
-Returns true if the selectable object aselectableobject having the selection mode amode is in this selector.
+Returns true if the selectable object aSelectableObject having the selection mode aMode is in this selector.
 ") IsInside;
 		Standard_Boolean IsInside(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const Standard_Integer theMode);
 
@@ -5124,7 +5192,7 @@ bool
 
 Description
 -----------
-Returns the list of selection modes modelist found in this selector for the selectable object aselectableobject. returns true if aselectableobject is referenced inside this selector; returns false if the object is not present in this selector.
+Returns the list of selection modes ModeList found in this selector for the selectable object aSelectableObject. Returns true if aSelectableObject is referenced inside this selector; returns false if the object is not present in this selector.
 ") Modes;
 		Standard_Boolean Modes(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, TColStd_ListOfInteger & theModeList, const SelectMgr_StateOfSelection theWantedState = SelectMgr_SOS_Any);
 
@@ -5188,7 +5256,7 @@ None
 
 Description
 -----------
-Picks the sensitive entity at the pixel coordinates of the mouse <thexpix> and <theypix>. the selector looks for touched areas and owners.
+Picks the sensitive entity at the pixel coordinates of the mouse <theXPix> and <theYPix>. The selector looks for touched areas and owners.
 ") Pick;
 		void Pick(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView);
 
@@ -5210,7 +5278,7 @@ None
 
 Description
 -----------
-Picks the sensitive entity according to the minimum and maximum pixel values <thexpmin>, <theypmin>, <thexpmax> and <theypmax> defining a 2d area for selection in the 3d view aview.
+Picks the sensitive entity according to the minimum and maximum pixel values <theXPMin>, <theYPMin>, <theXPMax> and <theYPMax> defining a 2D area for selection in the 3D view aView.
 ") Pick;
 		void Pick(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView);
 
@@ -5229,7 +5297,7 @@ None
 
 Description
 -----------
-Pick action - input pixel values for polyline selection for selection.
+pick action - input pixel values for polyline selection for selection.
 ") Pick;
 		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
 
@@ -5248,7 +5316,7 @@ None
 
 Description
 -----------
-Picks the sensitive entity according to the input axis. this is geometric intersection 3d objects by axis (camera parameters are ignored and objects with transform persistance are skipped).
+Picks the sensitive entity according to the input axis. This is geometric intersection 3D objects by axis (camera parameters are ignored and objects with transform persistence are skipped).
 ") Pick;
 		void Pick(const gp_Ax1 & theAxis, const opencascade::handle<V3d_View> & theView);
 
@@ -5266,7 +5334,8 @@ opencascade::handle<SelectMgr_EntityOwner>
 
 Description
 -----------
-Returns the entity owner for the object picked at specified position. @param therank rank of detected object within range 1...nbpicked().
+Returns the entity Owner for the object picked at specified position. 
+Parameter theRank rank of detected object within range 1...NbPicked().
 ") Picked;
 		opencascade::handle<SelectMgr_EntityOwner> Picked(const Standard_Integer theRank);
 
@@ -5284,7 +5353,8 @@ SelectMgr_SortCriterion
 
 Description
 -----------
-Returns the entity for the object picked at specified position. @param therank rank of detected object within range 1...nbpicked().
+Returns the Entity for the object picked at specified position. 
+Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedData;
 		const SelectMgr_SortCriterion & PickedData(const Standard_Integer theRank);
 
@@ -5302,7 +5372,8 @@ opencascade::handle<Select3D_SensitiveEntity>
 
 Description
 -----------
-Returns the entity for the object picked at specified position. @param therank rank of detected object within range 1...nbpicked().
+Returns the Entity for the object picked at specified position. 
+Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedEntity;
 		const opencascade::handle<Select3D_SensitiveEntity> & PickedEntity(const Standard_Integer theRank);
 
@@ -5320,7 +5391,8 @@ gp_Pnt
 
 Description
 -----------
-Returns the 3d point (intersection of picking axis with the object nearest to eye) for the object picked at specified position. @param therank rank of detected object within range 1...nbpicked().
+Returns the 3D point (intersection of picking axis with the object nearest to eye) for the object picked at specified position. 
+Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedPoint;
 		gp_Pnt PickedPoint(const Standard_Integer theRank);
 
@@ -5351,7 +5423,7 @@ None
 
 Description
 -----------
-Queues a sensitive entity to build its bvh.
+Queues a sensitive entity to build its BVH.
 ") QueueBVHBuild;
 		void QueueBVHBuild(const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
 
@@ -5369,7 +5441,7 @@ None
 
 Description
 -----------
-Marks bvh of selectable objects for rebuild. parameter theisforce set as true guarantees that 1st level bvh for the viewer selector will be rebuilt during this call.
+Marks BVH of selectable objects for rebuild. Parameter theIsForce set as true guarantees that 1st level BVH for the viewer selector will be rebuilt during this call.
 ") RebuildObjectsTree;
 		void RebuildObjectsTree(const Standard_Boolean theIsForce = Standard_False);
 
@@ -5388,7 +5460,7 @@ None
 
 Description
 -----------
-Marks bvh of sensitive entities of particular selectable object for rebuild. parameter theisforce set as true guarantees that 2nd level bvh for the object given will be rebuilt during this call.
+Marks BVH of sensitive entities of particular selectable object for rebuild. Parameter theIsForce set as true guarantees that 2nd level BVH for the object given will be rebuilt during this call.
 ") RebuildSensitivesTree;
 		void RebuildSensitivesTree(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_False);
 
@@ -5443,7 +5515,7 @@ None
 
 Description
 -----------
-Removes selection of the object and marks its bvh tree for rebuild.
+Removes selection of the object and marks its BVH tree for rebuild.
 ") RemoveSelectionOfObject;
 		void RemoveSelectionOfObject(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -5501,7 +5573,9 @@ None
 
 Description
 -----------
-Set the tolerance for considering two entities having a similar depth (distance from eye to entity). @param thetype [in] type of tolerance value @param thetolerance [in] tolerance value in 3d scale (selectmgr_typeofdepthtolerance_uniform)  or in pixels (selectmgr_typeofdepthtolerance_uniformpixels);  value is ignored in case of selectmgr_typeofdepthtolerance_sensitivityfactor.
+Set the tolerance for considering two entities having a similar depth (distance from eye to entity). 
+Input parameter: theType type of tolerance value 
+Input parameter: theTolerance tolerance value in 3D scale (SelectMgr_TypeOfDepthTolerance_Uniform)  or in pixels (SelectMgr_TypeOfDepthTolerance_UniformPixels);  value is ignored in case of  SelectMgr_TypeOfDepthTolerance_SensitivityFactor.
 ") SetDepthTolerance;
 		void SetDepthTolerance(SelectMgr_TypeOfDepthTolerance theType, Standard_Real theTolerance);
 
@@ -5519,7 +5593,7 @@ None
 
 Description
 -----------
-Sets the default builder used to construct bvh of entity set. the new builder will be also assigned for already defined objects, but computed bvh trees will not be invalidated.
+Sets the default builder used to construct BVH of entity set. The new builder will be also assigned for already defined objects, but computed BVH trees will not be invalidated.
 ") SetEntitySetBuilder;
 		void SetEntitySetBuilder(const opencascade::handle<Select3D_BVHBuilder3d> & theBuilder);
 
@@ -5555,7 +5629,7 @@ None
 
 Description
 -----------
-Sets the pixel tolerance <thetolerance>.
+Sets the pixel tolerance <theTolerance>.
 ") SetPixelTolerance;
 		void SetPixelTolerance(const Standard_Integer theTolerance);
 
@@ -5574,7 +5648,7 @@ None
 
 Description
 -----------
-Enables/disables building bvh for sensitives in separate threads.
+Enables/disables building BVH for sensitives in separate threads.
 ") SetToPrebuildBVH;
 		void SetToPrebuildBVH(Standard_Boolean theToPrebuild, Standard_Integer theThreadsNum = -1);
 
@@ -5605,7 +5679,7 @@ SelectMgr_StateOfSelection
 
 Description
 -----------
-Returns the selection status status of the selection aselection.
+Returns the selection status Status of the selection aSelection.
 ") Status;
 		SelectMgr_StateOfSelection Status(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -5636,7 +5710,7 @@ bool
 
 Description
 -----------
-Return the flag determining precedence of picked depth (distance from eye to entity) over entity priority in sorted results; true by default. when flag is true, priority will be considered only if entities have the same depth within the tolerance. when flag is false, entities with higher priority will be in front regardless of their depth (like x-ray).
+Return the flag determining precedence of picked depth (distance from eye to entity) over entity priority in sorted results; True by default. When flag is True, priority will be considered only if entities have the same depth within the tolerance. When flag is False, entities with higher priority will be in front regardless of their depth (like x-ray).
 ") ToPickClosest;
 		bool ToPickClosest();
 
@@ -5649,7 +5723,7 @@ bool
 
 Description
 -----------
-Returns true if building bvh for sensitives in separate threads is enabled.
+Returns True if building BVH for sensitives in separate threads is enabled.
 ") ToPrebuildBVH;
 		Standard_Boolean ToPrebuildBVH();
 
@@ -5662,7 +5736,7 @@ None
 
 Description
 -----------
-Waits bvh threads finished building.
+Waits BVH threads finished building.
 ") WaitForBVHBuild;
 		void WaitForBVHBuild();
 
@@ -5708,9 +5782,27 @@ None
 
 Description
 -----------
-Builds axis according to internal parameters. note: it should be called after init() method.
+Builds axis according to internal parameters. NOTE: it should be called after Init() method.
 ") Build;
 		virtual void Build();
+
+		/****** SelectMgr_AxisIntersector::CopyWithBuilder ******/
+		/****** md5 signature: 8bad58d05d1fae9bde4f830f89376dd8 ******/
+		%feature("compactdefaultargs") CopyWithBuilder;
+		%feature("autodoc", "
+Parameters
+----------
+theBuilder: SelectMgr_FrustumBuilder
+
+Return
+-------
+opencascade::handle<SelectMgr_BaseIntersector>
+
+Description
+-----------
+Returns a copy of the intersector transformed using the builder configuration given. Builder is an argument that represents corresponding settings for re-constructing transformed frustum from scratch. In this class, builder is not used and theBuilder parameter is ignored.
+") CopyWithBuilder;
+		virtual opencascade::handle<SelectMgr_BaseIntersector> CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_AxisIntersector::DetectedPoint ******/
 		/****** md5 signature: f5119614d059d473f2e98823f778528f ******/
@@ -5744,7 +5836,7 @@ float
 
 Description
 -----------
-Measures distance between start axis point and given point thecog.
+Measures distance between start axis point and given point theCOG.
 ") DistToGeometryCenter;
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
@@ -5835,7 +5927,7 @@ bool
 
 Description
 -----------
-Returns false (not applicable to this volume).
+Returns False (not applicable to this volume).
 ") IsScalable;
 		virtual Standard_Boolean IsScalable();
 
@@ -5876,7 +5968,7 @@ bool
 
 Description
 -----------
-Returns true if selecting axis intersects axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
+Returns true if selecting axis intersects axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside);
 
@@ -5898,7 +5990,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -5919,7 +6011,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by circle with radius theradius, boolean theisfilled and transformation to apply thetrsf. the position and orientation of the circle are specified via thetrsf transformation for gp::xoy() with center in gp::origin().
+Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
 
@@ -5943,7 +6035,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -5966,7 +6058,7 @@ bool
 
 Description
 -----------
-Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses thebottomrad and thetoprad, height theheight and transformation to apply thetrsf.
+Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
@@ -6025,7 +6117,7 @@ bool
 
 Description
 -----------
-Intersection test between defined axis and given ordered set of points, representing line segments. the test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
+Intersection test between defined axis and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
 		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -6066,7 +6158,7 @@ bool
 
 Description
 -----------
-Intersection test between defined axis and given sphere with center thecenter and radius theradius.
+Intersection test between defined axis and given sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
 
@@ -6087,7 +6179,7 @@ bool
 
 Description
 -----------
-Intersection test between defined axis and given sphere with center thecenter and radius theradius.
+Intersection test between defined axis and given sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -6110,7 +6202,7 @@ bool
 
 Description
 -----------
-Intersection test between defined axis and given triangle. the test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
+Intersection test between defined axis and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
 		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
@@ -6130,7 +6222,7 @@ opencascade::handle<SelectMgr_BaseIntersector>
 
 Description
 -----------
-Important: scaling doesn't make sense for this intersector. returns a copy of the intersector transformed using the matrix given. builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. can be null if reconstruction is not expected furthermore.
+IMPORTANT: Scaling doesn't make sense for this intersector. Returns a copy of the intersector transformed using the matrix given. Builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. Can be null if reconstruction is not expected furthermore.
 ") ScaleAndTransform;
 		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
@@ -6148,7 +6240,7 @@ None
 
 Description
 -----------
-Saves camera definition. do nothing for axis intersector (not applicable to this volume).
+Saves camera definition. Do nothing for axis intersector (not applicable to this volume).
 ") SetCamera;
 		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -6248,7 +6340,7 @@ bool
 
 Description
 -----------
-Returns true if the filter afilter is in this framework.
+Returns true if the filter aFilter is in this framework.
 ") IsIn;
 		Standard_Boolean IsIn(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
@@ -6266,7 +6358,7 @@ None
 
 Description
 -----------
-Removes the filter afilter from this framework.
+Removes the filter aFilter from this framework.
 ") Remove;
 		void Remove(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
@@ -6379,7 +6471,8 @@ SelectMgr_FilterType
 
 Description
 -----------
-Return a selection filter type (@sa selectmgr_filtertype).
+Return: a selection filter type (
+See also: SelectMgr_FilterType).
 ") FilterType;
 		SelectMgr_FilterType FilterType();
 
@@ -6397,7 +6490,7 @@ bool
 
 Description
 -----------
-Indicates that the selected interactive object passes the filter.
+Indicates that the selected Interactive Object passes the filter.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & theObj);
 
@@ -6433,7 +6526,8 @@ None
 
 Description
 -----------
-Sets a selection filter type. selectmgr_filtertype_or selection filter is used be default. @param thefiltertype the filter type.
+Sets a selection filter type. SelectMgr_FilterType_OR selection filter is used be default. 
+Parameter theFilterType the filter type.
 ") SetFilterType;
 		void SetFilterType(const SelectMgr_FilterType theFilterType);
 

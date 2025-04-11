@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LOCALANALYSISDOCSTRING
 "LocalAnalysis module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_localanalysis.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_localanalysis.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCALANALYSISDOCSTRING) LocalAnalysis
 
@@ -123,7 +123,7 @@ o: Standard_OStream
 
 Description
 -----------
-This class compute s and gives tools to check the local continuity between two points situated on 2 curves. //! this function gives information about a variable curvecontinuity.
+This class compute s and gives tools to check the local continuity between two points situated on 2 curves. //! This function gives information about a variable CurveContinuity.
 ") Dump;
 		static void Dump(const LocalAnalysis_SurfaceContinuity & surfconti, std::ostream &OutValue);
 
@@ -141,7 +141,7 @@ o: Standard_OStream
 
 Description
 -----------
-This function gives information about a variable surfacecontinuity.
+This function gives information about a variable SurfaceContinuity.
 ") Dump;
 		static void Dump(const LocalAnalysis_CurveContinuity & curvconti, std::ostream &OutValue);
 
@@ -185,7 +185,7 @@ None
 
 Description
 -----------
--u1 is the parameter of the point on curv1 -u2 is the parameter of the point on curv2 -order is the required continuity: geomabs_c0 geomabs_c1 geomabs_c2 geomabs_g1 geomabs_g2 //! -epsnul is used to detect a a vector with nul magnitude (in mm) //! -epsc0 is used for c0 continuity to confuse two points (in mm) //! -epsc1 is an angular tolerance in radians used for c1 continuity to compare the angle between the first derivatives //! -epsc2 is an angular tolerance in radians used for c2 continuity to compare the angle between the second derivatives //! -epsg1 is an angular tolerance in radians used for g1 continuity to compare the angle between the tangents //! -epsg2 is an angular tolerance in radians used for g2 continuity to compare the angle between the normals //! - percent: percentage of curvature variation (unitless) used for g2 continuity //! - maxlen is the maximum length of curv1 or curv2 in meters used to detect nul curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case c0 -------- - the distance between p1 and p2 with p1=curv1 (u1) and p2=curv2(u2) //! case c1 ------- //! - the angle between the first derivatives dcurv1(u1)  dcurv2(u2) -------- and --------- du  du //! - the ratio between the magnitudes of the first derivatives //! the angle value is between 0 and pi/2 //! case c2 ------- - the angle between the second derivatives 2  2 d curv1(u1) d curv2(u2) ---------- ---------- 2  2 du du //! the angle value is between 0 and pi/2 //! - the ratio between the magnitudes of the second derivatives //! case g1 ------- the angle between the tangents at each point //! the angle value is between 0 and pi/2 //! case g2 ------- -the angle between the normals at each point //! the angle value is between 0 and pi/2 //! - the relative variation of curvature: |curvat1-curvat2| ------------------ 1/2 (curvat1*curvat2) //! where curvat1 is the curvature at the first point and curvat2 the curvature at the second point.
+-u1 is the parameter of the point on Curv1 -u2 is the parameter of the point on Curv2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude (in mm) //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the tangents //! -EpsG2 is an angular tolerance in radians used for G2 continuity to compare the angle between the normals //! - percent: percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Curv1 or Curv2 in meters used to detect nul curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Curv1 (u1) and P2=Curv2(u2) //! case C1 ------- //! - the angle between the first derivatives dCurv1(u1)  dCurv2(u2) -------- and --------- du  du //! - the ratio between the magnitudes of the first derivatives //! the angle value is between 0 and PI/2 //! case C2 ------- - the angle between the second derivatives 2  2 d Curv1(u1) d Curv2(u2) ---------- ---------- 2  2 du du //! the angle value is between 0 and PI/2 //! - the ratio between the magnitudes of the second derivatives //! case G1 ------- the angle between the tangents at each point //! the angle value is between 0 and PI/2 //! case G2 ------- -the angle between the normals at each point //! the angle value is between 0 and PI/2 //! - the relative variation of curvature: |curvat1-curvat2| ------------------ 1/2 (curvat1*curvat2) //! where curvat1 is the curvature at the first point and curvat2 the curvature at the second point.
 ") LocalAnalysis_CurveContinuity;
 		 LocalAnalysis_CurveContinuity(const opencascade::handle<Geom_Curve> & Curv1, const Standard_Real u1, const opencascade::handle<Geom_Curve> & Curv2, const Standard_Real u2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real EpsG2 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
@@ -438,7 +438,7 @@ None
 
 Description
 -----------
--u1,v1 are the parameters of the point on surf1 -u2,v2 are the parameters of the point on surf2 -order is the required continuity: geomabs_c0 geomabs_c1 geomabs_c2 geomabs_g1 geomabs_g2 //! -epsnul is used to detect a a vector with nul magnitude //! -epsc0 is used for c0 continuity to confuse two points (in mm) //! -epsc1 is an angular tolerance in radians used for c1 continuity to compare the angle between the first derivatives //! -epsc2 is an angular tolerance in radians used for c2 continuity to compare the angle between the second derivatives //! -epsg1 is an angular tolerance in radians used for g1 continuity to compare the angle between the normals //! -percent: percentage of curvature variation (unitless) used for g2 continuity //! - maxlen is the maximum length of surf1 or surf2 in meters used to detect null curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case c0 -------- - the distance between p1 and p2 with p1=surf (u1,v1) and p2=surfv2(u2,v2) //! case c1 ------- //! - the angle between the first derivatives in u: //! dsurf1(u1,v1) dsurf2(u2,v2) ----------- and --------- du  du //! the angle value is between 0 and pi/2 //! - the angle between the first derivatives in v: //! dsurf1(u1,v1) dsurf2(u2,v2) -------- and --------- dv  dv //! - the ratio between the magnitudes of the first derivatives in u - the ratio between the magnitudes of the first derivatives in v //! the angle value is between 0 and pi/2 //! case c2 ------- - the angle between the second derivatives in u 2 2 d surf1(u1,v1) d surf2(u2,v2) ---------- ---------- 2 2 d u d u //! - the ratio between the magnitudes of the second derivatives in u - the ratio between the magnitudes of the second derivatives in v //! the angle value is between 0 and pi/2 //! case g1 ------- -the angle between the normals at each point the angle value is between 0 and pi/2 //! case g2 ------- - the maximum normal curvature gap between the two points.
+-u1,v1 are the parameters of the point on Surf1 -u2,v2 are the parameters of the point on Surf2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the normals //! -Percent: percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Surf1 or Surf2 in meters used to detect null curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Surf (u1,v1) and P2=Surfv2(u2,v2) //! case C1 ------- //! - the angle between the first derivatives in u: //! dSurf1(u1,v1) dSurf2(u2,v2) ----------- and --------- du  du //! the angle value is between 0 and PI/2 //! - the angle between the first derivatives in v: //! dSurf1(u1,v1) dSurf2(u2,v2) -------- and --------- dv  dv //! - the ratio between the magnitudes of the first derivatives in u - the ratio between the magnitudes of the first derivatives in v //! the angle value is between 0 and pi/2 //! case C2 ------- - the angle between the second derivatives in u 2 2 d Surf1(u1,v1) d Surf2(u2,v2) ---------- ---------- 2 2 d u d u //! - the ratio between the magnitudes of the second derivatives in u - the ratio between the magnitudes of the second derivatives in v //! the angle value is between 0 and PI/2 //! case G1 ------- -the angle between the normals at each point the angle value is between 0 and PI/2 //! case G2 ------- - the maximum normal curvature gap between the two points.
 ") LocalAnalysis_SurfaceContinuity;
 		 LocalAnalysis_SurfaceContinuity(const opencascade::handle<Geom_Surface> & Surf1, const Standard_Real u1, const Standard_Real v1, const opencascade::handle<Geom_Surface> & Surf2, const Standard_Real u2, const Standard_Real v2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-This constructor is used when we want to compute many analysis. after we use the method computeanalysis.
+This constructor is used when we want to compute many analysis. After we use the method ComputeAnalysis.
 ") LocalAnalysis_SurfaceContinuity;
 		 LocalAnalysis_SurfaceContinuity(const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 

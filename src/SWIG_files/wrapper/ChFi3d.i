@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFI3DDOCSTRING
 "ChFi3d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfi3d.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi3d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 
@@ -56,14 +56,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfi3d.html"
 #include<math_module.hxx>
 #include<Law_module.hxx>
 #include<gp_module.hxx>
-#include<GeomAdaptor_module.hxx>
-#include<TopOpeBRepDS_module.hxx>
-#include<Geom2d_module.hxx>
-#include<TColStd_module.hxx>
-#include<Bnd_module.hxx>
-#include<BRepBlend_module.hxx>
-#include<IntSurf_module.hxx>
-#include<GeomFill_module.hxx>
 #include<math_module.hxx>
 #include<Extrema_module.hxx>
 #include<IntCurveSurface_module.hxx>
@@ -76,6 +68,14 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfi3d.html"
 #include<TColGeom_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<TopOpeBRepDS_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TColStd_module.hxx>
+#include<Bnd_module.hxx>
+#include<BRepBlend_module.hxx>
+#include<IntSurf_module.hxx>
+#include<GeomFill_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -95,14 +95,6 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfi3d.html"
 %import math.i
 %import Law.i
 %import gp.i
-%import GeomAdaptor.i
-%import TopOpeBRepDS.i
-%import Geom2d.i
-%import TColStd.i
-%import Bnd.i
-%import BRepBlend.i
-%import IntSurf.i
-%import GeomFill.i
 
 %pythoncode {
 from enum import IntEnum
@@ -155,18 +147,17 @@ Parameters
 S1: BRepAdaptor_Surface
 S2: BRepAdaptor_Surface
 E: TopoDS_Edge
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
 
 Return
 -------
-int
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 
 Description
 -----------
-Returns reversed in or1 and(or) or2 if the concave edge defined by the interior of faces f1 and f2, in the neighbourhood of their boundary e is of the edge opposite to the normal of their surface support. the orientation of faces is not taken into consideration in the calculation. the function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in e.
+Returns Reversed in Or1 and(or) Or2 if the concave edge defined by the interior of faces F1 and F2, in the neighbourhood of their boundary E is of the edge opposite to the normal of their surface support. The orientation of faces is not taken into consideration in the calculation. The function returns 0 if the calculation fails (tangence), if not, it returns the number of choice of the fillet or chamfer corresponding to the orientations calculated and to the tangent to the guide line read in E.
 ") ConcaveSide;
-		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation & Or1, TopAbs_Orientation & Or2);
+		static Standard_Integer ConcaveSide(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const TopoDS_Edge & E, TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue);
 
 		/****** ChFi3d::DefineConnectType ******/
 		/****** md5 signature: cff62fae1d6d67c4fc161f59e5544eaa ******/
@@ -207,7 +198,7 @@ bool
 
 Description
 -----------
-Returns true if theedge between theface1 and theface2 is tangent.
+Returns true if theEdge between theFace1 and theFace2 is tangent.
 ") IsTangentFaces;
 		static Standard_Boolean IsTangentFaces(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomAbs_Shape Order = GeomAbs_G1);
 
@@ -217,21 +208,20 @@ Returns true if theedge between theface1 and theface2 is tangent.
 		%feature("autodoc", "
 Parameters
 ----------
-Or1: TopAbs_Orientation
-Or2: TopAbs_Orientation
 OrSave1: TopAbs_Orientation
 OrSave2: TopAbs_Orientation
 ChoixSauv: int
 
 Return
 -------
-int
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
 
 Description
 -----------
-Same as concaveside, but the orientations are logically deduced from the result of the call of concaveside on the first pair of faces of the fillet or chamnfer.
+Same as ConcaveSide, but the orientations are logically deduced from the result of the call of ConcaveSide on the first pair of faces of the fillet or chamnfer.
 ") NextSide;
-		static Standard_Integer NextSide(TopAbs_Orientation & Or1, TopAbs_Orientation & Or2, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
+		static Standard_Integer NextSide(TopAbs_Orientation &OutValue, TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave1, const TopAbs_Orientation OrSave2, const Standard_Integer ChoixSauv);
 
 		/****** ChFi3d::NextSide ******/
 		/****** md5 signature: cdb55087e2f58002d8dd06337ade33f1 ******/
@@ -239,19 +229,18 @@ Same as concaveside, but the orientations are logically deduced from the result 
 		%feature("autodoc", "
 Parameters
 ----------
-Or: TopAbs_Orientation
 OrSave: TopAbs_Orientation
 OrFace: TopAbs_Orientation
 
 Return
 -------
-None
+Or: TopAbs_Orientation
 
 Description
 -----------
-Same as the other nextside, but the calculation is done on an edge only.
+Same as the other NextSide, but the calculation is done on an edge only.
 ") NextSide;
-		static void NextSide(TopAbs_Orientation & Or, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
+		static void NextSide(TopAbs_Orientation &OutValue, const TopAbs_Orientation OrSave, const TopAbs_Orientation OrFace);
 
 		/****** ChFi3d::SameSide ******/
 		/****** md5 signature: cb26ae9b069d0a97c5fa9e8f947264b7 ******/
@@ -305,7 +294,7 @@ float
 
 Description
 -----------
-Returns the abscissa of the vertex v on the contour of index ic.
+returns the abscissa of the vertex V on the contour of index IC.
 ") Abscissa;
 		Standard_Real Abscissa(const Standard_Integer IC, const TopoDS_Vertex & V);
 
@@ -318,7 +307,7 @@ TopoDS_Shape
 
 Description
 -----------
-If (hasresult()) returns partial result if (!hasresult()).
+if (HasResult()) returns partial result if (!HasResult()).
 ") BadShape;
 		TopoDS_Shape BadShape();
 
@@ -331,7 +320,7 @@ opencascade::handle<TopOpeBRepBuild_HBuilder>
 
 Description
 -----------
-Returns the builder of topologic operations.
+Returns the Builder of topologic operations.
 ") Builder;
 		opencascade::handle<TopOpeBRepBuild_HBuilder> Builder();
 
@@ -349,7 +338,7 @@ bool
 
 Description
 -----------
-Returns true if the contour of index ic is closed.
+returns true if the contour of index IC is closed.
 ") Closed;
 		Standard_Boolean Closed(const Standard_Integer IC);
 
@@ -367,7 +356,7 @@ bool
 
 Description
 -----------
-Returns true if the contour of index ic is closed an tangent.
+returns true if the contour of index IC is closed an tangent.
 ") ClosedAndTangent;
 		Standard_Boolean ClosedAndTangent(const Standard_Integer IC);
 
@@ -380,7 +369,7 @@ None
 
 Description
 -----------
-General calculation of geometry on all edges, topologic reconstruction.
+general calculation of geometry on all edges, topologic reconstruction.
 ") Compute;
 		void Compute();
 
@@ -399,7 +388,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Returns the is'th surface calculated on the contour ic.
+Returns the IS'th surface calculated on the contour IC.
 ") ComputedSurface;
 		opencascade::handle<Geom_Surface> ComputedSurface(const Standard_Integer IC, const Standard_Integer IS);
 
@@ -417,7 +406,7 @@ int
 
 Description
 -----------
-Gives the number of the contour containing e or 0 if e does not belong to any contour.
+gives the number of the contour containing E or 0 if E does not belong to any contour.
 ") Contains;
 		Standard_Integer Contains(const TopoDS_Edge & E);
 
@@ -435,7 +424,7 @@ IndexInSpine: int
 
 Description
 -----------
-Gives the number of the contour containing e or 0 if e does not belong to any contour. sets in indexinspine the index of e in the contour if it's found.
+gives the number of the contour containing E or 0 if E does not belong to any contour. Sets in IndexInSpine the index of E in the contour if it's found.
 ") Contains;
 		Standard_Integer Contains(const TopoDS_Edge & E, Standard_Integer &OutValue);
 
@@ -453,7 +442,7 @@ int
 
 Description
 -----------
-Returns the number of i'th contour on which the calculation has failed.
+Returns the number of I'th contour on which the calculation has failed.
 ") FaultyContour;
 		Standard_Integer FaultyContour(const Standard_Integer I);
 
@@ -471,7 +460,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the iv'th vertex on which the calculation has failed.
+Returns the IV'th vertex on which the calculation has failed.
 ") FaultyVertex;
 		TopoDS_Vertex FaultyVertex(const Standard_Integer IV);
 
@@ -489,7 +478,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the first vertex v of the contour of index ic.
+returns the First vertex V of the contour of index IC.
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex(const Standard_Integer IC);
 
@@ -520,7 +509,7 @@ bool
 
 Description
 -----------
-Returns true if a partial result has been calculated.
+returns True if a partial result has been calculated.
 ") HasResult;
 		Standard_Boolean HasResult();
 
@@ -533,7 +522,7 @@ bool
 
 Description
 -----------
-Returns true if the computation is success.
+returns True if the computation is success.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -551,7 +540,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the last vertex v of the contour of index ic.
+returns the Last vertex V of the contour of index IC.
 ") LastVertex;
 		TopoDS_Vertex LastVertex(const Standard_Integer IC);
 
@@ -569,7 +558,7 @@ float
 
 Description
 -----------
-Returns the length of the contour of index ic.
+returns the length of the contour of index IC.
 ") Length;
 		Standard_Real Length(const Standard_Integer IC);
 
@@ -587,7 +576,7 @@ int
 
 Description
 -----------
-Returns the number of surfaces calculated on the contour ic.
+Returns the number of surfaces calculated on the contour IC.
 ") NbComputedSurfaces;
 		Standard_Integer NbComputedSurfaces(const Standard_Integer IC);
 
@@ -600,7 +589,7 @@ int
 
 Description
 -----------
-Gives the number of disjoint contours on which the fillets are calculated.
+gives the number of disjoint contours on which the fillets are calculated.
 ") NbElements;
 		Standard_Integer NbElements();
 
@@ -663,7 +652,7 @@ float
 
 Description
 -----------
-Returns the relative abscissa([0.,1.]) of the vertex v on the contour of index ic.
+returns the relative abscissa([0.,1.]) of the vertex V on the contour of index IC.
 ") RelativeAbscissa;
 		Standard_Real RelativeAbscissa(const Standard_Integer IC, const TopoDS_Vertex & V);
 
@@ -681,7 +670,7 @@ None
 
 Description
 -----------
-Extracts from the list the contour containing edge e.
+extracts from the list the contour containing edge E.
 ") Remove;
 		void Remove(const TopoDS_Edge & E);
 
@@ -749,7 +738,7 @@ TopoDS_Shape
 
 Description
 -----------
-If (isdone()) makes the result. if (!isdone()).
+if (Isdone()) makes the result. if (!Isdone()).
 ") Shape;
 		TopoDS_Shape Shape();
 
@@ -793,7 +782,7 @@ ChFiDS_ErrorStatus
 
 Description
 -----------
-For the stripe ic ,indication on the cause of failure walkingfailure,twistedsurface,error, ok.
+for the stripe IC ,indication on the cause of failure WalkingFailure,TwistedSurface,Error, Ok.
 ") StripeStatus;
 		ChFiDS_ErrorStatus StripeStatus(const Standard_Integer IC);
 
@@ -811,7 +800,7 @@ opencascade::handle<ChFiDS_Spine>
 
 Description
 -----------
-Gives the n'th set of edges (contour) if i >nbelements().
+gives the n'th set of edges (contour) if I >NbElements().
 ") Value;
 		opencascade::handle<ChFiDS_Spine> Value(const Standard_Integer I);
 
@@ -862,7 +851,7 @@ D: float
 
 Description
 -----------
-Computes the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -880,7 +869,7 @@ F: float
 
 Description
 -----------
-Computes the value of the function <f> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the value of the function <F> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -899,7 +888,7 @@ D: float
 
 Description
 -----------
-Computes the value <f> and the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -932,7 +921,7 @@ None
 
 Description
 -----------
-Initializes the builder with the shape <s> for the computation of chamfers.
+initializes the Builder with the Shape <S> for the computation of chamfers.
 ") ChFi3d_ChBuilder;
 		 ChFi3d_ChBuilder(const TopoDS_Shape & S, const Standard_Real Ta = 1.0e-2);
 
@@ -950,7 +939,7 @@ None
 
 Description
 -----------
-Initializes a contour with the edge <e> as first (the next are found by propagation ). the two distances (parameters of the chamfer) must be set after. if the edge <e> has more than 2 adjacent faces.
+initializes a contour with the edge <E> as first (the next are found by propagation ). The two distances (parameters of the chamfer) must be set after. if the edge <E> has more than 2 adjacent faces.
 ") Add;
 		void Add(const TopoDS_Edge & E);
 
@@ -969,7 +958,7 @@ None
 
 Description
 -----------
-Initializes a new contour with the edge <e> as first (the next are found by propagation ), and the distance <dis> if the edge <e> has more than 2 adjacent faces.
+initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis> if the edge <E> has more than 2 adjacent faces.
 ") Add;
 		void Add(const Standard_Real Dis, const TopoDS_Edge & E);
 
@@ -990,7 +979,7 @@ None
 
 Description
 -----------
-Initializes a new contour with the edge <e> as first (the next are found by propagation ), and the distance <dis1> and <dis2> if the edge <e> has more than 2 adjacent faces.
+initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis1> and <Dis2> if the edge <E> has more than 2 adjacent faces.
 ") Add;
 		void Add(const Standard_Real Dis1, const Standard_Real Dis2, const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1011,7 +1000,7 @@ None
 
 Description
 -----------
-Initializes a new contour with the edge <e> as first (the next are found by propagation ), and the distance <dis1> and <angle> if the edge <e> has more than 2 adjacent faces.
+initializes a new contour with the edge <E> as first (the next are found by propagation ), and the distance <Dis1> and <Angle> if the edge <E> has more than 2 adjacent faces.
 ") AddDA;
 		void AddDA(const Standard_Real Dis, const Standard_Real Angle, const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1030,7 +1019,7 @@ Dis2: float
 
 Description
 -----------
-Gives the distances <dis1> and <dis2> of the fillet contour of index <ic> in the ds.
+gives the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS.
 ") Dists;
 		void Dists(const Standard_Integer IC, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1048,7 +1037,7 @@ Dis: float
 
 Description
 -----------
-Gives the distances <dis> of the fillet contour of index <ic> in the ds.
+gives the distances <Dis> of the fillet contour of index <IC> in the DS.
 ") GetDist;
 		void GetDist(const Standard_Integer IC, Standard_Real &OutValue);
 
@@ -1067,7 +1056,7 @@ Angle: float
 
 Description
 -----------
-Gives the distances <dis> and <angle> of the fillet contour of index <ic> in the ds.
+gives the distances <Dis> and <Angle> of the fillet contour of index <IC> in the DS.
 ") GetDistAngle;
 		void GetDistAngle(const Standard_Integer IC, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1085,7 +1074,7 @@ ChFiDS_ChamfMethod
 
 Description
 -----------
-Renvoi la methode des chanfreins utilisee.
+renvoi la methode des chanfreins utilisee.
 ") IsChamfer;
 		ChFiDS_ChamfMethod IsChamfer(const Standard_Integer IC);
 
@@ -1098,7 +1087,7 @@ ChFiDS_ChamfMode
 
 Description
 -----------
-Returns the mode of chamfer used.
+returns the mode of chamfer used.
 ") Mode;
 		ChFiDS_ChamfMode Mode();
 
@@ -1300,7 +1289,7 @@ None
 
 Description
 -----------
-Reset tous rayons du contour ic.
+Reset tous rayons du contour IC.
 ") ResetContour;
 		void ResetContour(const Standard_Integer IC);
 
@@ -1339,7 +1328,7 @@ None
 
 Description
 -----------
-Set the distance <dis> of the fillet contour of index <ic> in the ds with <dis> on <f>. if the face <f> is not one of common faces of an edge of the contour <ic>.
+set the distance <Dis> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>.
 ") SetDist;
 		void SetDist(const Standard_Real Dis, const Standard_Integer IC, const TopoDS_Face & F);
 
@@ -1360,7 +1349,7 @@ None
 
 Description
 -----------
-Set the distance <dis> and <angle> of the fillet contour of index <ic> in the ds with <dis> on <f>. if the face <f> is not one of common faces of an edge of the contour <ic>.
+set the distance <Dis> and <Angle> of the fillet contour of index <IC> in the DS with <Dis> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>.
 ") SetDistAngle;
 		void SetDistAngle(const Standard_Real Dis, const Standard_Real Angle, const Standard_Integer IC, const TopoDS_Face & F);
 
@@ -1381,7 +1370,7 @@ None
 
 Description
 -----------
-Set the distances <dis1> and <dis2> of the fillet contour of index <ic> in the ds with <dis1> on <f>. if the face <f> is not one of common faces of an edge of the contour <ic>.
+set the distances <Dis1> and <Dis2> of the fillet contour of index <IC> in the DS with <Dis1> on <F>. if the face <F> is not one of common faces of an edge of the contour <IC>.
 ") SetDists;
 		void SetDists(const Standard_Real Dis1, const Standard_Real Dis2, const Standard_Integer IC, const TopoDS_Face & F);
 
@@ -1399,7 +1388,7 @@ None
 
 Description
 -----------
-Set the mode of shamfer.
+set the mode of shamfer.
 ") SetMode;
 		void SetMode(const ChFiDS_ChamfMode theMode);
 
@@ -1595,7 +1584,7 @@ None
 
 Description
 -----------
-Initialisation of a contour with the first edge (the following are found by propagation). attention, you need to start with setradius.
+initialisation of a contour with the first edge (the following are found by propagation). Attention, you need to start with SetRadius.
 ") Add;
 		void Add(const TopoDS_Edge & E);
 
@@ -1614,7 +1603,7 @@ None
 
 Description
 -----------
-Initialisation of the constant vector the corresponding 1st edge.
+initialisation of the constant vector the corresponding 1st edge.
 ") Add;
 		void Add(const Standard_Real Radius, const TopoDS_Edge & E);
 
@@ -1634,7 +1623,7 @@ Last: float
 
 Description
 -----------
-Returns in first and last les extremities of the part of variable vector framing e, returns false if e is flagged as edge constant.
+Returns in First and Last les extremities of the part of variable vector framing E, returns False if E is flagged as edge constant.
 ") GetBounds;
 		Standard_Boolean GetBounds(const Standard_Integer IC, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1666,7 +1655,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns the rule of elementary evolution of the part to variable vector framing e, returns a rule zero if e is flagged as edge constant.
+Returns the rule of elementary evolution of the part to variable vector framing E, returns a rule zero if E is flagged as edge constant.
 ") GetLaw;
 		opencascade::handle<Law_Function> GetLaw(const Standard_Integer IC, const TopoDS_Edge & E);
 
@@ -1703,7 +1692,7 @@ bool
 
 Description
 -----------
-Returns true e is flagged as edge constant.
+Returns true E is flagged as edge constant.
 ") IsConstant;
 		Standard_Boolean IsConstant(const Standard_Integer IC, const TopoDS_Edge & E);
 
@@ -1758,7 +1747,7 @@ float
 
 Description
 -----------
-Returns the vector if e is flagged as edge constant.
+Returns the vector if E is flagged as edge constant.
 ") Radius;
 		Standard_Real Radius(const Standard_Integer IC, const TopoDS_Edge & E);
 
@@ -1776,7 +1765,7 @@ None
 
 Description
 -----------
-Reset all vectors of contour ic.
+Reset all vectors of contour IC.
 ") ResetContour;
 		void ResetContour(const Standard_Integer IC);
 
@@ -1833,7 +1822,7 @@ None
 
 Description
 -----------
-Sets the rule of elementary evolution of the part to variable vector framing e.
+Sets the rule of elementary evolution of the part to variable vector framing E.
 ") SetLaw;
 		void SetLaw(const Standard_Integer IC, const TopoDS_Edge & E, const opencascade::handle<Law_Function> & L);
 
@@ -1853,7 +1842,7 @@ None
 
 Description
 -----------
-Set the radius of the contour of index ic.
+Set the radius of the contour of index IC.
 ") SetRadius;
 		void SetRadius(const opencascade::handle<Law_Function> & C, const Standard_Integer IC, const Standard_Integer IinC);
 
@@ -1873,7 +1862,7 @@ None
 
 Description
 -----------
-Set a constant on edge e of the contour of index ic. since then e is flagged as constant.
+Set a constant on edge E of the contour of index IC. Since then E is flagged as constant.
 ") SetRadius;
 		void SetRadius(const Standard_Real Radius, const Standard_Integer IC, const TopoDS_Edge & E);
 
@@ -1893,7 +1882,7 @@ None
 
 Description
 -----------
-Set a vector on vertex v of the contour of index ic.
+Set a vector on vertex V of the contour of index IC.
 ") SetRadius;
 		void SetRadius(const Standard_Real Radius, const Standard_Integer IC, const TopoDS_Vertex & V);
 
@@ -1913,7 +1902,7 @@ None
 
 Description
 -----------
-Set a vertex on the point of parametre u in the edge iinc of the contour of index ic.
+Set a vertex on the point of parametre U in the edge IinC of the contour of index IC.
 ") SetRadius;
 		void SetRadius(const gp_XY & UandR, const Standard_Integer IC, const Standard_Integer IinC);
 
@@ -1950,7 +1939,7 @@ None
 
 Description
 -----------
-Extracts the flag constant and the vector of edge e.
+Extracts the flag constant and the vector of edge E.
 ") UnSet;
 		void UnSet(const Standard_Integer IC, const TopoDS_Edge & E);
 
@@ -1969,7 +1958,7 @@ None
 
 Description
 -----------
-Extracts the vector of the vertex v.
+Extracts the vector of the vertex V.
 ") UnSet;
 		void UnSet(const Standard_Integer IC, const TopoDS_Vertex & V);
 

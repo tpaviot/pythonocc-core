@@ -19,20 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define RWSTEPELEMENT_HXX
 
 
-#include<RWStepElement_RWAnalysisItemWithinRepresentation.hxx>
-#include<RWStepElement_RWCurve3dElementDescriptor.hxx>
-#include<RWStepElement_RWCurveElementEndReleasePacket.hxx>
-#include<RWStepElement_RWCurveElementSectionDefinition.hxx>
-#include<RWStepElement_RWCurveElementSectionDerivedDefinitions.hxx>
-#include<RWStepElement_RWElementDescriptor.hxx>
-#include<RWStepElement_RWElementMaterial.hxx>
-#include<RWStepElement_RWSurface3dElementDescriptor.hxx>
-#include<RWStepElement_RWSurfaceElementProperty.hxx>
-#include<RWStepElement_RWSurfaceSection.hxx>
-#include<RWStepElement_RWSurfaceSectionField.hxx>
-#include<RWStepElement_RWSurfaceSectionFieldConstant.hxx>
-#include<RWStepElement_RWSurfaceSectionFieldVarying.hxx>
-#include<RWStepElement_RWUniformSurfaceSection.hxx>
-#include<RWStepElement_RWVolume3dElementDescriptor.hxx>
 
 #endif // RWSTEPELEMENT_HXX

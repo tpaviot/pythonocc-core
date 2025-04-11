@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLOBJMGTDOCSTRING
 "XmlObjMgt module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlobjmgt.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlobjmgt.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLOBJMGTDOCSTRING) XmlObjMgt
 
@@ -165,7 +165,7 @@ bool
 
 Description
 -----------
-Get attribute <theelement extstring='thestring' ...>.
+Get attribute <theElement extstring='theString' ...>.
 ") GetExtendedString;
 		static Standard_Boolean GetExtendedString(const XmlObjMgt_Element & theElement, TCollection_ExtendedString & theString);
 
@@ -238,7 +238,7 @@ bool
 
 Description
 -----------
-Convert xpath expression (domstring) into tagentry string returns false on error.
+Convert XPath expression (DOMString) into TagEntry string returns False on Error.
 ") GetTagEntryString;
 		static Standard_Boolean GetTagEntryString(const XmlObjMgt_DOMString & theTarget, TCollection_AsciiString & theTagEntry);
 
@@ -251,7 +251,7 @@ XmlObjMgt_DOMString
 
 Description
 -----------
-Define the name of xmlattribute 'id' (to be used everywhere).
+Define the name of XMLattribute 'ID' (to be used everywhere).
 ") IdString;
 		static const XmlObjMgt_DOMString & IdString();
 
@@ -270,7 +270,7 @@ bool
 
 Description
 -----------
-Add attribute <theelement extstring='thestring' ...>.
+Add attribute <theElement extstring='theString' ...>.
 ") SetExtendedString;
 		static Standard_Boolean SetExtendedString(XmlObjMgt_Element & theElement, TCollection_ExtendedString theString);
 
@@ -290,7 +290,7 @@ None
 
 Description
 -----------
-Add thedata as the last child text node to theelement iscleartext(true) avoids analysis of the string and replacement of characters like '<' and '&' during xml file storage. do never set iscleartext unless you have a hell of a reason.
+Add theData as the last child text node to theElement isClearText(True) avoids analysis of the string and replacement of characters like '<' and '&' during XML file storage. Do NEVER set isClearText unless you have a hell of a reason.
 ") SetStringValue;
 		static void SetStringValue(XmlObjMgt_Element & theElement, const XmlObjMgt_DOMString & theData, const Standard_Boolean isClearText = Standard_False);
 
@@ -309,7 +309,7 @@ None
 
 Description
 -----------
-Convert xpath expression (domstring) into tagentry string returns false on error.
+Convert XPath expression (DOMString) into TagEntry string returns False on Error.
 ") SetTagEntryString;
 		static void SetTagEntryString(XmlObjMgt_DOMString & theSource, TCollection_AsciiString theTagEntry);
 
@@ -346,7 +346,7 @@ None
 
 Description
 -----------
-Create an array of lower bound <low> and upper bound <up>. range error is raised when <up> is less than <low>.
+Create an array of lower bound <Low> and upper bound <Up>. Range error is raised when <Up> is less than <Low>.
 ") XmlObjMgt_Array1;
 		 XmlObjMgt_Array1(const Standard_Integer Low, const Standard_Integer Up);
 
@@ -365,7 +365,7 @@ None
 
 Description
 -----------
-For restoration from dom_element which is child of theparent: <theparent ...> <thename ...>.
+for restoration from DOM_Element which is child of theParent: <theParent ...> <theName ...>.
 ") XmlObjMgt_Array1;
 		 XmlObjMgt_Array1(const XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theName);
 
@@ -384,7 +384,7 @@ None
 
 Description
 -----------
-Create dom_element representing the array, under 'theparent'.
+Create DOM_Element representing the array, under 'theParent'.
 ") CreateArrayElement;
 		void CreateArrayElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theName);
 
@@ -397,7 +397,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Returns the dom element of <self>.
+Returns the DOM element of <self>.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
@@ -442,7 +442,7 @@ None
 
 Description
 -----------
-Set the <index>th element of the array to <value>.
+Set the <Index>th element of the array to <Value>.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, XmlObjMgt_Element & Value);
 
@@ -473,7 +473,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Returns the value of <index>th element of the array.
+Returns the value of <Index>th element of the array.
 ") Value;
 		XmlObjMgt_Element Value(const Standard_Integer Index);
 
@@ -625,7 +625,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent();
 
@@ -643,7 +643,7 @@ None
 
 Description
 -----------
-Constructor.
+constructor.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent(const XmlObjMgt_Element & theElement);
 
@@ -662,7 +662,7 @@ None
 
 Description
 -----------
-Constructor from sub-element of element referenced by theref.
+constructor from sub-element of Element referenced by theRef.
 ") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent(const XmlObjMgt_Element & theElement, const XmlObjMgt_DOMString & theRef);
 
@@ -682,7 +682,7 @@ None
 
 Description
 -----------
-Myelement := <thetype id='theid'/>.
+myElement := <theType id='theID'/>.
 ") CreateElement;
 		void CreateElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theType, const Standard_Integer theID);
 
@@ -695,7 +695,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Return myelement.
+return myElement.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
@@ -708,7 +708,7 @@ XmlObjMgt_Element
 
 Description
 -----------
-Return myelement.
+return myElement.
 ") Element;
 		XmlObjMgt_Element & Element();
 
@@ -802,7 +802,8 @@ None
 
 Description
 -----------
-Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
+Sets the storage header data. //! 
+Parameter theHeaderData header data of the file that is begin read.
 ") SetHeaderData;
 		void SetHeaderData(const opencascade::handle<Storage_HeaderData> & theHeaderData);
 
@@ -865,7 +866,8 @@ None
 
 Description
 -----------
-Sets the storage header data. //! @param theheaderdata header data of the file that is begin read.
+Sets the storage header data. //! 
+Parameter theHeaderData header data of the file that is begin read.
 ") SetHeaderData;
 		void SetHeaderData(const opencascade::handle<Storage_HeaderData> & theHeaderData);
 

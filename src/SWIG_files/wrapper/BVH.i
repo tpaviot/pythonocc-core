@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BVHDOCSTRING
 "BVH module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bvh.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bvh.html"
 %enddef
 %module (package="OCC.Core", docstring=BVHDOCSTRING) BVH
 
@@ -90,6 +90,7 @@ typedef BVH::ArrayType<Standard_Integer, 3>::Type BVH_Array3i;
 typedef BVH::ArrayType<Standard_Real, 4>::Type BVH_Array4d;
 typedef BVH::ArrayType<Standard_ShortReal, 4>::Type BVH_Array4f;
 typedef BVH::ArrayType<Standard_Integer, 4>::Type BVH_Array4i;
+typedef BVH_Builder<Standard_Real, 3> BVH_Builder3d;
 typedef std::pair<unsigned int, Standard_Integer> BVH_EncodedLink;
 typedef BVH::MatrixType<Standard_Real, 4>::Type BVH_Mat4d;
 typedef BVH::MatrixType<Standard_ShortReal, 4>::Type BVH_Mat4f;
@@ -422,7 +423,7 @@ None
 
 Description
 -----------
-Creates new empty bvh tree.
+Creates new empty BVH tree.
 ") BVH_Tree;
 		 BVH_Tree();
 
@@ -443,7 +444,7 @@ int
 
 Description
 -----------
-Adds new inner node to the bvh.
+Adds new inner node to the BVH.
 ") AddInnerNode;
 		int AddInnerNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theLftChild, const int theRghChild);
 
@@ -463,7 +464,7 @@ int
 
 Description
 -----------
-Adds new inner node to the bvh.
+Adds new inner node to the BVH.
 ") AddInnerNode;
 		int AddInnerNode(const BVH_Box<T, N> & theAABB, const int theLftChild, const int theRghChild);
 
@@ -482,7 +483,7 @@ int
 
 Description
 -----------
-Adds new inner node to the bvh with uninitialized bounds.
+Adds new inner node to the BVH with UNINITIALIZED bounds.
 ") AddInnerNode;
 		int AddInnerNode(const int theLftChild, const int theRghChild);
 
@@ -503,7 +504,7 @@ int
 
 Description
 -----------
-Adds new leaf node to the bvh.
+Adds new leaf node to the BVH.
 ") AddLeafNode;
 		int AddLeafNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theBegElem, const int theEndElem);
 
@@ -523,7 +524,7 @@ int
 
 Description
 -----------
-Adds new leaf node to the bvh.
+Adds new leaf node to the BVH.
 ") AddLeafNode;
 		int AddLeafNode(const BVH_Box<T, N> & theAABB, const int theBegElem, const int theEndElem);
 
@@ -542,7 +543,7 @@ int
 
 Description
 -----------
-Adds new leaf node to the bvh with uninitialized bounds.
+Adds new leaf node to the BVH with UNINITIALIZED bounds.
 ") AddLeafNode;
 		int AddLeafNode(const int theBegElem, const int theEndElem);
 
@@ -568,7 +569,7 @@ BVH_Tree<T, N, BVH_QuadTree> *
 
 Description
 -----------
-Collapses the tree into qbvh an returns it. as a result, each 2-nd level of current tree is kept and the rest are discarded.
+Collapses the tree into QBVH an returns it. As a result, each 2-nd level of current tree is kept and the rest are discarded.
 ") CollapseToQuadTree;
 		BVH_Tree<T, N, BVH_QuadTree> * CollapseToQuadTree();
 
@@ -581,7 +582,7 @@ T
 
 Description
 -----------
-Returns value of sah (surface area heuristic). allows to compare the quality of bvh trees constructed for the same sets of geometric objects with different methods.
+Returns value of SAH (surface area heuristic). Allows to compare the quality of BVH trees constructed for the same sets of geometric objects with different methods.
 ") EstimateSAH;
 		T EstimateSAH();
 
@@ -599,7 +600,7 @@ None
 
 Description
 -----------
-Reserves internal bvh storage, so that it can contain the given number of bvh nodes.
+Reserves internal BVH storage, so that it can contain the given number of BVH nodes.
 ") Reserve;
 		void Reserve(const int theNbNodes);
 
@@ -662,7 +663,7 @@ None
 
 Description
 -----------
-Creates new empty bvh tree.
+Creates new empty BVH tree.
 ") BVH_Tree;
 		 BVH_Tree();
 

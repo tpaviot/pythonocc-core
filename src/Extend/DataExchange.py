@@ -247,8 +247,8 @@ def read_step_file_with_names_colors(filename: str):
             # print("    all ass locs   :", locs)
 
             loc = TopLoc_Location()
-            for l in locs:
-                loc = loc.Multiplied(l)
+            for location in locs:
+                loc = loc.Multiplied(location)
 
             c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
             color_set = False
@@ -708,13 +708,10 @@ def read_gltf_file(
     verbose: bool = False,
     load_all_scenes: bool = False,
 ):
-    shapes_to_return = []
-
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
     gltf_reader = RWGltf_CafReader()
-    # gltf_reader.SetSystemLengthUnit (aScaleFactorM);
     gltf_reader.SetSystemCoordinateSystem(RWMesh_CoordinateSystem_posYfwd_posZup)
     gltf_reader.SetParallel(is_parallel)
     gltf_reader.SetDoublePrecision(is_double_precision)
@@ -731,7 +728,7 @@ def read_gltf_file(
     return [gltf_reader.SingleShape()]
 
 
-def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str):
+def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
     """ocaf based ply exporter"""
     # create a document
     doc = TDocStd_Document("pythonocc-doc-gltf-export")
@@ -750,7 +747,7 @@ def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str):
         TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
     )
 
-    rwgltf_writer = RWGltf_CafWriter(gltf_filename, True)
+    rwgltf_writer = RWGltf_CafWriter(gltf_filename, binary)
 
     status = rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange())
 

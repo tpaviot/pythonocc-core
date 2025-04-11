@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPPROJDOCSTRING
 "BRepProj module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepproj.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepproj.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPPROJDOCSTRING) BRepProj
 
@@ -101,7 +101,7 @@ None
 
 Description
 -----------
-Makes a cylindrical projection of wire om shape.
+Makes a Cylindrical projection of Wire om Shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Dir & D);
 
@@ -121,7 +121,7 @@ None
 
 Description
 -----------
-Makes a conical projection of wire om shape.
+Makes a Conical projection of Wire om Shape.
 ") BRepProj_Projection;
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Pnt & P);
 
@@ -160,7 +160,7 @@ bool
 
 Description
 -----------
-Returns false if the section failed.
+returns False if the section failed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -173,7 +173,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current result wire.
+Returns True if there is a current result wire.
 ") More;
 		Standard_Boolean More();
 

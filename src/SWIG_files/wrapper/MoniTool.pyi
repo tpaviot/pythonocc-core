@@ -3,10 +3,10 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.TCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.gp import *
 from OCC.Core.Message import *
+from OCC.Core.TCollection import *
 from OCC.Core.OSD import *
 from OCC.Core.TColStd import *
 

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFIDSDOCSTRING
 "ChFiDS module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfids.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfids.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFIDSDOCSTRING) ChFiDS
 
@@ -412,7 +412,7 @@ bool
 
 Description
 -----------
-Returns true if the output vector is stored.
+Returns True if the output vector is stored.
 ") HasVector;
 		Standard_Boolean HasVector();
 
@@ -425,7 +425,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a on an edge of the initial restriction facet of the surface.
+Returns True if the point is a on an edge of the initial restriction facet of the surface.
 ") IsOnArc;
 		Standard_Boolean IsOnArc();
 
@@ -438,7 +438,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a vertex on the initial restriction facet of the surface.
+Returns True if the point is a vertex on the initial restriction facet of the surface.
 ") IsVertex;
 		Standard_Boolean IsVertex();
 
@@ -464,7 +464,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point on the arc returned by the method arc().
+Returns the parameter of the point on the arc returned by the method Arc().
 ") ParameterOnArc;
 		Standard_Real ParameterOnArc();
 
@@ -490,7 +490,7 @@ None
 
 Description
 -----------
-Default value for all fields.
+default value for all fields.
 ") Reset;
 		void Reset();
 
@@ -511,7 +511,7 @@ None
 
 Description
 -----------
-Sets the values of a point which is on the arc a, at parameter param.
+Sets the values of a point which is on the arc A, at parameter Param.
 ") SetArc;
 		void SetArc(const Standard_Real Tol, const TopoDS_Edge & A, const Standard_Real Param, const TopAbs_Orientation TArc);
 
@@ -627,7 +627,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the transition of the point on the arc returned by arc().
+Returns the transition of the point on the arc returned by Arc().
 ") TransitionOnArc;
 		TopAbs_Orientation TransitionOnArc();
 
@@ -653,7 +653,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the information about the point when it is on the domain of the first patch, i-e when the function isvertex returns true. otherwise, an exception is raised.
+Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised.
 ") Vertex;
 		const TopoDS_Vertex Vertex();
 
@@ -1320,7 +1320,7 @@ opencascade::handle<Adaptor3d_Curve>
 
 Description
 -----------
-Returns a curve equivalent of <self> between parameters <first> and <last>. <tol> is used to test for 3d points confusion.
+Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion.
 ") Trim;
 		virtual opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
@@ -1646,7 +1646,7 @@ None
 
 Description
 -----------
-Create an empty map.
+Create an empty Map.
 ") ChFiDS_Map;
 		 ChFiDS_Map();
 
@@ -1684,7 +1684,7 @@ None
 
 Description
 -----------
-Fills the map with the subshapes of type t1 as keys and the list of ancestors of type t2 as items.
+Fills the map with the subshapes of type T1 as keys and the list of ancestors of type T2 as items.
 ") Fill;
 		void Fill(const TopoDS_Shape & S, const TopAbs_ShapeEnum T1, const TopAbs_ShapeEnum T2);
 
@@ -2061,7 +2061,7 @@ BRepAdaptor_Curve
 
 Description
 -----------
-Sets the current curve and returns it.
+sets the current curve and returns it.
 ") CurrentElementarySpine;
 		BRepAdaptor_Curve CurrentElementarySpine(const Standard_Integer Index);
 
@@ -2250,7 +2250,7 @@ float
 
 Description
 -----------
-Gives the total length of all arcs before the number indexsp.
+gives the total length of all arcs before the number IndexSp.
 ") FirstParameter;
 		Standard_Real FirstParameter(const Standard_Integer IndexSpine);
 
@@ -2263,7 +2263,7 @@ ChFiDS_State
 
 Description
 -----------
-Returns if the set of edges starts on a free boundary or if the first vertex is a breakpoint or if the set is closed.
+returns if the set of edges starts on a free boundary or if the first vertex is a breakpoint or if the set is closed.
 ") FirstStatus;
 		ChFiDS_State FirstStatus();
 
@@ -2315,7 +2315,7 @@ ChFiDS_TypeOfConcavity
 
 Description
 -----------
-Returns the type of concavity in the connection.
+returns the type of concavity in the connection.
 ") GetTypeOfConcavity;
 		ChFiDS_TypeOfConcavity GetTypeOfConcavity();
 
@@ -2422,7 +2422,7 @@ bool
 
 Description
 -----------
-Returns if the set of edges starts (or end) on tangency point.
+returns if the set of edges starts (or end) on Tangency point.
 ") IsTangencyExtremity;
 		Standard_Boolean IsTangencyExtremity(const Standard_Boolean IsFirst);
 
@@ -2453,7 +2453,7 @@ float
 
 Description
 -----------
-Gives the total length till the ark with number indexspine (inclus).
+gives the total length till the ark with number IndexSpine (inclus).
 ") LastParameter;
 		Standard_Real LastParameter(const Standard_Integer IndexSpine);
 
@@ -2466,7 +2466,7 @@ ChFiDS_State
 
 Description
 -----------
-Returns the state at the end of the set.
+returns the state at the end of the set.
 ") LastStatus;
 		ChFiDS_State LastStatus();
 
@@ -2497,7 +2497,7 @@ float
 
 Description
 -----------
-Gives the length of ark with number indexsp.
+gives the length of ark with number IndexSp.
 ") Length;
 		Standard_Real Length(const Standard_Integer IndexSpine);
 
@@ -2523,7 +2523,7 @@ None
 
 Description
 -----------
-Prepare the guideline depending on the edges that are elementary arks (take parameters from a single curvilinear abscissa); to be able to call methods on the geometry (first,last,value,d1,d2) it is necessary to start with preparation otherwise an exception will be raised.
+prepare the guideline depending on the edges that are elementary arks (take parameters from a single curvilinear abscissa); to be able to call methods on the geometry (first,last,value,d1,d2) it is necessary to start with preparation otherwise an exception will be raised.
 ") Load;
 		void Load();
 
@@ -2637,7 +2637,7 @@ None
 
 Description
 -----------
-Store the edge at the first position before all others.
+store the edge at the first position before all others.
 ") PutInFirst;
 		void PutInFirst(const TopoDS_Edge & E);
 
@@ -2655,7 +2655,7 @@ None
 
 Description
 -----------
-Store the offset edge at the first position before all others.
+store the offset edge at the first position before all others.
 ") PutInFirstOffset;
 		void PutInFirstOffset(const TopoDS_Edge & E);
 
@@ -2727,7 +2727,7 @@ None
 
 Description
 -----------
-Store edges composing the guideline.
+store edges composing the guideline.
 ") SetEdges;
 		void SetEdges(const TopoDS_Edge & E);
 
@@ -2781,7 +2781,7 @@ None
 
 Description
 -----------
-Stores if the start of a set of edges starts on a section of free border or forms a closed contour.
+stores if the start of a set of edges starts on a section of free border or forms a closed contour.
 ") SetFirstStatus;
 		void SetFirstStatus(const ChFiDS_State S);
 
@@ -2835,7 +2835,7 @@ None
 
 Description
 -----------
-Stores if the end of a set of edges starts on a section of free border or forms a closed contour.
+stores if the end of a set of edges starts on a section of free border or forms a closed contour.
 ") SetLastStatus;
 		void SetLastStatus(const ChFiDS_State S);
 
@@ -2871,7 +2871,7 @@ None
 
 Description
 -----------
-Store offset edges composing the offset guideline.
+store offset edges composing the offset guideline.
 ") SetOffsetEdges;
 		void SetOffsetEdges(const TopoDS_Edge & E);
 
@@ -2889,7 +2889,7 @@ None
 
 Description
 -----------
-Set a parameter reference for the approx.
+set a parameter reference for the approx.
 ") SetReference;
 		void SetReference(const Standard_Real W);
 
@@ -2907,7 +2907,7 @@ None
 
 Description
 -----------
-Set a parameter reference for the approx, at the middle of edge i.
+set a parameter reference for the approx, at the middle of edge I.
 ") SetReference;
 		void SetReference(const Standard_Integer I);
 
@@ -2963,7 +2963,7 @@ None
 
 Description
 -----------
-Sets the type of concavity in the connection.
+sets the type of concavity in the connection.
 ") SetTypeOfConcavity;
 		void SetTypeOfConcavity(const ChFiDS_TypeOfConcavity theType);
 
@@ -3431,7 +3431,7 @@ None
 
 Description
 -----------
-Set nb of surfdata's at end put in ds.
+Set nb of SurfData's at end put in DS.
 ") InDS;
 		void InDS(const Standard_Boolean First, const Standard_Integer Nb = 1);
 
@@ -3520,7 +3520,7 @@ int
 
 Description
 -----------
-Returns nb of surfdata's at end being in ds.
+Returns nb of SurfData's at end being in DS.
 ") IsInDS;
 		Standard_Integer IsInDS(const Standard_Boolean First);
 
@@ -3743,7 +3743,7 @@ None
 
 Description
 -----------
-Reset everything except spine.
+Reset everything except Spine.
 ") Reset;
 		void Reset();
 
@@ -4147,7 +4147,7 @@ Description
 -----------
 No available documentation.
 ") ChangeOrientation;
-		TopAbs_Orientation & ChangeOrientation();
+		TopAbs_Orientation  ChangeOrientation();
 
 		/****** ChFiDS_SurfData::ChangeSurf ******/
 		/****** md5 signature: 04810584e755bde58033397adab639cd ******/
@@ -4182,7 +4182,7 @@ ChFiDS_CommonPoint
 
 Description
 -----------
-Returns one of the four vertices whether first is true or wrong and ons equals 1 or 2.
+returns one of the four vertices whether First is true or wrong and OnS equals 1 or 2.
 ") ChangeVertex;
 		ChFiDS_CommonPoint & ChangeVertex(const Standard_Boolean First, const Standard_Integer OnS);
 
@@ -4800,7 +4800,7 @@ ChFiDS_CommonPoint
 
 Description
 -----------
-Returns one of the four vertices whether first is true or wrong and ons equals 1 or 2.
+returns one of the four vertices whether First is true or wrong and OnS equals 1 or 2.
 ") Vertex;
 		const ChFiDS_CommonPoint & Vertex(const Standard_Boolean First, const Standard_Integer OnS);
 
@@ -5122,7 +5122,7 @@ opencascade::handle<Law_Function>
 
 Description
 -----------
-Returns the elementary law.
+returns the elementary law.
 ") ChangeLaw;
 		opencascade::handle<Law_Function> & ChangeLaw(const TopoDS_Edge & E);
 
@@ -5135,7 +5135,7 @@ bool
 
 Description
 -----------
-Returns true if the radius is constant all along the spine.
+returns true if the radius is constant all along the spine.
 ") IsConstant;
 		Standard_Boolean IsConstant();
 
@@ -5153,7 +5153,7 @@ bool
 
 Description
 -----------
-Returns true if the radius is constant all along the edge e.
+returns true if the radius is constant all along the edge E.
 ") IsConstant;
 		Standard_Boolean IsConstant(const Standard_Integer IE);
 
@@ -5184,7 +5184,7 @@ float
 
 Description
 -----------
-Returns the maximum radius if the fillet is non-constant.
+returns the maximum radius if the fillet is non-constant.
 ") MaxRadFromSeqAndLaws;
 		Standard_Real MaxRadFromSeqAndLaws();
 
@@ -5197,7 +5197,7 @@ float
 
 Description
 -----------
-Returns the radius if the fillet is constant all along the spine.
+returns the radius if the fillet is constant all along the spine.
 ") Radius;
 		Standard_Real Radius();
 
@@ -5215,7 +5215,7 @@ float
 
 Description
 -----------
-Returns the radius if the fillet is constant all along the edge e.
+returns the radius if the fillet is constant all along the edge E.
 ") Radius;
 		Standard_Real Radius(const Standard_Integer IE);
 
@@ -5233,7 +5233,7 @@ float
 
 Description
 -----------
-Returns the radius if the fillet is constant all along the edge e.
+returns the radius if the fillet is constant all along the edge E.
 ") Radius;
 		Standard_Real Radius(const TopoDS_Edge & E);
 
@@ -5270,7 +5270,7 @@ None
 
 Description
 -----------
-Initializes the constant vector on edge e.
+initializes the constant vector on edge E.
 ") SetRadius;
 		void SetRadius(const Standard_Real Radius, const TopoDS_Edge & E);
 
@@ -5289,7 +5289,7 @@ None
 
 Description
 -----------
-Initializes the vector on vertex v.
+initializes the vector on Vertex V.
 ") SetRadius;
 		void SetRadius(const Standard_Real Radius, const TopoDS_Vertex & V);
 
@@ -5308,7 +5308,7 @@ None
 
 Description
 -----------
-Initializes the vector on the point of parameter w.
+initializes the vector on the point of parameter W.
 ") SetRadius;
 		void SetRadius(const gp_XY & UandR, const Standard_Integer IinC);
 
@@ -5326,7 +5326,7 @@ None
 
 Description
 -----------
-Initializes the constant vector on all spine.
+initializes the constant vector on all spine.
 ") SetRadius;
 		void SetRadius(const Standard_Real Radius);
 
@@ -5345,7 +5345,7 @@ None
 
 Description
 -----------
-Initializes the rule of evolution on all spine.
+initializes the rule of evolution on all spine.
 ") SetRadius;
 		void SetRadius(const opencascade::handle<Law_Function> & C, const Standard_Integer IinC);
 
@@ -5363,7 +5363,7 @@ None
 
 Description
 -----------
-Resets the constant vector on edge e.
+resets the constant vector on edge E.
 ") UnSetRadius;
 		void UnSetRadius(const TopoDS_Edge & E);
 
@@ -5381,7 +5381,7 @@ None
 
 Description
 -----------
-Resets the vector on vertex v.
+resets the vector on Vertex V.
 ") UnSetRadius;
 		void UnSetRadius(const TopoDS_Vertex & V);
 

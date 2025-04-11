@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTANADOCSTRING
 "IntAna module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intana.html"
+https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana.html"
 %enddef
 %module (package="OCC.Core", docstring=INTANADOCSTRING) IntAna
 
@@ -138,7 +138,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntAna_Curve;
 		 IntAna_Curve();
 
@@ -158,7 +158,7 @@ bool
 
 Description
 -----------
-Returns the point and the first derivative at parameter theta on the curve.
+Returns the point and the first derivative at parameter Theta on the curve.
 ") D1u;
 		Standard_Boolean D1u(const Standard_Real Theta, gp_Pnt & P, gp_Vec & V);
 
@@ -176,7 +176,7 @@ theLast: float
 
 Description
 -----------
-Returns the paramatric domain of the curve.
+Returns the parametric domain of the curve.
 ") Domain;
 		void Domain(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -195,7 +195,7 @@ None
 
 Description
 -----------
-Tries to find the parameter of the point p on the curve. if the method returns false, the 'projection' is impossible. if the method returns true at least one parameter has been found. theparams is always sorted in ascending order.
+Tries to find the parameter of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
 		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
 
@@ -208,7 +208,7 @@ bool
 
 Description
 -----------
-Returns true if the function is constant.
+Returns True if the function is constant.
 ") IsConstant;
 		Standard_Boolean IsConstant();
 
@@ -221,7 +221,7 @@ bool
 
 Description
 -----------
-Returns true if the domain is open at the beginning.
+Returns True if the domain is open at the beginning.
 ") IsFirstOpen;
 		Standard_Boolean IsFirstOpen();
 
@@ -234,7 +234,7 @@ bool
 
 Description
 -----------
-Returns true if the domain is open at the end.
+Returns True if the domain is open at the end.
 ") IsLastOpen;
 		Standard_Boolean IsLastOpen();
 
@@ -247,7 +247,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is not infinite at the last parameter or at the first parameter of the domain.
+Returns True if the curve is not infinite at the last parameter or at the first parameter of the domain.
 ") IsOpen;
 		Standard_Boolean IsOpen();
 
@@ -280,7 +280,7 @@ None
 
 Description
 -----------
-Sets the parameters used to compute points and derivative on the curve.
+Sets the parameters used to compute Points and Derivative on the curve.
 ") SetConeQuadValues;
 		void SetConeQuadValues(const gp_Cone & Cone, const Standard_Real Qxx, const Standard_Real Qyy, const Standard_Real Qzz, const Standard_Real Qxy, const Standard_Real Qxz, const Standard_Real Qyz, const Standard_Real Qx, const Standard_Real Qy, const Standard_Real Qz, const Standard_Real Q1, const Standard_Real Tol, const Standard_Real DomInf, const Standard_Real DomSup, const Standard_Boolean TwoZForATheta, const Standard_Boolean ZIsPositive);
 
@@ -313,7 +313,7 @@ None
 
 Description
 -----------
-Sets the parameters used to compute points and derivative on the curve.
+Sets the parameters used to compute Points and Derivative on the curve.
 ") SetCylinderQuadValues;
 		void SetCylinderQuadValues(const gp_Cylinder & Cylinder, const Standard_Real Qxx, const Standard_Real Qyy, const Standard_Real Qzz, const Standard_Real Qxy, const Standard_Real Qxz, const Standard_Real Qyz, const Standard_Real Qx, const Standard_Real Qy, const Standard_Real Qz, const Standard_Real Q1, const Standard_Real Tol, const Standard_Real DomInf, const Standard_Real DomSup, const Standard_Boolean TwoZForATheta, const Standard_Boolean ZIsPositive);
 
@@ -350,7 +350,7 @@ None
 
 Description
 -----------
-If flag is true, the curve is not defined at the first parameter of its domain.
+If flag is True, the Curve is not defined at the first parameter of its domain.
 ") SetIsFirstOpen;
 		void SetIsFirstOpen(const Standard_Boolean Flag);
 
@@ -368,7 +368,7 @@ None
 
 Description
 -----------
-If flag is true, the curve is not defined at the first parameter of its domain.
+If flag is True, the Curve is not defined at the first parameter of its domain.
 ") SetIsLastOpen;
 		void SetIsLastOpen(const Standard_Boolean Flag);
 
@@ -386,7 +386,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point at parameter theta on the curve.
+Returns the point at parameter Theta on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real Theta);
 
@@ -446,7 +446,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful.
+Returns True if the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -459,7 +459,7 @@ bool
 
 Description
 -----------
-Returns true if there is no intersection point. if 2 planes are identical or parallel, isempty will return true.
+Returns True if there is no intersection POINT. If 2 planes are identical or parallel, IsEmpty will return True.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -636,7 +636,7 @@ None
 
 Description
 -----------
-Intersection between a line and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to check the distance between line and plane on the distance <len> from the origin of the line.
+Intersection between a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 ") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad(const gp_Lin & L, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0);
 
@@ -657,7 +657,7 @@ None
 
 Description
 -----------
-Intersection between a circle and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to determine if a distance is null.
+Intersection between a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad(const gp_Circ & C, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -678,7 +678,7 @@ None
 
 Description
 -----------
-Intersection between an ellipse and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to determine if a distance is null.
+Intersection between an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad(const gp_Elips & E, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -698,7 +698,7 @@ None
 
 Description
 -----------
-Intersection between a parabola and a plane. tolang is used to determine if the angle between two vectors is null.
+Intersection between a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad(const gp_Parab & Pb, const gp_Pln & P, const Standard_Real Tolang);
 
@@ -718,7 +718,7 @@ None
 
 Description
 -----------
-Intersection between an hyperbola and a plane. tolang is used to determine if the angle between two vectors is null.
+Intersection between an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad(const gp_Hypr & H, const gp_Pln & P, const Standard_Real Tolang);
 
@@ -731,7 +731,7 @@ bool
 
 Description
 -----------
-Returns true if the creation completed.
+Returns True if the creation completed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -744,7 +744,7 @@ bool
 
 Description
 -----------
-Returns true if the conic is in the quadric.
+Returns True if the conic is in the quadric.
 ") IsInQuadric;
 		Standard_Boolean IsInQuadric();
 
@@ -757,7 +757,7 @@ bool
 
 Description
 -----------
-Returns true if the line is in a quadric which is parallel to the quadric.
+Returns True if the line is in a quadric which is parallel to the quadric.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -788,7 +788,7 @@ float
 
 Description
 -----------
-Returns the parameter on the line of the intersection point of range n.
+Returns the parameter on the line of the intersection point of range N.
 ") ParamOnConic;
 		Standard_Real ParamOnConic(const Standard_Integer N);
 
@@ -905,7 +905,7 @@ None
 
 Description
 -----------
-Intersects a line and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to check the distance between line and plane on the distance <len> from the origin of the line.
+Intersects a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 ") Perform;
 		void Perform(const gp_Lin & L, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0);
 
@@ -926,7 +926,7 @@ None
 
 Description
 -----------
-Intersects a circle and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to determine if a distance is null.
+Intersects a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") Perform;
 		void Perform(const gp_Circ & C, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -947,7 +947,7 @@ None
 
 Description
 -----------
-Intersects an ellipse and a plane. tolang is used to determine if the angle between two vectors is null. tol is used to determine if a distance is null.
+Intersects an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") Perform;
 		void Perform(const gp_Elips & E, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -967,7 +967,7 @@ None
 
 Description
 -----------
-Intersects a parabola and a plane. tolang is used to determine if the angle between two vectors is null.
+Intersects a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") Perform;
 		void Perform(const gp_Parab & Pb, const gp_Pln & P, const Standard_Real Tolang);
 
@@ -987,7 +987,7 @@ None
 
 Description
 -----------
-Intersects an hyperbola and a plane. tolang is used to determine if the angle between two vectors is null.
+Intersects an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") Perform;
 		void Perform(const gp_Hypr & H, const gp_Pln & P, const Standard_Real Tolang);
 
@@ -1005,7 +1005,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of range n.
+Returns the point of range N.
 ") Point;
 		const gp_Pnt Point(const Standard_Integer N);
 
@@ -1064,7 +1064,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful.
+Returns True if the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1095,7 +1095,7 @@ float
 
 Description
 -----------
-Returns the parameter on the line of the intersection point of range index.
+Returns the parameter on the line of the intersection point of range Index.
 ") ParamOnLine;
 		Standard_Real ParamOnLine(const Standard_Integer Index);
 
@@ -1114,7 +1114,7 @@ THETA: float
 
 Description
 -----------
-Returns the parameters on the torus of the intersection point of range index.
+Returns the parameters on the torus of the intersection point of range Index.
 ") ParamOnTorus;
 		void ParamOnTorus(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1151,7 +1151,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the intersection point of range index.
+Returns the intersection point of range Index.
 ") Value;
 		const gp_Pnt Value(const Standard_Integer Index);
 
@@ -1178,7 +1178,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad();
 
@@ -1198,7 +1198,7 @@ None
 
 Description
 -----------
-Creates the intersection between a cylinder and a quadric . tol est a definir plus precisemment.
+Creates the intersection between a cylinder and a quadric . Tol est a definir plus precisemment.
 ") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad(const gp_Cylinder & C, const IntAna_Quadric & Q, const Standard_Real Tol);
 
@@ -1218,7 +1218,7 @@ None
 
 Description
 -----------
-Creates the intersection between a cone and a quadric. tol est a definir plus precisemment.
+Creates the intersection between a cone and a quadric. Tol est a definir plus precisemment.
 ") IntAna_IntQuadQuad;
 		 IntAna_IntQuadQuad(const gp_Cone & C, const IntAna_Quadric & Q, const Standard_Real Tol);
 
@@ -1236,7 +1236,7 @@ IntAna_Curve
 
 Description
 -----------
-Returns the curve of range n.
+Returns the curve of range N.
 ") Curve;
 		IntAna_Curve Curve(const Standard_Integer N);
 
@@ -1254,7 +1254,7 @@ bool
 
 Description
 -----------
-Returns true if the curve i shares its last bound with another curve.
+Returns True if the Curve I shares its last bound with another curve.
 ") HasNextCurve;
 		Standard_Boolean HasNextCurve(const Standard_Integer I);
 
@@ -1272,7 +1272,7 @@ bool
 
 Description
 -----------
-Returns true if the curve i shares its first bound with another curve.
+Returns True if the Curve I shares its first bound with another curve.
 ") HasPreviousCurve;
 		Standard_Boolean HasPreviousCurve(const Standard_Integer I);
 
@@ -1285,7 +1285,7 @@ bool
 
 Description
 -----------
-Returns true if the cylinder, the cone or the sphere is identical to the quadric.
+Returns True if the cylinder, the cone or the sphere is identical to the quadric.
 ") IdenticalElements;
 		Standard_Boolean IdenticalElements();
 
@@ -1298,7 +1298,7 @@ bool
 
 Description
 -----------
-Returns true if the computation was successful.
+Returns True if the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1342,7 +1342,7 @@ theOpposite: bool
 
 Description
 -----------
-If hasnextcurve(i) returns true, this function returns the index j of the curve which has a common bound with the curve i. if theopposite == true , then the last parameter of the curve i, and the last parameter of the curve j give the same point. else the last parameter of the curve i and the first parameter of the curve j are the same point.
+If HasNextCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True , then the last parameter of the curve I, and the last parameter of the curve J give the same point. Else the last parameter of the curve I and the first parameter of the curve J are the same point.
 ") NextCurve;
 		Standard_Integer NextCurve(const Standard_Integer I, Standard_Boolean &OutValue);
 
@@ -1361,7 +1361,7 @@ U2: float
 
 Description
 -----------
-Returns the parameters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range n.
+Returns the parameters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range N.
 ") Parameters;
 		void Parameters(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1381,7 +1381,7 @@ None
 
 Description
 -----------
-Intersects a cylinder and a quadric . tol est a definir plus precisemment.
+Intersects a cylinder and a quadric . Tol est a definir plus precisemment.
 ") Perform;
 		void Perform(const gp_Cylinder & C, const IntAna_Quadric & Q, const Standard_Real Tol);
 
@@ -1401,7 +1401,7 @@ None
 
 Description
 -----------
-Intersects a cone and a quadric. tol est a definir plus precisemment.
+Intersects a cone and a quadric. Tol est a definir plus precisemment.
 ") Perform;
 		void Perform(const gp_Cone & C, const IntAna_Quadric & Q, const Standard_Real Tol);
 
@@ -1419,7 +1419,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of range n.
+Returns the point of range N.
 ") Point;
 		const gp_Pnt Point(const Standard_Integer N);
 
@@ -1437,7 +1437,7 @@ theOpposite: bool
 
 Description
 -----------
-If haspreviouscurve(i) returns true, this function returns the index j of the curve which has a common bound with the curve i. if theopposite == true , then the first parameter of the curve i, and the first parameter of the curve j give the same point. else the first parameter of the curve i and the last parameter of the curve j are the same point.
+if HasPreviousCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True , then the first parameter of the curve I, and the first parameter of the curve J give the same point. Else the first parameter of the curve I and the last parameter of the curve J are the same point.
 ") PreviousCurve;
 		Standard_Integer PreviousCurve(const Standard_Integer I, Standard_Boolean &OutValue);
 
@@ -1485,7 +1485,7 @@ None
 
 Description
 -----------
-Creates the intersection between two planes. tolang is the angular tolerance used to determine if the planes are parallel. tol is the tolerance used to determine if the planes are identical (only when they are parallel).
+Creates the intersection between two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Pln & P1, const gp_Pln & P2, const Standard_Real TolAng, const Standard_Real Tol);
 
@@ -1507,7 +1507,7 @@ None
 
 Description
 -----------
-Creates the intersection between a plane and a cylinder. tolang is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. tol is the tolerance used to determine if the result is a circle or an ellipse. if the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than tol, the result will be the circle. h is the height of the cylinder <cyl>. it is used to check whether the plane and cylinder are parallel.
+Creates the intersection between a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cylinder & C, const Standard_Real Tolang, const Standard_Real Tol, const Standard_Real H = 0);
 
@@ -1547,7 +1547,7 @@ None
 
 Description
 -----------
-Creates the intersection between a plane and a cone. tolang is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. tol is the tolerance used to determine if the apex of the cone is in the plane.
+Creates the intersection between a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cone & C, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -1587,7 +1587,7 @@ None
 
 Description
 -----------
-Creates the intersection between a cylinder and a sphere.
+Creates the intersection between a Cylinder and a Sphere.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Sphere & Sph, const Standard_Real Tol);
 
@@ -1607,7 +1607,7 @@ None
 
 Description
 -----------
-Creates the intersection between a cylinder and a cone.
+Creates the intersection between a Cylinder and a Cone.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Cone & Con, const Standard_Real Tol);
 
@@ -1627,7 +1627,7 @@ None
 
 Description
 -----------
-Creates the intersection between two spheres.
+Creates the intersection between two Spheres.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Sphere & Sph1, const gp_Sphere & Sph2, const Standard_Real Tol);
 
@@ -1647,7 +1647,7 @@ None
 
 Description
 -----------
-Creates the intersection between a sphere and a cone.
+Creates the intersection between a Sphere and a Cone.
 ") IntAna_QuadQuadGeo;
 		 IntAna_QuadQuadGeo(const gp_Sphere & Sph, const gp_Cone & Con, const Standard_Real Tol);
 
@@ -1785,7 +1785,7 @@ gp_Circ
 
 Description
 -----------
-Returns the circle solution of range num.
+Returns the circle solution of range Num.
 ") Circle;
 		gp_Circ Circle(const Standard_Integer Num);
 
@@ -1803,7 +1803,7 @@ gp_Elips
 
 Description
 -----------
-Returns the ellipse solution of range num.
+Returns the ellipse solution of range Num.
 ") Ellipse;
 		gp_Elips Ellipse(const Standard_Integer Num);
 
@@ -1834,7 +1834,7 @@ gp_Hypr
 
 Description
 -----------
-Returns the hyperbola solution of range num.
+Returns the hyperbola solution of range Num.
 ") Hyperbola;
 		gp_Hypr Hyperbola(const Standard_Integer Num);
 
@@ -1847,7 +1847,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the computation was successful.
+Returns Standard_True if the computation was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1865,7 +1865,7 @@ gp_Lin
 
 Description
 -----------
-Returns the line solution of range num.
+Returns the line solution of range Num.
 ") Line;
 		gp_Lin Line(const Standard_Integer Num);
 
@@ -1878,7 +1878,7 @@ int
 
 Description
 -----------
-Returns the number of intersections. the possible intersections are: - 1 point - 1 or 2 line(s) - 1 point and 1 line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
+Returns the number of intersections. The possible intersections are: - 1 point - 1 or 2 line(s) - 1 Point and 1 Line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1909,7 +1909,7 @@ gp_Parab
 
 Description
 -----------
-Returns the parabola solution of range num.
+Returns the parabola solution of range Num.
 ") Parabola;
 		gp_Parab Parabola(const Standard_Integer Num);
 
@@ -1930,7 +1930,7 @@ None
 
 Description
 -----------
-Intersects two planes. tolang is the angular tolerance used to determine if the planes are parallel. tol is the tolerance used to determine if the planes are identical (only when they are parallel).
+Intersects two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 ") Perform;
 		void Perform(const gp_Pln & P1, const gp_Pln & P2, const Standard_Real TolAng, const Standard_Real Tol);
 
@@ -1952,7 +1952,7 @@ None
 
 Description
 -----------
-Intersects a plane and a cylinder. tolang is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. tol is the tolerance used to determine if the result is a circle or an ellipse. if the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than tol, the result will be the circle. h is the height of the cylinder <cyl>. it is used to check whether the plane and cylinder are parallel.
+Intersects a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 ") Perform;
 		void Perform(const gp_Pln & P, const gp_Cylinder & C, const Standard_Real Tolang, const Standard_Real Tol, const Standard_Real H = 0);
 
@@ -1992,7 +1992,7 @@ None
 
 Description
 -----------
-Intersects a plane and a cone. tolang is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. tol is the tolerance used to determine if the apex of the cone is in the plane.
+Intersects a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 ") Perform;
 		void Perform(const gp_Pln & P, const gp_Cone & C, const Standard_Real Tolang, const Standard_Real Tol);
 
@@ -2230,7 +2230,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point solution of range num.
+Returns the point solution of range Num.
 ") Point;
 		gp_Pnt Point(const Standard_Integer Num);
 
@@ -2270,7 +2270,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntAna_Quadric;
 		 IntAna_Quadric();
 
@@ -2288,7 +2288,7 @@ None
 
 Description
 -----------
-Creates a quadric from a pln.
+Creates a Quadric from a Pln.
 ") IntAna_Quadric;
 		 IntAna_Quadric(const gp_Pln & P);
 
@@ -2306,7 +2306,7 @@ None
 
 Description
 -----------
-Creates a quadric from a sphere.
+Creates a Quadric from a Sphere.
 ") IntAna_Quadric;
 		 IntAna_Quadric(const gp_Sphere & Sph);
 
@@ -2324,7 +2324,7 @@ None
 
 Description
 -----------
-Creates a quadric from a cylinder.
+Creates a Quadric from a Cylinder.
 ") IntAna_Quadric;
 		 IntAna_Quadric(const gp_Cylinder & Cyl);
 
@@ -2342,7 +2342,7 @@ None
 
 Description
 -----------
-Creates a quadric from a cone.
+Creates a Quadric from a Cone.
 ") IntAna_Quadric;
 		 IntAna_Quadric(const gp_Cone & Cone);
 
@@ -2368,7 +2368,7 @@ xCCte: float
 
 Description
 -----------
-Returns the coefficients of the polynomial equation which define the quadric: xcxx x**2 + xcyy y**2 + xczz z**2 + 2 ( xcxy x y + xcxz x z + xcyz y z ) + 2 ( xcx x + xcy y + xcz z ) + xccte.
+Returns the coefficients of the polynomial equation which define the quadric: xCXX x**2 + xCYY y**2 + xCZZ z**2 + 2 ( xCXY x y + xCXZ x z + xCYZ y z ) + 2 ( xCX x + xCY y + xCZ z ) + xCCte.
 ") Coefficients;
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2395,7 +2395,7 @@ xCCte: float
 
 Description
 -----------
-Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) in the local coordinates system defined by axis.
+Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) in the local coordinates system defined by Axis.
 ") NewCoefficients;
 		void NewCoefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const gp_Ax3 & Axis);
 
@@ -2413,7 +2413,7 @@ None
 
 Description
 -----------
-Initializes the quadric with a pln.
+Initializes the quadric with a Pln.
 ") SetQuadric;
 		void SetQuadric(const gp_Pln & P);
 
@@ -2431,7 +2431,7 @@ None
 
 Description
 -----------
-Initialize the quadric with a sphere.
+Initialize the quadric with a Sphere.
 ") SetQuadric;
 		void SetQuadric(const gp_Sphere & Sph);
 
@@ -2449,7 +2449,7 @@ None
 
 Description
 -----------
-Initializes the quadric with a cone.
+Initializes the quadric with a Cone.
 ") SetQuadric;
 		void SetQuadric(const gp_Cone & Con);
 
@@ -2467,7 +2467,7 @@ None
 
 Description
 -----------
-Initializes the quadric with a cylinder.
+Initializes the quadric with a Cylinder.
 ") SetQuadric;
 		void SetQuadric(const gp_Cylinder & Cyl);
 
