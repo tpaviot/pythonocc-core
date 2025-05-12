@@ -48,7 +48,7 @@ Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INST
 
 Cite as
 -------
-pythonocc is widely used in the industrial and academic communities. It is registered as a [Zenodo open access softwar](https://zenodo.org/record/7471333) and should be cited as:
+pythonocc is widely used in the industrial and academic communities. It is registered as a [Zenodo open access software](https://zenodo.org/record/7471333) and should be cited as:
 
 Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
 
