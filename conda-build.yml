@@ -58,6 +58,10 @@ jobs:
   - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
     - script: |
         call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
+        echo "PATH=%PATH%"
+        where cl.exe
+        set CC=cl.exe
+        set CC=cl.exe
       displayName: 'Set Windows environment'
       env:
         CXX: "cl.exe"
@@ -72,6 +76,8 @@ jobs:
     displayName: 'Run conda build'
     failOnStderr: false
     env:
+      CXX: "cl.exe"
+      CC: "cl.exe"
       PYTHONBUFFERED: 1
       PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
       PACKAGE_VERSION: $(Build.SourceBranchName)
