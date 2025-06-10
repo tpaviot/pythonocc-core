@@ -45,10 +45,6 @@ if (POLICY CMP0086)
     cmake_policy(SET CMP0086 NEW)
 endif(POLICY CMP0086)
 
-# Force C++ 17
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(BUILD_SHARED_LIBS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -114,7 +110,7 @@ find_package(SWIG 4.2.1...4.3.1 REQUIRED)
 message(STATUS "SWIG version found: ${SWIG_VERSION}")
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual -builtin)
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual)
 if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
