@@ -48,36 +48,46 @@ jobs:
         conda config --add channels https://conda.anaconda.org/conda-forge
     displayName: 'Conda config and info'
 
-  - ${{ if eq(parameters.vmImage, 'windows-2019') }}:
-    - script: |
-        call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
-      displayName: 'Set Windows environment'
-      env:
-        CXX: "cl.exe"
-
-  - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
-    - script: |
-        call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
-        echo "PATH=%PATH%"
-        where cl.exe
-        set CC=cl.exe
-        set CC=cl.exe
-      displayName: 'Set Windows environment'
-      env:
-        CXX: "cl.exe"
-        CC: "cl.exe"
+  # - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
+  #   - script: |
+  #       call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
+  #       echo "PATH=%PATH%"
+  #       where cl.exe
+  #       set CC=cl.exe
+  #       set CC=cl.exe
+  #     displayName: 'Set Windows environment'
+  #     env:
+  #       CXX: "cl.exe"
+  #       CC: "cl.exe"
 
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
     displayName: 'Create Anaconda environment'
-    
+
+- ${{ if eq(parameters.vmImage, 'windows-2022') }}:
+  - script: |
+      call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
+      echo "PATH=%PATH%"
+      where cl.exe
+      set CC=cl.exe
+      set CXX=cl.exe
+      call activate build_env
+      conda-build --no-remove-work-dir --dirty ci/conda
+    displayName: 'Set Windows environment and build'
+    env:
+      CXX: "cl.exe"
+      CC: "cl.exe"
+      PYTHONBUFFERED: 1
+      PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
+      PACKAGE_VERSION: $(Build.SourceBranchName)
+      TOKEN: $(anaconda.TOKEN)
+
+- ${{ if not(contains(parameters.vmImage, 'win')) }}:
   - bash: |
       source activate build_env && \
       conda-build --no-remove-work-dir --dirty ci/conda
     displayName: 'Run conda build'
     failOnStderr: false
     env:
-      CXX: "cl.exe"
-      CC: "cl.exe"
       PYTHONBUFFERED: 1
       PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
       PACKAGE_VERSION: $(Build.SourceBranchName)
