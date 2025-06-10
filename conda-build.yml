@@ -61,6 +61,7 @@ jobs:
       displayName: 'Set Windows environment'
       env:
         CXX: "cl.exe"
+        CC: "cl.exe"
 
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
     displayName: 'Create Anaconda environment'
