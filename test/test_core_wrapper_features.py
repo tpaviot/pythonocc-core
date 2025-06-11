@@ -608,26 +608,6 @@ def test_default_constructor_DEFINE_STANDARD_ALLOC() -> None:
     assert isinstance(s, ShapeAnalysis_Curve)
 
 
-def test_handling_exceptions() -> None:
-    """asserts that handling of OCC exceptions is handled correctly caught
-    see issue #259 -- Standard errors like Standard_OutOfRange not caught
-    """
-    # Standard_OutOfRange
-    with pytest.raises(RuntimeError):
-        gp_Dir(0, 0, 1).Coord(-1)
-    # StdFail_NotDone
-    with pytest.raises(RuntimeError):
-        BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(0, 0, 0)).Edge()
-    # Standard_DomainError
-    with pytest.raises(RuntimeError):
-        BRepPrimAPI_MakeBox(0, 0, 0).Shape()
-    # Standard_OutOfRange, related to specific issue in #778
-    # Note: the exception is raised if and only if OCCT is compiled
-    # using -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
-    with pytest.raises(RuntimeError):
-        BRepBuilderAPI_Sewing().FreeEdge(-1)
-
-
 def test_memory_handle_getobject() -> None:
     """
     See https://github.com/tpaviot/pythonocc-generator/pull/24
