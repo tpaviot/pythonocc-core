@@ -142,66 +142,6 @@ void process_opencascade_exception(const Standard_Failure& error,
     PyErr_SetString(exception_type, oss.str().c_str());
 }
 
-// Function to handle C++ standard exceptions
-void process_std_exception(const std::exception& e, 
-                          const std::string& method_name, 
-                          const std::string& class_name) {
-    std::ostringstream oss;
-    const std::string readable_class = get_readable_class_name(class_name);
-    const std::string readable_method = get_readable_method_name(method_name);
-    
-    oss << "C++ Standard Exception: " << e.what();
-    oss << " (in " << readable_class;
-    if (readable_method != "Unknown") {
-        oss << "::" << readable_method;
-    }
-    oss << ")";
-    
-    #if PYTHONOCC_DEBUG_EXCEPTIONS
-    std::cerr << "[pythonOCC Debug] " << oss.str() << std::endl;
-    #endif
-    
-    // Try to determine the appropriate exception type
-    PyObject* exception_type = PyExc_RuntimeError;
-    
-    // Use typeid to determine the exact type
-    const std::type_info& ti = typeid(e);
-    const std::string type_name = ti.name();
-    
-    if (type_name.find("bad_alloc") != std::string::npos) {
-        exception_type = PyExc_MemoryError;
-    }
-    else if (type_name.find("out_of_range") != std::string::npos) {
-        exception_type = PyExc_IndexError;
-    }
-    else if (type_name.find("invalid_argument") != std::string::npos) {
-        exception_type = PyExc_ValueError;
-    }
-    
-    PyErr_SetString(exception_type, oss.str().c_str());
-}
-
-// Function for unknown exceptions
-void process_unknown_exception(const std::string& method_name, 
-                              const std::string& class_name) {
-    std::ostringstream oss;
-    const std::string readable_class = get_readable_class_name(class_name);
-    const std::string readable_method = get_readable_method_name(method_name);
-    
-    oss << "Unknown C++ Exception";
-    oss << " (in " << readable_class;
-    if (readable_method != "Unknown") {
-        oss << "::" << readable_method;
-    }
-    oss << ")";
-    
-    #if PYTHONOCC_DEBUG_EXCEPTIONS
-    std::cerr << "[pythonOCC Debug] " << oss.str() << std::endl;
-    #endif
-    
-    PyErr_SetString(PyExc_RuntimeError, oss.str().c_str());
-}
-
 %}
 
 // Enhanced exception macro with hierarchical exception handling
@@ -221,26 +161,6 @@ void process_unknown_exception(const std::string& method_name,
     catch(const std::bad_alloc& e)
     {
         PyErr_SetString(PyExc_MemoryError, "Memory allocation failed in OpenCASCADE operation");
-        SWIG_fail;
-    }
-    catch(const std::out_of_range& e)
-    {
-        process_std_exception(e, "$name", "$parentclassname");
-        SWIG_fail;
-    }
-    catch(const std::invalid_argument& e)
-    {
-        process_std_exception(e, "$name", "$parentclassname");
-        SWIG_fail;
-    }
-    catch(const std::exception& e)
-    {
-        process_std_exception(e, "$name", "$parentclassname");
-        SWIG_fail;
-    }
-    catch(...)
-    {
-        process_unknown_exception("$name", "$parentclassname");
         SWIG_fail;
     }
 }
