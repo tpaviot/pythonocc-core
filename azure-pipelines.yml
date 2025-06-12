@@ -29,17 +29,10 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python39
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python39
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 9
-
-- template: conda-build.yml
-  parameters:
-    name: Ubuntu_22_04_python310
-    vmImage: 'ubuntu-22.04'
-    py_maj: 3
-    py_min: 10
 
 - template: conda-build.yml
   parameters:
@@ -57,15 +50,15 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python310
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python310
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 10
 
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_22_04_python311
-    vmImage: 'ubuntu-22.04'
+    name: Ubuntu_24_04_python311
+    vmImage: 'ubuntu-24.04'
     py_maj: 3
     py_min: 11
 
@@ -78,15 +71,15 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python311
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python311
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 11
 
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_22_04_python312
-    vmImage: 'ubuntu-22.04'
+    name: Ubuntu_24_04_python312
+    vmImage: 'ubuntu-24.04'
     py_maj: 3
     py_min: 12
 
@@ -99,7 +92,7 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2019_python312
-    vmImage: 'windows-2019'
+    name: Windows_VS2022_python312
+    vmImage: 'windows-2022'
     py_maj: 3
     py_min: 12
