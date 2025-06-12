@@ -198,3 +198,16 @@ def test_list_of_shapes_to_compound():
     result, all_shape_converted = list_of_shapes_to_compound([box_shp, sph_shp])
     assert all_shape_converted
     assert get_type_as_string(result) == "Compound"
+
+
+def test_topology_summary():
+    assert topo.get_topology_summary() == {
+        "number_of_vertices": 8,
+        "number_of_edges": 12,
+        "number_of_wires": 6,
+        "number_of_faces": 6,
+        "number_of_shells": 1,
+        "number_of_solids": 1,
+        "number_of_compounds": 0,
+        "number_of_comp_solids": 0,
+    }

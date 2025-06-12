@@ -68,6 +68,13 @@ from OCC.Core.GCPnts import (
 )
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
+# Available discretization algorithms for edges and wires
+DISCRETIZATION_ALGORITHMS = {
+    "UniformAbscissa": GCPnts_UniformAbscissa,
+    "QuasiUniformDeflection": GCPnts_QuasiUniformDeflection,
+    "UniformDeflection": GCPnts_UniformDeflection,
+}
+
 
 def _number_of_topo(iterable: Iterable) -> int:
     return sum(1 for _ in iterable)
@@ -368,6 +375,18 @@ class TopologyExplorer:
             topo_set.add(topo_entity)
             topology_iterator.Next()
 
+    def get_topology_summary(self) -> Dict[str, int]:
+        return {
+            "number_of_vertices": self.number_of_vertices(),
+            "number_of_edges": self.number_of_edges(),
+            "number_of_wires": self.number_of_wires(),
+            "number_of_faces": self.number_of_faces(),
+            "number_of_shells": self.number_of_shells(),
+            "number_of_solids": self.number_of_solids(),
+            "number_of_compounds": self.number_of_compounds(),
+            "number_of_comp_solids": self.number_of_comp_solids(),
+        }
+
     def _number_shapes_ancestors(
         self, topology_type_1, topology_type_2, topological_entity
     ):
@@ -501,6 +520,36 @@ class TopologyExplorer:
     def number_of_faces_from_solids(self, solid: TopoDS_Solid) -> int:
         return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
 
+    # ======================================================================
+    # FACE <-> SHELL
+    # ======================================================================
+    def shells_from_face(self, face):
+        return self._map_shapes_and_ancestors(TopAbs_FACE, TopAbs_SHELL, face)
+
+    def number_of_shells_from_face(self, face):
+        return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SHELL, face)
+
+    def faces_from_shell(self, shell: TopoDS_Shell) -> Iterator[TopoDS_Face]:
+        return self._loop_topo(TopAbs_FACE, shell)
+
+    def number_of_faces_from_shell(self, shell: TopoDS_Shell) -> int:
+        return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
+
+    # ======================================================================
+    # SHELL <-> SOLID
+    # ======================================================================
+    def solids_from_shell(self, shell):
+        return self._map_shapes_and_ancestors(TopAbs_SHELL, TopAbs_SOLID, shell)
+
+    def number_of_solids_from_shell(self, shell):
+        return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SOLID, shell)
+
+    def shells_from_solid(self, solid: TopoDS_Solid) -> Iterator[TopoDS_Shell]:
+        return self._loop_topo(TopAbs_SHELL, solid)
+
+    def number_of_shells_from_solid(self, solid: TopoDS_Solid) -> int:
+        return sum(1 for _ in self._loop_topo(TopAbs_SHELL, solid))
+
 
 def dump_topology_to_string(
     shape: TopoDS_Shape, level: Optional[int] = 0, buffer: Optional[str] = ""
@@ -529,24 +578,34 @@ def dump_topology_to_string(
 
 
 def discretize_wire(
-    a_wire: TopoDS_Wire, deflection: Optional[int] = 0.5
+    a_wire: TopoDS_Wire,
+    deflection: float = 0.5,
+    algorithm: str = "QuasiUniformDeflection",
 ) -> List[gp_Pnt]:
     """Returns a set of points"""
     if not is_wire(a_wire):
         raise AssertionError(
             "You must provide a TopoDS_Wire to the discretize_wire function."
         )
+
+    if algorithm not in DISCRETIZATION_ALGORITHMS:
+        raise AssertionError(
+            f"Algorithm must be one of {list(DISCRETIZATION_ALGORITHMS.keys())}"
+        )
+
     wire_explorer = WireExplorer(a_wire)
     wire_pnts = []
     # loop over ordered edges
     for edg in wire_explorer.ordered_edges():
-        edg_pnts = discretize_edge(edg, deflection)
-        wire_pnts += edg_pnts
+        edg_pnts = discretize_edge(edg, deflection, algorithm)
+        wire_pnts.extend(edg_pnts)
     return wire_pnts
 
 
 def discretize_edge(
-    a_edge: TopoDS_Edge, deflection=0.2, algorithm="QuasiUniformDeflection"
+    a_edge: TopoDS_Edge,
+    deflection: float = 0.2,
+    algorithm: str = "QuasiUniformDeflection",
 ):
     """Take a TopoDS_Edge and returns a list of points
     The more deflection is small, the more the discretization is precise,
@@ -562,22 +621,21 @@ def discretize_edge(
             "Warning : TopoDS_Edge is null. discretize_edge will return an empty list of points."
         )
         return []
+    if algorithm not in DISCRETIZATION_ALGORITHMS:
+        raise AssertionError(
+            f"Algorithm must be one of {list(DISCRETIZATION_ALGORITHMS.keys())}"
+        )
+
     curve_adaptator = BRepAdaptor_Curve(a_edge)
     first = curve_adaptator.FirstParameter()
     last = curve_adaptator.LastParameter()
 
-    if algorithm == "QuasiUniformDeflection":
-        discretizer = GCPnts_QuasiUniformDeflection()
-    elif algorithm == "UniformAbscissa":
-        discretizer = GCPnts_UniformAbscissa()
-    elif algorithm == "UniformDeflection":
-        discretizer = GCPnts_UniformDeflection()
-    else:
-        raise AssertionError("Unknown algorithm")
+    discretizer_class = DISCRETIZATION_ALGORITHMS[algorithm]
+    discretizer = discretizer_class()
     discretizer.Initialize(curve_adaptator, deflection, first, last)
 
     if not discretizer.IsDone():
-        raise AssertionError("Discretizer not done.")
+        raise RuntimeError("Discretizer not done.")
     if discretizer.NbPoints() <= 0:
         raise AssertionError("Discretizer nb points not > 0.")
 
@@ -596,21 +654,15 @@ def discretize_edge(
 # TopoDS_Shape type utils
 #
 def is_vertex(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_VERTEX
-
-
-def is_solid(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_SOLID
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_VERTEX
 
 
 def is_edge(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_EDGE
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_EDGE
+
+
+def is_wire(shape: TopoDS_Shape) -> bool:
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_WIRE
 
 
 def is_face(shape: TopoDS_Shape) -> bool:
@@ -620,27 +672,21 @@ def is_face(shape: TopoDS_Shape) -> bool:
 
 
 def is_shell(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_SHELL
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_SHELL
 
 
-def is_wire(shape: TopoDS_Shape) -> bool:
+def is_solid(shape: TopoDS_Shape) -> bool:
     if not hasattr(shape, "ShapeType"):
         return False
-    return shape.ShapeType() == TopAbs_WIRE
+    return shape.ShapeType() == TopAbs_SOLID
 
 
 def is_compound(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_COMPOUND
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_COMPOUND
 
 
 def is_compsolid(shape: TopoDS_Shape) -> bool:
-    if not hasattr(shape, "ShapeType"):
-        return False
-    return shape.ShapeType() == TopAbs_COMPSOLID
+    return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_COMPSOLID
 
 
 def get_type_as_string(shape: TopoDS_Shape) -> str:
@@ -654,7 +700,7 @@ def get_type_as_string(shape: TopoDS_Shape) -> str:
         TopAbs_COMPOUND: "Compound",
         TopAbs_COMPSOLID: "CompSolid",
     }
-    return types[shape.ShapeType()]
+    return types.get(shape.ShapeType(), "Unknown")
 
 
 def get_sorted_hlr_edges(
@@ -692,9 +738,6 @@ def get_sorted_hlr_edges(
         visible += list(TopologyExplorer(visible_smooth_edges_as_compound).edges())
     if visible_contour_edges_as_compound := hlr_shapes.OutLineVCompound():
         visible += list(TopologyExplorer(visible_contour_edges_as_compound).edges())
-    # visible_isoparameter_edges_as_compound = hlr_shapes.IsoLineVCompound()
-    # if visible_isoparameter_edges_as_compound:
-    #    visible += list(TopologyExplorer(visible_isoparameter_edges_as_compound).edges())
     # hidden edges
     hidden = []
     if export_hidden_edges:
