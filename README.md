@@ -46,9 +46,13 @@ Build from source
 -----------------
 Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
 
+Cited by
+--------
+pythonocc is widely used in industrial and academic communities, with over 400 citations. View citations and applications on the [Google Scholar pythonocc page](https://scholar.google.com/scholar?hl=fr&as_sdt=0%2C5&q=pythonocc&btnG=&oq=pythonocc)
+
 Cite as
 -------
-pythonocc is widely used in the industrial and academic communities. It is registered as a [Zenodo open access softwar](https://zenodo.org/record/7471333) and should be cited as:
+pythonocc is registered as a [Zenodo open access software](https://zenodo.org/record/7471333) and should be cited as:
 
 Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
 
