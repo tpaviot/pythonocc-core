@@ -106,14 +106,13 @@ template <typename T> class handle{};
 
 // avoid useless copy for const objects
 %typemap(out) CONST TYPE {
-  TYPE * presult = new TYPE(static_cast< CONST TYPE& >($1));
-  if (presult) {
-      presult->IncrementRefCounter();
+  if ($1) {
+      $1->IncrementRefCounter();
 #ifdef DEBUG_MEMORY
       handle_creation_count++;
 #endif
     }
-    %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+    %set_output(SWIG_NewPointerObj(%as_voidptr($1), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
 
 
