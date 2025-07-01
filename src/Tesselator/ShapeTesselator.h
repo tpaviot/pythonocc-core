@@ -71,9 +71,9 @@ private:
     TopoDS_Shape myShape;            //!< The shape to tessellate
     Standard_Real myDeviation;       //!< Tessellation deviation parameter
     
-    // Face and edge collections using smart pointers
-    std::vector<std::unique_ptr<Face>> face_list;  //!< Collection of tessellated faces
-    std::vector<std::unique_ptr<Edge>> edge_list;  //!< Collection of tessellated edges
+    // Face and edge collections
+    std::vector<Face> face_list;     //!< Collection of tessellated faces
+    std::vector<Edge> edge_list;     //!< Collection of tessellated edges
     
     // Consolidated mesh data for efficient access
     std::vector<Standard_Real> consolidated_vertices;        //!< All vertex coordinates
