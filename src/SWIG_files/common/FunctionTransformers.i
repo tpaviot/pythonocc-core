@@ -41,7 +41,7 @@ Standard_CString parameter transformation
     $1 = PyUnicode_Check($input) ? 1 : 0;
 }
 %typemap(out) Standard_CString {
-    $result = PyString_FromString($1);
+    $result = PyUnicode_FromString($1);
 }
 
 /*
@@ -72,31 +72,15 @@ TCollection_AsciiString parameter transformation
     $1 = PyUnicode_Check($input) ? 1 : 0;
 }
 %typemap(out) TCollection_AsciiString {
-    $result = PyString_FromString($1.ToCString());
+    $result = PyUnicode_FromString($1.ToCString());
 }
 
 /*
 TCollection_HAsciiString output by ref parameter transformation
 */
 %typemap(argout) opencascade::handle<TCollection_HAsciiString> &OutValue {
-    PyObject *o, *o2, *o3;
-    opencascade::handle<TCollection_HAsciiString> thas = new TCollection_HAsciiString(*$1);
-    o = PyString_FromString(thas->ToCString());
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyUnicode_FromString((*$1)->ToCString());
+    $result = SWIG_AppendOutput($result, o);
 }
 
 %typemap(in,numinputs=0) opencascade::handle<TCollection_HAsciiString>  &OutValue(opencascade::handle<TCollection_HAsciiString>  temp) {
@@ -107,23 +91,8 @@ TCollection_HAsciiString output by ref parameter transformation
 Standard_ShortReal & function transformation
 */
 %typemap(argout) Standard_ShortReal &OutValue {
-    PyObject *o, *o2, *o3;
-    o = PyFloat_FromDouble(*$1);
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyFloat_FromDouble(*$1);
+    $result = SWIG_AppendOutput($result, o);
 }
 
 %typemap(in,numinputs=0) Standard_ShortReal &OutValue(Standard_ShortReal temp) {
@@ -134,23 +103,8 @@ Standard_ShortReal & function transformation
 Standard_Real & function transformation
 */
 %typemap(argout) Standard_Real &OutValue {
-    PyObject *o, *o2, *o3;
-    o = PyFloat_FromDouble(*$1);
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyFloat_FromDouble(*$1);
+    $result = SWIG_AppendOutput($result, o);
 }
 
 %typemap(in,numinputs=0) Standard_Real &OutValue(Standard_Real temp) {
@@ -161,23 +115,8 @@ Standard_Real & function transformation
 Standard_Integer & function transformation
 */
 %typemap(argout) Standard_Integer &OutValue {
-    PyObject *o, *o2, *o3;
-    o = PyInt_FromLong(*$1);
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyLong_FromLong(*$1);
+    $result = SWIG_AppendOutput($result, o);
 }
 
 %typemap(in,numinputs=0) Standard_Integer &OutValue(Standard_Integer temp) {
@@ -188,23 +127,8 @@ Standard_Integer & function transformation
 Standard_Boolean & function transformation
 */
 %typemap(argout) Standard_Boolean &OutValue {
-    PyObject *o, *o2, *o3;
-    o = PyBool_FromLong(*$1);
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyBool_FromLong(*$1);
+    $result = SWIG_AppendOutput($result, o);
 }
 
 %typemap(in,numinputs=0) Standard_Boolean &OutValue(Standard_Boolean temp) {
@@ -217,8 +141,8 @@ Standard_Boolean & function transformation
         Py_RETURN_NONE;
     }
     PyObject *resultobj = nullptr;
-    TopAbs_ShapeEnum shape_type = sh->ShapeType();
-    switch (shape_type)
+
+    switch (sh->ShapeType())
     {
       case TopAbs_COMPOUND:
         resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
@@ -257,8 +181,8 @@ Standard_Boolean & function transformation
         Py_RETURN_NONE;
     }
     PyObject *resultobj = nullptr;
-    TopAbs_ShapeEnum shape_type = sh->ShapeType();
-    switch (shape_type)
+
+    switch (sh->ShapeType())
     {
       case TopAbs_COMPOUND:
         resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
@@ -298,22 +222,7 @@ Standard_Boolean & function transformation
 }
 
 %typemap(argout) TYPE &OutValue {
-    PyObject *o, *o2, *o3;
-    o = PyInt_FromLong(*$1);
-    if ((!$result) || ($result == Py_None)) {
-        $result = o;
-    } else {
-        if (!PyTuple_Check($result)) {
-            PyObject *o2 = $result;
-            $result = PyTuple_New(1);
-            PyTuple_SetItem($result,0,o2);
-        }
-        o3 = PyTuple_New(1);
-        PyTuple_SetItem(o3,0,o);
-        o2 = $result;
-        $result = PySequence_Concat(o2,o3);
-        Py_DECREF(o2);
-        Py_DECREF(o3);
-    }
+    PyObject *o = PyLong_FromLong(static_cast<long>(*$1));
+    $result = SWIG_AppendOutput($result, o);
 }
 %enddef 

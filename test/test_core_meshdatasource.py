@@ -37,7 +37,7 @@ def test_stl_file_check_bounding_box():
     a_stl_mesh = rwstl.ReadFile(STL_BOTTLE_FILENAME)
     a_ds = MeshDS_DataSource(a_stl_mesh)
     bb = a_ds.GetBoundingBox().Get()
-    assert bb == (-26.5748, 4.426, -13.6694, 26.5269, 90.2, 13.5885)
+    assert bb == [-26.5748, 4.426, -13.6694, 26.5269, 90.2, 13.5885]
 
 
 def test_create_mesh_datasource():

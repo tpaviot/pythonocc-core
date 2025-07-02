@@ -427,7 +427,7 @@ def test_Standard_Boolean_byref() -> None:
     """
     cs = ChFiDS_ChamfSpine()
     cs.SetDistAngle(1.0, 45)
-    assert cs.GetDistAngle() == (1.0, 45.0)
+    assert cs.GetDistAngle() == [1.0, 45.0]
 
 
 def test_pickle_topods_shape_to_from() -> None:
@@ -690,7 +690,7 @@ def test_array_iterator() -> None:
     list_of_points[1] = P0
 
     # then get item
-    assert list_of_points[1].Coord() == (1.0, 2.0, 3.0)
+    assert list_of_points[1].Coord() == [1.0, 2.0, 3.0]
     with pytest.raises(IndexError):
         list_of_points[4]
     # iterator creation
@@ -1030,7 +1030,7 @@ def test_Standard_ShortReal_and_Standard_Real_returned_by_reference():
     hlr_edg_it.InitVisible(hlralgo_edge_status)
 
     # visible should return both 4 floats and doubles
-    assert hlr_edg_it.Visible() == (start, tol_start, end, tol_end)
+    assert hlr_edg_it.Visible() == [start, tol_start, end, tol_end]
 
 
 def test_deprecated_static_functions():
