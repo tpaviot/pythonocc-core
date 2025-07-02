@@ -49,16 +49,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 // Utility function to get a readable class name
-const char* get_readable_class_name(const char* class_name) noexcept {
-    if (!class_name || strcmp(class_name, "$parentclassname") == 0 || class_name[0] == '\0') {
+std::string get_readable_class_name(const std::string& class_name) {
+    if (class_name.empty() || class_name == "$parentclassname") {
         return "Unknown";
     }
     return class_name;
 }
 
 // Utility function to get a readable method name
-const char* get_readable_method_name(const char* method_name) noexcept {
-    if (!method_name || strcmp(method_name, "$name") == 0 || method_name[0] == '\0') {
+std::string get_readable_method_name(const std::string& method_name) {
+    if (method_name.empty() || method_name == "$name") {
         return "Unknown";
     }
     return method_name;
@@ -66,34 +66,44 @@ const char* get_readable_method_name(const char* method_name) noexcept {
 
 // Mapping OpenCASCADE exceptions to appropriate Python exceptions
 PyObject* get_exception_type(const Standard_Failure& error) {
-    static const std::vector<std::pair<std::string, PyObject*>> exception_map = {
-        {"OutOfRange",     PyExc_IndexError},
-        {"RangeError",     PyExc_IndexError},
-        {"OutOfMemory",    PyExc_MemoryError},
-        {"NullObject",     PyExc_ValueError},
-        {"NullValue",      PyExc_ValueError},
-        {"TypeMismatch",   PyExc_TypeError},
-        {"NotImplemented", PyExc_NotImplementedError},
-        {"NoSuchObject",   PyExc_KeyError},
-        {"DimensionError", PyExc_ValueError},
-        {"DomainError",    PyExc_ValueError},
-        {"NumericError",   PyExc_ArithmeticError},
-        {"Overflow",       PyExc_ArithmeticError},
-        {"Underflow",      PyExc_ArithmeticError},
-        {"TooManyUsers",   PyExc_ResourceWarning}
-    };
-
-    const char* type_name_cstr = error.DynamicType()->Name();
-    const std::string type_name(type_name_cstr);
-
-    // Iterate over the table to find the mapping
-    for (const auto& mapping : exception_map) {
-        if (type_name.find(mapping.first) != std::string::npos) {
-            return mapping.second;
-        }
+    const Handle(Standard_Type)& error_type = error.DynamicType();
+    const std::string type_name = error_type->Name();
+    
+    // Specific error type mapping
+    if (type_name.find("OutOfRange") != std::string::npos || 
+        type_name.find("RangeError") != std::string::npos) {
+        return PyExc_IndexError;
     }
-
-    // Valeur par défaut si aucune correspondance n'est trouvée.
+    else if (type_name.find("OutOfMemory") != std::string::npos) {
+        return PyExc_MemoryError;
+    }
+    else if (type_name.find("NullObject") != std::string::npos || 
+             type_name.find("NullValue") != std::string::npos) {
+        return PyExc_ValueError;
+    }
+    else if (type_name.find("TypeMismatch") != std::string::npos) {
+        return PyExc_TypeError;
+    }
+    else if (type_name.find("NotImplemented") != std::string::npos) {
+        return PyExc_NotImplementedError;
+    }
+    else if (type_name.find("NoSuchObject") != std::string::npos) {
+        return PyExc_KeyError;
+    }
+    else if (type_name.find("DimensionError") != std::string::npos || 
+             type_name.find("DomainError") != std::string::npos) {
+        return PyExc_ValueError;
+    }
+    else if (type_name.find("NumericError") != std::string::npos || 
+             type_name.find("Overflow") != std::string::npos || 
+             type_name.find("Underflow") != std::string::npos) {
+        return PyExc_ArithmeticError;
+    }
+    else if (type_name.find("TooManyUsers") != std::string::npos) {
+        return PyExc_ResourceWarning;
+    }
+    
+    // Default to RuntimeError
     return PyExc_RuntimeError;
 }
 
@@ -102,31 +112,31 @@ void process_opencascade_exception(const Standard_Failure& error,
                                   const std::string& method_name, 
                                   const std::string& class_name) {
     std::ostringstream oss;
-
+    
     // Basic error information
-    const char * error_type = error.DynamicType()->Name();
-    const char * error_message = error.GetMessageString();
-    const char * readable_class = get_readable_class_name(class_name.c_str());
-    const char * readable_method = get_readable_method_name(method_name.c_str());
-
+    const std::string error_type = error.DynamicType()->Name();
+    const std::string error_message = error.GetMessageString();
+    const std::string readable_class = get_readable_class_name(class_name);
+    const std::string readable_method = get_readable_method_name(method_name);
+    
     // Error message construction
     oss << "OpenCASCADE Error [" << error_type << "]";
-
-    if (error_message && *error_message) { // check c string is not empty or null
+    
+    if (!error_message.empty()) {
         oss << ": " << error_message;
     }
-
+    
     oss << " (in " << readable_class;
-    if (strcmp(readable_method, "Unknown") != 0) {
+    if (readable_method != "Unknown") {
         oss << "::" << readable_method;
     }
     oss << ")";
-
+    
     // Debug information if enabled
     #if PYTHONOCC_DEBUG_EXCEPTIONS
     std::cerr << "[pythonOCC Debug] " << oss.str() << std::endl;
     #endif
-
+    
     // Set Python exception with appropriate type
     PyObject* exception_type = get_exception_type(error);
     PyErr_SetString(exception_type, oss.str().c_str());
@@ -134,6 +144,7 @@ void process_opencascade_exception(const Standard_Failure& error,
 
 %}
 
+// Enhanced exception macro with hierarchical exception handling
 %exception
 {
     try
