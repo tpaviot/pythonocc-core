@@ -66,7 +66,7 @@ const char* get_readable_method_name(const char* method_name) noexcept {
 
 // Mapping OpenCASCADE exceptions to appropriate Python exceptions
 PyObject* get_exception_type(const Standard_Failure& error) {
-    static const std::vector<std::pair<std::string_view, PyObject*>> exception_map = {
+    static const std::vector<std::pair<std::string, PyObject*>> exception_map = {
         {"OutOfRange",     PyExc_IndexError},
         {"RangeError",     PyExc_IndexError},
         {"OutOfMemory",    PyExc_MemoryError},
@@ -83,11 +83,12 @@ PyObject* get_exception_type(const Standard_Failure& error) {
         {"TooManyUsers",   PyExc_ResourceWarning}
     };
 
-    const char* type_name = error.DynamicType()->Name();
+    const char* type_name_cstr = error.DynamicType()->Name();
+    const std::string type_name(type_name_cstr);
 
     // Iterate over the table to find the mapping
     for (const auto& mapping : exception_map) {
-        if (type_name.find(mapping.first) != std::string_view::npos) {
+        if (type_name.find(mapping.first) != std::string::npos) {
             return mapping.second;
         }
     }
@@ -105,18 +106,18 @@ void process_opencascade_exception(const Standard_Failure& error,
     // Basic error information
     const char * error_type = error.DynamicType()->Name();
     const char * error_message = error.GetMessageString();
-    const char * readable_class = get_readable_class_name(class_name);
-    const char * readable_method = get_readable_method_name(method_name);
+    const char * readable_class = get_readable_class_name(class_name.c_str());
+    const char * readable_method = get_readable_method_name(method_name.c_str());
 
     // Error message construction
     oss << "OpenCASCADE Error [" << error_type << "]";
 
-    if (error_message && *error_message) { // check c sttring is not empty or null
+    if (error_message && *error_message) { // check c string is not empty or null
         oss << ": " << error_message;
     }
 
     oss << " (in " << readable_class;
-    if (readable_method != "Unknown") {
+    if (strcmp(readable_method, "Unknown") != 0) {
         oss << "::" << readable_method;
     }
     oss << ")";
@@ -133,7 +134,6 @@ void process_opencascade_exception(const Standard_Failure& error,
 
 %}
 
-// Enhanced exception macro with hierarchical exception handling
 %exception
 {
     try
