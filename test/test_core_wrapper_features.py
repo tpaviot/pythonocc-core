@@ -681,6 +681,14 @@ def test_return_enum() -> None:
         it.Next()
 
 
+def test_ncollection_list_iterator() -> None:
+    los1 = BRepCheck_ListOfStatus()
+    los1.Append(BRepCheck_Multiple3DCurve)
+    los1.Append(BRepCheck_EmptyWire)
+    list_los1 = list(los1)
+    assert list_los1 == [BRepCheck_Multiple3DCurve, BRepCheck_EmptyWire]
+
+
 def test_array_iterator() -> None:
     P0 = gp_Pnt(1, 2, 3)
     list_of_points = TColgp_Array1OfPnt(5, 8)
