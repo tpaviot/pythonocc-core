@@ -96,7 +96,7 @@ option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh 
 set(Python3_FIND_STRATEGY LOCATION)
 set(Python3_FIND_FRAMEWORK NEVER)
 if(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 3.9 COMPONENTS Interpreter Development NumPy REQUIRED)
+    find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
     include_directories(${Python3_NumPy_INCLUDE_DIRS})
     message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
     set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DBUILD_MESHDS_NUMPY)
