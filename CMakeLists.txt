@@ -22,15 +22,15 @@ project(PYTHONOCC)
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
 set(PYTHONOCC_VERSION_MINOR 9)
-set(PYTHONOCC_VERSION_PATCH 0)
+set(PYTHONOCC_VERSION_PATCH 1)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL)
+set(PYTHONOCC_VERSION_DEVEL -dev)
 
 # set OCCT version
 set(OCCT_VERSION_MAJOR 7)
 set(OCCT_VERSION_MINOR 9)
-set(OCCT_VERSION_PATCH 0)
+set(OCCT_VERSION_PATCH 1)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
