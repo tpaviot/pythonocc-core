@@ -103,6 +103,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRTopoBRep_ListIteratorOfListOfVData(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(HLRTopoBRep_MapOfShapeListOfVData) NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>;

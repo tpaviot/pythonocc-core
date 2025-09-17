@@ -119,6 +119,11 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntSurf_ListIteratorOfListOfPntOn2S(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(IntSurf_SequenceOfCouple) NCollection_Sequence<IntSurf_Couple>;

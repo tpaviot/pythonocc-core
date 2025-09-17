@@ -108,6 +108,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPTools_ListIteratorOfListOfConnexityBlock(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(BOPTools_ListOfCoupleOfShape) NCollection_List<BOPTools_CoupleOfShape>;
@@ -116,6 +121,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPTools_ListIteratorOfListOfCoupleOfShape(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set>;

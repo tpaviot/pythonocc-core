@@ -1695,6 +1695,11 @@ Array1ExtendIter(Graphic3d_Attribute)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Graphic3d_ListIteratorOfGraphicDriverFactoryList(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(Graphic3d_IndexedMapOfStructure) NCollection_IndexedMap<const Graphic3d_CStructure *>;

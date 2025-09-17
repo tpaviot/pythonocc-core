@@ -300,6 +300,11 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = V3d_ListIteratorOfListOfLight(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(V3d_ListOfView) NCollection_List<opencascade::handle<V3d_View>>;
@@ -308,6 +313,11 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = V3d_ListIteratorOfListOfView(self.this)
+        while it.More():
+            it.Next()
     }
 };
 /* end templates declaration */

@@ -193,6 +193,11 @@ BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPAlgo_ListIteratorOfListOfCheckResult(self.this)
+        while it.More():
+            it.Next()
     }
 };
 /* end templates declaration */

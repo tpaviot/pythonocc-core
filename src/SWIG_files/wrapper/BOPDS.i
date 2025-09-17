@@ -137,6 +137,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPDS_ListIteratorOfListOfPave(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(BOPDS_ListOfPaveBlock) NCollection_List<opencascade::handle<BOPDS_PaveBlock>>;
@@ -145,6 +150,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPDS_ListIteratorOfListOfPaveBlock(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>>;

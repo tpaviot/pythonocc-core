@@ -167,6 +167,11 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TNaming_ListOfMapOfShape) NCollection_List<TopTools_MapOfShape>;
@@ -175,6 +180,11 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfMapOfShape(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TNaming_ListOfNamedShape) NCollection_List<opencascade::handle<TNaming_NamedShape>>;
@@ -183,6 +193,11 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfNamedShape(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>>;

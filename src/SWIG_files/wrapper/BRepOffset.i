@@ -236,6 +236,11 @@ BRepOffset_Unknown = BRepOffset_Status.BRepOffset_Unknown
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepOffset_ListIteratorOfListOfInterval(self.this)
+        while it.More():
+            it.Next()
     }
 };
 /* end templates declaration */

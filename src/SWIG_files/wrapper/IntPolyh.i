@@ -85,6 +85,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntPolyh_ListIteratorOfListOfCouples(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence<IntPolyh_StartPoint>;

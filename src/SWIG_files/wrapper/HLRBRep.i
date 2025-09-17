@@ -162,6 +162,11 @@ Array1ExtendIter(HLRBRep_FaceData)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRBRep_ListIteratorOfListOfBPnt2D(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(HLRBRep_ListOfBPoint) NCollection_List<HLRBRep_BiPoint>;
@@ -170,6 +175,11 @@ Array1ExtendIter(HLRBRep_FaceData)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRBRep_ListIteratorOfListOfBPoint(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;

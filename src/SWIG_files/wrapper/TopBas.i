@@ -79,6 +79,11 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopBas_ListIteratorOfListOfTestInterference(self.this)
+        while it.More():
+            it.Next()
     }
 };
 /* end templates declaration */

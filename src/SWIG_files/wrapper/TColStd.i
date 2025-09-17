@@ -220,6 +220,11 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfAsciiString(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TColStd_ListOfInteger) NCollection_List<Standard_Integer>;
@@ -228,6 +233,11 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfInteger(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TColStd_ListOfReal) NCollection_List<Standard_Real>;
@@ -236,6 +246,11 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfReal(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TColStd_ListOfTransient) NCollection_List<opencascade::handle<Standard_Transient>>;
@@ -244,6 +259,11 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfTransient(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(TColStd_MapOfAsciiString) NCollection_Map<TCollection_AsciiString>;

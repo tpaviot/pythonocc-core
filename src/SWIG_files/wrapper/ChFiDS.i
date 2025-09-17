@@ -211,6 +211,11 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_ListIteratorOfListOfHElSpine(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(ChFiDS_ListOfStripe) NCollection_List<opencascade::handle<ChFiDS_Stripe>>;
@@ -219,6 +224,11 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_ListIteratorOfListOfStripe(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(ChFiDS_Regularities) NCollection_List<ChFiDS_Regul>;
@@ -227,6 +237,11 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_ListIteratorOfRegularities(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(ChFiDS_SecArray1) NCollection_Array1<ChFiDS_CircSection>;

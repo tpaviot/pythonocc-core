@@ -171,6 +171,11 @@ VrmlData_NotImplemented = VrmlData_ErrorStatus.VrmlData_NotImplemented
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = VrmlData_ListIteratorOfListOfNode(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(VrmlData_MapOfNode) NCollection_Map<opencascade::handle<VrmlData_Node>>;

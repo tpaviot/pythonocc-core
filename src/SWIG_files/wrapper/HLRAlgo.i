@@ -149,6 +149,11 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRAlgo_ListIteratorOfInterferenceList(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(HLRAlgo_ListIteratorOfInterferenceList) NCollection_TListIterator<HLRAlgo_Interference>;
@@ -159,6 +164,11 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRAlgo_ListIteratorOfListOfBPoint(self.this)
+        while it.More():
+            it.Next()
     }
 };
 /* end templates declaration */

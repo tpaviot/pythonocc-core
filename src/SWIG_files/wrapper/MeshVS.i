@@ -496,6 +496,11 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = MeshVS_ListIteratorOfPolyhedronVerts(self.this)
+        while it.More():
+            it.Next()
     }
 };
 %template(MeshVS_PolyhedronVertsIter) NCollection_TListIterator<MeshVS_PolyhedronVerts>;
