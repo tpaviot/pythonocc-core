@@ -8,7 +8,6 @@ from OCC.Core.gp import *
 from OCC.Core.math import *
 from OCC.Core.TColStd import *
 
-
 class CSLib_DerivativeStatus(IntEnum):
     CSLib_Done: int = ...
     CSLib_D1uIsNull: int = ...
@@ -53,27 +52,76 @@ class cslib:
     def DNNUV(Nu: int, Nv: int, DerSurf: TColgp_Array2OfVec) -> gp_Vec: ...
     @overload
     @staticmethod
-    def DNNUV(Nu: int, Nv: int, DerSurf1: TColgp_Array2OfVec, DerSurf2: TColgp_Array2OfVec) -> gp_Vec: ...
+    def DNNUV(
+        Nu: int, Nv: int, DerSurf1: TColgp_Array2OfVec, DerSurf2: TColgp_Array2OfVec
+    ) -> gp_Vec: ...
     @staticmethod
-    def DNNormal(Nu: int, Nv: int, DerNUV: TColgp_Array2OfVec, Iduref: Optional[int] = 0, Idvref: Optional[int] = 0) -> gp_Vec: ...
+    def DNNormal(
+        Nu: int,
+        Nv: int,
+        DerNUV: TColgp_Array2OfVec,
+        Iduref: Optional[int] = 0,
+        Idvref: Optional[int] = 0,
+    ) -> gp_Vec: ...
     @overload
     @staticmethod
-    def Normal(D1U: gp_Vec, D1V: gp_Vec, SinTol: float, Normal: gp_Dir) -> CSLib_DerivativeStatus: ...
+    def Normal(
+        D1U: gp_Vec, D1V: gp_Vec, SinTol: float, Normal: gp_Dir
+    ) -> CSLib_DerivativeStatus: ...
     @overload
     @staticmethod
-    def Normal(D1U: gp_Vec, D1V: gp_Vec, D2U: gp_Vec, D2V: gp_Vec, D2UV: gp_Vec, SinTol: float, Normal: gp_Dir) -> Tuple[bool, CSLib_NormalStatus]: ...
+    def Normal(
+        D1U: gp_Vec,
+        D1V: gp_Vec,
+        D2U: gp_Vec,
+        D2V: gp_Vec,
+        D2UV: gp_Vec,
+        SinTol: float,
+        Normal: gp_Dir,
+    ) -> Tuple[bool, CSLib_NormalStatus]: ...
     @overload
     @staticmethod
-    def Normal(D1U: gp_Vec, D1V: gp_Vec, MagTol: float, Normal: gp_Dir) -> CSLib_NormalStatus: ...
+    def Normal(
+        D1U: gp_Vec, D1V: gp_Vec, MagTol: float, Normal: gp_Dir
+    ) -> CSLib_NormalStatus: ...
     @overload
     @staticmethod
-    def Normal(MaxOrder: int, DerNUV: TColgp_Array2OfVec, MagTol: float, U: float, V: float, Umin: float, Umax: float, Vmin: float, Vmax: float, Normal: gp_Dir) -> Tuple[CSLib_NormalStatus, int, int]: ...
+    def Normal(
+        MaxOrder: int,
+        DerNUV: TColgp_Array2OfVec,
+        MagTol: float,
+        U: float,
+        V: float,
+        Umin: float,
+        Umax: float,
+        Vmin: float,
+        Vmax: float,
+        Normal: gp_Dir,
+    ) -> Tuple[CSLib_NormalStatus, int, int]: ...
 
 class CSLib_Class2d:
     @overload
-    def __init__(self, thePnts2d: TColgp_Array1OfPnt2d, theTolU: float, theTolV: float, theUMin: float, theVMin: float, theUMax: float, theVMax: float) -> None: ...
+    def __init__(
+        self,
+        thePnts2d: TColgp_Array1OfPnt2d,
+        theTolU: float,
+        theTolV: float,
+        theUMin: float,
+        theVMin: float,
+        theUMax: float,
+        theVMax: float,
+    ) -> None: ...
     @overload
-    def __init__(self, thePnts2d: TColgp_SequenceOfPnt2d, theTolU: float, theTolV: float, theUMin: float, theVMin: float, theUMax: float, theVMax: float) -> None: ...
+    def __init__(
+        self,
+        thePnts2d: TColgp_SequenceOfPnt2d,
+        theTolU: float,
+        theTolV: float,
+        theUMin: float,
+        theVMin: float,
+        theUMax: float,
+        theVMax: float,
+    ) -> None: ...
     def InternalSiDans(self, X: float, Y: float) -> int: ...
     def InternalSiDansOuOn(self, X: float, Y: float) -> int: ...
     def SiDans(self, P: gp_Pnt2d) -> int: ...
@@ -88,4 +136,3 @@ class CSLib_NormalPolyDef(math_FunctionWithDerivative):
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

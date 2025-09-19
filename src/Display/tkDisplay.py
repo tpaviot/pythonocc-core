@@ -24,6 +24,7 @@ class tkViewer3d(tk.Frame):
     """
     A Tkinter widget for an OCC viewer.
     """
+
     def __init__(self, parent, default=""):
         """
         Initializes the tkViewer3d.

@@ -43,31 +43,31 @@ class FEmTool_SeqOfLinConstr:
     def __init__(self) -> None: ...
     def __len__(self) -> int: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_Assembly: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_Curve: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_ElementaryCriterion: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_ElementsOfRefMatrix: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_LinearFlexion: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_LinearJerk: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_LinearTension: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_ProfileMatrix: ...
 
-#classnotwrapped
+# classnotwrapped
 class FEmTool_SparseMatrix: ...
 
 # harray1 classes
@@ -75,10 +75,11 @@ class FEmTool_SparseMatrix: ...
 
 class FEmTool_HAssemblyTable(FEmTool_AssemblyTable, Standard_Transient):
     @overload
-    def __init__(self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int) -> None: ...
+    def __init__(
+        self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int
+    ) -> None: ...
     @overload
     def __init__(self, theOther: FEmTool_AssemblyTable) -> None: ...
     def Array2(self) -> FEmTool_AssemblyTable: ...
 
 # hsequence classes
-

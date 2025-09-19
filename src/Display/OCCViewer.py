@@ -148,6 +148,7 @@ class Viewer3d(Display3d):
     It is based on the `OCC.Core.Visualization.Display3d` class and provides
     a higher-level API for interacting with the viewer.
     """
+
     def __init__(self):
         """
         Initializes the Viewer3d.

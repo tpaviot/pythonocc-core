@@ -2,7 +2,6 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from threejs_renderer import ThreejsRenderer
 
-
 def format_color(r: int, g: int, b: int) -> str: ...
 
 class RenderWraper(ThreejsRenderer):

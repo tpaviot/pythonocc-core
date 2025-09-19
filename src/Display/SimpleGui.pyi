@@ -2,7 +2,6 @@ from typing import Any, Callable, List, Optional, Tuple
 
 from OCC.Display.OCCViewer import Viewer3d
 
-
 def check_callable(_callable: Callable) -> None: ...
 def init_display(
     backend_str: Optional[str] = None,

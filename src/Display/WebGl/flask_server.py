@@ -41,6 +41,7 @@ class RenderWraper(ThreejsRenderer):
     """
     A wrapper for the ThreejsRenderer that adds support for Flask.
     """
+
     def __init__(
         self,
         path=None,
@@ -184,6 +185,7 @@ class RenderConfig:
     """
     Configuration for the renderer.
     """
+
     def __init__(
         self,
         bg_gradient_color1="#ced7de",

@@ -6,12 +6,10 @@ from OCC.Display.backend import get_qt_modules
 
 QtCore, QtGui, QtWidgets, QtOpenGL = get_qt_modules()
 
-
 class qtBaseViewer(QtWidgets.QWidget):
     def __init__(self, parent: Optional[Any] = None) -> None: ...
     def resizeEvent(self, event: Any) -> None: ...
     def paintEngine(self) -> None: ...
-
 
 class qtViewer3d(qtBaseViewer):
     sig_topods_selected: Any
@@ -36,7 +34,6 @@ class qtViewer3d(qtBaseViewer):
     def mouseReleaseEvent(self, event: Any) -> None: ...
     def DrawBox(self, event: Any) -> None: ...
     def mouseMoveEvent(self, evt: Any) -> None: ...
-
 
 class qtViewer3dWithManipulator(qtViewer3d):
     sig_topods_selected: Any

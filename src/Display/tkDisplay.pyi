@@ -1,7 +1,6 @@
 import tkinter as tk
 from typing import Any
 
-
 class tkViewer3d(tk.Frame):
     def __init__(self, parent: Any, default: str = "") -> None: ...
     def LeftDown(self, event: Any) -> None: ...

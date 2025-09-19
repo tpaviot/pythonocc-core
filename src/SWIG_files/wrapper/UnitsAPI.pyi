@@ -5,7 +5,6 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Units import *
 
-
 class UnitsAPI_SystemUnits(IntEnum):
     UnitsAPI_DEFAULT: int = ...
     UnitsAPI_SI: int = ...
@@ -85,9 +84,10 @@ class unitsapi:
     @staticmethod
     def SetCurrentUnit(aQuantity: str, aUnit: str) -> None: ...
     @staticmethod
-    def SetLocalSystem(aSystemUnit: Optional[UnitsAPI_SystemUnits] = UnitsAPI_SI) -> None: ...
+    def SetLocalSystem(
+        aSystemUnit: Optional[UnitsAPI_SystemUnits] = UnitsAPI_SI,
+    ) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

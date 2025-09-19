@@ -9,7 +9,6 @@ from OCC.Core.Message import *
 from OCC.Core.XmlMDF import *
 from OCC.Core.TCollection import *
 
-
 class xmlxcafdrivers:
     @staticmethod
     def DefineFormat(theApp: TDocStd_Application) -> None: ...
@@ -18,13 +17,16 @@ class xmlxcafdrivers:
 
 class XmlXCAFDrivers_DocumentRetrievalDriver(XmlDrivers_DocumentRetrievalDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+    def AttributeDrivers(
+        self, theMsgDriver: Message_Messenger
+    ) -> XmlMDF_ADriverTable: ...
 
 class XmlXCAFDrivers_DocumentStorageDriver(XmlDrivers_DocumentStorageDriver):
     def __init__(self, theCopyright: str) -> None: ...
-    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+    def AttributeDrivers(
+        self, theMsgDriver: Message_Messenger
+    ) -> XmlMDF_ADriverTable: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

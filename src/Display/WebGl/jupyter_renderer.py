@@ -202,6 +202,7 @@ class Helpers:
     """
     A base class for helpers.
     """
+
     def __init__(self, bb_center):
         """
         Initializes the Helpers.
@@ -259,6 +260,7 @@ class Grid(Helpers):
     """
     A grid helper.
     """
+
     def __init__(
         self,
         bb_center=None,
@@ -392,6 +394,7 @@ class CustomMaterial(ShaderMaterial):
     """
     A custom material helper.
     """
+
     def __init__(self, typ):
         """
         Initializes the CustomMaterial.
@@ -479,6 +482,7 @@ class BoundingBox:
     """
     A bounding box helper.
     """
+
     def __init__(self, objects, tol=1e-5):
         """
         Initializes the BoundingBox.
@@ -563,6 +567,7 @@ class JupyterRenderer:
     """
     A renderer for Jupyter notebooks.
     """
+
     def __init__(
         self,
         size=(640, 480),

@@ -77,6 +77,7 @@ class qtViewer3d(qtBaseViewer):
     """
     A Qt Widget for an OCC viewer.
     """
+
     # emit signal when selection is changed
     # is a list of TopoDS_*
     if hasattr(QtCore, "pyqtSignal"):  # PyQt5
@@ -340,6 +341,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
     """
     A Qt Widget for an OCC viewer with a manipulator.
     """
+
     # emit signal when selection is changed
     # is a list of TopoDS_*
     if hasattr(QtCore, "pyqtSignal"):  # PyQt5

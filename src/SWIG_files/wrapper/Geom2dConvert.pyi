@@ -11,7 +11,6 @@ from OCC.Core.Adaptor2d import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.gp import *
 
-
 class Geom2dConvert_SequenceOfPPoint:
     def Assign(self, theItem: Geom2dConvert_PPoint) -> Geom2dConvert_PPoint: ...
     def Clear(self) -> None: ...
@@ -36,38 +35,99 @@ class Geom2dConvert_SequenceOfPPoint:
 class geom2dconvert:
     @overload
     @staticmethod
-    def C0BSplineToArrayOfC1BSplineCurve(BS: Geom2d_BSplineCurve, tabBS: TColGeom2d_HArray1OfBSplineCurve, Tolerance: float) -> None: ...
+    def C0BSplineToArrayOfC1BSplineCurve(
+        BS: Geom2d_BSplineCurve,
+        tabBS: TColGeom2d_HArray1OfBSplineCurve,
+        Tolerance: float,
+    ) -> None: ...
     @overload
     @staticmethod
-    def C0BSplineToArrayOfC1BSplineCurve(BS: Geom2d_BSplineCurve, tabBS: TColGeom2d_HArray1OfBSplineCurve, AngularTolerance: float, Tolerance: float) -> None: ...
+    def C0BSplineToArrayOfC1BSplineCurve(
+        BS: Geom2d_BSplineCurve,
+        tabBS: TColGeom2d_HArray1OfBSplineCurve,
+        AngularTolerance: float,
+        Tolerance: float,
+    ) -> None: ...
     @staticmethod
-    def C0BSplineToC1BSplineCurve(BS: Geom2d_BSplineCurve, Tolerance: float) -> None: ...
+    def C0BSplineToC1BSplineCurve(
+        BS: Geom2d_BSplineCurve, Tolerance: float
+    ) -> None: ...
     @overload
     @staticmethod
-    def ConcatC1(ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve, ArrayOfToler: TColStd_Array1OfReal, ArrayOfIndices: TColStd_HArray1OfInteger, ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve, ClosedTolerance: float) -> bool: ...
+    def ConcatC1(
+        ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve,
+        ArrayOfToler: TColStd_Array1OfReal,
+        ArrayOfIndices: TColStd_HArray1OfInteger,
+        ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve,
+        ClosedTolerance: float,
+    ) -> bool: ...
     @overload
     @staticmethod
-    def ConcatC1(ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve, ArrayOfToler: TColStd_Array1OfReal, ArrayOfIndices: TColStd_HArray1OfInteger, ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve, ClosedTolerance: float, AngularTolerance: float) -> bool: ...
+    def ConcatC1(
+        ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve,
+        ArrayOfToler: TColStd_Array1OfReal,
+        ArrayOfIndices: TColStd_HArray1OfInteger,
+        ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve,
+        ClosedTolerance: float,
+        AngularTolerance: float,
+    ) -> bool: ...
     @staticmethod
-    def ConcatG1(ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve, ArrayOfToler: TColStd_Array1OfReal, ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve, ClosedTolerance: float) -> bool: ...
+    def ConcatG1(
+        ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve,
+        ArrayOfToler: TColStd_Array1OfReal,
+        ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve,
+        ClosedTolerance: float,
+    ) -> bool: ...
     @staticmethod
-    def CurveToBSplineCurve(C: Geom2d_Curve, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> Geom2d_BSplineCurve: ...
+    def CurveToBSplineCurve(
+        C: Geom2d_Curve,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> Geom2d_BSplineCurve: ...
     @overload
     @staticmethod
-    def SplitBSplineCurve(C: Geom2d_BSplineCurve, FromK1: int, ToK2: int, SameOrientation: Optional[bool] = True) -> Geom2d_BSplineCurve: ...
+    def SplitBSplineCurve(
+        C: Geom2d_BSplineCurve,
+        FromK1: int,
+        ToK2: int,
+        SameOrientation: Optional[bool] = True,
+    ) -> Geom2d_BSplineCurve: ...
     @overload
     @staticmethod
-    def SplitBSplineCurve(C: Geom2d_BSplineCurve, FromU1: float, ToU2: float, ParametricTolerance: float, SameOrientation: Optional[bool] = True) -> Geom2d_BSplineCurve: ...
+    def SplitBSplineCurve(
+        C: Geom2d_BSplineCurve,
+        FromU1: float,
+        ToU2: float,
+        ParametricTolerance: float,
+        SameOrientation: Optional[bool] = True,
+    ) -> Geom2d_BSplineCurve: ...
 
 class Geom2dConvert_ApproxArcsSegments:
-    def __init__(self, theCurve: Adaptor2d_Curve2d, theTolerance: float, theAngleTol: float) -> None: ...
+    def __init__(
+        self, theCurve: Adaptor2d_Curve2d, theTolerance: float, theAngleTol: float
+    ) -> None: ...
     def GetResult(self) -> TColGeom2d_SequenceOfCurve: ...
 
 class Geom2dConvert_ApproxCurve:
     @overload
-    def __init__(self, Curve: Geom2d_Curve, Tol2d: float, Order: GeomAbs_Shape, MaxSegments: int, MaxDegree: int) -> None: ...
+    def __init__(
+        self,
+        Curve: Geom2d_Curve,
+        Tol2d: float,
+        Order: GeomAbs_Shape,
+        MaxSegments: int,
+        MaxDegree: int,
+    ) -> None: ...
     @overload
-    def __init__(self, Curve: Adaptor2d_Curve2d, Tol2d: float, Order: GeomAbs_Shape, MaxSegments: int, MaxDegree: int) -> None: ...
+    def __init__(
+        self,
+        Curve: Adaptor2d_Curve2d,
+        Tol2d: float,
+        Order: GeomAbs_Shape,
+        MaxSegments: int,
+        MaxDegree: int,
+    ) -> None: ...
     def Curve(self) -> Geom2d_BSplineCurve: ...
     def Dump(self) -> str: ...
     def HasResult(self) -> bool: ...
@@ -75,7 +135,9 @@ class Geom2dConvert_ApproxCurve:
     def MaxError(self) -> float: ...
 
 class Geom2dConvert_BSplineCurveKnotSplitting:
-    def __init__(self, BasisCurve: Geom2d_BSplineCurve, ContinuityRange: int) -> None: ...
+    def __init__(
+        self, BasisCurve: Geom2d_BSplineCurve, ContinuityRange: int
+    ) -> None: ...
     def NbSplits(self) -> int: ...
     def SplitValue(self, Index: int) -> int: ...
     def Splitting(self, SplitValues: TColStd_Array1OfInteger) -> None: ...
@@ -84,7 +146,13 @@ class Geom2dConvert_BSplineCurveToBezierCurve:
     @overload
     def __init__(self, BasisCurve: Geom2d_BSplineCurve) -> None: ...
     @overload
-    def __init__(self, BasisCurve: Geom2d_BSplineCurve, U1: float, U2: float, ParametricTolerance: float) -> None: ...
+    def __init__(
+        self,
+        BasisCurve: Geom2d_BSplineCurve,
+        U1: float,
+        U2: float,
+        ParametricTolerance: float,
+    ) -> None: ...
     def Arc(self, Index: int) -> Geom2d_BezierCurve: ...
     def Arcs(self, Curves: TColGeom2d_Array1OfBezierCurve) -> None: ...
     def Knots(self, TKnots: TColStd_Array1OfReal) -> None: ...
@@ -92,10 +160,26 @@ class Geom2dConvert_BSplineCurveToBezierCurve:
 
 class Geom2dConvert_CompCurveToBSplineCurve:
     @overload
-    def __init__(self, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
+    def __init__(
+        self,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
     @overload
-    def __init__(self, BasisCurve: Geom2d_BoundedCurve, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
-    def Add(self, NewCurve: Geom2d_BoundedCurve, Tolerance: float, After: Optional[bool] = False) -> bool: ...
+    def __init__(
+        self,
+        BasisCurve: Geom2d_BoundedCurve,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
+    def Add(
+        self,
+        NewCurve: Geom2d_BoundedCurve,
+        Tolerance: float,
+        After: Optional[bool] = False,
+    ) -> bool: ...
     def BSplineCurve(self) -> Geom2d_BSplineCurve: ...
     def Clear(self) -> None: ...
 
@@ -115,4 +199,3 @@ class Geom2dConvert_PPoint:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

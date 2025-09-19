@@ -14,15 +14,22 @@ from OCC.Core.Extrema import *
 from OCC.Core.Intf import *
 from OCC.Core.Bnd import *
 
-
 class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter:
-    def __init__(self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, Tol: float) -> None: ...
+    def __init__(
+        self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, Tol: float
+    ) -> None: ...
     def AnErrorOccurred(self) -> bool: ...
     def NbRoots(self) -> int: ...
     @overload
-    def Perform(self, Poly1: Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter, Poly2: Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter) -> Tuple[int, int, float, float]: ...
+    def Perform(
+        self,
+        Poly1: Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter,
+        Poly2: Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter,
+    ) -> Tuple[int, int, float, float]: ...
     @overload
-    def Perform(self, Uo: float, Vo: float, UInf: float, VInf: float, USup: float, VSup: float) -> None: ...
+    def Perform(
+        self, Uo: float, Vo: float, UInf: float, VInf: float, USup: float, VSup: float
+    ) -> None: ...
     def Roots(self) -> Tuple[float, float]: ...
 
 class Geom2dInt_GInter(IntRes2d_Intersection):
@@ -31,29 +38,83 @@ class Geom2dInt_GInter(IntRes2d_Intersection):
     @overload
     def __init__(self, C: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
     @overload
-    def __init__(self, C: Adaptor2d_Curve2d, D: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self, C: Adaptor2d_Curve2d, D: IntRes2d_Domain, TolConf: float, Tol: float
+    ) -> None: ...
     @overload
-    def __init__(self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float
+    ) -> None: ...
     @overload
-    def __init__(self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        C1: Adaptor2d_Curve2d,
+        D1: IntRes2d_Domain,
+        C2: Adaptor2d_Curve2d,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        C1: Adaptor2d_Curve2d,
+        C2: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, C2: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
-    def ComputeDomain(self, C1: Adaptor2d_Curve2d, TolDomain: float) -> IntRes2d_Domain: ...
+    def __init__(
+        self,
+        C1: Adaptor2d_Curve2d,
+        D1: IntRes2d_Domain,
+        C2: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
+    def ComputeDomain(
+        self, C1: Adaptor2d_Curve2d, TolDomain: float
+    ) -> IntRes2d_Domain: ...
     def GetMinNbSamples(self) -> int: ...
     @overload
-    def Perform(self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, C2: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        C1: Adaptor2d_Curve2d,
+        D1: IntRes2d_Domain,
+        C2: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float
+    ) -> None: ...
     @overload
-    def Perform(self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, TolConf: float, Tol: float
+    ) -> None: ...
     @overload
     def Perform(self, C1: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
     @overload
-    def Perform(self, C1: Adaptor2d_Curve2d, D1: IntRes2d_Domain, C2: Adaptor2d_Curve2d, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        C1: Adaptor2d_Curve2d,
+        D1: IntRes2d_Domain,
+        C2: Adaptor2d_Curve2d,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, C1: Adaptor2d_Curve2d, C2: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        C1: Adaptor2d_Curve2d,
+        C2: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     def SetMinNbSamples(self, theMinNbSamples: int) -> None: ...
 
 class Geom2dInt_Geom2dCurveTool:
@@ -64,9 +125,18 @@ class Geom2dInt_Geom2dCurveTool:
     @staticmethod
     def D1(C: Adaptor2d_Curve2d, U: float, P: gp_Pnt2d, T: gp_Vec2d) -> None: ...
     @staticmethod
-    def D2(C: Adaptor2d_Curve2d, U: float, P: gp_Pnt2d, T: gp_Vec2d, N: gp_Vec2d) -> None: ...
+    def D2(
+        C: Adaptor2d_Curve2d, U: float, P: gp_Pnt2d, T: gp_Vec2d, N: gp_Vec2d
+    ) -> None: ...
     @staticmethod
-    def D3(C: Adaptor2d_Curve2d, U: float, P: gp_Pnt2d, T: gp_Vec2d, N: gp_Vec2d, V: gp_Vec2d) -> None: ...
+    def D3(
+        C: Adaptor2d_Curve2d,
+        U: float,
+        P: gp_Pnt2d,
+        T: gp_Vec2d,
+        N: gp_Vec2d,
+        V: gp_Vec2d,
+    ) -> None: ...
     @staticmethod
     def DN(C: Adaptor2d_Curve2d, U: float, N: int) -> gp_Vec2d: ...
     @staticmethod
@@ -82,7 +152,9 @@ class Geom2dInt_Geom2dCurveTool:
     @staticmethod
     def FirstParameter(C: Adaptor2d_Curve2d) -> float: ...
     @staticmethod
-    def GetInterval(C: Adaptor2d_Curve2d, Index: int, Tab: TColStd_Array1OfReal) -> Tuple[float, float]: ...
+    def GetInterval(
+        C: Adaptor2d_Curve2d, Index: int, Tab: TColStd_Array1OfReal
+    ) -> Tuple[float, float]: ...
     @staticmethod
     def GetType(C: Adaptor2d_Curve2d) -> GeomAbs_CurveType: ...
     @staticmethod
@@ -110,33 +182,117 @@ class Geom2dInt_IntConicCurveOfGInter(IntRes2d_Intersection):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, L: gp_Lin2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        L: gp_Lin2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, C: gp_Circ2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        C: gp_Circ2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, E: gp_Elips2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        E: gp_Elips2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, Prb: gp_Parab2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        Prb: gp_Parab2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, H: gp_Hypr2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        H: gp_Hypr2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, L: gp_Lin2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        L: gp_Lin2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, C: gp_Circ2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        C: gp_Circ2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, E: gp_Elips2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        E: gp_Elips2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, Prb: gp_Parab2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        Prb: gp_Parab2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, H: gp_Hypr2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        H: gp_Hypr2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
 
-class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter(math_FunctionWithDerivative):
+class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter(
+    math_FunctionWithDerivative
+):
     def __init__(self, IT: IntCurve_IConicTool, PC: Adaptor2d_Curve2d) -> None: ...
     def Derivative(self, Param: float) -> Tuple[bool, float]: ...
     def Value(self, Param: float) -> Tuple[bool, float]: ...
     def Values(self, Param: float) -> Tuple[bool, float, float]: ...
 
-class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(math_FunctionWithDerivative):
+class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(
+    math_FunctionWithDerivative
+):
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -157,8 +313,12 @@ class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(math_FunctionWithDer
 class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter:
     pass
 
-class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter(math_FunctionSetWithDerivatives):
-    def __init__(self, curve1: Adaptor2d_Curve2d, curve2: Adaptor2d_Curve2d) -> None: ...
+class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter(
+    math_FunctionSetWithDerivatives
+):
+    def __init__(
+        self, curve1: Adaptor2d_Curve2d, curve2: Adaptor2d_Curve2d
+    ) -> None: ...
     def Derivatives(self, X: math_Vector, D: math_Matrix) -> bool: ...
     def NbEquations(self) -> int: ...
     def NbVariables(self) -> int: ...
@@ -169,53 +329,202 @@ class Geom2dInt_TheIntConicCurveOfGInter(IntRes2d_Intersection):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, L: gp_Lin2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        L: gp_Lin2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, C: gp_Circ2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        C: gp_Circ2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, E: gp_Elips2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        E: gp_Elips2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, Prb: gp_Parab2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        Prb: gp_Parab2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def __init__(self, H: gp_Hypr2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        H: gp_Hypr2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, L: gp_Lin2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        L: gp_Lin2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, C: gp_Circ2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        C: gp_Circ2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, E: gp_Elips2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        E: gp_Elips2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, Prb: gp_Parab2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        Prb: gp_Parab2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, H: gp_Hypr2d, D1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, D2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        H: gp_Hypr2d,
+        D1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        D2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
 
 class Geom2dInt_TheIntPCurvePCurveOfGInter(IntRes2d_Intersection):
     def __init__(self) -> None: ...
     def GetMinNbSamples(self) -> int: ...
     @overload
-    def Perform(self, Curve1: Adaptor2d_Curve2d, Domain1: IntRes2d_Domain, Curve2: Adaptor2d_Curve2d, Domain2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        Curve1: Adaptor2d_Curve2d,
+        Domain1: IntRes2d_Domain,
+        Curve2: Adaptor2d_Curve2d,
+        Domain2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     @overload
-    def Perform(self, Curve1: Adaptor2d_Curve2d, Domain1: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def Perform(
+        self,
+        Curve1: Adaptor2d_Curve2d,
+        Domain1: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
     def SetMinNbSamples(self, theMinNbSamples: int) -> None: ...
 
 class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter(IntRes2d_Intersection):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, ITool: IntCurve_IConicTool, Dom1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, Dom2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
-    def And_Domaine_Objet1_Intersections(self, TheImpTool: IntCurve_IConicTool, TheParCurve: Adaptor2d_Curve2d, TheImpCurveDomain: IntRes2d_Domain, TheParCurveDomain: IntRes2d_Domain, Inter2_And_Domain2: TColStd_Array1OfReal, Inter1: TColStd_Array1OfReal, Resultat1: TColStd_Array1OfReal, Resultat2: TColStd_Array1OfReal, EpsNul: float) -> int: ...
-    def FindU(self, parameter: float, point: gp_Pnt2d, TheParCurev: Adaptor2d_Curve2d, TheImpTool: IntCurve_IConicTool) -> float: ...
-    def FindV(self, parameter: float, point: gp_Pnt2d, TheImpTool: IntCurve_IConicTool, ParCurve: Adaptor2d_Curve2d, TheParCurveDomain: IntRes2d_Domain, V0: float, V1: float, Tolerance: float) -> float: ...
-    def Perform(self, ITool: IntCurve_IConicTool, Dom1: IntRes2d_Domain, PCurve: Adaptor2d_Curve2d, Dom2: IntRes2d_Domain, TolConf: float, Tol: float) -> None: ...
+    def __init__(
+        self,
+        ITool: IntCurve_IConicTool,
+        Dom1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        Dom2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
+    def And_Domaine_Objet1_Intersections(
+        self,
+        TheImpTool: IntCurve_IConicTool,
+        TheParCurve: Adaptor2d_Curve2d,
+        TheImpCurveDomain: IntRes2d_Domain,
+        TheParCurveDomain: IntRes2d_Domain,
+        Inter2_And_Domain2: TColStd_Array1OfReal,
+        Inter1: TColStd_Array1OfReal,
+        Resultat1: TColStd_Array1OfReal,
+        Resultat2: TColStd_Array1OfReal,
+        EpsNul: float,
+    ) -> int: ...
+    def FindU(
+        self,
+        parameter: float,
+        point: gp_Pnt2d,
+        TheParCurev: Adaptor2d_Curve2d,
+        TheImpTool: IntCurve_IConicTool,
+    ) -> float: ...
+    def FindV(
+        self,
+        parameter: float,
+        point: gp_Pnt2d,
+        TheImpTool: IntCurve_IConicTool,
+        ParCurve: Adaptor2d_Curve2d,
+        TheParCurveDomain: IntRes2d_Domain,
+        V0: float,
+        V1: float,
+        Tolerance: float,
+    ) -> float: ...
+    def Perform(
+        self,
+        ITool: IntCurve_IConicTool,
+        Dom1: IntRes2d_Domain,
+        PCurve: Adaptor2d_Curve2d,
+        Dom2: IntRes2d_Domain,
+        TolConf: float,
+        Tol: float,
+    ) -> None: ...
 
 class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, P: gp_Pnt2d, C: Adaptor2d_Curve2d, U0: float, TolU: float) -> None: ...
+    def __init__(
+        self, P: gp_Pnt2d, C: Adaptor2d_Curve2d, U0: float, TolU: float
+    ) -> None: ...
     @overload
-    def __init__(self, P: gp_Pnt2d, C: Adaptor2d_Curve2d, U0: float, Umin: float, Usup: float, TolU: float) -> None: ...
-    def Initialize(self, C: Adaptor2d_Curve2d, Umin: float, Usup: float, TolU: float) -> None: ...
+    def __init__(
+        self,
+        P: gp_Pnt2d,
+        C: Adaptor2d_Curve2d,
+        U0: float,
+        Umin: float,
+        Usup: float,
+        TolU: float,
+    ) -> None: ...
+    def Initialize(
+        self, C: Adaptor2d_Curve2d, Umin: float, Usup: float, TolU: float
+    ) -> None: ...
     def IsDone(self) -> bool: ...
     def IsMin(self) -> bool: ...
     def Perform(self, P: gp_Pnt2d, U0: float) -> None: ...
@@ -223,10 +532,14 @@ class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter:
     def SquareDistance(self) -> float: ...
 
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter(Intf_Polygon2d):
-    def __init__(self, Curve: Adaptor2d_Curve2d, NbPnt: int, Domain: IntRes2d_Domain, Tol: float) -> None: ...
+    def __init__(
+        self, Curve: Adaptor2d_Curve2d, NbPnt: int, Domain: IntRes2d_Domain, Tol: float
+    ) -> None: ...
     def ApproxParamOnCurve(self, Index: int, ParamOnLine: float) -> float: ...
     def AutoIntersectionIsPossible(self) -> bool: ...
-    def CalculRegion(self, x: float, y: float, x1: float, x2: float, y1: float, y2: float) -> int: ...
+    def CalculRegion(
+        self, x: float, y: float, x1: float, x2: float, y1: float, y2: float
+    ) -> int: ...
     @overload
     def Closed(self, clos: bool) -> None: ...
     @overload
@@ -246,9 +559,14 @@ class Geom2dInt_TheProjPCurOfGInter:
     def FindParameter(C: Adaptor2d_Curve2d, Pnt: gp_Pnt2d, Tol: float) -> float: ...
     @overload
     @staticmethod
-    def FindParameter(C: Adaptor2d_Curve2d, Pnt: gp_Pnt2d, LowParameter: float, HighParameter: float, Tol: float) -> float: ...
+    def FindParameter(
+        C: Adaptor2d_Curve2d,
+        Pnt: gp_Pnt2d,
+        LowParameter: float,
+        HighParameter: float,
+        Tol: float,
+    ) -> float: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

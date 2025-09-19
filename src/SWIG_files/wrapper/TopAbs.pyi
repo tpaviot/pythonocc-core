@@ -4,7 +4,6 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-
 class TopAbs_Orientation(IntEnum):
     TopAbs_FORWARD: int = ...
     TopAbs_REVERSED: int = ...
@@ -52,7 +51,9 @@ class topabs:
     @staticmethod
     def Complement(Or: TopAbs_Orientation) -> TopAbs_Orientation: ...
     @staticmethod
-    def Compose(Or1: TopAbs_Orientation, Or2: TopAbs_Orientation) -> TopAbs_Orientation: ...
+    def Compose(
+        Or1: TopAbs_Orientation, Or2: TopAbs_Orientation
+    ) -> TopAbs_Orientation: ...
     @overload
     @staticmethod
     def Print(theShapeType: TopAbs_ShapeEnum) -> Tuple[Standard_OStream, str]: ...
@@ -69,7 +70,9 @@ class topabs:
     def ShapeOrientationFromString(theOrientationString: str) -> TopAbs_Orientation: ...
     @overload
     @staticmethod
-    def ShapeOrientationFromString(theOrientationString: str) -> Tuple[bool, TopAbs_Orientation]: ...
+    def ShapeOrientationFromString(
+        theOrientationString: str,
+    ) -> Tuple[bool, TopAbs_Orientation]: ...
     @staticmethod
     def ShapeOrientationToString(theOrientation: TopAbs_Orientation) -> str: ...
     @overload
@@ -84,4 +87,3 @@ class topabs:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

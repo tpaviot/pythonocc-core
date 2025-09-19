@@ -5,7 +5,6 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
-
 class GccEnt_Position(IntEnum):
     GccEnt_unqualified: int = ...
     GccEnt_enclosing: int = ...
@@ -71,4 +70,3 @@ class GccEnt_QualifiedLin:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

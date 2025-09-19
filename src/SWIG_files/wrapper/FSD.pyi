@@ -8,22 +8,21 @@ FSD_BStream = NewType("FSD_BStream", FILE)
 # the following typedef cannot be wrapped as is
 FSD_FStream = NewType("FSD_FStream", Any)
 
-#classnotwrapped
+# classnotwrapped
 class FSD_Base64: ...
 
-#classnotwrapped
+# classnotwrapped
 class FSD_BinaryFile: ...
 
-#classnotwrapped
+# classnotwrapped
 class FSD_CmpFile: ...
 
-#classnotwrapped
+# classnotwrapped
 class FSD_File: ...
 
-#classnotwrapped
+# classnotwrapped
 class FSD_FileHeader: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

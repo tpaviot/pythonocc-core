@@ -4,7 +4,6 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
-
 class DsgPrs_ArrowSide(IntEnum):
     DsgPrs_AS_NONE: int = ...
     DsgPrs_AS_FIRSTAR: int = ...
@@ -26,82 +25,81 @@ DsgPrs_AS_BOTHPT = DsgPrs_ArrowSide.DsgPrs_AS_BOTHPT
 DsgPrs_AS_FIRSTAR_LASTPT = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTAR_LASTPT
 DsgPrs_AS_FIRSTPT_LASTAR = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTPT_LASTAR
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_AnglePresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_Chamf2dPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_ConcentricPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_DatumPrs: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_DiameterPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_EllipseRadiusPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_EqualDistancePresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_EqualRadiusPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_FilletRadiusPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_FixPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_IdenticPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_LengthPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_MidPointPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_OffsetPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_ParalPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_PerpenPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_RadiusPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_ShadedPlanePresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_ShapeDirPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_SymbPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_SymmetricPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_TangentPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_XYZAxisPresentation: ...
 
-#classnotwrapped
+# classnotwrapped
 class DsgPrs_XYZPlanePresentation: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

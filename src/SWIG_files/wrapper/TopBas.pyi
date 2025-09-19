@@ -5,10 +5,11 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopAbs import *
 
-
 class TopBas_ListOfTestInterference:
     def Append(self, theItem: TopBas_TestInterference) -> TopBas_TestInterference: ...
-    def Assign(self, theItem: TopBas_ListOfTestInterference) -> TopBas_ListOfTestInterference: ...
+    def Assign(
+        self, theItem: TopBas_ListOfTestInterference
+    ) -> TopBas_ListOfTestInterference: ...
     def Clear(self) -> None: ...
     def First(self) -> TopBas_TestInterference: ...
     def Last(self) -> TopBas_TestInterference: ...
@@ -24,7 +25,14 @@ class TopBas_TestInterference:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(self, Inters: float, Bound: int, Orient: TopAbs_Orientation, Trans: TopAbs_Orientation, BTrans: TopAbs_Orientation) -> None: ...
+    def __init__(
+        self,
+        Inters: float,
+        Bound: int,
+        Orient: TopAbs_Orientation,
+        Trans: TopAbs_Orientation,
+        BTrans: TopAbs_Orientation,
+    ) -> None: ...
     @overload
     def Boundary(self, B: int) -> None: ...
     @overload
@@ -53,4 +61,3 @@ class TopBas_TestInterference:
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

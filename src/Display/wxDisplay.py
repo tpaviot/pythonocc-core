@@ -32,6 +32,7 @@ class wxBaseViewer(wx.Panel):
     """
     The base wx.Panel for an OCC viewer.
     """
+
     def __init__(self, parent=None):
         """
         Initializes the wxBaseViewer.
@@ -172,6 +173,7 @@ class wxViewer3d(wxBaseViewer):
     """
     A wx.Panel for an OCC viewer.
     """
+
     def __init__(self, *kargs):
         """
         Initializes the wxViewer3d.
@@ -207,6 +209,7 @@ class wxViewer3d(wxBaseViewer):
         """
         Sets up the key map.
         """
+
         def set_shade_mode():
             self._display.DisableAntiAliasing()
             self._display.SetModeShaded()
@@ -418,6 +421,7 @@ def TestWxDisplay():
     """
     A test function for the wxViewer3d.
     """
+
     class AppFrame(wx.Frame):
         def __init__(self, parent):
             wx.Frame.__init__(

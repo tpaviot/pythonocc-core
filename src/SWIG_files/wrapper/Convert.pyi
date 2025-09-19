@@ -7,7 +7,9 @@ from OCC.Core.TColgp import *
 from OCC.Core.TColStd import *
 from OCC.Core.gp import *
 
-Convert_SequenceOfArray1OfPoles2d = NewType("Convert_SequenceOfArray1OfPoles2d", TColgp_SequenceOfArray1OfPnt2d)
+Convert_SequenceOfArray1OfPoles2d = NewType(
+    "Convert_SequenceOfArray1OfPoles2d", TColgp_SequenceOfArray1OfPnt2d
+)
 
 class Convert_SequenceOfArray1OfPoles:
     def Assign(self, theItem: False) -> False: ...
@@ -53,7 +55,9 @@ class Convert_CompBezierCurves2dToBSplineCurve2d:
     def __init__(self, AngularTolerance: Optional[float] = 1.0e-4) -> None: ...
     def AddCurve(self, Poles: TColgp_Array1OfPnt2d) -> None: ...
     def Degree(self) -> int: ...
-    def KnotsAndMults(self, Knots: TColStd_Array1OfReal, Mults: TColStd_Array1OfInteger) -> None: ...
+    def KnotsAndMults(
+        self, Knots: TColStd_Array1OfReal, Mults: TColStd_Array1OfInteger
+    ) -> None: ...
     def NbKnots(self) -> int: ...
     def NbPoles(self) -> int: ...
     def Perform(self) -> None: ...
@@ -63,7 +67,9 @@ class Convert_CompBezierCurvesToBSplineCurve:
     def __init__(self, AngularTolerance: Optional[float] = 1.0e-4) -> None: ...
     def AddCurve(self, Poles: TColgp_Array1OfPnt) -> None: ...
     def Degree(self) -> int: ...
-    def KnotsAndMults(self, Knots: TColStd_Array1OfReal, Mults: TColStd_Array1OfInteger) -> None: ...
+    def KnotsAndMults(
+        self, Knots: TColStd_Array1OfReal, Mults: TColStd_Array1OfInteger
+    ) -> None: ...
     def NbKnots(self) -> int: ...
     def NbPoles(self) -> int: ...
     def Perform(self) -> None: ...
@@ -71,11 +77,39 @@ class Convert_CompBezierCurvesToBSplineCurve:
 
 class Convert_CompPolynomialToPoles:
     @overload
-    def __init__(self, NumCurves: int, Continuity: int, Dimension: int, MaxDegree: int, NumCoeffPerCurve: TColStd_HArray1OfInteger, Coefficients: TColStd_HArray1OfReal, PolynomialIntervals: TColStd_HArray2OfReal, TrueIntervals: TColStd_HArray1OfReal) -> None: ...
+    def __init__(
+        self,
+        NumCurves: int,
+        Continuity: int,
+        Dimension: int,
+        MaxDegree: int,
+        NumCoeffPerCurve: TColStd_HArray1OfInteger,
+        Coefficients: TColStd_HArray1OfReal,
+        PolynomialIntervals: TColStd_HArray2OfReal,
+        TrueIntervals: TColStd_HArray1OfReal,
+    ) -> None: ...
     @overload
-    def __init__(self, NumCurves: int, Dimension: int, MaxDegree: int, Continuity: TColStd_Array1OfInteger, NumCoeffPerCurve: TColStd_Array1OfInteger, Coefficients: TColStd_Array1OfReal, PolynomialIntervals: TColStd_Array2OfReal, TrueIntervals: TColStd_Array1OfReal) -> None: ...
+    def __init__(
+        self,
+        NumCurves: int,
+        Dimension: int,
+        MaxDegree: int,
+        Continuity: TColStd_Array1OfInteger,
+        NumCoeffPerCurve: TColStd_Array1OfInteger,
+        Coefficients: TColStd_Array1OfReal,
+        PolynomialIntervals: TColStd_Array2OfReal,
+        TrueIntervals: TColStd_Array1OfReal,
+    ) -> None: ...
     @overload
-    def __init__(self, Dimension: int, MaxDegree: int, Degree: int, Coefficients: TColStd_Array1OfReal, PolynomialIntervals: TColStd_Array1OfReal, TrueIntervals: TColStd_Array1OfReal) -> None: ...
+    def __init__(
+        self,
+        Dimension: int,
+        MaxDegree: int,
+        Degree: int,
+        Coefficients: TColStd_Array1OfReal,
+        PolynomialIntervals: TColStd_Array1OfReal,
+        TrueIntervals: TColStd_Array1OfReal,
+    ) -> None: ...
     def Degree(self) -> int: ...
     def IsDone(self) -> bool: ...
     def Knots(self, K: TColStd_HArray1OfReal) -> None: ...
@@ -86,9 +120,27 @@ class Convert_CompPolynomialToPoles:
 
 class Convert_ConicToBSplineCurve:
     @overload
-    def BuildCosAndSin(self, Parametrisation: Convert_ParameterisationType, CosNumerator: TColStd_HArray1OfReal, SinNumerator: TColStd_HArray1OfReal, Denominator: TColStd_HArray1OfReal, Knots: TColStd_HArray1OfReal, Mults: TColStd_HArray1OfInteger) -> int: ...
+    def BuildCosAndSin(
+        self,
+        Parametrisation: Convert_ParameterisationType,
+        CosNumerator: TColStd_HArray1OfReal,
+        SinNumerator: TColStd_HArray1OfReal,
+        Denominator: TColStd_HArray1OfReal,
+        Knots: TColStd_HArray1OfReal,
+        Mults: TColStd_HArray1OfInteger,
+    ) -> int: ...
     @overload
-    def BuildCosAndSin(self, Parametrisation: Convert_ParameterisationType, UFirst: float, ULast: float, CosNumerator: TColStd_HArray1OfReal, SinNumerator: TColStd_HArray1OfReal, Denominator: TColStd_HArray1OfReal, Knots: TColStd_HArray1OfReal, Mults: TColStd_HArray1OfInteger) -> int: ...
+    def BuildCosAndSin(
+        self,
+        Parametrisation: Convert_ParameterisationType,
+        UFirst: float,
+        ULast: float,
+        CosNumerator: TColStd_HArray1OfReal,
+        SinNumerator: TColStd_HArray1OfReal,
+        Denominator: TColStd_HArray1OfReal,
+        Knots: TColStd_HArray1OfReal,
+        Mults: TColStd_HArray1OfInteger,
+    ) -> int: ...
     def Degree(self) -> int: ...
     def IsPeriodic(self) -> bool: ...
     def Knot(self, Index: int) -> float: ...
@@ -116,15 +168,49 @@ class Convert_ElementarySurfaceToBSplineSurface:
 
 class Convert_GridPolynomialToPoles:
     @overload
-    def __init__(self, MaxUDegree: int, MaxVDegree: int, NumCoeff: TColStd_HArray1OfInteger, Coefficients: TColStd_HArray1OfReal, PolynomialUIntervals: TColStd_HArray1OfReal, PolynomialVIntervals: TColStd_HArray1OfReal) -> None: ...
+    def __init__(
+        self,
+        MaxUDegree: int,
+        MaxVDegree: int,
+        NumCoeff: TColStd_HArray1OfInteger,
+        Coefficients: TColStd_HArray1OfReal,
+        PolynomialUIntervals: TColStd_HArray1OfReal,
+        PolynomialVIntervals: TColStd_HArray1OfReal,
+    ) -> None: ...
     @overload
-    def __init__(self, NbUSurfaces: int, NBVSurfaces: int, UContinuity: int, VContinuity: int, MaxUDegree: int, MaxVDegree: int, NumCoeffPerSurface: TColStd_HArray2OfInteger, Coefficients: TColStd_HArray1OfReal, PolynomialUIntervals: TColStd_HArray1OfReal, PolynomialVIntervals: TColStd_HArray1OfReal, TrueUIntervals: TColStd_HArray1OfReal, TrueVIntervals: TColStd_HArray1OfReal) -> None: ...
+    def __init__(
+        self,
+        NbUSurfaces: int,
+        NBVSurfaces: int,
+        UContinuity: int,
+        VContinuity: int,
+        MaxUDegree: int,
+        MaxVDegree: int,
+        NumCoeffPerSurface: TColStd_HArray2OfInteger,
+        Coefficients: TColStd_HArray1OfReal,
+        PolynomialUIntervals: TColStd_HArray1OfReal,
+        PolynomialVIntervals: TColStd_HArray1OfReal,
+        TrueUIntervals: TColStd_HArray1OfReal,
+        TrueVIntervals: TColStd_HArray1OfReal,
+    ) -> None: ...
     def IsDone(self) -> bool: ...
     def NbUKnots(self) -> int: ...
     def NbUPoles(self) -> int: ...
     def NbVKnots(self) -> int: ...
     def NbVPoles(self) -> int: ...
-    def Perform(self, UContinuity: int, VContinuity: int, MaxUDegree: int, MaxVDegree: int, NumCoeffPerSurface: TColStd_HArray2OfInteger, Coefficients: TColStd_HArray1OfReal, PolynomialUIntervals: TColStd_HArray1OfReal, PolynomialVIntervals: TColStd_HArray1OfReal, TrueUIntervals: TColStd_HArray1OfReal, TrueVIntervals: TColStd_HArray1OfReal) -> None: ...
+    def Perform(
+        self,
+        UContinuity: int,
+        VContinuity: int,
+        MaxUDegree: int,
+        MaxVDegree: int,
+        NumCoeffPerSurface: TColStd_HArray2OfInteger,
+        Coefficients: TColStd_HArray1OfReal,
+        PolynomialUIntervals: TColStd_HArray1OfReal,
+        PolynomialVIntervals: TColStd_HArray1OfReal,
+        TrueUIntervals: TColStd_HArray1OfReal,
+        TrueVIntervals: TColStd_HArray1OfReal,
+    ) -> None: ...
     def Poles(self) -> TColgp_HArray2OfPnt: ...
     def UDegree(self) -> int: ...
     def UKnots(self) -> TColStd_HArray1OfReal: ...
@@ -135,27 +221,59 @@ class Convert_GridPolynomialToPoles:
 
 class Convert_CircleToBSplineCurve(Convert_ConicToBSplineCurve):
     @overload
-    def __init__(self, C: gp_Circ2d, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
+    def __init__(
+        self,
+        C: gp_Circ2d,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
     @overload
-    def __init__(self, C: gp_Circ2d, U1: float, U2: float, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
+    def __init__(
+        self,
+        C: gp_Circ2d,
+        U1: float,
+        U2: float,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
 
 class Convert_ConeToBSplineSurface(Convert_ElementarySurfaceToBSplineSurface):
     @overload
-    def __init__(self, C: gp_Cone, U1: float, U2: float, V1: float, V2: float) -> None: ...
+    def __init__(
+        self, C: gp_Cone, U1: float, U2: float, V1: float, V2: float
+    ) -> None: ...
     @overload
     def __init__(self, C: gp_Cone, V1: float, V2: float) -> None: ...
 
 class Convert_CylinderToBSplineSurface(Convert_ElementarySurfaceToBSplineSurface):
     @overload
-    def __init__(self, Cyl: gp_Cylinder, U1: float, U2: float, V1: float, V2: float) -> None: ...
+    def __init__(
+        self, Cyl: gp_Cylinder, U1: float, U2: float, V1: float, V2: float
+    ) -> None: ...
     @overload
     def __init__(self, Cyl: gp_Cylinder, V1: float, V2: float) -> None: ...
 
 class Convert_EllipseToBSplineCurve(Convert_ConicToBSplineCurve):
     @overload
-    def __init__(self, E: gp_Elips2d, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
+    def __init__(
+        self,
+        E: gp_Elips2d,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
     @overload
-    def __init__(self, E: gp_Elips2d, U1: float, U2: float, Parameterisation: Optional[Convert_ParameterisationType] = Convert_TgtThetaOver2) -> None: ...
+    def __init__(
+        self,
+        E: gp_Elips2d,
+        U1: float,
+        U2: float,
+        Parameterisation: Optional[
+            Convert_ParameterisationType
+        ] = Convert_TgtThetaOver2,
+    ) -> None: ...
 
 class Convert_HyperbolaToBSplineCurve(Convert_ConicToBSplineCurve):
     def __init__(self, H: gp_Hypr2d, U1: float, U2: float) -> None: ...
@@ -165,21 +283,28 @@ class Convert_ParabolaToBSplineCurve(Convert_ConicToBSplineCurve):
 
 class Convert_SphereToBSplineSurface(Convert_ElementarySurfaceToBSplineSurface):
     @overload
-    def __init__(self, Sph: gp_Sphere, U1: float, U2: float, V1: float, V2: float) -> None: ...
+    def __init__(
+        self, Sph: gp_Sphere, U1: float, U2: float, V1: float, V2: float
+    ) -> None: ...
     @overload
-    def __init__(self, Sph: gp_Sphere, Param1: float, Param2: float, UTrim: Optional[bool] = True) -> None: ...
+    def __init__(
+        self, Sph: gp_Sphere, Param1: float, Param2: float, UTrim: Optional[bool] = True
+    ) -> None: ...
     @overload
     def __init__(self, Sph: gp_Sphere) -> None: ...
 
 class Convert_TorusToBSplineSurface(Convert_ElementarySurfaceToBSplineSurface):
     @overload
-    def __init__(self, T: gp_Torus, U1: float, U2: float, V1: float, V2: float) -> None: ...
+    def __init__(
+        self, T: gp_Torus, U1: float, U2: float, V1: float, V2: float
+    ) -> None: ...
     @overload
-    def __init__(self, T: gp_Torus, Param1: float, Param2: float, UTrim: Optional[bool] = True) -> None: ...
+    def __init__(
+        self, T: gp_Torus, Param1: float, Param2: float, UTrim: Optional[bool] = True
+    ) -> None: ...
     @overload
     def __init__(self, T: gp_Torus) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
-

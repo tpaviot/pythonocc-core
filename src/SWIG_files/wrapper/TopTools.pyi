@@ -12,24 +12,36 @@ from OCC.Core.TCollection import *
 # the following typedef cannot be wrapped as is
 TopTools_Array2OfShape = NewType("TopTools_Array2OfShape", Any)
 # the following typedef cannot be wrapped as is
-TopTools_DataMapIteratorOfDataMapOfShapeBox = NewType("TopTools_DataMapIteratorOfDataMapOfShapeBox", Any)
+TopTools_DataMapIteratorOfDataMapOfShapeBox = NewType(
+    "TopTools_DataMapIteratorOfDataMapOfShapeBox", Any
+)
 # the following typedef cannot be wrapped as is
-TopTools_IndexedDataMapOfShapeAddress = NewType("TopTools_IndexedDataMapOfShapeAddress", Any)
+TopTools_IndexedDataMapOfShapeAddress = NewType(
+    "TopTools_IndexedDataMapOfShapeAddress", Any
+)
 # the following typedef cannot be wrapped as is
-TopTools_IndexedDataMapOfShapeListOfShape = NewType("TopTools_IndexedDataMapOfShapeListOfShape", Any)
+TopTools_IndexedDataMapOfShapeListOfShape = NewType(
+    "TopTools_IndexedDataMapOfShapeListOfShape", Any
+)
 # the following typedef cannot be wrapped as is
 TopTools_IndexedDataMapOfShapeReal = NewType("TopTools_IndexedDataMapOfShapeReal", Any)
 # the following typedef cannot be wrapped as is
-TopTools_IndexedDataMapOfShapeShape = NewType("TopTools_IndexedDataMapOfShapeShape", Any)
+TopTools_IndexedDataMapOfShapeShape = NewType(
+    "TopTools_IndexedDataMapOfShapeShape", Any
+)
 # the following typedef cannot be wrapped as is
 TopTools_IndexedMapOfOrientedShape = NewType("TopTools_IndexedMapOfOrientedShape", Any)
 # the following typedef cannot be wrapped as is
 TopTools_IndexedMapOfShape = NewType("TopTools_IndexedMapOfShape", Any)
 # the following typedef cannot be wrapped as is
-TopTools_ListIteratorOfListOfListOfShape = NewType("TopTools_ListIteratorOfListOfListOfShape", Any)
+TopTools_ListIteratorOfListOfListOfShape = NewType(
+    "TopTools_ListIteratorOfListOfListOfShape", Any
+)
 TopTools_LocationSetPtr = NewType("TopTools_LocationSetPtr", TopTools_LocationSet)
 # the following typedef cannot be wrapped as is
-TopTools_MapIteratorOfMapOfOrientedShape = NewType("TopTools_MapIteratorOfMapOfOrientedShape", Any)
+TopTools_MapIteratorOfMapOfOrientedShape = NewType(
+    "TopTools_MapIteratorOfMapOfOrientedShape", Any
+)
 # the following typedef cannot be wrapped as is
 TopTools_MapIteratorOfMapOfShape = NewType("TopTools_MapIteratorOfMapOfShape", Any)
 # the following typedef cannot be wrapped as is
@@ -63,7 +75,9 @@ class TopTools_Array1OfShape:
 
 class TopTools_ListOfListOfShape:
     def Append(self, theItem: TopTools_ListOfShape) -> TopTools_ListOfShape: ...
-    def Assign(self, theItem: TopTools_ListOfListOfShape) -> TopTools_ListOfListOfShape: ...
+    def Assign(
+        self, theItem: TopTools_ListOfListOfShape
+    ) -> TopTools_ListOfListOfShape: ...
     def Clear(self) -> None: ...
     def First(self) -> TopTools_ListOfShape: ...
     def Last(self) -> TopTools_ListOfShape: ...
@@ -116,11 +130,16 @@ class TopTools_FormatVersion(IntEnum):
     TopTools_FormatVersion_VERSION_3: int = ...
     TopTools_FormatVersion_CURRENT: int = ...
 
-TopTools_FormatVersion_VERSION_1 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_1
-TopTools_FormatVersion_VERSION_2 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_2
-TopTools_FormatVersion_VERSION_3 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_3
+TopTools_FormatVersion_VERSION_1 = (
+    TopTools_FormatVersion.TopTools_FormatVersion_VERSION_1
+)
+TopTools_FormatVersion_VERSION_2 = (
+    TopTools_FormatVersion.TopTools_FormatVersion_VERSION_2
+)
+TopTools_FormatVersion_VERSION_3 = (
+    TopTools_FormatVersion.TopTools_FormatVersion_VERSION_3
+)
 TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_CURRENT
-
 
 class toptools:
     @staticmethod
@@ -135,13 +154,21 @@ class TopTools_LocationSet:
     def Dump(self) -> str: ...
     def Index(self, L: TopLoc_Location) -> int: ...
     def Location(self, I: int) -> TopLoc_Location: ...
-    def Read(self, IS: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
-    def Write(self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> str: ...
+    def Read(
+        self,
+        IS: str,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> None: ...
+    def Write(
+        self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()
+    ) -> str: ...
 
 class TopTools_MutexForShapeProvider:
     def __init__(self) -> None: ...
     def CreateMutexForShape(self, theShape: TopoDS_Shape) -> None: ...
-    def CreateMutexesForSubShapes(self, theShape: TopoDS_Shape, theType: TopAbs_ShapeEnum) -> None: ...
+    def CreateMutexesForSubShapes(
+        self, theShape: TopoDS_Shape, theType: TopAbs_ShapeEnum
+    ) -> None: ...
     def GetMutex(self, theShape: TopoDS_Shape) -> Standard_Mutex: ...
     def RemoveAllMutexes(self) -> None: ...
 
@@ -173,21 +200,33 @@ class TopTools_ShapeSet:
     def Locations(self) -> TopTools_LocationSet: ...
     def NbShapes(self) -> int: ...
     @overload
-    def Read(self, IS: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
+    def Read(
+        self,
+        IS: str,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> None: ...
     @overload
     def Read(self, S: TopoDS_Shape, IS: str) -> None: ...
     @overload
-    def ReadGeometry(self, IS: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
+    def ReadGeometry(
+        self,
+        IS: str,
+        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
+    ) -> None: ...
     @overload
     def ReadGeometry(self, T: TopAbs_ShapeEnum, IS: str, S: TopoDS_Shape) -> None: ...
     def SetFormatNb(self, theFormatNb: int) -> None: ...
     def Shape(self, I: int) -> TopoDS_Shape: ...
     @overload
-    def Write(self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> str: ...
+    def Write(
+        self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()
+    ) -> str: ...
     @overload
     def Write(self, S: TopoDS_Shape) -> str: ...
     @overload
-    def WriteGeometry(self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> str: ...
+    def WriteGeometry(
+        self, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()
+    ) -> str: ...
     @overload
     def WriteGeometry(self, S: TopoDS_Shape) -> str: ...
 
@@ -197,7 +236,6 @@ class TopTools_HArray1OfListOfShape(TopTools_Array1OfListOfShape, Standard_Trans
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TopTools_Array1OfListOfShape: ...
 
-
 class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TopTools_Array1OfShape: ...
@@ -206,7 +244,9 @@ class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
 
 class TopTools_HArray2OfShape(TopTools_Array2OfShape, Standard_Transient):
     @overload
-    def __init__(self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int) -> None: ...
+    def __init__(
+        self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int
+    ) -> None: ...
     @overload
     def __init__(self, theOther: TopTools_Array2OfShape) -> None: ...
     def Array2(self) -> TopTools_Array2OfShape: ...
@@ -220,5 +260,3 @@ class TopTools_HSequenceOfShape(TopTools_SequenceOfShape, Standard_Transient):
     def __init__(self, other: TopTools_SequenceOfShape) -> None: ...
     def Sequence(self) -> TopTools_SequenceOfShape: ...
     def Append(self, theSequence: TopTools_SequenceOfShape) -> None: ...
-
-

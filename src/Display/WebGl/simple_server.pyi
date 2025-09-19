@@ -1,6 +1,5 @@
 import socket
 
-
 def get_available_port(port: int) -> int: ...
 def get_interface_ip(family: socket.AddressFamily) -> str: ...
 def start_server(

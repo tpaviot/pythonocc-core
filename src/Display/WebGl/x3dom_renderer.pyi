@@ -1,6 +1,5 @@
 from typing import Any, Dict, Generator, List, Optional, Tuple
 
-
 def spinning_cursor() -> Generator[str, None, None]: ...
 def export_edge_to_indexed_lineset(edge_point_set: List[List[float]]) -> str: ...
 def indexed_lineset_to_x3d_string(

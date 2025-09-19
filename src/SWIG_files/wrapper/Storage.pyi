@@ -128,49 +128,49 @@ Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
 Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
 Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 
-#classnotwrapped
+# classnotwrapped
 class Storage: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BaseDriver: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Bucket: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BucketOfPersistent: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_BucketIterator: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_CallBack: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Data: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_DefaultCallBack: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_HeaderData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_InternalData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Root: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_RootData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_Schema: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_TypeData: ...
 
-#classnotwrapped
+# classnotwrapped
 class Storage_TypedCallBack: ...
 
 # harray1 classes
@@ -179,11 +179,9 @@ class Storage_HArrayOfCallBack(Storage_ArrayOfCallBack, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> Storage_ArrayOfCallBack: ...
 
-
 class Storage_HArrayOfSchema(Storage_ArrayOfSchema, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> Storage_ArrayOfSchema: ...
-
 
 class Storage_HPArray(Storage_PArray, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
@@ -199,5 +197,3 @@ class Storage_HSeqOfRoot(Storage_SeqOfRoot, Standard_Transient):
     def __init__(self, other: Storage_SeqOfRoot) -> None: ...
     def Sequence(self) -> Storage_SeqOfRoot: ...
     def Append(self, theSequence: Storage_SeqOfRoot) -> None: ...
-
-

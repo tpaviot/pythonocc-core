@@ -401,6 +401,7 @@ class HTMLHeader:
     """
     A class to generate the HTML header.
     """
+
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
         """
         Initializes the HTMLHeader.
@@ -429,6 +430,7 @@ class ThreejsRenderer:
     """
     A renderer that uses three.js to display shapes in a web browser.
     """
+
     def __init__(self, path=None):
         """
         Initializes the ThreejsRenderer.

@@ -231,6 +231,7 @@ class HTMLHeader:
     """
     A class to generate the HTML header.
     """
+
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
         """
         Initializes the HTMLHeader.
@@ -259,6 +260,7 @@ class HTMLBody:
     """
     A class to generate the HTML body.
     """
+
     def __init__(self, x3d_shapes, axes_plane, axes_plane_zoom_factor=1.0):
         """
         Initializes the HTMLBody.
@@ -457,6 +459,7 @@ class X3DomRenderer:
     """
     A renderer that uses x3dom to display shapes in a web browser.
     """
+
     def __init__(self, path=None, display_axes_plane=True, axes_plane_zoom_factor=1.0):
         """
         Initializes the X3DomRenderer.
