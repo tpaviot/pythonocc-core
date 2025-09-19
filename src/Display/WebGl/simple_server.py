@@ -24,13 +24,22 @@ import errno
 
 
 def get_available_port(port):
-    """sometimes, the python webserver is closed but the
-    port is not made available for a further call. So let's find
-    any available port to prevent such issue. This function:
-    * takes a port number (an integer), above 1024
-    * check if it is available
-    * if not, take another one
-    * returns the port number
+    """
+    Gets an available port.
+
+    Sometimes, the python webserver is closed but the port is not made
+    available for a further call. So let's find any available port to
+    prevent such issue. This function:
+    - takes a port number (an integer), above 1024
+    - check if it is available
+    - if not, take another one
+    - returns the port number
+
+    Args:
+        port (int): The port to check.
+
+    Returns:
+        int: An available port.
     """
     if port <= 1024:
         raise AssertionError("port number should be > 1024")
@@ -52,10 +61,17 @@ def get_available_port(port):
 
 
 def get_interface_ip(family: socket.AddressFamily) -> str:
-    """Get the IP address of an external interface. Used when binding to
-    0.0.0.0 or ::1 to show a more useful URL. Inspire of `werkzeug`.
+    """
+    Get the IP address of an external interface.
 
-    :meta private:
+    Used when binding to 0.0.0.0 or ::1 to show a more useful URL.
+    Inspired by `werkzeug`.
+
+    Args:
+        family (socket.AddressFamily): The address family.
+
+    Returns:
+        str: The IP address.
     """
     # arbitrary private address
     host = "2001:db8::1" if family == socket.AF_INET6 else "192.0.2.1"
@@ -70,11 +86,17 @@ def get_interface_ip(family: socket.AddressFamily) -> str:
 
 
 def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=False):
-    """starts the server if the PYTHONOCC_SHUNT_WEB_SERVER
-    env var is not set
-    * port: the port number to use (if available) ;
-    * path: where thehtml files are located
-    * open_webbrower: if True, open the web browser to the correct url
+    """
+    Starts a simple web server.
+
+    The server is started if the PYTHONOCC_SHUNT_WEB_SERVER environment
+    variable is not set.
+
+    Args:
+        addr (str, optional): The address to bind to.
+        port (int, optional): The port to use.
+        x3d_path (str, optional): The path to the HTML files.
+        open_webbrowser (bool, optional): Whether to open a web browser.
     """
     if os.getenv("PYTHONOCC_SHUNT_WEB_SERVER") == "1":
         return False

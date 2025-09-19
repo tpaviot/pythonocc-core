@@ -31,13 +31,22 @@ from OCC.Display.WebGl.simple_server import start_server
 
 
 def spinning_cursor():
+    """
+    A spinning cursor generator.
+    """
     while True:
         yield from "|/-\\"
 
 
 def color_to_hex(rgb_color):
-    """Takes a tuple with 3 floats between 0 and 1.
-    Returns a hex. Useful to convert occ colors to web color code
+    """
+    Converts a color from RGB to a hex string.
+
+    Args:
+        rgb_color (tuple): A tuple of 3 floats (R, G, B) between 0 and 1.
+
+    Returns:
+        str: The color as a hex string.
     """
     r, g, b = rgb_color
     if not (0 <= r <= 1.0 and 0 <= g <= 1.0 and 0 <= b <= 1.0):
@@ -49,7 +58,16 @@ def color_to_hex(rgb_color):
 
 
 def export_edgedata_to_json(edge_hash, point_set):
-    """Export a set of points to a LineSegment buffergeometry"""
+    """
+    Exports a set of points to a LineSegment buffergeometry.
+
+    Args:
+        edge_hash (str): The hash of the edge.
+        point_set (list): A list of points.
+
+    Returns:
+        str: The JSON string.
+    """
     # first build the array of point coordinates
     # edges are built as follows:
     # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
@@ -380,11 +398,24 @@ function render() {
 
 
 class HTMLHeader:
+    """
+    A class to generate the HTML header.
+    """
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
+        """
+        Initializes the HTMLHeader.
+
+        Args:
+            bg_gradient_color1 (str, optional): The first color of the background gradient.
+            bg_gradient_color2 (str, optional): The second color of the background gradient.
+        """
         self._bg_gradient_color1 = bg_gradient_color1
         self._bg_gradient_color2 = bg_gradient_color2
 
     def get_str(self):
+        """
+        Returns the HTML header as a string.
+        """
         return HEADER_TEMPLATE.substitute(
             {
                 "bg_gradient_color1": f"{self._bg_gradient_color1}",
@@ -395,7 +426,18 @@ class HTMLHeader:
 
 
 class ThreejsRenderer:
+    """
+    A renderer that uses three.js to display shapes in a web browser.
+    """
     def __init__(self, path=None):
+        """
+        Initializes the ThreejsRenderer.
+
+        Args:
+            path (str, optional): The path to the directory where the HTML
+                and JavaScript files will be created. If not specified, a
+                temporary directory will be created.
+        """
         self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
         self._main_js_filename = os.path.join(self._path, "main.js")
@@ -416,6 +458,23 @@ class ThreejsRenderer:
         line_width=1.0,
         mesh_quality=1.0,
     ):
+        """
+        Displays a shape.
+
+        Args:
+            shape: The shape to display.
+            export_edges (bool, optional): Whether to export the edges of the shape.
+            color (tuple, optional): The color of the shape.
+            specular_color (tuple, optional): The specular color of the shape.
+            shininess (float, optional): The shininess of the shape.
+            transparency (float, optional): The transparency of the shape.
+            line_color (tuple, optional): The color of the lines.
+            line_width (float, optional): The width of the lines.
+            mesh_quality (float, optional): The quality of the mesh.
+
+        Returns:
+            A tuple containing the shapes and edges.
+        """
         # if the shape is an edge or a wire, use the related functions
         if is_edge(shape):
             print("discretize an edge")
@@ -492,7 +551,9 @@ class ThreejsRenderer:
         return self._3js_shapes, self._3js_edges
 
     def generate_html_file(self):
-        """Generate the HTML file to be rendered by the web browser"""
+        """
+        Generates the HTML file to be rendered by the web browser.
+        """
         global BODY_TEMPLATE
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
@@ -585,7 +646,14 @@ class ThreejsRenderer:
             fp.write("</html>\n")
 
     def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
-        """render the scene into the browser."""
+        """
+        Renders the scene in the browser.
+
+        Args:
+            addr (str, optional): The address to bind the server to.
+            server_port (int, optional): The port to use for the server.
+            open_webbrowser (bool, optional): Whether to open a web browser.
+        """
         # generate HTML file
         self.generate_html_file()
         # then create a simple web server
