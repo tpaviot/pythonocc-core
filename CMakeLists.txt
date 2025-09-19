@@ -52,6 +52,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Required to build cxx 17 on conda
 if(UNIX AND NOT APPLE)
   add_definitions(-D_POSIX_C_SOURCE=200809L -D_GNU_SOURCE)
+  add_definitions(-D_GLIBCXX_USE_C99_STDINT_TR1=1)
+  add_definitions(-D__STDC_WANT_LIB_EXT1__=1)
 endif()
 
 set(BUILD_SHARED_LIBS ON)
