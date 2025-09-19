@@ -45,9 +45,14 @@ if (POLICY CMP0086)
     cmake_policy(SET CMP0086 NEW)
 endif(POLICY CMP0086)
 
-# Force C++ 14
+# Force C++ 17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Required to build cxx 17 on conda
+if(UNIX AND NOT APPLE)
+  add_definitions(-D_POSIX_C_SOURCE=200809L -D_GNU_SOURCE)
+endif()
 
 set(BUILD_SHARED_LIBS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
