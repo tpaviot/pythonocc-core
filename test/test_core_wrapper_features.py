@@ -682,11 +682,12 @@ def test_return_enum() -> None:
 
 
 def test_ncollection_list_iterator() -> None:
+    """Each NCollection_List wrapper comes with a generator implementing the related iterator"""
     los1 = BRepCheck_ListOfStatus()
     los1.Append(BRepCheck_Multiple3DCurve)
     los1.Append(BRepCheck_EmptyWire)
-    list_los1 = list(los1)
-    assert list_los1 == [BRepCheck_Multiple3DCurve, BRepCheck_EmptyWire]
+
+    assert list(los1) == [BRepCheck_Multiple3DCurve, BRepCheck_EmptyWire]
 
 
 def test_array_iterator() -> None:
