@@ -187,8 +187,16 @@ def write_step_file(
 
 
 def read_step_file_with_names_colors(filename: str):
-    """Returns list of tuples (topods_shape, label, color)
-    Use OCAF.
+    """
+    Reads a STEP file and extracts shapes with their names and colors using OCAF.
+
+    This function processes a STEP file, including its assembly structure,
+    and returns a dictionary mapping each shape to its name and color.
+
+    :param filename: The path to the STEP file.
+    :return: A dictionary where keys are TopoDS_Shape objects and values are
+             lists containing the shape's name and its Quantity_Color.
+    :raises FileNotFoundError: If the specified file does not exist.
     """
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
@@ -368,25 +376,22 @@ def write_stl_file(
     linear_deflection: float = 0.9,
     angular_deflection: float = 0.5,
 ) -> None:
-    """Export a shape to STL format.
+    """
+    Export a shape to STL format.
 
     The shape is first meshed using the specified deflection parameters before export.
 
-    Args:
-        shape: The shape to export
-        filename: Target STL file path
-        mode: Export format, either "ascii" or "binary".
-              Defaults to "ascii".
-        linear_deflection: Maximum distance between mesh and actual surface.
-                          Lower values produce more accurate but larger meshes.
-                          Defaults to 0.9
-        angular_deflection: Maximum angle between mesh elements in radians.
-                          Lower values produce smoother meshes.
-                          Defaults to 0.5
-
-    Raises:
-        AssertionError: If shape is null or meshing fails
-        IOError: If export fails
+    :param shape: The shape to export.
+    :param filename: Target STL file path.
+    :param mode: Export format, either "ascii" or "binary". Defaults to "ascii".
+    :param linear_deflection: Maximum distance between mesh and actual surface.
+                              Lower values produce more accurate but larger meshes.
+                              Defaults to 0.9.
+    :param angular_deflection: Maximum angle between mesh elements in radians.
+                               Lower values produce smoother meshes.
+                               Defaults to 0.5.
+    :raises AssertionError: If shape is null or meshing fails.
+    :raises IOError: If export fails.
     """
     if shape.IsNull():
         raise AssertionError("Shape is null.")
@@ -415,7 +420,14 @@ def write_stl_file(
 
 
 def read_stl_file(filename: str):
-    """open a stl file, reads the content, and returns a BRep topods_shape object"""
+    """
+    Reads an STL file and returns a TopoDS_Shape.
+
+    :param filename: The path to the STL file.
+    :return: The shape read from the file.
+    :raises FileNotFoundError: If the specified file does not exist.
+    :raises AssertionError: If the shape in the file is null.
+    """
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
@@ -437,11 +449,18 @@ def read_iges_file(
     verbosity: bool = False,
     visible_only: bool = False,
 ):
-    """read the IGES file and returns a compound
-    filename: the file path
-    return_as_shapes: optional, False by default. If True returns a list of shapes,
-                      else returns a single compound
-    verbosity: optionl, False by default.
+    """
+    Reads an IGES file and returns the shapes.
+
+    :param filename: The path to the IGES file.
+    :param return_as_shapes: If True, returns a list of shapes. Otherwise, returns
+                             a single compound shape. Defaults to False.
+    :param verbosity: If True, prints detailed information during import.
+                      Defaults to False.
+    :param visible_only: If True, only reads visible entities. Defaults to False.
+    :return: A list of shapes or a single compound shape.
+    :raises FileNotFoundError: If the specified file does not exist.
+    :raises IOError: If the file cannot be read.
     """
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
@@ -482,10 +501,13 @@ def read_iges_file(
 
 
 def write_iges_file(a_shape: TopoDS_Shape, filename: str):
-    """exports a shape to a STEP file
-    a_shape: the topods_shape to export (a compound, a solid etc.)
-    filename: the filename
-    application protocol: "AP203" or "AP214"
+    """
+    Exports a shape to an IGES file.
+
+    :param a_shape: The TopoDS_Shape to export.
+    :param filename: The path to the output IGES file.
+    :raises AssertionError: If the shape is null or the export fails.
+    :raises IOError: If the file cannot be written to disk.
     """
     # a few checks
     if a_shape.IsNull():
@@ -507,7 +529,14 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
 # SVG export #
 ##############
 def edge_to_svg_polyline(topods_edge: TopoDS_Edge, tol: float = 0.1, unit: str = "mm"):
-    """Returns a svgwrite.Path for the edge, and the 2d bounding box"""
+    """
+    Converts a TopoDS_Edge to an SVG polyline.
+
+    :param topods_edge: The edge to convert.
+    :param tol: The tolerance for discretization. Defaults to 0.1.
+    :param unit: The unit of the coordinates ('mm' or 'm'). Defaults to 'mm'.
+    :return: A tuple containing the svgwrite.shapes.Polyline and the 2D bounding box.
+    """
     check_svgwrite_installed()
 
     unit_factor = 1  # by default
@@ -545,16 +574,23 @@ def export_shape_to_svg(
     line_width: str = "1px",
     unit: str = "mm",
 ):
-    """export a single shape to an svg file and/or string.
-    shape: the TopoDS_Shape to export
-    filename (optional): if provided, save to an svg file
-    width, height (optional): integers, specify the canvas size in pixels
-    margin_left, margin_top (optional): integers, in pixel
-    export_hidden_edges (optional): whether or not draw hidden edges using a dashed line
-    location (optional): a gp_Pnt, the lookat
-    direction (optional): to set up the projector direction
-    color (optional), "default to "black".
-    line_width (optional, default to 1): an integer
+    """
+    Exports a shape to an SVG file or string.
+
+    :param shape: The TopoDS_Shape to export.
+    :param filename: If provided, the path to save the SVG file.
+    :param width: The width of the SVG canvas in pixels.
+    :param height: The height of the SVG canvas in pixels.
+    :param margin_left: The left margin in pixels.
+    :param margin_top: The top margin in pixels.
+    :param export_hidden_edges: If True, hidden edges are drawn with a dashed line.
+    :param location: The viewpoint location for HLR.
+    :param direction: The view direction for HLR.
+    :param color: The color of the lines.
+    :param line_width: The width of the lines.
+    :param unit: The unit of the coordinates ('mm' or 'm').
+    :return: The SVG content as a string if no filename is provided, otherwise True.
+    :raises AssertionError: If the shape is null or the export fails.
     """
     check_svgwrite_installed()
 
@@ -629,7 +665,12 @@ def export_shape_to_svg(
 # ply export (write not avaiable from upstream) #
 #################################################
 def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
-    """ocaf based ply exporter"""
+    """
+    Exports a shape to a PLY file using OCAF.
+
+    :param a_shape: The TopoDS_Shape to export.
+    :param ply_filename: The path to the output PLY file.
+    """
     # create a document
     doc = TDocStd_Document("pythonocc-doc-ply-export")
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
@@ -662,7 +703,12 @@ def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
 # Obj export (write not avaiable from upstream) #
 #################################################
 def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str):
-    """ocaf based ply exporter"""
+    """
+    Exports a shape to an OBJ file using OCAF.
+
+    :param a_shape: The TopoDS_Shape to export.
+    :param obj_filename: The path to the output OBJ file.
+    """
     # create a document
     doc = TDocStd_Document("pythonocc-doc-obj-export")
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
@@ -708,6 +754,20 @@ def read_gltf_file(
     verbose: bool = False,
     load_all_scenes: bool = False,
 ):
+    """
+    Reads a glTF file and returns the shape.
+
+    :param filename: The path to the glTF file.
+    :param is_parallel: If True, uses parallel processing. Defaults to False.
+    :param is_double_precision: If True, uses double precision. Defaults to False.
+    :param skip_late_data_loading: If True, skips loading late data. Defaults to False.
+    :param keep_late_data: If True, keeps late data. Defaults to True.
+    :param verbose: If True, prints debug messages. Defaults to False.
+    :param load_all_scenes: If True, loads all scenes. Defaults to False.
+    :return: A list containing the read shape.
+    :raises FileNotFoundError: If the specified file does not exist.
+    :raises IOError: If the file cannot be read.
+    """
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
@@ -729,7 +789,14 @@ def read_gltf_file(
 
 
 def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
-    """ocaf based ply exporter"""
+    """
+    Exports a shape to a glTF file using OCAF.
+
+    :param a_shape: The TopoDS_Shape to export.
+    :param gltf_filename: The path to the output glTF file.
+    :param binary: If True, exports to a binary glTF (.glb) file. Defaults to True.
+    :raises IOError: If the export fails.
+    """
     # create a document
     doc = TDocStd_Document("pythonocc-doc-gltf-export")
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
