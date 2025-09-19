@@ -90,7 +90,7 @@ Download and extract OpenCascade 7.9.0:
 ```bash
 wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_9_0.tar.gz
 tar -xvzf V7_9_0.tar.gz
-cd OCCT-7.9.0
+cd OCCT-7_9_0
 mkdir cmake-build
 cd cmake-build
 ```
