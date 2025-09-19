@@ -77,25 +77,40 @@ DISCRETIZATION_ALGORITHMS = {
 
 
 def _number_of_topo(iterable: Iterable) -> int:
+    """Counts the number of items in an iterable."""
     return sum(1 for _ in iterable)
 
 
 def ordered_vertices_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Vertex]:
+    """
+    Get an iterator over the vertices of a wire in connection order.
+    :param wire: The wire to explore.
+    :return: An iterator of vertices.
+    """
     wire_exp = WireExplorer(wire)
     return wire_exp.ordered_vertices()
 
 
 def ordered_edges_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]:
+    """
+    Get an iterator over the edges of a wire in connection order.
+    :param wire: The wire to explore.
+    :return: An iterator of edges.
+    """
     wire_exp = WireExplorer(wire)
     return wire_exp.ordered_edges()
 
 
 class WireExplorer:
     """
-    Wire traversal
+    A class to explore a TopoDS_Wire, providing access to its vertices and edges in order.
     """
 
     def __init__(self, wire: TopoDS_Wire) -> None:
+        """
+        Initializes the WireExplorer.
+        :param wire: The wire to explore.
+        """
         if not isinstance(wire, TopoDS_Wire):
             raise AssertionError("not a TopoDS_Wire")
         self.wire = wire
@@ -103,10 +118,16 @@ class WireExplorer:
         self.done = False
 
     def _reinitialize(self) -> None:
+        """Re-initializes the underlying BRepTools_WireExplorer."""
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
 
     def _loop_topo(self, edges: Optional[bool] = True) -> Iterator[Any]:
+        """
+        Internal loop to traverse the wire's topology.
+        :param edges: If True, iterates over edges, otherwise iterates over vertices.
+        :return: An iterator of edges or vertices.
+        """
         if self.done:
             self._reinitialize()
         topology_type = Edge if edges else Vertex
@@ -126,45 +147,38 @@ class WireExplorer:
         return iter(seq)
 
     def ordered_edges(self) -> Iterator[TopoDS_Edge]:
+        """
+        Returns an iterator over the edges of the wire in connection order.
+        """
         return self._loop_topo(edges=True)
 
     def ordered_vertices(self) -> Iterator[TopoDS_Vertex]:
+        """
+        Returns an iterator over the vertices of the wire in connection order.
+        """
         return self._loop_topo(edges=False)
 
 
 class TopologyExplorer:
     """
-    Topology traversal
+    A class to explore the topology of a TopoDS_Shape.
+    This class allows for traversing the topological hierarchy of a shape,
+    providing methods to access sub-shapes like faces, edges, and vertices.
+    It can also be used to find relationships between different topological entities,
+    for example, finding all faces connected to a specific edge.
     """
 
     def __init__(
         self, my_shape: TopoDS_Shape, ignore_orientation: Optional[bool] = True
     ) -> None:
         """
-        implements topology traversal from any TopoDS_Shape
-        this class lets you find how various topological entities are connected from one to another
-        find the faces connected to an edge, find the vertices this edge is made from, get all faces connected to
-        a vertex, and find out how many topological elements are connected from a source
-
-        *note* when traversing TopoDS_Wire entities, its advised to use the specialized
-        ``WireExplorer`` class, which will return the vertices / edges in the expected order
-
-        :param my_shape: the shape which topology will be traversed
-
-        :param ignore_orientation: filter out TopoDS_* entities of similar TShape but different Orientation
-
-        for instance, a cube has 24 edges, 4 edges for each of 6 faces
-
-        that results in 48 vertices, while there are only 8 vertices that have a unique
-        geometric coordinate
-
-        in certain cases ( computing a graph from the topology ) its preferable to return
-        topological entities that share similar geometry, though differ in orientation
-        by setting the ``ignore_orientation`` variable
-        to True, in case of a cube, just 12 edges and only 8 vertices will be returned
-
-        for further reference see TopoDS_Shape IsEqual / IsSame methods
-
+        Initializes the TopologyExplorer.
+        :param my_shape: The shape which topology will be traversed.
+        :param ignore_orientation: If True, filters out topological entities
+            that have the same geometry but different orientations. For example,
+            a cube has 12 unique geometric edges, but 24 edges when considering
+            orientation. Setting this to True will return 12 edges.
+            Defaults to True.
         """
         self.my_shape = my_shape
         self.ignore_orientation = ignore_orientation
@@ -189,10 +203,13 @@ class TopologyExplorer:
         topology_type_to_avoid=None,
     ) -> Iterator[Any]:
         """
-        this could be a faces generator for a python TopoShape class
-        that way you can just do:
-        for face in srf.faces:
-            processFace(face)
+        Generic method to iterate over sub-shapes of a given type.
+        :param topology_type: The type of sub-shapes to iterate over (e.g., TopAbs_FACE).
+        :param topological_entity: The shape to explore. If None, explores the shape
+            provided in the constructor. Defaults to None.
+        :param topology_type_to_avoid: A type of sub-shape to avoid during traversal.
+            Defaults to None.
+        :return: An iterator of the found sub-shapes.
         """
         topo_types = {
             TopAbs_VERTEX: TopoDS_Vertex,
@@ -251,90 +268,110 @@ class TopologyExplorer:
 
     def faces(self) -> Iterator[TopoDS_Face]:
         """
-        loops over all faces
+        Returns an iterator over all faces in the shape.
         """
         return self._loop_topo(TopAbs_FACE)
 
     def number_of_faces(self) -> int:
+        """Returns the number of faces in the shape."""
         return _number_of_topo(self.faces())
 
     def vertices(self) -> Iterator[TopoDS_Vertex]:
         """
-        loops over all vertices
+        Returns an iterator over all vertices in the shape.
         """
         return self._loop_topo(TopAbs_VERTEX)
 
     def number_of_vertices(self) -> int:
+        """Returns the number of vertices in the shape."""
         return _number_of_topo(self.vertices())
 
     def edges(self) -> Iterator[TopoDS_Edge]:
         """
-        loops over all edges
+        Returns an iterator over all edges in the shape.
         """
         return self._loop_topo(TopAbs_EDGE)
 
     def number_of_edges(self) -> int:
+        """Returns the number of edges in the shape."""
         return _number_of_topo(self.edges())
 
     def wires(self) -> Iterator[TopoDS_Wire]:
         """
-        loops over all wires
+        Returns an iterator over all wires in the shape.
         """
         return self._loop_topo(TopAbs_WIRE)
 
     def number_of_wires(self) -> int:
+        """Returns the number of wires in the shape."""
         return _number_of_topo(self.wires())
 
     def shells(self) -> Iterator[TopoDS_Shell]:
         """
-        loops over all shells
+        Returns an iterator over all shells in the shape.
         """
         return self._loop_topo(TopAbs_SHELL, None)
 
     def number_of_shells(self) -> int:
+        """Returns the number of shells in the shape."""
         return _number_of_topo(self.shells())
 
     def solids(self) -> Iterator[TopoDS_Solid]:
         """
-        loops over all solids
+        Returns an iterator over all solids in the shape.
         """
         return self._loop_topo(TopAbs_SOLID, None)
 
     def number_of_solids(self) -> int:
+        """Returns the number of solids in the shape."""
         return _number_of_topo(self.solids())
 
     def comp_solids(self) -> Iterator[TopoDS_CompSolid]:
         """
-        loops over all compound solids
+        Returns an iterator over all composite solids in the shape.
         """
         return self._loop_topo(TopAbs_COMPSOLID)
 
     def number_of_comp_solids(self) -> int:
+        """Returns the number of composite solids in the shape."""
         return _number_of_topo(self.comp_solids())
 
     def compounds(self) -> Iterator[TopoDS_Compound]:
         """
-        loops over all compounds
+        Returns an iterator over all compounds in the shape.
         """
         return self._loop_topo(TopAbs_COMPOUND)
 
     def number_of_compounds(self) -> int:
+        """Returns the number of compounds in the shape."""
         return _number_of_topo(self.compounds())
 
     def number_of_ordered_vertices_from_wire(self, wire: TopoDS_Wire) -> int:
+        """
+        Returns the number of vertices in a wire, in connection order.
+        :param wire: The wire to query.
+        :return: The number of ordered vertices.
+        """
         return _number_of_topo(ordered_vertices_from_wire(wire))
 
     def number_of_ordered_edges_from_wire(self, wire: TopoDS_Wire) -> int:
+        """
+        Returns the number of edges in a wire, in connection order.
+        :param wire: The wire to query.
+        :return: The number of ordered edges.
+        """
         return _number_of_topo(ordered_edges_from_wire(wire))
 
     def _map_shapes_and_ancestors(
         self, topology_type_1, topology_type_2, topological_entity
     ):
         """
-        using the same method
-        @param topoTypeA:
-        @param topoTypeB:
-        @param topological_entity:
+        Maps shapes to their ancestors of a different type.
+        For example, can be used to find all faces (ancestors, type 2) that an edge (shape, type 1) belongs to.
+        :param topology_type_1: The TopAbs_ShapeEnum of the entity.
+        :param topology_type_2: The TopAbs_ShapeEnum of the ancestors to find.
+        :param topological_entity: The topological entity itself.
+        :return: An iterator of the ancestor shapes.
         """
         topo_set = set()
         topo_set_hash_codes = {}
@@ -376,6 +413,9 @@ class TopologyExplorer:
             topology_iterator.Next()
 
     def get_topology_summary(self) -> Dict[str, int]:
+        """
+        Returns a dictionary with a summary of the number of topological elements in the shape.
+        """
         return {
             "number_of_vertices": self.number_of_vertices(),
             "number_of_edges": self.number_of_edges(),
@@ -390,13 +430,14 @@ class TopologyExplorer:
     def _number_shapes_ancestors(
         self, topology_type_1, topology_type_2, topological_entity
     ):
-        """returns the number of shape ancestors
-        If you want to know how many edges a faces has:
-        _number_shapes_ancestors(self, TopAbs_EDGE, TopAbs_FACE, edg)
-        will return the number of edges a faces has
-        @param topoTypeA:
-        @param topoTypeB:
-        @param topological_entity:
+        """
+        Returns the number of ancestors of a given type for a topological entity.
+        For example, to find out how many faces an edge belongs to:
+        _number_shapes_ancestors(TopAbs_EDGE, TopAbs_FACE, edge)
+        :param topology_type_1: The TopAbs_ShapeEnum of the entity.
+        :param topology_type_2: The TopAbs_ShapeEnum of the ancestors to count.
+        :param topological_entity: The topological entity itself.
+        :return: The number of ancestor shapes.
         """
         topo_set = set()
         _map = TopTools_IndexedDataMapOfShapeListOfShape()
@@ -415,139 +456,289 @@ class TopologyExplorer:
     # ======================================================================
     # EDGE <-> FACE
     # ======================================================================
-    def faces_from_edge(self, edge: TopoDS_Edge):
+    def faces_from_edge(self, edge: TopoDS_Edge) -> Iterator[TopoDS_Face]:
         """
-
-        :param edge:
-        :return:
+        Get the faces connected to an edge.
+        :param edge: The edge to query.
+        :return: An iterator of faces connected to the edge.
         """
         return self._map_shapes_and_ancestors(TopAbs_EDGE, TopAbs_FACE, edge)
 
     def number_of_faces_from_edge(self, edge: TopoDS_Edge) -> int:
         """
-
-        :param edge:
-        :return:
+        Get the number of faces connected to an edge.
+        :param edge: The edge to query.
+        :return: The number of faces connected to the edge.
         """
         return self._number_shapes_ancestors(TopAbs_EDGE, TopAbs_FACE, edge)
 
     def edges_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Edge]:
         """
-
-        :param face:
-        :return:
+        Get the edges that make up a face.
+        :param face: The face to query.
+        :return: An iterator of edges.
         """
         return self._loop_topo(TopAbs_EDGE, face)
 
     def number_of_edges_from_face(self, face: TopoDS_Face) -> int:
+        """
+        Get the number of edges that make up a face.
+        :param face: The face to query.
+        :return: The number of edges.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_EDGE, face))
 
     # ======================================================================
     # VERTEX <-> EDGE
     # ======================================================================
     def vertices_from_edge(self, edge: TopoDS_Edge) -> Iterator[TopoDS_Vertex]:
+        """
+        Get the vertices that make up an edge.
+        :param edge: The edge to query.
+        :return: An iterator of vertices.
+        """
         return self._loop_topo(TopAbs_VERTEX, edge)
 
     def number_of_vertices_from_edge(self, edge: TopoDS_Edge) -> int:
+        """
+        Get the number of vertices that make up an edge.
+        :param edge: The edge to query.
+        :return: The number of vertices.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, edge))
 
-    def edges_from_vertex(self, vertex):
+    def edges_from_vertex(self, vertex: TopoDS_Vertex) -> Iterator[TopoDS_Edge]:
+        """
+        Get the edges connected to a vertex.
+        :param vertex: The vertex to query.
+        :return: An iterator of edges connected to the vertex.
+        """
         return self._map_shapes_and_ancestors(TopAbs_VERTEX, TopAbs_EDGE, vertex)
 
     def number_of_edges_from_vertex(self, vertex: TopoDS_Vertex) -> int:
+        """
+        Get the number of edges connected to a vertex.
+        :param vertex: The vertex to query.
+        :return: The number of edges connected to the vertex.
+        """
         return self._number_shapes_ancestors(TopAbs_VERTEX, TopAbs_EDGE, vertex)
 
     # ======================================================================
     # WIRE <-> EDGE
     # ======================================================================
     def edges_from_wire(self, wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]:
+        """
+        Get the edges that make up a wire.
+        :param wire: The wire to query.
+        :return: An iterator of edges.
+        """
         return self._loop_topo(TopAbs_EDGE, wire)
 
     def number_of_edges_from_wire(self, wire: TopoDS_Wire) -> int:
+        """
+        Get the number of edges that make up a wire.
+        :param wire: The wire to query.
+        :return: The number of edges.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_EDGE, wire))
 
-    def wires_from_edge(self, edg):
+    def wires_from_edge(self, edg: TopoDS_Edge) -> Iterator[TopoDS_Wire]:
+        """
+        Get the wires an edge belongs to.
+        :param edg: The edge to query.
+        :return: An iterator of wires.
+        """
         return self._map_shapes_and_ancestors(TopAbs_EDGE, TopAbs_WIRE, edg)
 
-    def wires_from_vertex(self, edg):
+    def wires_from_vertex(self, edg: TopoDS_Vertex) -> Iterator[TopoDS_Wire]:
+        """
+        Get the wires connected to a vertex.
+        :param edg: The vertex to query.
+        :return: An iterator of wires.
+        """
         return self._map_shapes_and_ancestors(TopAbs_VERTEX, TopAbs_WIRE, edg)
 
-    def number_of_wires_from_edge(self, edg):
+    def number_of_wires_from_edge(self, edg: TopoDS_Edge) -> int:
+        """
+        Get the number of wires an edge belongs to.
+        :param edg: The edge to query.
+        :return: The number of wires.
+        """
         return self._number_shapes_ancestors(TopAbs_EDGE, TopAbs_WIRE, edg)
 
     # ======================================================================
     # WIRE <-> FACE
     # ======================================================================
     def wires_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Wire]:
+        """
+        Get the wires that make up a face.
+        :param face: The face to query.
+        :return: An iterator of wires.
+        """
         return self._loop_topo(TopAbs_WIRE, face)
 
     def number_of_wires_from_face(self, face: TopoDS_Face) -> int:
+        """
+        Get the number of wires that make up a face.
+        :param face: The face to query.
+        :return: The number of wires.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_WIRE, face))
 
-    def faces_from_wire(self, wire):
+    def faces_from_wire(self, wire: TopoDS_Wire) -> Iterator[TopoDS_Face]:
+        """
+        Get the faces a wire belongs to.
+        :param wire: The wire to query.
+        :return: An iterator of faces.
+        """
         return self._map_shapes_and_ancestors(TopAbs_WIRE, TopAbs_FACE, wire)
 
-    def number_of_faces_from_wires(self, wire):
+    def number_of_faces_from_wires(self, wire: TopoDS_Wire) -> int:
+        """
+        Get the number of faces a wire belongs to.
+        :param wire: The wire to query.
+        :return: The number of faces.
+        """
         return self._number_shapes_ancestors(TopAbs_WIRE, TopAbs_FACE, wire)
 
     # ======================================================================
     # VERTEX <-> FACE
     # ======================================================================
-    def faces_from_vertex(self, vertex):
+    def faces_from_vertex(self, vertex: TopoDS_Vertex) -> Iterator[TopoDS_Face]:
+        """
+        Get the faces connected to a vertex.
+        :param vertex: The vertex to query.
+        :return: An iterator of faces.
+        """
         return self._map_shapes_and_ancestors(TopAbs_VERTEX, TopAbs_FACE, vertex)
 
-    def number_of_faces_from_vertex(self, vertex):
+    def number_of_faces_from_vertex(self, vertex: TopoDS_Vertex) -> int:
+        """
+        Get the number of faces connected to a vertex.
+        :param vertex: The vertex to query.
+        :return: The number of faces.
+        """
         return self._number_shapes_ancestors(TopAbs_VERTEX, TopAbs_FACE, vertex)
 
     def vertices_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Vertex]:
+        """
+        Get the vertices that make up a face.
+        :param face: The face to query.
+        :return: An iterator of vertices.
+        """
         return self._loop_topo(TopAbs_VERTEX, face)
 
     def number_of_vertices_from_face(self, face: TopoDS_Face) -> int:
+        """
+        Get the number of vertices that make up a face.
+        :param face: The face to query.
+        :return: The number of vertices.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_VERTEX, face))
 
     # ======================================================================
     # FACE <-> SOLID
     # ======================================================================
-    def solids_from_face(self, face):
+    def solids_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Solid]:
+        """
+        Get the solids a face belongs to.
+        :param face: The face to query.
+        :return: An iterator of solids.
+        """
         return self._map_shapes_and_ancestors(TopAbs_FACE, TopAbs_SOLID, face)
 
-    def number_of_solids_from_face(self, face):
+    def number_of_solids_from_face(self, face: TopoDS_Face) -> int:
+        """
+        Get the number of solids a face belongs to.
+        :param face: The face to query.
+        :return: The number of solids.
+        """
         return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SOLID, face)
 
     def faces_from_solids(self, solid: TopoDS_Solid) -> Iterator[TopoDS_Face]:
+        """
+        Get the faces that make up a solid.
+        :param solid: The solid to query.
+        :return: An iterator of faces.
+        """
         return self._loop_topo(TopAbs_FACE, solid)
 
     def number_of_faces_from_solids(self, solid: TopoDS_Solid) -> int:
+        """
+        Get the number of faces that make up a solid.
+        :param solid: The solid to query.
+        :return: The number of faces.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
 
     # ======================================================================
     # FACE <-> SHELL
     # ======================================================================
-    def shells_from_face(self, face):
+    def shells_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Shell]:
+        """
+        Get the shells a face belongs to.
+        :param face: The face to query.
+        :return: An iterator of shells.
+        """
         return self._map_shapes_and_ancestors(TopAbs_FACE, TopAbs_SHELL, face)
 
-    def number_of_shells_from_face(self, face):
+    def number_of_shells_from_face(self, face: TopoDS_Face) -> int:
+        """
+        Get the number of shells a face belongs to.
+        :param face: The face to query.
+        :return: The number of shells.
+        """
         return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SHELL, face)
 
     def faces_from_shell(self, shell: TopoDS_Shell) -> Iterator[TopoDS_Face]:
+        """
+        Get the faces that make up a shell.
+        :param shell: The shell to query.
+        :return: An iterator of faces.
+        """
         return self._loop_topo(TopAbs_FACE, shell)
 
     def number_of_faces_from_shell(self, shell: TopoDS_Shell) -> int:
-        return sum(1 for _ in self._loop_topo(TopAbs_FACE, solid))
+        """
+        Get the number of faces that make up a shell.
+        :param shell: The shell to query.
+        :return: The number of faces.
+        """
+        return sum(1 for _ in self._loop_topo(TopAbs_FACE, shell))
 
     # ======================================================================
     # SHELL <-> SOLID
     # ======================================================================
-    def solids_from_shell(self, shell):
+    def solids_from_shell(self, shell: TopoDS_Shell) -> Iterator[TopoDS_Solid]:
+        """
+        Get the solids a shell belongs to.
+        :param shell: The shell to query.
+        :return: An iterator of solids.
+        """
         return self._map_shapes_and_ancestors(TopAbs_SHELL, TopAbs_SOLID, shell)
 
-    def number_of_solids_from_shell(self, shell):
+    def number_of_solids_from_shell(self, shell: TopoDS_Shell) -> int:
+        """
+        Get the number of solids a shell belongs to.
+        :param shell: The shell to query.
+        :return: The number of solids.
+        """
         return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SOLID, shell)
 
     def shells_from_solid(self, solid: TopoDS_Solid) -> Iterator[TopoDS_Shell]:
+        """
+        Get the shells that make up a solid.
+        :param solid: The solid to query.
+        :return: An iterator of shells.
+        """
         return self._loop_topo(TopAbs_SHELL, solid)
 
     def number_of_shells_from_solid(self, solid: TopoDS_Solid) -> int:
+        """
+        Get the number of shells that make up a solid.
+        :param solid: The solid to query.
+        :return: The number of shells.
+        """
         return sum(1 for _ in self._loop_topo(TopAbs_SHELL, solid))
 
 
@@ -555,7 +746,12 @@ def dump_topology_to_string(
     shape: TopoDS_Shape, level: Optional[int] = 0, buffer: Optional[str] = ""
 ) -> None:
     """
-    Return the details of an object from the top down
+    Prints the topological structure of a shape to the console.
+    Recursively iterates through the shape's sub-shapes and prints their type and hash.
+    For vertices, it also prints their coordinates.
+    :param shape: The shape to dump.
+    :param level: The current recursion level, used for indentation.
+    :param buffer: A string buffer (not currently used).
     """
     brt = BRep_Tool()
     s = shape.ShapeType()
@@ -582,7 +778,20 @@ def discretize_wire(
     deflection: float = 0.5,
     algorithm: str = "QuasiUniformDeflection",
 ) -> List[gp_Pnt]:
-    """Returns a set of points"""
+    """
+    Discretizes a wire into a list of points.
+    This function takes a TopoDS_Wire and generates a sequence of points
+    that approximate the wire's geometry. The precision of the discretization
+    is controlled by the `deflection` parameter.
+    :param a_wire: The wire to discretize.
+    :param deflection: The maximum allowed deviation between the wire and the
+        discretized points. A smaller value results in a more accurate
+        approximation and more points. Defaults to 0.5.
+    :param algorithm: The discretization algorithm to use. Can be one of
+        "UniformAbscissa", "QuasiUniformDeflection", or "UniformDeflection".
+        Defaults to "QuasiUniformDeflection".
+    :return: A list of gp_Pnt objects representing the discretized wire.
+    """
     if not is_wire(a_wire):
         raise AssertionError(
             "You must provide a TopoDS_Wire to the discretize_wire function."
@@ -607,10 +816,19 @@ def discretize_edge(
     deflection: float = 0.2,
     algorithm: str = "QuasiUniformDeflection",
 ):
-    """Take a TopoDS_Edge and returns a list of points
-    The more deflection is small, the more the discretization is precise,
-    i.e. the more points you get in the returned points
-    algorithm: to choose in ["UniformAbscissa", "QuasiUniformDeflection"]
+    """
+    Discretizes an edge into a list of points.
+    This function takes a TopoDS_Edge and generates a sequence of points
+    that approximate the edge's geometry. The precision of the discretization
+    is controlled by the `deflection` parameter.
+    :param a_edge: The edge to discretize.
+    :param deflection: The maximum allowed deviation between the edge and the
+        discretized points. A smaller value results in a more accurate
+        approximation and more points. Defaults to 0.2.
+    :param algorithm: The discretization algorithm to use. Can be one of
+        "UniformAbscissa", "QuasiUniformDeflection", or "UniformDeflection".
+        Defaults to "QuasiUniformDeflection".
+    :return: A list of gp_Pnt objects representing the discretized edge.
     """
     if not is_edge(a_edge):
         raise AssertionError(
@@ -654,43 +872,54 @@ def discretize_edge(
 # TopoDS_Shape type utils
 #
 def is_vertex(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Vertex."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_VERTEX
 
 
 def is_edge(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Edge."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_EDGE
 
 
 def is_wire(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Wire."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_WIRE
 
 
 def is_face(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Face."""
     if not hasattr(shape, "ShapeType"):
         return False
     return shape.ShapeType() == TopAbs_FACE
 
 
 def is_shell(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Shell."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_SHELL
 
 
 def is_solid(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Solid."""
     if not hasattr(shape, "ShapeType"):
         return False
     return shape.ShapeType() == TopAbs_SOLID
 
 
 def is_compound(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_Compound."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_COMPOUND
 
 
 def is_compsolid(shape: TopoDS_Shape) -> bool:
+    """Checks if a shape is a TopoDS_CompSolid."""
     return hasattr(shape, "ShapeType") and shape.ShapeType() == TopAbs_COMPSOLID
 
 
 def get_type_as_string(shape: TopoDS_Shape) -> str:
-    """just get the type string, remove TopAbs_ and lowercas all ending letters"""
+    """
+    Returns the type of a TopoDS_Shape as a string.
+    For example, for a TopoDS_Shape of type TopAbs_VERTEX, it returns "Vertex".
+    """
     types = {
         TopAbs_VERTEX: "Vertex",
         TopAbs_WIRE: "Wire",
@@ -709,7 +938,18 @@ def get_sorted_hlr_edges(
     direction: Optional[gp_Dir] = None,
     export_hidden_edges: Optional[bool] = True,
 ) -> Tuple[List, List]:
-    """Return hidden and visible edges as two lists of edges"""
+    """
+    Performs Hidden Line Removal (HLR) on a shape and returns the visible and hidden edges.
+    :param shape: The shape to process.
+    :param position: The viewpoint position for the HLR algorithm.
+        Defaults to the origin (0, 0, 0).
+    :param direction: The view direction for the HLR algorithm.
+        Defaults to the Z-axis (0, 0, 1).
+    :param export_hidden_edges: If True, the hidden edges are also computed and returned.
+        Defaults to True.
+    :return: A tuple containing two lists: the first list contains the visible edges,
+        and the second list contains the hidden edges.
+    """
     if position is None:
         position = gp_Pnt()
     if not isinstance(position, gp_Pnt):
@@ -752,9 +992,13 @@ def get_sorted_hlr_edges(
 def list_of_shapes_to_compound(
     list_of_shapes: List[TopoDS_Shape],
 ) -> Tuple[TopoDS_Compound, bool]:
-    """takes a list of shape in input, gather all shapes into one compound
-    returns the compound and a boolean, True if all shapes were added to the compound,
-    False otherwise
+    """
+    Takes a list of shapes and gathers them into a single compound shape.
+    :param list_of_shapes: A list of TopoDS_Shape objects.
+    :return: A tuple containing:
+        - The resulting TopoDS_Compound.
+        - A boolean that is True if all shapes were successfully added to the compound,
+          and False if any of the shapes were null and could not be added.
     """
     all_shapes_converted = True
     the_compound = TopoDS_Compound()
