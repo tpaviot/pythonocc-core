@@ -123,6 +123,7 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     def __iter__(self):
         it = IntSurf_ListIteratorOfListOfPntOn2S(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

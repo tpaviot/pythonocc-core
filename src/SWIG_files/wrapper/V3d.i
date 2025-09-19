@@ -304,6 +304,7 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
     def __iter__(self):
         it = V3d_ListIteratorOfListOfLight(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -317,6 +318,7 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
     def __iter__(self):
         it = V3d_ListIteratorOfListOfView(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

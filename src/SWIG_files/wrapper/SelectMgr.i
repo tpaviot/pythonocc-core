@@ -271,6 +271,7 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
     def __iter__(self):
         it = SelectMgr_ListIteratorOfListOfFilter(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

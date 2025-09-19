@@ -148,6 +148,7 @@ Array1ExtendIter(TDF_Label)
     def __iter__(self):
         it = TDataStd_ListIteratorOfListOfByte(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -161,6 +162,7 @@ Array1ExtendIter(TDF_Label)
     def __iter__(self):
         it = TDataStd_ListIteratorOfListOfExtendedString(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

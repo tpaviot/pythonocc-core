@@ -433,6 +433,7 @@ Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
     def __iter__(self):
         it = Prs3d_ListIteratorOfNListOfSequenceOfPnt(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

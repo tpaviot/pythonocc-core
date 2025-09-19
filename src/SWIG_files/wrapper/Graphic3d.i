@@ -1699,6 +1699,7 @@ Array1ExtendIter(Graphic3d_Attribute)
     def __iter__(self):
         it = Graphic3d_ListIteratorOfGraphicDriverFactoryList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

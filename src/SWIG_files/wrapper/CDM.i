@@ -113,6 +113,7 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     def __iter__(self):
         it = CDM_ListIteratorOfListOfDocument(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -126,6 +127,7 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     def __iter__(self):
         it = CDM_ListIteratorOfListOfReferences(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

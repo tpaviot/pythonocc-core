@@ -171,6 +171,7 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     def __iter__(self):
         it = TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -184,6 +185,7 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     def __iter__(self):
         it = TNaming_ListIteratorOfListOfMapOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -197,6 +199,7 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     def __iter__(self):
         it = TNaming_ListIteratorOfListOfNamedShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

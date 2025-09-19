@@ -197,6 +197,7 @@ BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
     def __iter__(self):
         it = BOPAlgo_ListIteratorOfListOfCheckResult(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

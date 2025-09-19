@@ -148,6 +148,7 @@ Array1ExtendIter(IntTools_Root)
     def __iter__(self):
         it = IntTools_ListIteratorOfListOfBox(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -161,6 +162,7 @@ Array1ExtendIter(IntTools_Root)
     def __iter__(self):
         it = IntTools_ListIteratorOfListOfCurveRangeSample(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -174,6 +176,7 @@ Array1ExtendIter(IntTools_Root)
     def __iter__(self):
         it = IntTools_ListIteratorOfListOfSurfaceRangeSample(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

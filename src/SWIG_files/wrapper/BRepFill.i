@@ -201,6 +201,7 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
     def __iter__(self):
         it = BRepFill_ListIteratorOfListOfOffsetWire(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

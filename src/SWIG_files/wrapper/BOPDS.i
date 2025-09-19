@@ -141,6 +141,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BOPDS_ListIteratorOfListOfPave(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -154,6 +155,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BOPDS_ListIteratorOfListOfPaveBlock(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

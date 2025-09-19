@@ -500,6 +500,7 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
     def __iter__(self):
         it = MeshVS_ListIteratorOfPolyhedronVerts(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

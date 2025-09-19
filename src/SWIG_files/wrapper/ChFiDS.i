@@ -215,6 +215,7 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     def __iter__(self):
         it = ChFiDS_ListIteratorOfListOfHElSpine(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -228,6 +229,7 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     def __iter__(self):
         it = ChFiDS_ListIteratorOfListOfStripe(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -241,6 +243,7 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     def __iter__(self):
         it = ChFiDS_ListIteratorOfRegularities(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

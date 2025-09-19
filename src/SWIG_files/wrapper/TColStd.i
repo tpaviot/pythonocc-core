@@ -224,6 +224,7 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     def __iter__(self):
         it = TColStd_ListIteratorOfListOfAsciiString(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -237,6 +238,7 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     def __iter__(self):
         it = TColStd_ListIteratorOfListOfInteger(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -250,6 +252,7 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     def __iter__(self):
         it = TColStd_ListIteratorOfListOfReal(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -263,6 +266,7 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
     def __iter__(self):
         it = TColStd_ListIteratorOfListOfTransient(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

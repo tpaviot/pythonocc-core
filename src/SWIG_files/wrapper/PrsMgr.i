@@ -159,6 +159,7 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
     def __iter__(self):
         it = PrsMgr_ListIteratorOfListOfPresentableObjects(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -173,6 +174,7 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
     def __iter__(self):
         it = PrsMgr_ListIteratorOfListOfPresentations(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

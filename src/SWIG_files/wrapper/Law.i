@@ -99,6 +99,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = Law_ListIteratorOfLaws(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

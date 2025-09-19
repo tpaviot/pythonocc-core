@@ -138,6 +138,7 @@ Array1OfTriaNumpyTemplate(Poly_Array1OfTriangle, Poly_Triangle)
     def __iter__(self):
         it = Poly_ListIteratorOfListOfTriangulation(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

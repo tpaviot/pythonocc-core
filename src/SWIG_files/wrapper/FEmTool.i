@@ -80,6 +80,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = FEmTool_ListIteratorOfListOfVectors(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

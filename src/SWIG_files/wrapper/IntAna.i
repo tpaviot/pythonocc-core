@@ -119,6 +119,7 @@ IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
     def __iter__(self):
         it = IntAna_ListIteratorOfListOfCurve(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

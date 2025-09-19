@@ -166,6 +166,7 @@ Array1ExtendIter(HLRBRep_FaceData)
     def __iter__(self):
         it = HLRBRep_ListIteratorOfListOfBPnt2D(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -179,6 +180,7 @@ Array1ExtendIter(HLRBRep_FaceData)
     def __iter__(self):
         it = HLRBRep_ListIteratorOfListOfBPoint(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

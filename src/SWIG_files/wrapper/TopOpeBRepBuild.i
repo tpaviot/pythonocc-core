@@ -133,6 +133,7 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     def __iter__(self):
         it = TopOpeBRepBuild_ListIteratorOfListOfListOfLoop(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -146,6 +147,7 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     def __iter__(self):
         it = TopOpeBRepBuild_ListIteratorOfListOfLoop(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -159,6 +161,7 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     def __iter__(self):
         it = TopOpeBRepBuild_ListIteratorOfListOfPave(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -172,6 +175,7 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     def __iter__(self):
         it = TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

@@ -111,6 +111,7 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     def __iter__(self):
         it = TDF_ListIteratorOfAttributeDeltaList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -126,6 +127,7 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     def __iter__(self):
         it = TDF_ListIteratorOfAttributeList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -148,6 +150,7 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     def __iter__(self):
         it = TDF_ListIteratorOfDeltaList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -163,6 +166,7 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     def __iter__(self):
         it = TDF_ListIteratorOfIDList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -181,6 +185,7 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     def __iter__(self):
         it = TDF_ListIteratorOfLabelList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

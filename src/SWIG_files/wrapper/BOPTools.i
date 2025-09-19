@@ -112,6 +112,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BOPTools_ListIteratorOfListOfConnexityBlock(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -125,6 +126,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BOPTools_ListIteratorOfListOfCoupleOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

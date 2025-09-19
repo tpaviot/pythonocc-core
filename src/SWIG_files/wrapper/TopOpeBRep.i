@@ -189,6 +189,7 @@ Array1ExtendIter(TopOpeBRep_VPointInter)
     def __iter__(self):
         it = TopOpeBRep_ListIteratorOfListOfBipoint(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

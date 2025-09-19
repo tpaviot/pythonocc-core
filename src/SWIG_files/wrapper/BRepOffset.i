@@ -240,6 +240,7 @@ BRepOffset_Unknown = BRepOffset_Status.BRepOffset_Unknown
     def __iter__(self):
         it = BRepOffset_ListIteratorOfListOfInterval(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

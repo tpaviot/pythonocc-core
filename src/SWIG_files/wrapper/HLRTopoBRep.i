@@ -107,6 +107,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = HLRTopoBRep_ListIteratorOfListOfVData(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

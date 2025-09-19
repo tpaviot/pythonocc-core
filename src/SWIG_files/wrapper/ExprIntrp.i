@@ -88,6 +88,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = ExprIntrp_ListIteratorOfStackOfGeneralExpression(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -101,6 +102,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = ExprIntrp_ListIteratorOfStackOfGeneralRelation(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

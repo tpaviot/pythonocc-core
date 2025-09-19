@@ -224,6 +224,7 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
     def __iter__(self):
         it = TopOpeBRepDS_ListIteratorOfListOfInterference(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

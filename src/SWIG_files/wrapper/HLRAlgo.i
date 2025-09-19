@@ -153,6 +153,7 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     def __iter__(self):
         it = HLRAlgo_ListIteratorOfInterferenceList(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -168,6 +169,7 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     def __iter__(self):
         it = HLRAlgo_ListIteratorOfListOfBPoint(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

@@ -119,6 +119,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BRep_ListIteratorOfListOfCurveRepresentation(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -132,6 +133,7 @@ from OCC.Core.Exception import *
     def __iter__(self):
         it = BRep_ListIteratorOfListOfPointRepresentation(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

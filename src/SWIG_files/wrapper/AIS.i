@@ -623,6 +623,7 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
     def __iter__(self):
         it = AIS_ListIteratorOfListOfInteractive(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -641,6 +642,7 @@ Array1ExtendIter(opencascade::handle<SelectMgr_EntityOwner>)
     def __iter__(self):
         it = AIS_ListIteratorOfNListOfEntityOwner(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

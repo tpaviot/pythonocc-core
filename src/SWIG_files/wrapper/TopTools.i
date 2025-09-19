@@ -162,6 +162,7 @@ Array1ExtendIter(TopoDS_Shape)
     def __iter__(self):
         it = TopTools_ListIteratorOfListOfListOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -175,6 +176,7 @@ Array1ExtendIter(TopoDS_Shape)
     def __iter__(self):
         it = TopTools_ListIteratorOfListOfShape(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

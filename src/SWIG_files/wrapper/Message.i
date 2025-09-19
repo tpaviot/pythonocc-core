@@ -606,6 +606,7 @@ Message_FAIL = Message_StatusType.Message_FAIL
     def __iter__(self):
         it = Message_ListIteratorOfListOfAlert(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
@@ -619,6 +620,7 @@ Message_FAIL = Message_StatusType.Message_FAIL
     def __iter__(self):
         it = Message_ListIteratorOfListOfMsg(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

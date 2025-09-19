@@ -140,6 +140,7 @@ TopOpeBRepTool_INTERPOL = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_INTERPOL
     def __iter__(self):
         it = TopOpeBRepTool_ListIteratorOfListOfC2DF(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };

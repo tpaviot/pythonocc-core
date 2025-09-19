@@ -175,6 +175,7 @@ VrmlData_NotImplemented = VrmlData_ErrorStatus.VrmlData_NotImplemented
     def __iter__(self):
         it = VrmlData_ListIteratorOfListOfNode(self.this)
         while it.More():
+            yield it.Value()
             it.Next()
     }
 };
