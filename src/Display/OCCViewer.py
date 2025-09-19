@@ -39,9 +39,10 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeFace,
 )
 from OCC.Core.TopAbs import (
-    TopAbs_FACE,
-    TopAbs_EDGE,
     TopAbs_VERTEX,
+    TopAbs_EDGE,
+    TopAbs_WIRE,
+    TopAbs_FACE,
     TopAbs_SHELL,
     TopAbs_SOLID,
 )
@@ -134,9 +135,8 @@ def get_color_from_name(color_name):
     return Quantity_Color(color_num)
 
 
-# some thing we'll need later
-modes = itertools.cycle(
-    [TopAbs_FACE, TopAbs_EDGE, TopAbs_VERTEX, TopAbs_SHELL, TopAbs_SOLID]
+TOPOLOGY_MODES = itertools.cycle(
+    [TopAbs_SOLID, TopAbs_SHELL, TopAbs_FACE, TopAbs_WIRE, TopAbs_EDGE, TopAbs_VERTEX]
 )
 
 
@@ -608,8 +608,8 @@ class Viewer3d(Display3d):
 
     def SetSelectionMode(self, mode=None):
         self.Context.Deactivate()
-        topo_level = next(modes)
         if mode is None:
+            topo_level = next(TOPOLOGY_MODES)
             self.Context.Activate(AIS_Shape.SelectionMode(topo_level), True)
         else:
             self.Context.Activate(AIS_Shape.SelectionMode(mode), True)
@@ -621,8 +621,17 @@ class Viewer3d(Display3d):
     def SetSelectionModeEdge(self):
         self.SetSelectionMode(TopAbs_EDGE)
 
+    def SetSelectionModeWire(self):
+        self.SetSelectionMode(TopAbs_WIRE)
+
     def SetSelectionModeFace(self):
         self.SetSelectionMode(TopAbs_FACE)
+
+    def SetSelectionModeShell(self):
+        self.SetSelectionMode(TopAbs_SHELL)
+
+    def SetSelectionModeSolid(self):
+        self.SetSelectionMode(TopAbs_SOLID)
 
     def SetSelectionModeShape(self):
         self.Context.Deactivate()
