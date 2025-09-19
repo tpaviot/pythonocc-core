@@ -23,10 +23,24 @@ from flask import Flask, render_template
 
 
 def format_color(r, g, b):
+    """
+    Formats a color from RGB to a hex string.
+
+    Args:
+        r (int): The red component (0-255).
+        g (int): The green component (0-255).
+        b (int): The blue component (0-255).
+
+    Returns:
+        str: The color as a hex string.
+    """
     return "0x%02x%02x%02x" % (r, g, b)
 
 
 class RenderWraper(ThreejsRenderer):
+    """
+    A wrapper for the ThreejsRenderer that adds support for Flask.
+    """
     def __init__(
         self,
         path=None,
@@ -34,6 +48,15 @@ class RenderWraper(ThreejsRenderer):
         default_edge_color=format_color(32, 32, 32),  # dark grey
         default_vertex_color=format_color(8, 8, 8),
     ):  # darker gray
+        """
+        Initializes the RenderWraper.
+
+        Args:
+            path (str, optional): The path to the templates.
+            default_shape_color (str, optional): The default color for shapes.
+            default_edge_color (str, optional): The default color for edges.
+            default_vertex_color (str, optional): The default color for vertices.
+        """
         super().__init__(path)
         self._3js_vertex = {}
         self._default_shape_color = default_shape_color
@@ -53,6 +76,24 @@ class RenderWraper(ThreejsRenderer):
         point_size=1.0,
         mesh_quality=1.0,
     ):
+        """
+        Converts a shape to a format that can be rendered by Three.js.
+
+        Args:
+            shape: The shape to convert.
+            export_edges (bool, optional): Whether to export the edges of the shape.
+            color (tuple, optional): The color of the shape.
+            specular_color (tuple, optional): The specular color of the shape.
+            shininess (float, optional): The shininess of the shape.
+            transparency (float, optional): The transparency of the shape.
+            line_color (tuple, optional): The color of the lines.
+            line_width (float, optional): The width of the lines.
+            point_size (float, optional): The size of the points.
+            mesh_quality (float, optional): The quality of the mesh.
+
+        Returns:
+            A tuple containing the shapes, edges, and vertices.
+        """
         # if the shape is an edge or a wire, use the related functions
         color = color_to_hex(color)
         specular_color = color_to_hex(specular_color)
@@ -140,6 +181,9 @@ class RenderWraper(ThreejsRenderer):
 
 
 class RenderConfig:
+    """
+    Configuration for the renderer.
+    """
     def __init__(
         self,
         bg_gradient_color1="#ced7de",
@@ -148,6 +192,16 @@ class RenderConfig:
         fragment_shader=None,
         uniforms=None,
     ):
+        """
+        Initializes the RenderConfig.
+
+        Args:
+            bg_gradient_color1 (str, optional): The first color of the background gradient.
+            bg_gradient_color2 (str, optional): The second color of the background gradient.
+            vertex_shader (str, optional): The vertex shader to use.
+            fragment_shader (str, optional): The fragment shader to use.
+            uniforms (dict, optional): The uniforms to use.
+        """
         self._occ_version = OCC_VERSION
         self._3js_version = THREEJS_RELEASE
         self._bg_gradient_color1 = bg_gradient_color1

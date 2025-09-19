@@ -30,6 +30,15 @@ log = logging.getLogger(__name__)
 
 
 def check_callable(_callable: Callable) -> None:
+    """
+    Checks if the given object is callable.
+
+    Args:
+        _callable: The object to check.
+
+    Raises:
+        AssertionError: If the object is not callable.
+    """
     if not callable(_callable):
         raise AssertionError("The function supplied is not callable")
 
@@ -41,20 +50,30 @@ def init_display(
     background_gradient_color1: Optional[List[int]] = [206, 215, 222],
     background_gradient_color2: Optional[List[int]] = [128, 128, 128],
 ):
-    """This function loads and initialize a GUI using either wx, pyqt5, pyqt6, pyside2 or pyside6.
-    If ever the environment variable PYTHONOCC_OFFSCREEN_RENDERER, then the GUI is simply
-    ignored and an offscreen renderer is returned.
-    init_display returns 4 objects :
-    * display : an instance of Viewer3d ;
-    * start_display : a function (the GUI mainloop) ;
-    * add_menu : a function that creates a menu in the GUI
-    * add_function_to_menu : adds a menu option
+    """
+    Initializes a GUI for the 3D viewer.
 
-    In case an offscreen renderer is returned, start_display and add_menu are ignored, i.e.
-    an empty function is returned (named do_nothing). add_function_to_menu just execute the
-    function taken as a parameter.
+    This function loads and initializes a GUI using either wx, pyqt5, pyqt6,
+    pyside2 or pyside6. If the environment variable
+    PYTHONOCC_OFFSCREEN_RENDERER is set to "1", the GUI is ignored and an
+    offscreen renderer is returned instead.
 
-    Note : the offscreen renderer is used on the travis side.
+    Args:
+        backend_str (str, optional): The backend to use. If not specified,
+            it will be automatically detected.
+        size (tuple, optional): The size of the window.
+        display_triedron (bool, optional): Whether to display the triedron.
+        background_gradient_color1 (list, optional): The first color of the
+            background gradient.
+        background_gradient_color2 (list, optional): The second color of the
+            background gradient.
+
+    Returns:
+        A tuple containing:
+        - display: An instance of Viewer3d.
+        - start_display: A function to start the GUI main loop.
+        - add_menu: A function to add a menu to the GUI.
+        - add_function_to_menu: A function to add a function to a menu.
     """
     if size is None:  # prevent size to being None (mypy)
         raise AssertionError("window size cannot be None")

@@ -29,7 +29,16 @@ from OCC.Display import OCCViewer
 
 
 class wxBaseViewer(wx.Panel):
+    """
+    The base wx.Panel for an OCC viewer.
+    """
     def __init__(self, parent=None):
+        """
+        Initializes the wxBaseViewer.
+
+        Args:
+            parent (wx.Window, optional): The parent window.
+        """
         wx.Panel.__init__(self, parent)
         self.Bind(wx.EVT_SIZE, self.OnSize)
         self.Bind(wx.EVT_IDLE, self.OnIdle)
@@ -51,17 +60,11 @@ class wxBaseViewer(wx.Panel):
         self._inited = False
 
     def GetWinId(self):
-        """Returns the windows Id as an integer.
-        issue with GetHandle on Linux for wx versions
-        >3 or 4. Window must be displayed before GetHandle is
-        called. For that, just wait for a few milliseconds/seconds
-        before calling InitDriver
-        a solution is given here
-        see https://github.com/cztomczak/cefpython/issues/349
-        but raises an issue with wxPython 4.x
-        finally, it seems that the sleep function does the job
-        reported as a pythonocc issue
-        https://github.com/tpaviot/pythonocc-core/476
+        """
+        Returns the windows Id as an integer.
+
+        On Linux, the window must be displayed before GetHandle is called.
+        For that, we wait for a few milliseconds/seconds before calling InitDriver.
         """
         timeout = 10  # 10 seconds
         win_id = self.GetHandle()
@@ -80,51 +83,99 @@ class wxBaseViewer(wx.Panel):
         return win_id
 
     def OnSize(self, event):
+        """
+        Called when the widget is resized.
+        """
         if self._inited:
             self._display.OnResize()
 
     def OnIdle(self, event):
+        """
+        Called when the application is idle.
+        """
         pass
 
     def OnMove(self, event):
+        """
+        Called when the widget is moved.
+        """
         pass
 
     def OnFocus(self, event):
+        """
+        Called when the widget gains focus.
+        """
         pass
 
     def OnLostFocus(self, event):
+        """
+        Called when the widget loses focus.
+        """
         pass
 
     def OnMaximize(self, event):
+        """
+        Called when the widget is maximized.
+        """
         pass
 
     def OnLeftDown(self, event):
+        """
+        Called when the left mouse button is pressed.
+        """
         pass
 
     def OnRightDown(self, event):
+        """
+        Called when the right mouse button is pressed.
+        """
         pass
 
     def OnMiddleDown(self, event):
+        """
+        Called when the middle mouse button is pressed.
+        """
         pass
 
     def OnLeftUp(self, event):
+        """
+        Called when the left mouse button is released.
+        """
         pass
 
     def OnRightUp(self, event):
+        """
+        Called when the right mouse button is released.
+        """
         pass
 
     def OnMiddleUp(self, event):
+        """
+        Called when the middle mouse button is released.
+        """
         pass
 
     def OnMotion(self, event):
+        """
+        Called when the mouse is moved.
+        """
         pass
 
     def OnKeyDown(self, event):
+        """
+        Called when a key is pressed.
+        """
         pass
 
 
 class wxViewer3d(wxBaseViewer):
+    """
+    A wx.Panel for an OCC viewer.
+    """
     def __init__(self, *kargs):
+        """
+        Initializes the wxViewer3d.
+        """
         wxBaseViewer.__init__(self, *kargs)
 
         self._drawbox = False
@@ -140,6 +191,9 @@ class wxViewer3d(wxBaseViewer):
         self.dragStartPos = None
 
     def InitDriver(self):
+        """
+        Initializes the driver.
+        """
         self._display = OCCViewer.Viewer3d()
         self._display.Create(window_handle=self.GetWinId(), parent=self)
 
@@ -150,6 +204,9 @@ class wxViewer3d(wxBaseViewer):
         self._SetupKeyMap()
 
     def _SetupKeyMap(self):
+        """
+        Sets up the key map.
+        """
         def set_shade_mode():
             self._display.DisableAntiAliasing()
             self._display.SetModeShaded()
@@ -165,6 +222,9 @@ class wxViewer3d(wxBaseViewer):
         }
 
     def OnKeyDown(self, evt):
+        """
+        Called when a key is pressed.
+        """
         code = evt.GetKeyCode()
         try:
             self._key_map[code]()
@@ -173,48 +233,81 @@ class wxViewer3d(wxBaseViewer):
             print("Unrecognized key pressed %i" % code)
 
     def OnMaximize(self, event):
+        """
+        Called when the widget is maximized.
+        """
         if self._inited:
             self._display.Repaint()
 
     def OnMove(self, event):
+        """
+        Called when the widget is moved.
+        """
         if self._inited:
             self._display.Repaint()
 
     def OnIdle(self, event):
+        """
+        Called when the application is idle.
+        """
         if self._drawbox:
             pass
         elif self._inited:
             self._display.Repaint()
 
     def Test(self):
+        """
+        Runs a test.
+        """
         if self._inited:
             self._display.Test()
 
     def OnFocus(self, event):
+        """
+        Called when the widget gains focus.
+        """
         if self._inited:
             self._display.Repaint()
 
     def OnLostFocus(self, event):
+        """
+        Called when the widget loses focus.
+        """
         if self._inited:
             self._display.Repaint()
 
     def OnPaint(self, event):
+        """
+        Called when the widget is painted.
+        """
         if self._inited:
             self._display.Repaint()
 
     def ZoomAll(self, evt):
+        """
+        Zooms to fit all objects in the view.
+        """
         self._display.FitAll()
 
     def Repaint(self, evt):
+        """
+        Repaints the view.
+        """
         if self._inited:
             self._display.Repaint()
 
     def OnLeftDown(self, evt):
+        """
+        Called when the left mouse button is pressed.
+        """
         self.SetFocus()
         self.dragStartPos = evt.GetPosition()
         self._display.StartRotation(self.dragStartPos.x, self.dragStartPos.y)
 
     def OnLeftUp(self, evt):
+        """
+        Called when the left mouse button is released.
+        """
         pt = evt.GetPosition()
         if self._select_area:
             [Xmin, Ymin, dx, dy] = self._drawbox
@@ -224,29 +317,47 @@ class wxViewer3d(wxBaseViewer):
             self._display.Select(pt.x, pt.y)
 
     def OnRightUp(self, evt):
+        """
+        Called when the right mouse button is released.
+        """
         if self._zoom_area:
             [Xmin, Ymin, dx, dy] = self._drawbox
             self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
             self._zoom_area = False
 
     def OnMiddleUp(self, evt):
+        """
+        Called when the middle mouse button is released.
+        """
         pass
 
     def OnRightDown(self, evt):
+        """
+        Called when the right mouse button is pressed.
+        """
         self.dragStartPos = evt.GetPosition()
         self._display.StartRotation(self.dragStartPos.x, self.dragStartPos.y)
 
     def OnMiddleDown(self, evt):
+        """
+        Called when the middle mouse button is pressed.
+        """
         self.dragStartPos = evt.GetPosition()
         self._display.StartRotation(self.dragStartPos.x, self.dragStartPos.y)
 
     def OnWheelScroll(self, evt):
+        """
+        Called when the mouse wheel is scrolled.
+        """
         # Zooming by wheel
         zoom_factor = 2.0 if evt.GetWheelRotation() > 0 else 0.5
         self._display.Repaint()
         self._display.ZoomFactor(zoom_factor)
 
     def DrawBox(self, event):
+        """
+        Draws a selection box.
+        """
         tolerance = 2
         pt = event.GetPosition()
         dx = pt.x - self.dragStartPos.x
@@ -265,6 +376,9 @@ class wxViewer3d(wxBaseViewer):
         self._drawbox = [self.dragStartPos.x, self.dragStartPos.y, dx, dy]
 
     def OnMotion(self, evt):
+        """
+        Called when the mouse is moved.
+        """
         pt = evt.GetPosition()
 
         # ROTATE
@@ -301,6 +415,9 @@ class wxViewer3d(wxBaseViewer):
 
 
 def TestWxDisplay():
+    """
+    A test function for the wxViewer3d.
+    """
     class AppFrame(wx.Frame):
         def __init__(self, parent):
             wx.Frame.__init__(

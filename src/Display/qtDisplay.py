@@ -32,9 +32,17 @@ log.setLevel(logging.DEBUG)
 
 
 class qtBaseViewer(QtWidgets.QWidget):
-    """The base Qt Widget for an OCC viewer"""
+    """
+    The base Qt Widget for an OCC viewer.
+    """
 
     def __init__(self, parent=None):
+        """
+        Initializes the qtBaseViewer.
+
+        Args:
+            parent (QWidget, optional): The parent widget.
+        """
         super(qtBaseViewer, self).__init__(parent)
         self._display = OCCViewer.Viewer3d()
         self._inited = False
@@ -52,14 +60,23 @@ class qtBaseViewer(QtWidgets.QWidget):
         self.setAutoFillBackground(False)
 
     def resizeEvent(self, event):
+        """
+        Called when the widget is resized.
+        """
         super(qtBaseViewer, self).resizeEvent(event)
         self._display.View.MustBeResized()
 
     def paintEngine(self):
+        """
+        Returns the paint engine.
+        """
         return None
 
 
 class qtViewer3d(qtBaseViewer):
+    """
+    A Qt Widget for an OCC viewer.
+    """
     # emit signal when selection is changed
     # is a list of TopoDS_*
     if hasattr(QtCore, "pyqtSignal"):  # PyQt5
@@ -70,6 +87,9 @@ class qtViewer3d(qtBaseViewer):
         raise IOError("no signal")
 
     def __init__(self, *kargs):
+        """
+        Initializes the qtViewer3d.
+        """
         qtBaseViewer.__init__(self, *kargs)
 
         self.setObjectName("qt_viewer_3d")
@@ -90,7 +110,9 @@ class qtViewer3d(qtBaseViewer):
 
     @property
     def qApp(self):
-        # reference to QApplication instance
+        """
+        A reference to the QApplication instance.
+        """
         return self._qApp
 
     @qApp.setter
@@ -98,6 +120,9 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
+        """
+        Initializes the driver.
+        """
         self._display.Create(window_handle=int(self.winId()), parent=self)
         # background gradient
         self._display.SetModeShaded()
@@ -115,6 +140,9 @@ class qtViewer3d(qtBaseViewer):
         self.createCursors()
 
     def createCursors(self):
+        """
+        Creates the cursors.
+        """
         module_pth = os.path.abspath(os.path.dirname(__file__))
         icon_pth = os.path.join(module_pth, "icons")
 
@@ -136,6 +164,9 @@ class qtViewer3d(qtBaseViewer):
         self._current_cursor = "arrow"
 
     def keyPressEvent(self, event):
+        """
+        Called when a key is pressed.
+        """
         super(qtViewer3d, self).keyPressEvent(event)
         code = event.key()
         if code in self._key_map:
@@ -148,14 +179,23 @@ class qtViewer3d(qtBaseViewer):
             log.info("key: code %i not mapped to any function" % code)
 
     def focusInEvent(self, event):
+        """
+        Called when the widget gains focus.
+        """
         if self._inited:
             self._display.Repaint()
 
     def focusOutEvent(self, event):
+        """
+        Called when the widget loses focus.
+        """
         if self._inited:
             self._display.Repaint()
 
     def paintEvent(self, event):
+        """
+        Called when the widget is painted.
+        """
         if not self._inited:
             self.InitDriver()
 
@@ -168,12 +208,18 @@ class qtViewer3d(qtBaseViewer):
             painter.drawRect(rect)
 
     def wheelEvent(self, event):
+        """
+        Called when the mouse wheel is scrolled.
+        """
         delta = event.angleDelta().y()
         zoom_factor = 2.0 if delta > 0 else 0.5
         self._display.ZoomFactor(zoom_factor)
 
     @property
     def cursor(self):
+        """
+        The current cursor.
+        """
         return self._current_cursor
 
     @cursor.setter
@@ -186,6 +232,9 @@ class qtViewer3d(qtBaseViewer):
                 self.qApp.restoreOverrideCursor()
 
     def mousePressEvent(self, event):
+        """
+        Called when a mouse button is pressed.
+        """
         self.setFocus()
         ev = event.pos()
         self.dragStartPosX = ev.x()
@@ -193,6 +242,9 @@ class qtViewer3d(qtBaseViewer):
         self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
     def mouseReleaseEvent(self, event):
+        """
+        Called when a mouse button is released.
+        """
         pt = event.pos()
         modifiers = event.modifiers()
 
@@ -219,6 +271,9 @@ class qtViewer3d(qtBaseViewer):
         self.cursor = "arrow"
 
     def DrawBox(self, event):
+        """
+        Draws a selection box.
+        """
         tolerance = 2
         pt = event.pos()
         dx = pt.x() - self.dragStartPosX
@@ -228,6 +283,9 @@ class qtViewer3d(qtBaseViewer):
         self._drawbox = [self.dragStartPosX, self.dragStartPosY, dx, dy]
 
     def mouseMoveEvent(self, evt):
+        """
+        Called when the mouse is moved.
+        """
         pt = evt.pos()
         # buttons = int(evt.buttons())
         buttons = evt.buttons()
@@ -279,6 +337,9 @@ class qtViewer3d(qtBaseViewer):
 
 
 class qtViewer3dWithManipulator(qtViewer3d):
+    """
+    A Qt Widget for an OCC viewer with a manipulator.
+    """
     # emit signal when selection is changed
     # is a list of TopoDS_*
     if hasattr(QtCore, "pyqtSignal"):  # PyQt5
@@ -287,6 +348,9 @@ class qtViewer3dWithManipulator(qtViewer3d):
         sig_topods_selected = QtCore.Signal(list)
 
     def __init__(self, *kargs):
+        """
+        Initializes the qtViewer3dWithManipulator.
+        """
         qtBaseViewer.__init__(self, *kargs)
 
         self.setObjectName("qt_viewer_3d")
@@ -311,18 +375,20 @@ class qtViewer3dWithManipulator(qtViewer3d):
         self.manip_moved = False
 
     def set_manipulator(self, manipulator):
-        r"""
-        Define the manipulator to reference
+        """
+        Sets the manipulator to use.
 
-        Returns:
-        ----
-        none
+        Args:
+            manipulator: The manipulator to use.
         """
         self.trsf_manip = []
         self.manipulator = manipulator
         self.manip_moved = False
 
     def mousePressEvent(self, event):
+        """
+        Called when a mouse button is pressed.
+        """
         self.setFocus()
         ev = event.pos()
         self.dragStartPosX = ev.x()
@@ -335,6 +401,9 @@ class qtViewer3dWithManipulator(qtViewer3d):
             self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
     def mouseMoveEvent(self, evt):
+        """
+        Called when the mouse is moved.
+        """
         pt = evt.pos()
         buttons = int(evt.buttons())
         modifiers = evt.modifiers()
@@ -391,12 +460,8 @@ class qtViewer3dWithManipulator(qtViewer3d):
             self.cursor = "arrow"
 
     def get_trsf_from_manip(self):
-        r"""
-        Get the transformations done with the manipulator
-
-        Returns:
-        ----
-        gp_Trsf
+        """
+        Returns the transformation from the manipulator.
         """
         trsf = gp_Trsf()
         for t in self.trsf_manip:
@@ -404,6 +469,9 @@ class qtViewer3dWithManipulator(qtViewer3d):
         return trsf
 
     def mouseReleaseEvent(self, event):
+        """
+        Called when a mouse button is released.
+        """
         pt = event.pos()
         modifiers = event.modifiers()
         if event.button() == QtCore.Qt.MouseButton.LeftButton:
