@@ -602,6 +602,12 @@ Message_FAIL = Message_StatusType.Message_FAIL
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Message_ListIteratorOfListOfAlert(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Message_ListOfMsg) NCollection_List<Message_Msg>;
@@ -610,6 +616,12 @@ Message_FAIL = Message_StatusType.Message_FAIL
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Message_ListIteratorOfListOfMsg(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Message_SequenceOfPrinters) NCollection_Sequence<opencascade::handle<Message_Printer>>;

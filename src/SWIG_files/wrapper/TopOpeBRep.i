@@ -185,6 +185,12 @@ Array1ExtendIter(TopOpeBRep_VPointInter)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRep_ListIteratorOfListOfBipoint(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopOpeBRep_SequenceOfPoint2d) NCollection_Sequence<TopOpeBRep_Point2d>;

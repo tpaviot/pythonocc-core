@@ -220,6 +220,12 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRepDS_ListIteratorOfListOfInterference(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CurveData>;

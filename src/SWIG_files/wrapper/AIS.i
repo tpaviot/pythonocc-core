@@ -619,6 +619,12 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = AIS_ListIteratorOfListOfInteractive(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(AIS_MouseGestureMap) NCollection_DataMap<unsigned int, AIS_MouseGesture>;
@@ -632,6 +638,12 @@ Array1ExtendIter(opencascade::handle<SelectMgr_EntityOwner>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = AIS_ListIteratorOfNListOfEntityOwner(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

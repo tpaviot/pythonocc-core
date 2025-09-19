@@ -107,6 +107,12 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_ListIteratorOfAttributeDeltaList(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_AttributeDoubleMap) NCollection_DoubleMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>>;
@@ -117,6 +123,12 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_ListIteratorOfAttributeList(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>>;
@@ -134,6 +146,12 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_ListIteratorOfDeltaList(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_GUIDProgIDMap) NCollection_DoubleMap<Standard_GUID,TCollection_ExtendedString>;
@@ -144,6 +162,12 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_ListIteratorOfIDList(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_IDMap) NCollection_Map<Standard_GUID>;
@@ -157,6 +181,12 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_ListIteratorOfLabelList(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_LabelMap) NCollection_Map<TDF_Label>;

@@ -144,6 +144,12 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfBox(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_ListOfCurveRangeSample) NCollection_List<IntTools_CurveRangeSample>;
@@ -152,6 +158,12 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfCurveRangeSample(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_ListOfSurfaceRangeSample) NCollection_List<IntTools_SurfaceRangeSample>;
@@ -160,6 +172,12 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfSurfaceRangeSample(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample>;

@@ -212,6 +212,12 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepCheck_ListIteratorOfListOfStatus(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

@@ -95,6 +95,12 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Law_ListIteratorOfLaws(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Law_ListIteratorOfLaws) NCollection_TListIterator<opencascade::handle<Law_Function>>;

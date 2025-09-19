@@ -76,6 +76,12 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = FEmTool_ListIteratorOfListOfVectors(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence<FEmTool_ListOfVectors>;

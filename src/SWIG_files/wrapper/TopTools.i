@@ -158,6 +158,12 @@ Array1ExtendIter(TopoDS_Shape)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopTools_ListIteratorOfListOfListOfShape(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
@@ -166,6 +172,12 @@ Array1ExtendIter(TopoDS_Shape)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopTools_ListIteratorOfListOfShape(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape>;

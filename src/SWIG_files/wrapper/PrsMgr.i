@@ -155,6 +155,12 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = PrsMgr_ListIteratorOfListOfPresentableObjects(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(PrsMgr_ListOfPresentableObjectsIter) NCollection_TListIterator<PrsMgr_ListOfPresentableObjects>;
@@ -164,6 +170,12 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = PrsMgr_ListIteratorOfListOfPresentations(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(PrsMgr_Presentations) NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>>;

@@ -197,6 +197,12 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepFill_ListIteratorOfListOfOffsetWire(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BRepFill_SequenceOfEdgeFaceAndOrder) NCollection_Sequence<BRepFill_EdgeFaceAndOrder>;

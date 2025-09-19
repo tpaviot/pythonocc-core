@@ -109,6 +109,12 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = CDM_ListIteratorOfListOfDocument(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(CDM_ListOfReferences) NCollection_List<opencascade::handle<CDM_Reference>>;
@@ -117,6 +123,12 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = CDM_ListIteratorOfListOfReferences(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(CDM_MapOfDocument) NCollection_Map<opencascade::handle<CDM_Document>>;

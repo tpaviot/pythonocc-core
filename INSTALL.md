@@ -142,6 +142,12 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt790/lib' >> ~/.bashrc
 source ~/.bashrc
 ```
 
+Note: if you're running a conda environment on a recent linux distribution, you migh have to
+
+```bash
+conda update -c conda-forge libstdcxx-ng libgcc-ng
+```
+
 # Windows Build Guide
 
 ## Prerequisites (Windows)

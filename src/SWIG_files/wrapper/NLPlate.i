@@ -99,6 +99,12 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = NLPlate_ListIteratorOfStackOfPlate(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

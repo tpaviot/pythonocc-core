@@ -115,6 +115,12 @@ IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntAna_ListIteratorOfListOfCurve(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

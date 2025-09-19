@@ -115,6 +115,12 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRep_ListIteratorOfListOfCurveRepresentation(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BRep_ListOfPointRepresentation) NCollection_List<opencascade::handle<BRep_PointRepresentation>>;
@@ -123,6 +129,12 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRep_ListIteratorOfListOfPointRepresentation(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

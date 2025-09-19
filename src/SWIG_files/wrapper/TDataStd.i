@@ -144,6 +144,12 @@ Array1ExtendIter(TDF_Label)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDataStd_ListIteratorOfListOfByte(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDataStd_ListOfExtendedString) NCollection_List<TCollection_ExtendedString>;
@@ -152,6 +158,12 @@ Array1ExtendIter(TDF_Label)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDataStd_ListIteratorOfListOfExtendedString(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

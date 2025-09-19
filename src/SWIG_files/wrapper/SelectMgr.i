@@ -267,6 +267,12 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = SelectMgr_ListIteratorOfListOfFilter(self.this)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(SelectMgr_MapOfOwners) NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>,Standard_Integer>;
