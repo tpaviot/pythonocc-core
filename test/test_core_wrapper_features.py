@@ -82,7 +82,7 @@ from OCC.Core.TopoDS import (
     TopoDS_Shape,
 )
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
-from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.TColgp import TColgp_Array1OfPnt, TColgp_HArray1OfPnt
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
@@ -100,6 +100,8 @@ from OCC.Core.BRepCheck import (
     BRepCheck_EmptyWire,
 )
 from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
+from OCC.Core.GeomAPI import GeomAPI_Interpolate
+from OCC.Core.GeomLib import geomlib
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_EdgeIterator, HLRAlgo_EdgeStatus, HLRAlgo_Projector
@@ -1222,3 +1224,26 @@ def test_topods_readfromstring_extension():
     # create a new shape each time
     for i in range(10):
         breptools.ReadFromString(string, topods_shape)
+
+
+def test_non_const_handle_reference():
+    points = TColgp_HArray1OfPnt(1, 3)
+    points.SetValue(1, gp_Pnt(0, 0, 0))
+    points.SetValue(2, gp_Pnt(1, 1, 0))
+    points.SetValue(3, gp_Pnt(2, 3, 4))
+    interpolator = GeomAPI_Interpolate(points, False, 1e-6)
+    interpolator.Perform()
+    curve_to_extend = interpolator.Curve()
+    # Display the curve
+    # display.DisplayShape(curve_to_extend, update=True)
+
+    # Extend the curve to another point
+    new_pnt = gp_Pnt(2.5, 6, -1)
+    # Display this new point
+
+    # Extend the curve
+    CONTINUITY = 1  # degree of continuity 1, 2 or 3
+    AFTER = True  # insert the new point at the end of the curve
+    modified_curve = geomlib.ExtendCurveToPoint(
+        curve_to_extend, new_pnt, CONTINUITY, AFTER
+    )
