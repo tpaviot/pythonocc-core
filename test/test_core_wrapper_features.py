@@ -1250,3 +1250,5 @@ def test_non_const_handle_reference():
     modified_curve = geomlib.ExtendCurveToPoint(
         curve_to_extend, new_pnt, CONTINUITY, AFTER
     )
+
+    assert not modified_curve.IsNull()  # TODO: deeper test
