@@ -202,6 +202,73 @@ template <typename T> class handle{};
   $1 = &tempshared;
 }
 
+// HANDLE REFERENCE PARAMETER HANDLING
+// ====================================
+// These typemaps handle the special case where OpenCASCADE functions take
+// handle<T>& parameters that they modify in-place. In C++, these modifications
+// affect the passed handle directly, but in Python we need to return the
+// modified handle as a return value.
+//
+// Example C++ function:
+//   void GeomLib::ExtendCurveToPoint(opencascade::handle<Geom_BoundedCurve>& Curve, ...)
+//
+// Desired Python interface:
+//   modified_curve = GeomLib_ExtendCurveToPoint(original_curve, ...)
+
+// CONST REFERENCE TYPEMAP - Do nothing for const references
+// ----------------------------------------------------------
+// Const references cannot be modified by the function, so we don't need
+// to return them. This empty typemap ensures that const handle<T>& parameters
+// are treated as input-only parameters.
+// This typemap has higher priority than the non-const version below.
+%typemap(argout) const opencascade::handle<TYPE> & {
+  // Intentionally empty - const references are read-only parameters
+  // Example: GeomAPI_Interpolate(const handle<TColgp_HArray1OfPnt>& Points, ...)
+  //          The Points parameter is input-only and won't be returned
+}
+
+// NON-CONST REFERENCE TYPEMAP - Return the modified handle
+// ---------------------------------------------------------
+// Non-const references can be modified by the function. This typemap
+// extracts the modified handle and returns it to Python, replacing
+// the default void return value.
+%typemap(argout) opencascade::handle<TYPE> & {
+  TYPE * presult = nullptr;
+
+  // Check if the handle is valid (not null)
+  if ($1 && !$1->IsNull()) {
+    // Extract the raw pointer from the handle using get()
+    // CRITICAL: We must use get() to retrieve the managed object pointer,
+    // not &$1 which would give us the address of the handle itself
+    presult = $1->get();
+
+    if (presult) {
+      // Increment reference counter to prevent the object from being
+      // deleted when the C++ handle goes out of scope
+      // This ensures Python owns a valid reference to the object
+      presult->IncrementRefCounter();
+
+#ifdef DEBUG_MEMORY
+      // Track handle creation for memory debugging
+      handle_creation_count++;
+#endif
+    }
+  }
+
+  // Replace the default void return value with our handle
+  // Py_XDECREF safely decrements the reference count of the old result (if any)
+  Py_XDECREF($result);
+
+  // Create a new Python object wrapping the modified handle
+  // SWIGTYPE_p_##TYPE is the SWIG type descriptor for this specific type
+  // SWIG_POINTER_OWN tells SWIG that Python owns this object and should
+  // decrement its reference count when the Python object is garbage collected
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(presult), SWIGTYPE_p_ ## TYPE, SWIG_POINTER_OWN);
+}
+
+// Note: Similar typemaps should be added for Handle_TYPE & syntax if needed
+// for backward compatibility with older OpenCASCADE code
+
 %typemap(typecheck,precedence=SWIG_TYPECHECK_POINTER,noblock=1)
                       TYPE CONST,
                       TYPE CONST &,
