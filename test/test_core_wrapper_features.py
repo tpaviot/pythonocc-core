@@ -1132,7 +1132,10 @@ def test_shape_analysis_free_bounds():
     edges.Append(e1)
     edges.Append(e2)
 
-    result = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False)
+    wires = TopTools_HSequenceOfShape()
+
+    result = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False, wires)
+
     assert result.Length() == 1
 
 
