@@ -46,7 +46,12 @@ from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
 from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_Transform,
+    BRepBuilderAPI_Sewing,
+    BRepBuilderAPI_MakeSolid,
+)
+
 from OCC.Core.TColStd import TColStd_IndexedDataMapOfStringString
 from OCC.Core.TCollection import TCollection_AsciiString
 from OCC.Core.RWPly import RWPly_CafWriter
@@ -419,11 +424,13 @@ def write_stl_file(
         raise IOError("File not written to disk.")
 
 
-def read_stl_file(filename: str):
+def read_stl_file(filename: str, sew_shape=False, make_solid=False):
     """
     Reads an STL file and returns a TopoDS_Shape.
 
     :param filename: The path to the STL file.
+    :param sew_shape: sew all triangular faces after loading
+    :param make_solid: fill the surfacic mesh to return a TopoDS_Solid
     :return: The shape read from the file.
     :raises FileNotFoundError: If the specified file does not exist.
     :raises AssertionError: If the shape in the file is null.
@@ -431,11 +438,26 @@ def read_stl_file(filename: str):
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
+    if not sew_shape and make_solid:
+        raise AssertionError("Please enable sew_shape in order to make solid.")
+
     the_shape = TopoDS_Shape()
     stlapi.Read(the_shape, filename)
 
     if the_shape.IsNull():
         raise AssertionError("Shape is null.")
+
+    if sew_shape:
+        sewer = BRepBuilderAPI_Sewing()
+        sewer.Add(the_shape)
+        sewer.Perform()
+        sewed_shape = sewer.SewedShape()
+
+        if make_solid:
+            return BRepBuilderAPI_MakeSolid(sewed_shape).Shape()
+
+        # Return the sewed shape
+        return sewed_shape
 
     return the_shape
 
