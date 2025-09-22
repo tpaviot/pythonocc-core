@@ -408,6 +408,30 @@ class ShapeAnalysis_FreeBounds:
         checkinternaledges: Optional[bool] = False,
     ) -> None: ...
     @staticmethod
+    def ConnectEdgesToWires(
+        edges: TopTools_HSequenceOfShape,
+        toler: float,
+        shared: bool,
+        wires: TopTools_HSequenceOfShape,
+    ) -> None: ...
+    @overload
+    @staticmethod
+    def ConnectWiresToWires(
+        iwires: TopTools_HSequenceOfShape,
+        toler: float,
+        shared: bool,
+        owires: TopTools_HSequenceOfShape,
+    ) -> None: ...
+    @overload
+    @staticmethod
+    def ConnectWiresToWires(
+        iwires: TopTools_HSequenceOfShape,
+        toler: float,
+        shared: bool,
+        owires: TopTools_HSequenceOfShape,
+        vertices: TopTools_DataMapOfShapeShape,
+    ) -> None: ...
+    @staticmethod
     def DispatchWires(
         wires: TopTools_HSequenceOfShape, closed: TopoDS_Compound, open: TopoDS_Compound
     ) -> None: ...
@@ -421,14 +445,6 @@ class ShapeAnalysis_FreeBounds:
         closed: TopTools_HSequenceOfShape,
         open: TopTools_HSequenceOfShape,
     ) -> None: ...
-    @staticmethod
-    def ConnectEdgesToWires(
-        edges: TopTools_HSequenceOfShape, toler: float, shared: bool
-    ) -> TopTools_HSequenceOfShape: ...
-    @staticmethod
-    def ConnectWiresToWires(
-        iwires: TopTools_HSequenceOfShape, toler: float, shared: bool
-    ) -> TopTools_HSequenceOfShape: ...
 
 class ShapeAnalysis_FreeBoundsProperties:
     @overload
