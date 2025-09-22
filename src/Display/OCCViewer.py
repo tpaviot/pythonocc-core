@@ -46,6 +46,7 @@ from OCC.Core.TopAbs import (
     TopAbs_SHELL,
     TopAbs_SOLID,
 )
+from OCC.Core.GeomAbs import GeomAbs_G2
 from OCC.Core.Geom import Geom_Curve, Geom_Surface
 from OCC.Core.Geom2d import Geom2d_Curve
 from OCC.Core.Visualization import Display3d
@@ -278,6 +279,8 @@ class Viewer3d(Display3d):
         # draw black contour edges, like other famous CAD packages
         if draw_face_boundaries:
             self.default_drawer.SetFaceBoundaryDraw(True)
+            # Don't draw seam edges
+            self.default_drawer.SetFaceBoundaryUpperContinuity(GeomAbs_G2)
 
         # turn up tessellation defaults, which are too conversative...
         chord_dev = self.default_drawer.MaximalChordialDeviation() / 10.0
