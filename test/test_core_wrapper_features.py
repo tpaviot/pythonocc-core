@@ -99,7 +99,7 @@ from OCC.Core.BRepCheck import (
     BRepCheck_Multiple3DCurve,
     BRepCheck_EmptyWire,
 )
-from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
+from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve, Geom_BoundedCurve
 from OCC.Core.GeomAPI import GeomAPI_Interpolate
 from OCC.Core.GeomLib import geomlib
 from OCC.Core.BRep import BRep_Tool
@@ -1251,4 +1251,4 @@ def test_non_const_handle_reference():
         curve_to_extend, new_pnt, CONTINUITY, AFTER
     )
 
-    assert not modified_curve.IsNull()  # TODO: deeper test
+    assert isinstance(modified_curve, Geom_BoundedCurve)
