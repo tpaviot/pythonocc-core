@@ -24,7 +24,7 @@ from typing import Any, Callable, List, Optional, Tuple
 
 from OCC import VERSION
 from OCC.Display.backend import get_qt_modules, load_backend
-from OCC.Display.OCCViewer import OffscreenRenderer
+from OCC.Display.OCCViewer import OffscreenRenderer, Viewer3d
 
 log = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ def init_display(
     display_triedron: Optional[bool] = True,
     background_gradient_color1: Optional[List[int]] = [206, 215, 222],
     background_gradient_color2: Optional[List[int]] = [128, 128, 128],
-):
+) -> Tuple[Viewer3d, Callable, Callable, Callable]:
     """
     Initializes a GUI for the 3D viewer.
 
@@ -82,11 +82,11 @@ def init_display(
         # create the offscreen renderer
         offscreen_renderer = OffscreenRenderer()
 
-        def do_nothing(*kargs: Any, **kwargs: Any) -> None:
+        def do_nothing(*args: Any, **kwargs: Any) -> None:
             """takes as many parameters as you want, and does nothing"""
             return None
 
-        def call_function(s, func: Callable) -> None:
+        def call_function(s: str, func: Callable) -> None:
             """A function that calls another function.
             Helpful to bypass add_function_to_menu. s should be a string
             """
@@ -141,7 +141,7 @@ def init_display(
         print("wxPython backend - ", wx.version())
 
         class AppFrame(wx.Frame):
-            def __init__(self, parent):
+            def __init__(self, parent: Any) -> None:
                 wx.Frame.__init__(
                     self,
                     parent,
@@ -180,10 +180,10 @@ def init_display(
         app.SetTopWindow(win)
         display = win.canva._display
 
-        def add_menu(*args, **kwargs) -> None:
+        def add_menu(*args: Any, **kwargs: Any) -> None:
             win.add_menu(*args, **kwargs)
 
-        def add_function_to_menu(*args, **kwargs) -> None:
+        def add_function_to_menu(*args: Any, **kwargs: Any) -> None:
             win.add_function_to_menu(*args, **kwargs)
 
         def start_display() -> None:
@@ -258,10 +258,10 @@ def init_display(
         win.canva.qApp = app
         display = win.canva._display
 
-        def add_menu(*args, **kwargs) -> None:
+        def add_menu(*args: Any, **kwargs: Any) -> None:
             win.add_menu(*args, **kwargs)
 
-        def add_function_to_menu(*args, **kwargs) -> None:
+        def add_function_to_menu(*args: Any, **kwargs: Any) -> None:
             win.add_function_to_menu(*args, **kwargs)
 
         def start_display() -> None:

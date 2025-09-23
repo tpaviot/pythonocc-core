@@ -23,7 +23,7 @@ import webbrowser
 import errno
 
 
-def get_available_port(port):
+def get_available_port(port: int) -> int:
     """
     Gets an available port.
 
@@ -85,7 +85,12 @@ def get_interface_ip(family: socket.AddressFamily) -> str:
         return s.getsockname()[0]  # type: ignore
 
 
-def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=False):
+def start_server(
+    addr: str = "127.0.0.1",
+    port: int = 8080,
+    x3d_path: str = ".",
+    open_webbrowser: bool = False,
+) -> None:
     """
     Starts a simple web server.
 

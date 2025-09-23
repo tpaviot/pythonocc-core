@@ -21,6 +21,7 @@ import itertools
 import math
 import uuid
 import sys
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 # pythreejs
 try:
@@ -88,37 +89,37 @@ from OCC.Extend.DataExchange import export_shape_to_svg
 #
 # Util mathematical functions
 #
-def _add(vec1, vec2):
+def _add(vec1: List[float], vec2: List[float]) -> List[float]:
     """Adds two vectors."""
     return [v1 + v2 for v1, v2 in zip(vec1, vec2)]
 
 
-def _explode(edge_list):
+def _explode(edge_list: List[List[float]]) -> List[List[List[float]]]:
     """Explodes a list of edges into a list of segments."""
     return [[edge_list[i], edge_list[i + 1]] for i in range(len(edge_list) - 1)]
 
 
-def _flatten(nested_dict):
+def _flatten(nested_dict: Dict[Any, Any]) -> List[Any]:
     """Flattens a nested dictionary."""
     return [y for x in nested_dict for y in x]
 
 
-def format_color(r, g, b):
+def format_color(r: int, g: int, b: int) -> str:
     """Formats a color from RGB to a hex string."""
     return "#%02x%02x%02x" % (r, g, b)
 
 
-def _distance(v1, v2):
+def _distance(v1: List[float], v2: List[float]) -> float:
     """Computes the distance between two vectors."""
     return np.linalg.norm([x - y for x, y in zip(v1, v2)])
 
 
-def _bool_or_new(val):
+def _bool_or_new(val: Union[bool, Dict[str, Any]]) -> bool:
     """Returns the value of a boolean or a new value."""
     return val if isinstance(val, bool) else val["new"]
 
 
-def _opt(b1, b2):
+def _opt(b1: Tuple[float, ...], b2: Tuple[float, ...]) -> Tuple[float, ...]:
     """Returns the union of two bounding boxes."""
     return (
         min(b1[0], b2[0]),
@@ -130,13 +131,13 @@ def _opt(b1, b2):
     )
 
 
-def _shift(v, offset):
+def _shift(v: List[float], offset: List[float]) -> List[float]:
     """Shifts a vector by an offset."""
     return [x + o for x, o in zip(v, offset)]
 
 
 # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
-def _nice_number(value, round_=False):
+def _nice_number(value: float, round_: bool = False) -> float:
     """
     Returns a "nice" number approximately equal to value.
 
@@ -171,7 +172,9 @@ def _nice_number(value, round_=False):
     return nice_fraction * 10**exponent
 
 
-def _nice_bounds(axis_start, axis_end, num_ticks=10):
+def _nice_bounds(
+    axis_start: float, axis_end: float, num_ticks: int = 10
+) -> Tuple[float, float, float]:
     """
     Returns "nice" bounds for a given axis.
 
@@ -203,7 +206,7 @@ class Helpers:
     A base class for helpers.
     """
 
-    def __init__(self, bb_center):
+    def __init__(self, bb_center: Tuple[float, float, float]) -> None:
         """
         Initializes the Helpers.
 
@@ -213,7 +216,7 @@ class Helpers:
         self.bb_center = bb_center
         self.center = (0, 0, 0)
 
-    def _center(self, zero=True):
+    def _center(self, zero: bool = True) -> Tuple[float, float, float]:
         """
         Returns the center of the bounding box.
 
@@ -225,7 +228,7 @@ class Helpers:
         """
         return self.center if zero else self.bb_center
 
-    def set_position(self, position):
+    def set_position(self, position: Tuple[float, float, float]) -> None:
         """
         Sets the position of the helper.
 
@@ -234,7 +237,7 @@ class Helpers:
         """
         raise NotImplementedError()
 
-    def set_visibility(self, change):
+    def set_visibility(self, change: bool) -> None:
         """
         Sets the visibility of the helper.
 
@@ -243,7 +246,7 @@ class Helpers:
         """
         raise NotImplementedError()
 
-    def set_center(self, change):
+    def set_center(self, change: bool) -> None:
         """
         Sets the center of the helper.
 
@@ -263,12 +266,12 @@ class Grid(Helpers):
 
     def __init__(
         self,
-        bb_center=None,
-        maximum=5,
-        ticks=10,
-        colorCenterLine="#aaa",
-        colorGrid="#ddd",
-    ):
+        bb_center: Optional[Tuple[float, float, float]] = None,
+        maximum: int = 5,
+        ticks: int = 10,
+        colorCenterLine: str = "#aaa",
+        colorGrid: str = "#ddd",
+    ) -> None:
         """
         Initializes the Grid.
 
@@ -291,7 +294,7 @@ class Grid(Helpers):
         )
         self.set_center(True)
 
-    def set_position(self, position):
+    def set_position(self, position: Tuple[float, float, float]) -> None:
         """
         Sets the position of the grid.
 
@@ -300,7 +303,7 @@ class Grid(Helpers):
         """
         self.grid.position = position
 
-    def set_visibility(self, change):
+    def set_visibility(self, change: bool) -> None:
         """
         Sets the visibility of the grid.
 
@@ -309,7 +312,7 @@ class Grid(Helpers):
         """
         self.grid.visible = change
 
-    def set_rotation(self, rotation):
+    def set_rotation(self, rotation: Tuple[float, float, float, str]) -> None:
         """
         Sets the rotation of the grid.
 
@@ -331,7 +334,13 @@ class Axes(Helpers):
     - Z is blue
     """
 
-    def __init__(self, bb_center, length=1, width=3, display_labels=False):
+    def __init__(
+        self,
+        bb_center: Tuple[float, float, float],
+        length: int = 1,
+        width: int = 3,
+        display_labels: bool = False,
+    ) -> None:
         """
         Initializes the Axes.
 
@@ -343,7 +352,7 @@ class Axes(Helpers):
         """
         Helpers.__init__(self, bb_center)
 
-        self.axes = []
+        self.axes: List[Any] = []
         self.axes.extend(
             LineSegments2(
                 LineSegmentsGeometry(
@@ -366,7 +375,7 @@ class Axes(Helpers):
             self.axes.append(y_text)
             self.axes.append(z_text)
 
-    def set_position(self, position):
+    def set_position(self, position: Tuple[float, float, float]) -> None:
         """
         Sets the position of the axes.
 
@@ -376,7 +385,7 @@ class Axes(Helpers):
         for i in range(3):
             self.axes[i].position = position
 
-    def set_visibility(self, change):
+    def set_visibility(self, change: bool) -> None:
         """
         Sets the visibility of the axes.
 
@@ -395,7 +404,7 @@ class CustomMaterial(ShaderMaterial):
     A custom material helper.
     """
 
-    def __init__(self, typ):
+    def __init__(self, typ: str) -> None:
         """
         Initializes the CustomMaterial.
 
@@ -437,28 +446,28 @@ class CustomMaterial(ShaderMaterial):
         self.lights = True
 
     @property
-    def color(self):
+    def color(self) -> str:
         """
         The color of the material.
         """
         return self.uniforms["diffuse"]["value"]
 
     @color.setter
-    def color(self, value):
+    def color(self, value: str) -> None:
         self.update("diffuse", value)
 
     @property
-    def alpha(self):
+    def alpha(self) -> float:
         """
         The alpha of the material.
         """
         return self.uniforms["alpha"]["value"]
 
     @alpha.setter
-    def alpha(self, value):
+    def alpha(self, value: float) -> None:
         self.update("alpha", value)
 
-    def update(self, key, value):
+    def update(self, key: str, value: Any) -> None:
         """
         Updates a uniform.
 
@@ -483,7 +492,7 @@ class BoundingBox:
     A bounding box helper.
     """
 
-    def __init__(self, objects, tol=1e-5):
+    def __init__(self, objects: List[Any], tol: float = 1e-5) -> None:
         """
         Initializes the BoundingBox.
 
@@ -505,7 +514,7 @@ class BoundingBox:
         )
         self.max = reduce(lambda a, b: max(abs(a), abs(b)), bbox)
 
-    def _max_dist_from_center(self):
+    def _max_dist_from_center(self) -> float:
         """
         Returns the maximum distance from the center.
         """
@@ -518,7 +527,7 @@ class BoundingBox:
             )
         )
 
-    def _max_dist_from_origin(self):
+    def _max_dist_from_origin(self) -> float:
         """
         Returns the maximum distance from the origin.
         """
@@ -531,7 +540,7 @@ class BoundingBox:
             )
         )
 
-    def _bounding_box(self, obj, tol=1e-5):
+    def _bounding_box(self, obj: Any, tol: float = 1e-5) -> Tuple[float, ...]:
         """
         Computes the bounding box of an object.
         """
@@ -541,13 +550,13 @@ class BoundingBox:
         values = bbox.Get()
         return (values[0], values[3], values[1], values[4], values[2], values[5])
 
-    def _bbox(self, objects):
+    def _bbox(self, objects: List[Any]) -> Tuple[float, ...]:
         """
         Computes the bounding box of a list of objects.
         """
         return reduce(_opt, [self._bounding_box(obj) for obj in objects])
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "[x(%f .. %f), y(%f .. %f), z(%f .. %f)]" % (
             self.xmin,
             self.xmax,
@@ -570,14 +579,14 @@ class JupyterRenderer:
 
     def __init__(
         self,
-        size=(640, 480),
-        compute_normals_mode=NORMAL.SERVER_SIDE,
-        default_shape_color=format_color(166, 166, 166),  # light grey
-        default_edge_color=format_color(32, 32, 32),  # dark grey
-        default_vertex_color=format_color(8, 8, 8),  # darker grey
-        pick_color=format_color(232, 176, 36),  # orange
-        background_color="white",
-    ):
+        size: Tuple[int, int] = (640, 480),
+        compute_normals_mode: int = NORMAL.SERVER_SIDE,
+        default_shape_color: str = format_color(166, 166, 166),  # light grey
+        default_edge_color: str = format_color(32, 32, 32),  # dark grey
+        default_vertex_color: str = format_color(8, 8, 8),  # darker grey
+        pick_color: str = format_color(232, 176, 36),  # orange
+        background_color: str = "white",
+    ) -> None:
         """
         Initializes the JupyterRenderer.
 
@@ -600,7 +609,9 @@ class JupyterRenderer:
         self._size = size
         self._compute_normals_mode = compute_normals_mode
 
-        self._bb = None  # the bounding box, necessary to compute camera position
+        self._bb: Optional[BoundingBox] = (
+            None  # the bounding box, necessary to compute camera position
+        )
 
         # the default camera object
         self._camera_target = [0.0, 0.0, 0.0]  # the point to look at
@@ -611,10 +622,10 @@ class JupyterRenderer:
 
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
-        self._shapes = {}
+        self._shapes: Dict[str, Any] = {}
 
         # we save the renderer so that is can be accessed
-        self._renderer = None
+        self._renderer: Optional[Renderer] = None
 
         # the group of 3d and 2d objects to render
         self._displayed_pickable_objects = Group()
@@ -623,15 +634,15 @@ class JupyterRenderer:
         self._displayed_non_pickable_objects = Group()
 
         # event manager/selection manager
-        self._picker = None
+        self._picker: Optional[Picker] = None
 
-        self._current_shape_selection = None
-        self._current_mesh_selection = None
-        self._savestate = None
+        self._current_shape_selection: Optional[Any] = None
+        self._current_mesh_selection: Optional[Mesh] = None
+        self._savestate: Optional[Tuple[Any, Any]] = None
 
         self._selection_color = format_color(232, 176, 36)
 
-        self._select_callbacks = (
+        self._select_callbacks: List[Callable] = (
             []
         )  # a list of all functions called after an object is selected
 
@@ -672,7 +683,9 @@ class JupyterRenderer:
         ]
         self.html = HTML("")
 
-    def create_button(self, description, tooltip, disabled, handler):
+    def create_button(
+        self, description: str, tooltip: str, disabled: bool, handler: Callable
+    ) -> Button:
         """
         Creates a button.
 
@@ -694,7 +707,9 @@ class JupyterRenderer:
         button.on_click(handler)
         return button
 
-    def create_checkbox(self, kind, description, value, handler):
+    def create_checkbox(
+        self, kind: str, description: str, value: bool, handler: Callable
+    ) -> Checkbox:
         """
         Creates a checkbox.
 
@@ -712,7 +727,7 @@ class JupyterRenderer:
         checkbox.add_class(f"view_{kind}")
         return checkbox
 
-    def remove_shape(self, *kargs):
+    def remove_shape(self, *kargs: Any) -> None:
         """
         Removes the selected shape.
         """
@@ -722,7 +737,7 @@ class JupyterRenderer:
         del self._shapes[cur_id]
         self._remove_shp_button.disabled = True
 
-    def on_compute_change(self, change):
+    def on_compute_change(self, change: Dict[str, Any]) -> None:
         """
         Called when the compute dropdown changes.
         """
@@ -813,26 +828,26 @@ class JupyterRenderer:
                 )
         self.html.value = output
 
-    def toggle_shape_visibility(self, *kargs):
+    def toggle_shape_visibility(self, *kargs: Any) -> None:
         """
         Toggles the visibility of the selected shape.
         """
         self.clicked_obj.visible = not self.clicked_obj.visible
 
-    def toggle_axes_visibility(self, change):
+    def toggle_axes_visibility(self, change: Dict[str, Any]) -> None:
         """
         Toggles the visibility of the axes.
         """
         self.axes.set_visibility(_bool_or_new(change))
 
-    def toggle_grid_visibility(self, change):
+    def toggle_grid_visibility(self, change: Dict[str, Any]) -> None:
         """
         Toggles the visibility of the grid.
         """
         self.horizontal_grid.set_visibility(_bool_or_new(change))
         self.vertical_grid.set_visibility(_bool_or_new(change))
 
-    def click(self, value):
+    def click(self, value: Any) -> None:
         """
         Called whenever a shape or edge is clicked.
 
@@ -879,7 +894,7 @@ class JupyterRenderer:
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
 
-    def register_select_callback(self, callback):
+    def register_select_callback(self, callback: Callable) -> None:
         """
         Adds a callback that will be called each time a shape is selected.
 
@@ -891,7 +906,7 @@ class JupyterRenderer:
         else:
             self._select_callbacks.append(callback)
 
-    def unregister_callback(self, callback):
+    def unregister_callback(self, callback: Callable) -> None:
         """
         Removes a callback from the callback list.
 
@@ -903,7 +918,7 @@ class JupyterRenderer:
         else:
             self._select_callbacks.remove(callback)
 
-    def GetSelectedShape(self):
+    def GetSelectedShape(self) -> Any:
         """
         Returns the selected shape.
         """
@@ -911,13 +926,13 @@ class JupyterRenderer:
 
     def DisplayShapeAsSVG(
         self,
-        shp,
-        export_hidden_edges=True,
-        location=gp_Pnt(0, 0, 0),
-        direction=gp_Dir(1, 1, 1),
-        color="black",
-        line_width=0.5,
-    ):
+        shp: Any,
+        export_hidden_edges: bool = True,
+        location: gp_Pnt = gp_Pnt(0, 0, 0),
+        direction: gp_Dir = gp_Dir(1, 1, 1),
+        color: str = "black",
+        line_width: float = 0.5,
+    ) -> None:
         """
         Displays a shape as an SVG.
 
@@ -944,19 +959,19 @@ class JupyterRenderer:
 
     def DisplayShape(
         self,
-        shp,
-        shape_color=None,
-        render_edges=False,
-        edge_color=None,
-        edge_deflection=0.05,
-        vertex_color=None,
-        quality=1.0,
-        transparency=False,
-        opacity=1.0,
-        topo_level="default",
-        update=False,
-        selectable=True,
-    ):
+        shp: Any,
+        shape_color: Optional[str] = None,
+        render_edges: bool = False,
+        edge_color: Optional[str] = None,
+        edge_deflection: float = 0.05,
+        vertex_color: Optional[str] = None,
+        quality: float = 1.0,
+        transparency: bool = False,
+        opacity: float = 1.0,
+        topo_level: str = "default",
+        update: bool = False,
+        selectable: bool = True,
+    ) -> None:
         """
         Displays a shape in the renderer.
 
@@ -981,7 +996,7 @@ class JupyterRenderer:
         if vertex_color is None:
             vertex_color = self._default_vertex_color
 
-        output = []  # a list of all geometries created from the shape
+        output: List[Any] = []  # a list of all geometries created from the shape
         # is it list of gp_Pnt ?
         if isinstance(shp, list) and isinstance(shp[0], gp_Pnt):
             result = self.AddVerticesToScene(shp, vertex_color)
@@ -1031,7 +1046,9 @@ class JupyterRenderer:
         if update:
             self.Display()
 
-    def AddVerticesToScene(self, pnt_list, vertex_color, vertex_width=5):
+    def AddVerticesToScene(
+        self, pnt_list: List[gp_Pnt], vertex_color: str, vertex_width: int = 5
+    ) -> Points:
         """
         Adds a list of vertices to the scene.
 
@@ -1043,7 +1060,7 @@ class JupyterRenderer:
         Returns:
             The created Points object.
         """
-        vertices_list = []  # will be passed to pythreejs
+        vertices_list: List[List[float]] = []  # will be passed to pythreejs
         BB = BRep_Builder()
         compound = TopoDS_Compound()
         BB.MakeCompound(compound)
@@ -1058,15 +1075,15 @@ class JupyterRenderer:
         point_cloud_id = f"{uuid.uuid4().hex}"
         self._shapes[point_cloud_id] = compound
 
-        vertices_list = np.array(vertices_list, dtype=np.float32)
-        attributes = {"position": BufferAttribute(vertices_list, normalized=False)}
+        np_vertices_list = np.array(vertices_list, dtype=np.float32)
+        attributes = {"position": BufferAttribute(np_vertices_list, normalized=False)}
         mat = PointsMaterial(
             color=vertex_color, sizeAttenuation=True, size=vertex_width
         )
         geom = BufferGeometry(attributes=attributes)
         return Points(geometry=geom, material=mat, name=point_cloud_id)
 
-    def AddCurveToScene(self, shp, edge_color, deflection):
+    def AddCurveToScene(self, shp: Any, edge_color: str, deflection: float) -> Line:
         """
         Adds a curve to the scene.
 
@@ -1102,15 +1119,15 @@ class JupyterRenderer:
 
     def AddShapeToScene(
         self,
-        shp,
-        shape_color=None,  # the default
-        render_edges=False,
-        edge_color=None,
-        vertex_color=None,
-        quality=1.0,
-        transparency=False,
-        opacity=1.0,
-    ):
+        shp: Any,
+        shape_color: Optional[str] = None,  # the default
+        render_edges: bool = False,
+        edge_color: Optional[str] = None,
+        vertex_color: Optional[str] = None,
+        quality: float = 1.0,
+        transparency: bool = False,
+        opacity: float = 1.0,
+    ) -> Any:
         """
         Adds a shape to the scene.
 
@@ -1204,7 +1221,7 @@ class JupyterRenderer:
 
         return shape_mesh
 
-    def _scale(self, vec):
+    def _scale(self, vec: List[float]) -> List[float]:
         """
         Scales a vector.
         """
@@ -1212,7 +1229,9 @@ class JupyterRenderer:
         n = np.linalg.norm(vec)
         return [v / n * r for v in vec]
 
-    def _material(self, color, transparent=False, opacity=1.0):
+    def _material(
+        self, color: str, transparent: bool = False, opacity: float = 1.0
+    ) -> CustomMaterial:
         """
         Creates a material.
         """
@@ -1231,7 +1250,7 @@ class JupyterRenderer:
         material.update("roughness", 0.8)
         return material
 
-    def EraseAll(self):
+    def EraseAll(self) -> None:
         """
         Erases all shapes from the renderer.
         """
@@ -1242,7 +1261,11 @@ class JupyterRenderer:
         self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
-    def Display(self, position=None, rotation=None):
+    def Display(
+        self,
+        position: Optional[Tuple[float, float, float]] = None,
+        rotation: Optional[Tuple[float, float, float]] = None,
+    ) -> None:
         """
         Displays the renderer.
 
@@ -1252,9 +1275,9 @@ class JupyterRenderer:
         """
         # Get the overall bounding box
         if self._shapes:
-            self._bb = BoundingBox([self._shapes.values()])
+            self._bb = BoundingBox(list(self._shapes.values()))
         else:  # if nothing registered yet, create a fake bb
-            self._bb = BoundingBox([[BRepPrimAPI_MakeSphere(5.0).Shape()]])
+            self._bb = BoundingBox([BRepPrimAPI_MakeSphere(5.0).Shape()])
         bb_max = self._bb.max
         orbit_radius = 1.5 * self._bb._max_dist_from_center()
 
@@ -1351,7 +1374,7 @@ class JupyterRenderer:
         # then display both 3d widgets and webui
         display(HBox([VBox([HBox(self._controls), self._renderer]), self.html]))
 
-    def ExportToHTML(self, filename):
+    def ExportToHTML(self, filename: str) -> None:
         """
         Exports the renderer to an HTML file.
 
@@ -1360,7 +1383,7 @@ class JupyterRenderer:
         """
         embed.embed_minimal_html(filename, views=self._renderer, title="pythonocc")
 
-    def _reset(self, *kargs):
+    def _reset(self, *kargs: Any) -> None:
         """
         Resets the camera.
         """
@@ -1369,12 +1392,12 @@ class JupyterRenderer:
         self._camera.zoom = self._camera_initial_zoom
         self._update()
 
-    def _update(self):
+    def _update(self) -> None:
         """
         Updates the controller.
         """
         self._controller.exec_three_obj_method("update")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         self.Display()
         return ""

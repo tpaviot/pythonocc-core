@@ -1,13 +1,9 @@
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
-import numpy as np
 from OCC.Core.gp import gp_Dir, gp_Pnt
 from pythreejs import (
     Button,
     Checkbox,
-    CustomMaterial,
-    GridHelper,
-    HTML,
     Line,
     Points,
     ShaderMaterial,

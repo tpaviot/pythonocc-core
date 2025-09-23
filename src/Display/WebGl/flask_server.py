@@ -2,6 +2,7 @@
 
 import sys
 import uuid
+from typing import Any, Dict, Optional, Tuple
 
 from threejs_renderer import (
     ThreejsRenderer,
@@ -14,7 +15,7 @@ from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discreti
 from OCC.Core.Tesselator import ShapeTesselator
 
 # Import following for building vertex (or point cloud) in WebGL
-from OCC.Core.gp import gp_Pnt, gp_Vec
+from OCC.Core.gp import gp_Pnt
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
@@ -22,7 +23,7 @@ from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from flask import Flask, render_template
 
 
-def format_color(r, g, b):
+def format_color(r: int, g: int, b: int) -> str:
     """
     Formats a color from RGB to a hex string.
 
@@ -44,11 +45,11 @@ class RenderWraper(ThreejsRenderer):
 
     def __init__(
         self,
-        path=None,
-        default_shape_color=format_color(166, 166, 166),  # light grey
-        default_edge_color=format_color(32, 32, 32),  # dark grey
-        default_vertex_color=format_color(8, 8, 8),
-    ):  # darker gray
+        path: Optional[str] = None,
+        default_shape_color: str = format_color(166, 166, 166),  # light grey
+        default_edge_color: str = format_color(32, 32, 32),  # dark grey
+        default_vertex_color: str = format_color(8, 8, 8),
+    ) -> None:  # darker gray
         """
         Initializes the RenderWraper.
 
@@ -59,24 +60,24 @@ class RenderWraper(ThreejsRenderer):
             default_vertex_color (str, optional): The default color for vertices.
         """
         super().__init__(path)
-        self._3js_vertex = {}
+        self._3js_vertex: Dict[str, Any] = {}
         self._default_shape_color = default_shape_color
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
 
     def convert_shape(
         self,
-        shape,
-        export_edges=False,
-        color=(0.65, 0.65, 0.7),
-        specular_color=(0.2, 0.2, 0.2),
-        shininess=0.9,
-        transparency=0.0,
-        line_color=(0, 0.0, 0.0),
-        line_width=1.0,
-        point_size=1.0,
-        mesh_quality=1.0,
-    ):
+        shape: Any,
+        export_edges: bool = False,
+        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        shininess: float = 0.9,
+        transparency: float = 0.0,
+        line_color: Tuple[float, float, float] = (0, 0.0, 0.0),
+        line_width: float = 1.0,
+        point_size: float = 1.0,
+        mesh_quality: float = 1.0,
+    ) -> Tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any]]:
         """
         Converts a shape to a format that can be rendered by Three.js.
 
@@ -188,12 +189,12 @@ class RenderConfig:
 
     def __init__(
         self,
-        bg_gradient_color1="#ced7de",
-        bg_gradient_color2="#808080",
-        vertex_shader=None,
-        fragment_shader=None,
-        uniforms=None,
-    ):
+        bg_gradient_color1: str = "#ced7de",
+        bg_gradient_color2: str = "#808080",
+        vertex_shader: Optional[str] = None,
+        fragment_shader: Optional[str] = None,
+        uniforms: Optional[Dict[str, Any]] = None,
+    ) -> None:
         """
         Initializes the RenderConfig.
 
@@ -222,7 +223,7 @@ if __name__ == "__main__":
 
     @app.route("/")
     @app.route("/index")
-    def index():
+    def index() -> str:
         """PythonOCC Demo Page"""
         # remove shapes from previous (avoid duplicate shape after F5 refresh)
         my_ren._3js_shapes = {}
@@ -232,10 +233,13 @@ if __name__ == "__main__":
         # import additional modules for building a box and a torus.
         from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
         from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-        from OCC.Core.gp import gp_Trsf
+        from OCC.Core.gp import gp_Trsf, gp_Vec
+        from OCC.Core.TopoDS import TopoDS_Shape
         import time
 
-        def translate_shp(shp, vec, copy=False):
+        def translate_shp(
+            shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False
+        ) -> TopoDS_Shape:
             trns = gp_Trsf()
             trns.SetTranslation(vec)
             brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)

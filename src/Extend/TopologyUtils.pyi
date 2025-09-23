@@ -1,38 +1,55 @@
-from OCC.Core.TopAbs import TopAbs_ShapeEnum as TopAbs_ShapeEnum
+from typing import Dict, Iterator, List, Optional, Tuple, Type, Union
+
+from OCC.Core.BRepTools import BRepTools_WireExplorer
+from OCC.Core.GCPnts import (
+    GCPnts_QuasiUniformDeflection,
+    GCPnts_UniformAbscissa,
+    GCPnts_UniformDeflection,
+)
+from OCC.Core.gp import gp_Dir, gp_Pnt
+from OCC.Core.TopAbs import TopAbs_ShapeEnum
 from OCC.Core.TopoDS import (
     TopoDS_CompSolid,
     TopoDS_Compound,
     TopoDS_Edge,
     TopoDS_Face,
-    TopoDS_Shape as TopoDS_Shape,
+    TopoDS_Shape,
     TopoDS_Shell,
     TopoDS_Solid,
     TopoDS_Vertex,
     TopoDS_Wire,
 )
-from OCC.Core.gp import gp_Dir, gp_Pnt
-from _typeshed import Incomplete
-from typing import Iterator
 
-DISCRETIZATION_ALGORITHMS: Incomplete
+DISCRETIZATION_ALGORITHMS: Dict[
+    str,
+    Type[
+        Union[
+            GCPnts_UniformAbscissa,
+            GCPnts_QuasiUniformDeflection,
+            GCPnts_UniformDeflection,
+        ]
+    ],
+]
 
 def ordered_vertices_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Vertex]: ...
 def ordered_edges_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]: ...
 
 class WireExplorer:
-    wire: Incomplete
-    wire_explorer: Incomplete
+    wire: TopoDS_Wire
+    wire_explorer: BRepTools_WireExplorer
     done: bool
+
     def __init__(self, wire: TopoDS_Wire) -> None: ...
     def ordered_edges(self) -> Iterator[TopoDS_Edge]: ...
     def ordered_vertices(self) -> Iterator[TopoDS_Vertex]: ...
 
 class TopologyExplorer:
-    my_shape: Incomplete
-    ignore_orientation: Incomplete
-    topology_factory: Incomplete
+    my_shape: TopoDS_Shape
+    ignore_orientation: bool
+    topology_factory: Dict[TopAbs_ShapeEnum, Type[TopoDS_Shape]]
+
     def __init__(
-        self, my_shape: TopoDS_Shape, ignore_orientation: bool | None = True
+        self, my_shape: TopoDS_Shape, ignore_orientation: Optional[bool] = True
     ) -> None: ...
     def faces(self) -> Iterator[TopoDS_Face]: ...
     def number_of_faces(self) -> int: ...
@@ -52,7 +69,7 @@ class TopologyExplorer:
     def number_of_compounds(self) -> int: ...
     def number_of_ordered_vertices_from_wire(self, wire: TopoDS_Wire) -> int: ...
     def number_of_ordered_edges_from_wire(self, wire: TopoDS_Wire) -> int: ...
-    def get_topology_summary(self) -> dict[str, int]: ...
+    def get_topology_summary(self) -> Dict[str, int]: ...
     def faces_from_edge(self, edge: TopoDS_Edge) -> Iterator[TopoDS_Face]: ...
     def number_of_faces_from_edge(self, edge: TopoDS_Edge) -> int: ...
     def edges_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Edge]: ...
@@ -88,18 +105,18 @@ class TopologyExplorer:
     def number_of_shells_from_solid(self, solid: TopoDS_Solid) -> int: ...
 
 def dump_topology_to_string(
-    shape: TopoDS_Shape, level: int | None = 0, buffer: str | None = ""
+    shape: TopoDS_Shape, level: Optional[int] = 0, buffer: Optional[str] = ""
 ) -> None: ...
 def discretize_wire(
     a_wire: TopoDS_Wire,
     deflection: float = 0.5,
     algorithm: str = "QuasiUniformDeflection",
-) -> list[gp_Pnt]: ...
+) -> List[gp_Pnt]: ...
 def discretize_edge(
     a_edge: TopoDS_Edge,
     deflection: float = 0.2,
     algorithm: str = "QuasiUniformDeflection",
-): ...
+) -> List[Tuple[float, float, float]]: ...
 def is_vertex(shape: TopoDS_Shape) -> bool: ...
 def is_edge(shape: TopoDS_Shape) -> bool: ...
 def is_wire(shape: TopoDS_Shape) -> bool: ...
@@ -111,10 +128,10 @@ def is_compsolid(shape: TopoDS_Shape) -> bool: ...
 def get_type_as_string(shape: TopoDS_Shape) -> str: ...
 def get_sorted_hlr_edges(
     shape: TopoDS_Shape,
-    position: gp_Pnt | None = None,
-    direction: gp_Dir | None = None,
-    export_hidden_edges: bool | None = True,
-) -> tuple[list, list]: ...
+    position: Optional[gp_Pnt] = None,
+    direction: Optional[gp_Dir] = None,
+    export_hidden_edges: Optional[bool] = True,
+) -> Tuple[List, List]: ...
 def list_of_shapes_to_compound(
-    list_of_shapes: list[TopoDS_Shape],
-) -> tuple[TopoDS_Compound, bool]: ...
+    list_of_shapes: List[TopoDS_Shape],
+) -> Tuple[TopoDS_Compound, bool]: ...

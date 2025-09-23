@@ -20,6 +20,7 @@ import sys
 from string import Template
 import tempfile
 import uuid
+from typing import Any, Dict, Generator, List, Optional, Tuple
 from xml.etree import ElementTree
 
 from OCC.Core.Tesselator import ShapeTesselator
@@ -29,7 +30,7 @@ from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discreti
 from OCC.Display.WebGl.simple_server import start_server
 
 
-def spinning_cursor():
+def spinning_cursor() -> Generator[str, None, None]:
     """
     A spinning cursor generator.
     """
@@ -174,7 +175,7 @@ BODY_TEMPLATE = Template(
 )
 
 
-def export_edge_to_indexed_lineset(edge_point_set):
+def export_edge_to_indexed_lineset(edge_point_set: List[List[float]]) -> str:
     """
     Exports an edge to an IndexedLineSet string.
 
@@ -192,7 +193,9 @@ def export_edge_to_indexed_lineset(edge_point_set):
     return str_x3d_to_return
 
 
-def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id=0):
+def indexed_lineset_to_x3d_string(
+    str_linesets: List[str], header: bool = True, footer: bool = True, ils_id: int = 0
+) -> str:
     """
     Converts an IndexedLineSet string to an X3D string.
 
@@ -232,7 +235,9 @@ class HTMLHeader:
     A class to generate the HTML header.
     """
 
-    def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
+    def __init__(
+        self, bg_gradient_color1: str = "#ced7de", bg_gradient_color2: str = "#808080"
+    ) -> None:
         """
         Initializes the HTMLHeader.
 
@@ -243,7 +248,7 @@ class HTMLHeader:
         self._bg_gradient_color1 = bg_gradient_color1
         self._bg_gradient_color2 = bg_gradient_color2
 
-    def get_str(self):
+    def get_str(self) -> str:
         """
         Returns the HTML header as a string.
         """
@@ -261,7 +266,12 @@ class HTMLBody:
     A class to generate the HTML body.
     """
 
-    def __init__(self, x3d_shapes, axes_plane, axes_plane_zoom_factor=1.0):
+    def __init__(
+        self,
+        x3d_shapes: List[str],
+        axes_plane: bool,
+        axes_plane_zoom_factor: float = 1.0,
+    ) -> None:
         """
         Initializes the HTMLBody.
 
@@ -275,7 +285,7 @@ class HTMLBody:
         self._display_axes_plane = axes_plane
         self._axis_plane_zoom_factor = axes_plane_zoom_factor
 
-    def get_str(self):
+    def get_str(self) -> str:
         """
         Returns the HTML body as a string.
         """
@@ -317,18 +327,18 @@ class X3DExporter:
 
     def __init__(
         self,
-        shape,  # the TopoDS shape to mesh
-        vertex_shader,  # the vertex_shader, passed as a string
-        fragment_shader,  # the fragment shader, passed as a string
-        export_edges,  # if yes, edges are exported to IndexedLineSet (might be SLOWW)
-        color,  # the default shape color
-        specular_color,  # shape specular color (white by default)
-        shininess,  # shape shininess
-        transparency,  # shape transparency
-        line_color,  # edge color
-        line_width,  # edge liewidth,
-        mesh_quality,  # mesh quality default is 1., good is <1, bad is >1
-    ):
+        shape: Any,
+        vertex_shader: Optional[str],
+        fragment_shader: Optional[str],
+        export_edges: bool,
+        color: Tuple[float, float, float],
+        specular_color: Tuple[float, float, float],
+        shininess: float,
+        transparency: float,
+        line_color: Tuple[float, float, float],
+        line_width: float,
+        mesh_quality: float,
+    ) -> None:
         """
         Initializes the X3DExporter.
 
@@ -357,11 +367,11 @@ class X3DExporter:
         # the list of indexed face sets that compose the shape
         # if ever the map_faces_to_mesh option is enabled, this list
         # maybe composed of dozains of TriangleSet
-        self._triangle_sets = []
-        self._line_sets = []
+        self._triangle_sets: List[str] = []
+        self._line_sets: List[str] = []
         self._x3d_string = ""  # the string that contains the x3d description
 
-    def compute(self):
+    def compute(self) -> None:
         """
         Computes the tessellation of the shape.
         """
@@ -389,7 +399,7 @@ class X3DExporter:
                 ils = export_edge_to_indexed_lineset(edge_point_set)
                 self._line_sets.append(ils)
 
-    def to_x3dfile_string(self, shape_id):
+    def to_x3dfile_string(self, shape_id: int) -> str:
         """
         Converts the shape to an X3D string.
 
@@ -443,7 +453,7 @@ class X3DExporter:
         xml_et = ElementTree.fromstring(x3dfile_str)
         return ElementTree.tostring(xml_et, encoding="utf8").decode("utf8")
 
-    def write_to_file(self, filename, shape_id):
+    def write_to_file(self, filename: str, shape_id: int) -> None:
         """
         Writes the X3D string to a file.
 
@@ -460,7 +470,12 @@ class X3DomRenderer:
     A renderer that uses x3dom to display shapes in a web browser.
     """
 
-    def __init__(self, path=None, display_axes_plane=True, axes_plane_zoom_factor=1.0):
+    def __init__(
+        self,
+        path: Optional[str] = None,
+        display_axes_plane: bool = True,
+        axes_plane_zoom_factor: float = 1.0,
+    ) -> None:
         """
         Initializes the X3DomRenderer.
 
@@ -473,8 +488,8 @@ class X3DomRenderer:
         """
         self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
-        self._x3d_shapes = {}
-        self._x3d_edges = {}
+        self._x3d_shapes: Dict[str, Any] = {}
+        self._x3d_edges: Dict[str, Any] = {}
         self._axes_plane = (
             display_axes_plane  # display the small RVB axes and the plane
         )
@@ -486,18 +501,18 @@ class X3DomRenderer:
 
     def DisplayShape(
         self,
-        shape,
-        vertex_shader=None,
-        fragment_shader=None,
-        export_edges=False,
-        color=(0.65, 0.65, 0.7),
-        specular_color=(0.2, 0.2, 0.2),
-        shininess=0.9,
-        transparency=0.0,
-        line_color=(0, 0.0, 0.0),
-        line_width=2.0,
-        mesh_quality=1.0,
-    ):
+        shape: Any,
+        vertex_shader: Optional[str] = None,
+        fragment_shader: Optional[str] = None,
+        export_edges: bool = False,
+        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        shininess: float = 0.9,
+        transparency: float = 0.0,
+        line_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
+        line_width: float = 2.0,
+        mesh_quality: float = 1.0,
+    ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         """
         Adds a shape to the rendering buffer.
 
@@ -582,7 +597,12 @@ class X3DomRenderer:
         ]
         return self._x3d_shapes, self._x3d_edges
 
-    def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
+    def render(
+        self,
+        addr: str = "localhost",
+        server_port: int = 8080,
+        open_webbrowser: bool = False,
+    ) -> None:
         """
         Renders the scene in the browser.
         """
@@ -591,7 +611,9 @@ class X3DomRenderer:
         # then create a simple web server
         start_server(addr, server_port, self._path, open_webbrowser)
 
-    def generate_html_file(self, axes_plane, axes_plane_zoom_factor):
+    def generate_html_file(
+        self, axes_plane: bool, axes_plane_zoom_factor: float
+    ) -> None:
         """
         Generates the HTML file to be rendered by the web browser.
 

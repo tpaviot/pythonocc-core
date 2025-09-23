@@ -18,6 +18,7 @@
 import logging
 import os
 import sys
+from typing import Any, Optional, Tuple
 
 # backend constants
 WX = "wx"
@@ -44,7 +45,7 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
 
 
-def qt6_force_xcb_on_linux():
+def qt6_force_xcb_on_linux() -> None:
     """
     Force QT_QPA_PLATFORM to 'xcb' on Linux for Qt6.
 
@@ -56,7 +57,7 @@ def qt6_force_xcb_on_linux():
             os.environ["QT_QPA_PLATFORM"] = "xcb"
 
 
-def load_pyqt5():
+def load_pyqt5() -> bool:
     """
     Loads the PyQt5 backend.
 
@@ -77,7 +78,7 @@ def load_pyqt5():
     return HAVE_PYQT5
 
 
-def load_pyside2():
+def load_pyside2() -> bool:
     """
     Loads the PySide2 backend.
 
@@ -98,7 +99,7 @@ def load_pyside2():
     return HAVE_PYSIDE2
 
 
-def load_pyqt6():
+def load_pyqt6() -> bool:
     """
     Loads the PyQt6 backend.
 
@@ -120,7 +121,7 @@ def load_pyqt6():
     return HAVE_PYQT6
 
 
-def load_pyside6():
+def load_pyside6() -> bool:
     """
     Loads the PySide6 backend.
 
@@ -142,7 +143,7 @@ def load_pyside6():
     return HAVE_PYSIDE6
 
 
-def load_wx():
+def load_wx() -> bool:
     """
     Loads the wxPython backend.
 
@@ -163,21 +164,21 @@ def load_wx():
     return HAVE_WX
 
 
-def loaded_backend():
+def loaded_backend() -> bool:
     """
     Returns True if a backend is loaded, False otherwise.
     """
     return HAVE_BACKEND
 
 
-def get_loaded_backend():
+def get_loaded_backend() -> str:
     """
     Returns the name of the loaded backend.
     """
     return BACKEND_MODULE
 
 
-def load_any_qt_backend():
+def load_any_qt_backend() -> bool:
     """
     Loads any Qt-based backend.
 
@@ -199,7 +200,7 @@ def load_any_qt_backend():
     return True
 
 
-def load_backend(backend_str=None):
+def load_backend(backend_str: Optional[str] = None) -> str:
     """Load a GUI backend
 
     If no Qt backend is found (PyQt5 or PySide), wx is loaded
@@ -318,7 +319,7 @@ def load_backend(backend_str=None):
     return "tk"
 
 
-def get_qt_modules():
+def get_qt_modules() -> Tuple[Any, Any, Any, Any]:
     """
 
     Returns

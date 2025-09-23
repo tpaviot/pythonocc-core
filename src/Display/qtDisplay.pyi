@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.gp import gp_Trsf

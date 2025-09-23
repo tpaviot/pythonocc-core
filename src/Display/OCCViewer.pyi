@@ -1,20 +1,13 @@
 from typing import Any, Callable, List, Optional, Tuple, Union
 
 from OCC.Core.AIS import AIS_Shape
-from OCC.Core.Aspect import Aspect_FillMethod, Aspect_GridType
-from OCC.Core.Graphic3d import (
-    Graphic3d_Camera,
-    Graphic3d_NameOfMaterial,
-    Graphic3d_RenderingParams,
-    Graphic3d_StereoMode,
-    Graphic3d_Structure,
-    Graphic3d_TextureEnv,
-)
-from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
-from OCC.Core.Prs3d import Prs3d_TextAspect
+from OCC.Core.Graphic3d import Graphic3d_Structure
+from OCC.Core.gp import gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.Quantity import Quantity_Color
-from OCC.Core.V3d import V3d_View
 from OCC.Core.Visualization import Display3d
+
+def rgb_color(r: float, g: float, b: float) -> Quantity_Color: ...
+def get_color_from_name(color_name: str) -> Quantity_Color: ...
 
 class Viewer3d(Display3d):
     def __init__(self) -> None: ...
@@ -70,8 +63,8 @@ class Viewer3d(Display3d):
     def hide_triedron(self) -> None: ...
     def set_bg_gradient_color(
         self,
-        color1: Union[List[int], Quantity_Color],
-        color2: Union[List[int], Quantity_Color],
+        color1: Union[List[float], Quantity_Color],
+        color2: Union[List[float], Quantity_Color],
         fill_method: int = ...,
     ) -> None: ...
     def SetBackgroundImage(self, image_filename: str, stretch: bool = True) -> None: ...
