@@ -16,6 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from math import radians
+from typing import Any, List, Tuple, Union
 
 from OCC.Core.BRepBndLib import brepbndlib
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
@@ -26,11 +27,12 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeFace,
     BRepBuilderAPI_MakeEdge2d,
     BRepBuilderAPI_Transform,
+    BRepBuilderAPI_GTransform,
 )
-from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_GTransform
 from OCC.Core.BRepFill import BRepFill_Filling
 from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
 from OCC.Core.GeomAbs import (
+    GeomAbs_Shape,
     GeomAbs_C0,
     GeomAbs_Plane,
     GeomAbs_Cylinder,
@@ -45,16 +47,24 @@ from OCC.Core.GeomAbs import (
     GeomAbs_OtherSurface,
 )
 from OCC.Core.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
+from OCC.Core.Geom import Geom_BSplineCurve, Geom_BezierCurve, Geom_Surface
 from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.TColgp import TColgp_Array1OfPnt
-from OCC.Core.TopoDS import TopoDS_Face
+from OCC.Core.TopoDS import (
+    TopoDS_Face,
+    TopoDS_Shape,
+    TopoDS_Vertex,
+    TopoDS_Edge,
+    TopoDS_Wire,
+)
 from OCC.Core.gp import (
     gp,
     gp_Vec,
     gp_Pnt,
     gp_Trsf,
+    gp_Ax1,
     gp_Ax2,
     gp_Dir,
     gp_GTrsf,
@@ -69,19 +79,19 @@ from OCC.Extend.TopologyUtils import is_edge, is_face
 #
 # assert utils
 #
-def assert_shape_not_null(shp):
+def assert_shape_not_null(shp: TopoDS_Shape) -> None:
     """Checks if a shape is not None."""
     if shp is None:
         raise AssertionError("Shape is Null.")
 
 
-def assert_isdone(inst, message):
+def assert_isdone(inst: Any, message: str) -> None:
     """Checks if a BRepBuilderAPI algorithm has completed successfully."""
     if not inst.IsDone():
         raise AssertionError(message)
 
 
-def point_list_to_TColgp_Array1OfPnt(li):
+def point_list_to_TColgp_Array1OfPnt(li: List[gp_Pnt]) -> TColgp_Array1OfPnt:
     """
     Converts a list of gp_Pnt to a TColgp_Array1OfPnt.
 
@@ -96,7 +106,7 @@ def point_list_to_TColgp_Array1OfPnt(li):
 
 #
 # 0D
-def make_vertex(*args):
+def make_vertex(*args: Union[gp_Pnt, float]) -> TopoDS_Vertex:
     """
     Creates a TopoDS_Vertex from a point.
 
@@ -111,7 +121,7 @@ def make_vertex(*args):
 #
 # 1D
 #
-def make_edge(*args):
+def make_edge(*args: Any) -> TopoDS_Edge:
     """
     Creates a TopoDS_Edge from various inputs.
 
@@ -129,7 +139,7 @@ def make_edge(*args):
     return edge.Edge()
 
 
-def make_edge2d(*args):
+def make_edge2d(*args: Any) -> TopoDS_Edge:
     """
     Creates a 2D TopoDS_Edge.
 
@@ -141,7 +151,7 @@ def make_edge2d(*args):
     return edge.Edge()
 
 
-def make_wire(*args):
+def make_wire(*args: Union[List[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
     """
     Creates a TopoDS_Wire from a list of edges or by connecting edges.
 
@@ -163,7 +173,7 @@ def make_wire(*args):
     return wire.Wire()
 
 
-def points_to_bspline(pnts):
+def points_to_bspline(pnts: List[gp_Pnt]) -> Geom_BSplineCurve:
     """
     Creates a BSpline curve from a list of points.
 
@@ -177,7 +187,9 @@ def points_to_bspline(pnts):
     return crv.Curve()
 
 
-def edge_to_bezier(topods_edge):
+def edge_to_bezier(
+    topods_edge: TopoDS_Edge,
+) -> Tuple[bool, Geom_BezierCurve, int]:
     """
     Converts a TopoDS_Edge to a Bezier curve if possible.
 
@@ -196,7 +208,9 @@ def edge_to_bezier(topods_edge):
 #
 # 2D
 #
-def make_n_sided(edges, continuity=GeomAbs_C0):
+def make_n_sided(
+    edges: List[TopoDS_Edge], continuity: GeomAbs_Shape = GeomAbs_C0
+) -> TopoDS_Face:
     """
     Creates an n-sided face from a list of edges.
 
@@ -212,7 +226,7 @@ def make_n_sided(edges, continuity=GeomAbs_C0):
     return n_sided.Face()
 
 
-def make_face(*args):
+def make_face(*args: Union[TopoDS_Wire, Geom_Surface]) -> TopoDS_Face:
     """
     Creates a TopoDS_Face from various inputs.
 
@@ -228,7 +242,9 @@ def make_face(*args):
     return face.Face()
 
 
-def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
+def get_aligned_boundingbox(
+    shape: TopoDS_Shape, tol: float = 1e-6, optimal_BB: bool = True
+) -> Tuple[gp_Pnt, List[float], TopoDS_Shape]:
     """
     Computes the axis-aligned bounding box of a shape.
 
@@ -262,7 +278,9 @@ def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
     return center, [dx, dy, dz], box_shp
 
 
-def get_oriented_boundingbox(shape, optimal_OBB=True):
+def get_oriented_boundingbox(
+    shape: TopoDS_Shape, optimal_OBB: bool = True
+) -> Tuple[gp_Pnt, List[float], TopoDS_Shape]:
     """
     Computes the oriented bounding box of a shape.
 
@@ -306,7 +324,7 @@ def get_oriented_boundingbox(shape, optimal_OBB=True):
     return bary_center, [a_half_x, a_half_y, a_half_z], a_box
 
 
-def midpoint(point_A, point_B):
+def midpoint(point_A: gp_Pnt, point_B: gp_Pnt) -> gp_Pnt:
     """
     Computes the midpoint between two points.
 
@@ -320,7 +338,7 @@ def midpoint(point_A, point_B):
     return gp_Pnt(mid.XYZ())
 
 
-def center_boundingbox(shape):
+def center_boundingbox(shape: TopoDS_Shape) -> gp_Pnt:
     """
     Computes the center of the bounding box of a shape.
 
@@ -331,7 +349,9 @@ def center_boundingbox(shape):
     return midpoint(gp_Pnt(xmin, ymin, zmin), gp_Pnt(xmax, ymax, zmax))
 
 
-def get_boundingbox(shape, tol=1e-6, use_mesh=True):
+def get_boundingbox(
+    shape: TopoDS_Shape, tol: float = 1e-6, use_mesh: bool = True
+) -> Tuple[float, float, float, float, float, float]:
     """
     Computes the axis-aligned bounding box of a shape.
 
@@ -356,7 +376,7 @@ def get_boundingbox(shape, tol=1e-6, use_mesh=True):
     return xmin, ymin, zmin, xmax, ymax, zmax
 
 
-def translate_shp(shp, vec, copy=False):
+def translate_shp(shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False) -> TopoDS_Shape:
     """
     Translates a shape by a vector.
 
@@ -372,7 +392,9 @@ def translate_shp(shp, vec, copy=False):
     return brep_trns.Shape()
 
 
-def rotate_shape(shape, axis, angle, unite="deg"):
+def rotate_shape(
+    shape: TopoDS_Shape, axis: gp_Ax1, angle: float, unite: str = "deg"
+) -> TopoDS_Shape:
     """
     Rotates a shape around an axis by a given angle.
 
@@ -392,7 +414,9 @@ def rotate_shape(shape, axis, angle, unite="deg"):
     return brep_trns.Shape()
 
 
-def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
+def rotate_shp_3_axis(
+    shape: TopoDS_Shape, rx: float, ry: float, rz: float, unity: str = "deg"
+) -> TopoDS_Shape:
     """
     Rotates a shape around the X, Y, and Z axes.
 
@@ -418,7 +442,7 @@ def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
     return brep_trns.Shape()
 
 
-def scale_shape(shape, fx, fy, fz):
+def scale_shape(shape: TopoDS_Shape, fx: float, fy: float, fz: float) -> TopoDS_Shape:
     """
     Scales a shape along the X, Y, and Z axes.
 
@@ -435,7 +459,9 @@ def scale_shape(shape, fx, fy, fz):
     return BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
 
 
-def make_extrusion(face, length, vector=None):
+def make_extrusion(
+    face: TopoDS_Face, length: float, vector: gp_Vec = None
+) -> TopoDS_Shape:
     """
     Creates an extrusion from a face along a vector.
 
@@ -456,7 +482,9 @@ def make_extrusion(face, length, vector=None):
 ##################################
 # Recognize functions
 ##################################
-def recognize_face(topods_face):
+def recognize_face(
+    topods_face: TopoDS_Face,
+) -> Tuple[str, gp_Pnt, gp_Dir]:
     """
     Recognizes the type of a TopoDS_Face and returns its properties.
 
@@ -521,7 +549,7 @@ def recognize_face(topods_face):
 ##############################################################################
 # Measure functions
 ##############################################################################
-def measure_shape_volume(shape):
+def measure_shape_volume(shape: TopoDS_Shape) -> float:
     """
     Measures the volume of a shape.
 
@@ -533,7 +561,9 @@ def measure_shape_volume(shape):
     return inertia_props.Mass()
 
 
-def measure_shape_mass_center_of_gravity(shape):
+def measure_shape_mass_center_of_gravity(
+    shape: TopoDS_Shape,
+) -> Tuple[gp_Pnt, float, str]:
     """
     Measures the mass, center of gravity, and the property used for mass calculation (Length, Area, or Volume).
 

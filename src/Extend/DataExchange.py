@@ -16,7 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from typing import Union, List
+from typing import Union, List, Dict, Tuple, Any
 
 from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape
 from OCC.Core.BRepTools import breptools
@@ -191,7 +191,9 @@ def write_step_file(
         raise IOError(f"{filename} not saved to filesystem.")
 
 
-def read_step_file_with_names_colors(filename: str):
+def read_step_file_with_names_colors(
+    filename: str,
+) -> Dict[TopoDS_Shape, List[Union[str, Quantity_Color]]]:
     """
     Reads a STEP file and extracts shapes with their names and colors using OCAF.
 
@@ -424,7 +426,9 @@ def write_stl_file(
         raise IOError("File not written to disk.")
 
 
-def read_stl_file(filename: str, sew_shape=False, make_solid=False):
+def read_stl_file(
+    filename: str, sew_shape: bool = False, make_solid: bool = False
+) -> TopoDS_Shape:
     """
     Reads an STL file and returns a TopoDS_Shape.
 
@@ -470,7 +474,7 @@ def read_iges_file(
     return_as_shapes: bool = False,
     verbosity: bool = False,
     visible_only: bool = False,
-):
+) -> List[TopoDS_Shape]:
     """
     Reads an IGES file and returns the shapes.
 
@@ -550,7 +554,9 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
 ##############
 # SVG export #
 ##############
-def edge_to_svg_polyline(topods_edge: TopoDS_Edge, tol: float = 0.1, unit: str = "mm"):
+def edge_to_svg_polyline(
+    topods_edge: TopoDS_Edge, tol: float = 0.1, unit: str = "mm"
+) -> Tuple[Any, Bnd_Box2d]:
     """
     Converts a TopoDS_Edge to an SVG polyline.
 
@@ -595,7 +601,7 @@ def export_shape_to_svg(
     color: str = "black",
     line_width: str = "1px",
     unit: str = "mm",
-):
+) -> Union[bool, str]:
     """
     Exports a shape to an SVG file or string.
 
@@ -775,7 +781,7 @@ def read_gltf_file(
     keep_late_data: bool = True,
     verbose: bool = False,
     load_all_scenes: bool = False,
-):
+) -> List[TopoDS_Shape]:
     """
     Reads a glTF file and returns the shape.
 

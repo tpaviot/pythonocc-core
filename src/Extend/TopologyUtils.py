@@ -815,7 +815,7 @@ def discretize_edge(
     a_edge: TopoDS_Edge,
     deflection: float = 0.2,
     algorithm: str = "QuasiUniformDeflection",
-):
+) -> List[Tuple[float, float, float]]:
     """
     Discretizes an edge into a list of points.
     This function takes a TopoDS_Edge and generates a sequence of points

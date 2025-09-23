@@ -15,8 +15,13 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.Core.Graphic3d import Graphic3d_NOM_DEFAULT
+from typing import Dict, List, Tuple, Optional
+
+from OCC.Core.AIS import AIS_InteractiveContext, AIS_Shape
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+from OCC.Core.gp import gp_Trsf
+from OCC.Core.Graphic3d import Graphic3d_NameOfMaterial
+from OCC.Core.TopoDS import TopoDS_Shape
 
 
 class Layer:
@@ -30,12 +35,12 @@ class Layer:
 
     def __init__(
         self,
-        from_display,
-        shape=None,
-        color=0,
-        transparency=0.0,
-        material=Graphic3d_NOM_DEFAULT,
-    ):
+        from_display: AIS_InteractiveContext,
+        shape: Optional[TopoDS_Shape] = None,
+        color: int = 0,
+        transparency: float = 0.0,
+        material: Graphic3d_NameOfMaterial = Graphic3d_NameOfMaterial.Graphic3d_NOM_DEFAULT,
+    ) -> None:
         """
         Initializes a new Layer.
 
@@ -45,15 +50,16 @@ class Layer:
         :param transparency: The transparency of the shapes, from 0.0 (opaque) to 1.0 (fully transparent). Defaults to 0.0.
         :param material: The material of the shapes. Defaults to Graphic3d_NOM_DEFAULT.
         """
-        self.clear()
-        self.color = color
-        self.display = from_display
-        self.transparency = transparency
-        self.material = material
+        self.element_to_display: Dict[int, Tuple[TopoDS_Shape, AIS_Shape]] = {}
+        self.count: int = 0
+        self.color: int = color
+        self.display: AIS_InteractiveContext = from_display
+        self.transparency: float = transparency
+        self.material: Graphic3d_NameOfMaterial = material
         if shape is not None:
             self.add_shape(shape)
 
-    def add_shape(self, shape):
+    def add_shape(self, shape: TopoDS_Shape) -> None:
         """
         Adds a shape to the layer.
 
@@ -67,7 +73,7 @@ class Layer:
         self.count += 1
         self.display.Context.Erase(to_display, False)
 
-    def replace_shape(self, shape, index):
+    def replace_shape(self, shape: TopoDS_Shape, index: int) -> None:
         """
         Replaces a shape in the layer at a specific index.
 
@@ -83,7 +89,9 @@ class Layer:
         self.element_to_display[index] = (shape, to_display)
         # self.display.Context.Erase(to_display, False)
 
-    def update_trsf_shape(self, shape, index, transformations):
+    def update_trsf_shape(
+        self, shape: TopoDS_Shape, index: int, transformations: gp_Trsf
+    ) -> None:
         """
         Applies a transformation to a shape and updates it in the layer.
 
@@ -94,7 +102,7 @@ class Layer:
         shape_moved = BRepBuilderAPI_Transform(shape, transformations, True).Shape()
         self.replace_shape(shape_moved, index)
 
-    def merge(self, layer, clear=False):
+    def merge(self, layer: "Layer", clear: bool = False) -> None:
         """
         Merges another layer into this one.
 
@@ -106,7 +114,7 @@ class Layer:
         if clear is True:
             layer.clear()
 
-    def delete_shape_with_index(self, index):
+    def delete_shape_with_index(self, index: int) -> None:
         """
         Deletes a shape from the layer by its index.
 
@@ -114,7 +122,7 @@ class Layer:
         """
         self.element_to_display.pop(index)
 
-    def delete_shape(self, shape_to_del):
+    def delete_shape(self, shape_to_del: TopoDS_Shape) -> None:
         """
         Deletes a shape from the layer.
 
@@ -125,14 +133,14 @@ class Layer:
             if shape_to_del == shape:
                 self.element_to_display.pop(index)
 
-    def clear(self):
+    def clear(self) -> None:
         """
         Removes all shapes from the layer.
         """
         self.element_to_display = {}
         self.count = 0
 
-    def get_shapes(self):
+    def get_shapes(self) -> List[TopoDS_Shape]:
         """
         Gets all the shapes in the layer.
 
@@ -144,7 +152,9 @@ class Layer:
             topods_shapes.append(shape)
         return topods_shapes
 
-    def get_aisshape_from_topodsshape(self, topshape):
+    def get_aisshape_from_topodsshape(
+        self, topshape: TopoDS_Shape
+    ) -> Optional[Tuple[AIS_Shape, int]]:
         """
         Gets the displayed AIS_Shape corresponding to a TopoDS_Shape.
 
@@ -155,8 +165,9 @@ class Layer:
             shape, ais_shape = element
             if shape == topshape:
                 return ais_shape, index
+        return None
 
-    def hide(self):
+    def hide(self) -> None:
         """
         Hides the layer from the display.
         """
@@ -165,7 +176,7 @@ class Layer:
             self.display.Context.Erase(ais_shape, False)
             self.display.View.Redraw()
 
-    def show(self):
+    def show(self) -> None:
         """
         Shows the layer in the display.
         """
