@@ -46,9 +46,11 @@ Build from source
 -----------------
 Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
 
-Cited by
---------
-pythonocc is widely used in industrial and academic communities, with over 400 citations. View citations and applications on the [Google Scholar pythonocc page](https://scholar.google.com/scholar?hl=fr&as_sdt=0%2C5&q=pythonocc&btnG=&oq=pythonocc)
+Use cases
+---------
+pythonocc is widely used in industrial and academic communities, with over 400 scientific citations covering a broad range of domains [Google Scholar pythonocc page](https://scholar.google.com/scholar?as_vis=1&q=pythonocc&hl=fr&as_sdt=0,5)
+
+Many pythonocc-related projects are available as [github repositories](https://github.com/search?q=pythonocc&type=repositories&p=3)
 
 Cite as
 -------
@@ -56,9 +58,9 @@ pythonocc is registered as a [Zenodo open access software](https://zenodo.org/re
 
 Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
 
-Professional support
---------------------
-pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us.
+Support
+-------
+pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a french company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us at contact@meedia.ai
 
 <a href="https://meedia.ai/pythonocc-en"><img src="https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png" width="150" alt="meeDIA logo"></a>
 
