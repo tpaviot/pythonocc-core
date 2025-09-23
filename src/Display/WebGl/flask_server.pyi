@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from threejs_renderer import ThreejsRenderer
 
@@ -8,19 +8,19 @@ class RenderWraper(ThreejsRenderer):
     def __init__(
         self,
         path: Optional[str] = None,
-        default_shape_color: str = ...,
-        default_edge_color: str = ...,
-        default_vertex_color: str = ...,
+        default_shape_color: str = "0xa6a6a6",
+        default_edge_color: str = "0x202020",
+        default_vertex_color: str = "0x80808",
     ) -> None: ...
     def convert_shape(
         self,
         shape: Any,
         export_edges: bool = False,
-        color: Tuple[float, float, float] = ...,
-        specular_color: Tuple[float, float, float] = ...,
+        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
         shininess: float = 0.9,
         transparency: float = 0.0,
-        line_color: Tuple[float, float, float] = ...,
+        line_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
         line_width: float = 1.0,
         point_size: float = 1.0,
         mesh_quality: float = 1.0,

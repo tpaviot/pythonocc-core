@@ -21,6 +21,7 @@ from string import Template
 import sys
 import tempfile
 import uuid
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 from OCC.Core.gp import gp_Vec
 from OCC.Core.Tesselator import ShapeTesselator
@@ -30,7 +31,7 @@ from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discreti
 from OCC.Display.WebGl.simple_server import start_server
 
 
-def spinning_cursor():
+def spinning_cursor() -> Generator[str, None, None]:
     """
     A spinning cursor generator.
     """
@@ -38,7 +39,7 @@ def spinning_cursor():
         yield from "|/-\\"
 
 
-def color_to_hex(rgb_color):
+def color_to_hex(rgb_color: Tuple[float, float, float]) -> str:
     """
     Converts a color from RGB to a hex string.
 
@@ -57,7 +58,7 @@ def color_to_hex(rgb_color):
     return "0x%.02x%.02x%.02x" % (rh, gh, bh)
 
 
-def export_edgedata_to_json(edge_hash, point_set):
+def export_edgedata_to_json(edge_hash: str, point_set: List[List[float]]) -> str:
     """
     Exports a set of points to a LineSegment buffergeometry.
 
@@ -402,7 +403,9 @@ class HTMLHeader:
     A class to generate the HTML header.
     """
 
-    def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
+    def __init__(
+        self, bg_gradient_color1: str = "#ced7de", bg_gradient_color2: str = "#808080"
+    ) -> None:
         """
         Initializes the HTMLHeader.
 
@@ -413,7 +416,7 @@ class HTMLHeader:
         self._bg_gradient_color1 = bg_gradient_color1
         self._bg_gradient_color2 = bg_gradient_color2
 
-    def get_str(self):
+    def get_str(self) -> str:
         """
         Returns the HTML header as a string.
         """
@@ -431,7 +434,7 @@ class ThreejsRenderer:
     A renderer that uses three.js to display shapes in a web browser.
     """
 
-    def __init__(self, path=None):
+    def __init__(self, path: Optional[str] = None) -> None:
         """
         Initializes the ThreejsRenderer.
 
@@ -443,23 +446,23 @@ class ThreejsRenderer:
         self._path = tempfile.mkdtemp() if not path else path
         self._html_filename = os.path.join(self._path, "index.html")
         self._main_js_filename = os.path.join(self._path, "main.js")
-        self._3js_shapes = {}
-        self._3js_edges = {}
+        self._3js_shapes: Dict[str, Any] = {}
+        self._3js_edges: Dict[str, Any] = {}
         self.spinning_cursor = spinning_cursor()
         print("## threejs renderer")
 
     def DisplayShape(
         self,
-        shape,
-        export_edges=False,
-        color=(0.65, 0.65, 0.7),
-        specular_color=(0.2, 0.2, 0.2),
-        shininess=0.9,
-        transparency=0.0,
-        line_color=(0, 0.0, 0.0),
-        line_width=1.0,
-        mesh_quality=1.0,
-    ):
+        shape: Any,
+        export_edges: bool = False,
+        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        shininess: float = 0.9,
+        transparency: float = 0.0,
+        line_color: Tuple[float, float, float] = (0, 0.0, 0.0),
+        line_width: float = 1.0,
+        mesh_quality: float = 1.0,
+    ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         """
         Displays a shape.
 
@@ -552,7 +555,7 @@ class ThreejsRenderer:
                 self._3js_edges[edge_hash] = [(0, 0, 0), line_width]
         return self._3js_shapes, self._3js_edges
 
-    def generate_html_file(self):
+    def generate_html_file(self) -> None:
         """
         Generates the HTML file to be rendered by the web browser.
         """
@@ -647,7 +650,12 @@ class ThreejsRenderer:
             fp.write(body)
             fp.write("</html>\n")
 
-    def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
+    def render(
+        self,
+        addr: str = "localhost",
+        server_port: int = 8080,
+        open_webbrowser: bool = False,
+    ) -> None:
         """
         Renders the scene in the browser.
 
@@ -665,10 +673,13 @@ class ThreejsRenderer:
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-    from OCC.Core.gp import gp_Trsf
+    from OCC.Core.gp import gp_Trsf, gp_Vec
+    from OCC.Core.TopoDS import TopoDS_Shape
     import time
 
-    def translate_shp(shp, vec, copy=False):
+    def translate_shp(
+        shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False
+    ) -> TopoDS_Shape:
         trns = gp_Trsf()
         trns.SetTranslation(vec)
         brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)

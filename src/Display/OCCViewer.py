@@ -22,6 +22,7 @@ import math
 import os
 import sys
 import time
+from typing import Any, Callable, List, Optional, Tuple, Union
 
 import OCC
 from OCC.Core.Aspect import Aspect_GFM_VER
@@ -89,7 +90,12 @@ from OCC.Core.Graphic3d import (
     Graphic3d_GraduatedTrihedron,
     Graphic3d_NameOfMaterial,
 )
-from OCC.Core.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
+from OCC.Core.Aspect import (
+    Aspect_TOTP_RIGHT_LOWER,
+    Aspect_FM_STRETCH,
+    Aspect_FM_NONE,
+    Aspect_FillMethod,
+)
 
 if sys.platform == "win32":
     if "CASROOT" in os.environ:
@@ -115,11 +121,11 @@ if sys.platform == "win32":
             os.environ["CASROOT"] = casroot_path
 
 
-def rgb_color(r, g, b):
+def rgb_color(r: float, g: float, b: float) -> Quantity_Color:
     return Quantity_Color(r, g, b, Quantity_TOC_RGB)
 
 
-def get_color_from_name(color_name):
+def get_color_from_name(color_name: str) -> Quantity_Color:
     """from the string 'WHITE', returns Quantity_Color
     WHITE.
     color_name is the color name, case insensitive.
@@ -150,7 +156,7 @@ class Viewer3d(Display3d):
     a higher-level API for interacting with the viewer.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initializes the Viewer3d.
         """
@@ -169,13 +175,13 @@ class Viewer3d(Display3d):
         self.default_drawer = None
         self._is_offscreen = None
 
-        self.selected_shapes = []
-        self._select_callbacks = []
-        self._overlay_items = []
+        self.selected_shapes: List[AIS_Shape] = []
+        self._select_callbacks: List[Callable] = []
+        self._overlay_items: List[Any] = []
 
-        self._window_handle = None
+        self._window_handle: Optional[Any] = None
 
-    def get_parent(self):
+    def get_parent(self) -> Any:
         """
         Returns the parent of the viewer.
 
@@ -184,7 +190,7 @@ class Viewer3d(Display3d):
         """
         return self._parent
 
-    def register_overlay_item(self, overlay_item):
+    def register_overlay_item(self, overlay_item: Any) -> None:
         """
         Registers an overlay item to be drawn on top of the 3D view.
 
@@ -195,7 +201,7 @@ class Viewer3d(Display3d):
         self.View.MustBeResized()
         self.View.Redraw()
 
-    def register_select_callback(self, callback):
+    def register_select_callback(self, callback: Callable) -> None:
         """
         Adds a callback that will be called each time a shape is selected.
 
@@ -207,7 +213,7 @@ class Viewer3d(Display3d):
             raise AssertionError("You must provide a callable to register the callback")
         self._select_callbacks.append(callback)
 
-    def unregister_callback(self, callback):
+    def unregister_callback(self, callback: Callable) -> None:
         """
         Remove a callback from the callback list.
 
@@ -218,7 +224,7 @@ class Viewer3d(Display3d):
             raise AssertionError("This callback is not registered")
         self._select_callbacks.remove(callback)
 
-    def MoveTo(self, X, Y):
+    def MoveTo(self, X: int, Y: int) -> None:
         """
         Moves the mouse to the given coordinates.
 
@@ -228,7 +234,7 @@ class Viewer3d(Display3d):
         """
         self.Context.MoveTo(X, Y, self.View, True)
 
-    def FitAll(self):
+    def FitAll(self) -> None:
         """
         Fits all objects in the view.
         """
@@ -237,13 +243,13 @@ class Viewer3d(Display3d):
 
     def Create(
         self,
-        window_handle=None,
-        parent=None,
-        create_default_lights=True,
-        draw_face_boundaries=True,
-        phong_shading=True,
-        display_glinfo=True,
-    ):
+        window_handle: Optional[Any] = None,
+        parent: Optional[Any] = None,
+        create_default_lights: bool = True,
+        draw_face_boundaries: bool = True,
+        phong_shading: bool = True,
+        display_glinfo: bool = True,
+    ) -> None:
         """
         Creates the viewer.
 
@@ -293,99 +299,99 @@ class Viewer3d(Display3d):
         # turn self._inited flag to True
         self._inited = True
 
-    def OnResize(self):
+    def OnResize(self) -> None:
         """
         Called when the view is resized.
         """
         self.View.MustBeResized()
 
-    def ResetView(self):
+    def ResetView(self) -> None:
         """
         Resets the view.
         """
         self.View.Reset()
 
-    def Repaint(self):
+    def Repaint(self) -> None:
         """
         Repaints the view.
         """
         self.Viewer.Redraw()
 
-    def SetModeWireFrame(self):
+    def SetModeWireFrame(self) -> None:
         """
         Sets the display mode to wireframe.
         """
         self.View.SetComputedMode(False)
         self.Context.SetDisplayMode(AIS_WireFrame, True)
 
-    def SetModeShaded(self):
+    def SetModeShaded(self) -> None:
         """
         Sets the display mode to shaded.
         """
         self.View.SetComputedMode(False)
         self.Context.SetDisplayMode(AIS_Shaded, True)
 
-    def SetModeHLR(self):
+    def SetModeHLR(self) -> None:
         """
         Sets the display mode to hidden line removal.
         """
         self.View.SetComputedMode(True)
 
-    def SetOrthographicProjection(self):
+    def SetOrthographicProjection(self) -> None:
         """
         Sets the projection to orthographic.
         """
         self.camera.SetProjectionType(Graphic3d_Camera.Projection_Orthographic)
 
-    def SetPerspectiveProjection(self):
+    def SetPerspectiveProjection(self) -> None:
         """
         Sets the projection to perspective.
         """
         self.camera.SetProjectionType(Graphic3d_Camera.Projection_Perspective)
 
-    def View_Top(self):
+    def View_Top(self) -> None:
         """
         Sets the view to top.
         """
         self.View.SetProj(V3d_Zpos)
 
-    def View_Bottom(self):
+    def View_Bottom(self) -> None:
         """
         Sets the view to bottom.
         """
         self.View.SetProj(V3d_Zneg)
 
-    def View_Left(self):
+    def View_Left(self) -> None:
         """
         Sets the view to left.
         """
         self.View.SetProj(V3d_Xneg)
 
-    def View_Right(self):
+    def View_Right(self) -> None:
         """
         Sets the view to right.
         """
         self.View.SetProj(V3d_Xpos)
 
-    def View_Front(self):
+    def View_Front(self) -> None:
         """
         Sets the view to front.
         """
         self.View.SetProj(V3d_Yneg)
 
-    def View_Rear(self):
+    def View_Rear(self) -> None:
         """
         Sets the view to rear.
         """
         self.View.SetProj(V3d_Ypos)
 
-    def View_Iso(self):
+    def View_Iso(self) -> None:
         """
         Sets the view to isometric.
         """
         self.View.SetProj(V3d_XposYnegZpos)
 
-    def EnableTextureEnv(self, name_of_texture=Graphic3d_NOT_ENV_CLOUDS):
+    def EnableTextureEnv(self, name_of_texture: int = Graphic3d_NOT_ENV_CLOUDS) -> None:
         """
         Enables environment mapping.
 
@@ -406,7 +412,7 @@ class Viewer3d(Display3d):
         self.View.SetTextureEnv(texture_env)
         self.View.Redraw()
 
-    def DisableTextureEnv(self):
+    def DisableTextureEnv(self) -> None:
         """
         Disables environment mapping.
         """
@@ -418,16 +424,16 @@ class Viewer3d(Display3d):
 
     def SetRenderingParams(
         self,
-        Method=Graphic3d_RM_RASTERIZATION,
-        RaytracingDepth=3,
-        IsShadowEnabled=True,
-        IsReflectionEnabled=False,
-        IsAntialiasingEnabled=False,
-        IsTransparentShadowEnabled=False,
-        StereoMode=Graphic3d_StereoMode_QuadBuffer,
-        AnaglyphFilter=Graphic3d_RenderingParams.Anaglyph_RedCyan_Optimized,
-        ToReverseStereo=False,
-    ):
+        Method: int = Graphic3d_RM_RASTERIZATION,
+        RaytracingDepth: int = 3,
+        IsShadowEnabled: bool = True,
+        IsReflectionEnabled: bool = False,
+        IsAntialiasingEnabled: bool = False,
+        IsTransparentShadowEnabled: bool = False,
+        StereoMode: int = Graphic3d_StereoMode_QuadBuffer,
+        AnaglyphFilter: "Graphic3d_RenderingParams.Anaglyph" = Graphic3d_RenderingParams.Anaglyph_RedCyan_Optimized,
+        ToReverseStereo: bool = False,
+    ) -> None:
         """
         Sets the rendering parameters.
 
@@ -454,13 +460,13 @@ class Viewer3d(Display3d):
             ToReverseStereo,
         )
 
-    def SetRasterizationMode(self):
+    def SetRasterizationMode(self) -> None:
         """
         Sets the rendering mode to rasterization.
         """
         self.SetRenderingParams()
 
-    def SetRaytracingMode(self, depth=3):
+    def SetRaytracingMode(self, depth: int = 3) -> None:
         """
         Enables the raytracing mode.
 
@@ -476,7 +482,7 @@ class Viewer3d(Display3d):
             IsTransparentShadowEnabled=True,
         )
 
-    def ExportToImage(self, image_filename):
+    def ExportToImage(self, image_filename: str) -> None:
         """
         Exports the view to an image file.
 
@@ -485,14 +491,14 @@ class Viewer3d(Display3d):
         """
         self.View.Dump(image_filename)
 
-    def display_graduated_trihedron(self):
+    def display_graduated_trihedron(self) -> None:
         """
         Displays a graduated trihedron.
         """
         a_trihedron_data = Graphic3d_GraduatedTrihedron()
         self.View.GraduatedTrihedronDisplay(a_trihedron_data)
 
-    def display_triedron(self):
+    def display_triedron(self) -> None:
         """
         Shows a black triedron in lower right corner.
         """
@@ -503,13 +509,18 @@ class Viewer3d(Display3d):
             V3d_ZBUFFER,
         )
 
-    def hide_triedron(self):
+    def hide_triedron(self) -> None:
         """
         Hides the triedron.
         """
         self.View.TriedronErase()
 
-    def set_bg_gradient_color(self, color1, color2, fill_method=Aspect_GFM_VER):
+    def set_bg_gradient_color(
+        self,
+        color1: Union[List[float], Quantity_Color],
+        color2: Union[List[float], Quantity_Color],
+        fill_method: Aspect_FillMethod = Aspect_GFM_VER,
+    ) -> None:
         """
         Sets a background vertical gradient color.
 
@@ -542,7 +553,7 @@ class Viewer3d(Display3d):
             )
         self.View.SetBgGradientColors(color1, color2, fill_method, True)
 
-    def SetBackgroundImage(self, image_filename, stretch=True):
+    def SetBackgroundImage(self, image_filename: str, stretch: bool = True) -> None:
         """
         Displays a background image (jpg, png etc.).
 
@@ -557,7 +568,9 @@ class Viewer3d(Display3d):
         else:
             self.View.SetBackgroundImage(image_filename, Aspect_FM_NONE, True)
 
-    def DisplayVector(self, vec, pnt, update=False):
+    def DisplayVector(
+        self, vec: gp_Vec, pnt: gp_Pnt, update: bool = False
+    ) -> Optional[Graphic3d_Structure]:
         """
         Displays a vector as an arrow.
 
@@ -589,15 +602,16 @@ class Viewer3d(Display3d):
             if update:
                 self.Repaint()
             return aStructure
+        return None
 
     def DisplayMessage(
         self,
-        point,
-        text_to_write,
-        height=14.0,
-        message_color=(0.0, 0.0, 0.0),
-        update=False,
-    ):
+        point: Union[gp_Pnt, gp_Pnt2d],
+        text_to_write: str,
+        height: float = 14.0,
+        message_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
+        update: bool = False,
+    ) -> Graphic3d_Structure:
         """
         Displays a message at the given point.
 
@@ -631,13 +645,13 @@ class Viewer3d(Display3d):
 
     def DisplayShape(
         self,
-        shapes,
-        material=None,
-        texture=None,
-        color=None,
-        transparency=None,
-        update=False,
-    ):
+        shapes: Any,
+        material: Optional[Any] = None,
+        texture: Optional[Any] = None,
+        color: Optional[Union[str, int, Quantity_Color]] = None,
+        transparency: Optional[float] = None,
+        update: bool = False,
+    ) -> List[AIS_Shape]:
         """
         Displays one or a set of displayable objects.
 
@@ -653,7 +667,7 @@ class Viewer3d(Display3d):
         Returns:
             A list of the displayed AIS_Shape objects.
         """
-        ais_shapes = []  # the list of all displayed shapes
+        ais_shapes: List[AIS_Shape] = []  # the list of all displayed shapes
 
         if issubclass(shapes.__class__, gp_Pnt):
             # if a gp_Pnt is passed, first convert to vertex
@@ -750,10 +764,10 @@ class Viewer3d(Display3d):
 
     def DisplayColoredShape(
         self,
-        shapes,
-        color="YELLOW",
-        update=False,
-    ):
+        shapes: Any,
+        color: Union[str, Quantity_Color] = "YELLOW",
+        update: bool = False,
+    ) -> List[AIS_Shape]:
         """
         Displays a shape with the given color.
 
@@ -786,25 +800,25 @@ class Viewer3d(Display3d):
 
         return self.DisplayShape(shapes, color=clr, update=update)
 
-    def EnableAntiAliasing(self):
+    def EnableAntiAliasing(self) -> None:
         """
         Enables anti-aliasing.
         """
         self.SetNbMsaaSample(4)
 
-    def DisableAntiAliasing(self):
+    def DisableAntiAliasing(self) -> None:
         """
         Disables anti-aliasing.
         """
         self.SetNbMsaaSample(0)
 
-    def EraseAll(self):
+    def EraseAll(self) -> None:
         """
         Erases all objects from the view.
         """
         self.Context.EraseAll(True)
 
-    def Tumble(self, num_images, animation=True):
+    def Tumble(self, num_images: int, animation: bool = True) -> None:
         """
         Tumbles the view.
 
@@ -814,7 +828,7 @@ class Viewer3d(Display3d):
         """
         self.View.Tumble(num_images, animation)
 
-    def Pan(self, dx, dy):
+    def Pan(self, dx: int, dy: int) -> None:
         """
         Pans the view.
 
@@ -824,7 +838,7 @@ class Viewer3d(Display3d):
         """
         self.View.Pan(dx, dy)
 
-    def SetSelectionMode(self, mode=None):
+    def SetSelectionMode(self, mode: Optional[int] = None) -> None:
         """
         Sets the selection mode.
 
@@ -840,55 +854,55 @@ class Viewer3d(Display3d):
             self.Context.Activate(AIS_Shape.SelectionMode(mode), True)
         self.Context.UpdateSelected(True)
 
-    def SetSelectionModeVertex(self):
+    def SetSelectionModeVertex(self) -> None:
         """
         Sets the selection mode to vertex.
         """
         self.SetSelectionMode(TopAbs_VERTEX)
 
-    def SetSelectionModeEdge(self):
+    def SetSelectionModeEdge(self) -> None:
         """
         Sets the selection mode to edge.
         """
         self.SetSelectionMode(TopAbs_EDGE)
 
-    def SetSelectionModeWire(self):
+    def SetSelectionModeWire(self) -> None:
         """
         Sets the selection mode to wire.
         """
         self.SetSelectionMode(TopAbs_WIRE)
 
-    def SetSelectionModeFace(self):
+    def SetSelectionModeFace(self) -> None:
         """
         Sets the selection mode to face.
         """
         self.SetSelectionMode(TopAbs_FACE)
 
-    def SetSelectionModeShell(self):
+    def SetSelectionModeShell(self) -> None:
         """
         Sets the selection mode to shell.
         """
         self.SetSelectionMode(TopAbs_SHELL)
 
-    def SetSelectionModeSolid(self):
+    def SetSelectionModeSolid(self) -> None:
         """
         Sets the selection mode to solid.
         """
         self.SetSelectionMode(TopAbs_SOLID)
 
-    def SetSelectionModeShape(self):
+    def SetSelectionModeShape(self) -> None:
         """
         Sets the selection mode to shape.
         """
         self.Context.Deactivate()
 
-    def SetSelectionModeNeutral(self):
+    def SetSelectionModeNeutral(self) -> None:
         """
         Sets the selection mode to neutral.
         """
         self.Context.Deactivate()
 
-    def GetSelectedShapes(self):
+    def GetSelectedShapes(self) -> List[AIS_Shape]:
         """
         Returns the selected shapes.
 
@@ -897,7 +911,7 @@ class Viewer3d(Display3d):
         """
         return self.selected_shapes
 
-    def GetSelectedShape(self):
+    def GetSelectedShape(self) -> AIS_Shape:
         """
         Returns the selected shape.
 
@@ -906,7 +920,7 @@ class Viewer3d(Display3d):
         """
         return self.Context.SelectedShape()
 
-    def SelectArea(self, Xmin, Ymin, Xmax, Ymax):
+    def SelectArea(self, Xmin: int, Ymin: int, Xmax: int, Ymax: int) -> None:
         """
         Selects objects within the given area.
 
@@ -928,7 +942,7 @@ class Viewer3d(Display3d):
         for callback in self._select_callbacks:
             callback(self.selected_shapes, Xmin, Ymin, Xmax, Ymax)
 
-    def Select(self, X, Y):
+    def Select(self, X: int, Y: int) -> None:
         """
         Selects the object at the given coordinates.
 
@@ -947,7 +961,7 @@ class Viewer3d(Display3d):
         for callback in self._select_callbacks:
             callback(self.selected_shapes, X, Y)
 
-    def ShiftSelect(self, X, Y):
+    def ShiftSelect(self, X: int, Y: int) -> None:
         """
         Adds the object at the given coordinates to the selection.
 
@@ -969,7 +983,7 @@ class Viewer3d(Display3d):
         for callback in self._select_callbacks:
             callback(self.selected_shapes, X, Y)
 
-    def Rotation(self, X, Y):
+    def Rotation(self, X: int, Y: int) -> None:
         """
         Rotates the view.
 
@@ -979,7 +993,7 @@ class Viewer3d(Display3d):
         """
         self.View.Rotation(X, Y)
 
-    def DynamicZoom(self, X1, Y1, X2, Y2):
+    def DynamicZoom(self, X1: int, Y1: int, X2: int, Y2: int) -> None:
         """
         Zooms the view dynamically.
 
@@ -991,7 +1005,7 @@ class Viewer3d(Display3d):
         """
         self.View.Zoom(X1, Y1, X2, Y2)
 
-    def ZoomFactor(self, zoom_factor):
+    def ZoomFactor(self, zoom_factor: float) -> None:
         """
         Sets the zoom factor.
 
@@ -1000,7 +1014,7 @@ class Viewer3d(Display3d):
         """
         self.View.SetZoom(zoom_factor)
 
-    def ZoomArea(self, X1, Y1, X2, Y2):
+    def ZoomArea(self, X1: int, Y1: int, X2: int, Y2: int) -> None:
         """
         Zooms to the given area.
 
@@ -1012,7 +1026,7 @@ class Viewer3d(Display3d):
         """
         self.View.WindowFit(X1, Y1, X2, Y2)
 
-    def Zoom(self, X, Y):
+    def Zoom(self, X: int, Y: int) -> None:
         """
         Zooms the view.
 
@@ -1022,7 +1036,7 @@ class Viewer3d(Display3d):
         """
         self.View.Zoom(X, Y)
 
-    def StartRotation(self, X, Y):
+    def StartRotation(self, X: int, Y: int) -> None:
         """
         Starts the rotation.
 
@@ -1042,7 +1056,7 @@ class OffscreenRenderer(Viewer3d):
     each time it is called.
     """
 
-    def __init__(self, screen_size=(640, 480)):
+    def __init__(self, screen_size: Tuple[int, int] = (640, 480)) -> None:
         """
         Initializes the OffscreenRenderer.
 
@@ -1060,16 +1074,16 @@ class OffscreenRenderer(Viewer3d):
 
     def DisplayShape(
         self,
-        shapes,
-        material=None,
-        texture=None,
-        color=None,
-        transparency=None,
-        update=True,
-        dump_image=True,
-        dump_image_path=None,
-        dump_image_filename=None,
-    ):
+        shapes: Any,
+        material: Optional[Any] = None,
+        texture: Optional[Any] = None,
+        color: Optional[Union[str, int, Quantity_Color]] = None,
+        transparency: Optional[float] = None,
+        update: bool = True,
+        dump_image: bool = True,
+        dump_image_path: Optional[str] = None,
+        dump_image_filename: Optional[str] = None,
+    ) -> List[AIS_Shape]:
         """
         Displays a shape and dumps the view to an image file.
 

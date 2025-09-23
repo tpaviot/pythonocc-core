@@ -25,7 +25,7 @@ class tkViewer3d(tk.Frame):
     A Tkinter widget for an OCC viewer.
     """
 
-    def __init__(self, parent, default=""):
+    def __init__(self, parent: "tk.Widget", default: str = "") -> None:
         """
         Initializes the tkViewer3d.
 
@@ -50,7 +50,7 @@ class tkViewer3d(tk.Frame):
 
         self.drag_pos_y = self.drag_pos_x = 0
 
-    def LeftDown(self, event):
+    def LeftDown(self, event: "tk.Event") -> None:
         """
         Called when the left mouse button is pressed.
         """
@@ -58,13 +58,13 @@ class tkViewer3d(tk.Frame):
         self.drag_pos_y = event.y
         self._display.StartRotation(self.drag_pos_x, self.drag_pos_y)
 
-    def Rotate(self, event):
+    def Rotate(self, event: "tk.Event") -> None:
         """
         Called when the mouse is moved with the left button pressed.
         """
         self._display.Rotation(event.x, event.y)
 
-    def Pan(self, event):
+    def Pan(self, event: "tk.Event") -> None:
         """
         Called when the mouse is moved with the middle button pressed.
         """
@@ -74,7 +74,7 @@ class tkViewer3d(tk.Frame):
         self.drag_pos_y = event.y
         self._display.Pan(dx, -dy)
 
-    def Zoom(self, event):
+    def Zoom(self, event: "tk.Event") -> None:
         """
         Called when the mouse wheel is scrolled.
         """
@@ -90,14 +90,14 @@ class tkViewer3d(tk.Frame):
             zoom_factor = 1.2
         self._display.ZoomFactor(zoom_factor)
 
-    def Resize(self, event):
+    def Resize(self, event: "tk.Event") -> None:
         """
         Called when the widget is resized.
         """
         if self._inited:
             self._display.Repaint()
 
-    def Map(self, event):
+    def Map(self, event: "tk.Event") -> None:
         """
         Called when the widget is mapped.
         """

@@ -19,6 +19,7 @@
 
 import logging
 import os
+from typing import Any, Callable, Dict, List, Optional
 
 from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.gp import gp_Trsf
@@ -36,7 +37,7 @@ class qtBaseViewer(QtWidgets.QWidget):
     The base Qt Widget for an OCC viewer.
     """
 
-    def __init__(self, parent=None):
+    def __init__(self, parent: Optional[Any] = None) -> None:
         """
         Initializes the qtBaseViewer.
 
@@ -59,14 +60,14 @@ class qtBaseViewer(QtWidgets.QWidget):
 
         self.setAutoFillBackground(False)
 
-    def resizeEvent(self, event):
+    def resizeEvent(self, event: Any) -> None:
         """
         Called when the widget is resized.
         """
         super(qtBaseViewer, self).resizeEvent(event)
         self._display.View.MustBeResized()
 
-    def paintEngine(self):
+    def paintEngine(self) -> None:
         """
         Returns the paint engine.
         """
@@ -87,7 +88,7 @@ class qtViewer3d(qtBaseViewer):
     else:
         raise IOError("no signal")
 
-    def __init__(self, *kargs):
+    def __init__(self, *kargs: Any) -> None:
         """
         Initializes the qtViewer3d.
         """
@@ -105,22 +106,22 @@ class qtViewer3d(qtBaseViewer):
         self._selection = None
         self._drawtext = True
         self._qApp = QtWidgets.QApplication.instance()
-        self._key_map = {}
+        self._key_map: Dict[int, Callable] = {}
         self._current_cursor = "arrow"
-        self._available_cursors = {}
+        self._available_cursors: Dict[str, QtGui.QCursor] = {}
 
     @property
-    def qApp(self):
+    def qApp(self) -> Any:
         """
         A reference to the QApplication instance.
         """
         return self._qApp
 
     @qApp.setter
-    def qApp(self, value):
+    def qApp(self, value: Any) -> None:
         self._qApp = value
 
-    def InitDriver(self):
+    def InitDriver(self) -> None:
         """
         Initializes the driver.
         """
@@ -140,7 +141,7 @@ class qtViewer3d(qtBaseViewer):
         }
         self.createCursors()
 
-    def createCursors(self):
+    def createCursors(self) -> None:
         """
         Creates the cursors.
         """
@@ -164,7 +165,7 @@ class qtViewer3d(qtBaseViewer):
 
         self._current_cursor = "arrow"
 
-    def keyPressEvent(self, event):
+    def keyPressEvent(self, event: Any) -> None:
         """
         Called when a key is pressed.
         """
@@ -179,21 +180,21 @@ class qtViewer3d(qtBaseViewer):
         else:
             log.info("key: code %i not mapped to any function" % code)
 
-    def focusInEvent(self, event):
+    def focusInEvent(self, event: Any) -> None:
         """
         Called when the widget gains focus.
         """
         if self._inited:
             self._display.Repaint()
 
-    def focusOutEvent(self, event):
+    def focusOutEvent(self, event: Any) -> None:
         """
         Called when the widget loses focus.
         """
         if self._inited:
             self._display.Repaint()
 
-    def paintEvent(self, event):
+    def paintEvent(self, event: Any) -> None:
         """
         Called when the widget is painted.
         """
@@ -208,7 +209,7 @@ class qtViewer3d(qtBaseViewer):
             rect = QtCore.QRect(*self._drawbox)
             painter.drawRect(rect)
 
-    def wheelEvent(self, event):
+    def wheelEvent(self, event: Any) -> None:
         """
         Called when the mouse wheel is scrolled.
         """
@@ -217,14 +218,14 @@ class qtViewer3d(qtBaseViewer):
         self._display.ZoomFactor(zoom_factor)
 
     @property
-    def cursor(self):
+    def cursor(self) -> str:
         """
         The current cursor.
         """
         return self._current_cursor
 
     @cursor.setter
-    def cursor(self, value):
+    def cursor(self, value: str) -> None:
         if self._current_cursor != value:
             self._current_cursor = value
             if cursor := self._available_cursors.get(value):
@@ -232,7 +233,7 @@ class qtViewer3d(qtBaseViewer):
             else:
                 self.qApp.restoreOverrideCursor()
 
-    def mousePressEvent(self, event):
+    def mousePressEvent(self, event: Any) -> None:
         """
         Called when a mouse button is pressed.
         """
@@ -242,7 +243,7 @@ class qtViewer3d(qtBaseViewer):
         self.dragStartPosY = ev.y()
         self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
-    def mouseReleaseEvent(self, event):
+    def mouseReleaseEvent(self, event: Any) -> None:
         """
         Called when a mouse button is released.
         """
@@ -271,7 +272,7 @@ class qtViewer3d(qtBaseViewer):
 
         self.cursor = "arrow"
 
-    def DrawBox(self, event):
+    def DrawBox(self, event: Any) -> None:
         """
         Draws a selection box.
         """
@@ -283,7 +284,7 @@ class qtViewer3d(qtBaseViewer):
             return
         self._drawbox = [self.dragStartPosX, self.dragStartPosY, dx, dy]
 
-    def mouseMoveEvent(self, evt):
+    def mouseMoveEvent(self, evt: Any) -> None:
         """
         Called when the mouse is moved.
         """
@@ -349,7 +350,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
     elif hasattr(QtCore, "Signal"):
         sig_topods_selected = QtCore.Signal(list)
 
-    def __init__(self, *kargs):
+    def __init__(self, *kargs: Any) -> None:
         """
         Initializes the qtViewer3dWithManipulator.
         """
@@ -367,16 +368,16 @@ class qtViewer3dWithManipulator(qtViewer3d):
         self._selection = None
         self._drawtext = True
         self._qApp = QtWidgets.QApplication.instance()
-        self._key_map = {}
+        self._key_map: Dict[int, Callable] = {}
         self._current_cursor = "arrow"
-        self._available_cursors = {}
+        self._available_cursors: Dict[str, QtGui.QCursor] = {}
 
         # create empty manipulator
         self.manipulator = AIS_Manipulator()
-        self.trsf_manip = []
+        self.trsf_manip: List[gp_Trsf] = []
         self.manip_moved = False
 
-    def set_manipulator(self, manipulator):
+    def set_manipulator(self, manipulator: AIS_Manipulator) -> None:
         """
         Sets the manipulator to use.
 
@@ -387,7 +388,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
         self.manipulator = manipulator
         self.manip_moved = False
 
-    def mousePressEvent(self, event):
+    def mousePressEvent(self, event: Any) -> None:
         """
         Called when a mouse button is pressed.
         """
@@ -402,7 +403,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
         else:
             self._display.StartRotation(self.dragStartPosX, self.dragStartPosY)
 
-    def mouseMoveEvent(self, evt):
+    def mouseMoveEvent(self, evt: Any) -> None:
         """
         Called when the mouse is moved.
         """
@@ -461,7 +462,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
             self._display.MoveTo(pt.x(), pt.y())
             self.cursor = "arrow"
 
-    def get_trsf_from_manip(self):
+    def get_trsf_from_manip(self) -> gp_Trsf:
         """
         Returns the transformation from the manipulator.
         """
@@ -470,7 +471,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
             trsf.Multiply(t)
         return trsf
 
-    def mouseReleaseEvent(self, event):
+    def mouseReleaseEvent(self, event: Any) -> None:
         """
         Called when a mouse button is released.
         """
