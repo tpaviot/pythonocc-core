@@ -44,7 +44,7 @@ test:
     - pytest
     - svgwrite
     - wxpython >=4
-    - pyside6
+    - pyside6  # [not osx]
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
