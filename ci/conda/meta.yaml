@@ -22,7 +22,7 @@ requirements:
     - {{ cdt('libxi-devel') }}          # [linux]
     - ninja
     - cmake
-    - swig ==4.3.1
+    - swig ==4.4.0
 
   host:
     - python {{ python }}
@@ -44,7 +44,7 @@ test:
     - pytest
     - svgwrite
     - wxpython >=4
-    - pyside6
+    - pyside6  # [not osx]
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
