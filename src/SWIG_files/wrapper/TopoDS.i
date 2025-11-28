@@ -1334,10 +1334,9 @@ No available documentation.
 }
 %pythoncode {
 def __ne__(self, right):
-    try:
-        return self.__ne_wrapper__(right)
-    except:
+    if not isinstance(right, TopoDS_Shape):
         return True
+    return self.__ne_wrapper__(right)
 }
 
 %extend{
@@ -1348,10 +1347,9 @@ def __ne__(self, right):
 }
 %pythoncode {
 def __eq__(self, right):
-    try:
-        return self.__eq_wrapper__(right)
-    except:
+    if not isinstance(right, TopoDS_Shape):
         return False
+    return self.__eq_wrapper__(right)
 }
 };
 

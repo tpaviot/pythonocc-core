@@ -144,30 +144,54 @@ Standard_Boolean & function transformation
 
     switch (sh->ShapeType())
     {
-      case TopAbs_COMPOUND:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+      case TopAbs_COMPOUND: {
+        TopoDS_Compound* ptr = new TopoDS_Compound(TopoDS::Compound(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_COMPSOLID:
-        resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_COMPSOLID: {
+        TopoDS_CompSolid* ptr = new TopoDS_CompSolid(TopoDS::CompSolid(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_SOLID:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_SOLID: {
+        TopoDS_Solid* ptr = new TopoDS_Solid(TopoDS::Solid(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_SHELL:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_SHELL: {
+        TopoDS_Shell* ptr = new TopoDS_Shell(TopoDS::Shell(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_FACE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_FACE: {
+        TopoDS_Face* ptr = new TopoDS_Face(TopoDS::Face(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_WIRE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_WIRE: {
+        TopoDS_Wire* ptr = new TopoDS_Wire(TopoDS::Wire(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_EDGE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_EDGE: {
+        TopoDS_Edge* ptr = new TopoDS_Edge(TopoDS::Edge(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_VERTEX:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_VERTEX: {
+        TopoDS_Vertex* ptr = new TopoDS_Vertex(TopoDS::Vertex(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
+      }
       default:
         break;
     }
@@ -184,30 +208,54 @@ Standard_Boolean & function transformation
 
     switch (sh->ShapeType())
     {
-      case TopAbs_COMPOUND:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+      case TopAbs_COMPOUND: {
+        TopoDS_Compound* ptr = new TopoDS_Compound(TopoDS::Compound(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_COMPSOLID:
-        resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_COMPSOLID: {
+        TopoDS_CompSolid* ptr = new TopoDS_CompSolid(TopoDS::CompSolid(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_SOLID:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_SOLID: {
+        TopoDS_Solid* ptr = new TopoDS_Solid(TopoDS::Solid(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_SHELL:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_SHELL: {
+        TopoDS_Shell* ptr = new TopoDS_Shell(TopoDS::Shell(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_FACE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_FACE: {
+        TopoDS_Face* ptr = new TopoDS_Face(TopoDS::Face(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_WIRE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_WIRE: {
+        TopoDS_Wire* ptr = new TopoDS_Wire(TopoDS::Wire(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_EDGE:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_EDGE: {
+        TopoDS_Edge* ptr = new TopoDS_Edge(TopoDS::Edge(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
-      case TopAbs_VERTEX:
-        resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+      }
+      case TopAbs_VERTEX: {
+        TopoDS_Vertex* ptr = new TopoDS_Vertex(TopoDS::Vertex(*sh));
+        resultobj = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+        if (!resultobj) delete ptr;
         break;
+      }
       default:
         break;
     }
