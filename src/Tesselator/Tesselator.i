@@ -57,8 +57,8 @@ class ShapeTesselator {
         void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
         void SetDeviation(double aDeviation);
         double GetDeviation();
-        double* VerticesList();
-        double* NormalsList();
+        const float* VerticesList();
+        const float* NormalsList();
         int ObjGetTriangleCount();
         int ObjGetInvalidTriangleCount();
         int ObjGetVertexCount();
