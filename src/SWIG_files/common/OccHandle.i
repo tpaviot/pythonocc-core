@@ -76,26 +76,7 @@ template <typename T> class handle{};
 
 %define WRAP_OCC_TRANSIENT(CONST, TYPE)
 
-%typemap(out) opencascade::handle<TYPE> {
-  TYPE * presult = nullptr;
-  if (!$1.IsNull()) {
-    presult = $1.get();
-    if (presult) {
-      presult->IncrementRefCounter();
-#ifdef DEBUG_MEMORY
-      handle_creation_count++;
-#endif
-    }
-  }
-  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
-  if (!obj && presult) {
-    presult->DecrementRefCounter();
-    SWIG_fail;
-  }
-  %set_output(obj);
-}
-
-%typemap(out) Handle_ ## TYPE {
+%typemap(out) opencascade::handle<TYPE>, Handle_ ## TYPE {
   TYPE * presult = nullptr;
   if (!$1.IsNull()) {
     presult = $1.get();
@@ -132,26 +113,7 @@ template <typename T> class handle{};
 }
 
 
-%typemap(out) CONST opencascade::handle<TYPE>& {
-  TYPE * presult = nullptr;
-  if ($1 && !$1->IsNull()) {
-    presult = $1->get();
-    if (presult) {
-      presult->IncrementRefCounter();
-#ifdef DEBUG_MEMORY
-      handle_creation_count++;
-#endif
-    }
-  }
-  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
-  if (!obj && presult) {
-    presult->DecrementRefCounter();
-    SWIG_fail;
-  }
-  %set_output(obj);
-}
-
-%typemap(out) CONST Handle_ ## TYPE& {
+%typemap(out) CONST opencascade::handle<TYPE>&, CONST Handle_ ## TYPE& {
   TYPE * presult = nullptr;
   if ($1 && !$1->IsNull()) {
     presult = $1->get();
@@ -200,29 +162,12 @@ template <typename T> class handle{};
 }
 
 // shared_ptr by reference
-%typemap(in) opencascade::handle<TYPE> &(void *argp, int res = 0, $*1_ltype tempshared) {
+%typemap(in) opencascade::handle<TYPE> &, Handle_ ## TYPE & (void *argp, int res = 0, $*1_ltype tempshared) {
   int newmem = 0;
   res = SWIG_ConvertPtrAndOwn($input, &argp, $descriptor(TYPE *), %convertptr_flags, &newmem);
   if (!SWIG_IsOK(res)) {
     %argument_fail(res, "$type", $symname, $argnum);
   }
-  if (argp) {
-    TYPE* typed_ptr = %reinterpret_cast(argp, TYPE*);
-    if (typed_ptr) {
-      tempshared = opencascade::handle< TYPE >(typed_ptr);
-    }
-  }
-  $1 = &tempshared;
-}
-
-// shared_ptr by reference
-%typemap(in) Handle_ ## TYPE &(void *argp, int res = 0, $*1_ltype tempshared) {
-  int newmem = 0;
-  res = SWIG_ConvertPtrAndOwn($input, &argp, $descriptor(TYPE *), %convertptr_flags, &newmem);
-  if (!SWIG_IsOK(res)) {
-    %argument_fail(res, "$type", $symname, $argnum);
-  }
-
   if (argp) {
     TYPE* typed_ptr = %reinterpret_cast(argp, TYPE*);
     if (typed_ptr) {
@@ -251,7 +196,7 @@ template <typename T> class handle{};
 // to return them. This empty typemap ensures that const handle<T>& parameters
 // are treated as input-only parameters.
 // This typemap has higher priority than the non-const version below.
-%typemap(argout) const opencascade::handle<TYPE> & {
+%typemap(argout) const opencascade::handle<TYPE> &, const Handle_ ## TYPE & {
   // Intentionally empty - const references are read-only parameters
   // Example: GeomAPI_Interpolate(const handle<TColgp_HArray1OfPnt>& Points, ...)
   //          The Points parameter is input-only and won't be returned
@@ -262,7 +207,7 @@ template <typename T> class handle{};
 // Non-const references can be modified by the function. This typemap
 // extracts the modified handle and returns it to Python, replacing
 // the default void return value.
-%typemap(argout) opencascade::handle<TYPE> & {
+%typemap(argout) opencascade::handle<TYPE> &, Handle_ ## TYPE & {
   TYPE * presult = nullptr;
 
   // Check if the handle is valid (not null)
@@ -295,9 +240,6 @@ template <typename T> class handle{};
   // decrement its reference count when the Python object is garbage collected
   $result = SWIG_NewPointerObj(SWIG_as_voidptr(presult), SWIGTYPE_p_ ## TYPE, SWIG_POINTER_OWN);
 }
-
-// Note: Similar typemaps should be added for Handle_TYPE & syntax if needed
-// for backward compatibility with older OpenCASCADE code
 
 %typemap(typecheck,precedence=SWIG_TYPECHECK_POINTER,noblock=1)
                       TYPE CONST,
@@ -347,7 +289,7 @@ WRAP_OCC_TRANSIENT(const, TYPE)
     handle_deletion_count++;
 #endif
     if($this->DecrementRefCounter() == 0) {
-      delete $this;
+      $this->Delete();
     }
   }
 %}
