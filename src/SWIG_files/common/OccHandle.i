@@ -87,7 +87,12 @@ template <typename T> class handle{};
 #endif
     }
   }
-  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
+  if (!obj && presult) {
+    presult->DecrementRefCounter();
+    SWIG_fail;
+  }
+  %set_output(obj);
 }
 
 %typemap(out) Handle_ ## TYPE {
@@ -101,7 +106,12 @@ template <typename T> class handle{};
 #endif
     }
   }
-  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
+  if (!obj && presult) {
+    presult->DecrementRefCounter();
+    SWIG_fail;
+  }
+  %set_output(obj);
 }
 
 // avoid useless copy for const objects
@@ -113,7 +123,12 @@ template <typename T> class handle{};
       handle_creation_count++;
 #endif
     }
-    %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+    PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
+    if (!obj && presult) {
+      presult->DecrementRefCounter();
+      SWIG_fail;
+    }
+    %set_output(obj);
 }
 
 
@@ -128,7 +143,12 @@ template <typename T> class handle{};
 #endif
     }
   }
-  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
+  if (!obj && presult) {
+    presult->DecrementRefCounter();
+    SWIG_fail;
+  }
+  %set_output(obj);
 }
 
 %typemap(out) CONST Handle_ ## TYPE& {
@@ -142,7 +162,12 @@ template <typename T> class handle{};
 #endif
     }
   }
-  %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
+  PyObject * obj = SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN);
+  if (!obj && presult) {
+    presult->DecrementRefCounter();
+    SWIG_fail;
+  }
+  %set_output(obj);
 }
 
 %typemap(out) CONST TYPE&, CONST TYPE* {
@@ -153,7 +178,12 @@ template <typename T> class handle{};
     handle_creation_count++;
 #endif
   }
-  %set_output(SWIG_NewPointerObj(%as_voidptr($1), $descriptor(TYPE *), SWIG_POINTER_OWN));
+  PyObject * obj = SWIG_NewPointerObj(%as_voidptr($1), $descriptor(TYPE *), SWIG_POINTER_OWN);
+  if (!obj && $1) {
+    $1->DecrementRefCounter();
+    SWIG_fail;
+  }
+  %set_output(obj);
 }
 
 %typemap(in) opencascade::handle<TYPE> (void *argp, int res = 0) {
