@@ -176,9 +176,9 @@ void ShapeTesselator::ProcessSingleFace(const TopoDS_Face& face,
     for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
         const auto point = triangulation->Node(i).Transformed(location).XYZ();
         const auto idx = (i - 1) * 3;
-        face_data.vertex_coords[idx] = point.X();
-        face_data.vertex_coords[idx + 1] = point.Y();
-        face_data.vertex_coords[idx + 2] = point.Z();
+        face_data.vertex_coords[idx] = static_cast<float>(point.X());
+        face_data.vertex_coords[idx + 1] = static_cast<float>(point.Y());
+        face_data.vertex_coords[idx + 2] = static_cast<float>(point.Z());
     }
 
     // Process normals if available
@@ -221,9 +221,9 @@ void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
         }
         
         const auto idx = (i - 1) * 3;
-        face_data.normal_coords[idx] = normal.X();
-        face_data.normal_coords[idx + 1] = normal.Y();
-        face_data.normal_coords[idx + 2] = normal.Z();
+        face_data.normal_coords[idx] = static_cast<float>(normal.X());
+        face_data.normal_coords[idx + 1] = static_cast<float>(normal.Y());
+        face_data.normal_coords[idx + 2] = static_cast<float>(normal.Z());
     }
 }
 
@@ -350,7 +350,7 @@ bool ShapeTesselator::ProcessSingleEdge(const TopoDS_Edge& edge,
             vertex.Transform(transform);
             
             edge_data.vertex_coords.insert(edge_data.vertex_coords.end(),
-                {vertex.X(), vertex.Y(), vertex.Z()});
+                {static_cast<float>(vertex.X()), static_cast<float>(vertex.Y()), static_cast<float>(vertex.Z())});
         }
         return true;
     }
@@ -382,7 +382,7 @@ bool ShapeTesselator::ProcessSingleEdge(const TopoDS_Edge& edge,
         vertex.Transform(transform);
         
         edge_data.vertex_coords.insert(edge_data.vertex_coords.end(),
-            {vertex.X(), vertex.Y(), vertex.Z()});
+            {static_cast<float>(vertex.X()), static_cast<float>(vertex.Y()), static_cast<float>(vertex.Z())});
     }
     
     return true;
@@ -432,11 +432,11 @@ Standard_Integer ShapeTesselator::ObjEdgeGetVertexCount(Standard_Integer iEdge) 
     return edge_list[iEdge]->size();
 }
 
-const Standard_Real* ShapeTesselator::VerticesList() const {
+const float* ShapeTesselator::VerticesList() const {
     return computed ? consolidated_vertices.data() : nullptr;
 }
 
-const Standard_Real* ShapeTesselator::NormalsList() const {
+const float* ShapeTesselator::NormalsList() const {
     return computed ? consolidated_normals.data() : nullptr;
 }
 
@@ -451,9 +451,9 @@ std::vector<float> ShapeTesselator::GetVerticesPositionAsTuple() const {
         for (int j = 0; j < 3; ++j) {
             const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
             result.insert(result.end(), {
-                static_cast<float>(consolidated_vertices[vertex_idx]),
-                static_cast<float>(consolidated_vertices[vertex_idx + 1]),
-                static_cast<float>(consolidated_vertices[vertex_idx + 2])
+                consolidated_vertices[vertex_idx],
+                consolidated_vertices[vertex_idx + 1],
+                consolidated_vertices[vertex_idx + 2]
             });
         }
     }
@@ -472,9 +472,9 @@ std::vector<float> ShapeTesselator::GetNormalsAsTuple() const {
         for (int j = 0; j < 3; ++j) {
             const auto normal_idx = consolidated_triangle_indices[base_idx + j] * 3;
             result.insert(result.end(), {
-                static_cast<float>(consolidated_normals[normal_idx]),
-                static_cast<float>(consolidated_normals[normal_idx + 1]),
-                static_cast<float>(consolidated_normals[normal_idx + 2])
+                consolidated_normals[normal_idx],
+                consolidated_normals[normal_idx + 1],
+                consolidated_normals[normal_idx + 2]
             });
         }
     }
@@ -488,9 +488,9 @@ void ShapeTesselator::GetVertex(Standard_Integer index, float& x, float& y, floa
     }
     
     const auto base_idx = index * 3;
-    x = static_cast<float>(consolidated_vertices[base_idx]);
-    y = static_cast<float>(consolidated_vertices[base_idx + 1]);
-    z = static_cast<float>(consolidated_vertices[base_idx + 2]);
+    x = consolidated_vertices[base_idx];
+    y = consolidated_vertices[base_idx + 1];
+    z = consolidated_vertices[base_idx + 2];
 }
 
 void ShapeTesselator::GetNormal(Standard_Integer index, float& x, float& y, float& z) const {
@@ -499,9 +499,9 @@ void ShapeTesselator::GetNormal(Standard_Integer index, float& x, float& y, floa
     }
     
     const auto base_idx = index * 3;
-    x = static_cast<float>(consolidated_normals[base_idx]);
-    y = static_cast<float>(consolidated_normals[base_idx + 1]);
-    z = static_cast<float>(consolidated_normals[base_idx + 2]);
+    x = consolidated_normals[base_idx];
+    y = consolidated_normals[base_idx + 1];
+    z = consolidated_normals[base_idx + 2];
 }
 
 void ShapeTesselator::GetTriangleIndex(Standard_Integer triangle_idx, 
@@ -528,9 +528,9 @@ void ShapeTesselator::GetEdgeVertex(Standard_Integer iEdge, Standard_Integer ive
     }
     
     const auto base_idx = ivert * 3;
-    x = static_cast<float>(edge->vertex_coords[base_idx]);
-    y = static_cast<float>(edge->vertex_coords[base_idx + 1]);
-    z = static_cast<float>(edge->vertex_coords[base_idx + 2]);
+    x = edge->vertex_coords[base_idx];
+    y = edge->vertex_coords[base_idx + 1];
+    z = edge->vertex_coords[base_idx + 2];
 }
 
 void ShapeTesselator::ObjGetTriangle(Standard_Integer trianglenum, Standard_Integer* vertices, Standard_Integer* normals) const {
@@ -590,11 +590,17 @@ std::string ShapeTesselator::ExportShapeToThreejsJSONString(const char* shape_fu
          << "\t\t\t\t\"type\": \"Float32Array\",\n"
          << "\t\t\t\t\"array\": [";
 
-    // Export vertices efficiently
-    auto vertices = GetVerticesPositionAsTuple();
-    for (size_t i = 0; i < vertices.size(); ++i) {
-        if (i > 0) json << ",";
-        json << vertices[i];
+    // Export vertices efficiently without creating intermediate vector
+    for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
+        const auto base_idx = i * 3;
+        for (int j = 0; j < 3; ++j) {
+            if (i > 0 || j > 0) json << ",";
+
+            const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
+            json << consolidated_vertices[vertex_idx] << ","
+                 << consolidated_vertices[vertex_idx + 1] << ","
+                 << consolidated_vertices[vertex_idx + 2];
+        }
     }
 
     json << "]\n\t\t\t},\n"
@@ -603,11 +609,17 @@ std::string ShapeTesselator::ExportShapeToThreejsJSONString(const char* shape_fu
          << "\t\t\t\t\"type\": \"Float32Array\",\n"
          << "\t\t\t\t\"array\": [";
 
-    // Export normals efficiently
-    auto normals = GetNormalsAsTuple();
-    for (size_t i = 0; i < normals.size(); ++i) {
-        if (i > 0) json << ",";
-        json << normals[i];
+    // Export normals efficiently without creating intermediate vector
+    for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
+        const auto base_idx = i * 3;
+        for (int j = 0; j < 3; ++j) {
+            if (i > 0 || j > 0) json << ",";
+
+            const auto normal_idx = consolidated_triangle_indices[base_idx + j] * 3;
+            json << consolidated_normals[normal_idx] << ","
+                 << consolidated_normals[normal_idx + 1] << ","
+                 << consolidated_normals[normal_idx + 2];
+        }
     }
 
     json << "]\n\t\t\t}\n"
@@ -632,17 +644,17 @@ std::string ShapeTesselator::ExportShapeToX3DTriangleSet() const {
         // Process vertices
         for (int j = 0; j < 3; ++j) {
             const auto idx = vertices_idx[j];
-            str_vertices << formatFloatNumber(static_cast<float>(consolidated_vertices[idx])) << " ";
-            str_vertices << formatFloatNumber(static_cast<float>(consolidated_vertices[idx + 1])) << " ";
-            str_vertices << formatFloatNumber(static_cast<float>(consolidated_vertices[idx + 2])) << " ";
+            str_vertices << formatFloatNumber(consolidated_vertices[idx]) << " ";
+            str_vertices << formatFloatNumber(consolidated_vertices[idx + 1]) << " ";
+            str_vertices << formatFloatNumber(consolidated_vertices[idx + 2]) << " ";
         }
         
         // Process normals
         for (int j = 0; j < 3; ++j) {
             const auto idx = normals_idx[j];
-            str_normals << formatFloatNumber(static_cast<float>(consolidated_normals[idx])) << " ";
-            str_normals << formatFloatNumber(static_cast<float>(consolidated_normals[idx + 1])) << " ";
-            str_normals << formatFloatNumber(static_cast<float>(consolidated_normals[idx + 2])) << " ";
+            str_normals << formatFloatNumber(consolidated_normals[idx]) << " ";
+            str_normals << formatFloatNumber(consolidated_normals[idx + 1]) << " ";
+            str_normals << formatFloatNumber(consolidated_normals[idx + 2]) << " ";
         }
     }
     

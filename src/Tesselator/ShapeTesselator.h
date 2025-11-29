@@ -39,8 +39,8 @@
 class ShapeTesselator {
 public:
     struct Face {
-        std::vector<Standard_Real> vertex_coords;     //!< Vertex coordinates (x,y,z)*n
-        std::vector<Standard_Real> normal_coords;     //!< Normal vectors (nx,ny,nz)*n 
+        std::vector<float> vertex_coords;     //!< Vertex coordinates (x,y,z)*n
+        std::vector<float> normal_coords;     //!< Normal vectors (nx,ny,nz)*n
         std::vector<Standard_Integer> triangle_indices; //!< Triangle vertex indices
         Standard_Integer number_of_triangles = 0;     //!< Number of valid triangles
         Standard_Integer number_of_invalid_triangles = 0; //!< Number of invalid triangles
@@ -54,7 +54,7 @@ public:
     };
     
     struct Edge {
-        std::vector<Standard_Real> vertex_coords; //!< Edge vertex coordinates
+        std::vector<float> vertex_coords; //!< Edge vertex coordinates
         
         //! Reserve memory for vertices
         //! @param vertices Expected number of vertices
@@ -76,8 +76,8 @@ private:
     std::vector<std::unique_ptr<Edge>> edge_list;  //!< Collection of tessellated edges
     
     // Consolidated mesh data for efficient access
-    std::vector<Standard_Real> consolidated_vertices;        //!< All vertex coordinates
-    std::vector<Standard_Real> consolidated_normals;         //!< All normal vectors
+    std::vector<float> consolidated_vertices;        //!< All vertex coordinates
+    std::vector<float> consolidated_normals;         //!< All normal vectors
     std::vector<Standard_Integer> consolidated_triangle_indices; //!< All triangle indices
     
     // Statistics counters
@@ -137,8 +137,8 @@ public:
     Standard_Integer ObjEdgeGetVertexCount(Standard_Integer iEdge) const;
 
     // Direct data access
-    const Standard_Real* VerticesList() const;  //!< Get pointer to vertex data
-    const Standard_Real* NormalsList() const;   //!< Get pointer to normal data
+    const float* VerticesList() const;  //!< Get pointer to vertex data
+    const float* NormalsList() const;   //!< Get pointer to normal data
 
     //! Get vertices as a flat array suitable for rendering
     //! @return Vector of vertex positions for all triangles
