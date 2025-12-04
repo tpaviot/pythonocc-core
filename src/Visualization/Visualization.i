@@ -89,6 +89,8 @@ class Display3d {
     void SetFfpEnable(bool theEnabled);
     %feature("autodoc", "1");
     void SetBuffersNoSwap(bool theNoSwap);
+    %feature("autodoc", "1");
+    void SetSRGBDisabled(bool theDisabled);
 };
 
 %extend Display3d {

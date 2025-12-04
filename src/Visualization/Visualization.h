@@ -74,6 +74,7 @@ public:
   Standard_EXPORT void SetContextCompatible(Standard_Boolean theCompatible);
   Standard_EXPORT void SetFfpEnable(Standard_Boolean theEnabled);
   Standard_EXPORT void SetBuffersNoSwap(Standard_Boolean theNoSwap);
+  Standard_EXPORT void SetSRGBDisabled(Standard_Boolean theDisabled);
 
   Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};

@@ -318,3 +318,13 @@ void Display3d::SetBuffersNoSwap(Standard_Boolean theNoSwap)
   // their own buffer swapping.
   GetGraphicDriver()->ChangeOptions().buffersNoSwap = theNoSwap;
 }
+
+void Display3d::SetSRGBDisabled(Standard_Boolean theDisabled)
+{
+  // Disable sRGB rendering (OFF by default in OCCT).
+  // When enabled, OCCT won't attempt to create sRGB framebuffers.
+  // Useful for macOS where GL_SRGB8_ALPHA8 format may not be supported
+  // in certain contexts.
+  // Must be called BEFORE Init()/InitOffscreen() to take effect.
+  GetGraphicDriver()->ChangeOptions().sRGBDisable = theDisabled;
+}
