@@ -283,3 +283,38 @@ void Display3d::Test()
       myV3dView->ZFitAll();
       myV3dView->FitAll();
 }
+
+void Display3d::SetCoreProfileEnabled(Standard_Boolean theEnabled)
+{
+  // Request OpenGL Core Profile instead of compatibility profile.
+  // On macOS, compatibility profile is limited to OpenGL 2.1 / GLSL 1.20.
+  // Core Profile enables OpenGL 3.2+ / GLSL 1.50+ which is required for
+  // Qt6 scene graph integration and modern shader features.
+  // Must be called BEFORE Init() to take effect.
+  GetGraphicDriver()->ChangeOptions().contextCompatible = !theEnabled;
+  GetGraphicDriver()->ChangeOptions().ffpEnable = !theEnabled;
+}
+
+void Display3d::SetContextCompatible(Standard_Boolean theCompatible)
+{
+  // Set whether to request backward-compatible OpenGL context.
+  // When false, requests Core Profile (OpenGL 3.2+).
+  // Must be called BEFORE Init() to take effect.
+  GetGraphicDriver()->ChangeOptions().contextCompatible = theCompatible;
+}
+
+void Display3d::SetFfpEnable(Standard_Boolean theEnabled)
+{
+  // Enable/disable fixed-function pipeline.
+  // Should be disabled when using Core Profile.
+  // Must be called BEFORE Init() to take effect.
+  GetGraphicDriver()->ChangeOptions().ffpEnable = theEnabled;
+}
+
+void Display3d::SetBuffersNoSwap(Standard_Boolean theNoSwap)
+{
+  // Set whether to skip buffer swapping (for external GL context management).
+  // Useful when integrating with Qt Quick or other frameworks that manage
+  // their own buffer swapping.
+  GetGraphicDriver()->ChangeOptions().buffersNoSwap = theNoSwap;
+}

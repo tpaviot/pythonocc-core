@@ -81,6 +81,14 @@ class Display3d {
     bool SetSize(int size_x, int size_y);
     %feature("autodoc", "1");
     bool IsOffscreen();
+    %feature("autodoc", "1");
+    void SetCoreProfileEnabled(bool theEnabled);
+    %feature("autodoc", "1");
+    void SetContextCompatible(bool theCompatible);
+    %feature("autodoc", "1");
+    void SetFfpEnable(bool theEnabled);
+    %feature("autodoc", "1");
+    void SetBuffersNoSwap(bool theNoSwap);
 };
 
 %extend Display3d {
