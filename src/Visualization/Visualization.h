@@ -68,6 +68,14 @@ public:
                                              Standard_Boolean        ToReverseStereo);
   Standard_EXPORT void EnableVBO();
   Standard_EXPORT void DisableVBO();
+
+  // OpenGL context configuration - must be called BEFORE Init()
+  Standard_EXPORT void SetCoreProfileEnabled(Standard_Boolean theEnabled);
+  Standard_EXPORT void SetContextCompatible(Standard_Boolean theCompatible);
+  Standard_EXPORT void SetFfpEnable(Standard_Boolean theEnabled);
+  Standard_EXPORT void SetBuffersNoSwap(Standard_Boolean theNoSwap);
+  Standard_EXPORT void SetSRGBDisabled(Standard_Boolean theDisabled);
+
   Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
 	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
   Standard_EXPORT Handle_Graphic3d_Camera& GetCamera() {return myGraphic3dCamera;};
