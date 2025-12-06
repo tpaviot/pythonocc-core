@@ -347,7 +347,7 @@ WRAP_OCC_TRANSIENT(const, TYPE)
     handle_deletion_count++;
 #endif
     if($this->DecrementRefCounter() == 0) {
-      delete $this;
+      $this->Delete();
     }
   }
 %}
