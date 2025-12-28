@@ -68,6 +68,7 @@ public:
 private:
     // Internal state
     bool computed;                    //!< Whether tessellation has been computed
+    bool use_parallel;               //!< Whether to use parallel processing
     TopoDS_Shape myShape;            //!< The shape to tessellate
     Standard_Real myDeviation;       //!< Tessellation deviation parameter
     
@@ -196,7 +197,8 @@ private:
     void Tessellate(bool compute_edges, float mesh_quality, bool parallel);
 
     //! Process all faces in the shape
-    void ProcessFaces();
+    //! @param faces Vector of faces to process
+    void ProcessFaces(const std::vector<TopoDS_Face>& faces);
 
     //! Process a single face
     //! @param face The face to process
