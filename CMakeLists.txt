@@ -22,7 +22,7 @@ project(PYTHONOCC)
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
 set(PYTHONOCC_VERSION_MINOR 9)
-set(PYTHONOCC_VERSION_PATCH 1)
+set(PYTHONOCC_VERSION_PATCH 3)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL -dev)
@@ -30,7 +30,7 @@ set(PYTHONOCC_VERSION_DEVEL -dev)
 # set OCCT version
 set(OCCT_VERSION_MAJOR 7)
 set(OCCT_VERSION_MINOR 9)
-set(OCCT_VERSION_PATCH 1)
+set(OCCT_VERSION_PATCH 3)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
@@ -110,7 +110,7 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 4.2.1...4.3.1 REQUIRED)
+find_package(SWIG 4.2.1...4.4.1 REQUIRED)
 message(STATUS "SWIG version found: ${SWIG_VERSION}")
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
