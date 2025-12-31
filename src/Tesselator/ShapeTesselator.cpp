@@ -26,6 +26,11 @@
 #include <utility>
 #include <fstream>
 #include <iostream>
+#include <mutex>
+
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 // OpenCASCADE includes  
 #include <TopExp_Explorer.hxx>
@@ -76,9 +81,9 @@ Standard_Integer ShapeTesselator::Edge::size() const noexcept {
 // ========================================================================
 
 ShapeTesselator::ShapeTesselator(const TopoDS_Shape& aShape)
-    : computed(false), myShape(aShape) {
+    : computed(false), use_parallel(false), myShape(aShape) {
     ComputeDefaultDeviation();
-    
+
     // Reserve memory for face and edge collections based on estimates
     face_list.reserve(100);  // Initial estimate
     edge_list.reserve(200);  // Initial estimate
@@ -122,18 +127,20 @@ void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool pa
         throw std::invalid_argument("The mesh quality must be greater than 0");
     }
 
+    use_parallel = parallel;
+
     // Clean and tessellate the shape
     BRepTools::Clean(myShape);
     BRepMesh_IncrementalMesh(myShape, myDeviation * mesh_quality, false, 0.5f * mesh_quality, parallel);
 
-    // Estimate number of faces for pre-allocation
-    Standard_Integer face_count = 0;
+    // Collect faces for processing
+    std::vector<TopoDS_Face> faces;
     for (TopExp_Explorer exp(myShape, TopAbs_FACE); exp.More(); exp.Next()) {
-        ++face_count;
+        faces.push_back(TopoDS::Face(exp.Current()));
     }
-    face_list.reserve(face_count);
+    face_list.reserve(faces.size());
 
-    ProcessFaces();
+    ProcessFaces(faces);
     JoinPrimitives();
 
     if (compute_edges) {
@@ -141,21 +148,56 @@ void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool pa
     }
 }
 
-void ShapeTesselator::ProcessFaces() {
-    for (TopExp_Explorer exp_face(myShape, TopAbs_FACE); exp_face.More(); exp_face.Next()) {
-        TopLoc_Location location;
-        const auto& face = TopoDS::Face(exp_face.Current());
-        auto triangulation = BRep_Tool::Triangulation(face, location);
+void ShapeTesselator::ProcessFaces(const std::vector<TopoDS_Face>& faces) {
+    const auto num_faces = static_cast<Standard_Integer>(faces.size());
 
-        if (triangulation.IsNull()) {
-            continue;
+#ifdef _OPENMP
+    if (use_parallel && num_faces > 1) {
+        // Parallel processing: create face data in parallel, then collect results
+        std::vector<std::unique_ptr<Face>> local_results(num_faces);
+
+        #pragma omp parallel for schedule(dynamic)
+        for (Standard_Integer i = 0; i < num_faces; ++i) {
+            TopLoc_Location location;
+            const auto& face = faces[i];
+            auto triangulation = BRep_Tool::Triangulation(face, location);
+
+            if (triangulation.IsNull()) {
+                continue;
+            }
+
+            auto face_data = std::make_unique<Face>();
+            ProcessSingleFace(face, triangulation, location, *face_data);
+
+            if (face_data->number_of_triangles > 0) {
+                local_results[i] = std::move(face_data);
+            }
         }
 
-        auto face_data = std::make_unique<Face>();
-        ProcessSingleFace(face, triangulation, location, *face_data);
-        
-        if (face_data->number_of_triangles > 0) {
-            face_list.push_back(std::move(face_data));
+        // Collect non-null results
+        for (auto& result : local_results) {
+            if (result) {
+                face_list.push_back(std::move(result));
+            }
+        }
+    } else
+#endif
+    {
+        // Sequential processing
+        for (const auto& face : faces) {
+            TopLoc_Location location;
+            auto triangulation = BRep_Tool::Triangulation(face, location);
+
+            if (triangulation.IsNull()) {
+                continue;
+            }
+
+            auto face_data = std::make_unique<Face>();
+            ProcessSingleFace(face, triangulation, location, *face_data);
+
+            if (face_data->number_of_triangles > 0) {
+                face_list.push_back(std::move(face_data));
+            }
         }
     }
 }
@@ -181,8 +223,8 @@ void ShapeTesselator::ProcessSingleFace(const TopoDS_Face& face,
         face_data.vertex_coords[idx + 2] = static_cast<float>(point.Z());
     }
 
-    // Process normals if available
-    if (triangulation->HasUVNodes()) {
+    // Process normals - prefer pre-computed normals, fallback to UV computation
+    if (triangulation->HasNormals() || triangulation->HasUVNodes()) {
         ProcessNormals(face, triangulation, face_data);
     } else {
         ++face_data.number_of_invalid_normals;
@@ -195,22 +237,46 @@ void ShapeTesselator::ProcessSingleFace(const TopoDS_Face& face,
 void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
                    const Handle(Poly_Triangulation)& triangulation,
                    Face& face_data) {
-    
+
     const auto nb_nodes = triangulation->NbNodes();
-    BRepGProp_Face prop(face);
-    
     face_data.normal_coords.resize(nb_nodes * 3);
     face_data.number_of_normals = nb_nodes;
-    
+
     const bool reverse_orientation = (face.Orientation() == TopAbs_INTERNAL);
-    
+
+    // Use pre-computed normals from triangulation when available (OCC 7.6+)
+    // This is much faster than recomputing via BRepGProp_Face::Normal()
+    if (triangulation->HasNormals()) {
+        for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
+            auto normal = triangulation->Normal(i);
+
+            if (reverse_orientation) {
+                normal.Reverse();
+            }
+
+            const auto idx = (i - 1) * 3;
+            face_data.normal_coords[idx] = static_cast<float>(normal.X());
+            face_data.normal_coords[idx + 1] = static_cast<float>(normal.Y());
+            face_data.normal_coords[idx + 2] = static_cast<float>(normal.Z());
+        }
+        return;
+    }
+
+    // Fallback: compute normals from UV coordinates (slower path)
+    if (!triangulation->HasUVNodes()) {
+        ++face_data.number_of_invalid_normals;
+        return;
+    }
+
+    BRepGProp_Face prop(face);
+
     for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
         const auto& uv_point = triangulation->UVNode(i);
         gp_Pnt point;
         gp_Vec normal;
-        
+
         prop.Normal(uv_point.X(), uv_point.Y(), point, normal);
-        
+
         if (normal.SquareMagnitude() > Precision::SquareConfusion()) {
             normal.Normalize();
             if (reverse_orientation) {
@@ -219,7 +285,7 @@ void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
         } else {
             normal.SetCoord(0., 0., 0.);
         }
-        
+
         const auto idx = (i - 1) * 3;
         face_data.normal_coords[idx] = static_cast<float>(normal.X());
         face_data.normal_coords[idx + 1] = static_cast<float>(normal.Y());
@@ -230,22 +296,26 @@ void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
 void ShapeTesselator::ProcessTriangles(const TopoDS_Face& face,
                      const Handle(Poly_Triangulation)& triangulation,
                      Face& face_data) {
-    
+
     const auto nb_triangles = triangulation->NbTriangles();
     const auto is_reversed = (face.Orientation() == TopAbs_REVERSED);
-    
-    face_data.triangle_indices.reserve(nb_triangles * 3);
-    
+
+    // Pre-allocate exact size
+    face_data.triangle_indices.resize(nb_triangles * 3);
+    face_data.number_of_triangles = nb_triangles;
+
     for (Standard_Integer i = 1; i <= nb_triangles; ++i) {
         Standard_Integer n1, n2, n3;
         triangulation->Triangle(i).Get(n1, n2, n3);
-        
+
         if (is_reversed) {
             std::swap(n2, n3);
         }
-        
-        face_data.triangle_indices.insert(face_data.triangle_indices.end(), {n1, n2, n3});
-        ++face_data.number_of_triangles;
+
+        const auto base_idx = (i - 1) * 3;
+        face_data.triangle_indices[base_idx] = n1;
+        face_data.triangle_indices[base_idx + 1] = n2;
+        face_data.triangle_indices[base_idx + 2] = n3;
     }
 }
 
@@ -339,18 +409,21 @@ bool ShapeTesselator::ProcessSingleEdge(const TopoDS_Edge& edge,
         if (!location.IsIdentity()) {
             transform = location.Transformation();
         }
-        
+
         const auto& nodes = poly_3d->Nodes();
         const auto nb_nodes = poly_3d->NbNodes();
-        
-        edge_data.reserve(nb_nodes);
-        
+
+        // Pre-allocate exact size
+        edge_data.vertex_coords.resize(nb_nodes * 3);
+
         for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
             auto vertex = nodes(i);
             vertex.Transform(transform);
-            
-            edge_data.vertex_coords.insert(edge_data.vertex_coords.end(),
-                {static_cast<float>(vertex.X()), static_cast<float>(vertex.Y()), static_cast<float>(vertex.Z())});
+
+            const auto idx = (i - 1) * 3;
+            edge_data.vertex_coords[idx] = static_cast<float>(vertex.X());
+            edge_data.vertex_coords[idx + 1] = static_cast<float>(vertex.Y());
+            edge_data.vertex_coords[idx + 2] = static_cast<float>(vertex.Z());
         }
         return true;
     }
@@ -371,20 +444,23 @@ bool ShapeTesselator::ProcessSingleEdge(const TopoDS_Edge& edge,
     if (!location.IsIdentity()) {
         transform = location.Transformation();
     }
-    
+
     const auto& indices = poly_on_tri->Nodes();
     const auto nb_nodes = poly_on_tri->NbNodes();
-    
-    edge_data.reserve(nb_nodes);
-    
+
+    // Pre-allocate exact size
+    edge_data.vertex_coords.resize(nb_nodes * 3);
+
     for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
         auto vertex = face_triangulation->Node(indices(i));
         vertex.Transform(transform);
-        
-        edge_data.vertex_coords.insert(edge_data.vertex_coords.end(),
-            {static_cast<float>(vertex.X()), static_cast<float>(vertex.Y()), static_cast<float>(vertex.Z())});
+
+        const auto idx = (i - 1) * 3;
+        edge_data.vertex_coords[idx] = static_cast<float>(vertex.X());
+        edge_data.vertex_coords[idx + 1] = static_cast<float>(vertex.Y());
+        edge_data.vertex_coords[idx + 2] = static_cast<float>(vertex.Z());
     }
-    
+
     return true;
 }
 
@@ -442,43 +518,41 @@ const float* ShapeTesselator::NormalsList() const {
 
 std::vector<float> ShapeTesselator::GetVerticesPositionAsTuple() const {
     if (!computed) return {};
-    
-    std::vector<float> result;
-    result.reserve(tot_triangle_count * 9);  // 3 vertices * 3 coords
-    
+
+    const auto total_floats = tot_triangle_count * 9;  // 3 vertices * 3 coords
+    std::vector<float> result(total_floats);
+
+    Standard_Integer out_idx = 0;
     for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
         const auto base_idx = i * 3;
         for (int j = 0; j < 3; ++j) {
             const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
-            result.insert(result.end(), {
-                consolidated_vertices[vertex_idx],
-                consolidated_vertices[vertex_idx + 1],
-                consolidated_vertices[vertex_idx + 2]
-            });
+            result[out_idx++] = consolidated_vertices[vertex_idx];
+            result[out_idx++] = consolidated_vertices[vertex_idx + 1];
+            result[out_idx++] = consolidated_vertices[vertex_idx + 2];
         }
     }
-    
+
     return result;
 }
 
 std::vector<float> ShapeTesselator::GetNormalsAsTuple() const {
     if (!computed) return {};
-    
-    std::vector<float> result;
-    result.reserve(tot_triangle_count * 9);
-    
+
+    const auto total_floats = tot_triangle_count * 9;
+    std::vector<float> result(total_floats);
+
+    Standard_Integer out_idx = 0;
     for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
         const auto base_idx = i * 3;
         for (int j = 0; j < 3; ++j) {
             const auto normal_idx = consolidated_triangle_indices[base_idx + j] * 3;
-            result.insert(result.end(), {
-                consolidated_normals[normal_idx],
-                consolidated_normals[normal_idx + 1],
-                consolidated_normals[normal_idx + 2]
-            });
+            result[out_idx++] = consolidated_normals[normal_idx];
+            result[out_idx++] = consolidated_normals[normal_idx + 1];
+            result[out_idx++] = consolidated_normals[normal_idx + 2];
         }
     }
-    
+
     return result;
 }
 
@@ -557,15 +631,14 @@ void ShapeTesselator::ObjGetTriangle(Standard_Integer trianglenum, Standard_Inte
 // ========================================================================
 
 namespace {
-    //! Format float number with epsilon handling
-    std::string formatFloatNumber(float f) {
-        const float epsilon = 1e-3f;
-        std::ostringstream formatted_float;
+    //! Format float number with epsilon handling directly to stream
+    inline void writeFloat(std::ostringstream& out, float f) {
+        constexpr float epsilon = 1e-3f;
         if (std::abs(f) < epsilon) {
-            f = 0.0f;
+            out << "0";
+        } else {
+            out << f;
         }
-        formatted_float << f;
-        return formatted_float.str();
     }
 }
 
@@ -632,38 +705,33 @@ std::string ShapeTesselator::ExportShapeToThreejsJSONString(const char* shape_fu
 
 std::string ShapeTesselator::ExportShapeToX3DTriangleSet() const {
     if (!computed) return "";
-    
-    std::ostringstream str_ifs, str_vertices, str_normals;
-    std::vector<Standard_Integer> vertices_idx(3);
-    std::vector<Standard_Integer> normals_idx(3);
-    
-    // Process triangles and build vertex/normal strings
+
+    std::ostringstream str_vertices, str_normals;
+
+    // Process triangles and build vertex/normal strings directly
     for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
-        ObjGetTriangle(i, vertices_idx.data(), normals_idx.data());
-        
-        // Process vertices
+        const auto base_idx = i * 3;
+
+        // Process all 3 vertices of the triangle
         for (int j = 0; j < 3; ++j) {
-            const auto idx = vertices_idx[j];
-            str_vertices << formatFloatNumber(consolidated_vertices[idx]) << " ";
-            str_vertices << formatFloatNumber(consolidated_vertices[idx + 1]) << " ";
-            str_vertices << formatFloatNumber(consolidated_vertices[idx + 2]) << " ";
-        }
-        
-        // Process normals
-        for (int j = 0; j < 3; ++j) {
-            const auto idx = normals_idx[j];
-            str_normals << formatFloatNumber(consolidated_normals[idx]) << " ";
-            str_normals << formatFloatNumber(consolidated_normals[idx + 1]) << " ";
-            str_normals << formatFloatNumber(consolidated_normals[idx + 2]) << " ";
+            const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
+            writeFloat(str_vertices, consolidated_vertices[vertex_idx]); str_vertices << ' ';
+            writeFloat(str_vertices, consolidated_vertices[vertex_idx + 1]); str_vertices << ' ';
+            writeFloat(str_vertices, consolidated_vertices[vertex_idx + 2]); str_vertices << ' ';
+
+            writeFloat(str_normals, consolidated_normals[vertex_idx]); str_normals << ' ';
+            writeFloat(str_normals, consolidated_normals[vertex_idx + 1]); str_normals << ' ';
+            writeFloat(str_normals, consolidated_normals[vertex_idx + 2]); str_normals << ' ';
         }
     }
-    
-    str_ifs << "<TriangleSet solid='false'>\n";
-    str_ifs << "<Coordinate point='" << str_vertices.str() << "'></Coordinate>\n";
-    str_ifs << "<Normal vector='" << str_normals.str() << "'></Normal>\n";
-    str_ifs << "</TriangleSet>\n";
-    
-    return str_ifs.str();
+
+    std::ostringstream result;
+    result << "<TriangleSet solid='false'>\n";
+    result << "<Coordinate point='" << str_vertices.str() << "'></Coordinate>\n";
+    result << "<Normal vector='" << str_normals.str() << "'></Normal>\n";
+    result << "</TriangleSet>\n";
+
+    return result.str();
 }
 
 void ShapeTesselator::ExportShapeToX3D(const char* filename, int diffR, int diffG, int diffB) {
