@@ -292,7 +292,7 @@ foreach(OCCT_MODULE ${OCCT_TOOLKIT_MODEL})
     set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library (${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} Python3::Module)
+    target_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} Python3::Module)
 endforeach(OCCT_MODULE)
 
 ###############
@@ -306,7 +306,7 @@ set(TESSELATOR_SOURCE_FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/ShapeTesselator.cpp)
 
 swig_add_library(Tesselator LANGUAGE python SOURCES ${TESSELATOR_SOURCE_FILES} TYPE MODULE)
-swig_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
+target_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
 
 #################
 # Visualisation #
@@ -322,7 +322,7 @@ if(PYTHONOCC_WRAP_VISU)
       set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
       set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
       swig_add_library (${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-      swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
+      target_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
     endforeach(OCCT_MODULE)
 
   # Build third part modules
@@ -335,12 +335,12 @@ if(PYTHONOCC_WRAP_VISU)
       ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp)
 
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-    swig_link_libraries(Visualization ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
+    target_link_libraries(Visualization ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
     # if GLX is enabled
-    swig_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
+    target_link_libraries(Visualization /System/Library/Frameworks/Cocoa.framework)
   endif(APPLE)
 
   ##########################
@@ -355,7 +355,7 @@ if(PYTHONOCC_WRAP_VISU)
   ${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource/MeshDataSource.cpp)
 
   swig_add_library(MeshDS LANGUAGE python SOURCES ${MESHDATASOURCE_SOURCE_FILES} TYPE MODULE)
-  swig_link_libraries(MeshDS ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
+  target_link_libraries(MeshDS ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
 endif(PYTHONOCC_WRAP_VISU)
 
@@ -367,7 +367,7 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
     set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_DATAEXCHANGE_LIBRARIES} Python3::Module)
+    target_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_DATAEXCHANGE_LIBRARIES} Python3::Module)
   endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
@@ -379,7 +379,7 @@ if(PYTHONOCC_WRAP_OCAF)
     set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCCT_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_OCAF_LIBRARIES} Python3::Module)
+    target_link_libraries(${OCCT_MODULE} ${OCCT_MODEL_LIBRARIES} ${OCCT_OCAF_LIBRARIES} Python3::Module)
   endforeach(OCCT_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
@@ -398,7 +398,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
 )
 
 swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
-swig_link_libraries(Addons ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
+target_link_libraries(Addons ${OCCT_MODEL_LIBRARIES} ${OCCT_VISUALIZATION_LIBRARIES} Python3::Module)
 
 ################
 # Installation #
