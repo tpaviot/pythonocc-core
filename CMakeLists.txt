@@ -196,7 +196,10 @@ if(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
       message(STATUS "conda-build running, using $ENV{SP_DIR} as install dir")
       set(PYTHONOCC_INSTALL_DIRECTORY $ENV{SP_DIR}/OCC CACHE PATH "pythonocc install directory")
     else(DEFINED ENV{SP_DIR} AND WIN32)
-      execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; from os.path import relpath; print(relpath(get_python_lib(1,prefix='${CMAKE_INSTALL_PREFIX}'),'${CMAKE_INSTALL_PREFIX}'))" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
+      execute_process(
+    COMMAND ${Python3_EXECUTABLE} -c "import sysconfig, os, sys; print(os.path.relpath(sysconfig.get_path('platlib'), sys.prefix))"
+    OUTPUT_VARIABLE python_lib
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
       set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonocc install directory")
     endif(DEFINED ENV{SP_DIR} AND WIN32)
 endif(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
