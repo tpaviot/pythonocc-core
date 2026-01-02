@@ -27,6 +27,7 @@ requirements:
   host:
     - python {{ python }}
     - python_abi * *_cp313  [py==313]
+    - python_abi * *_cp314  [py==314]
     - occt ==7.9.3
     - numpy >=1.17
 
@@ -34,6 +35,7 @@ requirements:
     - occt ==7.9.3
     - numpy >=1.17
     - python_abi * *_cp313  [py==313]
+    - python_abi * *_cp314  [py==314]
 
 test:
   imports:
