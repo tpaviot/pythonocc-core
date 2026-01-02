@@ -44,7 +44,7 @@ jobs:
         conda info -a && \
         conda config --add channels https://conda.anaconda.org/conda-forge
     displayName: 'Conda config and info'
-  - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
+  - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=3.12 anaconda-client
     displayName: 'Create Anaconda environment'
   - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
     - script: |
@@ -54,7 +54,7 @@ jobs:
         set CC=cl.exe
         set CXX=cl.exe
         call activate build_env
-        conda-build --no-remove-work-dir --dirty ci/conda
+        conda-build --python ${{ parameters.py_maj }}.${{ parameters.py_min }} --no-remove-work-dir --dirty ci/conda
       displayName: 'Set Windows environment and build'
       env:
         CXX: "cl.exe"
@@ -66,7 +66,7 @@ jobs:
   - ${{ if not(contains(parameters.vmImage, 'win')) }}:
     - bash: |
         source activate build_env && \
-        conda-build --no-remove-work-dir --dirty ci/conda
+        conda-build --python ${{ parameters.py_maj }}.${{ parameters.py_min }} --no-remove-work-dir --dirty ci/conda
       displayName: 'Run conda build'
       failOnStderr: false
       env:
