@@ -75,3 +75,45 @@ jobs:
     vmImage: 'windows-2022'
     py_maj: 3
     py_min: 12
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_24_04_python313
+    vmImage: 'ubuntu-24.04'
+    py_maj: 3
+    py_min: 13
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_12_python313
+    vmImage: 'macOS-latest'
+    py_maj: 3
+    py_min: 13
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2022_python313
+    vmImage: 'windows-2022'
+    py_maj: 3
+    py_min: 13
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_24_04_python314
+    vmImage: 'ubuntu-24.04'
+    py_maj: 3
+    py_min: 14
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_12_python314
+    vmImage: 'macOS-latest'
+    py_maj: 3
+    py_min: 14
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2022_python314
+    vmImage: 'windows-2022'
+    py_maj: 3
+    py_min: 14

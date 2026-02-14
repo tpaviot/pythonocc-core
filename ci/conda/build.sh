@@ -1,7 +1,11 @@
 #!/bin/bash
-# make an in source build do to some problems with install
 
 # Configure step
+EXTRA_CMAKE_ARGS=""
+if [ "$(uname)" == "Darwin" ]; then
+  EXTRA_CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.13"
+fi
+
 cmake -G Ninja \
  -DCMAKE_BUILD_TYPE=Release \
  -DCMAKE_PREFIX_PATH=$PREFIX \
@@ -12,17 +16,11 @@ cmake -G Ninja \
  -DPython3_FIND_STRATEGY=LOCATION \
  -DPython3_FIND_FRAMEWORK=NEVER \
  -DSWIG_HIDE_WARNINGS=ON \
- -DPYTHONOCC_MESHDS_NUMPY=ON
+ -DPYTHONOCC_MESHDS_NUMPY=ON \
+ $EXTRA_CMAKE_ARGS
 
 # Build step
 ninja
 
 # Install step
 ninja install
-
-# fix rpaths
-#if [ $(uname) == Darwin ]; then
-#    for lib in $(ls $SP_DIR/OCC/_*.so); do
-#      install_name_tool -rpath $PREFIX/lib @loader_path/../../../ $lib
-#    done
-#fi
