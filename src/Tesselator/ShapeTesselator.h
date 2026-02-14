@@ -21,9 +21,7 @@
 #pragma once
 
 #include <vector>
-#include <memory>
 #include <string>
-#include <tuple>
 
 // OpenCASCADE includes
 #include <Standard_Real.hxx>
@@ -34,7 +32,6 @@
 #include <TopLoc_Location.hxx>
 #include <Poly_Triangulation.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <Poly_Triangulation.hxx>
 
 class ShapeTesselator {
 public:
@@ -46,23 +43,14 @@ public:
         Standard_Integer number_of_invalid_triangles = 0; //!< Number of invalid triangles
         Standard_Integer number_of_invalid_normals = 0;   //!< Number of invalid normals
         Standard_Integer number_of_normals = 0;       //!< Number of normal vectors
-        
-        //! Reserve memory to avoid reallocations
-        //! @param vertices Expected number of vertices
-        //! @param triangles Expected number of triangles
-        void reserve(size_t vertices, size_t triangles);
     };
     
     struct Edge {
         std::vector<float> vertex_coords; //!< Edge vertex coordinates
-        
-        //! Reserve memory for vertices
-        //! @param vertices Expected number of vertices
-        void reserve(size_t vertices);
-        
+
         //! Get number of vertices in this edge
         //! @return Number of vertices
-        Standard_Integer size() const noexcept;
+        [[nodiscard]] Standard_Integer size() const noexcept;
     };
 
 private:
@@ -72,9 +60,9 @@ private:
     TopoDS_Shape myShape;            //!< The shape to tessellate
     Standard_Real myDeviation;       //!< Tessellation deviation parameter
     
-    // Face and edge collections using smart pointers
-    std::vector<std::unique_ptr<Face>> face_list;  //!< Collection of tessellated faces
-    std::vector<std::unique_ptr<Edge>> edge_list;  //!< Collection of tessellated edges
+    // Face and edge collections stored by value (no heap indirection)
+    std::vector<Face> face_list;  //!< Collection of tessellated faces
+    std::vector<Edge> edge_list;  //!< Collection of tessellated edges
     
     // Consolidated mesh data for efficient access
     std::vector<float> consolidated_vertices;        //!< All vertex coordinates
@@ -119,35 +107,35 @@ public:
 
     //! Get the current deviation parameter
     //! @return The deviation value
-    Standard_Real GetDeviation() const noexcept;
+    [[nodiscard]] Standard_Real GetDeviation() const noexcept;
 
     //! Ensure that mesh computation has been performed
     void EnsureMeshIsComputed();
 
     // Mesh statistics getters
-    Standard_Integer ObjGetTriangleCount() const noexcept;      //!< Get total triangle count
-    Standard_Integer ObjGetVertexCount() const noexcept;       //!< Get total vertex count  
-    Standard_Integer ObjGetNormalCount() const noexcept;       //!< Get total normal count
-    Standard_Integer ObjGetInvalidTriangleCount() const noexcept; //!< Get invalid triangle count
-    Standard_Integer ObjGetInvalidNormalCount() const noexcept;   //!< Get invalid normal count
-    Standard_Integer ObjGetEdgeCount() const noexcept;           //!< Get edge count
+    [[nodiscard]] Standard_Integer ObjGetTriangleCount() const noexcept;
+    [[nodiscard]] Standard_Integer ObjGetVertexCount() const noexcept;
+    [[nodiscard]] Standard_Integer ObjGetNormalCount() const noexcept;
+    [[nodiscard]] Standard_Integer ObjGetInvalidTriangleCount() const noexcept;
+    [[nodiscard]] Standard_Integer ObjGetInvalidNormalCount() const noexcept;
+    [[nodiscard]] Standard_Integer ObjGetEdgeCount() const noexcept;
 
     //! Get number of vertices in a specific edge
     //! @param iEdge Edge index
     //! @return Number of vertices in the edge
-    Standard_Integer ObjEdgeGetVertexCount(Standard_Integer iEdge) const;
+    [[nodiscard]] Standard_Integer ObjEdgeGetVertexCount(Standard_Integer iEdge) const;
 
     // Direct data access
-    const float* VerticesList() const;  //!< Get pointer to vertex data
-    const float* NormalsList() const;   //!< Get pointer to normal data
+    [[nodiscard]] const float* VerticesList() const;
+    [[nodiscard]] const float* NormalsList() const;
 
     //! Get vertices as a flat array suitable for rendering
     //! @return Vector of vertex positions for all triangles
-    std::vector<float> GetVerticesPositionAsTuple() const;
+    [[nodiscard]] std::vector<float> GetVerticesPositionAsTuple() const;
 
-    //! Get normals as a flat array suitable for rendering  
+    //! Get normals as a flat array suitable for rendering
     //! @return Vector of normal vectors for all triangles
-    std::vector<float> GetNormalsAsTuple() const;
+    [[nodiscard]] std::vector<float> GetNormalsAsTuple() const;
 
     //! Get vertex coordinates by index
     //! @param index Vertex index
@@ -175,11 +163,11 @@ public:
     //! Export shape as Three.js JSON BufferGeometry
     //! @param shape_function_name Name/UUID for the geometry
     //! @return JSON string representation
-    std::string ExportShapeToThreejsJSONString(const char* shape_function_name) const;
+    [[nodiscard]] std::string ExportShapeToThreejsJSONString(const char* shape_function_name) const;
 
     //! Export shape as X3D TriangleSet
     //! @return X3D string representation
-    std::string ExportShapeToX3DTriangleSet() const;
+    [[nodiscard]] std::string ExportShapeToX3DTriangleSet() const;
 
     //! Export complete X3D file
     //! @param filename Output filename
