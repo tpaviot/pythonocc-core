@@ -18,8 +18,8 @@
 #include "ShapeTesselator.h"
 
 #include <algorithm>
-#include <charconv>
 #include <cmath>
+#include <cstdio>
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -54,15 +54,15 @@
 #include <TColStd_Array1OfInteger.hxx>
 
 // ========================================================================
-// Fast float-to-string helpers using C++17 std::to_chars
+// Fast float-to-string helpers
 // ========================================================================
 
 namespace {
-    //! Append a float to a string using std::to_chars (no locale, no virtual dispatch)
+    //! Append a float to a string using snprintf (portable across all platforms)
     inline void appendFloat(std::string& out, float f) {
         char buf[32];
-        auto [ptr, ec] = std::to_chars(buf, buf + sizeof(buf), f);
-        out.append(buf, static_cast<size_t>(ptr - buf));
+        int len = std::snprintf(buf, sizeof(buf), "%g", f);
+        out.append(buf, static_cast<size_t>(len));
     }
 
     //! Append a float with epsilon clamping (for X3D export compatibility)
