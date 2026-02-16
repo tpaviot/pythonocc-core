@@ -1,3 +1,67 @@
+Version 7.9.3 - February 2026
+=============================
+
+This release requires opencascade-7.9.3
+
+Highlights:
+- OpenCASCADE 7.9.3 and SWIG 4.4.1
+- C++17 standard
+- Python 3.13 and 3.14 support (Python 3.9 dropped)
+- Tesselator performance: up to 37% faster exports, 50% less memory
+- OpenGL Core Profile API for Qt6 integration
+- Several memory leak fixes in SWIG typemaps and handle management
+- Type stubs (.pyi) for Display and Extend packages
+
+* wrapper: upgrade to OpenCASCADE 7.9.3, bump SWIG to 4.4.1
+
+* wrapper: bump C++ standard to C++17
+
+* wrapper: add support for Python 3.13 and 3.14, drop Python 3.9
+
+* wrapper: fix memory leak in TopoDS_Shape output typemaps
+
+* wrapper: fix memory leaks in SWIG wrappers (FunctionTransformers, OccHandle)
+
+* wrapper: add template for non-const byref handles, #1443
+
+* wrapper: use Delete() method for occ handles
+
+* wrapper: use builtin SWIG_Python_AppendOutput
+
+* wrapper: refactored IOStream and exception catcher
+
+* wrapper: wrap NCollection_List iterator
+
+* wrapper: improve wrapper for NCollection_Sequence, __iter__ method added
+
+* wrapper: add docstrings and stubs (.pyi) for Display and Extend packages
+
+* wrapper: fix type hints for Display and Extend packages
+
+* wrapper: overall blackification (code formatting)
+
+* tesselator: optimize ShapeTesselator speed and memory with C++17 idioms
+
+* tesselator: switch from double to float for mesh vertices and normals, halving memory usage
+
+* display: add OpenGL Core Profile API to Display3d
+
+* display: add SetSRGBDisabled() to disable sRGB framebuffer
+
+* display: extend selection mode with wires and shells
+
+* display: don't draw seam edges in OCCViewer, #1413
+
+* data exchange: add sew and make_solid options to STL importer for solid construction from 2d triangular mesh
+
+* build: add DEBUG_MEMORY compilation mode
+
+* build: fix macOS build (std::to_chars float compatibility)
+
+* build: fix conda build issues (sysroot, OpenGL path, dylib warnings)
+
+* ci/cd: use Windows 2022 in Azure pipelines
+
 Version 7.9.0 - April 2025
 ==========================
 

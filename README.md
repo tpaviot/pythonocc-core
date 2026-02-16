@@ -2,7 +2,7 @@
 [![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.0)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.3)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3605364.svg)](https://doi.org/10.5281/zenodo.3605364)
 
 pythonocc-core
@@ -12,7 +12,7 @@ About
 -----
 pythonocc provides 3D modeling and dataexchange features. It is intended for CAD/PDM/PLM/BIM development. It is based on the OpenCascade Technology modeling kernel.
 
-Latest release: [pythonocc-core 7.9.0 (April 2025)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.9.0)
+Latest release: [pythonocc-core 7.9.3 (February 2026)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.9.3)
 
 Features
 --------
@@ -27,17 +27,17 @@ pythonocc provides the following features:
 
 Try online at mybinder
 ----------------------
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.0) to open a jupyter notebook running the latest pythonocc-core 7.9.0.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.3) to open a jupyter notebook running the latest pythonocc-core 7.9.3.
 
 Install with conda
 ------------------
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.9, 3.10, 3.11 and 3.12. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.10:
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.10, 3.11, 3.12, 3.13 and 3.14. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.12:
 
 ```bash
 # first create an environment
-conda create --name=pyoccenv python=3.10
+conda create --name=pyoccenv python=3.12
 conda activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.9.0
+conda install -c conda-forge pythonocc-core=7.9.3
 ```
 
 Other conda channels may provide pythonocc-core packages, check [search Anaconda](https://anaconda.org/search?q=pythonocc-core)
