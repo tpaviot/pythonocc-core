@@ -31,7 +31,7 @@ Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpav
 
 Install with conda
 ------------------
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.10, 3.11, 3.12, 3.13 and 3.14. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.12:
+pythonocc provides precompiled [conda packages](https://anaconda.org/conda-forge/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.10, 3.11, 3.12, 3.13 and 3.14. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.12:
 
 ```bash
 # first create an environment
