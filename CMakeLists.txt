@@ -70,20 +70,22 @@ endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
 #####################################################################
 # OpenGL. If available, enable compilation for Visualization module #
 #####################################################################
-find_package(OpenGL)
-include_directories(${OPENGL_INCLUDE_DIR})
+set(OPENGL_FOUND FALSE)
+if(NOT DEFINED PYTHONOCC_WRAP_VISU)
+  find_package(OpenGL)
+  include_directories(${OPENGL_INCLUDE_DIR})
+  if(NOT OPENGL_FOUND)
+    message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
+  endif(NOT OPENGL_FOUND)
+endif(NOT DEFINED PYTHONOCC_WRAP_VISU)
 
 #################
 # Build options #
 #################
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCCT_Modules.cmake)
 # add an option to choose toolkits to compile
-if(OPENGL_FOUND)
-  option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
-else(OPENGL_FOUND)
-  message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
-  set(PYTHONOCC_WRAP_VISU "Compile Visualisation" OFF)
-endif(OPENGL_FOUND)
+option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ${OPENGL_FOUND})
+option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
 option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
